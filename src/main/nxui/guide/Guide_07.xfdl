@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_07" classname="Guide_01" left="0" top="0" width="710" height="1114" titletext="PopupMenu/GroupBox/ProgressBar/Confirm/Alert">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="PopupMenu" left="17" top="16" width="273" height="16" cssclass="Guide_title"/>
+        <Static id="Static05" taborder="34" cssclass="Guide_line" left="10" top="184" right="10" height="11"/>
+        <Button id="Button00" taborder="35" text="PopupMenu" left="49" top="51" width="100" height="21" onclick="Button00_onclick"/>
+        <PopupMenu id="PopupMenu00" innerdataset="@ds_menu" idcolumn="idx" captioncolumn="Caption" levelcolumn="lev" userdatacolumn="UserData" onmenuclick="PopupMenu00_onmenuclick" left="49" top="72" width="124" height="106" enablecolumn="enable"/>
+        <Static id="Static01" taborder="36" text="GroupBox" cssclass="Guide_title" left="17" top="210" width="273" height="16"/>
+        <GroupBox id="GroupBox00" text="GroupBox" taborder="37" left="49" top="272" width="205" height="138"/>
+        <GroupBox id="GroupBox01" text="GroupBox" taborder="38" left="354" top="272" width="205" height="138" enable="false"/>
+        <Static id="Static02" taborder="39" text="ProgressBar" cssclass="Guide_title" left="17" top="461" width="273" height="16"/>
+        <Static id="Static03" taborder="40" cssclass="Guide_line" left="10" top="430" right="10" height="11"/>
+        <ProgressBar id="ProgressBar00" taborder="41" max="100" min="0" left="49" top="538" width="235" height="9" pos="65"/>
+        <ProgressBar id="ProgressBar01" taborder="42" max="100" min="0" pos="100" left="49" top="567" width="235" height="9"/>
+        <ProgressBar id="ProgressBar02" taborder="43" max="100" min="0" left="49" top="626" width="300" height="9"/>
+        <Button id="Button01" taborder="44" text="Progress Test" left="369" top="620" width="120" height="21" onclick="Button01_onclick"/>
+        <ProgressBar id="ProgressBar03" taborder="45" max="100" min="0" pos="100" left="354" top="567" width="235" height="9" enable="false"/>
+        <ProgressBar id="ProgressBar04" taborder="46" max="100" min="0" pos="65" left="354" top="538" width="235" height="9" enable="false"/>
+        <Static id="Static07" taborder="47" text="Normal" cssclass="pseudo" left="49" top="245" width="123" height="22"/>
+        <Static id="Static08" taborder="48" text="Disabled" cssclass="pseudo" left="354" top="245" width="123" height="22"/>
+        <Static id="Static04" taborder="49" text="Disabled" cssclass="pseudo" left="354" top="496" width="93" height="22"/>
+        <Static id="Static06" taborder="50" text="Normal" cssclass="pseudo" left="49" top="496" width="93" height="22"/>
+        <FileUpload id="FileUpload00" taborder="51" retry="0" index="0" left="367" top="82" width="266" height="23"/>
+        <FileDownload id="FileDownload00" taborder="52" retry="0" text="FileDownload" left="367" top="51" width="100" height="23"/>
+        <Static id="Static09" taborder="53" text="FileUpload / FileDownload" cssclass="Guide_title" left="344" top="16" width="273" height="16"/>
+        <Static id="Static14" taborder="60" cssclass="Guide_Hsize" visible="false" left="555" top="104" width="78" height="5"/>
+        <Static id="Static33" taborder="61" text="h23" cssclass="Guide_color" visible="false" left="348" top="51" width="25" height="23"/>
+        <Static id="Static10" taborder="62" text="h23" cssclass="Guide_color" visible="false" left="348" top="82" width="25" height="23"/>
+        <Static id="Static11" taborder="63" text="Confirm / Alert" cssclass="Guide_title" left="2.39%" top="757" right="59.15%" height="16"/>
+        <Static id="Static12" taborder="64" cssclass="Guide_line" left="1.41%" top="726" right="1.41%" height="11"/>
+        <Div id="Div00" taborder="65" text="Div00" left="23" top="792" height="140" width="285" cssclass="div_WF_conpop">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="Confirm" left="0" top="0" height="25" width="281" cssclass="sta_WF_conpopTitle"/>
+              <Button id="Button01" taborder="2" left="258" top="4" height="13" cssclass="btn_WF_popClose" width="13"/>
+              <Static id="Static01" taborder="3" text="승인하시겠습니까?" left="98" top="67" height="22" width="144"/>
+              <ImageViewer id="ImageViewer00" taborder="4" top="49" height="52" width="52" style="background:URL('image::alert_confirm.png');border:0 none #808080ff ;" right="208"/>
+              <Button id="Button00" taborder="5" text="아니오" left="51.96%" top="104" right="29.18%" height="21"/>
+              <Button id="Button02" taborder="6" text="예" left="88" top="104" right="140" height="21" position="absolute"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <ImageViewer id="ImageViewer01" taborder="67" left="56" top="960" height="52" style="background:URL('image::alert_question.png');border:0 none #808080ff ;" width="52"/>
+        <ImageViewer id="ImageViewer02" taborder="68" left="136" top="960" height="52" style="background:URL('image::alert_error.png');border:0 none #808080ff ;" width="52"/>
+        <ImageViewer id="ImageViewer03" taborder="69" left="216" top="960" height="52" style="background:URL('image::alert_information.png');border:0 none #808080ff ;" width="52"/>
+        <Static id="Static15" taborder="71" text="question" cssclass="pseudo" top="1020" height="22" width="54" left="56"/>
+        <Static id="Static16" taborder="72" text="error" cssclass="pseudo" top="1020" height="22" width="41" left="145"/>
+        <Static id="Static17" taborder="73" text="information" cssclass="pseudo" top="1020" height="22" width="64" left="211"/>
+        <Div id="Div01" taborder="74" text="Div00" top="792" height="140" cssclass="div_WF_alrpop" width="285" left="351">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="7" text="Confirm" cssclass="sta_WF_alrpopTitle" left="0%" top="0" right="0%" height="25"/>
+              <Button id="Button01" taborder="8" cssclass="btn_WF_popClose" left="91.81%" top="4" right="3.56%" height="13"/>
+              <Static id="Static01" taborder="9" text="오류가 발생했습니다." left="34.88%" top="67" right="13.88%" height="22"/>
+              <ImageViewer id="ImageViewer00" taborder="10" top="49" height="52" style="background:URL('image::con_default.png');border:0 none #808080ff ;" width="52" left="21"/>
+              <Button id="Button02" taborder="12" text="예" left="39.86%" top="104" right="41.28%" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <ImageViewer id="ImageViewer00" taborder="75" top="960" height="52" style="background:URL('image::con_question.png');border:0 none #808080ff ;" width="52" left="384"/>
+        <ImageViewer id="ImageViewer04" taborder="76" top="960" height="52" style="background:URL('image::con_error.png');border:0 none #808080ff ;" width="52" left="464"/>
+        <ImageViewer id="ImageViewer05" taborder="77" top="960" height="52" style="background:URL('image::con_information.png');border:0 none #808080ff ;" width="52" left="544"/>
+        <Static id="Static13" taborder="78" text="question" cssclass="pseudo" top="1020" height="22" width="54" left="384"/>
+        <Static id="Static18" taborder="79" text="error" cssclass="pseudo" top="1020" height="22" width="41" left="473"/>
+        <Static id="Static19" taborder="80" text="information" cssclass="pseudo" top="1020" height="22" width="64" left="539"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_menu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="idx" type="STRING" size="256"/>
+          <Column id="lev" type="STRING" size="256"/>
+          <Column id="UserData" type="STRING" size="256"/>
+          <Column id="Caption" type="STRING" size="256"/>
+          <Column id="enable" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lev">0</Col>
+            <Col id="UserData">PopupMenu01</Col>
+            <Col id="Caption">PopupMenu01</Col>
+            <Col id="idx">1000</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu02</Col>
+            <Col id="Caption">PopupMenu02</Col>
+            <Col id="lev">0</Col>
+            <Col id="idx">1001</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu01</Col>
+            <Col id="Caption">PopupMenu01</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1002</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu02</Col>
+            <Col id="Caption">PopupMenu02</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1003</Col>
+            <Col id="enable">0</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu03</Col>
+            <Col id="Caption">PopupMenu03</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1004</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu04</Col>
+            <Col id="Caption">PopupMenu04</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1005</Col>
+            <Col id="enable">0</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu05</Col>
+            <Col id="Caption">PopupMenu05</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1006</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu03</Col>
+            <Col id="Caption">PopupMenu03</Col>
+            <Col id="lev">0</Col>
+            <Col id="idx">1007</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu04</Col>
+            <Col id="Caption">PopupMenu04</Col>
+            <Col id="lev">0</Col>
+            <Col id="idx">1008</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu01</Col>
+            <Col id="Caption">PopupMenu01</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1009</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu02</Col>
+            <Col id="Caption">PopupMenu02</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1010</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu03</Col>
+            <Col id="Caption">PopupMenu03</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1011</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu04</Col>
+            <Col id="Caption">PopupMenu04</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1012</Col>
+            <Col id="enable">1</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">PopupMenu05</Col>
+            <Col id="Caption">PopupMenu05</Col>
+            <Col id="lev">0</Col>
+            <Col id="idx">1013</Col>
+            <Col id="enable">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nX   = system.clientToScreenX(obj, 0);
+    var nY   = system.clientToScreenY(obj, 21);
+	this.PopupMenu00.trackPopup(nX, nY);
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var i, j;
+	this.ProgressBar02.pos = 0;
+	for( i = 0 ; i < 200 ; i+=2 )
+	{
+		this.ProgressBar02.stepIt();
+		this.updateWindow();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

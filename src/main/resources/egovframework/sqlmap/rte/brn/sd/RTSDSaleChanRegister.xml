@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="saleChan">
+	<resultMap id="saleChanResultMap" class="java.util.HashMap">
+		<result property="lLevel" 		column="L_LEVEL" /> 			 
+		<result property="cd" 			column="CD" /> 	 
+		<result property="cdNm" 		column="CD_NM" /> 		 
+		<result property="upperCd" 		column="UPPER_CD" /> 			 
+	</resultMap>
+	
+	<parameterMap id="saleChanParam" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="saleChanResultMap" />         
+		<parameter property="saleCd"	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	
+	<procedure id="saleChan.saleChanList" parameterMap="saleChanParam">
+		{call Pkg_Rtsd0045.p_sRtsd0045(?, ?)}		
+	</procedure>
+	
+	
+</sqlMap>

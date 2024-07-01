@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info6_seller" classname="RTSDContractStatus_tab_info6_seller" left="0" top="0" width="1147" height="150" titletext="[STEP6]판매인정보">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Edit id="ed_orgAgtel" taborder="3" left="685" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_orgAgtel" taborder="4" text="판매인연락처" cssclass="sta_WF_detailLabel" left="555" top="5" width="125" height="31"/>
+        <Edit id="ed_orgAgnm" taborder="5" left="408" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_orgAgnm" taborder="6" text="판매인성명" cssclass="sta_WF_detailLabel" left="278" top="5" width="125" height="31"/>
+        <Edit id="ed_ordAgent" taborder="7" left="131" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_ordAgent" taborder="8" text="판매인번호" cssclass="sta_WF_detailLabel" left="0" top="5" width="125" height="31"/>
+        <Static id="Static00" taborder="9" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Edit id="Edit01" taborder="12" left="685" top="40" width="142" height="21" readonly="true"/>
+        <Static id="Static02" taborder="13" text="연락처" cssclass="sta_WF_detailLabel" left="555" top="35" width="125" height="31"/>
+        <Edit id="Edit02" taborder="14" left="408" top="40" width="142" height="21" readonly="true"/>
+        <Static id="Static08" taborder="15" text="판매인조직명" cssclass="sta_WF_detailLabel" left="278" top="35" width="125" height="31"/>
+        <Edit id="Edit07" taborder="16" left="131" top="40" width="142" height="21" readonly="true"/>
+        <Static id="Static09" taborder="17" text="판매인조직" cssclass="sta_WF_detailLabel" left="0" top="35" width="125" height="31"/>
+        <Static id="Static01" taborder="18" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="19" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_seller" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgAgnm" type="STRING" size="256"/>
+          <Column id="orgAgtel" type="STRING" size="256"/>
+          <Column id="orgCd" type="STRING" size="256"/>
+          <Column id="orgNm" type="STRING" size="256"/>
+          <Column id="orgTel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_ordAgent" propid="value" datasetid="ds_seller" columnid="ordAgent"/>
+      <BindItem id="item1" compid="ed_orgAgnm" propid="value" datasetid="ds_seller" columnid="orgAgnm"/>
+      <BindItem id="item2" compid="ed_orgAgtel" propid="value" datasetid="ds_seller" columnid="orgAgtel"/>
+    </Bind>
+  </Form>
+</FDL>

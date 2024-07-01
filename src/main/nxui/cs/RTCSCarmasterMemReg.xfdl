@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSCarmasterMemReg" classname="RTSDCustGrp" left="0" top="0" width="1147" height="496" titletext="미스터로디안 조직원 등록" onload="RTSDCustGrp_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1121" top="0" right="0" height="496"/>
+        <Static id="Static03" taborder="2" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="55" right="25" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="3" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1112" left="10">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Button id="bt_saveCustGrp1" taborder="7" text="일괄적용" cssclass="btn_WF_module" top="75" height="21" width="71" left="1051" onclick="bt_saveCustGrp1_onclick"/>
+        <Static id="st_searchCondition01" taborder="11" text="미스터로디안" cssclass="sta_WF_schTitle" left="21" top="23" width="112" height="20" domainId="nexa.s_condition"/>
+        <Edit id="Ed_carmasterNm" taborder="12" left="204" top="23" width="108" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="80" enable="false"/>
+        <Static id="Static00" taborder="13" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="112" top="9" width="30" height="44"/>
+        <Button id="btn_carMaster" taborder="15" cssclass="btn_WF_edtSch" left="185" top="22" width="20" height="21" domainId="nexa.save" onclick="btn_carMaster_onclick"/>
+        <Edit id="Ed_carmasterNu" taborder="16" left="142" top="23" width="44" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="10" visible="true" enable="false"/>
+        <Div id="div_cust" taborder="17" left="0.87%" top="75" right="2.18%" height="261" style="background:@gradation;" scrollbars="none">
+          <Layouts>
+            <Layout width="1024" height="301">
+              <Static id="Static01" taborder="12" cssclass="sta_WF_detailLabel2" left="0%" top="60" right="0%" height="31"/>
+              <Static id="Static00" taborder="13" cssclass="sta_WF_detailLabel2" left="0%" top="30" right="0%" height="31"/>
+              <Static id="Static02" taborder="14" cssclass="sta_WF_detailLabel2" left="0%" top="90" right="0%" height="31"/>
+              <Static id="Static03" taborder="15" cssclass="sta_WF_detailLabel2" left="0%" top="120" right="0%" height="31"/>
+              <Static id="Static17" taborder="16" cssclass="sta_WF_detailLabel2" left="0%" top="0" right="0%" height="31"/>
+              <Static id="st_custTp" taborder="17" text="미스터로디안 사번" cssclass="sta_WF_detailLabelP" left="0%" top="0" right="88.58%" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_custNm" taborder="18" text="지사" cssclass="sta_WF_detailLabelP" left="0%" top="30" right="88.58%" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_mobNo" taborder="19" text="휴대폰" cssclass="sta_WF_detailLabelP" left="0%" top="60" right="88.58%" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_posCd" taborder="20" text="주소" cssclass="sta_WF_detailLabelP" left="0%" top="90" right="88.58%" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_posCd" taborder="21" inputtype="number" maxlength="6" enable="false" left="11.78%" top="95" right="80.76%" height="21" lengthunit="ascii"/>
+              <Static id="st_mobFirm" taborder="22" text="전화번호" cssclass="sta_WF_detailLabelP" left="33.9%" top="60" right="54.68%" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_addr1" taborder="23" maxlength="100" enable="false" left="19.6%" top="95" right="62.41%" height="21"/>
+              <Edit id="ed_addr2" taborder="24" maxlength="160" enable="false" left="37.95%" top="95" right="33.81%" height="21"/>
+              <Static id="st_telNo" taborder="25" text="퇴사일" cssclass="sta_WF_detailLabelP" left="68.44%" top="90" right="20.86%" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_telNo2" taborder="26" text="근무여부" cssclass="sta_WF_detailLabelP" left="68.44%" top="120" right="20.86%" height="31" domainId="nexa.s_condition"/>
+              <MaskEdit id="ed_mobNo" taborder="4" type="string" mask="###-####-####" onsetfocus="div_cust_ed_mobNo_onsetfocus" left="11.78%" top="65" right="75.72%" height="21"/>
+              <Static id="st_buslNo" taborder="27" text="지점" cssclass="sta_WF_detailLabelP" visible="true" left="33.9%" top="30" right="54.68%" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_custTp2" taborder="28" text="대리점" cssclass="sta_WF_detailLabelP" visible="true" left="68.44%" top="30" right="20.86%" height="31" domainId="nexa.s_condition"/>
+              <Button id="btn_postSearch" taborder="7" cssclass="btn_WF_edtSch" left="17.45%" top="94" right="80.76%" height="21" domainId="nexa.save" onclick="div_cust_btn_postSearch_onclick"/>
+              <Edit id="ed_carmasterNu" taborder="29" maxlength="10" left="11.78%" top="5" right="75.72%" height="21" enable="false" lengthunit="ascii"/>
+              <Static id="st_custNo00" taborder="30" text="미스터로디안 명" cssclass="sta_WF_detailLabelP" left="33.9%" top="0" right="54.68%" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_carmasterNm" taborder="0" maxlength="80" left="45.68%" top="5" right="41.82%" height="21" lengthunit="ascii"/>
+              <Edit id="ed_telNo" taborder="5" maxlength="12" left="45.77%" top="65" right="41.91%" height="21" lengthunit="ascii" onkeyup="div_cust_ed_telNo_onkeyup" onchanged="div_cust_ed_telNo_onchanged"/>
+              <Static id="st_mobFirm00" taborder="31" text="입사일" cssclass="sta_WF_detailLabelP" left="68.44%" top="60" right="20.86%" height="31" domainId="nexa.s_condition"/>
+              <Combo id="Cb_useYn" taborder="9" text="Y" top="125" right="8.36%" height="21" width="136" innerdataset="@useYn" codecolumn="cd" datacolumn="cdNm" index="0" value="Y" enable="true"/>
+              <Calendar id="Calendar00" taborder="6" left="79.5%" top="66" height="21" width="136" dateformat="yyyy-MM-dd" value="null"/>
+              <Calendar id="Calendar01" taborder="8" left="79.5%" top="95" height="21" width="136" dateformat="yyyy-MM-dd" value="null"/>
+              <Edit id="Ed_salesGroup" taborder="32" enableevent="true" left="11.78%" top="35" height="21" right="81.29%" visible="true" enable="false" lengthunit="ascii" maxlength="3"/>
+              <Button id="Btn_salesGroup" taborder="1" cssclass="btn_WF_edtSch" left="16.91%" top="34" right="81.29%" height="21" onclick="div_cust_Btn_salesGroup_onclick"/>
+              <Edit id="Ed_salesGroupNm" taborder="33" left="18.62%" top="35" right="70.77%" height="21" visible="true" enable="false"/>
+              <Edit id="Ed_salesOfficeNm" taborder="34" left="52.52%" top="35" right="36.87%" height="21" visible="true" enable="false"/>
+              <Edit id="Ed_agencyCdNm" taborder="35" left="86.33%" top="35" right="3.06%" height="21" visible="true" enable="false"/>
+              <Static id="st_custTp00" taborder="36" text="기타1" cssclass="sta_WF_detailLabelP" left="0%" top="184" right="88.58%" height="31" domainId="nexa.s_condition" visible="false"/>
+              <Edit id="ed_etc1" taborder="10" lengthunit="ascii" maxlength="3" enable="true" left="11.78%" top="189" right="75.72%" height="21" visible="false"/>
+              <Static id="st_custNo01" taborder="37" text="기타2" cssclass="sta_WF_detailLabelP" left="33.9%" top="184" right="54.68%" height="31" domainId="nexa.s_condition" visible="false"/>
+              <Edit id="ed_etc2" taborder="11" lengthunit="ascii" maxlength="10" left="45.68%" top="189" right="41.82%" height="21" visible="false"/>
+              <Edit id="Ed_salesOffice" taborder="38" lengthunit="ascii" maxlength="3" enable="false" left="45.77%" top="35" right="47.3%" height="21"/>
+              <Button id="Btn_salesOffice" taborder="2" onclick="div_cust_Btn_salesOffice_onclick" cssclass="btn_WF_edtSch" left="50.81%" top="34" right="47.39%" height="21"/>
+              <Edit id="Ed_agencyCd" taborder="39" lengthunit="ascii" maxlength="3" enable="false" left="79.59%" top="35" right="13.49%" height="21"/>
+              <Button id="Btn_agencyCd" taborder="3" onclick="div_cust_Btn_agencyCd_onclick" cssclass="btn_WF_edtSch" left="84.62%" top="34" right="13.58%" height="21"/>
+              <Static id="st_ordAgent" taborder="40" text="판매인번호" cssclass="sta_WF_detailLabelP" visible="true" left="0%" top="120" right="88.58%" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordAgent" taborder="41" lengthunit="ascii" maxlength="10" visible="true" left="11.78%" top="125" right="75.72%" height="21"/>
+              <Static id="Static09" taborder="42" cssclass="sta_WF_detailLabel2" left="0" top="150" height="31" right="0%"/>
+              <Static id="st_useYn00" taborder="43" text="렌탈지역" cssclass="sta_WF_detailLabelP" left="0" top="150" height="31" domainId="nexa.s_condition" right="88.58%"/>
+              <Edit id="ed_salesGroupCd00" taborder="44" readonly="true" enable="false" left="11.78%" top="156" width="80" height="21"/>
+              <Button id="bt_salesGroup00" taborder="45" onclick="div_cust.bt_salesGroup00_onclick" cssclass="btn_WF_edtSch" left="215" top="156" width="21" height="21"/>
+              <Edit id="ed_salesGroupNm00" taborder="46" readonly="true" enable="false" left="236" top="156" width="148" height="21"/>
+              <Edit id="ed_salesGroupCd01" taborder="47" readonly="true" enable="false" visible="false" left="11.78%" top="156" width="37" height="21"/>
+              <Edit id="ed_salesGroupNm01" taborder="48" readonly="true" enable="false" visible="false" left="236" top="156" width="36" height="21"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="carmasterNu" type="STRING" size="256"/>
+          <Column id="carmasterNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesGroupNm" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="salesOfficeNm" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="city" type="STRING" size="256"/>
+          <Column id="street" type="STRING" size="256"/>
+          <Column id="etc1" type="STRING" size="256"/>
+          <Column id="etc2" type="STRING" size="256"/>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsListArea" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="0"/>
+          <Column id="rtmasterNu" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="0"/>
+          <Column id="rentalGroupNm" type="STRING" size="0"/>
+          <Column id="rentalOffice" type="STRING" size="0"/>
+          <Column id="rentalOfficeNm" type="STRING" size="0"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="0"/>
+          <Column id="regId" type="STRING" size="0"/>
+          <Column id="regDt" type="STRING" size="0"/>
+          <Column id="chgId" type="STRING" size="0"/>
+          <Column id="chgDt" type="STRING" size="0"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_cust.ed_carmasterNu" propid="value" datasetid="dsList" columnid="carmasterNu"/>
+      <BindItem id="item1" compid="div_cust.ed_carmasterNm" propid="value" datasetid="dsList" columnid="carmasterNm"/>
+      <BindItem id="item2" compid="div_cust.Ed_salesGroup" propid="value" datasetid="dsList" columnid="salesGroup"/>
+      <BindItem id="item3" compid="div_cust.Ed_salesOffice" propid="value" datasetid="dsList" columnid="salesOffice"/>
+      <BindItem id="item4" compid="div_cust.Ed_agencyCd" propid="value" datasetid="dsList" columnid="agencyCd"/>
+      <BindItem id="item5" compid="div_cust.ed_mobNo" propid="value" datasetid="dsList" columnid="mobNo"/>
+      <BindItem id="item6" compid="div_cust.ed_telNo" propid="value" datasetid="dsList" columnid="telNo"/>
+      <BindItem id="item7" compid="div_cust.Calendar00" propid="value" datasetid="dsList" columnid="strDay"/>
+      <BindItem id="item8" compid="div_cust.Calendar01" propid="value" datasetid="dsList" columnid="endDay"/>
+      <BindItem id="item9" compid="div_cust.Cb_useYn" propid="value" datasetid="dsList" columnid="useYn"/>
+      <BindItem id="item10" compid="div_cust.Ed_salesGroupNm" propid="value" datasetid="dsList" columnid="salesGroupNm"/>
+      <BindItem id="item11" compid="div_cust.Ed_salesOfficeNm" propid="value" datasetid="dsList" columnid="salesOfficeNm"/>
+      <BindItem id="item12" compid="div_cust.Ed_agencyCdNm" propid="value" datasetid="dsList" columnid="agencyNm"/>
+      <BindItem id="item13" compid="div_cust.ed_posCd" propid="value" datasetid="dsList" columnid="posCd"/>
+      <BindItem id="item14" compid="div_cust.ed_addr1" propid="value" datasetid="dsList" columnid="city"/>
+      <BindItem id="item15" compid="div_cust.ed_addr2" propid="value" datasetid="dsList" columnid="street"/>
+      <BindItem id="item16" compid="div_cust.ed_etc1" propid="value" datasetid="dsList" columnid="etc1"/>
+      <BindItem id="item17" compid="div_cust.ed_etc2" propid="value" datasetid="dsList" columnid="etc2"/>
+      <BindItem id="item18" compid="div_cust.ed_ordAgent" propid="value" datasetid="dsList" columnid="ordAgent"/>
+      <BindItem id="item19" compid="div_cust.ed_salesGroupCd00" propid="value" datasetid="dsList" columnid="rentalGroupNm"/>
+      <BindItem id="item20" compid="div_cust.ed_salesGroupNm00" propid="value" datasetid="dsList" columnid="rentalOfficeNm"/>
+      <BindItem id="item21" compid="div_cust.ed_salesGroupCd01" propid="value" datasetid="dsList" columnid="rentalGroup"/>
+      <BindItem id="item22" compid="div_cust.ed_salesGroupNm01" propid="value" datasetid="dsList" columnid="rentalOffice"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSCarmasterMemReg.xfdl
+ * 설    명 : 미스터로디안 조직원 등록
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-05-19	wjim		[20170519_01] 판매인번호 추가
+ * 2017-06-22	wjim		[20170622_01] 조회기준 변경
+ *							- 로디안명 > 로디안 사번
+ * 2017-06-22	wjim		[20170622_02] 로디안 팝업 조회기준 변경
+ *							- '근무여부' 관계없이 조회
+ ***************************************************************************************************/
+ 
+include "lib::comLib.xjs";
+
+this.resultGrpNo = "";
+
+this.selectGrpNo = "0";
+this.selectCustNo = "0";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDCustGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj); 
+	this.parent.setButton("C|N|S", this);
+}
+
+/**
+ * 조회
+ * - 조회기준 변경 [20170622_01]
+ */
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var carmasterNu = nvl(this.Ed_carmasterNu.value); //로디안 사번	
+	
+	if (carmasterNu == "") {
+		this.alert("조회할 로디안을 선택해주세요!")
+		return;
+	}
+	
+	var sSvcID        	= "carmasterAreaList";                    
+	var sController   	= "/ntrms/cs/carmasterNu.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+		
+	sArgs += Ex.util.setParam("carmasterNu", carmasterNu);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+	
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	var rType = this.dsList.getRowType(0);
+	if(rType == "1") {
+		alert("변경내용이 없습니다.")
+		return;
+	} else if(rType == "0") {
+		alert("추가버튼을 눌러 정보를 입력해주세요.")
+		return;
+	} 
+	var carmasterNm = nvl(this.div_cust.ed_carmasterNm.value);
+	if(carmasterNm == "") {
+		alert("미스터로디안 명을 입력해주세요.");
+		this.div_cust.ed_carmasterNm.setFocus();
+		return;
+	}
+	
+	var sSvcID        	= "saveData";
+	var sController   	= "ntrms/cs/carmasterMemRegSave.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	sInDatasets   		= "input=dsList:U";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	
+	this.Ed_carmasterNm.set_value(carmasterNm);
+	this.div_cust.ed_telNo.set_value(FN_numberHyphenOut(this.div_cust.ed_telNo.value));
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//추가
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.Ed_carmasterNm.set_value("");
+	this.Ed_carmasterNu.set_value("");
+	this.dsList.clearData();
+	this.dsList.addRow();
+	this.div_cust.Cb_useYn.set_index(0);
+	this.div_cust.ed_carmasterNm.setFocus();
+}
+
+//미스터로디안 팝업 버튼
+this.btn_carMaster_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	// [20170622_02] p_useYn 추가
+	var args ={
+		  p_formId : "RTCSCarMaster"
+		, p_useYn  : "A"
+	};
+	
+	Ex.core.popup(this,"미스터로디안 찾기","cs::RTCSCarMaster_pop.xfdl",args, "modaless=false");
+}
+//팝업 리턴
+this.returnCarmaster = function(val1, val2){
+	this.Ed_carmasterNu.set_value(val1);
+	this.Ed_carmasterNm.set_value(val2);
+}
+	
+//일괄적용 button
+this.bt_saveCustGrp1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsList.addColumn("carmasterNu", "string", 256);
+	this.dsList.addColumn("carmasterNm", "string", 256);
+	
+	var carmasterNu = nvl(this.Ed_carmasterNu.value); //미스터로디안 코드
+	var carmasterNm = nvl(this.Ed_carmasterNm.value); //미스터로디안 이름
+	
+	if(carmasterNu == "" || carmasterNm == "") {
+		alert("미스터로디안를 입력해주세요.");
+		return;
+	}
+	if( confirm( '미스터로디안 "' + carmasterNm + '" 을 적용시키겠습니까?') ){
+		var cnt = this.dsList.rowcount;
+		var checkCnt = 0;
+		for(var i = cnt; i >= 0; i--) {
+			if(this.dsList.getColumn(i, "check")  == "1") {
+				this.dsList.setColumn(i, "carmasterNu", carmasterNu);
+				this.dsList.setColumn(i, "carmasterNm", carmasterNm);
+				checkCnt++;
+			}
+		}
+	}else{
+		return false;
+	}
+	
+	if(checkCnt == 0) {
+		alert("미스터로디안 적용 대상을 선택해주세요.");
+	} else {
+		
+	}
+}
+
+//우편번호 찾기
+this.div_cust_btn_postSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg : "RTCSCarmasterMemReg"};
+	Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+}
+//우편번호 리턴
+this.FN_postCd = function( res ){
+	this.div_cust.ed_posCd.set_value( res[0] );
+	this.div_cust.ed_addr1.set_value( res[1] );
+	this.div_cust.ed_addr2.set_value( res[2] );
+}
+
+
+//광역시/도 enter
+this.div_search_Ed_doNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+//시/군/구 enter
+this.div_search_Ed_ctNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+//면/동 enter
+this.div_search_Ed_emNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+//지사 팝업
+this.div_cust_Btn_salesGroup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:""};
+	Ex.core.popup(this,"지사 조회","comm::RTCOMMVkgrp_pop_old.xfdl",args,"modaless=false");
+}
+//지점 팝업
+this.div_cust_Btn_salesOffice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTCSCarmasterMemReg"};
+	Ex.core.popup(this,"지점 조회","comm::RTCOMMVkbur_pop_old.xfdl",args,"modaless=false");
+}
+//대리점 팝업
+this.div_cust_Btn_agencyCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_vkgrpCd: this.div_cust.Ed_salesGroup.value, p_vkgrpNm: this.div_cust.Ed_salesGroupNm.value, 
+				p_vkburCd: this.div_cust.Ed_salesOffice.value, p_vkburNm: this.div_cust.Ed_salesOfficeNm.value, 
+				p_formId : "RTCSCarmasterMemReg"};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+
+//----------------------------------------------------------------------------------
+// [렌탈지역등록] 클릭: 팝업호출
+//----------------------------------------------------------------------------------
+this.div_cust.bt_salesGroup00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var args = {p_argGrpNo : ""};
+	
+	Ex.core.popup(this, "렌탈지역등록", "sd::RTSDRentalAreaRegisterPopup2_new.xfdl", args, "modaless=false");
+}
+
+	//----------------------------------------------------------------------------------
+	// 팝업반환값(렌탈지역등록)
+	//----------------------------------------------------------------------------------
+	this._setReturnRentalArea = function(val){
+		var sDsNm = val[0];
+		var nRowCnt = sDsNm.rowcount;
+		
+		var rentalGroup=sDsNm.getColumn(0,"rentalGroup");
+		var rentalOffice=sDsNm.getColumn(0,"rentalOffice");
+		var rentalGroupNm=sDsNm.getColumn(0,"rentalGroupNm");
+		var rentalOfficeNm =sDsNm.getColumn(0,"rentalOfficeNm");
+
+		this.div_cust.ed_salesGroupCd01.set_value(rentalGroup);		
+		this.div_cust.ed_salesGroupNm01.set_value(rentalOffice);
+		this.div_cust.ed_salesGroupCd00.set_value(rentalGroupNm);
+		this.div_cust.ed_salesGroupNm00.set_value(rentalOfficeNm);		
+	}
+
+
+// 파라미터 반환 공통
+this._setReturn = function(val) {
+	var cd = val[0];
+	var nm = val[1];
+	var gb = val[2];
+	if(gb == "vkgrp") {
+		this.div_cust.Ed_salesGroup.set_value(cd);
+		this.div_cust.Ed_salesGroupNm.set_value(nm);
+	} else if(gb == "vkbur" ) {
+		this.div_cust.Ed_salesOffice.set_value(cd);
+		this.div_cust.Ed_salesOfficeNm.set_value(nm);
+	} else if(gb == "vkazc" ) {
+		this.div_cust.Ed_agencyCd.set_value(cd);
+		this.div_cust.Ed_agencyCdNm.set_value(nm);
+	}
+}
+/*
+this.div_cust_ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	this.div_cust.ed_telNo.set_value(FN_numberHyphenInReturn(this.div_cust.ed_telNo.value));
+}*/
+
+this.div_cust_ed_telNo_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	this.div_cust.ed_telNo.set_value(FN_numberHyphenInReturn(this.div_cust.ed_telNo.value));
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{
+	if( strSvcId == "initRTCMCustGrp" ){
+		this.div_search.cal_grpDayStart.set_value(FN_beforeMonths());
+		this.div_search.cal_grpDayEnd.set_value(FN_today());
+	}
+	
+	if( strSvcId == "carmasterAreaList" ){
+		this.dsList.set_updatecontrol(false);
+		this.div_cust.ed_telNo.set_value(FN_numberHyphenInReturn(this.dsList.getColumn(0,"telNo")));
+		this.dsList.set_updatecontrol(true);
+		//alert(this.dsList.saveXML());
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		} else {
+		}
+	}
+	if(strSvcId == "saveData") {
+		alert(strErrorMsg);
+		this.fn_search();
+	}
+	
+}]]></Script>
+  </Form>
+</FDL>

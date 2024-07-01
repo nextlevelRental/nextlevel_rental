@@ -1,0 +1,2959 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables>
+  <Dataset id="gds_menu">
+    <ColumnInfo>
+      <Column id="MENU_CD" type="STRING" size="256"/>
+      <Column id="MENU_NM" type="STRING" size="256"/>
+      <Column id="MENU_LEVEL" type="STRING" size="256"/>
+      <Column id="PARENT_CD" type="STRING" size="256"/>
+      <Column id="MENU_LINK" type="STRING" size="256"/>
+      <Column id="MENU_IMAGE" type="STRING" size="256"/>
+      <Column id="SORT_CD" type="STRING" size="256"/>
+      <Column id="MENU_NOTE" type="STRING" size="256"/>
+      <Column id="USE_YN" type="STRING" size="256"/>
+      <Column id="MENU_NAVI" type="STRING" size="256"/>
+      <Column id="MENU_GRP" type="STRING" size="256"/>
+      <Column id="MENU_AUTH" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_openMenu">
+    <ColumnInfo>
+      <Column id="WIN_ID" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="TITLE" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_myMenu">
+    <ColumnInfo>
+      <Column id="USER_ID" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="MENU_NAME" type="STRING" size="256"/>
+      <Column id="SORT" type="STRING" size="256"/>
+      <Column id="CHK" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="USER_ID">test</Col>
+        <Col id="MENU_ID">1002</Col>
+        <Col id="MENU_NAME">사용자 등록관리</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_viewType" initval="login"/>
+  <Dataset id="gds_userInfo">
+    <Dataset id="gds_userInfo">
+      <ColumnInfo>
+        <Column id="tmpPwYn" type="string" size="32"/>
+        <Column id="vcursor" type="string" size="32"/>
+        <Column id="chgNm" type="string" size="32"/>
+        <Column id="lastPwDt" type="string" size="32"/>
+        <Column id="agentNm" type="string" size="32"/>
+        <Column id="failCnt" type="string" size="32"/>
+        <Column id="userGrpNm" type="string" size="32"/>
+        <Column id="agentId" type="string" size="32"/>
+        <Column id="oldPassword" type="string" size="32"/>
+        <Column id="chgId" type="string" size="32"/>
+        <Column id="password" type="string" size="32"/>
+        <Column id="userGrp" type="string" size="32"/>
+        <Column id="userNm" type="string" size="32"/>
+        <Column id="vkgrpNm" type="string" size="32"/>
+        <Column id="lastLogonDt" type="string" size="32"/>
+        <Column id="userId" type="string" size="32"/>
+        <Column id="chgDt" type="string" size="32"/>
+        <Column id="regNm" type="string" size="32"/>
+        <Column id="vkbur" type="string" size="32"/>
+        <Column id="regDt" type="string" size="32"/>
+        <Column id="regId" type="string" size="32"/>
+        <Column id="lockYn" type="string" size="32"/>
+        <Column id="vkburNm" type="string" size="32"/>
+        <Column id="vkgrp" type="string" size="32"/>
+      </ColumnInfo>
+    </Dataset>
+    <ColumnInfo>
+      <Column id="tmpPwYn" type="string" size="32"/>
+      <Column id="vcursor" type="string" size="32"/>
+      <Column id="chgNm" type="string" size="32"/>
+      <Column id="lastPwDt" type="string" size="32"/>
+      <Column id="agentNm" type="string" size="32"/>
+      <Column id="failCnt" type="string" size="32"/>
+      <Column id="userGrpNm" type="string" size="32"/>
+      <Column id="agentId" type="string" size="32"/>
+      <Column id="oldPassword" type="string" size="32"/>
+      <Column id="chgId" type="string" size="32"/>
+      <Column id="password" type="string" size="32"/>
+      <Column id="userGrp" type="string" size="32"/>
+      <Column id="userNm" type="string" size="32"/>
+      <Column id="vkgrpNm" type="string" size="32"/>
+      <Column id="lastLogonDt" type="string" size="32"/>
+      <Column id="userId" type="string" size="32"/>
+      <Column id="chgDt" type="string" size="32"/>
+      <Column id="regNm" type="string" size="32"/>
+      <Column id="vkbur" type="string" size="32"/>
+      <Column id="regDt" type="string" size="32"/>
+      <Column id="regId" type="string" size="32"/>
+      <Column id="lockYn" type="string" size="32"/>
+      <Column id="vkburNm" type="string" size="32"/>
+      <Column id="vkgrp" type="string" size="32"/>
+    </ColumnInfo>
+  </Dataset>
+  <Variable id="gv_menuType" initval="default"/>
+  <Dataset id="gds_menuSet" useclientlayout="true">
+    <ColumnInfo>
+      <Column id="SET_SEQ" type="BIGDECIMAL" size="256"/>
+      <Column id="SET_NM" type="STRING" size="256"/>
+      <Column id="MENU_ID_SET" type="STRING" size="256"/>
+      <Column id="MENU_NM_SET" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="SET_SEQ">1</Col>
+        <Col id="SET_NM">메뉴2</Col>
+        <Col id="MENU_ID_SET">84130</Col>
+        <Col id="MENU_NM_SET">템플릿1</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">3</Col>
+        <Col id="SET_NM">에유</Col>
+        <Col id="MENU_ID_SET">84130</Col>
+        <Col id="MENU_NM_SET">템플릿1</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">5</Col>
+        <Col id="SET_NM">기초공사재료신청</Col>
+        <Col id="MENU_ID_SET">84130,84132,84131,84133</Col>
+        <Col id="MENU_NM_SET">템플릿1,템플릿2,템플릿3,템플릿4</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">6</Col>
+        <Col id="SET_NM">메뉴3</Col>
+        <Col id="MENU_ID_SET">83248,83247,83383,84123,84125,84128,84130</Col>
+        <Col id="MENU_NM_SET">고객불만목록,인증문서,고객불만진행조회,외주출하지시내역,외주상차지시편성,파일럿,템플릿1</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_locale" initval="KO"/>
+  <Dataset id="gds_comCode">
+    <ColumnInfo>
+      <Column id="TYPE_CD" type="string" size="255"/>
+      <Column id="CD_TYPE_NAME" type="string" size="255"/>
+      <Column id="CD_VAL" type="string" size="255"/>
+      <Column id="CD_NM" type="string" size="255"/>
+      <Column id="CLASS1_CD" type="string" size="255"/>
+      <Column id="CLASS1_NAME1" type="string" size="255"/>
+      <Column id="CLASS2_CD" type="string" size="255"/>
+      <Column id="CLASS2_NAME1" type="string" size="255"/>
+      <Column id="CLASS3_CD" type="string" size="255"/>
+      <Column id="CLASS3_NAME1" type="string" size="255"/>
+      <Column id="DEL_YN" type="string" size="255"/>
+      <Column id="SORT_SEQ" type="string" size="255"/>
+      <Column id="DS_NAME" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_comCodeParam">
+    <ColumnInfo>
+      <Column id="TYPE_CD" type="string" size="255"/>
+      <Column id="CLASS1_CD" type="string" size="255"/>
+      <Column id="CLASS2_CD" type="string" size="255"/>
+      <Column id="CLASS3_CD" type="string" size="255"/>
+      <Column id="DS_NAME" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Variable id="gv_formUrl"/>
+  <Variable id="gv_frameWidth" initval="1280"/>
+  <Variable id="gv_frameHeight" initval="800"/>
+  <Variable id="gv_initWidth" initval="1264"/>
+  <Variable id="gv_initHeight" initval="788"/>
+  <Dataset id="gds_menu0">
+    <ColumnInfo>
+      <Column id="_chk" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="PAGE_ID" type="STRING" size="256"/>
+      <Column id="MENU_NAME" type="STRING" size="256"/>
+      <Column id="MENU_LEVEL" type="STRING" size="256"/>
+      <Column id="MENU_GRP" type="STRING" size="256"/>
+      <Column id="MENU_TOP" type="STRING" size="256"/>
+      <Column id="MENU_SEQ" type="STRING" size="256"/>
+      <Column id="MENU_OPTP" type="STRING" size="256"/>
+      <Column id="MENU_ARGS" type="STRING" size="256"/>
+      <Column id="MENU_STAT" type="STRING" size="256"/>
+      <Column id="MENU_DESC" type="STRING" size="256"/>
+      <Column id="CREATE_USER" type="STRING" size="256"/>
+      <Column id="CREATE_DT" type="STRING" size="256"/>
+      <Column id="UPDATE_USER" type="STRING" size="256"/>
+      <Column id="UPDATE_DT" type="STRING" size="256"/>
+      <Column id="PAGE_URL" type="STRING" size="256"/>
+      <Column id="PAGE_TYPE" type="STRING" size="256"/>
+      <Column id="PAGE_EXTP" type="STRING" size="256"/>
+      <Column id="MENU_AUTH" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">사용자관리</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">0</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1002</Col>
+        <Col id="PAGE_ID">TEMPLATE004</Col>
+        <Col id="MENU_NAME">사용자 등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">1</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191340000</Col>
+        <Col id="PAGE_URL">template::menu1_01.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1004</Col>
+        <Col id="PAGE_ID">ADMSAMP002</Col>
+        <Col id="MENU_NAME">사용자 그룹관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">2</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906144301000</Col>
+        <Col id="PAGE_URL">template::menu1_02.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1003</Col>
+        <Col id="PAGE_ID">ADMSAMP009</Col>
+        <Col id="MENU_NAME">그룹별 사용자관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">3</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906134400000</Col>
+        <Col id="PAGE_URL">template::menu1_03.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1005</Col>
+        <Col id="PAGE_ID">ADMSAMP003</Col>
+        <Col id="MENU_NAME">그룹별 메뉴관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">4</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906144249000</Col>
+        <Col id="PAGE_URL">template::menu1_04.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">기초관리</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">5</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2001</Col>
+        <Col id="PAGE_ID">ADMSAMP004</Col>
+        <Col id="MENU_NAME">공통코드관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">6</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906182817000</Col>
+        <Col id="PAGE_URL">admin::CodeMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2003</Col>
+        <Col id="PAGE_ID">ADMSAMP005</Col>
+        <Col id="MENU_NAME">메뉴등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">7</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL">admin::MenuMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2005</Col>
+        <Col id="PAGE_ID">ADMSAMP008</Col>
+        <Col id="MENU_NAME">화면등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">8</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">[Undefined]</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">admin::PageMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2004</Col>
+        <Col id="PAGE_ID">ADMSAMP006</Col>
+        <Col id="MENU_NAME">그룹등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">9</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905201049000</Col>
+        <Col id="PAGE_URL">admin::GroupMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">Template</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">12</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184625000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60001</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">템플릿</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">13</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905182055000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6001</Col>
+        <Col id="PAGE_ID">TEMPLATE001</Col>
+        <Col id="MENU_NAME">GRID BASIC</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">14</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191250000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE001.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6002</Col>
+        <Col id="PAGE_ID">TEMPLATE002</Col>
+        <Col id="MENU_NAME">GRID FORM</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">15</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE002.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6003</Col>
+        <Col id="PAGE_ID">TEMPLATE003</Col>
+        <Col id="MENU_NAME">GRID POPUP</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">16</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE003.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6004</Col>
+        <Col id="PAGE_ID">TEMPLATE004</Col>
+        <Col id="MENU_NAME">GRID TAB</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">17</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6005</Col>
+        <Col id="PAGE_ID">TEMPLATE006</Col>
+        <Col id="MENU_NAME">SHUTTLE</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">18</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE006.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6006</Col>
+        <Col id="PAGE_ID">TEMPLATE007</Col>
+        <Col id="MENU_NAME">GRID SUBGRID</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">19</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE007.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6007</Col>
+        <Col id="PAGE_ID">TEMPLATE008</Col>
+        <Col id="MENU_NAME">TREE SUBGRID</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">20</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE008.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6008</Col>
+        <Col id="PAGE_ID">TEMPLATE009</Col>
+        <Col id="MENU_NAME">TREE FORM</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">21</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE009.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6009</Col>
+        <Col id="PAGE_ID">TEMPLATE010</Col>
+        <Col id="MENU_NAME">GRID FILTERING</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">22</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE010.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6010</Col>
+        <Col id="PAGE_ID">TEMPLATE011</Col>
+        <Col id="MENU_NAME">GRID MONTHLY CALENDAR</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">23</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE011.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6011</Col>
+        <Col id="PAGE_ID">TEMPLATE012</Col>
+        <Col id="MENU_NAME">GRID WEEKLY CALENDAR</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">24</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE012.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6012</Col>
+        <Col id="PAGE_ID">TEMPLATE013</Col>
+        <Col id="MENU_NAME">FILE ATTACHMENT</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">25</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE013.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6013</Col>
+        <Col id="PAGE_ID">TEMPLATE014</Col>
+        <Col id="MENU_NAME">GRID SUMMARY</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">26</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE014.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6014</Col>
+        <Col id="PAGE_ID">TEMPLATE101</Col>
+        <Col id="MENU_NAME">PAGING</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">27</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE101.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60002</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">가이드</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">28</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191224000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600011</Col>
+        <Col id="PAGE_ID">guide1</Col>
+        <Col id="MENU_NAME">컴포넌트 Static, Edit, MaskEdit, TextArea</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">29</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191224000</Col>
+        <Col id="PAGE_URL">Component::guide1.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600012</Col>
+        <Col id="PAGE_ID">guide2</Col>
+        <Col id="MENU_NAME">컴포넌트 Spin, Button, ListBox, Combo</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">30</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide2.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600013</Col>
+        <Col id="PAGE_ID">guide3</Col>
+        <Col id="MENU_NAME">컴포넌트 Radio, CheckBox, Calendar, ProgressBar</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">31</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide3.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600014</Col>
+        <Col id="PAGE_ID">guide4</Col>
+        <Col id="MENU_NAME">컴포넌트 GropupBox, ImageViewer</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">32</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide4.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600015</Col>
+        <Col id="PAGE_ID">guide5</Col>
+        <Col id="MENU_NAME">컴포넌트 PopupMenu, Menu</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">33</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide5.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600017</Col>
+        <Col id="PAGE_ID">guide6</Col>
+        <Col id="MENU_NAME">컴포넌트 Alert, Confirm</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">34</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184826000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184834000</Col>
+        <Col id="PAGE_URL">Component::guide6.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600016</Col>
+        <Col id="PAGE_ID">guide7</Col>
+        <Col id="MENU_NAME">컴포넌트 Tab1</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">35</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184834000</Col>
+        <Col id="PAGE_URL">Component::guide7.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600018</Col>
+        <Col id="PAGE_ID">guide8</Col>
+        <Col id="MENU_NAME">컴포넌트 Tab2</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">36</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide8.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600019</Col>
+        <Col id="PAGE_ID">guide9</Col>
+        <Col id="MENU_NAME">컴포넌트 Grid1</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">37</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide9.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600020</Col>
+        <Col id="PAGE_ID">guide10</Col>
+        <Col id="MENU_NAME">컴포넌트 Grid2</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">38</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide10.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600021</Col>
+        <Col id="PAGE_ID">guide11</Col>
+        <Col id="MENU_NAME">컴포넌트 ExcelExport</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">39</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide11.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600022</Col>
+        <Col id="PAGE_ID">guide12</Col>
+        <Col id="MENU_NAME">컴포넌트 FileUpload</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">40</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide12.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60003</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">화면패턴</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">41</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600031</Col>
+        <Col id="PAGE_ID">PATTERN001</Col>
+        <Col id="MENU_NAME">Detail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">42</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_01.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600032</Col>
+        <Col id="PAGE_ID">PATTERN002</Col>
+        <Col id="MENU_NAME">MultiDetail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">43</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_02.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600033</Col>
+        <Col id="PAGE_ID">PATTERN003</Col>
+        <Col id="MENU_NAME">List/Detail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">44</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_03.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600034</Col>
+        <Col id="PAGE_ID">PATTERN004</Col>
+        <Col id="MENU_NAME">Master/Detail(1:n)</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">45</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_04.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600035</Col>
+        <Col id="PAGE_ID">PATTERN005</Col>
+        <Col id="MENU_NAME">Master/Detail(n:n)</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">46</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_05.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600036</Col>
+        <Col id="PAGE_ID">PATTERN006</Col>
+        <Col id="MENU_NAME">TAB</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">47</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_06.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600037</Col>
+        <Col id="PAGE_ID">PATTERN007</Col>
+        <Col id="MENU_NAME">Shuttle</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">48</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_07.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">7000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">Sample</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">[Undefined]</Col>
+        <Col id="MENU_SEQ">49</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">[Undefined]</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700011</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">웹접근성</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">51</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::Accessibility.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700012</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">엑셀 Import / Export</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">52</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::Excel.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700013</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">파일 Upload / Download</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">53</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER"/>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::fileupload_download.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700014</Col>
+        <Col id="MENU_NAME">조회테스트</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">54</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="PAGE_URL">sample::testSearch.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_pageInfo">
+    <ColumnInfo>
+      <Column id="PAGE_LINE" type="STRING" size="256"/>
+      <Column id="CURR_PAGE" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="PAGE_LINE"/>
+        <Col id="CURR_PAGE"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_one">
+    <ColumnInfo>
+      <Column id="Column0" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row/>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_menuAuth" initval="2"/>
+  <Dataset id="gds_message">
+    <ColumnInfo>
+      <Column id="MSG_CD" type="string" size="32"/>
+      <Column id="MSG_TYPE" type="string" size="32"/>
+      <Column id="MSG_NM" type="string" size="32"/>
+      <Column id="MSG_NOTE" type="string" size="32"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="MSG_CD">fail.common.msg</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">error ocurred!</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">fail.common.sql</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">sql error ocurred! error code: {0}, error msg: {1}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">info.nodata.msg</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">no data found.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">button.search</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Search</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">image.search</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">btn_form_search_en.gif</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">image.errorBg</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">error_en</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.required</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is required.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.hgr_store_credit.amount.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">HGR Store Credit does not have to remove.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.vendor</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter Vendor.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.vendor_contact</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter a Vendor Contact.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.phone</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter a Phone No.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.fax</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter a Fax No.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.email</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter an Email.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.address</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter an Address.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.inspection.expected_input_costs</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Please enter Expected Costs.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">btn.modify</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Save</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">btn.list</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">List</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">btn.delete</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Remove</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.insert</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Transaction has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.update</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Transaction has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.delete</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Transaction has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.select</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">Transaction has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.neworder.delete.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">You cannot delete all the items.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.neworder.hgrCredit.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please check HGR Credit.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.order.cancel.check</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Do you want to cancel?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.purchaseRequest.confirm.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">You cannot Confirm Request. Please cancel.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.delivery.chk.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please select an Item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.return.refundmethod.choice.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please select the return method.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.return.finishPay.choice.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please select a payment status.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.return.returnQty.out.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please select the Quantity of Returns.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.scrap.amount.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Price is incorrect.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.order.not.add</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Add items not available.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">sale.length.check.error</Col>
+        <Col id="MSG_TYPE">SA</Col>
+        <Col id="MSG_NM">Please check the number of digits of {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.unselected.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please select Data.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.menu.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please enter {0}.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.parent.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please select a Parent Menu.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.access-name.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please enter an Access Name.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.access.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please select Access.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.board.title.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please select a Title.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.board.content.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please enter the Content.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.board.question.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please enter a Question.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.message.board.answer.data</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Please enter the Answer.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">system.scrap.material.rate.error</Col>
+        <Col id="MSG_TYPE">SY</Col>
+        <Col id="MSG_NM">Retail Rate does not exceed 100.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">vcrm.message.vendor.manager</Col>
+        <Col id="MSG_TYPE">VC</Col>
+        <Col id="MSG_NM">Plase Select a Vendor Manager!</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">vcrm.message.bulk.select</Col>
+        <Col id="MSG_TYPE">VC</Col>
+        <Col id="MSG_NM">Please select a target allocation.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">vcrm.message.source.select</Col>
+        <Col id="MSG_TYPE">VC</Col>
+        <Col id="MSG_NM">Please select a source type allocation.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">vcrm.message.compare_source.select</Col>
+        <Col id="MSG_TYPE">VC</Col>
+        <Col id="MSG_NM">Please select a compare source type allocation.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">transaction.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Transaction has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.select.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.list.select.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select from the list.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.select.not.found</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">There is no data.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">start.date.input</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please enter start date.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.input.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please enter {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">common.date.range</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please configure the date again.</Col>
+        <Col id="MSG_NOTE">검색일자 기간체크</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.validation.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is invalid.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.print.barcode</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Want to print bar codes?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">main.title</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">:: HGR Industrial Surplus - We Buy  Everything! ::</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">main.negotiation</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Looks back on 30 minutes after</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">test</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">ttttttt</Col>
+        <Col id="MSG_NOTE">1111111</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">error.incorrect</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is incorrect</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.button.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please click the {0} button.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.data.check_status</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">The status of data has changed.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.success.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.register</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please save {0} information.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.already.registered</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} already exists.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.register.fail</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Failed to register. Please try again.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">common.date.input</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please enter date.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.inspection.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Inspection has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.bid.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Bid has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.createoffer.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Create Offer has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.po.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">PO has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.revised.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Revised Offer has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.exception.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Exception has been completed</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">hr.user.password</Col>
+        <Col id="MSG_TYPE">HR</Col>
+        <Col id="MSG_NM">Please check your password.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.account_name.input.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please enter Account Name.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">hr.recruit.nonselect</Col>
+        <Col id="MSG_TYPE">HR</Col>
+        <Col id="MSG_NM">Please select one or more.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.settlement.amount.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please check the amount.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.settlement.invoiceNum.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please check Invoice Number.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">hr.recruit.multiselect</Col>
+        <Col id="MSG_TYPE">HR</Col>
+        <Col id="MSG_NM">Please select one or more.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">messaging.survey.input.error</Col>
+        <Col id="MSG_TYPE">ME</Col>
+        <Col id="MSG_NM">Please enter a Question.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">messaging.survey.date</Col>
+        <Col id="MSG_TYPE">ME</Col>
+        <Col id="MSG_NM">Please enter start date.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.data.not.changed</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">The data has not changed.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.confirm.save</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Do you want to save?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.minnumber</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0}항목은 {1}이상 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.maxnumber</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0}항목은 {1}이하 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.minnumber.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0}항목은 {1}{2}이상 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.maxnumber.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0}항목은 {1}{2}이하 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">purchase.create_po.item_add_check</Col>
+        <Col id="MSG_TYPE">PU</Col>
+        <Col id="MSG_NM">If you add items please proceed after saving</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.data.changed</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">The data has changed.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.code.delete.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">You cannot delete the existing value.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.settlement.cust_id.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please enter cust id</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.settlement.pre_amt.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Payment must be more than the Pre-Paid Expense at most.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.misccost.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please select a PO number.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.ap_amt.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Current Amount Due is at the maximum.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">accounting.account_code.input.error</Col>
+        <Col id="MSG_TYPE">AC</Col>
+        <Col id="MSG_NM">Please enter an Account Code.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.minlength</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} can not be less than {1} characters.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.maxlength</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} can not be greater than {1} characters.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.invalid</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is invalid.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.byte</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a byte.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.short</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a short.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.integer</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be an integer.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.long</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a long.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.float</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a float.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.double</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a double.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.date</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is not a date.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.range</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is not in the range {1} through {2}.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.creditcard</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is an invalid credit card number.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.email</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is an invalid e-mail address.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.ihidnum</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">An invalid Social Security Number.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.korean</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a Korean.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">title.sample.name</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Category Name</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">title.sample.description</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Description</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">title.sample.regUser</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">User Name</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.item.nonselect</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please select an item</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.itemization.noinput.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter an item first.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.itemization.completeBeforeSave.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please complete the information after saveing.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.unloading.complete</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Have you completed all the required information?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.unloading.ros.noauth</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Authority available.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.unloading.before.complete</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please complete the information after saveing.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.itemization.complete</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Have you completed all the required information?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.status.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">You cannot request the item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.checkbox.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please select at least two item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.delcheck.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">You cannot delete any items.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.sameitem.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Item already exists.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.price.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter Amount</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.org_price.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Original price does not exist.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.micro.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter a Micro-itemization item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.macro.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter a Macro-itemization item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.pre.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter a Pre-itemization item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.ms.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter a Manager-special item.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.ms.date.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please set the Manager-special period.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.ms.price.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter the Manager-special price.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.li.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter the Quantity.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.reitemization.li.currqty.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Quantity is incorrect.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.barcode.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">An error has occurred.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.item.image.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Value is incorrect.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.barcode.search.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Please enter at least one.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.itemization.receiveQty.zero.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Recive Qty must be greater than zero.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.itemization.receiveQty.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Recive Qty is less than or equal to the qty.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.success.insert.qna</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Do you want to save?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.success.update.qna</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Do you want to save?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.success</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Process has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.image.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Image mapping can be done for the register items only.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.imagemapping.status.error</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">This item is not available for image mapping.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.item.loading</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">Work in progress. Please wait.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">inventory.detail.not.view</Col>
+        <Col id="MSG_TYPE">IN</Col>
+        <Col id="MSG_NM">No additional product details</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.number</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} must be a number.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.required.column</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} 행의 {1} 은(는) 필수 입력 입니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.number.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} 번째 줄의 ({1}) 숫자형이 아닙니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.minlength.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} 번째 줄의 {1} {2}  글자이상으로 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.maxlength.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} 번째 줄의 {1} {2}  글자이하로 입력하셔야 합니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.confirm.want</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Do you want to {0}?</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.dismatch</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} 아닙니다. {1} 확인하세요</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">errors.zero.row</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0}번째 줄의{1} '0'이 아닙니다.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.item.nonselect</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select an item</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_host" initval="http://localhost/" usecookie="false"/>
+  <Variable id="gv_prjType" initval="true"/>
+  <Dataset id="gds_gridInfo">
+    <ColumnInfo>
+      <Column id="PAGE_URL" type="STRING" size="256"/>
+      <Column id="GRID_ID" type="STRING" size="256"/>
+      <Column id="GRID_FORMAT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="PAGE_URL"/>
+        <Col id="GRID_ID"/>
+        <Col id="GRID_FORMAT"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_curFormId"/>
+  <Variable id="gv_errormsg"/>
+  <Variable id="gv_debug" initval="N"/>
+  <Variable id="gv_version" initval="0"/>
+  <Dataset id="gds_config">
+    <ColumnInfo>
+      <Column id="ID" type="STRING" size="256"/>
+      <Column id="LOCALE" type="STRING" size="256"/>
+      <Column id="TEXT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="ID">domain.add</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">추가</Col>
+      </Row>
+      <Row>
+        <Col id="ID">domain.add</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Add</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Images>
+    <Image id="nexacro_platform" url="image::nexacro_platform.png"/>
+  </Images>
+  <Dataset id="gds_DomainText_EN">
+    <ColumnInfo>
+      <Column id="CODE" type="STRING" size="256"/>
+      <Column id="LOCALE" type="STRING" size="256"/>
+      <Column id="TEXT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="CODE">nexa.name</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Name</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Code</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.search</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Search</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.add</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Add</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.delete</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Delete</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.save</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Save</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.cancel</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Cancel</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.s_condition</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Search Info.</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.down</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Down Level</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.same</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Same Level</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.up</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Up Level</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.mainpage</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Main Page</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.subpage</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Sub Page</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.popup</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Popup Page</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.normalpage</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Normal Page</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.web</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Web Page</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.extn</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">External Link</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.id</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">ID</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.userlist</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">User List</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.dspt</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Screen Description</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.password</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Password</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.phone</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Phone</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.email</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">E-Mail</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.createdate</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Create Date</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.createuser</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Create User</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.updatedate</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Update Date</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.updateuser</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Update User</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.use</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Use</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.add</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Add</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.update</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Update</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.delete</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Delete</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.print</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Print</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.user</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">USER</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.admin</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Admin</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.test</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Test</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.cellphone</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Cellphone</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.view</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">View</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.unused</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Unused</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.development</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Development</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.user</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">User Group</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.id</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Group ID</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.dspt</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Group Description</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.list</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Group List</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.menu</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.authority</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Authority</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.codegroup</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Code Group</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.groupname</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Code Group name</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.name</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Group</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.list</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Code List</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.division</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Division</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.order</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Order</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.id</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page ID</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.name</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page Name</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.type</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page Type</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.linkage</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page Linkage</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.url</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page URL</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.dspt</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Page Description</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.use</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Domain Use</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.list</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu List</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.id</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu ID</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.opty</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu Open Type</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.param</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu Parameter</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.dspt</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Mecu Description</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.status</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu Status</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.name</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Menu Name</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.title</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Title</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.postid</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Post ID</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.regcode</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Post Code</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.contents</Col>
+        <Col id="LOCALE">EN</Col>
+        <Col id="TEXT">Contents</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_DomainText_KO">
+    <ColumnInfo>
+      <Column id="CODE" type="STRING" size="256"/>
+      <Column id="LOCALE" type="STRING" size="256"/>
+      <Column id="TEXT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="CODE">nexa.name</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">명칭</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">코드</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.search</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">검색</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.add</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">추가</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.delete</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">삭제</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.save</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">저장</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.cancel</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">취소</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.s_condition</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">검색조건</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.down</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">하위레벨</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.same</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">등위레벨</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.level.up</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">상위레벨</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.mainpage</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메인화면</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.subpage</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">보조화면</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.popup</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">팝업화면</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.normalpage</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">일반화면</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.web</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">웹페이지</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.extn</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">외부연동</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.id</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">아이디</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.userlist</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">사용자 목록</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.dspt</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">설명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.password</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">패스워드</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.phone</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">전화번호</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.email</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">이메일</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.createdate</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">등록일</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.createuser</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">등록자</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.updatedate</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">수정일</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.updateuser</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">수정자</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.use</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">사용</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.add</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">추가</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.update</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">수정</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.delete</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">삭제</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.print</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">인쇄</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.user</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">사용자</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.admin</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">관리자</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.test</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">테스트</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.view</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">표시</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.unused</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">사용안함</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.development</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">개발</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.cellphone</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">휴대전화</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.user</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">사용자 그룹</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.id</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">그룹 아이디</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.dspt</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">그룹 설명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.list</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">그룹목록</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.menu</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.authority</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">권한</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.group.name</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">그룹</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.codegroup</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">코드그룹</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.groupname</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">코드그룹명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.list</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">코드목록</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.division</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">구분</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.code.order</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">순서</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.id</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">화면 아이디</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.name</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">화면명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.type</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">화면 타입</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.linkage</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">화면 연동</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.url</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">페이지URL</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.dspt</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">페이지설명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.page.use</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">도메인사용여부</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.list</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴목록</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.id</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴 아이디</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.name</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.opty</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴오픈타입</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.param</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴 파라메터</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.dspt</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴설명</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.menu.status</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">메뉴상태</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.title</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">제목</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.postid</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">등록 코드</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.contents</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">내용</Col>
+      </Row>
+      <Row>
+        <Col id="CODE">nexa.board.regcode</Col>
+        <Col id="LOCALE">KO</Col>
+        <Col id="TEXT">개시물 코드</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_userAuth"/>
+  <Dataset id="gds_gridInfoLoad">
+    <ColumnInfo>
+      <Column id="PAGE_URL" type="STRING" size="256"/>
+      <Column id="GRID_ID" type="STRING" size="256"/>
+      <Column id="GRID_FORMAT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="PAGE_URL"/>
+        <Col id="GRID_ID"/>
+        <Col id="GRID_FORMAT"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_auth">
+    <ColumnInfo>
+      <Column id="GROUP_ID" type="string" size="32"/>
+      <Column id="USER_ID" type="string" size="32"/>
+    </ColumnInfo>
+  </Dataset>
+  <Variable id="gv_group_id" initval="BA0011000328"/>
+  <Variable id="gv_pay_type" initval="PACA"/>
+  <Variable id="gv_menu_name"/>
+  <Dataset id="gds_msg">
+    <ColumnInfo>
+      <Column id="cd" type="STRING" size="256"/>
+      <Column id="msg" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="cd">P000</Col>
+        <Col id="msg">정상적으로 처리되었습니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">S003</Col>
+        <Col id="msg">데이터가 존재하지 않습니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">P015</Col>
+        <Col id="msg">중복건 존재하고 있습니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">P001</Col>
+        <Col id="msg">주민번호 등 요청번호 오류</Col>
+      </Row>
+      <Row>
+        <Col id="cd">P017</Col>
+        <Col id="msg">SafeKey 처리 불가 기관입니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">S602</Col>
+        <Col id="msg">성명, 휴대폰 미입력 등 입력정보가 유효하지 않습니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">S702</Col>
+        <Col id="msg">서비스 이용 권한 오류입니다.</Col>
+      </Row>
+      <Row>
+        <Col id="cd">S738</Col>
+        <Col id="msg">대상자정보 (생년월일, 성별)가 유효하지 않습니다.</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+</GlobalVariables>

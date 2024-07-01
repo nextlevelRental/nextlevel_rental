@@ -1,0 +1,12 @@
+.area_type{
+    BODY {background: #FFFFFF}
+    A:link {color: #80FF00}
+    A:visited {color: #FF00FF}
+	color: #46586e;
+	font-family: verdana;
+	font-size: 12px;
+	line-height: 1.5;
+	text-align: left;
+	vertical-align: top;
+	word-wrap: break-word;
+}

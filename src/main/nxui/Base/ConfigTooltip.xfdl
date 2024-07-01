@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configTooltip" classname="config_xaxis" left="0" top="0" width="320" height="719" titletext="차트 툴팁 설정" style="background:#d4d9dfff;" onload="configTooltip_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="Tooltip" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static09" taborder="36" text="borderColor" left="6.25%" top="406" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="37" text="borderStyle" left="6.25%" top="367" right="46.88%" height="20"/>
+        <Static id="Static06" taborder="39" text="fontColor" left="6.25%" top="226" right="46.88%" height="20"/>
+        <Static id="Static04" taborder="43" text="fontType" left="6.25%" top="190" right="46.88%" height="20"/>
+        <Static id="Static03" taborder="45" text="fontFace" left="6.25%" top="158" right="46.88%" height="20"/>
+        <Static id="Static02" taborder="47" text="show" left="6.25%" top="88" right="46.88%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.81%" top="54" right="6.25%" height="24" onsetfocus="common_onsetfocus" readonly="true"/>
+        <CheckBox id="chk_show" taborder="94" left="52.81%" top="86" right="6.25%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <Static id="Static25" taborder="97" left="6.25%" top="303" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static40" taborder="101" text="hookHeight" left="6.25%" top="598" right="46.88%" height="20"/>
+        <Static id="Static49" taborder="126" text="hookWidth" left="6.25%" top="560" right="46.88%" height="20"/>
+        <Combo id="cmb_fontType" taborder="134" innerdataset="@ds_fontType" codecolumn="code" datacolumn="data" left="52.81%" top="188" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_borderStyle" taborder="156" innerdataset="@ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="365" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static07" taborder="157" text="borderWidth" left="6.25%" top="327" right="46.88%" height="20"/>
+        <Edit id="edt_borderColor" taborder="159" left="52.81%" top="404" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static15" taborder="160" onclick="Static05_onclick" left="6.25%" top="534" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static10" taborder="161" text="color" left="6.25%" top="446" right="46.88%" height="20"/>
+        <Edit id="edt_color" taborder="162" left="52.81%" top="444" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static16" taborder="163" left="6.25%" top="487" right="46.88%" height="20" text="opacity"/>
+        <Static id="Static00" taborder="165" left="6.25%" top="645" right="46.88%" height="20"/>
+        <Static id="Static05" taborder="167" text="offsetY" left="6.25%" top="678" right="46.88%" height="20"/>
+        <Edit id="edt_fontFace" taborder="169" left="52.81%" top="156" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_fontColor" taborder="170" left="52.81%" top="222" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static11" taborder="171" text="text" left="6.25%" top="121" right="46.88%" height="20"/>
+        <Edit id="edt_text" taborder="172" left="52.81%" top="119" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static12" taborder="174" text="offsetX" left="6.25%" top="638" right="46.88%" height="20"/>
+        <Static id="Static13" taborder="175" text="fontSize" left="6.25%" top="265" right="46.88%" height="20"/>
+        <MaskEdit id="mae_fontSize" taborder="176" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="263" right="6.25%" height="24"/>
+        <MaskEdit id="mae_borderWidth" taborder="177" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="325" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_opacity" taborder="178" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="484" right="6.88%" height="24"/>
+        <MaskEdit id="mae_hookWidth" taborder="179" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="558" right="6.25%" height="24" limitbymask="integer"/>
+        <MaskEdit id="mae_hookHeight" taborder="180" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="596" right="6.25%" height="24" limitbymask="integer"/>
+        <MaskEdit id="mae_offsetX" taborder="181" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="636" right="6.25%" height="24" limitbymask="decimal"/>
+        <MaskEdit id="mae_offsetY" taborder="182" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="676" right="6.25%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item24" compid="cmb_borderStyle" propid="value" datasetid="" columnid="borderStyle"/>
+      <BindItem id="item1" compid="chk_show" propid="value" datasetid="" columnid="show"/>
+      <BindItem id="item3" compid="cmb_fontType" propid="value" datasetid="" columnid="fontType"/>
+      <BindItem id="item5" compid="edt_borderColor" propid="value" datasetid="" columnid="borderColor"/>
+      <BindItem id="item7" compid="edt_color" propid="value" datasetid="" columnid="color"/>
+      <BindItem id="item2" compid="edt_fontFace" propid="value" datasetid="" columnid="fontFace"/>
+      <BindItem id="item6" compid="edt_fontColor" propid="value" datasetid="" columnid="fontColor"/>
+      <BindItem id="item11" compid="edt_text" propid="value" datasetid="" columnid="text"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="" columnid="id"/>
+      <BindItem id="item29" compid="mae_fontSize" propid="value" columnid="fontSize"/>
+      <BindItem id="item4" compid="mae_borderWidth" propid="value" columnid="borderWidth"/>
+      <BindItem id="item8" compid="mae_opacity" propid="value" columnid="opacity"/>
+      <BindItem id="item9" compid="mae_hookWidth" propid="value" columnid="hookWidth"/>
+      <BindItem id="item10" compid="mae_hookHeight" propid="value" columnid="hookHeight"/>
+      <BindItem id="item12" compid="mae_offsetX" propid="value" columnid="offsetX"/>
+      <BindItem id="item13" compid="mae_offsetY" propid="value" columnid="offsetY"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var parent = this.parent;
+	
+this.configTooltip_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var bindDs,
+		dsNm = "ds_tooltip";
+	
+	bindDs = parent.grd_leftMenu.getBindDataset();
+	if (bindDs)
+	{
+		if (bindDs.name == "ds_pieMenu")
+		{
+			dsNm = "ds_ptooltip";
+		}
+		
+		var binds = this.binds;
+		for (var i = 0, len = binds.length; i < len ; i++)
+		{
+			binds[i].datasetid = dsNm;
+			binds[i].bind();
+		}
+	}
+}
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	this.parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="sale">
+	<resultMap id="saleResultMap" class="java.util.HashMap">
+		<result property="dcGb" 		column="DC_GB" /> 			<!-- 할인구분코드 --> 
+		<result property="dcNm" 		column="DC_NM" /> 			<!-- 할인구분명 --> 
+		<result property="stdStrDay" 	column="STD_STR_DAY" /> 	<!-- 할인시작일 --> 
+		<result property="dcRate" 		column="DC_RATE" /> 		<!-- 할인율 --> 
+		<result property="dcAmt" 		column="DC_AMT" /> 			<!-- 할인금액 --> 
+		<result property="mltDcYn" 		column="MLT_DC_YN" /> 		<!-- 중복할인여부 --> 
+		<result property="dcDtlYn" 		column="DC_DTL_YN" /> 		<!-- 할인상세여부 --> 
+		<result property="dcDtlYnChk"	column="DC_DTL_YN_CHK" /> 	<!-- 할인상세여부(팝업창) --> 
+		<result property="stdEndDay" 	column="STD_END_DAY" /> 	<!-- 할인종료일 --> 
+		<result property="regDt" 		column="REG_DT" /> 			<!-- 등록일 --> 
+		<result property="regId" 		column="REG_ID" /> 			<!-- 등록자 ID --> 
+		<result property="chgId" 		column="CHG_ID" /> 			<!-- 변경자 ID --> 
+		<result property="chgDt" 		column="CHG_DT" /> 			<!-- 변경일 -->   
+	</resultMap>
+	
+	<parameterMap id="saleParam" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="saleResultMap" />         
+		<parameter property="dcGb" 		jdbcType="VARCHAR" mode="IN" /> <!-- 할인구분 -->
+	</parameterMap> 
+	
+	<procedure id="sale.saleList" parameterMap="saleParam">
+		{call Pkg_Rtsd0024.p_sRtsd0024(?, ?)}		
+	</procedure>
+	
+	<parameterMap id="p_IUDRtsd0024" class="java.util.Map">
+		<parameter property="dvsn"  		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리구분(I,U,D) -->
+		<parameter property="dcGb"   		jdbcType="VARCHAR" mode="IN" /> 	<!-- 할인구분코드 -->
+		<parameter property="stdStrDay"  	jdbcType="VARCHAR" mode="IN" /> 	<!-- 할인시작일 -->
+		<parameter property="dcRate" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 할인율 -->
+		<parameter property="dcAmt" 		jdbcType="NUMERIC" mode="IN" /> 	<!-- 할인금액 -->
+		<parameter property="mltDcYn"  		jdbcType="VARCHAR" mode="IN" /> 	<!-- 중복할인여부 -->
+		<parameter property="stdEndDay" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 할인종료일 --> 
+		<parameter property="dcDtlYn"  		jdbcType="VARCHAR" mode="IN" /> 	<!-- 할인상세여부 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자 ID --> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="sale.insertSale" parameterMap="p_IUDRtsd0024">
+		{call Pkg_Rtsd0024.p_IUDRtsd0024(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

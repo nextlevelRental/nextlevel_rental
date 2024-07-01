@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="donut" classname="EcoChartSample" left="0" top="0" width="1024" height="723" titletext="donut" style="background:#ffffffff;" onload="StackBarSample_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_male" taborder="18" top="37" height="20" width="111" right="198" style="align:right middle;"/>
+        <Static id="st_female" taborder="19" top="37" height="20" width="94" right="29" style="align:right middle;"/>
+        <Static id="Static01" taborder="22" text="Donut &amp; Highlight" cssclass="WF_sta_Title" left="1.95%" top="10" right="4.69%" height="47"/>
+        <EcoChart id="ecochart" left="1.95%" top="64" right="4.69%" height="444" style="background:#ffffffff;border:0 solid #808080ff ;bordertype:round 15 15 ;"/>
+        <Grid id="Grid00" taborder="26" binddataset="ds_donut" useinputpanel="false" left="1.95%" top="518" right="4.69%" height="168">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="188"/>
+                <Column size="156"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="country"/>
+                <Cell col="1" text="litres"/>
+                <Cell col="2" text="aaa"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:country"/>
+                <Cell col="1" edittype="normal" text="bind:litres"/>
+                <Cell col="2" text="bind:aaa"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_donut" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="country" type="STRING" size="256"/>
+          <Column id="litres" type="FLOAT" size="256"/>
+          <Column id="aaa" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="country">Lithuania</Col>
+            <Col id="litres">501.9</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="country">Czech Republic</Col>
+            <Col id="litres">301.9</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="country">Ireland</Col>
+            <Col id="litres">201.1</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="country">Germany</Col>
+            <Col id="litres">165.8</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="litres">139.9</Col>
+            <Col id="country">Australia</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="country">Austria</Col>
+            <Col id="litres">128.3</Col>
+            <Col id="aaa">1</Col>
+          </Row>
+          <Row>
+            <Col id="country">UK</Col>
+            <Col id="litres">99</Col>
+            <Col id="aaa">2</Col>
+          </Row>
+          <Row>
+            <Col id="country">Belgium</Col>
+            <Col id="litres">60</Col>
+            <Col id="aaa">4</Col>
+          </Row>
+          <Row>
+            <Col id="country">Netherlands</Col>
+            <Col id="litres">50</Col>
+            <Col id="aaa">3</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+var chart;
+
+this.StackBarSample_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.drawChart();
+}
+
+
+this.drawChart = function()
+{
+	if (!chart)
+	{	
+		var config = {
+			"type": "Pie",
+			"chart": {
+				"id": "donut chart",
+				"bindDataset": "ds_donut",
+				"bindCategory": "country",
+				"bindValue": "litres",
+				"colors": "color12",
+				"plotBackgroundColor": "#9467bd",
+				"plotBackgroundOpacity": 0.2,
+				"radius": 0.7,
+				"innerRadius": 0.3,
+				"tilt": 0.7,
+				"labelFontSize": 8,
+				"labelRadius": 0.8,
+				"labelColor": "gray",
+				"labelFontType": "bold",
+				"showHighLight": true,
+				"highLightOpacity": 0.6,
+				"highLightRadius": 0.8
+			},
+			"legend": {
+				"position": "left",
+				"valign": "top",
+				"autoMargins": false,
+				"marginTop": 100,
+				"marginLeft": 90,
+				"marginRight": 20,
+				"markerType": "circle",
+				"markerSize": 15,
+				"switchable": false,
+				"useMarkerColorForLabels": true,
+				"equalItemWidths": true,
+				"columns": 2
+			},
+			"tooltip": {
+				"text": "[%y]% ",
+				"fontSize": 10
+			}
+		};
+	
+		this.ecochart.set_config(config);
+	}
+	
+	chart = this.ecochart.getChart();
+		
+	this.ecochart.draw();
+}
+]]></Script>
+  </Form>
+</FDL>

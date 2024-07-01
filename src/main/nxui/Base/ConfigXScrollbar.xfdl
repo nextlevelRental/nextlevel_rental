@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configXScrollbar" classname="config_xaxis" left="0" top="0" width="320" height="804" titletext="차트 X스크롤바 설정" style="background:#d4d9dfff;" onload="configTooltip_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="XScrollbar" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static09" taborder="36" text="borderColor" left="6.25%" top="456" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="37" text="borderStyle" left="6.25%" top="419" right="46.88%" height="20"/>
+        <Static id="Static06" taborder="39" text="scrollWidth" left="6.25%" top="266" right="46.88%" height="20"/>
+        <Static id="Static04" taborder="43" text="scrollHeight" left="6.25%" top="229" right="46.88%" height="20"/>
+        <Static id="Static03" taborder="45" text="rangeEnd" left="6.25%" top="130" right="46.88%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.81%" top="54" right="6.25%" height="24" onsetfocus="common_onsetfocus" readonly="true"/>
+        <Static id="Static40" taborder="101" text="rangeBorderStyle" left="6.25%" top="639" right="46.88%" height="20"/>
+        <Static id="Static49" taborder="126" text="rangeBorderColor" left="6.25%" top="598" right="46.88%" height="20"/>
+        <Combo id="cmb_rangeBorderStyle" taborder="134" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="637" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_borderStyle" taborder="156" innerdataset="@ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="417" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static07" taborder="157" text="borderWidth" left="6.25%" top="382" right="46.88%" height="20"/>
+        <Edit id="edt_borderColor" taborder="159" left="52.81%" top="454" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static15" taborder="160" onclick="Static05_onclick" left="6.56%" top="498" right="5.94%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static10" taborder="161" text="rangeColor" left="6.25%" top="517" right="46.88%" height="20"/>
+        <Edit id="edt_rangeColor" taborder="162" left="52.81%" top="515" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static16" taborder="163" left="6.25%" top="559" right="46.88%" height="20" text="rangeOpacity"/>
+        <Static id="Static11" taborder="171" text="rangeStart" left="6.25%" top="93" right="46.88%" height="20"/>
+        <Static id="Static13" taborder="175" text="scrollOffset" left="6.56%" top="167" right="46.56%" height="20"/>
+        <Static id="Static00" taborder="177" text="scrollColor" left="6.25%" top="308" right="46.88%" height="20"/>
+        <Static id="Static05" taborder="179" text="scrollOpacity" left="6.25%" top="345" right="46.88%" height="20"/>
+        <Static id="Static12" taborder="181" text="rangeBorderWidth" left="6.25%" top="679" right="46.88%" height="20"/>
+        <Static id="Static14" taborder="183" text="rangeMinSize" left="6.25%" top="717" right="46.88%" height="20"/>
+        <Static id="Static18" taborder="185" text="resizeSize" left="6.25%" top="760" right="46.88%" height="20"/>
+        <Edit id="edt_scrollColor" taborder="188" left="52.81%" top="306" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_rangeBorderColor" taborder="190" left="52.81%" top="596" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_rangeEnd" taborder="195" left="52.81%" top="128" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_rangeStart" taborder="196" left="52.81%" top="91" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static19" taborder="197" left="6.56%" top="207" right="5.94%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <MaskEdit id="mae_scrollOffset" taborder="198" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="165" right="6.56%" height="24"/>
+        <MaskEdit id="mae_scrollHeight" taborder="199" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="227" right="6.56%" height="24"/>
+        <MaskEdit id="mae_scrollWidth" taborder="200" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="264" right="6.56%" height="24"/>
+        <MaskEdit id="mae_borderWidth" taborder="201" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="380" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_plotTopBorderOpacity" taborder="202" mask="0.0" canchange="common_canchage_02" left="52.81%" top="1518" right="6.88%" height="24"/>
+        <MaskEdit id="mae_plotTopBorderOpacity00" taborder="203" mask="0.0" canchange="common_canchage_02" left="55.31%" top="1526" right="4.38%" height="24"/>
+        <MaskEdit id="mae_scrollOpacity" taborder="204" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="343" right="6.88%" height="24"/>
+        <MaskEdit id="mae_rangeOpacity" taborder="205" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="559" right="6.88%" height="24"/>
+        <MaskEdit id="mae_rangeBorderWidth" taborder="206" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="677" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_rangeMinSize" taborder="207" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="715" right="6.56%" height="24"/>
+        <MaskEdit id="mae_resizeSize" taborder="208" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="758" right="6.56%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item24" compid="cmb_borderStyle" propid="value" datasetid="ds_xScrollbar" columnid="borderStyle"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_xScrollbar" columnid="id"/>
+      <BindItem id="item3" compid="cmb_rangeBorderStyle" propid="value" datasetid="ds_xScrollbar" columnid="rangeBorderStyle"/>
+      <BindItem id="item5" compid="edt_borderColor" propid="value" datasetid="ds_xScrollbar" columnid="borderColor"/>
+      <BindItem id="item7" compid="edt_rangeColor" propid="value" datasetid="ds_xScrollbar" columnid="rangeColor"/>
+      <BindItem id="item9" compid="edt_scrollColor" propid="value" datasetid="ds_xScrollbar" columnid="scrollColor"/>
+      <BindItem id="item16" compid="edt_rangeBorderColor" propid="value" datasetid="ds_xScrollbar" columnid="rangeBorderColor"/>
+      <BindItem id="item2" compid="edt_rangeEnd" propid="value" datasetid="ds_xScrollbar" columnid="rangeEnd"/>
+      <BindItem id="item11" compid="edt_rangeStart" propid="value" datasetid="ds_xScrollbar" columnid="rangeStart"/>
+      <BindItem id="item4" compid="mae_scrollHeight" propid="value" datasetid="ds_xScrollbar" columnid="scrollHeight"/>
+      <BindItem id="item6" compid="mae_scrollWidth" propid="value" datasetid="ds_xScrollbar" columnid="scrollWidth"/>
+      <BindItem id="item12" compid="mae_borderWidth" propid="value" datasetid="ds_xScrollbar" columnid="borderWidth"/>
+      <BindItem id="item1" compid="mae_scrollOffset" propid="value" datasetid="ds_xScrollbar" columnid="scrollOffset"/>
+      <BindItem id="item36" compid="mae_plotTopBorderOpacity" propid="value" datasetid="ds_pchart" columnid="plotTopBorderOpacity"/>
+      <BindItem id="item10" compid="mae_plotTopBorderOpacity00" propid="value" datasetid="ds_pchart" columnid="plotTopBorderOpacity"/>
+      <BindItem id="item17" compid="mae_scrollOpacity" propid="value" datasetid="ds_xScrollbar" columnid="scrollOpacity"/>
+      <BindItem id="item8" compid="mae_rangeOpacity" propid="value" datasetid="ds_xScrollbar" columnid="rangeOpacity"/>
+      <BindItem id="item13" compid="mae_rangeBorderWidth" propid="value" datasetid="ds_xScrollbar" columnid="rangeBorderWidth"/>
+      <BindItem id="item14" compid="mae_rangeMinSize" propid="value" datasetid="ds_xScrollbar" columnid="rangeMinSize"/>
+      <BindItem id="item15" compid="mae_resizeSize" propid="value" datasetid="ds_xScrollbar" columnid="resizeSize"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var parent = this.parent;
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

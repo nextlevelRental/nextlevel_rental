@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="price">
+	
+	<resultMap id="priceResultMap" class="java.util.HashMap">
+		<result property="priceCd"  			column="PRICE_CD" />
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="periodCd"  			column="PERIOD_CD" />
+		<result property="cntCd"  				column="CNT_CD" />
+		<result property="regiCd"  				column="REGI_CD" />
+		<result property="strDay"  				column="STR_DAY" />
+		<result property="endDay"  				column="END_DAY" />
+		<result property="seq"  				column="SEQ" />
+		<result property="amt"  				column="AMT" />
+		<result property="useYn"  				column="USE_YN" />
+		<result property="regId"  				column="REG_ID" />
+		<result property="regDt"  				column="REG_DT" />
+		<result property="chgId"  				column="CHG_ID" />
+		<result property="chgDt" 				column="CHG_DT" />
+	</resultMap>
+       
+	<parameterMap id="priceParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="priceResultMap" />
+		<parameter property="priceCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="matCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regiCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="strDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seq"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="amt"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="price.listPriceInfo" parameterMap="priceParam">
+		{call Pkg_Rtsd0008.p_sRtsd0008(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="p_IUDRtsd0008_I" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="priceCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="matCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regiCd" 		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="strDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seq"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="amt"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="price.savePriceInfo" parameterMap="p_IUDRtsd0008_I">
+		{call Pkg_Rtsd0008.p_IUDRtsd0008(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 등록일자 중복체크 -->
+	<parameterMap id="exitsPriceParam" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="resultDay" />
+		<parameter property="priceCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="matCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="periodCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cntCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regiCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seq" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+		
+	<resultMap id="resultDay" class="java.util.HashMap"/>
+	
+	<procedure  id="price.exitsPriceDay" resultClass="java.util.Map" parameterMap="exitsPriceParam">
+		{call ? := Pkg_Rtsd0008.f_sRtsd0008ExistsDay ( ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	<resultMap id="prodAndPriceMap" class="java.util.HashMap">
+		<result property="matCd"  			column="MAT_CD" />
+		<result property="matNm"  			column="MAT_NM" />
+		<result property="petternCd"  		column="PETTERN_CD" />
+		<result property="sectionWidth"  	column="SECTION_WIDTH" />
+		<result property="aspectRatio"  	column="ASPECT_RATIO" />
+		<result property="wheelInches"  	column="WHEEL_INCHES" />
+		<result property="plyRating"  		column="PLY_RATING" />
+		<result property="demendQty"  		column="DEMEND_QTY" />
+		<result property="pgCd"  			column="PG_CD" />
+		<result property="seasonCd"  		column="SEASON_CD" />
+		<result property="seasonNm"  		column="SEASON_NM" />
+		<result property="frCd"  			column="FR_CD" />
+		<result property="contentsCd"  		column="CONTENTS_CD" />
+		<result property="modelCd"  		column="MODEL_CD" />
+		<result property="wheelQty"    		column="WHEEL_QTY" />
+		<result property="wheelLimitQty"    column="WHEEL_LIMIT_QTY" />
+		<result property="classCd"  		column="CLASS_CD" />
+		<result property="makerCd"  		column="MAKER_CD" />
+		<result property="seq"  			column="SEQ" />
+		<result property="endDy"  			column="END_DAY" />
+		<result property="strDy"  			column="STR_DAY" />
+		<result property="regiCd"  			column="REGI_CD" />
+		<result property="regiAmt"  		column="REGI_AMT" />
+		<result property="cntCd"  			column="CNT_CD" />
+		<result property="ordQty"  			column="ORD_QTY" />
+		<result property="periodCd"  		column="PERIOD_CD" />
+		<result property="periodNm"  		column="PERIOD_NM" />
+		<result property="priceCd"  		column="PRICE_CD" />
+		<result property="rentAmt"  		column="RENT_AMT" />
+		<result property="frCdNm"  			column="FR_CD_NM" />
+		<result property="contentsCdNm"  	column="CONTENTS_CD_NM" />
+		<result property="modelNm"  		column="MODEL_NM" />
+	</resultMap>
+       
+	<parameterMap id="prodAndPriceParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="prodAndPriceMap" />
+		<parameter property="modelCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="contentsCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="frCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="sectionWidth"  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="aspectRatio"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="wheelInches"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="plyRating"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seasonCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="petternCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="ordDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  		mode="IN" jdbcType="VARCHAR" />		
+	</parameterMap>
+	
+	<procedure id="price.productAndPriceList" parameterMap="prodAndPriceParam">
+		{call Pkg_Rtsd0008.p_sRtsd0008_ProductList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 이전종료일자 업데이트처리 -->
+	<parameterMap id="p_IUDRtsd0008_U" class="java.util.Map">
+		<parameter property="priceCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="matCd"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regiCd"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="strDay" 			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDay"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="preDay"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seq"  				mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="price.updateRtsd0008EndDay" parameterMap="p_IUDRtsd0008_U">
+		{call Pkg_Rtsd0008.p_UpdateRtsd0008EndDay(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

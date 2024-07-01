@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSChangeVisitSchedule" classname="RTCSEngineOilInvMan" left="0" top="0" width="1147" height="496" titletext="방문점검지역변경" onload="RTCSChangeVisitSchedule_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1117" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_procDay" taborder="89" text="파일업로드" cssclass="sta_WF_schTitle" left="25" top="12" width="100" height="21"/>
+              <Static id="Static26" taborder="90" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="91" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="92" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Button id="bt_fileChoice" taborder="93" text="파일선택" onclick="div_search_bt_fileChoice_onclick" left="125" top="12" width="100" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="gr_list" taborder="2" binddataset="ds_visitChangeList" useinputpanel="false" autofittype="none" left="0" top="87" width="1117" height="409">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="74"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="배정월"/>
+                <Cell col="1" text="주문번호"/>
+                <Cell col="2" text="구_로디안"/>
+                <Cell col="3" text="신_로디안"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:COL_01"/>
+                <Cell col="1" displaytype="normal" text="bind:COL_02" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:COL_03"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:COL_04"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="3" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static03" taborder="4" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="62" width="140" height="20"/>
+        <Static id="Static02" taborder="5" cssclass="Guide_color" visible="false" left="0" top="77" width="1147" height="10"/>
+        <Static id="Static01" taborder="6" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00" useclientlayout="false" loadfiltermode="keep" loadkeymode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="stdYm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="mrCdOrg" type="STRING" size="256"/>
+          <Column id="mrCdNew" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_visitChangeList" useclientlayout="false" loadfiltermode="keep" loadkeymode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="COL_01" type="STRING" size="256"/>
+          <Column id="COL_02" type="STRING" size="256"/>
+          <Column id="COL_03" type="STRING" size="256"/>
+          <Column id="COL_04" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 		= "";
+this.firstDay 	= "";
+this.addMonth	= "";
+this.lastDay	= "";
+this.url 		= application.services["svcurl"].url+"XImport";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( nErrorCode < 0 ){
+		alert(strErrorMsg);
+	}
+		
+	if( strSvcId == "saveVisitChangeTemp" ){		
+		this.ds_visitChangeList.clearData();
+		if(nErrorCode == 0){
+			this.alert("저장이 완료되었습니다.");
+		}
+		return;
+	}
+	
+	if( strSvcId == "saveRTCSChangeVisitSchedule" ){	
+		
+		if(nErrorCode == 0){
+			this.alert("저장이 완료되었습니다.");
+		}
+		return;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCSChangeVisitSchedule_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_setButton();
+	this.fn_getToday();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_setButton = function(){
+	this.parent.setButton("C|AG", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_aggregate = function(){
+
+	if(this.FN_saveCheck()){
+		var sSvcID        	= "saveVisitChangeTemp";                
+		var sController   	= "rtms/cs/saveVisitChangeTemp.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=ds_visitChangeList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	
+	if( confirm( "저장하시겠습니까?" ) ){
+		var sSvcID        	= "saveRTCSChangeVisitSchedule";                
+		var sController   	= "rtms/cs/saveRTCSChangeVisitSchedule.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_saveCheck = function(){
+	var nCnt 	 = this.ds_visitChangeList.getRowCount();
+	var saveFlag = false;
+	var msg		 = " 값이 없습니다.";
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var stdYm	= nvl(this.ds_visitChangeList.getColumn( i, this.ds_visitChangeList.getColumnInfo(0).name ));
+		var ordNo	= nvl(this.ds_visitChangeList.getColumn( i, this.ds_visitChangeList.getColumnInfo(1).name ));
+		var mrCdOrg	= nvl(this.ds_visitChangeList.getColumn( i, this.ds_visitChangeList.getColumnInfo(2).name ));
+		var mrCdNew	= nvl(this.ds_visitChangeList.getColumn( i, this.ds_visitChangeList.getColumnInfo(3).name ));
+		
+		if( stdYm == "" ){		alert( "배정년월"+msg ); 			this.ds_visitChangeList.set_rowposition(i);	saveFlag = false; break;
+		}else if( ordNo == "" ){	alert( "계약번호"+msg ); 	    this.ds_visitChangeList.set_rowposition(i);	saveFlag = false; break;
+		}else if( mrCdOrg == "" ){	alert( "구_로디안"+msg ); 		this.ds_visitChangeList.set_rowposition(i);	saveFlag = false; break;
+		}else if( mrCdNew == "" ){	alert( "신_로디안"+msg ); 		this.ds_visitChangeList.set_rowposition(i);	saveFlag = false; break;
+		}else{
+			saveFlag = true;
+		}
+	}
+	return saveFlag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_fileChoice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.Dataset00.clear();
+	this.importObj = new nexacro.ExcelImportObject("Import00",this);
+	this.importObj.addEventHandler("onsuccess", this.Import00_onsuccess, this);
+	this.importObj.addEventHandler("onerror", this.Import00_onerror, this);
+	this.importObj.set_importurl(this.url);
+	this.importObj.importData("", "Sheet 1!A1:G", "Dataset00");
+	this.importObj.parent.addChild("Import00",this.importObj);
+	this.importObj = null;
+}
+this.Import00_onsuccess = function(obj:ExcelImportObject,  e:nexacro.ExcelImportEventInfo){
+	this.fn_Copy();
+}
+this.Import00_onerror = function(obj:ExcelImportObject,  e:nexacro.ExcelImportErrorEventInfo){
+}
+this.fn_Copy = function(){
+	
+	this.ds_visitChangeList.clearData();
+	this.ds_visitChangeList.set_enableevent(false);
+
+	for (var i=0; i < this.Dataset00.getRowCount(); i++) {
+		var idxAddRow     = this.ds_visitChangeList.addRow();		
+		
+		this.ds_visitChangeList.setColumn(idxAddRow, "COL_01", this.Dataset00.getColumn(idxAddRow, nvl(this.Dataset00.getColID(0))));
+		this.ds_visitChangeList.setColumn(idxAddRow, "COL_02", this.Dataset00.getColumn(idxAddRow, nvl(this.Dataset00.getColID(1))));
+		this.ds_visitChangeList.setColumn(idxAddRow, "COL_03", this.Dataset00.getColumn(idxAddRow, nvl(this.Dataset00.getColID(2))));
+		this.ds_visitChangeList.setColumn(idxAddRow, "COL_04", this.Dataset00.getColumn(idxAddRow, nvl(this.Dataset00.getColID(3))));		
+	}
+	
+	this.ds_visitChangeList.set_enableevent(true);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

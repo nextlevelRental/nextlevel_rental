@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSWarehAgencyRegister" classname="RTCSWarehAgencyRegister" left="0" top="0" width="1147" height="496" titletext="대리점 창고 관리" onload="RTCSWarehAgencyRegister_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" text="Div00" left="0" top="0" width="1122" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_wareh" taborder="6" text="창고코드" cssclass="sta_WF_schTitle" left="401" top="10" width="100" height="21"/>
+              <Static id="st_agency" taborder="7" text="대리점코드" cssclass="sta_WF_schTitle" left="8" top="10" width="100" height="21"/>
+              <Static id="Static03" taborder="8" cssclass="Guide_color" visible="false" left="371" top="0" width="30" height="44"/>
+              <Static id="Static22" taborder="9" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static02" taborder="10" cssclass="Guide_color" visible="false" left="0" top="30" right="0" height="12"/>
+              <Edit id="ed_agencyCd" taborder="0" enable="true" left="112" top="10" width="120" height="21" onchanged="div_search_ed_agencyCd_onchanged"/>
+              <Edit id="ed_agencyNm" taborder="2" enable="false" left="251" top="10" width="120" height="21"/>
+              <Button id="bt_agency" taborder="1" cssclass="btn_WF_edtSch" left="231" top="9" width="21" height="21" onclick="div_search_bt_agency_onclick"/>
+              <Edit id="ed_warehCd" taborder="3" enable="true" left="501" top="10" width="120" height="21" onchanged="div_search_ed_warehCd_onchanged"/>
+              <Button id="bt_wareh" taborder="4" cssclass="btn_WF_edtSch" left="620" top="9" width="21" height="21" onclick="div_search_bt_wareh_onclick"/>
+              <Edit id="ed_warehNm" taborder="5" enable="false" left="640" top="10" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="3" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="4" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static03" taborder="5" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="61" width="169" height="20"/>
+        <Static id="Static04" taborder="18" cssclass="Guide_color" visible="false" left="0" top="76" width="1147" height="10"/>
+        <Grid id="grid_rtcs0202" taborder="17" binddataset="ds_rtcs0202" useinputpanel="false" cellsizingtype="col" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="86" width="1122" height="299" onselectchanged="grid_rtcs0202_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="순번"/>
+                <Cell col="1" text="대리점코드"/>
+                <Cell col="2" text="대리점명"/>
+                <Cell col="3" text="창고코드"/>
+                <Cell col="4" text="창고명"/>
+                <Cell col="5" text="시작일자"/>
+                <Cell col="6" text="종료일자"/>
+                <Cell col="7" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:awSeq" tooltiptext="bind:awSeq"/>
+                <Cell col="1" text="bind:agencyCd" tooltiptext="bind:agencyCd"/>
+                <Cell col="2" text="bind:agencyNm" tooltiptext="bind:agencyNm"/>
+                <Cell col="3" text="bind:warehCd" tooltiptext="bind:warehCd"/>
+                <Cell col="4" text="bind:warehNm" tooltiptext="bind:warehNm"/>
+                <Cell col="5" displaytype="date" text="bind:begday" calendardisplaynulltype="none" tooltiptext="bind:begday"/>
+                <Cell col="6" displaytype="date" text="bind:endday" calendardisplaynulltype="none" tooltiptext="bind:endday"/>
+                <Cell col="7" text="bind:useYn" tooltiptext="bind:useYn"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" text="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="1" cssclass="sta_WF_detailLabel2" left="0" top="435" width="1122" height="31"/>
+        <Static id="st_begday" taborder="19" text="시작일자" cssclass="sta_WF_detailLabelP" left="448" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_useYn" taborder="20" text="사용여부" cssclass="sta_WF_detailLabelP" left="718" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_agency" taborder="21" text="대리점코드" cssclass="sta_WF_detailLabelP" left="0" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static05" taborder="2" cssclass="sta_WF_detailLabel2" left="0" top="465" width="1122" height="31"/>
+        <Static id="st_endday" taborder="22" text="종료일자" cssclass="sta_WF_detailLabelP" left="448" top="465" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_wareh" taborder="23" text="창고코드" cssclass="sta_WF_detailLabelP" left="0" top="465" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static22" taborder="24" cssclass="Guide_color" visible="false" left="0" top="385" width="1147" height="20"/>
+        <Button id="btn_delete" taborder="6" text="삭제" left="1035" top="405" width="41" height="21" domainId="nexa.save" onclick="btn_delete_onclick"/>
+        <Button id="btn_insert" taborder="7" text="신규" left="1081" top="405" width="41" height="21" domainId="nexa.save" onclick="btn_insert_onclick"/>
+        <Static id="Static10" taborder="25" cssclass="Guide_color" visible="false" left="0" top="425" width="1147" height="10"/>
+        <Calendar id="cal_begday" taborder="11" dateformat="yyyy-MM-dd" onchanged="cal_begday_onchanged" left="553" top="440" width="160" height="21" style="align:middle;"/>
+        <Calendar id="cal_endday" taborder="16" dateformat="yyyy-MM-dd" enable="false" left="553" top="470" width="160" height="21"/>
+        <Combo id="cb_useYn" taborder="12" autoselect="true" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="823" top="440" width="160" height="21"/>
+        <Static id="Static11" taborder="26" text="변경할 내용" cssclass="sta_WF_subTitle" left="0" top="407" width="169" height="20"/>
+        <Edit id="ed_agencyCd" taborder="8" enable="false" left="104" top="440" width="160" height="21"/>
+        <Button id="bt_agency" taborder="9" cssclass="btn_WF_edtSch" left="262" top="439" width="21" height="21" onclick="bt_agency_onclick" enable="false"/>
+        <Edit id="ed_agencyNm" taborder="10" enable="false" left="283" top="440" width="160" height="21"/>
+        <Edit id="ed_warehCd" taborder="13" enable="false" left="104" top="470" width="160" height="21"/>
+        <Button id="bt_wareh" taborder="14" cssclass="btn_WF_edtSch" left="262" top="469" width="21" height="21" onclick="bt_wareh_onclick" enable="false"/>
+        <Edit id="ed_warehNm" taborder="15" enable="false" left="283" top="470" width="160" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtcs0202" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="awSeq" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="begday" type="STRING" size="256"/>
+          <Column id="endday" type="STRING" size="256"/>
+          <Column id="warehCd" type="STRING" size="256"/>
+          <Column id="warehNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_agencyCd" propid="value" datasetid="ds_rtcs0202" columnid="agencyCd"/>
+      <BindItem id="item1" compid="ed_agencyNm" propid="value" datasetid="ds_rtcs0202" columnid="agencyNm"/>
+      <BindItem id="item2" compid="cal_begday" propid="value" datasetid="ds_rtcs0202" columnid="begday"/>
+      <BindItem id="item3" compid="cb_useYn" propid="value" datasetid="ds_rtcs0202" columnid="useYn"/>
+      <BindItem id="item4" compid="ed_warehCd" propid="value" datasetid="ds_rtcs0202" columnid="warehCd"/>
+      <BindItem id="item5" compid="ed_warehNm" propid="value" datasetid="ds_rtcs0202" columnid="warehNm"/>
+      <BindItem id="item6" compid="cal_endday" propid="value" datasetid="ds_rtcs0202" columnid="endday"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 			= "RTCSWarehouseRegister";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 			= "";		//현재날짜
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+	
+	if( strSvcId == "initRTCSWarehAgencyRegister" ){
+	
+	}
+	
+	if( strSvcId == "getToday" ){
+	
+	}
+	
+	if( strSvcId == "saveRTCSWarehAgencyRegister" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			this.fn_search();
+		}
+	}
+	
+	if( strSvcId == "selectRTCSWarehAgencyRegister" ){
+		var nRowCount = this.ds_rtcs0202.getRowCount();
+		if(nRowCount != 0){
+			
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_rtcs0202.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_agencyCd.setFocus(true);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCSWarehAgencyRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.parent.setButton("E|C|S", this);
+	this.fn_init();
+	
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTCSWarehAgencyRegister";  
+	var sController   	= "rtms/cs/initRTCSWarehAgencyRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	
+	if( !this.FN_saveCheckRequired() ) {
+		return false;
+	}
+	
+	if( !this.FN_saveCheckChange() ) {
+		alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+	
+	if( !this.FN_saveCheckChangeCount() ) {
+		alert('변경된 데이터가 1건 이상입니다.');
+		return false;
+	}
+	
+	var sSvcID        	= "saveRTCSWarehAgencyRegister";                    
+	var sController   	= "rtms/cs/saveRTCSWarehAgencyRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	sInDatasets   		= "input=ds_rtcs0202:U";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+this.FN_saveCheckRequired = function(){
+	var returnFlag = true;
+	var cnt = this.ds_rtcs0202.getRowCount();
+	var msg = " 값이 없습니다.";
+	for( var  i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0202.getRowType(i) == 2) || (this.ds_rtcs0202.getRowType(i) == 4) ){
+			var agencyCd= nvl(this.ds_rtcs0202.getColumn(i,"agencyCd"));
+			var warehCd	= nvl(this.ds_rtcs0202.getColumn(i,"warehCd"));
+			var begday 	= nvl(this.ds_rtcs0202.getColumn(i,"begday"));
+			var endday 	= nvl(this.ds_rtcs0202.getColumn(i,"endday"));
+			var useYn 	= nvl(this.ds_rtcs0202.getColumn(i,"useYn"));
+			if( agencyCd == "" ){ 	alert( "창고코드" + msg); 		this.ds_rtcs0202.set_rowposition(i); this.ed_agencyCd.setFocus(true); 	returnFlag = false; break;}
+			if( warehCd == "" ){ 	alert( "대리점코드" + msg); 	this.ds_rtcs0202.set_rowposition(i); this.ed_warehCd.setFocus(true); 	returnFlag = false; break;}
+			if( begday == "" ){ 	alert( "시작일자" + msg); 		this.ds_rtcs0202.set_rowposition(i); this.cal_begday.setFocus(true);	returnFlag = false; break;}
+			if( endday == "" ){ 	alert( "종료일자" + msg); 		this.ds_rtcs0202.set_rowposition(i); this.cal_endday.setFocus(true); 	returnFlag = false; break;}
+			if( useYn == "" ){ 		alert( "사용여부" + msg); 		this.ds_rtcs0202.set_rowposition(i); this.cb_useYn.setFocus(true); 		returnFlag = false; break;}
+		}
+	}
+	return returnFlag;
+}
+this.FN_saveCheckChange = function(){
+	var returnFlag = true;
+	var cnt = this.ds_rtcs0202.getRowCount();
+	for( var  i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0202.getRowType(i) == 2) || (this.ds_rtcs0202.getRowType(i) == 4) ){
+			returnFlag = true;
+			break;
+		}else{
+			returnFlag = false;
+		}
+	}
+	return returnFlag;
+}
+this.FN_saveCheckChangeCount = function(){
+	var returnFlag = true;
+	var changeCount = 0;
+	var cnt = this.ds_rtcs0202.getRowCount();
+	for( var i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0202.getRowType(i) == 2) || (this.ds_rtcs0202.getRowType(i) == 4) ){
+			changeCount++;
+		}
+	}
+	if( changeCount == 1 ){
+		returnFlag = true;
+	}else{
+		returnFlag = false;
+	}
+	return returnFlag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.grid_rtcs0202);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var agencyCd = nvl(this.div_search.ed_agencyCd.value);
+	var warehCd  = nvl(this.div_search.ed_warehCd.value);
+	var loginId  = application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+	
+	var sSvcID        	= "selectRTCSWarehAgencyRegister";                    
+	var sController   	= "rtms/cs/selectRTCSWarehAgencyRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtcs0202=mapRtcs0202";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("agencyCd", agencyCd);
+	sArgs += Ex.util.setParam("warehCd", warehCd);
+	sArgs += Ex.util.setParam("loginId", loginId);
+	this.ds_rtcs0202.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args = {p_arg : "RTCSWarehAgencyRegister_select"};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+this.returnAgencyCdSelect = function(res) {
+	this.div_search.ed_agencyCd.set_value( res[0] );
+	this.div_search.ed_agencyNm.set_value( res[1] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_wareh_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTCSWarehAgencyRegister_select"};
+	Ex.core.popup(this,"창고 조회","comm::RTCOMMWarehouse_pop.xfdl",args, "modaless=false");
+}
+this.returnWarehCdSelect = function( res ){
+	this.div_search.ed_warehCd.set_value( res[0] );
+	this.div_search.ed_warehNm.set_value( res[1] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtcs0202_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	if( this.ds_rtcs0202.getRowType( this.ds_rtcs0202.rowposition ) == 2 ){
+		this.bt_agency.set_enable(true);
+		this.bt_wareh.set_enable(true);
+		this.cal_begday.set_enable(true);
+		this.cb_useYn.set_enable(false);
+	}else{
+		this.bt_agency.set_enable(false);
+		this.bt_wareh.set_enable(false);
+		this.cal_begday.set_enable(false);
+		this.cb_useYn.set_enable(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var delRow = -1;
+	var cnt = this.ds_rtcs0202.getRowCount();
+	for( var i = 0 ; i < cnt ; i++ ){
+		if( this.ds_rtcs0202.getRowType(i) == 2 ){
+			delRow = i;
+		}else{
+			delRow = -1
+		}
+	}
+	
+	if( delRow != -1 ){
+		this.ds_rtcs0202.deleteRow(delRow);
+	}else{
+		alert("삭제할 행이 없습니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if( this.FN_addRow() ){
+		this.FN_addValue();
+	}
+}
+this.FN_addRow = function(){
+	var addRowFlag = false;
+	var cnt = this.ds_rtcs0202.getRowCount();
+	if( cnt == 0 ){
+		addRowFlag = true;
+	}else{		
+		for( var  i = 0 ; i < cnt ; i++ ){
+			if( this.ds_rtcs0202.getRowType(i) == 2 || this.ds_rtcs0202.getRowType(i) == 4){
+				alert("추가,수정된 행이 있으므로 추가하실 수 없습니다.\n저장 후 다시 작업하세요.");
+				this.ds_rtcs0202.set_rowposition(i);
+				addRowFlag = false;
+				break;
+			}else{
+				addRowFlag = true;
+			}
+		}
+	}
+	return addRowFlag;
+}
+this.FN_addValue = function(){
+	var nRow = this.ds_rtcs0202.addRow();
+	this.cal_begday.set_value(this.toDay);
+	this.cal_endday.set_value("99991231");
+	this.cb_useYn.set_value("Y");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args = {p_arg : "RTCSWarehAgencyRegister_insert"};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+this.returnAgencyCdInsert = function(res) {
+	this.ed_agencyCd.set_value( res[0] );
+	this.ed_agencyNm.set_value( res[1] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_wareh_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTCSWarehAgencyRegister_insert"};
+	Ex.core.popup(this,"창고 조회","comm::RTCOMMWarehouse_pop.xfdl",args, "modaless=false");
+}
+this.returnWarehCdIsnert = function( res ){
+	this.ed_warehCd.set_value( res[0] );
+	this.ed_warehNm.set_value( res[1] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cal_begday_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var thisValue =  obj.value;
+	var firstDate =  Eco.date.getFirstDate(this.toDay);
+	var lastDay   =  this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+	
+	if( !(( firstDate <= thisValue ) && (thisValue <= lastDay)) ){
+		alert("시작일자는 "+firstDate+" ~ "+lastDay+" 선택가능합니다.");
+		obj.set_value(this.toDay);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_agencyCd_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	this.div_search.ed_agencyNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_warehCd_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	this.div_search.ed_warehNm.set_value("");
+}
+]]></Script>
+  </Form>
+</FDL>

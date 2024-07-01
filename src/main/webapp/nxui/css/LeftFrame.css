@@ -1,0 +1,157 @@
+﻿/******************************************* Left Frame *******************************************/
+/* Button */
+Button.btn_LF_hide
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_hideN.png') left top
+}
+/*
+Button.btn_LF_hide, Button.btn_LF_hide:selected, Button.btn_LF_hide:focused
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_showN.jpg') left top;
+}
+Button.btn_LF_hide:mouseover
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_showN.jpg') left top;
+}
+Button.btn_LF_hide:pushed
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_showN.jpg') left top;
+}
+*/
+
+Button.btn_LF_show
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_showN.png') left top;
+}
+/*
+Button.btn_LF_show, Button.btn_LF_show:selected, Button.btn_LF_show:focused
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_hideN.jpg') left top;
+}
+Button.btn_LF_show:mouseover
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_hideN.jpg') left top;
+}
+Button.btn_LF_show:pushed
+{
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	background			: URL('image::btn_LF_hideN.jpg') left top;
+}
+*/
+
+/* Grid */
+Grid.grd_LF
+{
+	align				: left middle;
+	background			: #f2f2ef;
+	border				: 1 solid #a8a8a2, 1 solid #a8a8a2, 1 solid #a8a8a2, 0 none;
+	color				: #333333;
+	font				: 9 Dotum;
+	treeclosebuttonimage		: URL('image::grd_LF_treeClose.png');
+	treeopenbuttonimage		: URL('image::grd_LF_treeOpen.png');
+	treecollapseimage		: ;
+	treeexpandimage			: ;
+	treeitemimage			: URL('image::grd_LF_tree.png');	
+}
+Grid.grd_LF>#body, Grid.grd_LF>#body:focused
+{
+	background			: #f2f2ef;
+	border				: 0 none;
+	cellalign			: left middle;
+	cellbackground			: #f2f2ef;
+	cellbackground2			: #f2f2ef;
+	cellcolor			: #666666;
+	cellcolor2			: #666666;
+	cellfont			: 9 Dotum;
+	cellline			: 1 solid #e5e5e5, 0 none, 1 solid #e5e5e5, 1 solid #e5e5e5;
+	celllinetype			: exhor;
+	cellpadding			: 0 0 0 -16;
+	selectbackground		: #5a1166;
+	selectcolor			: #ffffff;
+	selectfont			: bold 9 Dotum;
+}
+Grid.grd_LF>#body:mouseover
+{
+	cellbackground			: #e1e1e1;
+	cellbackground2			: #e1e1e1;
+	cellcolor			: #333333;
+	cellcolor2			: #333333;
+	selectbackground		: #5a1166;
+	selectcolor			: #ffffff;
+}
+Grid.grd_LF>#body:selected
+{
+	cellcolor			: #fffbc8;
+	cellfont			: bold 9 Dotum;
+	selectbackground		: #5a1166;
+	selectcolor			: #fffbc8;
+	selectfont			: bold 9 Dotum;
+}
+Grid.grd_LF>#body:disabled
+{
+	cellbackground			: #5d5858;
+	cellbackground2			: #5d5858;
+	cellcolor			: #999999;
+	selectbackground		: #5d5858;
+	selectcolor			: #999999;
+}
+
+Grid.grd_LF>#vscrollbar, Grid.grd_LF>#vscrollbar:mouseover, Grid.grd_LF>#vscrollbar:pushed, Grid.grd_LF.grd_LF>#vscrollbar:disabled
+{
+	background			: #f2f2ef;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	scrollbarsize			: 11;
+	incbtnsize			: 0;
+	decbtnsize			: 0;
+	trackbarsize			: 60;
+	padding				: 0 2 0 1;
+}
+Grid.grd_LF>#vscrollbar>#trackbar, Grid.grd_LF>#vscrollbar>#trackbar:mouseover, Grid.grd_LF.grd_LF>#vscrollbar>#trackbar:pushed
+{
+	align				: center middle;
+	background			: #888383;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	padding				: ;
+}
+Grid.grd_LF>#vscrollbar>#trackbar:disabled
+{
+	background			: #f2f2ef;
+}
+
+
+/* Static */
+Static.sta_LF_menuTitle
+{
+	accessibility			: ;
+	align				: left middle;
+	background			: URL('image::img_LF_menuBg.png') stretch 1,1;
+	border				: 0 none, 1 solid #a8a8a2, 0 none, 0 none;
+	bordertype			: normal 0 0;
+	color				: #000000;
+	cursor				: ;
+	font				: bold 9 Dotum;
+	gradation			: ;
+	linespace			: ;
+	opacity				: ;
+	padding				: 0 0 0 6;
+	shadow				: ;
+}
+
+/******************************************* Left Frame End*******************************************/{}

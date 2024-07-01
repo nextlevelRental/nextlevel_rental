@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="FileUpDownStatus" classname="FileUpDownStatus" inheritanceid="" position="absolute" titletext="파일 업로드/다운로드 팝업" onload="FileUpDownStatus_onload" style="background:white;" ontimer="FileUpDownStatus_ontimer" left="0" top="0" width="500" height="120">
+    <Layouts>
+      <Layout>
+        <Static id="sta_bg" taborder="7" left="0" top="0" style="border:2 solid #808080ff ;" right="0" bottom="0"/>
+        <Static id="Static40" class="WK_st_MC_Box" position="absolute" transparenthittest="true" text="" left="0" top="-8" width="297" height="86"/>
+        <Static id="sta_fileCnt" class="WK_st_LD_Title" position="absolute" text="1 / 1" style="align:right middle;" top="39" width="55" height="13" right="26"/>
+        <Static id="stTitle" taborder="6" text="File : " left="15" top="40" width="208" height="12" style="align:left middle;" class="WK_st_LD_Title"/>
+        <FileUpload id="fud_status" taborder="8" retry="0" index="0" left="664" top="48" width="68" height="20" visible="false" innerdataset="@ds_file" onsuccess="fud_status_onsuccess" onerror="fud_status_onerror"/>
+        <ProgressBar id="pgBar" taborder="9" max="100" min="0" left="15" top="68" height="29" right="15"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_file" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="filepath" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[var nPos = 1;
+var nCurFile = 0;
+var oFileComp;
+var nTotlItemCnt;
+var strUrl;
+this.FileUpDownStatus_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	oFileComp = this.parent.pFile;
+	strUrl = "/multiFileUpload/upload.do?path=savefile&codeCd=01";
+
+	this.fn_init(oFileComp);
+}
+
+this.fn_init = function(obj)
+{
+    nTotlItemCnt = obj.getItemCount(true);
+    this.pgBar.set_pos(nPos);
+    
+   this.setTimer(23412,500);
+    
+    this.fn_upload();
+}
+
+
+this.fn_upload = function()
+{
+// //     var ff = document.getElementsByTagName("iframe")[0];
+// //     //var gg = ff.contentDocument.getElementById("mainframe_childframe_form_" + oFileComp.id).getElementsByTagName('input')[0].files[0];
+// //     var gg = ff.contentDocument.getElementById("mainframe_childframe_form_" + oFileComp.id);
+// //     var cc = ff.contentDocument.getElementById("mainframe_childframe_form_"+this.name+"_"+ this.fud_status.id);
+//     trace("gg ==>"+gg);
+//     trace("cc ==>"+cc);
+
+    if(oFileComp.multiselect)
+    {
+		var sPath = oFileComp.value;
+		var dirExpt = sPath.lastIndexOf("\\")+1;	// 폴더 표시\ 가 있는 마지막 인덱스
+		
+		var sFileName = sPath.substr(dirExpt);    
+		 
+		this.ds_file.setColumn(0,"filepath",sPath);
+		
+		this.stTitle.set_text("File : "+sFileName);
+		
+		this.sta_fileCnt.set_text((nCurFile+1)+" / "+nTotlItemCnt);
+		
+		this.fud_status.setInnerDataset(this.ds_file);
+		var itemCnt = this.fud_status.getItemCount(true);
+
+		var bSucc = this.fud_status.upload(strUrl);
+		
+		trace("bSucc ==>"+bSucc);    
+    }
+    else
+    {
+        oFileComp.setEventHandler("onsuccess",this.fud_status_onsuccess,this);
+        oFileComp.setEventHandler("onerror",this.fud_status_onerror,this);
+        var bSucc = oFileComp.upload(strUrl);
+    }
+}
+
+this.FileUpDownStatus_ontimer = function(obj:Form, e:nexacro.TimerEventInfo)
+{
+    nPos = nPos+1;
+    
+    trace("nPos ==>"+nPos);
+    switch(nPos)
+    {
+        case 100 :  
+             this.killTimer(e.timerid);
+             this.pgBar.set_pos(nPos);
+             
+             this.alert("Upload complted successfully");
+             this.close();
+             
+             alert(ds_file.saveXML());
+        break;
+        case 99 :  nPos = nPos-1;  break;
+        default : 
+            trace("AAAAAAAAAAAAAA");
+            this.pgBar.set_pos(nPos); 
+        break;
+    }
+}
+
+
+
+this.fud_status_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo)
+{
+	nCurFile = nCurFile+1;
+	
+	if(nCurFile == nTotlItemCnt)
+	{
+	     nPos = 99;
+	     
+	}
+	else
+	{
+	    nPos = Math.round((nCurFile / nTotlItemCnt) * 100);
+	    
+	    trace("**************** nPos ==>"+nPos);
+	    alert(nPos);
+	    oFileComp.set_index(nCurFile);
+	    this.fn_upload();
+	}
+	
+}
+
+this.fud_status_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo)
+{
+    this.killTimer(e.timerid);
+    this.alert("e.errormsg ==>"+e.errormsg);
+    this.close();   
+
+}
+]]></Script>
+  </Form>
+</FDL>

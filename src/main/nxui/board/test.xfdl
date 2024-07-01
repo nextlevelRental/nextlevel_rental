@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test" classname="test" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="dasdad" left="25%" top="109" right="34.18%" height="150" style="font:bold 14 arial;"/>
+        <Button id="Button00" taborder="1" text="Button00" left="15.23%" top="8" right="29.39%" height="72"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+    //폼로드시 공통함수 
+	Ex.core.init(obj); 	
+}]]></Script>
+  </Form>
+</FDL>

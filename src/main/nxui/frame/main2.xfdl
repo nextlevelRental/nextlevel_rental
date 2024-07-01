@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="main" classname="Login" left="0" top="0" width="1024" height="600" titletext="메인화면" onload="main_onload" scrollbars="autoboth" onsize="main_onsize">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="8" left="0" top="0" right="0" height="483" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" onclick="Static00_onclick" cssclass="sta_WF_mainImage" left="3.13%" top="14" right="5.66%" height="441" style="background:URL('image::img_WF_image4.png') center middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_mainGrd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">- 투비소프트의 다양한 제품군들에 대한 &#13;   상세한 소개와 ShowCase</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">- 아이디(ID) 도용을 막기 위한 &#13;   세가지 팁(Tip)</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">- 성공 비즈니스를 위한 소통의 BUX란?</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">- 익스플로어 8에서 엑스플랫폼이 &#13;   안될 때 조치법</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_mainGrd1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="bgColor" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="bgColor">URL('image::sta_WF_mainGrdBL.png') center middle</Col>
+            <Col id="Column2">2014-1학기 등록금 납부안내</Col>
+            <Col id="Column1">뉴스</Col>
+          </Row>
+          <Row>
+            <Col id="bgColor">URL('image::sta_WF_mainGrdR.png') center middle</Col>
+            <Col id="Column2">현장실습 참가 신청서 접수</Col>
+            <Col id="Column1">공지</Col>
+          </Row>
+          <Row>
+            <Col id="bgColor">URL('image::sta_WF_mainGrdR.png') center middle</Col>
+            <Col id="Column2">제 38회 학위수여식 식장</Col>
+            <Col id="Column1">채용공지</Col>
+          </Row>
+          <Row>
+            <Col id="bgColor">URL('image::sta_WF_mainGrdB.png') center middle</Col>
+            <Col id="Column2">2014학년도 학부모 설명회</Col>
+            <Col id="Column1">채용공지</Col>
+          </Row>
+          <Row>
+            <Col id="Column2">2014-1학기 등록금 납부안내</Col>
+            <Col id="bgColor">URL('image::sta_WF_mainGrdB.png') center middle</Col>
+            <Col id="Column1">공지</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_mainGrd2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column2">2014.12.29</Col>
+            <Col id="Column1">CSS Edit 속성 중...</Col>
+          </Row>
+          <Row>
+            <Col id="Column2">2014.12.29</Col>
+            <Col id="Column1">Fwd: 메인이미지 관련</Col>
+          </Row>
+          <Row>
+            <Col id="Column2">2014.07.25</Col>
+            <Col id="Column1">2013.12 프로젝트 파견관련</Col>
+          </Row>
+          <Row>
+            <Col id="Column2">2014.11.16</Col>
+            <Col id="Column1">접근성 디자인 일정...</Col>
+          </Row>
+          <Row>
+            <Col id="Column2">2014.11.16</Col>
+            <Col id="Column1">아이콘 샘플 이미지 요청</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item2" compid="Tab00.tabpage1" propid="text" datasetid="Notice" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/this.main_onload = function(obj:Form, e:TOBE.LoadEventInfo){ 
+	this.parent.setButton(obj);
+    //폼로드시 공통함수 
+    Ex.core.onload(obj);
+	//this.fn_onsize();
+   	if (system.mc_animate){
+		//system.mc_animate(this.Div00, "zoomIn 1s");	
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_init = function(){
+	//trace("form_init ");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.main_onsize = function(obj:Form, e:nexacro.SizeEventInfo){
+	//this.fn_onsize();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_onsize = function(){
+	var nLeft = (application.mainframe.width / 2) - Math.round((this.Div04.getOffsetWidth()) / 2);
+	if(nLeft <= 0)	{
+		this.Div04.set_left(0);
+	}else{
+		this.Div04.set_left(nLeft);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

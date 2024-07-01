@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="mfpRfndTrgt">
+	<!-- 중도완납환불대상내역조회 -->
+	<parameterMap class="java.util.Map" id="mfpRfndTrgtListParam">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mfpRfndTrgtListResultMap"/>
+		<parameter property="recvMon" jdbcType="VARCHAR" mode="IN"/> <!-- 대상년월		-->
+		<parameter property="endTp"	  jdbcType="VARCHAR" mode="IN"/> <!-- 계약종료유형	-->
+	</parameterMap>
+	<resultMap id="mfpRfndTrgtListResultMap" class="java.util.HashMap">
+		<result property="mfpSeq"		column="MFP_SEQ"/>			<!-- 중도완납순번		-->
+		<result property="cncDay"		column="CNC_DAY"/>			<!-- 중도완납일자		-->
+		<result property="mfpCd"		column="MFP_CD"/>			<!-- 계약종료유형코드	-->
+		<result property="mfpCdNm"		column="MFP_CD_NM"/>		<!-- 계약종료유형명		-->
+		<result property="ordNo"		column="ORD_NO"/>			<!-- 계약번호			-->
+		<result property="custNo"		column="CUST_NO"/>			<!-- 고객번호			-->
+		<result property="custNm"		column="CUST_NM"/>			<!-- 고객명			-->
+		<result property="dblWthAmt"	column="DBL_WTH_AMT"/>		<!-- 이중출금금액		-->
+		<result property="recpPay"		column="RECP_PAY"/>			<!-- 납부유형코드		-->
+		<result property="recpPayNm"	column="RECP_PAY_NM"/>		<!-- 납부유형명		-->
+		<result property="recvDay"		column="RECV_DAY"/>			<!-- 납부일자			-->
+		<result property="mfpRecpPay"	column="MFP_RECP_PAY"/>		<!-- 중도완납 납부유형코드	-->
+		<result property="mfpRecpPayNm"	column="MFP_RECP_PAY_NM"/>	<!-- 중도완납 납부유형명	-->
+		<result property="recvSeq"		column="RECV_SEQ"/>			<!-- 수납거래번호		-->
+		<result property="tno"			column="TNO"/>				<!-- 거래번호			-->
+		<result property="orgnTrAmt"	column="ORGN_TR_AMT"/>		<!-- 원거래금액		-->
+		<result property="pOidSeq"		column="P_OID_SEq"/>		<!-- 주문일련번호		-->
+	</resultMap>
+	<procedure id="mfpRfndTrgt.retrieveMfpRfndTrgtList" parameterMap="mfpRfndTrgtListParam">
+		{call Pkg_Rtre0230.p_sRtre0230MfpRfndTrgtList(?, ?, ?)}
+	</procedure>
+</sqlMap>

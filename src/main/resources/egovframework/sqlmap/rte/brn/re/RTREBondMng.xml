@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="bondMng">
+	<!-- 연체내역 조회 -->
+	<resultMap id="resultMap" class="java.util.HashMap">
+		<result property="useYn"		column="USE_YN" /> 		<!--연체집계일자-->
+		<result property="delyDay"		column="DELY_DAY" /> 		<!--연체집계일자-->
+		<result property="ordNo"		column="ORD_NO" /> 			<!--계약번호    -->
+		<result property="custNo"		column="CUST_NO" /> 		<!--고객번호    -->
+		<result property="custNm"		column="CUST_NM" /> 		<!--고객명      -->
+		<result property="matNo"		column="MAT_NO" /> 			<!--상품코드    -->
+		<result property="matNm"		column="MAT_NM" /> 			<!--상품명      -->
+		<result property="periodCd"		column="PERIOD_CD" /> 		<!--계약기간    -->
+		<result property="carNo"		column="CAR_NO" /> 			<!--차량번호    -->
+		<result property="procDay"  	column="PROC_DAY" /> 		<!--장착일자    -->
+		<result property="payMthd"		column="PAY_MTHD" /> 		<!--결제방법    -->
+		<result property="payMthdNm"	column="PAY_MTHD_NM" /> 	<!--결제방법명  -->
+		<result property="payDd"		column="PAY_DD" /> 			<!--결제일자    -->
+		<result property="recpTp"		column="RECP_TP" /> 		<!--청구구분    -->
+		<result property="recpTpNm"		column="RECP_TP_NM" /> 		<!--청구구분명  -->
+		<result property="apprScnt"		column="APPR_SCNT" /> 		<!--연체회차    -->
+		<result property="apprAmt"		column="APPR_AMT" /> 		<!--연체금액    -->
+		<result property="agency"		column="AGENCY" /> 			<!--판매인코드  -->
+		<result property="agencyNm"		column="AGENCY_NM" /> 		<!--판매인명    -->
+		<result property="agencyTel"	column="AGENCY_TEL" /> 		<!--판매인전화  -->
+		<result property="rowNum"	column="ROW_NUM" /> 		<!--연번  -->
+		<result property="recvDay"	column="RECV_DAY" /> 		<!--수납기준일  -->
+		<result property="recvDt"	column="RECV_DT" /> 		<!--수납일시  -->
+		<result property="recpPay"	column="RECP_PAY" /> 		<!--수납유형코드  -->
+		<result property="recpPayNm"	column="RECP_PAY_NM" /> 		<!--수납유형코드명  -->
+		<result property="cntRecp"	column="CNT_RECP" /> 		<!--수납회차  -->
+		<result property="recpTotAmt"	column="RECP_TOT_AMT" /> 		<!--수납금액  -->
+		<result property="recvCncSt"	column="RECV_CNC_ST" /> 		<!--수납취소여부  -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="ArrearsListParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultMap" />   
+		<parameter property="delyDay"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="apprScntF"  jdbcType="NUMERIC" mode="IN" /> <!-- 연체회차 시작  -->
+		<parameter property="apprScntT"  jdbcType="NUMERIC" mode="IN" /> <!-- 연체회차 종료  -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />  <!-- 계약번호       -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객코드       -->
+		<parameter property="recpTp"     jdbcType="VARCHAR" mode="IN" /> <!-- 청구구분       -->
+	</parameterMap>	
+	<procedure id="bondMng.getArrearsList" parameterMap="ArrearsListParam">
+		{call
+		Pkg_Rtre0100.p_sRtre0100ArrearsList(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 연체대상 집계 내역 Count -->	
+	<resultMap id="delyAggregateCntresultMap" class="java.util.Map">
+		<result property="currCunt"  	column="COUNT" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="delyAggregateCntParam"> 
+		<parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="delyAggregateCntresultMap" />   
+		<parameter property="delyDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 연체집계일자 -->
+	</parameterMap>	
+	<procedure id="bondMng.delyAggregateCnt" parameterMap="delyAggregateCntParam">
+		{call ? := Pkg_Rtre0100.f_sRtre0100DelyDayCount(?)}		
+	</procedure>	
+		
+	<!-- 연체대상 집계-->
+	<parameterMap class="java.util.Map" id="delyAggrParam">
+		<parameter property="delyDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--연체기준일자    -->
+		<parameter property="procYn"		jdbcType="VARCHAR" mode="IN" />      <!--처리가능여부    -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디    -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="bondMng.delyAggregate" parameterMap="delyAggrParam">
+		{call Pkg_Rtre0100.p_IUDRtre0100Aggregate(?, ?,	?,	?,	?,	?)}
+	</procedure>	
+		
+	<!-- 채권관리 내역 count -->	
+	<resultMap id="bondAggregateCntresultMap" class="java.util.Map">
+		<result property="currCunt"  	column="COUNT" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="bondAggregateCntParam"> 
+		<parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="bondAggregateCntresultMap" />   
+		<parameter property="ramgYm"   jdbcType="VARCHAR" mode="IN" /> <!-- 집계년월 -->
+	</parameterMap>	
+	<procedure id="bondMng.bondTargetAggregateCnt" parameterMap="bondAggregateCntParam">
+		{call ? := Pkg_Rtre0110.f_sRtre0110EqualCount(?)}		
+	</procedure>	
+		
+	<!-- 채권관리대상 집계-->
+	<parameterMap class="java.util.Map" id="bondAggrParam">
+		<parameter property="ramgYm" 		jdbcType="VARCHAR" mode="IN" />	     <!--집계년월    -->
+		<parameter property="procYn"		jdbcType="VARCHAR" mode="IN" />      <!--처리가능여부    -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디    -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="bondMng.bondTargetAggregate" parameterMap="bondAggrParam">
+		{call Pkg_Rtre0110.p_InsertRtre0110Aggregate(?, ?,	?,	?,	?,	?)}
+	</procedure>		
+	
+	<!-- 채권계정내역 조회 -->
+	<resultMap id="bondResultMap" class="java.util.HashMap">
+		<result property="ramgYm"		column="RAMG_YM" /> 		<!--연체집계일자-->
+		<result property="custNo"		column="CUST_NO" /> 		<!--고객번호-->
+		<result property="custNm"		column="CUST_NM" /> 		<!--고객명-->
+		<result property="ramgStat"		column="RAMG_STAT" /> 		<!--채권계정등급-->
+		<result property="ramgStatNm"	column="RAMG_STAT_NM" />	<!--채권계정등급명-->
+		<result property="ramgAmt"		column="RAMG_AMT" /> 		<!--채권관리금액-->
+		<result property="arreAmt"		column="ARRE_AMT" /> 		<!--연체금액-->
+		<result property="rmonAmt"		column="RMON_AMT" /> 		<!--당월청구금액-->
+		<result property="ramgreAmt"	column="RAMGRE_AMT" /> 		<!--채권관리수납금액-->
+		<result property="arrereAmt"	column="ARRERE_AMT" /> 		<!--연체수납금액-->
+		<result property="rmonreAmt"	column="RMONRE_AMT" /> 		<!--당월청구수납금액-->
+		<result property="ovinAmt"		column="OVIN_AMT" /> 		<!--연체이자금액-->
+		<result property="ovinreAmt"	column="OVINRE_AMT" /> 		<!--연체이자수납금액-->
+		<result property="ramgId"		column="RAMG_ID" /> 		<!--채권관리자-->
+		<result property="ramgIdNm"		column="RAMG_NM" /> 		<!--채권관리자명-->
+		<result property="ordCnt"		column="ORD_CNT" /> 		<!--계약건수-->
+		<result property="fstDelYm"		column="FST_DEL_YM" /> 		<!--연체시작월-->
+		<result property="regId"		column="REG_ID" /> 			<!--등록자 ID-->
+		<result property="regNm"		column="REG_NM" /> 			<!--등록자명-->
+		<result property="regDt"		column="REG_DT" /> 			<!--등록일-->
+		<result property="chgId"		column="CHG_ID" /> 			<!--변경자 ID-->
+		<result property="chgNm"		column="CHG_NM" /> 			<!--변경자명-->
+		<result property="chgDt"		column="CHG_DT" /> 			<!--변경일-->			
+	</resultMap>
+	<parameterMap class="java.util.Map" id="bondListParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="bondResultMap" />   
+		<parameter property="ramgYm"     jdbcType="VARCHAR" mode="IN" /> <!-- 채권관리년월   -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호       -->
+		<parameter property="ramgStat"   jdbcType="VARCHAR" mode="IN" /> <!-- 채권계정등급   -->
+	</parameterMap>	
+	<procedure id="bondMng.getBondList" parameterMap="bondListParam">
+		{call
+		Pkg_Rtre0110.p_sRtre0110(?, ?, ?, ?)}
+	</procedure>		
+	
+	<!-- 계약별내역 조회 -->
+	<resultMap id="bondByOrdResultMap" class="java.util.HashMap">
+		<result property="ramgYm"		column="RAMG_YM" /> 		<!--채권관리년월-->
+		<result property="custNo"		column="CUST_NO" /> 		<!--고객번호-->
+		<result property="custNm"		column="CUST_NM" /> 		<!--고객명-->
+		<result property="ordNo"		column="ORD_NO" /> 			<!--계약번호-->
+		<result property="ramgStat"		column="RAMG_STAT" /> 		<!--채권계정등급-->
+		<result property="ramgStatNm"	column="RAMG_STAT_NM" />	<!--채권계정등급명-->
+		<result property="ramgAmt"		column="RAMG_AMT" /> 		<!--채권관리금액-->
+		<result property="arreAmt"		column="ARRE_AMT" /> 		<!--연체금액-->
+		<result property="rmonAmt"		column="RMON_AMT" /> 		<!--당월청구금액-->
+		<result property="ramgreAmt"	column="RAMGRE_AMT" /> 		<!--채권관리수납금액-->
+		<result property="arrereAmt"	column="ARRERE_AMT" /> 		<!--연체수납금액-->
+		<result property="rmonreAmt"	column="RMONRE_AMT" /> 		<!--당월청구수납금액-->
+		<result property="ovinAmt"		column="OVIN_AMT" /> 		<!--연체이자금액-->
+		<result property="ovinreAmt"	column="OVINRE_AMT" /> 		<!--연체이자수납금액-->
+		<!--
+		<result property="ramgId"		column="RAMG_ID" /> 		채권관리자
+		<result property="ramgIdNm"		column="RAMG_ID_NM" /> 		채권관리자명
+		-->
+		<result property="fstDelYm"		column="FST_DEL_YM" /> 		<!--연체시작월-->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="bondByOrdParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="bondByOrdResultMap" />   
+		<parameter property="ramgYm"     jdbcType="VARCHAR" mode="IN" /> <!-- 채권관리년월   -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호       -->
+	</parameterMap>	
+	<procedure id="bondMng.getBondByOrdList" parameterMap="bondByOrdParam">
+		{call
+		Pkg_Rtre0111.p_sRtre0111OrdList(?, ?, ?)}
+	</procedure>		
+	
+	<!-- 채권컨택내역 조회 -->
+	<resultMap id="contactResultMap" class="java.util.HashMap">
+		<result property="custNo"		column="CUST_NO" /> 		<!--고객번호-->
+		<result property="custNm"		column="CUST_NM" /> 		<!--고객번호-->
+		<result property="ramgSeq"		column="RAMG_SEQ" /> 		<!--채권관리순번-->
+		<result property="ramgYm"		column="RAMG_YM" /> 		<!--채권관리년월-->
+		<result property="ordNo"		column="ORD_NO" /> 			<!--계약번호-->
+		<result property="cntctDay"		column="CNTCT_DAY" /> 		<!--채권관리결과등록일-->
+		<result property="cntctGb"		column="CNTCT_GB" />		<!--채권관리결과등록구분-->
+		<result property="cntctGbNm"	column="CNTCT_GB_NM" /> 	<!--채권관리결과등록구분명-->
+		<result property="cntctDesc"	column="CNTCT_DESC" /> 		<!--채권관리결과내용-->
+		<result property="attchFlSeq"	column="ATTCH_FL_SEQ" /> 	<!--첨부파일 정보-->
+		<result property="delYn"		column="DEL_YN" /> 			<!--삭제여부-->
+		<result property="regId"		column="REG_ID" /> 			<!--등록자 ID-->
+		<result property="regNm"		column="REG_NM" /> 			<!--등록자명-->
+		<result property="regDt"		column="REG_DT" /> 			<!--등록일-->
+		<result property="chgId"		column="CHG_ID" /> 			<!--변경자 ID-->
+		<result property="chgNm"		column="CHG_NM" /> 			<!--변경자명-->
+		<result property="chgDt"		column="CHG_DT" /> 			<!--변경일-->	
+	</resultMap>
+	<parameterMap class="java.util.Map" id="contactParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="contactResultMap" />   
+		<parameter property="ramgYm"     jdbcType="VARCHAR" mode="IN" /> <!-- 채권관리년월   -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호       -->
+		<parameter property="ordNo"      jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호       -->
+	</parameterMap>	
+	<procedure id="bondMng.getContactList" parameterMap="contactParam">
+		{call
+		Pkg_Rtre0113.p_sRtre0113List(?, ?, ?, ?)}
+	</procedure>	
+
+	<!-- 채권추심관리내역 등록/수정/삭제 -->
+	<parameterMap id="contactInfoParam" class="java.util.Map">
+		<parameter property="dvsn"  		mode="IN" jdbcType="VARCHAR" />     <!--처리구분(i,u,d)     -->
+		<parameter property="custNo"  		mode="IN" jdbcType="VARCHAR" />     <!--고객번호              -->
+		<parameter property="ramgSeq"  		mode="INOUT" jdbcType="NUMERIC"/>  <!--채권관리순번          -->
+		<parameter property="ramgYm"  		mode="IN" jdbcType="VARCHAR" />     <!--채권관리년월          -->
+		<parameter property="ordNo"  		mode="IN" jdbcType="VARCHAR" />     <!--계약번호              -->
+		<parameter property="cntctDay"  	mode="IN" jdbcType="VARCHAR"/>      <!--채권관리결과등록일    -->
+		<parameter property="cntctGb"  		mode="IN" jdbcType="VARCHAR"/>      <!--채권관리결과등록구분  -->
+		<parameter property="cntctDesc"  	mode="IN" jdbcType="VARCHAR"/>      <!--채권관리결과내용      -->
+		<parameter property="attchFlSeq"  	mode="IN" jdbcType="NUMERIC" />     <!--첨부파일 정보         -->
+		<parameter property="delYn"  		mode="IN" jdbcType="VARCHAR"/>      <!--삭제여부              -->
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR"/>      <!--등록자 id           -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />   
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="bondMng.saveContactInfo" parameterMap="contactInfoParam">
+		{call Pkg_Rtre0113.p_IUDRtre0113(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 ?, ?, ?, ?)}
+	</procedure>		
+	
+	<!-- 계약번호별 연체내역 조회  -->
+	<resultMap id="arrearsResultListresultMap" class="java.util.HashMap">
+		<result property="delyDay"	         column="DELY_DAY" />        <!--연체집계일자  -->
+		<result property="ordNo"	         column="ORD_NO" />          <!--계약번호      -->
+		<result property="custNo"	         column="CUST_NO" />         <!--고객번호      -->
+		<result property="custNm"	         column="CUST_NM" />      	 <!--고객명        -->
+		<result property="birthDay"	         column="BIRTH_DAY" />     	 <!--생년월일      -->
+		<result property="addr"		         column="ADDR" />  	    	 <!--주소          -->
+		<result property="mobNo"	         column="MOB_NO" />      	 <!--휴대폰번호    -->
+		<result property="matNo"	         column="MAT_NO" />          <!--상품코드      -->
+		<result property="matNm"	         column="MAT_NM" />		     <!--상품명        -->
+		<result property="periodCd"	         column="PERIOD_CD" />       <!--계약기간      -->
+		<result property="carNo"	         column="CAR_NO" />          <!--차량번호      -->
+		<result property="procDay"           column="PROC_DAY" />        <!--장착일자      -->
+		<result property="payMthd"	         column="PAY_MTHD" />        <!--결제방법      -->
+		<result property="payMthdNm"         column="PAY_MTHD_NM" />     <!--결제방법명    -->
+		<result property="payDd"	         column="PAY_DD" />          <!--결제일자      -->
+		<result property="regiAmt"	         column="REGI_AMT" />        <!--등록비        -->
+		<result property="rentAmt"	         column="RENT_AMT" />        <!--렌탈료        -->
+		<result property="pntyAmt"	         column="PNTY_AMT" />        <!--위약금        -->
+		<result property="etcAmt"	         column="ETC_AMT" />         <!--기타          -->
+		<result property="apprScnt"	         column="APPR_SCNT" />       <!--연체회차      -->
+		<result property="apprAmt"	         column="APPR_AMT" />        <!--연체금액      -->
+		<result property="agenCy"            column="AGENCY" />          <!--판매인코드    -->
+		<result property="agenCyNm"          column="AGENCY_NM" />       <!--판매인명      -->
+		<result property="agenCyTel"         column="AGENCY_TEL" />      <!--판매인전화    -->
+		<result property="errMsg"            column="ERR_MSG" />         <!--에러메시지    -->  
+		<result property="posCd"             column="POS_CD" />          <!--우편번호      -->
+		<result property="genderNm"          column="GENDER_NM" />       <!--성별          -->
+		<result property="safekey"           column="SAFEKEY" />         <!--SAFEKEY       -->
+		<result property="monAmt"            column="MON_AMT" />         <!--월렌탈료      -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="ArrearsResultListParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="arrearsResultListresultMap" />   
+		<parameter property="delyDay"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="apprScntF"  jdbcType="NUMERIC" mode="IN" /> <!-- 연체회차 시작  -->
+		<parameter property="apprScntT"  jdbcType="NUMERIC" mode="IN" /> <!-- 연체회차 종료  -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />  <!-- 계약번호       -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객코드       -->
+	</parameterMap>	
+	<procedure id="bondMng.getArrearsResultList" parameterMap="ArrearsResultListParam">
+		{call Pkg_Rtre0100.p_sRtre0100ArrearsListOrdSum(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	
+	<resultMap id="visitorServiceresultMap" class="java.util.HashMap">
+		<result property="commTp"	         column="COMM_TP" />        <!--연체집계일자  -->
+		<result property="commTpNm"	         column="COMM_TP_NM" />          <!--계약번호      -->
+		<result property="chanLclsCd"	         column="CHAN_LCLS_CD" />         <!--고객번호      -->
+		<result property="chanLclsNm"	         column="CHAN_LCLS_NM" />      	 <!--고객명        -->
+		<result property="chanMclsCd"	         column="CHAN_MCLS_CD" />     	 <!--생년월일      -->
+		<result property="chanMclsNm"		         column="CHAN_MCLS_NM" />  	    	 <!--주소          -->
+		<result property="chrSeq"	         column="CHR_SEQ" />      	 <!--휴대폰번호    -->
+		<result property="minCnt"	         column="MIN_CNT" />          <!--상품코드      -->
+		<result property="strDay"	         column="STR_DAY" />		     <!--상품명        -->
+		<result property="maxCnt"	         column="MAX_CNT" />       <!--계약기간      -->
+		<result property="endDay"	         column="END_DAY" />          <!--차량번호      -->		
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="visitorServiceParam"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="visitorServiceresultMap" />   
+		<parameter property="commTp"		jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="chanLclsCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="chanMclsCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="chrSeq"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+	</parameterMap>	
+	
+	<procedure id="bondMng.visitorService" parameterMap="visitorServiceParam">
+		{call PKG_RTSD0060.p_sRtsd0060visitorService(?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<resultMap id="visitorService2resultMap" class="java.util.HashMap">
+		<result property="commTp"			column="COMM_TP" />        <!--연체집계일자  -->
+		<result property="chanLclsCd"		column="CHAN_LCLS_CD" />         <!--고객번호      -->
+		<result property="chanMclsCd"		column="CHAN_MCLS_CD" />     	 <!--생년월일      -->
+		<result property="chrSeq"			column="CHR_SEQ" />      	 <!--휴대폰번호    -->
+		<result property="seq"				column="SEQ" />          <!--상품코드      -->
+		<result property="saleMinCnt"		column="SALE_MIN_CNT" />		     <!--상품명        -->
+		<result property="commAmt"			column="COMM_AMT" />       <!--계약기간      -->
+		<result property="saleMaxCnt"		column="SALE_MAX_CNT" />          <!--차량번호      -->		
+		<result property="useYn"			column="USE_YN" />          <!--차량번호      -->		
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="visitorService2Param"> 
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="visitorService2resultMap" />   
+		<parameter property="commTp"		jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="chanLclsCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+		<parameter property="chanMclsCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자   -->
+	</parameterMap>	
+	
+	<procedure id="bondMng.visitorService2" parameterMap="visitorService2Param">
+		{call PKG_RTSD0060.p_sRtsd0060visitorService2(?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0060">
+		<parameter property="dvsn"  		    javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="commTp"     		jdbcType="VARCHAR" mode="IN" /> <!-- 입사일           -->
+		<parameter property="chrSeq"     		jdbcType="VARCHAR" mode="IN" /> <!-- 퇴사일           -->
+		<parameter property="chanMclsCd"		jdbcType="VARCHAR" mode="IN" /> <!-- 기타1            -->
+		<parameter property="chanLclsCd"		jdbcType="VARCHAR" mode="IN" /> <!-- 기타1            -->
+		<parameter property="saleMinCnt"		jdbcType="VARCHAR" mode="IN" /> <!-- 기타2            -->
+		<parameter property="commAmt"     		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자ID         -->
+		<parameter property="saleMaxCnt"		jdbcType="VARCHAR" mode="IN" /> <!-- 판매인번호       -->
+		<parameter property="seq"				jdbcType="VARCHAR" mode="IN" /> <!-- 기타2            -->
+		<parameter property="useYn"     		jdbcType="VARCHAR" mode="IN" /> <!-- 근무여부         -->
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" /> <!-- 근무여부         -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="bondMng.saveVisitorService" parameterMap="p_IUDRtsd0060">
+		{call Pkg_Rtsd0060.p_IUDRtsd0060(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="paramlistSusu" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSusuinfo" />
+		<parameter property="cd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd2" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd3" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd4" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd5" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="resultSusuinfo" class="java.util.HashMap">
+		<result property="cd" column="CD" />
+		<result property="cdNm" column="CD_NM" />
+		<result property="cdDesc" column="CD_DESC" />
+	</resultMap>
+	
+	<procedure id="bondMng.listSusuInfo" parameterMap="paramlistSusu">
+		{call
+		Pkg_Rtsd0060.p_sRtsd0060CodeName(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="rselectInsentiveList" 	class="java.util.HashMap">
+		<result property="commTp"	         column="COMM_TP" />        <!--연체집계일자  -->
+		<result property="commTpNm"	         column="COMM_TP_NM" />          <!--계약번호      -->
+		<result property="chanLclsCd"	     column="CHAN_LCLS_CD" />         <!--고객번호      -->
+		<result property="chanLclsNm"	     column="CHAN_LCLS_NM" />      	 <!--고객명        -->
+		<result property="chanMclsCd"	     column="CHAN_MCLS_CD" />     	 <!--생년월일      -->
+		<result property="chanMclsNm"		 column="CHAN_MCLS_NM" />  	    	 <!--주소          -->
+		<result property="chrSeq"	         column="CHR_SEQ" />      	 <!--휴대폰번호    -->
+		<result property="minCnt"	         column="MIN_CNT" />          <!--상품코드      -->
+		<result property="strDay"	         column="STR_DAY" />		     <!--상품명        -->
+		<result property="maxCnt"	         column="MAX_CNT" />       <!--계약기간      -->
+		<result property="endDay"	         column="END_DAY" />          <!--차량번호      -->
+		<result property="commAmt"	         column="COMM_AMT" />          <!--차량번호      -->
+		<result property="useYn"	         column="USE_YN" />          <!--차량번호      -->		
+	</resultMap>
+	<parameterMap id="pselectInsentiveList" class="java.util.Map">
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rselectInsentiveList"/>
+		<parameter property="commTp"		jdbcType="VARCHAR" mode="IN" /> <!-- 수수료명   -->
+		<parameter property="chanLclsCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 채널대분류   -->
+	</parameterMap>
+	<procedure id="bondMng.selectInsentiveList" parameterMap="pselectInsentiveList">
+		{call Pkg_Rtsd0060.p_sRtsd0060visitorService3(?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0060Insentive">
+		<parameter property="dvsn"  		    javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="commTp"     		jdbcType="VARCHAR" mode="IN" /> <!-- 수수료명          -->
+		<parameter property="chanMclsCd"		jdbcType="VARCHAR" mode="IN" /> <!-- 채널대분류            -->
+		<parameter property="chanLclsCd"		jdbcType="VARCHAR" mode="IN" /> <!-- 채널중분류            -->
+		<parameter property="chrSeq"     		jdbcType="VARCHAR" mode="IN" /> <!-- 채널시퀀스          -->
+		<parameter property="minCnt"			jdbcType="VARCHAR" mode="IN" /> <!-- 최소건수            -->
+		<parameter property="commAmt"     		jdbcType="VARCHAR" mode="IN" /> <!-- 수수료금액         -->
+		<parameter property="maxCnt"			jdbcType="VARCHAR" mode="IN" /> <!-- 최대건수       -->
+		<parameter property="useYn"     		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부         -->
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" /> <!-- 아이디         -->
+		<parameter property="strDay"     		jdbcType="VARCHAR" mode="IN" /> <!-- 아이디         -->
+		<parameter property="endDay"     		jdbcType="VARCHAR" mode="IN" /> <!-- 아이디         -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="bondMng.saveInsentive" parameterMap="p_IUDRtsd0060Insentive">
+		{call Pkg_Rtsd0060.p_IUDRtsd0060Insentive(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 연체내역 백업 -->
+	<parameterMap class="java.util.Map" id="p_URtre0100Backup">
+		<parameter property="custNo"     		    jdbcType="VARCHAR" mode="IN" /> 
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="bondMng.backupArrears" parameterMap="p_URtre0100Backup">
+		{call Pkg_Comm.p_URtre0100Backup(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 연체내역 해제 -->
+	<parameterMap class="java.util.Map" id="p_URtre0100RollBack">
+		<parameter property="custNo"     		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="bondMng.rollbackArrears" parameterMap="p_URtre0100RollBack">
+		{call Pkg_Comm.p_URtre0100RollBack(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 연체금액 조회 -->	
+	<resultMap id="monthDelyAmtMap" class="java.util.Map">
+		<result property="delyAmt"  	column="DELY_AMT" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="monthDelyAmtParam"> 
+		<parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="monthDelyAmtMap" />   
+		<parameter property="custNo"   jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+		<parameter property="recpTp"   jdbcType="VARCHAR" mode="IN" /> <!-- 청구구분 -->
+		<parameter property="delyDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 연체집계일자 -->
+	</parameterMap>	
+	<procedure id="bondMng.monthDelyAmt" parameterMap="monthDelyAmtParam">
+		{call ? := Pkg_Rtre0100.f_sRtre0100BMonthDelyAmt(?, ?, ?)}		
+	</procedure>
+	
+	<!-- 채권매각대상 조회 -->	
+	<resultMap id="rselectSaleBondList" 	class="java.util.HashMap">
+		<result property="ordNo"	         column="ORD_NO" />           <!--주문번호      -->
+		<result property="custNo"	         column="CUST_NO" />          <!--고객번호      -->
+		<result property="saleCnt"	     column="SALE_CNT" />          <!--매각회차      -->
+	</resultMap>
+	<parameterMap id="pselectSaleBondList" class="java.util.Map">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rselectSaleBondList"/>
+		<parameter property="ordNo"		jdbcType="VARCHAR" mode="IN" /> <!-- 주문번호   -->
+		<parameter property="custNo"       jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호   -->
+		<parameter property="saleCnt"       jdbcType="VARCHAR" mode="IN" /> <!-- 매각회차   -->
+	</parameterMap>
+	<procedure id="bondMng.selectSaleBondList" parameterMap="pselectSaleBondList">
+		{call Pkg_Rtre0400.p_sRTRE0400(?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>
+
+

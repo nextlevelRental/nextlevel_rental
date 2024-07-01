@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CashReceiptMngDAO">
+
+
+
+	<resultMap id="rSRtre0091TargetList" class="java.util.HashMap">	
+		<result property="cashDay"  	column="CASH_DAY" 		/>
+		<result property="cashStat" 	column="CASH_STAT" 		/>
+		<result property="cashStatNm" 	column="CASH_STAT_NM" 	/>
+		<result property="cashCnt"  	column="CASH_CNT" 		/>
+		<result property="cashAmt"  	column="CASH_AMT" 		/>
+		<result property="cashNamt"  	column="CASH_NAMT" 		/>
+		<result property="cashVamt"  	column="CASH_VAMT" 		/>
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="pSRtre0091TargetList"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtre0091TargetList" />   
+		<parameter property="cashDay"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>		
+	<procedure id="cashReceiptMng.cashReceiptTargetList" parameterMap="pSRtre0091TargetList">
+		{call Pkg_Rtre0091.p_sRtre0091TargetList(?, ?, ?, ?, ?)}
+	</procedure>	
+	
+
+
+	<parameterMap class="java.util.Map" id="pInsertRtre0090Aggregate">
+		<parameter property="cashDay" 		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="recvSDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="recvEDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>		
+	<procedure id="cashReceiptMng.cashReceiptAggregate" parameterMap="pInsertRtre0090Aggregate">
+		{call Pkg_Rtre0090.p_InsertRtre0090Aggregate(?, ?, ?, ?, ?,	?, ?)}
+	</procedure>
+
+
+
+	<resultMap id="rInsertRtre0090FileCreate" class="java.util.HashMap">
+		<result property="rqstDay"  column="RQST_DAY" 	/>
+		<result property="fileNm"  	column="FILE_NM" 	/>
+		<result property="rowSeq"  	column="ROW_SEQ" 	/>
+		<result property="fileTp"  	column="FILE_TP" 	/>
+		<result property="fileSeq"  column="FILE_SEQ" 	/>
+		<result property="rowData"  column="ROW_DATA" 	/>
+		<result property="delYn"  	column="DEL_YN" 	/>
+		<result property="regId"  	column="REG_ID" 	/>
+		<result property="regDt"  	column="REG_DT" 	/>
+		<result property="chgId"  	column="CHG_ID" 	/>
+		<result property="chgDt"  	column="CHG_DT" 	/>
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="pInsertRtre0090FileCreate">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rInsertRtre0090FileCreate" />	
+		<parameter property="rcrdDay" 		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="crlfYn" 		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>			
+	<procedure id="cashReceiptMng.cashReceiptMakeData" parameterMap="pInsertRtre0090FileCreate">
+		{call  Pkg_Rtre0090.p_InsertRtre0090FileCreate(?, ?, ?,	?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<parameterMap class="java.util.Map" id="pInsertRtre0099CashFileUpload">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fileTp"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fileData"		jdbcType="CLOB"    mode="IN" 	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>	
+	<procedure id="cashReceiptMng.cashReceiptResultFileUpload" parameterMap="pInsertRtre0099CashFileUpload">
+		{call  Pkg_Rtre0099.p_InsertRtre0099CashFileUpload(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<parameterMap class="java.util.Map" id="pUpdateRtre0091CashReltApply">
+		<parameter property="cashDay" 		jdbcType="VARCHAR" mode="IN"	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"  	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>	
+	<procedure id="cashReceiptMng.cashReceiptProc" parameterMap="pUpdateRtre0091CashReltApply">
+		{call Pkg_Rtre0091.p_UpdateRtre0091CashReltApply(?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<resultMap id="rSRtre0098" class="java.util.HashMap">	
+		<result property="rqstDay"  column="RQST_DAY" 	/>
+		<result property="fileNm" 	column="FILE_NM" 	/>
+		<result property="rowSeq"  	column="ROW_SEQ" 	/>
+		<result property="fileTp"  	column="FILE_TP" 	/>
+		<result property="fileSeq"  column="FILE_SEQ" 	/>
+		<result property="rowData"  column="ROW_DATA" 	/>
+		<result property="delYn"  	column="DEL_YN" 	/>
+		<result property="regId"  	column="REG_ID" 	/>
+		<result property="regDt"  	column="REG_DT" 	/>
+		<result property="chgId"  	column="CHG_ID" 	/>
+		<result property="chgDt"  	column="CHG_DT" 	/>
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="pSRtre0098"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtre0098" />   
+		<parameter property="rqstDay"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileNm"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rowSeq"   	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="fileTp"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileSeq"  	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="rowData"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="delYn"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"   	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	<procedure id="cashReceiptMng.sndRcvList" parameterMap="pSRtre0098">
+		{call Pkg_Rtre0098.p_sRtre0098(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<resultMap id="rSRtre0091CashReceiptList" class="java.util.HashMap">	
+		<result property="recvDay"  	column="RECV_DAY" 		/>
+		<result property="cashAmt" 		column="CASH_AMT" 		/>
+		<result property="cashNamt"  	column="CASH_NAMT" 		/>
+		<result property="cashVamt"  	column="CASH_VAMT" 		/>
+		<result property="recvPay"  	column="RECV_PAY" 		/>
+		<result property="recvPayNm"  	column="RECV_PAY_NM" 	/>
+		<result property="custNo"  		column="CUST_NO" 		/>
+		<result property="custNm"  		column="CUST_NM" 		/>
+		<result property="chiNo" 		column="CHI_NO" 		/>
+		<result property="cashDay"  	column="CASH_DAY" 		/>
+		<result property="cashappNo" 	column="CASHAPP_NO" 	/>
+		<result property="cashStat"  	column="CASH_STAT" 		/>
+		<result property="cashStatNm"  	column="CASH_STAT_NM" 	/>
+		<result property="csermsg"  	column="CSERMSG" 		/>
+		<result property="recvSeq"  	column="RECV_SEQ" 		/>
+		<result property="regiAmt"  	column="REGI_AMT" 		/>
+		<result property="rentAmt"  	column="RENT_AMT" 		/>
+		<result property="rtarAmt"  	column="RTAR_AMT" 		/>
+		<result property="cancAmt"  	column="CANC_AMT" 		/>
+		<result property="pntyAmt"  	column="PNTY_AMT" 		/>
+		<result property="ppayAmt"  	column="PPAY_AMT" 		/>
+		<result property="etcAmt"  		column="ETC_AMT" 		/>
+		<result property="cashSeq" 		column="CASH_SEQ" 		/>
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="pSRtre0091CashReceiptList"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtre0091CashReceiptList" />   
+		<parameter property="recvDayF"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="recvDayT"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashDayF"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashDayT"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashStat"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>		
+	<procedure id="cashReceiptMng.cashReceiptList" parameterMap="pSRtre0091CashReceiptList">
+		{call Pkg_Rtre0091.p_sRtre0091CashReceiptList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<parameterMap class="java.util.Map" id="pIRtre0092CreateCashApp"> 
+		<parameter property="jobGb"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="recvSeq"   	jdbcType="NUMERIC" mode="IN" 	/>
+		<parameter property="regId"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashSeq"   	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="cashIseq"   	jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="ordrIdxx"   	jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="goodNm"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="buyrNm"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="buyrTel"   	jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="reqTx"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="coType"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="CtaxType"   	jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="ctaxNo"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="coNm"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="cownerNm"   	jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="coAdd"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="coTel"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="tradTm"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="trCode"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="idInfo"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="amtTot"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="amtSup"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="amtSvc"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="amtTax"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="modType"   	jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="modGb"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="modVal"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="modMny"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="remMny"   		jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"   	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>
+	<procedure id="cashReceiptMng.cashReceiptsRegister" parameterMap="pIRtre0092CreateCashApp">
+		{call Pkg_Rtre0092.p_IRtre0092CreateCashApp( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="pIRtre0092ResultCashApp"> 
+		<parameter property="jobGb"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="recvSeq"   	jdbcType="NUMERIC" mode="IN" 	/>
+		<parameter property="cashSeq"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashIseq"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="resCd"   		jdbcType="NUMERIC" mode="IN" 	/>
+		<parameter property="resMsg"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="CashTno"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cashappNo"   	jdbcType="NUMERIC" mode="IN" 	/>
+		<parameter property="cashappTm"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cregSt"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="CregDesc"   	jdbcType="NUMERIC" mode="IN" 	/>
+		<parameter property="regId"   		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"   	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>
+	<procedure id="cashReceiptMng.cashReceiptsRegisterOut" parameterMap="pIRtre0092ResultCashApp">
+		{call Pkg_Rtre0092.p_IRtre0092ResultCashApp( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>
+
+

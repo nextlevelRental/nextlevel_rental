@@ -1,0 +1,1000 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSHappyCallRegister" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="1072" titletext="해피콜상담등록" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="81" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="19" text="상담유형" cssclass="sta_WF_schTitle" left="36" top="12" width="79" height="21"/>
+              <Static id="Static01" taborder="22" text="처리일자" cssclass="sta_WF_schTitle" left="279" top="12" width="79" height="21"/>
+              <Edit id="userNm" taborder="23" left="664" top="12" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="20"/>
+              <Static id="Static02" taborder="24" text="상담사" cssclass="sta_WF_schTitle" left="596" top="12" width="79" height="21"/>
+              <Static id="Static03" taborder="26" text="통화상태" cssclass="sta_WF_schTitle" left="839" top="12" width="79" height="21"/>
+              <Edit id="Edit05" taborder="32" left="103" top="44" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="120"/>
+              <Static id="Static06" taborder="33" text="고객명" cssclass="sta_WF_schTitle" left="36" top="44" width="79" height="21"/>
+              <Calendar id="Calendar02" taborder="34" dateformat="yyyy-MM-dd" left="462" top="12" width="100" height="21" value="null"/>
+              <Static id="Static07" taborder="35" text="~" left="450" top="12" width="9" height="21"/>
+              <Calendar id="Calendar01" taborder="36" dateformat="yyyy-MM-dd" left="347" top="12" width="100" height="21" value="null"/>
+              <Combo id="Combo01" taborder="40" innerdataset="@dsJobTp" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="103" top="12" width="140" height="21" index="-1" onitemchanged="Div00_Combo01_onitemchanged"/>
+              <Button id="Button00" taborder="41" onclick="Button00_onclick" cssclass="btn_WF_edtSch" left="783" top="11" width="21" height="21"/>
+              <Edit id="userId" taborder="42" lengthunit="ascii" maxlength="20" left="664" top="12" width="92" height="21" tooltiptext="edit" visible="false"/>
+              <Combo id="Combo00" taborder="45" innerdataset="@dsCallStatus" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="906" top="12" width="140" height="21"/>
+              <Edit id="Edit01" taborder="46" displaynulltext="뒷번호 4자리" lengthunit="ascii" maxlength="4" left="664" top="44" width="140" height="21" tooltiptext="edit"/>
+              <Static id="Static04" taborder="47" text="전화번호" cssclass="sta_WF_schTitle" left="596" top="44" width="79" height="21"/>
+              <Edit id="Edit04" taborder="48" displaynulltext="뒷번호 4자리" lengthunit="ascii" maxlength="4" left="347" top="44" width="140" height="21" tooltiptext="edit"/>
+              <Static id="Static05" taborder="49" text="휴대번호" cssclass="sta_WF_schTitle" left="279" top="44" width="79" height="21"/>
+              <Static id="Static22" taborder="50" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static08" taborder="51" cssclass="Guide_color" visible="false" left="0" top="33" right="0" height="12"/>
+              <Static id="Static09" taborder="52" cssclass="Guide_color" visible="false" left="0" top="65" right="0" height="12"/>
+              <Static id="Static24" taborder="53" cssclass="Guide_color" visible="false" left="0" top="0" width="30" height="76"/>
+              <Static id="Static10" taborder="54" cssclass="Guide_color" visible="false" left="243" top="0" width="30" height="76"/>
+              <Static id="Static11" taborder="55" cssclass="Guide_color" visible="false" left="560" top="0" width="30" height="76"/>
+              <Static id="Static12" taborder="56" cssclass="Guide_color" visible="false" left="804" top="0" width="30" height="76"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="3" text="상담리스트" cssclass="sta_WF_subTitle" left="0" top="96" width="81" height="20"/>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="121" height="250" binddataset="dsList" left="0" autofittype="col" nodatatext="조회된 데이터가 없습니다." oncelldblclick="Grid00_oncelldblclick" width="1122">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="상담번호"/>
+                <Cell col="2" text="상담사"/>
+                <Cell col="3" text="통화상태"/>
+                <Cell col="4" text="계약번호"/>
+                <Cell col="5" text="고객명"/>
+                <Cell col="6" text="휴대번호"/>
+                <Cell col="7" text="전화번호"/>
+                <Cell col="8" text="시도건수"/>
+                <Cell col="9" text="처리일자"/>
+                <Cell col="10" text="통화일자"/>
+                <Cell col="11" text="서비스명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jobTpNm"/>
+                <Cell col="1" text="bind:callNo"/>
+                <Cell col="2" text="bind:userIdNm"/>
+                <Cell col="3" text="bind:callStatusNm"/>
+                <Cell col="4" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="5" text="bind:custNm"/>
+                <Cell col="6" text="bind:mobNo"/>
+                <Cell col="7" text="bind:telNo"/>
+                <Cell col="8" text="bind:jobCnt"/>
+                <Cell col="9" text="bind:jobDay"/>
+                <Cell col="10" text="bind:callDay"/>
+                <Cell col="11" text="bind:servNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="7" text="계약정보" cssclass="sta_WF_subTitle" left="0" top="392" width="81" height="20"/>
+        <Button id="Button31" taborder="8" text="상담등록" onclick="Button31_onclick" cssclass="btn_WF_module" enable="false" top="391" width="71" height="22" left="1051"/>
+        <Combo id="Combo00" taborder="9" innerdataset="@dsCallStatus" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="false" top="391" width="126" height="21" onitemchanged="Combo00_onitemchanged" left="895"/>
+        <Static id="Static08" taborder="10" text="통화상태" cssclass="sta_WF_schTitle" top="392" width="74" height="20" left="828"/>
+        <Edit id="Edit_callNo" taborder="11" lengthunit="ascii" maxlength="3" enable="false" top="391" width="140" height="21" left="657"/>
+        <Static id="Static35" taborder="12" text="상담번호" cssclass="sta_WF_schTitle" top="391" width="66" height="20" left="589"/>
+        <Div id="Div02" taborder="13" left="0" top="732" width="1122" height="350">
+          <Layouts>
+            <Layout>
+              <Static id="Static35" taborder="78" text="질문번호" cssclass="sta_WF_detailLabel" left="0" top="0" width="130" height="31" style="align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static27" taborder="79" text="질문내용" cssclass="sta_WF_detailLabel" left="129" top="0" width="864" height="31" style="align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static28" taborder="80" text="답변" cssclass="sta_WF_detailLabel" left="992" top="0" right="0" height="31" style="align:center middle;font:bold 9 Dotum;"/>
+              <Static id="Static02" taborder="81" cssclass="sta_WF_detailLabel2" left="0" top="30" width="130" height="31"/>
+              <Static id="Static00" taborder="82" cssclass="sta_WF_detailLabel2" left="129" top="30" width="864" height="31"/>
+              <Static id="Static01" taborder="83" cssclass="sta_WF_detailLabel2" left="992" top="30" right="0" height="31"/>
+              <Static id="Static03" taborder="84" cssclass="sta_WF_detailLabel2" left="0" top="60" width="130" height="31"/>
+              <Static id="Static04" taborder="85" cssclass="sta_WF_detailLabel2" left="129" top="60" width="864" height="31"/>
+              <Static id="Static05" taborder="86" cssclass="sta_WF_detailLabel2" left="992" top="60" right="0" height="31"/>
+              <Static id="Static06" taborder="87" cssclass="sta_WF_detailLabel2" left="0" top="90" width="130" height="31"/>
+              <Static id="Static07" taborder="88" cssclass="sta_WF_detailLabel2" left="129" top="90" width="864" height="31"/>
+              <Static id="Static08" taborder="89" cssclass="sta_WF_detailLabel2" left="992" top="90" right="0" height="31"/>
+              <Static id="Static09" taborder="90" cssclass="sta_WF_detailLabel2" left="0" top="150" width="130" height="31"/>
+              <Static id="Static10" taborder="91" cssclass="sta_WF_detailLabel2" left="129" top="150" width="864" height="31"/>
+              <Static id="Static11" taborder="92" cssclass="sta_WF_detailLabel2" left="992" top="150" right="0" height="31"/>
+              <Static id="Static12" taborder="93" cssclass="sta_WF_detailLabel2" left="992" top="120" right="0" height="31"/>
+              <Static id="Static13" taborder="94" cssclass="sta_WF_detailLabel2" left="129" top="120" width="864" height="31"/>
+              <Static id="Static14" taborder="95" cssclass="sta_WF_detailLabel2" left="0" top="120" width="130" height="31"/>
+              <Edit id="Edit12" taborder="96" value="1" enable="false" left="5" top="35" width="120" height="21"/>
+              <Edit id="Edit_question01" taborder="97" left="134" top="35" width="854" height="21" enable="false"/>
+              <Edit id="Edit_question02" taborder="98" left="134" top="65" width="854" height="21" enable="false"/>
+              <Edit id="Edit04" taborder="99" value="2" enable="false" left="5" top="65" width="120" height="21"/>
+              <Edit id="Edit_question04" taborder="100" left="134" top="125" width="854" height="21" enable="false"/>
+              <Edit id="Edit07" taborder="101" value="4" enable="false" left="5" top="125" width="120" height="21"/>
+              <Edit id="Edit08" taborder="102" value="3" enable="false" left="5" top="95" width="120" height="21"/>
+              <Edit id="Edit_question03" taborder="103" left="134" top="95" width="854" height="21" enable="false"/>
+              <Edit id="Edit_question05" taborder="104" left="134" top="155" width="854" height="21" enable="false"/>
+              <Edit id="Edit14" taborder="105" value="5" enable="false" left="5" top="155" width="120" height="21"/>
+              <Combo id="Combo00" taborder="106" innerdataset="@dsAnswer1" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" top="35" right="5" width="120" height="21"/>
+              <Combo id="Combo01" taborder="107" innerdataset="@dsAnswer2" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="65" width="120" height="21"/>
+              <Combo id="Combo02" taborder="108" innerdataset="@dsAnswer3" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="95" width="120" height="21"/>
+              <Combo id="Combo03" taborder="109" innerdataset="@dsAnswer4" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="125" width="120" height="21"/>
+              <Combo id="Combo04" taborder="110" innerdataset="@dsAnswer5" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="155" width="120" height="21"/>
+              <Static id="Static15" taborder="111" cssclass="sta_WF_detailLabel2" left="0" top="180" width="130" height="31"/>
+              <Static id="Static16" taborder="112" cssclass="sta_WF_detailLabel2" left="129" top="180" width="864" height="31"/>
+              <Static id="Static17" taborder="113" cssclass="sta_WF_detailLabel2" left="992" top="180" right="0" height="31"/>
+              <Static id="Static18" taborder="114" cssclass="sta_WF_detailLabel2" left="0" top="210" width="130" height="31"/>
+              <Static id="Static19" taborder="115" cssclass="sta_WF_detailLabel2" left="129" top="210" width="864" height="31"/>
+              <Static id="Static20" taborder="116" cssclass="sta_WF_detailLabel2" left="992" top="210" right="0" height="31"/>
+              <Static id="Static21" taborder="117" cssclass="sta_WF_detailLabel2" left="0" top="240" width="130" height="31"/>
+              <Static id="Static22" taborder="118" cssclass="sta_WF_detailLabel2" left="129" top="240" width="864" height="31"/>
+              <Static id="Static23" taborder="119" cssclass="sta_WF_detailLabel2" left="992" top="240" right="0" height="31"/>
+              <Static id="Static24" taborder="120" cssclass="sta_WF_detailLabel2" left="0" top="300" width="130" height="31"/>
+              <Static id="Static25" taborder="121" cssclass="sta_WF_detailLabel2" left="129" top="300" width="864" height="31"/>
+              <Static id="Static26" taborder="122" cssclass="sta_WF_detailLabel2" left="992" top="300" right="0" height="31"/>
+              <Static id="Static29" taborder="123" cssclass="sta_WF_detailLabel2" left="992" top="270" right="0" height="31"/>
+              <Static id="Static30" taborder="124" cssclass="sta_WF_detailLabel2" left="129" top="270" width="864" height="31"/>
+              <Static id="Static31" taborder="125" cssclass="sta_WF_detailLabel2" left="0" top="270" width="130" height="31"/>
+              <Edit id="Edit01" taborder="126" value="6" enable="false" left="5" top="185" width="120" height="21"/>
+              <Edit id="Edit_question06" taborder="127" left="134" top="185" width="854" height="21" enable="false"/>
+              <Edit id="Edit_question07" taborder="128" left="134" top="215" width="854" height="21" enable="false"/>
+              <Edit id="Edit10" taborder="129" value="7" enable="false" left="5" top="215" width="120" height="21"/>
+              <Edit id="Edit_question09" taborder="130" left="134" top="275" width="854" height="21" enable="false"/>
+              <Edit id="Edit15" taborder="131" value="9" enable="false" left="5" top="275" width="120" height="21"/>
+              <Edit id="Edit16" taborder="132" value="8" enable="false" left="5" top="245" width="120" height="21"/>
+              <Edit id="Edit_question08" taborder="133" left="134" top="245" width="854" height="21" enable="false"/>
+              <Edit id="Edit_question10" taborder="134" left="134" top="305" width="854" height="21" enable="false"/>
+              <Edit id="Edit19" taborder="135" value="10" enable="false" left="5" top="305" width="120" height="21"/>
+              <Combo id="Combo05" taborder="136" innerdataset="@dsAnswer6" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="185" width="120" height="21"/>
+              <Combo id="Combo06" taborder="137" innerdataset="@dsAnswer7" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="215" width="120" height="21"/>
+              <Combo id="Combo07" taborder="138" innerdataset="@dsAnswer8" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="245" width="120" height="21"/>
+              <Combo id="Combo08" taborder="139" innerdataset="@dsAnswer9" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="275" width="120" height="21"/>
+              <Combo id="Combo09" taborder="140" innerdataset="@dsAnswer10" codecolumn="answerCd" datacolumn="answer" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="997" top="305" width="120" height="21"/>
+              <Edit id="Edit_quesNo01" taborder="141" visible="false" left="893" top="35" width="95" height="21"/>
+              <Edit id="Edit_quesNo02" taborder="142" visible="false" left="893" top="65" width="95" height="21"/>
+              <Edit id="Edit_quesNo03" taborder="143" visible="false" left="893" top="95" width="95" height="21"/>
+              <Edit id="Edit_quesNo04" taborder="144" visible="false" left="893" top="125" width="95" height="21"/>
+              <Edit id="Edit_quesNo05" taborder="145" visible="false" left="893" top="155" width="95" height="21"/>
+              <Edit id="Edit_quesNo06" taborder="146" visible="false" left="893" top="185" width="95" height="21"/>
+              <Edit id="Edit_quesNo07" taborder="147" visible="false" left="893" top="215" width="95" height="21"/>
+              <Edit id="Edit_quesNo08" taborder="148" visible="false" left="893" top="245" width="95" height="21"/>
+              <Edit id="Edit_quesNo09" taborder="149" visible="false" left="893" top="275" width="95" height="21"/>
+              <Edit id="Edit_quesNo10" taborder="150" visible="false" left="893" top="305" width="95" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="14" left="0" top="422" height="315" width="1122">
+          <Layouts>
+            <Layout width="1122" height="254">
+              <Static id="Static49" taborder="0" cssclass="sta_WF_detailLabel2" left="841" top="0" height="31" width="281"/>
+              <Static id="Static50" taborder="1" cssclass="sta_WF_detailLabel2" left="560" top="30" height="31" width="562"/>
+              <Static id="Static47" taborder="2" cssclass="sta_WF_detailLabel2" left="560" top="0" width="281" height="31"/>
+              <Static id="Static45" taborder="3" cssclass="sta_WF_detailLabel2" left="280" top="0" width="281" height="31"/>
+              <Static id="Static46" taborder="4" cssclass="sta_WF_detailLabel2" left="280" top="30" width="281" height="31"/>
+              <Static id="Static34" taborder="5" cssclass="sta_WF_detailLabel2" left="0" top="0" width="281" height="31"/>
+              <Static id="Static39" taborder="6" cssclass="sta_WF_detailLabel2" left="0" top="30" width="281" height="31"/>
+              <Static id="Static35" taborder="7" text="계약번호" cssclass="sta_WF_detailLabel" left="0" top="0" width="130" height="31"/>
+              <Edit id="Edit_ordNo" taborder="8" left="134" top="5" width="142" height="21" readonly="true"/>
+              <Static id="Static36" taborder="9" text="장착대리점" cssclass="sta_WF_detailLabel" left="0" top="30" width="130" height="31"/>
+              <Edit id="Edit_agencyNm" taborder="10" left="134" top="35" width="142" height="21" readonly="true"/>
+              <Edit id="Edit_custNm" taborder="11" left="414" top="5" width="142" height="21" readonly="true"/>
+              <Edit id="Edit_procDay" taborder="12" left="414" top="35" width="142" height="21" readonly="true"/>
+              <Static id="Static26" taborder="13" text="장착일자" cssclass="sta_WF_detailLabel" left="280" top="30" width="130" height="31"/>
+              <Static id="Static27" taborder="14" text="고객명" cssclass="sta_WF_detailLabel" left="280" top="0" width="130" height="31"/>
+              <Static id="Static28" taborder="16" text="휴대번호" cssclass="sta_WF_detailLabel" left="560" top="0" width="130" height="31"/>
+              <Static id="Static29" taborder="17" text="상품명" cssclass="sta_WF_detailLabel" left="560" top="30" width="130" height="31"/>
+              <Static id="Static31" taborder="18" text="전화번호" cssclass="sta_WF_detailLabel" left="840" top="0" width="130" height="31"/>
+              <Edit id="Edit_telNo" taborder="19" left="974" top="5" width="143" height="21" readonly="true"/>
+              <Edit id="Edit_matCd" taborder="20" left="694" top="35" width="423" height="21" readonly="true"/>
+              <Static id="Static00" taborder="21" cssclass="sta_WF_detailLabel2" left="840" top="60" height="31" width="282"/>
+              <Static id="Static01" taborder="22" cssclass="sta_WF_detailLabel2" left="560" top="60" width="281" height="31"/>
+              <Static id="Static02" taborder="23" cssclass="sta_WF_detailLabel2" left="280" top="60" width="281" height="31"/>
+              <Static id="Static03" taborder="24" cssclass="sta_WF_detailLabel2" left="0" top="60" width="281" height="31"/>
+              <Static id="Static04" taborder="25" text="등록비" cssclass="sta_WF_detailLabel" left="0" top="60" width="130" height="31"/>
+              <Static id="Static05" taborder="28" text="월렌탈료" cssclass="sta_WF_detailLabel" left="280" top="60" width="130" height="31"/>
+              <Static id="Static06" taborder="30" text="타이어본수" cssclass="sta_WF_detailLabel" left="560" top="60" width="130" height="31"/>
+              <Static id="Static07" taborder="31" text="렌탈기간(월)" cssclass="sta_WF_detailLabel" left="840" top="60" width="130" height="31"/>
+              <Edit id="Edit_periodNm" taborder="32" left="974" top="65" width="143" height="21" readonly="true"/>
+              <Static id="Static08" taborder="33" cssclass="sta_WF_detailLabel2" left="0" top="90" height="150" width="1122"/>
+              <TextArea id="TextArea00" taborder="34" left="134" top="95" height="140" width="556"/>
+              <Static id="Static09" taborder="35" text="상담내용" cssclass="sta_WF_detailLabel" left="0" top="90" width="130" height="150"/>
+              <MaskEdit id="Edit_mobNo" taborder="15" type="string" mask="###-####-####" enable="true" left="694" top="5" width="142" height="21" readonly="true"/>
+              <MaskEdit id="Edit_regiNm" taborder="36" type="number" mask="###,###,###,##0" left="134" top="65" width="142" height="21" readonly="true"/>
+              <MaskEdit id="Edit_monAmt" taborder="37" mask="###,###,###,##0" left="414" top="65" width="142" height="21" readonly="true"/>
+              <MaskEdit id="Edit_cntCd" taborder="38" mask="###,###,###,##0" left="694" top="65" width="142" height="21" readonly="true"/>
+              <Static id="Static10" taborder="39" cssclass="sta_WF_detailLabel2" left="0%" top="269" height="31" width="386"/>
+              <Static id="Static16" taborder="52" cssclass="sta_WF_detailLabel2" left="0%" top="239" height="31" width="385"/>
+              <Static id="Static17" taborder="53" text="타이어제조사" cssclass="sta_WF_detailLabel" left="0%" top="269" height="31" width="130"/>
+              <Combo id="manufactureDrop" taborder="55" innerdataset="@dsManufacture" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="11.94%" top="274" height="21" index="-1" width="244"/>
+              <Static id="Static18" taborder="56" cssclass="sta_WF_detailLabel2" left="34.14%" top="239" height="31" width="739"/>
+              <Edit id="modelNM" taborder="58" left="46.08%" top="244" height="21" width="247"/>
+              <Static id="Static19" taborder="64" text="모델명" cssclass="sta_WF_detailLabel" left="34.14%" top="239" height="31" width="130"/>
+              <Grid id="grid_service" taborder="66" binddataset="dsService" useinputpanel="false" left="694" top="95" width="424" height="140">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="80"/>
+                      <Column size="190"/>
+                      <Column size="80"/>
+                      <Column size="60"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="서비스명"/>
+                      <Cell col="1" text="처리자"/>
+                      <Cell col="2" text="처리일자"/>
+                      <Cell col="3" text="처리시간"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:serviceNm"/>
+                      <Cell col="1" text="bind:procInNm"/>
+                      <Cell col="2" displaytype="date" text="bind:procDay" calendardisplaynulltype="none"/>
+                      <Cell col="3" text="bind:procTm" mask="##:##:##"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static11" taborder="67" text="단면폭" cssclass="sta_WF_detailLabel" left="0" top="239" width="130" height="31"/>
+              <Combo id="widthDrop" taborder="68" innerdataset="@dsWidth" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="134" top="242" right="744" height="21"/>
+              <Static id="Static14" taborder="69" cssclass="sta_WF_detailLabel2" left="770" top="269" width="352" height="31"/>
+              <Static id="Static12" taborder="70" cssclass="sta_WF_detailLabel2" left="383" top="269" right="351" height="31"/>
+              <Static id="Static13" taborder="71" text="편평비" cssclass="sta_WF_detailLabel" left="383" top="269" width="130" height="31"/>
+              <Combo id="ratioDrop" taborder="72" innerdataset="@dsRatio" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="517" top="274" width="247" height="21"/>
+              <Static id="Static15" taborder="73" text="인치" cssclass="sta_WF_detailLabel" left="770" top="269" width="130" height="31"/>
+              <Combo id="InchDrop" taborder="74" innerdataset="@dsInch" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="904" top="274" right="5" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="Edit_jobCnt" taborder="15" lengthunit="ascii" maxlength="3" enable="false" top="391" width="44" height="21" visible="false" left="513"/>
+        <Static id="Static00" taborder="16" text="시도건수" cssclass="sta_WF_schTitle" top="391" width="66" height="20" visible="false" left="445"/>
+        <Static id="Static01" taborder="17" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" bottom="0"/>
+        <Static id="Static02" taborder="18" cssclass="Guide_color" visible="false" left="0" top="80" width="1147" height="20"/>
+        <Static id="Static04" taborder="19" cssclass="Guide_color" visible="false" left="0" top="111" width="1147" height="10"/>
+        <Static id="Static06" taborder="21" cssclass="Guide_color" visible="false" left="0" top="412" width="1147" height="10"/>
+        <Static id="Static11" taborder="22" cssclass="Guide_color" visible="false" left="1021" top="371" width="30" height="51"/>
+        <Static id="Static07" taborder="23" cssclass="Guide_color" visible="false" left="797" top="371" width="30" height="51"/>
+        <Static id="Static09" taborder="24" cssclass="Guide_color" visible="false" left="557" top="371" width="30" height="51"/>
+        <Static id="Static05" taborder="25" cssclass="Guide_color" visible="false" left="0" top="371" width="1147" height="20"/>
+        <Static id="Static10" taborder="26" cssclass="Guide_color" visible="false" left="0" top="722" width="1147" height="10"/>
+        <Static id="Static12" taborder="27" cssclass="Guide_color" visible="false" left="0" top="1063" width="1147" height="9"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="jobTpNm" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="callStatus" type="STRING" size="256"/>
+          <Column id="callStatusNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="jobCnt" type="STRING" size="256"/>
+          <Column id="jobDay" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="servNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsQuestion" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="question01" type="STRING" size="256"/>
+          <Column id="question02" type="STRING" size="256"/>
+          <Column id="question03" type="STRING" size="256"/>
+          <Column id="question04" type="STRING" size="256"/>
+          <Column id="question05" type="STRING" size="256"/>
+          <Column id="question06" type="STRING" size="256"/>
+          <Column id="question07" type="STRING" size="256"/>
+          <Column id="question08" type="STRING" size="256"/>
+          <Column id="question09" type="STRING" size="256"/>
+          <Column id="question10" type="STRING" size="256"/>
+          <Column id="objectQus01" type="STRING" size="256"/>
+          <Column id="objectQus02" type="STRING" size="256"/>
+          <Column id="objectQus03" type="STRING" size="256"/>
+          <Column id="objectQus04" type="STRING" size="256"/>
+          <Column id="objectQus05" type="STRING" size="256"/>
+          <Column id="objectQus06" type="STRING" size="256"/>
+          <Column id="objectQus07" type="STRING" size="256"/>
+          <Column id="objectQus08" type="STRING" size="256"/>
+          <Column id="objectQus09" type="STRING" size="256"/>
+          <Column id="objectQus10" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsJobTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCallStatus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDetailInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="regiNm" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="manufactureDrop" type="STRING" size="256"/>
+          <Column id="modelNM" type="STRING" size="256"/>
+          <Column id="widthDrop" type="STRING" size="256"/>
+          <Column id="inchDrop" type="STRING" size="256"/>
+          <Column id="ratioDrop" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer3" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer4" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer5" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer6" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer7" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer8" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer9" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAnswer10" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answerCd" type="string" size="32"/>
+          <Column id="answer" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsQuestAns" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="question01" type="INT" size="256"/>
+          <Column id="question02" type="STRING" size="256"/>
+          <Column id="question03" type="STRING" size="256"/>
+          <Column id="question04" type="STRING" size="256"/>
+          <Column id="question05" type="STRING" size="256"/>
+          <Column id="question06" type="STRING" size="256"/>
+          <Column id="question07" type="STRING" size="256"/>
+          <Column id="question08" type="STRING" size="256"/>
+          <Column id="question09" type="STRING" size="256"/>
+          <Column id="question10" type="STRING" size="256"/>
+          <Column id="answer01" type="STRING" size="256"/>
+          <Column id="answer02" type="STRING" size="256"/>
+          <Column id="answer03" type="STRING" size="256"/>
+          <Column id="answer04" type="STRING" size="256"/>
+          <Column id="answer05" type="STRING" size="256"/>
+          <Column id="answer06" type="STRING" size="256"/>
+          <Column id="answer07" type="STRING" size="256"/>
+          <Column id="answer08" type="STRING" size="256"/>
+          <Column id="answer09" type="STRING" size="256"/>
+          <Column id="answer10" type="STRING" size="256"/>
+          <Column id="objectAns10" type="STRING" size="256"/>
+          <Column id="objectJumsu01" type="STRING" size="256"/>
+          <Column id="objectJumsu02" type="STRING" size="256"/>
+          <Column id="objectJumsu03" type="STRING" size="256"/>
+          <Column id="objectJumsu04" type="STRING" size="256"/>
+          <Column id="objectJumsu05" type="STRING" size="256"/>
+          <Column id="objectJumsu06" type="STRING" size="256"/>
+          <Column id="objectJumsu07" type="STRING" size="256"/>
+          <Column id="objectJumsu08" type="STRING" size="256"/>
+          <Column id="objectJumsu09" type="STRING" size="256"/>
+          <Column id="objectJumsu10" type="STRING" size="256"/>
+          <Column id="subjectQus1" type="STRING" size="256"/>
+          <Column id="subjectQus2" type="STRING" size="256"/>
+          <Column id="subjectQus3" type="STRING" size="256"/>
+          <Column id="subjectQus4" type="STRING" size="256"/>
+          <Column id="subjectQus5" type="STRING" size="256"/>
+          <Column id="subjectAns1" type="STRING" size="256"/>
+          <Column id="subjectAns2" type="STRING" size="256"/>
+          <Column id="subjectAns3" type="STRING" size="256"/>
+          <Column id="subjectAns4" type="STRING" size="256"/>
+          <Column id="subjectAns5" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsQusAnsInput" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="callNo" type="INT" size="256"/>
+          <Column id="objectQus01" type="STRING" size="256"/>
+          <Column id="objectQus02" type="STRING" size="256"/>
+          <Column id="objectQus03" type="STRING" size="256"/>
+          <Column id="objectQus04" type="STRING" size="256"/>
+          <Column id="objectQus05" type="STRING" size="256"/>
+          <Column id="objectQus06" type="STRING" size="256"/>
+          <Column id="objectQus07" type="STRING" size="256"/>
+          <Column id="objectQus08" type="STRING" size="256"/>
+          <Column id="objectQus09" type="STRING" size="256"/>
+          <Column id="objectQus10" type="STRING" size="256"/>
+          <Column id="objectAns01" type="STRING" size="256"/>
+          <Column id="objectAns02" type="STRING" size="256"/>
+          <Column id="objectAns03" type="STRING" size="256"/>
+          <Column id="objectAns04" type="STRING" size="256"/>
+          <Column id="objectAns05" type="STRING" size="256"/>
+          <Column id="objectAns06" type="STRING" size="256"/>
+          <Column id="objectAns07" type="STRING" size="256"/>
+          <Column id="objectAns08" type="STRING" size="256"/>
+          <Column id="objectAns09" type="STRING" size="256"/>
+          <Column id="objectAns10" type="STRING" size="256"/>
+          <Column id="objectJumsu01" type="STRING" size="256"/>
+          <Column id="objectJumsu02" type="STRING" size="256"/>
+          <Column id="objectJumsu03" type="STRING" size="256"/>
+          <Column id="objectJumsu04" type="STRING" size="256"/>
+          <Column id="objectJumsu05" type="STRING" size="256"/>
+          <Column id="objectJumsu06" type="STRING" size="256"/>
+          <Column id="objectJumsu07" type="STRING" size="256"/>
+          <Column id="objectJumsu08" type="STRING" size="256"/>
+          <Column id="objectJumsu09" type="STRING" size="256"/>
+          <Column id="objectJumsu10" type="STRING" size="256"/>
+          <Column id="subjectQus1" type="STRING" size="256"/>
+          <Column id="subjectQus2" type="STRING" size="256"/>
+          <Column id="subjectQus3" type="STRING" size="256"/>
+          <Column id="subjectQus4" type="STRING" size="256"/>
+          <Column id="subjectQus5" type="STRING" size="256"/>
+          <Column id="subjectAns1" type="STRING" size="256"/>
+          <Column id="subjectAns2" type="STRING" size="256"/>
+          <Column id="subjectAns3" type="STRING" size="256"/>
+          <Column id="subjectAns4" type="STRING" size="256"/>
+          <Column id="subjectAns5" type="STRING" size="256"/>
+          <Column id="manufactureDrop" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="widthDrop" type="STRING" size="256"/>
+          <Column id="inchDrop" type="STRING" size="256"/>
+          <Column id="ratioDrop" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsWidth" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRatio" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsInch" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsManufacture" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="serviceCd" type="STRING" size="256"/>
+          <Column id="serviceNm" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+          <Column id="procInNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="Div01.Edit_ordNo" propid="value" datasetid="dsDetailInfo" columnid="ordNo"/>
+      <BindItem id="item2" compid="Div01.Edit_custNm" propid="value" datasetid="dsDetailInfo" columnid="custNm"/>
+      <BindItem id="item4" compid="Div01.Edit_telNo" propid="value" datasetid="dsDetailInfo" columnid="telNo"/>
+      <BindItem id="item5" compid="Div01.Edit_agencyNm" propid="value" datasetid="dsDetailInfo" columnid="agencyNm"/>
+      <BindItem id="item6" compid="Div01.Edit_procDay" propid="value" datasetid="dsDetailInfo" columnid="procDay"/>
+      <BindItem id="item7" compid="Div01.Edit_matCd" propid="value" datasetid="dsDetailInfo" columnid="matNm"/>
+      <BindItem id="item11" compid="Div01.Edit_periodNm" propid="value" datasetid="dsDetailInfo" columnid="periodNm"/>
+      <BindItem id="item12" compid="Div02.Edit_question01" propid="value" datasetid="dsQuestion" columnid="question01"/>
+      <BindItem id="item13" compid="Div02.Edit_question02" propid="value" datasetid="dsQuestion" columnid="question02"/>
+      <BindItem id="item14" compid="Div02.Edit_question03" propid="value" datasetid="dsQuestion" columnid="question03"/>
+      <BindItem id="item15" compid="Div02.Edit_question04" propid="value" datasetid="dsQuestion" columnid="question04"/>
+      <BindItem id="item16" compid="Div02.Edit_question05" propid="value" datasetid="dsQuestion" columnid="question05"/>
+      <BindItem id="item17" compid="Div02.Edit_question06" propid="value" datasetid="dsQuestion" columnid="question06"/>
+      <BindItem id="item18" compid="Div02.Edit_question07" propid="value" datasetid="dsQuestion" columnid="question07"/>
+      <BindItem id="item19" compid="Div02.Edit_question08" propid="value" datasetid="dsQuestion" columnid="question08"/>
+      <BindItem id="item20" compid="Div02.Edit_question09" propid="value" datasetid="dsQuestion" columnid="question09"/>
+      <BindItem id="item21" compid="Div02.Edit_question10" propid="value" datasetid="dsQuestion" columnid="question10"/>
+      <BindItem id="item33" compid="Div02.Edit_quesNo01" propid="value" datasetid="dsQuestion" columnid="objectQus01"/>
+      <BindItem id="item34" compid="Div02.Edit_quesNo02" propid="value" datasetid="dsQuestion" columnid="objectQus02"/>
+      <BindItem id="item35" compid="Div02.Edit_quesNo03" propid="value" datasetid="dsQuestion" columnid="objectQus03"/>
+      <BindItem id="item36" compid="Div02.Edit_quesNo04" propid="value" datasetid="dsQuestion" columnid="objectQus04"/>
+      <BindItem id="item37" compid="Div02.Edit_quesNo05" propid="value" datasetid="dsQuestion" columnid="objectQus05"/>
+      <BindItem id="item38" compid="Div02.Edit_quesNo06" propid="value" datasetid="dsQuestion" columnid="objectQus06"/>
+      <BindItem id="item39" compid="Div02.Edit_quesNo07" propid="value" datasetid="dsQuestion" columnid="objectQus07"/>
+      <BindItem id="item40" compid="Div02.Edit_quesNo08" propid="value" datasetid="dsQuestion" columnid="objectQus08"/>
+      <BindItem id="item41" compid="Div02.Edit_quesNo09" propid="value" datasetid="dsQuestion" columnid="objectQus09"/>
+      <BindItem id="item42" compid="Div02.Edit_quesNo10" propid="value" datasetid="dsQuestion" columnid="objectQus10"/>
+      <BindItem id="item0" compid="Div02.Combo00" propid="text" datasetid="dsQuestAns" columnid="answer01"/>
+      <BindItem id="item43" compid="Div02.Combo01" propid="text" datasetid="dsQuestAns" columnid="answer02"/>
+      <BindItem id="item22" compid="Div02.Combo02" propid="text" datasetid="dsQuestAns" columnid="answer03"/>
+      <BindItem id="item23" compid="Div02.Combo03" propid="text" datasetid="dsQuestAns" columnid="answer04"/>
+      <BindItem id="item24" compid="Div02.Combo04" propid="text" datasetid="dsQuestAns" columnid="answer05"/>
+      <BindItem id="item25" compid="Div02.Combo05" propid="text" datasetid="dsQuestAns" columnid="answer06"/>
+      <BindItem id="item26" compid="Div02.Combo06" propid="text" datasetid="dsQuestAns" columnid="answer07"/>
+      <BindItem id="item27" compid="Div02.Combo07" propid="text" datasetid="dsQuestAns" columnid="answer08"/>
+      <BindItem id="item28" compid="Div02.Combo08" propid="text" datasetid="dsQuestAns" columnid="answer09"/>
+      <BindItem id="item29" compid="Div02.Combo09" propid="text" datasetid="dsQuestAns" columnid="answer10"/>
+      <BindItem id="item32" compid="Div01.Edit_mobNo" propid="value" datasetid="dsDetailInfo" columnid="mobNo"/>
+      <BindItem id="item3" compid="Div01.Edit_regiNm" propid="value" datasetid="dsDetailInfo" columnid="regiNm"/>
+      <BindItem id="item8" compid="Div01.Edit_monAmt" propid="value" datasetid="dsDetailInfo" columnid="monAmt"/>
+      <BindItem id="item9" compid="Div01.Edit_cntCd" propid="value" datasetid="dsDetailInfo" columnid="cntCd"/>
+      <BindItem id="item50" compid="Div01.modelNM" propid="value" datasetid="dsDetailInfo" columnid="modelNm"/>
+      <BindItem id="item49" compid="Div01.manufactureDrop" propid="value" datasetid="dsDetailInfo" columnid="manufactureDrop"/>
+      <BindItem id="item51" compid="Div01.widthDrop" propid="value" datasetid="dsDetailInfo" columnid="widthDrop"/>
+      <BindItem id="item52" compid="Div01.ratioDrop" propid="value" datasetid="dsDetailInfo" columnid="ratioDrop"/>
+      <BindItem id="item53" compid="Div01.InchDrop" propid="value" datasetid="dsDetailInfo" columnid="inchDrop"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay  = "";
+this.stat 	= "";
+this.bfStat = "";
+this.afStat = "";
+this.cnt 	= 0;
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if(nErrorCode < 0){
+		alert(strErrorMsg);				
+		return;
+	} 
+	
+	if(strSvcId == "initRegister") {
+		var ct = this.dsJobTp.rowcount;
+		if( ct != 0 ){
+			this.Div00.Combo01.set_value( this.dsJobTp.getColumn(1,"cd") );
+			this.Div00_Combo01_onitemchanged();
+		}
+	}	
+	
+	if(strSvcId == "getToday"){
+		this.Div00.Calendar01.set_value(this.toDay);
+		this.Div00.Calendar02.set_value(this.toDay);
+	}
+	
+	if(strSvcId == "registerList"){
+	var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		}
+	}
+	
+	if(strSvcId == "registerInfo"){
+		this.Edit_callNo.set_value(this.dsList.getColumn(this.dsList.rowposition, "callNo")); //상담번호 세팅
+		this.Edit_jobCnt.set_value(this.dsList.getColumn(this.dsList.rowposition, "jobCnt")); //시도건수 세팅
+		var cnt = this.dsDetailInfo.getRowCount();
+		if(cnt <= 0) {
+			return;
+		}else{
+			this.questionInfo();
+			
+			var callStatus = nvl(this.dsList.getColumn(this.dsList.rowposition, "callStatus")); //통화상태
+			this.Combo00.set_value(callStatus);
+			
+			var callDtl = nvl(this.dsList.getColumn(this.dsList.rowposition, "callDtl")); //상담내용
+			this.Div01.TextArea00.set_value(callDtl);
+			
+			if(callStatus == "C") {
+				this.Combo00.set_enable(false); 	//통화상태버튼 비활성화
+				//this.Button31.set_enable(false); 	//상담등록버튼 비활성화	-> 20151123 장착완료건도 수정가능하게 수정함
+			}else{
+				this.Combo00.set_enable(true); 		//통화상태버튼 활성화
+				//this.Button31.set_enable(true); 	//상담등록버튼 활성화		-> 20151123 장착완료건도 수정가능하게 수정함
+			}
+		}
+		this.FN_telNoChange();
+	}
+	
+	if (strSvcId == "registerSaveDaset") {
+		if(nErrorCode == "0"){
+			alert(strErrorMsg);
+			this.clearEvent();
+			this.fn_search();
+		}else{
+			alert(strErrorMsg);
+		}
+	}
+	
+	if(strSvcId == "sRtcs0100ServiceHistory"){
+		var cnt = this.dsService.getRowCount();
+		if( cnt <= 0) {
+			this.Div01.grid_service.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+	
+	if(strSvcId == "questionInfo"){
+		
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.get_date();
+	this.parent.setButton("E|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initRegister";  
+	var sController   	= "/ntrms/cs/initRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsJobTp=output dsCallStatus=output2 dsWidth=output3 dsRatio=output4 dsInch=output5 dsManufacture=output6";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.get_date = function(){
+	var sSvcID        	= "getToday";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var jobTp 		= nvl(this.Div00.Combo01.value); 		//상담유형
+	var jobDay1 	= nvl(this.Div00.Calendar01.value); 	//처리일자FROM	
+	var jobDay2 	= nvl(this.Div00.Calendar02.value); 	//처리일자TO
+	var userId		= nvl(this.Div00.userId.value); 		//상담자 code
+	var callStatus	= nvl(this.Div00.Combo00.value); 		//통화상태
+	var custNm 		= nvl(this.Div00.Edit05.value); 		//고객명
+	var agencyCd 	= ""; 									//장착대리점
+	var mobNo 		= nvl(this.Div00.Edit04.value); 		//휴대번호
+	var telNo 		= nvl(this.Div00.Edit01.value); 		//전화번호
+
+	if( jobTp == ""   || jobTp == null   || jobTp.length == 0	) { alert("상담유형을 입력해주세요."); 		   return; }
+	if( jobDay1 == "" || jobDay1 == null || jobDay1.length == 0	) { alert("처리일자(시작일)을 입력해주세요."); return; }
+	if( jobDay2 == "" || jobDay2 == null || jobDay2.length == 0	) { alert("처리일자(종료일)을 입력해주세요."); return; }
+	
+	var sSvcID        	= "registerList";             
+	var sController   	= "/ntrms/cs/registerList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+
+	sArgs += Ex.util.setParam("jobTp", jobTp);
+	sArgs += Ex.util.setParam("jobDay1", jobDay1);
+	sArgs += Ex.util.setParam("jobDay2", jobDay2);
+	sArgs += Ex.util.setParam("userId", userId);
+	sArgs += Ex.util.setParam("callStatus", callStatus);
+	sArgs += Ex.util.setParam("custNm", custNm);
+	sArgs += Ex.util.setParam("agencyCd", agencyCd);
+	sArgs += Ex.util.setParam("mobNo", mobNo);
+	sArgs += Ex.util.setParam("telNo", telNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg:"RTCSRegister"};
+	Ex.core.popup(this,"listUser","comm::RTCOMMUser_pop.xfdl",args, "modaless=false");
+}
+this.returnUserInfo = function(arr) {
+	var	cd = arr[0].getColumn(0, "userId");
+	var cdNm = arr[0].getColumn(0, "userNm");
+	
+	this.Div00.userId.set_value(cd);
+	this.Div00.userNm.set_value(cdNm);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Grid00_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.chgEndFlag = false;
+	this.Button31.set_enable(true); 												//상담등록버튼 비활성화
+	this.stat  		= this.dsList.getColumn(this.dsList.rowposition,"callStatus");
+	var ordNo 		= nvl(this.dsList.getColumn(this.dsList.rowposition, "ordNo"));
+	var servSeq 	= nvl(this.dsList.getColumn(this.dsList.rowposition, "servSeq"));
+	
+	this.clearEvent();
+	
+	var sSvcID        	= "registerInfo";             
+	var sController   	= "/ntrms/cs/registerInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsDetailInfo=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	if( ordNo != "" && servSeq != ""){
+		this.serviceHistory(ordNo, servSeq);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.serviceHistory = function(ordNo, servSeq){
+	if( ordNo != "" && servSeq != ""){
+		var sSvcID        	= "sRtcs0100ServiceHistory";             
+		var sController   	= "/ntrms/cs/sRtcs0100ServiceHistory.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsService=serviceHistory";
+		var sArgs 			= ""
+		var fn_callBack		= "fn_callBack";
+		this.dsService.clearData();
+		sArgs += Ex.util.setParam("ordNo", ordNo);
+		sArgs += Ex.util.setParam("servSeq", servSeq);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.questionInfo = function(){//질문/ 답변
+	var callNo = nvl(this.dsList.getColumn(this.dsList.rowposition, "callNo")); //상담번호
+	var sSvcID        	= "questionInfo";             
+	var sController   	= "/ntrms/cs/questionInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " dsQuestion=output ";
+	sOutDatasets += " dsAnswer1=output1 ";
+	sOutDatasets += " dsAnswer2=output2 ";
+	sOutDatasets += " dsAnswer3=output3 ";
+	sOutDatasets += " dsAnswer4=output4 ";
+	sOutDatasets += " dsAnswer5=output5 ";
+	sOutDatasets += " dsAnswer6=output6 ";
+	sOutDatasets += " dsAnswer7=output7 ";
+	sOutDatasets += " dsAnswer8=output8 ";
+	sOutDatasets += " dsAnswer9=output9 ";
+	sOutDatasets += " dsAnswer10=output10 ";
+	sOutDatasets += " dsQuestAns=output11 ";
+	
+	this.dsQuestion.clearData();
+	
+	sArgs += Ex.util.setParam("callNo", callNo);
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Button31_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){//상담등록
+	var callNo 			= nvl(this.Edit_callNo.value); 											//상담번호
+	var jobCnt 			= nvl(this.Edit_jobCnt.value); 											//시도건수
+	var ordNo 			= nvl(this.dsDetailInfo.getColumn(0, "ordNo"))							//계약번호
+	var callDtl 		= nvl(this.Div01.TextArea00.value);  									//상담내용
+	var callStatus 		= nvl(this.Combo00.value); 												//통화상태
+	var callStatusNow 	= nvl(this.dsList.getColumn(this.dsList.rowposition, "callStatus")); 	//기존 통화상태
+	
+	//통화 완료건이면 등록 X -> 20151123 장착완료건도 수정가능하게 수정함
+	//if(callStatusNow == "C"){
+	//	alert("통화완료건 입니다.")
+	//	return;
+	//} 
+	
+	if(callStatus=="" || callStatus.length == 0){
+		alert("통화상태를 선택해주세요");
+		return;
+	} 
+	
+	//통화상태 통화미완료, 통화완료 저장시 시도건수 +1 저장
+	if(callStatus == "N" || callStatus == "C") {
+		jobCnt = parseInt(jobCnt, 10) + 1;
+	}
+	
+	var sSvcID        	= "registerSaveDaset";
+	var sController   	= "/ntrms/cs/registerSaveDaset.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	sInDatasets   		= "input2=dsQusAnsInput";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+
+	//dsList 파라미터값 세팅
+	sArgs += Ex.util.setParam("callNo", callNo);
+	sArgs += Ex.util.setParam("jobCnt", jobCnt);
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	sArgs += Ex.util.setParam("callDtl", callDtl);
+	sArgs += Ex.util.setParam("callStatus", callStatus);
+	
+	//통화 완료시 dsQuestAns 질문에 대한 답변 null체크/ 타이어 제조사 값 체크
+	if(callStatus == "C") {
+		if(nvl(this.Div02.Edit_quesNo01.value) != "" && nvl(this.Div02.Combo00.value) == "") {
+			alert("1번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo03.value) != "" && nvl(this.Div02.Combo01.value) == "") {
+			alert("2번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo03.value) != "" && nvl(this.Div02.Combo02.value) == "") {
+			alert("3번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo04.value) != "" && nvl(this.Div02.Combo03.value) == "") {
+			alert("4번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo05.value) != "" && nvl(this.Div02.Combo04.value) == "") {
+			alert("5번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo06.value) != "" && nvl(this.Div02.Combo05.value) == "") {
+			alert("6번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo07.value) != "" && nvl(this.Div02.Combo06.value) == "") {
+			alert("7번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo08.value) != "" && nvl(this.Div02.Combo07.value) == "") {
+			alert("8번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo09.value) != "" && nvl(this.Div02.Combo08.value) == "") {
+			alert("9번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+		if(nvl(this.Div02.Edit_quesNo10.value) != "" && nvl(this.Div02.Combo09.value) == "") {
+			alert("10번째 질문에대한 답변 등록후 저장하세요");
+			return;
+		}
+
+		if(nvl(this.Div01.manufactureDrop.value) == "") {  
+		    alert("타이어 제조사를 등록후 저장하세요");
+			return;
+		}
+		
+	}
+	
+	//dsQuestAns 파라미터값 세팅
+	this.dsQusAnsInput.clearData();
+	this.dsQusAnsInput.addRow();
+	
+	this.dsQusAnsInput.setColumn(0, "callNo", callNo); //상담번호
+	
+	this.dsQusAnsInput.setColumn(0, "objectQus01", this.Div02.Edit_quesNo01.value); //질문1 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus02", this.Div02.Edit_quesNo02.value); //질문2 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus03", this.Div02.Edit_quesNo03.value); //질문3 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus04", this.Div02.Edit_quesNo04.value); //질문4 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus05", this.Div02.Edit_quesNo05.value); //질문5 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus06", this.Div02.Edit_quesNo06.value); //질문6 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus07", this.Div02.Edit_quesNo07.value); //질문7 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus08", this.Div02.Edit_quesNo08.value); //질문8 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus09", this.Div02.Edit_quesNo09.value); //질문9 코드
+	this.dsQusAnsInput.setColumn(0, "objectQus10", this.Div02.Edit_quesNo10.value); //질문10 코드
+	
+	this.dsQusAnsInput.setColumn(0, "objectAns01", this.Div02.Combo00.value); //답변1 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns02", this.Div02.Combo01.value); //답변2 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns03", this.Div02.Combo02.value); //답변3 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns04", this.Div02.Combo03.value); //답변4 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns05", this.Div02.Combo04.value); //답변5 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns06", this.Div02.Combo05.value); //답변6 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns07", this.Div02.Combo06.value); //답변7 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns08", this.Div02.Combo07.value); //답변8 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns09", this.Div02.Combo08.value); //답변9 코드
+	this.dsQusAnsInput.setColumn(0, "objectAns10", this.Div02.Combo09.value); //답변10 코드
+	
+    this.dsQusAnsInput.setColumn(0, "manufactureDrop", 	this.dsDetailInfo.getColumn(0,"manufactureDrop") );
+	this.dsQusAnsInput.setColumn(0, "modelNm", 			this.dsDetailInfo.getColumn(0,"modelNm") );
+	this.dsQusAnsInput.setColumn(0, "widthDrop", 		this.dsDetailInfo.getColumn(0,"widthDrop") );
+	this.dsQusAnsInput.setColumn(0, "inchDrop", 		this.dsDetailInfo.getColumn(0,"inchDrop") );
+	this.dsQusAnsInput.setColumn(0, "ratioDrop", 		this.dsDetailInfo.getColumn(0,"ratioDrop") );
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.clearEvent = function() {				//클리어 이벤트
+	this.dsDetailInfo.clearData(); 			//계약상세
+	this.dsQuestion.clearData(); 			//질문내용
+	this.dsAnswer1.clearData(); 			//답변내용1
+	this.dsAnswer2.clearData(); 			//답변내용2
+	this.dsAnswer3.clearData(); 			//답변내용3
+	this.dsAnswer4.clearData(); 			//답변내용4
+	this.dsAnswer5.clearData(); 			//답변내용5
+	this.dsAnswer6.clearData(); 			//답변내용6
+	this.dsAnswer7.clearData(); 			//답변내용7
+	this.dsAnswer8.clearData(); 			//답변내용8
+	this.dsAnswer9.clearData(); 			//답변내용9
+	this.dsAnswer10.clearData(); 			//답변내용10
+	this.dsService.clearData();				//서비스 처리내역
+	this.Edit_callNo.set_value(""); 		//상담번호 초기화
+	this.Combo00.set_index(-1); 			//통화상태 초기화
+	this.Edit_jobCnt.set_value(""); 		//시도건수 초기화
+	this.Div01.TextArea00.set_value(""); 	//상담내용
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_telNoChange = function(){
+	this.Div01.Edit_telNo.set_value( FN_numberHyphenInReturn(this.dsDetailInfo.getColumn(0,"telNo")));
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Combo00_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){//초기:I, 통화미완료:N, 통화완료:C
+	if(this.cnt > 1) {
+		this.cnt = 0;
+	}
+	this.bfStat = this.dsList.getColumn(this.dsList.rowposition,"callStatus");
+	this.afStat = obj.value;
+
+	if(this.bfStat == "N" && this.afStat == "I") {
+		if(this.cnt == 0) {
+			alert('통화미완료건은 초기상태로 변경이 불가능합니다.');
+		}
+		this.Combo00.set_value(this.bfStat);
+		this.cnt++;
+	}else {
+		this.cnt = 0;	
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Div00_Combo01_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	if( this.Div00.Combo01.value == "H1" ){
+		this.Div01.grid_service.set_visible(false);
+		this.Div01.TextArea00.resize(983,140);
+	}else{
+		this.Div01.grid_service.set_visible(true);
+		this.Div01.TextArea00.resize(556,140);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo){
+	Ex.core.exportExcel(this, this.Grid00);
+}]]></Script>
+  </Form>
+</FDL>

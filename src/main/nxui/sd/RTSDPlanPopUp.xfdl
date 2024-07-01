@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="planPopUp" classname="planPopUp" left="0" top="0" width="341" height="132" titletext="장착 등록 저장팝업" style="font:bold 9 Dotum;" onload="planPopUp_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div01" taborder="13" text="Div00" left="0" top="0" width="341" height="132" cssclass="div_WF_conpop">
+          <Layouts>
+            <Layout>
+              <Button id="Button01" taborder="11" text="아니오" left="194" top="85" right="34" height="21" onclick="Div01_Button01_onclick"/>
+              <Button id="Button00" taborder="12" text="예" left="78" top="85" right="150" height="21" onclick="Div01_Button00_onclick"/>
+              <Static id="Static01" taborder="13" text="장착일자" cssclass="sta_WF_schTitle" left="70" top="13" width="78" height="21" style="font:bold 10 arial;"/>
+              <Calendar id="Calendar00" taborder="14" dateformat="yyyy-MM-dd" left="154" top="12" width="120" height="21"/>
+              <Static id="Static02" taborder="15" text="현재 설정된 일자로 저장하시겠습니까?" cssclass="pseudo" left="68" top="45" width="254" height="29" style="font:bold 10 arial;"/>
+              <Edit id="Edit00" taborder="16" readonly="true" visible="false" left="101" top="105" width="118" height="21"/>
+              <ImageViewer id="ImageViewer00" taborder="17" top="17" right="278" width="52" height="52" style="background:URL('image::alert_confirm.png');border:0 none #808080ff ;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 장착 등록 팝업
+ * 02. 그룹명   : RTSD
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2015-07-27
+ * 05. 작성자   : 신정수
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay = "";
+
+
+
+//온로드
+this.planPopUp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj); 
+	this.get_date();
+}
+
+
+
+//java에서 현재 날짜 가져오기
+	this.get_date = function() 
+	{
+		var sSvcID        	= "getDate";                    
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+		
+	}
+	
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{ 
+		if (strSvcId == "getDate") {
+			this.Div01.Edit00.set_value(this.toDay);
+			this.Div01.Calendar00.set_value(String(this.toDay));
+		}
+
+	}
+
+this.Div01_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var day = this.Div01.Calendar00.value;
+	var tDay = this.Div01.Edit00.value;
+	if(day > tDay) { 
+		alert("장착일자는 오늘 날짜보다 클 수 없습니다.");
+		return;
+	}
+	this.close(this.opener.returnPlanInfo(day));
+}
+
+this.Div01_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+this.Div01_Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

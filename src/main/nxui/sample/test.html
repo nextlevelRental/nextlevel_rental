@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript" src="WebIF.js"></script>
+<script type="text/javascript">
+var xpCallBackObj;  //WebBrowser 로부터 결과를 전달받을 오브젝트 (XPLATFORM Form)
+var xpCallBackFn;
+
+
+function setCallback(obj, name)
+{
+
+	window.NEXACROHTML.Init();
+
+
+/*
+    xpCallBackObj = obj;
+    xpCallBackFn = name;
+alert(  obj + ":" +     name);
+//  console.log("xpCallBackObj >>> "+xpCallBackObj+"  xpCallBackFn >>> "+xpCallBackFn);
+*/
+};
+
+
+function fn_test(){
+
+	//for(var prop in window) {
+	//console.log(prop + ":" + window[prop];
+	//}
+
+	// 에디터의 내용이 textarea에 적용된다.
+	      
+	      // 에디터의 내용에 대한 값 검증은 이곳에서
+	  var objElement = document.getElementById("inputText1");
+	      
+	  try {
+	  
+	  
+	      window.NEXACROHTML.FireUserNotify(objElement.value);
+
+//	    xpCallBackObj[xpCallBackFn](objElement.value);
+//	    console.log(objElement.value);
+	 
+	      } catch(e) {
+	          alert(e + "error");
+	      }
+};
+
+
+function fn_test(){
+	 var objElement = document.getElementById("resultText");
+     
+	  try {
+	  
+		  alert(" value : " + objElement.value);
+	     // window.NEXACROHTML.FireUserNotify(objElement.value);  /g
+         
+//	    xpCallBackObj[xpCallBackFn](objElement.value);
+//	    console.log(objElement.value);
+	 
+	      } catch(e) {
+	          alert(e + "error");
+	      }
+};
+</script>
+</head>
+<body onload = "setCallback();">
+    <h2>테스트</h2>    
+        <form name="fmt">    
+            <tr>
+                <td>결과</td>
+                <td><input type="text" id="resultText" value="nexacro"></input></td>
+                <td><input type="button" id="btnTest1" value="HTML5값전달" onClick="fn_test()"></input></td>
+            </tr>
+        </form>
+    
+</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="middleFullPayment">
+	<resultMap id="r_sRtsd0109CancelList" class="java.util.HashMap">
+		<result property="ordNo"	  column="ORD_NO"/>
+		<result property="statCd"	  column="STAT_CD"/>
+		<result property="custNo"	  column="CUST_NO"/>
+		<result property="custNm"	  column="CUST_NM"/>
+		<result property="ordNm"	  column="ORD_NM"/>
+		<result property="chanNm"	  column="CHAN_NM"/>
+		<result property="saleNm"	  column="SALE_NM"/>
+		<result property="statNm"	  column="STAT_NM"/>
+		<result property="ordDay"	  column="ORD_DAY"/>
+		<result property="planDay"	  column="PLAN_DAY"/>
+		<result property="procDay"	  column="PROC_DAY"/>
+		<result property="cancDay"	  column="CANC_DAY"/>
+		<result property="matCd"	  column="MAT_CD"/>
+		<result property="matNm"	  column="MAT_NM"/>
+		<result property="ordQty"	  column="ORD_QTY"/>
+		<result property="periodNm"	  column="PERIOD_NM"/>
+		<result property="osYn"		  column="OS_YN"/>
+		<result property="mepYn"	  column="MFP_YN"/>
+		<result property="psNm"		  column="PS_NM"/>
+		<result property="makerNm"	  column="MAKER_NM"/>
+		<result property="mcNm"		  column="MC_NM"/>
+		<result property="carNo"	  column="CAR_NO"/>
+		<result property="carOwner"	  column="CAR_OWNER"/>
+		<result property="cMileage"	  column="C_MILEAGE"/>
+		<result property="maMileage"  column="MA_MILEAGE"/>
+		<result property="reqText"	  column="REQ_TEXT"/>
+		<result property="monAmt"	  column="MON_AMT"/>
+		<result property="saleAmt"	  column="SALE_AMT"/>
+		<result property="recpAmt"	  column="RECP_AMT"/>
+		<result property="blancAmt"	  column="BLANC_AMT"/>
+		<result property="arre1Amt"	  column="ARRE1_AMT"/>
+		<result property="arre2Amt"	  column="ARRE2_AMT"/>
+		<result property="makeAmt"	  column="MAKE_AMT"/>
+		<result property="servAmt"	  column="SERV_AMT"/>
+		<result property="planAmt"	  column="PLAN_AMT"/>
+		<result property="regiAmt"	  column="REGI_AMT"/>
+		<result property="rgcpAmt"	  column="RGCP_AMT"/>
+		<result property="rgblancAmt" column="RGBLANC_AMT"/>
+		<result property="balanceAmt" column="BALANCE_AMT"/>
+	</resultMap>
+	<parameterMap id="p_sRtsd0109CancelList" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0109CancelList"/>
+		<parameter property="ordNo"	  jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="endTp"	  jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="cancDay" jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.pSrtsd0109CancelList" parameterMap="p_sRtsd0109CancelList">
+		{call Pkg_Rtsd0109.p_sRtsd0109CancelList(?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_InsertRtsd0109CancelSave">
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="endTp"			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="canclDay"		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="recpAmt"		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="arre1Amt"		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="bankRecpDay"	jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errortext"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.cancelSave" parameterMap="p_InsertRtsd0109CancelSave">
+		{call Pkg_Rtsd0109.p_InsertRtsd0109CancelSave(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 청구스케줄 관리 - 중도완납 저장 -->
+	<parameterMap id="saveMiddleFullPaymentParam" class="java.util.HashMap">
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호				-->
+		<parameter property="endTp"			jdbcType="VARCHAR" mode="IN"/>	<!-- 종료유형(S070 : E, C)	-->
+		<parameter property="cancDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 중도완납일			-->
+		<parameter property="totRecvAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 총수납금액			-->
+		<parameter property="pnltAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 할인미대상			-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID				-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.saveMiddleFullPayment" resultClass="java.util.HashMap" parameterMap="saveMiddleFullPaymentParam">
+		{call PKG_RTSD0109.p_InsertRtsd0109CancelSave2(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 중도완납순번 채번 -->
+	<parameterMap id="get0230MfpSeqParam" class="java.util.Map">
+		<parameter property="mfpSeq" jdbcType="INTEGER" mode="OUT" resultMap="get0230MfpSeqResult"/>
+	</parameterMap>
+	<resultMap id="get0230MfpSeqResult" class="java.util.Map">
+		<result property="mfpSeq" column="MFP_SEQ"/>
+	</resultMap>
+	<procedure id="middleFullPayment.get0230MfpSeq" parameterMap="get0230MfpSeqParam">
+		{call ? := PKG_RTRE0230.f_sRtre0230MfpSeq()}
+	</procedure>
+	
+	<!-- 중도완납내역 저장 -->
+	<parameterMap id="saveMidFullPymntListParam" class="java.util.HashMap">
+		<parameter property="mfpSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 중도완납순번		-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="cancDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 취소일자			-->
+		<parameter property="recvMon"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납년월			-->
+		<parameter property="endTp"			jdbcType="VARCHAR" mode="IN"/>	<!-- 해지구분			-->
+		<parameter property="procDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 장착일자			-->
+		<parameter property="totRentAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 총렌탈료			-->
+		<parameter property="recpAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납금액			-->
+		<parameter property="pnltAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 위약금			-->
+		<parameter property="servAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 추가납부금액		-->
+		<parameter property="totRecvAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 총수납금액		-->
+		<parameter property="recvRt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 회수율			-->
+		<parameter property="recpPay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납방법			-->
+		<parameter property="recvSeq"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납거래번호		-->
+		<parameter property="mfpRsnCd"		jdbcType="VARCHAR" mode="IN"/>	<!-- 완납해지사유코드	-->
+		<parameter property="mfpDesc"		jdbcType="VARCHAR" mode="IN"/>	<!-- 상세사유			-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.saveMidFullPymntList" resultClass="java.util.HashMap" parameterMap="saveMidFullPymntListParam">
+		{call PKG_RTRE0230.p_InsertRtsd0230MidFullPymnt(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 선수금관련 Seq 조회 -->
+	<parameterMap id="paramGetSeq0035" class="java.util.HashMap">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultGetSeq0035"/>
+		<parameter property="ordNo"	  jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호	-->
+	</parameterMap>
+	<resultMap id="resultGetSeq0035" class="java.util.HashMap">
+		<result property="rcrdDay" column="RCRD_DAY"/>
+		<result property="ractDay" column="RACT_DAY"/>
+		<result property="recvSeq" column="RECV_SEQ"/>
+		<result property="ritmSeq" column="RITM_SEQ"/>
+	</resultMap>
+	<procedure id="middleFullPayment.getSeq0035" resultClass="java.util.HashMap" parameterMap="paramGetSeq0035">
+		{call PKG_RTRE0230.p_sRtre0035SeqList(?, ?)}
+	</procedure>
+	
+	<!-- 카드선수납처리 -->
+	<parameterMap id="paramCrdPartClear" class="java.util.HashMap">
+		<parameter property="rcrdDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납일자					-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호					-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호					-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납거래번호				-->
+		<parameter property="ritmSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 거래일련번호				-->
+		<parameter property="type"			jdbcType="VARCHAR" mode="IN"/>	<!-- 처리구분 P : part A:All	-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID					-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.crdPartClear" resultClass="java.util.HashMap" parameterMap="paramCrdPartClear">
+		{call PKG_RTRE0035.p_UpdateRtre0035MfpPartClear(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌선수납처리 -->
+	<parameterMap id="paramAccPartClear" class="java.util.HashMap">
+		<parameter property="ractDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납일자					-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호					-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호					-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납거래번호				-->
+		<parameter property="ritmSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 거래일련번호				-->
+		<parameter property="type"			jdbcType="VARCHAR" mode="IN"/>	<!-- 처리구분 P : part A:All	-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID					-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="middleFullPayment.accPartClear" resultClass="java.util.HashMap" parameterMap="paramAccPartClear">
+		{call PKG_RTRE0035.p_UpdateRtre0035MfpPartClear(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDVisitInstallLog_pop" classname="RTSDVisitInstallLog_pop" left="0" top="0" width="475" height="485" titletext="New Form" onload="RTSDVisitInstallLog_pop_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="0" text="닫기" onclick="btn_close_onclick" left="217" top="455" width="41" height="21" domainId="nexa.save"/>
+        <Static id="Static04" taborder="1" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="474" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="2" text="변경이력" cssclass="sta_WF_subTitle" left="10" top="53" width="120" height="21"/>
+        <Static id="Static02" taborder="3" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="70" width="471" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_visitLogList" taborder="4" binddataset="ds_visitListLog" useinputpanel="false" oncellclick="grid_mrMonDecideCnt_oncellclick" left="9" top="80" width="455" height="365">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="34"/>
+                <Column size="69"/>
+                <Column size="41"/>
+                <Column size="53"/>
+                <Column size="62"/>
+                <Column size="77"/>
+                <Column size="68"/>
+                <Column size="64"/>
+                <Column size="64"/>
+                <Column size="65"/>
+                <Column size="116"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="순번"/>
+                <Cell col="1" text="방문일자"/>
+                <Cell col="2" text="시간"/>
+                <Cell col="3" text="상태"/>
+                <Cell col="4" text="세부상태"/>
+                <Cell col="5" text="연락처"/>
+                <Cell col="6" text="주소1"/>
+                <Cell col="7" text="주소2"/>
+                <Cell col="8" text="메모"/>
+                <Cell col="9" text="변경자"/>
+                <Cell col="10" text="변경일시"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:seq"/>
+                <Cell col="1" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:procDay" mask="####-##-##"/>
+                <Cell col="2" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:procTm" mask="##:##"/>
+                <Cell col="3" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:statNm"/>
+                <Cell col="4" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:statDtlNm"/>
+                <Cell col="5" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:mobNo"/>
+                <Cell col="6" displaytype="normal" style="align:center;" text="bind:addr1"/>
+                <Cell col="7" displaytype="normal" style="align:center;" text="bind:addr2"/>
+                <Cell col="8" displaytype="normal" style="align:center;" text="bind:memo"/>
+                <Cell col="9" displaytype="normal" style="align:center;" text="bind:chgId"/>
+                <Cell col="10" displaytype="normal" style="align:right;" text="bind:chgDt" mask="####-##-## ##:##:##"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" style="align:right;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="5" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="6" width="10" height="470" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="6" text="Div00" left="10" top="9" width="454" height="37" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_condOrdNo" taborder="151" text="계약번호" cssclass="sta_WF_schTitle" left="9" top="6" width="78" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_condOrdNo" taborder="152" lengthunit="ascii" maxlength="30" enable="false" left="86" top="6" width="109" height="21" tooltiptext="edit"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static05" taborder="7" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="464" top="6" width="10" height="470" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="9" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="445" width="471" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static06" taborder="10" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="47" width="471" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="11" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="476" width="471" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_visitListLog">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="reqDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="poscd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="statDtlCd" type="STRING" size="256"/>
+          <Column id="statDtlNm" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDVisitInstallLog_pop.xfdl
+ * 설    명 : 방문장착 변경이력 조회(팝업)
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2018-12-03	wjim		[20181122_01] 신규 개발
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDVisitInstallLog_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);	
+	this.div_search.ed_condOrdNo.set_value(this.parent.p_ordNo);
+	this.fn_searchListVisitLog();
+}
+
+/**
+ * 변경이력 조회
+ */
+this.fn_searchListVisitLog = function() {
+	// 기존 조회결과 초기화
+	this.ds_visitListLog.deleteAll();
+	
+	var sSvcID        	= "listVisitLog";                    
+	var sController   	= "rtms/sd/listVisitInstallLog.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_visitListLog=ds_visitListLog";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", this.div_search.ed_condOrdNo.value);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		case "listVisitLog":
+			var rowCt = this.ds_visitListLog.getRowCount();
+		
+ 			if (rowCt == 0) {
+ 				this.grid_visitLogList.set_nodatatext("조회된 데이터가 없습니다.");
+ 			}
+ 						
+			break;
+			
+		default:
+			break;
+	}
+}
+
+/**
+ * 닫기 버튼의 클릭 이벤트 처리
+ */
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

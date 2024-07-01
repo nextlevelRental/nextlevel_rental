@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rtlMasterInfo">
+	<!-- 렌탈마스터 조회 for COMBOBOX -->
+	<!-- START -->
+	<parameterMap id="rtlMsCBParam" class="java.util.Map">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRtlMsCB" />
+		<parameter property="cdGrpCd"  jdbcType="VARCHAR" mode="IN" />	<!-- 코드 그룹 코드	 -->
+		<parameter property="cdNm"     jdbcType="VARCHAR" mode="IN" />	<!-- 코드명         	 -->
+	</parameterMap>	
+	
+	<resultMap id="resultRtlMsCB" class="java.util.HashMap">
+		<result property="orderPt" 		column="ORDER_PT"	/>			<!-- 우선순위    	 	-->
+		<result property="cdNm" 		column="CD_NM"		/>			<!-- 코드     		-->
+		<result property="cd" 			column="CD"			/>			<!-- 코드명    	 	-->
+	</resultMap>
+	
+	<!-- 렌탈마스터 공통 코드 조회 -->	
+	<procedure id="rtlMasterInfo.RtlMasterCBList" parameterMap="rtlMsCBParam">
+		{call Pkg_Rtcm0110SEC.p_sRtcm0051_RtlMasterCBList(?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+	<!-- 렌탈 지사 / 지점 조회 for COMBOBOX -->
+	<!-- START -->
+	<parameterMap id="rtlHoBoCBParam" class="java.util.Map">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRtlHoBoCB" />
+		<parameter property="cdGrpCd1" jdbcType="VARCHAR" mode="IN" />	<!-- 코드 그룹 코드1	 -->
+		<parameter property="cdGrpCd2" jdbcType="VARCHAR" mode="IN" />	<!-- 코드 그룹 코드2 	 -->
+	</parameterMap>	
+	
+	<resultMap id="resultRtlHoBoCB" class="java.util.HashMap">
+		<result property="cdGrpCd" 		column="CD_GRP_CD"	/>			<!-- 코드 그룹 코드 	-->
+		<result property="cdGrpNm" 		column="CD_GRP_NM"  />			<!-- 코드 그룹 코드명 	-->
+	</resultMap>
+	
+	<!-- 렌탈마스터 지사  / 지점 공통 코드 조회 -->	
+	<procedure id="rtlMasterInfo.RtlMasterHoBoList" parameterMap="rtlHoBoCBParam">
+		{call Pkg_Rtcm0110SEC.p_sRtcm0051_RtlMasterHoBoList(?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+	<!-- 렌탈 마스터 정보 검색 -->
+	<!-- START -->
+	<parameterMap id="rtlMsParam" class="java.util.Map">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRtlMs" />
+		<parameter property="userNm"   jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 명 	 -->
+		<parameter property="userId"   jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 ID	 -->
+	</parameterMap>	
+	
+	<resultMap id="resultRtlMs" class="java.util.HashMap">
+		<result property="userId" 		column="USER_ID"	/>			<!-- RENTAL MASTER ID		-->
+		<result property="userNm" 		column="USER_NM"	/>			<!-- RENTAL MASTER NAME 	-->
+	</resultMap>
+	
+	<!-- 렌탈마스터 List -->	
+	<procedure id="rtlMasterInfo.RtlMasterList" parameterMap="rtlMsParam">
+		{call Pkg_Rtcm0110SEC.p_sRtcm0001_RtlMasterList(?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+	<!-- 렌탈 지사 지점 검색 -->
+	<!-- START -->
+	<parameterMap id="rtlHoBoParam" class="java.util.Map">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRtlHoBo" />
+		<parameter property="rntOfcNm" jdbcType="VARCHAR" mode="IN" />	<!-- 렌탈 지사 명	 	 -->
+		<parameter property="rntPntNm" jdbcType="VARCHAR" mode="IN" />	<!-- 렌탈 지점 명 	 -->
+		<parameter property="pntCd"    jdbcType="VARCHAR" mode="IN" />	<!-- 렌탈 지점 코드 	 -->
+		<parameter property="ofcCd"    jdbcType="VARCHAR" mode="IN" />	<!-- 렌탈 지사 코드 	 -->
+	</parameterMap>	
+	
+	<resultMap id="resultRtlHoBo" class="java.util.HashMap">
+		<result property="rntMstId" 	column="RNT_MST_ID"	/>		<!-- RENTAL MASTER ID -->
+		<result property="ofcGrpCd" 	column="OFC_GRP_CD" />		<!-- 렌탈 지사 그룹 코드	-->
+		<result property="pntGrpCd" 	column="PNT_GRP_CD"	/>		<!-- 렌탈 지점 그룹 코드	-->
+		<result property="ofcCd" 		column="OFC_CD"  	/>		<!-- 렌탈 지사 코드 	-->
+		<result property="ofcNm" 		column="OFC_NM" />			<!-- 렌탈 지사 명 	-->
+		<result property="pntCd" 		column="PNT_CD" />			<!-- 렌탈 지점 코드	-->
+		<result property="pntNm" 		column="PNT_NM" />			<!-- 렌탈 지점 명 -->	
+	</resultMap>
+	
+	<!-- 렌탈 지사 / 지점 List -->	
+	<procedure id="rtlMasterInfo.RtlHOBOList" parameterMap="rtlHoBoParam">
+		{call Pkg_Rtcm0110SEC.p_sRtcm0110_RtlHOBOList(?, ?, ?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+	
+	<!-- 렌탈 마스터 정보 검색 -->
+	<!-- START -->
+	<parameterMap id="rm01Param" class="java.util.Map">
+		<parameter property="vcursor"  		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rm01Result" />
+		<parameter property="rntMstId"   	jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 명 	 -->
+		<parameter property="rntMstNm"   jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 ID	 -->
+		<parameter property="useYn"   		jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 ID	 -->
+	</parameterMap>	
+	
+	<resultMap id="rm01Result" class="java.util.HashMap">
+		<result property="rntMstId" 			column="RNT_MST_ID"	/>				<!-- RENTAL MASTER ID		-->
+		<result property="rntMstNm" 		column="RNT_MST_NM"	/>			<!-- RENTAL MASTER NAME 	-->
+		<result property="mobNo" 			column="MOB_NO"	/>					<!-- RENTAL MASTER ID		-->
+		<result property="emailAddr" 		column="EMAIL_ADDR"	/>			<!-- RENTAL MASTER NAME 	-->
+		<result property="useYn" 				column="USE_YN"	/>					<!-- RENTAL MASTER NAME 	-->
+		<result property="piDstryYn" 			column="PI_DSTRY_YN"	/>			<!-- RENTAL MASTER NAME 	-->
+		<result property="piDstryId" 			column="PI_DSTRY_ID"	/>				<!-- RENTAL MASTER NAME 	-->
+		<result property="piDstryDt" 			column="PI_DSTRY_DT"	/>			<!-- RENTAL MASTER NAME 	-->
+		<result property="regId" 				column="REG_ID"	/>					<!-- RENTAL MASTER NAME 	-->
+	</resultMap>
+	
+	<!-- 렌탈마스터 List -->	
+	<procedure id="rtlMasterInfo.p_Rtcm0111" parameterMap="rm01Param">
+		{call Pkg_Rtcm0111.p_sRtcm0111(?, ?, ?, ?)}
+	</procedure>
+	<!-- END --> 
+	
+	<!-- 렌탈 마스터 IUD -->
+	<!-- START -->
+	<parameterMap id="rm02Param" class="java.util.Map">
+		<parameter property="dvsn"   				jdbcType="VARCHAR" mode="IN" />	<!-- 구분 	 -->
+		<parameter property="rntMstId"   			jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 ID	 -->
+		<parameter property="rntMstNm"   		jdbcType="VARCHAR" mode="IN" />	<!-- 사용자명	 -->
+		<parameter property="mobNo"  			jdbcType="VARCHAR" mode="IN" />	<!-- 휴대폰번호	 -->
+		<parameter property="emailAddr"   		jdbcType="VARCHAR" mode="IN" />	<!-- EMAIL	 -->
+		<parameter property="useYn"   				jdbcType="VARCHAR" mode="IN" />	<!-- 사용여부	 -->
+		<parameter property="piDstryYn"   			jdbcType="VARCHAR" mode="IN" />	<!-- 개인정보파기여부	 -->
+		<parameter property="piDstryId"   			jdbcType="VARCHAR" mode="IN" />	<!-- 개인정보파기ID	 -->
+		<parameter property="piDstryDt"   			jdbcType="VARCHAR" mode="IN" />	<!-- 개인정보파기일자	 -->
+		<parameter property="regId"   				jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 ID	 -->
+		<parameter property="successCode"   		jdbcType="VARCHAR" mode="OUT" />	<!-- 성공여부	 -->
+		<parameter property="returnMessage"   	jdbcType="VARCHAR" mode="OUT" />	<!-- returnMessage	 -->
+		<parameter property="errorText"   			jdbcType="VARCHAR" mode="OUT" />	<!-- errorText	 -->
+	</parameterMap>	
+	
+	<!-- 렌탈마스터 IUD -->	
+	<procedure id="rtlMasterInfo.p_IUDRtcm0111" parameterMap="rm02Param">
+		{call Pkg_Rtcm0111.p_IUDRtcm0111(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+	
+	<!-- 렌탈 마스터 정보 검색 -->
+	<!-- START -->
+	<parameterMap id="rm03Param" class="java.util.Map">
+		<parameter property="vcursor"  		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rm03Result" />
+		<parameter property="rntMstId"   	jdbcType="VARCHAR" mode="IN" />	<!-- 사용자 명 	 -->
+	</parameterMap>	
+	
+	<resultMap id="rm03Result" class="java.util.HashMap">
+	    <result property="chk" 				column="CHK"	/>						<!-- CHECK		-->
+		<result property="agencyCd" 		column="AGENCY_CD"	/>				<!-- 대리점코드		-->
+		<result property="agencyNm" 		column="AGENCY_NM"	/>			<!-- 대리점명 	-->
+		<result property="rntMstId" 			column="RNT_MST_ID"	/>				<!-- RENTAL MASTER ID		-->
+	</resultMap>
+	
+	<!-- 렌탈마스터 List -->	
+	<procedure id="rtlMasterInfo.p_Rtcm0112" parameterMap="rm03Param">
+		{call Pkg_Rtcm0112.p_sRtcm0112(?, ?)}
+	</procedure>
+	<!-- END --> 
+	
+	<!-- 렌탈 마스터 IUD -->
+	<!-- START -->
+	<parameterMap id="rm04Param" class="java.util.Map">
+		<parameter property="dvsn"   				jdbcType="VARCHAR" mode="IN" />	<!-- 구분 	 -->
+		<parameter property="rntMstId"   			jdbcType="VARCHAR" mode="IN" />	<!-- 렌탈마스터 ID	 -->
+		<parameter property="agencyCd"   			jdbcType="VARCHAR" mode="IN" />	<!-- 대리점코드	 -->
+		<parameter property="regId"   				jdbcType="VARCHAR" mode="IN" />	<!-- 등록자 ID	 -->
+		<parameter property="successCode"   		jdbcType="VARCHAR" mode="OUT" />	<!-- 성공여부	 -->
+		<parameter property="returnMessage"   	jdbcType="VARCHAR" mode="OUT" />	<!-- returnMessage	 -->
+		<parameter property="errorText"   			jdbcType="VARCHAR" mode="OUT" />	<!-- errorText	 -->
+	</parameterMap>	
+	
+	<!-- 렌탈마스터 IUD -->	
+	<procedure id="rtlMasterInfo.p_IUDRtcm0112" parameterMap="rm04Param">
+		{call Pkg_Rtcm0112.p_IUDRtcm0112(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	<!-- END -->
+	
+</sqlMap>

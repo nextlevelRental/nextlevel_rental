@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="그룹관리" onload="form_onload" onbeforeclose="form_onbeforeclose" left="0" width="1260" top="0" height="401">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_Group" taborder="3" position="absolute" useinputpanel="false" autofittype="col" left="0" right="0" top="93" bottom="40" binddataset="ds_group" domainId="nexa.group.id;nexa.name;nexa.use;nexa.dspt;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="104"/>
+                <Column size="139"/>
+                <Column size="34"/>
+                <Column size="282"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="그룹아이디"/>
+                <Cell col="1" text="그룹"/>
+                <Cell col="2" text="사용"/>
+                <Cell col="3" text="그룹설명"/>
+                <Cell col="4" text="등록일"/>
+                <Cell col="5" text="등록자"/>
+                <Cell col="6" text="수정일"/>
+                <Cell col="7" text="수정자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" text="bind:GROUP_ID"/>
+                <Cell col="1" displaytype="normal" edittype="normal" text="bind:GROUP_NM"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:USE_FG"/>
+                <Cell col="3" edittype="textarea" style="align:left;" text="bind:GROUP_DESC"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:CREATE_DT"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:CREATE_USER"/>
+                <Cell col="6" displaytype="date" edittype="none" text="bind:UPDATE_DT"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:UPDATE_USER"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="0" left="0" top="0" right="0" height="41" text="Div00" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="19" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" right="7" bottom="7" width="62" height="25" domainId="nexa.search"/>
+              <Static id="st_searchCondition" taborder="20" text="검색조건" cssclass="sta_WF_schTitle" left="20" top="0" width="64" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cmb_searchCondition" taborder="21" codecolumn="codecolumn" datacolumn="datacolumn" left="86" top="10" width="140" height="20" domainId="nexa.name;nexa.code">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">0</Col>
+                      <Col id="datacolumn">명칭</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">코드</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="edt_searchKeyword" taborder="22" onkeydown="edt_searchKeyword_onkeydown" left="228" top="10" width="260" height="20" onkeyup="div_search_edt_searchKeyword_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static27" taborder="2" text="h15" cssclass="Guide_color" visible="false" left="0" top="78" right="0" height="15"/>
+        <Div id="div_grid_bottom" taborder="4" left="0" right="0" bottom="21" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="28" cssclass="sta_WF_GridDis" left="0%" top="0" right="0%" bottom="0"/>
+              <Static id="sta_grid_cnt" taborder="29" text="Rows : 0" top="0" right="0" height="20" width="90"/>
+              <Static id="sta_msg" taborder="30" text="There is no data." left="0.48%" top="0" right="11%" height="20" style="color:#444444ff;"/>
+              <Button id="btn_find" taborder="31" onclick="div_grid_bottom_btn_find_onclick" cssclass="btn_WF_find" top="2" right="132" height="16" width="29"/>
+              <Button id="btn_format" taborder="32" onclick="div_grid_bottom00_btn_format_onclick" cssclass="btn_WF_format" top="2" right="164" height="16" _format="this.grd_Group" width="29"/>
+              <Button id="btn_excel00" taborder="33" cssclass="btn_WF_xls" top="2" right="100" height="16" _excel="this.grd_Group" width="29"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_grid_top" taborder="5" left="0%" top="55" right="0%" height="23" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_title" taborder="25" text="Records Found" cssclass="sta_WF_GridFound2" left="2.06%" top="3" right="87.46%" height="16"/>
+              <Static id="sta_total_cnt" taborder="26" text="0" cssclass="sta_WF_GridFound" left="0%" top="3" right="98.25%" height="16" style="align:right middle;"/>
+              <Button id="btn_add" taborder="27" text="추가" onclick="fn_add" cssclass="btn_WF_CRUD" top="0" right="128" height="23" domainId="nexa.add" width="58"/>
+              <Button id="btn_delete" taborder="28" text="삭제" onclick="fn_delete" cssclass="btn_WF_CRUD" top="0" right="68" height="23" domainId="nexa.delete" width="58"/>
+              <Button id="btn_save" taborder="29" text="저장" onclick="fn_save" cssclass="btn_WF_CRUD" top="0" right="7" height="23" domainId="nexa.save" width="58"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_GroupValid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="GROUP_ID" type="string" size="20"/>
+          <Column id="GROUP_NM" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="GROUP_ID">title:group.id,required:true</Col>
+            <Col id="GROUP_NM">title:group.name,required:true</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_group" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="ds_group_cancolumnchange">
+        <ColumnInfo>
+          <Column id="GROUP_ID" type="string" size="10"/>
+          <Column id="GROUP_NM" type="string" size="20"/>
+          <Column id="GROUP_DESC" type="string" size="100"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="GROUP_ID">USER</Col>
+            <Col id="GROUP_NM">사용자</Col>
+            <Col id="GROUP_DESC">사용자 그룹</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905203435000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905203435000</Col>
+          </Row>
+          <Row>
+            <Col id="GROUP_ID">ADMIN</Col>
+            <Col id="GROUP_NM">관리자</Col>
+            <Col id="GROUP_DESC">관리자 그룹</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905202039000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905202039000</Col>
+          </Row>
+          <Row>
+            <Col id="GROUP_ID">TEST</Col>
+            <Col id="GROUP_NM">테스트</Col>
+            <Col id="GROUP_DESC">테스트 그룹</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905202246000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906130349000</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Search" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <ConstColumn id="PageIndex" type="INT" size="30" value="1"/>
+          <ConstColumn id="PageSize" type="INT" size="30" value="5"/>
+          <ConstColumn id="PageUnit" type="INT" size="30" value="5"/>
+          <Column id="SEARCH_CONDITION" type="STRING" size="100"/>
+          <Column id="SEARCH_KEYWORD" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SEARCH_KEYWORD"/>
+            <Col id="SEARCH_CONDITION"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_GroupKey" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item17" compid="div_search.cmb_searchCondition" propid="value" datasetid="ds_Search" columnid="SEARCH_CONDITION"/>
+      <BindItem id="item18" compid="div_search.edt_searchKeyword" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 업무그룹 그룹등록관리
+ * 02. 그룹명   : GroupMgmt.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+/***********************************************************************
+ * Form Function
+ ************************************************************************/
+ 
+// Form Load 시 공통 기능 처리
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+	Ex.core.init(obj); 	
+}
+
+//사용자 정의 폼 로드 함수(form_init 고정)
+this.form_init = function(obj)
+{
+    this.fn_search();
+}
+
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+
+//목록조회 Search
+this.fn_search = function()
+{
+	var sSvcID        	= "search";                    
+    var sController   	= "nexacroController.do";
+    
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_group=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectGroupList");// Map형태
+    
+     if (this.div_search.cmb_searchCondition.value == 0)
+	{
+		sArgs += Ex.util.setParam("GROUP_NM",this.div_search.edt_searchKeyword.value);
+	}
+	else if (this.div_search.cmb_searchCondition.value == 1)
+	{
+		sArgs += Ex.util.setParam("GROUP_ID",this.div_search.edt_searchKeyword.value);
+	}
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+}
+
+//저장 save
+this.fn_save = function()
+{
+	var sSvcID        	= "save";                    
+    var sController   	= "nexacroController.do";
+
+    var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs = "";	
+	
+	sInDatasets   	= "input1=ds_group:U";
+	sOutDatasets  	= "";
+	sArgs += Ex.util.setParam("method","save"); 
+	sArgs += Ex.util.setParam("sqlId","modyfyGroup");   // Map형태
+	sArgs += Ex.util.setParam("forceSqlFlag","N");
+    
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs);
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		return ExtNx.core.comMsg("alert",strErrorMsg);		
+	}
+	
+	if (strSvcId == "search") 
+	{
+		this.fn_search_post();
+	}
+	
+	if (strSvcId == "save") 
+	{
+		this.fn_search();
+	}
+}
+
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+
+
+// 그룹 추가 버튼 클릭시 이벤트 처리
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var strGrpCd = this.ds_group.getColumn(this.ds_group.rowposition, "GROUP_CD");
+	var nRow = this.ds_group.addRow();
+	this.ds_group.setColumn(nRow, "GROUP_CD", strGrpCd);
+	
+	this.ds_group.setColumn(nRow,"CREATE_DT",this.Ex.util.todayTime());
+	this.ds_group.setColumn(nRow,"UPDATE_DT",this.Ex.util.todayTime());
+	this.ds_group.setColumn(nRow,"CREATE_USER","test");
+	this.ds_group.setColumn(nRow,"UPDATE_USER","test");
+}
+
+// 그룹 삭제 버튼 클릭시 이벤트 처리
+this.fn_delete = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_group.rowposition;
+	this.ds_group.deleteRow(nRow);
+}
+
+// Enter 키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13)
+	{
+		this.fn_search();
+	}
+}
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+
+
+this.fn_search_post = function()
+{
+	//페이징 없는 경우
+	var nTotalCnt = this.ds_group.rowcount;
+    var nCnt = this.ds_group.rowcount;
+
+	this.div_grid_top.sta_total_cnt.set_text(nTotalCnt);
+	this.div_grid_bottom.sta_grid_cnt.set_text("Rows : "+nTotalCnt);
+	this.div_grid_bottom.sta_msg.set_text("Select has been complted successfully.");	
+	this.div_grid_bottom.sta_grid_cnt.set_text("Rows : " + nCnt);
+}
+
+
+this.div_grid_bottom_btn_find_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfn_findPopup(this.grd_Group);
+}
+
+this.div_grid_bottom_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this.grd_Group);
+}
+]]></Script>
+  </Form>
+</FDL>

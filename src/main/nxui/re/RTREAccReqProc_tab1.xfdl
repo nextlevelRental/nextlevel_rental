@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAccReqProc_tab1" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="[STEP1] 계좌신청대상집계" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="10" top="134" width="1102" height="31"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" width="1102" height="82" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="54" text="계좌신청일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="55" dateformat="yyyy-MM-dd" left="131" top="12" width="120" height="21" value="null" onchanged="cal_accReqDate_onchanged"/>
+              <Static id="Static22" taborder="56" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="57" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="58" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="st_searchCondition00" taborder="59" text="결제정보변경일" cssclass="sta_WF_schTitle" left="19" top="41" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_fromGyeoljeil" taborder="60" dateformat="yyyy-MM-dd" left="130" top="45" width="120" height="21" enable="false" value="null"/>
+              <Static id="Static01" taborder="61" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="-1" top="33" width="20" height="45"/>
+              <Static id="Static02" taborder="62" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="66" right="431" height="12"/>
+              <Static id="Static46" taborder="63" text="5 px" visible="false" left="130" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static45" taborder="64" text="5 px" visible="false" left="125" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static23" taborder="65" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <Calendar id="cal_toGyeoljeil" taborder="66" dateformat="yyyy-MM-dd" left="284" top="45" width="120" height="21" value="null" onchanged="cal_toGyeoljeil_onchanged"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static02" taborder="4" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static46" taborder="5" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static47" taborder="6" text="5 px" visible="false" left="127" top="90" right="966" height="21" style="color:red;"/>
+        <Static id="Static05" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="93" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Edit id="edt_procStatus" taborder="8" left="144" top="139" width="963" height="21" enable="false"/>
+        <Static id="Static06" taborder="9" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="109" width="84" height="20"/>
+        <Static id="Static19" taborder="10" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="134" width="130" height="31"/>
+        <Static id="Static45" taborder="11" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static03" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="124" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="13" text="-" left="262" top="57" width="34" height="21" style="align:center middle;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > CMS관리 > 계좌신청처리 > [STEP1] 계좌신청대상집계
+ * 02. 그룹명   : RTREAccReqProc_tab1.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay = ""; 	//현재날짜
+	this.toHour = "";	//현재시간
+	this.bfAfDay = "";	//계좌신청일 
+	this.checkDay = "";	//영업일-5
+	this.prevDay = "";  //현재일자-1
+	this.rpcDay = "";  	//결제정보변경일
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 
+		this.fn_init();	
+		
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//전일(영업일) 조회
+		this.fn_getAccReqDate();
+		//조회조건 체크에 사용할 영업일-5일조회
+		this.fn_getCheckDate();		
+		//결제정보 변경일 조회
+		this.fn_getPayChgDate();			
+		//버튼초기화
+		this.fn_initBtn();		
+	}
+		 		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 	//---------------------------------------------------------------------------------
+	// 전일(영업일) 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getAccReqDate  = function() {
+		var sSvcID      	= "getAccReqDate";  
+		var sController   	= "ntrms/re/getAccReqDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("serchGb", '-');	
+		sArgs += Ex.util.setParam("days", 1);	
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}
+ 	//---------------------------------------------------------------------------------
+	// 전일(영업일) 조회 -5일
+	//---------------------------------------------------------------------------------
+	this.fn_getCheckDate  = function() {
+		var sSvcID      	= "getCheckDate";  
+		var sController   	= "ntrms/re/getCheckDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("serchGb", '-');	
+		sArgs += Ex.util.setParam("days", 5);	
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}	
+ 	//---------------------------------------------------------------------------------
+	// 결제정보 변경일 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getPayChgDate  = function() {
+		var sSvcID      	= "getPayChgDate";  
+		var sController   	= "ntrms/re/getPayChgDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+	
+ 	//---------------------------------------------------------------------------------
+	// 집계
+	//---------------------------------------------------------------------------------
+	this.fn_aggregate  = function() {
+	
+		if(nvl(this.div_search.cal_accReqDate.value) == "") {
+			alert('계좌신청일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}
+		if(nvl(this.div_search.cal_toGyeoljeil.value) == "") {
+			alert('결제정보변경일을 입력하세요');
+			this.div_search.cal_toGyeoljeil.setFocus();
+			return;
+		}
+					
+		this.edt_procStatus.set_value("");
+		
+		var sSvcID      	= "setAggregate";  
+		var sController   	= "ntrms/re/setAggregate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("acrqDay"	, nvl(this.div_search.cal_accReqDate.value));		//계좌신청일
+		sArgs += Ex.util.setParam("frRpcDay", nvl(this.div_search.cal_fromGyeoljeil.value));	//결제정보 변경시작일자
+		sArgs += Ex.util.setParam("toRpcDay", nvl(this.div_search.cal_toGyeoljeil.value));		//결제정보 변경종료일자
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "setAggregate") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);	
+			}	
+
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getAccReqDate":
+				//12시이후에는 계좌신청일 세팅 안함
+				if(parseInt(nvl(this.toHour,10)) >= 12) {
+					this.div_search.cal_accReqDate.set_value("");					
+				}
+				else {
+		
+					this.div_search.cal_accReqDate.set_value(this.bfAfDay);
+				}
+				break;
+			case "getCheckDate":
+				break;					
+			case "getPayChgDate":
+				this.div_search.cal_fromGyeoljeil.set_value(this.rpcDay);			
+				//TO일자가 FROM일자보다 작은경우 FROM일자로 세팅
+				if(parseInt(nvl(this.rpcDay) ,10) >= parseInt(nvl(this.prevDay),10)) {
+					this.div_search.cal_toGyeoljeil.set_value(this.rpcDay);				
+				}
+				else {
+					this.div_search.cal_toGyeoljeil.set_value(this.prevDay);
+				}	
+	
+			case "setAggregate":
+				//Ex.core.comMsg("alert",strErrorMsg);			
+				this.edt_procStatus.set_value(strErrorMsg);	
+				break;
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		//(영업일 이전5일 ~ 오늘)
+		if(parseInt(this.div_search.cal_accReqDate.value,10) < parseInt(this.checkDay,10) || parseInt(this.div_search.cal_accReqDate.value,10) > parseInt(this.toDay,10)) 
+		{
+			alert('처리할수 없는 계좌신청일입니다.');
+			this.div_search.cal_accReqDate.set_value("");			
+			this.div_search.cal_accReqDate.setFocus();
+			return;			
+		}
+	}	
+	
+	this.cal_toGyeoljeil_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		if(parseInt(this.div_search.cal_fromGyeoljeil.value,10) > parseInt(this.div_search.cal_toGyeoljeil.value,10)) 
+		{
+			alert('결제정보변경일 종료일자는 시작일자보다 이전날짜로 입력하실수 없습니다.');
+			this.div_search.cal_toGyeoljeil.set_value("");	
+			this.div_search.cal_toGyeoljeil.setFocus();
+			return;
+		}				
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("AG",this);			
+	}
+]]></Script>
+  </Form>
+</FDL>

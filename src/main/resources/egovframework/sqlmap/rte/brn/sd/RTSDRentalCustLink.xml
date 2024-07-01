@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rentalCustLink">
+	<resultMap id="rentalResultMap" class="java.util.HashMap">
+		<result property="grpCd"  column= "GRP_CD" />
+		<result property="grpNm"  column= "GRP_NM" />
+		<result property="cd"     column= "CD" />
+		<result property="cdNm"   column= "CD_NM" />
+	</resultMap>
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalResultMap" />
+		<parameter property="cdNm"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	<procedure id="rentalCustLink.listRentalCustLinkMstInfo" parameterMap="groupParam">
+		{call PKG_RTCM0110.p_sRentalCustMst(?, ?)}
+	</procedure>
+	
+	<resultMap id="custResultMap" class="java.util.HashMap">
+		<result property="chk"            column= "CHK" />
+		<result property="agencyCd"       column= "AGENCY_CD" />
+		<result property="agencyNm"       column= "AGENCY_NM" />
+		<result property="rentalGroup"    column= "RENTAL_GROUP" />
+		<result property="rentalOffice"   column= "RENTAL_OFFICE" />
+		<result property="prplYn"         column= "PRPL_YN" />
+		<result property="groupNm"         column= "GROUP_NM" />
+	</resultMap>
+	<parameterMap id="officeParam" class="java.util.Map">
+		<parameter property="vcursor"     jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="custResultMap" />
+		<parameter property="grpCd"  	  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cd"  	      mode="IN" jdbcType="VARCHAR" />
+		<parameter property="agencyGbn"   mode="IN" jdbcType="VARCHAR" />
+		<parameter property="agencyNm"    mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	<procedure id="rentalCustLink.listRentalCustLinkDtlInfo" parameterMap="officeParam">
+		{call PKG_RTCM0110.p_sRentalCustDtl(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRentalCust" class="java.util.Map">
+		<parameter property="dvsn" 			 jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyGbn" 	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalGroup"    mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalOffice"   mode="IN" jdbcType="VARCHAR" />
+		<parameter property="agencyCd"       mode="IN" jdbcType="VARCHAR" />
+		<parameter property="prplYn"         mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rentalCustLink.saveRentalCustLink" parameterMap="p_IUDRentalCust">
+		{call PKG_RTCM0110.p_IUDRentalCust(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 미반영판매자 조회 -->
+	<parameterMap id="paramUnRlsSelerList" class="java.util.Map">
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultUnRlsSelerList"/>
+		<parameter property="agencyGbn"	jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	<resultMap id="resultUnRlsSelerList" class="java.util.HashMap">
+		<result property="agencyCd"		  column= "AGENCY_CD"/>
+		<result property="agencyNm"		  column= "AGENCY_NM"/>
+	</resultMap>
+	<procedure id="rentalCustLink.retrieveUnRlsSelerList" parameterMap="paramUnRlsSelerList">
+		{call PKG_RTCM0110.p_sUnRlsSelerList(?, ?)}
+	</procedure>
+</sqlMap>

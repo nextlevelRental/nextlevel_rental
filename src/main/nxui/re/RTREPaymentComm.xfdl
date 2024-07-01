@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREPaymentComm" classname="RTREPaymentComm" left="0" top="0" width="1147" height="496" titletext="수납공통화면" onload="RTREPaymentComm_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="RTREPaymentCommTab" taborder="0" left="0" top="0" right="25" height="496" tabindex="0" scrollbars="autoboth" style="showextrabutton:false;" onchanged="RTREPaymentCommTab_onchanged">
+          <Tabpages>
+            <Tabpage id="RTREPaymentComm_tab1" text="연체금" url="re::RTREPaymentComm_tab1.xfdl"/>
+            <Tabpage id="RTREPaymentComm_tab2" text="선납할인" url="re::RTREPaymentComm_tab2.xfdl"/>
+            <Tabpage id="RTREPaymentComm_tab3" text="중도완납" url="re::RTREPaymentComm_tab3.xfdl"/>
+            <Tabpage id="RTREPaymentComm_tab4" text="수금취소" url="re::RTREPaymentComm_tab4.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static01" taborder="1" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 수금관리 > 수납공통화면
+ * 02. 그룹명		: RTREPaymentComm.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2018-11-09
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2018-11-09		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.p_arg = "RTREPaymentComm";
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.RTREPaymentComm_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+}
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+this.RTREPaymentCommTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo) {
+	switch(obj.tabindex) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		default:
+			break;
+	}
+}]]></Script>
+  </Form>
+</FDL>

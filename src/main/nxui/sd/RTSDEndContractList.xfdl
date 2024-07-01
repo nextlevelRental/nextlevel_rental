@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDEndContractList" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="계약만료대상 조회" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="46" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="22" text="만료일자" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="Calendar02" taborder="34" dateformat="yyyy-MM-dd" left="219" top="10" width="100" height="21" value="null" onchanged="Div00_Calendar02_onchanged" canchange="Div00_Calendar02_canchange"/>
+              <Static id="Static07" taborder="35" text="~" left="207" top="10" width="9" height="21"/>
+              <Calendar id="Calendar01" taborder="36" dateformat="yyyy-MM-dd" left="105" top="10" width="100" height="21" value="null"/>
+              <Static id="Static26" taborder="42" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1147" height="12"/>
+              <Static id="Static00" taborder="43" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" width="1147" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="61" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1122" height="431">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="50"/>
+                <Column size="177"/>
+                <Column size="160"/>
+                <Column size="91"/>
+                <Column size="72"/>
+                <Column size="55"/>
+                <Column size="36"/>
+                <Column size="57"/>
+                <Column size="44"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="고객명"/>
+                <Cell col="1" text="휴대폰번호"/>
+                <Cell col="2" text="우편번호"/>
+                <Cell col="3" text="주소"/>
+                <Cell col="4" text="상세주소"/>
+                <Cell col="5" text="주문번호"/>
+                <Cell col="6" text="상품"/>
+                <Cell col="7" text="장착일자"/>
+                <Cell col="8" text="본수"/>
+                <Cell col="9" text="기간"/>
+                <Cell col="10" text="계약만료일"/>
+                <Cell col="11" text="타이어무상교체"/>
+                <Cell col="12" text="엔진오일"/>
+                <Cell col="13" text="위치교환"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:custNm"/>
+                <Cell col="1" displaytype="normal" edittype="none" text="bind:mobNo"/>
+                <Cell col="2" displaytype="normal" text="bind:posCd" calendardisplaynulltype="none"/>
+                <Cell col="3" displaytype="normal" text="bind:addr1" calendardisplaynulltype="none"/>
+                <Cell col="4" displaytype="normal" text="bind:addr2" calendardisplaynulltype="none"/>
+                <Cell col="5" text="bind:ordNo"/>
+                <Cell col="6" displaytype="normal" text="bind:matNm" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="normal" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="8" text="bind:cntCd"/>
+                <Cell col="9" text="bind:periodCd"/>
+                <Cell col="10" text="bind:osDayT"/>
+                <Cell col="11" text="bind:serv07"/>
+                <Cell col="12" text="bind:serv01"/>
+                <Cell col="13" text="bind:serv02"/>
+              </Band>
+              <Band id="summary">
+                <Cell displaytype="number" expr="dataset.getCountNF(0)"/>
+                <Cell col="1" text="건"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="46"/>
+        <Static id="Static10" taborder="8" cssclass="Guide_color" visible="false" left="0" top="46" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="osDayT" type="STRING" size="256"/>
+          <Column id="serv07" type="STRING" size="256"/>
+          <Column id="serv01" type="STRING" size="256"/>
+          <Column id="serv02" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.firstDate  = "";
+this.lastDate  = "";
+this.orgToDate = "";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.get_date();
+	this.parent.setButton("E|S", this);
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var endFDay = 			nvl(this.Div00.Calendar01.value); //접수일자FROM	
+	var endTDay = 			nvl(this.Div00.Calendar02.value); //접수일자TO
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/rtms/sd/listEndContract.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=listEndContract";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("endFDay", endFDay);
+	sArgs += Ex.util.setParam("endTDay", endTDay);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	if(strSvcId == "getDate") {
+		this.Div00.Calendar01.set_value(this.firstDate);
+		this.Div00.Calendar02.set_value(this.lastDate);
+	}
+	if (strSvcId == "searchList") 
+	{
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		} else {
+			//this.dsList.set_keystring("S:custNo+ordNo");
+		}
+	}
+	
+}
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+]]></Script>
+  </Form>
+</FDL>

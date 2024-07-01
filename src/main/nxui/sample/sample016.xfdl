@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample016" classname="testHtml" left="0" top="0" width="1260" height="641" titletext="webbrowser아규먼트전달" onload="testHtml_onload">
+    <Layouts>
+      <Layout>
+        <GroupBox id="GroupBox00" text="Example" taborder="5" left="44" top="42" right="0" height="224" style="font:bold 9 Verdana;"/>
+        <WebBrowser id="web" left="40" top="332" width="398" height="164" taborder="0" onusernotify="web_onusernotify"/>
+        <Button id="btn_run" taborder="1" text="(실행)아규먼트전달" left="145" top="283" width="115" height="40" onclick="Button00_onclick"/>
+        <Edit id="edit_input" taborder="2" left="43" top="285" width="92" height="37" value="arg1234" style="border:1 none #6b6b6bff ;"/>
+        <Static id="Static01" taborder="3" text="1.webbrowser아규먼트전달" cssclass="sample_Title" left="41" top="8" width="332" height="36"/>
+        <Static id="Static03" taborder="4" text="webbrowser에 해당 uirl link sample::test.html 참조&#13;&#10;&#13;&#10;&#9;var doc = this.web.document;&#9;&#9;&#9;&#9;&#9;&#9;        &#13;&#10;&#9;var objTxt = doc.getElementById(&quot;resultText&quot;);  &#13;&#10;&#9;var objBtn = doc.getElementById(&quot;btnTest1&quot;);    &#13;&#10;&#9;                                                &#13;&#10;&#9;if(objTxt){                                     &#13;&#10;&#9;                                                &#13;&#10;&#9;&#9;objTxt.value = this.edit_input.value;         &#13;&#10;&#9;&#9;                                              &#13;&#10;&#9;//&#9;this.sleep(100);                            &#13;&#10;&#9;&#9;objBtn.click();                               " cssclass="sample_example" left="56" top="60" right="10" height="188"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : 
+* BUSINESS    : 
+* FILE NAME   : 
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+   //폼로드시 공통함수 
+   Ex.core.init(obj);
+}
+
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+		var doc = this.web.document;						
+	var objTxt = doc.getElementById("resultText");  
+	var objBtn = doc.getElementById("btnTest1");
+	
+	if(objTxt){
+	
+		objTxt.value = this.edit_input.value;
+		objBtn.click();
+	}
+	//this.WebBrowser00.document.onload.fn_test('aaaaaaaaaaa');
+}
+
+this.WebBrowser00_onloadcompleted = function(obj:WebBrowser, e:nexacro.WebLoadCompEventInfo)
+{
+
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.WebBrowser00.("fn_test()","aa");
+	//this.WebBrowser00.document.fn_test("aaaa");
+		
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.Plugin00.call
+}
+
+this.testHtml_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		//this.Plugin00.Navigate2("http://localhost/test.html");
+}
+
+
+this.fn_callBack = function(param)
+{
+	this.Edit00.set_value(param);
+}
+
+this.web_onusernotify = function(obj:WebBrowser, e:nexacro.WebTitleChangeEventInfo)
+{
+	alert("TOBE:" + e.userdata);
+}
+]]></Script>
+  </Form>
+</FDL>

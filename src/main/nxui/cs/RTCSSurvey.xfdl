@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test_form" classname="test_form" left="0" top="0" width="1147" height="496" titletext="해피콜설문 정의" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="17" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="18" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="Button37" taborder="20" text="추가" onclick="btnAdd_onclick" cssclass="btn_WF_module" top="58" right="25" width="45" height="22"/>
+        <Grid id="Grid00" taborder="6" binddataset="dsList" useinputpanel="false" autofittype="col" top="86" height="410" left="0" right="25">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="50"/>
+                <Column size="70"/>
+                <Column size="300"/>
+                <Column size="30"/>
+                <Column size="30"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="질문번호"/>
+                <Cell col="2" text="질문유형"/>
+                <Cell col="3" text="질문내용"/>
+                <Cell col="4" text="사용여부"/>
+                <Cell col="5" text="정렬순서"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="combo" text="bind:jobTp" editlimit="2" editlengthunit="ascii" combodataset="dsJobTp" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="1" displaytype="normal" edittype="text" text="bind:questionNo" editlimit="3" editlengthunit="ascii"/>
+                <Cell col="2" text="bind:questionTpNm"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:question" editlimit="2000" editlengthunit="ascii"/>
+                <Cell col="4" displaytype="normal" edittype="combo" text="bind:useYn" editlimit="1" editlengthunit="ascii" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="5" edittype="text" text="bind:sortSeq"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="12" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="24" text="상담유형" cssclass="sta_WF_schTitle" top="0" height="41" domainId="nexa.s_condition" width="71" left="20"/>
+              <Edit id="edt_searchKeyword" taborder="26" onkeyup="div_search_edt_searchKeyword_onkeyup" top="10" height="20" displaynulltext="전체" maxlength="3" lengthunit="ascii" width="140" left="88"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="15" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="21" text="상담등록" cssclass="sta_WF_subTitle" left="0" top="61" width="81" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onvaluechanged="dsList_onvaluechanged">
+        <ColumnInfo>
+          <Column id="jobTp" type="STRING" size="256"/>
+          <Column id="jobTpNm" type="STRING" size="256"/>
+          <Column id="questionNo" type="STRING" size="256"/>
+          <Column id="questionTpNm" type="STRING" size="256"/>
+          <Column id="question" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="sortSeq" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsJobTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPram" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="questionTpNm" type="STRING" size="256"/>
+          <Column id="question" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("E|C|S", this);
+}
+
+//상담유형세팅
+this.fn_init = function(){
+	var sSvcID      	= "initCombo";  
+	var sController   	= "/ntrms/cs/initSurvey.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsJobTp=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//추가
+this.btnAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsList.addRow();
+	//var nRow = this.dsList.rowposition ;
+	//this.dsList.setColumn( nRow, "answerNo", 100);
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var jobTp = 	nvl(this.div_search.edt_searchKeyword.value); //상담유형
+	
+	var sSvcID        	= "surveyList";                    
+	var sController   	= "/ntrms/cs/surveyList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= "jobTp="+jobTp;
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//질문 조회
+this.question_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var answerNo = 	nvl(this.div_search.edt_searchKeyword.value); //상담유형
+	
+	var sSvcID        	= "surveyList";                    
+	var sController   	= "/ntrms/cs/surveyList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= "answerNo="+answerNo;	
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);				
+			return;
+		} 
+		
+		if(strSvcId == "questionList") {
+			var questionTpNm = this.dsPram.getColumn(0, "questionTpNm");
+			var question = this.dsPram.getColumn(0, "question");
+			
+			var nRow = this.dsList.rowposition ;
+			this.dsList.setColumn(nRow,"questionTpNm"  , questionTpNm);	
+			this.dsList.setColumn(nRow, "question", question);
+			
+		}
+		
+		if (strSvcId == "saveData") 
+		{
+			alert(strErrorMsg);
+			//this.fn_search();
+		}
+	}
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.dsList.rowposition ;
+		var questionNo = nvl(this.dsList.getColumn(nRow, "questionNo"));
+		
+		if(questionNo == "" || questionNo == null || questionNo.length == 0) {
+			alert("질문번호를 입력해주세요.")
+			return;
+		}
+		
+		if(questionNo.length != 3) {
+			alert("질문번호 3자리수로");
+			return;
+		}
+		
+		var sSvcID        	= "saveData";
+		var sController   	= "/ntrms/cs/surveySaveDaset.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=dsList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+this.dsList_onvaluechanged = function(obj:Dataset,  e:nexacro.DSColChangeEventInfo)
+{
+	if(e.columnid == "questionNo") {
+		var nRow = this.dsList.rowposition ;
+		var questionNo = nvl(this.dsList.getColumn(nRow, "questionNo"));
+	
+		var sSvcID        	= "questionList";                    
+		var sController   	= "/ntrms/cs/questionList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsPram=output";
+		var sArgs 			= "questionNo="+questionNo;	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

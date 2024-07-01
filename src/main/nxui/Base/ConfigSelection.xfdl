@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configSelection" classname="config_xaxis" left="0" top="0" width="320" height="382" titletext="차트 selection 설정" style="background:#d4d9dfff;" onload="configTooltip_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="Selection" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static09" taborder="36" text="borderColor" left="6.25%" top="230" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="37" text="borderStyle" left="6.25%" top="156" right="46.88%" height="20"/>
+        <Static id="Static02" taborder="47" text="mode" left="6.25%" top="97" right="46.88%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.81%" top="54" right="6.25%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus" readonly="true"/>
+        <Static id="Static25" taborder="97" left="6.25%" top="136" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Combo id="cmb_borderStyle" taborder="156" innerdataset="@ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="154" right="5.94%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <Static id="Static07" taborder="157" text="borderWidth" left="6.25%" top="193" right="46.88%" height="20"/>
+        <Edit id="edt_borderColor" taborder="159" left="52.81%" top="228" right="6.56%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <Static id="Static10" taborder="161" text="backgroundColor" left="6.25%" top="267" right="46.88%" height="20"/>
+        <Edit id="edt_backgroundColor" taborder="162" left="52.81%" top="265" right="6.25%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <Static id="Static16" taborder="163" left="6.25%" top="304" right="46.88%" height="20" text="backgroundOpacity"/>
+        <Combo id="cmb_mode" taborder="177" innerdataset="ds_smode" codecolumn="code" datacolumn="data" left="52.81%" top="91" right="5.94%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <CheckBox id="chk_zoom" taborder="178" left="52.81%" top="340" right="6.25%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus" cssclass="WF_chk_Switch"/>
+        <Static id="Static00" taborder="179" text="zoom" left="6.25%" top="342" right="46.88%" height="20"/>
+        <MaskEdit id="mae_scrollOffset" taborder="180" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="191" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_backgroundOpacity" taborder="181" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="302" right="6.88%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item24" compid="cmb_borderStyle" propid="value" datasetid="ds_selection" columnid="borderStyle"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_selection" columnid="id"/>
+      <BindItem id="item5" compid="edt_borderColor" propid="value" datasetid="ds_selection" columnid="borderColor"/>
+      <BindItem id="item7" compid="edt_backgroundColor" propid="value" datasetid="ds_selection" columnid="backgroundColor"/>
+      <BindItem id="item1" compid="cmb_mode" propid="value" datasetid="ds_selection" columnid="mode"/>
+      <BindItem id="item2" compid="chk_zoom" propid="value" datasetid="ds_selection" columnid="zoom"/>
+      <BindItem id="item3" compid="mae_scrollOffset" propid="value" datasetid="ds_selection" columnid="borderWidth"/>
+      <BindItem id="item17" compid="mae_backgroundOpacity" propid="value" datasetid="ds_selection" columnid="backgroundOpacity"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var	parent = this.parent;
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

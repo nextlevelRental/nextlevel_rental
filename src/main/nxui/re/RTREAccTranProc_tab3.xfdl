@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAccTranProc_tab3" classname="re00050_cms" left="0" top="0" width="1147" height="496" titletext="[STEP3] 파일생성" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="45" text="출금이체 청구일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="46" dateformat="yyyy-MM-dd" left="131" top="12" width="120" height="21" value="null" onchanged="cal_accReqDate_onchanged"/>
+              <Static id="Static22" taborder="47" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="48" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="49" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="50" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <FileDownload id="FileDownload" taborder="51" retry="0" text="다운" visible="false" left="692" top="6" width="38" height="28"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="2" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static45" taborder="3" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="4" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static47" taborder="5" text="5 px" visible="false" left="127" top="53" right="966" height="21" style="color:red;"/>
+        <Static id="Static21" taborder="6" text="파일생성 위치" cssclass="sta_WF_subTitle" left="10" top="72" width="101" height="20"/>
+        <Static id="Static02" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="8" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="9" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="207" width="1127" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="10" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="240" width="1127" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static17" taborder="11" cssclass="sta_WF_detailLabel2" left="10" top="250" width="1103" height="31"/>
+        <Edit id="edt_procStatus" taborder="12" left="144" top="255" width="964" height="21" enable="false"/>
+        <Static id="Static19" taborder="13" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="250" width="130" height="31"/>
+        <Static id="Static06" taborder="14" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="223" right="1028" height="20"/>
+        <Static id="Static09" taborder="15" cssclass="sta_WF_detailLabel2" left="10" top="97" width="1103" height="31"/>
+        <Static id="Static11" taborder="16" cssclass="sta_WF_detailLabel2" left="10" top="127" width="1103" height="31"/>
+        <Edit id="edt_fileLocalLoc" taborder="17" left="144" top="102" width="964" height="21" enable="false"/>
+        <Static id="Static08" taborder="18" cssclass="sta_WF_detailLabel" left="10" top="97" width="130" height="31"/>
+        <Edit id="edt_fileSvrLoc" taborder="19" left="144" top="132" width="964" height="21" enable="false"/>
+        <Static id="Static10" taborder="20" cssclass="sta_WF_detailLabel" left="10" top="127" width="130" height="31"/>
+        <Button id="btn_send" taborder="21" text="전송완료" left="1041" top="70" width="71" height="22" cssclass="btn_WF_module" enable="false"/>
+        <Radio id="rdo_locPos" taborder="22" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="1" onitemclick="rdo_locPos_onitemclick" left="18" top="104" width="120" height="20">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">CMS Pro</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static12" taborder="23" text="* CMS Pro를 이용하여 파일 전송 후 전송완료 처리를 하시기 바랍니다." cssclass="sta_WF_text" left="9" top="178" width="635" height="20"/>
+        <Static id="Static13" taborder="24" text="* 미처리시 이후 작업이 진행되지 않습니다. " cssclass="sta_WF_text" left="9" top="193" width="635" height="20"/>
+        <Radio id="rdo_svrPos" taborder="25" codecolumn="codecolumn" datacolumn="datacolumn" value="0" onitemclick="rdo_svrPos_onitemclick" left="18" top="133" width="120" height="20">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">Server</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="sta_fileDesc" taborder="27" text="* 파일저장은 반드시 C:\CMS\99$$$$$$$$(기관번호)\EB21 경로에 하시기 바랍니다." cssclass="sta_WF_text" left="9" top="162" width="635" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rqstDay" type="STRING" size="256"/>
+          <Column id="fileNm" type="STRING" size="256"/>
+          <Column id="rowSeq" type="STRING" size="256"/>
+          <Column id="fileTp" type="STRING" size="256"/>
+          <Column id="fileSeq" type="STRING" size="256"/>
+          <Column id="rowData" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R016" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cdDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > CMS관리 > 출금이체처리 > [STEP3] 파일생성
+ * 02. 그룹명   : RTREAccTranProc_tab3.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 			= ""; 	//현재날짜
+	this.toHour 		= "";	//현재시간
+	this.bfAfDay 		= "";	//계좌신청일 	 
+	this.bSuccFileDn 	= true;	//파일다운로드성공여부
+	this.crlfYn			= ""; 	//CRLF여부	
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//출금이체청구일조회(익일영업일)
+		this.fn_getAccReqDate();
+		//공통코드조회
+		this.fn_getCommCode();					
+		//버튼초기화		
+		this.fn_initBtn();		
+	} 			 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 	//---------------------------------------------------------------------------------
+	// 공통코드 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getCommCode  = function() {
+		var sSvcID      	= "getCommCode";  
+		var sController   	= "ntrms/re/getAccTranProcCommCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_R016=outputR016";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+ 	//---------------------------------------------------------------------------------
+	// 익일(영업일) 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getAccReqDate  = function() {
+		var sSvcID      	= "getAccReqDate";  
+		var sController   	= "ntrms/re/getAccReqDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("serchGb", '+');	
+		sArgs += Ex.util.setParam("days", 1);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}
+  	//---------------------------------------------------------------------------------
+	// 다운
+	//---------------------------------------------------------------------------------
+	this.fn_down  = function() {
+		this.fn_makeData();		
+	}	
+	
+  	//---------------------------------------------------------------------------------
+	// 파일생성
+	//---------------------------------------------------------------------------------
+	this.fn_createFile = function() {
+		var rqstDay = this.ds_list.getColumn(0,"rqstDay");
+		var fileNm 	= this.ds_list.getColumn(0,"fileNm");
+		var rowSeq 	= this.ds_list.getColumn(0,"rowSeq");
+		var fileTp 	= this.ds_list.getColumn(0,"fileTp");		
+		var gubun 	= "EB21";
+		var delYn	= "N";				
+		var param = "?rqstDay=" + rqstDay;
+			param += "&fileNm=" + fileNm;
+			param += "&rowSeq=" + rowSeq;			
+			param += "&fileTp=" + fileTp;					
+			param += "&gubun="  + gubun;					
+			param += "&crlfYn=" + this.crlfYn;		
+			param += "&delYn="  + delYn;					
+		location.href = application.gv_host+"/createFile.do"+param;		
+	/*
+		var rqstDay = nvl(this.div_search.cal_accReqDate.value);
+		var fileNm = "EB21" + "" + rqstDay.substr(4,4);
+		var gubun 	= "EB21";
+		var fileTp 	= "EB21";
+		location.href = application.gv_host+"/createFile.do?rqstDay=" + rqstDay+ "&fileNm="+fileNm+"&fileTp="+fileTp+"&gubun="+gubun;
+	*/	
+	}
+  	//---------------------------------------------------------------------------------
+	// 송신데이터 생성
+	//---------------------------------------------------------------------------------	
+	this.fn_makeData = function() {
+		var rqstDay = nvl(this.div_search.cal_accReqDate.value);
+		if(rqstDay == "") {
+			alert('출금이체청구일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}		
+		this.edt_procStatus.set_value("");		
+		var sSvcID      	= "accTranMakeData";  
+		var sController   	= "ntrms/re/accTranMakeData.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("rqstDay"	, nvl(this.div_search.cal_accReqDate.value));		//요청일자	
+		sArgs += Ex.util.setParam("fileTp"	, "EB21");		//송수신 파일구분
+		sArgs += Ex.util.setParam("fileNm"	, "EB21" + "" + nvl(this.div_search.cal_accReqDate.value).substr(4,4));		//파일명	
+		
+		// EAI I/F 수행시간을 고려하여 timeout 시간(초) 조정 (default = 60 sec)
+		application.set_httptimeout(1800);
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 			
+	}	
+  	//---------------------------------------------------------------------------------
+	// 전송완료
+	//---------------------------------------------------------------------------------	
+	this.fn_send = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		if(nvl(this.div_search.cal_accReqDate.value) == "") {
+			alert('출금이체청구일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}
+		this.edt_procStatus.set_value("");			
+		var sSvcID      	= "confirmProc";  
+		var sController   	= "ntrms/re/confirmProc.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("fileTp"	, "EB21");		//송수신파일구분
+		sArgs += Ex.util.setParam("rqstDay"	, nvl(this.div_search.cal_accReqDate.value));		//요청일자
+		sArgs += Ex.util.setParam("fileNm"	, "EB21" + "" + nvl(this.div_search.cal_accReqDate.value).substr(4,4));		//파일명	
+		sArgs += Ex.util.setParam("cnfStep"	, "TRAN");		//송신처리단계
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "confirmProc") {
+				this.edt_procStatus.set_value(strErrorMsg);
+				return;
+			}
+			else if(strSvcId == "accTranMakeData") {
+				this.btn_send.set_enable(false);				
+				this.edt_procStatus.set_value(strErrorMsg);
+				return;
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);		
+			}
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getCommCode":
+				var sFileLoc = nvl(this.ds_R016.lookup("cd","EB21","cdDesc"));
+				this.edt_fileLocalLoc.set_value(sFileLoc);		
+				this.sta_fileDesc.set_text("* 파일저장은 반드시 " + sFileLoc + " 경로에 하시기 바랍니다.");								
+				break;			
+			case "getAccReqDate":
+				//17시이후에는 출금이체청구일 세팅 안함
+				if(parseInt(nvl(this.toHour,10)) >= 17) {
+					this.div_search.cal_accReqDate.set_value("");					
+				}
+				else {
+					this.div_search.cal_accReqDate.set_value(this.bfAfDay);
+				}
+				break;
+			case "accTranMakeData":
+				this.btn_send.set_enable(true);				
+				this.edt_procStatus.set_value(strErrorMsg);			
+				this.fn_createFile();
+				break;
+			case "confirmProc":		
+				this.edt_procStatus.set_value(strErrorMsg);
+				break;		
+				
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 출금이체청구일 변경이벤트
+    //-------------------------------------------------------------------------------  	
+    this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			var lastDay =   Eco.date.getLastDayOfMonth(this.bfAfDay);
+			this.validDate = this.bfAfDay.substr(0,6) + "" + lastDay;
+			if(parseInt(accReqDate,10) < this.bfAfDay || parseInt(accReqDate,10) > this.validDate) 
+			{
+				alert('출금이체청구일은 영업일기준 익일에서 말일까지만 선택가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('출금이체청구일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}
+    //-------------------------------------------------------------------------------  	
+	// 전송완료 클릭 이벤트
+    //-------------------------------------------------------------------------------  		
+	this.btn_send_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_send();
+	}	
+    //-------------------------------------------------------------------------------  	
+	// 파일생성위치 클릭 이벤트
+    //-------------------------------------------------------------------------------  		
+	this.rdo_locPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{
+		this.rdo_locPos.set_value("1");		
+		this.rdo_svrPos.set_value("0");	
+	}
+    //-------------------------------------------------------------------------------  	
+	// 파일생성위치 클릭 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.rdo_svrPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{
+		this.rdo_locPos.set_value("0");		
+		this.rdo_svrPos.set_value("1");		
+	}
+	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("DN",this);		
+		this.edt_procStatus.set_value("");		
+		this.btn_send.set_enable(false);				
+	}]]></Script>
+  </Form>
+</FDL>

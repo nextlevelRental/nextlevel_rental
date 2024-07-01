@@ -1,0 +1,1422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="popup">
+	<resultMap id="resultAgencypop" class="java.util.HashMap">
+		<result property="agencyCd"  		column="AGENCY_CD" />
+		<result property="agencyNm"  		column="AGENCY_NM" />
+		<result property="salesGroup"  		column="SALES_GROUP" />
+		<result property="salesGroupNm"  	column="SALES_GROUP_NM" />
+		<result property="salesOffice"  	column="SALES_OFFICE" />
+		<result property="salesOfficeNm"  	column="SALES_OFFICE_NM" />
+		<result property="posCd"  			column="POS_CD" />
+		<result property="city"  			column="CITY" />
+		<result property="street"  			column="STREET" />
+		<result property="sidoCd"  			column="SIDO_CD" />
+		<result property="sigunCd"  		column="SIGUN_CD" />
+		<result property="serNo"  			column="SER_NO" />
+		<result property="telNo"  			column="TEL_NO" />
+		<result property="mobNo"  			column="MOB_NO" />
+		<result property="faxNo"  			column="FAX_NO" />
+		<result property="taxNo"  			column="TAX_NO" />
+		<result property="repNm"  			column="REP_NM" />
+		<result property="busiType"  		column="BUSI_TYPE" />
+		<result property="busiCond"  		column="BUSI_COND" />
+		<result property="rentalYn"  		column="RENTAL_YN" />
+		<result property="strDay"  			column="STR_DAY" />
+		<result property="endDay"  			column="END_DAY" />
+		<result property="posX"  			column="POS_X" />
+		<result property="posY"  			column="POS_Y" />
+		<result property="useYn"  			column="USE_YN" />
+		<result property="regId"  			column="REG_ID" />
+		<result property="regNm"  			column="REG_NM" />
+		<result property="regDt"  			column="REG_DT" />
+		<result property="chgId"  			column="CHG_ID" />
+		<result property="chgNm"  			column="CHG_NM" />
+		<result property="chgDt"  			column="CHG_DT" />
+		<result property="lmYn"  			column="LM_YN" />
+		<result property="fmYn"  			column="FM_YN" />
+		<result property="lifnr"  			column="LIFNR" />
+		<result property="taxRqcd" 			column="TAX_RQCD" />
+		<result property="chanLclsNm" 		column="CHAN_LCLS_NM" />
+		<result property="chanMclsNm" 		column="CHAN_MCLS_NM" />
+		<result property="chanLclsCd" 		column="CHAN_LCLS_CD" />
+		<result property="chanMclsCd" 		column="CHAN_MCLS_CD" />
+		<result property="taxRqcdNm" 		column="TAX_RQCD_NM" />
+		<result property="cwYn" 			column="CW_YN" />
+		<result property="chYn"		 		column="CH_YN" />
+		<result property="opYn"		 		column="OP_YN" />
+		<result property="memo"		 		column="MEMO"  />
+		<result property="desorptCd"  	    column="DESORPT_CD"       /> <!-- 20180312_01 -->
+		<result property="desorptNm"  	    column="DESORPT_NM"       /> <!-- 20180312_01 -->
+		<result property="alignCd"	  	    column="ALIGN_CD"         /> <!-- 20180312_01 -->
+		<result property="alignNm"	  	    column="ALIGN_NM"         /> <!-- 20180312_01 -->
+		<result property="balanceCd"  	    column="BALANCE_CD"       /> <!-- 20180312_01 -->
+		<result property="balanceNm"  	    column="BALANCE_NM"       /> <!-- 20180312_01 -->
+		<result property="visitYn"	 		column="VISIT_YN"         />
+		<result property="prplYn"			column="PRPL_YN"          /> <!-- 퍼플점여부 [20190221_01] -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"     /> <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  /> <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"    /> <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM" /> <!-- 렌탈지점명   20181226 -->	
+		<result property="userId"			column="USER_ID"          />
+		<result property="o2oYn"			column="O2O_YN"          />	<!-- 거점여부 20191210 -->	
+		<result property="rntMstId"			column="RNT_MST_ID"          />	<!-- 렌탈마스터 ID -->	
+		<result property="rntMstNm"			column="RNT_MST_NM"          />	<!-- 렌탈마스터 이름 -->	
+		<result property="rntMstMob"		column="RNT_MST_MOB"          />	<!-- 렌탈마스터 휴대폰번호 -->	
+	</resultMap>
+	<parameterMap id="paramAgenypop" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultAgencypop" />
+		<parameter property="agencyNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesOffice" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sidoCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sigunCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lmYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fnYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="opYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="desorptCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="alignCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="balanceCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+		     
+	</parameterMap>
+	<procedure id="popup.listAgencyPop" parameterMap="paramAgenypop">
+		{call Pkg_Rtsd0007.p_sRtsd0007Popup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+  
+	<resultMap id="resultModelCombo" class="java.util.HashMap">
+		<result property="rn"  			column="RN" />
+		<result property="makerCd"  	column="MAKER_CD" />
+		<result property="modelCd"  	column="MODEL_CD" />
+		<result property="modelNm"  	column="MODEL_NM" />
+		<result property="contentsCd"  	column="CONTENTS_CD" />
+		<result property="conTentsNm"  	column="CONTENTS_NM" />
+		<result property="frCd"  		column="FR_CD" />
+		<result property="mcNm"  		column="MC_NM" />
+	</resultMap>
+	<parameterMap id="paramModelCombo" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultModelCombo" />
+		<parameter property="makerCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listModelCombo" parameterMap="paramModelCombo">
+		{call Pkg_Rtsd0001.p_sRtsd0001ModelName(?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="resultProduct" class="java.util.HashMap">
+		<result property="petternCd"  			column="PETTERN_CD" />
+		<result property="pettrenNm"  			column="PETTERN_NM" />
+		<result property="sizeNm"  				column="SIZE_NM" />
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="wheelQty"  			column="WHEEL_QTY" />
+		<result property="weelLimitQty"  		column="WHEEL_LIMIT_QTY" />
+		<result property="modelCd"  			column="MODEL_CD" />
+		<result property="modelNm"  			column="MODEL_NM" />
+		<result property="contentsCd"  			column="CONTENTS_CD" />
+		<result property="contentsNm"  			column="CONTENTS_NM" />
+		<result property="frCd"  				column="FR_CD" />
+		<result property="frNm"  				column="FR_NM" />
+		<result property="modelFullNm"  		column="MODEL_FULL_NM" />
+		<result property="sectionWidth"  		column="SECTION_WIDTH" />
+		<result property="aspectRatio"  		column="ASPECT_RATIO" />
+		<result property="wheelInches"  		column="WHEEL_INCHES" />
+		<result property="plyRating"  			column="PLY_RATING" />
+		<result property="demmndQty"  			column="DEMEND_QTY" />
+		<result property="pgCd"  				column="PG_CD" />
+		<result property="seasonCd"  			column="SEASON_CD" />
+		<result property="seasonNm"  			column="SEASON_NM" />
+		<result property="classSd"  			column="CLASS_CD" />
+		<result property="makerCd"  			column="MAKER_CD" />
+		<result property="makerNm"  			column="MAKER_NM" />
+	</resultMap>
+	<parameterMap id="paramPropduct" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultProduct" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seasonCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="petternCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listProductPop" parameterMap="paramPropduct">
+		{call Pkg_Rtsd0005.p_sRtsd0005Popup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultB2BProduct" class="java.util.HashMap">
+		<result property="petternCd"  			column="PETTERN_CD" />
+		<result property="pettrenNm"  			column="PETTERN_NM" />
+		<result property="sizeNm"  				column="SIZE_NM" />
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="wheelQty"  			column="WHEEL_QTY" />
+		<result property="weelLimitQty"  		column="WHEEL_LIMIT_QTY" />
+		<result property="modelCd"  			column="MODEL_CD" />
+		<result property="modelNm"  			column="MODEL_NM" />
+		<result property="contentsCd"  			column="CONTENTS_CD" />
+		<result property="contentsNm"  			column="CONTENTS_NM" />
+		<result property="frCd"  				column="FR_CD" />
+		<result property="frNm"  				column="FR_NM" />
+		<result property="modelFullNm"  		column="MODEL_FULL_NM" />
+		<result property="sectionWidth"  		column="SECTION_WIDTH" />
+		<result property="aspectRatio"  		column="ASPECT_RATIO" />
+		<result property="wheelInches"  		column="WHEEL_INCHES" />
+		<result property="plyRating"  			column="PLY_RATING" />
+		<result property="demmndQty"  			column="DEMEND_QTY" />
+		<result property="pgCd"  				column="PG_CD" />
+		<result property="seasonCd"  			column="SEASON_CD" />
+		<result property="seasonNm"  			column="SEASON_NM" />
+		<result property="classSd"  			column="CLASS_CD" />
+		<result property="makerCd"  			column="MAKER_CD" />
+		<result property="makerNm"  			column="MAKER_NM" />
+	</resultMap>
+	<parameterMap id="paramB2BPropduct" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultB2BProduct" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seasonCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="petternCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listB2BProductPop" parameterMap="paramB2BPropduct">
+		{call Pkg_Rtsd0005.p_sRtsd0005B2BPopup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultPrice" class="java.util.HashMap">
+		<result property="priceCd"  	column="PRICE_CD" />
+		<result property="matCd"  		column="MAT_CD" />
+		<result property="matNm"  		column="MAT_NM" />
+		<result property="periodCd"  	column="PERIOD_CD" />
+		<result property="cntCd"  		column="CNT_CD" />
+		<result property="regiCd"  		column="REGI_CD" />
+		<result property="regiAmt"  	column="REGI_AMT" />
+		<result property="rentAmt"  	column="RENT_AMT" />
+		<result property="strDay"  		column="STR_DAY" />
+		<result property="endDay"  		column="END_DAY" />
+		<result property="seq"  		column="SEQ" />
+	</resultMap>
+	<parameterMap id="paramPrice" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPrice" />
+		<parameter property="ordDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="matCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="periodCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cntCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listPricePop" parameterMap="paramPrice">
+		{call  Pkg_Rtsd0008.p_sRtsd0008PoPup(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="resultDoCode" class="java.util.HashMap">
+		<result property="cd" 		column="CD" />
+		<result property="cdNm" 	column="CD_NM" />
+	</resultMap>
+	<parameterMap id="paramListDoCombo" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultDoCode" />
+	</parameterMap>
+	<procedure id="popup.listDoCombo" parameterMap="paramListDoCombo">
+		{call  Pkg_Rtsd0010.f_sRtsd0010DoCombo(?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="resultListCtCombo" class="java.util.HashMap">
+		<result property="cd" 		column="CD" />
+		<result property="cdNm" 	column="CD_NM" />
+	</resultMap>
+	<parameterMap id="paramListCtCombo" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultListCtCombo" />
+		<parameter property="doNm" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listCtCombo" parameterMap="paramListCtCombo">
+		{call  Pkg_Rtsd0010.f_sRtsd0010CtCombo(?,?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="resultPostCode" class="java.util.HashMap">
+		<result property="rnAddr1D" 	column="RN_ADDR1_D" />
+		<result property="rnAddr2D" 	column="RN_ADDR2_D" />
+		<result property="rnAddr1B" 	column="RN_ADDR1_B" />
+		<result property="rnAddr2B" 	column="RN_ADDR2_B" />
+		<result property="bldMngNo" 	column="BLD_MNG_NO" />
+		<result property="areaNum" 		column="AREA_NUM" />
+		<result property="doNm" 		column="DO_NM" />
+		<result property="doNmE" 		column="DO_NM_E" />
+		<result property="ctNm" 		column="CT_NM" />
+		<result property="ctNmE" 		column="CT_NM_E" />
+		<result property="emNm" 		column="EM_NM" />	
+		<result property="emNmE" 		column="EM_NM_E" />
+		<result property="rdCd" 		column="RD_CD" />
+		<result property="rdNm" 		column="RD_NM" />
+		<result property="rdNmE" 		column="RD_NM_E" />
+		<result property="undrGrnd" 	column="UNDR_GRND" />
+		<result property="bldMb"		column="BLD_MB" />
+		<result property="bldSb" 		column="BLD_SB" />
+		<result property="mdNm" 		column="MD_NM" />
+		<result property="bldNm1" 		column="BLD_NM1" />
+		<result property="bDngCd" 		column="B_DNG_CD" />
+		<result property="bDngNm" 		column="B_DNG_NM" />
+		<result property="bRiNm" 		column="B_RI_NM" />
+		<result property="hDngNm" 		column="H_DNG_NM" />
+		<result property="sCd" 			column="S_CD" />
+		<result property="lotMb" 		column="LOT_MB" />
+		<result property="dngSeq" 		column="DNG_SEQ" />
+		<result property="lotSb" 		column="LOT_SB" />
+		<result property="zipNum" 		column="ZIP_NUM" />
+		<result property="seq" 			column="SEQ" />	
+		<result property="sidoCd" 		column="SIDO_CD" />
+		<result property="sigunCd" 		column="SIGUN_CD" />
+	</resultMap>
+	<parameterMap id="paramPostCode" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPostCode" />
+		<parameter property="dbCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="doNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ctNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rdDngNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mbNm" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listPostCodePop" parameterMap="paramPostCode">
+		{call  Pkg_Rtsd0010.p_sRtsd0010PoPup(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0010PopupPage" class="java.util.HashMap">
+		<result property="rnAddr1D" 	column="RN_ADDR1_D" />
+		<result property="rnAddr2D" 	column="RN_ADDR2_D" />
+		<result property="rnAddr1B" 	column="RN_ADDR1_B" />
+		<result property="rnAddr2B" 	column="RN_ADDR2_B" />
+		<result property="bldMngNo" 	column="BLD_MNG_NO" />
+		<result property="areaNum" 		column="AREA_NUM" />
+		<result property="doNm" 		column="DO_NM" />
+		<result property="doNmE" 		column="DO_NM_E" />
+		<result property="ctNm" 		column="CT_NM" />
+		<result property="ctNmE" 		column="CT_NM_E" />
+		<result property="emNm" 		column="EM_NM" />	
+		<result property="emNmE" 		column="EM_NM_E" />
+		<result property="rdCd" 		column="RD_CD" />
+		<result property="rdNm" 		column="RD_NM" />
+		<result property="rdNmE" 		column="RD_NM_E" />
+		<result property="undrGrnd" 	column="UNDR_GRND" />
+		<result property="bldMb"		column="BLD_MB" />
+		<result property="bldSb" 		column="BLD_SB" />
+		<result property="mdNm" 		column="MD_NM" />
+		<result property="bldNm1" 		column="BLD_NM1" />
+		<result property="bDngCd" 		column="B_DNG_CD" />
+		<result property="bDngNm" 		column="B_DNG_NM" />
+		<result property="bRiNm" 		column="B_RI_NM" />
+		<result property="hDngNm" 		column="H_DNG_NM" />
+		<result property="sCd" 			column="S_CD" />
+		<result property="lotMb" 		column="LOT_MB" />
+		<result property="dngSeq" 		column="DNG_SEQ" />
+		<result property="lotSb" 		column="LOT_SB" />
+		<result property="zipNum" 		column="ZIP_NUM" />
+		<result property="seq" 			column="SEQ" />	
+		<result property="sidoCd" 		column="SIDO_CD" />
+		<result property="sigunCd" 		column="SIGUN_CD" />
+		<result property="totalCnt" 	column="TOTAL_CNT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0010PopupPage" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0010PopupPage" />
+		<parameter property="dbCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="doNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ctNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rdDngNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mbNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="pageNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="getCnt" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listPostPageCodePop" parameterMap="p_sRtsd0010PopupPage">
+		{call  Pkg_Rtsd0010.p_sRtsd0010PopupPage(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="resultListCustInfo" class="java.util.HashMap">
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="custTp"  		column="CUST_TP" />
+		<result property="custTp2"  	column="CUST_TP2" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="birthDay"  	column="BIRTH_DAY" />
+		<result property="genderCd"  	column="GENDER_CD" />
+		<result property="lfCd"  		column="LF_CD" />
+		<result property="mobNo"  		column="MOB_NO" />
+		<result property="mobFirm"  	column="MOB_FIRM" />
+		<result property="telNo"  		column="TEL_NO" />
+		<result property="faxNo"  		column="FAX_NO" />
+		<result property="bldMngNo"  	column="BLD_MNG_NO" />
+		<result property="posCd"  		column="POS_CD" />
+		<result property="addr1"  		column="ADDR1" />
+		<result property="addr2"  		column="ADDR2" />
+		<result property="telNo2"  		column="TEL_NO2" />
+		<result property="bldMngNo2"  	column="BLD_MNG_NO2" />
+		<result property="posCd2"  		column="POS_CD2" />
+		<result property="addr12"  		column="ADDR1_2" />
+		<result property="addr22"  		column="ADDR2_2" />
+		<result property="addrSum1"		column="ADDR_SUM1" />
+		<result property="addrSum2"		column="ADDR_SUM2" />
+		<result property="safekey"  	column="SAFEKEY" />
+		<result property="buslNo"  		column="BUSL_NO" />
+		<result property="corpNo"  		column="CORP_NO" />
+		<result property="repNm"  		column="REP_NM" />
+		<result property="oCustnm"  	column="O_CUSTNM" />
+		<result property="oBirthday"  	column="O_BIRTHDAY" />
+		<result property="oGendercd"  	column="O_GENDERCD" />
+		<result property="oLfcd"  		column="O_LFCD" />
+		<result property="oMobno"  		column="O_MOBNO" />
+		<result property="oSafekey"  	column="O_SAFEKEY" />
+		<result property="cCustnm"  	column="C_CUSTNM" />
+		<result property="cTelno"  		column="C_TELNO" />
+		<result property="emailAddr"  	column="EMAIL_ADDR" />
+		<result property="busiType"  	column="BUSI_TYPE" />
+		<result property="busiCond"  	column="BUSI_COND" />
+		<result property="taxYn"  		column="TAX_YN" />
+		<result property="kunnr"  		column="KUNNR" />
+		<result property="ciCd"  		column="CI_CD" />
+		<result property="diCd"  		column="DI_CD" />
+		<result property="useYn" 	 	column="USE_YN" />
+		<result property="regId"  		column="REG_ID" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="paramListCustInfo" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultListCustInfo" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp2" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="genderCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lfCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobFirm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="faxNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr2" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo2" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo2" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd2" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr12" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr22" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="corpNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="repNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oCustnm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oBirthday" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oGendercd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oLfcd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oMobno" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oSafekey" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cCustnm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cTelno"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="emailAddr" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiType" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiCond" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="taxYn" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="kunnr" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ciCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="diCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap id="paramListCustInfoBase" class="java.util.Map">
+        <parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultListCustInfo" />
+        <parameter property="custNo"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="custTp"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="custTp2"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="custNm"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="birthDay"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="genderCd"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="lfCd"      jdbcType="VARCHAR" mode="IN" />
+        <parameter property="mobNo"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="mobFirm"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="telNo"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="faxNo"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="bldMngNo"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="posCd"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="addr1"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="addr2"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="telNo2"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="bldMngNo2" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="posCd2"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="addr12"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="addr22"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="safekey"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="buslNo"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="corpNo"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="repNm"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oCustnm"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oBirthday" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oGendercd" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oLfcd"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oMobno"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="oSafekey"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="cCustnm"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="cTelno"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="emailAddr" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="busiType"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="busiCond"  jdbcType="VARCHAR" mode="IN" />
+        <parameter property="taxYn"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="kunnr"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="ciCd"      jdbcType="VARCHAR" mode="IN" />
+        <parameter property="diCd"      jdbcType="VARCHAR" mode="IN" />
+        <parameter property="useYn"     jdbcType="VARCHAR" mode="IN" />
+        <parameter property="regId"     jdbcType="VARCHAR" mode="IN" />
+    </parameterMap>
+    
+	<procedure id="popup.listCustInfoBase" parameterMap="paramListCustInfoBase">
+        {call Pkg_Rtsd0100.p_sRtsd0100Base(
+                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+                                        ?, ?
+                                      )}
+    </procedure>
+	<procedure id="popup.listCustInfo" parameterMap="paramListCustInfo">
+		{call Pkg_Rtsd0100.p_sRtsd0100(
+										?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										?, ?, ?
+									  )}
+	</procedure>
+	
+	
+	
+	<!-- 고객 계좌정보 resultMap  -->
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="accSeq"  		column="ACC_SEQ" />
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="bankCd"  		column="BANK_CD" />
+		<result property="bankNm"  		column="BANK_NM" />		
+		<result property="acctNo"  		column="ACCT_NO" />
+		<result property="depositor"  	column="CUST_NM" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="custTp"  		column="CUST_TP" />
+		<result property="ebirDay" 		column="EBIR_DAY" />
+		<result property="buslNo"  		column="BUSL_NO" />
+		<result property="accChk"  		column="ACC_CHK" />
+	</resultMap>
+	
+	
+	
+	<!-- 고객 카드정보 resultMap  -->
+	<resultMap id="cardResultMap" class="java.util.HashMap">
+		<result property="crdSeq"  		column="CRD_SEQ" />
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="cardcomCd"  	column="CARDCOM_CD" />
+		<result property="cardcomNm"  	column="CARDCOM_NM" />		
+		<result property="cardNo"  		column="CARD_NO" />
+		<result property="depositor"  	column="CUST_NM" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="custTp"  		column="CUST_TP" />		
+		<result property="ebirDay" 		column="EBIR_DAY" />
+		<result property="buslNo"  		column="BUSL_NO" />
+		<result property="expireYm"  	column="EXPIRE_YM" />
+		<result property="bkeyChk"  	column="BKEY_CHK" />
+		<result property="batchKey"  	column="BATCH_KEY" />
+	</resultMap>
+
+
+
+	<!-- 고객 계좌정보 파라미터  -->
+	<parameterMap class="java.util.Map" id="parameters"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />   
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="accSeq"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>	
+	
+	
+	
+	<!-- 고객 카드정보 파라미터  -->	
+	<parameterMap class="java.util.Map" id="cardparameters"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="cardResultMap" />   
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cardSeq"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+
+
+	<!-- 고객 계좌정보 팝업  -->
+	<procedure id="popup.sRtre0010AccPopup" parameterMap="parameters">
+		{call Pkg_Rtre0010.p_sRtre0010AccPopup(?, ?, ?)}
+	</procedure>
+
+
+
+	<!-- 고객 카드정보 팝업  -->
+	<procedure id="popup.sRtre0020CrdPopup" parameterMap="cardparameters">
+		{call Pkg_Rtre0020.p_sRtre0020CrdPopup(?, ?, ?)}
+	</procedure>
+
+
+
+
+
+	<resultMap id="resultProPriPoPup" class="java.util.HashMap">
+		<result property="matCd"  			column="MAT_CD" />
+		<result property="matNm"  			column="MAT_NM" />
+		<result property="petternCd"  		column="PETTERN_CD" />
+		<result property="sectionWidth"  	column="SECTION_WIDTH" />
+		<result property="aspectRatio"  	column="ASPECT_RATIO" />
+		<result property="wheelInches"  	column="WHEEL_INCHES" />
+		<result property="plyRating"  		column="PLY_RATING" />
+		<result property="demendQty"  		column="DEMEND_QTY" />
+		<result property="pgCd"  			column="PG_CD" />
+		<result property="seasonCd"  		column="SEASON_CD" />
+		<result property="seasonNm"  		column="SEASON_NM" />
+		<result property="frCd"  			column="FR_CD" />
+		<result property="contentsCd"  		column="CONTENTS_CD" />
+		<result property="modelCd"  		column="MODEL_CD" />
+		<result property="wheelQty"  		column="WHEEL_QTY" />
+		<result property="wheelLimitQty"  	column="WHEEL_LIMIT_QTY" />
+		<result property="classCd"  		column="CLASS_CD" />
+		<result property="makerCd"  		column="MAKER_CD" />
+		<result property="seq"  			column="SEQ" />
+		<result property="endDay"  			column="END_DAY" />
+		<result property="strDay"  			column="STR_DAY" />
+		<result property="regiCd"  			column="REGI_CD" />
+		<result property="regiAmt"  		column="REGI_AMT" />
+		<result property="cntCd"  			column="CNT_CD" />
+		<result property="ordQty"  			column="ORD_QTY" />
+		<result property="periodCd"  		column="PERIOD_CD" />
+		<result property="priceCd"  		column="PRICE_CD" />
+		<result property="rentAmt"  		column="RENT_AMT" />
+	</resultMap>
+	<parameterMap id="paramProPriPoPup" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultProPriPoPup" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="matCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="period" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cnt" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regiAmt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="amt" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="priceCd"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listProductAndprice" parameterMap="paramProPriPoPup">
+		{call  Pkg_Rtsd0008.p_sRtsd0008_Pro_Pri_PoPup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	
+
+<resultMap id="resultOrdNoList" class="java.util.HashMap">
+		   <result property="ordDay" column="ORD_DAY" />
+           <result property="ordNo" column="ORD_NO" />
+           <result property="custNo" column="CUST_NO" />
+           <result property="birthDay" column="BIRTH_DAY" />
+           <result property="buslNo" column="BUSL_NO" />
+           <result property="custNm" column="CUST_NM" />
+           <result property="genderCd" column="GENDER_CD" />
+           <result property="genderNm" column="GENDER_NM" />
+           <result property="lfCd" column="LF_CD" />
+           <result property="lfNm" column="LF_NM" />
+           <result property="mobNo" column="MOB_NO" />
+           <result property="telNo" column="TEL_NO" />
+           <result property="telNo2" column="TEL_NO2" />
+           <result property="addr" column="ADDR" />
+           <result property="carNo" column="CAR_NO" />
+           <result property="makerCd" column="MAKER_CD" />
+           <result property="modelCd" column="MODEL_CD" />
+           <result property="contentsCd" column="CONTENTS_CD" />
+           <result property="frCd" column="FR_CD" />
+           <result property="carKind" column="CAR_KIND" />
+           <result property="statCd" column="STAT_CD" />
+           <result property="statNm" column="STAT_NM" />
+           <result property="monAmt" column="MON_AMT" />
+           <result property="grpNo" column="GRP_NO" />
+           <result property="custTp" column="CUST_TP" />     
+           <result property="cntCd" column="CNT_CD" />
+           <result property="procDay" column="PROC_DAY" />
+           <result property="agencyCd" column="AGENCY_CD" />
+           <result property="agencyNm" column="AGENCY_NM" />
+           <result property="petternCd" column="PETTERN_CD" />
+           <result property="posCd" column="POS_CD" />
+           <result property="addr1" column="ADDR1" />
+           <result property="addr2" column="ADDR2" />
+           <result property="mfpYn" column="MFP_YN"/>
+           <result property="bondSelDay" column="BOND_SEL_DAY"/>
+           <result property="chanCd" column="CHAN_CD"/>
+           <result property="o2oYn" column="O2O_YN"/>
+	</resultMap>
+	
+	
+<!-- 	<resultMap id="resultOrdNoList" class="java.util.HashMap"> -->
+<!-- 		<result property="ordDay" column="ORD_DAY" /> -->
+<!-- 		<result property="ordNo" column="ORD_NO" /> -->
+<!-- 		<result property="custNo" column="CUST_NO" /> -->
+<!-- 		<result property="birthDay" column="BIRTH_DAY" /> -->
+<!-- 		<result property="buslNo" column="BUSL_NO" /> -->
+<!-- 		<result property="custNm" column="CUST_NM" /> -->
+<!-- 		<result property="genderCd" column="GENDER_CD" /> -->
+<!-- 		<result property="genderNm" column="GENDER_NM" /> -->
+<!-- 		<result property="lfCd" column="LF_CD" /> -->
+<!-- 		<result property="lfNm" column="LF_NM" /> -->
+<!-- 		<result property="mobNo" column="MOB_NO" /> -->
+<!-- 		<result property="telNo" column="TEL_NO" /> -->
+<!-- 		<result property="telNo2" column="TEL_NO2" /> -->
+<!-- 		<result property="addr" column="ADDR" /> -->
+<!-- 		<result property="carNo" column="CAR_NO" /> -->
+<!-- 		<result property="makerCd" column="MAKER_CD" /> -->
+<!-- 		<result property="modelCd" column="MODEL_CD" /> -->
+<!-- 		<result property="contentsCd" column="CONTENTS_CD" /> -->
+<!-- 		<result property="frCd" column="FR_CD" /> -->
+<!-- 		<result property="carKind" column="CAR_KIND" /> -->
+<!-- 		<result property="statCd" column="STAT_CD" /> -->
+<!-- 		<result property="statNm" column="STAT_NM" /> -->
+<!-- 		<result property="matCd" column="MAT_CD" /> -->
+<!-- 		<result property="matNm" column="MAT_NM" /> -->
+<!-- 		<result property="planDay" column="PLAN_DAY" /> -->
+<!-- 		<result property="instDay" column="INST_DAY" /> -->
+<!-- 		<result property="seasonCd" column="SEASON_CD" /> -->
+<!-- 		<result property="seasonNm" column="SEASON_NM" /> -->
+<!-- 		<result property="saleNm" column="SALE_NM" /> -->
+<!-- 		<result property="chanNm" column="CHAN_NM" /> -->
+<!-- 		<result property="hshopGbNm" column="HSHOP_GB_NM" /> -->
+<!-- 		<result property="monAmt" column="MON_AMT" /> -->
+<!-- 		<result property="grpNo" column="GRP_NO" /> -->
+<!-- 		<result property="custTp" column="CUST_TP" />		 -->
+<!-- 		<result property="cntCd" column="CNT_CD" />			 -->
+<!-- 	</resultMap> -->
+	<parameterMap id="paramOrdNoList" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoList" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="statCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo2" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="gender" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lf" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordId" 		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="groNoYn" 	jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>
+	<procedure id="popup.ordNoList" parameterMap="paramOrdNoList">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoListPoPup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,? ,?)}
+	</procedure>
+	
+	
+	<resultMap id="resultOrdNoListNew" class="java.util.HashMap">
+		<result property="ordDay" column="ORD_DAY" />
+		<result property="ordNo" column="ORD_NO" />
+		<result property="custNo" column="CUST_NO" />
+		<result property="birthDay" column="BIRTH_DAY" />
+		<result property="buslNo" column="BUSL_NO" />
+		<result property="custNm" column="CUST_NM" />
+		<result property="genderCd" column="GENDER_CD" />
+		<result property="genderNm" column="GENDER_NM" />
+		<result property="lfCd" column="LF_CD" />
+		<result property="lfNm" column="LF_NM" />
+		<result property="mobNo" column="MOB_NO" />
+		<result property="telNo" column="TEL_NO" />
+		<result property="telNo2" column="TEL_NO2" />
+		<result property="addr" column="ADDR" />
+		<result property="carNo" column="CAR_NO" />
+		<result property="makerCd" column="MAKER_CD" />
+		<result property="modelCd" column="MODEL_CD" />
+		<result property="contentsCd" column="CONTENTS_CD" />
+		<result property="frCd" column="FR_CD" />
+		<result property="carKind" column="CAR_KIND" />
+		<result property="statCd" column="STAT_CD" />
+		<result property="statNm" column="STAT_NM" />
+		<result property="seasonCd" column="SEASON_CD" />
+		<result property="seasonNm" column="SEASON_NM" />
+		<result property="saleNm" column="SALE_NM" />
+		<result property="chanNm" column="CHAN_NM" />
+		<result property="hshopGbNm" column="HSHOP_GB_NM" />
+		<result property="monAmt" column="MON_AMT" />
+		<result property="grpNo" column="GRP_NO" />
+		<result property="custTp" column="CUST_TP" />		
+		<result property="cntCd" column="CNT_CD" />	
+		<result property="periodCd" column="PERIOD_CD" />	
+		<result property="fpayYn" column="FPAY_YN" />	
+		<result property="prdtGrp" column="PRDT_GRP" />							
+	</resultMap>
+	<parameterMap id="paramOrdNoListNew" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoListNew" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>
+	<procedure id="popup.ordNoListNew" parameterMap="paramOrdNoListNew">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoList(?, ?)}
+	</procedure>
+	
+	
+	<resultMap id="resultPreminumList" class="java.util.HashMap">
+		<result property="psCd"  			column="PS_CD" />
+		<result property="psNm"  			column="PS_NM" />
+		<result property="seq"  			column="SEQ" />
+		<result property="strDay"  			column="STR_DAY" />
+		<result property="endDay"  			column="END_DAY" />
+		<result property="seasonCd"  		column="SEASON_CD" />
+		<result property="seasonNm"  		column="SEASON_NM" />
+		<result property="prsDcd"  			column="PRS_DCD" />
+		<result property="prsNm"  			column="PRS_NM" />
+		<result property="cntCd"  			column="CNT_CD" />
+		<result property="cntNm"  			column="CNT_NM" />
+		<result property="servVnt"  		column="SERV_CNT" />
+		<result property="servAmt"  		column="SERV_AMT" />
+	</resultMap>
+	<parameterMap id="paramPreminumList" class="java.util.Map">
+		<parameter property="vcursor" 			jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPreminumList" />
+		<parameter property="applyDate" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cnt"				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="season" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="periodCd" 			jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.preminumList" parameterMap="paramPreminumList">
+		{call  Pkg_Rtsd0011.p_sRtsd0011_preminumPopup(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<resultMap id="resultPreminumMstList" class="java.util.HashMap">
+		<result property="psCd"  			column="PS_CD"     />
+		<result property="seq"  			column="SEQ"       />
+		<result property="psNm"  			column="PS_NM"     />		
+		<result property="ordId"  			column="ORD_ID"    />
+		<result property="chanCd"  			column="CHAN_CD"   />
+		<result property="seasonCd"  		column="SEASON_CD" />
+		<result property="servAmt"  		column="SERV_AMT"  />
+		<result property="memo"  			column="MEMO"      />		
+		<result property="strDay"  			column="STR_DAY"   />
+		<result property="endDay"  			column="END_DAY"   />
+		<result property="useYn"  			column="USE_YN"    />
+		<result property="regId"  			column="REG_ID"    />
+		<result property="regDt"  			column="REG_DT"    />
+		<result property="chgId"  			column="CHG_ID"    />
+		<result property="chgDt"  			column="CHG_DT"    />		
+	</resultMap>
+	<parameterMap id="paramPreminumMstList" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPreminumMstList" />
+		<parameter property="dayTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="applyDate"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seasonCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.preminumMstList" parameterMap="paramPreminumMstList">
+		{call  Pkg_Rtsd0011.p_sRtsd0011_masterChoicePopup(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<resultMap id="resultListSvcDetailByPscd" class="java.util.HashMap">
+		<result property="psCd"  			column="PS_CD"     />
+		<result property="prsDcd"  			column="PRS_DCD"   />
+		<result property="prsNm"  			column="PRS_NM"    />		
+		<result property="periodCd"			column="PERIOD_CD" />
+		<result property="cntCd"  			column="CNT_CD"    />
+		<result property="servCnt"  		column="SERV_CNT"  />
+		<result property="servAmt"  		column="SERV_AMT"  />		
+		<result property="useYn"  			column="USE_YN"    />
+		<result property="regId"  			column="REG_ID"    />
+		<result property="regDt"  			column="REG_DT"    />
+		<result property="chgId"  			column="CHG_ID"    />
+		<result property="chgDt"  			column="CHG_DT"    />
+		<result property="memo"  			column="MEMO"      />		
+	</resultMap>
+	<parameterMap id="paramListSvcDetailByPscd" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultListSvcDetailByPscd" />
+		<parameter property="psCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="periodCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cntCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.listSvcDetailByPscd" parameterMap="paramListSvcDetailByPscd">
+		{call  Pkg_Rtsd0012.p_sRtsd0012_ByPrmSvc(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!-- CMS 청구세부 내역 조회 Select -->
+	<resultMap id="sRtre0071ResultMap" class="java.util.HashMap">
+		<result property="rcmsDay"  	column="RCMS_DAY" />	<!-- 출금이체일자 -->
+		<result property="ordNo"  		column="ORD_NO" />		<!-- 계약번호 -->
+		<result property="custNo"  		column="CUST_NO" />		<!-- 고객번호 -->
+		<result property="custNm"  		column="CUST_NM" />		<!-- 고객명 -->
+		<result property="recpTp"  		column="RECP_TP" />		<!-- 청구구분 -->
+		<result property="recpTpNm"  	column="RECP_TP_NM" />	<!-- 청구구분명 -->
+		<result property="recpNu"  		column="RECP_NU" />		<!-- 청구순번 -->
+		<result property="zfbDay"  		column="ZFB_DAY" />		<!-- 만기일자 -->
+		<result property="saleAmt"  	column="SALE_AMT" />	<!-- 매출금액 -->
+		<result property="arreAmt"  	column="ARRE_AMT" />	<!-- 현재미납금액-->
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="sRtre0071DetailParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0071ResultMap" />	
+		<parameter property="rcmsDay"  	jdbcType="VARCHAR" mode="IN" />	<!--출금이체일자 -->
+		<parameter property="rcmsSeq"  	jdbcType="VARCHAR" mode="IN" />	<!--출금이체일련번호   -->
+	</parameterMap>
+	<procedure id="popup.listTranChargeDetail" parameterMap="sRtre0071DetailParam">
+		{call Pkg_Rtre0071.p_sRtre0071Detail(?, ?, ?)}
+	</procedure>	
+
+
+
+	<!-- 카드이체 청구세부 내역 조회 Select -->
+	<resultMap id="sRtre0081ResultMap" class="java.util.HashMap">
+		<result property="rcrdDay"  	column="RCRD_DAY" />	<!-- 카드이체일자 -->
+		<result property="ordNo"  		column="ORD_NO" />		<!-- 계약번호 -->
+		<result property="custNo"  		column="CUST_NO" />		<!-- 고객번호 -->
+		<result property="custNm"  		column="CUST_NM" />		<!-- 고객명 -->
+		<result property="recpTp"  		column="RECP_TP" />		<!-- 청구구분 -->
+		<result property="recpTpNm"  	column="RECP_TP_NM" />	<!-- 청구구분명 -->
+		<result property="recpNu"  		column="RECP_NU" />		<!-- 청구순번 -->
+		<result property="zfbDay"  		column="ZFB_DAY" />		<!-- 만기일자 -->
+		<result property="saleAmt"  	column="SALE_AMT" />	<!-- 매출금액 -->
+		<result property="arreAmt"  	column="ARRE_AMT" />	<!-- 현재미납금액-->
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="sRtre0081DetailParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0081ResultMap" />	
+		<parameter property="rcrdDay"  	jdbcType="VARCHAR" mode="IN" />	<!--카드이체일자 -->
+		<parameter property="rcrdSeq"  	jdbcType="VARCHAR" mode="IN" />	<!--카드이체일련번호   -->
+	</parameterMap>	
+	<procedure id="popup.listCrdTranDetail" parameterMap="sRtre0081DetailParam">
+		{call Pkg_Rtre0081.p_sRtre0081Detail(?, ?, ?)}
+	</procedure>
+
+
+
+	<!-- CMS/카드이체 수납세부내역조회 Select -->
+	<resultMap id="sRtre0030ResultMap" class="java.util.HashMap">
+		<result property="recvSeq"  	column="RECV_SEQ" />	<!-- 수납거래번호 -->
+		<result property="ritmSeq"  	column="RITM_SEQ" />	<!-- 거래일련번호 -->
+		<result property="recvDay"  	column="RECV_DAY" />	<!-- 수납일자      -->
+		<result property="ordNo"  		column="ORD_NO" />		<!-- 계약번호      -->
+		<result property="custNo"  		column="CUST_NO" />		<!-- 고객번호      -->
+		<result property="custNm"  		column="CUST_NM" />		<!-- 고객명         -->
+		<result property="recpTp"  		column="RECP_TP" />		<!-- 청구구분      -->
+		<result property="recpTpNm"  	column="RECP_TP_NM" />	<!-- 청구구분명   -->
+		<result property="schdSeq" 		column="SCHD_SEQ" />	<!-- 청구순번      -->
+		<result property="recpNu"  		column="RECP_NU" />		<!-- 청구회차      -->
+		<result property="zfbDay"  		column="ZFB_DAY" />		<!-- 만기일자      -->
+		<result property="recpAmt"  	column="RECP_AMT" />	<!-- 수납금액      -->
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="sRtre0030DetailParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0030ResultMap" />	
+		<parameter property="recvSeq"   jdbcType="VARCHAR" mode="IN" />	<!--수납거래번호  -->
+	</parameterMap>	
+	<procedure id="popup.listTranReceiptDetail" parameterMap="sRtre0030DetailParam">
+		{call Pkg_Rtre0030.p_sRtre0030Detail(?, ?)}
+	</procedure>	
+	
+	
+	
+	<!-- 연체 청구세부 내역 조회 Select -->	
+	<resultMap id="sRtre0101ResultMap" class="java.util.HashMap">
+		<result property="delyDay"  	column="DELY_DAY" />	<!-- 연체일자 -->
+		<result property="ordNo"  		column="ORD_NO" />		<!-- 계약번호 -->
+		<result property="custNo"  		column="CUST_NO" />		<!-- 고객번호 -->
+		<result property="custNm"  		column="CUST_NM" />		<!-- 고객명 -->
+		<result property="recpTp"  		column="RECP_TP" />		<!-- 청구구분 -->
+		<result property="recpTpNm"  	column="RECP_TP_NM" />	<!-- 청구구분명 -->
+		<result property="recpNu"  		column="RECP_NU" />		<!-- 청구순번 -->
+		<result property="zfbDay"  		column="ZFB_DAY" />		<!-- 만기일자 -->
+		<result property="saleAmt"  	column="SALE_AMT" />	<!-- 매출금액 -->
+		<result property="arreAmt"  	column="ARRE_AMT" />	<!-- 현재미납금액-->
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="sRtre0101DetailParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0101ResultMap" />	
+		<parameter property="delyDay"  	jdbcType="VARCHAR" mode="IN" />	<!--연체일자 -->
+		<parameter property="ordNo"  	jdbcType="VARCHAR" mode="IN" />	<!--계약번호   -->
+		<parameter property="custNo"  	jdbcType="VARCHAR" mode="IN" />	<!--고객번호   -->
+	</parameterMap>	
+	<procedure id="popup.listArrearsDetail" parameterMap="sRtre0101DetailParam">
+		{call Pkg_Rtre0101.p_sRtre0101Detail(?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<parameterMap id="p_sRtsd0007GetSeasonGbn" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_sRtsd0007GetSeasonGbn" />
+		<parameter property="agentId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_sRtsd0007GetSeasonGbn" class="java.util.HashMap"/>
+	<procedure id="popup.initProductPriceGetSeason" parameterMap="p_sRtsd0007GetSeasonGbn">
+		{call ? := Pkg_Rtsd0007.f_sRtsd0007GetSeasonGbn(?)}
+	</procedure>
+	
+	
+	
+	<parameterMap id="p_sRtcs0202UseCntCheck" class="java.util.Map">
+		<parameter property="result"	jdbcType="VARCHAR" javaType="java.lang.Integer" mode="OUT" resultMap="r_sRtcs0202UseCntCheck" />
+		<parameter property="agentId"	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_sRtcs0202UseCntCheck" class="java.util.HashMap"/>
+	<procedure  id="popup.sRtcs0202UseCntCheck" resultClass="java.util.Map" parameterMap="p_sRtcs0202UseCntCheck">
+		{call ? := Pkg_Rtcs0202.f_sRtcs0202UseCntCheck( ? )}
+	</procedure>
+	
+	
+	
+	<resultMap id="rSRtsd0113Popup" class="java.util.HashMap">
+		<result property="ordAgent" column="ORD_AGENT"	/>
+		<result property="orgAgnm"  column="ORG_AGNM"	/>
+		<result property="orgAgtel" column="ORG_AGTEL"	/>
+		<result property="chanCd"  	column="CHAN_CD"	/>
+		<result property="chanNm"  	column="CHAN_NM"	/>
+		<result property="lifnr"  	column="LIFNR"		/>
+		<result property="num"  	column="NUM"		/>
+		<result property="useYn"  	column="USE_YN"		/>
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="pSRtsd0113Popup">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtsd0113Popup" />	
+		<parameter property="ordAgent"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orgAgnm"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"  	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>	
+	<procedure id="popup.selectRTCOMMOrdAgentList" parameterMap="pSRtsd0113Popup">
+		{call Pkg_Rtsd0113.p_sRtsd0113Popup(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="Pkg_Rtsd0007PopupResultMap" class="java.util.HashMap">
+		<result property="agencyCd"    column="AGENCY_CD"    />
+		<result property="agencyNm"    column="AGENCY_NM"    />
+		<result property="salesGroup"  column="SALES_GROUP"  />
+		<result property="salesOffice" column="SALES_OFFICE" />
+		<result property="telNo"  	   column="TEL_NO"       />
+		<result property="chanCd"  	   column="CHAN_CD"      />
+		<result property="lifnr"  	   column="LIFNR"        />
+		<result property="taxRqcd"     column="TAX_RQCD"     />
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="Pkg_Rtsd0007PopupParam">
+		<parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="Pkg_Rtsd0007PopupResultMap" />	
+		<parameter property="saleAgent"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="saleAgnm"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="saleOffice"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="saleGroup"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"  	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lifnr"  	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->   
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>	
+	<procedure id="popup.selectRTCOMMSaleAgentList" parameterMap="Pkg_Rtsd0007PopupParam">
+		{call Pkg_Rtsd0007.p_sRtview02List(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<resultMap id="rSRtcm0051HCode" class="java.util.HashMap">
+		<result property="cdGrpCd"  column="CD_GRP_CD" 	/>
+		<result property="cdGrpNm"  column="CD_GRP_NM" 	/>
+		<result property="cd" 		column="CD"  		/>
+		<result property="cdNm" 	column="CD_NM" 		/>
+		<result property="cdDesc"  	column="CD_DESC"    />
+		<result property="orderPt"  column="ORDER_PT"   />
+	</resultMap>
+	<parameterMap class="java.util.Map" id="pSRtcm0051HCode">
+		<parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcm0051HCode" />	
+		<parameter property="salesGroup"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdDesc"  		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.selectSigunCd" parameterMap="pSRtcm0051HCode">
+		{call Pkg_Rtcm0051.p_sRtcm0051HCode(?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultComboset" class="java.util.HashMap">
+		<result property="seasonCd"  		column="SEASON_CD" />
+		<result property="petternCd"  		column="PETTERN_CD" />
+		<result property="petternNm"  		column="PETTERN_NM" />
+		<result property="sectionWidth" 	column="SECTION_WIDTH" />
+		<result property="aspectRatio"  	column="ASPECT_RATIO" />
+		<result property="wheelInches"  	column="WHEEL_INCHES" />
+		<result property="plyRating"  		column="PLY_RATING" />
+		<result property="specNm"  			column="SPEC_NM" />
+	</resultMap>
+	<parameterMap id="paramCar" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultComboset" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.combosetMat" parameterMap="paramCar">
+		{call Pkg_Rtsd0005.p_sRtsd0005Comboset(?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultSrvcList" class="java.util.HashMap">
+		<result property="prsDcd"  			column="PRS_DCD" />
+		<result property="prsNm"  			column="PRS_NM" />
+	</resultMap>
+	<parameterMap id="paramSrvcList" class="java.util.Map">
+		<parameter property="vcursor" 			jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSrvcList" />
+	</parameterMap>
+	<procedure id="popup.srvcList" parameterMap="paramSrvcList">
+		{call  Pkg_Rtsd0012.p_sRtsd0012_srvcPopup(?)}
+	</procedure>
+	
+	<resultMap id="resultSrvcOrdList" class="java.util.HashMap">
+	    <result property="saleCd"  			column="SALE_CD" />
+		<result property="prsDcd"  			column="PRS_DCD" />
+		<result property="prsNm"  			column="PRS_NM" />
+		<result property="periodCd"  		column="PERIOD_CD" />
+		<result property="periodNm"  		column="PERIOD_NM" />
+		<result property="cntCd"  			column="CNT_CD" />
+		<result property="cntNm"  			column="CNT_NM" />
+		<result property="servCnt"  		column="SERV_CNT" />
+		<result property="servCntOrg"  		column="SERV_CNT" />
+		<result property="servAmt1"  		column="SERV_AMT_1" />
+		<result property="servAmt2"  		column="SERV_AMT_2" />
+		<result property="servAmt3"  		column="SERV_AMT_3" />
+		<result property="servAmt4"  		column="SERV_AMT_4" />
+		<result property="servAmt5"  		column="SERV_AMT_5" />
+		<result property="servAmt6"  		column="SERV_AMT_6" />
+		<result property="servAmt7"  		column="SERV_AMT_7" />
+		<result property="servAmt8"  		column="SERV_AMT_8" />
+		<result property="servAmt9"  		column="SERV_AMT_9" />
+		<result property="servAmt10"  		column="SERV_AMT_10" />
+		<result property="servAmt12"  		column="SERV_AMT_12" />
+		<result property="servAmt18"  		column="SERV_AMT_18" />
+		<result property="servAmt24"  		column="SERV_AMT_24" />
+		<result property="servAmtSum"  		column="SERV_CNT_AMT" />
+		<result property="servAmtSumOrg"	column="SERV_CNT_AMT" />
+		<result property="servInfAmt"  		column="SERV_INF_AMT" />
+		<result property="servInfYN"  		column="SERV_INF_YN" />
+		<result property="saleAmt" 			column="SALE_AMT" /> 		<!-- 사용자가 저장한 프리미엄 할인 금액 -->
+		<result property="dcRate" 			column="DC_RATE" /> 		<!-- 판매코드 할인율 -->
+	</resultMap>
+	<parameterMap id="paramSrvcOrdList" class="java.util.Map">
+		<parameter property="vcursor" 			jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSrvcOrdList" />
+		<parameter property="p_saleCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="p_periodCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="p_cntCd"			jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.srvcOrdList" parameterMap="paramSrvcOrdList">
+		{call  Pkg_Rtsd0028.p_sRtsd0028_srvcOrdPopup(?, ?, ?, ?)}
+	</procedure>
+
+	<resultMap id="resultOrdNoList2" class="java.util.HashMap">
+		<result property="ordDay" column="ORD_DAY" />
+		<result property="ordNo" column="ORD_NO" />
+		<result property="custNo" column="CUST_NO" />
+		<result property="birthDay" column="BIRTH_DAY" />
+		<result property="buslNo" column="BUSL_NO" />
+		<result property="custNm" column="CUST_NM" />
+		<result property="genderCd" column="GENDER_CD" />
+		<result property="genderNm" column="GENDER_NM" />
+		<result property="lfCd" column="LF_CD" />
+		<result property="lfNm" column="LF_NM" />
+		<result property="mobNo" column="MOB_NO" />
+		<result property="telNo" column="TEL_NO" />
+		<result property="telNo2" column="TEL_NO2" />
+		<result property="addr" column="ADDR" />
+		<result property="carNo" column="CAR_NO" />
+		<result property="makerCd" column="MAKER_CD" />
+		<result property="modelCd" column="MODEL_CD" />
+		<result property="contentsCd" column="CONTENTS_CD" />
+		<result property="frCd" column="FR_CD" />
+		<result property="carKind" column="CAR_KIND" />
+		<result property="statCd" column="STAT_CD" />
+		<result property="statNm" column="STAT_NM" />
+		<result property="saleNm" column="SALE_NM" />
+		<result property="custTp" column="CUST_TP" />		
+		<result property="chanNm" column="CHAN_NM" />
+		<result property="hshopGbNm" column="HSHOP_GB_NM" />
+		<result property="monAmt" column="MON_AMT" />
+		<result property="grpNo" column="GRP_NO" />
+		<result property="seasonCd" column="SEASON_CD" />
+		<result property="seasonNm" column="SEASON_NM" />
+		<result property="grpCnt" column="GRP_CNT" />
+		<result property="grpSt" column="GRP_ST" />
+		<result property="grpDcRate" column="GRP_DC_RATE" />
+		<result property="grpDcAmt" column="GRP_DC_AMT" />
+	</resultMap>
+	<parameterMap id="paramOrdNoList2" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoList2" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="statCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo2" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="gender" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lf" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>
+	<procedure id="popup.ordNoList2" parameterMap="paramOrdNoList2">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoList2PoPup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<resultMap id="resultOrdNoList3" class="java.util.HashMap">
+		<result property="ordDay" column="ORD_DAY" />
+		<result property="ordNo" column="ORD_NO" />
+		<result property="custNo" column="CUST_NO" />
+		<result property="birthDay" column="BIRTH_DAY" />
+		<result property="buslNo" column="BUSL_NO" />
+		<result property="custNm" column="CUST_NM" />
+		<result property="genderCd" column="GENDER_CD" />
+		<result property="genderNm" column="GENDER_NM" />
+		<result property="lfCd" column="LF_CD" />
+		<result property="lfNm" column="LF_NM" />
+		<result property="mobNo" column="MOB_NO" />
+		<result property="telNo" column="TEL_NO" />
+		<result property="telNo2" column="TEL_NO2" />
+		<result property="addr" column="ADDR" />
+		<result property="carNo" column="CAR_NO" />
+		<result property="makerCd" column="MAKER_CD" />
+		<result property="modelCd" column="MODEL_CD" />
+		<result property="contentsCd" column="CONTENTS_CD" />
+		<result property="frCd" column="FR_CD" />
+		<result property="carKind" column="CAR_KIND" />
+		<result property="statCd" column="STAT_CD" />
+		<result property="statNm" column="STAT_NM" />
+		<result property="seasonCd" column="SEASON_CD" />
+		<result property="seasonNm" column="SEASON_NM" />
+		<result property="orderNm" column="ORDER_NM" />
+		<result property="monAmt" column="MON_AMT" />
+		<result property="grpNo" column="GRP_NO" />
+		<result property="custTp" column="CUST_TP" />		
+		<result property="cntCd" column="CNT_CD" />			
+	</resultMap>
+	<parameterMap id="paramOrdNoList3" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoList3" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orderCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>
+	<procedure id="popup.ordNoList3" parameterMap="paramOrdNoList3">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoList3PoPup(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultOrdNoList4" class="java.util.HashMap">
+		<result property="ordNo" column="ORD_NO" />
+		<result property="custNo" column="CUST_NO" />
+		<result property="custNm" column="CUST_NM" />
+		<result property="mobNo" column="MOB_NO" />
+		<result property="outStockType" column="OUT_STOCK_TYPE" />
+	</resultMap>
+	<parameterMap id="paramOrdNoList4" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoList4" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orderType"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reqNum"		jdbcType="NUMERIC" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.ordNoList4" parameterMap="paramOrdNoList4">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoList4PoPup(?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultOrdNoListPackage" class="java.util.HashMap">
+		   <result property="ordDay" column="ORD_DAY" />
+           <result property="ordNo" column="ORD_NO" />
+           <result property="custNo" column="CUST_NO" />
+           <result property="birthDay" column="BIRTH_DAY" />
+           <result property="buslNo" column="BUSL_NO" />
+           <result property="custNm" column="CUST_NM" />
+           <result property="genderCd" column="GENDER_CD" />
+           <result property="genderNm" column="GENDER_NM" />
+           <result property="lfCd" column="LF_CD" />
+           <result property="lfNm" column="LF_NM" />
+           <result property="mobNo" column="MOB_NO" />
+           <result property="telNo" column="TEL_NO" />
+           <result property="telNo2" column="TEL_NO2" />
+           <result property="addr" column="ADDR" />
+           <result property="carNo" column="CAR_NO" />
+           <result property="makerCd" column="MAKER_CD" />
+           <result property="modelCd" column="MODEL_CD" />
+           <result property="contentsCd" column="CONTENTS_CD" />
+           <result property="frCd" column="FR_CD" />
+           <result property="carKind" column="CAR_KIND" />
+           <result property="statCd" column="STAT_CD" />
+           <result property="statNm" column="STAT_NM" />
+           <result property="monAmt" column="MON_AMT" />
+           <result property="grpNo" column="GRP_NO" />
+           <result property="checkCnt" column="CHECK_CNT" />
+           <result property="custTp" column="CUST_TP" />
+           <result property="cntCd" column="CNT_CD" />
+	</resultMap>
+	<parameterMap id="paramOrdNoListPackage" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultOrdNoListPackage" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="statCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo2" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="gender" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lf" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>
+	<procedure id="popup.ordNoListPackage" parameterMap="paramOrdNoListPackage">
+		{call  Pkg_Rtsd0104.p_sRtsd0104_ordNoListPackage(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultSchd" class="java.util.HashMap">
+		<result property="calDay"  		column="CAL_DAY"  />
+		<result property="calDat"  		column="CAL_DAT"  />
+		<result property="cntSum"  		column="CNT_SUM"  />
+		<result property="cntReal"  	column="CNT_REAL" />
+		<result property="cnt01" 		column="CNT_01"   />
+		<result property="cnt02"  		column="CNT_02"   />
+		<result property="cnt03"  		column="CNT_03"   />
+		<result property="cnt04"  		column="CNT_04"   />
+	</resultMap>
+	<parameterMap id="paramCond" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSchd" />
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayFrom" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayTo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="popup.visitSchdPerStat" parameterMap="paramCond">
+		{call Pkg_Rtsd0401.p_sRTSD0401CountPerStat(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<resultMap id="resultrestCnt" class="java.util.HashMap">
+		<result property="grpStdNm" column="GRP_STD_NM" />
+		<result property="dcCd" column="DC_CD" />
+		<result property="dcRate" column="DC_RATE" />
+		<result property="dcAmt" column="DC_AMT" />
+		<result property="minCnt" column="MIN_CNT" />
+		<result property="maxCnt" column="MAX_CNT" />
+	</resultMap>
+	<parameterMap id="paramrestCnt" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultrestCnt" />
+		
+	</parameterMap>
+	<procedure id="popup.restCnt" parameterMap="paramrestCnt">
+		{call  Pkg_Rtsd0105.p_sRtsd0105_restCnt(?)}
+	</procedure>
+		
+		
+		
+<!-- 	주문등록 대리점 조회 팝업 -->
+	<resultMap id="resultAgencyOrdpop" class="java.util.HashMap">
+		<result property="agencyCd"          	column="AGENCY_CD" />           <!-- 대리점코드      -->
+		<result property="agencyNm"         	column="AGENCY_NM" />           <!-- 대리점명        -->
+		<result property="salesGroup"        	column="SALES_GROUP" />         <!-- 지사코드        -->
+		<result property="salesGroupNm" 	column="SALES_GROUP_NM" />      <!-- 지사명          -->
+		<result property="salesOffice"        	column="SALES_OFFICE" />        <!-- 지점코드        -->
+		<result property="salesOfficeNm" 	column="SALES_OFFICE_NM" />     <!-- 지점명          -->
+		<result property="posCd"               	column="POS_CD" />              <!-- 우편번호        -->
+		<result property="city"                   	column="CITY" />                <!-- 주소            -->
+		<result property="street"                	column="STREET" />              <!-- 상세주소        -->
+		<result property="sidoCd"              	column="SIDO_CD" />             <!-- 시,도 코드      -->
+		<result property="sigunCd"            	column="SIGUN_CD" />            <!-- 시,군,구 코드   -->
+		<result property="serNo"               	column="SER_NO" />              <!-- 우편일련번호    -->
+		<result property="telNo"                 	column="TEL_NO" />              <!-- 전화번호        -->
+		<result property="mobNo"              	column="MOB_NO" />              <!-- 핸드폰번호      -->
+		<result property="faxNo"                	column="FAX_NO" />              <!-- FAX번호         -->
+		<result property="taxNo"                	column="TAX_NO" />              <!-- 사업자번호      -->
+		<result property="repNm"               	column="REP_NM" />              <!-- 대표명          -->
+		<result property="busiType"           	column="BUSI_TYPE" />           <!-- 업종            -->
+		<result property="busiCond"          	column="BUSI_COND" />           <!-- 업태            -->
+		<result property="rentalYn"           	column="RENTAL_YN" />           <!-- 렌탈대리점 여부 -->
+		<result property="strDay"              	column="STR_DAY" />             <!-- 렌탈대리점 시 -->
+		<result property="endDay"             	column="END_DAY" />             <!-- 렌탈대리점 종 -->
+		<result property="posX"                 	column="POS_X" />               <!-- X좌표           -->
+		<result property="posY"                 	column="POS_Y" />               <!-- Y좌표           -->
+		<result property="lmYn"                 	column="LM_YN" />               <!--  경정비 가능여 -->
+		<result property="fmYn"                 	column="FM_YN" />               <!-- 1급정비 가능여 -->
+		<result property="lifnr"               	   	column="LIFNR" />               <!-- 벤더코드        -->
+		<result property="taxRqcd"            	column="TAX_RQCD" />            <!-- 세금계산서 발행방법  -->
+		<result property="useYn"               	column="USE_YN" />              <!-- 사용여부             -->
+		<result property="regId"                 	column="REG_ID" />              <!-- 등록자 ID            -->
+		<result property="regNm"               	column="REG_NM" />              <!-- 등록자명       -->
+		<result property="regDt"               	column="REG_DT" />              <!-- 등록일         -->
+		<result property="chgId"               	column="CHG_ID" />              <!-- 변경자 ID      -->
+		<result property="chgNm"               column="CHG_NM" />              <!-- 변경자명       -->
+		<result property="chgDt"               	column="CHG_DT" />              <!-- 변경일         -->
+		<result property="chanLclsNm"     	column="CHAN_LCLS_NM" />
+		<result property="chanMclsNm"    	column="CHAN_MCLS_NM" />
+		<result property="chanLclsCd"      	column="CHAN_LCLS_CD" />
+		<result property="chanMclsCd"     	column="CHAN_MCLS_CD" />
+		<result property="taxRqcdNm"     	column="TAX_RQCD_NM" />                  
+		<result property="cwYn"                	column="CW_YN" />               <!-- 세차 가능여부       -->
+		<result property="chYn"                 	column="CH_YN" />               <!-- 추천장착점 여부     -->
+		<result property="opYn"                 	column="OP_YN" />               <!-- 온라인장착가능여부  -->
+		<result property="memo"               	column="MEMO" />                <!-- 비고               -->
+		<result property="desorptCd"         	column="DESORPT_CD" />          <!-- 탈착기 코드 [20171226_01] -->
+		<result property="desorptNm"        	column="DESORPT_NM" />          <!-- 탈착기명    [20171226_01] -->
+		<result property="alignCd"             	column="ALIGN_CD" />            <!-- 얼라인먼트 코드[20171226_01] -->
+		<result property="alignNm"            	column="ALIGN_NM" />            <!-- 얼라인먼트명   [20171226_01] -->
+		<result property="balanceCd"        	column="BALANCE_CD" />          <!-- 밸런스 코드   [20171226_01] -->
+		<result property="balanceNm"       	column="BALANCE_NM" />          <!-- 밸런스명      [20171226_01] -->
+		<result property="visitYn"              	column="VISIT_YN" />            <!-- 방문점검구분   [20181122_01] -->
+		<result property="o2oYn"              	column="O2O_YN" />            <!-- 거점여부구분   [20191205_01] -->
+	</resultMap>
+	
+	<!-- 	주문등록 대리점 조회 팝업 -->
+	<parameterMap id="paramAgenyOrdpop" class="java.util.Map">
+		<parameter property="vcursor"    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultAgencyOrdpop" />        
+		<parameter property="agencyNm"   	jdbcType="VARCHAR" mode="IN" /> <!-- 대리점명              -->                    
+		<parameter property="salesGroup" 	jdbcType="VARCHAR" mode="IN" /> <!-- 지사코드              -->                    
+		<parameter property="salesOffice"		jdbcType="VARCHAR" mode="IN" /> <!-- 지점코드              -->                    
+		<parameter property="sidoCd"     		jdbcType="VARCHAR" mode="IN" /> <!-- 시,도 코드            -->                    
+		<parameter property="sigunCd"    		jdbcType="VARCHAR" mode="IN" /> <!-- 시,군,구 코드         -->                     
+		<parameter property="lmYn"       		jdbcType="VARCHAR" mode="IN" /> <!-- 경정비 가능여부       -->                       
+		<parameter property="fmYn"       		jdbcType="VARCHAR" mode="IN" /> <!-- 1급정비 가능여부      -->                       
+		<parameter property="opYn"       		jdbcType="VARCHAR" mode="IN" /> <!--  온라인장착 가능여부       -->                    
+		<parameter property="desorptCd"  		jdbcType="VARCHAR" mode="IN" /> <!-- 탈착기 코드         -->                       
+		<parameter property="alignCd"    		jdbcType="VARCHAR" mode="IN" /> <!-- 얼라인먼트 코드      -->                        
+		<parameter property="balanceCd"  	jdbcType="VARCHAR" mode="IN" /> <!-- 밸런스 코드         --> 
+	</parameterMap>
+	<procedure id="popup.listAgencyOrdPop" parameterMap="paramAgenyOrdpop">
+		{call Pkg_Rtsd0007.p_sRtsd0007OrdPopup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<parameterMap id="p_Sumpay" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_Sumpay" />
+		<parameter property="saleCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="periodCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cntCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_Sumpay" class="java.util.HashMap"/>
+	<procedure id="popup.Sumpay" parameterMap="p_Sumpay">
+		{call ? := Pkg_Rtsd0042.f_sRtsd0042GetSumPay(?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

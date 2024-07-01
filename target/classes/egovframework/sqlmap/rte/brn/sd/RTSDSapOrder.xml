@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="sapOrder">
+	
+	<!--  주문 인터페이스 현황 조회 -->
+	<resultMap id="sapOrderResultMap" class="java.util.HashMap">
+		<result property="ordDay" 		column="ORD_DAY" /> 		<!-- 주문일  		-->
+		<result property="ordNo" 		column="ORD_NO" /> 			<!-- 주문번호         -->
+		<result property="statNm" 		column="STAT_NM" /> 		<!-- 계약상태Nm      -->
+		<result property="planDay" 		column="PLAN_DAY" /> 		<!-- 장착예정일 		-->
+		<result property="procDay" 		column="PROC_DAY" />  		<!-- 장착일   		-->
+		<result property="cancDay" 		column="CANC_DAY" />  		<!-- 취소일 			-->
+		<result property="transTp" 		column="TRANS_TP" /> 		<!-- 전송구분일       	-->
+		<result property="sendDay" 		column="SEND_DAY" /> 		<!-- 송신일자일       -->
+		<result property="transDay" 	column="TRANS_DAY" /> 		<!-- 전송일자일       	-->
+		<result property="eaiYn" 		column="EAI_YN" /> 			<!-- EAI수신여부      -->
+		<result property="sapYn" 		column="SAP_YN" /> 			<!-- SAP결과수신여부  -->
+		<result property="vbeln" 		column="VBELN" /> 			<!-- SAP주문번호      -->
+	</resultMap>	
+	
+	<parameterMap id="Pkg_Rtsd0104" class="java.util.Map">             
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sapOrderResultMap" />
+		<parameter property="orddayF" 			jdbcType="VARCHAR" mode="IN" /> 	<!-- 주문일From   -->
+		<parameter property="orddayT" 			jdbcType="VARCHAR" mode="IN" /> 	<!-- 주문일To     -->
+		<parameter property="conditionerId" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 1: 전송대상, 2: 전송결과 -->   
+	</parameterMap> 
+	<procedure id="sapOrder.listSapOrder" parameterMap="Pkg_Rtsd0104">
+		{call
+		Pkg_Rtsd0104.p_sRtsd0104SapInterfaceList(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

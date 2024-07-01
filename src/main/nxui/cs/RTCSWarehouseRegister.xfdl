@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSWarehouseRegister" classname="RTCSWarehouseRegister" left="0" top="0" width="1147" height="496" titletext="창고등록" onload="RTCSWarehouseRegister_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_telNo" taborder="17" text="전화번호" cssclass="sta_WF_schTitle" left="402" top="10" width="100" height="21"/>
+              <Static id="st_wareh" taborder="18" text="창고코드" cssclass="sta_WF_schTitle" left="8" top="10" width="100" height="21"/>
+              <Static id="Static03" taborder="20" cssclass="Guide_color" visible="false" left="372" top="0" width="30" height="44"/>
+              <Static id="Static22" taborder="21" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static02" taborder="22" cssclass="Guide_color" visible="false" left="0" top="30" right="0" height="12"/>
+              <Edit id="ed_warehCd" taborder="0" left="112" top="10" width="120" height="21" onkeyup="div_search_ed_warehCd_onkeyup" enable="true" imemode="none" onchanged="div_search_ed_warehCd_onchanged"/>
+              <Edit id="ed_warehNm" taborder="2" enable="false" left="252" top="10" width="120" height="21"/>
+              <Button id="bt_wareh" taborder="1" cssclass="btn_WF_edtSch" left="230" top="9" width="21" height="21" onclick="div_search_bt_wareh_onclick"/>
+              <Edit id="ed_telNo" taborder="3" maxlength="15" left="502" top="10" width="121" height="21" onkeyup="div_search_ed_telNo_onkeyup"/>
+              <Static id="st_useYn" taborder="23" text="사용여부" cssclass="sta_WF_schTitle" left="653" top="10" width="100" height="21"/>
+              <Combo id="cb_useYn" taborder="24" autoselect="true" innerdataset="@ds_useYnSelect" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="div_search_cb_makerSearch_onitemchanged" left="763" top="10" width="80" height="21" index="-1" enable="true"/>
+              <Static id="Static00" taborder="25" cssclass="Guide_color" visible="false" left="623" top="0" width="30" height="44"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="27" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="28" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static03" taborder="29" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="61" width="169" height="20"/>
+        <Static id="Static04" taborder="30" cssclass="Guide_color" visible="false" left="0" top="76" width="1147" height="10"/>
+        <Grid id="grid_rtcs0200" taborder="1" binddataset="ds_rtcs0200" useinputpanel="false" cellsizingtype="col" left="0" top="86" width="1122" height="210" autofittype="col" onselectchanged="grid_rtcs0200_onselectchanged" nodatatext="조회된 데이터가 없습니다." oncelldblclick="grid_rtcs0200_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="창고코드"/>
+                <Cell col="1" text="창고명"/>
+                <Cell col="2" text="시작일자"/>
+                <Cell col="3" text="종료일자"/>
+                <Cell col="4" text="우편번호"/>
+                <Cell col="5" text="주소"/>
+                <Cell col="6" text="상세주소"/>
+                <Cell col="7" text="전화번호"/>
+                <Cell col="8" text="팩스번호"/>
+                <Cell col="9" text="핸드폰번호"/>
+                <Cell col="10" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" text="bind:warehCd" tooltiptext="bind:warehCd"/>
+                <Cell col="1" edittype="none" text="bind:warehNm" tooltiptext="bind:warehNm"/>
+                <Cell col="2" displaytype="date" edittype="none" text="bind:begday" calendardisplaynulltype="none" tooltiptext="bind:begday"/>
+                <Cell col="3" displaytype="date" edittype="none" text="bind:endday" calendardisplaynulltype="none" tooltiptext="bind:endday"/>
+                <Cell col="4" edittype="none" text="bind:posCd" tooltiptext="bind:posCd"/>
+                <Cell col="5" edittype="none" text="bind:addr1" tooltiptext="bind:addr1"/>
+                <Cell col="6" edittype="none" text="bind:addr2" tooltiptext="bind:addr2"/>
+                <Cell col="7" edittype="none" text="bind:telNo" tooltiptext="bind:telNo"/>
+                <Cell col="8" edittype="none" text="bind:faxNo" tooltiptext="bind:faxNo"/>
+                <Cell col="9" edittype="none" text="bind:mobNo" tooltiptext="bind:mobNo"/>
+                <Cell col="10" edittype="none" text="bind:useYn" tooltiptext="bind:useYn"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="21" cssclass="sta_WF_detailLabel2" left="0" top="345" height="31" width="1122"/>
+        <Edit id="ed_warehCd" taborder="4" enable="false" left="155" top="350" width="130" height="21" readonly="false" inputtype="number,english" imemode="alpha"/>
+        <Static id="st_begday" taborder="32" text="시작일자" cssclass="sta_WF_detailLabelP" left="360" top="345" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_useYn" taborder="33" text="사용여부" cssclass="sta_WF_detailLabelP" left="721" top="345" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_warehCd" taborder="34" text="창고코드" cssclass="sta_WF_detailLabelP" left="0" top="345" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static05" taborder="22" cssclass="sta_WF_detailLabel2" left="0" top="375" width="1122" height="31"/>
+        <Edit id="ed_warehNm" taborder="8" enable="true" left="155" top="380" width="200" height="21" readonly="false" imemode="hangul"/>
+        <Static id="st_endday" taborder="36" text="종료일자" cssclass="sta_WF_detailLabelP" left="360" top="375" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_regId" taborder="37" text="등록자" cssclass="sta_WF_detailLabel" left="721" top="375" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_regId" taborder="10" enable="false" left="876" top="380" width="240" height="20" readonly="true"/>
+        <Static id="st_warehNm" taborder="38" text="창고명" cssclass="sta_WF_detailLabelP" left="0" top="375" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_carNo03" taborder="39" text="차량번호" cssclass="sta_WF_detailLabel" left="0" top="405" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static06" taborder="23" cssclass="sta_WF_detailLabel2" left="0" top="405" width="1122" height="31"/>
+        <Edit id="ed_posCd" taborder="11" enable="false" left="155" top="410" width="200" height="21" readonly="false"/>
+        <Static id="st_telNo" taborder="40" text="전화번호" cssclass="sta_WF_detailLabelP" left="360" top="405" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_telNo" taborder="13" enable="true" left="516" top="410" width="200" height="20" readonly="false" onkeyup="ed_telNo_onkeyup" inputtype="number"/>
+        <Static id="st_regDt" taborder="41" text="등록일자" cssclass="sta_WF_detailLabel" left="721" top="405" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_regDt" taborder="14" enable="false" left="876" top="410" width="240" height="20" readonly="true"/>
+        <Static id="st_posCd" taborder="42" text="창고주소" cssclass="sta_WF_detailLabelP" left="0" top="405" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static08" taborder="25" cssclass="sta_WF_detailLabel2" left="360" top="435" height="31" width="762"/>
+        <Static id="Static09" taborder="26" cssclass="sta_WF_detailLabel2" left="360" top="465" width="762" height="31"/>
+        <Static id="st_faxNo" taborder="45" text="팩스번호" cssclass="sta_WF_detailLabel" left="360" top="435" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_faxNo" taborder="16" enable="true" left="516" top="440" width="200" height="20" readonly="false" onkeyup="ed_faxNo_onkeyup" inputtype="number"/>
+        <Static id="st_chgId" taborder="46" text="수정자" cssclass="sta_WF_detailLabel" left="721" top="435" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_chgId" taborder="17" enable="false" left="876" top="440" width="240" height="20" readonly="true"/>
+        <Static id="st_mobNo" taborder="47" text="휴대폰번호" cssclass="sta_WF_detailLabel" left="360" top="465" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_mobNo" taborder="19" enable="true" left="516" top="470" width="200" height="20" readonly="false" onkeyup="ed_mobNo_onkeyup" inputtype="number"/>
+        <Static id="st_chgDt" taborder="48" text="수정일자" cssclass="sta_WF_detailLabel" left="721" top="465" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_chgDt" taborder="20" enable="false" left="876" top="470" width="240" height="20" readonly="true"/>
+        <Static id="Static22" taborder="49" cssclass="Guide_color" visible="false" left="0" top="295" width="1147" height="20"/>
+        <Button id="btn_cancel" taborder="2" text="취소" left="1035" top="315" width="41" height="21" domainId="nexa.save" onclick="btn_cancel_onclick"/>
+        <Button id="btn_add" taborder="3" text="추가" left="1081" top="315" width="41" height="21" domainId="nexa.save" onclick="btn_add_onclick"/>
+        <Static id="Static10" taborder="50" cssclass="Guide_color" visible="false" left="0" top="335" width="1147" height="10"/>
+        <Button id="bt_posCd" taborder="12" cssclass="btn_WF_edtSch" left="334" top="409" width="20" height="21" domainId="nexa.save" onclick="bt_posCd_onclick"/>
+        <Button id="bt_warehCd" taborder="5" text="중복확인" left="290" top="350" width="65" height="21" onclick="bt_warehCd_onclick" enable="false"/>
+        <Calendar id="cal_begday" taborder="6" dateformat="yyyy-MM-dd" enable="true" left="517" top="350" width="200" height="21" readonly="false" onchanged="cal_begday_onchanged"/>
+        <Calendar id="cal_endday" taborder="9" dateformat="yyyy-MM-dd" enable="false" left="517" top="380" width="200" height="21" readonly="false"/>
+        <Combo id="cb_useYn" taborder="7" autoselect="true" index="0" displayrowcount="5" onitemchanged="div_search_cb_makerSearch_onitemchanged" left="876" top="350" width="240" height="21" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" enable="true" readonly="false"/>
+        <Edit id="ed_bldMngNo" taborder="51" enable="false" left="160" top="315" width="200" height="21" displaynulltext="우편번호 PK" visible="false"/>
+        <Static id="Static11" taborder="52" text="변경할 내용" cssclass="sta_WF_subTitle" left="0" top="317" width="169" height="20"/>
+        <Static id="Static07" taborder="53" cssclass="sta_WF_detailLabel2" left="0" top="435" width="361" height="61"/>
+        <Static id="st_addr" taborder="54" text="주소" cssclass="sta_WF_detailLabelP" left="0" top="435" width="150" height="61" domainId="nexa.s_condition"/>
+        <Edit id="ed_addr1" taborder="55" enable="false" left="155" top="440" width="200" height="21"/>
+        <Edit id="ed_addr2" taborder="56" left="155" top="470" width="200" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtcs0200" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="warehCd" type="STRING" size="256"/>
+          <Column id="warehNm" type="STRING" size="256"/>
+          <Column id="begday" type="STRING" size="256"/>
+          <Column id="endday" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYnSelect" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_warehCd" propid="value" datasetid="ds_rtcs0200" columnid="warehCd"/>
+      <BindItem id="item1" compid="ed_warehNm" propid="value" datasetid="ds_rtcs0200" columnid="warehNm"/>
+      <BindItem id="item2" compid="ed_bldMngNo" propid="value" datasetid="ds_rtcs0200" columnid="bldMngNo"/>
+      <BindItem id="item3" compid="ed_posCd" propid="value" datasetid="ds_rtcs0200" columnid="posCd"/>
+      <BindItem id="item6" compid="cal_begday" propid="value" datasetid="ds_rtcs0200" columnid="begday"/>
+      <BindItem id="item7" compid="cal_endday" propid="value" datasetid="ds_rtcs0200" columnid="endday"/>
+      <BindItem id="item8" compid="ed_telNo" propid="value" datasetid="ds_rtcs0200" columnid="telNo"/>
+      <BindItem id="item9" compid="ed_faxNo" propid="value" datasetid="ds_rtcs0200" columnid="faxNo"/>
+      <BindItem id="item10" compid="ed_mobNo" propid="value" datasetid="ds_rtcs0200" columnid="mobNo"/>
+      <BindItem id="item11" compid="cb_useYn" propid="value" datasetid="ds_rtcs0200" columnid="useYn"/>
+      <BindItem id="item12" compid="ed_regId" propid="value" datasetid="ds_rtcs0200" columnid="regId"/>
+      <BindItem id="item13" compid="ed_regDt" propid="value" datasetid="ds_rtcs0200" columnid="regDt"/>
+      <BindItem id="item14" compid="ed_chgId" propid="value" datasetid="ds_rtcs0200" columnid="chgId"/>
+      <BindItem id="item15" compid="ed_chgDt" propid="value" datasetid="ds_rtcs0200" columnid="chgDt"/>
+      <BindItem id="item16" compid="ed_bldMngNo" propid="value" datasetid="ds_rtcs0200" columnid="bldMngNo"/>
+      <BindItem id="item4" compid="ed_addr1" propid="value" datasetid="ds_rtcs0200" columnid="addr1"/>
+      <BindItem id="item5" compid="ed_addr2" propid="value" datasetid="ds_rtcs0200" columnid="addr2"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 			= "RTCSWarehouseRegister";
+this.checkWarchCd 	= false;	//중복체크여부
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 			= "";		//현재날짜
+this.cntWarehCd 	= "";		//창고코드 중복체크
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTCSWarehouseRegister" ){
+		var ct = this.ds_useYnSelect.getRowCount();
+		if( ct != 0 ){
+			this.div_search.cb_useYn.set_value("Y");
+		}
+	}
+	
+	if( strSvcId == "getToday" ){
+	
+	}
+	
+	if( strSvcId == "checkWarehCd" ){
+		if(this.cntWarehCd != '0') {
+			this.checkWarchCd = false;
+			alert('입력하신 창고코드 \'' + this.ed_warehCd.value + '\'는 존재하고 있습니다.'); 
+			this.ed_warehCd.set_value('');
+		}else{
+			this.checkWarchCd = true;
+			this.ed_warehCd.set_enable(false);
+			this.cal_begday.setFocus(true);
+			alert('사용가능한 창고코드 입니다.');
+		}
+	}
+	
+	if( strSvcId == "saveRTCSWarehouseRegister" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			this.fn_search();
+		}
+	}
+	
+	if( strSvcId == "selectRTCSWarehouseRegister" ){
+		var nRowCount = this.ds_rtcs0200.getRowCount();
+		if(nRowCount != 0){
+			this.ds_rtcs0200.set_updatecontrol(false);
+			for( var i = 0 ; i < nRowCount ; i++ ){
+				this.ds_rtcs0200.setColumn(i, "telNo",FN_numberHyphenInReturn(nvl(this.ds_rtcs0200.getColumn(i,"telNo"))));
+				this.ds_rtcs0200.setColumn(i, "faxNo",FN_numberHyphenInReturn(nvl(this.ds_rtcs0200.getColumn(i,"faxNo"))));
+				this.ds_rtcs0200.setColumn(i, "mobNo",FN_numberHyphenInReturn(nvl(this.ds_rtcs0200.getColumn(i,"mobNo"))));
+			}
+			this.ds_rtcs0200.set_updatecontrol(true);
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_rtcs0200.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_warehCd.setFocus(true);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCSWarehouseRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.parent.setButton("E|C|S", this);
+	this.fn_init();
+	
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTCSWarehouseRegister";  
+	var sController   	= "rtms/cs/initRTCSWarehouseRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	sOutDatasets += " ds_useYnSelect=mapDsUseYnSelect ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	
+	if( !this.FN_saveCheckRequired() ) {
+		return false;
+	}
+	
+	if( !this.FN_saveCheckChange() ) {
+		alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+	
+	if( !this.FN_saveCheckChangeCount() ) {
+		alert('변경된 데이터가 1건 이상입니다.');
+		return false;
+	}
+	
+	var sSvcID        	= "saveRTCSWarehouseRegister";                    
+	var sController   	= "rtms/cs/saveRTCSWarehouseRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	sInDatasets   		= "input=ds_rtcs0200:U";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	
+	var nRow = this.ds_rtcs0200.rowposition;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	for( var i = 0 ; i < cnt ; i++){
+		if( (this.ds_rtcs0200.getRowType(i) == 2) || (this.ds_rtcs0200.getRowType(i) == 4) ){
+			this.ds_rtcs0200.setColumn(i, "telNo",FN_numberHyphenOut(nvl(this.ds_rtcs0200.getColumn(i,"telNo"))));
+			this.ds_rtcs0200.setColumn(i, "faxNo",FN_numberHyphenOut(nvl(this.ds_rtcs0200.getColumn(i,"faxNo"))));
+			this.ds_rtcs0200.setColumn(i, "mobNo",FN_numberHyphenOut(nvl(this.ds_rtcs0200.getColumn(i,"mobNo"))));
+		}
+	}
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+this.FN_saveCheckRequired = function(){
+	var returnFlag = true;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	var msg = " 값이 없습니다.";
+	for( var  i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0200.getRowType(i) == 2) || (this.ds_rtcs0200.getRowType(i) == 4) ){
+			var warehCd 	= nvl(this.ds_rtcs0200.getColumn(i,"warehCd"));
+			var begday		= nvl(this.ds_rtcs0200.getColumn(i,"begday"));
+			var useYn 		= nvl(this.ds_rtcs0200.getColumn(i,"useYn"));
+			var warehNm 	= nvl(this.ds_rtcs0200.getColumn(i,"warehNm"));
+			var endday 		= nvl(this.ds_rtcs0200.getColumn(i,"endday"));
+			var posCd 		= nvl(this.ds_rtcs0200.getColumn(i,"posCd"));
+			var addr1 		= nvl(this.ds_rtcs0200.getColumn(i,"addr1"));
+			var addr2 		= nvl(this.ds_rtcs0200.getColumn(i,"addr2"));
+			var bldMngNo 	= nvl(this.ds_rtcs0200.getColumn(i,"bldMngNo"));
+			var telNo 		= nvl(this.ds_rtcs0200.getColumn(i,"telNo"));
+			if( warehCd == "" ){ 	alert( "창고코드" + msg); 		this.ds_rtcs0200.set_rowposition(i); this.ed_warehCd.setFocus(true); 	returnFlag = false; break;}
+			if( begday == "" ){ 	alert( "시작일자" + msg); 		this.ds_rtcs0200.set_rowposition(i); this.cal_begday.setFocus(true); 	returnFlag = false; break;}
+			if( useYn == "" ){ 		alert( "사용여부" + msg); 		this.ds_rtcs0200.set_rowposition(i); this.cb_useYn.setFocus(true);	 	returnFlag = false; break;}
+			if( warehNm == "" ){ 	alert( "창고명" + msg); 		this.ds_rtcs0200.set_rowposition(i); this.ed_warehNm.setFocus(true); 	returnFlag = false; break;}
+			if( endday == "" ){ 	alert( "종료일자" + msg ); 	this.ds_rtcs0200.set_rowposition(i); this.cal_endday.setFocus(true); 	returnFlag = false; break;}
+			if( posCd == "" ){ 		alert( "우편번호" + msg ); 	this.ds_rtcs0200.set_rowposition(i); this.bt_posCd.setFocus(true);	  	returnFlag = false; break;}
+			if( addr1 == "" ){ 		alert( "주소"  + msg ); 		this.ds_rtcs0200.set_rowposition(i); this.bt_posCd.setFocus(true);	 	returnFlag = false; break;}
+			if( addr2 == "" ){ 		alert( "상세주소"  + msg ); 	this.ds_rtcs0200.set_rowposition(i); this.ed_addr2.setFocus(true);	 	returnFlag = false; break;}
+			//if( bldMngNo == "" ){ 	alert( "우편번호 PK" + msg ); 	this.ds_rtcs0200.set_rowposition(i); this.bt_posCd.setFocus(true);	 	returnFlag = false; break;}
+			if( telNo == "" ){ 		alert( "전화번호"  + msg ); 	this.ds_rtcs0200.set_rowposition(i); this.ed_telNo.setFocus(true);	 	returnFlag = false; break;}
+			//if( warehCd.length < 5 = "" ){ 		alert( "창고코드길이는 5자리 이상입니다."); this.ed_warehCd.setFocus(true);  return false; }
+		}
+
+	}
+	if( (returnFlag == true) && (this.checkWarchCd == false) ){
+		for( var  i = 0 ; i < cnt ; i++ ){
+			if( this.ds_rtcs0200.getRowType(i) == 2 ){
+				alert("창고코드 중복체크를 해주세요.");
+				this.ds_rtcs0200.set_rowposition(i);
+				this.bt_warehCd.setFocus(true);
+				returnFlag = false;
+			}
+		}
+	}
+	return returnFlag;
+}
+this.FN_saveCheckChange = function(){
+	var returnFlag = true;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	for( var  i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0200.getRowType(i) == 2) || (this.ds_rtcs0200.getRowType(i) == 4) ){
+			returnFlag = true;
+			break;
+		}else{
+			returnFlag = false;
+		}
+	}
+	return returnFlag;
+}
+this.FN_saveCheckChangeCount = function(){
+	var returnFlag = true;
+	var changeCount = 0;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	for( var i = 0 ; i < cnt ; i++ ){
+		if( (this.ds_rtcs0200.getRowType(i) == 2) || (this.ds_rtcs0200.getRowType(i) == 4) ){
+			changeCount++;
+		}
+	}
+	if( changeCount == 1 ){
+		returnFlag = true;
+	}else{
+		returnFlag = false;
+	}
+	return returnFlag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.grid_rtcs0200);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var warehCd = nvl(this.div_search.ed_warehCd.value);
+	var telNo 	= nvl(FN_numberHyphenOut(nvl(this.div_search.ed_telNo.value)));
+	var useYn 	= nvl(this.div_search.cb_useYn.value);
+	
+	var sSvcID        	= "selectRTCSWarehouseRegister";                    
+	var sController   	= "rtms/cs/selectRTCSWarehouseRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtcs0200=mapRtcs0200";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("warehCd", warehCd);
+	sArgs += Ex.util.setParam("telNo", telNo);
+	sArgs += Ex.util.setParam("useYn", useYn);
+	this.ds_rtcs0200.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_wareh_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"창고 조회","comm::RTCOMMWarehouse_pop.xfdl",args, "modaless=false");
+}
+this.returnWarehCd = function( res ){
+	this.div_search.ed_warehCd.set_value( res[0] );
+	this.div_search.ed_warehNm.set_value( res[1] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_cancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var delRow = -1;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	for( var i = 0 ; i < cnt ; i++ ){
+		if( this.ds_rtcs0200.getRowType(i) == 2 ){
+			delRow = i;
+		}else{
+			delRow = -1
+		}
+	}
+	
+	if( delRow != -1 ){
+		this.ds_rtcs0200.deleteRow(delRow);
+		this.bt_warehCd.set_enable(false);
+	}else{
+		alert("취소할 행이 없습니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_add_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if( this.FN_addRow() ){
+		this.FN_addValue();
+	}
+}
+this.FN_addRow = function(){
+	var addRowFlag = false;
+	var cnt = this.ds_rtcs0200.getRowCount();
+	if( cnt == 0 ){
+		addRowFlag = true;
+	}else{		
+		for( var  i = 0 ; i < cnt ; i++ ){
+			if( this.ds_rtcs0200.getRowType(i) == 2 || this.ds_rtcs0200.getRowType(i) == 4){
+				alert("추가,수정된 행이 있으므로 추가하실 수 없습니다.\n저장 후 다시 작업하세요.");
+				this.ds_rtcs0200.set_rowposition(i);
+				addRowFlag = false;
+				break;
+			}else{
+				addRowFlag = true;
+			}
+		}
+	}
+	return addRowFlag;
+}
+this.FN_addValue = function(){
+	this.ds_rtcs0200.addRow();
+	this.cal_begday.set_value(this.toDay);
+	this.cal_endday.set_value("99991231");
+	this.cb_useYn.set_value("Y");
+	this.bt_warehCd.setFocus(true);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_warehCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(nvl(this.ed_warehCd.value) == "") {
+		alert("창고코드를  입력해주십시오.");
+		this.ed_warehCd.setFocus(true);
+		return;
+	}
+	var sSvcID        	= "checkWarehCd";                    
+	var sController   	= "rtms/cs/checkWarehCd.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	sArgs += Ex.util.setParam("warehCd",this.ed_warehCd.value);
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_posCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+}
+this.FN_postCd = function( res ){
+	this.ed_posCd.set_value( res[0] );
+	this.ed_addr1.set_value( res[1] );
+	this.ed_addr2.set_value( res[2] );
+	this.ed_bldMngNo.set_value( res[3] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtcs0200_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	if( this.ds_rtcs0200.getRowType( this.ds_rtcs0200.rowposition ) == 2 ){
+		this.bt_warehCd.set_enable(true);
+		this.ed_warehCd.set_enable(true);
+		this.cb_useYn.set_enable(false);
+	}else{
+		this.bt_warehCd.set_enable(false);
+		this.ed_warehCd.set_enable(false);
+		this.cb_useYn.set_enable(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtcs0200_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var args = {p_arg : this.p_arg, warehCd : this.ds_rtcs0200.getColumn( this.ds_rtcs0200.rowposition, "warehCd" )};
+	Ex.core.popup(this,"창고변경이력","comm::RTCOMMWarehouseUpdateList_pop.xfdl",args, "modaless=false");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_warehCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if(e.keycode == 13){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if(e.keycode == 13){
+		this.fn_search();
+	}else{
+		FN_numberHyphenIn(obj, e);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ed_faxNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ed_mobNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cal_begday_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var thisValue =  obj.value;
+	var firstDate =  Eco.date.getFirstDate(this.toDay);
+	var lastDay   =  this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+	
+	if( !(( firstDate <= thisValue ) && (thisValue <= lastDay)) ){
+		alert("시작일자는 "+firstDate+" ~ "+lastDay+" 선택가능합니다.");
+		obj.set_value(this.toDay);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_warehCd_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	this.div_search.ed_warehNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+]]></Script>
+  </Form>
+</FDL>

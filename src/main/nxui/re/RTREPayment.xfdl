@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="결제정보변경" left="0" width="1147" top="0" height="496" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="tabPayment" taborder="0" left="0" top="0" tabindex="0" style="buttonpadding:7 10 7 10;showextrabutton:false;" tabjustify="false" width="1122" height="578">
+          <Tabpages>
+            <Tabpage id="RTREPaymentTab1" text="결제방법 및 결제일 변경" url="re::RTREPayment_tab1.xfdl"/>
+            <Tabpage id="RTREPaymentTab2" text="변경 HISTORY" enableevent="true" enable="true" url="re::RTREPayment_tab2.xfdl">
+              <Layouts/>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static01" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 결제정보변경
+ * 02. 그룹명   : RTREPayment.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   : 
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.parent.setButton("",this);		
+	} 
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+]]></Script>
+  </Form>
+</FDL>

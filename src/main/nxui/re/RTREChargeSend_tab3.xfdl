@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREChargeSend_tab3" classname="test_form" left="0" top="0" width="1147" height="496" titletext="수수료내역 SMS발송" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static02" taborder="16" cssclass="Guide_color" visible="false" left="0" top="87" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="22" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="26" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="72" width="84" height="20"/>
+        <Static id="Static17" taborder="24" cssclass="sta_WF_detailLabel2" left="10" top="97" width="1098" height="31"/>
+        <Edit id="edt_procStatus" taborder="25" enable="false" left="144" top="102" width="958" height="21"/>
+        <Static id="Static19" taborder="23" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="97" width="130" height="31"/>
+        <Static id="Static05" taborder="27" cssclass="Guide_color" visible="false" left="8" top="0" right="17" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="28" left="9" top="10" width="1098" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_procDay" taborder="132" text="마감월" cssclass="sta_WF_schTitle" left="31" top="12" width="108" height="21"/>
+              <Static id="Static26" taborder="133" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="134" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="135" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static00" taborder="137" text="FIX w20" cssclass="Guide_color" visible="false" left="149" top="0" width="20" height="45"/>
+              <Calendar id="cal_slcmYm" taborder="138" dateformat="yyyy-MM" left="167" top="12" width="142" height="21" value="null" editformat="yyyy-MM"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="29" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Bind>
+      <BindItem id="item9" compid="div_search.cal_slcmYm" propid="value" datasetid="ds_provsnList" columnid="planDay"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 	= ""; 	//현재날짜
+this.toHour = "";	//현재시간
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if (nErrorCode < 0)	{
+		this.edt_procStatus.set_value(strErrorMsg);
+		return;
+	}
+	
+	switch (strSvcId){
+		case "aggregateSms":
+			if(nErrorCode == 0){
+				this.edt_procStatus.set_value("SMS발송준비가 완료되었습니다.");
+			}
+			break;
+		case "saveSendSms":
+			if(nErrorCode == 0){
+				this.edt_procStatus.set_value("SMS발송이 완료되었습니다.");
+			}
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.fn_init();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.fn_initBtn();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.parent.parent.setButton("C|AG",this);
+	this.edt_procStatus.set_value("");
+}		
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var sSvcID      	= "saveSendSms";  
+	var sController   	= "ntrms/re/saveSendSms.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	sArgs += Ex.util.setParam("slcmYm", 	nvl(this.div_search.cal_slcmYm.value).substring(0, 6));
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_aggregate = function(){
+	var sSvcID      	= "aggregateSms";  
+	var sController   	= "ntrms/re/aggregateSms.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	sArgs += Ex.util.setParam("slcmYm", 	nvl(this.div_search.cal_slcmYm.value).substring(0, 6));
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}]]></Script>
+  </Form>
+</FDL>

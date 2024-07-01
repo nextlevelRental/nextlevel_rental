@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="POCTest01" classname="POCTest01" left="0" top="0" width="1147" height="768" titletext="PoC 테스트" onload="POCTest01_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="10" top="10" width="1126" height="49" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_contentsCd" taborder="75" text="사양" cssclass="sta_WF_schTitle" left="661" top="12" width="47" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cb_contentsCd" taborder="76" displaynulltext="선택" innerdataset="ds_contents" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_contentsCd_onitemchanged" left="762" top="12" width="92" height="21" domainId=""/>
+              <Edit id="ed_frCd" taborder="77" maxlength="80" enable="false" visible="false" left="276" top="-10" width="81" height="21"/>
+              <Edit id="ed_modelCd" taborder="78" maxlength="80" enable="false" visible="false" left="80" top="-10" width="84" height="21"/>
+              <Edit id="ed_contentsCd" taborder="79" maxlength="80" enable="false" visible="false" left="172" top="-10" width="104" height="21"/>
+              <Static id="st_carModelCd" taborder="81" text="차종" cssclass="sta_WF_schTitle" left="421" top="12" width="45" height="21" domainId="nexa.s_condition"/>
+              <Static id="st_carGubunCd" taborder="82" text="차량분류" cssclass="sta_WF_schTitle" left="20" top="12" width="75" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static07" taborder="84" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1102" height="12"/>
+              <Static id="Static06" taborder="86" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="37"/>
+              <Static id="Static00" taborder="87" text="FIX w20" cssclass="Guide_color" visible="false" left="95" top="0" width="20" height="37"/>
+              <Static id="Static02" taborder="88" text="FIX w20" cssclass="Guide_color" visible="false" left="401" top="0" width="20" height="35"/>
+              <Static id="Static04" taborder="89" text="FIX w20" cssclass="Guide_color" visible="false" left="466" top="0" width="20" height="37"/>
+              <Static id="Static05" taborder="90" text="FIX w20" cssclass="Guide_color" visible="false" left="640" top="0" width="20" height="35"/>
+              <Static id="Static08" taborder="91" text="FIX w20" cssclass="Guide_color" visible="false" left="742" top="0" width="20" height="36"/>
+              <Static id="Static09" taborder="92" text="FIX w20" cssclass="Guide_color" visible="false" left="1102" top="0" width="20" height="37"/>
+              <Static id="Static01" taborder="96" text="FIX w20" onclick="div_search_Static01_onclick" cssclass="Guide_color" visible="false" left="1077" top="0" width="20" height="35"/>
+              <Static id="Static11" taborder="99" text="FIX w20" cssclass="Guide_color" visible="false" left="206" top="0" width="20" height="36"/>
+              <Static id="Static12" taborder="101" text="FIX w20" cssclass="Guide_color" visible="false" left="290" top="0" width="20" height="36"/>
+              <Combo id="cb_carClassCd" taborder="103" displaynulltext="선택" innerdataset="ds_carClassCd" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_carClassCd_onitemchanged" left="115" top="12" width="92" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_carMakerCd" taborder="104" text="제조사" cssclass="sta_WF_schTitle" left="227" top="12" width="66" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cb_carMakerCd" taborder="105" displaynulltext="선택" innerdataset="ds_carMaker" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_carMakerCd_onitemchanged" left="309" top="12" width="92" height="21" domainId="nexa.name;nexa.code"/>
+              <Combo id="cb_carModelCd" taborder="106" displaynulltext="선택" innerdataset="ds_carModel" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_carModelCd_onitemchanged" left="485" top="12" width="155" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_frCd" taborder="107" text="전후구분" cssclass="sta_WF_schTitle" left="873" top="12" width="65" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static13" taborder="108" text="FIX w20" cssclass="Guide_color" visible="false" left="854" top="0" width="20" height="36"/>
+              <Combo id="cb_frCd" taborder="109" displaynulltext="선택" innerdataset="ds_frCd" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_searchPeriod_onitemchanged" left="968" top="11" width="109" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="Static15" taborder="113" text="FIX w20" cssclass="Guide_color" visible="false" left="948" top="8" width="20" height="27"/>
+              <Static id="Static03" taborder="114" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" width="1122" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_productAndPrice" taborder="1" binddataset="ds_rtsd0004" useinputpanel="false" cellsizingtype="col" autofittype="col" oncellclick="grid_product_oncellclick" left="11" top="66" width="285" height="406">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="단면폭"/>
+                <Cell col="1" text="편평비"/>
+                <Cell col="2" text="인치"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:sectionWidth"/>
+                <Cell col="1" text="bind:aspectRatio"/>
+                <Cell col="2" text="bind:wheelInches"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_productAndPrice00" taborder="2" binddataset="ds_detail" useinputpanel="false" cellsizingtype="col" autofittype="col" oncellclick="grid_product_oncellclick" left="307" top="66" width="829" height="406">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="101"/>
+                <Column size="200"/>
+                <Column size="51"/>
+                <Column size="55"/>
+                <Column size="68"/>
+                <Column size="55"/>
+                <Column size="57"/>
+                <Column size="59"/>
+                <Column size="71"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="제조사"/>
+                <Cell col="1" text="패턴"/>
+                <Cell col="2" text="RR지수"/>
+                <Cell col="3" text="WET지수"/>
+                <Cell col="4" text="판가"/>
+                <Cell col="5" text="RR점수"/>
+                <Cell col="6" text="WET점수"/>
+                <Cell col="7" text="판가점수"/>
+                <Cell col="8" text="총점수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:maker"/>
+                <Cell col="1" text="bind:pattern"/>
+                <Cell col="2" text="bind:idxRr"/>
+                <Cell col="3" text="bind:idxWet"/>
+                <Cell col="4" text="bind:sale"/>
+                <Cell col="5" text="bind:scrRr"/>
+                <Cell col="6" text="bind:scrWet"/>
+                <Cell col="7" text="bind:scrSale"/>
+                <Cell col="8" text="bind:scrTot"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_carClassCd">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_carMaker"/>
+      <Dataset id="ds_carModel"/>
+      <Dataset id="ds_contents">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_frCd">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0004">
+        <ColumnInfo>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="sectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="wheelQty" type="STRING" size="256"/>
+          <Column id="wheelLimitQty" type="STRING" size="256"/>
+          <Column id="classCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_detail">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="sw" type="STRING" size="256"/>
+          <Column id="ar" type="STRING" size="256"/>
+          <Column id="inch" type="STRING" size="256"/>
+          <Column id="maker" type="STRING" size="256"/>
+          <Column id="pattern" type="STRING" size="256"/>
+          <Column id="idxRr" type="STRING" size="256"/>
+          <Column id="idxWet" type="STRING" size="256"/>
+          <Column id="sale" type="STRING" size="256"/>
+          <Column id="scrRr" type="STRING" size="256"/>
+          <Column id="scrWet" type="STRING" size="256"/>
+          <Column id="scrSale" type="STRING" size="256"/>
+          <Column id="scrTot" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+this.toDay = "";
+
+this.POCTest01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.parent.setButton("S", this);
+	this.fn_initYmd();
+	this.fn_init();
+}
+
+this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		case "initProductPriceCombo":
+		
+			this.ds_period.insertRow(0);
+			this.ds_period.setColumn(0, "cd","");
+			this.ds_period.setColumn(0, "cdNm","전체");
+			
+			this.fn_resetCombo(this.div_search.cb_period);
+			
+			this.ds_seasonCd.insertRow(0);
+			this.ds_seasonCd.setColumn(0, "cd","");
+			this.ds_seasonCd.setColumn(0, "cdNm","전체");
+			
+			this.fn_resetCombo(this.div_search.cb_seasonCd);
+			
+			this.ds_cnt.insertRow(0);
+			this.ds_cnt.setColumn(0, "cd","");
+			this.ds_cnt.setColumn(0, "cdNm","전체");
+			
+			this.fn_resetCombo(this.div_search.cb_cnt);
+			
+			break;
+			
+		case "sRtsd0004ContentsSelect":
+				
+			for(var i=0; i<this.ds_contents.rowcount; i++){
+				if(nvl(this.ds_contents.getColumn(i, "cdNm")) == ""){
+					this.ds_contents.setColumn(i, "cdNm", "사양없음");
+				}
+			}
+			
+			break;
+			
+		case "sRtsd0004FrCdSelect":
+		
+			//조회한 전후구분코드로 세팅
+			for(var i=0; i<this.ds_frCd.rowcount;i++){
+				if(nvl(this.ds_frCd.getColumn(i, "cd")) == "Z"){
+					this.ds_frCd.setColumn(i, "cdNm", "구분없음");
+				}
+			}
+			
+			this.fn_resetCombo(this.div_search.cb_frCd);
+			
+			break;
+
+		case "sRtsd0004Select":
+			
+			if(this.ds_rtsd0004.rowcount == 0){
+				this.grid_productAndPrice.set_nodatatext("조회된 데이터가 존재 하지 않습니다.");
+			}
+				
+			break;		
+			
+		case "listPocScore":
+			
+			if(this.ds_detail.rowcount == 0){
+				this.grid_productAndPrice00.set_nodatatext("조회된 데이터가 존재 하지 않습니다.");
+			}
+				
+			break;
+		
+		default:
+			break;
+	}
+}
+
+/**
+ * 서버기준 오늘 날자 조회 후 세팅
+ */
+this.fn_initYmd = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+this.fn_init = function() {
+	var sSvcID      	= "initProductPriceCombo";  
+	var sController   	= "rtms/comm/initProductPriceCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= " ";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sOutDatasets += " ds_carClassCd=mapCarGubun ";
+	sOutDatasets += " ds_carMaker=mapBrand ";
+	sOutDatasets += " ds_period=mapPeriod ";
+	sOutDatasets += " ds_cnt=mapCnt ";
+	sOutDatasets += " ds_seasonCd=mapSeasonCd ";
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 콤보박스 컨트롤 초기화
+ */
+this.fn_resetCombo = function(cbObj) {	
+	cbObj.set_index(-1);
+	cbObj.value = "";
+}
+
+//차량분류 변경
+this.div_search_cb_carClassCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	if(nvl(this.div_search.cb_carMakerCd.value) != ""){
+		this.div_search_cb_carMakerCd_onitemchanged();
+	}
+}
+
+//제조사에 해당하는 차종종류
+this.div_search_cb_carMakerCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var sSvcID        	= "sRtsd0001ModelSelect";                    
+	var sController   	= "/rtms/sd/sRtsd0001ModelByClassSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_carModel=modelSearchMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("makerCd",  nvl(this.div_search.cb_carMakerCd.value));
+	sArgs += Ex.util.setParam("classCd",  nvl(this.div_search.cb_carClassCd.value));
+	
+	this.ds_carModel.clearData();
+	this.ds_contents.clearData();
+	this.ds_frCd.clearData();
+	
+	this.fn_resetCombo(this.div_search.cb_carModelCd);
+	this.fn_resetCombo(this.div_search.cb_contentsCd);	
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//차종분류,차종에 해당하는 사양종류
+this.div_search_cb_carModelCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{	
+	var sSvcID        	= "sRtsd0004ContentsSelect";                    
+	var sController   	= "/rtms/sd/sRtsd0004ContentsCdSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_contents=contentsCdSearchMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("modelCd",  nvl(this.div_search.cb_carModelCd.value));
+	sArgs += Ex.util.setParam("classCd",  nvl(this.div_search.cb_carClassCd.value));
+	sArgs += Ex.util.setParam("useYn",  "Y");
+	
+	this.ds_contents.clearData();
+	this.ds_frCd.clearData();
+	
+	this.fn_resetCombo(this.div_search.cb_contentsCd);
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//차종분류,차종에 해당하는 전후구분
+this.div_search_cb_contentsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var sSvcID        	= "sRtsd0004FrCdSelect";                    
+	var sController   	= "/rtms/sd/sRtsd0004FrCdSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_frCd=fdCdSearchMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("classCd",  nvl(this.div_search.cb_carClassCd.value));
+	sArgs += Ex.util.setParam("contentsCd",  nvl(this.div_search.cb_contentsCd.value));
+	sArgs += Ex.util.setParam("modelCd",  nvl(this.div_search.cb_carModelCd.value));
+	sArgs += Ex.util.setParam("useYn",  "Y");
+	
+	this.ds_frCd.clearData();
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 조회 버튼의 클릭 이벤트 처리
+ */
+this.fn_search = function(){
+	
+	if(nvl(this.div_search.cb_carClassCd.value) == ""){
+		this.alert("차량분류를 선택해주세요.");
+		return;
+	}
+	
+	if(nvl(this.div_search.cb_carMakerCd.value) == ""){
+		this.alert("제조사를 선택해주세요.");
+		return;
+	}
+	
+	if(nvl(this.div_search.cb_carModelCd.value) == ""){
+		this.alert("차량종류를 선택해주세요.");
+		return;
+	}
+	
+	if(nvl(this.div_search.cb_contentsCd.value) == ""){
+		this.alert("사양을 선택해주세요.");
+		return;
+	}
+	
+	this.ds_detail.clearData();
+	
+	var sSvcID        	= "sRtsd0004Select";                    
+	var sController   	= "/rtms/sd/sRtsd0004Select.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0004=rtsd0004SearchMap";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("modelCd" 		,nvl(this.div_search.cb_carModelCd.value));
+	sArgs += Ex.util.setParam("contentsCd" 		,nvl(this.div_search.cb_contentsCd.value));
+	sArgs += Ex.util.setParam("frCd" 		,nvl(this.div_search.cb_frCd.value));
+	sArgs += Ex.util.setParam("classCd" 		,nvl(this.div_search.cb_carClassCd.value));
+	sArgs += Ex.util.setParam("useYn" 		,"Y");
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.grid_product_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var sSvcID        	= "listPocScore";                    
+	var sController   	= "/ntrms/cm/listPocScore.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_detail=listPocScore";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("sw", this.ds_rtsd0004.getColumn(e.row, "sectionWidth"));
+	sArgs += Ex.util.setParam("ar", this.ds_rtsd0004.getColumn(e.row, "aspectRatio"));
+	sArgs += Ex.util.setParam("inch", this.ds_rtsd0004.getColumn(e.row, "wheelInches"));	
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+]]></Script>
+  </Form>
+</FDL>

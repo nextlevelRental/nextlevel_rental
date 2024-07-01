@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="MDI" classname="MDI" left="0" top="0" width="1167" height="31" titletext="MDI">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="2" left="0" top="0" height="31" cssclass="sta_MDI_bg" right="16"/>
+        <Static id="Static01" taborder="6" top="4" width="34" height="22" cssclass="sta_MDI_btnbg" right="38"/>
+        <Button id="Button00" taborder="0" left="0" top="0" width="34" height="31" cssclass="btn_MDI_home"/>
+        <Button id="Button01" taborder="1" top="7" width="16" height="16" cssclass="btn_MDI_pre" enable="true" right="55"/>
+        <Tab id="Tab00" taborder="3" left="34" top="0" height="30" tabindex="0" scrollbars="autoboth" cssclass="tab_MDI" width="969">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="MDI menu01"/>
+            <Tabpage id="tabpage2" text="MDI menu02"/>
+            <Tabpage id="tabpage3" text="MDI menu03"/>
+            <Tabpage id="tabpage4" text="MDI menu04"/>
+            <Tabpage id="tabpage5" text="MDI menu05"/>
+          </Tabpages>
+        </Tab>
+        <Button id="Button02" taborder="4" cssclass="btn_MDI_nxt" top="7" width="16" height="16" right="38"/>
+        <Static id="Static31" taborder="5" text="FIX &#13;&#10;w16" cssclass="Guide_color" visible="false" left="1151" top="0" height="31" width="16"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

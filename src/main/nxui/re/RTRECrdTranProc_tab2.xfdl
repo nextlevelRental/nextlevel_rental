@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECrdTranProc_tab2" classname="re00050_cms" left="0" top="0" width="1147" height="496" titletext="[STEP2] 카드이체대상조회" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="33" text="카드이체 청구일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="34" dateformat="yyyy-MM-dd" left="131" top="12" width="120" height="21" value="null" onchanged="cal_accReqDate_onchanged"/>
+              <Static id="Static22" taborder="35" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="36" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="37" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="38" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="2" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static45" taborder="3" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="4" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static47" taborder="5" text="5 px" visible="false" left="127" top="53" right="966" height="21" style="color:red;"/>
+        <Static id="Static21" taborder="6" text="조회결과" cssclass="sta_WF_subTitle" left="10" top="72" width="86" height="20"/>
+        <Static id="Static02" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="8" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="9" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="369" width="1127" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="10" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="402" width="1127" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static17" taborder="11" cssclass="sta_WF_detailLabel2" left="10" top="412" width="1103" height="31"/>
+        <Edit id="edt_procStatus" taborder="12" left="144" top="417" width="964" height="21" enable="false"/>
+        <Static id="Static19" taborder="13" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="412" width="130" height="31"/>
+        <Grid id="grd_list" taborder="14" binddataset="ds_list" useinputpanel="false" left="10" top="97" width="1102" height="272">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카드이체일자"/>
+                <Cell col="1" text="카드사코드"/>
+                <Cell col="2" text="카드사명"/>
+                <Cell col="3" text="처리상태"/>
+                <Cell col="4" text="건수"/>
+                <Cell col="5" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:rcrdDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" edittype="none" text="bind:cardcomCd"/>
+                <Cell col="2" text="bind:cardcomNm"/>
+                <Cell col="3" edittype="none" text="bind:rqstStatNm"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="bind:rqcnt" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="bind:rqAmt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" style="align:right middle;"/>
+                <Cell col="3" style="align:right middle;"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;rqcnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;rqAmt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static06" taborder="15" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="385" right="1028" height="20"/>
+        <Button id="btn_Confirm" taborder="16" text="대상확인" onclick="btn_Confirm_onclick" cssclass="btn_WF_module" enable="false" left="1041" top="70" width="71" height="22"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rcrdDay" type="STRING" size="256"/>
+          <Column id="rqstStat" type="STRING" size="256"/>
+          <Column id="rqstStatNm" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="rqcnt" type="STRING" size="256"/>
+          <Column id="rqAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 카드이체관리 > 카드이체처리 > [STEP2] 카드이체 대상조회
+ * 02. 그룹명   : RTRECrdTranProc_tab2.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay = ""; 	//현재날짜
+	this.toHour = "";	//현재시간
+	this.returnMsg 	= ""; 	//대상조회 리턴메세지
+	this.returnCode = "";	//대상조회 리턴코드	
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();	
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		this.ds_list.clearData();	
+		//오늘날짜조회
+		this.fn_getToday();	
+		//버튼초기화
+		this.fn_initBtn();				
+	} 		
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//오늘날짜 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getToday = function() 
+	{
+		var sSvcID      	= "getToday";  
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}		
+ 	//---------------------------------------------------------------------------------
+	// 카드이체 대상조회
+	//---------------------------------------------------------------------------------		
+	this.fn_search = function()
+	{
+		if(nvl(this.div_search.cal_accReqDate.value) == "") {
+			alert('카드이체 청구일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}
+		this.edt_procStatus.set_value("");		
+		var sSvcID      	= "getCrdTranTargetList";  
+		var sController   	= "ntrms/re/getCrdTranTargetList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("rcrdDay"	, nvl(this.div_search.cal_accReqDate.value));		
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+	//---------------------------------------------------------------------------------
+	// 대상확인(전송처리 업무상태 업데이트)
+	//---------------------------------------------------------------------------------	
+	this.fn_saveConfirm = function() {
+		this.edt_procStatus.set_value("");
+		var sSvcID      	= "confirmProc";  
+		var sController   	= "ntrms/re/confirmProc.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("fileTp"	, "BC02_INX");		//송수신파일구분
+		sArgs += Ex.util.setParam("rqstDay"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition,"rcrdDay")));		//카드이체일자	
+		sArgs += Ex.util.setParam("fileNm"	, "KCP_BATCH_FILE_BC02_INX_V5407_" + "" + nvl(this.ds_list.getColumn(this.ds_list.rowposition,"rcrdDay")));		//파일명	
+		sArgs += Ex.util.setParam("cnfStep"	, "CONF");		//송신처리단계
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "confirmProc") {
+				this.edt_procStatus.set_value(strErrorMsg);	
+				return;
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);		
+			}	
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getToday":
+				//17시이후에는 출금이체청구일 세팅 안함
+				if(parseInt(nvl(this.toHour,10)) >= 17) {
+					this.div_search.cal_accReqDate.set_value("");					
+				}
+				else {
+					//카드이체청구일은 당일로 세팅
+					this.div_search.cal_accReqDate.set_value(this.toDay);
+				}				
+				break;
+			case "getCrdTranTargetList":	
+				this.edt_procStatus.set_value(nexacro._replaceAll(this.returnMsg, "&#32;", " "));
+
+				if(this.ds_list.rowcount > 0) {
+					if(this.returnCode == 0) {
+						this.btn_Confirm.set_enable(true);
+					} 
+					else {
+						this.btn_Confirm.set_enable(false);
+					}
+				}
+				else {
+					this.grd_list.set_nodatatext("조회된 결과가 없습니다.");				
+				}
+				break;					
+			case "confirmProc":
+				this.edt_procStatus.set_value(strErrorMsg);			
+				break;				
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) != this.toDay) 
+			{
+				alert('카드이체청구일은 당일만 선택가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('카드이체청구일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}	
+    //-------------------------------------------------------------------------------  	
+	// 확인완료 클릭 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.btn_Confirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_saveConfirm();
+	}		
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("E|S",this);
+	}
+	
+	//---------------------------------------------------------------------------------
+	// VAILD 체크
+	//---------------------------------------------------------------------------------	
+	this.fn_valid = function () {
+	
+		this.fn_getToday();
+
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) != this.toDay) 
+			{
+				alert('카드이체청구일은 당일만 선택가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('카드이체청구일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}
+	
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.grd_list);
+	}]]></Script>
+  </Form>
+</FDL>

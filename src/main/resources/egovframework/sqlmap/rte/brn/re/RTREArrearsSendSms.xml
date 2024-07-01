@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="arrSendSms">
+	<!-- 당월연체대상집계 -->
+	<parameterMap class="java.util.Map" id="sendAggregateParam">
+		<parameter property="delyDay" 		jdbcType="VARCHAR" mode="IN" />	  <!--연체기준일자          -->
+		<parameter property="rcmsDay"		jdbcType="VARCHAR" mode="IN" />      <!--CMS청구집계일자    -->
+		<parameter property="rcrdDay"		jdbcType="VARCHAR" mode="IN" />      <!--카드청구집계일자     -->
+		<parameter property="payDd"		jdbcType="VARCHAR" mode="IN" />      <!--청구일자               -->
+		<parameter property="successCode" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="arrSendSms.arrSendAggregate" parameterMap="sendAggregateParam">
+		{call Pkg_Rtre0105.p_ProcessRtre0105(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 당월연체대상 특정내역 삭제 -->
+	<parameterMap id="p_DeleteRtre0105" class="java.util.Map">
+		<parameter property="successCode" 		jdbcType="VARCHAR" javaType="java.lang.Integer" mode="OUT" resultMap="r_DeleteRtre0105" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errorText"    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<resultMap id="r_DeleteRtre0105" class="java.util.HashMap"/>
+	<procedure id="arrSendSms.arrAggregateDelete" parameterMap="p_DeleteRtre0105">
+		{call ? := Pkg_Rtre0105.f_DeleteRtre0105(?, ?)}
+	</procedure>
+	
+	<!-- 당월연체집계내역 count -->	
+	<resultMap id="arrAggregateCntresultMap" class="java.util.Map">
+		<result property="currCunt"  	column="COUNT" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="arrAggregateCntParam"> 
+		<parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="arrAggregateCntresultMap" />   
+		<parameter property="delyDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 집계년월 -->
+	</parameterMap>	
+	<procedure id="arrSendSms.arrSendAggregateCnt" parameterMap="arrAggregateCntParam">
+		{call ? := Pkg_Rtre0105.p_sRtre0105Cnt(?)}		
+	</procedure>	
+	
+	<!-- 당월연체 SMS대상 집계 -->
+	<parameterMap class="java.util.Map" id="smsAggregateParam">
+		<parameter property="sendCnt" 				jdbcType="NUMERIC" mode="IN" />	  <!--발송건수          	-->
+		<parameter property="sendTerm"			jdbcType="NUMERIC" mode="IN" />      <!--발송간격     		-->
+		<parameter property="sendStart"			jdbcType="NUMERIC" mode="IN" />      <!--발송시간           -->
+		<parameter property="successCode" 		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="arrSendSms.arrSmsAggregate" parameterMap="smsAggregateParam">
+		{call Pkg_Rtre0106.p_ProcessRtre0106(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 당월연체대상 SMS발송 -->
+	<parameterMap class="java.util.Map" id="sendSmsParam">
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />  
+		<parameter property="successCode" 		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="arrSendSms.arrSendSms" parameterMap="sendSmsParam">
+		{call Pkg_Rtre0106.p_SendSmsRtre0106(?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

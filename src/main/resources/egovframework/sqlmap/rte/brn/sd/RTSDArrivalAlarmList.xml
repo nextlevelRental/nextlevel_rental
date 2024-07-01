@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rTSDArrivalAlarmList">
+	
+	<resultMap id="resultCursor" class="java.util.HashMap">
+	    <result property="sendDay"	 	column="SEND_DAY" />
+		<result property="ordNo"	 	 	column="ORD_NO" />
+		<result property="orderType"	 	column="ORDER_TYPE" />
+		<result property="invoiceNo"	 	column="INVOICE_NO" />
+		<result property="logistics"	 	column="LOGISTICS" />
+		<result property="sendCnt"  		column="SEND_CNT" />
+		<result property="giDay" 			column="GI_DAY" />
+		<result property="giYn" 			column="GI_YN" />
+		<result property="mobNo" 		column="MOB_NO" />
+		<result property="smsType" 		column="SMS_TYPE" />
+		<result property="nextSendDay" 		column="NEXT_SEND_DAY" />
+		<result property="deliveryType" 		column="DELIVERY_TYPE" />
+		<result property="custNo" 		column="CUST_NO" />
+		<result property="custNm" 		column="CUST_NM" />
+		<result property="delYn" 		column="DEL_YN" />
+		<result property="holdYn" 		column="HOLD_YN" />
+		<result property="matCd" 		column="MAT_CD" />
+		<result property="matNm" 		column="MAT_NM" />
+		<result property="agencyCd" 		column="AGENCY_CD" />
+		<result property="agencyNm" 		column="AGENCY_NM" />
+		<result property="rentalGroupNm" 		column="RENTAL_GROUP_NM" />
+		<result property="rentalOfficeNm" 		column="RENTAL_OFFICE_NM" />
+		<result property="cntCd" 		column="CNT_CD" />
+		<result property="logisticsStatus" 		column="LOGISTICS_STATUS" />
+		<result property="logisticsStatusNm" 	column="LOGISTICS_STATUS_NM" />
+	</resultMap>
+	<parameterMap id="pSRTSD0420" class="java.util.Map">
+	    <parameter property="vcursor"				    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor" />
+	    <parameter property="sendDay"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orderType"				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="invoiceNo"			    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="giDay"					    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="giYn"					    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="holdYn"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="delYn"					    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="smsType"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"					    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="nextSendDay"		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="deliveryType"		        jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420" parameterMap="pSRTSD0420">
+		{call Pkg_Rtsd0420.p_sRTSD0420(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="pSRtsd0420Aggregate" class="java.util.Map">
+		<parameter property="dayF"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dayT"				        jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420Aggregate" parameterMap="pSRtsd0420Aggregate">
+		{call Pkg_Rtsd0420.p_sRTSD0420Aggregate(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="pSRtsd0420SendMsg" class="java.util.Map">
+		<parameter property="sendDay"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420SendMsg" parameterMap="pSRtsd0420SendMsg">
+		{call Pkg_Rtsd0420.p_sRTSD0420SendMsg(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultSendMsg1" class="java.util.HashMap">
+	    <result property="sendDay"	 		column="SEND_DAY" />
+		<result property="invoiceNo"	 	 	column="INVOICE_NO" />
+		<result property="logistics"	 		column="LOGISTICS" />
+		<result property="sendCnt"	 		column="SEND_CNT" />
+		<result property="nextSendCnt"	 	column="NEXT_SEND_CNT" />
+		<result property="giDay"  			column="GI_DAY" />
+		<result property="giYn" 				column="GI_YN" />
+		<result property="ordNo" 			column="ORD_NO" />
+		<result property="orderType" 		column="ORDER_TYPE" />
+		<result property="mobNo" 			column="MOB_NO" />
+		<result property="smsType" 			column="SMS_TYPE" />
+		<result property="deliveryType" 		column="DELIVERY_TYPE" />
+		<result property="delYn" 				column="DEL_YN" />
+		<result property="holdYn" 			column="HOLD_YN" />
+	</resultMap>
+	<parameterMap id="pSRtsd0420SendMsg1" class="java.util.Map">
+		<parameter property="vcursor"				    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSendMsg1" />
+		<parameter property="sendDay"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420SendMsg1" parameterMap="pSRtsd0420SendMsg1">
+		{call Pkg_Rtsd0420.p_sRTSD0420SendMsg1(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultSendMsg2" class="java.util.HashMap">
+	    <result property="sendDay"	 		column="SEND_DAY" />
+		<result property="invoiceNo"	 	 	column="INVOICE_NO" />
+		<result property="logistics"	 		column="LOGISTICS" />
+		<result property="sendCnt"	 		column="SEND_CNT" />
+		<result property="nextSendCnt"	 	column="NEXT_SEND_CNT" />
+		<result property="giDay"  			column="GI_DAY" />
+		<result property="giYn" 				column="GI_YN" />
+		<result property="ordNo" 			column="ORD_NO" />
+		<result property="orderType" 		column="ORDER_TYPE" />
+		<result property="mobNo" 			column="MOB_NO" />
+		<result property="smsType" 			column="SMS_TYPE" />
+		<result property="deliveryType" 		column="DELIVERY_TYPE" />
+		<result property="delYn" 				column="DEL_YN" />
+		<result property="holdYn" 			column="HOLD_YN" />
+	</resultMap>
+	<parameterMap id="pSRtsd0420SendMsg2" class="java.util.Map">
+		<parameter property="vcursor"				    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSendMsg2" />
+		<parameter property="sendDay"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420SendMsg2" parameterMap="pSRtsd0420SendMsg2">
+		{call Pkg_Rtsd0420.p_sRTSD0420SendMsg2(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRtsd0420" class="java.util.Map">
+		<parameter property="dvsn"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendDay"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo"			        jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orderType"           	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="invoiceNo"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="logistics"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="giDay"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="giYn"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="smsType"           		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="deliveryType"           	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="delYn"           	        jdbcType="VARCHAR" mode="IN" />
+		<parameter property="holdYn"           	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="logisticsStatus"          jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_IUDRtsd0420" parameterMap="p_IUDRtsd0420">
+		{call Pkg_Rtsd0420.p_IUDRtsd0420(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultCursor1" class="java.util.HashMap">
+		<result property="ordNo"	 	 		column="ORD_NO" />
+		<result property="invoiceNo"	 		column="INVOICE_NO" />
+		<result property="logistics"	 		column="LOGISTICS" />
+		<result property="giDay" 				column="GI_DAY" />
+		<result property="sendCnt"  			column="SEND_CNT" />
+		<result property="mobNo" 			column="MOB_NO" />
+		<result property="smsType" 			column="SMS_TYPE" />
+		<result property="orderType"	 		column="ORDER_TYPE" />
+		<result property="sendDay" 			column="SEND_DAY" />
+		<result property="deliveryType" 		column="DELIVERY_TYPE" />
+		<result property="seq" 			    column="SEQ" />
+		<result property="regId" 			    column="REG_ID" />
+		<result property="reservedDttm" 	column="RESERVED_DTTM" />
+		<result property="rcvPhnId" 			column="RCV_PHN_ID" />
+		<result property="sndPhnId" 			column="SND_PHN_ID" />
+		<result property="sndMsg" 			column="SND_MSG" />
+		<result property="custNo" 			column="CUST_NO" />
+		<result property="custNm" 			column="CUST_NM" />
+	</resultMap>
+	<parameterMap id="pSRTSD0421" class="java.util.Map">
+	    <parameter property="vcursor"				    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor1" />
+		<parameter property="ordNo"				    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"		            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordDayF"		            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordDayT"		            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendCnt"		            jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0421" parameterMap="pSRTSD0421">
+		{call Pkg_Rtsd0421.p_sRTSD0421(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="pSRtsd0420Renew" class="java.util.Map">
+		<parameter property="dayF"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dayT"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420Renew" parameterMap="pSRtsd0420Renew">
+		{call Pkg_Rtsd0420.p_sRTSD0420Renew(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="resultCursor2" class="java.util.HashMap">
+		<result property="sendDay"	 	 		column="SEND_DAY" />
+		<result property="ordNo"	 				column="ORD_NO" />
+		<result property="custNo"	 				column="CUST_NO" />
+		<result property="custNm" 				column="CUST_NM" />
+		<result property="orderType"  			column="ORDER_TYPE" />
+		<result property="invoiceNo" 			column="INVOICE_NO" />
+		<result property="logisticsNm" 			column="LOGISTICS_NM" />
+		<result property="logisticsCd" 			column="LOGISTICS_CD" />
+		<result property="sendCnt"	 			column="SEND_CNT" />
+		<result property="giDay" 					column="GI_DAY" />
+		<result property="giYn" 					column="GI_YN" />
+		<result property="mobNo" 			    column="MOB_NO" />
+		<result property="smsType" 			    column="SMS_TYPE" />
+		<result property="deliveryType" 			column="DELIVERY_TYPE" />
+		<result property="delYn" 					column="DEL_YN" />
+		<result property="holdYn" 				column="HOLD_YN" />
+		<result property="regId" 					column="REG_ID" />
+	</resultMap>
+	<parameterMap id="pSRtsd0420ByPost" class="java.util.Map">
+		<parameter property="vcursor"				    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor2" />
+		<parameter property="dayF"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dayT"			            jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"			            jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_sRTSD0420ByPost" parameterMap="pSRtsd0420ByPost">
+		{call Pkg_Rtsd0420.p_sRTSD0420ByPost(?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="f_sRTSD0423Count" class="java.util.Map">
+		<parameter property="result" 	    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" />
+		<parameter property="logisticsCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure  id="rTSDArrivalAlarmList.f_sRTSD0423Count" resultClass="java.util.Map" parameterMap="f_sRTSD0423Count">
+		{call ? := Pkg_Rtsd0423.f_sRtsd0423Count ( ? )}
+	</procedure>
+	
+	<!-- 코드명 조회 -->
+	<parameterMap id="codeNameParamMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="codeNameMap" />
+		<parameter property="logisticsCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="codeNameMap" class="java.util.HashMap"/>
+		
+	<procedure  id="rTSDArrivalAlarmList.codeName" resultClass="java.util.Map" parameterMap="codeNameParamMap">
+		{call ? := Pkg_Rtsd0423.f_sRtsd0423CodeName (?)}
+	</procedure>
+	
+	<!-- 코드 조회 -->
+	<parameterMap id="codeParamMap" class="java.util.Map">
+		<parameter property="result" 				jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="codeMap" />
+		<parameter property="logisticsCdNm" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="codeMap" class="java.util.HashMap"/>
+		
+	<procedure  id="rTSDArrivalAlarmList.code" resultClass="java.util.Map" parameterMap="codeParamMap">
+		{call ? := Pkg_Rtsd0423.f_sRtsd0423Code (?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRtsd0423" class="java.util.Map">
+		<parameter property="dvsn"           		    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="logisticsCd"				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="logisticsNm"			    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="logisticsInternational"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"           			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	        jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"         jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	            jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="rTSDArrivalAlarmList.p_IUDRtsd0423" parameterMap="p_IUDRtsd0423">
+		{call Pkg_Rtsd0423.p_IUDRtsd0423(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

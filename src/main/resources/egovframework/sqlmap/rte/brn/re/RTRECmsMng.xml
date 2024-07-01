@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cmsMngDAO">
+
+	
+	<resultMap id="rRtsd0109DetailList" class="java.util.HashMap">
+		<result property="ordNo" column="ORD_NO" /> 		<!-- 계약번호 -->		
+		<result property="schdSeq" column="SCHD_SEQ" /> 	<!-- 청구순번 -->	
+		<result property="recpTp" column="RECP_TP" /> 		<!-- 청구구분 -->	
+		<result property="recpTpNm" column="RECP_TP_NM" /> 	<!-- 청구구분Nm -->	
+		<result property="recpNu" column="RECP_NU" /> 		<!-- 청구회차 -->	 
+		<result property="scdStat" column="SCD_STAT" /> 	<!-- 스케줄상태코드 -->	 
+		<result property="scdStatNm" column="SCD_STAT_NM" /> 	<!-- 스케줄상태Nm -->	
+		<result property="saleAmt" column="SALE_AMT" /> 	<!-- 매출금액(VAT 포함) -->	 
+		<result property="saleNamt" column="SALE_NAMT" /> 	<!-- 원금 -->	 
+		<result property="saleVamt" column="SALE_VAMT" /> 	<!--부가세  -->	 
+		<result property="recpAmt" column="RECP_AMT" /> 	<!-- 수납금액(VAT포함) -->	 
+		<result property="arreAmt" column="ARRE_AMT" /> 	<!-- 연체금액(VAT포함) -->	 
+		<result property="demdDt" column="DEMD_DT" /> 		<!-- 청구일자 -->	 
+		<result property="zlspr" column="ZLSPR" /> 			<!-- 청구보류 -->	 
+		<result property="rcDay" column="RC_DAY" /> 		<!-- 수납일자 -->	 
+		<result property="rcYn" column="RC_YN" /> 			<!-- 수납여부 -->
+		<result property="rcYnNm" column="RC_NM" /> 			<!-- 수납여부Nm -->
+		<result property="taxDt" column="TAX_DT" /> 		<!-- 세금계산서발행일자 -->	 
+		<result property="taxNo" column="TAX_NO" /> 		<!-- 세금계산서번호 -->	
+		<result property="canclDay" column="CANCL_DAY" /> 	<!-- 중도완납일 -->
+		<result property="begDay" column="BEG_DAY" /> 		<!-- 시작일 -->	 
+		<result property="endDay" column="END_DAY" /> 		<!-- 종료일 -->
+		<result property="zfbDay" column="ZFB_DAY" />		<!-- 만기계산기준일 -->
+		<!-- 부가정보 -->
+		<result property="custNo" column="CUST_NO" /> 			<!-- 고객번호 -->	 
+		<result property="salesGroup" column="SALES_GROUP" /> 	<!-- 지사 -->	 
+		<result property="salesOffice" column="SALES_OFFICE" /> <!-- 지점 -->	 
+		<result property="agencyCd" column="AGENCY_CD" /> 		<!-- 장착대리점 -->	 
+		<result property="delayYn" column="DELAY_YN" /> 		<!-- 연체이자적용여부 -->	 
+		<result property="delayRate" column="DELAY_RATE" /> 	<!-- 연체 이자율 --> 
+		<result property="useYn" column="USE_YN" /> 			<!-- 사용여부 -->	 
+		<result property="regId" column="REG_ID" /> 			<!-- 등록자 ID -->	 
+		<result property="regDt" column="REG_DT" /> 			<!-- 등록일 -->	 
+		<result property="chgId" column="CHG_ID" /> 			<!-- 변경자ID -->	 
+		<result property="chgDt" column="CHG_DT" /> 			<!-- 변경일 -->	   
+	</resultMap>	
+	<parameterMap id="pRtsd0109DetailList" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rRtsd0109DetailList" />         
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 주문번호 -->                    
+	</parameterMap>	
+	<procedure id="rtreCmsMngMapDAO.pSrtsd0109DetailList" parameterMap="pRtsd0109DetailList"> 	<!-- 청구스케줄 LIST -->
+		{call Pkg_Rtsd0109.p_sRtsd0109DetailList(?, ?)}
+	</procedure>
+		
+	<parameterMap class="java.util.Map" id="p_IUDRtre0031">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ritmSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="schdSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="saleAmt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="arreAmt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="zfbdt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="rtreCmsMngMapDAO.p_IUDRtre0031" parameterMap="p_IUDRtre0031">
+		{call Pkg_Rtre0031.p_IUDRtre0031(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="f_InsertRtre0030">
+		<parameter property="result" 	    jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="recvSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ritmSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpAmt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpPay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpFg" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="schdSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cashYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncStat" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncRseq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncIseq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncIoseq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="rtreCmsMngMapDAO.f_InsertRtre0030" parameterMap="f_InsertRtre0030">
+		{? = call Pkg_Rtre0030.f_InsertRtre0030(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="pRtre0030RecvSeq">
+		<parameter property="recvSeq" 	jdbcType="INTEGER" mode="OUT"/>
+	</parameterMap>
+	
+	<procedure id="rtreCmsMngMapDAO.f_sRtre0030RecvSeq" parameterMap="pRtre0030RecvSeq">
+		{? = call Pkg_Rtre0030.f_sRtre0030RecvSeq()}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="pInsertRtre0040">
+		<parameter property="result" 	    jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="recvSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="recpAmt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpPay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpFg" 		jdbcType="VARCHAR" mode="IN" />	
+		<parameter property="bankRecpDay"	jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="cncRseq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncStat" 		jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="recpId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="rtreCmsMngMapDAO.f_InsertRtre0040" parameterMap="pInsertRtre0040">
+		{? = call Pkg_Rtre0040.f_InsertRtre0040(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="pUpdateRtsd0109ReceiptState">
+		<parameter property="result" 	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="schdSeq" 	jdbcType="NUMERIC" mode="IN"/>
+		<parameter property="rcYn" 		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="recpAmt" 	jdbcType="NUMERIC" mode="IN"/>
+		<parameter property="arreAmt" 	jdbcType="NUMERIC" mode="IN"/>
+		<parameter property="rcDay" 	jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="errorText" jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	
+	<procedure id="rtreCmsMngMapDAO.f_UpdateRtsd0109ReceiptState" parameterMap="pUpdateRtsd0109ReceiptState">
+		{? = call Pkg_Rtsd0109.f_UpdateRtsd0109ReceiptState(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>
+
+

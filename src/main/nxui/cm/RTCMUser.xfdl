@@ -1,0 +1,596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="사용자 등록관리" left="0" width="1147" top="0" height="527" ontimer="form_ontimer" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static58" taborder="110" cssclass="sta_WF_detailLabel2" left="748" top="465" right="25" height="31"/>
+        <Static id="Static56" taborder="108" cssclass="sta_WF_detailLabel2" left="748" top="405" right="25" height="31"/>
+        <Static id="Static57" taborder="109" cssclass="sta_WF_detailLabel2" left="748" top="435" right="25" height="31"/>
+        <Static id="Static55" taborder="107" cssclass="sta_WF_detailLabel2" left="748" top="375" height="31" right="25"/>
+        <Static id="Static54" taborder="106" cssclass="sta_WF_detailLabel2" left="748" top="345" height="31" right="25"/>
+        <Static id="Static17" taborder="102" cssclass="sta_WF_detailLabel2" top="345" height="31" width="749" left="0"/>
+        <Static id="Static10" taborder="50" cssclass="sta_WF_detailLabel2" top="375" height="31" width="749" left="0"/>
+        <Button id="Button34" taborder="33" text="비밀번호 초기화" cssclass="btn_WF_module" top="313" height="22" width="123" right="25" onclick="clearUserPassword"/>
+        <Grid id="grd_Group" taborder="4" position="absolute" useinputpanel="false" autofittype="none" left="0" top="86" binddataset="ds_user" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" scrollbars="autoboth" cellclickbound="cell" cellmovingtype="none" autosizebandtype="head" height="216" scrollpixel="all" right="25">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="88"/>
+                <Column size="80"/>
+                <Column size="0"/>
+                <Column size="93"/>
+                <Column size="83"/>
+                <Column size="91"/>
+                <Column size="96"/>
+                <Column size="165"/>
+                <Column size="116"/>
+                <Column size="80"/>
+                <Column size="150"/>
+                <Column size="80"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="아이디"/>
+                <Cell col="1" text="이름"/>
+                <Cell col="2" text="비밀번호"/>
+                <Cell col="3" text="대리점"/>
+                <Cell col="4" text="ERP지점"/>
+                <Cell col="5" text="ERP지사"/>
+                <Cell col="6" text="사용자 그룹"/>
+                <Cell col="7" text="임시비밀번호 사용여부"/>
+                <Cell col="8" text="사용불가 계정여부"/>
+                <Cell col="9" text="등록자 ID"/>
+                <Cell col="10" text="등록일"/>
+                <Cell col="11" text="변경자 ID"/>
+                <Cell col="12" text="변경일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:userId"/>
+                <Cell col="1" text="bind:userNm"/>
+                <Cell col="2" displaytype="none" text="bind:password"/>
+                <Cell col="3" text="bind:agentNm"/>
+                <Cell col="4" text="bind:vkburNm"/>
+                <Cell col="5" text="bind:vkgrpNm"/>
+                <Cell col="6" text="bind:userGrpNm"/>
+                <Cell col="7" text="bind:tmpPwYn"/>
+                <Cell col="8" text="bind:lockYn"/>
+                <Cell col="9" text="bind:regId"/>
+                <Cell col="10" displaytype="normal" text="bind:regDt"/>
+                <Cell col="11" text="bind:chgId"/>
+                <Cell col="12" text="bind:chgDt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="0" top="0" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" right="25">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="15" text="사용자ID" cssclass="sta_WF_schTitle" left="20" top="0" width="64" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cmb_searchCondition" taborder="17" codecolumn="codecolumn" datacolumn="datacolumn" left="88" top="10" width="140" height="21" domainId="nexa.name;nexa.code">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">0</Col>
+                      <Col id="datacolumn">아이디</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">이름</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="edt_searchKeyword" taborder="18" left="233" top="10" width="260" height="21" onkeyup="div_search_edt_searchKeyword_onkeyup"/>
+              <Combo id="userGrp" taborder="19" top="10" height="21" innerdataset="@dsGrp2" codecolumn="cd" datacolumn="cdNm" width="140" left="609"/>
+              <Static id="st_searchCondition01" taborder="20" text="사용자 그룹" cssclass="sta_WF_schTitle" top="0" height="41" domainId="nexa.s_condition" width="90" left="523"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="24" text="검색결과" cssclass="sta_WF_subTitle" top="61" height="20" width="81" left="0"/>
+        <Static id="Static22" taborder="25" text="FIX h12" cssclass="Guide_color" visible="false" top="0" height="12" width="716" right="430"/>
+        <Static id="Static23" taborder="26" text="FIX h12" cssclass="Guide_color" visible="false" left="0.09%" top="33" right="37.49%" height="12"/>
+        <Static id="Static06" taborder="27" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" top="0" height="45" width="20" left="0"/>
+        <Static id="Static24" taborder="28" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="43.16%" top="0" right="54.23%" height="44"/>
+        <Static id="Static00" taborder="29" text="FIX h20" cssclass="Guide_color" visible="false" top="45" height="20" width="1122" left="0" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="30" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" top="0" height="496" width="25" left="1122"/>
+        <Static id="Static02" taborder="31" text="FIX h10" cssclass="Guide_color" visible="false" left="0%" top="76" right="2.18%" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="32" text="FIX h20" cssclass="Guide_color" visible="false" top="302" height="20" style="background:aqua;color:#333333ff;" width="1122" left="0"/>
+        <Static id="Static04" taborder="34" text="FIX h10" cssclass="Guide_color" visible="false" top="335" height="10" style="background:aqua;color:#333333ff;" width="1122" left="0"/>
+        <Static id="Static05" taborder="35" text="변경할 내용" cssclass="sta_WF_subTitle" top="318" height="20" width="81" left="0"/>
+        <Static id="Static20" taborder="37" text="ERP 지사" cssclass="sta_WF_detailLabel" top="345" height="31" width="130" left="374"/>
+        <Static id="Static07" taborder="38" text="ERP 지점" cssclass="sta_WF_detailLabel" top="375" height="31" width="130" left="374"/>
+        <Edit id="vkgrp" taborder="39" top="350" height="21" width="116" left="508" readonly="true" oneditclick="vkgrp_oneditclick"/>
+        <Edit id="vkbur" taborder="40" top="380" height="21" width="116" left="508" readonly="true"/>
+        <Edit id="failCnt" taborder="41" top="350" height="21" width="235" left="882" enable="false"/>
+        <Edit id="regId" taborder="42" top="380" height="21" width="235" left="882" enable="false"/>
+        <Static id="Static08" taborder="43" text="등록자" cssclass="sta_WF_detailLabel" top="375" height="31" width="130" left="748"/>
+        <Static id="Static09" taborder="44" text="접속실패건수" cssclass="sta_WF_detailLabel" top="345" height="31" width="130" left="748"/>
+        <Static id="Static19" taborder="46" text="사용자 ID" cssclass="sta_WF_detailLabelP" top="345" height="31" width="130" left="0"/>
+        <Static id="Static18" taborder="47" text="사용자명" cssclass="sta_WF_detailLabelP" top="375" height="31" width="130" left="0"/>
+        <Edit id="userNm" taborder="48" top="380" height="21" width="236" left="134"/>
+        <Edit id="userId" taborder="49" top="350" height="21" width="167" left="134" onkillfocus="userId_onkillfocus"/>
+        <Static id="Static11" taborder="51" cssclass="sta_WF_detailLabel2" top="405" height="31" width="749" left="0"/>
+        <Edit id="regDt" taborder="52" top="410" height="21" width="235" left="882" enable="false"/>
+        <Static id="Static12" taborder="53" text="등록일자" cssclass="sta_WF_detailLabel" top="405" height="31" width="130" left="748"/>
+        <Edit id="Edit01" taborder="54" top="410" height="21" width="236" left="508" enable="false" oneditclick="Edit01_oneditclick"/>
+        <Static id="Static13" taborder="55" text="대리점" cssclass="sta_WF_detailLabel" top="405" height="31" width="130" left="374"/>
+        <Static id="Static14" taborder="57" text="사용자그룹" cssclass="sta_WF_detailLabelP" top="405" height="31" width="130" left="0"/>
+        <Static id="Static15" taborder="58" cssclass="sta_WF_detailLabel2" top="435" height="31" width="749" left="0"/>
+        <Edit id="chgId" taborder="59" top="440" height="21" width="235" left="882" enable="false"/>
+        <Static id="Static16" taborder="60" text="수정자" cssclass="sta_WF_detailLabel" top="435" height="31" width="130" left="748"/>
+        <Edit id="lastPwDt" taborder="61" top="440" height="21" width="236" left="508" enable="false" oneditclick="lastPwDt_oneditclick"/>
+        <Static id="Static25" taborder="62" text="비밀번호변경일" cssclass="sta_WF_detailLabel" top="435" height="31" width="130" left="374"/>
+        <Static id="Static26" taborder="64" text="사용불가여부" cssclass="sta_WF_detailLabelP" top="435" height="31" width="130" left="0"/>
+        <Static id="Static27" taborder="65" cssclass="sta_WF_detailLabel2" top="465" height="31" width="749" left="0"/>
+        <Edit id="chgDt" taborder="66" left="882" top="470" height="21" width="235" enable="false"/>
+        <Static id="Static28" taborder="67" text="수정일자" cssclass="sta_WF_detailLabel" top="465" height="31" width="130" left="748"/>
+        <Edit id="lastLogonDt" taborder="68" left="508" top="470" height="21" width="236" enable="false"/>
+        <Static id="Static29" taborder="69" text="최종접속일자" cssclass="sta_WF_detailLabel" top="465" height="31" width="130" left="374"/>
+        <Static id="Static30" taborder="71" cssclass="sta_WF_detailLabel" top="465" height="31" width="130" left="0"/>
+        <Button id="Button01" taborder="74" text="중복확인" left="304" top="350" height="21" width="65" onclick="fn_userId_exists"/>
+        <Edit id="vkgrpNm" taborder="75" top="350" height="21" width="116" left="628" readonly="true"/>
+        <Edit id="vkburNm" taborder="76" top="380" height="21" width="116" left="628" readonly="true"/>
+        <Button id="Button02" taborder="77" cssclass="btn_WF_edtSch" top="349" height="21" width="20" left="604" onclick="showVkgrp"/>
+        <Button id="Button03" taborder="78" cssclass="btn_WF_edtSch" top="379" height="21" width="20" left="604" onclick="showVkbur"/>
+        <Static id="Static31" taborder="79" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="96.08%" top="0" right="2.18%" height="45"/>
+        <Static id="Static32" taborder="80" top="88" height="1" width="30" left="1098" style="background:red;" visible="false"/>
+        <Static id="Static33" taborder="81" visible="false" left="95.73%" top="117" right="1.66%" height="1" style="background:red;"/>
+        <Static id="Static34" taborder="82" text="H:30px" top="94" height="21" width="50" left="1119" style="color:red;" visible="false"/>
+        <Static id="Static35" taborder="83" text="Line H:2px" top="71" height="21" style="color:red;" width="59" left="1121" visible="false"/>
+        <Static id="Static36" taborder="84" visible="false" top="469" height="30" style="background:red;" width="1" left="1"/>
+        <Static id="Static37" taborder="85" visible="false" top="469" height="30" style="background:red;" left="11.25%" right="88.67%"/>
+        <Edit id="Edit14" taborder="86" top="470" height="21" width="236" left="134" visible="false"/>
+        <Static id="Static38" taborder="87" visible="false" top="469" height="30" style="background:red;" left="11.68%" right="88.23%"/>
+        <Static id="Static39" taborder="88" visible="false" top="469" height="30" style="background:red;" left="32.17%" right="67.74%"/>
+        <Static id="Static40" taborder="89" visible="false" top="469" height="30" style="background:red;" left="32.61%" right="67.31%"/>
+        <Static id="Static41" taborder="90" text="W:130px" top="496" height="21" style="color:red;" width="47" left="40" visible="false"/>
+        <Static id="Static42" taborder="91" text="4 px" top="495" height="21" style="color:red;" width="47" left="120" visible="false"/>
+        <Static id="Static43" taborder="92" text="4 px" left="32.08%" top="495" right="63.82%" height="21" style="color:red;" visible="false"/>
+        <Static id="Static44" taborder="93" text="5 px" top="40" height="21" style="color:red;" width="47" left="76" visible="false"/>
+        <Static id="Static45" taborder="94" visible="false" top="14" height="30" style="background:red;" width="1" left="85" text="5 px"/>
+        <Static id="Static46" taborder="95" visible="false" top="14" height="30" style="background:red;" width="1" left="90" text="5 px"/>
+        <Static id="Static47" taborder="96" text="5 px" visible="false" left="19.27%" top="40" right="76.63%" height="21" style="color:red;"/>
+        <Static id="Static48" taborder="97" text="5 px" visible="false" left="20.49%" top="14" right="79.42%" height="30" style="background:red;"/>
+        <Static id="Static49" taborder="98" text="5 px" visible="false" left="20.05%" top="14" right="79.86%" height="30" style="background:red;"/>
+        <Static id="Static50" taborder="99" text="5 px" visible="false" left="51.96%" top="41" right="43.94%" height="21" style="color:red;"/>
+        <Static id="Static51" taborder="100" text="5 px" visible="false" left="53.18%" top="15" right="46.73%" height="30" style="background:red;"/>
+        <Static id="Static52" taborder="101" text="5 px" visible="false" left="52.75%" top="15" right="47.17%" height="30" style="background:red;"/>
+        <Static id="Static53" taborder="103" text="*Detail Area는 Guide 09 가이드 참고" visible="false" top="518" height="21" style="color:red;" width="404" left="32"/>
+        <Combo id="userGrp" taborder="104" value="0" index="0" displayrowcount="5" top="410" height="21" innerdataset="@dsGrp" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search00_userGrp_onitemchanged" width="236" left="134"/>
+        <Combo id="Combo01" taborder="105" value="0" innerdataset="@dsLock" codecolumn="cd" datacolumn="data" index="0" displayrowcount="5" left="134" top="440" width="236" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="tmpPwYn" type="string" size="32"/>
+          <Column id="lastPwDt" type="STRING" size="17"/>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="failCnt" type="bigdecimal" size="16"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="oldPassword" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="password" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="lastLogonDt" type="STRING" size="17"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="chgDt" type="STRING" size="17"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="regDt" type="STRING" size="17"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="lockYn" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsGrp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsLock" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="data">사용불가</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="data">사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="Dataset00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsGrp2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="userId" propid="value" datasetid="ds_user" columnid="userId"/>
+      <BindItem id="item1" compid="userNm" propid="value" datasetid="ds_user" columnid="userNm"/>
+      <BindItem id="item2" compid="vkgrp" propid="value" datasetid="ds_user" columnid="vkgrp"/>
+      <BindItem id="item3" compid="vkgrpNm" propid="value" datasetid="ds_user" columnid="vkgrpNm"/>
+      <BindItem id="item4" compid="vkbur" propid="value" datasetid="ds_user" columnid="vkbur"/>
+      <BindItem id="item5" compid="vkburNm" propid="value" datasetid="ds_user" columnid="vkburNm"/>
+      <BindItem id="item6" compid="lastPwDt" propid="value" datasetid="ds_user" columnid="lastPwDt"/>
+      <BindItem id="item7" compid="lastLogonDt" propid="value" datasetid="ds_user" columnid="lastLogonDt"/>
+      <BindItem id="item8" compid="failCnt" propid="value" datasetid="ds_user" columnid="failCnt"/>
+      <BindItem id="item9" compid="regId" propid="value" datasetid="ds_user" columnid="regId"/>
+      <BindItem id="item10" compid="regDt" propid="value" datasetid="ds_user" columnid="regDt"/>
+      <BindItem id="item11" compid="chgId" propid="value" datasetid="ds_user" columnid="chgId"/>
+      <BindItem id="item12" compid="chgDt" propid="value" datasetid="ds_user" columnid="chgDt"/>
+      <BindItem id="item13" compid="userGrp" propid="value" datasetid="ds_user" columnid="userGrp"/>
+      <BindItem id="item14" compid="Combo01" propid="value" datasetid="ds_user" columnid="lockYn"/>
+      <BindItem id="item15" compid="Edit01" propid="value" datasetid="ds_user" columnid="agentNm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 사용자 등록관리
+ * 02. 그룹명   :
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+  this.resultCnt = "";
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 */
+
+		Ex.core.init(obj); 	
+		this.fn_search();
+		this.parent.setButton("E|C|N|S", this);
+		
+	} 
+	 
+ 
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//목록조회 Search
+	this.fn_search = function()
+	{
+		var userId 			= this.div_search.edt_searchKeyword.value;
+		var sSvcID        	= "listUserInfo";                    
+		var sController   	= "listUserInfo.do";
+		var sInDatasets   	= "user_=ds_user";
+		var sOutDatasets  	= "ds_user=listUser dsGrp=userGrp";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if (this.div_search.cmb_searchCondition.value == 1) {
+			sArgs += Ex.util.setParam("userNm", this.div_search.edt_searchKeyword.value);
+		} else if (this.div_search.cmb_searchCondition.value == 0) {
+			sArgs += Ex.util.setParam("userId", this.div_search.edt_searchKeyword.value);
+		}
+		
+		sArgs += Ex.util.setParam("userGrp", this.div_search.userGrp.value);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	//아이디 중복확인
+	this.fn_userId_exists = function()
+	{
+		if(nvl(this.userId.value) == "") {
+			alert("아이디를 입력해주십시오.");
+			this.userId.setFocus();
+			return;
+		}
+		var sSvcID        	= "userIdExists";                    
+		var sController   	= "checkIdExists.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sArgs += Ex.util.setParam("userId",this.userId.value);
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.checkForm = function() {
+		if(nvl(this.userId.value) == "") {
+			alert("사용자 아이디는 필수입력항목입니다.");
+			this.userId.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.userNm.value) == "") {
+			alert("사용자명은 필수입력항목입니다.");
+			this.userNm.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.userGrp.value) == "") {
+			alert("사용자그룹은 필수입력항목입니다.");
+			return false;
+		}
+		return true;
+	}
+
+	//저장
+	this.fn_save = function() {
+		
+		
+		if(!this.checkForm()) {
+			return;
+		}
+		
+		if(!this.fn_updateCnt("save")) {
+			alert('변경된 데이타가 없습니다.');
+			return;
+		}
+		
+		
+		var sSvcID        	= "saveUserInfo";                    
+		var sController   	= "saveUserInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sInDatasets   		= "input=ds_user:U";
+		sOutDatasets  		= "ds_user=listUser dsGrp=userGrp";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	// 사용자 암호 초기화
+	this.clearUserPassword = function()	{
+		var sSvcID        	= "clearPwd";                    
+		var sController   	= "clearPwd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sArgs += Ex.util.setParam("userId",this.userId.value);
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt) { 
+		if (nErrorCode < 0) {
+			alert(strErrorMsg);		
+			return;
+		}
+		
+		if (strSvcId == "listUserInfo") {
+			this.dsGrp2.copyData(this.dsGrp);
+			this.fn_search_post();
+			this.grd_Group.set_scrollbars("autoboth");
+			
+		}
+		
+		if (strSvcId == "saveUserInfo") {
+			alert(strErrorMsg);
+			//this.fn_search();
+		}
+		
+		if (strSvcId == "userIdExists") {
+			var msg = "";
+			this.ds_user.getRowType();
+			var position = this.ds_user.rowposition;
+			var id = this.userId.value;
+			if(this.resultCnt != '0') {
+				msg = '입력하신 아이디 \'' + id + '\'는 존재하고 있습니다.';
+				this.userId.set_value('');
+			} else {
+				var msg = '사용가능한 아이디 입니다.';
+			}
+			alert(msg);
+		}
+		
+		if(strSvcId == "clearPwd") {
+			alert(strErrorMsg);
+		}
+
+	}
+	
+	//====================================================
+	// 입력중인 데이타가 있는경우 추가버튼 금지
+	//====================================================
+	this.fn_updateCnt = function(chkVal) {
+		var b = false;
+		var cnt = this.ds_user.getRowCount();
+		var updateCnt = 0;
+		for(var i = 0; i<cnt; i++) {
+			if(chkVal == "save") {
+				if(this.ds_user.getRowType(i) == 4 || this.ds_user.getRowType(i) == 2) {
+					b = true;
+					break;
+				}
+			} else if(chkVal == "add") {
+				if(this.ds_user.getRowType(i) == 2) {
+					b = true;
+					break;
+				}
+			}
+		}
+		return b;
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+
+	// 그룹 추가 버튼 클릭시 이벤트 처리
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		if(this.fn_updateCnt("add")) {
+			alert("수정 및 신규작성중인 자료저장후 추가해주십시오.");
+			return;
+		}
+		var nRow = this.ds_user.addRow();
+		this.Combo01.set_value("N");
+	}
+
+	// 그룹 삭제 버튼 클릭시 이벤트 처리
+	this.fn_delete = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_user.rowposition;
+		this.ds_user.deleteRow(nRow);
+	}
+
+	//검색 시 Enter키 이벤트 처리
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}
+
+	this.div_grid_bottom_btn_find_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.gfn_findPopup(this.grd_Group);
+	}
+
+	this.div_grid_bottom_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this.grd_Group);
+	}
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+
+
+	this.showVkgrp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	  var args ={p_arg:""};
+	  Ex.core.popup(this,"StringReturnSample","comm::RTCOMMVkgrp_pop_old.xfdl",args,"modaless=false");
+	}
+	
+	// 파라미터 반환
+	this._setReturn = function(val) {
+		var cd = val[0];
+		var nm = val[1];
+		var gb 		= val[2];
+		if(gb == "vkgrp") {
+			this.vkgrp.set_value(cd);
+			this.vkgrpNm.set_value(nm);
+		} else if(gb == "vkbur" ) {
+			this.vkbur.set_value(cd);
+			this.vkburNm.set_value(nm);
+		}
+	}
+	
+	this.showVkbur = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	  var args ={p_arg:""};
+	  //Ex.core.popup(this,"StringReturnSample","comm::RTCOMMVkbur_pop.xfdl",args,"modaless=false");
+	  Ex.core.popup(this,"StringReturnSample","comm::RTCOMMVkbur_pop_old.xfdl",args,"modaless=false");
+	}
+	
+	this.checkSaveMode = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo) {
+		var rowType = obj.getRowType(e.newrow);
+		
+		if(rowType !=  "2") { //신규등록만 입력가능하도록 !!!
+			this.userId.enable = false;
+			this.Button01.enable = false;
+		} else {
+			this.userId.enable = true;
+			this.Button01.enable = true;
+		}
+		
+		if(obj.getColumn(e.newrow, "userGrpNm") == "렌탈마스터") {
+			this.vkbur.set_enable(false);
+			this.Button02.set_enable(false);
+			this.vkgrpNm.set_enable(false);
+			this.vkgrp.set_enable(false);
+			this.Button03.set_enable(false);
+			this.vkburNm.set_enable(false);
+		} else {
+			this.vkbur.set_enable(true);
+			this.Button02.set_enable(true);
+			this.vkgrpNm.set_enable(true);
+			this.vkgrp.set_enable(true);
+			this.Button03.set_enable(true);
+			this.vkburNm.set_enable(true);
+		}
+	}
+
+	// 사용자 그룹 변경 이벤트 발생시 처리 함수
+	this.div_search00_userGrp_onitemchanged = function(obj:Combo, obj2:Dataset, e:nexacro.ItemChangeEventInfo) {
+		var idx = this.ds_user.rowposition;
+		var rowType = this.ds_user.getRowType(idx);
+		//신규입력은 대리점 선택 못하도록
+
+		if(rowType ==  "2" && this.userGrp.value == "05") {
+			var msg = "신규등록인경우 대리점은 선택하실수 없습니다.";
+			alert(msg);
+			this.userGrp.set_value("");
+			return;
+		}
+		
+		// 렌탈 마스터 항목 선택시 ERP 지사, ERP 지점 비활성
+		if (this.userGrp.value == "RM") {
+			this.vkbur.set_enable(false);
+			this.Button02.set_enable(false);
+			this.vkgrpNm.set_enable(false);
+			this.vkgrp.set_enable(false);
+			this.Button03.set_enable(false);
+			this.vkburNm.set_enable(false);
+		} else {
+			this.vkbur.set_enable(true);
+			this.Button02.set_enable(true);
+			this.vkgrpNm.set_enable(true);
+			this.vkgrp.set_enable(true);
+			this.Button03.set_enable(true);
+			this.vkburNm.set_enable(true);
+		}
+		
+	} 
+
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.grd_Group);
+	}
+
+	//신규등록인경우 만 처리
+	this.userId_onkillfocus = function(obj:Edit, e:nexacro.KillFocusEventInfo){
+		this.fn_userId_exists();
+	}
+]]></Script>
+  </Form>
+</FDL>

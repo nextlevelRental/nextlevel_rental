@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info3_discount" classname="RTSDContractStatus_tab_info3_discount" left="0" top="0" width="1140" height="150" titletext="[STEP3]할인정보">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Static id="st_rentAmt" taborder="4" text="월렌탈료(조견표)" cssclass="sta_WF_detailLabel" left="554" top="5" width="125" height="31"/>
+        <Static id="st_monAmt" taborder="6" text="월렌탈료" cssclass="sta_WF_detailLabel" left="277" top="5" width="125" height="31"/>
+        <Static id="st_regiAmt" taborder="8" text="렌탈등록비" cssclass="sta_WF_detailLabel" left="0" top="5" width="125" height="31"/>
+        <Static id="Static00" taborder="9" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Static id="st_cDcamt" taborder="15" text="캠페인할인금액" cssclass="sta_WF_detailLabel" left="277" top="35" width="125" height="31"/>
+        <Static id="st_monDcamt" taborder="17" text="월렌탈료 할인" cssclass="sta_WF_detailLabel" left="0" top="35" width="125" height="31"/>
+        <Static id="Static10" taborder="18" cssclass="sta_WF_detailLabel2" left="0" top="95" width="1107" height="31"/>
+        <Static id="st_fDcamt" taborder="22" text="최종할인액" cssclass="sta_WF_detailLabel" left="554" top="95" width="125" height="31"/>
+        <Static id="st_lDcamt" taborder="24" text="제한할인액" cssclass="sta_WF_detailLabel" left="277" top="95" width="125" height="31"/>
+        <Static id="st_lDcrate" taborder="26" text="제한할인율" cssclass="sta_WF_detailLabel" left="0" top="95" width="125" height="31"/>
+        <Static id="Static15" taborder="27" cssclass="sta_WF_detailLabel2" left="0" top="65" width="1107" height="31"/>
+        <Static id="st_gDcamt" taborder="29" text="결합할인액" cssclass="sta_WF_detailLabel" left="831" top="65" width="125" height="31"/>
+        <Static id="st_gDcrate" taborder="31" text="결합할인율" cssclass="sta_WF_detailLabel" left="554" top="65" width="125" height="31"/>
+        <Edit id="ed_grpNo" taborder="32" left="407" top="70" width="142" height="21" readonly="true"/>
+        <Static id="st_grpNo" taborder="33" text="고객결합번호" cssclass="sta_WF_detailLabel" left="277" top="65" width="125" height="31"/>
+        <Edit id="ed_grpYn" taborder="34" left="130" top="70" width="142" height="21" readonly="true"/>
+        <Static id="st_grpYn" taborder="35" text="고객결합여부" cssclass="sta_WF_detailLabel" left="0" top="65" width="125" height="31"/>
+        <Static id="Static01" taborder="36" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="37" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <MaskEdit id="ed_gDcamt" taborder="38" readonly="true" mask="###,###,###,##0" left="961" top="70" width="142" height="21"/>
+        <MaskEdit id="ed_fDcamt" taborder="39" readonly="true" mask="###,###,###,##0" left="684" top="100" width="142" height="21"/>
+        <MaskEdit id="ed_rentAmt" taborder="40" readonly="true" mask="###,###,###,##0" left="684" top="10" width="142" height="21"/>
+        <MaskEdit id="ed_lDcamt" taborder="41" readonly="true" mask="###,###,###,##0" left="408" top="100" width="142" height="21"/>
+        <MaskEdit id="ed_cDcamt" taborder="42" readonly="true" mask="###,###,###,##0" left="407" top="40" width="142" height="21"/>
+        <MaskEdit id="ed_monAmt" taborder="43" readonly="true" mask="###,###,###,##0" left="407" top="10" width="142" height="21"/>
+        <MaskEdit id="ed_monDcamt" taborder="44" readonly="true" mask="###,###,###,##0" left="131" top="40" width="142" height="21"/>
+        <MaskEdit id="ed_regiAmt" taborder="45" mask="###,###,###,##0" left="131" top="10" width="142" height="21" readonly="true"/>
+        <MaskEdit id="ed_gDcrate" taborder="46" readonly="true" mask="###,###,###,##0" left="684" top="70" width="142" height="21"/>
+        <MaskEdit id="ed_lDcrate" taborder="47" readonly="true" mask="###,###,###,##0" left="130" top="100" width="142" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_discount" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="cDcamt" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="gDcrate" type="STRING" size="256"/>
+          <Column id="gDcamt" type="STRING" size="256"/>
+          <Column id="lDcrate" type="STRING" size="256"/>
+          <Column id="lDcamt" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_regiAmt" propid="value" datasetid="ds_discount" columnid="regiAmt"/>
+      <BindItem id="item1" compid="ed_monAmt" propid="value" datasetid="ds_discount" columnid="monAmt"/>
+      <BindItem id="item2" compid="ed_rentAmt" propid="value" datasetid="ds_discount" columnid="rentAmt"/>
+      <BindItem id="item3" compid="ed_monDcamt" propid="value" datasetid="ds_discount" columnid="monDcamt"/>
+      <BindItem id="item4" compid="ed_cDcamt" propid="value" datasetid="ds_discount" columnid="cDcamt"/>
+      <BindItem id="item5" compid="ed_grpYn" propid="value" datasetid="ds_discount" columnid="grpYn"/>
+      <BindItem id="item6" compid="ed_grpNo" propid="value" datasetid="ds_discount" columnid="grpNo"/>
+      <BindItem id="item7" compid="ed_gDcrate" propid="value" datasetid="ds_discount" columnid="gDcrate"/>
+      <BindItem id="item8" compid="ed_gDcamt" propid="value" datasetid="ds_discount" columnid="gDcamt"/>
+      <BindItem id="item9" compid="ed_lDcrate" propid="value" datasetid="ds_discount" columnid="lDcrate"/>
+      <BindItem id="item10" compid="ed_lDcamt" propid="value" datasetid="ds_discount" columnid="lDcamt"/>
+      <BindItem id="item11" compid="ed_fDcamt" propid="value" datasetid="ds_discount" columnid="fDcamt"/>
+    </Bind>
+  </Form>
+</FDL>

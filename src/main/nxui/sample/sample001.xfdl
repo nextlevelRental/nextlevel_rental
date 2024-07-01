@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample001" classname="testWeb" left="0" top="0" width="1260" height="411" titletext="구글api 위치정보가져오는샘플" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="1" useinputpanel="false" left="14" top="231" height="161" binddataset="Dataset00" right="54.29%">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="Column0"/>
+                <Cell col="1" disptype="normal" text="Column1"/>
+                <Cell col="2" disptype="normal" text="Column2"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:Column0"/>
+                <Cell col="1" disptype="normal" text="bind:Column1"/>
+                <Cell col="2" disptype="normal" text="bind:Column2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="2" text="set Google Api" left="12" top="182" width="120" height="40" onclick="Button00_onclick"/>
+        <GroupBox id="GroupBox03" text="Example" taborder="6" left="11" top="6" right="13" height="122" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;"/>
+        <Static id="Static00" taborder="7" text="index.html에 해당 태그 삽입&#13;&#10;&#13;&#10; &lt;!-- google api --&gt;&#13;&#10;    &lt;script id=&quot;google&quot; src=&quot;http://maps.google.com/maps?file=api&amp;amp;v=2&amp;amp;key=ABQIAAAAzr2EBOXUKnm_jVnk0OJI7xSosDVG8KKPE1-m51RBrvYughuyMxQ-i1QfUnH94QxWIa6N4U6MouMmBA&quot;&#13;&#10;            type=&quot;text/javascript&quot;&gt;&lt;/script&gt;&#13;&#10;    &lt;!-- google api End--&gt;" cssclass="sample_example" left="19" top="24" right="20" height="96" style="align:left top;"/>
+        <Button id="Button01" taborder="8" text="키값변경" left="12" top="138" width="120" height="40" onclick="Button01_onclick"/>
+        <TextArea id="txtArea" taborder="9" left="137" top="138" height="41" right="54.29%"/>
+        <ImageViewer id="ImageViewer00" taborder="10" left="47.62%" top="136" height="268" image="URL('image::gogleapi.png')" stretch="fixaspectratio" right="15"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">47567</Col>
+            <Col id="Column1">441171480</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">47532</Col>
+            <Col id="Column1">441171480</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Column2D" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="no" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column1">Alex</Col>
+            <Col id="Column2">25000</Col>
+            <Col id="no">1</Col>
+          </Row>
+          <Row>
+            <Col id="Column1">Mark</Col>
+            <Col id="Column2">35000</Col>
+            <Col id="no">2</Col>
+          </Row>
+          <Row>
+            <Col id="Column1">David</Col>
+            <Col id="Column2">42300</Col>
+            <Col id="no">3</Col>
+          </Row>
+          <Row>
+            <Col id="Column1">Graham</Col>
+            <Col id="Column2">35300</Col>
+            <Col id="no">4</Col>
+          </Row>
+          <Row>
+            <Col id="Column1">John</Col>
+            <Col id="Column2">31300</Col>
+            <Col id="no">5</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : 
+* BUSINESS    : 
+* FILE NAME   : 
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+   //quickview에서 테스트시에만 사용
+    //  Ex.core.isOnloadElement();
+     // this.fn_createElement();
+  
+   //키변경
+	
+
+}
+
+
+
+this.testObj ={};
+this.testObj.aaaaa = "AAAAAAAAAAA";
+this.testObj.Properties = {};
+this.testObj.bbb
+this.testObj.bbbbb = function(obj)
+{
+   trace("testObj.aaaaa ==>"+_testObj.aaaaa);
+   
+}
+
+var _testObj = this.testObj;
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    var startZip = this.Dataset00.getColumn(this.Dataset00.rowposition,"Column0");
+    var endZip = this.Dataset00.getColumn(this.Dataset00.rowposition,"Column1");
+    trace(" system.gdirections : " + system.gdirections);
+    if(system.gdirections)
+    {
+	    system.gdirections(startZip,endZip,this.Dataset00,"Column2",this.Dataset00.rowposition);
+	}
+
+
+   trace(this.testObj.Properties);
+   trace(this.testObj.bbbbb("aaa"));
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+      var src = 'http://maps.google.com/maps?file=api&v=2&sensor=false&key=ABQIAAAAdwN82gHCmJudZ5IqudMlrxQKw-kwr7JkHbCLOURqQJ3EgkRO9BQszjCMgaRHBxW6JYUP2q9gpTyryA';
+
+	   document.getElementById("google").src = src;
+	this.txtArea.set_value(document.getElementById("google").src);
+
+}
+
+this.testWeb_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	
+}]]></Script>
+  </Form>
+</FDL>

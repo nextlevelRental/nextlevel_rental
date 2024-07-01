@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCampPopUp" classname="RTCMPrice_pop" left="0" top="0" width="490" height="252" titletext="캠페인 신규등록 팝업" onload="RTSDCampPopUp_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="23" left="10" top="10" right="10" height="242" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="Static11" taborder="90" cssclass="sta_WF_detailLabel2" left="0" top="60" right="0" height="31"/>
+              <Calendar id="Calendar00" taborder="76" dateformat="yyyy-MM-dd" left="124" top="65" width="100" height="21" value="null" readonly="true" ondayclick="div_search_Calendar00_ondayclick"/>
+              <Calendar id="Calendar01" taborder="77" dateformat="yyyy-MM-dd" left="239" top="65" width="100" height="21" value="null"/>
+              <Static id="Static06" taborder="87" cssclass="sta_WF_detailLabel2" left="0" top="0" right="0" height="31"/>
+              <Static id="Static09" taborder="88" cssclass="sta_WF_detailLabel2" left="0" top="30" right="0" height="31"/>
+              <Static id="Static13" taborder="92" cssclass="sta_WF_detailLabel2" left="0" top="120" right="0" height="31"/>
+              <Static id="Static00" taborder="61" text="할인유형" cssclass="sta_WF_detailLabel" domainId="nexa.s_condition" left="0" top="0" height="31" width="120"/>
+              <Static id="Static01" taborder="62" text="상품" cssclass="sta_WF_detailLabel" left="0" top="30" width="120" height="31" domainId="nexa.s_condition"/>
+              <Static id="Static03" taborder="63" text="할인율" cssclass="sta_WF_detailLabel" left="0" top="120" width="120" height="31" domainId="nexa.s_condition"/>
+              <Static id="Static02" taborder="64" text="적용일자" cssclass="sta_WF_detailLabel" left="0" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_dcTp" taborder="68" innerdataset="@dsDcTp" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_searchBrand_onitemchanged" left="124" top="5" width="215" height="21" domainId="nexa.name;nexa.code" index="-1"/>
+              <Edit id="ed_matCd" taborder="69" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="124" top="35" width="215" height="21" readonly="false"/>
+              <Button id="bt_searchProduct" taborder="71" onclick="div_search_bt_searchSalesGroup_onclick" cssclass="btn_WF_edtSch" left="319" top="34" width="20" height="21"/>
+              <Static id="Static05" taborder="75" text="~" left="227" top="65" width="30" height="21"/>
+              <Radio id="Radio02" taborder="79" innerdataset="@dsRadioBtn" codecolumn="cd" datacolumn="cdNm" value="01" direction="vertical" left="4" top="92" height="27" width="206" onitemchanged="div_search_Radio02_onitemchanged" index="0"/>
+              <Edit id="Edit00" taborder="81" left="124" top="125" width="215" height="21" tooltiptext="edit"/>
+              <Static id="Static07" taborder="83" text="%" left="342" top="128" width="30" height="21"/>
+              <Button id="Button27" taborder="85" text="저장" left="180" top="191" width="41" height="21" onclick="div_search_Button00_onclick"/>
+              <Button id="Button00" taborder="86" text="취소" left="225" top="191" width="41" height="21" onclick="div_search_Button01_onclick"/>
+              <Static id="Static04" taborder="94" text="할인액" cssclass="sta_WF_detailLabel" left="0" top="120" width="120" height="31" domainId="nexa.s_condition" visible="false"/>
+              <Edit id="Edit01" taborder="95" left="124" top="125" width="215" height="21" tooltiptext="edit" visible="false"/>
+              <Static id="Static08" taborder="96" text="원" left="341" top="126" width="30" height="21" visible="false"/>
+              <CheckBox id="CheckBox02" taborder="97" text="전체" value="true" left="352" top="36" width="104" height="21" onclick="div_search_CheckBox02_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static06" taborder="24" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" right="10" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsRadioBtn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">01</Col>
+            <Col id="cdNm">할인률(%)</Col>
+          </Row>
+          <Row>
+            <Col id="cd">02</Col>
+            <Col id="cdNm">할인액(원)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsDcTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 캠페인 등록 팝업
+ * 02. 그룹명   : RTSD
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2015-08-03
+ * 05. 작성자   : 신정수
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay = "";
+this.countRegInfo = 0;
+this.countNext = 0;
+    
+	this.RTSDCampPopUp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		//this.obj.value = "01"; //기본은 할인율로
+		Ex.core.init(obj);
+		this.fn_init();
+		this.get_date();
+		this.div_search.ed_matCd.set_value("전체");
+		
+	}
+
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "initCombo";  
+		var sController   	= "rtms/sd/initCampReg.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsDcTp=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	//java에서 현재 날짜 가져오기
+	this.get_date = function() 
+	{
+		var sSvcID        	= "getDate";                    
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+		
+	}
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if( strSvcId == "initCampReg" ){
+			
+		} else if(strSvcId == "getDate") {
+			this.getToDay();
+		} else if(strSvcId == "saveCampRegInfo") {
+			if(nErrorCode == 0) {
+				alert(strErrorMsg);
+				this.close();
+			} else {
+				alert(strErrorMsg);
+			}
+		}
+	}
+	
+	this.getToDay = function() //calendar1에대한 1일후값 가져오기
+	{
+		var bfDate = String(this.toDay); //현재 날짜
+
+		var yyyy  	= bfDate.substring(0, 4);
+		var mm  	= bfDate.substring(4, 6) ;
+		var dd  	= bfDate.substring(6, 8);
+
+		dd = String(parseInt(dd) + 1);
+		if((dd).length = 1) {
+			dd = "0" + dd;
+		}
+		var cDate = yyyy + "" + mm + "" + dd;
+		
+		this.toDay = cDate;
+		
+		this.div_search.Calendar00.set_value(cDate);
+		this.div_search.Calendar01.set_value("99991231");
+		//var cDate = new Date(temp_date);
+		
+		
+		//cDate.addMonth(2);
+		//this.fDate = cDate;
+	}
+	
+	this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var edSearchProductCdVal = nvl(this.div_search.ed_searchProductCd.value);
+		var cbPeriodVal 		 = nvl(this.div_search.cb_period.value);
+		var cbSearchCntVal 		 = nvl(this.div_search.cb_searchCnt.value);
+		var calSearchOrdDayVal 	 = nvl(this.div_search.cal_searchOrdDay.value);
+		
+		if( edSearchProductCdVal == "" ){
+			alert( this.div_search.st_searchSalesGroup.text  + " 값이 없습니다.");
+			return this.div_search.ed_searchProductCd.setFocus();
+		}else if( cbPeriodVal == "" ){
+			alert( this.div_search.st_searchPeriod.text + " 값이 없습니다.");
+			return this.div_search.cb_period.setFocus();
+		}else if( cbSearchCntVal == "" ){
+			alert( this.div_search.st_searchCnt.text + " 값이 없습니다.");
+			return this.div_search.cb_searchCnt.setFocus();
+		}else if( calSearchOrdDayVal == "" ){
+			alert( this.div_search.st_searchOrdDay.text + " 값이 없습니다.");
+			return this.div_search.cal_searchOrdDay.setFocus();
+		}else{
+				var sSvcID        	= "listPricePop";                    
+				var sController   	= "rtms/comm/listPricePop.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "ds_price=mapPrice";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				
+				this.ds_price.deleteAll();
+				
+				sArgs += Ex.util.setParam("ordDay", calSearchOrdDayVal);
+				sArgs += Ex.util.setParam("matCd", edSearchProductCdVal);
+				sArgs += Ex.util.setParam("periodCd", cbPeriodVal);
+				sArgs += Ex.util.setParam("cntCd", cbSearchCntVal);
+				
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+
+//상품조회
+this.div_search_bt_searchSalesGroup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.div_search.CheckBox02.set_value(false);
+	var args ={p_formId :"RTSDCampReg" };
+	Ex.core.popup(this,"상품조회","sd::RTSDCampProductPopUp.xfdl",args, "modaless=false");
+}
+	
+//상품조회 파라미터 반환
+this.returnProduct = function(arr) {
+	this.div_search.ed_matCd.set_value(arr.cd);
+}
+
+//저장버튼
+this.div_search_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var dcTp = this.div_search.cb_dcTp.value; //할인유형
+	
+	var matCd = "" //상품코드
+	if(this.div_search.CheckBox02.value == true) {
+		matCd = "Z"
+	} else {
+		matCd = this.div_search.ed_matCd.value; 
+	}
+	
+	var strDay = this.div_search.Calendar00.value; //가격적용 시작일
+	var endDay = this.div_search.Calendar01.value; //가격적용 완료일
+	var dcRate = nvl(this.div_search.Edit00.value); //할인율
+	var dcAmt = nvl(this.div_search.Edit01.value); //할인금액
+	var useYn = "Y"; //사용여부
+	
+	if(dcRate == null || dcRate == "") {
+		dcRate == 0;
+	}
+	if(dcAmt == null || dcAmt == "") {
+		dcRate == 0;
+	}
+	
+	var sSvcID      	= "saveCampRegInfo";  
+	var sController   	= "rtms/sd/saveCampRegInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsDcTp=dcTpInfo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("dcTp", dcTp);
+	sArgs += Ex.util.setParam("matCd", matCd);
+	sArgs += Ex.util.setParam("strDay", strDay);
+	sArgs += Ex.util.setParam("endDay", endDay);
+	sArgs += Ex.util.setParam("dcRate", dcRate);
+	sArgs += Ex.util.setParam("dcAmt", dcAmt);
+	sArgs += Ex.util.setParam("useYn", useYn);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//취소버튼
+this.div_search_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+
+//라디오버튼 onchanged
+this.div_search_Radio02_onitemchanged = function(obj:Radio, e:nexacro.ItemChangeEventInfo)
+{
+	if(obj.value == "01") {
+		this.div_search.Static03.set_visible(true);
+		this.div_search.Static04.set_visible(false);
+		this.div_search.Edit00.set_visible(true);
+		this.div_search.Edit01.set_visible(false);
+		this.div_search.Static07.set_visible(true);
+		this.div_search.Static08.set_visible(false);
+	} else if(obj.value == "02") {
+		this.div_search.Static03.set_visible(false);
+		this.div_search.Static04.set_visible(true);
+		this.div_search.Edit00.set_visible(false);
+		this.div_search.Edit01.set_visible(true);
+		this.div_search.Static07.set_visible(false);
+		this.div_search.Static08.set_visible(true);
+	} else {
+		return;
+	}
+}
+
+	//해당상품으로 등록된 계약 건수 count
+	this.regInfoCheck = function()
+	{
+		var sSvcID      	= "countRegInfo";  
+		var sController   	= "rtms/sd/countRegInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "countRegInfo";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+	//상품, 적용일자가 겹치는 할인내역 건수 count
+	this.nextCheck = function()
+	{
+		var sSvcID      	= "countNext";  
+		var sController   	= "rtms/sd/countNext.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+this.div_search_CheckBox02_onclick = function(obj:CheckBox,  e:nexacro.ClickEventInfo)
+{
+	
+	if(this.div_search.CheckBox02.value == true) {
+		this.div_search.ed_matCd.set_value("전체");
+	} else {
+		this.div_search.ed_matCd.set_value("");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

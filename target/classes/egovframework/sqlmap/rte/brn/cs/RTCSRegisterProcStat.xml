@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="registerProcStat">
+
+		<resultMap id="registerResultMap" class="java.util.HashMap">
+			<result property="userNm"          		   	column="USER_NM" />          	  			<!-- 로디안 -->                                                        
+			<result property="carmasterNu"          	column="CARMASTER_NU" />          	<!-- 로디안 코드 -->                                                  
+			<result property="baejungCnt"          		column="BAEJUNG_CNT" />       	  		<!-- 배정건수 -->                                            
+			<result property="processCnt"          	 	column="PROCESS_CNT" />        	  	<!-- 처리건수 -->                                                 
+			<result property="processYul"         		   	column="PROCESS_YUL" />       			<!-- 처리율 -->                                                        
+			<result property="contactCnt"      	   		column="CONTACT_CNT" />    			<!-- 컨캑건수 -->                             
+			<result property="contactYul"   				column="CONTACT_YUL" />   				<!-- 컨택율 -->                                                                   				                                                                                                                         
+			<result property="processDateCnt"       	column="PROCESS_DATE_CNT" />     <!-- 처리일수 -->                                                       
+			<result property="saleCnt"        				column="SALE_CNT" />  		  				<!-- 판매수량 -->                                                      			                                                                                                                
+			<result property="onePoint"           			column="ONE_POINT" />         			<!-- 매우불만족 -->                                                  
+			<result property="twoPoint"        			column="TWO_POINT" />    		  		<!-- 불만족 -->                                                     			                                                                                                                   
+			<result property="threePoint"         			column="THREE_POINT" />       			<!-- 보통 -->                                                
+			<result property="fourPoint"         			column="FOUR_POINT" />    	  			<!-- 만족 -->                                                       
+			<result property="fivePoint"           			column="FIVE_POINT" />        				<!-- 매우만족 -->
+		</resultMap>
+	
+	<parameterMap id="registerProcStatParam" class="java.util.Map">  
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="registerResultMap" />
+		<parameter property="stdYm"     jdbcType="VARCHAR"   mode="IN"/>  <!-- 년도월    -->    
+	</parameterMap> 
+
+	<procedure id="registerProcStat.List" parameterMap="registerProcStatParam">
+		{call Pkg_Rtcs0005.p_sRtcs0005RegisterProcStat(?,?)}
+	</procedure>
+
+</sqlMap>

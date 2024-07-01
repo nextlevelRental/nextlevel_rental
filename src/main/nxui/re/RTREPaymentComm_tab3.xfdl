@@ -1,0 +1,815 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREPaymentComm_tab3" classname="test_form" left="0" top="0" width="1166" height="460" titletext="중도완납수납" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" top="0" width="25" right="0" bottom="0"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="25" top="0" height="20" style="background:aqua;color:#333333ff;" right="25"/>
+        <Static id="st_collectionMoney" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="25" top="16" width="81" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="25" top="31" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="st_pymntSchdlAmt" taborder="19" text="납부예정금액" cssclass="sta_WF_subTitle" left="25" top="202" width="100" height="20"/>
+        <Static id="st_recpFg" taborder="21" text="수납유형" cssclass="sta_WF_subTitle" left="605" top="202" width="120" height="20"/>
+        <Button id="btn_payment" taborder="23" text="수납" cssclass="btn_WF_module" top="202" width="45" height="22" onclick="btn_payment_onclick" right="25"/>
+        <Grid id="grd_collectionMoneyList" taborder="25" binddataset="ds_collectionMoneyList" useinputpanel="false" left="25" top="37" height="150" nodatatext="조회된 데이터가 없습니다." autosizingtype="row" extendsizetype="row" width="1116">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="80"/>
+                <Column size="45"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="고객코드"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="상품명"/>
+                <Cell col="4" text="차량번호"/>
+                <Cell col="5" text="수량"/>
+                <Cell col="6" text="계약일자"/>
+                <Cell col="7" text="장착일자"/>
+                <Cell col="8" text="계약상태"/>
+                <Cell col="9" text="법정생년월일"/>
+                <Cell col="10" text="사업자번호"/>
+                <Cell col="11" text="핸드폰"/>
+                <Cell col="12" text="전화번호"/>
+                <Cell col="13" text="결제방법"/>
+                <Cell col="14" text="결제일"/>
+                <Cell col="15" text="선수금액"/>
+                <Cell col="16" text="연체금액"/>
+                <Cell col="17" text="연체개월"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordNo"/>
+                <Cell col="1" text="bind:custNo"/>
+                <Cell col="2" text="bind:custNm"/>
+                <Cell col="3" text="bind:matNm"/>
+                <Cell col="4" text="bind:carNo"/>
+                <Cell col="5" text="bind:cntCd"/>
+                <Cell col="6" text="bind:ordDay"/>
+                <Cell col="7" text="bind:procDay"/>
+                <Cell col="8" text="bind:statNm"/>
+                <Cell col="9" text="bind:birthDay"/>
+                <Cell col="10" text="bind:buslNo"/>
+                <Cell col="11" text="bind:mobNo"/>
+                <Cell col="12" text="bind:telNo"/>
+                <Cell col="13" text="bind:payNm"/>
+                <Cell col="14" text="bind:payDD"/>
+                <Cell col="15" style="align:right;" text="bind:prePaid"/>
+                <Cell col="16" style="align:right;" text="bind:arreAmt"/>
+                <Cell col="17" text="bind:arreMon"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_refresh" taborder="42" text="재조회" cssclass="btn_WF_CRUD" top="10" width="57" height="22" visible="true" onclick="btn_refresh_onclick" right="25"/>
+        <Radio id="rdo_recpFg" taborder="44" left="605" top="227" width="200" height="22" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" index="0" value="100000000000" onitemchanged="rdo_recpFg_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">100000000000</Col>
+                <Col id="datacolumn">카드즉시출금</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">010000000000</Col>
+                <Col id="datacolumn">계좌즉시출금</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Div id="div_payment" taborder="58" left="605" height="181" width="536" url="re::RTREPaymentComm_div.xfdl" top="254"/>
+        <Div id="div_pymntSchdlAmt" taborder="59" left="25" width="560" height="208" top="227">
+          <Layouts>
+            <Layout>
+              <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="0" height="31" right="0"/>
+              <Static id="Static00" taborder="1" cssclass="sta_WF_detailLabel2" left="0" top="30" right="0" height="31"/>
+              <Static id="Static01" taborder="2" cssclass="sta_WF_detailLabel2" left="0" top="60" right="0" height="31"/>
+              <Static id="Static02" taborder="3" cssclass="sta_WF_detailLabel2" left="0" top="90" right="0" height="31"/>
+              <Static id="st_cancDayTh" taborder="4" text="취소일자" cssclass="sta_WF_detailLabelP" left="0" top="0" width="140" height="31"/>
+              <Static id="st_saleAmtTh" taborder="5" text="총렌탈료" cssclass="sta_WF_detailLabel" left="0" top="30" width="140" height="31"/>
+              <Static id="st_recpAmtTh" taborder="6" text="렌탈료수납액" cssclass="sta_WF_detailLabel" left="0" top="60" width="140" height="31"/>
+              <Static id="st_endTpTh" taborder="8" text="계약종료유형" cssclass="sta_WF_detailLabelP" left="280" top="0" width="140" height="31"/>
+              <Static id="st_rgblancAmtTh" taborder="9" text="등록비잔액" cssclass="sta_WF_detailLabel" left="280" top="30" width="140" height="31"/>
+              <Static id="st_blancAmtTh" taborder="10" text="렌탈료잔액" cssclass="sta_WF_detailLabel" left="280" top="60" width="140" height="31"/>
+              <Static id="st_rqstDt" taborder="12" left="140" top="0" width="140" height="31" style="align:center middle;"/>
+              <Static id="Static03" taborder="26" cssclass="sta_WF_detailLabel2" left="0" top="120" right="0" height="31"/>
+              <Static id="st_planAmtTh" taborder="11" text="총 납부금액" cssclass="sta_WF_detailLabel" left="280" top="120" width="140" height="31"/>
+              <Static id="st_saleAmt" taborder="13" left="140" top="30" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_recpAmt" taborder="14" left="140" top="60" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_balanceAmt" taborder="15" left="140" top="90" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_rgblancAmt" taborder="17" left="420" top="30" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_blancAmt" taborder="18" left="420" top="60" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_planAmt" taborder="19" left="420" top="120" width="140" height="31" style="align:right middle;"/>
+              <Combo id="cbo_endTp" taborder="20" innerdataset="@ds_endTpList" codecolumn="cd" datacolumn="cdNm" left="424" top="5" width="100" height="21" onitemchanged="div_prptAmtCalc_cbo_endTp_onitemchanged"/>
+              <Calendar id="cal_cancDay" taborder="21" dateformat="yyyy-MM-dd" left="144" top="5" width="100" height="21" onchanged="div_prptAmtCalc_cal_cancDay_onchanged"/>
+              <Static id="st_mfpRsnTh" taborder="22" text="중도완납 사유" cssclass="sta_WF_detailLabelP" left="0" top="120" width="140" height="31"/>
+              <Static id="st_totDcAmt00" taborder="23" left="140" top="120" width="140" height="31" style="align:right middle;"/>
+              <Static id="st_servAmtTh" taborder="24" cssclass="sta_WF_detailLabel" left="280" top="90" width="140" height="31" text="추가납부금액"/>
+              <Static id="st_servAmt" taborder="25" left="420" top="90" width="140" height="31" style="align:right middle;"/>
+              <Static id="Static04" taborder="28" cssclass="sta_WF_detailLabel2" left="0" top="150" height="58" right="0"/>
+              <Static id="st_mfpDescTh" taborder="27" text="중도완납&#13;&#10;상세사유" cssclass="sta_WF_detailLabelP" left="0" top="150" width="140" height="58"/>
+              <TextArea id="txt_mfpDesc" taborder="29" left="144" top="155" height="48" width="411"/>
+              <Combo id="cbo_mfpRsn" taborder="30" innerdataset="@ds_mfpRsnList" codecolumn="cd" datacolumn="cdNm" left="144" top="125" width="100" height="21"/>
+              <Static id="st_balanceAmtTh" taborder="31" text="선수금" cssclass="sta_WF_detailLabel" left="0" top="90" width="140" height="31"/>
+              <MaskEdit id="me_servAmt" taborder="33" type="number" mask="{##,###,##0}" left="423" top="93" width="124" height="25" limitbymask="both" onkeyup="div_pymntSchdlAmt_me_servAmt_onkeyup"/>
+              <Static id="st_servAmt00" taborder="34" top="90" height="31" right="0" width="20" text="원" style="align:right middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="60" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" top="0" width="25" bottom="0" left="0"/>
+        <Button id="btn_SaveAcc" taborder="61" text="Button00" onclick="div_accImmWthdr_btn_SaveAcc_onclick" left="85.08%" top="262" right="2.83%" height="18" visible="false"/>
+        <Edit id="ed_tordNo" taborder="62" left="85.08%" top="290" right="2.83%" height="20" visible="false"/>
+        <Edit id="ed_PTrNo" taborder="63" left="85.08%" top="320" right="2.83%" height="20" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_collectionMoneyList" firenextcount="0" useclientlayout="true" onrowposchanged="ds_collectionMoneyList_onrowposchanged">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payNm" type="STRING" size="256"/>
+          <Column id="payDD" type="STRING" size="256"/>
+          <Column id="prePaid" type="STRING" size="256"/>
+          <Column id="arreAmt" type="STRING" size="256"/>
+          <Column id="arreMon" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
+          <Column id="preAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_pymntSchdlAmt" firenextcount="0" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256" description="계약번호"/>
+          <Column id="custNo" type="STRING" size="256" description="고객번호"/>
+          <Column id="cancDay" type="STRING" size="256" description="중도완납일"/>
+          <Column id="recvMon" type="BIGDECIMAL" size="256" description="수납년월"/>
+          <Column id="endTp" type="STRING" size="256" description="종료유형"/>
+          <Column id="procDay" type="STRING" size="256" description="장착일자"/>
+          <Column id="totRentAmt" type="BIGDECIMAL" size="256" description="총렌탈료"/>
+          <Column id="recpAmt" type="BIGDECIMAL" size="256" description="수납금액(VAT포함)"/>
+          <Column id="pnltAmt" type="BIGDECIMAL" size="256" description="할인미대상"/>
+          <Column id="totRecvAmt" type="BIGDECIMAL" size="256" description="총수납금액"/>
+          <Column id="recvRt" type="BIGDECIMAL" size="256" description="회수율"/>
+          <Column id="recpPay" type="STRING" size="256" description="수납방법"/>
+          <Column id="recvSeq" type="BIGDECIMAL" size="256" description="수납거래번호"/>
+          <Column id="mfpRsnCd" type="STRING" size="256" description="완납해지사유코드"/>
+          <Column id="mfpDesc" type="STRING" size="256" description="상세사유"/>
+          <Column id="servAmt" type="BIGDECIMAL" size="256" description="추가납부금액"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_midFullPymntDtl" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="endTp" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="ordNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="osYn" type="STRING" size="256"/>
+          <Column id="mepYn" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="maMileage" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="saleAmt" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="blancAmt" type="STRING" size="256"/>
+          <Column id="arre1Amt" type="STRING" size="256"/>
+          <Column id="arre2Amt" type="STRING" size="256"/>
+          <Column id="makeAmt" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="planAmt" type="STRING" size="256"/>
+          <Column id="canclDay" type="STRING" size="256"/>
+          <Column id="saleAmt2" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rgcpAmt" type="STRING" size="256"/>
+          <Column id="rgblancAmt" type="STRING" size="256"/>
+          <Column id="balanceAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_endTpList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mfpRsnList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="div_pymntSchdlAmt.st_saleAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="saleAmt"/>
+      <BindItem id="item2" compid="div_pymntSchdlAmt.st_rgblancAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="rgblancAmt"/>
+      <BindItem id="item3" compid="div_pymntSchdlAmt.st_recpAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="recpAmt"/>
+      <BindItem id="item4" compid="div_pymntSchdlAmt.st_blancAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="blancAmt"/>
+      <BindItem id="item5" compid="div_pymntSchdlAmt.st_balanceAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="balanceAmt"/>
+      <BindItem id="item6" compid="div_pymntSchdlAmt.st_planAmt" propid="text" datasetid="ds_midFullPymntDtl" columnid="planAmt"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 수금관리 > 수납공통화면 > 중도완납수납
+ * 02. 그룹명		: RTREPaymentComm_tab3.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2018-12-13
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2018-12-10		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.popupYn = "Y";		/* Popup 여부	*/
+this.viewId = "middleFullPayment";	/* 업무구분	*/
+this.workCd = "MFP";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ***********************************************************************/
+this.toDay	  = "";	/* 당일			*/
+this.curMonth = "";	/* 당월말일	*/
+this.tordNo	  = "";
+this.custNo	  = this.parent.custNo;
+this.custNm	  = "";
+this.matNm	  = "";
+this.telNo	  = "";
+this.mobNo	  = "";
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(this);
+	
+	this.fn_init();
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {
+
+	/* 월일 조회 */
+	this.fn_getDayMongth();
+	
+	/* 계약종료유형 선택항목 조회 */
+	this.fn_initRTREMiddleFullPayment();
+	
+	/* 중도완납사유 선택항목 조회 */
+	this.fn_retrieveMfpRsnList();
+	
+	/* 수금내역 조회 */
+	this.fn_retrieveCollectionMoneyList();
+
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+/**
+ * 월일 조회
+ */
+this.fn_getDayMongth = function() {
+	var sSvcID		 = "getDayMongth";
+	var sController	 = "/ntrms/re/getDayMongth.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 계약종료유형 선택항목 조회
+ */
+this.fn_initRTREMiddleFullPayment = function() {
+	var sSvcID		 = "initRTREMiddleFullPayment";
+	var sController	 = "/rtms/re/initRTREMiddleFullPayment.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_endTpList=mapDsEndTp";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 중도완납사유 선택항목 조회
+ */
+this.fn_retrieveMfpRsnList = function() {
+	var sSvcID		 = "retrieveMfpRsnList";
+	var sController	 = "ntrms/re/retrieveMfpRsnList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_mfpRsnList=output";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 수금내역 조회
+ */
+this.fn_retrieveCollectionMoneyList = function() {
+	this.ds_collectionMoneyList.clearData();
+	
+	var sSvcID		 = "retrieveCollectionMoneyList";
+	var sController	 = "ntrms/re/getCollectionMoneyList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_collectionMoneyList=output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("custNo", this.custNo);
+	
+	if(this.parent.p_arg="RTCSAdviceStatus") {
+		sArgs		+= Ex.util.setParam("ordNo", this.parent.p_ordNo);
+	}
+	
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 납부예정금액 조회
+ */
+this.fn_retrieveMidFullPymntDtl = function() {
+	this.ds_midFullPymntDtl.clearData();
+	
+	var dsClct	= this.ds_collectionMoneyList;
+	
+	var ordNo	= dsClct.getColumn(dsClct.rowposition, "ordNo");	/* 계약번호		*/
+	var cancDay	= this.div_pymntSchdlAmt.cal_cancDay.value;			/* 취소일자		*/
+	var endTp	= this.div_pymntSchdlAmt.cbo_endTp.value;			/* 계약종료유형	*/
+	
+	var sSvcID		 = "retrieveMidFullPymntDtl";
+	var sController	 = "/rtms/re/pSrtsd0109CancelList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_midFullPymntDtl=mapCancelList";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("ordNo",   nvl(ordNo));
+		sArgs		+= Ex.util.setParam("cancDay", nvl(cancDay));
+		sArgs		+= Ex.util.setParam("endTp",   nvl(endTp));
+		
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 중도완납 저장
+ */
+this.fn_saveMiddleFullPayment = function(recpPay, tno) {
+	var div	  = this.div_pymntSchdlAmt;
+	var dsMid = this.ds_midFullPymntDtl;
+	var dsAmt = this.div_payment.ds_pymntSchdlAmt;
+	
+	dsAmt.clearData();
+	dsAmt.addRow();
+	
+	var recvMon	   = div.cal_cancDay.value.toString().substr(0, 6);
+	var totRentAmt = dsMid.getColumn(0, "saleAmt");
+	var recpAmt    = dsMid.getColumn(0, "recpAmt");
+	var pnltAmt	   = dsMid.getColumn(0, "arre1Amt");
+	var servAmt	   = parseInt(this.div_pymntSchdlAmt.me_servAmt.text);
+	var totRecvAmt = parseInt(dsMid.getColumn(0, "planAmt")) + servAmt;
+	var planAmt	   = parseInt(dsMid.getColumn(0, "planAmt"));
+	
+	totRentAmt = parseInt(totRentAmt == "" || totRentAmt.toString()	== "NaN" ? "0" : totRentAmt);
+	recpAmt	   = parseInt(recpAmt 	 == "" || recpAmt.toString()	== "NaN" ? "0" : recpAmt);
+	pnltAmt	   = parseInt(pnltAmt	 == "" || pnltAmt.toString()	== "NaN" ? "0" : pnltAmt);
+	totRecvAmt = parseInt(totRecvAmt == "" || totRecvAmt.toString()	== "NaN" ? "0" : totRecvAmt);
+	
+	var recvRt = (recpAmt + planAmt) / totRentAmt * 100;
+	
+	dsAmt.setColumn(0, "ordNo",		 this.tordNo);						/* 계약번호				*/
+	dsAmt.setColumn(0, "custNo",	 this.custNo);						/* 고객번호				*/
+	dsAmt.setColumn(0, "cancDay",	 div.cal_cancDay.value);			/* 중도완납일				*/
+	dsAmt.setColumn(0, "recvMon",	 recvMon);							/* 수납년월				*/
+	dsAmt.setColumn(0, "endTp",		 div.cbo_endTp.value);				/* 종료유형(S070 : E, C)	*/
+	dsAmt.setColumn(0, "procDay",	 dsMid.getColumn(0, "procDay"));	/* 장착일자				*/
+	dsAmt.setColumn(0, "totRentAmt", totRentAmt);						/* 총렌탈료				*/
+	dsAmt.setColumn(0, "recpAmt",	 recpAmt);							/* 수납금액(VAT포함)		*/
+	dsAmt.setColumn(0, "pnltAmt",	 pnltAmt);							/* 할인미대상				*/
+	dsAmt.setColumn(0, "servAmt",	 servAmt);							/* 추가납부금액			*/
+	dsAmt.setColumn(0, "totRecvAmt", totRecvAmt);						/* 총수납금액				*/
+	dsAmt.setColumn(0, "recvRt",	 nexacro.round(recvRt));			/* 회수율					*/
+	dsAmt.setColumn(0, "recpPay",	 recpPay);							/* 수납방법				*/
+	dsAmt.setColumn(0, "mfpRsnCd",	 nvl(div.cbo_mfpRsn.value));				/* 완납해지사유코드		*/
+	dsAmt.setColumn(0, "mfpDesc",	 nvl(div.txt_mfpDesc.value));			/* 상세사유				*/
+	
+	if(this.rdo_recpFg.index == 1) {
+		/* 계좌즉시출금결제 저장 */
+		this.div_payment.fn_saveAccImmWthdrPayment();
+	}
+}
+
+/***********************************************************************************
+ * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+		
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	var div = this.div_payment;
+	
+	
+	switch(strSvcId) {
+		/* 월일 조회 */
+		case "getDayMongth":
+			this.curMonth = this.toDay.substr(0, 4) + this.toDay.substr(4, 2) + Eco.date.getLastDayOfMonth(this.toDay);
+			
+			/* 취소일자 */
+			this.div_pymntSchdlAmt.cal_cancDay.set_value(this.toDay);
+			break;
+		
+		/* 계약종료유형 선택항목 조회 */
+		case "initRTREMiddleFullPayment":
+			this.div_pymntSchdlAmt.cbo_endTp.set_index(0);
+			break;
+		
+		/* 중도완납사유 선택항목 조회 */
+		case "retrieveMfpRsnList":
+			this.div_pymntSchdlAmt.cbo_mfpRsn.set_index(0);
+			break;
+		
+		/* 수금내역 조회 */
+		case "retrieveCollectionMoneyList":
+			var ds = this.ds_collectionMoneyList;
+			
+			//[20200512_01] kstka 중도완납, 계약종료되고 연체금이 없는 계약은 제외처리
+			ds.filter("mfpYn == 'N' && (arreAmt > 0 || preAmt > 0)");
+			
+			if(ds.getColumn(0, "custTp") == "01") {
+				/* 개인 */
+				div.div_cardImmWthdr.ed_cardauth.set_value(ds.getColumn(0, "birthDay").substring(2, 8));
+				div.div_accImmWthdr.ed_bizNo.set_value(ds.getColumn(0, "birthDay").substring(2, 8));
+			} else if(ds.getColumn(0, "custTp") == "02") {
+				/* 사업자 */
+				div.div_cardImmWthdr.ed_cardauth.set_value(ds.getColumn(0, "buslNo"));
+				div.div_accImmWthdr.ed_bizNo.set_value(ds.getColumn(0, "buslNo"));
+			}
+			
+			if(ds.getRowCount() > 0) {
+				this.tordNo	= ds.getColumn(ds.rowposition, "ordNo");
+				this.custNo	= ds.getColumn(ds.rowposition, "custNo");
+				this.custNm	= ds.getColumn(ds.rowposition, "custNm");
+				this.matNm	= ds.getColumn(ds.rowposition, "matNm");
+				this.telNo	= ds.getColumn(ds.rowposition, "telNo");
+				this.mobNo	= ds.getColumn(ds.rowposition, "mobNo");
+
+				div.div_accImmWthdr.ed_ownerNm.set_value(this.custNm);
+				
+				/* 납부예정금액 조회 */
+				this.fn_retrieveMidFullPymntDtl();
+			} else {
+				div.div_cardImmWthdr.st_paymentAmt.set_text("0원");
+				div.div_accImmWthdr.st_paymentAmt.set_text(	"0원");
+				
+				this.alert("조회된 데이터가 없습니다.");
+			}
+			break;
+		
+		/* 납부예정금액 조회 */
+		case "retrieveMidFullPymntDtl":
+			var divPymnt = this.div_payment;
+			var divAmt	 = this.div_pymntSchdlAmt;
+			var ds		 = this.ds_midFullPymntDtl;
+			
+			if(ds.getRowCount() > 0) {			
+				var totalAmt = ds.getColumn(0, "planAmt");
+				
+				/* 할부 불가 */
+				if(totalAmt < 50000) {
+					divPymnt.div_cardImmWthdr.cbo_quotaopt.set_index(0);
+					divPymnt.div_cardImmWthdr.cbo_quotaopt.set_readonly(true);
+				} else {
+					divPymnt.div_cardImmWthdr.cbo_quotaopt.set_readonly(false);
+				}
+				
+				totalAmt = divPymnt.fn_numberWithComma(nvl(totalAmt));
+				totalAmt = totalAmt == "" || totalAmt.toString() == "NaN" ? "0" : totalAmt;
+				
+				divPymnt.div_cardImmWthdr.st_paymentAmt.set_text(totalAmt + "원");
+				divPymnt.div_accImmWthdr.st_paymentAmt.set_text( totalAmt + "원");
+				
+				var saleAmt	   = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "saleAmt")));
+				var rgblancAmt = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "rgblancAmt")));
+				var recpAmt	   = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "recpAmt")));
+				var blancAmt   = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "blancAmt")));
+				var balanceAmt = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "balanceAmt")));
+				var planAmt	   = divPymnt.fn_numberWithComma(nvl(ds.getColumn(0, "planAmt")));
+				
+				divAmt.st_saleAmt.set_text(	  (saleAmt	  == ""	|| saleAmt.toString()	 == "NaN" ? "0" : saleAmt)	  + "원");
+				divAmt.st_rgblancAmt.set_text((rgblancAmt == ""	|| rgblancAmt.toString() == "NaN" ? "0" : rgblancAmt) + "원");
+				divAmt.st_recpAmt.set_text(	  (recpAmt	  == ""	|| recpAmt.toString()	 == "NaN" ? "0" : recpAmt)	  + "원");
+				divAmt.st_blancAmt.set_text(  (blancAmt	  == ""	|| blancAmt.toString()	 == "NaN" ? "0" : blancAmt)	  + "원");
+				divAmt.st_balanceAmt.set_text((balanceAmt == ""	|| balanceAmt.toString() == "NaN" ? "0" : balanceAmt) + "원");
+				divAmt.st_planAmt.set_text(	  (planAmt	  == ""	|| planAmt.toString()	 == "NaN" ? "0" : planAmt)	  + "원");
+			}
+			break;
+		default:
+			break;
+	}
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 재조회
+ */
+this.btn_refresh_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	this.fn_retrieveCollectionMoneyList();
+}
+
+/**
+ * 수납
+ */
+this.btn_payment_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	
+	//[20200511_01]중도완납 이중클릭 방지
+	this.btn_payment.set_enable(false);
+	
+	var rdo		= this.rdo_recpFg;
+	var div		= this.div_payment;
+	var dsMst	= this.ds_collectionMoneyList;
+	var nMstRow	= dsMst.rowposition;
+	var dsAmt	= this.ds_pymntSchdlAmt;
+	var divAmt	= this.div_pymntSchdlAmt;
+	
+	div.tordNo = dsMst.getColumn(nMstRow, "ordNo");
+	div.custNo = dsMst.getColumn(nMstRow, "custNo");
+	div.custNm = dsMst.getColumn(nMstRow, "custNm");
+	
+	if(rdo.index == 0) {
+		/* 카드즉시출금결제 */
+		var dsCrdParam	= div.ds_crdPymntParam;
+		var divCrd		= div.div_cardImmWthdr;
+		var nPaymentAmt = divCrd.st_paymentAmt.text.replace(/,/gi, "");
+			nPaymentAmt = nPaymentAmt.replace("원", "");
+		var nServAmt	= parseInt(this.div_pymntSchdlAmt.me_servAmt.text);
+		
+		if(parseInt(nPaymentAmt) == 0) {
+			this.alert("결제금액이 0원입니다.");
+			
+			return false;
+		}
+		
+		dsCrdParam.clearData();
+		dsCrdParam.addRow();
+		
+		dsCrdParam.setColumn(0, "reqTx",		 "pay");									/* 결제/취소구분		*/
+		dsCrdParam.setColumn(0, "custNo",		 nvl(dsMst.getColumn(nMstRow, "custNo")));	/* 고객번호			*/
+		dsCrdParam.setColumn(0, "ordNo",		 nvl(dsMst.getColumn(nMstRow, "ordNo")));	/* 주문번호			*/
+		dsCrdParam.setColumn(0, "payMethodCd",	 rdo.value);								/* 지불방법코드		*/
+		dsCrdParam.setColumn(0, "payMethodName", rdo.text);									/* 지불방법명			*/
+		dsCrdParam.setColumn(0, "recpAmt",		 nPaymentAmt.toString());					/* 결제금액			*/
+		dsCrdParam.setColumn(0, "crdNo",		 nvl(divCrd.me_cardNo.value));				/* 카드번호			*/
+		dsCrdParam.setColumn(0, "quotaopt",		 nvl(divCrd.cbo_quotaopt.value));			/* 할부개월			*/
+		dsCrdParam.setColumn(0, "expiryYy",		 nvl(divCrd.cbo_expiryYy.value));			/* 유효기간(년)		*/
+		dsCrdParam.setColumn(0, "expiryMm",		 nvl(divCrd.cbo_expiryMm.value));			/* 유효기간(월)		*/
+		dsCrdParam.setColumn(0, "cardauth",		 nvl(divCrd.ed_cardauth.value));			/* 인증정보			*/
+		dsCrdParam.setColumn(0, "cardpwd",		 nvl(divCrd.me_cardpwd.value));				/* 비밀번호			*/
+		dsCrdParam.setColumn(0, "cncDay",		 nvl(divAmt.cal_cancDay.value));			/* 중도완납일			*/
+		dsCrdParam.setColumn(0, "mfpCd",		 nvl(divAmt.cbo_endTp.value));				/* 종료유형			*/
+		dsCrdParam.setColumn(0, "mfpRsnCd",		 nvl(divAmt.cbo_mfpRsn.value));				/* 완납해지사유코드	*/
+		dsCrdParam.setColumn(0, "mfpDesc",		 nvl(divAmt.txt_mfpDesc.value));			/* 완납해지상세사유	*/
+		dsCrdParam.setColumn(0, "servAmt",		 nServAmt);									/* 추가납부금액		*/
+		dsCrdParam.setColumn(0, "workCd",		 this.workCd);								/* 업무구분			*/
+		
+		/* 카드즉시출금 결제/환불 */
+		div.fn_processPayment();
+	} else if(rdo.index == 1) {
+		/* 계좌즉시출금결제 */
+		var divAcc = div.div_accImmWthdr;
+		
+		if(Eco.isEmpty(divAcc.cbo_bank.value)) {
+			this.alert("은행이 선택되지 않았습니다.");
+			
+			return false;
+		}
+		
+		var nPaymentAmt	= divAcc.st_paymentAmt.text.replace(/,/gi, "");
+			nPaymentAmt	= nPaymentAmt.replace("원", "");
+		
+		if(parseInt(nPaymentAmt) == 0) {
+			this.alert("결제금액이 0원입니다.");
+			
+			return false;
+		}
+		
+		if(div.agreeYn == "Y") {
+			div.fn_paymentCertified();
+		} else {
+			this.alert("출금이체동의 완료 후 수납가능합니다.");
+			
+			return false;
+		}
+	}
+}
+
+/**
+ * 수납유형 Onitemchanged Event
+ */
+this.rdo_recpFg_onitemchanged = function(obj:Radio, e:nexacro.ItemChangeEventInfo) {
+	var div = this.div_payment;
+	
+	if(obj.index == 0) {
+		div.div_cardImmWthdr.set_visible(true);
+		div.div_accImmWthdr.set_visible(false);
+	} else if(obj.index == 1) {
+		div.div_cardImmWthdr.set_visible(false);
+		div.div_accImmWthdr.set_visible(true);
+	}
+}
+
+/**
+ * 취소일자 Onchanged Event
+ */
+this.div_prptAmtCalc_cal_cancDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo) {
+	/* 회납부예정금액 조회 */
+	this.fn_retrieveMidFullPymntDtl();
+}
+
+/**
+ * 계약종료유형 Onitemchanged Event
+ */
+this.div_prptAmtCalc_cbo_endTp_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	/* 회납부예정금액 조회 */
+	this.fn_retrieveMidFullPymntDtl();
+}
+
+/**
+ * 추가납부금액 Onkeyup Event
+ */
+this.div_pymntSchdlAmt_me_servAmt_onkeyup = function(obj:MaskEdit, e:nexacro.KeyEventInfo) {
+	var planAmt	= parseInt(this.ds_midFullPymntDtl.getColumn(0, "planAmt"));
+	var servAmt	= this.div_pymntSchdlAmt.me_servAmt.value;
+		servAmt	= parseInt(servAmt == "" || servAmt.toString() == "NaN" ? "0" : servAmt);
+	
+	var nAmt	= this.div_payment.fn_numberWithComma(planAmt + servAmt);
+	
+	this.div_pymntSchdlAmt.st_planAmt.set_text(nAmt + "원");
+	this.div_payment.div_cardImmWthdr.st_paymentAmt.set_text(nAmt + "원");
+	this.div_payment.div_accImmWthdr.st_paymentAmt.set_text(nAmt + "원");
+}
+
+/**
+ * ds_collectionMoneyList Onrowposchanged Event
+ */
+this.ds_collectionMoneyList_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo) {
+
+	//[20200511_01]중도완납 이중클릭 방지
+	this.btn_payment.set_enable(true);
+	
+	/* 수금내역 조회 */
+	this.fn_retrieveMidFullPymntDtl();
+}
+
+this.div_accImmWthdr_btn_SaveAcc_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var div	  = this.div_pymntSchdlAmt;
+	var dsMid = this.ds_midFullPymntDtl;
+	var dsAmt = this.div_payment.ds_pymntSchdlAmt;
+	
+	dsAmt.clearData();
+	dsAmt.addRow();
+	
+	var recvMon	   = div.cal_cancDay.value.toString().substr(0, 6);
+	var totRentAmt = dsMid.getColumn(0, "saleAmt");
+	var recpAmt    = dsMid.getColumn(0, "recpAmt");
+	var pnltAmt	   = dsMid.getColumn(0, "arre1Amt");
+	var servAmt	   = parseInt(this.div_pymntSchdlAmt.me_servAmt.text);
+	var totRecvAmt = parseInt(dsMid.getColumn(0, "planAmt")) + servAmt;
+	var planAmt	   = parseInt(dsMid.getColumn(0, "planAmt"));
+	
+	
+	totRentAmt = parseInt(totRentAmt == "" || totRentAmt.toString()	== "NaN" ? "0" : totRentAmt);
+	recpAmt	   = parseInt(recpAmt 	 == "" || recpAmt.toString()	== "NaN" ? "0" : recpAmt);
+	pnltAmt	   = parseInt(pnltAmt	 == "" || pnltAmt.toString()	== "NaN" ? "0" : pnltAmt);
+	totRecvAmt = parseInt(totRecvAmt == "" || totRecvAmt.toString()	== "NaN" ? "0" : totRecvAmt);
+	
+	var recvRt = (recpAmt + planAmt) / totRentAmt * 100;
+	
+	this.tordNo = this.ed_tordNo.text;
+	this.div_payment.custNo = this.custNo;
+	this.div_payment.tordNo = this.ed_tordNo.text;
+	this.div_payment.PTrNo = this.ed_PTrNo.text;
+	
+	dsAmt.setColumn(0, "ordNo",		 this.tordNo);						/* 계약번호				*/
+	dsAmt.setColumn(0, "custNo",	 this.custNo);						/* 고객번호				*/
+	dsAmt.setColumn(0, "cancDay",	 div.cal_cancDay.value);			/* 중도완납일				*/
+	dsAmt.setColumn(0, "recvMon",	 recvMon);							/* 수납년월				*/	
+	dsAmt.setColumn(0, "endTp",		 div.cbo_endTp.value);				/* 종료유형(S070 : E, C)	*/
+	dsAmt.setColumn(0, "procDay",	 dsMid.getColumn(0, "procDay"));	/* 장착일자				*/
+	dsAmt.setColumn(0, "totRentAmt", totRentAmt);						/* 총렌탈료				*/
+	dsAmt.setColumn(0, "recpAmt",	 recpAmt);							/* 수납금액(VAT포함)		*/
+	dsAmt.setColumn(0, "pnltAmt",	 pnltAmt);							/* 할인미대상				*/
+	dsAmt.setColumn(0, "servAmt",	 servAmt);							/* 추가납부금액			*/
+	dsAmt.setColumn(0, "totRecvAmt", totRecvAmt);						/* 총수납금액				*/
+	dsAmt.setColumn(0, "recvRt",	 nexacro.round(recvRt));			/* 회수율					*/
+	dsAmt.setColumn(0, "recpPay",	 "P6");							/* 수납방법				*/
+	dsAmt.setColumn(0, "mfpRsnCd",	 nvl(div.cbo_mfpRsn.value));				/* 완납해지사유코드		*/
+	dsAmt.setColumn(0, "mfpDesc",	 nvl(div.txt_mfpDesc.value));			/* 상세사유				*/
+	
+	if(this.rdo_recpFg.index == 1) {
+		/* 계좌즉시출금결제 저장 */
+		this.div_payment.fn_saveAccImmWthdrPayment();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

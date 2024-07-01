@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="workFrame" classname="workFrame2" left="0" top="0" width="1260" height="32" titletext="New Form" onload="workFrame_onload">
+    <Layouts>
+      <Layout>
+        <Static id="stc_title" taborder="0" left="0" top="0" height="30" style="background:#d3d1d1ff;" right="0" cssclass="sta_home"/>
+        <Static id="stc_navi" taborder="3" cssclass="sta_MDI_bg" visible="true" left="0" top="0" height="30" right="0" style="background:#d3d1d1ff URL('image::img_WF_LabelEssential.png');padding:0 0 0 10;align:left middle;font:bold 9 Verdana;"/>
+        <Div id="Div00" taborder="4" top="0" width="451" height="26" scrollbars="none" right="28">
+          <Layouts>
+            <Layout>
+              <CheckBox id="IE8" taborder="0" text="IE8" left="35" top="5" width="56" height="20" readonly="true" enable="true" visible="false"/>
+              <CheckBox id="IE9" taborder="1" text="IE9" left="101" top="5" width="56" height="20" readonly="true" enable="true" visible="false"/>
+              <CheckBox id="IE10" taborder="2" text="IE10" left="167" top="5" width="56" height="20" value="true" readonly="true" enable="true" visible="false"/>
+              <CheckBox id="IE11" taborder="3" text="IE11" left="233" top="5" width="56" height="20" readonly="true" enable="true" value="true" visible="false"/>
+              <CheckBox id="chrome" taborder="4" text="chrome" left="299" top="5" width="68" height="20" readonly="true" enable="true" value="true" visible="false"/>
+              <CheckBox id="safarie" taborder="5" text="safarie" left="377" top="5" width="65" height="20" readonly="true" enable="true" value="true" visible="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="stc_titleM" taborder="1" cssclass="sta_LF_1DepthBg" left="6" top="176" height="28" style="background:cornflowerblue;" width="426" visible="false" onclick="stc_titleM_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : HTML5 Frame
+ * 02. 화면명   : workFrame.xfdl
+ * 03. 화면설명 :
+ * 04. 작성일   :
+ * 05. 작성자   : w.s.jeong  
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+/************************************************************************************************
+ * 1. 공통 라이브러리
+ ************************************************************************************************/
+
+/************************************************************************************************
+ * 2. 변수 선언부
+ ************************************************************************************************/
+
+this.workFrame_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+
+	gv_workTop = obj;
+}
+
+
+//navi title setting
+this.setNavi = function()
+{
+  var sNaviText =  Ex.core.o_menu.VIEW_NAVIGATION.split(">");
+  var sTitleText = sNaviText[1];
+  var sText = sNaviText[sNaviText.length-1];
+ 
+  var oComp = "";
+  
+
+  for(var i=0; i <  Eco.XComp.query(this.Div00).length; i++)
+  {
+      oComp =   Eco.XComp.query(this.Div00)[i];
+   
+  }
+  
+  
+  if(!Eco.isEmpty(Ex.core.o_menu.VIEW_NAVIGATION))
+  {
+      this.stc_titleM.set_text(sTitleText);
+      
+      this.stc_title.set_text(sText);   //navi title setting
+      var titleA = Ex.core.o_menu.PAGE_URL;
+	this.stc_navi.set_text(" " +Ex.core.o_menu.MENU_NM+ " :: " + Ex.core.o_menu.PAGE_URL);
+
+  }
+}
+
+]]></Script>
+  </Form>
+</FDL>

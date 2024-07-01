@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMOrdAgentList_pop" classname="RTCOMMSellersList_pop" left="0" top="0" width="800" height="496" titletext="판매인조회" onload="RTCOMMSellersList_pop_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="10" top="10" width="782" height="72" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_1" taborder="82" text="판매인코드" cssclass="sta_WF_schTitle" left="20" top="9" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordAgent" taborder="83" onkeyup="div_search_ed_warehCd_onkeyup" left="100" top="10" width="120" height="21"/>
+              <Edit id="ed_orgAgnm" taborder="84" onkeyup="div_search_ed_warehNm_onkeyup" left="330" top="11" width="120" height="21"/>
+              <Static id="st_3" taborder="85" text="사용여부" cssclass="sta_WF_schTitle" left="20" top="36" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_2" taborder="87" text="판매인명" cssclass="sta_WF_schTitle" enableevent="false" left="250" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="88" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static03" taborder="89" cssclass="Guide_color" visible="false" left="450" top="0" width="30" height="68"/>
+              <Static id="Static02" taborder="90" cssclass="Guide_color" visible="false" left="0" top="30" height="6" width="778"/>
+              <Static id="Static00" taborder="91" cssclass="Guide_color" visible="false" left="220" top="0" width="30" height="68"/>
+              <Static id="Static01" taborder="92" cssclass="Guide_color" visible="false" left="682" top="0" width="30" height="68"/>
+              <Static id="Static04" taborder="93" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="68"/>
+              <Static id="Static05" taborder="94" cssclass="Guide_color" visible="false" left="758" top="0" width="20" height="68"/>
+              <Combo id="cb_useYn" taborder="95" autoselect="true" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="div_search_cb_makerSearch_onitemchanged" left="100" top="36" width="80" height="21"/>
+              <Button id="btn_search" taborder="96" text="검색" onclick="div_search_btn_search_onclick" cssclass="btn_WF_CRUD" top="12" right="21" width="45" height="22" domainId="nexa.add"/>
+              <Combo id="cb_chanCd" taborder="97" autoselect="true" innerdataset="@ds_chanCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="562" top="12" width="120" height="21"/>
+              <Static id="st_4" taborder="98" text="채널" cssclass="sta_WF_schTitle" enableevent="false" left="482" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static06" taborder="99" cssclass="Guide_color" visible="false" left="0" top="56" height="12" width="778"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_ordAgent" taborder="1" binddataset="ds_ordAgent" useinputpanel="false" cellsizingtype="col" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="10" top="92" width="782" height="356" oncelldblclick="grid_sellers_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매인코드"/>
+                <Cell col="1" text="판매인명"/>
+                <Cell col="2" text="연락처"/>
+                <Cell col="3" text="채널명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordAgent"/>
+                <Cell col="1" text="bind:orgAgnm"/>
+                <Cell col="2" text="bind:orgAgtel"/>
+                <Cell col="3" text="bind:chanNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" left="706" top="462" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" left="751" top="462" width="41" height="21" domainId="nexa.add"/>
+        <Static id="Static22" taborder="4" cssclass="Guide_color" visible="false" left="0" top="0" width="802" height="10"/>
+        <Static id="Static03" taborder="5" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="496"/>
+        <Static id="Static00" taborder="6" cssclass="Guide_color" visible="false" left="0" top="82" height="10" width="800"/>
+        <Static id="Static01" taborder="7" cssclass="Guide_color" visible="false" left="790" top="0" width="10" height="496"/>
+        <Static id="Static02" taborder="8" cssclass="Guide_color" visible="false" left="0" top="447" width="802" height="10"/>
+        <Static id="Static04" taborder="9" cssclass="Guide_color" visible="false" left="0" top="486" width="802" height="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_ordAgent" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgAgnm" type="STRING" size="256"/>
+          <Column id="orgAgtel" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="lifnr" type="STRING" size="256"/>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chanCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTCOMMOrdAgentList" ){
+		var useYnCnt = this.ds_useYn.getRowCount();
+		if( useYnCnt != 0 ){
+			this.div_search.cb_useYn.set_index(0);
+		}
+		
+		var chanCdCnt = this.ds_chanCd.getRowCount();
+		if( chanCdCnt != 0){
+			var nRow = this.ds_chanCd.insertRow(0);
+			this.ds_chanCd.setColumn(0,"cd"," ");
+			this.ds_chanCd.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanCd.set_value(" ");
+			
+			if( (this.parent.p_arg  == "selectRTRESalesCommMangOpenMall") || (this.parent.p_arg  == "insertRTRESalesCommMangOpenMall") ){
+				this.div_search.cb_chanCd.set_value("03");
+				this.div_search.cb_chanCd.set_enable(false);
+			}else{
+				this.div_search.cb_chanCd.set_enable(true);
+			}
+		}
+	}
+	
+	if( strSvcId == "selectRTCOMMSellersList" ){
+		var nRowCount = this.ds_ordAgent.getRowCount();
+		if(nRowCount != 0){
+		
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_rtcs0200.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMSellersList_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initRTCOMMOrdAgentList";
+	var sController   	= "rtms/comm/initRTCOMMOrdAgentList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	sOutDatasets += " ds_chanCd=mapDsChanCd ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var ordAgent = nvl(this.div_search.ed_ordAgent.value);
+	var orgAgnm  = nvl(this.div_search.ed_orgAgnm.value);
+	var useYn 	 = nvl(this.div_search.cb_useYn.value);
+	var chanCd 	 = nvl(this.div_search.cb_chanCd.value);
+	
+	var sSvcID        	= "selectRTCOMMOrdAgentList";                    
+	var sController   	= "rtms/comm/selectRTCOMMOrdAgentList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_ordAgent=mapOrdAgent";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordAgent", ordAgent);
+	sArgs += Ex.util.setParam("orgAgnm" , orgAgnm);
+	sArgs += Ex.util.setParam("useYn"	, useYn);
+	sArgs += Ex.util.setParam("chanCd"	, chanCd);
+	this.ds_ordAgent.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_sellers_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_choice = function(){
+	var nRow 	 = this.ds_ordAgent.rowposition;
+	var ordAgent = this.ds_ordAgent.getColumn( nRow, "ordAgent" );
+	var orgAgnm  = this.ds_ordAgent.getColumn( nRow, "orgAgnm" );
+	
+	res = [ ordAgent, orgAgnm];
+		
+	if( this.parent.p_arg == "RTSDOrdAgentResult" || this.parent.p_arg == "RTCMOrdAgentOrder" || this.parent.p_arg == "RTSDOrdAgentRegister" ){
+		this.close( this.opener.FN_sellers(res) );
+	}else if( this.parent.p_arg  == "selectRTRESalesCommMangOpenMall" ){
+		this.close( this.opener.retrunSelect(res ));
+	}else if( this.parent.p_arg  == "insertRTRESalesCommMangOpenMall" ){
+		this.close( this.opener.retrunInsert(res ));
+	}else{
+	
+	}
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+]]></Script>
+  </Form>
+</FDL>

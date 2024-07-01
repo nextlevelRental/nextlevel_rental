@@ -1,0 +1,108 @@
+#############################################
+# 1. Security Configuration
+#  클라이언트 인증 정보
+# 
+# NICE에서 발급한 클라이언트 ID 
+# client.id
+# 
+# NICE에서 발급한 전문 조회용 대표 계정
+# client.userid=NEXEN
+# 
+# 암호화 세션키 생성을 위한 공개키/개인키 저장 위치
+# client.key.path=d:/temp/key
+# 
+# NICE Secure Connector가 실행되는 서버의 실제 IP 
+# client.ip.private=172.27.199.130
+# 
+# NICE Secure Connector가 실행되는 서버의 공인 IP
+# 인터넷 공유기 등으로 NAT 되는 경우 외부에서 식별할 수 있는 IP를 등록 해야 함
+# 네이버 검색창에 "공인IP확인"을 입력하면 확인 할 수 있음
+# client.ip.public=115.94.57.150
+# 
+#############################################
+
+# NICE에서 발급한 암호화 모듈 ID 
+client.id=0023586001
+
+# NICE에서 발급한 전문 조회용 대표 계정
+client.userid=NEXEN
+
+# 암호화 세션키 생성을 위한 공개키/개인키 저장 위치
+client.key.path=c:\\temp\\keyfile
+
+# NICE Secure Connector가 실행되는 서버의 실제 IP 
+client.ip.private=172.17.163.147
+
+# NICE Secure Connector가 실행되는 서버의 공인 IP
+# 인터넷 공유기 등으로 NAT 되는 경우 외부에서 식별할 수 있는 IP를 등록 해야 함
+# 네이버 검색창에 "공인IP확인"을 입력하면 확인 할 수 있음
+client.ip.public=211.178.168.254
+
+#############################################
+# 2. NCB Configuration
+#  서비스 사용을 위한 정보 
+#   ncb.real : 운영 서비스 관련 설정
+#   ncb.test : 테스트 서비스 관련 설정
+#
+#
+# NCB 전문 사용 여부  (0:미사용, 1:사용)
+# ncb.use=1
+# 
+# 전문 길이  (4 or 10)
+# ncb.length=10
+# 
+# 전문 호출 후 대기 시간(초)
+# ncb.test.timeout=5
+# 
+# 서비스 연결을 위한 Local Port
+# ncb.test.local.port=10001
+# 
+# NICE 서버 IP 주소
+# ncb.test.server.ip=121.162.154.160
+# 
+# NICE 서버 포트 번호
+# ncb.test.server.port=10001
+# 
+# 전문 호출 후 대기 시간(초)
+# ncb.real.timeout=4
+# 
+# 서비스 연결을 위한 Local Port 
+# ncb.real.local.port=10002
+# 
+# NICE 서버 IP 주소 
+# ncb.real.server.ip=121.162.154.160
+# 
+# NICE 서버 포트 번호
+# ncb.real.server.port=10002
+# 
+#############################################
+
+ncb.use=1
+ncb.length=10
+
+ncb.test.timeout=10
+ncb.test.local.port=10001
+ncb.test.server.ip=121.162.154.160
+ncb.test.server.port=51036
+
+ncb.real.timeout=10
+ncb.real.local.port=10002
+ncb.real.server.ip=121.162.154.160
+ncb.real.server.port=10002
+
+#############################################
+# ASP Configuration
+#############################################
+asp.use=0
+asp.length=10
+
+asp.test.timeout=10
+asp.test.local.port=10003
+asp.test.server.ip=121.162.154.160
+asp.test.server.port=10003
+
+asp.real.timeout=10
+asp.real.local.port=10004
+asp.real.server.ip=121.162.154.160
+asp.real.server.port=10004
+

@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDGrpAdd_pop" classname="RTSDGrpAdd_pop" left="0" top="0" width="800" height="430" titletext="제품추가" onload="form_onload" onkeyup="RTSDGrpAdd_pop_onkeyup" scrollbars="none">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" taborder="0" cssclass="sta_WF_SearchBox" left="10" top="0" right="-10" height="40"/>
+        <Div id="div_grid_top" taborder="1" left="10" top="55" right="-10" height="23" scrollbars="none"/>
+        <Div id="div_search" taborder="2" text="Div00" left="10" top="10" right="10" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="21" text="조회" onclick="div_search.btn_search_onclick" cssclass="btn_WF_CRUD" top="9" right="20" width="45" height="22" domainId="nexa.search"/>
+              <Static id="st_searchCondition" taborder="22" text="단체명" cssclass="sta_WF_schTitle" left="20" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_searchKeyword" taborder="24" onkeyup="div_search_edt_searchKeyword_onkeyup" left="92" top="10" width="189" height="20" enable="true" visible="true" lengthunit="utf8"/>
+              <Static id="st_searchCondition00" taborder="26" text="단체번호" cssclass="sta_WF_schTitle" left="324" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_searchKeyword00" taborder="27" onkeyup="div_search_edt_searchKeyword00_onkeyup" enable="true" visible="true" left="403" top="10" width="173" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_Group" taborder="4" binddataset="ds_agencyPop" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" left="10" top="65" right="10" height="326" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" oncelldblclick="grd_Group_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="106"/>
+                <Column size="83"/>
+                <Column size="0"/>
+                <Column size="0"/>
+                <Column size="129"/>
+                <Column size="68"/>
+                <Column size="79"/>
+                <Column size="0"/>
+                <Column size="97"/>
+                <Column size="61"/>
+                <Column size="68"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="단체명"/>
+                <Cell col="1" text="단체번호"/>
+                <Cell col="2" text="비밀번호"/>
+                <Cell col="3" displaytype="normal" text="대리점아이디"/>
+                <Cell col="4" text="판매상품명"/>
+                <Cell col="5" text="단체상태"/>
+                <Cell col="6" text="최소약정본수"/>
+                <Cell col="7" text="사용자 그룹"/>
+                <Cell col="8" text="현재계약본수"/>
+                <Cell col="9" text="할인율"/>
+                <Cell col="10" text="할인금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:grpNm"/>
+                <Cell col="1" text="bind:grpNo"/>
+                <Cell col="2" displaytype="none" text="bind:password"/>
+                <Cell col="3" text="bind:agentId"/>
+                <Cell col="4" text="bind:saleNm"/>
+                <Cell col="5" text="bind:grpSt"/>
+                <Cell col="6" text="bind:minAgrCnt"/>
+                <Cell col="7" text="bind:userGrp"/>
+                <Cell col="8" text="bind:restCnt"/>
+                <Cell col="9" text="bind:grpDcRate"/>
+                <Cell col="10" text="bind:grpDcAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="6" text="닫기" onclick="btn_close_onclick" top="397" right="10" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_choice" taborder="7" text="선택" top="397" right="54" width="41" height="21" domainId="nexa.add" onclick="btn_choice_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_agencyPop" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="grpNm" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="grpSt" type="STRING" size="256"/>
+          <Column id="minAgrCnt" type="STRING" size="256"/>
+          <Column id="restCnt" type="STRING" size="256"/>
+          <Column id="grpDcRate" type="STRING" size="256"/>
+          <Column id="grpDcAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_agencyPop_Cp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="grpNm" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="grpSt" type="STRING" size="256"/>
+          <Column id="minAgrCnt" type="STRING" size="256"/>
+          <Column id="restCnt" type="STRING" size="256"/>
+          <Column id="grpDcRate" type="STRING" size="256"/>
+          <Column id="grpDcAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDGrpAdd_pop.xfdl
+ * 설    명 : 상품(제품)정보 조회 (팝업)
+  ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+this.fv_opYn = "";	// 온라인장착 가능여부
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)	{
+
+	Ex.core.init(obj);
+	
+	// 모화면에서 온라인장착 가능여부 파라미터를 받았는지 확인하여 전역변수로 세팅
+	// - 받지않은 경우 null로 처리하여 가능여부와 관계없이 모두 조회되도록 함
+	if (this.parent.p_opYn == "Y" || this.parent.p_opYn == "N") {
+		this.fv_opYn = this.parent.p_opYn;
+	}
+}
+
+/**
+ * 키입력 이벤트 처리
+ * - ESC 키 입력 시 닫기
+ */
+this.RTSDGrpAdd_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)	{
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.div_search.btn_search_onclick();
+	}
+}
+this.div_search_edt_searchKeyword00_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.div_search.btn_search_onclick();
+	}
+}
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "listGrpAdd" ){
+		var ct = this.ds_agencyPop.rowcount;
+		if( ct != 0 ){
+		
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_agency.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_searchAgency.setFocus();
+		}
+		
+		console.log(this.ds_agencyPop.saveXML());
+	}	
+}
+
+/**
+ * 조회 버튼의 클릭 이벤트 처리
+ */
+this.div_search.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_search();
+}
+
+/**
+ * 조회
+ */
+this.FN_search = function(){
+	
+	/*var modelCd 		= nvl(this.ds_model.getColumn(idx, "modelCd"));*/
+	var sSvcID        	= "listGrpAdd";                    
+	var sController   	= "/rtms/sd/listGrpAdd.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_agencyPop=listGrpAdd";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_agencyPop.deleteAll();
+	sArgs += Ex.util.setParam("nodeNm", 	"listGrpAdd");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("grpNo", 	this.div_search.edt_searchKeyword00.value);			//코드		
+	sArgs += Ex.util.setParam("grpNm", 	this.div_search.edt_searchKeyword.value);			//코드	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+/**
+ * 닫기 버튼의 클릭 이벤트 처리
+ */
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var idx = this.ds_agencyPop.rowposition;
+	var nRow = this.ds_agencyPop_Cp.addRow();
+	
+	this.ds_agencyPop_Cp.copyRow(nRow,this.ds_agencyPop,idx);
+	
+	var arr = [this.ds_agencyPop_Cp];
+	this.close(this.opener.set_grp(arr));
+	 
+}
+
+this.grd_Group_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var idx = this.ds_agencyPop.rowposition;
+	var nRow = this.ds_agencyPop_Cp.addRow();
+	
+	this.ds_agencyPop_Cp.copyRow(nRow,this.ds_agencyPop,idx);
+	
+	var arr = [this.ds_agencyPop_Cp];
+	this.close(this.opener.set_grp(arr));
+}
+]]></Script>
+  </Form>
+</FDL>

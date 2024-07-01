@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="chargeExcept">
+	<!-- 청구제외대상등록 -->
+	<parameterMap class="java.util.Map" id="paramIUDRtre0310">
+		<parameter property="dvsn" 					jdbcType="VARCHAR" mode="IN" />	  <!--등록구분          			 -->
+		<parameter property="ordNo"				jdbcType="VARCHAR" mode="IN" />      <!--주문번호    				 -->
+		<parameter property="seq"					jdbcType="NUMERIC" mode="IN" />      <!--순번     					 -->
+		<parameter property="apprFlag"				jdbcType="VARCHAR" mode="IN" />      <!--청구제외구분               -->
+		<parameter property="useYn"				jdbcType="VARCHAR" mode="IN" />      <!--사용여부               	  -->
+		<parameter property="payMthd"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="chargeExcept.saveChargeExcept" parameterMap="paramIUDRtre0310">
+		{call Pkg_Rtre0310.p_IUDRtre0310(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="rSRtre0310" class="java.util.HashMap">	
+		<result property="ordNo"  		column="ORD_NO" 		/>
+		<result property="seq"  			column="SEQ" 		/>
+		<result property="custNo"  		column="CUST_NO" 		/>
+		<result property="custNm"  		column="CUST_NM" 		/>
+		<result property="mobNo"  		column="MOB_NO" 		/>
+		<result property="apprFlag" 		column="APPR_FLAG" 		/>
+		<result property="apprDesc" 		column="APPR_DESC" 	/>
+		<result property="useYn"  		column="USE_YN" 		/>
+		<result property="payMthd"  	column="PAY_MTHD" 		/>
+		<result property="payMthdNm"  column="PAY_MTHD_NM" 		/>
+		<result property="apprAmt"  		column="APPR_AMT" 		/>
+		<result property="apprScnt"  	column="APPR_SCNT" 		/>
+		<result property="regDt"  		column="REG_DT" 		/>
+		<result property="regId"  			column="REG_ID" 		/>
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="pSRtre0310"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtre0310" />   
+		<parameter property="procFDay"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="procTDay"   	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="ordNo"   		jdbcType="VARCHAR" mode="IN" 	/>
+	</parameterMap>		
+	<procedure id="chargeExcept.listChargeExcept" parameterMap="pSRtre0310">
+		{call Pkg_Rtre0310.p_sRtre0310(?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

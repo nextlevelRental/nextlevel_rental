@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheckContactPopUp" classname="RTCSRegularCheckContactPopUp" left="0" top="0" width="862" height="409" titletext="New Form" onload="RTCSRegularCheckContactPopUp_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="0" text="닫기" onclick="btn_close_onclick" left="807" top="366" width="41" height="21" domainId="nexa.save"/>
+        <Static id="Static21" taborder="1" cssclass="Guide_color" visible="false" left="0" top="387" width="863" height="20"/>
+        <Static id="Static18" taborder="2" cssclass="Guide_color" visible="false" left="848" top="0" width="15" height="405"/>
+        <Static id="Static20" taborder="3" cssclass="Guide_color" visible="false" left="0" top="356" width="863" height="10"/>
+        <Button id="btn_save" taborder="4" text="저장" onclick="btn_save_onclick" left="761" top="366" width="41" height="21"/>
+        <Static id="Static04" taborder="5" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="863" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="6" text="정기점검 상담목록" cssclass="sta_WF_subTitle" left="10" top="9" width="120" height="21"/>
+        <Static id="Static02" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="29" width="863" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_contactList" taborder="8" binddataset="ds_contactList" useinputpanel="false" left="9" top="39" width="840" height="181" oncellclick="grid_contactList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="33"/>
+                <Column size="76"/>
+                <Column size="63"/>
+                <Column size="200"/>
+                <Column size="74"/>
+                <Column size="74"/>
+                <Column size="76"/>
+                <Column size="133"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="순번"/>
+                <Cell col="2" text="상담일자"/>
+                <Cell col="3" text="상담시간"/>
+                <Cell col="4" text="상담내용"/>
+                <Cell col="5" text="재컨택일자"/>
+                <Cell col="6" text="재컨택시간"/>
+                <Cell col="7" text="등록자"/>
+                <Cell col="8" displaytype="normal" text="등록일시"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:center;" text="bind:ordNo"/>
+                <Cell col="1" displaytype="normal" style="align:center;" text="bind:callSeq"/>
+                <Cell col="2" displaytype="normal" style="align:center;" text="bind:callDay" mask="####-##-##"/>
+                <Cell col="3" displaytype="normal" style="align:center;" text="bind:callTm" mask="##:##"/>
+                <Cell col="4" displaytype="normal" style="align:left;" text="bind:callDtl"/>
+                <Cell col="5" text="bind:recallDay" mask="####-##-##"/>
+                <Cell col="6" text="bind:recallTm" mask="##:##"/>
+                <Cell col="7" displaytype="normal" style="align:center;" text="bind:regId" combodataset="ds_R051" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="8" displaytype="normal" style="align:center;" text="bind:regDt" mask="####-##-## ##:##:##"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8" displaytype="normal" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="9" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="398" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static34" taborder="10" cssclass="sta_WF_detailLabel2" left="10" top="266" width="839" height="31"/>
+        <Static id="st_custNo" taborder="11" text="계약번호" cssclass="sta_WF_detailLabel" left="10" top="266" width="85" height="31"/>
+        <Edit id="ed_provsnNo" taborder="12" readonly="true" maxlength="50" left="99" top="271" width="142" height="21" style="background:#f7f7f7ff;"/>
+        <Static id="st_custNm" taborder="13" text="상담순번" cssclass="sta_WF_detailLabel" left="245" top="266" width="85" height="31"/>
+        <Edit id="ed_callSeq" taborder="14" readonly="true" maxlength="14" left="334" top="271" width="142" height="21" style="background:#f7f7f7ff;"/>
+        <Static id="Static05" taborder="15" cssclass="sta_WF_detailLabel2" left="10" top="296" width="839" height="31"/>
+        <Static id="st_chanNm" taborder="16" text="상담시간" cssclass="sta_WF_detailLabel" left="245" top="296" width="85" height="31"/>
+        <Static id="st_ordNm" taborder="17" text="상담일자" cssclass="sta_WF_detailLabel" left="10" top="296" width="85" height="31"/>
+        <Static id="Static08" taborder="18" cssclass="sta_WF_detailLabel2" left="10" top="326" width="839" height="31"/>
+        <Static id="st_planDay" taborder="19" text="등록일시" cssclass="sta_WF_detailLabel" left="245" top="326" width="85" height="31"/>
+        <Static id="st_ordDay" taborder="20" text="등록자" cssclass="sta_WF_detailLabel" left="10" top="326" width="85" height="31"/>
+        <Static id="cust_birth_title" taborder="21" text="상담내용" cssclass="sta_WF_detailLabel" left="480" top="266" width="85" height="61"/>
+        <Static id="st_contractInfo" taborder="22" text="정기점검 상담정보" cssclass="sta_WF_subTitle" left="10" top="240" width="118" height="21"/>
+        <Edit id="ed_regId" taborder="23" inputtype="number" readonly="true" left="99" top="331" width="142" height="21" style="background:#f7f7f7ff;"/>
+        <Button id="btn_new" taborder="24" text="신규" onclick="btn_new_onclick" cssclass="btn_WF_module" left="753" top="234" width="45" height="22" domainId="nexa.save"/>
+        <Button id="btn_del" taborder="25" text="삭제" onclick="btn_del_onclick" cssclass="btn_WF_module" left="803" top="234" width="45" height="22" domainId="nexa.save"/>
+        <Static id="Static06" taborder="26" cssclass="Guide_color" visible="false" left="0" top="256" width="863" height="10"/>
+        <Static id="Static03" taborder="27" cssclass="Guide_color" visible="false" left="0" top="219" right="-1" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <TextArea id="ta_callDtl" taborder="28" maxlength="1800" oneditclick="ta_callDtl_oneditclick" left="66.01%" top="271" right="2.09%" height="51"/>
+        <Calendar id="cal_callDay" taborder="29" dateformat="yyyy-MM-dd" left="99" top="301" width="142" height="21"/>
+        <MaskEdit id="me_planDay" taborder="30" type="string" mask="##:##" left="334" top="301" width="142" height="21" style="align:left middle;"/>
+        <MaskEdit id="me_regDt" taborder="31" readonly="true" type="string" mask="####-##-## ##:##:##" left="334" top="331" width="142" height="21" style="background:#f7f7f7ff;align:left middle;"/>
+        <Static id="st_planDay00" taborder="32" text="재컨택일시" cssclass="sta_WF_detailLabel" left="480" top="326" width="85" height="31"/>
+        <Calendar id="cal_recallDay" taborder="33" dateformat="yyyy-MM-dd" left="569" top="331" width="126" height="21"/>
+        <MaskEdit id="me_recallTm" taborder="34" type="string" mask="##:##" left="700" top="331" width="144" height="21" style="align:left middle;"/>
+        <Div id="divCallDtl" taborder="35" left="30.16%" top="91" right="33.29%" height="210" style="background:white;border:1 solid darkgray ;" onkillfocus="divCallDtl_onkillfocus" visible="false">
+          <Layouts>
+            <Layout>
+              <TextArea id="ta_callDtl_copy" taborder="0" left="0.64%" top="2" right="0.64%" height="204"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_sndSms" taborder="36" text="SMS" onclick="btn_sndSms_onclick" cssclass="btn_TF_utill" left="491" top="304" width="47" height="18"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ed_provsnNo" propid="value" datasetid="ds_contactList" columnid="ordNo"/>
+      <BindItem id="item1" compid="ed_callSeq" propid="value" datasetid="ds_contactList" columnid="callSeq"/>
+      <BindItem id="item6" compid="ed_regId" propid="value" datasetid="ds_contactList" columnid="regId"/>
+      <BindItem id="item4" compid="ta_callDtl" propid="value" datasetid="ds_contactList" columnid="callDtl"/>
+      <BindItem id="item7" compid="cal_callDay" propid="value" datasetid="ds_contactList" columnid="callDay"/>
+      <BindItem id="item25" compid="me_planDay" propid="value" datasetid="ds_contactList" columnid="callTm"/>
+      <BindItem id="item2" compid="me_regDt" propid="value" datasetid="ds_contactList" columnid="regDt"/>
+      <BindItem id="item3" compid="cal_recallDay" propid="value" datasetid="ds_contactList" columnid="recallDay"/>
+      <BindItem id="item5" compid="me_recallTm" propid="value" datasetid="ds_contactList" columnid="recallTm"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_contactList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="stdYm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="jobSeq" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="callSeq" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callTm" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSRegularCheckContactPopUp.xfdl
+ * 설    명 : 정기점검 컨택 관리(팝업)
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-03-27	wjim		[20170324_02] 신규 개발
+ * 2017-06-20	wjim		[20170612_01] SMS발송 팝업 연동
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+// 전역변수
+this.fs_ordNo = "";		// 계약번호
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTCSRegularCheckContactPopUp_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	this.fs_ordNo = this.parent.p_ordNo;
+	
+	// 사용자그룹에 따라 편집권한 부여
+	if (this.parent.p_userGrp == "01" || this.parent.p_userGrp == "02") {
+		this.btn_new.set_visible(true);
+		this.btn_del.set_visible(true);
+		this.btn_save.set_visible(true);
+		this.cal_callDay.set_readonly(false);
+		this.me_planDay.set_readonly(false);
+		this.ta_callDtl.set_readonly(false);
+		this.cal_recallDay.set_readonly(false);
+		this.me_recallTm.set_readonly(false);
+	} else if(this.parent.p_userGrp == "08") { //로디안인경우 상담내역 작성기능 오픈
+		this.btn_new.set_visible(true);
+		this.btn_del.set_visible(true);
+		this.btn_save.set_visible(true);
+		this.cal_callDay.set_readonly(true);
+		this.me_planDay.set_readonly(true);
+		this.ta_callDtl.set_readonly(true);
+		this.cal_recallDay.set_readonly(true);
+		this.me_recallTm.set_readonly(true);
+	} else {
+		this.btn_new.set_visible(false);
+		this.btn_del.set_visible(false);
+		this.btn_save.set_visible(false);
+		this.cal_callDay.set_readonly(true);
+		this.me_planDay.set_readonly(true);
+		this.ta_callDtl.set_readonly(true);
+		this.cal_recallDay.set_readonly(true);
+		this.me_recallTm.set_readonly(true);
+	}
+	
+	// 조회
+	this.fn_search();
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		case "listContact":
+			var rowCt = this.ds_contactList.getRowCount();
+		
+ 			if (rowCt == 0) {
+ 				this.grid_contactList.set_nodatatext("조회된 데이터가 없습니다.");
+ 			}else{
+				this.grid_contactList.selectRow(0, true);
+ 			}
+ 			
+ 			this.btn_del.set_enable(false);
+			
+			break;
+			
+		case "saveContact":
+			this.alert(strErrorMsg);
+			this.fn_search();
+			break;
+			
+		default:
+			break;
+	}
+}
+
+/**
+ * 조회
+ */
+this.fn_search = function() {
+	// 기존 조회결과 초기화
+	this.ds_contactList.deleteAll();
+	
+	var sSvcID        	= "listContact";                    
+	var sController   	= "/rtms/cs/selectContactList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_contactList=ds_contactList";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", this.fs_ordNo);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 목록 그리드의 Body 영역 셀 더블 클릭 이벤트 처리
+ */
+this.grid_contactList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+		
+	// 신규 생성 row인 경우에만 '삭제'가능
+	if (this.ds_contactList.getRowType(e.row) == 2) {
+		this.btn_del.set_enable(true);
+	} else {
+		this.btn_del.set_enable(false);
+	}
+}
+
+/**
+ * 신규 버튼의 클릭 이벤트 처리
+ */
+this.btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	var objDate = new Date();	
+
+	// 행 추가
+	var idx = this.ds_contactList.addRow();
+
+	// 추가한 행에 기본값 설정
+	this.ds_contactList.setColumn(idx, "stdYm"  , this.parent.p_stdYm );								// 기준년월	
+	this.ds_contactList.setColumn(idx, "ordNo"  , this.fs_ordNo       );								// 계약번호
+	this.ds_contactList.setColumn(idx, "equNo"  , this.parent.p_equNo );								// 설비번호
+	this.ds_contactList.setColumn(idx, "jobSeq" , this.parent.p_jobSeq);								// 작업순번
+	this.ds_contactList.setColumn(idx, "seq"    , this.parent.p_seq   );								// 변경순번
+	this.ds_contactList.setColumn(idx, "callSeq", idx+1               );								// 상담순번(실제 저장되는 값은 아님)
+	this.ds_contactList.setColumn(idx, "callDay", this.parent.p_today );								// 상담일자 = 서버상의 오늘날자
+	this.ds_contactList.setColumn(idx, "callTm" , objDate.toTimeString().substr(0,5).replace(":", ""));	// 상담시간 = 로컬PC의 시간
+}
+
+/**
+ * 삭제 버튼의 클릭 이벤트 처리
+ */
+this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.ds_contactList.deleteRow(this.grid_contactList.currentrow);
+}
+
+/**
+ * SMS 버튼의 클릭 이벤트 처리 [20170612_01]
+ * - SMS발송 팝업 연동
+ */
+this.btn_sndSms_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	
+	var arr ={
+		  p_callId : "RTCSRegularCheckContactPopUp"
+		, p_phnNo  : this.parent.p_mobNo
+		, p_ordNo  : this.parent.p_ordNo
+	};
+			
+	Ex.core.popup(this, "SMS발송", "comm::RTCOMMSmsSend_pop.xfdl", arr, "modaless=false");
+}
+
+/**
+ * 상담메모창 확대
+ */
+this.ta_callDtl_oneditclick = function(obj:TextArea,  e:nexacro.EditClickEventInfo)
+{	
+	//로디안인경우 타 ID로 작성된 상담내역 수정 불가
+	if(this.parent.p_userGrp == "08" && this.ds_contactList.getColumn(this.ds_contactList.rowposition, "regId") != this.parent.p_userId && nvl(this.ds_contactList.getColumn(this.ds_contactList.rowposition, "regId")) != ""){
+		this.divCallDtl.ta_callDtl_copy.set_enable(false);
+	}else{
+		this.divCallDtl.ta_callDtl_copy.set_enable(true);
+	}
+	
+	this.divCallDtl.ta_callDtl_copy.set_value(this.ta_callDtl.text);
+	this.divCallDtl.set_visible(true);
+	this.ta_callDtl.set_enable(false);
+	this.divCallDtl.setFocus();
+}
+
+/**
+ * 상담메모창 제거
+ */
+this.divCallDtl_onkillfocus = function(obj:Div, e:nexacro.KillFocusEventInfo)
+{
+	this.ta_callDtl.set_value(this.divCallDtl.ta_callDtl_copy.text);
+	this.divCallDtl.set_visible(false);
+	this.ta_callDtl.set_enable(true);
+}
+
+/**
+ * 저장 버튼의 클릭 이벤트 처리
+ */
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	if (confirm( "저장하시겠습니까?")) {
+		var sSvcID        	= "saveContact";                    
+		var sController   	= "/rtms/cs/saveContact.do";
+		var sInDatasets   	= "ds_contactList=ds_contactList:U";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}	
+}
+
+/**
+ * 닫기 버튼의 클릭 이벤트 처리
+ */
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

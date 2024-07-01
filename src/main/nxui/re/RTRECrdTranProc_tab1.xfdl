@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECrdTranProc_tab1" classname="re00050_cms" left="0" top="0" width="1147" height="496" titletext="[STEP1] 카드이체대상집계" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="15" cssclass="sta_WF_detailLabel2" left="10" top="262" width="1102" height="31"/>
+        <Static id="Static19" taborder="0" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="262" width="130" height="31"/>
+        <Static id="Static06" taborder="1" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="235" width="84" height="20"/>
+        <Edit id="edt_procStatus" taborder="2" left="144" top="267" width="963" height="21" enable="false"/>
+        <Grid id="grd_list" taborder="3" binddataset="ds_list" useinputpanel="false" left="10" top="96" width="1102" height="123" oncellclick="grd_list_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="결제일"/>
+                <Cell col="1" text="당월청구"/>
+                <Cell col="2" text="연체청구"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" text="bind:payDd" combodataset="ds_R006" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="1" displaytype="checkbox" edittype="checkbox" text="bind:curCharge"/>
+                <Cell col="2" displaytype="checkbox" edittype="checkbox" text="bind:delayCharge"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="4" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="252" width="1103" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="5" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="219" width="1102" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="6" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static03" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="8" text="결제일 청구 기준" cssclass="sta_WF_subTitle" left="10" top="72" width="120" height="20"/>
+        <Static id="Static47" taborder="9" text="5 px" visible="false" left="127" top="53" right="966" height="21" style="color:red;"/>
+        <Static id="Static46" taborder="10" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static45" taborder="11" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static02" taborder="12" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="13" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="14" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="51" text="카드이체 청구일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="52" dateformat="yyyy-MM-dd" left="131" top="12" width="120" height="21" value="null" onchanged="cal_accReqDate_onchanged"/>
+              <Static id="Static22" taborder="53" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="54" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="55" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="56" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_R006" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="payDd" type="STRING" size="2"/>
+          <Column id="curCharge" type="STRING" size="1"/>
+          <Column id="delayCharge" type="STRING" size="1"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 카드이체관리 > 카드이체처리 > [STEP1] 카드이체대상집계
+ * 02. 그룹명   : RTRECrdTranProc_tab1.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 		= ""; 	//현재날짜
+	this.toHour 	= "";	//현재시간
+	this.validDate 	= "";	
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//오늘날짜조회
+		this.fn_getToday();
+		//공통코드조회
+		this.fn_getCommCode();
+		//버튼초기화
+		this.fn_initBtn();			
+	} 		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//오늘날짜 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getToday = function() 
+	{
+		var sSvcID      	= "getToday";  
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}		
+    //-------------------------------------------------------------------------------  	
+	//공통코드 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getCommCode = function() 
+	{
+		var sSvcID      	= "getCommCode";  
+		var sController   	= "ntrms/re/getCrdTranCommCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_R006=outputR006";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+ 	//---------------------------------------------------------------------------------
+	// 집계
+	//---------------------------------------------------------------------------------
+	this.fn_aggregate  = function() {
+		
+		if(nvl(this.div_search.cal_accReqDate.value) == "") {
+			alert('카드이체청구일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}
+		
+		var rqstDay = nvl(this.div_search.cal_accReqDate.value);
+		var stdexDd 	= "";
+		var curCharge 	= "";
+		var delayCharge = "";
+				
+		for(var i=0; i<this.ds_list.rowcount; i++) {
+			curCharge   = this.ds_list.getColumn(i,"curCharge") == "0" ? "N" : "Y";
+			delayCharge = this.ds_list.getColumn(i,"delayCharge") == "0" ? "N" : "Y";
+			stdexDd += this.ds_list.getColumn(i,"payDd") + "" + curCharge + "" + delayCharge;
+		}
+		
+		this.edt_procStatus.set_value("");
+		
+		var sSvcID      	= "crdTranAggregate";  
+		var sController   	= "ntrms/re/crdTranAggregate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		sArgs += Ex.util.setParam("rqstDay"	, rqstDay);		//카드이체일자
+		sArgs += Ex.util.setParam("stdexDd"	, stdexDd);		//결제일청구기준데이터
+		sArgs += Ex.util.setParam("pydmaYn"	, 'N');			//제외건존재여부
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+		
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "crdTranAggregate") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);	
+			}	
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getToday":
+				//17시이후에는 출금이체청구일 세팅 안함
+				if(parseInt(nvl(this.toHour,10)) >= 17) {
+					this.div_search.cal_accReqDate.set_value("");					
+				}
+				else {
+					//카드이체청구일은 당일로 세팅
+					this.div_search.cal_accReqDate.set_value(this.toDay);
+				}				
+				break;
+			case "getCommCode":
+				this.ds_list.clearData();
+				this.ds_list.set_enableevent(false);
+				for(var i=0; i<this.ds_R006.rowcount; i++) {
+					this.ds_list.addRow();
+					this.ds_list.setColumn(i,"payDd"		, this.ds_R006.getColumn(i,"cd"));
+					this.ds_list.setColumn(i,"curCharge"	, 1);
+					this.ds_list.setColumn(i,"delayCharge"	, 1);
+				}
+				this.ds_list.set_enableevent(true);	
+				this.ds_list.set_rowposition(0);
+				break;	
+			case "crdTranAggregate":	
+				this.edt_procStatus.set_value(strErrorMsg);				
+				break;
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) != this.toDay) 
+			{
+				alert('카드이체청구일은 당일만 선택가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+ 			}	
+		}
+		else {
+			alert('카드이체청구일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("AG",this);		
+	}
+	
+	//---------------------------------------------------------------------------------
+	// VAILD 체크
+	//---------------------------------------------------------------------------------	
+	this.fn_valid = function () {
+	
+		this.fn_getToday();
+
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) != this.toDay) 
+			{
+				alert('카드이체청구일은 당일만 선택가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('카드이체청구일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}]]></Script>
+  </Form>
+</FDL>

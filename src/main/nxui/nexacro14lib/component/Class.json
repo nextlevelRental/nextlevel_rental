@@ -1,0 +1,12 @@
+﻿{
+	"name": "Class",
+	"version": "1.0.0.0",
+	"description": "Eco Library for nexacro platform",
+	"license": "",
+	"scripts": [
+        "Class/History.js",
+        "Class/XpCompEvent.js",
+        "Class/XpCompFactory.js"      
+	]
+}
+//@ sourceURL=Class.json

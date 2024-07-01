@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMPrice_pop" classname="RTCMMNotice_pop" left="0" top="0" width="529" height="344" titletext="가격조회" onload="RTCMMNotice_pop_onload" scrollbars="none">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_notice" taborder="1" useinputpanel="false" top="0" height="312" binddataset="dsList" left="0" right="-1" cellsizingtype="col" scrollbars="autovert" oncelldblclick="grd_notice_oncelldblclick" style="border:1 solid #5a1166ff,1 solid #c6c6c6ff,0 solid #c6c6c6ff,1 solid #c6c6c6ff;" oncellclick="grd_notice_oncellclick_tablet">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="54"/>
+                <Column size="69"/>
+                <Column size="303"/>
+                <Column size="94"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="공지유형"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" displaytype="text" text="공지일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ntcSeq"/>
+                <Cell col="1" text="bind:ntcType"/>
+                <Cell col="2" style="align:left;" text="bind:title"/>
+                <Cell col="3" displaytype="date" text="bind:regDt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="6" left="0%" top="311" right="0%" height="33" style="background:#ffffffff;border:1 solid #ccccccff ;"/>
+        <CheckBox id="toDayChk" taborder="7" text="오늘하루 열지않기" value="0" truevalue="1" falsevalue="0" onclick="toDayChk_onclick" left="75.61%" top="319" right="0%" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="fileCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="fileCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";   
+    
+	this.RTCMMNotice_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+
+		this.fn_init();
+	}
+
+	this.DateDemo = function(){
+		var obj, y, m, d, s = "";
+		obj = new Date();
+		s += obj.getFullYear() + "/";
+		m = obj.getMonth() + 1;
+		if(String(m).length == 1) {
+			m = "0" + m;
+		} 
+		s += m + "";
+		return(s);
+	}
+
+	//조회
+	this.fn_init = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var d = this.DateDemo().replace("/", "");
+		var cDate = new Date(this.DateDemo() + "/01");
+		
+		cDate.addMonth(1);
+		cDate.addDate(-1);
+		var lastDay = cDate.getDate();
+
+		var sSvcID        	= "listNoticeInfo";                    
+		var sController   	= "/ntrms/cm/listNoticeInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=listNotice";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		//sArgs += " regFdt=" + nvl(d + "01");
+		//sArgs += " regTdt=" + nvl(d + lastDay);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if( strSvcId == "listNoticeInfo" ){
+			var nRow = this.dsList.rowcount;
+			if( nRow == 0 ){
+				this.close();
+			}
+		} 
+	}
+
+
+	this.toDayChk_onclick = function(obj:CheckBox,  e:nexacro.ClickEventInfo)
+	{
+		this.setCookie();
+	}
+
+	
+	this.setCookie = function() {
+		var bSucc;
+		var checkVal = this.toDayChk.value;
+        if(checkVal == 1) {
+			bSucc = application.setPrivateProfile("today", FN_today());
+			this.close();
+		} 
+	}
+
+	this.grd_notice_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+		var pos = this.dsList.rowposition;
+		this.dsCopy.deleteAll();
+		var row = this.dsCopy.addRow();
+		this.dsCopy.copyRow(row, this.dsList, pos);
+		
+		//등록팝업생성
+		var args ={p_arg:this.dsCopy};
+		Ex.core.popup2(this,"상세보기","comm::RTCMNoticeDetail_pop.xfdl", args, "modaless=false");
+	}
+
+	this.grd_notice_oncellclick_tablet = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		//모바일 경우에는 ONCELLCLICK이벤트 처리 20160419 한승훈 
+		if(nexacro.OS == "Android" || nexacro.OS == "iOS"){
+			var pos = this.dsList.rowposition;
+			this.dsCopy.deleteAll();
+			var row = this.dsCopy.addRow();
+			this.dsCopy.copyRow(row, this.dsList, pos);
+			
+			//등록팝업생성
+			var args ={p_arg:this.dsCopy};
+			Ex.core.popup2(this,"상세보기","comm::RTCMNoticeDetail_pop.xfdl", args, "modaless=false");
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

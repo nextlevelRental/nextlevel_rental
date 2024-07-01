@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRESETTLEDirectHisCheck_tab1" classname="RTREKCPPayHisCheck_tab1" left="0" top="0" width="1147" height="496" titletext="[STEP1]엑셀업로드" onload="RTRESETTLEDirectHisCheck_tab1_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" height="110" scrollbars="none" cssclass="div_WF_searchBg" width="1117">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="86" text="체크일자" cssclass="sta_WF_schTitle" left="20" top="12" width="100" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="87" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1113"/>
+              <Static id="Static06" taborder="88" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="106"/>
+              <Static id="Static23" taborder="89" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="1113"/>
+              <Calendar id="cal_checkDay" taborder="90" dateformat="yyyy-MM-dd" onchanged="cal_cashReceiptDate_onchanged" left="120" top="12" width="120" height="21" enable="false"/>
+              <Radio id="ra_dupGb" taborder="91" codecolumn="cd" datacolumn="cdNm" direction="vertical" left="220" top="75" width="174" height="21" innerdataset="@ds_dupGb"/>
+              <Static id="Static03" taborder="92" text="체크회차" cssclass="sta_WF_schTitle" left="20" top="43" width="100" height="21"/>
+              <Combo id="cb_checkSet" taborder="93" codecolumn="checkSet" datacolumn="setNm" displayrowcount="5" left="120" top="43" width="120" height="21" innerdataset="@ds_checkSet"/>
+              <Static id="Static00" taborder="94" cssclass="Guide_color" visible="false" left="0" top="64" height="12" width="1113"/>
+              <Static id="Static01" taborder="95" text="[거래번호 중복건 처리 방법]" cssclass="sta_WF_schTitle" left="20" top="75" width="200" height="21"/>
+              <Static id="Static02" taborder="96" cssclass="Guide_color" visible="false" left="0" top="94" height="12" width="1113"/>
+              <Button id="bt_upload" taborder="97" text="업로드" cssclass="btn_WF_CRUD" left="1049" top="12" width="58" height="22" onclick="div_search_bt_upload_onclick"/>
+              <Button id="bt_verProcess" taborder="98" text="검증처리" cssclass="btn_WF_CRUD" left="972" top="12" width="71" height="22" onclick="div_search_bt_verProcess_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static09" taborder="5" cssclass="sta_WF_detailLabel2" left="0" top="122" height="187" width="1117"/>
+        <Static id="Static02" taborder="10" cssclass="Guide_color" visible="false" left="0" top="110" height="12" width="1147"/>
+        <Static id="Static00" taborder="11" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="496"/>
+        <Static id="Static06" taborder="12" cssclass="Guide_color" visible="false" left="0" top="122" width="40" height="187"/>
+        <Static id="Static01" taborder="14" cssclass="Guide_color" visible="false" left="0" top="122" height="38" width="1117"/>
+        <Static id="Static03" taborder="15" cssclass="Guide_color" visible="false" left="0" top="189" height="12" width="1147"/>
+        <Static id="Static05" taborder="19" cssclass="Guide_color" visible="false" left="651" top="122" width="20" height="187"/>
+        <FileUpload id="settleDirectUploadFile" taborder="22" retry="0" innerdataset="ds_File" index="0" left="160" top="160" width="491" height="50" style="buttontext:파일선택;cursor:auto;" onerror="cardApproveUploadFile_onerror" onsuccess="cardApproveUploadFile_onsuccess"/>
+        <Button id="bt_settleDirectAdd" taborder="23" text="파일추가" cssclass="btn_WF_module" left="671" top="160" width="58" height="22" onclick="bt_settleDirectAdd_onclick"/>
+        <Button id="bt_settleDirectDelete" taborder="24" text="파일삭제" cssclass="btn_WF_module" left="671" top="184" width="58" height="22" onclick="bt_settleDirectDelete_onclick"/>
+        <Static id="Static07" taborder="25" cssclass="Guide_color" visible="false" left="0" top="271" width="1117" height="38"/>
+        <Static id="st_searchCondition" taborder="26" text="EXCEL파일을 업로드 해주세요." cssclass="sta_WF_schTitle" left="164" top="188" width="204" height="21" domainId="nexa.s_condition" style="color:red;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_checkSet" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="checkSet" type="STRING" size="256"/>
+          <Column id="setNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dupGb">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_output" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileid" type="STRING" size="256"/>
+          <Column id="filename" type="STRING" size="256"/>
+          <Column id="filesize" type="STRING" size="256"/>
+          <Column id="savepath" type="STRING" size="256"/>
+          <Column id="ErrorMsg" type="STRING" size="256"/>
+          <Column id="ErrorCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_verProcess">
+        <ColumnInfo>
+          <Column id="checkDay" type="STRING" size="256"/>
+          <Column id="checkSet" type="STRING" size="256"/>
+          <Column id="jobGb" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg = "RTRESETTLEDirectHisCheck_tab1";
+this.toDay = "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "getToday" ){
+		if( this.toDay != "" ){
+			this.div_search.cal_checkDay.set_value(this.toDay);
+			this.fn_initSelectCheckSet();
+		}
+	}
+	
+	if( strSvcId == "initRTRESETTLEDirectHisCheck" ){
+		var dupGbCnt 		= this.ds_dupGb.getRowCount();
+
+		if( dupGbCnt != 0 ){
+			this.div_search.ra_dupGb.set_value("M");
+		}
+	}
+	
+	if( strSvcId == "checkSetRtre0045" ){
+		var nCnt = this.ds_checkSet.getRowCount();
+		if( nCnt == 0 ){
+			var nRow = this.ds_checkSet.addRow();
+			this.ds_checkSet.setColumn(nRow, "checkSet", "1");
+			this.ds_checkSet.setColumn(nRow, "setNm", "1회차");
+			this.div_search.cb_checkSet.set_value("1");
+		}else{
+			nCnt = nCnt+1;
+			var nRow = this.ds_checkSet.insertRow(nCnt);
+			this.ds_checkSet.setColumn(nRow, "checkSet", nCnt);
+			this.ds_checkSet.setColumn(nRow, "setNm", nCnt+"회차");
+			this.div_search.cb_checkSet.set_value(nCnt);
+		}
+	}
+	
+	if( strSvcId == "saveVerRtre0045" ){
+		alert(strErrorMsg);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/	
+this.RTRESETTLEDirectHisCheck_tab1_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 	
+	this.fn_init();
+}
+this.fn_init = function(){
+	this.settleDirectUploadFile.setEventHandler("onsuccess", this.settleDirectUploadFile_onsuccess, this);
+	this.settleDirectUploadFile.setEventHandler("onerror", this.settleDirectUploadFile_onerror, this);
+	this.fn_getToday();
+	this.fn_initCombo();
+	this.parent.parent.parent.setButton("",this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initCombo = function(){
+	var sSvcID        	= "initRTRESETTLEDirectHisCheck";
+	var sController   	= "rtms/re/initRTRESETTLEDirectHisCheck.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	sOutDatasets += " ds_dupGb=mapDsDupGb ";
+	sOutDatasets += " ds_payDivision=mapDsPayDivision ";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initSelectCheckSet = function(){
+	var sSvcID        	= "checkSetRtre0045";
+	var sController   	= "rtms/re/checkSetRtre0045.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_checkSet=selectCheckSetMap";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("checkDay", this.toDay);
+	this.ds_checkSet.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_upload_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_settleDirectUploadFile();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_verProcess_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.ds_verProcess.clearData();
+	var nRow = this.ds_verProcess.addRow();
+	var checkDay = nvl(this.div_search.cal_checkDay.value);
+	var checkSet = nvl(this.div_search.cb_checkSet.value);
+	
+	if( checkDay == "" ){
+		alert("체크일자 값이 없습니다."); return false;
+	}else if( checkSet == "" ){
+		alert("체크회차 값이 없습니다."); return false;
+	}else{
+		this.ds_verProcess.setColumn(nRow, "checkDay", checkDay);
+		this.ds_verProcess.setColumn(nRow, "checkSet", checkSet);
+		this.ds_verProcess.setColumn(nRow, "jobGb", "O");
+		var sSvcID        	= "saveVerRtre0045";                    
+		var sController   	= "rtms/re/saveVerRtre0045.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sInDatasets   		= "input=ds_verProcess:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_settleDirectUploadFile = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var checkDay = nvl(this.div_search.cal_checkDay.value);
+	var checkSet = nvl(this.div_search.cb_checkSet.value);
+	var dupGb	 = nvl(this.div_search.ra_dupGb.value);
+	var recpPay	 = "P6";
+	var fileCnt1 = this.settleDirectUploadFile.getItemCount(true);
+	
+	if( checkDay == "" ){
+		alert("체크일자 값이 없습니다."); return false;
+	}else if( checkSet == "" ){
+		alert("체크회차 값이 없습니다."); return false;
+	}else if( dupGb == "" ){
+		alert("거래번호 중복건 처리 방법 값이 없습니다."); return false;
+	}else if( recpPay == "" ){
+		alert("결제구분 값이 없습니다."); return false;
+	}else if( fileCnt1 == 0 ){
+		alert("업로드 파일을 확인하세요."); return false;
+	}else{
+		if( confirm( "파일을 저장하시겠습니까?") ){
+			application.set_httptimeout(120);
+			var sController = "/ntrms/re/settleDirectUploadFile.do?checkDay="+checkDay+"&checkSet="+checkSet+"&dupGb="+dupGb+"&recpPay="+recpPay;
+			this.settleDirectUploadFile.set_uploadurl(sController);
+			var bSucc = this.settleDirectUploadFile.upload(sController);
+			Ex.core.set_wait(true);
+		}
+	}
+}
+this.settleDirectUploadFile_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo){
+	application.set_httptimeout(60);
+	Ex.core.set_wait(false);
+	if( e.errormsg == "failed to get"){
+		alert("업로드를 실패하였습니다.");
+	}else{
+		alert(e.errormsg);
+	}
+}
+
+this.settleDirectUploadFile_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadLoadEventInfo){
+	application.set_httptimeout(60);
+	Ex.core.set_wait(false);
+	alert(e.errormsg);
+	this.reload();
+}
+
+this.bt_settleDirectAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var fileCnt	 = this.settleDirectUploadFile.getItemCount(false);
+	if( fileCnt == 1){
+		this.settleDirectUploadFile.appendItem();
+	}
+}
+
+this.bt_settleDirectDelete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var fileCnt	 = this.settleDirectUploadFile.getItemCount(false);
+	if( fileCnt == 2){
+		this.settleDirectUploadFile.deleteItem(1); 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_clearFileExt = function(val){
+	var retVal = "";
+	var idx = val.lastIndexOf(".");
+	if(idx < 0){
+		retVal = val;
+	}else{
+		retVal = val.substring(0,idx);
+	}
+	return retVal;
+}
+
+]]></Script>
+  </Form>
+</FDL>

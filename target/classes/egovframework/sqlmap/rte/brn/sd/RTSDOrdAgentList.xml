@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTSDOrdAgent">
+    <resultMap id="rSrtsd0108AgencyResult2"     class="java.util.HashMap">
+        <result property="agencyNm"             column="AGENCY_NM"      />
+        <result property="sales_groupNm"        column="SALES_GROUP_NM" />
+        <result property="sales_officeNm"       column="SALES_OFFICE_NM"/>
+        <result property="ordNo"                column="ORD_NO"         />
+        <result property="pgNm"                 column="PG_NM"          />
+        <result property="petternNm"            column="PETTERN_NM"     />
+        <result property="sectionWidth"         column="SECTION_WIDTH"  />
+        <result property="aspectRatio"          column="ASPECT_RATIO"   />
+        <result property="wheelInches"          column="WHEEL_INCHES"   />
+        <result property="plyRating"            column="PLY_RATING"     />
+        <result property="cntNm"                column="CNT_NM"         />
+        <result property="procDay"              column="PROC_DAY"       />
+        <result property="periodNm"             column="PERIOD_NM"      />
+        <result property="custNm"               column="CUST_NM"        />
+        <result property="regiNm"               column="REGI_NM"        />
+        <result property="monAmt"               column="MON_AMT"        />
+        <result property="orgAgnm"              column="ORG_AGNM"       />
+        <result property="seasonCd"             column="SEASON_CD"      />
+        <result property="seasonNm"             column="SEASON_NM"      />
+        <result property="matCd"                column="MAT_CD"         />
+        <result property="ordAgent"             column="ORD_AGENT"      />
+        <result property="agencyCd"             column="AGENCY_CD"      />
+        <result property="rentalGroup"      column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+        <result property="rentalGroupNm"    column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+        <result property="rentalOffice"     column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+        <result property="rentalOfficeNm"   column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->    
+    </resultMap>
+    <parameterMap id="pSrtsd0108AgencyResult2" class="java.util.Map">
+        <parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSrtsd0108AgencyResult2"/>
+        <parameter property="ordAgent"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procDayS"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procDayE"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="userId"        mode="IN" jdbcType="VARCHAR" />     <!-- 20181226 사용자ID -->
+        <parameter property="userGrp"       mode="IN" jdbcType="VARCHAR" />     <!-- 20181226 사용자그룹 -->
+    </parameterMap>
+    <procedure id="rTSDOrdAgent.selectOrdAgentList" parameterMap="pSrtsd0108AgencyResult2">
+        {call Pkg_Rtsd0108.p_sRtsd0108AgencyResult2(?, ?, ?, ?, ?, ?)}
+    </procedure>
+    
+    
+    <!-- 판매인 주문리스트 조회 -->
+    <!-- 2017-09-28 wjim        [20170922_03] 가계약번호 추가 -->
+    <resultMap id="r_sRtsd0104StatusAgent"  class="java.util.HashMap">
+        <result property="ordNo"                column="ORD_NO"         />
+        <result property="seqSeq"               column="SEQ"            />
+        <result property="statCd"               column="STAT_CD"        />
+        <result property="statNm"               column="STAT_NM"        />
+        <result property="procDay"              column="PROC_DAY"       />
+        <result property="procTm"               column="PROC_TM"        />
+        <result property="matCd"                column="MAT_CD"         />
+        <result property="petternCd"            column="PETTERN_CD"     />
+        <result property="matNm"                column="MAT_NM"         />
+        <result property="cntCd"                column="CNT_CD"         />
+        <result property="cntNm"                column="CNT_NM"         />
+        <result property="periodCd"             column="PERIOD_CD"      />
+        <result property="periodNm"             column="PERIOD_NM"      />
+        <result property="regiAmt"              column="REGI_AMT"       />
+        <result property="monAmt"               column="MON_AMT"        />
+        <result property="custNo"               column="CUST_NO"        />
+        <result property="custNm"               column="CUST_NM"        />
+        <result property="modelCd"              column="MODEL_CD"       />
+        <result property="modelNm"              column="MODEL_NM"       />
+        <result property="carNo"                column="CAR_NO"         />
+        <result property="oprocDay"             column="OPROC_DAY"      />
+        <result property="ordDay"               column="ORD_DAY"        />
+        <result property="ordId"                column="ORD_ID"         />
+        <result property="ordNm"                column="ORD_NM"         />
+        <result property="chanCd"               column="CHAN_CD"        />
+        <result property="chanNm"               column="CHAN_NM"        />
+        <result property="saleId"               column="SALE_ID"        />
+        <result property="saleNm"               column="SALE_NM"        />
+        <result property="regiCd"               column="REGI_CD"        />
+        <result property="regiNm"               column="REGI_NM"        />
+        <result property="campYn"               column="CAMP_YN"        />
+        <result property="cDcrate"              column="C_DCRATE"       />
+        <result property="cDcamt"               column="C_DCAMT"        />
+        <result property="custTp"               column="CUST_TP"        />
+        <result property="custTpNm"             column="CUST_TP_NM"     />
+        <result property="safekey"              column="SAFEKEY"        />
+        <result property="grpYn"                column="GRP_YN"         />
+        <result property="grpNo"                column="GRP_NO"         />
+        <result property="gDcrate"              column="G_DCRATE"       />
+        <result property="gDcamt"               column="G_DCAMT"        />
+        <result property="lDcrate"              column="L_DCRATE"       />
+        <result property="lDcamt"               column="L_DCAMT"        />
+        <result property="fDcrate"              column="F_DCRATE"       />
+        <result property="fDcamt"               column="F_DCAMT"        />
+        <result property="bordNo"               column="BORD_NO"        />
+        <result property="cancDay"              column="CANC_DAY"       />
+        <result property="agencyCd"             column="AGENCY_CD"      />
+        <result property="agencyNm"             column="AGENCY_NM"      />
+        <result property="salesGroup"           column="SALES_GROUP"    />
+        <result property="salesGroupNm"         column="SALES_GROUP_NM" />
+        <result property="salesOffice"          column="SALES_OFFICE"   />
+        <result property="salesOfficeNm"        column="SALES_OFFICE_NM"/>
+        <result property="engNm"                column="ENG_NM"         />
+        <result property="agDesc"               column="AG_DESC"        />
+        <result property="makerCd"              column="MAKER_CD"       />
+        <result property="makerNm"              column="MAKER_NM"       />
+        <result property="contentsCd"           column="CONTENTS_CD"    />
+        <result property="contentsNm"           column="CONTENTS_NM"    />
+        <result property="frCd"                 column="FR_CD"          />
+        <result property="frNm"                 column="FR_NM"          />
+        <result property="carOwner"             column="CAR_OWNER"      />
+        <result property="cMileage"             column="C_MILEAGE"      />
+        <result property="reqText"              column="REQ_TEXT"       />
+        <result property="payMthd"              column="PAY_MTHD"       />
+        <result property="payMthdNm"            column="PAY_MTHD_NM"    />
+        <result property="payDd"                column="PAY_DD"         />
+        <result property="accSeq"               column="ACC_SEQ"        />
+        <result property="crdSeq"               column="CRD_SEQ"        />
+        <result property="accChk"               column="ACC_CHK"        />
+        <result property="accStat"              column="ACC_STAT"       />
+        <result property="accStatNm"            column="ACC_STAT_NM"    />
+        <result property="bkeyChk"              column="BKEY_CHK"       />
+        <result property="batchKey"             column="BATCH_KEY"      />
+        <result property="billYn"               column="BILL_YN"        />
+        <result property="crdtStat"             column="CRDT_STAT"      />
+        <result property="crdt_statNm"          column="CRDT_STAT_NM"   />
+        <result property="certCd"               column="CERT_CD"        />
+        <result property="certNm"               column="CERT_NM"        />
+        <result property="certStat"             column="CERT_STAT"      />
+        <result property="cert_statNm"          column="CERT_STAT_NM"   />
+        <result property="ordAgent"             column="ORD_AGENT"      />
+        <result property="orgCd"                column="ORG_CD"         />
+        <result property="orgHq"                column="ORG_HQ"         />
+        <result property="orgL1"                column="ORG_L1"         />
+        <result property="orgL2"                column="ORG_L2"         />
+        <result property="orgL3"                column="ORG_L3"         />
+        <result property="orgL4"                column="ORG_L4"         />
+        <result property="insOrg"               column="INS_ORG"        />
+        <result property="psCd"                 column="PS_CD"          />
+        <result property="cmsagYn"              column="CMSAG_YN"       />
+        <result property="conMthd"              column="CON_MTHD"       />
+        <result property="pcertYn"              column="PCERT_YN"       />
+        <result property="fcDay"                column="FC_DAY"         />
+        <result property="agDay"                column="AG_DAY"         />
+        <result property="agSeq"                column="AG_SEQ"         />
+        <result property="inputDt"              column="INPUT_DT"       />
+        <result property="filePath"             column="FILE_PATH"      />
+        <result property="fileName"             column="FILE_NAME"      />
+        <result property="regId"                column="REG_ID"         />
+        <result property="regDt"                column="REG_DT"         />
+        <result property="chgId"                column="CHG_ID"         />
+        <result property="chgDt"                column="CHG_DT"         />
+        <result property="frCd"                 column="FR_CD"          />
+        <result property="lrCd"                 column="LR_CD"          />
+        <result property="ordQty"               column="ORD_QTY"        />
+        <result property="rentAmt"              column="RENT_AMT"       />
+        <result property="fDcrate1"             column="F_DCRATE_1"     />
+        <result property="fDcamt1"              column="F_DCAMT_1"      />
+        <result property="monDcamt"             column="MON_DCAMT"      />
+        <result property="planDay"              column="PLAN_DAY"       />
+        <result property="planTm"               column="PLAN_TM"        />
+        <result property="instDay"              column="INST_DAY"       />
+        <result property="instTm"               column="INST_TM"        />
+        <result property="instYn"               column="INST_YN"        />
+        <result property="valYn"                column="VAL_YN"         />
+        <result property="equNo"                column="EQU_NO"         />
+        <result property="osId"                 column="OS_ID"          />
+        <result property="osDay"                column="OS_DAY"         />
+        <result property="flYn"                 column="FL_YN"          />
+        <result property="frYn"                 column="FR_YN"          />
+        <result property="rlYn"                 column="RL_YN"          />
+        <result property="rrYn"                 column="RR_YN"          />
+        <result property="orgAgnm"              column="ORG_AGNM"       />
+        <result property="genderCd"             column="GENDER_CD"      />
+        <result property="ageAge"               column="AGE"            />
+        <result property="addrArea"             column="ADDR_AREA"      />
+        <result property="seasonCd"             column="SEASON_CD"      />
+        <result property="seasonNm"             column="SEASON_NM"      />
+        <result property="provsnNo"             column="PROVSN_NO"      />  <!-- 가계약번호 [20170922_03] -->
+        <result property="mobNo"             	column="MOB_NO"         />  <!-- 휴대폰번호 [20190524_01] -->
+        <result property="empNo"             	column="EMP_NO"         />  <!-- 사번 [20211012_01] -->
+        <result property="firstDay"             	column="FIRST_DAY"         />  <!-- 도착알림문자 발송일(1회차) [20211018_01] -->
+    </resultMap>
+    <parameterMap id="p_sRtsd0104StatusAgent" class="java.util.Map">
+        <parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0104StatusAgent"/>
+        <parameter property="ordFday"       mode="IN" jdbcType="VARCHAR" />
+        <parameter property="ordTday"       mode="IN" jdbcType="VARCHAR" />
+        <parameter property="orgAgentCd"    mode="IN" jdbcType="VARCHAR" />
+        <parameter property="ordNo"         mode="IN" jdbcType="VARCHAR" />
+        <parameter property="custNo"        mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procFday"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procTday"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="empNoYn"      mode="IN" jdbcType="VARCHAR" />
+    </parameterMap>
+    <procedure id="rTSDOrdAgent.selectOrdAgentOrderList" parameterMap="p_sRtsd0104StatusAgent">
+        {call Pkg_Rtsd0104.p_sRtsd0104StatusAgent( ?, ?, ?, ?,?, ?, ?, ?, ? )}
+    </procedure>
+    
+    
+    <resultMap id="r_sRtsd0104StatusAgentNew"  class="java.util.HashMap">
+        <result property="ordNo"                column="ORD_NO"         />
+        <result property="seqSeq"               column="SEQ"            />
+        <result property="statCd"               column="STAT_CD"        />
+        <result property="statNm"               column="STAT_NM"        />
+        <result property="procDay"              column="PROC_DAY"       />
+        <result property="procTm"               column="PROC_TM"        />
+        <result property="matCd"                column="MAT_CD"         />
+        <result property="petternCd"            column="PETTERN_CD"     />
+        <result property="matNm"                column="MAT_NM"         />
+        <result property="cntCd"                column="CNT_CD"         />
+        <result property="cntNm"                column="CNT_NM"         />
+        <result property="periodCd"             column="PERIOD_CD"      />
+        <result property="periodNm"             column="PERIOD_NM"      />
+        <result property="regiAmt"              column="REGI_AMT"       />
+        <result property="monAmt"               column="MON_AMT"        />
+        <result property="custNo"               column="CUST_NO"        />
+        <result property="custNm"               column="CUST_NM"        />
+        <result property="modelCd"              column="MODEL_CD"       />
+        <result property="modelNm"              column="MODEL_NM"       />
+        <result property="carNo"                column="CAR_NO"         />
+        <result property="oprocDay"             column="OPROC_DAY"      />
+        <result property="ordDay"               column="ORD_DAY"        />
+        <result property="ordId"                column="ORD_ID"         />
+        <result property="ordNm"                column="ORD_NM"         />
+        <result property="chanCd"               column="CHAN_CD"        />
+        <result property="chanNm"               column="CHAN_NM"        />
+        <result property="saleId"               column="SALE_ID"        />
+        <result property="saleNm"               column="SALE_NM"        />
+        <result property="regiCd"               column="REGI_CD"        />
+        <result property="regiNm"               column="REGI_NM"        />
+        <result property="campYn"               column="CAMP_YN"        />
+        <result property="cDcrate"              column="C_DCRATE"       />
+        <result property="cDcamt"               column="C_DCAMT"        />
+        <result property="custTp"               column="CUST_TP"        />
+        <result property="custTpNm"             column="CUST_TP_NM"     />
+        <result property="safekey"              column="SAFEKEY"        />
+        <result property="grpYn"                column="GRP_YN"         />
+        <result property="grpNo"                column="GRP_NO"         />
+        <result property="gDcrate"              column="G_DCRATE"       />
+        <result property="gDcamt"               column="G_DCAMT"        />
+        <result property="lDcrate"              column="L_DCRATE"       />
+        <result property="lDcamt"               column="L_DCAMT"        />
+        <result property="fDcrate"              column="F_DCRATE"       />
+        <result property="fDcamt"               column="F_DCAMT"        />
+        <result property="bordNo"               column="BORD_NO"        />
+        <result property="cancDay"              column="CANC_DAY"       />
+        <result property="agencyCd"             column="AGENCY_CD"      />
+        <result property="agencyNm"             column="AGENCY_NM"      />
+        <result property="salesGroup"           column="SALES_GROUP"    />
+        <result property="salesGroupNm"         column="SALES_GROUP_NM" />
+        <result property="salesOffice"          column="SALES_OFFICE"   />
+        <result property="salesOfficeNm"        column="SALES_OFFICE_NM"/>
+        <result property="engNm"                column="ENG_NM"         />
+        <result property="agDesc"               column="AG_DESC"        />
+        <result property="makerCd"              column="MAKER_CD"       />
+        <result property="makerNm"              column="MAKER_NM"       />
+        <result property="contentsCd"           column="CONTENTS_CD"    />
+        <result property="contentsNm"           column="CONTENTS_NM"    />
+        <!-- <result property="frCd"                 column="FR_CD"          /> -->
+        <result property="frNm"                 column="FR_NM"          />
+        <result property="carOwner"             column="CAR_OWNER"      />
+        <result property="cMileage"             column="C_MILEAGE"      />
+        <result property="reqText"              column="REQ_TEXT"       />
+        <result property="payMthd"              column="PAY_MTHD"       />
+        <result property="payMthdNm"            column="PAY_MTHD_NM"    />
+        <result property="payDd"                column="PAY_DD"         />
+        <result property="accSeq"               column="ACC_SEQ"        />
+        <result property="crdSeq"               column="CRD_SEQ"        />
+        <result property="accChk"               column="ACC_CHK"        />
+        <result property="accStat"              column="ACC_STAT"       />
+        <result property="accStatNm"            column="ACC_STAT_NM"    />
+        <result property="bkeyChk"              column="BKEY_CHK"       />
+        <result property="batchKey"             column="BATCH_KEY"      />
+        <result property="billYn"               column="BILL_YN"        />
+        <result property="crdtStat"             column="CRDT_STAT"      />
+        <result property="crdt_statNm"          column="CRDT_STAT_NM"   />
+        <result property="certCd"               column="CERT_CD"        />
+        <result property="certNm"               column="CERT_NM"        />
+        <result property="certStat"             column="CERT_STAT"      />
+        <result property="cert_statNm"          column="CERT_STAT_NM"   />
+        <result property="ordAgent"             column="ORD_AGENT"      />
+        <result property="orgCd"                column="ORG_CD"         />
+        <result property="orgHq"                column="ORG_HQ"         />
+        <result property="orgL1"                column="ORG_L1"         />
+        <result property="orgL2"                column="ORG_L2"         />
+        <result property="orgL3"                column="ORG_L3"         />
+        <result property="orgL4"                column="ORG_L4"         />
+        <result property="insOrg"               column="INS_ORG"        />
+        <result property="psCd"                 column="PS_CD"          />
+        <result property="cmsagYn"              column="CMSAG_YN"       />
+        <result property="conMthd"              column="CON_MTHD"       />
+        <result property="pcertYn"              column="PCERT_YN"       />
+        <result property="fcDay"                column="FC_DAY"         />
+        <result property="agDay"                column="AG_DAY"         />
+        <result property="agSeq"                column="AG_SEQ"         />
+        <result property="inputDt"              column="INPUT_DT"       />
+        <result property="filePath"             column="FILE_PATH"      />
+        <result property="fileName"             column="FILE_NAME"      />
+        <result property="regId"                column="REG_ID"         />
+        <result property="regDt"                column="REG_DT"         />
+        <result property="chgId"                column="CHG_ID"         />
+        <result property="chgDt"                column="CHG_DT"         />
+        <result property="frCd"                 column="FR_CD"          />
+        <result property="lrCd"                 column="LR_CD"          />
+        <result property="ordQty"               column="ORD_QTY"        />
+        <result property="rentAmt"              column="RENT_AMT"       />
+        <result property="fDcrate1"             column="F_DCRATE_1"     />
+        <result property="fDcamt1"              column="F_DCAMT_1"      />
+        <result property="monDcamt"             column="MON_DCAMT"      />
+        <result property="planDay"              column="PLAN_DAY"       />
+        <result property="planTm"               column="PLAN_TM"        />
+        <result property="instDay"              column="INST_DAY"       />
+        <result property="instTm"               column="INST_TM"        />
+        <result property="instYn"               column="INST_YN"        />
+        <result property="valYn"                column="VAL_YN"         />
+        <result property="equNo"                column="EQU_NO"         />
+        <result property="osId"                 column="OS_ID"          />
+        <result property="osDay"                column="OS_DAY"         />
+        <result property="flYn"                 column="FL_YN"          />
+        <result property="frYn"                 column="FR_YN"          />
+        <result property="rlYn"                 column="RL_YN"          />
+        <result property="rrYn"                 column="RR_YN"          />
+        <result property="orgAgnm"              column="ORG_AGNM"       />
+        <result property="genderCd"             column="GENDER_CD"      />
+        <result property="ageAge"               column="AGE"            />
+        <result property="addrArea"             column="ADDR_AREA"      />
+        <result property="seasonCd"             column="SEASON_CD"      />
+        <result property="seasonNm"             column="SEASON_NM"      />
+        <result property="provsnNo"             column="PROVSN_NO"      />  <!-- 가계약번호 [20170922_03] -->
+        <result property="rentalGroup"          column="RENTAL_GROUP" />     <!-- 20190212 렌탈지사 추가 -->
+        <result property="rentalOffice"         column="RENTAL_OFFICE" />     <!-- 20190212 렌탈지점 추가 -->   
+        <result property="rentalGroupNm"        column="RENTAL_GROUP_NM" />     <!-- 20190212 렌탈지사 추가 -->
+        <result property="rentalOfficeNm"       column="RENTAL_OFFICE_NM" />     <!-- 20190212 렌탈지점 추가 -->   
+        
+        <result property="userId"               column="USER_ID" />     <!-- 20190212 사용자ID -->
+    </resultMap>
+    
+    <parameterMap id="p_sRtsd0104StatusAgentNew" class="java.util.Map">
+        <parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0104StatusAgentNew"/>
+        <parameter property="ordFday"       mode="IN" jdbcType="VARCHAR" />
+        <parameter property="ordTday"       mode="IN" jdbcType="VARCHAR" />
+        <parameter property="orgAgentCd"    mode="IN" jdbcType="VARCHAR" />
+        <parameter property="ordNo"         mode="IN" jdbcType="VARCHAR" />
+        <parameter property="custNo"        mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procFday"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="procTday"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="rentalGroup"   jdbcType="VARCHAR" mode="IN" />     <!-- 20190212 렌탈지사 추가 -->
+        <parameter property="rentalOffice"  jdbcType="VARCHAR" mode="IN" />     <!-- 20190212 렌탈지점 추가 -->   
+        <parameter property="userId"        jdbcType="VARCHAR" mode="IN" />     <!-- 20190212 사용자ID -->
+        <parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20190212 사용자그룹 -->
+    </parameterMap>
+    <procedure id="rTSDOrdAgent.selectOrdAgentOrderListNew" parameterMap="p_sRtsd0104StatusAgentNew">
+        {call Pkg_Rtsd0104.p_sRtsd0104StatusAgentNew( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+    </procedure>
+    
+    <resultMap id="r_sRtsd0113List"     class="java.util.HashMap">
+        <result property="ordAgent"         column="ORD_AGENT"      />
+        <result property="orgAgnm"          column="ORG_AGNM"       />
+        <result property="orgAgtel"         column="ORG_AGTEL"      />
+        <result property="chanCd"           column="CHAN_CD"        />
+        <result property="chanNm"           column="CHAN_NM"        />
+        <result property="lifnr"            column="LIFNR"          />
+        <result property="num"              column="NUM"            />
+        <result property="salesGroup"       column="SALES_GROUP"    />
+        <result property="sgNm"             column="SG_NM"          />
+        <result property="salesOffice"      column="SALES_OFFICE"   />
+        <result property="soNm"             column="SO_NM"          />
+        <result property="taxRqcd"          column="TAX_RQCD"       />
+        <result property="taxRqnm"          column="TAX_RQNM"       />
+        <result property="useYn"            column="USE_YN"         />
+        <result property="useNm"            column="USE_NM"         />
+        <result property="regId"            column="REG_ID"         />
+        <result property="regNm"            column="REG_NM"         />
+        <result property="regDt"            column="REG_DT"         />
+        <result property="chgId"            column="CHG_ID"         />
+        <result property="chgNm"            column="CHG_NM"         />
+        <result property="chgDt"            column="CHG_DT"         />
+        <result property="chanLclsCd"       column="CHAN_LCLS_CD"   />
+        <result property="chanMclsCd"       column="CHAN_MCLS_CD"   />
+        <result property="rentalGroup"      column="RENTAL_GROUP"   /> 
+        <result property="rentalGroupNm"    column="RENTAL_GROUP_NM"   /> 
+        <result property="rentalOffice"     column="RENTAL_OFFICE"   /> 
+        <result property="rentalOfficeNm"   column="RENTAL_OFFICE_NM"   /> 
+    </resultMap>
+    <parameterMap id="p_sRtsd0113List" class="java.util.Map">
+        <parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0113List"/>
+        <parameter property="ordAgentCd"    mode="IN" jdbcType="VARCHAR" />
+        <parameter property="useYn"         mode="IN" jdbcType="VARCHAR" />
+        <parameter property="chanLclsCd"    mode="IN" jdbcType="VARCHAR" />
+        <parameter property="chanMclsCd"    mode="IN" jdbcType="VARCHAR" />     
+        <parameter property="userId"        jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+        <parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+    </parameterMap>
+    <procedure id="rTSDOrdAgent.selectRTSDOrdAgentRegister" parameterMap="p_sRtsd0113List">
+        { call Pkg_Rtsd0113.p_sRtsd0113List(?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+    
+    
+    
+    <parameterMap class="java.util.Map" id="p_IUDRtsd0113">
+        <parameter property="dvsn"          jdbcType="VARCHAR" mode="IN" />
+        <parameter property="ordAgent"      jdbcType="VARCHAR" mode="IN" />
+        <parameter property="orgAgnm"       jdbcType="VARCHAR" mode="IN" />
+        <parameter property="orgAgtel"      jdbcType="VARCHAR" mode="IN" />
+        <parameter property="chanCd"        jdbcType="VARCHAR" mode="IN" />
+        <parameter property="lifnr"         jdbcType="VARCHAR" mode="IN" />
+        <parameter property="num"           jdbcType="VARCHAR" mode="IN" />
+        <parameter property="salesGroup"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="salesOffice"   jdbcType="VARCHAR" mode="IN" />
+        <parameter property="taxRqcd"       jdbcType="VARCHAR" mode="IN" />
+        <parameter property="useYn"         jdbcType="VARCHAR" mode="IN" />
+        <parameter property="regId"         jdbcType="VARCHAR" mode="IN" />
+        <parameter property="chanLclsCd"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="chanMclsCd"    jdbcType="VARCHAR" mode="IN" />
+        <parameter property="rentalGroup"   jdbcType="VARCHAR" mode="IN" />     
+        <parameter property="rentalOffice"  jdbcType="VARCHAR" mode="IN" />     
+        <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" />
+        <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+        <parameter property="errortext"     jdbcType="VARCHAR" mode="OUT" />
+    </parameterMap>
+    <procedure id="rTSDOrdAgent.saveRTSDOrdAgentRegister" parameterMap="p_IUDRtsd0113">
+        {call Pkg_Rtsd0113.p_IUDRtsd0113(?, ?, ?, ?, ?
+                                       , ?, ?, ?, ?, ?
+                                       , ?, ?, ?, ?, ?
+                                       , ?, ?, ?, ?)
+        }
+    </procedure>
+        
+    
+    <parameterMap id="p_sRtsd0113Count" class="java.util.Map">
+        <parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="r_sRtsd0113Count" />
+        <parameter property="ordAgent"  jdbcType="VARCHAR" mode="IN" />
+    </parameterMap>
+    <resultMap id="r_sRtsd0113Count" class="java.util.HashMap"/>
+    <procedure  id="rTSDOrdAgent.checkOrdAgent" resultClass="java.util.Map" parameterMap="p_sRtsd0113Count">
+        { call ? := Pkg_Rtsd0113.f_sRtsd0113Count(?) }
+    </procedure>
+</sqlMap>

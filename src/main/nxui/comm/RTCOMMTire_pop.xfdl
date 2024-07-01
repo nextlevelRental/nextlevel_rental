@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMTire_pop" classname="RTCMVkgrp_pop" left="0" top="0" width="400" height="485" titletext="타이어조회" onload="RTCOMMTire_pop_onload" onkeyup="RTCOMMTire_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" right="10" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="30" text="패턴코드" cssclass="sta_WF_schTitle" left="20" top="10" width="62" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_searchKeyword" taborder="31" onkeyup="div_search_edt_searchKeyword_onkeyup" left="95" top="10" width="205" height="21"/>
+              <Button id="btn_add" taborder="32" text="검색" onclick="div_search_btn_add_onclick" cssclass="btn_WF_CRUD" top="9" right="18" width="45" height="22" domainId="nexa.add"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" top="456" right="54" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="456" right="9" width="41" height="21" domainId="nexa.add"/>
+        <Grid id="Grid00" taborder="4" binddataset="dsVKGrp" useinputpanel="false" cellsizingtype="col" autofittype="col" left="10" top="66" right="10" height="380" onheadclick="c">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="245"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="패턴 코드"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk" editlimit="-1" combodisplayrowcount="-1"/>
+                <Cell col="1" edittype="none" editfilter="upper,number,char" text="bind:petternCd" editlimit="12" editlengthunit="ascii"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsVKGrp">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="petternNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsVKGrpCp">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="petternNm" type="STRING" size="256"/>
+          <Column id="allchk" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ParserStr = "^&^";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+
+	if( strSvcId == "listTire" ){
+		var ct = this.dsVKGrp.getRowCount();
+		this.dsVKGrp.addColumn("chk", "string", 256);
+
+		if( ct != 0){
+			
+				
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grd_Group.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.edt_searchKeyword.setFocus(true);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMTire_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.FN_search();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_add_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_search();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.FN_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_search = function(){
+	var petternCd		= this.div_search.edt_searchKeyword.value;
+	var sSvcID        	= "listTire";                    
+	var sController   	= "/rtms/sd/listTireInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsVKGrp=listTireGrp";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	var idx 		= this.dsVKGrp.rowposition;
+
+	this.dsVKGrp.deleteAll();
+	sArgs += Ex.util.setParam("nodeNm", 	"listTireGrp");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("useYn", 		"Y");			//사용여부
+	sArgs += Ex.util.setParam("petternCd", 	this.div_search.edt_searchKeyword.value);			//코드
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMTire_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var parentForm 	= this.parent.parent.form;
+	var result 		= "";
+	var res			= "";
+	var idx 		= this.dsVKGrp.rowposition;
+	var cd 			= this.dsVKGrp.getColumn(idx, "petternCd");
+	var nm 			= this.dsVKGrp.getColumn(idx, "petternNm");
+	var nCnt = this.dsVKGrp.getRowCount();
+	
+	if( idx == -1 ){
+		alert("선택된 데이터가 없습니다.");
+	}else{
+		if( parentForm.name == "RTCOMMAgency_pop" ){
+			if( nvl(cd) != "" && nvl(nm) != "" ){
+				res = { cd: cd, nm: nm };
+				parentForm.setRetVal(res);
+				this.close();
+			}else{
+				alert("ERROR");
+			}
+		}else if( this.parent.p_arg  == "RTSDAgencyResult" || this.parent.p_arg  == "RTSDOrdAgentRegister" || this.parent.p_arg == "RTSDAgencyStatus" ){
+			var arr = [ nm, cd];
+			this.close(this.opener.return_salesGroup(arr));
+		}else{
+		var arr = new Array();
+		this.dsVKGrpCp.clearData();
+			for( var i = 0 ; i < nCnt ; i++){
+				if(this.dsVKGrp.getColumn(i,"chk",1)==1){
+					var nRow = this.dsVKGrpCp.addRow();
+					this.dsVKGrpCp.setColumn(nRow,"petternCd",this.dsVKGrp.getColumn(i,"petternCd"));
+					this.dsVKGrpCp.setColumn(nRow,"petternNm",this.dsVKGrp.getColumn(i,"petternNm"));
+				}
+					if(this.dsVKGrpCp.rowcount==nCnt){
+					var nRow = this.dsVKGrpCp.addRow();
+					this.dsVKGrpCp.setColumn(nRow,"allchk","all");			
+					}
+				}
+			var arr = [this.dsVKGrpCp];
+			this.close(this.opener._setReturn(arr));
+				
+		
+// 			var arr = [cd , nm, "vkgrp"];
+// 			this.close(this.opener._setReturn(arr));
+		}
+	}
+}
+
+
+
+// //cell클릭 이벤트
+// this.Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+// {
+// 	for (var i=0; i<=this.dsVKGrp.rowcount; i++) {
+// 		if(this.dsVKGrp.rowposition == i) {
+// 			this.dsVKGrp.setColumn(this.dsList.rowposition ,"chk","1");
+// 		}
+// 		else {
+// 			this.dsVKGrp.setColumn(i,"chk","0");
+// 		}
+// 	}
+// }
+]]></Script>
+  </Form>
+</FDL>

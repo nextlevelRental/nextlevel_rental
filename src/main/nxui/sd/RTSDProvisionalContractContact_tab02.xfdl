@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDProvisionalContractContact_tab02" classname="RTSDProvisionalContractContact_tab02" left="0" top="0" width="1091" height="82" titletext="New Form" onload="RTSDProvisionalContractContact_tab02_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static10" taborder="0" text="~" left="217" top="14" width="9" height="53"/>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1090" height="81" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1112" height="49">
+              <Static id="Static07" taborder="64" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1108" height="12"/>
+              <Static id="Static06" taborder="65" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static10" taborder="66" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" width="1108" height="12"/>
+              <Static id="st_custNm" taborder="67" text="고객명" cssclass="sta_WF_schTitle" left="20" top="12" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="68" left="82" top="12" width="104" height="21"/>
+              <Static id="st_custNm01" taborder="72" text="연락처" cssclass="sta_WF_schTitle" left="205" top="12" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_mobNo" taborder="73" left="267" top="12" width="120" height="21"/>
+              <Static id="Static11" taborder="76" text="FIX h12" cssclass="Guide_color" visible="false" left="8" top="65" width="1108" height="12"/>
+              <Static id="Static12" taborder="77" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="32" width="20" height="45"/>
+              <Static id="st_date01" taborder="78" text="가계약번호" cssclass="sta_WF_schTitle" left="412" top="11" width="80" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_provsnNoF" taborder="79" left="511" top="12" width="107" height="21"/>
+              <Static id="Static19" taborder="80" text="~" left="619" top="13" width="9" height="21"/>
+              <Edit id="ed_provsnNoT" taborder="81" left="632" top="12" width="107" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDProvisionalContractContact_tab02.xfdl
+ * 설    명 : 가계약상담_조회2
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2019-07-30	wjim		[20190716_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractContact_tab02_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);
+}
+]]></Script>
+  </Form>
+</FDL>

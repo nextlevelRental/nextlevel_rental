@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configCategoryAxis" classname="config_xaxis" left="0" top="0" width="320" height="1148" titletext="차트 기본 설정" style="background:#d4d9dfff;" onload="configCategoryAxis_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="CategoryAxis" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Combo id="cmb_lineStyle" taborder="25" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="216" right="5.94%" height="24" index="-1" onsetfocus="common_onsetfocus"/>
+        <Static id="Static13" taborder="30" text="labelFontType" left="6.25%" top="631" right="46.88%" height="20"/>
+        <Static id="Static12" taborder="32" text="labelFontSize" left="6.25%" top="596" right="46.88%" height="20"/>
+        <Edit id="edt_labelFontFace" taborder="33" left="52.81%" top="555" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static11" taborder="34" text="labelFontFace" left="6.25%" top="557" right="46.88%" height="20"/>
+        <Static id="Static09" taborder="36" text="lineOpacity" left="6.25%" top="289" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="37" text="lineColor" left="6.25%" top="253" right="46.88%" height="20"/>
+        <Static id="Static07" taborder="38" text="lineStyle" left="6.25%" top="218" right="46.88%" height="20"/>
+        <Static id="Static06" taborder="39" text="lineWidth" left="6.25%" top="185" right="46.88%" height="20"/>
+        <Static id="Static04" taborder="43" text="position" left="6.25%" top="92" right="46.88%" height="20"/>
+        <Static id="Static14" taborder="48" text="labelColor" left="6.25%" top="664" right="46.88%" height="20"/>
+        <Static id="Static00" taborder="51" text="labelRotate" left="6.25%" top="697" right="46.88%" height="20"/>
+        <Static id="Static27" taborder="52" text="labelMargin" left="6.25%" top="733" right="46.88%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.25%" top="58" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.81%" top="56" right="6.25%" height="24" onsetfocus="common_onsetfocus" readonly="true"/>
+        <Static id="Static24" taborder="95" left="6.25%" top="164" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static25" taborder="97" left="6.25%" top="532" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static39" taborder="99" text="tickStyle" left="6.25%" top="408" right="46.88%" height="20"/>
+        <Combo id="cmb_tickStyle" taborder="100" innerdataset="@ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="406" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static40" taborder="101" text="tickWidth" left="6.25%" top="368" right="46.88%" height="20"/>
+        <Static id="Static41" taborder="103" text="tickOpacity" left="6.25%" top="488" right="46.88%" height="20"/>
+        <Static id="Static42" taborder="105" text="tickColor" left="6.25%" top="448" right="46.88%" height="20"/>
+        <Static id="Static20" taborder="111" left="6.25%" top="780" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static21" taborder="112" text="titleFontFace" left="6.25%" top="837" right="46.88%" height="20"/>
+        <Static id="Static22" taborder="113" text="titleFontSize" left="6.25%" top="873" right="46.88%" height="20"/>
+        <Static id="Static45" taborder="116" text="titleFontType" left="6.25%" top="911" right="46.88%" height="20"/>
+        <Static id="Static46" taborder="118" text="titleFontColor" left="6.25%" top="952" right="46.88%" height="20"/>
+        <Static id="Static47" taborder="120" text="titleMargin" left="6.25%" top="991" right="46.88%" height="20"/>
+        <Static id="Static48" taborder="122" text="titleHalign" left="6.25%" top="1031" right="46.88%" height="20"/>
+        <Static id="Static49" taborder="126" text="tickLength" left="6.25%" top="328" right="46.88%" height="20"/>
+        <Static id="Static05" taborder="128" text="titleValign" left="6.25%" top="1071" right="46.88%" height="20"/>
+        <Static id="Static23" taborder="130" text="titleRotate" left="6.25%" top="1111" right="46.88%" height="20"/>
+        <Static id="Static43" taborder="132" text="title" left="6.25%" top="801" right="46.88%" height="20"/>
+        <Edit id="edt_title" taborder="133" left="52.19%" top="799" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_position" taborder="134" innerdataset="ds_position" codecolumn="code" datacolumn="data" left="52.81%" top="90" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_lineColor" taborder="135" left="52.81%" top="251" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_tickColor" taborder="136" left="52.81%" top="446" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_labelFontType" taborder="137" innerdataset="@ds_fontType" codecolumn="code" datacolumn="data" left="52.81%" top="629" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_labelColor" taborder="139" left="52.81%" top="662" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_titleFontFace" taborder="141" left="52.19%" top="835" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_titleFontType" taborder="143" innerdataset="@ds_fontType" codecolumn="code" datacolumn="data" left="52.19%" top="909" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_titleFontColor" taborder="144" left="52.19%" top="950" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_titleHalign" taborder="145" innerdataset="@ds_halign" codecolumn="code" datacolumn="data" left="52.19%" top="1027" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_titleValign" taborder="146" innerdataset="@ds_valign" codecolumn="code" datacolumn="data" left="52.19%" top="1069" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <CheckBox id="chk_titleRotate" taborder="162" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch" left="52.19%" top="1109" right="27.5%" height="24"/>
+        <Static id="Static16" taborder="166" text="autoscaleMargin" left="6.25%" top="126" right="46.88%" height="20"/>
+        <MaskEdit id="mae_autoscaleMargin" taborder="167" left="52.81%" top="124" right="6.56%" height="24" onsetfocus="common_onsetfocus" mask="0.00" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_lineWidth" taborder="168" onsetfocus="common_onsetfocus" left="52.81%" top="183" right="6.56%" height="24" canchange="common_canchage_integer" mask="0.0"/>
+        <MaskEdit id="mae_lineOpacity" taborder="169" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="287" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_tickWidth" taborder="170" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="364" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_tickLength" taborder="171" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="326" right="6.56%" height="24"/>
+        <MaskEdit id="mae_tickOpacity" taborder="172" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="486" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_labelFontSize" taborder="173" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="594" right="6.56%" height="24"/>
+        <MaskEdit id="mae_labelRotate" taborder="174" onsetfocus="common_onsetfocus" canchange="common_canchage_angle" left="52.81%" top="695" right="6.56%" height="24"/>
+        <MaskEdit id="mae_labelMargin" taborder="175" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="731" right="6.56%" height="24"/>
+        <MaskEdit id="mae_titleFontSize" taborder="176" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="871" right="7.19%" height="24"/>
+        <MaskEdit id="mae_titleMargin" taborder="177" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="989" right="7.19%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item24" compid="cmb_lineStyle" propid="value" datasetid="ds_categoryAxis" columnid="lineStyle"/>
+      <BindItem id="item10" compid="edt_labelFontFace" propid="value" datasetid="ds_categoryAxis" columnid="labelFontFace"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_categoryAxis" columnid="id"/>
+      <BindItem id="item18" compid="cmb_tickStyle" propid="value" datasetid="ds_categoryAxis" columnid="tickStyle"/>
+      <BindItem id="item23" compid="edt_title" propid="value" datasetid="ds_categoryAxis" columnid="title"/>
+      <BindItem id="item8" compid="edt_lineColor" propid="value" datasetid="ds_categoryAxis" columnid="lineColor"/>
+      <BindItem id="item14" compid="edt_tickColor" propid="value" datasetid="ds_categoryAxis" columnid="tickColor"/>
+      <BindItem id="item11" compid="cmb_labelFontType" propid="value" datasetid="ds_categoryAxis" columnid="labelFontType"/>
+      <BindItem id="item20" compid="edt_labelColor" propid="value" datasetid="ds_categoryAxis" columnid="labelColor"/>
+      <BindItem id="item4" compid="edt_titleFontFace" propid="value" datasetid="ds_categoryAxis" columnid="titleFontFace"/>
+      <BindItem id="item21" compid="cmb_titleFontType" propid="value" datasetid="ds_categoryAxis" columnid="titleFontType"/>
+      <BindItem id="item22" compid="edt_titleFontColor" propid="value" datasetid="ds_categoryAxis" columnid="titleFontColor"/>
+      <BindItem id="item5" compid="cmb_titleHalign" propid="value" datasetid="ds_categoryAxis" columnid="titleHalign"/>
+      <BindItem id="item25" compid="cmb_titleValign" propid="value" datasetid="ds_categoryAxis" columnid="titleValign"/>
+      <BindItem id="item15" compid="chk_titleRotate" propid="value" datasetid="ds_categoryAxis" columnid="titleRotate"/>
+      <BindItem id="item1" compid="cmb_position" propid="value" datasetid="ds_categoryAxis" columnid="position"/>
+      <BindItem id="item2" compid="mae_autoscaleMargin" propid="value" datasetid="ds_categoryAxis" columnid="autoscaleMargin"/>
+      <BindItem id="item3" compid="mae_lineWidth" propid="value" datasetid="ds_categoryAxis" columnid="lineWidth"/>
+      <BindItem id="item6" compid="mae_lineOpacity" propid="value" datasetid="ds_categoryAxis" columnid="lineOpacity"/>
+      <BindItem id="item9" compid="mae_tickWidth" propid="value" datasetid="ds_categoryAxis" columnid="tickWidth"/>
+      <BindItem id="item16" compid="mae_tickLength" propid="value" datasetid="ds_categoryAxis" columnid="tickLength"/>
+      <BindItem id="item17" compid="mae_tickOpacity" propid="value" datasetid="ds_categoryAxis" columnid="tickOpacity"/>
+      <BindItem id="item12" compid="mae_labelFontSize" propid="value" datasetid="ds_categoryAxis" columnid="labelFontSize"/>
+      <BindItem id="item13" compid="mae_labelRotate" propid="value" datasetid="ds_categoryAxis" columnid="labelRotate"/>
+      <BindItem id="item19" compid="mae_labelMargin" propid="value" datasetid="ds_categoryAxis" columnid="labelMargin"/>
+      <BindItem id="item7" compid="mae_titleFontSize" propid="value" datasetid="ds_categoryAxis" columnid="titleFontSize"/>
+      <BindItem id="item26" compid="mae_titleMargin" propid="value" datasetid="ds_categoryAxis" columnid="titleMargin"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var	parent = this.parent;
+	
+this.common_onsetfocus = function(obj:Combo, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.configCategoryAxis_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{	
+	var innerDs = parent.ds_position;
+	var nrow;
+	
+	var categoryAxis = parent.eChart.getCategoryAxis();
+	if (innerDs.rowcount > 0)
+	{
+		innerDs.clearData();
+	}
+	
+	if (categoryAxis)
+	{
+		var cAxisPosition = categoryAxis.getPosition();
+		if (cAxisPosition == "left" || cAxisPosition == "right")
+		{
+			if (cAxisPosition == "left")
+			{
+				this.cmb_position.set_value("left");
+			}
+			else
+			{
+				this.cmb_position.set_value("right");
+			}
+			innerDs.set_enableevent(false);
+			nrow = innerDs.addRow();
+			innerDs.setColumn(nrow, "code", "left");
+			innerDs.setColumn(nrow, "data", "left");
+			
+			nrow = innerDs.addRow();
+			innerDs.setColumn(nrow, "code", "right");
+			innerDs.setColumn(nrow, "data", "right");
+			innerDs.set_enableevent(true);
+		}
+		else if (cAxisPosition == "bottom" || cAxisPosition == "top")
+		{
+			if (cAxisPosition == "bottom")
+			{
+				this.cmb_position.set_value("bottom");
+			}
+			else
+			{
+				this.cmb_position.set_value("top");
+			}
+			innerDs.set_enableevent(false);
+			nrow = innerDs.addRow();
+			innerDs.setColumn(nrow, "code", "bottom");
+			innerDs.setColumn(nrow, "data", "bottom");
+			
+			nrow = innerDs.addRow();
+			innerDs.setColumn(nrow, "code", "top");
+			innerDs.setColumn(nrow, "data", "top");
+			innerDs.set_enableevent(true);
+		}
+	}
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_angle = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData3(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

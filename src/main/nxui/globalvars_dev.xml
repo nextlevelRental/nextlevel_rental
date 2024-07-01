@@ -1,0 +1,3931 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GlobalVariables>
+  <Dataset id="gds_menu">
+    <ColumnInfo>
+      <Column id="USE_YN" type="string" size="32"/>
+      <Column id="MENU_NM" type="string" size="32"/>
+      <Column id="SORT_CD" type="string" size="32"/>
+      <Column id="MENU_AUTH" type="string" size="32"/>
+      <Column id="MENU_NOTE" type="string" size="32"/>
+      <Column id="MENU_GRP" type="string" size="32"/>
+      <Column id="MENU_LEVEL" type="bigdecimal" size="16"/>
+      <Column id="MENU_IMAGE" type="string" size="32"/>
+      <Column id="MENU_LINK" type="string" size="32"/>
+      <Column id="MENU_NAVI" type="string" size="32"/>
+      <Column id="PARENT_CD" type="string" size="32"/>
+      <Column id="ROWNUM" type="bigdecimal" size="16"/>
+      <Column id="MENU_CD" type="string" size="32"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Purchase</Col>
+        <Col id="SORT_CD">1</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Purchase</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">1</Col>
+        <Col id="MENU_CD">00001</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Inspection</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Inspection</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">2</Col>
+        <Col id="MENU_CD">00010</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Bid</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">purchase::bid_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Bid</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">3</Col>
+        <Col id="MENU_CD">00011</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Bid by Buyer</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">frame::Wrok_Bid.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Bid by Buyer</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">4</Col>
+        <Col id="MENU_CD">00207</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Negotiation</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Negotiation</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">5</Col>
+        <Col id="MENU_CD">00012</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Revised Offer</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Revised Offer</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">6</Col>
+        <Col id="MENU_CD">00013</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Trucking Data Upload</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Trucking Data Upload</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">7</Col>
+        <Col id="MENU_CD">00072</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Trucking Schedule</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Trucking Schedule</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">8</Col>
+        <Col id="MENU_CD">00015</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">COGS Adjustment</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; COGS Adjustment</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">9</Col>
+        <Col id="MENU_CD">00120</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Telemarketing</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Telemarketing</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">10</Col>
+        <Col id="MENU_CD">00176</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Status</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Status</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">11</Col>
+        <Col id="MENU_CD">00016</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">PDL</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; PDL</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">12</Col>
+        <Col id="MENU_CD">00017</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Sell Signup</Col>
+        <Col id="SORT_CD">12</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00001</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Purchase &gt; Sell Signup</Col>
+        <Col id="PARENT_CD">00001</Col>
+        <Col id="ROWNUM">13</Col>
+        <Col id="MENU_CD">00085</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Inventory</Col>
+        <Col id="SORT_CD">2</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Inventory</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">14</Col>
+        <Col id="MENU_CD">00002</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Itemization</Col>
+        <Col id="SORT_CD">1</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization</Col>
+        <Col id="PARENT_CD">00002</Col>
+        <Col id="ROWNUM">15</Col>
+        <Col id="MENU_CD">00032</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Unloading</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Unloading</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">16</Col>
+        <Col id="MENU_CD">00033</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Itemize</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Itemize</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">17</Col>
+        <Col id="MENU_CD">00034</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Not Received</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_NOTE">duplicated in Purchase menu for buyers</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Not Received</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">18</Col>
+        <Col id="MENU_CD">00076</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Retail Pricing</Col>
+        <Col id="SORT_CD">3</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Retail Pricing</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">19</Col>
+        <Col id="MENU_CD">00035</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Aisle &amp; Bay</Col>
+        <Col id="SORT_CD">4</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Aisle &amp; Bay</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">20</Col>
+        <Col id="MENU_CD">00036</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Status</Col>
+        <Col id="SORT_CD">6</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Itemization &gt; Status</Col>
+        <Col id="PARENT_CD">00032</Col>
+        <Col id="ROWNUM">21</Col>
+        <Col id="MENU_CD">00077</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Re-itemization</Col>
+        <Col id="SORT_CD">2</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization</Col>
+        <Col id="PARENT_CD">00002</Col>
+        <Col id="ROWNUM">22</Col>
+        <Col id="MENU_CD">00037</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Re-itemize</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization &gt; Re-itemize</Col>
+        <Col id="PARENT_CD">00037</Col>
+        <Col id="ROWNUM">23</Col>
+        <Col id="MENU_CD">00066</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Request Micro</Col>
+        <Col id="SORT_CD">1</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization &gt; Request Micro</Col>
+        <Col id="PARENT_CD">00037</Col>
+        <Col id="ROWNUM">24</Col>
+        <Col id="MENU_CD">00038</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Request Macro</Col>
+        <Col id="SORT_CD">2</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization &gt; Request Macro</Col>
+        <Col id="PARENT_CD">00037</Col>
+        <Col id="ROWNUM">25</Col>
+        <Col id="MENU_CD">00061</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Request Scrap</Col>
+        <Col id="SORT_CD">3</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization &gt; Request Scrap</Col>
+        <Col id="PARENT_CD">00037</Col>
+        <Col id="ROWNUM">26</Col>
+        <Col id="MENU_CD">00062</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Request Pricing</Col>
+        <Col id="SORT_CD">4</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Re-itemization &gt; Request Pricing</Col>
+        <Col id="PARENT_CD">00037</Col>
+        <Col id="ROWNUM">27</Col>
+        <Col id="MENU_CD">00065</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Item</Col>
+        <Col id="SORT_CD">3</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item</Col>
+        <Col id="PARENT_CD">00002</Col>
+        <Col id="ROWNUM">28</Col>
+        <Col id="MENU_CD">00039</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Item Data</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Item Data</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">29</Col>
+        <Col id="MENU_CD">00040</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Change Available Item</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Change Available Item</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">30</Col>
+        <Col id="MENU_CD">00164</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">eBay Store</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; eBay Store</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">31</Col>
+        <Col id="MENU_CD">00087</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">eBay Auction</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; eBay Auction</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">32</Col>
+        <Col id="MENU_CD">00079</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Markdown Prep.</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Markdown Prep.</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">33</Col>
+        <Col id="MENU_CD">00177</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Markdown History</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Markdown History</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">34</Col>
+        <Col id="MENU_CD">00086</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Item Removal</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Item Removal</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">35</Col>
+        <Col id="MENU_CD">00083</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Print Barcode</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">inventory::barcodePrint_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Print Barcode</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">36</Col>
+        <Col id="MENU_CD">00084</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Lost Item</Col>
+        <Col id="SORT_CD">6</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00002</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Inventory &gt; Item &gt; Lost Item</Col>
+        <Col id="PARENT_CD">00039</Col>
+        <Col id="ROWNUM">37</Col>
+        <Col id="MENU_CD">00082</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Accounting</Col>
+        <Col id="SORT_CD">3</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Accounting</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">38</Col>
+        <Col id="MENU_CD">00003</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Code Management</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Code Management</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">39</Col>
+        <Col id="MENU_CD">00105</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Account Code</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Code Management &gt; Account Code</Col>
+        <Col id="PARENT_CD">00105</Col>
+        <Col id="ROWNUM">40</Col>
+        <Col id="MENU_CD">00106</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Bank Account</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Code Management &gt; Bank Account</Col>
+        <Col id="PARENT_CD">00105</Col>
+        <Col id="ROWNUM">41</Col>
+        <Col id="MENU_CD">00107</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Freight Company</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Code Management &gt; Freight Company</Col>
+        <Col id="PARENT_CD">00105</Col>
+        <Col id="ROWNUM">42</Col>
+        <Col id="MENU_CD">00108</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Open ROS</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">accounting::open_ros_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Open ROS</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">43</Col>
+        <Col id="MENU_CD">00132</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">44</Col>
+        <Col id="MENU_CD">00109</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Customer</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Customer</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">45</Col>
+        <Col id="MENU_CD">00117</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Vendor</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Vendor</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">46</Col>
+        <Col id="MENU_CD">00110</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Trucking Co.</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Trucking Co.</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">47</Col>
+        <Col id="MENU_CD">00111</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Consignor</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Consignor</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">48</Col>
+        <Col id="MENU_CD">00116</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Rigging</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Rigging</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">49</Col>
+        <Col id="MENU_CD">00162</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/P Admin. Expense</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/P &gt; A/P Admin. Expense</Col>
+        <Col id="PARENT_CD">00109</Col>
+        <Col id="ROWNUM">50</Col>
+        <Col id="MENU_CD">00163</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Misc. Cost</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">accounting::misc_cost_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Misc. Cost</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">51</Col>
+        <Col id="MENU_CD">00133</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Req. COGS Adjustment</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">accounting::adjustment_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Req. COGS Adjustment</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">52</Col>
+        <Col id="MENU_CD">00134</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/R Customer</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; A/R Customer</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">53</Col>
+        <Col id="MENU_CD">00135</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Lost Check</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Lost Check</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">54</Col>
+        <Col id="MENU_CD">00147</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">History</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; History</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">55</Col>
+        <Col id="MENU_CD">00158</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Settlement History</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; History &gt; Settlement History</Col>
+        <Col id="PARENT_CD">00158</Col>
+        <Col id="ROWNUM">56</Col>
+        <Col id="MENU_CD">00159</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Check History</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">accounting::check_history_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; History &gt; Check History</Col>
+        <Col id="PARENT_CD">00158</Col>
+        <Col id="ROWNUM">57</Col>
+        <Col id="MENU_CD">00160</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Details for GP</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Details for GP</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">58</Col>
+        <Col id="MENU_CD">00155</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Summary for GP</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">accounting::daily_summary.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Summary for GP</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">59</Col>
+        <Col id="MENU_CD">00136</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Accounting Cancellation</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">60</Col>
+        <Col id="MENU_CD">00181</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">PO Issuing</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation &gt; PO Issuing</Col>
+        <Col id="PARENT_CD">00181</Col>
+        <Col id="ROWNUM">61</Col>
+        <Col id="MENU_CD">00182</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Misc. Cost</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation &gt; Misc. Cost</Col>
+        <Col id="PARENT_CD">00181</Col>
+        <Col id="ROWNUM">62</Col>
+        <Col id="MENU_CD">00183</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">ROS</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation &gt; ROS</Col>
+        <Col id="PARENT_CD">00181</Col>
+        <Col id="ROWNUM">63</Col>
+        <Col id="MENU_CD">00184</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">COGS Adjustment</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation &gt; COGS Adjustment</Col>
+        <Col id="PARENT_CD">00181</Col>
+        <Col id="ROWNUM">64</Col>
+        <Col id="MENU_CD">00185</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/R Customer</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Accounting Cancellation &gt; A/R Customer</Col>
+        <Col id="PARENT_CD">00181</Col>
+        <Col id="ROWNUM">65</Col>
+        <Col id="MENU_CD">00209</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">HGR Store Credit</Col>
+        <Col id="SORT_CD">12</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; HGR Store Credit</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">66</Col>
+        <Col id="MENU_CD">00210</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Force PO to Req. COGS Adj.</Col>
+        <Col id="SORT_CD">13</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00003</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Accounting &gt; Force PO to Req. COGS Adj.</Col>
+        <Col id="PARENT_CD">00003</Col>
+        <Col id="ROWNUM">67</Col>
+        <Col id="MENU_CD">00245</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Sales</Col>
+        <Col id="SORT_CD">4</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Sales</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">68</Col>
+        <Col id="MENU_CD">00004</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Order</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">69</Col>
+        <Col id="MENU_CD">00091</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">New Order Entry</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; New Order Entry</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">70</Col>
+        <Col id="MENU_CD">00092</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Online Order</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">sales::onlineOrder_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Online Order</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">71</Col>
+        <Col id="MENU_CD">00093</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Existing Order</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Existing Order</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">72</Col>
+        <Col id="MENU_CD">00094</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Auction Order Printing</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Auction Order Printing</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">73</Col>
+        <Col id="MENU_CD">00253</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Cancel History</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Cancel History</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">74</Col>
+        <Col id="MENU_CD">00146</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Additional Settlement</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Additional Settlement</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">75</Col>
+        <Col id="MENU_CD">00125</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Cancel Settlement</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Order &gt; Cancel Settlement</Col>
+        <Col id="PARENT_CD">00091</Col>
+        <Col id="ROWNUM">76</Col>
+        <Col id="MENU_CD">00126</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Shipping</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Shipping</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">77</Col>
+        <Col id="MENU_CD">00096</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Complete Shipping</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Shipping &gt; Complete Shipping</Col>
+        <Col id="PARENT_CD">00096</Col>
+        <Col id="ROWNUM">78</Col>
+        <Col id="MENU_CD">00097</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Revert Status</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Shipping &gt; Revert Status</Col>
+        <Col id="PARENT_CD">00096</Col>
+        <Col id="ROWNUM">79</Col>
+        <Col id="MENU_CD">00101</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Shipping Company</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Shipping &gt; Shipping Company</Col>
+        <Col id="PARENT_CD">00096</Col>
+        <Col id="ROWNUM">80</Col>
+        <Col id="MENU_CD">00148</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Return</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Return</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">81</Col>
+        <Col id="MENU_CD">00098</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">New Return Entry</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Return &gt; New Return Entry</Col>
+        <Col id="PARENT_CD">00098</Col>
+        <Col id="ROWNUM">82</Col>
+        <Col id="MENU_CD">00099</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Complete Return</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Return &gt; Complete Return</Col>
+        <Col id="PARENT_CD">00098</Col>
+        <Col id="ROWNUM">83</Col>
+        <Col id="MENU_CD">00100</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Return History</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Return &gt; Return History</Col>
+        <Col id="PARENT_CD">00098</Col>
+        <Col id="ROWNUM">84</Col>
+        <Col id="MENU_CD">00102</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Scrap</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Scrap</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">85</Col>
+        <Col id="MENU_CD">00139</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">New Order Entry</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Scrap &gt; New Order Entry</Col>
+        <Col id="PARENT_CD">00139</Col>
+        <Col id="ROWNUM">86</Col>
+        <Col id="MENU_CD">00140</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Scrap Order</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Scrap &gt; Scrap Order</Col>
+        <Col id="PARENT_CD">00139</Col>
+        <Col id="ROWNUM">87</Col>
+        <Col id="MENU_CD">00141</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">eBay</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; eBay</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">88</Col>
+        <Col id="MENU_CD">00178</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Manual Order Entry</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; eBay &gt; Manual Order Entry</Col>
+        <Col id="PARENT_CD">00178</Col>
+        <Col id="ROWNUM">89</Col>
+        <Col id="MENU_CD">00179</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Store Status &amp; Adj.</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; eBay &gt; Store Status &amp; Adj.</Col>
+        <Col id="PARENT_CD">00178</Col>
+        <Col id="ROWNUM">90</Col>
+        <Col id="MENU_CD">00180</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Q&amp;A</Col>
+        <Col id="SORT_CD">12</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Q&amp;A</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">91</Col>
+        <Col id="MENU_CD">00090</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Inquiry</Col>
+        <Col id="SORT_CD">14</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Inquiry</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">92</Col>
+        <Col id="MENU_CD">00122</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Name Your Price</Col>
+        <Col id="SORT_CD">15</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Name Your Price</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">93</Col>
+        <Col id="MENU_CD">00121</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Wish List</Col>
+        <Col id="SORT_CD">16</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00004</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Sales &gt; Wish List</Col>
+        <Col id="PARENT_CD">00004</Col>
+        <Col id="ROWNUM">94</Col>
+        <Col id="MENU_CD">00215</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">VCRM</Col>
+        <Col id="SORT_CD">5</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; VCRM</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">95</Col>
+        <Col id="MENU_CD">00005</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Vendor</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">vcrm::vendor_manager_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; Vendor</Col>
+        <Col id="PARENT_CD">00005</Col>
+        <Col id="ROWNUM">96</Col>
+        <Col id="MENU_CD">00018</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Assign Vendor</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; Assign Vendor</Col>
+        <Col id="PARENT_CD">00005</Col>
+        <Col id="ROWNUM">97</Col>
+        <Col id="MENU_CD">00019</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">My VRM</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM</Col>
+        <Col id="PARENT_CD">00005</Col>
+        <Col id="ROWNUM">98</Col>
+        <Col id="MENU_CD">00020</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">My Vendor</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM &gt; My Vendor</Col>
+        <Col id="PARENT_CD">00020</Col>
+        <Col id="ROWNUM">99</Col>
+        <Col id="MENU_CD">00021</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">To-do List</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM &gt; To-do List</Col>
+        <Col id="PARENT_CD">00020</Col>
+        <Col id="ROWNUM">100</Col>
+        <Col id="MENU_CD">00074</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Negotiation To-do List</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM &gt; Negotiation To-do List</Col>
+        <Col id="PARENT_CD">00020</Col>
+        <Col id="ROWNUM">101</Col>
+        <Col id="MENU_CD">00075</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Assign Request</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM &gt; Assign Request</Col>
+        <Col id="PARENT_CD">00020</Col>
+        <Col id="ROWNUM">102</Col>
+        <Col id="MENU_CD">00127</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Contact Activity</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My VRM &gt; Contact Activity</Col>
+        <Col id="PARENT_CD">00020</Col>
+        <Col id="ROWNUM">103</Col>
+        <Col id="MENU_CD">00022</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Customer</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; Customer</Col>
+        <Col id="PARENT_CD">00005</Col>
+        <Col id="ROWNUM">104</Col>
+        <Col id="MENU_CD">00025</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">My CRM</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00005</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; VCRM &gt; My CRM</Col>
+        <Col id="PARENT_CD">00005</Col>
+        <Col id="ROWNUM">105</Col>
+        <Col id="MENU_CD">00026</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Tracking</Col>
+        <Col id="SORT_CD">6</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Tracking</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">106</Col>
+        <Col id="MENU_CD">00006</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Purchase</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">107</Col>
+        <Col id="MENU_CD">00169</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">PO Buyer</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; PO Buyer</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">108</Col>
+        <Col id="MENU_CD">00170</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-01 Sales Det w/Pic</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">tracking::buyer_sold_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-01 Sales Det w/Pic</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">109</Col>
+        <Col id="MENU_CD">00195</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-05-1200 Act Det</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">tracking::inventory_cost_01.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-05-1200 Act Det</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">110</Col>
+        <Col id="MENU_CD">00200</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-05-1200 Act Sum</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-05-1200 Act Sum</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">111</Col>
+        <Col id="MENU_CD">00201</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-05-4000 Act Det</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-05-4000 Act Det</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">112</Col>
+        <Col id="MENU_CD">00198</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-05-4100 Act Det</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-05-4100 Act Det</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">113</Col>
+        <Col id="MENU_CD">00197</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-05-4000/4100 Act Sum</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-05-4000/4100 Act Sum</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">114</Col>
+        <Col id="MENU_CD">00199</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-02-Consigned Itemized Master</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-02-Consigned Itemized Master</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">115</Col>
+        <Col id="MENU_CD">00206</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-02 Consigned IOH Master</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-02 Consigned IOH Master</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">116</Col>
+        <Col id="MENU_CD">00205</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-02 Ret IOH Buyer</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-02 Ret IOH Buyer</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">117</Col>
+        <Col id="MENU_CD">00213</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">03-02 itemized Buyer</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; 03-02 itemized Buyer</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">118</Col>
+        <Col id="MENU_CD">00214</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Buyer Report Card</Col>
+        <Col id="SORT_CD">12</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; Buyer Report Card</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">119</Col>
+        <Col id="MENU_CD">00216</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Closed PO Report Card</Col>
+        <Col id="SORT_CD">13</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; Closed PO Report Card</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">120</Col>
+        <Col id="MENU_CD">00217</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Open PO Report Card</Col>
+        <Col id="SORT_CD">14</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; Open PO Report Card</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">121</Col>
+        <Col id="MENU_CD">00231</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Dead Deals</Col>
+        <Col id="SORT_CD">15</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; Dead Deals</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">122</Col>
+        <Col id="MENU_CD">00234</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Vendor Contact Master</Col>
+        <Col id="SORT_CD">16</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Purchase &gt; Vendor Contact Master</Col>
+        <Col id="PARENT_CD">00169</Col>
+        <Col id="ROWNUM">123</Col>
+        <Col id="MENU_CD">00233</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Inventory</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Inventory</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">124</Col>
+        <Col id="MENU_CD">00187</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Scrap In Stock</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Inventory &gt; Scrap In Stock</Col>
+        <Col id="PARENT_CD">00187</Col>
+        <Col id="ROWNUM">125</Col>
+        <Col id="MENU_CD">00144</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Accounting</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">126</Col>
+        <Col id="MENU_CD">00188</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">A/R Customer Status</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; A/R Customer Status</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">127</Col>
+        <Col id="MENU_CD">00172</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Taxable Sales</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; Taxable Sales</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">128</Col>
+        <Col id="MENU_CD">00174</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">05-02 Retail IOH Master</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; 05-02 Retail IOH Master</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">129</Col>
+        <Col id="MENU_CD">00196</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">05-05 Cash Receipts</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; 05-05 Cash Receipts</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">130</Col>
+        <Col id="MENU_CD">00202</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">05-05 a/p con pending</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; 05-05 a/p con pending</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">131</Col>
+        <Col id="MENU_CD">00211</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">05-05 a/p con LT 45</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; 05-05 a/p con LT 45</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">132</Col>
+        <Col id="MENU_CD">00212</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Tax Exempt Status</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Accounting &gt; Tax Exempt Status</Col>
+        <Col id="PARENT_CD">00188</Col>
+        <Col id="ROWNUM">133</Col>
+        <Col id="MENU_CD">00243</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Sales</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">134</Col>
+        <Col id="MENU_CD">00171</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Sales Type</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; Sales Type</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">135</Col>
+        <Col id="MENU_CD">00173</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Scrap Sold</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; Scrap Sold</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">136</Col>
+        <Col id="MENU_CD">00145</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">01-05-Chan/Lin Det</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; 01-05-Chan/Lin Det</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">137</Col>
+        <Col id="MENU_CD">00203</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">01-05-Chan/Lin Sum</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; 01-05-Chan/Lin Sum</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">138</Col>
+        <Col id="MENU_CD">00204</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">01-05 Discount</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; 01-05 Discount</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">139</Col>
+        <Col id="MENU_CD">00227</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">01-05 Sales Staff Discount</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; 01-05 Sales Staff Discount</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">140</Col>
+        <Col id="MENU_CD">00228</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">01-05 Customer Discount</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; 01-05 Customer Discount</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">141</Col>
+        <Col id="MENU_CD">00229</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Aged Sales Report</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; Aged Sales Report</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">142</Col>
+        <Col id="MENU_CD">00230</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Old Customer</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Sales &gt; Old Customer</Col>
+        <Col id="PARENT_CD">00171</Col>
+        <Col id="ROWNUM">143</Col>
+        <Col id="MENU_CD">00235</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">System</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; System</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">144</Col>
+        <Col id="MENU_CD">00190</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">HR</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; HR</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">145</Col>
+        <Col id="MENU_CD">00191</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Messaging</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Messaging</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">146</Col>
+        <Col id="MENU_CD">00192</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">E-Commerce</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; E-Commerce</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">147</Col>
+        <Col id="MENU_CD">00194</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">E-Commerce Analyzer</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; E-Commerce &gt; E-Commerce Analyzer</Col>
+        <Col id="PARENT_CD">00194</Col>
+        <Col id="ROWNUM">148</Col>
+        <Col id="MENU_CD">00154</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Other</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other</Col>
+        <Col id="PARENT_CD">00006</Col>
+        <Col id="ROWNUM">149</Col>
+        <Col id="MENU_CD">00236</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Third Party UL</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Third Party UL</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">150</Col>
+        <Col id="MENU_CD">00237</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Vendor Contact Master</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Vendor Contact Master</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">151</Col>
+        <Col id="MENU_CD">00241</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Email Sign Up - Web</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Email Sign Up - Web</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">152</Col>
+        <Col id="MENU_CD">00238</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Marketing Report</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Marketing Report</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">153</Col>
+        <Col id="MENU_CD">00239</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Member and Customer Email</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Member and Customer Email</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">154</Col>
+        <Col id="MENU_CD">00240</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Inspection Report</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_NOTE">This report finds all inspections that have changed to Offer, Dead or PO within the given dates </Col>
+        <Col id="MENU_GRP">00006</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Tracking &gt; Other &gt; Inspection Report</Col>
+        <Col id="PARENT_CD">00236</Col>
+        <Col id="ROWNUM">155</Col>
+        <Col id="MENU_CD">00242</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">System</Col>
+        <Col id="SORT_CD">7</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; System</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">156</Col>
+        <Col id="MENU_CD">00007</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Menu</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::menu_treemenu_modify.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Menu</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">157</Col>
+        <Col id="MENU_CD">00050</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Access</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::access_manager_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Access</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">158</Col>
+        <Col id="MENU_CD">00051</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Assign Access-Menu</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::access_menu_manager_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Assign Access-Menu</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">159</Col>
+        <Col id="MENU_CD">00052</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Assign Access-User</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::user_access_manager_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Assign Access-User</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">160</Col>
+        <Col id="MENU_CD">00053</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Item Category</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::category_main.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Item Category</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">161</Col>
+        <Col id="MENU_CD">00054</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Aisle &amp; Bay Setting</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Aisle &amp; Bay Setting</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">162</Col>
+        <Col id="MENU_CD">00142</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Range</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">system::aisle_bay_range.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Aisle &amp; Bay Setting &gt; Range</Col>
+        <Col id="PARENT_CD">00142</Col>
+        <Col id="ROWNUM">163</Col>
+        <Col id="MENU_CD">00149</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Aisle</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">system::aisle_set.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Aisle &amp; Bay Setting &gt; Aisle</Col>
+        <Col id="PARENT_CD">00142</Col>
+        <Col id="ROWNUM">164</Col>
+        <Col id="MENU_CD">00150</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Bay</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">system::bay_set.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Aisle &amp; Bay Setting &gt; Bay</Col>
+        <Col id="PARENT_CD">00142</Col>
+        <Col id="ROWNUM">165</Col>
+        <Col id="MENU_CD">00151</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Print Aisle &amp; Bay</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_LINK">system::aisle_bay_print.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Aisle &amp; Bay Setting &gt; Print Aisle &amp; Bay</Col>
+        <Col id="PARENT_CD">00142</Col>
+        <Col id="ROWNUM">166</Col>
+        <Col id="MENU_CD">00153</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Common Code</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::common_code_manager_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Common Code</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">167</Col>
+        <Col id="MENU_CD">00058</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Auction Data Entry</Col>
+        <Col id="SORT_CD">08</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::auction_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Auction Data Entry</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">168</Col>
+        <Col id="MENU_CD">00060</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Markdown Rule</Col>
+        <Col id="SORT_CD">09</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::markdown_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Markdown Rule</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">169</Col>
+        <Col id="MENU_CD">00059</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Vendor Access</Col>
+        <Col id="SORT_CD">10</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::consignment_company_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Vendor Access</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">170</Col>
+        <Col id="MENU_CD">00104</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Misc. Data Setting</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::config_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Misc. Data Setting</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">171</Col>
+        <Col id="MENU_CD">00128</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Scrap Setting</Col>
+        <Col id="SORT_CD">11</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::scrap_material_list.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Scrap Setting</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">172</Col>
+        <Col id="MENU_CD">00138</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Tax</Col>
+        <Col id="SORT_CD">12</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::state_tax.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Tax</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">173</Col>
+        <Col id="MENU_CD">00157</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Message</Col>
+        <Col id="SORT_CD">8</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00007</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">system::system_message.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; System &gt; Message</Col>
+        <Col id="PARENT_CD">00007</Col>
+        <Col id="ROWNUM">174</Col>
+        <Col id="MENU_CD">00254</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">HR</Col>
+        <Col id="SORT_CD">8</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; HR</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">175</Col>
+        <Col id="MENU_CD">00008</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Location</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Location</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">176</Col>
+        <Col id="MENU_CD">00027</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Department</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Department</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">177</Col>
+        <Col id="MENU_CD">00028</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Position</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Position</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">178</Col>
+        <Col id="MENU_CD">00029</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Task</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Task</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">179</Col>
+        <Col id="MENU_CD">00073</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Employee</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Employee</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">180</Col>
+        <Col id="MENU_CD">00030</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Assign Responder</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Assign Responder</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">181</Col>
+        <Col id="MENU_CD">00103</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Job Openings</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00008</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; HR &gt; Job Openings</Col>
+        <Col id="PARENT_CD">00008</Col>
+        <Col id="ROWNUM">182</Col>
+        <Col id="MENU_CD">00031</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Messaging</Col>
+        <Col id="SORT_CD">9</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Messaging</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">183</Col>
+        <Col id="MENU_CD">00009</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">System E-mail</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; System E-mail</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">184</Col>
+        <Col id="MENU_CD">00041</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Template</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; System E-mail &gt; Template</Col>
+        <Col id="PARENT_CD">00041</Col>
+        <Col id="ROWNUM">185</Col>
+        <Col id="MENU_CD">00042</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">History</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; System E-mail &gt; History</Col>
+        <Col id="PARENT_CD">00041</Col>
+        <Col id="ROWNUM">186</Col>
+        <Col id="MENU_CD">00044</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Announcement</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Announcement</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">187</Col>
+        <Col id="MENU_CD">00048</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">FAQ</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; FAQ</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">188</Col>
+        <Col id="MENU_CD">00088</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">HGR in the Spotlight</Col>
+        <Col id="SORT_CD">05</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; HGR in the Spotlight</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">189</Col>
+        <Col id="MENU_CD">00089</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Survey</Col>
+        <Col id="SORT_CD">06</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Survey</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">190</Col>
+        <Col id="MENU_CD">00049</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Title</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Survey &gt; Title</Col>
+        <Col id="PARENT_CD">00049</Col>
+        <Col id="ROWNUM">191</Col>
+        <Col id="MENU_CD">00166</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Question</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Survey &gt; Question</Col>
+        <Col id="PARENT_CD">00049</Col>
+        <Col id="ROWNUM">192</Col>
+        <Col id="MENU_CD">00167</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Answer</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">3</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Survey &gt; Answer</Col>
+        <Col id="PARENT_CD">00049</Col>
+        <Col id="ROWNUM">193</Col>
+        <Col id="MENU_CD">00168</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Download &amp; Info.</Col>
+        <Col id="SORT_CD">07</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Download &amp; Info.</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">194</Col>
+        <Col id="MENU_CD">00156</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Error Report</Col>
+        <Col id="SORT_CD">15</Col>
+        <Col id="MENU_AUTH">1</Col>
+        <Col id="MENU_GRP">00009</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Messaging &gt; Error Report</Col>
+        <Col id="PARENT_CD">00009</Col>
+        <Col id="ROWNUM">195</Col>
+        <Col id="MENU_CD">00161</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">Sample</Col>
+        <Col id="SORT_CD">99</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_NOTE">Nexacro Sample</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_NAVI">&gt; Sample</Col>
+        <Col id="PARENT_CD">00000</Col>
+        <Col id="ROWNUM">196</Col>
+        <Col id="MENU_CD">00246</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_01</Col>
+        <Col id="SORT_CD">01</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_01.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_01</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">197</Col>
+        <Col id="MENU_CD">00247</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_02</Col>
+        <Col id="SORT_CD">02</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_02.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_02</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">198</Col>
+        <Col id="MENU_CD">00248</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_03</Col>
+        <Col id="SORT_CD">03</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_03.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_03</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">199</Col>
+        <Col id="MENU_CD">00249</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_04</Col>
+        <Col id="SORT_CD">04</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_04.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_04</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">200</Col>
+        <Col id="MENU_CD">00250</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_05</Col>
+        <Col id="SORT_CD">5</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_05.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_05</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">201</Col>
+        <Col id="MENU_CD">00252</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_06</Col>
+        <Col id="SORT_CD">6</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_08.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_06</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">202</Col>
+        <Col id="MENU_CD">00251</Col>
+      </Row>
+      <Row>
+        <Col id="USE_YN">1</Col>
+        <Col id="MENU_NM">sample_07</Col>
+        <Col id="SORT_CD">7</Col>
+        <Col id="MENU_AUTH">2</Col>
+        <Col id="MENU_NOTE">1234</Col>
+        <Col id="MENU_GRP">00246</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_LINK">sample::hgrSample_07.xfdl</Col>
+        <Col id="MENU_NAVI">&gt; Sample &gt; sample_07</Col>
+        <Col id="PARENT_CD">00246</Col>
+        <Col id="ROWNUM">203</Col>
+        <Col id="MENU_CD">00255</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_openMenu">
+    <ColumnInfo>
+      <Column id="WIN_ID" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="TITLE" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_myMenu">
+    <ColumnInfo>
+      <Column id="USER_ID" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="MENU_NAME" type="STRING" size="256"/>
+      <Column id="SORT" type="STRING" size="256"/>
+      <Column id="CHK" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="USER_ID">test</Col>
+        <Col id="MENU_ID">1002</Col>
+        <Col id="MENU_NAME">사용자 등록관리</Col>
+        <Col id="SORT">1</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_viewType" initval="login"/>
+  <Dataset id="gds_userInfo">
+    <ColumnInfo>
+      <Column id="ORIGINAL_NM" type="string" size="32"/>
+      <Column id="SERIALVERSIONUID" type="bigdecimal" size="16"/>
+      <Column id="PROFILE_NICKNAME" type="string" size="32"/>
+      <Column id="INSERT_ID" type="string" size="32"/>
+      <Column id="USER_FAX" type="string" size="32"/>
+      <Column id="USER_EMAIL" type="string" size="32"/>
+      <Column id="MIDDLE_NM" type="string" size="32"/>
+      <Column id="SUB_DEPT_NM" type="string" size="32"/>
+      <Column id="JOB_NM" type="string" size="32"/>
+      <Column id="PROFILE_FAVORITE" type="string" size="32"/>
+      <Column id="PROFILE_PERFECT_JOB" type="string" size="32"/>
+      <Column id="UPDATE_ID" type="string" size="32"/>
+      <Column id="FIRST_NM" type="string" size="32"/>
+      <Column id="JOB_TITLE" type="string" size="32"/>
+      <Column id="USER_STATE" type="string" size="32"/>
+      <Column id="USER_IDS" type="string" size="32"/>
+      <Column id="DEPT_CD" type="string" size="32"/>
+      <Column id="USER_NM" type="string" size="32"/>
+      <Column id="BIRTH_DT" type="string" size="32"/>
+      <Column id="LOC_CD" type="string" size="32"/>
+      <Column id="PROFILE_BEST" type="string" size="32"/>
+      <Column id="IMAGE_PATH" type="string" size="32"/>
+      <Column id="USER_ZIPCODE" type="string" size="32"/>
+      <Column id="UPDATE_DT" type="datetime" size="17"/>
+      <Column id="RETIRE_DT" type="string" size="32"/>
+      <Column id="JOIN_DT" type="string" size="32"/>
+      <Column id="EXTRA_TEL" type="string" size="32"/>
+      <Column id="SUB_DEPT_CD" type="string" size="32"/>
+      <Column id="FILE_SEQ" type="string" size="32"/>
+      <Column id="USER_GB" type="string" size="32"/>
+      <Column id="USE_YN" type="string" size="32"/>
+      <Column id="LAST_NM" type="string" size="32"/>
+      <Column id="LOC_NM" type="string" size="32"/>
+      <Column id="USER_ID" type="string" size="32"/>
+      <Column id="USER_TEL" type="string" size="32"/>
+      <Column id="DEPT_NM" type="string" size="32"/>
+      <Column id="USER_CITY" type="string" size="32"/>
+      <Column id="PROFILE_NOT_WORK" type="string" size="32"/>
+      <Column id="USER_SEX" type="string" size="32"/>
+      <Column id="USER_PWD" type="string" size="32"/>
+      <Column id="INSERT_DT" type="datetime" size="17"/>
+      <Column id="PROFILE_BIGGEST" type="string" size="32"/>
+      <Column id="USER_CP" type="string" size="32"/>
+      <Column id="JOB_CD" type="string" size="32"/>
+      <Column id="ORDER_BY" type="string" size="32"/>
+      <Column id="USER_ADDR2" type="string" size="32"/>
+      <Column id="USER_ADDR1" type="string" size="32"/>
+      <Column id="TITLE" type="string" size="32"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="SERIALVERSIONUID">1657431909881492135</Col>
+        <Col id="INSERT_ID">hgr</Col>
+        <Col id="USER_EMAIL">yescomm@hgrinc.com</Col>
+        <Col id="UPDATE_ID">yescomm</Col>
+        <Col id="FIRST_NM">YES COMMUNICATION</Col>
+        <Col id="DEPT_CD">00006</Col>
+        <Col id="BIRTH_DT">20100802</Col>
+        <Col id="LOC_CD">01</Col>
+        <Col id="USER_ZIPCODE">44117</Col>
+        <Col id="UPDATE_DT">20110601050941000</Col>
+        <Col id="JOIN_DT">20100802</Col>
+        <Col id="SUB_DEPT_CD">00007</Col>
+        <Col id="USER_GB">99</Col>
+        <Col id="USE_YN">1</Col>
+        <Col id="LAST_NM">INC</Col>
+        <Col id="USER_ID">yescomm</Col>
+        <Col id="USER_TEL">1-866-447-7117</Col>
+        <Col id="USER_SEX">M</Col>
+        <Col id="USER_PWD">1</Col>
+        <Col id="INSERT_DT">20100802020558000</Col>
+        <Col id="USER_CP">1</Col>
+        <Col id="JOB_CD">00002</Col>
+        <Col id="USER_ADDR1">20001 Euclid Ave.</Col>
+        <Col id="TITLE">Administrator Super Admin</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_menuType" initval="default"/>
+  <Dataset id="gds_menuSet" useclientlayout="true">
+    <ColumnInfo>
+      <Column id="SET_SEQ" type="BIGDECIMAL" size="256"/>
+      <Column id="SET_NM" type="STRING" size="256"/>
+      <Column id="MENU_ID_SET" type="STRING" size="256"/>
+      <Column id="MENU_NM_SET" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="SET_SEQ">1</Col>
+        <Col id="SET_NM">메뉴2</Col>
+        <Col id="MENU_ID_SET">84130</Col>
+        <Col id="MENU_NM_SET">템플릿1</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">3</Col>
+        <Col id="SET_NM">에유</Col>
+        <Col id="MENU_ID_SET">84130</Col>
+        <Col id="MENU_NM_SET">템플릿1</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">5</Col>
+        <Col id="SET_NM">기초공사재료신청</Col>
+        <Col id="MENU_ID_SET">84130,84132,84131,84133</Col>
+        <Col id="MENU_NM_SET">템플릿1,템플릿2,템플릿3,템플릿4</Col>
+      </Row>
+      <Row>
+        <Col id="SET_SEQ">6</Col>
+        <Col id="SET_NM">메뉴3</Col>
+        <Col id="MENU_ID_SET">83248,83247,83383,84123,84125,84128,84130</Col>
+        <Col id="MENU_NM_SET">고객불만목록,인증문서,고객불만진행조회,외주출하지시내역,외주상차지시편성,파일럿,템플릿1</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_locale" initval="KO"/>
+  <Dataset id="gds_comCode">
+    <ColumnInfo>
+      <Column id="TYPE_CD" type="string" size="255"/>
+      <Column id="CD_TYPE_NAME" type="string" size="255"/>
+      <Column id="CD_VAL" type="string" size="255"/>
+      <Column id="CD_NM" type="string" size="255"/>
+      <Column id="CLASS1_CD" type="string" size="255"/>
+      <Column id="CLASS1_NAME1" type="string" size="255"/>
+      <Column id="CLASS2_CD" type="string" size="255"/>
+      <Column id="CLASS2_NAME1" type="string" size="255"/>
+      <Column id="CLASS3_CD" type="string" size="255"/>
+      <Column id="CLASS3_NAME1" type="string" size="255"/>
+      <Column id="DEL_YN" type="string" size="255"/>
+      <Column id="SORT_SEQ" type="string" size="255"/>
+      <Column id="DS_NAME" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Dataset id="gds_comCodeParam">
+    <ColumnInfo>
+      <Column id="TYPE_CD" type="string" size="255"/>
+      <Column id="CLASS1_CD" type="string" size="255"/>
+      <Column id="CLASS2_CD" type="string" size="255"/>
+      <Column id="CLASS3_CD" type="string" size="255"/>
+      <Column id="DS_NAME" type="STRING" size="256"/>
+    </ColumnInfo>
+  </Dataset>
+  <Variable id="gv_formUrl"/>
+  <Variable id="gv_frameWidth" initval="1280"/>
+  <Variable id="gv_frameHeight" initval="800"/>
+  <Variable id="gv_initWidth" initval="1264"/>
+  <Variable id="gv_initHeight" initval="788"/>
+  <Dataset id="gds_menu0">
+    <ColumnInfo>
+      <Column id="_chk" type="STRING" size="256"/>
+      <Column id="MENU_ID" type="STRING" size="256"/>
+      <Column id="PAGE_ID" type="STRING" size="256"/>
+      <Column id="MENU_NAME" type="STRING" size="256"/>
+      <Column id="MENU_LEVEL" type="STRING" size="256"/>
+      <Column id="MENU_GRP" type="STRING" size="256"/>
+      <Column id="MENU_TOP" type="STRING" size="256"/>
+      <Column id="MENU_SEQ" type="STRING" size="256"/>
+      <Column id="MENU_OPTP" type="STRING" size="256"/>
+      <Column id="MENU_ARGS" type="STRING" size="256"/>
+      <Column id="MENU_STAT" type="STRING" size="256"/>
+      <Column id="MENU_DESC" type="STRING" size="256"/>
+      <Column id="CREATE_USER" type="STRING" size="256"/>
+      <Column id="CREATE_DT" type="STRING" size="256"/>
+      <Column id="UPDATE_USER" type="STRING" size="256"/>
+      <Column id="UPDATE_DT" type="STRING" size="256"/>
+      <Column id="PAGE_URL" type="STRING" size="256"/>
+      <Column id="PAGE_TYPE" type="STRING" size="256"/>
+      <Column id="PAGE_EXTP" type="STRING" size="256"/>
+      <Column id="MENU_AUTH" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">사용자관리</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">0</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1002</Col>
+        <Col id="PAGE_ID">TEMPLATE004</Col>
+        <Col id="MENU_NAME">사용자 등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">1</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191340000</Col>
+        <Col id="PAGE_URL">template::menu1_01.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1004</Col>
+        <Col id="PAGE_ID">ADMSAMP002</Col>
+        <Col id="MENU_NAME">사용자 그룹관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">2</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906144301000</Col>
+        <Col id="PAGE_URL">template::menu1_02.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1003</Col>
+        <Col id="PAGE_ID">ADMSAMP009</Col>
+        <Col id="MENU_NAME">그룹별 사용자관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">3</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906134400000</Col>
+        <Col id="PAGE_URL">template::menu1_03.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">1005</Col>
+        <Col id="PAGE_ID">ADMSAMP003</Col>
+        <Col id="MENU_NAME">그룹별 메뉴관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">1000</Col>
+        <Col id="MENU_TOP">1000</Col>
+        <Col id="MENU_SEQ">4</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT">20120906144249000</Col>
+        <Col id="PAGE_URL">template::menu1_04.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">기초관리</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">5</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2001</Col>
+        <Col id="PAGE_ID">ADMSAMP004</Col>
+        <Col id="MENU_NAME">공통코드관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">6</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906182817000</Col>
+        <Col id="PAGE_URL">admin::CodeMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2003</Col>
+        <Col id="PAGE_ID">ADMSAMP005</Col>
+        <Col id="MENU_NAME">메뉴등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">7</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120831181214000</Col>
+        <Col id="PAGE_URL">admin::MenuMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2005</Col>
+        <Col id="PAGE_ID">ADMSAMP008</Col>
+        <Col id="MENU_NAME">화면등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">8</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">[Undefined]</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">admin::PageMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">2004</Col>
+        <Col id="PAGE_ID">ADMSAMP006</Col>
+        <Col id="MENU_NAME">그룹등록관리</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">2000</Col>
+        <Col id="MENU_TOP">2000</Col>
+        <Col id="MENU_SEQ">9</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905201049000</Col>
+        <Col id="PAGE_URL">admin::GroupMgmt.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">Template</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP"/>
+        <Col id="MENU_SEQ">12</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184625000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60001</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">템플릿</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">13</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905182055000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6001</Col>
+        <Col id="PAGE_ID">TEMPLATE001</Col>
+        <Col id="MENU_NAME">GRID BASIC</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">14</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191250000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE001.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6002</Col>
+        <Col id="PAGE_ID">TEMPLATE002</Col>
+        <Col id="MENU_NAME">GRID FORM</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">15</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE002.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6003</Col>
+        <Col id="PAGE_ID">TEMPLATE003</Col>
+        <Col id="MENU_NAME">GRID POPUP</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">16</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE003.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6004</Col>
+        <Col id="PAGE_ID">TEMPLATE004</Col>
+        <Col id="MENU_NAME">GRID TAB</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">17</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6005</Col>
+        <Col id="PAGE_ID">TEMPLATE006</Col>
+        <Col id="MENU_NAME">SHUTTLE</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">18</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE006.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6006</Col>
+        <Col id="PAGE_ID">TEMPLATE007</Col>
+        <Col id="MENU_NAME">GRID SUBGRID</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">19</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE007.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6007</Col>
+        <Col id="PAGE_ID">TEMPLATE008</Col>
+        <Col id="MENU_NAME">TREE SUBGRID</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">20</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE008.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6008</Col>
+        <Col id="PAGE_ID">TEMPLATE009</Col>
+        <Col id="MENU_NAME">TREE FORM</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">21</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE009.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6009</Col>
+        <Col id="PAGE_ID">TEMPLATE010</Col>
+        <Col id="MENU_NAME">GRID FILTERING</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">22</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE010.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6010</Col>
+        <Col id="PAGE_ID">TEMPLATE011</Col>
+        <Col id="MENU_NAME">GRID MONTHLY CALENDAR</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">23</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE011.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6011</Col>
+        <Col id="PAGE_ID">TEMPLATE012</Col>
+        <Col id="MENU_NAME">GRID WEEKLY CALENDAR</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">24</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE012.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6012</Col>
+        <Col id="PAGE_ID">TEMPLATE013</Col>
+        <Col id="MENU_NAME">FILE ATTACHMENT</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">25</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE013.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6013</Col>
+        <Col id="PAGE_ID">TEMPLATE014</Col>
+        <Col id="MENU_NAME">GRID SUMMARY</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">26</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE014.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">6014</Col>
+        <Col id="PAGE_ID">TEMPLATE101</Col>
+        <Col id="MENU_NAME">PAGING</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60001</Col>
+        <Col id="MENU_SEQ">27</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120831181214000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905182055000</Col>
+        <Col id="PAGE_URL">template::TEMPLATE101.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60002</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">가이드</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">28</Col>
+        <Col id="MENU_OPTP"/>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191224000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600011</Col>
+        <Col id="PAGE_ID">guide1</Col>
+        <Col id="MENU_NAME">컴포넌트 Static, Edit, MaskEdit, TextArea</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">29</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905191224000</Col>
+        <Col id="PAGE_URL">Component::guide1.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600012</Col>
+        <Col id="PAGE_ID">guide2</Col>
+        <Col id="MENU_NAME">컴포넌트 Spin, Button, ListBox, Combo</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">30</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide2.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600013</Col>
+        <Col id="PAGE_ID">guide3</Col>
+        <Col id="MENU_NAME">컴포넌트 Radio, CheckBox, Calendar, ProgressBar</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">31</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide3.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600014</Col>
+        <Col id="PAGE_ID">guide4</Col>
+        <Col id="MENU_NAME">컴포넌트 GropupBox, ImageViewer</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">32</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide4.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600015</Col>
+        <Col id="PAGE_ID">guide5</Col>
+        <Col id="MENU_NAME">컴포넌트 PopupMenu, Menu</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">33</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184826000</Col>
+        <Col id="PAGE_URL">Component::guide5.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600017</Col>
+        <Col id="PAGE_ID">guide6</Col>
+        <Col id="MENU_NAME">컴포넌트 Alert, Confirm</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">34</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184826000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184834000</Col>
+        <Col id="PAGE_URL">Component::guide6.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600016</Col>
+        <Col id="PAGE_ID">guide7</Col>
+        <Col id="MENU_NAME">컴포넌트 Tab1</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">35</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905184351000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905184834000</Col>
+        <Col id="PAGE_URL">Component::guide7.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600018</Col>
+        <Col id="PAGE_ID">guide8</Col>
+        <Col id="MENU_NAME">컴포넌트 Tab2</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">36</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide8.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600019</Col>
+        <Col id="PAGE_ID">guide9</Col>
+        <Col id="MENU_NAME">컴포넌트 Grid1</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">37</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide9.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600020</Col>
+        <Col id="PAGE_ID">guide10</Col>
+        <Col id="MENU_NAME">컴포넌트 Grid2</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">38</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide10.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600021</Col>
+        <Col id="PAGE_ID">guide11</Col>
+        <Col id="MENU_NAME">컴포넌트 ExcelExport</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">39</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide11.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600022</Col>
+        <Col id="PAGE_ID">guide12</Col>
+        <Col id="MENU_NAME">컴포넌트 FileUpload</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60002</Col>
+        <Col id="MENU_SEQ">40</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120905190645000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120905190645000</Col>
+        <Col id="PAGE_URL">Component::guide12.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">60003</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">화면패턴</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">6000</Col>
+        <Col id="MENU_SEQ">41</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL"/>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600031</Col>
+        <Col id="PAGE_ID">PATTERN001</Col>
+        <Col id="MENU_NAME">Detail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">42</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_01.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600032</Col>
+        <Col id="PAGE_ID">PATTERN002</Col>
+        <Col id="MENU_NAME">MultiDetail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">43</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_02.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600033</Col>
+        <Col id="PAGE_ID">PATTERN003</Col>
+        <Col id="MENU_NAME">List/Detail</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">44</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_03.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600034</Col>
+        <Col id="PAGE_ID">PATTERN004</Col>
+        <Col id="MENU_NAME">Master/Detail(1:n)</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">45</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_04.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600035</Col>
+        <Col id="PAGE_ID">PATTERN005</Col>
+        <Col id="MENU_NAME">Master/Detail(n:n)</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">46</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_05.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600036</Col>
+        <Col id="PAGE_ID">PATTERN006</Col>
+        <Col id="MENU_NAME">TAB</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">47</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_06.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">600037</Col>
+        <Col id="PAGE_ID">PATTERN007</Col>
+        <Col id="MENU_NAME">Shuttle</Col>
+        <Col id="MENU_LEVEL">2</Col>
+        <Col id="MENU_GRP">6000</Col>
+        <Col id="MENU_TOP">60003</Col>
+        <Col id="MENU_SEQ">48</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT">20120906110710000</Col>
+        <Col id="UPDATE_USER">test</Col>
+        <Col id="UPDATE_DT">20120906110749000</Col>
+        <Col id="PAGE_URL">pattern::Pattern_07.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH">1111</Col>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">7000</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">Sample</Col>
+        <Col id="MENU_LEVEL">0</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">[Undefined]</Col>
+        <Col id="MENU_SEQ">49</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">[Undefined]</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700011</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">웹접근성</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">51</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::Accessibility.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700012</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">엑셀 Import / Export</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">52</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER">test</Col>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::Excel.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700013</Col>
+        <Col id="PAGE_ID"/>
+        <Col id="MENU_NAME">파일 Upload / Download</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">53</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="CREATE_USER"/>
+        <Col id="CREATE_DT"/>
+        <Col id="UPDATE_USER"/>
+        <Col id="UPDATE_DT"/>
+        <Col id="PAGE_URL">sample::fileupload_download.xfdl</Col>
+        <Col id="PAGE_TYPE"/>
+        <Col id="PAGE_EXTP"/>
+        <Col id="MENU_AUTH"/>
+      </Row>
+      <Row>
+        <Col id="_chk"/>
+        <Col id="MENU_ID">700014</Col>
+        <Col id="MENU_NAME">조회테스트</Col>
+        <Col id="MENU_LEVEL">1</Col>
+        <Col id="MENU_GRP">7000</Col>
+        <Col id="MENU_TOP">7000</Col>
+        <Col id="MENU_SEQ">54</Col>
+        <Col id="MENU_OPTP">MAIN</Col>
+        <Col id="MENU_ARGS"/>
+        <Col id="MENU_STAT">VIEW</Col>
+        <Col id="MENU_DESC"/>
+        <Col id="PAGE_URL">sample::testSearch.xfdl</Col>
+        <Col id="PAGE_TYPE">MAIN</Col>
+        <Col id="PAGE_EXTP">FORM</Col>
+        <Col id="MENU_AUTH"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_pageInfo">
+    <ColumnInfo>
+      <Column id="PAGE_LINE" type="STRING" size="256"/>
+      <Column id="CURR_PAGE" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="PAGE_LINE"/>
+        <Col id="CURR_PAGE"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Dataset id="gds_one">
+    <ColumnInfo>
+      <Column id="Column0" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row/>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_menuAuth" initval="2"/>
+  <Dataset id="gds_message">
+    <ColumnInfo>
+      <Column id="MSG_CD" type="string" size="32"/>
+      <Column id="MSG_TYPE" type="string" size="32"/>
+      <Column id="MSG_NM" type="string" size="32"/>
+      <Column id="MSG_NOTE" type="string" size="32"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="MSG_CD">comm.select.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.list.select.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select from the list.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">success.complete</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} has been completed successfully.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.select.not.found</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">There is no data.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">start.date.input</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please enter start date.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.input.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please enter {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.select.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Please select {0}</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.validation.message</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">{0} is invalid.</Col>
+      </Row>
+      <Row>
+        <Col id="MSG_CD">comm.print.barcode</Col>
+        <Col id="MSG_TYPE">CO</Col>
+        <Col id="MSG_NM">Want to print bar codes?</Col>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_host" initval="http://localhost/"/>
+  <Variable id="gv_prjType" initval="false"/>
+   <Dataset id="gds_gridInfo">
+    <ColumnInfo>
+      <Column id="PAGE_URL" type="STRING" size="256"/>
+      <Column id="GRID_ID" type="STRING" size="256"/>
+      <Column id="GRID_FORMAT" type="STRING" size="256"/>
+    </ColumnInfo>
+    <Rows>
+      <Row>
+        <Col id="PAGE_URL"/>
+        <Col id="GRID_ID"/>
+        <Col id="GRID_FORMAT"/>
+      </Row>
+    </Rows>
+  </Dataset>
+  <Variable id="gv_curFormId"/>
+  <Variable id="gv_errormsg"/>
+  <Variable id="gv_debug" initval="N"/>
+</GlobalVariables>

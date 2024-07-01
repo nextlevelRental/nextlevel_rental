@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configSeries" classname="config_xaxis" left="0" top="0" width="320" height="1780" titletext="Series 설정" style="background:#d4d9dfff;" onload="configSeries_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="id" top="56" height="20" width="150" left="20"/>
+        <Edit id="edt_id" taborder="1" top="54" height="24" width="131" left="169" onsetfocus="common_onsetfocus" readonly="true"/>
+        <Static id="Static02" taborder="3" text="bindX" left="20" top="152" right="150" height="20"/>
+        <Static id="Static03" taborder="5" text="bindY" left="20" top="184" right="150" height="20"/>
+        <Static id="Static04" taborder="7" text="bindValue" left="20" top="216" right="150" height="20"/>
+        <Static id="Static06" taborder="11" text="title" left="20" top="250" right="150" height="20"/>
+        <Edit id="edt_title" taborder="12" top="248" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static07" taborder="13" text="tooltipText" left="20" top="312" right="150" height="20"/>
+        <Edit id="dt_tooltipText" taborder="14" top="310" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="st_name" taborder="22" text="Series" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="280"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static01" taborder="26" text="showLine" left="6.25%" top="344" right="46.88%" height="20"/>
+        <CheckBox id="chk_showLine" taborder="27" cssclass="WF_chk_Switch" top="342" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static22" taborder="28" text="lineWidth" left="6.25%" top="373" right="46.88%" height="20"/>
+        <Static id="Static11" taborder="30" text="lineColor" left="6.25%" top="408" right="46.88%" height="20"/>
+        <Edit id="edt_lineColor" taborder="31" top="406" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static16" taborder="32" text="lineOpacity" left="6.25%" top="437" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="34" text="lineFill" left="6.25%" top="472" right="46.88%" height="20"/>
+        <CheckBox id="chk_lineFill" taborder="35" cssclass="WF_chk_Switch" top="470" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static09" taborder="36" text="lineFillGradation" left="6.25%" top="504" right="46.88%" height="20"/>
+        <Edit id="edt_lineFillGradation" taborder="37" top="502" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static12" taborder="38" text="lineFillOpacity" left="6.25%" top="533" right="46.88%" height="20"/>
+        <Static id="Static13" taborder="40" text="lineSteps" left="6.25%" top="568" right="46.88%" height="20"/>
+        <CheckBox id="chk_lineSteps" taborder="41" cssclass="WF_chk_Switch" top="566" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <CheckBox id="chk_showBar" taborder="43" cssclass="WF_chk_Switch" top="627" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static17" taborder="46" text="barLineWidth" top="702" height="20" width="150" left="20"/>
+        <Static id="Static18" taborder="48" text="barLineColor" top="735" height="20" width="150" left="20"/>
+        <Edit id="edt_barLineColor" taborder="49" top="733" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static19" taborder="50" text="barFill" top="767" height="20" width="150" left="20"/>
+        <CheckBox id="chk_barFill" taborder="51" cssclass="WF_chk_Switch" top="765" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static20" taborder="52" text="barWidth" top="798" height="20" width="150" left="20"/>
+        <Static id="Static21" taborder="54" text="barColor" top="831" height="20" width="150" left="20"/>
+        <Edit id="edt_barColor" taborder="55" top="829" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static23" taborder="56" text="barGradation" top="863" height="20" width="150" left="20"/>
+        <Edit id="edt_barGradation" taborder="57" top="861" height="24" width="131" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static24" taborder="58" text="barAlign" top="895" height="20" width="150" left="20"/>
+        <Combo id="cmb_barAlign" taborder="59" innerdataset="ds_halign" codecolumn="code" datacolumn="data" top="893" height="24" value="null" width="132" left="169" onsetfocus="common_onsetfocus"/>
+        <Static id="Static25" taborder="60" text="barOpacity" top="926" height="20" width="150" left="20"/>
+        <Static id="Static27" taborder="62" text="showPoint" top="995" height="20" width="150" left="20"/>
+        <CheckBox id="chk_showPoint" taborder="63" cssclass="WF_chk_Switch" top="993" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static28" taborder="64" text="pointOpacity" top="1024" height="20" width="150" left="20"/>
+        <Static id="Static29" taborder="66" text="pointLineWidth" top="1056" height="20" width="150" left="20"/>
+        <Static id="Static30" taborder="68" text="pointColor" top="1091" height="20" width="150" left="20"/>
+        <Edit id="edt_pointColor" taborder="69" top="1089" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static31" taborder="70" text="pointSymbol" top="1121" height="20" width="150" left="20"/>
+        <Combo id="cmb_pointSymbol" taborder="71" innerdataset="ds_symbols" codecolumn="code" datacolumn="data" top="1121" height="24" value="null" width="132" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static32" taborder="72" text="pointFill" top="1155" height="20" width="150" left="20"/>
+        <CheckBox id="chk_pointFill" taborder="73" cssclass="WF_chk_Switch" top="1153" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static33" taborder="74" text="pointRadius" top="1184" height="20" width="150" left="20"/>
+        <Static id="Static34" taborder="76" text="pointFillColor" top="1219" height="20" width="150" left="20"/>
+        <Edit id="edt_pointFillColor" taborder="77" top="1217" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_pointFillGradation" taborder="78" top="1249" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static35" taborder="79" text="pointFillGradation" top="1251" height="20" width="150" left="20"/>
+        <Static id="Static36" taborder="80" text="showBubble" top="1307" height="20" width="150" left="19"/>
+        <CheckBox id="chk_showBubble" taborder="81" cssclass="WF_chk_Switch" top="1305" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static37" taborder="82" text="bubbleLineWidth" top="1336" height="20" width="150" left="20"/>
+        <Static id="Static38" taborder="84" text="bubbleColor" top="1371" height="20" width="150" left="19"/>
+        <Edit id="edt_bubbleColor" taborder="85" top="1369" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static39" taborder="86" text="bubbleFill" top="1403" height="20" width="150" left="19"/>
+        <CheckBox id="chk_bubbleFill" taborder="87" cssclass="WF_chk_Switch" top="1401" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static40" taborder="88" text="bubbleFillColor" top="1435" height="20" width="150" left="19"/>
+        <Edit id="edt_bubbleFillColor" taborder="89" top="1433" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static41" taborder="90" text="bubbleOpacity" top="1464" height="20" width="150" left="20"/>
+        <Static id="Static42" taborder="92" text="bubbleFillGradation" top="1499" height="20" width="150" left="19"/>
+        <Edit id="edt_bubbleFillGradation" taborder="93" top="1497" height="24" width="131" left="168" onsetfocus="common_onsetfocus"/>
+        <Static id="Static45" taborder="98" text="showHighLight" top="1560" height="20" width="150" left="19"/>
+        <CheckBox id="chk_showHighLight" taborder="99" cssclass="WF_chk_Switch" top="1558" height="24" width="131" left="167" onsetfocus="common_onsetfocus"/>
+        <Static id="Static46" taborder="100" text="highLightFillColor" top="1592" height="20" width="150" left="19"/>
+        <Edit id="edt_highLightFillColor" taborder="101" top="1590" height="24" width="131" left="167" onsetfocus="common_onsetfocus"/>
+        <Static id="Static47" taborder="102" text="highLightColor" top="1624" height="20" width="150" left="18"/>
+        <Edit id="edt_highLightColor" taborder="103" top="1622" height="24" width="131" left="167" onsetfocus="common_onsetfocus"/>
+        <Static id="Static48" taborder="105" text="highLightWidth" top="1653" height="20" width="150" left="20"/>
+        <Static id="Static49" taborder="106" text="highLightOpacity" top="1685" height="20" width="150" left="20"/>
+        <Static id="Static50" taborder="108" text="highLightRadius" top="1717" height="20" width="150" left="20"/>
+        <Static id="Static51" taborder="110" text="xaxis" left="6.25%" top="88" right="46.88%" height="20"/>
+        <Static id="Static52" taborder="112" text="yaxis" left="6.25%" top="120" right="46.88%" height="20"/>
+        <Combo id="cmb_bindX" taborder="118" innerdataset="ds_basicCols" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="150" height="24" width="131" left="169"/>
+        <Combo id="cmb_bindY" taborder="119" innerdataset="ds_basicCols" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="182" height="24" width="131" left="169"/>
+        <Combo id="cmb_bindValue" taborder="120" innerdataset="ds_basicCols" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="214" height="24" width="131" left="169"/>
+        <Static id="Static53" taborder="121" left="6.25%" top="291" right="6.56%" height="19" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static57" taborder="122" left="6.25%" top="607" right="6.56%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static56" taborder="123" left="6.25%" top="974" right="6.56%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static54" taborder="124" left="6.25%" top="1289" right="6.56%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static55" taborder="125" left="6.25%" top="1537" right="6.56%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Combo id="cmb_xaxis" taborder="126" innerdataset="ds_innerAxis" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="86" height="24" width="131" left="169"/>
+        <Combo id="cmb_yaxis" taborder="127" innerdataset="ds_innerAxis" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="118" height="24" width="131" left="169"/>
+        <Static id="Static14" taborder="128" text="showBar" left="6.25%" top="629" right="46.88%" height="20"/>
+        <Static id="Static05" taborder="129" text="barHorizontal" left="6.25%" top="664" right="46.88%" height="20"/>
+        <CheckBox id="chk_barHorizontal" taborder="130" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch" left="169" top="662" height="24" width="131"/>
+        <MaskEdit id="mae_lineWidth" taborder="131" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="169" top="371" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_lineOpacity" taborder="132" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="169" top="435" height="24" width="131"/>
+        <MaskEdit id="mae_lineFillOpacity" taborder="133" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="169" top="531" height="24" width="131"/>
+        <MaskEdit id="mae_barLineWidth" taborder="134" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="169" top="700" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_barWidth" taborder="135" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="169" top="796" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_barOpacity" taborder="136" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="169" top="924" height="24" width="131"/>
+        <MaskEdit id="mae_pointOpacity" taborder="137" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="168" top="1022" height="24" width="131"/>
+        <MaskEdit id="mae_pointLineWidth" taborder="138" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="168" top="1054" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_pointRadius" taborder="139" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="168" top="1182" height="24" width="131"/>
+        <MaskEdit id="mae_bubbleLineWidth" taborder="140" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="168" top="1334" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_bubbleOpacity" taborder="141" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="168" top="1462" height="24" width="131"/>
+        <MaskEdit id="mae_highLightWidth" taborder="142" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="167" top="1651" height="24" width="131" mask="0.0"/>
+        <MaskEdit id="mae_highLightRadius" taborder="143" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="167" top="1715" height="24" width="131"/>
+        <MaskEdit id="mae_highLightOpacity" taborder="144" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="167" top="1683" height="24" width="131"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item1" compid="edt_id" propid="value" datasetid="" columnid="id"/>
+      <BindItem id="item35" compid="edt_title" propid="value" datasetid="" columnid="title"/>
+      <BindItem id="item36" compid="dt_tooltipText" propid="value" datasetid="" columnid="tooltipText"/>
+      <BindItem id="item3" compid="chk_showLine" propid="value" datasetid="" columnid="showLine"/>
+      <BindItem id="item15" compid="edt_lineColor" propid="value" datasetid="" columnid="lineColor"/>
+      <BindItem id="item4" compid="edt_lineFillGradation" propid="value" datasetid="" columnid="lineFillGradation"/>
+      <BindItem id="item5" compid="edt_barLineColor" propid="value" datasetid="" columnid="barLineColor"/>
+      <BindItem id="item6" compid="edt_barColor" propid="value" datasetid="" columnid="barColor"/>
+      <BindItem id="item9" compid="chk_lineFill" propid="value" datasetid="" columnid="lineFill"/>
+      <BindItem id="item11" compid="chk_lineSteps" propid="value" datasetid="" columnid="lineSteps"/>
+      <BindItem id="item25" compid="chk_showBar" propid="value" datasetid="" columnid="showBar"/>
+      <BindItem id="item39" compid="chk_barFill" propid="value" datasetid="" columnid="barFill"/>
+      <BindItem id="item41" compid="edt_barGradation" propid="value" datasetid="" columnid="barGradation"/>
+      <BindItem id="item24" compid="cmb_barAlign" propid="value" datasetid="" columnid="barAlign"/>
+      <BindItem id="item13" compid="chk_showPoint" propid="value" datasetid="" columnid="showPoint"/>
+      <BindItem id="item42" compid="edt_pointColor" propid="value" datasetid="" columnid="pointColor"/>
+      <BindItem id="item17" compid="cmb_pointSymbol" propid="value" datasetid="" columnid="pointSymbol"/>
+      <BindItem id="item18" compid="chk_pointFill" propid="value" datasetid="" columnid="pointFill"/>
+      <BindItem id="item43" compid="edt_pointFillColor" propid="value" datasetid="" columnid="pointFillColor"/>
+      <BindItem id="item44" compid="edt_pointFillGradation" propid="value" datasetid="" columnid="pointFillGradation"/>
+      <BindItem id="item20" compid="chk_showBubble" propid="value" datasetid="" columnid="showBubble"/>
+      <BindItem id="item45" compid="edt_bubbleColor" propid="value" datasetid="" columnid="bubbleColor"/>
+      <BindItem id="item22" compid="chk_bubbleFill" propid="value" datasetid="" columnid="bubbleFill"/>
+      <BindItem id="item46" compid="edt_bubbleFillColor" propid="value" datasetid="" columnid="bubbleFillColor"/>
+      <BindItem id="item47" compid="edt_bubbleFillGradation" propid="value" datasetid="" columnid="bubbleFillGradation"/>
+      <BindItem id="item29" compid="chk_showHighLight" propid="value" datasetid="" columnid="showHighLight"/>
+      <BindItem id="item48" compid="edt_highLightFillColor" propid="value" datasetid="" columnid="highLightFillColor"/>
+      <BindItem id="item49" compid="edt_highLightColor" propid="value" datasetid="" columnid="highLightColor"/>
+      <BindItem id="item50" compid="cmb_bindX" propid="value" datasetid="" columnid="bindX"/>
+      <BindItem id="item52" compid="cmb_bindY" propid="value" datasetid="" columnid="bindY"/>
+      <BindItem id="item54" compid="cmb_bindValue" propid="value" datasetid="" columnid="bindValue"/>
+      <BindItem id="item0" compid="cmb_xaxis" propid="value" columnid="xaxis"/>
+      <BindItem id="item2" compid="cmb_yaxis" propid="value" columnid="yaxis"/>
+      <BindItem id="item26" compid="chk_barHorizontal" propid="value" columnid="barHorizontal"/>
+      <BindItem id="item7" compid="mae_lineFillOpacity" propid="displaynulltext" datasetid="" columnid="lineFillOpacity"/>
+      <BindItem id="item8" compid="mae_lineOpacity" propid="value" datasetid="" columnid="lineOpacity"/>
+      <BindItem id="item10" compid="mae_lineWidth" propid="value" datasetid="" columnid="lineWidth"/>
+      <BindItem id="item12" compid="mae_barLineWidth" propid="value" columnid="barLineWidth"/>
+      <BindItem id="item27" compid="mae_barWidth" propid="value" columnid="barWidth"/>
+      <BindItem id="item33" compid="mae_barOpacity" propid="value" datasetid="" columnid="barOpacity"/>
+      <BindItem id="item14" compid="mae_pointOpacity" propid="value" columnid="pointOpacity"/>
+      <BindItem id="item16" compid="mae_pointLineWidth" propid="value" columnid="pointLineWidth"/>
+      <BindItem id="item19" compid="mae_pointRadius" propid="value" columnid="pointRadius"/>
+      <BindItem id="item21" compid="mae_bubbleLineWidth" propid="value" columnid="bubbleLineWidth"/>
+      <BindItem id="item23" compid="mae_bubbleOpacity" propid="value" columnid="bubbleOpacity"/>
+      <BindItem id="item28" compid="mae_highLightWidth" propid="value" columnid="highLightWidth"/>
+      <BindItem id="item30" compid="mae_highLightRadius" propid="value" columnid="highLightRadius"/>
+      <BindItem id="item31" compid="mae_highLightOpacity" propid="value" columnid="highLightOpacity"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var parent = this.parent,
+	eChart;
+	
+this.configSeries_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	eChart = parent.eChart;
+	//trace("configSeries_onload >> ", e, eChart);
+	if (eChart.isStack)
+	{
+		this.chk_showHighLight.set_enable(false);
+		this.edt_highLightFillColor.set_enable(false);
+		this.edt_highLightColor.set_enable(false);
+		this.mae_highLightRadius.set_enable(false);
+		this.mae_highLightOpacity.set_enable(false);
+		this.mae_highLightWidth.set_enable(false);
+	}
+	
+	var bindDs,
+		seq = -1,
+		dsNm;
+	
+	bindDs = parent.grd_leftMenu.getBindDataset();
+	if (bindDs)
+	{
+		var row = -1,
+			name,
+			seq = -1;
+		
+		row = parent.leftMenuIndex;
+		name = bindDs.getColumn(row, "name");
+		seq = bindDs.getColumn(row, "seq");
+		
+		this.st_name.set_text(Eco.string.capitalize(name));
+		dsNm = "ds_series" + seq;
+		
+		var binds = this.binds;
+		for (var i = 0, len = binds.length; i < len ; i++)
+		{
+			binds[i].datasetid = dsNm;
+			binds[i].bind();
+		}
+	}
+	
+	// stack 인 경우 barHorizontal checkbox value 변경
+	var isStack = eChart.getIsStack();
+	var horizontalFlag = false;
+	
+	if (isStack)
+	{
+		var series = eChart.getAllSeries();
+		var length = series.length;
+		
+		for(var i = 0; i < length; i++)
+		{
+			var barHorizontal = series[i].barHorizontal;
+			if (barHorizontal)
+			{
+				horizontalFlag = true;
+				break;
+			}
+		}
+		
+		if (horizontalFlag)
+		{
+			this.chk_barHorizontal.set_value(true);
+		}
+		else 
+		{
+			this.chk_barHorizontal.set_value(false);
+		}
+	}
+}
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

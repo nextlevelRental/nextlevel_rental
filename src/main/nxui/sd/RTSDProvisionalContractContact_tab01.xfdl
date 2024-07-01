@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDProvisionalContractContact_tab01" classname="RTSDProvisionalContractContact_tab01" left="0" top="0" width="1091" height="82" titletext="New Form" onload="RTSDProvisionalContractContact_tab01_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static10" taborder="0" text="~" left="217" top="14" width="9" height="53"/>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1090" height="81" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1112" height="49">
+              <Static id="st_date" taborder="31" text="주문접수일" cssclass="sta_WF_schTitle" left="20" top="12" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static07" taborder="32" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1108" height="12"/>
+              <Static id="Static06" taborder="33" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static10" taborder="35" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" width="1108" height="12"/>
+              <Static id="st_custNm" taborder="36" text="고객명" cssclass="sta_WF_schTitle" left="349" top="12" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="37" left="411" top="12" width="104" height="21"/>
+              <Combo id="cmb_condProvsnSt" taborder="40" innerdataset="ds_S093_cond" codecolumn="cd" datacolumn="cdNm" displayrowcount="6" onitemchanged="div_search_cmb_condProvsnSt_onitemchanged" left="596" top="44" width="81" height="21"/>
+              <Combo id="cmb_condProvsnStDtl" taborder="41" innerdataset="ds_S094_cond" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="681" top="44" width="144" height="21"/>
+              <Static id="st_custNm00" taborder="43" text="상태" cssclass="sta_WF_schTitle" left="535" top="44" width="52" height="21" domainId="nexa.s_condition"/>
+              <Static id="st_custNm01" taborder="45" text="연락처" cssclass="sta_WF_schTitle" left="534" top="12" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_mobNo" taborder="46" left="596" top="12" width="120" height="21"/>
+              <Static id="st_custNm02" taborder="47" text="상담사" cssclass="sta_WF_schTitle" left="350" top="44" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_callId" taborder="48" left="411" top="44" width="104" height="21"/>
+              <Static id="Static11" taborder="49" text="FIX h12" cssclass="Guide_color" visible="false" left="8" top="65" width="1108" height="12"/>
+              <Static id="Static12" taborder="50" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="32" width="20" height="45"/>
+              <Static id="st_date00" taborder="51" text="상담일자" cssclass="sta_WF_schTitle" left="20" top="44" width="80" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_condCallDayFrom" taborder="52" dateformat="yyyy-MM-dd" left="109" top="45" width="100" height="21"/>
+              <Static id="Static13" taborder="53" text="~" left="215" top="48" width="9" height="21"/>
+              <Calendar id="cal_condCallDayTo" taborder="54" dateformat="yyyy-MM-dd" left="229" top="45" width="100" height="21"/>
+              <Static id="st_custNm03" taborder="57" text="판매처" cssclass="sta_WF_schTitle" left="741" top="12" width="52" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cmb_condSaleId" taborder="58" innerdataset="ds_user" codecolumn="userId" datacolumn="userNm" displayrowcount="6" onitemchanged="div_search_cmb_condProvsnSt_onitemchanged" left="820" top="12" width="141" height="21"/>
+              <Static id="st_custNm04" taborder="59" text="재컨택일자" cssclass="sta_WF_schTitle" left="844" top="44" width="83" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_recallDay" taborder="60" dateformat="yyyy-MM-dd" left="943" top="44" width="100" height="21"/>
+              <Static id="Static14" taborder="62" text="~" left="215" top="14" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Calendar id="cal_condProvsnDayFrom" taborder="2" dateformat="yyyy-MM-dd" left="111" top="14" width="100" height="21"/>
+        <Calendar id="cal_condProvsnDayTo" taborder="3" dateformat="yyyy-MM-dd" left="231" top="14" width="100" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_S093_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S094_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDProvisionalContractContact_tab01.xfdl
+ * 설    명 : 가계약상담_조회1
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2019-07-30	wjim		[20190716_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractContact_tab01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);	
+}
+
+/**
+ * 상태 조회조건 콤보에서 변경된 값이 적용된 후 이벤트 처리
+ */
+this.div_search_cmb_condProvsnSt_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	if (e.postvalue == "") {
+		this.ds_S094_cond.filter("cd == ''");
+	} else {
+		this.ds_S094_cond.filter("cd == '' || cd.substr(0,2) == '" + e.postvalue + "'");
+	}
+	
+	this.div_search.cmb_condProvsnStDtl.set_value("");
+}]]></Script>
+  </Form>
+</FDL>

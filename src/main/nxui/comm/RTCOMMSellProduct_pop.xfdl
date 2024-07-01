@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMSellProduct" classname="Authority" inheritanceid="" position="absolute" titletext="판매상품조회" left="0" width="1162" top="0" height="535" ontimer="form_ontimer" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="검색결과" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="9" top="69" width="241" height="20"/>
+        <Static id="Static03" taborder="1" text="FIX h20" cssclass="Guide_color" visible="false" left="9" top="53" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="9" top="84" width="1122" height="10" style="background:aqua;color:#333333ff;" onclick="Static04_onclick"/>
+        <Grid id="Grid00" taborder="5" binddataset="ds_agencyPop" useinputpanel="false" cellsizingtype="col" autofittype="col" left="9" top="94" right="16" height="409" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="0"/>
+                <Column size="146"/>
+                <Column size="93"/>
+                <Column size="80"/>
+                <Column size="59"/>
+                <Column size="71"/>
+                <Column size="129"/>
+                <Column size="103"/>
+                <Column size="156"/>
+                <Column size="132"/>
+                <Column size="71"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매상품코드" expandshow="hide" expandsize="0"/>
+                <Cell col="1" text="판매상품명"/>
+                <Cell col="2" text="판매시작일"/>
+                <Cell col="3" text="판매종료일"/>
+                <Cell col="4" text="할인율"/>
+                <Cell col="5" text="할인금액"/>
+                <Cell col="6" text="판매유형 Lv1"/>
+                <Cell col="7" text="판매유형 Lv2"/>
+                <Cell col="8" text="선납중복할인"/>
+                <Cell col="9" text="패키지중복할인"/>
+                <Cell col="10" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:saleCd"/>
+                <Cell col="1" edittype="none" editfilter="upper,number,char" text="bind:saleNm" editlimit="12" editlengthunit="ascii"/>
+                <Cell col="2" edittype="none" editfilter="upper,number,char" text="bind:saleStrDay" editlimit="150" editlengthunit="ascii"/>
+                <Cell col="3" edittype="none" editfilter="number,char" text="bind:saleEndDay" editlimit="200" editlengthunit="ascii"/>
+                <Cell col="4" edittype="none" text="bind:dcRate" combodataset="Dataset00" combocodecol="CODE" combodatacol="NAME"/>
+                <Cell col="5" displaytype="number" edittype="none" text="bind:dcAmt" editlimit="20" editlengthunit="ascii"/>
+                <Cell col="6" edittype="none" text="bind:prdtGrpNm"/>
+                <Cell col="7" edittype="none" text="bind:prdtGrpDtlNm" editlimit="20" editlengthunit="ascii"/>
+                <Cell col="8" edittype="none" text="bind:preDcYn"/>
+                <Cell col="9" edittype="none" text="bind:pkgDcYn"/>
+                <Cell col="10" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="6" text="Div00" left="9" top="8" right="16" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1137" height="45">
+              <Static id="st_searchCondition" taborder="27" text="판매상품명" cssclass="sta_WF_schTitle" left="1.97%" top="0" right="91.68%" height="41" domainId="nexa.s_condition"/>
+              <Edit id="edt_searchKeyword" taborder="29" onkeyup="div_search_edt_searchKeyword_onkeyup" left="8.91%" top="10" right="78.91%" height="20" inputmode="normal" imemode="none" lengthunit="utf8"/>
+              <Button id="btn_search" taborder="30" text="조회" onclick="div_search.btn_search_onclick" cssclass="btn_WF_CRUD" top="9" right="20" width="45" height="22" domainId="nexa.search"/>
+              <Static id="st_prdtGrp" taborder="33" text="판매유형Lv1" cssclass="sta_WF_schTitle" left="23.83%" top="0" right="67.52%" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cb_prdtGrp" taborder="41" left="32.3%" top="10" right="55.43%" height="20" style="align:center;" codecolumn="cd" datacolumn="cdNm" index="-1" innerdataset="@ds_prdtGrpGubun" onkeyup="div_search_cb_prdtGrp_onkeyup"/>
+              <Static id="st_prdtGrp2" taborder="42" text="판매유형Lv2" cssclass="sta_WF_schTitle" left="46.43%" top="0" right="44.92%" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cb_prdtGrp2" taborder="43" innerdataset="@ds_prdtGrpGubunDtl" codecolumn="cd" datacolumn="cdNm" left="54.9%" top="10" right="32.83%" height="20" style="align:center;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="7" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1131" top="8" width="25" height="496"/>
+        <Button id="btn_choice" taborder="8" text="선택" onclick="btn_choice_onclick" top="507" right="65" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="9" text="닫기" onclick="btn_close_onclick" top="507" right="20" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_agencyPop" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="saleStrDay" type="STRING" size="256"/>
+          <Column id="saleEndDay" type="STRING" size="256"/>
+          <Column id="dcRate" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="grpSaleGb" type="STRING" size="256"/>
+          <Column id="grpSaleGbNm" type="STRING" size="256"/>
+          <Column id="prdtGrp" type="STRING" size="256"/>
+          <Column id="prdtGrpNm" type="STRING" size="256"/>
+          <Column id="prdtGrpDtl" type="STRING" size="256"/>
+          <Column id="prdtGrpDtlNm" type="STRING" size="256"/>
+          <Column id="preDcYn" type="STRING" size="256"/>
+          <Column id="pkgDcYn" type="STRING" size="256"/>
+          <Column id="fpayYn" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_prdtGrpGubun">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_prdtGrpGubunDtl">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cdDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item9" compid="sidoCd" propid="value" datasetid="dsAgency" columnid="sidoCd"/>
+      <BindItem id="item10" compid="sigunCd" propid="value" datasetid="dsAgency" columnid="sigunCd"/>
+      <BindItem id="item11" compid="serNo" propid="value" datasetid="dsAgency" columnid="serNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.toDay    = "";
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.fn_initYmd();
+	
+	if(this.parent.p_formId == "RTSDContractRegister"){
+		this.ds_prdtGrpGubunDtl.filter("cd == '01' || cd == '04' ");		//주문등록일경우 렌탈과 자유렌탈만 보여준다.
+	}else{
+		this.div_search.cb_prdtGrp2.set_visible(false);
+		this.div_search.st_prdtGrp2.set_visible(false);
+	}
+}
+
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+
+this.div_search.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_search();
+}
+
+//----------------------------------------------------------------------------------   
+// Initialize
+//---------------------------------------------------------------------------------- 	
+this.fn_init = function() {
+	
+	var sSvcID      	= "saleItemCommCode";  
+	var sController   	= "ntrms/sd/saleItemCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	sOutDatasets += " ds_prdtGrpGubun=mapDsPrdtGrpGubun";
+	sOutDatasets += " ds_prdtGrpGubunDtl=mapDsPrdtGrpGubunDtl";
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+
+this.fn_initYmd = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "sellProduct";                    
+	var sController   	= "/rtms/sd/sellProduct.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_agencyPop=listSellProduct";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	this.ds_agencyPop.clearData();
+	sArgs += Ex.util.setParam("nodeNm", 	"listSellProduct");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("saleNm", 	nvl(this.div_search.edt_searchKeyword.value));			//코드
+	//sArgs += Ex.util.setParam("saleStrDay", nvl(this.div_search.cal_condProvsnDayFrom.value));		//코드	
+	sArgs += Ex.util.setParam("prdtGrp",    nvl(this.div_search.cb_prdtGrp.value),0);			    //코드	
+	sArgs += Ex.util.setParam("prdtGrp2",   nvl(this.div_search.cb_prdtGrp2.value),0);			    //코드	
+	sArgs += Ex.util.setParam("sChanCd",    nvl(this.parent.p_sChanCd),0);			    //채널
+	
+	sArgs += Ex.util.setParam("custTp",     nvl(this.parent.p_custTp),0);			    //고객유형	
+	sArgs += Ex.util.setParam("saleAge",    nvl(this.parent.p_saleAge),0);			    //연령	
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var idx 		= this.ds_agencyPop.rowposition;
+	var cd 			= this.ds_agencyPop.getColumn(idx, "saleCd");
+	var nm 			= this.ds_agencyPop.getColumn(idx, "saleNm");
+	var rate		= this.ds_agencyPop.getColumn(idx, "dcRate");
+	var amt			= this.ds_agencyPop.getColumn(idx, "dcAmt");
+	var useYn		= this.ds_agencyPop.getColumn(idx, "useYn");
+	var arr=[cd,nm,rate,amt,useYn];
+	this.close(this.opener._setSaleReturn(arr));
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if( strSvcId == "sellProduct" ){
+			var ct = this.ds_agencyPop.rowcount;
+			if( ct != 0 ){
+						
+				//주문등록 렌탈 판매상품 조회
+				
+				if(this.parent.p_formId == "RTSDDirectOrder" ||
+				   this.parent.p_formId == "RTSDMemberOrder" ||
+				   this.parent.p_formId == "RTSDContractRegister" ){
+					if(nvl(this.parent.p_prdtGrp) == '01'){
+						//this.ds_agencyPop.filter("prdtGrpDtl != '03'");
+						this.ds_agencyPop.filter("prdtGrpDtl != '03' && useYn != 'N' && saleEndDay >="+this.toDay+" && saleStrDay <="+this.toDay+"");					
+					} else {						
+						this.ds_agencyPop.filter("useYn != 'N' && saleEndDay >="+this.toDay+" && saleStrDay <="+this.toDay+"");
+					}
+					
+				}
+				//단체정보등록에서 단체만 나오게 조회
+				if(this.parent.p_formId == "RTSDGroupRegister"){
+					if(nvl(this.parent.p_prdtGrp)=="01"){
+						this.ds_agencyPop.filter("useYn != 'N' && saleEndDay >="+this.toDay+" && saleStrDay <="+this.toDay+"");
+					}
+				}
+							
+			}else{
+				alert("조회된 데이터가 없습니다.");
+				this.grid_agency.set_nodatatext("조회된 데이터가 없습니다.");
+				this.div_search.ed_searchAgency.setFocus();
+			}
+		}	
+
+		if( strSvcId == "initProductPriceCombo")
+		{
+			this.div_search.cb_prdtGrp.set_index(0);
+		}
+		/*
+		if( strSvcId == "getToday")
+		{
+			this.div_search.cal_condProvsnDayFrom.set_value(this.toDay);
+		}
+		*/
+		
+		if( strSvcId == "saleItemCommCode" ){
+		this.div_search.cb_prdtGrp.set_index(0);
+			if(this.parent.p_formId == "RTSDDirectOrder" ){
+				this.div_search.cb_prdtGrp.set_value(this.parent.p_prdtGrp);
+				this.div_search.cb_prdtGrp.set_enable(false);
+			}
+			if(this.parent.p_formId == "RTSDContractRegister"){
+				this.div_search.cb_prdtGrp.set_value(this.parent.p_prdtGrp);
+				this.div_search.cb_prdtGrp.set_enable(false);
+			}
+			if(this.parent.p_formId == "RTSDMemberOrder"){
+				this.div_search.cb_prdtGrp.set_value(this.parent.p_prdtGrp);
+				this.div_search.cb_prdtGrp.set_enable(false);
+			}
+			//단체정보등록에서 단체만 나오게 하고 렌탈은 enable 20190213
+			if(this.parent.p_formId == "RTSDGroupRegister"){
+				this.div_search.cb_prdtGrp2.set_value("03");
+				this.div_search.cb_prdtGrp.set_value(this.parent.p_prdtGrp);
+				this.div_search.cb_prdtGrp.set_enable(false);
+			}		
+		}	
+	}
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+
+
+this.Grid00_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.btn_choice_onclick();
+}
+
+
+this.div_search_cb_prdtGrp_onkeyup = function(obj:Combo, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+
+
+
+]]></Script>
+  </Form>
+</FDL>

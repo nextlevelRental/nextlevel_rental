@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREPrcmAmtNOnePymntRecp_pop" classname="test_form" left="0" top="0" width="586" height="359" titletext="장착비 및 일시불상품 수납" onload="form_onload" style="color:#333333ff;" onclose="form_onclose">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" top="0" width="25" right="0" bottom="0"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="25" top="0" height="20" style="background:aqua;color:#333333ff;" right="25"/>
+        <Static id="st_collectionMoney" taborder="15" text="장착비 및 일시불 수납" cssclass="sta_WF_subTitle" left="25" top="16" width="150" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="25" top="31" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="btn_payment" taborder="23" text="수납" cssclass="btn_WF_CRUD" height="22" onclick="btn_payment_onclick" width="45" top="41" right="25"/>
+        <Radio id="rdo_recpFg" taborder="44" left="25" top="41" width="200" height="22" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical" index="0" value="100000000000" onitemchanged="rdo_recpFg_onitemchanged">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">100000000000</Col>
+                <Col id="datacolumn">카드즉시출금</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">010000000000</Col>
+                <Col id="datacolumn">계좌즉시출금</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Div id="div_headInfo" taborder="46" left="25" top="68" height="91" right="25">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="27" cssclass="sta_WF_detailLabel2" left="0" top="60" height="31" right="0"/>
+              <Static id="Static03" taborder="28" cssclass="sta_WF_detailLabel2" left="0" top="30" height="31" right="0"/>
+              <Static id="Static05" taborder="29" cssclass="sta_WF_detailLabel2" left="0" top="0" height="31" right="0"/>
+              <Static id="st_onePymntTh" taborder="30" text="일시불" cssclass="sta_WF_detailLabel" left="0" top="60" width="140" height="31"/>
+              <Static id="st_regiAmtTh" taborder="31" text="등록비" cssclass="sta_WF_detailLabel" left="0" top="30" width="140" height="31"/>
+              <Static id="st_ordNoTh" taborder="32" text="계약번호" cssclass="sta_WF_detailLabel" left="0" top="0" width="140" height="31"/>
+              <Static id="st_onePymnt" taborder="33" text="0원" left="144" top="60" width="100" height="31"/>
+              <Static id="st_regiAmt" taborder="34" text="0원" left="144" top="30" width="100" height="31"/>
+              <Static id="st_ordNo" taborder="35" left="144" top="0" width="100" height="31"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="55" text="FIX h20" cssclass="Guide_color" visible="false" left="25" top="339" right="25" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="56" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" top="0" bottom="0" width="25" left="0"/>
+        <Div id="div_payment" taborder="57" left="25" top="158" height="181" url="re::RTREPaymentComm_div.xfdl" right="25">
+          <Layouts/>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 수금관리 > 수납공통화면 > 장착비 및 일시불상품 수납
+ * 02. 그룹명		: RTREPrcmAmtNOnePymntRecp_pop.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2018-12-05
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2018-12-05		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include 
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.popupYn = "Y";	/* Popup 여부	*/
+this.toDay	 = "";	/* 당일			*/
+this.viewId	 = "";	/* 업무구분	*/
+this.etcPop	 = "Y";
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ***********************************************************************/
+this.tordNo	   = this.parent.ordNo;		/* 통합청구계약번호							*/
+this.custNo	   = this.parent.custNo;	/* 고객번호									*/
+this.regiAmt   = "";					/* 등록비										*/
+this.onePymnt  = "";					/* 일시불										*/
+this.recpAmt   = "";					/* 수납금액									*/
+this.recpTp	   = this.parent.recpTp;	/* 청구구분									*/
+this.recpPay   = "";					/* 수납방법 - P6 : 계좌출금 P7 : 카드출금	*/
+this.tno	   = "";					/* 거래번호									*/
+this.appNo	   = "";					/* 승인번호									*/
+this.matNm	   = this.parent.matNm;		/* 상품명										*/
+this.custNm	   = this.parent.custNm;	/* 주문자명									*/
+this.bizNo	   = this.parent.bizNo;		/* 생년월일 / 사업자번호						*/
+this.custEmail = "";					/* 주문자 E-Mail								*/
+this.telNo	   = "";					/* 주문자 전화번호							*/
+this.mobNo	   = this.parent.mobNo;		/* 주문자 휴대폰번호							*/
+
+if(nvl(this.parent.regiAmt) == "") {
+	this.regiAmt = 0;
+} else {
+	this.regiAmt = parseInt(this.parent.regiAmt);
+}
+
+if(nvl(this.parent.onePymnt) == "") {
+	this.onePymnt = 0;
+} else {
+	this.onePymnt = parseInt(this.parent.onePymnt);
+}
+
+this.recpAmt = this.regiAmt + this.onePymnt;
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	this.fn_init();
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {
+	var divHead	 = this.div_headInfo;
+	var divPymnt = this.div_payment;
+	var recpAmt	 = divPymnt.fn_numberWithComma(this.recpAmt) + "원";
+	
+	divHead.st_ordNo.set_text(this.tordNo);
+	divHead.st_regiAmt.set_text( divPymnt.fn_numberWithComma(this.regiAmt)  + "원");
+	divHead.st_onePymnt.set_text(divPymnt.fn_numberWithComma(this.onePymnt) + "원");
+	
+	/* 생년월일 / 사업자번호에 따른 인증번호 Set */
+	if(this.bizNo.toString().length == 8) {
+		divPymnt.div_cardImmWthdr.ed_cardauth.set_value(this.bizNo.substring(2, 8));
+	} else {
+		divPymnt.div_cardImmWthdr.ed_cardauth.set_value(this.bizNo);
+	}
+	
+	divPymnt.div_cardImmWthdr.st_paymentAmt.set_text(recpAmt);
+	
+	divPymnt.div_accImmWthdr.st_paymentAmt.set_text(recpAmt);
+	divPymnt.div_accImmWthdr.ed_ownerNm.set_value(this.custNm);
+	
+	/* 월일 조회 */
+	this.fn_getDayMongth();
+}
+
+/***********************************************************************************
+ * Form Close Event
+ ***********************************************************************************/
+this.form_onclose = function(obj:Form, e:nexacro.CloseEventInfo) {
+	this.close();
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+/**
+ * 월일 조회
+ */
+this.fn_getDayMongth = function() {
+	var sSvcID		 = "getDayMongth";
+	var sController	 = "/ntrms/re/getDayMongth.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	switch(strSvcId) {
+		/* 월일 조회 */
+		case "getDayMongth":
+			break;
+		default:
+			break;
+	}
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 수납
+ */
+this.btn_payment_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	var rdo		   = this.rdo_recpFg;
+	var div		   = this.div_payment;
+	var dsCrdParam = div.ds_crdPymntParam;
+	
+	div.tordNo = this.tordNo;
+	div.custNo = this.custNo;
+	div.recpTp = this.recpTp;
+	
+	if(rdo.index == 0) {
+		/* 카드즉시출금결제 */
+		if(parseInt(this.recpAmt.toString()) == 0) {
+			this.alert("결제금액이 0원입니다.");
+			
+			return false;
+		}
+		
+		var divCrd = div.div_cardImmWthdr;
+		
+		if(this.recpTp == "42") {
+			this.viewId = "PNLT";
+		}else if(this.recpTp == "90") {
+			this.viewId = "TMPRR";
+		}
+		
+		dsCrdParam.clearData();
+		dsCrdParam.addRow();
+		
+		dsCrdParam.setColumn(0, "reqTx",		 "pay");							/* 결제/취소구분	*/
+		dsCrdParam.setColumn(0, "custNo",		 nvl(this.custNo));					/* 고객번호		*/
+		dsCrdParam.setColumn(0, "ordNo",		 nvl(this.tordNo));					/* 주문번호		*/
+		dsCrdParam.setColumn(0, "payMethodCd",	 rdo.value);						/* 지불방법코드	*/
+		dsCrdParam.setColumn(0, "payMethodName", rdo.text);							/* 지불방법명		*/
+		dsCrdParam.setColumn(0, "recpAmt",		 nvl(this.recpAmt.toString()));		/* 결제금액		*/
+		dsCrdParam.setColumn(0, "crdNo",		 nvl(divCrd.me_cardNo.value));		/* 카드번호		*/
+		dsCrdParam.setColumn(0, "quotaopt",		 nvl(divCrd.cbo_quotaopt.value));	/* 할부개월		*/
+		dsCrdParam.setColumn(0, "expiryYy",		 nvl(divCrd.cbo_expiryYy.value));	/* 유효기간(년)	*/
+		dsCrdParam.setColumn(0, "expiryMm",		 nvl(divCrd.cbo_expiryMm.value));	/* 유효기간(월)	*/
+		dsCrdParam.setColumn(0, "cardauth",		 nvl(divCrd.ed_cardauth.value));	/* 인증정보		*/
+		dsCrdParam.setColumn(0, "cardpwd",		 nvl(divCrd.me_cardpwd.value));		/* 비밀번호		*/
+		dsCrdParam.setColumn(0, "workCd",		 this.viewId);						/* 업무구분		*/
+		
+		/* 카드즉시출금 결제/환불 */
+		div.fn_processPayment();
+	} else if(rdo.index == 1) {
+		/* 계좌즉시출금결제 */
+		if(div.agreeYn == "Y") {
+			div.fn_paymentCertified();
+		} else {
+			this.alert("출금이체동의 완료 후 수납가능합니다.");
+			
+			return false;
+		}
+	}
+}
+
+/**
+ * 수납유형 Onitemchanged Event
+ */
+this.rdo_recpFg_onitemchanged = function(obj:Radio, e:nexacro.ItemChangeEventInfo) {
+	var div = this.div_payment;
+	
+	if(obj.index == 0) {
+		div.div_cardImmWthdr.set_visible(true);
+		div.div_accImmWthdr.set_visible(false);
+	} else if(obj.index == 1) {
+		div.div_cardImmWthdr.set_visible(false);
+		div.div_accImmWthdr.set_visible(true);
+	}
+}]]></Script>
+  </Form>
+</FDL>

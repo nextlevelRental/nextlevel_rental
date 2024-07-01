@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCampReg" classname="RTSDCampReg" left="0" top="0" width="1147" height="496" titletext="캠페인 등록" onload="RTSDCampReg_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="5" binddataset="dsCampList" useinputpanel="false" autofittype="col" left="0" top="68" right="25" nodatatext="조회된 데이터가 없습니다." height="428">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="할인유형"/>
+                <Cell col="1" text="상품코드"/>
+                <Cell col="2" text="상품명"/>
+                <Cell col="3" text="적용시작일"/>
+                <Cell col="4" text="적용종료일"/>
+                <Cell col="5" text="할인율"/>
+                <Cell col="6" text="할인금액"/>
+                <Cell col="7" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:dcTpNm"/>
+                <Cell col="1" text="bind:matCd"/>
+                <Cell col="2" text="bind:matNm"/>
+                <Cell col="3" displaytype="date" text="bind:strDay" calendardisplaynulltype="none"/>
+                <Cell col="4" displaytype="date" text="bind:endDay" calendardisplaynulltype="none"/>
+                <Cell col="5" text="bind:dcRate"/>
+                <Cell col="6" text="bind:dcAmt"/>
+                <Cell col="7" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="6" text="Div00" left="0" top="0" right="25" height="48" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="32" enableevent="false" left="349" top="12" width="165" height="21" readonly="false" enable="false"/>
+              <Static id="Static00" taborder="33" text="할인유형" cssclass="sta_WF_schTitle" left="25" top="12" width="77" height="21"/>
+              <Button id="Button02" taborder="34" onclick="Div01_Button02_onclick" cssclass="btn_WF_edtSch" left="495" top="12" width="20" height="21"/>
+              <Static id="Static02" taborder="35" text="기준일자" cssclass="sta_WF_schTitle" left="539" top="12" width="78" height="21"/>
+              <Combo id="Combo00" taborder="37" autoselect="true" innerdataset="@dsDcTp" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" onitemchanged="Div01_Combo00_onitemchanged" left="102" top="12" width="143" height="21" value="null"/>
+              <Static id="Static01" taborder="38" text="상품" cssclass="sta_WF_schTitle" left="270" top="12" width="79" height="21"/>
+              <Calendar id="Calendar00" taborder="39" dateformat="yyyy-MM-dd" left="617" top="12" width="100" height="21"/>
+              <Static id="Static11" taborder="40" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static22" taborder="41" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static03" taborder="42" text="FIX w20" cssclass="Guide_color" visible="false" left="245" top="0" width="25" height="41"/>
+              <Static id="Static04" taborder="43" text="FIX w20" cssclass="Guide_color" visible="false" left="514" top="0" width="25" height="41"/>
+              <Static id="Static05" taborder="44" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" right="0" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="7" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="8" text="Static02" cssclass="Guide_color" visible="false" left="0" top="48" width="1147" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCampList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dcTp" type="STRING" size="256"/>
+          <Column id="dcTpNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="dcRate" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDcTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+ 
+include "lib::comLib.xjs";
+this.toDay = "";
+
+	
+	this.RTSDCampReg_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+		this.get_date();
+		this.parent.setButton("S|E|N", this); //S조회, C추가
+	}
+	this.fn_init = function(){
+			var sSvcID      	= "initCombo";  
+			var sController   	= "rtms/sd/initCampReg.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "dsDcTp=output";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+		//java에서 현재 날짜 가져오기
+	this.get_date = function(){
+		var sSvcID        	= "getDate";                    
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+		
+	}
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if( strSvcId == "list" ){
+			
+		} else if(strSvcId == "getDate") {
+			this.div_search.Calendar00.set_value(this.toDay);
+		} else if(strSvcId == "countRegInfo") {
+			alert(this.countRegInfo);
+		} else if(strSvcId == "countNext") {
+			alert(this.countNext);
+		}
+	}
+
+//조회 button event
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var dcTp = this.div_search.Combo00.value;
+	var matCd = this.div_search.Edit00.value;
+	var strDay = this.div_search.Calendar00.value;
+	
+	var sSvcID        	= "listCamp";                    
+	var sController   	= "rtms/sd/listCampRegInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsCampList=mapCampReg";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsCampList.deleteAll();
+	
+	sArgs += Ex.util.setParam("dcTp", dcTp);
+	sArgs += Ex.util.setParam("matCd", matCd);
+	sArgs += Ex.util.setParam("strDay", strDay);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+}
+
+//추가 button event
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_formId :"RTSDCampReg" };
+	Ex.core.popup(this,"캠페인 - 신규등록","sd::RTSDCampPopUp.xfdl",args, "modaless=false");
+}
+
+//상품조회
+this.Div01_Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_formId :"RTSDCampReg" };
+	Ex.core.popup(this,"상품조회","sd::RTSDCampProductPopUp.xfdl",args, "modaless=false");
+}
+
+//상품조회 파라미터 반환
+this.returnProduct = function(arr) {
+	this.div_search.Edit00.set_value(arr.cd);
+}
+
+
+//엑셀
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+]]></Script>
+  </Form>
+</FDL>

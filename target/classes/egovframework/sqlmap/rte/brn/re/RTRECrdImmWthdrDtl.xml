@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="crdImmWthdr">
+	<!-- 계좌즉시출금 내역조회 -->
+	<parameterMap class="java.util.Map" id="crdImmWthdrParam">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="crdImmWthdrResult" />
+		<parameter property="rcrdFDay" jdbcType="VARCHAR" mode="IN" />	<!-- 수납일자 StartDay	-->
+		<parameter property="rcrdTDay" jdbcType="VARCHAR" mode="IN" />	<!-- 수납일자 EndDay	-->
+		<parameter property="ordNo"	   jdbcType="VARCHAR" mode="IN" />	<!-- 계약번호			-->
+		<parameter property="custNo"   jdbcType="VARCHAR" mode="IN" />	<!-- 고객번호			-->
+	</parameterMap>	
+	<resultMap id="crdImmWthdrResult" class="java.util.HashMap">
+		<result property="rcrdDay"		 column="RCRD_DAY" />			<!-- 카드수납일자		-->
+		<result property="rcrdSeq"		 column="RCRD_SEQ" />			<!-- 수납일련번호		-->
+		<result property="tordNo"		 column="TORD_NO" />			<!-- 통합청구계약번호	-->
+		<result property="custNo"		 column="CUST_NO" />			<!-- 고객번호			-->
+		<result property="custNm"		 column="CUST_NM" />			<!-- 고객명			-->
+		<result property="recpTp"		 column="RECP_TP" />			<!-- 청구구분코드		-->
+		<result property="recpTpNm"		 column="RECP_TP_NM" />			<!-- 청구구분명		-->
+		<result property="tno"			 column="TNO" />				<!-- 거래번호			-->
+		<result property="crdCd"		 column="CRD_CD" />				<!-- 카드사코드		-->
+		<result property="crdNm"		 column="CRD_NM" />				<!-- 카드사명			-->
+		<result property="recpAmt"		 column="RECP_AMT" />			<!-- 수납금액			-->
+		<result property="cncStat"		 column="CNC_STAT" />			<!-- 수납취소여부		-->
+		<result property="prtCncRmnnAmt" column="PRT_CNC_RMNN_AMT" />	<!-- 수납취소 후 남은금액	-->
+		<result property="recvSeq"		 column="RECV_SEQ" />			<!-- 수납거래번호		-->
+		<result property="cncRseq"		 column="CNC_RSEQ" />			<!-- 수납취소거래번호	-->
+		<result property="refundYn"		 column="REFUND_YN" />			<!-- 환불영부	-->
+	</resultMap>
+	<procedure id="crdImmWthdr.sRtre0200CrdImmWthdrList" parameterMap="crdImmWthdrParam">
+		{call Pkg_Rtre0200.p_sRtre0200_crdImmWthdrList(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 수납내역 상세조회 -->
+	<parameterMap class="java.util.Map" id="crdImmWthdrDtlParam">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="crdImmWthdrDtlResult" />
+		<parameter property="recvSeq"  jdbcType="VARCHAR" mode="IN" />	<!-- 수납거래번호 -->
+	</parameterMap>	
+	<resultMap id="crdImmWthdrDtlResult" class="java.util.HashMap">
+		<result property="ordNo"	column="ORD_NO" />		<!-- 계약번호		-->
+		<result property="schdSeq"	column="SCHD_SEQ" />	<!-- 청구회차		-->
+		<result property="recpFg"	column="RECP_FG" />		<!-- 수납유형코드	-->
+		<result property="recpFgNm"	column="RECP_FG_NM" />	<!-- 수납유형명	-->
+		<result property="recpAmt"	column="RECP_AMT" />	<!-- 수남급액		-->
+		<result property="cncStat"	column="CNC_STAT" />	<!-- 수납취소여부	-->
+	</resultMap>
+	<procedure id="crdImmWthdr.sRtre0200CrdImmWthdrDtlList" parameterMap="crdImmWthdrDtlParam">
+		{call Pkg_Rtre0200.p_sRtre0200_crdImmWthdrDtlList(?, ?)}
+	</procedure>
+</sqlMap>

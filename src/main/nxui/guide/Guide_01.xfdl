@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_01" classname="Guide_01" left="0" top="0" width="779" height="730" titletext="Static/Edit/MaskEdit/TextArea">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="Static" left="17" top="16" width="112" height="16" cssclass="Guide_title"/>
+        <Static id="Static01" taborder="1" text="Normal / Mouseover" left="58" top="51" width="123" height="22" cssclass="pseudo"/>
+        <Static id="Static02" taborder="2" left="58" top="73" width="164" height="21" text="넥센타이어"/>
+        <Static id="Static03" taborder="3" text="넥센타이어" left="242" top="73" width="164" height="21" enable="false"/>
+        <Static id="Static04" taborder="4" text="Disabled" cssclass="pseudo" left="242" top="51" width="51" height="22"/>
+        <Static id="Static05" taborder="5" left="10" top="109" height="8" cssclass="Guide_line" right="10"/>
+        <Static id="Static06" taborder="6" text="Edit" cssclass="Guide_title" left="17" top="135" width="112" height="16"/>
+        <Edit id="Edit00" taborder="7" left="59" top="197" width="140" height="21" tooltiptext="edit" value="넥센타이어"/>
+        <Static id="Static07" taborder="8" text="Normal" cssclass="pseudo" left="58" top="165" width="123" height="22"/>
+        <Static id="Static08" taborder="9" text="Disabled" cssclass="pseudo" left="218" top="165" width="123" height="22"/>
+        <Edit id="Edit01" taborder="10" left="219" top="197" width="140" height="21" value="넥센타이어" enable="false"/>
+        <Static id="Static09" taborder="11" text="Readonly" left="378" top="165" width="123" height="22" cssclass="pseudo"/>
+        <Edit id="Edit02" taborder="12" value="넥센타이어" left="379" top="197" width="140" height="21" cssclass="readonly" readonly="true"/>
+        <Static id="Static10" taborder="13" text="MaskEdit" cssclass="Guide_title" left="17" top="279" width="112" height="16"/>
+        <Static id="Static11" taborder="14" text="Normal" cssclass="pseudo" left="58" top="309" width="123" height="22"/>
+        <Static id="Static12" taborder="15" text="Disabled" cssclass="pseudo" left="218" top="309" width="123" height="22"/>
+        <Static id="Static13" taborder="17" text="Readonly" cssclass="pseudo" left="378" top="309" width="123" height="22"/>
+        <Static id="Static14" taborder="19" cssclass="Guide_line" left="10" top="253" right="10" height="8"/>
+        <MaskEdit id="MaskEdit00" taborder="20" value="100000" left="59" top="341" width="140" height="21" mask="###,###"/>
+        <MaskEdit id="MaskEdit01" taborder="21" value="100000" readonly="true" left="379" top="341" width="140" height="21" mask="###,###" cssclass="readonly"/>
+        <MaskEdit id="MaskEdit02" taborder="22" value="100000" enable="false" left="219" top="341" width="140" height="21" mask="###,###"/>
+        <Static id="Static15" taborder="23" text="Normal" cssclass="pseudo" left="58" top="458" width="123" height="22"/>
+        <Static id="Static16" taborder="24" text="Disabled" cssclass="pseudo" left="238" top="458" width="123" height="22"/>
+        <Static id="Static17" taborder="25" text="Readonly" cssclass="pseudo" left="418" top="458" width="123" height="22"/>
+        <Static id="Static18" taborder="26" cssclass="Guide_line" left="10" top="397" right="10" height="8"/>
+        <TextArea id="TextArea00" taborder="27" value="넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어" mask="###,###" left="59" top="485" width="160" height="120"/>
+        <TextArea id="TextArea01" taborder="28" value="넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어" readonly="true" mask="###,###" left="419" top="485" width="160" height="120" cssclass="readonly"/>
+        <TextArea id="TextArea02" taborder="29" value="넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어&#13;&#10;넥센타이어" mask="###,###" enable="false" left="239" top="485" width="160" height="120"/>
+        <Static id="Static19" taborder="30" text="TextArea" cssclass="Guide_title" left="17" top="423" width="112" height="16"/>
+        <Static id="Static31" taborder="47" text="Class : readonly" left="379" top="223" width="120" height="21" cssclass="Guide_class"/>
+        <Static id="Static34" taborder="50" text="Class : readonly" cssclass="Guide_class" left="379" top="365" width="120" height="21"/>
+        <Static id="Static36" taborder="52" text="Class : readonly" cssclass="Guide_class" left="419" top="608" width="120" height="21"/>
+        <Static id="Static20" taborder="53" text="메인타이틀" left="352" top="68" width="135" height="30" cssclass="sta_WF_title"/>
+        <Static id="Static21" taborder="54" text="서브타이틀" cssclass="sta_WF_subTitle" left="518" top="73" width="83" height="20"/>
+        <Static id="Static22" taborder="55" text="조회타이틀" cssclass="sta_WF_schTitle" left="636" top="73" width="83" height="20"/>
+        <TextArea id="TextArea03" taborder="56" value="fs 글자의 크기(fontsize)를 지정합니다.  ex)&lt;fs v='12'&gt;&lt;/fs&gt;&#13;&#10;fc 글자의 색상(fontcolor)를 지정합니다.  ex)&lt;fc v='red'&gt;&lt;/fc&gt;&lt;fc v='#FF00FF'&gt;&lt;/fc&gt;&#13;&#10;ff 글자의 종류(fontface)를 지정합니다.  ex)&lt;ff v='굴림'&gt;&lt;/ff&gt;&#13;&#10;b 굵은글씨를(bold)를 지정합니다. ex)&lt;b v='true'&gt;&lt;/b&gt;&#13;&#10;i 이텔릭체를 (italic)를 지정합니다.  ex)&lt;i v='true'&gt;&lt;/i&gt;&#13;&#10;u 언더라인을(underline)를 지정합니다.  ex)&lt;u v='true'&gt;&lt;/u&gt;&#13;&#10;s 취소선(strike)를 지정합니다.  ex)&lt;s v='true'&gt;&lt;/s&gt;" wordwrap="true" readonly="true" linespace="3" left="801" top="35" width="499" height="127" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" oneditclick="TextArea03_oneditclick" visible="false"/>
+        <Static id="Static62" taborder="57" text="※ usedecorate =&quot;&lt;b v='true'&gt;true&lt;/b&gt;&quot;" usedecorate="true" left="802" top="13" width="255" height="15" class="sta_WF_Info_Orange" tooltiptype="default" visible="false"/>
+        <Static id="Static23" taborder="58" text="FIX h30" cssclass="Guide_color" visible="false" left="462" top="68" width="45" height="30"/>
+        <Static id="Static26" taborder="59" text="FIX h20" cssclass="Guide_color" visible="false" left="582" top="73" width="45" height="20"/>
+        <Static id="Static27" taborder="60" text="FIX h20" cssclass="Guide_color" visible="false" left="701" top="73" width="45" height="20"/>
+        <Static id="Static32" taborder="61" text="FIX h21" cssclass="Guide_color" visible="false" left="511" top="197" width="45" height="21"/>
+        <Static id="Static24" taborder="62" text="FIX h21" cssclass="Guide_color" visible="false" left="511" top="341" width="45" height="21"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

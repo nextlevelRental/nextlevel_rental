@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDOrderMonthAnalysis" classname="RTSDOrderMonthAnalysis" left="0" top="0" width="1147" height="496" titletext="월간 계약 현황" onload="RTSDOrderMonthAnalysis_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" height="77" scrollbars="none" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="42" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="10"/>
+              <Static id="Static23" taborder="43" cssclass="Guide_color" visible="false" left="0" top="31" width="1117" height="10"/>
+              <Static id="st_day" taborder="44" text="기간지정" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="cal_fDay" taborder="45" dateformat="yyyy-MM-dd" left="105" top="10" width="140" height="21"/>
+              <Static id="Static03" taborder="46" text="~" left="253" top="10" width="9" height="21"/>
+              <Calendar id="cal_eDay" taborder="47" dateformat="yyyy-MM-dd" left="270" top="10" width="140" height="21"/>
+              <Static id="Static08" taborder="48" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="73"/>
+              <Static id="Static00" taborder="49" cssclass="Guide_color" visible="false" left="410" top="0" width="25" height="73"/>
+              <Static id="st_disGb" taborder="50" text="시간단위" cssclass="sta_WF_schTitle" left="435" top="10" width="80" height="21"/>
+              <Static id="Static01" taborder="52" cssclass="Guide_color" visible="false" left="655" top="0" width="25" height="73"/>
+              <Static id="st_valGb" taborder="53" text="구분" cssclass="sta_WF_schTitle" left="680" top="10" width="80" height="21"/>
+              <Combo id="cb_timGb" taborder="54" autoselect="true" innerdataset="@ds_timGb" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="515" top="10" width="140" height="21"/>
+              <ExtCombo id="cb_chanCd" taborder="56" left="760" top="10" width="340" height="21" _select_type="select"/>
+              <Static id="st_disGb00" taborder="57" text="조건1" cssclass="sta_WF_schTitle" left="25" top="41" width="80" height="21"/>
+              <Radio id="ra_disGb" taborder="58" innerdataset="ds_disGb" codecolumn="cd" datacolumn="cdNm" direction="vertical" left="105" top="41" width="180" height="21"/>
+              <Static id="st_valGb00" taborder="59" text="조건2" cssclass="sta_WF_schTitle" left="435" top="41" width="80" height="21"/>
+              <Radio id="ra_valGb" taborder="60" innerdataset="@ds_valGb" codecolumn="cd" datacolumn="cdNm" direction="vertical" left="515" top="41" width="180" height="21"/>
+              <Static id="Static02" taborder="61" cssclass="Guide_color" visible="false" left="1" top="63" width="1117" height="10"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_resultList" taborder="1" useinputpanel="false" left="0" top="80" height="416" width="1122" binddataset="ds_resultList" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="시간대"/>
+                <Cell col="1" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="월"/>
+                <Cell col="2" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="화"/>
+                <Cell col="3" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="수"/>
+                <Cell col="4" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="목"/>
+                <Cell col="5" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="금"/>
+                <Cell col="6" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="토"/>
+                <Cell col="7" style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="일"/>
+              </Band>
+              <Band id="body">
+                <Cell style="background:#5a1166ff;background2:#5a1166ff;color:aliceblue;color2:aliceblue;font:9 bold 12 arial;" text="bind:dt"/>
+                <Cell col="1" text="bind:mon"/>
+                <Cell col="2" text="bind:tue"/>
+                <Cell col="3" text="bind:wed"/>
+                <Cell col="4" text="bind:thu"/>
+                <Cell col="5" text="bind:fri"/>
+                <Cell col="6" text="bind:sat"/>
+                <Cell col="7" text="bind:sun"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계"/>
+                <Cell col="1" style="align:right;" text="expr:dataset.getSum(&quot;mon&quot;)+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;" text="expr:dataset.getSum(&quot;tue&quot;)+&quot;(건)&quot;"/>
+                <Cell col="3" style="align:right;" text="expr:dataset.getSum(&quot;wed&quot;)+&quot;(건)&quot;"/>
+                <Cell col="4" style="align:right;" text="expr:dataset.getSum(&quot;thu&quot;)+&quot;(건)&quot;"/>
+                <Cell col="5" style="align:right;" text="expr:dataset.getSum(&quot;fri&quot;)+&quot;(건)&quot;"/>
+                <Cell col="6" style="align:right;" text="expr:dataset.getSum(&quot;sat&quot;)+&quot;(건)&quot;"/>
+                <Cell col="7" style="align:right;" text="expr:dataset.getSum(&quot;sun&quot;)+&quot;(건)&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="5" cssclass="Guide_color" visible="false" left="1122" top="0" bottom="0" width="25"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_timGb" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chanCd" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_disGb" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_valGb" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="dt" type="STRING" size="256"/>
+          <Column id="mon" type="INT" size="256"/>
+          <Column id="tue" type="INT" size="256"/>
+          <Column id="wed" type="INT" size="256"/>
+          <Column id="thu" type="INT" size="256"/>
+          <Column id="fri" type="INT" size="256"/>
+          <Column id="sat" type="INT" size="256"/>
+          <Column id="sun" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay = "";
+this.p_arg = "RTSDOrderMonthAnalysis";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTSDOrderMonthAnalysis" ){
+		var timGbCnt = this.ds_timGb.getRowCount();
+		if( timGbCnt != 0 ){
+			this.div_search.cb_timGb.set_value( "1" );
+		}
+		
+		var chanCdCnt = this.ds_chanCd.getRowCount();
+		if( chanCdCnt != 0 ){
+			this.div_search.cb_chanCd.setInnerDataset(this.ds_chanCd,"cd","cdNm")
+		}
+		
+		var disCnt = this.ds_disGb.getRowCount()
+		if( disCnt != 0 ){
+			this.div_search.ra_disGb.set_value("1");
+		}
+		
+		var valGb = this.ds_valGb.getRowCount();
+		if( valGb != 0 ){
+			this.div_search.ra_valGb.set_value("1");
+		}
+	}
+	
+	if( strSvcId == "getToday" ){
+		this.div_search.cal_fDay.set_value( Eco.date.getFirstDate(this.toDay) );
+		this.div_search.cal_eDay.set_value( this.toDay );
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDOrderMonthAnalysis_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("E|S",this);
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTSDOrderMonthAnalysis";  
+	var sController   	= "rtms/sd/initRTSDOrderMonthAnalysis.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";	 
+	sOutDatasets += " ds_timGb=mapDsTimGb ";
+	sOutDatasets += " ds_chanCd=mapDsChanCd ";
+	sOutDatasets += " ds_disGb=mapDsDisGb ";
+	sOutDatasets += " ds_valGb=mapDsValGb ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	
+
+	var fDay 	= nvl(this.div_search.cal_fDay.value);
+	var eDay 	= nvl(this.div_search.cal_eDay.value);
+	var disGb 	= nvl(this.div_search.ra_disGb.value);
+	var valGb 	= nvl(this.div_search.ra_valGb.value);
+	var chanCd = nvl(this.div_search.cb_chanCd.getValue());
+	var count = 0;
+	do{
+		if( chanCd.indexOf(",") < 0 ) break;
+		else chanCd = chanCd.replace(",","|");
+		count++;
+	}while( count <= count);
+	var timGb 	= nvl(this.div_search.cb_timGb.value);
+	var msg  	= " 값이 없습니다.";
+	if( fDay == "" ){
+		alert("기준일자"+msg);
+	}else if( eDay == "" ){
+		alert("기준일자"+msg);
+	}else if( fDay > eDay ){
+		alert("기준일자를 확인하세요.");
+	}else if( timGb == "" ){
+		alert("시간단위"+msg);
+	}else if( chanCd == "" ){
+		alert("채널"+msg);
+	}else if( disGb == "" ){
+		alert("조건1"+msg);
+	}else if( valGb == "" ){
+		alert("조건2"+msg);
+	}else{
+		this.ds_resultList.clearData();
+		var sSvcID      	= "selectRTSDOrderMonthAnalysis";  
+		var sController   	= "rtms/sd/selectRTSDOrderMonthAnalysis.do";
+		var sInDatasets   	= "";
+		var sOutDatasets	= ""
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sOutDatasets += " ds_resultList=resultList "
+		sArgs += Ex.util.setParam("fDay",  fDay);
+		sArgs += Ex.util.setParam("eDay",  eDay);
+		sArgs += Ex.util.setParam("disGb", disGb);
+		sArgs += Ex.util.setParam("valGb", valGb);
+		sArgs += Ex.util.setParam("timGb", timGb);
+		sArgs += Ex.util.setParam("chanCd", chanCd);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.grid_resultList);
+}
+]]></Script>
+  </Form>
+</FDL>

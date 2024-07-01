@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="workFramePopup" classname="popGuide" left="0" top="0" width="600" height="500" titletext="New Form" cssclass="from_POP" scrollbars="none" onload="workFramePopup_onload" text="CORVAL GROUP" style="color:#343434ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="1" text="35" left="600" top="0" width="20" height="35" style="background:cornflowerblue;color:white;" visible="false"/>
+        <Static id="Static01" taborder="2" text="20" visible="false" left="600" top="481" width="40" height="20" style="background:white;border:1 solid cornflowerblue,0 solid #808080ff;color:black;align:right middle;"/>
+        <Static id="Static02" taborder="3" text="20" visible="false" left="581" top="500" width="20" height="40" style="background:white;border:0 solid #808080ff,1 solid cornflowerblue;color:black;align:center bottom;"/>
+        <Static id="Static03" taborder="4" text="20" visible="false" left="600" top="35" width="40" height="20" style="background:white;border:1 solid cornflowerblue,0 solid #808080ff;color:black;align:right middle;"/>
+        <Static id="Static04" taborder="5" text="20" visible="false" left="0" top="500" width="20" height="40" style="background:white;border:0 solid #808080ff,1 solid cornflowerblue;color:black;align:center bottom;"/>
+        <Button id="btn_close" taborder="8" cssclass="btn_POP_Close" top="12" width="11" height="11" onclick="btn_close_onclick" right="16"/>
+        <Div id="div_work" taborder="6" left="20" top="55" right="20" style="border:0 solid #808080 ;" scrollbars="none" bottom="20"/>
+        <Static id="sta_title" taborder="9" text="CORVAL GROUP" cssclass="sta_POP_Title" left="15" top="0" height="34" width="276"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"
+
+this.workFramePopup_onload = function(obj:Form, e:TOBE.LoadEventInfo)
+{
+    var oForm = this.getOwnerFrame();
+	var sTitleText = oForm.titletext;
+	var aPopupInfo = sTitleText.split(",");
+	
+	if(oForm.showtitlebar)
+	{
+	    this.div_header.set_visible(false);
+	    oForm.set_titletext(aPopupInfo[0]);
+	    this.div_work.setOffsetTop(20);
+	}
+	else
+	{
+	   var objFont 	= Ex.util.getObjFont(this.sta_title,11,"Verdana","bold");
+	   var objTextSize = nexacro._getTextSize2(aPopupInfo[0], objFont);	
+	   this.sta_title.setOffsetWidth(objTextSize[0]);
+	   this.sta_title.set_text(aPopupInfo[0]);
+	}
+	
+	this.div_work.set_url(aPopupInfo[1]);
+}
+
+this.popupClose = function(val)
+{
+    this.close(val);
+}
+
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

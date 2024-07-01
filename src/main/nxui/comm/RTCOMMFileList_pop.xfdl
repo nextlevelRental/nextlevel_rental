@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMFileList_pop" classname="RTCOMMFileList_pop" left="0" top="0" width="400" height="301" titletext="업로드파일목록" onload="RTCOMMFileList_pop_onload" onkeyup="RTCOMMFileList_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_Group" taborder="0" binddataset="dsImg" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="10" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="10" height="260" oncellclick="grd_Group_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="267"/>
+                <Column size="61"/>
+                <Column size="51"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="text" edittype="none" text="파일명"/>
+                <Cell col="1" text="사이즈"/>
+                <Cell col="2" text="저장"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:left;" text="bind:filePnm"/>
+                <Cell col="1" displaytype="number" style="controlbuttonsize:20;" text="bind:fileSize"/>
+                <Cell col="2" displaytype="button" edittype="none" style="padding:2 2 2 2;" text="Down"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="275" right="9" width="41" height="21" domainId="nexa.add"/>
+        <FileDownload id="fileDownload" taborder="4" retry="0" onsuccess="fileDownload_onsuccess" onerror="fileDownload_onerror" text="파일다운로드" visible="false" left="293" top="276" right="52" height="19" onload=""/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsImg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileSize" type="bigdecimal" size="16"/>
+          <Column id="filePnm" type="string" size="32"/>
+          <Column id="fileGrpSeq" type="bigdecimal" size="16"/>
+          <Column id="custNo" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="uplpgCd" type="string" size="32"/>
+          <Column id="filePath" type="string" size="32"/>
+          <Column id="fileSeq" type="bigdecimal" size="16"/>
+          <Column id="fileLnm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 지점 조회
+ * 02. 그룹명   : RTCMVkbur_pop.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+	this.ParserStr = "^&^";
+	this.RTCOMMFileList_pop_onload = function (obj:Form, e:LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		var obj = this.parent.p_arg;
+		this.dsImg.deleteAll();
+		this.dsImg.copyData(obj);
+
+	}
+
+	
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		this.close();
+	}
+
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt) {
+		
+	}
+	
+
+this.grd_Group_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var row = e.row;
+	if(e.col == "2") {
+		var fileSeq 	= this.dsImg.getColumn(row, "fileSeq");
+		var sFileUrl = "/ntrms/cm/fileDownLoad.do?fileSeq="+fileSeq ;
+		this.fileDownload.set_downloadurl(sFileUrl);
+		var bSucc = this.fileDownload.download();	
+	}
+}
+
+this.RTCOMMFileList_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

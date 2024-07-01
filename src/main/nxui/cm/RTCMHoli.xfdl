@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCMHoli" classname="RTCMHoli" left="0" top="0" width="1147" height="496" onload="RTCMHoli_onload" titletext="휴일관리">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="16" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Calendar id="cal_calendar" taborder="1" left="0" top="86" height="298" type="monthonly" innerdataset="@ds_holi" value="null" dateformat="yyyy-MM-dd ddd" backgroundcolumn="backgroundcolumn" bordercolumn="bordercolumn" datecolumn="hDate" width="300" style="usetrailingday:true;border:0 none #808080 ;"/>
+        <Grid id="grid_holi" taborder="2" useinputpanel="false" left="320" top="86" height="299" binddataset="ds_holi" autosizingtype="none" extendsizetype="row" right="25" style="background:transparent;" useselcolor="true" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="140"/>
+                <Column size="100"/>
+                <Column size="320"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="날짜"/>
+                <Cell col="1" text="휴일명"/>
+                <Cell col="2" text="휴일여부"/>
+                <Cell col="3" text="설명"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="expr:(dataset.getRowType(currow) == 2) ? 'date' : 'none'" text="bind:hDate" calendardisplay="display"/>
+                <Cell col="1" displaytype="normal" edittype="normal" text="bind:holiDesc" editlimit="20" editdisplay="edit"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:holiYn" combodataset="ds_holiYn" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="3" displaytype="normal" edittype="normal" text="bind:remark" wordwrap="char" editlimit="100" editdisplay="edit" calendardisplay="edit"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYn" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="10" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_date" taborder="24" text="검색 일자" cssclass="sta_WF_schTitle" left="20" top="0" width="90" height="41" domainId="nexa.s_condition"/>
+              <Static id="st_holiDesc" taborder="25" text="휴일명" cssclass="sta_WF_schTitle" left="338" top="0" width="64" height="41" domainId="nexa.s_condition"/>
+              <Edit id="ed_holiDesc" taborder="26" onkeyup="div_search_edt_searchKeyword_onkeyup" left="392" top="10" width="260" height="21"/>
+              <Calendar id="cal_startDate" taborder="27" value="20150715" dateformat="yyyy-MM-dd" left="93" top="10" width="100" height="21"/>
+              <Calendar id="cal_endDate" taborder="28" value="20150718" dateformat="yyyy-MM-dd" left="208" top="10" width="100" height="21"/>
+              <Static id="Static00" taborder="29" text="~" left="196" top="10" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static22" taborder="11" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+        <Static id="Static23" taborder="12" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+        <Static id="Static24" taborder="13" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="310" top="0" height="44" width="30"/>
+        <Static id="Static06" taborder="14" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+        <Static id="Static02" taborder="15" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="17" text="검색결과" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="0" top="61" width="300" height="20"/>
+        <Static id="Static04" taborder="18" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="19" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="300" top="86" width="20" height="298"/>
+        <Button id="Button37" taborder="24" text="추가" cssclass="btn_WF_module" top="58" width="45" height="22" right="25" onclick="btn_add_onclick"/>
+        <Button id="Button00" taborder="25" text="삭제" cssclass="btn_WF_module" top="58" width="45" height="22" right="73" onclick="btn_del_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_holi" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_holi_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="hDate" type="STRING" size="256"/>
+          <Column id="hGubun" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="hYear" type="STRING" size="256"/>
+          <Column id="hMonth" type="STRING" size="256"/>
+          <Column id="hDay" type="STRING" size="256"/>
+          <Column id="holiYn" type="STRING" size="256"/>
+          <Column id="holiDesc" type="STRING" size="256"/>
+          <Column id="weekYn" type="STRING" size="256"/>
+          <Column id="remark" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="textcolorcolumn" type="STRING" size="256"/>
+          <Column id="backgroundcolumn" type="STRING" size="256"/>
+          <Column id="bordercolumn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_holiYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.resultCnt = "";//중복코드카운트
+	this.checkHDate = "";	//중복코드코드
+	var checkHDateRow; 	//중복체크ROW
+    
+    this.updateFlag = "false";
+    
+	this.RTCMHoli_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+		this.parent.setButton("C|S", this);
+	}
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "listHoliCombo";  
+		var sController   	= "rtms/cm/listHoliCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_useYn=output1 ds_holiYn=output2";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+		this.div_search.cal_startDate.set_value(FN_firstDay());
+		this.div_search.cal_endDate.set_value(FN_lastDay());
+	}
+	
+	
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkHDate)
+	{
+	
+		if( strSvcId == "checkHDate" ){
+			var msg = "";
+			if(this.resultCnt != '0') {
+				alert("입력하신 " + nvl( this.grid_holi.getCellText(-1, 0) ) + " \'" + this.checkHDate + "\' 는 존재하고 있습니다.");
+				this.ds_holi.setColumn(checkHDateRow,"cd", "");
+				this.grid_holi.selectRow(checkHDateRow);
+				this.grid_holi.setCellPos(0);
+			}
+		}
+		
+		if( strSvcId == "listHoli" ){
+			this.updateFlag = "false";
+			var dsHoliRowCt = this.ds_holi.getRowCount();
+			if( dsHoliRowCt == 0 ){
+				this.grid_holi.set_nodatatext("조회된 데이터가 없습니다.");
+			}else{
+				this.ds_holi.set_updatecontrol(false);
+				for(var i = 0 ; i < dsHoliRowCt ; i++){
+					this.ds_holi.setColumn(i,"backgroundcolumn","red");
+					this.ds_holi.setRowType(i, Dataset.ROWTYPE_NORMAL);
+				}
+				this.ds_holi.set_updatecontrol(true);
+			}
+		}
+		
+		if( strSvcId == "saveHoli" ){
+			this.updateFlag = "false";
+			if( nErrorCode == "0" ){
+				alert(strErrorMsg);
+				this.go( "cm::RTCMHoli.xfdl" );
+			}else{
+				alert(strErrorMsg);
+			}
+		}
+	}
+	
+	
+	
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var calStartDateVal = nvl(this.div_search.cal_startDate.value);
+		var calEndDateVal 	= nvl(this.div_search.cal_endDate.value);
+		var stDateTxt 		= nvl(this.div_search.st_date.text);
+		
+		var edHoliDescVal 	= nvl(this.div_search.ed_holiDesc.value);
+		var stHoliDescTxt 	= nvl(this.div_search.st_holiDesc.text);
+		
+		var sSvcID        	= "listHoli";                    
+		var sController   	= "rtms/cm/listHoli.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_holi=mapHoli";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if( calStartDateVal == "" ){
+			alert(stDateTxt + " 값이 없습니다.");
+			return this.div_search.cal_startDate.setFocus();
+		}else if( calEndDateVal == "" ){
+			alert(stDateTxt + " 값이 없습니다.");
+			return this.div_search.cal_endDate.setFocus();
+		}else{
+			sArgs += Ex.util.setParam("calStartDate", calStartDateVal);
+			sArgs += Ex.util.setParam("calEndDate", calEndDateVal);
+			sArgs += Ex.util.setParam("edHoliDesc", edHoliDescVal);
+			
+			this.ds_holi.deleteAll();
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+
+
+	this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var dsHoliCnt = this.ds_holi.getRowCount();
+		var exitFlag = false;
+		
+		if( dsHoliCnt > 0 ){
+			for( row_i = 1 , row_ii = 0 ; row_i <= dsHoliCnt ; row_i++, row_ii++){
+				for( var cell_i = 0 ; cell_i <= 3 ; cell_i++){
+					var cellVal = nvl(this.grid_holi.getCellValue(row_ii, cell_i));
+					
+					if( (cell_i == 0 || cell_i == 1) && cellVal == "" ){
+						alert(nvl(this.grid_holi.getCellText(-1, cell_i)) +" 값이 없습니다.");
+						this.grid_holi.selectRow(row_ii);
+						this.grid_holi.setCellPos(cell_i);
+						this.grid_holi.showEditor(true);
+						exitFlag = true;
+					}
+					if(exitFlag){break;}
+				}
+				if(exitFlag){break;}
+			}
+			
+			if( !exitFlag ){
+				for(var i = 0 ; i < dsHoliCnt ; i++ ){
+					if( this.ds_holi.getRowType(i) == 0 ){//존재하지 않는 행의 상태
+						
+					}else if( this.ds_holi.getRowType(i) == 1 ){//초기 행의 상태
+						this.updateFlag = "false";
+					}else if( this.ds_holi.getRowType(i) == 2 ){//추가된 행의 상태
+						this.updateFlag = "true";break;
+					}else if( this.ds_holi.getRowType(i) == 4 ){//수정된 행의 상태
+						this.updateFlag = "true";break;
+					}else if( this.ds_holi.getRowType(i) == 8 ){//삭제된 행의 상태
+						this.updateFlag = "true";break;
+					}else if( this.ds_holi.getRowType(i) == 16 ){//그룹 정보 행의 상태
+					
+					}else{
+					
+					}
+				}
+				if( this.updateFlag == "false" ){
+					alert( "변경된 정보가 없습니다.");
+					return false;
+				}else{
+					var sSvcID        	= "saveHoli";                    
+					var sController   	= "rtms/cm/saveHoli.do";
+					var sInDatasets   	= "";
+					var sOutDatasets  	= "";
+					var sArgs 			= "";
+					var fn_callBack		= "fn_callBack";
+					sInDatasets += "input=ds_holi:U";
+					Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+				}
+			}
+		}else{
+			alert("저장할 데이터가 없습니다.");
+			this.grid_holi.set_nodatatext("저장할 데이터가 없습니다.");
+		}
+	}
+
+
+
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	
+	}
+
+
+
+	this.btn_add_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_holi.addRow();
+		this.grid_holi.selectRow(nRow);
+		this.grid_holi.setCellPos(0);
+		this.grid_holi.showEditor(true);
+		this.ds_holi.setColumn(nRow,"hDate",FN_today());
+		this.ds_holi.setColumn(nRow,"holiYn","Y");
+		this.ds_holi.setColumn(nRow,"useYn","Y");
+	}
+
+
+
+	this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var gridHoliSelectNb = this.grid_holi.currentrow;
+		if( gridHoliSelectNb == -9 ){
+			alert("삭제할 행을 선택하여 주십시오.");
+		}else{
+			this.ds_holi.deleteRow(gridHoliSelectNb);
+			this.updateFlag = true;
+		}
+	}
+	
+	
+	
+	this.ds_holi_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if(e.columnid == "hDate") {
+			checkHDateRow = e.row;
+			this.FN_hDateCheck( nvl(obj.getColumn(e.row, "hDate")) );
+		}
+	}
+
+
+
+	this.FN_hDateCheck = function( objVal1)
+	{
+		var sSvcID        	= "checkHDate";
+		var sController   	= "rtms/cm/checkHDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("hDate",objVal1);
+		sArgs += Ex.util.setParam("hGubun","HOLI");
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.grid_holi);
+	}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="group">
+	
+	<resultMap id="groupResultMap" class="java.util.HashMap">
+		<result property="grpNo"		    column="GRP_NO" />     
+		<result property="grpNm"		    column="GRP_NM" />     
+		<result property="grpSt"		    column="GRP_ST" />     
+		<result property="minAgrCnt"	  	column="MIN_AGR_CNT" />
+		<result property="restCnt"	    	column="REST_CNT" />   
+		<result property="grpType"	    	column="GRP_TYPE" />   
+		<result property="regId"		    column="REG_ID" />     
+		<result property="regDt"		    column="REG_DT" />     
+		<result property="chgId"		    column="CHG_ID" />     
+		<result property="chgDt"		    column="CHG_DT" />     
+		<result property="grpDcRate"	 	column="GRP_DC_RATE" />
+		<result property="grpDcAmt"	    	column="GRP_DC_AMT" />
+		<result property="saleCd"	    	column="SALE_CD" />
+		<result property="saleNm"	    	column="SALE_NM" />
+		<result property="pkgDcYn"	    	column="PKG_DC_YN" />				
+	</resultMap>
+       
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="groupResultMap" />
+		<parameter property="grpNo"  	mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="grpNm"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="group.listGroupInfo" parameterMap="groupParam">
+		{call PKG_RTSD0031.p_sRTSD0031(?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRTSD0031_I" class="java.util.Map">
+		<parameter property="dvsn" 		  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpNo"		  mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="grpNm"		  mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="grpSt"		  mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="minAgrCnt"	  mode="IN" jdbcType="VARCHAR" /> 	
+		<parameter property="restCnt"	  mode="IN" jdbcType="VARCHAR" /> 	
+		<parameter property="grpType"	  mode="IN" jdbcType="VARCHAR" /> 	
+		<parameter property="regId"		  mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="grpDcRate"	  mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="grpDcAmt"	  mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="saleCd"	  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="group.saveGroupInfo" parameterMap="p_IUDRTSD0031_I">
+		{call PKG_RTSD0031.p_IUDRTSD0031(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	<parameterMap id="p_IUDRTSD0031_Cancel" class="java.util.Map">
+		<parameter property="dvsn" 		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpNo"		  	mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="ordNo"		  	mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="grpType"		mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="cntCd"			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcCd"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpSt"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chk"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="restCnt"		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="pkgDcYn"		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcGb"			mode="IN" jdbcType="VARCHAR" />							  	
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="group.cancelOrdNo" parameterMap="p_IUDRTSD0031_Cancel">
+		{call PKG_RTSD0031.p_sRTSD0031cancel(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	<parameterMap id="p_IUDRTSD0031_Cancel_All" class="java.util.Map">
+		<parameter property="grpNo"		  	mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="regId"		  	mode="IN" jdbcType="VARCHAR" />	  	
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="group.cancelOrdNoAll" parameterMap="p_IUDRTSD0031_Cancel_All">
+		{call PKG_RTSD0031.p_IUDRTSD0031GrpSt(?, ?, ?, ?, ?)}
+	</procedure>
+
+	<resultMap id="PackageResultMap" class="java.util.HashMap">
+		<result property="grpNo"		column="GRP_NO" />     
+		<result property="grpCnt"		column="GRP_CNT" />     
+		<result property="dcAmt"		column="DC_AMT" />     
+		<result property="dcRate"	 	column="DC_RATE" />
+		<result property="grpStdNm"	    column="GRP_STD_NM" />
+		<result property="dcGb"	    	column="DC_GB" />
+		<result property="dcCd"	    	column="DC_CD" />				
+	</resultMap>
+       
+	<parameterMap id="PackageParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="PackageResultMap" />
+		<parameter property="grpNo"  	mode="IN" jdbcType="VARCHAR" />		
+	</parameterMap>
+	
+	<procedure id="group.listAddPackageInfo" parameterMap="PackageParam">
+		{call PKG_RTSD0031.p_sRTSD0031Package(?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRTSD0031_Cancel2" class="java.util.Map">
+		<parameter property="dvsn" 		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpNo"		  	mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="ordNo"		  	mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="grpType"		mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="cntCd"			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcCd"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpSt"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chk"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="restCnt"		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="pkgDcYn"		mode="IN" jdbcType="VARCHAR" />							  	
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="group.cancelOrdNo2" parameterMap="p_IUDRTSD0031_Cancel2">
+		{call PKG_RTSD0031.p_sRTSD0031cancel2(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_cancelOrdNoGroup" class="java.util.Map">
+		<parameter property="dvsn" 		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpNo"		  	mode="IN" jdbcType="VARCHAR" />  
+		<parameter property="ordNo"		  	mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="grpType"		mode="IN" jdbcType="VARCHAR" />
+	  	<parameter property="cntCd"			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcCd"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="grpSt"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chk"		  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="restCnt"		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="pkgDcYn"		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcGb"			mode="IN" jdbcType="VARCHAR" />							  	
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="group.cancelOrdNoGroup" parameterMap="p_cancelOrdNoGroup">
+		{call PKG_RTSD0031.p_sRTSD0031cancelGroup(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="f_cancelPrice" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_cancelPrice" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_cancelPrice" class="java.util.HashMap"/>
+	<procedure id="group.cancelPrice" parameterMap="f_cancelPrice">
+		{call ? := Pkg_Rtsd0109.f_sRtsd0109PenaltyAmt(?)}
+	</procedure>	
+	
+</sqlMap>

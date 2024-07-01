@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="렌탈지사/지역 변경" left="0" width="1147" top="0" height="496" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="0" top="0" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="15" text="구분" cssclass="sta_WF_schTitle" left="25" top="11" width="40" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="23" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1118"/>
+              <Static id="Static23" taborder="24" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="1118"/>
+              <Static id="Static01" taborder="25" text="FIX w20" cssclass="Guide_color" visible="false" left="160" top="0" width="20" height="45"/>
+              <Combo id="cmb_chnCd" taborder="0" innerdataset="@dsChnCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="6" left="75" top="11" width="85" height="21" index="0" value="1" text="대리점" onitemchanged="div_search_cmb_chnCd_onitemchanged"/>
+              <Edit id="edt_grpNm" taborder="2" readonly="true" maxlength="100" onkeyup="div_search_edt_grpNm_onkeyup" left="255" top="11" width="124" height="21"/>
+              <Edit id="edt_officeNm" taborder="3" readonly="true" maxlength="100" onkeyup="div_search_edt_grpNm_onkeyup" left="383" top="11" width="124" height="21"/>
+              <Button id="btn_search" taborder="1" onclick="btn_addArea_onclick" cssclass="btn_WF_edtSch" left="509" top="10" width="21" height="21"/>
+              <Static id="st_searchCondition00" taborder="30" text="렌탈지역" cssclass="sta_WF_schTitle" left="180" top="11" width="64" height="21" domainId="nexa.s_condition"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="24" text="소속판매인" cssclass="sta_WF_subTitle" top="61" height="20" width="153" left="0"/>
+        <Static id="Static06" taborder="27" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" top="0" height="45" width="25" left="0"/>
+        <Static id="Static24" taborder="28" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="621" top="0" height="44" width="25"/>
+        <Static id="Static00" taborder="128" text="Static02" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static04" taborder="129" text="Static02" cssclass="Guide_color" visible="false" left="0" top="75" width="1147" height="10"/>
+        <Static id="Static01" taborder="130" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="690"/>
+        <Static id="Static03" taborder="132" text="Static02" cssclass="Guide_color" visible="false" left="0" top="479" width="1147" height="10"/>
+        <Grid id="Grid" taborder="139" binddataset="dsList" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="85" width="1122" height="393" onexpandup="Grid_onexpandup">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="180"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="구분"/>
+                <Cell col="2" text="판매인번호"/>
+                <Cell col="3" text="판매인명"/>
+                <Cell col="4" text="채널대분류"/>
+                <Cell col="5" text="채널중분류"/>
+                <Cell col="6" text="연락처"/>
+                <Cell col="7" text="(現)렌탈지사"/>
+                <Cell col="8" text="(現)렌탈지역"/>
+                <Cell col="9" text="(新)렌탈지사"/>
+                <Cell col="10" text="(新)렌탈지역"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" displaytype="combo" edittype="none" style="align:center;" text="bind:chnCl" combodataset="dsChnCd" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="2" edittype="none" text="bind:agencyCd" editlimit="4"/>
+                <Cell col="3" edittype="none" style="align:left;" text="bind:agencyNm" editlimit="100"/>
+                <Cell col="4" displaytype="combo" edittype="none" style="align:center;" text="bind:chanLclsCd" combodataset="dsS090" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="5" displaytype="combo" text="bind:chanMclsCd" combodataset="dsS091" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="6" expr="expr:FN_numberMaskReturn(telNo)"/>
+                <Cell col="7" text="bind:rentalGroupNm"/>
+                <Cell col="8" text="bind:rentalOfficeNm"/>
+                <Cell col="9" edittype="none" text="bind:rentalGroupNmNew" expandshow="show" expandsize="13" expandimage="URL('theme://images\btn_WF_Search_N.png')"/>
+                <Cell col="10" text="bind:rentalOfficeNmNew" expandshow="show" expandimage="URL('theme://images\btn_WF_Search_N.png')"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_yn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">렌탈마스터</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">관계없음</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsChnCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdDesc" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+          <Column id="cd" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">대리점</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">판매인</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="cdNm">로디안</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsS090" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdDesc" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+          <Column id="cd" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS091" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdDesc" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+          <Column id="cd" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListArea" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="0"/>
+          <Column id="rtmasterNu" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="0"/>
+          <Column id="rentalGroupNm" type="STRING" size="0"/>
+          <Column id="rentalOffice" type="STRING" size="0"/>
+          <Column id="rentalOfficeNm" type="STRING" size="0"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="0"/>
+          <Column id="regId" type="STRING" size="0"/>
+          <Column id="regDt" type="STRING" size="0"/>
+          <Column id="chgId" type="STRING" size="0"/>
+          <Column id="chgDt" type="STRING" size="0"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="0"/>
+          <Column id="agencyCd" type="STRING" size="0"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="0"/>
+          <Column id="telNo" type="STRING" size="0"/>
+          <Column id="chanCd" type="STRING" size="0"/>
+          <Column id="lifnr" type="STRING" size="0"/>
+          <Column id="taxRqcd" type="STRING" size="0"/>
+          <Column id="rentalYn" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+          <Column id="chnCl" type="STRING" size="256"/>
+          <Column id="rentalGroupNew" type="STRING" size="256"/>
+          <Column id="rentalGroupNmNew" type="STRING" size="256"/>
+          <Column id="rentalOfficeNew" type="STRING" size="256"/>
+          <Column id="rentalOfficeNmNew" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListChked" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="0"/>
+          <Column id="agencyCd" type="STRING" size="0"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="0"/>
+          <Column id="telNo" type="STRING" size="0"/>
+          <Column id="chanCd" type="STRING" size="0"/>
+          <Column id="lifnr" type="STRING" size="0"/>
+          <Column id="taxRqcd" type="STRING" size="0"/>
+          <Column id="rentalYn" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+          <Column id="chnCl" type="STRING" size="256"/>
+          <Column id="rentalGroupNew" type="STRING" size="256"/>
+          <Column id="rentalGroupNmNew" type="STRING" size="256"/>
+          <Column id="rentalOfficeNew" type="STRING" size="256"/>
+          <Column id="rentalOfficeNmNew" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_search.edt_grpNm" propid="value" datasetid="dsListArea" columnid="rentalGroupNm"/>
+      <BindItem id="item1" compid="div_search.edt_officeNm" propid="value" datasetid="dsListArea" columnid="rentalOfficeNm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 렌탈지사, 지역 변경
+ * 02. 그룹명   : 주문관리-기준정보
+ * 03. 설명		 : 
+				   대리점: RTVIEW33.CHN_CD in ('01', '05')
+				   판매인: RTVIEW33.CHN_LCLS_CD = '03' AND RTVIEW33.AGENCY_CD <> RTCS0002.ORD_AGENT
+				   로디안: RTVIEW33.CHN_LCLS_CD = '03' AND RTVIEW33.AGENCY_CD = RTCS0002.ORD_AGENT
+ * 04. 작성일   : 2018.11.12
+ * 05. 작성자   : Sean
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ * ToDo.1. 확인: 로디안 저장시, RTCS0002에만 저장하면 되는지 RTSD0113에도 저장해야 하는지 확인
+ ***********************************************************************
+ */
+
+/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************************
+ * 2. FORM 변수 선언 영역
+***********************************************************************************/
+	//팝업에서 전달받은 변수 저장
+	this.arr ;
+	
+	this.nuSeq = 0; //사번 시퀀스	
+
+/***********************************************************************************
+ * 3. Common Events and Functions
+***********************************************************************************/
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 */
+		Ex.core.init(obj); 
+		this.parent.setButton("C|S", this);
+		this.fn_searchCode(); //공통코드 조회(S030: 채널구분, S090: 채널 대분류, S091: 채널 중분류)
+		//this.div_search.edt_grpNm.setFocus();
+	}
+	 
+/***********************************************************************************
+* 4. Transaction Functions
+***********************************************************************************/
+	//----------------------------------------------------------------------------------
+	// Search: 렌탈지사지역 조회
+	//----------------------------------------------------------------------------------
+	this.fn_search = function()
+	{
+		this.dsList.clearData();
+
+		//if(!this.fn_searchValidation()) return false;
+
+		var sSvcID        	= "listRentalGroupOffice";                    
+		var sController   	= "/rtms/sd/listRentalGroupOffice.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=ds_output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+			sArgs 			+= Ex.util.setParam("rentalGroup", this.dsListArea.getColumn(0, "rentalGroup"));
+			sArgs 			+= Ex.util.setParam("rentalOffice", this.dsListArea.getColumn(0, "rentalOffice"));
+			sArgs 			+= Ex.util.setParam("chnCd", this.div_search.cmb_chnCd.value);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+	//----------------------------------------------------------------------------------
+	// Save
+	//----------------------------------------------------------------------------------
+	this.fn_save = function()
+	{
+		if(!this.fn_saveValidation())	return false;
+
+		if( confirm( "저장하시겠습니까?"))
+		{					
+			this.dsListChked.clearData();
+			var nRow = 0;
+
+			for(var i=0; i<this.dsList.rowcount; i++)
+			{
+				if(this.dsList.getColumn(i, "chk") == 1)
+				{
+					nRow = this.dsListChked.addRow();
+					this.dsListChked.copyRow(nRow, this.dsList, i);
+				}
+			}
+			
+			this.fn_saveDetail();
+		}
+	}
+	
+	this.fn_saveDetail = function()
+	{
+		var sSvcID        	= "saveRentalGroupOffice";                    
+		var sController   	= "/rtms/sd/saveRentalGroupOffice.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sInDatasets   		= "input=dsListChked";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+	}
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//공통
+	this.fn_searchCode = function()
+	{
+		var sSvcID        	= "searchCode";                    
+		var sController   	= "/rtms/sd/listRentalMasterCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsS030=dsS030 dsS090=dsS090 dsS091=dsS091";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}	
+	
+/***********************************************************************************
+* 5. CallBack Functions
+***********************************************************************************/	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) {
+			alert(strErrorMsg);		
+		}
+		
+		if (strSvcId == "listRentalGroupOffice") { //조회
+
+		}
+				
+		if (strSvcId == "saveRentalGroupOffice") { //저장
+			alert(strErrorMsg);
+			this.fn_search();
+		}
+	}
+
+/***********************************************************************************
+ * 6. User Functions
+***********************************************************************************/
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+	//=======================================
+	// 검색 시 Enter키 이벤트 처리
+	//=======================================
+	this.div_search_edt_grpNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+		if ( e.keycode == 13 ){
+			this.fn_search();
+		}
+	}	
+
+	//----------------------------------------------------------------------------------
+	// [렌탈지역찾기] 클릭: 팝업호출
+	//----------------------------------------------------------------------------------
+	this.btn_addArea_onclick = function(obj:Button, e:nexacro.ClickEventInfo)
+	{
+		var args ={p_argGrid:""};
+		Ex.core.popup(this,"렌탈지역찾기","sd::RTSDRentalAreaRegisterPopup2.xfdl",args, "modaless=false");
+	}
+	
+	//----------------------------------------------------------------------------------
+	// 팝업반환값(렌탈지역찾기)
+	//----------------------------------------------------------------------------------
+	this._setReturnRentalArea = function(val){
+		var sDsNm = val[0];
+		var nRowCnt = sDsNm.rowcount;
+		
+		if ( nRowCnt > 0)
+		{
+			this.dsListArea.clearData();
+			this.dsListArea.addRow();
+			this.dsListArea.copyRow(0, sDsNm, 0); 
+		}
+	}	
+
+	//확장버튼 클릭시
+	this.Grid_onexpandup = function(obj:Grid, e:nexacro.GridMouseEventInfo)
+	{
+		//trace("e.col = " + e.col);
+		var nCol = e.col;
+		if(nCol == 9 || nCol == 10)
+		{
+			var args ={p_argGrid:"1"};
+			Ex.core.popup(this,"렌탈지역찾기(Grid)","sd::RTSDRentalAreaRegisterPopup.xfdl",args, "modaless=false");			
+		}		
+	}
+
+	//----------------------------------------------------------------------------------
+	// [Grid 렌탈지역찾기] 클릭: 팝업호출
+	//----------------------------------------------------------------------------------
+	this.fn_searchRentalMasterNm = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_argGrid:"1"};
+		Ex.core.popup(this,"렌탈지역찾기","sd::RTSDRentalAreaRegisterPopup.xfdl",args, "modaless=false");	
+	}
+
+	//----------------------------------------------------------------------------------
+	// 팝업반환값(Grid 렌탈지역찾기)
+	//----------------------------------------------------------------------------------
+	this._setReturnRentalAreaGrid = function(val){
+		var sDsNm = val[0];
+		var nRowCnt = sDsNm.rowcount;
+		
+		if ( nRowCnt > 0)
+		{
+			this.dsList.setColumn(this.dsList.rowposition, "rentalGroupNew", sDsNm.getColumn(0, "rentalGroup"));
+			this.dsList.setColumn(this.dsList.rowposition, "rentalGroupNmNew", sDsNm.getColumn(0, "rentalGroupNm"));
+			this.dsList.setColumn(this.dsList.rowposition, "rentalOfficeNew",sDsNm.getColumn(0, "rentalOffice"));
+			this.dsList.setColumn(this.dsList.rowposition, "rentalOfficeNmNew",sDsNm.getColumn(0, "rentalOfficeNm"));
+			
+
+			this.dsListArea.copyRow(0, sDsNm, 0); 
+		}
+	}
+	
+	//----------------------------------------------------------------------------------
+	// Excel
+	//----------------------------------------------------------------------------------
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.Grid01);
+	}
+
+	//----------------------------------------------------------------------------------
+	// 칼럼변경시
+	//----------------------------------------------------------------------------------
+	this.dsList_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		var sColId = e.columnid;
+		var nRow = e.row;
+				
+		if(sColId == "useYn"){		//지사 사용여부
+			//trace("newvalue = " + e.newvalue);
+			if(e.newvalue == "N")
+			{
+				var nAreaRow = this.dsList2.rowcount;
+				for(var i=0; i<nAreaRow; i++)
+				{
+					this.dsList2.setColumn(i, "useYn", "N");
+				}				
+			}
+			//obj.setColumn(nRow, "actAmt", nvl(obj.getColumn(nRow, "amt"), 0) - nvl( obj.getColumn(nRow, "dcAmt"), 0));
+		}
+	}
+
+	//----------------------------------------------------------------------------------
+	// Search Validation
+	//----------------------------------------------------------------------------------	
+	this.fn_searchValidation = function(){
+// 		var sChnCd = nvl(this.div_search.cmb_chnCd.value);
+// 		if(sChnCd == 0)
+// 		{
+// 		
+// 		}
+// 		else
+// 		{
+// 			var sRentalGroup = nvl(this.dsListArea.getColumn(0, "rentalGroup")); 
+// 			if(Eco.isEmpty(sRentalGroup))
+// 			{
+// 				alert("렌탈지사를 선택해주세요.");
+// 				this.div_search.btn_search.setFocus();
+// 				return false;
+// 			}
+// 			
+// 			var sRentalOffice = nvl(this.dsListArea.getColumn(0, "rentalOffice")); 
+// 			if(Eco.isEmpty(sRentalOffice))
+// 			{
+// 				alert("렌탈지역을 선택해주세요.");
+// 				this.div_search.btn_search.setFocus();
+// 				return false;
+// 			}
+// 		}
+		return true;
+	}
+
+	//----------------------------------------------------------------------------------
+	// Search Validation: 렌탈관리지역 조회
+	//----------------------------------------------------------------------------------	
+	this.fn_searchMgmtAreaValidation = function(){
+// 		if(this.dsList.rowcount < 1)
+// 		{
+// 
+// 		}
+		var sRtMasterNu = nvl(this.dsList.getColumn(0, "rtmasterNu")); //렌탈 마스터 사번
+		if(Eco.isEmpty(sRtMasterNu))
+		{
+			alert("렌탈지역을 조회하기 위해서는 렌탈 마스터 사번이 필요합니다.");
+			return false;
+		}		
+	
+		return true;
+	}
+
+	//----------------------------------------------------------------------------------
+	// Search Validation: 소속판매인 조회
+	//----------------------------------------------------------------------------------	
+	this.fn_searchSalesAgentValidation = function(){
+		//Callback에서 이미 확인
+// 		if(this.dsList.rowcount < 1)
+// 		{
+// 
+// 		}
+		//rtmasterNu, 렌탈 마스터 사번은 fn_searchMgmtAreaValidation()에서 이미 확인
+
+		//Callback에서 이미 확인
+//  	if(this.dsListArea.rowcount < 1)
+//  	{
+// 
+//  	}
+ 		
+		var sRentalGroup = nvl(this.dsListArea.getColumn(0, "rentalGroup")); //렌탈지사
+		if(Eco.isEmpty(sRentalGroup))
+		{
+			alert("소속판매인을 조회하기 위해서는 렌탈지사코드가 필요합니다.");
+			return false;
+		}		
+	
+		return true;
+	}	
+		
+	//----------------------------------------------------------------------------------
+	// Save Validation
+	//----------------------------------------------------------------------------------
+	this.fn_saveValidation = function() {
+		if(!Ex.util.isUpdated(this.dsList))
+		{
+			alert('변경된 데이터가 없습니다.');
+			return false;			
+		}
+
+		if(this.dsList.getCaseCount("chk == 1") == 0)
+		{
+			alert('저장할 데이타를 선택해 주세요.');
+			return false;
+		}
+		
+		var srentalGroup = "";
+		var rentalOffice = "";
+
+		for(var i=0; i<this.dsList.rowcount; i++)
+		{
+			if(this.dsList.getColumn(i, "chk") == 1)
+			{
+				srentalGroup = nvl(this.dsList.getColumn(i, "rentalGroupNew"));
+				if(Eco.isEmpty(srentalGroup))
+				{
+					alert("렌탈지사를 입력해 주세요");
+					this.Grid.setFocus();
+					this.Grid.selectRow(i);
+					return false;
+				}
+				
+				rentalOffice = nvl(this.dsList.getColumn(i, "rentalOfficeNew"));
+				if(Eco.isEmpty(rentalOffice))
+				{
+					alert("렌탈지역을 입력해 주세요");
+					this.Grid.setFocus();
+					this.Grid.selectRow(i);
+					return false;
+				}			
+			}
+		}		
+		
+		return true;
+	}
+
+	//전화번호 validation
+	this.fn_telNoVal = function( telNo ){
+		//var regExp1 = /^\d{2,3}-\d{3,4}-\d{4}$/;//전화번호
+		var regExp1 = /^(02|051|053|032|062|042|052|044|031|033|043|041|063|061|054|055|064|070|010|011|016|017|018|019|0310|0502|0505|0506)([0-9]{3,4})([0-9]{4})$/;//전화번호(-없이 입력)
+		if(!regExp1.test(telNo)) return false;
+		
+		return true
+	}
+
+	//구분 변경시
+	this.div_search_cmb_chnCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		this.dsListArea.clearData(); //렌탈지역 초기화
+	}
+]]></Script>
+  </Form>
+</FDL>

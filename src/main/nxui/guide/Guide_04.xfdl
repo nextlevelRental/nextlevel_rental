@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_04" classname="Guide_01" left="0" top="0" width="1250" height="957" titletext="Grid01">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="Grid" left="17" top="16" width="273" height="16" cssclass="Guide_title"/>
+        <Grid id="Grid00" taborder="35" useinputpanel="false" left="43" top="51" height="310" binddataset="da_grd" autofittype="col" width="922">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="37"/>
+                <Column size="428"/>
+                <Column size="100"/>
+                <Column size="63"/>
+                <Column size="84"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="Normal"/>
+                <Cell col="2" text="Number"/>
+                <Cell col="3" text="Text"/>
+                <Cell col="4" text="Date"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" style="align: ;" text="bind:Column0"/>
+                <Cell col="1" style="align: ;" text="bind:Column2"/>
+                <Cell col="2" displaytype="number" style="align: ;" text="bind:Column1"/>
+                <Cell col="3" displaytype="text" style="align: ;" text="bind:Column3"/>
+                <Cell col="4" displaytype="date" edittype="date" style="align: ;" text="bind:Column4"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" style="align:center middle;" text="합계"/>
+                <Cell col="2" colspan="3" style="align:right middle;" text="43,843,145"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="36" useinputpanel="false" autofittype="col" left="981" top="51" width="188" height="309" binddataset="ds_tree" treeinitstatus="expand,all" treeusecheckbox="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="31" band="head"/>
+                <Row size="31"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Grid Tree"/>
+              </Band>
+              <Band id="body" style="cellline:0 none;">
+                <Cell displaytype="tree" edittype="tree" text="bind:UserData" treelevel="bind:lev"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid02" taborder="37" binddataset="ds_comp" useinputpanel="false" autofittype="col" left="43" top="395" width="1126" height="309" autoenter="select">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="0"/>
+                <Column size="59"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox" text="Column0"/>
+                <Cell col="1" style="background: ;" text="Edit"/>
+                <Cell col="2" text="MaskEdit"/>
+                <Cell col="3" text="Combo"/>
+                <Cell col="4" text="Calendar"/>
+                <Cell col="5" text="링크"/>
+                <Cell col="6" text="정형텍스트"/>
+                <Cell col="7" text="비정형텍스트"/>
+                <Cell col="8" text="데이터텍스트"/>
+                <Cell col="9" text="Expand"/>
+                <Cell col="10" text="Bar"/>
+                <Cell col="11" text="Button"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:Column0"/>
+                <Cell col="1" displaytype="text" edittype="text" style="align:left middle;" text="bind:Column1" editdisplay="display"/>
+                <Cell col="2" displaytype="text" edittype="mask" style="align:right middle;" text="bind:Column2" mask="###,###" editdisplay="display"/>
+                <Cell col="3" displaytype="combo" edittype="combo" style="align:left middle;" text="bind:Column3" combodataset="ds_Combo" combocodecol="Column0" combodatacol="Column1" combodisplay="display"/>
+                <Cell col="4" displaytype="date" edittype="date" style="align:left middle;" text="bind:Column4" calendardisplay="display"/>
+                <Cell col="5" displaytype="normal" style="color:#1955b8ff;color2:#1955b8ff;font:underline 9 Gulim;cursor:hand;" text="www.link.com"/>
+                <Cell col="6" displaytype="text" style="align: ;" text="홍길동"/>
+                <Cell col="7" displaytype="normal" text="가나다라마바사"/>
+                <Cell col="8" displaytype="number" text="123456789"/>
+                <Cell col="9" edittype="expand" expandshow="show" expandsize="30" expandimage="URL('Img::pmnu_WF_expand.png')"/>
+                <Cell col="10" displaytype="bar"/>
+                <Cell col="11" displaytype="button" edittype="button" style="cursor:hand;" text="bind:Column5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static23" taborder="45" text="FIX h30" cssclass="Guide_color" visible="false" left="10" top="51" width="45" height="31"/>
+        <Static id="Static01" taborder="46" text="FIX h30" cssclass="Guide_color" visible="false" left="10" top="82" width="45" height="31"/>
+        <Static id="Static02" taborder="47" text="FIX h30" cssclass="Guide_color" visible="false" left="10" top="330" width="45" height="31"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="da_grd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">1000000000001</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">1000000000002</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">3</Col>
+            <Col id="Column1">1000000000003</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">4</Col>
+            <Col id="Column1">1000000000004</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">5</Col>
+            <Col id="Column1">1000000000005</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">6</Col>
+            <Col id="Column1">1000000000006</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">7</Col>
+            <Col id="Column1">1000000000007</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">8</Col>
+            <Col id="Column1">1000000000008</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">9</Col>
+            <Col id="Column1">1000000000009</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">10</Col>
+            <Col id="Column1">1000000000010</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">11</Col>
+            <Col id="Column1">1000000000011</Col>
+            <Col id="Column2">정확한 글자수제한은 시스템에 따라 달라질 수 있습니다.</Col>
+            <Col id="Column3">홍길동</Col>
+            <Col id="Column4">20150715</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_tree" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="idx" type="STRING" size="256"/>
+          <Column id="lev" type="STRING" size="256"/>
+          <Column id="UserData" type="STRING" size="256"/>
+          <Column id="Caption" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lev">0</Col>
+            <Col id="UserData">첫번째뎁스</Col>
+            <Col id="Caption">첫번째뎁스</Col>
+            <Col id="idx">1000</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">두번째뎁스</Col>
+            <Col id="Caption">두번째뎁스</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1001</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+            <Col id="lev">2</Col>
+            <Col id="idx">1002</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">두번째뎁스</Col>
+            <Col id="Caption">두번째뎁스</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1003</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+            <Col id="lev">2</Col>
+            <Col id="idx">1004</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">두번째뎁스</Col>
+            <Col id="Caption">두번째뎁스</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1005</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+            <Col id="lev">2</Col>
+            <Col id="idx">1006</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">두번째뎁스</Col>
+            <Col id="Caption">두번째뎁스</Col>
+            <Col id="lev">1</Col>
+            <Col id="idx">1007</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+            <Col id="lev">2</Col>
+            <Col id="idx">1008</Col>
+          </Row>
+          <Row>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+            <Col id="lev">2</Col>
+            <Col id="idx">1009</Col>
+          </Row>
+          <Row>
+            <Col id="idx">1010</Col>
+            <Col id="lev">2</Col>
+            <Col id="UserData">세번째뎁스</Col>
+            <Col id="Caption">세번째뎁스</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_comp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">0</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">1</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">2</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">0</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">2</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">3</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">0</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">1</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">2</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">0</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+            <Col id="Column2">100000</Col>
+            <Col id="Column3">0</Col>
+            <Col id="Column4">20150715</Col>
+            <Col id="Column5">Button</Col>
+            <Col id="Column6">텍스트출력</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Combo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">CM Infortek</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">CM Infortek</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">CM Infortek</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">3</Col>
+            <Col id="Column1">CM Infortek</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">4</Col>
+            <Col id="Column1">CM Infortek</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

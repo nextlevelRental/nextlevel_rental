@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCarStandardRegister" classname="RTSDCarStandard" left="0" top="0" width="1147" height="496" titletext="차종규격등록" onload="RTSDCarStandardRegister_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="2" cssclass="Guide_color" visible="false" left="800" top="108" width="347" height="10"/>
+        <Static id="Static05" taborder="3" cssclass="Guide_color" visible="false" left="800" top="0" width="20" height="496"/>
+        <Static id="Static01" taborder="4" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Grid id="grid_carMasterSelect" taborder="5" useinputpanel="false" cellsizingtype="col" autofittype="none" left="0" top="117" width="800" binddataset="ds_rtsd0004" scrollbars="autoboth" onselectchanged="grid_carMasterSelect_onselectchanged" height="379">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="160"/>
+                <Column size="160"/>
+                <Column size="80"/>
+                <Column size="160"/>
+                <Column size="160"/>
+                <Column size="160"/>
+                <Column size="160"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="160"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="차종"/>
+                <Cell col="1" text="사양"/>
+                <Cell col="2" text="전후 구분"/>
+                <Cell col="3" text="단면폭"/>
+                <Cell col="4" text="편평비"/>
+                <Cell col="5" text="인치"/>
+                <Cell col="6" text="PR(강도)"/>
+                <Cell col="7" text="바퀴수"/>
+                <Cell col="8" text="장착가능 바퀴수"/>
+                <Cell col="9" text="차량분류"/>
+                <Cell col="10" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="none" text="bind:modelCd" combodataset="ds_modelCdGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="1" displaytype="combo" edittype="none" text="bind:contentsCd" combodataset="ds_contentsCdGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="2" displaytype="combo" edittype="none" text="bind:frCd" combodataset="ds_frCdGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="3" displaytype="combo" edittype="none" text="bind:sectionWidth" mask="###,###,###,##0" combodataset="ds_sectionWidthGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="4" displaytype="combo" edittype="none" text="bind:aspectRatio" mask="###,###,###,##0" combodataset="ds_aspectRatioGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="5" displaytype="combo" edittype="none" text="bind:wheelInches" mask="###,###,###,##0" combodataset="ds_wheelInchesGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="6" displaytype="combo" edittype="none" text="bind:plyRating" combodataset="ds_plyRatingGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="7" displaytype="combo" edittype="none" text="bind:wheelQty" mask="###,###,###,##0" combodataset="ds_wheelQtyGrid" combocodecol="cdNm" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="8" displaytype="combo" edittype="none" text="bind:wheelLimitQty" mask="###,###,###,##0" combodataset="ds_wheelLimitQtyGrid" combocodecol="cdNm" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="9" displaytype="combo" edittype="none" text="bind:classCd" combodataset="ds_classCdGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+                <Cell col="10" displaytype="combo" edittype="none" text="bind:useYn" combodataset="ds_useYnGrid" combocodecol="cd" combodatacol="cdNm" combodisplay="edit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="6" text="차종규격리스트" cssclass="sta_WF_subTitle" left="0" top="92" width="169" height="20"/>
+        <Static id="Static04" taborder="7" cssclass="Guide_color" visible="false" left="0" top="107" width="1147" height="10"/>
+        <Div id="div_search" taborder="10" text="Div00" left="0" top="0" right="25" height="76" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="차종" cssclass="sta_WF_schTitle" left="25" top="13" width="80" height="21"/>
+              <Combo id="cb_modelCdS" taborder="0" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="105" top="12" width="143" height="21" innerdataset="@ds_modelCdS" onitemchanged="div_search_cb_modelCdS_onitemchanged"/>
+              <Static id="Static01" taborder="9" text="사양" cssclass="sta_WF_schTitle" left="273" top="13" width="80" height="21"/>
+              <Combo id="cb_contentsCdS" taborder="2" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="353" top="12" width="143" height="21" innerdataset="@ds_contentsCdS" onitemchanged="div_search_cb_contentsCdS_onitemchanged"/>
+              <Static id="Static02" taborder="10" text="전후_구분" cssclass="sta_WF_schTitle" left="521" top="13" width="80" height="21"/>
+              <Combo id="cb_frCdS" taborder="3" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="601" top="12" width="180" height="21" innerdataset="@ds_frCdS" onitemchanged="div_search_cb_frCdS_onitemchanged"/>
+              <Static id="Static24" taborder="11" cssclass="Guide_color" visible="false" left="248" top="0" width="25" height="72"/>
+              <Static id="Static03" taborder="12" cssclass="Guide_color" visible="false" left="496" top="0" width="25" height="72"/>
+              <Static id="Static04" taborder="13" cssclass="Guide_color" visible="false" left="781" top="0" width="25" height="72"/>
+              <Static id="Static05" taborder="14" text="PR(강도)" cssclass="sta_WF_schTitle" left="806" top="13" width="80" height="21"/>
+              <Combo id="cb_plyRatingS" taborder="4" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="886" top="12" width="143" height="21" innerdataset="@ds_plyRatingS" onitemchanged="div_search_cb_plyRatingS_onitemchanged"/>
+              <Static id="Static29" taborder="15" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="6"/>
+              <Static id="Static06" taborder="16" text="단면폭" cssclass="sta_WF_schTitle" left="25" top="39" width="80" height="21"/>
+              <Combo id="cb_sectionWidthS" taborder="5" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="105" top="39" width="143" height="21" innerdataset="@ds_sectionWidthS" onitemchanged="div_search_cb_sectionWidthS_onitemchanged"/>
+              <Static id="Static07" taborder="17" text="편평비" cssclass="sta_WF_schTitle" left="273" top="39" width="80" height="21"/>
+              <Combo id="cb_aspectRatioS" taborder="6" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="353" top="39" width="143" height="21" innerdataset="@ds_aspectRatioS" onitemchanged="div_search_cb_aspectRatioS_onitemchanged"/>
+              <Static id="Static08" taborder="18" text="인치" cssclass="sta_WF_schTitle" left="521" top="39" width="80" height="21"/>
+              <Combo id="cb_wheelInchesS" taborder="7" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="601" top="39" width="180" height="21" innerdataset="@ds_wheelInchesS"/>
+              <Static id="Static09" taborder="19" text="사용여부" cssclass="sta_WF_schTitle" left="806" top="39" width="80" height="21"/>
+              <Combo id="cb_useYnS" taborder="8" autoselect="true" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="886" top="39" width="143" height="21" innerdataset="@ds_useYnS"/>
+              <Static id="Static22" taborder="20" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static10" taborder="21" cssclass="Guide_color" visible="false" left="0" top="60" right="0" height="12"/>
+              <Static id="Static11" taborder="22" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="72"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static08" taborder="22" cssclass="sta_WF_detailLabel2" left="820" top="150" width="302" height="31"/>
+        <Static id="Static06" taborder="23" cssclass="sta_WF_detailLabel2" left="820" top="180" width="302" height="31"/>
+        <Static id="Static09" taborder="24" cssclass="sta_WF_detailLabel2" left="820" top="210" width="302" height="31"/>
+        <Static id="Static10" taborder="25" cssclass="sta_WF_detailLabel2" left="820" top="270" width="302" height="31"/>
+        <Static id="Static11" taborder="26" cssclass="sta_WF_detailLabel2" left="820" top="300" width="302" height="31"/>
+        <Static id="Static15" taborder="27" cssclass="sta_WF_detailLabel2" left="820" top="330" width="302" height="31"/>
+        <Static id="Static14" taborder="28" cssclass="sta_WF_detailLabel2" left="820" top="240" width="302" height="31"/>
+        <Static id="Static13" taborder="29" cssclass="sta_WF_detailLabel2" left="820" top="358" width="302" height="31"/>
+        <Static id="Static12" taborder="30" cssclass="sta_WF_detailLabel2" left="820" top="388" width="302" height="31"/>
+        <Static id="Static07" taborder="31" cssclass="sta_WF_detailLabel2" left="820" top="418" width="302" height="31"/>
+        <Static id="Static16" taborder="32" cssclass="sta_WF_detailLabel2" left="820" top="448" width="302" height="31"/>
+        <Combo id="cb_modelCd" taborder="11" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="155" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_modelCd"/>
+        <Static id="st_modelCd" taborder="33" text="차종" cssclass="sta_WF_detailLabelP" left="820" top="150" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_contentsCd" taborder="12" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="184" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_contentsCd"/>
+        <Static id="st_contentsCd" taborder="34" text="사양" cssclass="sta_WF_detailLabelP" left="820" top="180" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_frCd" taborder="13" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="216" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_frCd"/>
+        <Static id="st_frCd" taborder="35" text="전후_구분" cssclass="sta_WF_detailLabelP" left="820" top="210" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_sectionWidth" taborder="15" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="275" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_sectionWidth"/>
+        <Static id="st_sectionWidth" taborder="36" text="단면폭" cssclass="sta_WF_detailLabelP" left="820" top="270" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_aspectRatio" taborder="16" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="305" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_aspectRatio"/>
+        <Static id="st_aspectRatio" taborder="37" text="편평비" cssclass="sta_WF_detailLabelP" left="820" top="300" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_wheelInches" taborder="38" text="인치" cssclass="sta_WF_detailLabelP" left="820" top="330" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_wheelInches" taborder="17" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="334" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_wheelInches"/>
+        <Static id="st_plyRating" taborder="39" text="PR(강도)" cssclass="sta_WF_detailLabelP" left="820" top="240" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_plyRating" taborder="14" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="false" left="945" top="244" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_plyRating"/>
+        <Static id="st_wheelQty" taborder="40" text="바퀴수" cssclass="sta_WF_detailLabelP" left="820" top="358" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_wheelQty" taborder="18" codecolumn="cdNm" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="true" left="945" top="364" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_wheelQty" index="-1"/>
+        <Static id="st_wheelLimitQty" taborder="41" text="장착가능 바퀴수" cssclass="sta_WF_detailLabelP" left="820" top="388" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_wheelLimitQty" taborder="19" codecolumn="cdNm" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="true" left="945" top="393" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_wheelLimitQty" index="-1"/>
+        <Static id="st_classCd" taborder="42" text="차량분류" cssclass="sta_WF_detailLabelP" left="820" top="418" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_classCd" taborder="20" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="true" left="945" top="423" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_classCd"/>
+        <Static id="st_useYn" taborder="43" text="사용여부" cssclass="sta_WF_detailLabelP" left="820" top="448" width="120" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_useYn" taborder="21" codecolumn="cd" datacolumn="cdNm" ontextchanged="div_search_cb_bankCd_ontextchanged" ontextchange="div_search_cb_bankCd_ontextchange" enable="true" left="945" top="453" width="172" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_useYn"/>
+        <Button id="btn_del" taborder="45" text="삭제" onclick="div_search_btn_del_onclick" cssclass="btn_WF_module" left="1077" top="118" width="45" height="22" domainId="nexa.save"/>
+        <Button id="btn_new" taborder="46" text="신규" onclick="div_search_btn_new_onclick" cssclass="btn_WF_module" left="1027" top="118" width="45" height="22" domainId="nexa.save"/>
+        <Static id="Static00" taborder="47" cssclass="Guide_color" visible="false" left="0" top="76" width="1147" height="20"/>
+        <Static id="Static17" taborder="48" cssclass="Guide_color" visible="false" left="800" top="140" width="347" height="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_modelCdS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contentsCdS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_frCdS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRatingS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sectionWidthS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatioS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInchesS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYnS" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_modelCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contentsCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_frCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRating" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sectionWidth" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatio" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInches" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelQty" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelLimitQty" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_classCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_modelCdGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contentsCdGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_frCdGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRatingGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInchesGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatioGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sectionWidthGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelQtyGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelLimitQtyGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_classCdGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYnGrid" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0004" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="sectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="wheelQty" type="STRING" size="256"/>
+          <Column id="wheelLimitQty" type="STRING" size="256"/>
+          <Column id="classCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="cb_modelCd" propid="value" datasetid="ds_rtsd0004" columnid="modelCd"/>
+      <BindItem id="item1" compid="cb_contentsCd" propid="value" datasetid="ds_rtsd0004" columnid="contentsCd"/>
+      <BindItem id="item2" compid="cb_frCd" propid="value" datasetid="ds_rtsd0004" columnid="frCd"/>
+      <BindItem id="item3" compid="cb_plyRating" propid="value" datasetid="ds_rtsd0004" columnid="plyRating"/>
+      <BindItem id="item4" compid="cb_sectionWidth" propid="value" datasetid="ds_rtsd0004" columnid="sectionWidth"/>
+      <BindItem id="item5" compid="cb_aspectRatio" propid="value" datasetid="ds_rtsd0004" columnid="aspectRatio"/>
+      <BindItem id="item6" compid="cb_wheelInches" propid="value" datasetid="ds_rtsd0004" columnid="wheelInches"/>
+      <BindItem id="item7" compid="cb_wheelQty" propid="value" datasetid="ds_rtsd0004" columnid="wheelQty"/>
+      <BindItem id="item8" compid="cb_wheelLimitQty" propid="value" datasetid="ds_rtsd0004" columnid="wheelLimitQty"/>
+      <BindItem id="item9" compid="cb_classCd" propid="value" datasetid="ds_rtsd0004" columnid="classCd"/>
+      <BindItem id="item10" compid="cb_useYn" propid="value" datasetid="ds_rtsd0004" columnid="useYn"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTSDCarStandardRegister" ){
+		var modelCdCt = this.ds_modelCdS.getRowCount();
+		var useYnCt = this.ds_useYnS.getRowCount();
+		
+		if( modelCdCt != 0 ){
+			this.div_search.cb_modelCdS.set_value( this.ds_modelCdS.getColumn(this.ds_modelCdS.rowposition, "cd") );
+			this.div_search_cb_modelCdS_onitemchanged();
+			this.div_search_cb_contentsCdS_onitemchanged();
+			this.div_search_cb_frCdS_onitemchanged();
+			this.div_search_cb_plyRatingS_onitemchanged();
+			this.div_search_cb_sectionWidthS_onitemchanged();
+			this.div_search_cb_aspectRatioS_onitemchanged();
+		}
+		
+		if( useYnCt != 0 ){
+			var insert = this.ds_useYnS.insertRow( 0 );
+			this.ds_useYnS.setColumn(insert,"cd"," ");
+			this.ds_useYnS.setColumn(insert,"cdNm","전체");
+			this.div_search.cb_useYnS.set_value( " " );
+			
+			this.div_search.cb_useYnS.set_value( this.ds_useYnS.getColumn(this.ds_useYnS.rowposition, "cd")  );
+		}
+	}
+	
+	if( strSvcId == "saveRTSDCarStandardRegister" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			this.reload();
+		}
+	}
+	
+	if( strSvcId == "sRtsd0004ContentsCdSelect" ){
+		var insert = this.ds_contentsCdS.insertRow( 0 );
+		this.ds_contentsCdS.setColumn(insert,"cd"," ");
+		this.ds_contentsCdS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_contentsCdS.set_value( this.ds_contentsCdS.getColumn(this.ds_contentsCdS.rowposition, "cd")  );
+	}
+
+	if( strSvcId == "sRtsd0004FrCdSelect" ){
+		var insert = this.ds_frCdS.insertRow( 0 );
+		this.ds_frCdS.setColumn(insert,"cd"," ");
+		this.ds_frCdS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_frCdS.set_value( this.ds_frCdS.getColumn(this.ds_frCdS.rowposition, "cd")  );
+	}
+
+	if( strSvcId == "sRtsd0004PlyRatingCdSelect" ){
+		var insert = this.ds_plyRatingS.insertRow( 0 );
+		this.ds_plyRatingS.setColumn(insert,"cd"," ");
+		this.ds_plyRatingS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_plyRatingS.set_value( this.ds_plyRatingS.getColumn(this.ds_plyRatingS.rowposition, "cd")  );
+	}
+
+	if( strSvcId == "sRtsd0004SectionWidthSelect" ){
+		var insert = this.ds_sectionWidthS.insertRow( 0 );
+		this.ds_sectionWidthS.setColumn(insert,"cd"," ");
+		this.ds_sectionWidthS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_sectionWidthS.set_value( this.ds_sectionWidthS.getColumn(this.ds_sectionWidthS.rowposition, "cd")  );
+	}
+
+	if( strSvcId == "sRtsd0004AspectRatioSelect" ){
+		var insert = this.ds_aspectRatioS.insertRow( 0 );
+		this.ds_aspectRatioS.setColumn(insert,"cd"," ");
+		this.ds_aspectRatioS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_aspectRatioS.set_value( this.ds_aspectRatioS.getColumn(this.ds_aspectRatioS.rowposition, "cd")  );
+	}
+
+	if( strSvcId == "sRtsd0004WheelInchesSelect" ){
+		var insert = this.ds_wheelInchesS.insertRow( 0 );
+		this.ds_wheelInchesS.setColumn(insert,"cd"," ");
+		this.ds_wheelInchesS.setColumn(insert,"cdNm","전체");
+		this.div_search.cb_useYnS.set_value( " " );
+
+		this.div_search.cb_wheelInchesS.set_value( this.ds_wheelInchesS.getColumn(this.ds_wheelInchesS.rowposition, "cd")  );
+	}
+	
+	if( strSvcId == "sRtsd0004Select" ){
+		var rowCt = this.ds_rtsd0004();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grid_carMasterSelect.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDCarStandardRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("E|C|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initRTSDCarStandardRegister";  
+	var sController   	= "rtms/sd/initRTSDCarStandardRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sOutDatasets += " ds_modelCdS=mapDsModelCdS ";					//1.차종
+	sOutDatasets += " ds_useYnS=mapDsUseYnS ";						//11.사용여부    
+		 
+	sOutDatasets += " ds_modelCd=mapDsModelCd ";					//1.차종
+	sOutDatasets += " ds_contentsCd=mapDsContentsCd ";				//2.사양 
+	sOutDatasets += " ds_frCd=mapDsFrCd ";							//3.전후구분 	
+	sOutDatasets += " ds_plyRating=mapDsPlyRating ";				//4.PR(강도) 
+	sOutDatasets += " ds_sectionWidth=mapDsSectionWidth ";			//5.단면폭
+	sOutDatasets += " ds_aspectRatio=mapDsAspectRatio ";			//6.편평비 
+	sOutDatasets += " ds_wheelInches=mapDsWheelInches ";			//7.인치
+	sOutDatasets += " ds_wheelQty=mapDsWheelQty ";					//8.바퀴수
+	sOutDatasets += " ds_wheelLimitQty=mapDsWheelLimitQty ";		//9.장착가능 바퀴수
+	sOutDatasets += " ds_classCd=mapDsClassCd ";					//10.차량분류 
+	sOutDatasets += " ds_useYn=mapDsUseYn ";						//11.사용여부
+	
+	sOutDatasets += " ds_modelCdGrid=mapDsModelCdGrid ";			//1.차종
+	sOutDatasets += " ds_contentsCdGrid=mapDsContentsCdGrid ";		//2.사양 
+	sOutDatasets += " ds_frCdGrid=mapDsFrCdGrid ";					//3.전후구분 	
+	sOutDatasets += " ds_plyRatingGrid=mapDsPlyRatingGrid ";		//4.PR(강도) 
+	sOutDatasets += " ds_sectionWidthGrid=mapDsSectionWidthGrid ";	//5.단면폭
+	sOutDatasets += " ds_aspectRatioGrid=mapDsAspectRatioGrid ";	//6.편평비 
+	sOutDatasets += " ds_wheelInchesGrid=mapDsWheelInchesGrid ";	//7.인치
+	sOutDatasets += " ds_wheelQtyGrid=mapDsWheelQtyGrid ";			//8.바퀴수
+	sOutDatasets += " ds_wheelLimitQtyGrid=mapDsWheelLimitQtyGrid ";//9.장착가능 바퀴수
+	sOutDatasets += " ds_classCdGrid=mapDsClassCdGrid ";			//10.차량분류 
+	sOutDatasets += " ds_useYnGrid=mapDsUseYnGrid ";				//11.사용여부
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var msg	 	 = "은(는) 필수항목 입니다.";
+	var rowCount = this.ds_rtsd0004.getRowCount();
+	var goSaveFlag = true;
+	
+	if( rowCount != 0){
+		var saveFlag = false;
+		for( var i = 0 ; i < rowCount ; i++){
+			var rowType 	= this.ds_rtsd0004.getRowType(i);
+			if(rowType == 2 || rowType == 4){
+				saveFlag= true;break;
+			}else{
+				saveFlag= false;
+			}
+		}
+		
+		if( saveFlag == false ){
+			alert("수정된 사항이 없습니다.");
+			return false;
+		}else{
+			for( var i = 0 ; i < rowCount ; i++){
+				var modelCd 		= nvl(this.ds_rtsd0004.getColumn(i, "modelCd"));
+				var contentsCd 		= nvl(this.ds_rtsd0004.getColumn(i, "contentsCd"));
+				var frCd 			= nvl(this.ds_rtsd0004.getColumn(i, "frCd"));
+				var sectionWidth 	= nvl(this.ds_rtsd0004.getColumn(i, "sectionWidth"));
+				var aspectRatio 	= nvl(this.ds_rtsd0004.getColumn(i, "aspectRatio"));
+				var wheelInches 	= nvl(this.ds_rtsd0004.getColumn(i, "wheelInches"));
+				var plyRating 		= nvl(this.ds_rtsd0004.getColumn(i, "plyRating"));
+				
+				var wheelQty 		= nvl(this.ds_rtsd0004.getColumn(i, "wheelQty"));
+				var wheelLimitQty 	= nvl(this.ds_rtsd0004.getColumn(i, "wheelLimitQty"));
+				var classCd 		= nvl(this.ds_rtsd0004.getColumn(i, "classCd"));
+				
+				if( modelCd == "" ){			alert("차종" + msg);				this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( contentsCd == "" ){	alert("사양" + msg); 				this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( frCd == "" ){			alert("전후 구분" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( sectionWidth == "" ){	alert("단면폭" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( aspectRatio == "" ){	alert("편평비" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( wheelInches == "" ){	alert("인치" + msg); 				this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( plyRating == "" ){		alert("PR(강도)" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( wheelQty == "" ){		alert("바퀴수" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( wheelLimitQty == "" ){	alert("장착가능 바퀴수" + msg); 	this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+				else if( classCd == "" ){		alert("차량분류" + msg); 			this.ds_rtsd0004.set_rowposition(i); goSaveFlag = false; break; return false; }
+			}
+			
+			if( goSaveFlag ){
+				if( confirm( "저장하시겠습니까?")){
+					var sSvcID        	= "saveRTSDCarStandardRegister";                    
+					var sController   	= "rtms/sd/saveRTSDCarStandardRegister.do";
+					var sInDatasets   	= "";
+					var sOutDatasets  	= "";
+					var sArgs 			= "";
+					sInDatasets			+= " input=ds_rtsd0004:U ";
+					var fn_callBack		= "fn_callBack";
+					Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+				}
+			}
+		}
+	}else{
+		alert("저장할 데이터가 없습니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var sSvcID        	= "sRtsd0004Select";                    
+	var sController   	= "rtms/sd/sRtsd0004Select.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0004=rtsd0004SearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_rtsd0004.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_sArgs = function(){
+	var sArgs = "";
+	sArgs += Ex.util.setParam("modelCd" 		,nvl(this.div_search.cb_modelCdS.value));
+	sArgs += Ex.util.setParam("contentsCd" 		,nvl(this.div_search.cb_contentsCdS.value));
+	sArgs += Ex.util.setParam("frCd" 			,nvl(this.div_search.cb_frCdS.value));
+	sArgs += Ex.util.setParam("sectionWidth" 	,nvl(this.div_search.cb_sectionWidthS.value));
+	sArgs += Ex.util.setParam("aspectRatio" 	,nvl(this.div_search.cb_aspectRatioS.value));
+	sArgs += Ex.util.setParam("wheelInches" 	,nvl(this.div_search.cb_wheelInchesS.value));
+	sArgs += Ex.util.setParam("plyRating" 		,nvl(this.div_search.cb_plyRatingS.value));
+	sArgs += Ex.util.setParam("wheelQty" 		,"");
+	sArgs += Ex.util.setParam("wheelLimitQty" 	,"");
+	sArgs += Ex.util.setParam("classCd" 		,"");
+	sArgs += Ex.util.setParam("useYn" 			,nvl(this.div_search.cb_useYnS.value));
+	sArgs += Ex.util.setParam("regId" 			,"");
+	return sArgs;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_modelCdS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004ContentsCdSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004ContentsCdSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_contentsCdS=contentsCdSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_contentsCdS.clearData();
+	this.ds_frCdS.clearData();
+	this.ds_plyRatingS.clearData();
+	this.ds_sectionWidthS.clearData();
+	this.ds_aspectRatioS.clearData();
+	this.ds_wheelInchesS.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_contentsCdS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004FrCdSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004FrCdSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_frCdS=fdCdSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_frCdS.clearData();
+	this.ds_plyRatingS.clearData();
+	this.ds_sectionWidthS.clearData();
+	this.ds_aspectRatioS.clearData();
+	this.ds_wheelInchesS.clearData();
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_frCdS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004PlyRatingCdSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004PlyRatingCdSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_plyRatingS=plyRatingCdSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_plyRatingS.clearData();
+	this.ds_sectionWidthS.clearData();
+	this.ds_aspectRatioS.clearData();
+	this.ds_wheelInchesS.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_plyRatingS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004SectionWidthSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004SectionWidthSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_sectionWidthS=sectionWidthSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_sectionWidthS.clearData();
+	this.ds_aspectRatioS.clearData();
+	this.ds_wheelInchesS.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_sectionWidthS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004AspectRatioSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004AspectRatioSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_aspectRatioS=aspectRatioSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_aspectRatioS.clearData();
+	this.ds_wheelInchesS.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_aspectRatioS_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var sSvcID        	= "sRtsd0004WheelInchesSelect";                    
+	var sController   	= "rtms/sd/sRtsd0004WheelInchesSelect.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_wheelInchesS=wheelInchesSearchMap";
+	var sArgs 			= this.FN_sArgs();
+	var fn_callBack		= "fn_callBack";
+	this.ds_wheelInchesS.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var addRow = this.ds_rtsd0004.addRow();
+	this.ds_rtsd0004.setColumn(addRow, "useYn", "Y");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var rowposition = this.ds_rtsd0004.rowposition;
+	if( this.ds_rtsd0004.getRowType( rowposition ) == 2 ){
+		this.ds_rtsd0004.deleteRow(rowposition);
+	}else{
+		alert("기존데이터는 삭제할 수 없습니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_carMasterSelect_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var rowposition = this.ds_rtsd0004.rowposition;
+	if( this.ds_rtsd0004.getRowType(rowposition) !=  2 ){
+		this.FN_enableFalse();
+	}else{
+		this.FN_enableTrue();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_enableTrue = function(){
+	this.cb_modelCd.set_enable(true);
+	this.cb_contentsCd.set_enable(true);
+	this.cb_frCd.set_enable(true);
+	this.cb_plyRating.set_enable(true);
+	this.cb_sectionWidth.set_enable(true);
+	this.cb_aspectRatio.set_enable(true);
+	this.cb_wheelInches.set_enable(true);
+	this.cb_wheelQty.set_enable(true);
+	this.cb_wheelLimitQty.set_enable(true);
+	this.cb_classCd.set_enable(true);
+	this.cb_useYn.set_enable(true);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_enableFalse = function(){
+	this.cb_modelCd.set_enable(false);
+	this.cb_contentsCd.set_enable(false);
+	this.cb_frCd.set_enable(false);
+	this.cb_plyRating.set_enable(false);
+	this.cb_sectionWidth.set_enable(false);
+	this.cb_aspectRatio.set_enable(false);
+	this.cb_wheelInches.set_enable(false);
+	//this.cb_wheelQty.set_enable(false);
+	//this.cb_wheelLimitQty.set_enable(false);
+	//this.cb_classCd.set_enable(false);
+	//this.cb_useYn.set_enable(false);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel= function(){
+	Ex.core.exportExcel(this, this.grid_carMasterSelect);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+]]></Script>
+  </Form>
+</FDL>

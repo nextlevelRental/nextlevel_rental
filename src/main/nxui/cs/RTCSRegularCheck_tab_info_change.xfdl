@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheck_tab_info_change" classname="RTCSRegularCheck_tab_info_change" left="0" top="0" width="1147" height="150" titletext="정보변경[01]">
+    <Layouts>
+      <Layout>
+        <Static id="Static25" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Static id="Static00" taborder="13" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Static id="Static04" taborder="20" cssclass="sta_WF_detailLabel2" left="0" top="65" width="1107" height="31"/>
+        <Static id="Static83" taborder="27" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Static id="Static09" taborder="34" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="st_posCd" taborder="36" text="우편번호" cssclass="sta_WF_detailLabelP" left="0" top="5" height="31" domainId="nexa.s_condition" width="120"/>
+        <Edit id="posCd" taborder="38" inputtype="number" maxlength="6" enable="false" left="123" top="10" height="21" width="141"/>
+        <Static id="st_addr1" taborder="39" text="주소" cssclass="sta_WF_detailLabelP" left="268" top="5" height="31" domainId="nexa.s_condition" width="121"/>
+        <Edit id="addr1" taborder="40" maxlength="100" enable="false" left="392" top="10" height="21" width="210"/>
+        <Edit id="addr2" taborder="41" maxlength="160" enable="false" left="605" top="10" height="21" width="453"/>
+        <Button id="btn_postSearch1" taborder="42" onclick="div_cust_btn_postSearch1_onclick" cssclass="btn_WF_edtSch" left="243" top="9" height="21" domainId="nexa.save" width="20"/>
+        <Button id="change_save" taborder="43" text="저장" left="1063" top="9" height="23" onclick="change_save_onclick" enable="false" width="40"/>
+        <Static id="st_posCd00" taborder="44" text="핸드폰" cssclass="sta_WF_detailLabelP" left="0" top="35" height="31" domainId="nexa.s_condition" width="120"/>
+        <Static id="st_posCd01" taborder="45" text="전화번호" cssclass="sta_WF_detailLabelP" left="268" top="35" height="31" domainId="nexa.s_condition" width="120"/>
+        <Edit id="mobNo" taborder="46" inputtype="number" maxlength="15" enable="true" left="123" top="40" height="21" onkeyup="mobNo_onkeyup" width="140"/>
+        <Static id="st_posCd02" taborder="47" text="담당자" cssclass="sta_WF_detailLabelP" left="535" top="35" height="31" domainId="nexa.s_condition" width="120"/>
+        <Edit id="telNo" taborder="48" inputtype="number" maxlength="15" enable="true" left="392" top="40" height="21" onkeyup="telNo_onkeyup" width="140"/>
+        <Edit id="ed_mrCd" taborder="49" inputtype="number" maxlength="6" enable="true" left="661" top="40" height="21" readonly="true" width="148"/>
+        <Static id="Static01" taborder="50" cssclass="sta_WF_detailLabel2" left="0" top="95" height="31" width="1107"/>
+        <Static id="st_posCd03" taborder="51" text="예정일" cssclass="sta_WF_detailLabelP" left="0" top="65" height="31" domainId="nexa.s_condition" width="120"/>
+        <Static id="st_posCd04" taborder="52" text="예정시간" cssclass="sta_WF_detailLabelP" left="268" top="65" height="31" domainId="nexa.s_condition" width="120"/>
+        <Static id="st_posCd05" taborder="53" text="변경일" cssclass="sta_WF_detailLabelP" left="535" top="65" height="31" domainId="nexa.s_condition" width="121"/>
+        <Static id="st_posCd06" taborder="54" text="변경시간" cssclass="sta_WF_detailLabelP" left="811" top="65" height="31" domainId="nexa.s_condition" width="121"/>
+        <Static id="st_posCd07" taborder="55" text="특이사항" cssclass="sta_WF_detailLabelP" left="0" top="95" height="31" domainId="nexa.s_condition" width="120"/>
+        <Calendar id="planDaya" taborder="56" readonly="false" dateformat="yyyy-MM-dd" left="123" top="70" height="21" enable="false" width="141"/>
+        <Calendar id="planDay" taborder="57" readonly="false" dateformat="yyyy-MM-dd" left="661" top="70" height="21" width="147"/>
+        <Edit id="reqDesc" taborder="60" maxlength="160" enable="true" left="123" top="100" height="21" width="980"/>
+        <MaskEdit id="planTm" taborder="61" left="936" top="70" height="21" mask="@@:@@" type="string" maskchar=" " style="color:black;align:left middle;" width="166"/>
+        <MaskEdit id="planTma" taborder="62" left="392" top="70" height="21" style="color:black;align:left middle;" maskchar=" " mask="@@:@@" type="string" enable="false" readonly="true" width="140"/>
+        <Edit id="ed_bldMngNo" taborder="63" maxlength="160" enable="false" left="0" top="126" right="695" height="21" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="subChange" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="mobNo" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="posY" type="string" size="32"/>
+          <Column id="posX" type="string" size="32"/>
+          <Column id="mrCd" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="poscd" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="planDaya" type="string" size="32"/>
+          <Column id="bldMngNo" type="string" size="32"/>
+          <Column id="planDay" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="planTm" type="string" size="32"/>
+          <Column id="addr1" type="string" size="32"/>
+          <Column id="addr2" type="string" size="32"/>
+          <Column id="chgDt" type="string" size="32"/>
+          <Column id="seq" type="bigdecimal" size="16"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="reqDesc" type="string" size="32"/>
+          <Column id="regDt" type="string" size="32"/>
+          <Column id="planTma" type="string" size="32"/>
+          <Column id="telNo" type="string" size="32"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="posCd" propid="value" datasetid="subChange" columnid="poscd"/>
+      <BindItem id="item1" compid="addr1" propid="value" datasetid="subChange" columnid="addr1"/>
+      <BindItem id="item2" compid="addr2" propid="value" datasetid="subChange" columnid="addr2"/>
+      <BindItem id="item3" compid="mobNo" propid="value" datasetid="subChange" columnid="mobNo"/>
+      <BindItem id="item4" compid="telNo" propid="value" datasetid="subChange" columnid="telNo"/>
+      <BindItem id="item5" compid="ed_mrCd" propid="value" datasetid="subChange" columnid="mrCd"/>
+      <BindItem id="item6" compid="planDaya" propid="value" datasetid="subChange" columnid="planDaya"/>
+      <BindItem id="item7" compid="planTma" propid="value" datasetid="subChange" columnid="planTma"/>
+      <BindItem id="item8" compid="planDay" propid="value" datasetid="subChange" columnid="planDay"/>
+      <BindItem id="item9" compid="planTm" propid="value" datasetid="subChange" columnid="planTm"/>
+      <BindItem id="item10" compid="reqDesc" propid="value" datasetid="subChange" columnid="reqDesc"/>
+      <BindItem id="item11" compid="ed_bldMngNo" propid="value" datasetid="subChange" columnid="bldMngNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[ 	include "lib::comLib.xjs";
+	
+	this.mrCd = "";
+	 //===========================================
+	 // 우편번호 조회 팝업을 호출한다.
+	 //===========================================
+	this.div_cust_btn_postSearch1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		var args ={p_arg : "RTSDCustRegister_1"};
+		Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+	}
+
+	 //===========================================
+	 // 우편번호 찾기 팝업호출 후처리.
+	 //===========================================
+	this.FN_postCd = function( res, division ){
+		if( division == "addr1"){
+			this.posCd.set_value( res[0] );
+			this.addr1.set_value( res[1] );
+			this.addr2.set_value( res[2] );
+			this.ed_bldMngNo.set_value(res[3]);
+			this.getMrCd(res[3]);
+		}
+	}
+	
+	 //====================================================
+	 // 저장전 필수입력 및 데이타 유효성체크
+	 //====================================================	
+	this.inputCheck = function() {
+		var chkStat = this.subChange.getColumn(0, "chkStat");
+		if(chkStat == "04") {
+			alert("작업상태[04]가 유효하지 않습니다.");
+			return false;
+		}
+		
+		return true;
+	}
+	
+	 //====================================================
+	 // 정기정검 작업목록의 정보변경 처리(자료생성)
+	 //====================================================
+	this.change_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		if(!this.inputCheck()) {
+			return;
+		}
+		
+		if( confirm( "저장하시겠습니까?") ){
+			var nRow = this.subChange.rowposition;
+			this.subChange.setColumn(nRow, "mobNo", FN_numberHyphenOut(this.subChange.getColumn(nRow, "mobNo")));
+			this.subChange.setColumn(nRow, "telNo", FN_numberHyphenOut(this.subChange.getColumn(nRow, "telNo")));
+			
+			var sSvcID        	= "saveReqularCheck";                    
+			var sController   	= "rtms/cs/saveReqularCheck.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			sInDatasets   		= "in_chg=subChange";
+			sOutDatasets  		= "";
+			
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+	
+	 //====================================================
+	 // 주소별 MR Roadian 조회
+	 //====================================================
+	this.getMrCd = function(bldMngNo) {
+	
+		var sSvcID        	= "getMrCd";                    
+		var sController   	= "rtms/cs/getMrCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		sArgs 				+= "bldMngNo=" + nvl(bldMngNo);
+	alert(sArgs);
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	//===========================================================================
+	// 요청에 대한 응답결과처리 및 메시지처리 
+	//===========================================================================
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+		if (strSvcId == "saveReqularCheck"){
+			if (nErrorCode < 0) {
+				alert(strErrorMsg);
+				return;
+			}else{
+				alert(strErrorMsg);
+				this.parent.parent.fn_search()
+			}
+		}
+		
+		if (strSvcId == "getMrCd"){
+			 if( this.mrCd != "" ){
+				this.change_save.set_enable(true);
+				this.ed_mrCd.set_value(this.mrCd);
+			 }else{
+				alert("MR. Roadian 값이 없으므로 저장할 수 없습니다.");
+				this.change_save.set_enable(false);
+				this.ed_mrCd.set_value(this.mrCd);
+			 }
+		}
+	}
+
+	this.mobNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		FN_numberHyphenIn(obj, e);
+	}
+
+	this.telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		FN_numberHyphenIn(obj, e);
+	}
+]]></Script>
+  </Form>
+</FDL>

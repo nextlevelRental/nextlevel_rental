@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREKCPDirectHisCheck" classname="RTREKCPPayHisCheck" left="0" top="0" width="1147" height="496" titletext="KCP결제내역체크(즉시출금)" onload="RTREKCPDirectHisCheck_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="Tab00" taborder="0" left="0" top="0" tabindex="0" scrollbars="autoboth" height="496" onchanged="Tab00_onchanged" right="25">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="[STEP 1] 엑셀업로드" url="re::RTREKCPDirectHisCheck_tab1.xfdl"/>
+            <Tabpage id="tabpage2" text="[STEP 2] 차이 내역 조회" url="re::RTREKCPDirectHisCheck_tab2.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00" taborder="1" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_output" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileid" type="STRING" size="256"/>
+          <Column id="filename" type="STRING" size="256"/>
+          <Column id="filesize" type="STRING" size="256"/>
+          <Column id="savepath" type="STRING" size="256"/>
+          <Column id="ErrorMsg" type="STRING" size="256"/>
+          <Column id="ErrorCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_File" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="FILE_PATH" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_SAVENM" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg = "RTREKCPDirectHisCheck";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTREKCPDirectHisCheck_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Tab00_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo){
+	switch(obj.tabindex){
+		case 0	: this.Tab00.tabpage1.fn_init(); this.Tab00.tabpage2.ds_list.clearData(); break;
+		case 1	: this.Tab00.tabpage2.fn_init(); break;
+		default	: break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+]]></Script>
+  </Form>
+</FDL>

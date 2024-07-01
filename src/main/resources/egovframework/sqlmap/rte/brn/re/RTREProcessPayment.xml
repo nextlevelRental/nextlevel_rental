@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="procPayment">
+    <resultMap id="RESULT_P_MAT_INFO_WITH"  class="java.util.HashMap">
+        <result property="matCd"    column="MAT_CD"     />
+        <result property="matNm"    column="MAT_NM"     />
+        <result property="matNm30"   column="MAT_NM30"    />
+    </resultMap>
+    
+    <parameterMap id="PARAM_P_MAT_INFO_WITH" class="java.util.Map">
+        <parameter property="vcursor"       jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="RESULT_P_MAT_INFO_WITH"/>
+        <parameter property="piVal"         jdbcType="VARCHAR" mode="IN" />
+    </parameterMap>
+    
+    <!-- 계약번호로 MAT 정보 추출 -->
+    <procedure id="procPayment.selectMatInfoWithOrd" parameterMap="PARAM_P_MAT_INFO_WITH">
+        {call PKG_RTSD0106.P_SELECT_MAT_INFO_WITH_ORD(?, ?)}
+    </procedure>
+    
+    <parameterMap id="paramInsertRtre0205CrdHst" class="java.util.Map">
+        <parameter property="ordNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpAmt" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="email" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tno" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="crdNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="crdCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="crdNm" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appTime" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="noinf" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="noinfType" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="quota" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resMsg" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT"/>
+        <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT"/>
+        <parameter property="errorText"     jdbcType="VARCHAR" mode="OUT"/>
+    </parameterMap>
+    <!-- 카드즉시출금결제이력 Insert (수납 - 항상) -->
+    <procedure id="procPayment.insertRtre0205CrdHst" parameterMap="paramInsertRtre0205CrdHst">
+        {call PKG_RTRE0200.p_InsertRtre0205CrdHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+    
+    <parameterMap id="paramInsertRtre0206CrdHst" class="java.util.Map">
+        <parameter property="tno" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modType" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modMny" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="remMny" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modDesc" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resMsg" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT"/>
+        <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT"/>
+        <parameter property="errorText"     jdbcType="VARCHAR" mode="OUT"/>
+    </parameterMap>
+    <!-- 카드즉시출금취소이력 Insert (환불 - 항상) -->
+    <procedure id="procPayment.insertRtre0206CrdHst" parameterMap="paramInsertRtre0206CrdHst">
+        {call PKG_RTRE0200.p_InsertRtre0206CrdHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+    
+    <parameterMap id="paramInsertRtre0202CrdHst" class="java.util.Map">
+        <parameter property="tno" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="crdNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="crdCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" jdbcType="VARCHAR" mode="IN" />
+        <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT"/>
+        <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT"/>
+        <parameter property="errorText"     jdbcType="VARCHAR" mode="OUT"/>
+    </parameterMap>
+    <!-- 카드즉시출금결제 카드정보 Insert (수납 - 성공) -->
+    <procedure id="procPayment.insertRtre0202CrdHst" parameterMap="paramInsertRtre0202CrdHst">
+        {call PKG_RTRE0200.p_InsertRtre0202CrdHst(?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+    
+    <parameterMap id="paramTotCrdRecvMng" class="java.util.Map">
+	    <parameter property="recvDay" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="ordNo" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="custNo" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="recpAmt" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="tno" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="appNo" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="dcCd" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="prptMon" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="cncDay" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="servAmt" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="mfpCd" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="mfpRsnCd" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="mfpDesc" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="workCd" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="regId" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT"/>
+	    <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT"/>
+	    <parameter property="errorText"     jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<!-- 카드즉시출금 수납처리 메니져 -->
+	<procedure id="procPayment.TotCrdRecvMng" parameterMap="paramTotCrdRecvMng">
+        {call PKG_RTRE0200.p_InsertRtre0200TotCrdRecvMng(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+	
+	<parameterMap id="paramTotCrdRecvRfndMng" class="java.util.Map">
+	    <parameter property="recvDay" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="ordNo" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="custNo" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="panc_rem_mny" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="recvSeq" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="prptSeq" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="workCd" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="tno" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="regId" jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT"/>
+	    <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT"/>
+	    <parameter property="errorText"     jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<!-- 카드즉시출금 환불처리 메니져 -->
+	<procedure id="procPayment.TotCrdRecvRfndMng" parameterMap="paramTotCrdRecvRfndMng">
+        {call PKG_RTRE0200.p_Rtre0200TotCrdRecvRfndMng(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+    </procedure>
+</sqlMap>

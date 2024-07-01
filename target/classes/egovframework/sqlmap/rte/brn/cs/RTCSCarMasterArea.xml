@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<!-- 지역별 카마스터 조회 -->
+<sqlMap namespace="carMasterArea">
+	<resultMap id="p_sRtsd0010carmasterResult" class="java.util.HashMap">
+		<result property="doNm"			column="DO_NM" />
+		<result property="ctNm" 		column="CT_NM" />
+		<result property="emNm" 		column="EM_NM" />
+		<result property="rdNm" 		column="RD_NM" />
+		<result property="cnt" 			column="CNT" />
+		<result property="carmasterNm"  column="CARMASTER_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0010carmaster" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="p_sRtsd0010carmasterResult" />
+		<parameter property="doNm" 	jdbcType="VARCHAR" mode="IN" /> <!-- 시/도    -->
+		<parameter property="ctNm" 	jdbcType="VARCHAR" mode="IN" /> <!-- 시/군/구 -->
+		<parameter property="emNm" 	jdbcType="VARCHAR" mode="IN" /> <!-- 읍/면    -->
+		<parameter property="rdNm" 	jdbcType="VARCHAR" mode="IN" /> <!-- 도로명    -->
+	</parameterMap>
+	<procedure id="carMasterArea.listCarMasterArea" parameterMap="p_sRtsd0010carmaster">
+		{call Pkg_Rtsd0010.p_sRtsd0010carmaster(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 지역별 카마스터 등록 -->
+	<parameterMap class="java.util.Map" id="p_UpdateRtsd0010carmaster">
+		<parameter property="doNm"     			jdbcType="VARCHAR" mode="IN" /> <!-- 시/도    	 -->
+		<parameter property="ctNm"     			jdbcType="VARCHAR" mode="IN" /> <!-- 시/군/구 	 -->
+		<parameter property="emNm"     			jdbcType="VARCHAR" mode="IN" /> <!-- 읍/면    	 -->
+		<parameter property="rdNm"     			jdbcType="VARCHAR" mode="IN" /> <!-- 도로명    	 -->
+		<parameter property="carmasterNu"     	jdbcType="VARCHAR" mode="IN" /> <!-- 카마스터 코드   -->
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID     -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="carMasterArea.updateCarmasterArea" parameterMap="p_UpdateRtsd0010carmaster">
+		{call Pkg_Rtsd0010.p_UpdateRtsd0010carmaster(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카마스터 팝업 -->
+	<resultMap id="p_sRtcs0002carmasterPopupResult" class="java.util.HashMap">
+		<result property="carmasterNu"	  column="CARMASTER_NU"/>		<!-- 카마스터 사번	-->
+		<result property="carmasterNm"	  column="CARMASTER_NM"/>		<!-- 카마스터 명	-->
+		<result property="salesGroup"	  column="SALES_GROUP"/>		<!-- 지사코드		-->
+		<result property="salesGroupNm"	  column="SALES_GROUP_NM"/>		<!-- 지사 명		-->
+		<result property="salesOffice"	  column="SALES_OFFICE"/>		<!-- 지점코드		-->
+		<result property="salesOfficeNm"  column="SALES_OFFICE_NM"/>	<!-- 지점 명		-->
+		<result property="agencyCd"		  column="AGENCY_CD"/>			<!-- 대리점코드	-->
+		<result property="agencyNm"		  column="AGENCY_NM"/>			<!-- 대리점 명		-->
+		<result property="mobNo"		  column="MOB_NO"/> 			<!-- 핸드폰번호	-->
+		<result property="telNo"		  column="TEL_NO"/>				<!-- 전화번호		-->
+		<result property="strDay"		  column="STR_DAY"/>			<!-- 입사일		-->
+		<result property="endDay"		  column="END_DAY"/>			<!-- 퇴사일		-->
+		<result property="useYn"		  column="USE_YN"/>				<!-- 근무여부		-->
+		<result property="posCd"		  column="POS_CD"/>				<!-- 우편번호		-->
+		<result property="city"			  column="CITY"/>				<!-- 주소			-->
+		<result property="street"		  column="STREET"/>				<!-- 상세주소		-->
+		<result property="etc1"			  column="ETC1"/>				<!-- 기타1		-->
+		<result property="etc2"			  column="ETC2"/>				<!-- 기타2		-->
+		<result property="ordAgent"		  column="ORD_AGENT"/>			<!-- 판매인번호	-->
+		<result property="rentalGroup"	  column="RENTAL_GROUP"/>		<!-- 렌탈지사코드	-->
+		<result property="rentalGroupNm"  column="RENTAL_GROUP_NM"/>	<!-- 렌탈지사명	-->
+		<result property="rentalOffice"	  column="RENTAL_OFFICE"/>		<!-- 렌탈지점코드	-->
+		<result property="rentalOfficeNm" column="RENTAL_OFFICE_NM"/>	<!-- 렌탈지점명	-->
+	</resultMap>
+	<parameterMap id="p_sRtcs0002carmasterPopup" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="p_sRtcs0002carmasterPopupResult" />
+		<parameter property="carmasterNm" 	jdbcType="VARCHAR" mode="IN" /> <!-- 카마스터명 -->
+		<parameter property="useYn"	 		jdbcType="VARCHAR" mode="IN" /> <!-- 근무여부 [20170622_02] -->
+	</parameterMap>
+	<procedure id="carMasterArea.carMasterPopUp" parameterMap="p_sRtcs0002carmasterPopup">
+		{call Pkg_Rtcs0002.p_sRtcs0002carmasterPopup(?, ?, ?)}
+	</procedure>
+	
+	<!-- 사번으로 로디안 정보 조회 [20170622_01] -->
+	<resultMap id="p_sRtcs0002carmasterNuResult" class="java.util.HashMap">
+		<result property="carmasterNu"		column="CARMASTER_NU"    /> <!-- 카마스터 사번 -->
+		<result property="carmasterNm" 		column="CARMASTER_NM"    /> <!-- 카마스터 명 -->
+		<result property="salesGroup" 		column="SALES_GROUP"     /> <!-- 지사코드 -->
+		<result property="salesGroupNm" 	column="SALES_GROUP_NM"  /> <!-- 지사 명 -->
+		<result property="salesOffice" 		column="SALES_OFFICE"    />	<!-- 지점코드 -->
+		<result property="salesOfficeNm" 	column="SALES_OFFICE_NM" /> <!-- 지점 명 -->
+		<result property="agencyCd" 		column="AGENCY_CD"       />	<!-- 대리점코드 -->
+		<result property="agencyNm" 		column="AGENCY_NM"       />	<!-- 대리점명 -->
+		<result property="mobNo"  			column="MOB_NO"          /> <!-- 핸드폰번호 -->
+		<result property="telNo"  			column="TEL_NO"          />	<!-- 전화번호 -->
+		<result property="strDay"  			column="STR_DAY"         />	<!-- 입사일 -->
+		<result property="endDay"  			column="END_DAY"         />	<!-- 퇴사일 -->
+		<result property="useYn"  			column="USE_YN"          />	<!-- 근무여부 -->
+		<result property="posCd"  			column="POS_CD"          />	<!-- 우편번호 -->
+		<result property="city"  			column="CITY"            />	<!-- 주소 -->
+		<result property="street"  			column="STREET"          />	<!-- 상세주소 -->
+		<result property="etc1"  			column="ETC1"            />	<!-- 기타1 -->
+		<result property="etc2"  			column="ETC2"            />	<!-- 기타2 -->
+		<result property="ordAgent"			column="ORD_AGENT"       />	<!-- 판매인번호 -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />
+	</resultMap>
+	<parameterMap id="p_sRtcs0002carmasterNu" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="p_sRtcs0002carmasterNuResult" />
+		<parameter property="carmasterNu" 	jdbcType="VARCHAR" mode="IN" /> <!-- 로디안 사번 -->
+	</parameterMap>
+	<procedure id="carMasterArea.carmasterNu" parameterMap="p_sRtcs0002carmasterNu">
+		{call Pkg_Rtcs0002.p_sRtcs0002carmasterNu(?, ?)}
+	</procedure>
+	
+	<!-- 카마스터 조직원 등록 -->
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0002">
+		<parameter property="dvsn"  		    javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="carmasterNu"     	jdbcType="VARCHAR" mode="IN" /> <!-- 카마스타 사번    -->
+		<parameter property="carmasterNm"     	jdbcType="VARCHAR" mode="IN" /> <!-- 카마스타 명      -->
+		<parameter property="salesGroup"     	jdbcType="VARCHAR" mode="IN" /> <!-- 지사코드         -->
+		<parameter property="salesOffice"     	jdbcType="VARCHAR" mode="IN" /> <!-- 지점코드         -->
+		<parameter property="agencyCd"     		jdbcType="VARCHAR" mode="IN" /> <!-- 대리점코드       -->
+		<parameter property="mobNo"     		jdbcType="VARCHAR" mode="IN" /> <!-- 핸드폰번호       -->
+		<parameter property="telNo"     		jdbcType="VARCHAR" mode="IN" /> <!-- 전화번호         -->
+		<parameter property="posCd"     		jdbcType="VARCHAR" mode="IN" /> <!-- 우편번호         -->
+		<parameter property="city"     			jdbcType="VARCHAR" mode="IN" /> <!-- 주소             -->
+		<parameter property="street"     		jdbcType="VARCHAR" mode="IN" /> <!-- 상세주소         -->
+		<parameter property="strDay"     		jdbcType="VARCHAR" mode="IN" /> <!-- 입사일           -->
+		<parameter property="endDay"     		jdbcType="VARCHAR" mode="IN" /> <!-- 퇴사일           -->
+		<parameter property="useYn"     		jdbcType="VARCHAR" mode="IN" /> <!-- 근무여부         -->
+		<parameter property="etc1"     			jdbcType="VARCHAR" mode="IN" /> <!-- 기타1            -->
+		<parameter property="etc2"     			jdbcType="VARCHAR" mode="IN" /> <!-- 기타2            -->
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자ID         -->
+		<parameter property="ordAgent"     		jdbcType="VARCHAR" mode="IN" /> <!-- 판매인번호       -->
+		<parameter property="rentalGroup"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalOffice"		jdbcType="VARCHAR" mode="IN" />
+		
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="carMasterArea.iudCarmasterMemGeg" parameterMap="p_IUDRtcs0002">
+		{call Pkg_Rtcs0002.p_IUDRtcs0002(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	
+</sqlMap>

@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample008" classname="Test035" left="0" top="0" width="1260" height="604" titletext="팝업오픈" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="0" text="모달(Modal) 팝업창 오픈" left="24" top="55" width="212" height="39" onclick="Button00_onclick"/>
+        <TextArea id="txa_return" taborder="2" left="24" top="102" right="20" bottom="201"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="25" width="374" binddataset="ds_rtn_1" bottom="24" height="123">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="Column0"/>
+                <Cell col="1" disptype="normal" text="Column1"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:Column0"/>
+                <Cell col="1" disptype="normal" text="bind:Column1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="4" useinputpanel="false" left="409" width="374" binddataset="ds_rtn_2" bottom="24" height="123">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="Column0"/>
+                <Cell col="1" disptype="normal" text="Column1"/>
+                <Cell col="2" disptype="normal" text="Column2"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:Column0"/>
+                <Cell col="1" disptype="normal" text="bind:Column1"/>
+                <Cell col="2" disptype="normal" text="bind:Column2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="5" text="데이타셋을 전달받은 경우 확인용 그리드" left="26" width="550" style="color:blue;font:bold 12 arial;" bottom="143" height="45"/>
+        <Button id="Button01" taborder="6" text="팝업닫고 열기" left="458" top="55" width="212" height="39" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="7" text="모달(Modaless) 팝업창 오픈" left="241" top="55" width="212" height="39" onclick="Button02_onclick"/>
+        <Static id="Static00" taborder="8" text="1.팝업샘플" cssclass="sample_Title" left="44" top="8" width="140" height="36"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtn_1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="ds_rtn_2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : nexacro sample
+* BUSINESS    : system
+* FILE NAME   : 
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs"
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+this.ParserStr = "^&^";
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+    //폼로드시 공통함수 
+	Ex.core.init(obj,604);
+}
+
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.txa_return.set_value("");
+	this.ds_rtn_1.clear();
+	this.ds_rtn_2.clear();
+	var args ={p_arg:"11111"};
+	
+    Ex.core.popup(this,"StringReturnSample","sample::sample008_pop.xfdl",args,"");
+}
+
+// 팝업 Callback
+this.fn_popupAfter = function(sPopupId, Variant)
+{
+
+	// 반환받은 문자열데이타 형변환(String, Array, Object) 처리
+	var rtn = this.gfn_getPopupRtn();
+
+	if(rtn instanceof Array) {		// Array 인 경우
+		var rtnStr = "";
+		for(var i in rtn)
+		{
+			rtnStr += i + " 번째 Array 내용 >>>> " + rtn[i] + "\n\n";
+			
+			if(rtn[i].indexOf("<Dataset") != -1 && rtn[i].indexOf("</Dataset>") != -1) {	
+				if(i==1) {
+					this.ds_rtn_1.loadXML(rtn[i]);
+				} else if(i==2) {
+					this.ds_rtn_2.loadXML(rtn[i]);
+				}
+			}
+		}
+		this.txa_return.set_value(rtnStr);
+	} else if(rtn instanceof Object) {		// Object 인 경우
+		var rtnStr = "";
+		for(var i in rtn)
+		{
+			var rtnVal = decodeURI(rtn[i]);
+			rtnStr += i + " 번째 Object 내용 >>>> " + rtnVal + "\n\n";
+			
+			if(rtnVal.indexOf("<Dataset") != -1 && rtnVal.indexOf("</Dataset>") != -1) {	
+				if(i=="key2") {
+					this.ds_rtn_1.loadXML(rtnVal); 
+				} else if(i=="key3") {
+					this.ds_rtn_2.loadXML(rtnVal);
+				}
+			}
+		}
+		this.txa_return.set_value(rtnStr);	
+	} else {		// 문자열인 경우
+		this.txa_return.set_value("전달받은 내용 >>>> " + Variant);
+	}
+}
+
+// 파라미터 반환
+this.fn_getPopupRtn = function(sPopupId, Variant)
+{
+	if(String(Variant).length > 0) {
+		if(String(Variant).indexOf(this.ParserStr) != -1) {
+			var arr = Variant.split(this.ParserStr);
+			return arr;
+		} else if(String(Variant).substr(0,1)=="{" && String(Variant).substr(String(Variant).length-1,1)=="}") {
+			var obj =  this.gf_StringToJSON(Variant);
+			return obj;
+		} else {
+			return Variant;
+		}
+		return 
+	} else {
+		return Variant;
+	}
+}
+
+// Modal 팝업화면 호출
+this.popup = function(sPopupId, sPopupUrl, sArgument)
+{
+	var childFrame 	= new ChildFrame;	
+
+	childFrame.init(sPopupId,"absolute" ,-1, -1, 400, 400, null, null, sPopupUrl);		
+
+	childFrame.set_openalign("center middle");
+	childFrame.set_showtitlebar(true);
+	childFrame.set_autosize(true);			
+	childFrame.set_resizable(false);
+	
+	childFrame.showModal(this.getOwnerFrame(), sArgument, this, "fn_callback", false); 
+}
+
+/******************************************************************************
+ * Function name: gf_JSONToString
+ * Description	: JSON Object를 JSON String으로 변환하여 리턴한다.
+ * Parameter 	: JSON Object
+ * Return		: JSON String
+ ******************************************************************************/
+this.gf_JSONToString = function(object)
+{
+    var isArray = (object.join && object.pop && object.push
+                    && object.reverse && object.shift && object.slice && object.splice);
+    var results = [];
+ 
+    for (var i in object) {
+        var value = object[i];
+         
+		results.push((isArray ? "" : "\"" + i.toString() + "\" : ") 
+						+ (typeof value == "string" ? "\"" + value + "\"" : value));
+    }
+     
+    return (isArray ? "[" : "{") + results.join(", ") + (isArray ? "]" : "}");
+}
+
+/******************************************************************************
+ * Function name: gf_StringToJSON
+ * Description	: JSON String을 JSON Object으로 변환하여 리턴한다.
+ * Parameter 	: JSON String
+ * Return		: JSON Object
+ ******************************************************************************/
+this.gf_StringToJSON = function(strJson)
+{
+    return eval("(" + strJson + ")");
+}
+
+
+//modaless 창 close
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+  var args ={p_arg:"11111"};
+  Ex.core.popup(this,"StringReturnSample","sample::sample008_pop.xfdl",args,"modaless=true");
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	  //trace(" getOwnerFrame(); : "  + ;
+	 // trace(">>> " + Eco.isEmpty(this.getOwnerFrame().all["StringReturnSample"]));
+	 if(Eco.isEmpty(this.getOwnerFrame().all["StringReturnSample"])==false)
+	 {
+	 this.getOwnerFrame().all["StringReturnSample"].form.gfn_popupClose();
+	 }
+	  Ex.core.popup(this,"StringReturnSample","sample::sample008_pop.xfdl",args,"modaless=true");
+		
+	
+}
+]]></Script>
+  </Form>
+</FDL>

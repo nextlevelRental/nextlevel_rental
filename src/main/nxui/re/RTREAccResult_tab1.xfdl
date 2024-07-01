@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAccResult_tab1" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="[STEP1] 결과파일반영" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="10" top="236" width="1102" height="31"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" width="1102" height="82" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="54" text="계좌신청일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="55" dateformat="yyyy-MM-dd" left="131" top="12" width="120" height="21" value="null" onchanged="cal_accReqDate_onchanged"/>
+              <Static id="Static22" taborder="56" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" height="12" width="1097"/>
+              <Static id="Static06" taborder="57" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="58" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="st_searchCondition00" taborder="59" text="작업구분" cssclass="sta_WF_schTitle" left="19" top="41" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="61" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="-1" top="33" width="20" height="45"/>
+              <Static id="Static02" taborder="62" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="66" height="12" width="1098"/>
+              <Static id="Static46" taborder="63" text="5 px" visible="false" left="130" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static45" taborder="64" text="5 px" visible="false" left="125" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static23" taborder="65" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" height="12" width="1097"/>
+              <Radio id="rdo_JobGubun" taborder="66" index="0" innerdataset="@ds_R010" codecolumn="cd" datacolumn="cdNm" left="131" top="31" height="51" columncount="0" rowcount="0" direction="vertical" width="200" onitemchanged="rdo_JobGubun_onitemchanged"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" style="background:aqua;color:#333333ff;" height="486"/>
+        <Static id="Static02" taborder="4" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" style="background:aqua;color:#333333ff;" height="486"/>
+        <Static id="Static46" taborder="5" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static47" taborder="6" text="5 px" visible="false" left="127" top="90" right="966" height="21" style="color:red;"/>
+        <Static id="Static05" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="93" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Edit id="edt_procStatus" taborder="8" left="144" top="241" width="963" height="21" enable="false"/>
+        <Static id="Static06" taborder="9" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="211" width="84" height="20"/>
+        <Static id="Static19" taborder="10" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="236" width="130" height="31"/>
+        <Static id="Static45" taborder="11" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static03" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="226" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static09" taborder="14" cssclass="sta_WF_detailLabel2" left="10" top="134" width="1103" height="31"/>
+        <Static id="Static11" taborder="15" cssclass="sta_WF_detailLabel2" left="10" top="164" width="1103" height="31"/>
+        <Static id="Static08" taborder="17" cssclass="sta_WF_detailLabel" left="10" top="134" width="130" height="31"/>
+        <Edit id="edt_fileSvrLoc" taborder="18" left="144" top="169" width="500" height="21" enable="false"/>
+        <Static id="Static10" taborder="19" cssclass="sta_WF_detailLabel" left="10" top="164" width="130" height="31"/>
+        <Radio id="rdo_locPos" taborder="20" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="1" onitemclick="rdo_locPos_onitemclick" left="18" top="141" width="120" height="20">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">CMS Pro</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="rdo_svrPos" taborder="21" codecolumn="codecolumn" datacolumn="datacolumn" value="0" onitemclick="rdo_svrPos_onitemclick" left="18" top="170" width="120" height="20" enableevent="true">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">Server</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static21" taborder="22" text="업로드 파일 위치" cssclass="sta_WF_subTitle" left="10" top="109" width="142" height="20"/>
+        <Static id="Static07" taborder="23" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="124" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static12" taborder="24" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="195" width="1110" height="20" style="background:aqua;color:#333333ff;"/>
+        <FileUpload id="FileUpload00" taborder="26" retry="0" index="0" left="144" top="138" height="25" onitemchanged="FileUpload00_onitemchanged" width="500" style="buttontext:파일선택;cursor:auto;" onsuccess="FileUpload00_onsuccess" onerror="FileUpload00_onerror" innerdataset="@ds_File"/>
+        <Static id="sta_fileDesc" taborder="27" cssclass="sta_WF_text" left="649" top="140" width="455" height="20"/>
+        <Edit id="edt_fileNm" taborder="28" enable="false" left="145" top="139" width="427" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_R010" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_output" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileid" type="STRING" size="256"/>
+          <Column id="filename" type="STRING" size="256"/>
+          <Column id="filesize" type="STRING" size="256"/>
+          <Column id="savepath" type="STRING" size="256"/>
+          <Column id="ErrorMsg" type="STRING" size="256"/>
+          <Column id="ErrorCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_File" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="FILE_PATH" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_SAVENM" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R016" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cdDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 		= ""; 	//현재날짜
+this.toHour 	= "";	//현재시간
+this.bfAfDay 	= "";	//계좌신청일 
+this.checkDay 	= "";	//영업일-5	
+this.sFilePath	= "";	//업로드파일경로(로컬)
+this.sFileName	= "";	//업로드파일명(로컬)
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if (nErrorCode < 0)	{
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	}
+	
+	switch (strSvcId){
+		case "getAccReqDate":
+			if(parseInt(nvl(this.toHour,10)) >= 18){ //18시이후에는 계좌신청일 세팅 안함
+				this.div_search.cal_accReqDate.set_value("");					
+			}else {
+				this.div_search.cal_accReqDate.set_value(this.bfAfDay);
+			}
+			break;
+		case "getCheckDate"	: break;					
+		case "getCommCode"	:
+			var sFileLoc = nvl(this.ds_R016.lookup("cd","EB14","cdDesc"));
+			this.sta_fileDesc.set_text("* 업로드 하실 파일의 위치는 " + sFileLoc + " 경로입니다.");			
+			this.div_search.rdo_JobGubun.set_index(0);
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/ 
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 	
+	this.fn_init();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.fn_getAccReqDate(2);		//전일(영업일) 조회 - 회사접수 2일로 셋팅함.
+	this.fn_getCheckDate();			//조회조건 체크에 사용할 영업일-5일조회
+	this.fn_getCommCode();			//공통코드조회
+	this.fn_initBtn();				//버튼초기화
+	this.FileUpload00.setEventHandler("onsuccess", this.FileUpload00_onsuccess, this);
+	this.FileUpload00.setEventHandler("onerror", this.FileUpload00_onerror, this);	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getAccReqDate  = function(days) {
+	if( nvl(days) != "" ){
+		var sSvcID      	= "getAccReqDate";
+		var sController   	= "ntrms/re/getAccReqDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("serchGb", '-');	
+		sArgs += Ex.util.setParam("days", days);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}else{
+		alert("접수일자 오류입니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getCheckDate  = function() {
+	var sSvcID      	= "getCheckDate";  
+	var sController   	= "ntrms/re/getCheckDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("serchGb", '-');	
+	sArgs += Ex.util.setParam("days", 5);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getCommCode  = function() {//공통코드 조회
+	var sSvcID      	= "getCommCode";  
+	var sController   	= "ntrms/re/getAccResultCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_R010=outputR010 ds_R016=outputR016";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가		* 2. S : 조회		* 3. C : 데이타생성		* 4. E : 엑셀데이타생성		* 5. AG: 집계		* 6. DN: 다운*/	
+	this.parent.parent.parent.setButton("UP",this);		
+	this.edt_procStatus.set_value("");					
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_upload  = function() {
+	var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+	if(accReqDate == "") {
+		alert('계좌신청일을 입력하세요.');
+		this.div_search.cal_accReqDate.setFocus();
+		return;
+	}
+	if(nvl(this.FileUpload00.value) == "") {
+		alert('업로드 파일을 선택하세요.');
+		this.this.FileUpload00.setFocus();
+		return;			
+	}
+	var sChkFileNm = "";
+
+	if(this.div_search.rdo_JobGubun.value == "A") {		//작업구분이 회사접수분일 경우
+		sChkFileNm = "EB14"+ accReqDate.substr(4,4);
+	}
+	
+	if(this.div_search.rdo_JobGubun.value == "B") {		//작업구분이 은행접수분일 경우
+		sChkFileNm = "EB11"+ accReqDate.substr(4,4);		
+	}		
+
+	this.sFilePath = this.FileUpload00.value;  
+	var dirExpt = this.sFilePath.lastIndexOf("\\")+1;	
+	
+	this.sFileName = this.fn_clearFileExt(this.sFilePath.substr(dirExpt));
+
+	if(sChkFileNm != this.sFileName) {
+		alert('선택하신 파일은 업로드 할수 없습니다.');
+		return;
+	}	
+	var acrqFg = nvl(this.div_search.rdo_JobGubun.value);
+	var sController = "/ntrms/re/accResultFileUpload.do?fileNm="+this.sFileName+"&rqstDay="+accReqDate+"&acrqFg="+acrqFg;
+	this.FileUpload00.set_uploadurl(sController);
+	var bSucc = this.FileUpload00.upload(sController);
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	//(영업일 이전5일 ~ 오늘)
+	if(parseInt(this.div_search.cal_accReqDate.value,10) < parseInt(this.checkDay,10) || parseInt(this.div_search.cal_accReqDate.value,10) > parseInt(this.toDay,10)){
+		alert('처리할수 없는 계좌신청일입니다.');
+		this.div_search.cal_accReqDate.set_value("");			
+		this.div_search.cal_accReqDate.setFocus();
+		return;			
+	}
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/	
+this.rdo_JobGubun_onitemchanged = function(obj:Radio, e:nexacro.ItemChangeEventInfo){
+	this.fn_jobChange();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FileUpload00_onitemchanged = function(obj:FileUpload,  e:nexacro.FileUploadItemChangeEventInfo){// 파일업로드 변경이벤트
+	this.sFilePath = this.FileUpload00.value;  
+	var dirExpt = this.sFilePath.lastIndexOf("\\")+1;	
+	this.edt_fileNm.set_value(this.sFilePath.substr(dirExpt));
+	this.edt_procStatus.set_value("");	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FileUpload00_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo){// 파일업로드 에러이벤트
+	this.edt_procStatus.set_value(e.errormsg);
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FileUpload00_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo){// 파일업로드 성공이벤트
+	this.edt_procStatus.set_value(e.errormsg);	
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.rdo_locPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo){// 파일생성위치 클릭 이벤트
+	this.rdo_locPos.set_value("1");		
+	this.rdo_svrPos.set_value("0");	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.rdo_svrPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo){// 파일생성위치 클릭 이벤트
+	this.rdo_locPos.set_value("0");		
+	this.rdo_svrPos.set_value("1");		
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_jobChange = function(){// 작업구분값 변경시 파일경로
+	this.edt_procStatus.set_value("");		
+	
+	if(this.div_search.rdo_JobGubun.value == "A") {	//회사접수
+		var sFileLoc = nvl(this.ds_R016.lookup("cd","EB14","cdDesc"));
+		this.sta_fileDesc.set_text("* 업로드 하실 파일의 위치는 " + sFileLoc + " 경로입니다.");			
+		//this.edt_fileLocalLoc.set_value("C:\\CMS\\99$$$$$$$(기관번호)\\EB14\\");
+		this.fn_getAccReqDate(2);		//전일(영업일) 조회 - 회사접수 2일로 셋팅함.
+	}
+	
+	if(this.div_search.rdo_JobGubun.value == "B") {	//은행접수
+		//this.edt_fileLocalLoc.set_value("C:\\CMS\\99$$$$$$$(기관번호)\\EB11\\");	
+		var sFileLoc = nvl(this.ds_R016.lookup("cd","EB11","cdDesc"));
+		this.sta_fileDesc.set_text("* 업로드 하실 파일의 위치는 " + sFileLoc + " 경로입니다.");				
+		this.fn_getAccReqDate(1);		//전일(영업일) 조회 - 은행접수 1일로 셋팅함.
+	}	
+}
+//---------------------------------------------------------------------------------
+// 버튼생성
+//---------------------------------------------------------------------------------
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_clearFileExt = function(val){	// 파일확장자 제거
+	var retVal = "";
+	var idx = val.lastIndexOf(".");
+	if(idx < 0){
+		retVal = val;
+	}else{
+		retVal = val.substring(0,idx);
+	}
+	return retVal;
+}]]></Script>
+  </Form>
+</FDL>

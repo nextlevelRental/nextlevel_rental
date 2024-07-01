@@ -1,0 +1,599 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCDContract" classname="RTCMClaim" left="0" top="0" width="1147" height="690" titletext="청구스케줄조회 -계약별" onload="form_onload" scrollbars="autoboth">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid01" taborder="4" useinputpanel="false" autofittype="none" left="0" top="381" binddataset="dsSdListDetail" nodatatext="조회된 데이터가 없습니다." width="1122" height="309">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="160"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="청구순번"/>
+                <Cell col="2" text="청구구분"/>
+                <Cell col="3" text="청구회차"/>
+                <Cell col="4" text="스케줄상태"/>
+                <Cell col="5" text="매출금액"/>
+                <Cell col="6" text="공급가"/>
+                <Cell col="7" text="부가세"/>
+                <Cell col="8" text="수납금액"/>
+                <Cell col="9" text="미납금액"/>
+                <Cell col="10" text="청구일자"/>
+                <Cell col="11" text="청구보류"/>
+                <Cell col="12" text="수납일자"/>
+                <Cell col="13" text="세금계산서발행일자(예정)"/>
+                <Cell col="14" text="세금계산서번호"/>
+                <Cell col="15" text="중도완납일"/>
+                <Cell col="16" text="시작일"/>
+                <Cell col="17" text="종료일"/>
+                <Cell col="18" text="기산일"/>
+                <Cell col="19" text="미도래원금"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:schdSeq"/>
+                <Cell col="2" text="bind:recpTpNm"/>
+                <Cell col="3" text="bind:recpNu"/>
+                <Cell col="4" text="bind:scdStat"/>
+                <Cell col="5" style="align:right;" text="bind:saleAmt"/>
+                <Cell col="6" style="align:right;" text="bind:saleNamt"/>
+                <Cell col="7" style="align:right;" text="bind:saleVamt"/>
+                <Cell col="8" style="align:right;" text="bind:recpAmt"/>
+                <Cell col="9" style="align:right;" text="bind:arreAmt"/>
+                <Cell col="10" displaytype="date" text="bind:demdDt" calendardisplaynulltype="none"/>
+                <Cell col="11" text="bind:zlspr"/>
+                <Cell col="12" displaytype="date" text="bind:rcDay" calendardisplaynulltype="none"/>
+                <Cell col="13" displaytype="date" text="bind:taxDt" calendardisplaynulltype="none"/>
+                <Cell col="14" text="bind:taxNo"/>
+                <Cell col="15" displaytype="date" text="bind:canclDay" calendardisplaynulltype="none"/>
+                <Cell col="16" displaytype="date" text="bind:begDay" calendardisplaynulltype="none"/>
+                <Cell col="17" displaytype="date" text="bind:endDay" calendardisplaynulltype="none"/>
+                <Cell col="18" displaytype="date" text="bind:zfbDay" calendardisplaynulltype="none"/>
+                <Cell col="19" displaytype="number" style="align:right;" text="bind:notamt"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총합계"/>
+                <Cell col="1" style="align:right;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;saleAmt&quot;)"/>
+                <Cell col="6" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;saleNamt&quot;)"/>
+                <Cell col="7" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;saleVamt&quot;)"/>
+                <Cell col="8" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;recpAmt&quot;)"/>
+                <Cell col="9" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;arreAmt&quot;)"/>
+                <Cell col="10" style="align:right;"/>
+                <Cell col="11" style="align:right;"/>
+                <Cell col="12" style="align:right;"/>
+                <Cell col="13" style="align:right;"/>
+                <Cell col="14" style="align:right;"/>
+                <Cell col="15" style="align:right;"/>
+                <Cell col="16" style="align:right;"/>
+                <Cell col="17" style="align:right;"/>
+                <Cell col="18" style="align:right;"/>
+                <Cell col="19" style="align:right;" expr="expr:dataset.getSum(&quot;endDay&quot;)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="6" left="0" top="0" height="100" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout width="1122" height="95">
+              <Static id="Static00" taborder="50" text="렌탈지사" cssclass="sta_WF_schTitle" left="25" top="10" height="20" domainId="nexa.s_condition" width="80"/>
+              <Edit id="vkgrpNm" taborder="53" left="225" top="10" width="120" height="21" enable="false"/>
+              <Edit id="vkgrpCd" taborder="54" left="105" top="10" width="120" height="21" enable="false"/>
+              <Button id="btn_save00" taborder="55" cssclass="btn_WF_edtSch" left="205" top="10" width="21" height="21" onclick="showVkgrp"/>
+              <Edit id="vkburCd" taborder="57" left="450" top="10" width="120" height="21" enable="false"/>
+              <Button id="btn_save01" taborder="58" cssclass="btn_WF_edtSch" left="549" top="10" width="21" height="21" onclick="showVkbur"/>
+              <Edit id="vkburNm" taborder="59" left="570" top="10" width="120" height="21" enable="false"/>
+              <Static id="Static02" taborder="60" text="장착대리점" cssclass="sta_WF_schTitle" left="715" top="10" height="20" domainId="nexa.s_condition" width="80"/>
+              <Edit id="vkazcCd" taborder="61" left="795" top="10" width="120" height="21" enable="false"/>
+              <Button id="btn_save02" taborder="62" cssclass="btn_WF_edtSch" left="893" top="10" width="21" height="21" onclick="showVkazc"/>
+              <Edit id="vkazcNm" taborder="63" left="914" top="10" width="120" height="21" enable="false"/>
+              <Static id="Static01" taborder="76" text="렌탈지점" cssclass="sta_WF_schTitle" left="370" top="10" height="20" domainId="nexa.s_condition" width="80"/>
+              <Static id="Static03" taborder="77" text="계약번호" cssclass="sta_WF_schTitle" left="25" top="36" height="20" domainId="nexa.s_condition" width="80"/>
+              <Edit id="orderCd" taborder="78" left="105" top="36" width="120" height="21"/>
+              <Button id="btn_save04" taborder="79" cssclass="btn_WF_edtSch" left="205" top="36" width="21" height="21" onclick="showVkorder"/>
+              <Static id="Static04" taborder="81" text="고객번호" cssclass="sta_WF_schTitle" left="370" top="36" height="20" domainId="nexa.s_condition" width="80"/>
+              <Edit id="custCd" taborder="82" left="450" top="36" width="120" height="21" enable="false"/>
+              <Button id="btn_save03" taborder="83" cssclass="btn_WF_edtSch" left="549" top="36" width="21" height="21" onclick="showVkcus"/>
+              <Edit id="custNm" taborder="84" left="570" top="36" width="120" height="21" enable="false"/>
+              <Combo id="statCd" taborder="85" displayrowcount="5" left="795" top="63" width="120" height="21" innerdataset="@dsSdStaus" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_statCd_onitemchanged" index="0" text="전체"/>
+              <Static id="Static05" taborder="86" text="계약상태" cssclass="sta_WF_schTitle" left="715" top="63" height="20" domainId="nexa.s_condition" width="80"/>
+              <Static id="Static06" taborder="87" text="장착일자" cssclass="sta_WF_schTitle" left="715" top="36" height="20" domainId="nexa.s_condition" width="80"/>
+              <Calendar id="dt00" taborder="88" dateformat="yyyy-MM-dd" left="795" top="36" width="110" height="21" value="null"/>
+              <Calendar id="dt01" taborder="89" dateformat="yyyy-MM-dd" left="924" top="36" width="110" height="21" value="null"/>
+              <Static id="Static07" taborder="90" text="~" left="910" top="36" width="10" height="21"/>
+              <Static id="Static09" taborder="93" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static15" taborder="94" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="113"/>
+              <Static id="Static08" taborder="95" cssclass="Guide_color" visible="false" left="345" top="0" width="25" height="96"/>
+              <Static id="Static10" taborder="96" cssclass="Guide_color" visible="false" left="690" top="0" width="25" height="96"/>
+              <Static id="Static22" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1118"/>
+              <Static id="Static11" taborder="98" cssclass="Guide_color" visible="false" left="0" top="31" height="6" width="1118"/>
+              <Static id="Static12" taborder="99" cssclass="Guide_color" visible="false" left="0" top="57" height="6" width="1118"/>
+              <Static id="Static13" taborder="100" cssclass="Guide_color" visible="false" left="0" top="84" height="12" width="1118"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="8" text="Static02" left="0" top="340" height="20" cssclass="Guide_color" visible="false" width="1147"/>
+        <Static id="Static21" taborder="9" text="청구스케줄 LIST" cssclass="sta_WF_subTitle" left="0" top="356" width="169" height="20"/>
+        <Static id="Static01" taborder="10" text="Static02" cssclass="Guide_color" left="0" top="371" height="10" visible="false" width="1147"/>
+        <Static id="Static00" taborder="11" text="Static02" cssclass="Guide_color" visible="false" left="0" top="100" height="20" width="1147"/>
+        <Static id="Static03" taborder="12" text="메인 LIST" cssclass="sta_WF_subTitle" left="0" top="116" height="20" width="169"/>
+        <Static id="Static04" taborder="13" text="Static02" cssclass="Guide_color" visible="false" left="0" top="131" height="10" width="1147"/>
+        <Grid id="Grid00" taborder="14" binddataset="dsSdList" useinputpanel="false" autofittype="none" nodatatext="조회된 데이터가 없습니다." left="0" top="141" height="200" oncellclick="Grid00_oncellclick" width="1122">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="300"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="110"/>
+                <Column size="110"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" edittype="none" text="계약번호"/>
+                <Cell col="1" text="계약상태"/>
+                <Cell col="2" text="장착일자"/>
+                <Cell col="3" text="상품명"/>
+                <Cell col="4" text="타이어본수"/>
+                <Cell col="5" text="계약기간"/>
+                <Cell col="6" text="등록비"/>
+                <Cell col="7" text="월렌탈료"/>
+                <Cell col="8" text="고객명"/>
+                <Cell col="9" text="차종"/>
+                <Cell col="10" text="차량번호"/>
+                <Cell col="11" text="렌탈지사명"/>
+                <Cell col="12" text="렌탈지점명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:statNm"/>
+                <Cell col="2" displaytype="date" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="3" text="bind:matNm"/>
+                <Cell col="4" text="bind:cntNm"/>
+                <Cell col="5" text="bind:periodNm"/>
+                <Cell col="6" style="align:right;" text="bind:regiAmt"/>
+                <Cell col="7" style="align:right;" text="bind:monAmt"/>
+                <Cell col="8" text="bind:custNm"/>
+                <Cell col="9" text="bind:modelNm"/>
+                <Cell col="10" text="bind:carNo"/>
+                <Cell col="11" text="bind:rentalGroupNm"/>
+                <Cell col="12" text="bind:rentalOfficeNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총합계"/>
+                <Cell col="1" style="align:right;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;regiAmt&quot;)"/>
+                <Cell col="7" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;monAmt&quot;)"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+                <Cell col="11" style="align:right;"/>
+                <Cell col="12" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static05" taborder="15" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="690"/>
+        <Button id="Button00" taborder="16" text="엑셀" cssclass="btn_WF_CRUD" visible="true" left="1077" top="115" height="22" width="45" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="17" text="엑셀" cssclass="btn_WF_CRUD" visible="true" left="1077" top="354" width="45" height="22" onclick="Button01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsSdStaus" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsSdListDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="schdSeq" type="INT" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="recpNu" type="INT" size="256"/>
+          <Column id="scdStat" type="STRING" size="256"/>
+          <Column id="saleAmt" type="INT" size="256"/>
+          <Column id="saleNamt" type="INT" size="256"/>
+          <Column id="saleVamt" type="INT" size="256"/>
+          <Column id="recpAmt" type="INT" size="256"/>
+          <Column id="arreAmt" type="INT" size="256"/>
+          <Column id="demdDt" type="STRING" size="256"/>
+          <Column id="zlspr" type="STRING" size="256"/>
+          <Column id="rcDay" type="STRING" size="256"/>
+          <Column id="taxDt" type="STRING" size="256"/>
+          <Column id="taxNo" type="STRING" size="256"/>
+          <Column id="canclDay" type="STRING" size="256"/>
+          <Column id="begDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="notamt" type="INT" size="256"/>
+          <Column id="zfbDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSdList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="INT" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="regiAmt" type="INT" size="256"/>
+          <Column id="monAmt" type="INT" size="256"/>
+          <Column id="custNm" type="INT" size="256"/>
+          <Column id="modelNm" type="INT" size="256"/>
+          <Column id="carNo" type="INT" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRentalInfo" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="" propid="" datasetid="dsSdStaus" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 청구스케줄조회(계약별)
+ * 02. 그룹명   : RTSDCleim.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2015.07.17
+ * 05. 작성자   : 신정수
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.nTotalCnt = 0;
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	//폼로드시 공통함수 
+	Ex.core.init(obj);
+	this.DateDemo(); //오늘날짜, 첫날 세팅
+	this.comboInfo(); //계약상태 combox값 세팅
+	//this.fn_search();
+	this.fn_userRentalGroupInfo();
+	this.parent.setButton("S",this);
+	
+	var auth = Ex.core.o_auth;
+	if( auth.exptAuthYn == "N" ){
+		this.Button00.set_enable(false);
+		this.Button01.set_enable(false);
+	}
+}
+	
+//----------------------------------------------------------------------------------
+// Search: 사용자 렌탈그룹 조회
+//----------------------------------------------------------------------------------
+this.fn_userRentalGroupInfo = function()
+{
+	this.dsRentalInfo.clearData();
+	
+	var sSvcID        	= "userRentalGroupInfo";                    
+	var sController   	= "/rtms/sd/userRentalGroupInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsRentalInfo=ds_output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sArgs 			+= Ex.util.setParam("userId", application.gds_userInfo.getColumn(0, "userId"));
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+	
+
+this.fn_init = function(){
+
+	var userId = application.gds_userInfo.getColumn(0, "userId"); 	//id
+	var userNm = application.gds_userInfo.getColumn(0, "userNm"); 	//이름
+	var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+	
+	var vkgrp = this.dsRentalInfo.getColumn(0, "rentalGroup"); 	//지사코드
+	var vkgrpNm = this.dsRentalInfo.getColumn(0, "rentalGroupNm"); //지사Nm
+	var vkbur = this.dsRentalInfo.getColumn(0, "rentalOffice"); 	//지점코드
+	var vkburNm = this.dsRentalInfo.getColumn(0, "rentalOfficeNm"); //지점NM
+	
+	var vkazc = application.gds_userInfo.getColumn(0, "vkazc");	 	//대리점
+	var vkazcNm = application.gds_userInfo.getColumn(0, "vkazcNm"); //대리점NM
+	
+	if(userGrp != '01' && userGrp != 'RM'){ 
+	
+		this.div_search.vkgrpCd.set_enable(false); 		//지사code 비활성
+		this.div_search.vkgrpNm.set_enable(false); 		//지사name 비활성
+		this.div_search.btn_save00.set_visible(false); 	//지사button visible
+		this.div_search.vkburCd.set_enable(false); 		//지점code 비활성 
+		this.div_search.vkburNm.set_enable(false); 		//지점name 비활성
+		this.div_search.btn_save01.set_visible(false); 	//지점button visible
+		this.div_search.vkazcCd.set_enable(false); 		//장착대리점code 비활성
+		this.div_search.vkazcNm.set_enable(false); 		//장착대리점name 비활성
+		this.div_search.btn_save02.set_visible(false); 	//장착대리점button visible
+		
+		this.div_search.vkgrpCd.set_value(vkgrp);
+		this.div_search.vkgrpNm.set_value(vkgrpNm);
+		this.div_search.vkburCd.set_value(vkbur);
+		this.div_search.vkburNm.set_value(vkburNm);
+		this.div_search.vkazcCd.set_value(userId);	
+		this.div_search.vkazcNm.set_value(userNm);
+	}
+}
+		
+//지사
+this.showVkgrp = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+  var args ={p_arg:"RTSDOrder"};
+  Ex.core.popup(this,"지사 조회","comm::RTCOMMVkgrp_pop.xfdl",args,"modaless=false");
+}
+
+//지점
+this.showVkbur = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDOrder", p_rentalGroup:this.div_search.vkgrpCd.value};
+	Ex.core.popup(this,"지점 조회","comm::RTCOMMVkbur_pop.xfdl",args,"modaless=false");
+}
+this._setReturn = function(val) {
+	var cd = val[0];
+	var nm = val[1];
+	var gb = val[2];
+	if(gb == "vkgrp") {
+		this.div_search.vkgrpCd.set_value(cd);
+		this.div_search.vkgrpNm.set_value(nm);
+	} else if(gb == "vkbur" ) {
+		this.div_search.vkburCd.set_value(cd);
+		this.div_search.vkburNm.set_value(nm);
+	} else if(gb == "vkazc" ) {
+		this.div_search.vkazcCd.set_value(cd);
+		this.div_search.vkazcNm.set_value(nm);
+	}
+}
+
+//장착대리점
+this.showVkazc = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_vkgrpCd:this.div_search.vkgrpCd.value, p_vkgrpNm:this.div_search.vkgrpNm.value, 
+				p_vkburCd:this.div_search.vkburCd.value, p_vkburNm:this.div_search.vkburNm.value, 
+				p_formId : "RTCMContract"};
+	Ex.core.popup(this,"대리점정보 검색","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+this.return_agency = function(arr) {
+	this.div_search.vkgrpNm.set_value(arr[0]);
+	this.div_search.vkgrpCd.set_value(arr[1]);
+	this.div_search.vkburNm.set_value(arr[2]);
+	this.div_search.vkburCd.set_value(arr[3]);
+	this.div_search.vkazcNm.set_value(arr[4]);
+	this.div_search.vkazcCd.set_value(arr[5]);
+}
+
+//계약번호
+this.showVkorder = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDContract"};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl", args ,"modaless=false");
+}
+this.returnOrderNoInfo = function(val) {
+	this.div_search.orderCd.set_value(val);
+}
+
+//고객번호
+this.showVkcus = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDContract"};
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}
+this.returnCustInfo = function(arr) {
+	var	custNo = arr[0].getColumn(0, "custNo");
+	var custNm = arr[0].getColumn(0, "custNm");
+	
+	this.div_search.custCd.set_value(custNo);
+	this.div_search.custNm.set_value(custNm);
+	
+}
+
+//combobox DATA값 세팅
+this.comboInfo = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "contractService";
+	var sController   	= "/rtms/sd/comboInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsSdStaus=status";
+	var sArgs 			= "";	
+	var fn_callBack		= "";
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//조회버튼
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var procFday 		= nvl(this.div_search.dt00.value); //장착일자 시작일
+		var procTday 		= nvl(this.div_search.dt01.value); //장착일자 마지막일
+		var salesGroup 		= ""; //지사
+		var salesOffice 	= ""; //지점
+		var agencyCd 		= nvl(this.div_search.vkazcCd.value); //장착대리점
+		var ordNo 			= nvl(this.div_search.orderCd.value); //계약번호
+		var custNo 			= nvl(this.div_search.custCd.value); //고객번호
+		var statCd 			= nvl(this.div_search.statCd.value); //스케쥴 상태코드
+		var rentalGroup 	= nvl(this.div_search.vkgrpCd.value); //렌탈지사
+		var rentalOffice 	= nvl(this.div_search.vkburCd.value); //렌탈지점
+		var userId          = application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+		
+		/* 렌탈지사지점 Check 해제 */
+// 		if (rentalGroup == "" || rentalGroup == null)
+// 		{
+// 			alert("렌탈지사를 선택하세요.");
+// 			return false;
+// 		}
+// 		if (rentalOffice == "" || rentalOffice == null)
+// 		{
+// 			alert("렌탈지점을 선택하세요.");
+// 			return false;
+// 		}
+	
+		var sSvcID        	= "contractList";                    
+		var sController   	= "/rtms/sd/listContract.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsSdList=contractInfo dsSdStaus=status";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("procFday", procFday);
+		sArgs += Ex.util.setParam("procTday", procTday);
+		sArgs += Ex.util.setParam("salesGroup", salesGroup);
+		sArgs += Ex.util.setParam("salesOffice", salesOffice);
+		sArgs += Ex.util.setParam("agencyCd", agencyCd);
+		sArgs += Ex.util.setParam("ordNo", ordNo);
+		sArgs += Ex.util.setParam("custNo", custNo);
+		sArgs += Ex.util.setParam("statCd", statCd);
+		sArgs += Ex.util.setParam("rentalGroup", rentalGroup);
+		sArgs += Ex.util.setParam("rentalOffice", rentalOffice);
+		sArgs += Ex.util.setParam("userId", userId);
+			
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+		
+	if (strSvcId == "userRentalGroupInfo"){		
+	
+		if (this.dsRentalInfo.getColumn(0, "rentalGroup") == "" || this.dsRentalInfo.getColumn(0, "rentalGroup") == null) return;
+		
+		this.fn_init();
+	}
+	
+	if (strSvcId == "contractList") 
+	{
+		this.nTotalCnt = this.dsSdList.rowcount;
+		if(this.nTotalCnt == 0) {
+			this.Div02.Grid00.set_nodatatext("조회된 데이터가 없습니다.");
+		} else {
+			this.Grid00_oncellclick();
+		}
+	}
+}
+
+//오늘날짜와 오늘날짜 달의 첫날
+
+this.DateDemo = function(){
+
+	var obj, y, m, d, s = "";
+	obj = new Date();
+	s += obj.getFullYear();
+	m = obj.getMonth() + 1;
+	if(String(m).length == 1) {
+		m = "0" + m;
+	} 
+	s += m;
+	this.div_search.dt00.set_value(s + "01"); //첫날
+	d = obj.getDate();
+	s += d;
+	
+	this.div_search.dt01.set_value(s); //오늘날짜
+}
+
+
+this.Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	
+	var ordNo 			= nvl(this.dsSdList.getColumn(this.dsSdList.rowposition, "ordNo")); //계약번호
+	var sSvcID        	= "contractListDetail";                    
+	var sController   	= "/rtms/sd/listContractDetail.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsSdListDetail=contractDetail";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.Grid01);
+}
+]]></Script>
+  </Form>
+</FDL>

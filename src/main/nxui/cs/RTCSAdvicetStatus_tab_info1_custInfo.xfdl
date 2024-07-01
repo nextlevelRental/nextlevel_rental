@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdvicetStatus_tab_info1_custInfo" classname="RTCMCustRegister" left="0" top="0" width="1147" height="221" scrollbars="autoboth" titletext="[STEP1]고객등록" name="RTSDCustRegister" onload="RTCSAdviceStatus_tab_info1_custInfo_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_cust" taborder="0" style="background:@gradation;" scrollbars="none" position="absolute" enable="true" right="25" left="0" top="0" height="242">
+          <Layouts>
+            <Layout width="1024" height="301">
+              <Edit id="ed_safekey" taborder="31" left="17.74%" top="180" height="20" enable="false" position="absolute" displaynulltext="SAFEKEY" visible="false" width="100" readonly="false"/>
+              <Edit id="ed_taxYn" taborder="51" displaynulltext="개인사업자 면세여부" enable="false" top="180" height="20" visible="false" width="120" left="303" readonly="false"/>
+              <Static id="Static01" taborder="60" cssclass="sta_WF_detailLabel2" left="0" top="60" height="31" right="0"/>
+              <Static id="Static00" taborder="59" cssclass="sta_WF_detailLabel2" left="0" top="30" height="31" right="0"/>
+              <Static id="Static02" taborder="61" cssclass="sta_WF_detailLabel2" left="0" top="60" height="31" right="0"/>
+              <Static id="Static03" taborder="62" cssclass="sta_WF_detailLabel2" left="0" top="90" height="31" right="0"/>
+              <Static id="Static17" taborder="58" cssclass="sta_WF_detailLabel2" left="0" top="0" height="31" right="0"/>
+              <Static id="st_custTp" taborder="32" text="고객유형" cssclass="sta_WF_detailLabel" top="0" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="0"/>
+              <Edit id="ed_custNm" taborder="3" top="35" height="21" position="absolute" maxlength="80" width="140" left="124" imemode="hangul" readonly="true"/>
+              <Static id="st_custNm" taborder="33" text="고객명" cssclass="sta_WF_detailLabelP" top="30" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="0"/>
+              <Static id="st_mobNo" taborder="34" text="휴대폰" cssclass="sta_WF_detailLabelP" top="0" height="31" domainId="nexa.s_condition" position="absolute" width="100" left="543"/>
+              <Static id="st_posCd" taborder="35" text="고객주소" cssclass="sta_WF_detailLabelP" top="60" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="0"/>
+              <Edit id="ed_posCd" taborder="27" top="65" height="21" position="absolute" maxlength="6" inputtype="number" enable="true" width="140" left="124" readonly="true"/>
+              <Static id="st_posCd2" taborder="36" text="근무지주소" top="90" height="31" domainId="nexa.s_condition" position="absolute" cssclass="sta_WF_detailLabel" width="120" left="0"/>
+              <Edit id="ed_posCd2" taborder="29" top="95" height="21" position="absolute" maxlength="6" inputtype="number" enable="true" width="140" left="124" readonly="true"/>
+              <Static id="st_birthDay" taborder="37" text="법정생년월일" cssclass="sta_WF_detailLabelP" top="30" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="268"/>
+              <Static id="st_mobFirm" taborder="38" text="통신사" cssclass="sta_WF_detailLabelP" top="0" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="795"/>
+              <Static id="st_genderCd" taborder="39" text="성별" cssclass="sta_WF_detailLabelP" top="30" height="31" domainId="nexa.s_condition" position="absolute" width="100" left="543"/>
+              <Static id="st_custNo" taborder="41" text="고객번호" top="0" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="268" cssclass="sta_WF_detailLabel"/>
+              <Edit id="ed_custNo" taborder="1" top="5" height="21" position="absolute" enable="true" width="140" left="392" readonly="true" oneditclick="div_cust_ed_custNo_oneditclick"/>
+              <Button id="btn_safeKeyConfirm" taborder="13" text="인증번호확인" top="5" height="21" domainId="nexa.save" position="absolute" onclick="div_cust_btn_safeKeyConfirm_onclick" width="77" left="986"/>
+              <Edit id="ed_emailAddr1" taborder="16" top="35" height="21" position="absolute" maxlength="35" imemode="none" width="90" left="867" enable="true" readonly="true"/>
+              <Static id="st_emailAddr" taborder="43" text="e-mail주소" top="30" height="31" domainId="nexa.s_condition" position="absolute" width="100" left="763" cssclass="sta_WF_detailLabel"/>
+              <Static id="st_cdGrpCd11" taborder="44" text="@" top="34" height="20" domainId="nexa.s_condition" position="absolute" width="25" left="958"/>
+              <Static id="st_addr1" taborder="45" text="주소" cssclass="sta_WF_detailLabelP" top="60" height="31" domainId="nexa.s_condition" position="absolute" width="120" left="268"/>
+              <Edit id="ed_addr1" taborder="28" top="65" height="21" position="absolute" maxlength="100" enable="true" width="210" left="392" readonly="true"/>
+              <Static id="st_addr2" taborder="46" text="주소" top="90" height="31" domainId="nexa.s_condition" position="absolute" cssclass="sta_WF_detailLabel" width="120" left="268"/>
+              <Edit id="ed_addr12" taborder="30" top="95" height="21" position="absolute" maxlength="100" enable="true" width="210" left="392" readonly="true"/>
+              <Edit id="ed_addr22" taborder="24" top="95" height="21" position="absolute" maxlength="160" width="245" left="606" enable="true" readonly="true"/>
+              <Edit id="ed_addr2" taborder="21" top="65" height="21" position="absolute" maxlength="160" width="245" left="606" enable="true" readonly="true"/>
+              <Static id="st_telNo" taborder="47" text="전화번호" cssclass="sta_WF_detailLabelP" top="60" height="31" domainId="nexa.s_condition" position="absolute" width="100" left="854"/>
+              <Static id="st_telNo2" taborder="48" text="전화번호" top="90" height="31" domainId="nexa.s_condition" position="absolute" cssclass="sta_WF_detailLabel" width="100" left="854"/>
+              <MaskEdit id="ed_birthDay" taborder="4" type="string" mask="####-##-##" top="35" height="20" onchanged="div_cust_ed_birthDay_onchanged" width="140" left="392" onsetfocus="div_cust_ed_birthDay_onsetfocus" enable="false"/>
+              <Edit id="ed_emailAddr2" taborder="18" maxlength="35" top="35" height="21" visible="true" width="92" left="971" enable="true" readonly="true"/>
+              <Edit id="ed_useYn" taborder="50" displaynulltext="사용여부" enable="false" top="180" height="20" visible="false" width="100" left="418" readonly="false"/>
+              <Static id="st_buslNo" taborder="52" text="사업자번호" cssclass="sta_WF_detailLabel" top="30" height="31" domainId="nexa.s_condition" visible="false" width="120" left="268"/>
+              <MaskEdit id="ed_buslNo" taborder="5" type="string" mask="###-##-#####" top="35" height="21" visible="false" onchanged="div_cust_ed_buslNo_onchanged" width="140" left="392" onsetfocus="div_cust_ed_buslNo_onsetfocus" enable="false"/>
+              <CheckBox id="ch_birthDayAndBuslNoCh" taborder="57" text="법정생년월일&amp;사업자번호체크" top="181" height="20" visible="false" enable="false" width="190" left="866" value="true" readonly="false"/>
+              <Edit id="ed_telNo" taborder="22" maxlength="80" top="65" height="21" onkeyup="div_cust_ed_telNo_onkeyup" inputtype="number" width="139" left="960" readonly="true"/>
+              <Edit id="ed_telNo2" taborder="25" maxlength="80" top="95" height="21" onkeyup="div_cust_ed_telNo2_onkeyup" inputtype="number" width="139" left="960" readonly="true"/>
+              <Button id="btn_postSearch1" taborder="20" top="64" height="21" domainId="nexa.save" position="absolute" onclick="div_cust_btn_postSearch1_onclick" width="20" left="244" cssclass="btn_WF_edtSch"/>
+              <Button id="btn_postSearch2" taborder="23" top="94" height="21" domainId="nexa.save" position="absolute" onclick="div_cust_btn_postSearch2_onclick" width="20" left="244" cssclass="btn_WF_edtSch"/>
+              <Edit id="ed_di" taborder="66" maxlength="80" left="0" top="180" width="100" height="21" enable="false" displaynulltext="di" visible="false" readonly="false"/>
+              <Edit id="ed_ci" taborder="67" maxlength="80" left="99" top="180" width="100" height="21" enable="false" displaynulltext="ci" visible="false" readonly="false"/>
+              <CheckBox id="ch_safekeyFlag" taborder="70" left="526" top="181" width="65" height="21" value="false" enable="false" visible="false" text="safekey" readonly="false"/>
+              <CheckBox id="ch_loginCheck2" taborder="74" text="로그인아이디체크" left="733" top="181" width="128" height="24" visible="false" enable="false" readonly="false"/>
+              <CheckBox id="ch_loginCheck1" taborder="75" text="로그인아이디체크" left="605" top="181" width="128" height="24" enable="false" visible="false"/>
+              <Edit id="ed_mobNo" taborder="11" maxlength="80" left="647" top="5" width="140" height="21" onkeyup="div_cust_ed_mobNo_onkeyup" readonly="true"/>
+              <Edit id="ed_custTp" taborder="76" imemode="hangul" maxlength="80" left="124" top="5" width="20" height="21" enable="false" visible="false"/>
+              <Edit id="ed_mobFirm" taborder="78" maxlength="80" left="919" top="5" width="59" height="21" readonly="true"/>
+              <Edit id="ed_genderCd" taborder="79" maxlength="80" onkeyup="div_cust_ed_mobNo_onkeyup" left="659" top="35" width="91" height="21" visible="false"/>
+              <Edit id="ed_custTpNm" taborder="80" imemode="hangul" maxlength="80" enable="false" left="124" top="5" width="140" height="21" visible="true"/>
+              <Edit id="ed_genderCdNm" taborder="81" maxlength="80" onkeyup="div_cust_ed_mobNo_onkeyup" left="659" top="35" width="91" height="21" visible="true" readonly="true"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Static id="Static01" taborder="6" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="222"/>
+        <Button id="bt_save" taborder="7" text="저장" cssclass="btn_WF_module" left="1042" top="122" width="45" height="22" onclick="bt_save_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_genderCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mobFirm" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_emailAddr2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="bind_custNo" compid="div_cust.ed_custNo" propid="value" datasetid="ds_cust" columnid="custNo"/>
+      <BindItem id="bind_custNm" compid="div_cust.ed_custNm" propid="value" datasetid="ds_cust" columnid="custNm"/>
+      <BindItem id="bind_emailAddr1" compid="div_cust.ed_emailAddr1" propid="value" datasetid="ds_cust" columnid="emailAddr1"/>
+      <BindItem id="bind_posCd" compid="div_cust.ed_posCd" propid="value" datasetid="ds_cust" columnid="posCd"/>
+      <BindItem id="bind_addr1" compid="div_cust.ed_addr1" propid="value" datasetid="ds_cust" columnid="addr1"/>
+      <BindItem id="bind_addr2" compid="div_cust.ed_addr2" propid="value" datasetid="ds_cust" columnid="addr2"/>
+      <BindItem id="bind_posCd2" compid="div_cust.ed_posCd2" propid="value" datasetid="ds_cust" columnid="posCd2"/>
+      <BindItem id="bind_addr12" compid="div_cust.ed_addr12" propid="value" datasetid="ds_cust" columnid="addr12"/>
+      <BindItem id="bind_addr22" compid="div_cust.ed_addr22" propid="value" datasetid="ds_cust" columnid="addr22"/>
+      <BindItem id="bind_birthDay" compid="div_cust.ed_birthDay" propid="value" datasetid="ds_cust" columnid="birthDay"/>
+      <BindItem id="bind_useYn" compid="div_cust.ed_useYn" propid="value" datasetid="ds_cust" columnid="useYn"/>
+      <BindItem id="bind_taxYn" compid="div_cust.ed_taxYn" propid="value" datasetid="ds_cust" columnid="taxYn"/>
+      <BindItem id="bind_buslNo" compid="div_cust.ed_buslNo" propid="value" datasetid="ds_cust" columnid="buslNo"/>
+      <BindItem id="bind_telNo" compid="div_cust.ed_telNo" propid="value" datasetid="ds_cust" columnid="telNo"/>
+      <BindItem id="bind_telNo2" compid="div_cust.ed_telNo2" propid="value" datasetid="ds_cust" columnid="telNo"/>
+      <BindItem id="item0" compid="div_cust.ed_di" propid="value" datasetid="ds_cust" columnid="diCd"/>
+      <BindItem id="item2" compid="div_cust.ed_ci" propid="value" datasetid="ds_cust" columnid="ciCd"/>
+      <BindItem id="item3" compid="div_cust.ed_mobNo" propid="value" datasetid="ds_cust" columnid="mobNo"/>
+      <BindItem id="item1" compid="div_cust.ed_custTp" propid="value" datasetid="ds_cust" columnid="custTp"/>
+      <BindItem id="item5" compid="div_cust.ed_mobFirm" propid="value" datasetid="ds_cust" columnid="mobFirm"/>
+      <BindItem id="item6" compid="div_cust.ed_emailAddr2" propid="value" datasetid="ds_cust" columnid="emailAddr2"/>
+      <BindItem id="item4" compid="div_cust.ed_genderCd" propid="value" datasetid="ds_cust" columnid="genderCd"/>
+      <BindItem id="item7" compid="div_cust.ed_custTpNm" propid="value" datasetid="ds_contractStatus" columnid="custTpNm"/>
+      <BindItem id="item8" compid="div_cust.ed_genderCdNm" propid="value" datasetid="ds_contractStatus" columnid="genderCdNm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.resultSafekey 		= "0";
+this.resultCustNo 		= "0";
+this.resultBuslCnt 		= "0";
+this.checkbuslNo 		= "";
+this.resultSuccessCd 	= "";
+this.resultSuccessMsg 	= "";
+this.resultNagYn 		= "N";
+this.selectSafekey 		= "";
+this.oldMobNo			= "";
+this.certificationFlag	= false;
+this.cerChangeFlag		= false;//본인인증 신분증->휴대폰으로 변경하면 인증을 받아야함.
+this.toDay 				= "";   //현재날짜
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTCMCustRegister" ){
+		if( this.ds_custTp.rowcount != 0 && this.ds_certification.rowcount != 0){
+			this.initSetValue();
+			this.div_cust.ed_custNm.setFocus(true);
+		}
+	}
+	
+	if(strSvcId == "getToday"){
+	}	
+
+	if( strSvcId == "safeKeyConfirm" ){
+
+		if( this.resultCustNo == "0" ){
+
+			if( nvl(this.resultSafekey) != "0" && this.resultSuccessCd == "P000" ){
+				this.FN_safekeyEnable();
+				this.div_cust.ch_safekeyFlag.set_value(true);
+				this.div_cust.ed_safekey.set_value( nvl(this.resultSafekey) );
+				alert("인증번호 확인완료했습니다.");
+			}else{
+				var msg = "";
+				if( this.resultSuccessCd == "S003" ){ 
+					msg = "인증번호 확인이 되지 않아 safekey 등록을 시작합니다.";
+				}
+				if( this.resultSuccessCd == "P015" ){
+					msg = "중복건이 존재하므로 등록을 시작합니다.";
+				}
+				if( this.resultSuccessCd == "S003" || this.resultSuccessCd == "P015"){
+					if( confirm(msg) ){
+						this.FN_safekeyEnable();
+						this.div_cust.ch_safekeyFlag.set_value(false);
+						// safekey 가 존재하지 않고 
+						// IR통신을 통해 전달된 safekey가 없는경우 팝업을 통해 
+						// safekey 인증을 시작한다.
+
+						var kunnr 			= nvl(this.div_cust.ed_custNo.value);
+						var birthDay 		= nvl(this.div_cust.ed_birthDay.value);
+						var mobNo 			= FN_numberHyphenOut(nvl(this.div_cust.ed_mobNo.value));
+						var gender 			= nvl(this.div_cust.cb_genderCd.value);
+						var emailAddr1  	= nvl(this.div_cust.ed_emailAddr1.value);
+						var emailAddr2  	= nvl(this.div_cust.ed_emailAddr2.value);	
+						var custNm 			= nvl(this.div_cust.ed_custNm.value);
+						var email 			= emailAddr1 + "@" + emailAddr2;
+						
+						var doc = this.div_cust.safekey_interface.document;
+						doc.getElementById("kunnr").value 		= kunnr;
+						doc.getElementById("username").value 	= custNm;
+						doc.getElementById("birthdate").value 	= birthDay;
+						doc.getElementById("gender").value 		= gender;
+						doc.getElementById("mobileno").value 	= mobNo;
+						doc.getElementById("email").value 		= email;
+						doc.getElementById("safe_fn_popup").click();
+					}
+				}else{
+					var nRow = application.gds_msg.findRow( "cd", this.resultSuccessCd);
+					var msg  = application.gds_msg.getColumn(nRow, "msg");
+					alert(this.resultSuccessCd + " : " +msg);
+				}
+			}
+		}else{
+			if( confirm( "인증번호로 이미 등록된 고객이 있습니다.\n고객번호는 \'"+this.resultCustNo+"\' 입니다." + "\고객번호로 조회하시겠습니까?") ){
+				this.FN_custNoSelect( this.resultCustNo );
+			}else{
+				return false;
+			}
+		}
+	}
+	
+	if( strSvcId == "saveAdviceCust" ){
+		if( nErrorCode == "0" && this.resultCustNo != "0" ){
+			if( confirm( strErrorMsg +"\n저장된 고객번호는 \'"+this.resultCustNo+"\' 입니다." + "\n저장된 고객번호로 조회하시겠습니까?") ){
+				this.certificationFlag	= false;
+				this.cerChangeFlag		= true;
+				this.FN_custNoSelect( this.resultCustNo );
+			}else{
+				this.reload();
+			}
+		}else{
+			alert(strErrorMsg);
+		}
+	}
+
+	
+	if( strSvcId == "saveBeforSafeKeyConfirm"){
+/*		if( nvl(this.selectSafekey) != "0" ){*/
+			this.div_cust.ed_safekey.set_value( this.selectSafekey );
+			var sSvcID        	= "saveBeforSafeKeySelect";                    
+			var sController   	= "rtms/sd/saveBeforSafeKeySelect.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			sArgs += Ex.util.setParam("safekey", this.selectSafekey);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 				
+// 		}else{
+// 			alert("인증번호 확인이 되지 않아 저장할 수 없습니다.");
+// 		}
+	}
+	
+	if( strSvcId == "saveBeforSafeKeySelect" ){
+		if( this.resultCustNo == "0" ){
+			this.div_cust.ch_safekeyFlag.set_value(true);
+			this.fn_goSave();
+		}else{
+			if( confirm( "인증번호로 이미 등록된 고객이 있습니다.\n고객번호는 \'"+this.resultCustNo+"\' 입니다." + "\고객번호로 조회하시겠습니까?") ){
+				this.FN_custNoSelect( this.resultCustNo );
+			}else{
+				return false;
+			}
+		}
+	}
+
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCSAdviceStatus_tab_info1_custInfo_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_getToday();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_safekeyEnable = function(){
+	this.div_cust.btn_safeKeyConfirm.set_enable(false);
+	this.div_cust.ra_custTp.set_enable(false);
+	this.div_cust.ed_custNm.set_enable(false);
+	this.div_cust.ed_birthDay.set_enable(false);
+	this.div_cust.cb_genderCd.set_enable(false);
+	this.div_cust.cb_lfCd.set_enable(false);
+	this.div_cust.ed_mobNo.set_enable(false);
+	this.div_cust.cb_mobFirm.set_enable(false);
+	this.div_cust.ed_emailAddr1.setFocus(true);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.initSetValue = function(){
+	this.div_cust.ra_custTp.set_value( this.ds_custTp.getColumn(0,"cd") );
+	this.div_cust.ra_certification.set_value( this.ds_certification.getColumn(0,"cd") );
+	this.div_cust.ed_taxYn.set_value("N");		//고객유형이 개인이면 개인사업자 면세여부는 "N"
+	this.div_cust.cb_custTp2.set_value("0001");	//고객분류 : 개인사업자
+	this.div_cust.ed_useYn.set_value("Y");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.fn_goSave();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_goSave = function(){
+
+	if( confirm( "저장하시겠습니까?") ){
+	
+		var cnt = 0;
+		var dsCustCnt = this.ds_cust.getRowCount();
+		for( var i = 0 ; i < dsCustCnt ; i++ ){
+		var iRowType = this.ds_cust.getRowType(i);		
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			cnt++;
+			}
+		}
+		if(cnt != 0) {
+			var sSvcID        	= "saveAdviceCust";                    
+		var sController   	= "rtms/sd/saveAdviceCust.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		sInDatasets   		+= "input=ds_cust:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+		}else{
+			alert("변경된 데이터가 없습니다!");
+			return false; 
+		}	
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_btn_postSearch1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTCSAdviceStatus_tab_info1_custInfo_1"};
+	Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_btn_postSearch2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTCSAdviceStatus_tab_info1_custInfo_2"};
+	Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_postCd = function( res, division ){
+	if( division == "addr1"){
+		this.div_cust.ed_addr2.set_enable(true);
+		this.div_cust.ed_posCd.set_value( res[0] );
+		this.div_cust.ed_addr1.set_value( res[1] );
+		this.div_cust.ed_addr2.set_value( res[2] );
+		//20200709 kstka 빌딩번호 추가
+		this.ds_cust.setColumn(this.ds_cust.rowposition, "bldMngNo", res[3]);
+	}else{
+		this.div_cust.ed_addr22.set_enable(true);
+		this.div_cust.ed_posCd2.set_value( res[0] );
+		this.div_cust.ed_addr12.set_value( res[1] );
+		this.div_cust.ed_addr22.set_value( res[2] );
+		//20200709 kstka 빌딩번호 추가
+		this.ds_cust.setColumn(this.ds_cust.rowposition, "bldMngNo2", res[3]);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_btn_safeKeyConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var custTpNm 	= nvl(this.div_cust.ed_custTpNm.value);
+	var custTp		= nvl(this.div_cust.ed_custTp.value);
+	var custNm 		= nvl(this.div_cust.ed_custNm.value);
+	var birthDay 	= nvl(this.div_cust.ed_birthDay.value);
+	var genderCd 	= nvl(this.div_cust.ed_genderCd.value);
+	var genderCdNm 	= nvl(this.div_cust.ed_genderCdNm.value);
+	var mobNo 		= FN_numberHyphenOut( nvl(this.div_cust.ed_mobNo.value) );
+	var mobFirm 	= nvl(this.div_cust.ed_mobFirm.value);
+	var age			= (parseInt(this.toDay.substr(0,4))-parseInt(birthDay.substr(0,4))) + 1;
+
+
+	switch( custTp == "01" ){
+
+		case custNm 	== "" : alert( this.div_cust.st_custNm.text + " 값이 없습니다." );
+								this.div_cust.ed_custNm.setFocus(true);
+								break;
+		case birthDay 	== "" : alert( this.div_cust.st_birthDay.text + " 값이 없습니다." );
+								this.div_cust.ed_birthDay.setFocus(true);
+								break;
+
+		case genderCd 	== "" : alert( this.div_cust.st_genderCd.text + " 값이 없습니다." );
+								this.div_cust.cb_genderCd.setFocus(true);
+								break;
+
+		case mobNo	 	== "" : alert( this.div_cust.st_mobNo.text + " 값이 없습니다." );
+								this.div_cust.ed_mobNo.setFocus(true);
+								break;
+			
+		case mobFirm 	== "" : alert( this.div_cust.st_mobFirm.text + " 값이 없습니다." );
+								this.div_cust.cb_mobFirm.setFocus(true);
+								break;
+		case age >  100 : alert( "법정생년월일을 확인하세요." );
+						  this.div_cust.ed_birthDay.setFocus(true);
+						  break;
+		default : this.FN_safekeyConfirm(custNm, birthDay, genderCd, mobNo, mobFirm);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_safekeyConfirm = function(custNm, birthDay, genderCd, mobNo, mobFirm){
+
+	var sSvcID        	= "safeKeyConfirm";                    
+	var sController   	= "rtms/sd/safeKeyConfirm.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	sArgs += Ex.util.setParam("custNm", custNm);
+	sArgs += Ex.util.setParam("birthDay", birthDay);
+	sArgs += Ex.util.setParam("genderCd", 	genderCd);
+	sArgs += Ex.util.setParam("mobNo", mobNo);
+	sArgs += Ex.util.setParam("mobFirm", mobFirm);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_ed_mobNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_ed_telNo2_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_cust_ed_cTelno_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+this.bt_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_save();
+}
+]]></Script>
+  </Form>
+</FDL>

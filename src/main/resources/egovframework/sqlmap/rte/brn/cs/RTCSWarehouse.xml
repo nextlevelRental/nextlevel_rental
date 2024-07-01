@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rTCSWarehouse">
+	<parameterMap id="p_sRtcs0200Count" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="r_sRtcs0200Count" />
+		<parameter property="warehCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_sRtcs0200Count" class="java.util.HashMap"/>
+	<procedure  id="rTCSWarehouse.checkWarehCd" resultClass="java.util.Map" parameterMap="p_sRtcs0200Count">
+		{ call ? := Pkg_Rtcs0200.f_sRtcs0200Count(?) }
+	</procedure>
+
+
+
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0200"> 
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="begday" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endday" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr2" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="faxNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.p_IUDRtcs0200" parameterMap="p_IUDRtcs0200">
+		{call Pkg_Rtcs0200.p_IUDRtcs0200(	?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+											?, ?, ?, ?, ?, ?, ?
+										)}
+	</procedure>     
+	
+
+
+	<resultMap id="r_sRtcs0200WareHouse" class="java.util.HashMap">
+		<result property="warehCd" 		column="WAREH_CD" />
+		<result property="warehNm"  	column="WAREH_NM" />
+		<result property="begday"  		column="BEGDAY" />
+		<result property="endday"		column="ENDDAY" />
+		<result property="bldMngNo" 	column="BLD_MNG_NO" />
+		<result property="posCd" 		column="POS_CD" />
+		<result property="addr1" 		column="ADDR1" />
+		<result property="addr2" 		column="ADDR2" />
+		<result property="telNo" 		column="TEL_NO" />
+		<result property="faxNo" 		column="FAX_NO" />
+		<result property="mobNo" 		column="MOB_NO" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0200WareHouse" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0200WareHouse" />
+		<parameter property="warehCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.p_sRtcs0200WareHouse" parameterMap="p_sRtcs0200WareHouse">
+		{call Pkg_Rtcs0200.p_sRtcs0200WareHouse(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+
+	<resultMap id="r_sRtcs0201WareHistory" class="java.util.HashMap">
+		<result property="wrhSeq"	  	column="WRH_SEQ" />
+		<result property="warehCd" 		column="WAREH_CD" />
+		<result property="warehNm"  	column="WAREH_NM" />
+		<result property="begday"  		column="BEGDAY" />
+		<result property="endday"		column="ENDDAY" />
+		<result property="bldMngNo" 	column="BLD_MNG_NO" />
+		<result property="posCd" 		column="POS_CD" />
+		<result property="addr1" 		column="ADDR1" />
+		<result property="addr2" 		column="ADDR2" />
+		<result property="telNo" 		column="TEL_NO" />
+		<result property="faxNo" 		column="FAX_NO" />
+		<result property="mobNo" 		column="MOB_NO" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0201WareHistory" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0201WareHistory" />
+		<parameter property="warehCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.p_sRtcs0201WareHistory" parameterMap="p_sRtcs0201WareHistory">
+		{call Pkg_Rtcs0201.p_sRtcs0201WareHistory(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0202"> 
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="awSeq" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="begday" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endday" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.p_IUDRtcs0202" parameterMap="p_IUDRtcs0202">
+		{call Pkg_Rtcs0202.p_IUDRtcs0202(	?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+											?
+										)}
+	</procedure>
+
+
+
+	<resultMap id="r_sRtcs0202AgencyWareh" class="java.util.HashMap">
+		<result property="awSeq"	 	column="AW_SEQ" />
+		<result property="agencyCd" 	column="AGENCY_CD" />
+		<result property="agencyNm"  	column="AGENCY_NM" />
+		<result property="warehCd" 		column="WAREH_CD" />
+		<result property="warehNm"  	column="WAREH_NM" />
+		<result property="begday"  		column="BEGDAY" />
+		<result property="endday"		column="ENDDAY" />
+		<result property="useYn" 		column="USE_YN" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0202AgencyWareh" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0202AgencyWareh" />
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />     
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="rTCSWarehouse.p_sRtcs0202AgencyWareh" parameterMap="p_sRtcs0202AgencyWareh">
+		{call Pkg_Rtcs0202.p_sRtcs0202AgencyWareh(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

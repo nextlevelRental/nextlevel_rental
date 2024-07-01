@@ -1,0 +1,17 @@
+{
+	"name": "ExtComp",
+	"version": "14.0.0.29",
+	"description": "nexacro platform 14 Unified Framework Library",
+	"license": "",
+	"scripts": [
+			"ExtComp/ExtFileUpDownload.js",
+			"ExtComp/ExtCombo.js"
+	],
+	"objInfo": [
+		"ExtComp/ExtFileUpload.info",
+		"ExtComp/ExtFileDownload.info",
+		"ExtComp/ExtCombo.info",
+		"ExtComp/ExtComboEmul.info"
+	]
+}
+//@ sourceURL=ExtComp.json

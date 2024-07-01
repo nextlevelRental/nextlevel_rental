@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="survey">
+
+	<resultMap id="surveyResultMap" class="java.util.HashMap">
+		<result property="jobTp" column="JOB_TP" /> <!-- 상담유형 -->
+		<result property="jobTpNm" column="JOB_TP_NM" /> <!-- 상담유형Nm --> 
+		<result property="questionNo" column="QUESTION_NO" /> <!-- 질문번호 --> 
+		<result property="questionTpNm" column="QUESTION_TP_NM" /> <!-- 질문유형Nm -->
+		<result property="question" column="QUESTION" /> <!-- 질문내용 --> 
+		<result property="useYn" column="USE_YN" /> <!-- 사용여부 -->	
+		<result property="sortSeq" column="SORT_SEQ" /> <!-- 정렬순번 --> 
+		<result property="regId" column="REG_ID" /> <!-- 등록자 ID -->	 
+		<result property="regDt" column="REG_DT" /> <!-- 등록일 -->	 
+		<result property="chgId" column="CHG_ID" /> <!-- 변경자ID -->	 
+		<result property="chgDt" column="CHG_DT" /> <!-- 변경일 -->	   
+	</resultMap>
+	
+	<parameterMap id="p_sRtcs0111" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="surveyResultMap" />         
+		<parameter property="jobTp" 	jdbcType="VARCHAR" mode="IN" /> <!-- 상담유형 -->
+		<parameter property="questionNo" jdbcType="VARCHAR" mode="IN" /> <!-- 질문번호 -->
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="sortSeq" 	jdbcType="NUMERIC" mode="IN" /> <!-- 정렬순번 -->
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID -->                    
+	</parameterMap> 
+	
+	<procedure id="survey.listSurvey" parameterMap="p_sRtcs0111">
+		{call
+		Pkg_Rtcs0111.p_sRtcs0111(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRtcs0111" class="java.util.Map">
+		<parameter property="dvsn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="jobTp"   		jdbcType="VARCHAR" mode="IN" /> <!-- 상담유형 -->
+		<parameter property="questionNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 질문번호 -->
+		<parameter property="useYn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="sortSeq" 		jdbcType="NUMERIC" mode="IN" /> <!-- 정렬순번 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID --> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="survey.insertSurvey" parameterMap="p_IUDRtcs0111">
+		{call
+		Pkg_Rtcs0111.p_IUDRtcs0111(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

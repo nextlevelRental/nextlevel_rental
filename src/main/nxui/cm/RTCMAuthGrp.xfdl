@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCMAuthGrp" classname="Test" left="0" top="0" width="1147" height="496" titletext="권한그룹등록" style="shadow:outer 0,1 1 #d2d2d2ff;" onload="RTCMAuthGrp_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="11" text="Menu Title" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="0" top="61" width="241" height="20"/>
+        <Static id="Static04" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="Button00" taborder="13" text="삭제" onclick="btn_del_onclick" cssclass="btn_WF_module" top="58" right="73" width="45" height="22"/>
+        <Button id="Button37" taborder="14" text="추가" onclick="btn_add_onclick" cssclass="btn_WF_module" top="58" right="25" width="45" height="22"/>
+        <Grid id="grid_authGrp" taborder="3" binddataset="ds_authGrp" useinputpanel="false" autofittype="none" top="86" autosizingtype="none" extendsizetype="none" left="0" right="25" height="410" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="260"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="권한그룹코드"/>
+                <Cell col="1" text="권한그룹명"/>
+                <Cell col="2" edittype="none" text="설명"/>
+                <Cell col="3" text="사용유무"/>
+                <Cell col="4" text="등록자"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="등록일자"/>
+                <Cell col="6" text="수정자"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="수정일자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" editfilter="upper,number" text="bind:authGrpCd" editlimit="12" editautoselect="true"/>
+                <Cell col="1" displaytype="normal" edittype="normal" text="bind:authGrpNm" editlimit="50"/>
+                <Cell col="2" displaytype="normal" edittype="normal" text="bind:authGrpDesc" wordwrap="char" editlimit="200"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYn" combocodecol="cd" combodatacol="cdNm" combodisplayrowcount="-1" combodisplay="display"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:regId"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:regDt"/>
+                <Cell col="6" displaytype="normal" edittype="none" text="bind:chgId"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:chgDt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="8" text="Div00" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="0" right="25">
+          <Layouts>
+            <Layout width="1024" height="40">
+              <Static id="st_searchCondition" taborder="30" text="검색" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="70" left="20"/>
+              <Combo id="cb_searchCondition" taborder="31" innerdataset="@ds_searchCondition" codecolumn="cd" datacolumn="cdNm" index="-1" top="10" height="21" domainId="nexa.name;nexa.code" width="140" left="61" displayrowcount="-1" onitemchanged="div_search_cb_searchCondition_onitemchanged"/>
+              <Edit id="ed_searchKeyword" taborder="32" top="10" height="21" width="260" left="206" onkeyup="div_search_ed_searchKeyword_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_searchCondition" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_authGrp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_authGrp_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="authGrpCd" type="STRING" size="256"/>
+          <Column id="authGrpNm" type="STRING" size="256"/>
+          <Column id="authGrpDesc" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.resultCnt = "";		//중복권한카운트
+	this.checkAuthGrpuCd = "";	//중복권한코드
+	var checkAuthGrpuCdRow; 	//중복체크ROW
+	
+	this.updateFlag = "false";
+	
+	this.RTCMAuthGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+		this.div_search.cb_searchCondition.set_value('AUTHGRPCD');
+		this.parent.setButton("E|C|S", this);
+	}
+
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "listAuthGrpCombo";  
+		var sController   	= "rtms/cm/listAuthGrpCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_searchCondition=output1 ds_useYn=output2";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+
+    /***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkAuthGrpuCd)
+	{
+	
+		if (strSvcId == "checkAuthGrpCd") 
+		{
+			var msg = "";
+			if(this.resultCnt != '0') {
+				alert("입력하신 " + nvl( this.grid_authGrp.getCellText(-1, 1) ) + " \'" + this.checkAuthGrpuCd + "\' 는 존재하고 있습니다.");
+				this.ds_authGrp.setColumn(checkAuthGrpuCdRow,"authGrpCd", "");
+				this.grid_authGrp.selectRow(checkAuthGrpuCdRow);
+				this.grid_authGrp.setCellPos(1);
+			}
+		}
+		
+		if ( strSvcId == "saveAuthGrp" ) {
+			this.updateFlag = "false";
+			if( nErrorCode == "0" ){
+				alert("저장되었습니다.");
+				this.reload();
+			}else{
+				alert("저장실패.");
+			}
+		}
+		
+		if( strSvcId == "listAuthGrp" ){
+			this.updateFlag = "false";
+			var dsAuthGrpRowCt = this.ds_authGrp.rowcount;
+			this.sta_total_cnt.set_text(dsAuthGrpRowCt);
+			if( dsAuthGrpRowCt == 0 ){
+				this.grid_authGrp.set_nodatatext("조회된 데이터가 없습니다.");
+				this.div_search.ed_searchKeyword.setFocus();
+			}
+		}
+	}
+	
+	
+	
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cbSearchConditionVal 	= nvl(this.div_search.cb_searchCondition.value);
+		var cbSearchConditionTxt 	= nvl(this.div_search.cb_searchCondition.text);
+		var edSearchKeywordVal 		= nvl(this.div_search.ed_searchKeyword.value);
+		
+		var sSvcID        	= "listAuthGrp";                    
+		var sController   	= "rtms/cm/listAuthGrp.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_authGrp=mapAuthGrp";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if( cbSearchConditionVal == 'AUTHGRPCD' ){
+			sArgs += Ex.util.setParam("authGrpCd", edSearchKeywordVal);
+		}else if(  cbSearchConditionVal == 'AUTHGRPNM' ){
+			if( edSearchKeywordVal.length < 2){
+				alert( cbSearchConditionTxt + "은 최소 2글자 이상이여야 합니다.");
+				return this.div_search.ed_searchKeyword.setFocus();
+			}else{
+				sArgs += Ex.util.setParam("authGrpNm", edSearchKeywordVal);
+			}
+		}else{
+			alert( "검색조건을 선택하세요");
+			return this.div_search.cb_searchCondition.setFocus();
+		}
+		
+		this.ds_authGrp.deleteAll();
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var dsAuthGrpCnt = this.ds_authGrp.getRowCount();
+		if( dsAuthGrpCnt > 0 ){
+			var exitFlag = false;
+			
+			for(var row_i = 0; row_i < dsAuthGrpCnt ; row_i++){
+				for( var cell_i = 1 ; cell_i < 4 ; cell_i++){
+					var cellVal = nvl(this.grid_authGrp.getCellValue(row_i, cell_i));
+					
+					if( cellVal == "" && this.ds_authGrp.getRowType(row_i) == 2 ){
+						alert( nvl( this.grid_authGrp.getCellText(-1, cell_i) ) +" 값이 없습니다.");
+						this.grid_authGrp.selectRow(row_i);
+						this.grid_authGrp.setCellPos(cell_i);
+						this.grid_authGrp.showEditor(true);
+						exitFlag = true;
+					}
+					if(exitFlag){break;}
+				}
+				if(exitFlag){break;}
+			}
+			
+			if( !exitFlag ){
+				for(var row_i = 0; row_i < dsAuthGrpCnt ; row_i++){
+					if( this.ds_authGrp.getRowType(row_i) == 0 ){//존재하지 않는 행의 상태
+						
+					}else if( this.ds_authGrp.getRowType(row_i) == 1 ){//초기 행의 상태
+						this.updateFlag = "false";
+					}else if( this.ds_authGrp.getRowType(row_i) == 2 ){//추가된 행의 상태
+						this.updateFlag= "true";break;
+					}else if( this.ds_authGrp.getRowType(row_i) == 4 ){//수정된 행의 상태
+						this.updateFlag= "true";break;
+					}else if( this.ds_authGrp.getRowType(row_i) == 8 ){//삭제된 행의 상태
+						this.updateFlag= "true";break;
+					}else if( this.ds_authGrp.getRowType(row_i) == 16 ){//그룹 정보 행의 상태
+						
+					}else{
+					
+					}
+				}
+				if( this.updateFlag == "false" ){
+					alert( "변경된 정보가 없습니다.");
+					return false;
+				}else{
+					if( confirm( "저장하시겠습니까?") ){
+						var sSvcID        	= "saveAuthGrp";                    
+						var sController   	= "rtms/cm/saveAuthGrp.do";
+						var sInDatasets   	= "";
+						var sOutDatasets  	= "";
+						var sArgs 			= "";	
+						sInDatasets   		= "input=ds_authGrp:U";
+						sOutDatasets  		= "";
+						var fn_callBack		= "fn_callBack";
+						Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+					}
+				}
+			}
+		}else{
+			alert("저장할 데이터가 없습니다.");
+			this.grid_authGrp.set_nodatatext("저장할 데이터가 없습니다.");
+			return false;
+		}
+	}
+
+
+
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		
+	}
+
+
+
+	this.btn_add_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_authGrp.addRow();
+		this.grid_authGrp.selectRow(nRow);
+		this.grid_authGrp.setCellPos(1);
+		this.grid_authGrp.showEditor(true);
+		this.ds_authGrp.setColumn(nRow,"useYn","Y");
+		this.grid_authGrp.setCellProperty( "Head", 2, "color", "black");
+	}
+
+
+
+	this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.grid_authGrp.currentrow;
+		if( nRow == -9 ){
+			alert("삭제할 행을 선택하여 주십시오.");
+		}else{
+			this.ds_authGrp.deleteRow(nRow);
+			this.updateFlag = "true";
+		}
+	}
+
+
+
+	this.ds_authGrp_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if(e.columnid == "authGrpCd") {
+			checkAuthGrpuCdRow = e.row;
+			this.FN_authGrpCdCheck( nvl(obj.getColumn(e.row, "authGrpCd")) );
+		}
+	}
+
+
+
+	this.FN_authGrpCdCheck = function(objVal)
+	{
+		var sSvcID        	= "checkAuthGrpCd";                    
+		var sController   	= "rtms/cm/checkAuthGrpCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("authGrpCd",objVal);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.grid_authGrp);
+	}
+this.div_search_ed_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

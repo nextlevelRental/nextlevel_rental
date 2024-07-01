@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="inbound">
+	
+	<!--  해피콜 상담사 등록조회 -->
+	<resultMap id="registerResultMap" class="java.util.HashMap">
+		<result property="callNo" 		column="CALL_NO" /> 		<!-- 인바운드 상담번호  	-->
+		<result property="recvDay" 		column="RECV_DAY" /> 		<!-- 통화일자            	-->
+		<result property="recvTm" 		column="RECV_TM" /> 		<!-- 통화시간           	-->
+		<result property="userId" 		column="USER_ID" /> 		<!-- 사용자ID(상담사) 	-->
+		<result property="recvTp" 		column="RECV_TP" />  		<!-- 인바운드 상담유형   	-->
+		<result property="recvTpNm" 	column="RECV_TP_NM" />  	<!-- 인바운드 상담유형 Nm -->
+		<result property="resuSt" 		column="RESU_ST" /> 		<!-- 처리상태           	-->
+		<result property="resuStNm" 	column="RESU_ST_NM" /> 		<!-- 처리상태Nm       	-->
+		<result property="ordNo" 		column="ORD_NO" /> 			<!-- 주문번호            	-->
+		<result property="custNo" 		column="CUST_NO" /> 		<!-- 고객번호            	-->
+		<result property="custNm" 		column="CUST_NM" /> 		<!-- 고객명/법인명      	-->
+		<result property="telNo" 		column="TEL_NO" /> 			<!-- 상담전화번호        	-->
+		<result property="callDtl" 		column="CALL_DTL" /> 		<!-- 상담내용            	-->
+		<result property="claimNo" 		column="CLAIM_NO" /> 		<!-- 클레임번호         	-->
+		<result property="endDay" 		column="END_DAY" /> 		<!-- 완료일자           	-->
+		<result property="endTm" 		column="END_TM" /> 			<!-- 완료시간          	-->
+		<result property="smsTx" 		column="SMS_TX" /> 			<!-- SMS내용          	-->
+		<result property="regionNo" 	column="REGION_NO" /> 		<!-- 지역코드          	-->
+		<result property="cityNo" 		column="CITY_NO" /> 		<!-- 도시코드          	-->
+		<result property="carNo" 		column="CAR_NO" /> 			<!-- 차량번호          	-->
+		<result property="regId" 		column="REG_ID" /> 			<!-- 등록자ID      	-->
+		<result property="regDt" 		column="REG_DT" /> 			<!-- 등록일      	 	-->
+		<result property="chgId" 		column="CHG_ID" /> 			<!-- 변경자ID      	-->
+		<result property="chgDt" 		column="CHG_DT" /> 			<!-- 변경일      	 	-->
+		<result property="chanCd" 		column="CHAN_CD" /> 		<!-- 채널구분      	 	-->		
+	</resultMap>	
+	
+	<parameterMap id="p_sRtcs0100Regf" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="registerResultMap" />
+		<parameter property="callNo" 		jdbcType="NUMERIC" mode="IN" /> 	<!-- 인바운드 상담번호   -->
+		<parameter property="recvFday" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화일자 시작일     -->
+		<parameter property="recvTday" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화일자 종료일     -->
+		<parameter property="userId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사용자ID(상담사) -->   
+		<parameter property="recvTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 인바운드 상담유형   -->        
+		<parameter property="resuSt" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리상태            -->    
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 주문번호            -->    
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객번호            -->
+		<parameter property="recvTm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화시간            -->   
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명/법인명       -->    
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담전화번호        -->    
+		<parameter property="callDtl" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담내용            -->    
+		<parameter property="claimNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 클레임번호          -->    
+		<parameter property="endDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 완료일자            -->    
+		<parameter property="endTm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 완료시간            -->    
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자ID       --> 
+	</parameterMap> 
+	<procedure id="inbound.listInbound" parameterMap="p_sRtcs0100Regf">
+		{call
+		Pkg_Rtcs0102.p_sRtcs0102(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>
+
+

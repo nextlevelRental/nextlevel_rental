@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="httpsForm" classname="httpsForm" left="0" top="0" width="440" height="60" style="background:aliceblue;font:9 Dotum;">
+    <Layouts>
+      <Layout>
+        <CheckBox id="toDayChk" taborder="0" text="오늘하루 열지않기" value="0" truevalue="1" falsevalue="0" onclick="toDayChk_onclick" left="307" top="20" height="30" width="128"/>
+        <Div id="Div00" taborder="1" text="로그인이 안될경우" left="16" top="0" height="30" width="110" onclick="Div00_onclick" style="align:left middle;">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Div id="Div01" taborder="2" text=" https://portal.tirerental.co.kr" left="118" top="0" width="170" height="30" style="align:left middle;color:#33333399;font:bold underline 9 arial;"/>
+        <Div id="Div02" taborder="3" text="로 접속해주시기 바랍니다." left="285" top="0" width="150" height="30" onclick="Div00_onclick" style="align:left middle;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	 
+   	this.toDayChk_onclick = function(obj:CheckBox,  e:nexacro.ClickEventInfo)
+	{
+		this.setCookie();
+	}
+	
+	this.setCookie = function() {
+		var bSucc;
+		var checkVal = this.toDayChk.value;
+        if(checkVal == 1) {
+			bSucc = application.setPrivateProfile("httpsCh", FN_today());
+			this.close();
+		} 
+	}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rentalAreaLink">
+	
+	<resultMap id="userRentalGroupInfo" class="java.util.HashMap">
+		<result property="userId"           column= "USER_ID" />
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  
+	</resultMap> 
+       
+	<parameterMap id="userRentalParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="userRentalGroupInfo" />
+		<parameter property="userId"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalAreaLink.userRentalGroupInfo" parameterMap="userRentalParam">
+		{call PKG_RTCM0110.p_userRentalGroup(?, ?)}
+	</procedure>
+	
+	<resultMap id="groupResultMap" class="java.util.HashMap">
+		<result property="cdGrpCd" column= "CD_GRP_CD" />
+		<result property="cd"      column= "CD" />  		
+		<result property="cdNm"    column= "CD_NM" />
+		<result property="orderPt" column= "ORDER_PT" />
+		<result property="useYn"   column= "USE_YN" />			
+	</resultMap>
+       
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="groupResultMap" />
+		<parameter property="cdNm"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalAreaLink.listGroupInfo" parameterMap="groupParam">
+		{call PKG_RTCM0110.p_sRentalMst(?, ?)}
+	</procedure>
+
+	<resultMap id="officeResultMap" class="java.util.HashMap">
+		<result property="cdGrpCd" column= "CD_GRP_CD" />
+		<result property="cd"      column= "CD" />  		
+		<result property="cdNm"    column= "CD_NM" />
+		<result property="orderPt" column= "ORDER_PT" />
+		<result property="useYn"   column= "USE_YN" />		
+		<result property="rfr1"    column= "RFR_1" />
+		<result property="rfr2"    column= "RFR_2" />	
+		<result property="chk"     column= "CHK" />		
+		<result property="dataYn"     column= "DATA_YN" />				
+	</resultMap>
+       
+	<parameterMap id="officeParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="officeResultMap" />
+		<parameter property="cd"  	    mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cdNm"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalAreaLink.listOfficeInfo" parameterMap="officeParam">
+		{call PKG_RTCM0110.p_sRentalDtl(?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRENTAL_MST" class="java.util.Map">
+		<parameter property="dvsn" 			 jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="cdGrpCd"  	     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cd"             mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cdNm"           mode="IN" jdbcType="VARCHAR" />
+		<parameter property="orderPt"        mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"   		 mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="rentalAreaLink.saveRentalMst" parameterMap="p_IUDRENTAL_MST">
+		{call PKG_RTCM0110.p_IUDRentalMst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRENTAL_DTL" class="java.util.Map">
+		<parameter property="dvsn" 			 jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="cdGrpCd"  	     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cd"             mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cdNm"           mode="IN" jdbcType="VARCHAR" />
+		<parameter property="orderPt"        mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"   		 mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="rfr1"     	     mode="IN" jdbcType="VARCHAR" />	 
+		<parameter property="rfr2"     	     mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="rentalAreaLink.saveRentalDtl" parameterMap="p_IUDRENTAL_DTL">
+		{call PKG_RTCM0110.p_IUDRentalDtl(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>		
+</sqlMap>

@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="extAlert" classname="PopUp_PDLSearch" left="0" top="0" width="400" height="280" onload="form_onload" cssclass="from_POP">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="1" cssclass="btn_POP_Close" top="12" right="10" width="11" height="11" onclick="btn_close_onclick"/>
+        <Div id="div_main" taborder="2" left="20" top="49" right="20" bottom="66" style="background:#ffffffff;" text="Div00">
+          <Layouts>
+            <Layout>
+              <Static id="sta_msg" taborder="8" left="70" top="20" right="10" bottom="10" style="align:left middle;"/>
+              <ImageViewer id="img_icon" taborder="9" cssclass="alert_default" left="13" top="18" width="40" height="41"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_bottom" taborder="0" left="20" right="20" bottom="20" height="25">
+          <Layouts>
+            <Layout>
+              <Button id="btn_confirm" taborder="0" text="Confirm" cssclass="btn_POP_Button" visible="false" top="0" right="51%" width="68" height="25" onclick="div_bottom_btn_confirm_onclick"/>
+              <Button id="btn_cancel" taborder="5" text="Cancel" cssclass="btn_POP_Button" visible="false" left="51%" top="0" width="68" height="25" onclick="div_bottom_btn_cancel_onclick"/>
+              <Button id="btn_ok" taborder="1" text="OK" cssclass="btn_POP_Button" left="40.56%" top="0" width="68" height="25" onclick="div_bottom_btn_ok_onclick" visible="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="id_title" taborder="3" text="Alert" cssclass="sta_POP_Title" left="15" top="0" width="361" height="34"/>
+        <ImageViewer id="ImageViewer00" taborder="9" cssclass="alert_default" left="424" top="48" width="40" height="40" visible="false"/>
+        <ImageViewer id="ImageViewer01" taborder="10" cssclass="alert_information" left="424" top="104" width="40" height="40" visible="false"/>
+        <ImageViewer id="ImageViewer02" taborder="11" cssclass="alert_question" left="424" top="160" width="40" height="40" visible="false"/>
+        <ImageViewer id="ImageViewer03" taborder="12" cssclass="alert_error" left="424" top="216" width="40" height="40" visible="false"/>
+        <ImageViewer id="ImageViewer04" taborder="13" cssclass="alert_warning" left="424" top="272" width="40" height="40" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : nexacro Platform HTML5
+* BUSINESS    : popup comm
+* FILE NAME   : extComMessage.xfdl
+* PROGRAMMER  : w.s.jeong
+* DATE        : 2014.09.11
+* DESCRIPTION : 메세지 공통 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+this.strType = "";
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+
+     Ex.core.onload(this); 
+     this.onload_set();
+}
+
+/**
+* icon setting
+* @param 
+* @return 
+* @example
+* @memberOf this
+*/ 
+this.onload_set = function()
+{
+
+    var msgID = this.parent.p_id;
+    var msgType = msgID.indexOf("confirm") != -1 && this.parent.msgType =="default"? "question" :this.parent.msgType;
+    var strMsg = this.parent.msg;
+    var strSizeType = this.parent.sizeType;
+   
+    if(msgType != "default" && msgType != "information" && msgType != "error" && msgType != "warning" && msgType != "question")
+    {      
+       Eco.Logger.error({message: "messagetype  : '"+msgType,elapsed: true,stack:true});       
+    } 
+    
+    if(this.parent.p_id.indexOf("alert") != -1)
+    {
+        this.div_bottom.btn_ok.set_visible(true);
+    }
+    else
+    {
+       this.div_bottom.btn_confirm.set_visible(true);
+       this.div_bottom.btn_cancel.set_visible(true);
+    }
+    
+    if(strSizeType == "default")
+    {
+ 	  this.div_main.sta_msg.style.set_align("left middle");
+    }
+    else
+    {
+      this.div_main.sta_msg.style.set_align("left top");
+    }
+
+     this.id_title.set_text("Message");
+     this.div_main.sta_msg.set_text(strMsg);
+     this.div_main.img_icon.set_cssclass("alert_" +msgType);
+}
+
+
+//화면닫기 x  
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	 this.setClose("OK");
+}
+
+//ok 버튼 클릭시 발생되는 event
+this.div_bottom_btn_ok_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.setClose("OK");
+}
+
+
+//cancel 버튼 클릭시 발생되는 evente
+this.div_bottom_btn_cancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.setClose("CANCEL");
+}
+
+
+
+this.div_bottom_btn_confirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.setClose("OK");
+}
+
+
+//닫기 버튼 폼공통 함수
+this.setClose =  function(id)
+{
+  this.gfn_popupClose({CLOSE_RES:id,CALLBACK_ID:this.parent.p_callbackId,f_CALLBACK:this.parent.fCallback});
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

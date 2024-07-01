@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="testWeb" classname="testWeb" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <WebBrowser id="WebBrowser00" left="9.67%" top="37" right="56.25%" height="329" taborder="0" url="http://www.tobesoft.com/"/>
+        <WebBrowser id="WebBrowser01" left="45.31%" top="36" right="20.61%" height="329" taborder="1" url="http://localhost/nxuih5s/web/loading.html"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

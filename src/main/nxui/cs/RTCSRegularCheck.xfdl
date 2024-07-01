@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheck" classname="contractStatus" left="0" top="0" width="1147" height="544" titletext="점검 작업목록조회" onload="RTCSRegularCheck_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_contractInfo" taborder="9" text="작업목록" cssclass="sta_WF_subTitle" left="0" top="64" width="80" height="21"/>
+        <Static id="Static31" taborder="62" text="h20" cssclass="Guide_color" visible="false" left="0" top="48" height="20" style="border:0 none #808080,1 solid #d2020bff;" width="1147"/>
+        <Tab id="tab_info" taborder="82" left="0" top="334" tabindex="0" scrollbars="autoboth" onchanged="tab_info_onchanged" style="showextrabutton:false;" height="210" width="1122">
+          <Tabpages>
+            <Tabpage id="tab_info_chagne" text="정보변경" url="cs::RTCSRegularCheck_tab_info_change.xfdl"/>
+            <Tabpage id="tab_info_result" text="미처리등록" url="cs::RTCSRegularCheck_tab_info_result.xfdl"/>
+            <Tabpage id="tab_info_preminum" text="프리미엄서비스" url="cs::RTCSRegularCheck_tab_info_preminum.xfdl"/>
+            <Tabpage id="tab_info_history" text="서비스이력" url="cs::RTCSRegularCheck_tab_info_history.xfdl">
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static83" taborder="83" text="w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" bottom="0"/>
+        <Static id="Static46" taborder="85" text="h150" cssclass="Guide_color" visible="false" left="1121" top="382" width="25" height="150"/>
+        <Grid id="grd_workList" taborder="128" useinputpanel="false" left="0" top="92" height="188" binddataset="dsWorkList" oncellclick="grd_workList_oncellclick" width="1122">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="61"/>
+                <Column size="72"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="88"/>
+                <Column size="159"/>
+                <Column size="46"/>
+                <Column size="80"/>
+                <Column size="97"/>
+                <Column size="80"/>
+                <Column size="92"/>
+                <Column size="83"/>
+                <Column size="80"/>
+                <Column size="132"/>
+                <Column size="136"/>
+                <Column size="200"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="예정일"/>
+                <Cell col="1" text="시간"/>
+                <Cell col="2" text="상태"/>
+                <Cell col="3" text="담당자"/>
+                <Cell col="4" text="처리일"/>
+                <Cell col="5" text="처리자"/>
+                <Cell col="6" text="시간"/>
+                <Cell col="7" text="계약번호"/>
+                <Cell col="8" text="고객명"/>
+                <Cell col="9" text="차량번호"/>
+                <Cell col="10" text="상품명"/>
+                <Cell col="11" text="본수"/>
+                <Cell col="12" text="주행거리"/>
+                <Cell col="13" text="주행거리(계약)"/>
+                <Cell col="14" text="장착일자"/>
+                <Cell col="15" text="핸드폰"/>
+                <Cell col="16" text="전화번호"/>
+                <Cell col="17" text="우편번호"/>
+                <Cell col="18" text="주소"/>
+                <Cell col="19" text="구주소"/>
+                <Cell col="20" text="상세주소"/>
+                <Cell col="21" text="전월연체여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" text="expr:planDay==&quot;&quot; ?&quot;&quot;:planDay.substring(0,4)+&quot;-&quot;+planDay.substring(4,6)+&quot;-&quot;+planDay.substring(6,8)"/>
+                <Cell col="1" text="expr:planTm==&quot;&quot;?&quot;&quot;:planTm.substring(0,2) + &quot;:&quot;+planTm.substring(2,4)" maskchar=" "/>
+                <Cell col="2" text="bind:chkStatNm" maskchar="_"/>
+                <Cell col="3" text="bind:mrNm"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="expr:procDay==&quot;&quot; ?&quot;&quot;:procDay.substring(0,4)+&quot;-&quot;+procDay.substring(4,6)+&quot;-&quot;+procDay.substring(6,8)" maskchar=" "/>
+                <Cell col="5" text="bind:rMrnm"/>
+                <Cell col="6" text="expr:procTm==&quot;&quot;?&quot;&quot;:procTm.substring(0,2) + &quot;:&quot;+procTm.substring(2,4)"/>
+                <Cell col="7" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="8" text="bind:custName"/>
+                <Cell col="9" text="bind:carNo"/>
+                <Cell col="10" text="bind:matNm"/>
+                <Cell col="11" text="bind:cntNm"/>
+                <Cell col="12" style="align:left;" text="bind:aMzileage"/>
+                <Cell col="13" style="align:left;" text="bind:cMileage"/>
+                <Cell col="14" displaytype="date" text="bind:procDayb"/>
+                <Cell col="15" text="bind:mobNo"/>
+                <Cell col="16" text="bind:telNo"/>
+                <Cell col="17" text="bind:poscd"/>
+                <Cell col="18" style="align:left;" text="bind:addr1"/>
+                <Cell col="19" style="align:left;" text="bind:addr1Old"/>
+                <Cell col="20" style="align:left;" text="bind:addr2"/>
+                <Cell col="21" text="bind:delyYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="130" text="Div00" left="0" top="0" height="48" scrollbars="none" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition00" taborder="77" text="대상년월" cssclass="sta_WF_schTitle" left="25" top="12" height="21" domainId="nexa.s_condition" width="80"/>
+              <Static id="st_searchCondition01" taborder="78" text="계약번호" cssclass="sta_WF_schTitle" left="636" top="12" height="21" domainId="nexa.s_condition" width="80"/>
+              <Static id="st_searchCondition02" taborder="79" text="담당자" cssclass="sta_WF_schTitle" left="272" top="12" height="21" domainId="nexa.s_condition" width="100"/>
+              <Edit id="mrCd" taborder="84" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_ctNm_onkeyup" left="372" top="12" height="21" tooltiptext="edit" enable="false" width="120"/>
+              <Edit id="ordNo" taborder="86" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_emNm_onkeyup" left="716" top="12" height="21" tooltiptext="edit" width="141"/>
+              <Button id="btn_save01" taborder="89" onclick="div_cust_btn_postSearch1_onclick" cssclass="btn_WF_edtSch" left="471" top="12" height="21" width="21"/>
+              <Button id="btn_save00" taborder="90" onclick="btn_orderNo_onclick" cssclass="btn_WF_edtSch" left="74.6%" top="12" height="21" width="22"/>
+              <Calendar id="sdYm" taborder="91" left="105" top="12" height="21" editformat="yyyy-MM" dateformat="yyyy-MM" value="null" type="normal" width="142"/>
+              <Edit id="mrNm" taborder="92" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_ctNm_onkeyup" left="491" top="12" height="21" tooltiptext="edit" enable="false" width="120"/>
+              <Static id="Static08" taborder="93" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="64"/>
+              <Static id="Static26" taborder="94" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static00" taborder="95" text="FIX h12" cssclass="Guide_color" visible="false" left="8" top="32" width="1122" height="12"/>
+              <Static id="Static01" taborder="96" cssclass="Guide_color" visible="false" left="247" top="0" width="25" height="64"/>
+              <Static id="Static02" taborder="97" cssclass="Guide_color" visible="false" left="611" top="0" width="25" height="64"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="131" text="h10" cssclass="Guide_color" visible="false" left="0" top="82" height="10" style="border:0 none #808080,1 solid #d2020bff;" width="1147"/>
+        <Static id="Static01" taborder="132" left="0" top="290" height="40" style="background:#ffffffff;" width="1147"/>
+        <Static id="st_payMthd" taborder="133" text="핸드폰" cssclass="sta_WF_detailLabel" left="0" top="290" height="31" width="68"/>
+        <Static id="txt_hpNo" taborder="134" cssclass="sta_WF_detailLabel" left="67" top="290" height="31" style="background:#ffffffff;" width="102"/>
+        <Static id="st_payMthd01" taborder="135" text="전화번호" cssclass="sta_WF_detailLabel" left="168" top="290" height="31" width="70"/>
+        <Static id="txt_telNo" taborder="136" cssclass="sta_WF_detailLabel" left="237" top="290" height="31" style="background:#ffffffff;" width="95"/>
+        <Static id="st_payMthd03" taborder="137" text="우편번호" cssclass="sta_WF_detailLabel" left="331" top="290" height="31" width="71"/>
+        <Static id="txt_poscd" taborder="138" cssclass="sta_WF_detailLabel" left="401" top="290" height="31" style="background:#ffffffff;" width="62"/>
+        <Static id="st_payMthd05" taborder="139" text="주소" cssclass="sta_WF_detailLabel" left="462" top="290" height="31" width="47"/>
+        <Static id="txt_addr1" taborder="140" cssclass="sta_WF_detailLabel" left="508" top="290" height="31" style="background:#ffffffff;padding:0 2 0 2;font:8 Dotum;" width="235"/>
+        <Static id="txt_addr2" taborder="141" cssclass="sta_WF_detailLabel" left="876" top="290" height="31" style="background:#ffffffff;padding:0 2 0 2;font:8 Dotum;" width="246"/>
+        <Static id="Static02" taborder="142" text="h10" cssclass="Guide_color" visible="false" left="0" top="280" width="1147" height="10" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="txt_addr1Old" taborder="143" cssclass="sta_WF_detailLabel" left="746" top="290" width="127" height="31" style="background:#ffffffff;padding:0 2 0 2;font:8 Dotum;"/>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Objects>
+      <Dataset id="dsWorkList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="mobNo" type="string" size="32"/>
+          <Column id="cMileage" type="bigdecimal" size="16"/>
+          <Column id="custNo" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="matCd" type="string" size="32"/>
+          <Column id="poscd" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="aMzileage" type="string" size="32"/>
+          <Column id="chkStatNm" type="string" size="32"/>
+          <Column id="cntNm" type="string" size="32"/>
+          <Column id="carNo" type="string" size="32"/>
+          <Column id="planDay" type="string" size="32"/>
+          <Column id="matNm" type="string" size="32"/>
+          <Column id="addr1" type="string" size="32"/>
+          <Column id="planTm" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="procTm" type="string" size="32"/>
+          <Column id="addr1Old" type="STRING" size="256"/>
+          <Column id="addr2" type="string" size="32"/>
+          <Column id="cntCd" type="string" size="32"/>
+          <Column id="seq" type="bigdecimal" size="16"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="custName" type="string" size="32"/>
+          <Column id="telNo" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+          <Column id="procDay" type="string" size="32"/>
+          <Column id="delyYn" type="STRING" size="256"/>
+          <Column id="mrNm" type="STRING" size="256"/>
+          <Column id="rMrnm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="mobNo" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="posY" type="string" size="32"/>
+          <Column id="posX" type="string" size="32"/>
+          <Column id="mrCd" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="poscd" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="planDaya" type="string" size="32"/>
+          <Column id="bldMngNo" type="string" size="32"/>
+          <Column id="planDay" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="planTm" type="string" size="32"/>
+          <Column id="addr1" type="string" size="32"/>
+          <Column id="addr2" type="string" size="32"/>
+          <Column id="chgDt" type="string" size="32"/>
+          <Column id="seq" type="bigdecimal" size="16"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="reqDesc" type="string" size="32"/>
+          <Column id="regDt" type="string" size="32"/>
+          <Column id="planTma" type="string" size="32"/>
+          <Column id="telNo" type="string" size="32"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsResult" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="npDesc" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="procTm" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="aMileage" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+          <Column id="procDay" type="string" size="32"/>
+          <Column id="chkStatNm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminumCp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_HistoryCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="serviceCd" type="STRING" size="256"/>
+          <Column id="serviceNm" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+          <Column id="procInNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsParams" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="mobNo" type="string" size="32"/>
+          <Column id="cMileage" type="bigdecimal" size="16"/>
+          <Column id="custNo" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="matCd" type="string" size="32"/>
+          <Column id="poscd" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="aMzileage" type="string" size="32"/>
+          <Column id="chkStatNm" type="string" size="32"/>
+          <Column id="cntNm" type="string" size="32"/>
+          <Column id="carNo" type="string" size="32"/>
+          <Column id="planDay" type="string" size="32"/>
+          <Column id="matNm" type="string" size="32"/>
+          <Column id="addr1" type="string" size="32"/>
+          <Column id="planTm" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="procTm" type="string" size="32"/>
+          <Column id="addr2" type="string" size="32"/>
+          <Column id="cntCd" type="string" size="32"/>
+          <Column id="seq" type="bigdecimal" size="16"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="custName" type="string" size="32"/>
+          <Column id="telNo" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+          <Column id="procDay" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_userInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="carmasterNu" type="STRING" size="256"/>
+          <Column id="carmasterNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="city" type="STRING" size="256"/>
+          <Column id="street" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="etc1" type="STRING" size="256"/>
+          <Column id="etc2" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSRegularCheck.xfdl
+ * 설    명 : 정기점검 작업목록 조회
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-06-16	wjim		[20170616_01] '구주소' 추가
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+this.p_arg = "RTCSRegularCheck";
+
+//===========================================================================
+// 최초 화면 로드시 처리할 내용정의 
+//===========================================================================
+this.RTCSRegularCheck_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.div_search.sdYm.set_value( FN_today());
+	this.parent.setButton("E|S", this);
+	
+	if( application.gds_userInfo.getColumn(0, "userGrp") == "08" ){
+		this.div_search.btn_save01.set_visible(false);
+		
+		var userId = application.gds_userInfo.getColumn(0, "userId");
+		if( nvl(userId) != "" ){
+			this.ds_userInfo.clearData();
+			
+			var sSvcID        	= "selectUserInfo";                    
+			var sController   	= "rtms/cs/selectUserInfo.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_userInfo=mapUserInfo";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			sArgs += Ex.util.setParam("userId", userId);
+		}
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			
+	}else{
+		this.div_search.btn_save01.set_visible(true);
+	}
+}
+
+//===========================================================================
+// 계약번호조회를 위한 팝업호출
+//===========================================================================
+this.btn_orderNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+}
+
+this.returnOrderNoInfo = function(ordNo){
+	this.div_search.ordNo.set_value(ordNo);
+}
+
+//===========================================================================
+// 계약번호조회팝업의 결과값을 처리하기위한 함수
+//===========================================================================
+//this.returnOrderNoInfo = function(ordNo, birthDay, telNo){
+//	this.selectWorkList(ordNo);
+//}
+
+//===========================================================================
+// 미스터로디안 찾기 팝업호출
+//===========================================================================
+this.div_cust_btn_postSearch1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_formId : "RTCSCarMaster"};
+	Ex.core.popup(this,"Mr. Roadian 찾기","cs::RTCSCarMaster_pop.xfdl",args, "modaless=false");
+}
+
+//===========================================================================
+// 미스터로디안 찾기 팝업결과
+//===========================================================================
+this.returnCarmaster = function(val1, val2){
+	this.div_search.mrCd.set_value(val1);
+	this.div_search.mrNm.set_value(val2);
+}
+
+//===========================================================================
+// 정기정검 작업목록조회
+//===========================================================================
+this.fn_search = function(){
+	var ordNo = nvl(this.div_search.ordNo.value);
+	var sdYm  = nvl(this.div_search.sdYm.value);
+	sdYm = sdYm.substring(0, 6);
+	var mrCd  = nvl(this.div_search.mrCd.value);
+	
+	if(sdYm == "") {
+		alert("대상년월은 필수입력항목 입니다.");
+		return;
+	}
+	
+	var sSvcID        	= "selectWorkList";                    
+	var sController   	= "rtms/cs/selectWorkList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsWorkList=out_work_list";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	//this.FN_tabDataSetClear();
+	sArgs += Ex.util.setParam("ordNo", 	ordNo);
+	sArgs += Ex.util.setParam("sdYm", 	sdYm);
+	sArgs += Ex.util.setParam("mrCd", 	mrCd);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//===========================================================================
+// 엔터키 이벤트를 통한 계약리스트 팝업호출
+//===========================================================================
+this.ed_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(e.keycode == 13 ){	
+		var ordNo = nvl(this.ed_ordNo.value);
+			if( ordNo == "" ){
+			alert("계약번호를 입력하세요.");
+			return;
+		}else{
+			this.returnOrderNoInfo(ordNo);
+		}	
+	}
+}
+
+//===========================================================================
+// 텝페이지 변경 이벤트 발생시 공통 스크립트처리
+//===========================================================================
+this.tab_info_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo) {
+	this.FN_tabDataSetClear();
+	this.FN_initTab( e.postindex );
+}
+
+//===========================================================================
+// 각텝페이지에 해당되는 데이타셋 초기화
+//===========================================================================
+this.FN_tabDataSetClear = function(){
+	this.dsChg.clearData();
+	this.ds_HistoryCp.clearData();
+	this.ds_preminumCp.clearData();
+	this.dsResult.clearData();
+	//this.tab_info.tab_info1_install.ds_install.clearData();
+}
+
+//===========================================================================
+// 그리드클릭시 정보변경, 처리결과, 프리미엄서비스, 서비스이력 조회
+//===========================================================================
+this.grd_workList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var row = this.dsWorkList.rowposition;
+	//var cnt = this.dsWorkList.getColCount();
+	var str = "";
+
+	this.txt_hpNo.set_text(nvl(this.dsWorkList.getColumn(row, "mobNo")));
+	this.txt_telNo.set_text(nvl(this.dsWorkList.getColumn(row, "telNo")));
+	this.txt_poscd.set_text(nvl(this.dsWorkList.getColumn(row, "poscd")));
+	this.txt_addr1.set_text(nvl(this.dsWorkList.getColumn(row, "addr1")));
+	this.txt_addr1Old.set_text(nvl(this.dsWorkList.getColumn(row, "addr1Old")));
+	this.txt_addr2.set_text(nvl(this.dsWorkList.getColumn(row, "addr2")));
+	
+	this.FN_initTab(0);
+}
+
+//===========================================================================
+// 각 텝페이지에 해당되는 내용을 조회한다.
+//===========================================================================
+this.FN_initTab = function(postindex){
+	
+	var row    	= this.dsWorkList.rowposition;
+	//파라미터로 넘길 DataSetRow 처리
+	this.dsParams.deleteAll();
+	
+	if( this.dsWorkList.getRowCount() != 0 ){
+		var addRow = this.dsParams.addRow();
+		this.dsParams.copyRow(addRow, this.dsWorkList, row);
+	}
+			
+	var ordNo = nvl(this.dsWorkList.getColumn(this.dsWorkList.rowposition,"ordNo"));
+	
+	this.FN_tabDataSetClear();
+	if( postindex == 0 ){
+		if( this.dsParams.getRowCount() != 0 ){
+			this.tab_info.set_tabindex(0);
+			var sSvcID        	= "infoChange";                    
+			var sController   	= "rtms/cs/infoChange.do";
+			var sInDatasets   	= "param_chg=dsParams";
+			var sOutDatasets  	= "dsChg=out_chg";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}else if( postindex == 1 ){
+		if( this.dsParams.getRowCount() != 0 ){
+			var sSvcID        	= "infoResult";                    
+			var sController   	= "rtms/cs/infoResult.do";
+			var sInDatasets   	= "param_chg=dsParams";
+			var sOutDatasets  	= "dsResult=out_chg";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}else if( postindex == 2 ){
+		var row = this.dsWorkList.rowposition;
+		var preOrdNo = this.dsWorkList.getColumn(row, "ordNo");
+		
+		if( nvl(preOrdNo) != "" ){
+			var sSvcID        	= "listPreminum";                    
+			var sController   	= "rtms/sd/listPreminum.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_preminumCp=mapPreminum";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			sArgs += Ex.util.setParam("ordNo", 	preOrdNo);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}else if( postindex == 3 ){
+		if( ordNo != "" ){
+			var sSvcID        	= "serviceHistory";                    
+			var sController   	= "rtms/cs/serviceHistory.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_HistoryCp=mapHistory";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			sArgs += Ex.util.setParam("ordNo", 	ordNo);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+}
+
+//===========================================================================
+// 요청에 대한 응답결과처리 및 메시지처리
+//===========================================================================
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{
+	if (strSvcId == "selectWorkList"){
+		
+		this.FN_tabDataSetClear();
+		this.grd_workList_oncellclick();
+		
+		var cnt = this.dsWorkList.getRowCount();
+		//for(var i = 0; i<cnt; i++) {
+		//	if(nvl(this.dsWorkList.getColumn(i, "procDay")) == "") {
+		//		
+		//	}
+		//}
+		if( cnt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grd_workList.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+		
+	}
+	
+	if (strSvcId == "infoChange"){
+		if( this.dsChg.rowcount != 0){
+			var nRow = this.dsChg.rowposition;
+			if( FN_numberHyphenInReturn(this.dsChg.getColumn(nRow, "mobNo")) != false ){
+				this.dsChg.setColumn(nRow, "mobNo", FN_numberHyphenInReturn(this.dsChg.getColumn(nRow, "mobNo")));
+			}
+			if( FN_numberHyphenInReturn(this.dsChg.getColumn(nRow, "telNo")) != false ){
+				this.dsChg.setColumn(nRow, "telNo", FN_numberHyphenInReturn(this.dsChg.getColumn(nRow, "telNo")));
+			}
+			this.tab_info.tab_info_chagne.subChange.copyData(this.dsChg);
+			
+			if( this.dsWorkList.getColumn(this.dsWorkList.rowposition,"chkStat") == "04" ){
+				this.tab_info.tab_info_chagne.change_save.set_enable(false);
+			}else{
+				this.tab_info.tab_info_chagne.change_save.set_enable(true);
+			}
+		}
+	}
+	
+	if (strSvcId == "infoResult"){
+		this.tab_info.tab_info_result.subResult.copyData(this.dsResult);
+		
+		if( this.dsWorkList.getColumn(this.dsWorkList.rowposition,"chkStat") == "04" ){
+			this.tab_info.tab_info_result.change_save.set_enable(false);
+		}else{
+			this.tab_info.tab_info_result.change_save.set_enable(true);
+		}
+	}
+	
+	if(strSvcId == "listPreminum"){
+		this.tab_info.tab_info_preminum.ds_preminum.copyData(this.ds_preminumCp);
+	}
+	
+	if(strSvcId == "serviceHistory"){
+		this.tab_info.tab_info_history.ds_History.copyData(this.ds_HistoryCp);
+		
+		if( this.userGrp == "01" ){
+ 			this.tab_info.tab_info_history.btn_rollBack.set_visible(true);
+ 		}
+	}
+	
+	if(strSvcId == "selectUserInfo"){
+		var ct = this.ds_userInfo.rowcount;
+		if( ct != 0 ){
+			this.div_search.mrCd.set_value( this.ds_userInfo.getColumn(0,"carmasterNu") );
+			this.div_search.mrNm.set_value( this.ds_userInfo.getColumn(0,"carmasterNm") );
+		}
+	}
+}
+
+this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grd_workList, "리스트");
+}
+
+
+this.div_search_Ed_emNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+if( e.keycode == "13" ){
+	this.fn_search();
+}
+}
+]]></Script>
+  </Form>
+</FDL>

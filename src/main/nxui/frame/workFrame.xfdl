@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5"><TypeDefinition url="..\default_typedef.xml"/>
++  <Form id="workFrame" classname="workFrame2" left="0" top="0" width="1167" height="527" titletext="New Form" onload="form_onload" ontimer="workFrame_ontimer" scrollbars="none" oninit="workFrame_oninit"><Layouts><Layout><Div id="div_work" taborder="1" position="absolute" left="20" style="padding:0 0 0 0;" onvscroll="div_work_onvscroll" scrollbars="autovert" top="54" async="true" width="1147" height="496"><Layouts/></Div><Button id="Button00" taborder="2" text="Button00" wordwrap="true" left="6" top="7" width="0" height="0" style="background:@gradation;"/><Static id="Static22" taborder="3" text="FIX h20" cssclass="Guide_color" visible="false" top="0" height="20" width="1167" left="0"/><Static id="Static00" taborder="4" text="FIX &#13;&#10;w&#13;&#10;20" cssclass="Guide_color" visible="false" top="1" height="572" width="20" left="0"/><Static id="Static01" taborder="5" text="FIX h22" cssclass="Guide_color" visible="false" top="550" height="22" width="1167" left="0"/><Static id="Static02" taborder="6" text="FIX h10" cssclass="Guide_color" visible="false" top="42" height="10" width="1147" left="20" style="background:aqua;"/><Static id="Static20" taborder="7" text="사용자 등록관리" cssclass="sta_WF_title" left="1.71%" top="16" right="73.95%" height="30"/><Div id="Div00" taborder="8" top="20" height="22" width="431" left="711"><Layouts><Layout><Button id="Button27" taborder="0" text="신규" cssclass="btn_WF_CRUD" top="0" height="22" width="45" left="10" visible="false" onclick="Div00_Button27_onclick"/><Button id="Button00" taborder="1" text="조회" cssclass="btn_WF_CRUD" top="0" height="22" width="45" left="58" visible="false"/><Button id="Button01" taborder="2" text="엑셀" cssclass="btn_WF_CRUD" top="0" height="22" width="45" left="154" visible="false"/><Button id="Button02" taborder="3" text="저장" cssclass="btn_WF_CRUD" top="0" height="22" width="45" left="106" visible="false"/></Layout></Layouts></Div><Static id="Static03" taborder="9" cssclass="sta_WF_line" visible="false" top="52" height="2" width="1147" left="20"/><Static id="Static04" taborder="10" text="w3" cssclass="Guide_color" visible="false" top="20" height="21" width="3" left="998"/><Static id="Static05" taborder="11" text="w3" cssclass="Guide_color" visible="false" top="20" height="21" width="3" left="1046"/><Static id="Static06" taborder="12" text="w3" cssclass="Guide_color" visible="false" top="20" height="21" width="3" left="1094"/></Layout></Layouts><Objects><Dataset id="ds_menuInit" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/></Objects><Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fCloseFrame 	= "";
+this.fvPageUrl 		= "";
+this.fvMenuId 		= "";
+this.fvMenuNm 		= "";
+this.fvPageUrl 		= "";
+this.fvMenuNmPath 	= "";
+this.fv_MenuAuth 	= "";
+this.fv_navigation 	= "";
+this.CRUDBTN_ID 	= "btn";
+this.menuNm;
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.workFrame_oninit = function(obj:Form, e:nexacro.InitEventInfo){
+
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function (obj:Form, e:LoadEventInfo){
+	gv_work = obj;
+	try{
+		gv_left.fn_changeMenu();
+		gv_left.fn_menuInit();
+	}catch(e){
+		this.setTimer(2,20);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_init = function(){
+	var oMenu	 		= Ex.core.o_menu;   
+	this.fvMenuId 		= oMenu.MENU_ID;   			//메뉴아이디
+	this.fvMenuNm 		= oMenu.MENU_NM;   			//메뉴명
+	this.fvMenuNmPath 	= oMenu.sMenuNmPath; 		//메뉴 path
+	this.fvPageUrl 		= oMenu.PAGE_URL;   		//메뉴 url
+	this.fv_MenuAuth 	= oMenu.MENU_AUTH;  		//메뉴 권한
+	this.fv_navigation 	= oMenu.VIEW_NAVIGATION;  	//메뉴 네비게이션
+	this.fv_arg = oMenu.PARAM;
+	
+	if(this.fvPageUrl.indexOf("::") == -1)	{
+		Eco.Logger.error({message:"UnKnown MenuInfo",elapsed:true,stack:true});
+		return;
+	}
+
+	var keyword = "work";
+	var hashId 	= "work";
+	hashId += ":" + this.fvPageUrl.split('::')[1].split('.')[0];	      
+	Eco.History.setLocationHash(hashId, {'keyword' : keyword,'url':this.fvPageUrl,'menuid':this.fvMenuId});	
+
+	this.div_work.set_url('');
+	var url = this.fvPageUrl;
+	if(url.indexOf("xfdl") > 0) {
+		this.div_work.set_url(url);
+	}else{
+		this.div_work.set_url("frame::main2.xfdl");
+	}
+	
+	try{
+		//gv_workTop.setNavi();
+		this.Static20.set_text(application.gv_menu_name);
+		//alert(application.gv_menu_name);
+	}catch(e){
+		this.setTimer(3,20);
+	} 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.workFrame_ontimer = function(obj:Form, e:nexacro.TimerEventInfo){
+	if(e.timerid == 0){
+	//  trace(" this.fvPageurl0 : "  +this.fvPageUrl.split('::')[0]);
+	//  trace(" this.fvPageurl1 : "  +this.fvPageUrl.split('::')[1]);
+	// 	 try{
+	// 	    $(ExtNx.ani.jquery(this.div_work)).fadeIn(30); 
+	// 	 }catch(e)
+	// 	 {
+	// 	 
+	// 	 }
+
+	//  this.setTimer( 1, 20 );
+	//  this.killTimer(e.timerid);
+	}else if(e.timerid == 1){
+		this.killTimer(e.timerid);
+	}else if(e.timerid == 2){
+		try{
+			gv_left.fn_changeMenu();
+			gv_left.fn_menuInit();
+			this.killTimer(e.timerid);
+		}catch(e){
+			this.setTimer(2,20);
+		}
+	}else if(e.timerid == 3){
+		try{
+			gv_workTop.setNavi();  
+			this.killTimer(e.timerid);
+		}catch(e){
+			this.setTimer(3,20);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+var arrayNm ;
+var arrayId ;
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.setButton = function(btn, obj, grd) {
+	arrayNm = new Array();
+	arrayId = new Array();
+
+	var btnObj;
+	
+	while(this.Div00.components.length > 0){
+		btnObj = this.Div00.components[0];
+		this.Div00.removeChild(btnObj.id); 
+		btnObj.destroy(); 
+		btnObj = null;
+	}
+
+	if( btn.length != undefined ){
+		var btnList = btn.split("|");
+		for(var i = 0; i<btnList.length; i++){
+			if(btnList[i] == "N"){
+				arrayNm[i] = "추가";
+				arrayId[i] = "add";
+			}else if(btnList[i] == "S"){
+				arrayNm[i] = "조회";
+				arrayId[i] = "search";
+			}else if(btnList[i] == "C"){
+				arrayNm[i] = "저장";
+				arrayId[i] = "save";
+			}else if(btnList[i] == "E"){
+				arrayNm[i] = "엑셀";
+				arrayId[i] = "excel";
+			}else if(btnList[i] == "DN"){
+				arrayNm[i] = "다운";
+				arrayId[i] = "down";
+			}else if(btnList[i] == "AG"){
+				arrayNm[i] = "집계";
+				arrayId[i] = "sum";
+			}else if(btnList[i] == "DL"){
+				arrayNm[i] = "삭제";
+				arrayId[i] = "delete";
+			}else if(btnList[i] == "UP"){
+				arrayNm[i] = "업로드";
+				arrayId[i] = "upload";
+			}else if(btnList[i] == "P"){
+				arrayNm[i] = "처리";
+				arrayId[i] = "process";
+			}else if(btnList[i] == "RA"){
+				arrayNm[i] = "결과반영";
+				arrayId[i] = "resultapply";
+			}else if(btnList[i] == "PK"){
+				arrayNm[i] = "패키지(묶음)처리";
+				arrayId[i] = "resultPkgY";
+			}else if(btnList[i] == "GR"){
+				arrayNm[i] = "패키지(묶음)해지";
+				arrayId[i] = "resultGrpN";
+			}		
+		}
+		for(var i = 0; i<arrayId.length; i++) {
+			this.fn_createCrudMenu(arrayId[i], i, obj, grd) ;
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_createCrudMenu = function (strID, index, obj, grd){
+	// CRUD 버튼 생성
+	var preIndex 		= 0;
+	var nLeft 			= 431;
+	var nRight 			= 0;
+	var preStrId 		= "";
+	var preObject;
+	strName 			= arrayNm[index];
+	var objBtn 			= new Button();
+	var defaultWidth 	= 45;	//버튼 디폴트width(버튼명이 2일경우:45)
+	var nIncreseVal 	= 0;	//버튼width 증가값
+
+	if(strName.length > 2){//버튼명이 2보다 클경우 1문자당 증가값 13씩증가
+		nIncreseVal = 13 * (strName.length-2);
+		nLeft = nLeft-nIncreseVal;
+	}
+	var width = defaultWidth + nIncreseVal;
+	
+	try {
+		objBtn.init(this.CRUDBTN_ID + strID, "absolute", 154, 0, width, 22);
+		this.Div00.addChild(objBtn.name, objBtn);
+	}catch(e) {
+
+	}
+	
+	objBtn.set_text(strName);
+	//objBtn.menuid =  strID;
+	objBtn.name = strID;
+	objBtn.set_cssclass("btn_WF_CRUD");
+	objBtn.style.set_align("center middle");
+
+	//추가
+	//objBtn.menuCdTop = menuCdTop;
+	//objBtn.setEventHandler("onclick", this.btnTop_onclick, this);	
+	if(arrayId[index] == "add") {
+		objBtn.setEventHandler("onclick", obj.fn_add, obj);	
+	}else if(arrayId[index] == "search") {
+		objBtn.setEventHandler("onclick", obj.fn_search, obj);	
+	}else if(arrayId[index] == "save") {
+		objBtn.setEventHandler("onclick", obj.fn_save, obj);	
+	}else if(arrayId[index] == "excel") {
+		objBtn.setEventHandler("onclick", obj.fn_excel, obj);	
+	}else if(arrayId[index] == "down") {
+		objBtn.setEventHandler("onclick", obj.fn_down, obj);	
+	}else if(arrayId[index] == "sum") {
+		objBtn.setEventHandler("onclick", obj.fn_aggregate, obj);	
+	}else if(arrayId[index] == "delete") {
+		objBtn.setEventHandler("onclick", obj.fn_delete, obj);	
+	}else if(arrayId[index] == "upload") {
+		objBtn.setEventHandler("onclick", obj.fn_upload, obj);	
+	}else if(arrayId[index] == "process") {
+		objBtn.setEventHandler("onclick", obj.fn_process, obj);	
+	}else if(arrayId[index] == "resultapply") {
+		objBtn.setEventHandler("onclick", obj.fn_resultapply, obj);	
+	}else if(arrayId[index] == "resultPkgY") {
+		objBtn.setEventHandler("onclick", obj.fn_pkgBundleProc, obj);	
+	}else if(arrayId[index] == "resultGrpN") {
+		objBtn.setEventHandler("onclick", obj.fn_grpTermiProc, obj);	
+	}
+
+	objBtn.show();
+
+	if(index > 0){
+		preIndex 	= index - 1;
+		preStrId 	= arrayId[preIndex];
+		preObject 	= this.Div00.components[this.CRUDBTN_ID  + preStrId];
+		nLeft 		= preObject.getOffsetLeft();
+	}
+
+	//var objFont = Ex.util.getObjFont(objBtn, 9, "Dotum");	
+	var padding = 3;
+	objBtn.setOffsetLeft(parseInt(nLeft-padding-width));
+	
+	objBtn.set_visible(true);
+	//권한별 버튼출력처리
+	this.setBtnAuth(this.Div00);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script></Form>
+</FDL>

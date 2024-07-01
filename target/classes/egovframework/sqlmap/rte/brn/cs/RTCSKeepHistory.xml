@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTCSKeepHistory">
+	<resultMap id="r_sRtcs0203KeepHistory" class="java.util.HashMap">
+		<result property="ordNo"			column="ORD_NO"/>
+		<result property="strgSeq"			column="STRG_SEQ"/>
+		<result property="custNo"			column="CUST_NO"/>
+		<result property="custNm"			column="CUST_NM"/>
+		<result property="custTelNo"		column="CUST_TEL_NO"/>
+		<result property="custMobNo"		column="CUST_MOB_NO"/>
+		<result property="carKind"			column="CAR_KIND"/>
+		<result property="carNo"			column="CAR_NO"/>
+		<result property="srrgDay"			column="SRRG_DAY"/>
+		<result property="strgYn"			column="STRG_YN"/>
+		<result property="strgStat"			column="STRG_STAT"/>
+		<result property="strgStatNm"		column="STRG_STAT_NM"/>
+		<result property="srsvYn"			column="SRSV_YN"/>
+		<result property="agencyCd"			column="AGENCY_CD"/>
+		<result property="agencyNm"			column="AGENCY_NM"/>
+		<result property="agencyMobNo"		column="AGENCY_MOB_NO"/>
+		<result property="warehCd"			column="WAREH_CD"/>
+		<result property="warehNm"			column="WAREH_NM"/>
+		<result property="addr"				column="ADDR"/>
+		<result property="strgDay"			column="STRG_DAY"/>
+		<result property="strgDt"			column="STRG_DT"/>
+		<result property="strgMthd"			column="STRG_MTHD"/>
+		<result property="strgMthdNm"		column="STRG_MTHD_NM"/>
+		<result property="strgFilePath"		column="STRG_FILE_PATH"/>
+		<result property="strgFileName"		column="STRG_FILE_NAME"/>
+		<result property="strgUserId"		column="STRG_USER_ID"/>
+		<result property="strgUserNm"		column="STRG_USER_NM"/>
+		<result property="dlvrDay"			column="DLVR_DAY"/>
+		<result property="dlvrDt"			column="DLVR_DT"/>
+		<result property="dlvrFilePath"		column="DLVR_FILE_PATH"/>
+		<result property="dlvrFileName"		column="DLVR_FILE_NAME"/>
+		<result property="dlvrUserId"		column="DLVR_USER_ID"/>
+		<result property="dlvrUserNm"		column="DLVR_USER_NM"/>
+		<result property="mfCd"				column="MF_CD"/>
+		<result property="mfNm"				column="MF_NM"/>
+		<result property="patternCd"		column="PATTERN_CD"/>
+		<result property="selectionWidth"	column="SELECTION_WIDTH"/>
+		<result property="aspectRatio"		column="ASPECT_RATIO"/>
+		<result property="wheelInches"		column="WHEEL_INCHES"/>
+		<result property="plyRating"		column="PLY_RATING"/>
+		<result property="tireCnt"			column="TIRE_CNT"/>
+		<result property="mfCdF"			column="MF_CD_F"/>
+		<result property="mfNmF"			column="MF_NM_F"/>
+		<result property="patternCdF"		column="PATTERN_CD_F"/>
+		<result property="selectionWidthF"	column="SELECTION_WIDTH_F"/>
+		<result property="aspectRatioF"		column="ASPECT_RATIO_F"/>
+		<result property="wheelInchesF"		column="WHEEL_INCHES_F"/>
+		<result property="plyRatingF"		column="PLY_RATING_F"/>
+		<result property="tireCntF"			column="TIRE_CNT_F"/>
+		<result property="mfCdR"			column="MF_CD_R"/>
+		<result property="mfNmR"			column="MF_NM_R"/>
+		<result property="patternCdR"		column="PATTERN_CD_R"/>
+		<result property="selectionWidthR"	column="SELECTION_WIDTH_R"/>
+		<result property="aspectRatioR"		column="ASPECT_RATIO_R"/>
+		<result property="wheelInchesR"		column="WHEEL_INCHES_R"/>
+		<result property="plyRatingR"		column="PLY_RATING_R"/>
+		<result property="tireCntR"			column="TIRE_CNT_R"/>
+		<result property="totTireCnt"		column="TOT_TIRE_CNT"/>
+		<result property="regId"			column="REG_ID"/>
+		<result property="regNm"			column="REG_NM"/>
+		<result property="regDt"			column="REG_DT"/>
+		<result property="chgId"			column="CHG_ID"/>
+		<result property="chgNm"			column="CHG_NM"/>
+		<result property="chgDt"			column="CHG_DT"/>
+	</resultMap>
+	<parameterMap id="p_sRtcs0203KeepHistory" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0203KeepHistory" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgStat" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgDayStart" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgDayEnd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayStart" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayEnd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgMthd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="rTCSKeepHistory.p_sRtcs0203KeepHistory" parameterMap="p_sRtcs0203KeepHistory">
+		{call Pkg_Rtcs0203.p_sRtcs0203KeepHistory(
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+													?, ?, ?, ?
+												  )}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtcs0202UseAgencyWareh" class="java.util.HashMap">
+		<result property="agencyCd"		column="AGENCY_CD"/>
+		<result property="warehCd"		column="WAREH_CD"/>
+		<result property="warehNm"		column="WAREH_NM"/>
+		<result property="addr"			column="ADDR"/>
+		<result property="telNo"		column="TEL_NO"/>
+		<result property="mobNo"		column="MOB_NO"/>
+	</resultMap>
+	<parameterMap id="p_sRtcs0202UseAgencyWareh" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0202UseAgencyWareh" />
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSKeepHistory.pSRtcs0202UseAgencyWareh" parameterMap="p_sRtcs0202UseAgencyWareh">
+		{call Pkg_Rtcs0202.p_sRtcs0202UseAgencyWareh( ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_Rtcs0203WinterIn"> 
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgStat" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="srsvYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="warehCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgMthd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgFilePath" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgFileName" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mfCd" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="patternCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="selectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tireCnt" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mfCdF" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="patternCdF" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="selectionWidthF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatioF" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInchesF" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRatingF" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tireCntF" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mfCdR" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="patternCdR" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="selectionWidthR" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatioR" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInchesR" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRatingR" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tireCntR" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.saveRtcs0203WinterIn" parameterMap="p_Rtcs0203WinterIn">
+		{call Pkg_Rtcs0203.p_Rtcs0203WinterIn(	?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?
+											)}
+	</procedure>
+	<parameterMap class="java.util.Map" id="p_Rtcs0203WinterOut"> 
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgSeq" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="srsvYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrFilePath" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrFileName" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSWarehouse.saveRtcs0203WinterOut" parameterMap="p_Rtcs0203WinterOut">
+		{call Pkg_Rtcs0203.p_Rtcs0203WinterOut(	?, ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtcs0203FilePathName" class="java.util.HashMap">
+		<result property="ordNo"			column="ORD_NO"/>
+		<result property="custNo"			column="CUST_NO"/>
+		<result property="strgFilePath"		column="STRG_FILE_PATH"/>
+		<result property="strgFileName"		column="STRG_FILE_NAME"/>
+		<result property="dlvrFilePath"		column="DLVR_FILE_PATH"/>
+		<result property="dlvrFileName"		column="DLVR_FILE_NAME"/>
+	</resultMap>
+	<parameterMap id="p_sRtcs0203FilePathName" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0203FilePathName" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strgSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSKeepHistory.sRtcs0203FilePathName" parameterMap="p_sRtcs0203FilePathName">
+		{call Pkg_Rtcs0203.p_sRtcs0203FilePathName( ?, ?, ?, ?, ?, ? )}
+	</procedure>
+</sqlMap>

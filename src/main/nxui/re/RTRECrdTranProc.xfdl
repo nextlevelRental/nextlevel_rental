@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECrdTranProc" classname="re00050_cms" left="0" top="0" width="1147" height="496" titletext="카드이체처리" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="Tab02" taborder="0" left="0" top="0" height="496" tabindex="0" scrollbars="autoboth" style="showextrabutton:false;" width="1122" onchanged="Tab02_onchanged">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="[STEP 1] 카드이체 대상집계" url="re::RTRECrdTranProc_tab1.xfdl">
+              <Layouts/>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="[STEP 2] 카드이체 대상조회" url="re::RTRECrdTranProc_tab2.xfdl">
+              <Layouts/>
+            </Tabpage>
+            <Tabpage id="tabpage3" text="[STEP 3] 파일 생성" url="re::RTRECrdTranProc_tab3.xfdl">
+              <Layouts/>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static01" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 카드이체관리 > 카드이체처리
+ * 02. 그룹명   : RTRECrdTranProc.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+	} 
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "":
+				break;			
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// Tab02_onchanged event
+	//---------------------------------------------------------------------------------	
+	  this.Tab02_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+	{
+		this.fn_getButton(obj.tabindex);
+	}
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 탭변경시 버튼변경처리
+	//---------------------------------------------------------------------------------
+	this.fn_getButton = function(idx) {
+		switch (idx) 
+		{
+			case 0:
+				this.Tab02.tabpage1.fn_init();
+				break;		
+			case 1:
+				this.Tab02.tabpage2.fn_init();		
+				break;		
+			case 2:
+				this.Tab02.tabpage3.fn_init();		
+				break;									
+			default:
+				break;
+		}
+	}]]></Script>
+  </Form>
+</FDL>

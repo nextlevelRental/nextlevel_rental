@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	 
+	<!-- 영업관리 -->
+    <bean id="dataSourceBRN" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${ntrms.datasource.driver}"/>
+        <property name="url" value="${ntrms.datasource.url}"/>
+        <property name="username" value="${ntrms.datasource.username}"/>
+        <property name="password" value="${ntrms.datasource.password}"/>
+        <property name="maxActive" value="60"/>
+        <property name="maxIdle" value="60"/>
+        <property name="minIdle" value="60"/>
+    </bean>
+    
+</beans>

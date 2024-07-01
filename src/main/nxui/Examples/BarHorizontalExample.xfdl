@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="barhorizontal" classname="EcoChartSample" left="0" top="0" width="1024" height="723" titletext="barhorizontal" style="background:#ffffffff;" onload="StackBarSample_onload">
+    <Layouts>
+      <Layout>
+        <EcoChart id="ecochart" top="67" left="20" height="444" style="background:#ffffffff;border:0 solid #808080ff ;bordertype:round 15 15 ;" right="48"/>
+        <Static id="st_male" taborder="18" top="37" height="20" width="111" right="198" style="align:right middle;"/>
+        <Static id="st_female" taborder="19" top="37" height="20" width="94" right="29" style="align:right middle;"/>
+        <Grid id="Grid00" taborder="20" useinputpanel="false" left="1.95%" top="521" right="4.69%" height="168" binddataset="ds_bar">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="257"/>
+                <Column size="249"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="year"/>
+                <Cell col="1" text="income"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:year"/>
+                <Cell col="1" edittype="normal" text="bind:income"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="22" text="BarHorizontal &amp; Crosshair" cssclass="WF_sta_Title" left="1.95%" top="10" right="4.69%" height="47"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_bar" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="year" type="STRING" size="256"/>
+          <Column id="income" type="FLOAT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="year">1920</Col>
+            <Col id="income">23.5</Col>
+          </Row>
+          <Row>
+            <Col id="year">1930</Col>
+            <Col id="income">8</Col>
+          </Row>
+          <Row>
+            <Col id="year">1940</Col>
+            <Col id="income">30.1</Col>
+          </Row>
+          <Row>
+            <Col id="year">1950</Col>
+            <Col id="income">29.5</Col>
+          </Row>
+          <Row>
+            <Col id="year">1960</Col>
+            <Col id="income">18.3</Col>
+          </Row>
+          <Row>
+            <Col id="year">1970</Col>
+            <Col id="income">22</Col>
+          </Row>
+          <Row>
+            <Col id="year">1980</Col>
+            <Col id="income">12</Col>
+          </Row>
+          <Row>
+            <Col id="year">1990</Col>
+            <Col id="income">3</Col>
+          </Row>
+          <Row>
+            <Col id="year">2000</Col>
+            <Col id="income">22</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+var chart;
+
+this.StackBarSample_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.drawChart();
+}
+
+
+this.drawChart = function()
+{
+	if (!chart)
+	{
+		var config = {		
+			"type": "Basic",
+			"chart": {
+				"id": "bar horizontal chart",
+				"bindDataset": "ds_bar",
+				"bindCategory": "year",
+				"colors": "colorRed10",
+				"plotLeftBorderWidth": 3,
+				"plotBottomBorderWidth": 3
+			},
+			"categoryAxis": {
+				"id": "categoryAxis X",
+				"position": "left",
+				"lineColor": "#717a8380",
+				"tickColor": "#717a8380",
+				"autoscaleMargin": 0.08,
+				"tickWidth": 3,
+				"tickLength": 10,
+				"labelFontSize": 8,
+				"title": "Year",
+				"titleFontSize": 11,
+				"titleFontType": "bold",
+				"titleMargin": 30
+			},
+			"valueAxis": [
+				{
+					"id": "ValueAxis Y",
+					"title": "Income in millions, US",
+					"max": 35,
+					"position": "bottom",
+					"lineColor": "#717a8380",
+					"tickColor": "#717a8380",
+					"tickDecimals": 1,
+					"tickWidth": 2,
+					"tickLength": 15,
+					"labelFontSize": 9,
+					"titleFontSize": 12,
+					"titleFontType": "bold",
+					"titleMargin": 40,
+					"ticks": 5
+				}
+			],
+			"series": [
+				{
+					"id": "Series 1",
+					"title": "income",
+					"bindValue": "income",
+					"xaxis": "categoryAxis X",
+					"yaxis": "ValueAxis Y",
+					"showBar": true,
+					"barHorizontal": true,
+					"barWidth": 0.7,
+					"barOpacity": 0.6
+				}
+			],
+			"crosshair": {
+				"mode": "y"
+			},
+			"tooltip": {
+				"text": "income : [%x]",
+				"fontFace": "Meiryo UI",
+				"fontSize": 9,
+				"fontType": "bold",
+				"fontColor": "#ffffff",
+				"borderWidth": 1,
+				"borderStyle": "solid",
+				"borderColor": "#717a83",
+				"color": "#717a83cc",
+				"opacity": 1,
+				"hookWidth": 10,
+				"hookHeight": 10,
+				"offsetX": 0,
+				"offsetY": 20
+			}
+		};
+	
+		this.ecochart.set_config(config);
+	}
+	
+	this.ecochart.draw();
+}
+]]></Script>
+  </Form>
+</FDL>

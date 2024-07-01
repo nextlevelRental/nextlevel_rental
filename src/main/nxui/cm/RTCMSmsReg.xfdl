@@ -1,0 +1,911 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCMSmsReg" classname="RTCMCdGrp" left="0" top="0" width="1147" height="496" onload="RTCMCdGrp_onload" titletext="SMS포맷등록">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_cdGrp" taborder="17" binddataset="ds_cdGrp" useinputpanel="false" left="0" top="65" width="300" cellsizingtype="col" height="421" onselectchanged="div_cdGrp_grid_codeGrp_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="184"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="문자코드"/>
+                <Cell col="1" text="문자코드명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:midGrpCd"/>
+                <Cell col="1" text="bind:midGrpNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="7" text="Div00" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="0" right="25">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="36" text="검색" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="71" left="20"/>
+              <Combo id="cb_searchCondition" taborder="37" innerdataset="@ds_searchConditionChild" codecolumn="cd" datacolumn="cdNm" index="-1" top="10" height="21" domainId="nexa.name;nexa.code" visible="true" readonly="false" displaynulltext="선택" width="140" left="61"/>
+              <Edit id="ed_searchKeyword" taborder="38" top="10" height="21" width="260" left="206" onkeyup="div_search_ed_searchKeyword_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="11" text="코드그룹" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="318" top="61" width="100" height="20"/>
+        <Static id="Static04" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="76" width="802" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="13" text="FIX h20" cssclass="Guide_color" visible="false" left="319" top="177" width="803" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="14" text="검색" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="720" top="225" width="100" height="20"/>
+        <Static id="Static08" taborder="15" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="208" width="803" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="16" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="299" top="65" width="20" height="431"/>
+        <Static id="Static11" taborder="20" cssclass="sta_WF_detailLabel2" left="319" top="86" height="31" right="25"/>
+        <Static id="Static12" taborder="21" cssclass="sta_WF_detailLabel2" left="319" top="116" height="31" right="25"/>
+        <Static id="st_midGrpCd" taborder="18" text="문자코드" cssclass="sta_WF_detailLabelP" left="319" top="86" width="130" height="31"/>
+        <Static id="st_midGrpNm" taborder="19" text="문자코드명" cssclass="sta_WF_detailLabelP" left="319" top="116" width="130" height="31"/>
+        <Static id="Static10" taborder="24" text="모듈" cssclass="sta_WF_detailLabelP" left="719" top="86" width="130" height="31"/>
+        <Static id="st_useYn" taborder="25" text="사용여부" cssclass="sta_WF_detailLabelP" left="719" top="116" width="130" height="31"/>
+        <Static id="Static14" taborder="26" cssclass="sta_WF_detailLabel2" left="319" top="146" height="31" right="25"/>
+        <Static id="Static15" taborder="27" text="설명" cssclass="sta_WF_detailLabelP" left="319" top="146" width="130" height="31"/>
+        <Edit id="ed_cdGrpCd" taborder="28" inputmode="upper" inputtype="number,english" maxlength="4" left="453" top="91" height="21" width="193"/>
+        <Edit id="ed_cdGrpNm" taborder="29" maxlength="100" left="453" top="121" height="21" width="262"/>
+        <Edit id="ed_cdGrpDesc" taborder="30" maxlength="100" left="453" top="151" height="21" width="650"/>
+        <Button id="btn_overlapConfirm" taborder="31" text="중복확인" onclick="div_cdGrpDetails_btn_overlapConfirm_onclick" left="650" top="91" height="21" domainId="nexa.save" width="65"/>
+        <Combo id="cb_mdlCd" taborder="32" displaynulltext="선택" innerdataset="@ds_mdl" codecolumn="cd" datacolumn="cdNm" left="853" top="91" height="21" domainId="nexa.name;nexa.code" width="120"/>
+        <Combo id="cd_useYn" taborder="33" displaynulltext="선택" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" left="853" top="121" height="21" domainId="nexa.name;nexa.code" width="120"/>
+        <Edit id="ed_overlapConfirmFlag" taborder="34" value="false" maxlength="20" enable="false" visible="false" left="977" top="91" height="21" width="140"/>
+        <Combo id="cb_searchConditionChild" taborder="38" displaynulltext="선택" innerdataset="@ds_searchConditionChild" codecolumn="cd" datacolumn="cdNm" left="793" top="223" height="20" domainId="nexa.name;nexa.code" width="113"/>
+        <Edit id="ed_searchKeywordChild" taborder="39" left="911" top="223" height="21" width="149"/>
+        <Button id="btn_searchChild" taborder="40" text="조회" onclick="div_cdGrpChild_btn_searchChild_onclick" cssclass="btn_WF_module" left="1070" top="223" height="22" domainId="nexa.search" width="45"/>
+        <Tab id="Tab00" taborder="50" left="27.81%" top="221" right="2.27%" height="270" tabindex="0" scrollbars="autoboth" onchanged="Tab00_onchanged">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="문자분류">
+              <Layouts>
+                <Layout>
+                  <Grid id="grid_cdList" taborder="0" binddataset="ds_cdList" useinputpanel="false" left="0" top="31" width="449" height="203">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="60"/>
+                          <Column size="120"/>
+                          <Column size="269"/>
+                          <Column size="80"/>
+                          <Column size="60"/>
+                          <Column size="60"/>
+                          <Column size="60"/>
+                          <Column size="60"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="코드"/>
+                          <Cell col="1" text="코드명"/>
+                          <Cell col="2" text="메세지"/>
+                          <Cell col="3" text="알림톡코드"/>
+                          <Cell col="4" text="발송방식"/>
+                          <Cell col="5" text="발송유형"/>
+                          <Cell col="6" text="정렬순서"/>
+                          <Cell col="7" text="사용여부"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" text="bind:cd"/>
+                          <Cell col="1" edittype="normal" text="bind:cdNm"/>
+                          <Cell col="2" edittype="normal" text="bind:msgContents"/>
+                          <Cell col="3" text="bind:kakaoMsgCd"/>
+                          <Cell col="4" text="bind:msgType"/>
+                          <Cell col="5" text="bind:reservedType"/>
+                          <Cell col="6" edittype="normal" text="bind:orderPt"/>
+                          <Cell col="7" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYnChild" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btnDelCd" taborder="1" text="삭제" cssclass="btn_WF_module" left="704" top="4" width="45" height="22" onclick="Tab00_tabpage1_btnDelCd_onclick"/>
+                  <Button id="btnAddCd" taborder="2" text="추가" cssclass="btn_WF_module" left="752" top="5" width="45" height="22" onclick="Tab00_tabpage1_btnAddCd_onclick"/>
+                  <TextArea id="txt_contents" taborder="3" left="57.11%" top="31" right="0.37%" height="203" style="background:antiquewhite;color:transparent;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="파라미터">
+              <Layouts>
+                <Layout>
+                  <Grid id="grid_paramList" taborder="0" binddataset="ds_paramList" useinputpanel="false" left="0" top="31" width="795" height="203">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="100"/>
+                          <Column size="200"/>
+                          <Column size="60"/>
+                          <Column size="60"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="코드"/>
+                          <Cell col="1" text="코드명"/>
+                          <Cell col="2" text="설명"/>
+                          <Cell col="3" text="정렬순서"/>
+                          <Cell col="4" text="사용여부"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" text="bind:paramCd"/>
+                          <Cell col="1" edittype="normal" text="bind:paramCdNm"/>
+                          <Cell col="2" edittype="normal" text="bind:paramCdDesc"/>
+                          <Cell col="3" edittype="normal" text="bind:orderPt"/>
+                          <Cell col="4" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYnChild" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btnDelParam" taborder="1" text="삭제" cssclass="btn_WF_module" top="4" right="51" width="45" height="22" onclick="Tab00_tabpage2_btnDelParam_onclick"/>
+                  <Button id="btnAddParam" taborder="2" text="추가" cssclass="btn_WF_module" top="4" right="3" width="45" height="22" onclick="Tab00_tabpage2_btnAddParam_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage3" text="발송위치매핑">
+              <Layouts>
+                <Layout>
+                  <Grid id="grid_posList" taborder="0" binddataset="ds_posList" useinputpanel="false" left="0" top="31" width="797" height="203">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="150"/>
+                          <Column size="100"/>
+                          <Column size="120"/>
+                          <Column size="200"/>
+                          <Column size="60"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="발송위치코드"/>
+                          <Cell col="1" text="중분류"/>
+                          <Cell col="2" text="코드"/>
+                          <Cell col="3" text="적요"/>
+                          <Cell col="4" text="사용여부"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="none" text="bind:sendPos"/>
+                          <Cell col="1" edittype="text" text="bind:midGrpCd"/>
+                          <Cell col="2" edittype="text" text="bind:cd"/>
+                          <Cell col="3" edittype="text" text="bind:remark"/>
+                          <Cell col="4" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYnChild" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btnAddCd" taborder="1" text="추가" onclick="Tab00_tabpage3_btnAddCd_onclick" cssclass="btn_WF_module" left="752" top="5" width="45" height="22"/>
+                  <Button id="btnDelCd" taborder="2" text="삭제" onclick="Tab00_tabpage3_btnDelCd_onclick" cssclass="btn_WF_module" left="704" top="4" width="45" height="22"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage4" text="발송제한설정">
+              <Layouts>
+                <Layout>
+                  <Grid id="grid_lockList" taborder="0" binddataset="ds_lockList" useinputpanel="false" left="0" top="31" width="802" height="203">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="60"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="40"/>
+                          <Column size="60"/>
+                          <Column size="60"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="30"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="발송위치"/>
+                          <Cell col="1" text="중분류"/>
+                          <Cell col="2" text="코드명"/>
+                          <Cell col="3" text="고객번호"/>
+                          <Cell col="4" text="주문번호"/>
+                          <Cell col="5" text="시작일"/>
+                          <Cell col="6" text="종료일"/>
+                          <Cell col="7" text="순번"/>
+                          <Cell col="8" text="제한여부"/>
+                          <Cell col="9" text="제한유형"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell/>
+                          <Cell col="1"/>
+                          <Cell col="2" edittype="normal" text="bind:cdNm"/>
+                          <Cell col="3"/>
+                          <Cell col="4"/>
+                          <Cell col="5" displaytype="date"/>
+                          <Cell col="6" displaytype="date"/>
+                          <Cell col="7"/>
+                          <Cell col="8" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_useYnChild" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                          <Cell col="9" displaytype="combo" edittype="combo" combodisplay="display"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btnDelCd" taborder="1" text="삭제" cssclass="btn_WF_module" left="704" top="4" width="45" height="22" onclick="Tab00_tabpage4_btnDelCd_onclick"/>
+                  <Button id="btnAddCd" taborder="2" text="추가" cssclass="btn_WF_module" left="752" top="5" width="45" height="22" onclick="Tab00_tabpage4_btnAddCd_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_searchCondition" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cdGrp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="lrgGrpCd" type="STRING" size="256"/>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="midGrpNm" type="STRING" size="256"/>
+          <Column id="midGrpDesc" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cdList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_cdGrpChild_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="midGrpNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="msgContents" type="STRING" size="256"/>
+          <Column id="kakaoMsgCd" type="STRING" size="256"/>
+          <Column id="msgType" type="STRING" size="256"/>
+          <Column id="reservedType" type="STRING" size="256"/>
+          <Column id="orderPt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="useYnNm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mdl" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYnChild" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_searchConditionChild" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_paramList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_cdGrpChild_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="paramCd" type="STRING" size="256"/>
+          <Column id="paramCdNm" type="STRING" size="256"/>
+          <Column id="paramCdDesc" type="STRING" size="256"/>
+          <Column id="orderPt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="useYnNm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_posList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="sendPos" type="STRING" size="256"/>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="useYnNm" type="STRING" size="256"/>
+          <Column id="remark" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lockList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_cdGrpChild_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="sendPos" type="STRING" size="256"/>
+          <Column id="midGrpCd" type="STRING" size="256"/>
+          <Column id="midGrpNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="lockYn" type="STRING" size="256"/>
+          <Column id="lockType" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item5" compid="ed_cdGrpCd" propid="value" datasetid="ds_cdGrp" columnid="midGrpCd"/>
+      <BindItem id="item6" compid="ed_cdGrpNm" propid="value" datasetid="ds_cdGrp" columnid="midGrpNm"/>
+      <BindItem id="item7" compid="ed_cdGrpDesc" propid="value" datasetid="ds_cdGrp" columnid="midGrpDesc"/>
+      <BindItem id="item8" compid="cb_mdlCd" propid="value" datasetid="ds_cdGrp" columnid="lrgGrpCd"/>
+      <BindItem id="item9" compid="cd_useYn" propid="value" datasetid="ds_cdGrp" columnid="useYn"/>
+      <BindItem id="item0" compid="Tab00.tabpage1.txt_contents" propid="value" datasetid="ds_cdList" columnid="msgContents"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.resultCnt = 0;//중복코드카운트
+	this.checkCd = "";	//중복코드코드
+	var checkCdRow; 	//중복체크ROW
+	this.seqNo = 0;
+	
+    
+    FN_stringByteLength = function(p_val){
+		var objString = new String(p_val);
+		var stringByteLength = 0;
+		for(var i=0; i<objString.length; i++)
+		{
+			if( escape(objString.charAt(i)).length >= 4)  stringByteLength += 3;
+			else if(escape(objString.charAt(i)) == "%A7") stringByteLength += 3;
+			else if(escape(objString.charAt(i)) != "%0D") stringByteLength++;
+		}
+		return stringByteLength;
+	}
+    
+	
+	
+	/***********************************************************************************
+	* Events
+	***********************************************************************************/
+	this.RTCMCdGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+		this.parent.setButton("E|C|N|S", this);
+	}
+
+    this.div_cdGrp_grid_codeGrp_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+	{
+		if(this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) != 2){
+			this.ed_cdGrpCd.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "midGrpCd"));
+			this.cb_mdlCd.set_value		(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "lrgGrpCd"));
+			this.ed_cdGrpNm.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "midGrpNm"));
+			this.cd_useYn.set_value		(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "useYn"));
+			this.ed_cdGrpDesc.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "midGrpDesc"));
+			
+			this.ed_cdGrpCd.set_enable(false);
+			this.btn_overlapConfirm.set_visible(false);
+			
+			this.ed_overlapConfirmFlag.set_value("true");
+			this.fn_cdList("parent");
+		}
+		
+		if(this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) == 2){
+			this.ed_cdGrpCd.set_enable(true);
+			this.btn_overlapConfirm.set_visible(true);
+			this.ed_overlapConfirmFlag.set_value("false");
+			this.ds_cdList.clearData();
+		}
+	}
+    
+    this.div_cdGrpDetails_btn_overlapConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var edCdGrpCdVal = nvl(this.ed_cdGrpCd.value);
+		
+		if( nvl(edCdGrpCdVal) != "" ){
+			var sSvcID        	= "cdGrpCdOverlapConfirm";                    
+			var sController   	= "rtms/cm/cdGrpCdOverlapConfirm.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			sInDatasets   		= "";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			
+			sArgs += Ex.util.setParam("cdGrpCd",edCdGrpCdVal);
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}else{
+			alert("공통코드 값이 없습니다.");
+			this.ed_cdGrpCd.setFocus();
+		}
+	}	
+	
+	this.div_cdGrpChild_btn_searchChild_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_cdList("child");
+	}
+	
+	this.ds_cdGrpChild_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if(e.columnid == "cd") {
+			checkCdRow = e.row;
+			this.FN_cdGrpCdCheck( nvl(obj.getColumn(e.row, "midGrpCd")), nvl(obj.getColumn(e.row, "cd")) );
+		}
+	}
+	
+	// 2016-05-03 이영근, 엔터키 입력시 조회
+	this.div_search_ed_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if( e.keycode == "13" ){
+			this.fn_search();
+		}	
+	}
+
+	this.Tab00_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+	{
+		if(obj.tabindex == 0){		
+			this.fn_cdList("parent");		
+		} else if(obj.tabindex == 1) {
+			this.fn_paramList();
+		} else {			
+			this.fn_posList();
+		}
+	}
+
+	this.Tab00_tabpage1_btnAddCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var midGrpCd     	    = nvl(this.ed_cdGrpCd.value);
+		var cdUseYn  			= nvl(this.cd_useYn.value);
+		var overlapConfirmVal 	= nvl(this.ed_overlapConfirmFlag.value);
+		
+		var cdGrpCdTxt = nvl(this.st_cdGrpCd.text);
+		var cdGrpNmTxt = nvl(this.st_cdGrpNm.text);
+		var cdUseYnTxt = nvl(this.st_useYn.text);
+		var overlapConfirmTxt = nvl(this.btn_overlapConfirm.text);
+		
+		if( cdGrpCd == "" ){
+			alert(cdGrpCdTxt + " 값이 없습니다.");
+			this.ed_cdGrpCd.setFocus();
+		}else if( cdUseYn == "" ){
+			alert(cdUseYnTxt + " 값이 없습니다.");
+			this.cd_useYn.setFocus();
+		}else if( overlapConfirmVal == "false"){
+			alert(overlapConfirmTxt + "을 하십시오.");
+			this.btn_overlapConfirm.setFocus();
+		}else{
+			var nRow = this.ds_cdList.addRow();
+			this.grid_cdList.selectRow(nRow);
+			this.grid_cdList.setCellPos(0);
+			this.grid_cdList.showEditor(true);
+			this.ds_cdList.setColumn(nRow,"useYn","Y");
+			this.ds_cdList.setColumn(nRow,"midGrpCd",midGrpCd);
+		}
+	}
+
+	this.Tab00_tabpage1_btnDelCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var gridCdListSlected = this.grid_cdList.currentrow;
+			
+		if( gridCdListSlected == -9 ){
+			alert("삭제할 행을 선택하여 주십시오.");
+		}else{
+			this.ds_cdList.deleteRow(gridCdListSlected);
+		}
+	}
+
+	this.Tab00_tabpage2_btnAddParam_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cdRow = this.ds_cdList.rowposition;
+		var midGrpCd = this.ds_paramList.getColumn(cdRow, "midGrpCd");
+		var cd = this.ds_paramList.getColumn(cdRow, "cd");
+		
+		var nRow = this.ds_paramList.addRow();
+		this.grid_paramList.selectRow(nRow);
+		this.grid_paramList.setCellPos(0);
+		this.grid_paramList.showEditor(true);
+		this.ds_paramList.setColumn(nRow,"useYn","Y");
+		this.ds_paramList.setColumn(nRow,"midGrpCd",midGrpCd);
+		this.ds_paramList.setColumn(nRow,"cd",cd);
+	}
+	
+	this.Tab00_tabpage2_btnDelParam_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var gridParamListSlected = this.grid_paramList.currentrow;
+			
+		if( gridParamListSlected == -9 ){
+			alert("삭제할 행을 선택하여 주십시오.");
+		}else{
+			this.ds_paramList.deleteRow(gridParamListSlected);
+		}
+	}
+
+	this.Tab00_tabpage3_btnAddCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_posList.addRow();
+		this.ds_posList.setColumn(nRow, "sendPos", "RENTAL_" + this.seqNo);
+	}
+
+	this.Tab00_tabpage3_btnDelCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.ds_posList.deleteRow(this.ds_posList.rowposition);
+	}
+	
+	this.Tab00_tabpage4_btnAddCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_lockList.addRow();
+	}
+	
+	this.Tab00_tabpage4_btnDelCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.ds_lockList.deleteRow(this.ds_posList.rowposition);
+	}
+    /***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkCd)
+	{
+		if( strSvcId == "listCdGrp" ){
+			if( this.ds_cdGrp.getRowCount() == 0 ){
+				this.grid_cdGrp.set_nodatatext("조회된 데이터가 없습니다.");
+				this.div_search.ed_searchKeyword.setFocus();
+			}
+		}
+		
+		if (strSvcId == "checkCd") 
+		{
+			if(this.resultCnt != '0') {
+				alert( "입력하신 " + nvl( this.grid_cdList.getCellText(-1, 0) ) + " \'" + this.checkCd + "\' 는 존재하고 있습니다." );
+				this.ds_cdList.setColumn(checkCdRow,"cd", "");
+				this.grid_cdList.selectRow(checkCdRow);
+				this.grid_cdList.setCellPos(0);
+			}
+		}
+		
+		if( strSvcId == "cdGrpCdOverlapConfirm" ){
+			var msg = "";
+			if(this.resultCnt != "0") {
+				msg = "입력하신 코드 \'" + this.ed_cdGrpCd.value + "\'는 존재하고 있습니다.";
+				this.ed_cdGrpCd.set_value("");
+				this.ed_cdGrpCd.setFocus();
+			} else {
+				msg = "사용가능한 코드 입니다.";
+				this.ed_cdGrpCd.set_enable(false);
+				this.btn_overlapConfirm.set_visible(false)
+				this.ed_overlapConfirmFlag.set_value("true");
+				this.ed_cdGrpNm.setFocus(true);
+			}
+			resultCnt = 0;
+			alert(msg);
+		}
+		
+		if( strSvcId == "saveCdGrp" ){
+			if( nErrorCode == "0" ){
+				alert(strErrorMsg);
+				this.reload();
+			}else{
+				alert(strErrorMsg);
+			}
+		}
+		
+		if( strSvcId == "listSmsDetailCd" ){
+			if( this.ds_cdList.getRowCount() == 0 ){
+				this.grid_cdList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+		}
+		
+		if( strSvcId == "listSmsParamCd" ) {
+			if( this.ds_paramList.getRowCount() == 0 ){
+				this.grid_paramList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+		}
+		
+		if( strSvcId == "listSmsSendPos" ) {
+			if( this.ds_posList.getRowCount() == 0 ){
+				this.grid_posList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+						
+		    this.fn_smsSendSeq();
+		}
+		
+		//최초로드시 공통코드선택
+		if(strSvcId == "listcdGrpCombo") {
+			this.div_search.cb_searchCondition.set_value("CD_GRP_CD");
+		}
+	}	
+	
+	/***********************************************************************************
+	* Custom function
+	***********************************************************************************/
+	this.fn_init = function(){
+		var sSvcID      	= "listcdGrpCombo";  
+		var sController   	= "rtms/cm/listcdGrpCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_searchCondition=output1 ds_searchConditionChild=output2 ds_mdl=output3 ds_useYn=output4 ds_useYnChild=output5";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_cdGrp.addRow();
+		this.ds_cdGrp.setColumn(nRow,"useYn", "Y");
+		this.ed_cdGrpCd.setFocus(true);
+		this.ds_cdList.clearData();
+		this.ds_paramList.clearData();
+	}
+
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cbSearchConditionVal 	= nvl(this.div_search.cb_searchCondition.value);
+		var cbSearchConditionTxt 	= nvl(this.div_search.cb_searchCondition.text);
+		var edSearchKeywordVal 		= nvl(this.div_search.ed_searchKeyword.value);
+		
+		var sSvcID        	= "listSmsHeaderCd";                    
+		var sController   	= "rtms/cm/listSmsHeaderCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_cdGrp=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if( cbSearchConditionVal == 'CD_GRP_CD' ){
+			sArgs += Ex.util.setParam("midGrpCd", edSearchKeywordVal);
+		}else{
+			alert("검색조건을 선택하세요.");
+			return this.div_search.cb_searchCondition.setFocus();
+		}
+		
+		this.ds_cdGrp.clearData();
+		this.ds_cdList.clearData();
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+		
+
+	this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var dsCdListRowCt = this.ds_cdList.getRowCount();
+		var exitFlag = false;
+		var overlapConfirmVal 	= nvl(this.ed_overlapConfirmFlag.value);
+		var overlapConfirmTxt 	= nvl(this.btn_overlapConfirm.text);
+		
+		if( overlapConfirmVal == "true" ){
+			var edCdGrpCdVal 	= nvl(this.ed_cdGrpCd.value);
+			var cbMdlCdVal 		= nvl(this.cb_mdlCd.value);
+			var edCdGrpNmVal 	= nvl(this.ed_cdGrpNm.value);
+			var cdUseYnVal 		= nvl(this.cd_useYn.value);
+			var edCdGrpDescVal 	= nvl(this.ed_cdGrpDesc.value);
+			
+			var cdGrpCdTxt 		= nvl(this.st_cdGrpCd.text);
+			var cdGrpNmTxt 		= nvl(this.st_cdGrpNm.text);
+			var cdUseYnTxt 		= nvl(this.st_useYn.text);
+			
+			if( edCdGrpCdVal == "" ){
+				alert(cdGrpCdTxt + " 값이 없습니다.");
+				this.ed_cdGrpCd.setFocus();
+			}else if( FN_stringByteLength(edCdGrpCdVal)  > 4 ){
+				alert(cdGrpCdTxt + " 크기가 4Byte를 초과하였습니다.");
+				this.ed_cdGrpCd.setFocus();
+			}else if( edCdGrpNmVal == "" ){
+				alert("저장되었습니다.");
+				this.ed_cdGrpNm.setFocus();
+			}else if( cdUseYnVal == "" ){
+				alert(cdUseYnTxt + " 값이 없습니다.");
+				this.cd_useYn.setFocus();
+			}else{
+				
+				if( dsCdListRowCt > 0){
+					for( var row_i = 1 , row_ii = 0 ; row_i <= dsCdGrpChildRowCt ; row_i++, row_ii++){
+						for( var cell_i = 0 ; cell_i <= 3 ; cell_i++){
+						
+							var cellVal = nvl(this.grid_cdGrpChild.getCellValue(row_ii, cell_i));
+							
+							if( (cell_i == 0 || cell_i == 1) && cellVal == "" ){
+								alert(nvl(this.grid_cdList.getCellText(-1, cell_i)) + " 값이 없습니다.");
+								this.grid_cdList.selectRow(row_ii);
+								this.grid_cdList.setCellPos(cell_i);
+								this.grid_cdList.showEditor(true);
+								exitFlag = true;
+							}
+							/*
+							else if( cell_i == 0 && FN_stringByteLength(cellVal) > 16 ){
+								alert(nvl(this.grid_cdGrpChild.getCellText(-1, cell_i)) + " 크기가 16Byte를 초과하였습니다.");
+								this.grid_cdGrpChild.selectRow(row_ii);
+								this.grid_cdGrpChild.setCellPos(cell_i);
+								this.grid_cdGrpChild.showEditor(true);
+								exitFlag = true;
+							}
+							*/
+							if(exitFlag){break;}
+						}
+						for( var find_i = 1 ; find_i <= dsCdListRowCt ; find_i++ ){
+							if( row_i != find_i && nvl(this.ds_cdList.getColumn( row_i, "cd" )) ==  nvl(this.ds_cdList.getColumn( find_i, "cd" )) ){
+								alert( "\'" + nvl(this.ds_cdList.getColumn(  find_i, "cd" )) + "\'" + " 중복된 코드값입니다." );
+								this.grid_cdList.selectRow(find_i);
+								this.grid_cdList.setCellPos(0);
+								this.grid_cdList.showEditor(true);
+								exitFlag = true;
+							}
+							if(exitFlag){break;}
+						}
+					}
+				}else{
+					exitFlag = false;
+				}
+				
+				if( !exitFlag  ){
+					var saveFlag_1 = true;
+					var saveFlag_2 = true;
+					if( this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) == 1 ){
+						saveFlag_1 = false;
+					}else{
+						saveFlag_1 = true;
+					}
+					
+					for(var i  = 0 ; i < this.ds_cdList.getRowCount() ; i++){
+						if( this.ds_cdList.getRowType( i ) == 1){
+							saveFlag_2 = false;
+						}else{
+							saveFlag_2 = true;break;
+						}
+					}
+					
+					if( saveFlag_1 == true || saveFlag_2 == true){
+						var sSvcID        	= "saveCdGrp";                    
+						var sController   	= "rtms/cm/saveCdGrp.do";
+						var sInDatasets   	= "";
+						var sOutDatasets  	= "";
+						var sArgs 			= "";
+						var fn_callBack		= "fn_callBack";
+						sInDatasets += "input1=ds_cdGrp:U input2=ds_cdList:U";
+						Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+					}else{
+						alert("수정된 사항이 없습니다.");
+					}
+				}				
+			}
+		}else{
+			alert(overlapConfirmTxt + "을 하십시오.");
+			this.btn_overlapConfirm.setFocus();
+		}
+	}
+	
+	this.fn_cdList = function(division){
+	
+		var midGrpCd = this.ds_cdGrp.getColumn(grid_cdGrp_selectNb, "midGrpCd");
+		if(nvl(midGrpCd) == "") {
+			return;
+		}
+		
+		var grid_cdGrp_selectNb = this.grid_cdGrp.currentrow;
+	
+		var cbSearchConditionChildVal = nvl(this.cb_searchConditionChild.value);
+		var cbSearchConditionTxt 	  = this.cb_searchConditionChild.text;
+		var edSearchKeywordChildVal   = nvl(this.ed_searchKeywordChild.value);
+		
+		var sSvcID        	= "listSmsDetailCd";
+		var sController   	= "rtms/cm/listSmsDetailCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_cdList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		
+		sArgs += Ex.util.setParam( "midGrpCd", midGrpCd );
+		sArgs += Ex.util.setParam( "cd", "" );
+		
+		if( division == "child"){
+			if( cbSearchConditionChildVal == 'CD_GRP_CD' ){
+				sArgs += Ex.util.setParam("cd", edSearchKeywordChildVal);
+			}else{
+				alert("검색조건을 선택하세요.");
+				return this.cb_searchConditionChild.setFocus();
+			}
+		}
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_paramList = function() {
+	
+		var midGrpCd = this.ds_cdList.getColumn(grid_cdList_selectNb, "midGrpCd");
+		var cd = this.ds_cdList.getColumn(grid_cdList_selectNb, "cd");
+		if(nvl(midGrpCd) == "" || nvl(cd) == "") {
+			return;
+		}
+		
+		var grid_cdList_selectNb = this.Tab00.tabpage1.grid_cdList.currentrow;
+		
+		var sSvcID        	= "listSmsParamCd";
+		var sController   	= "rtms/cm/listSmsParamCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_paramList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+				
+		sArgs += Ex.util.setParam( "midGrpCd", this.ds_cdList.getColumn(grid_cdList_selectNb, "midGrpCd") );
+		sArgs += Ex.util.setParam( "cd", this.ds_cdList.getColumn(grid_cdList_selectNb, "cd") );
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_posList = function() {
+		
+		var sSvcID        	= "listSmsSendPos";
+		var sController   	= "rtms/cm/listSmsSendPos.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_posList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.fn_smsSendSeq = function() {
+
+		var sSvcID        	= "selectSeqSmsPosNo";
+		var sController   	= "rtms/cm/selectSeqSmsPosNo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+	this.FN_cdGrpCdCheck = function( objVal1, objVal2)
+	{
+		var sSvcID        	= "checkCd";
+		var sController   	= "rtms/cm/checkSmsCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("midGrpCd",objVal1);
+		sArgs += Ex.util.setParam("cd"	    ,objVal2);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}	
+	
+	this.fn_excel= function() {
+		var objArray1 = new Array();
+		objArray1.push(this.grid_cdGrp);
+		objArray1.push(this.grid_cdList);
+		objArray1.push(this.grid_paramList);
+		Ex.core.exportExcel(this, objArray1);
+	}
+]]></Script>
+  </Form>
+</FDL>

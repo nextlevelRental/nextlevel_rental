@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDHomeShoppingContractContact_tab02" classname="RTSDHomeShoppingContractContact_tab02" left="0" top="0" width="1091" height="97" titletext="New Form" onload="RTSDHomeShoppingContractContact_tab02_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="0" width="1091" height="97" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1112" height="49">
+              <Static id="st_custNm" text="고객명" cssclass="sta_WF_schTitle" left="16" top="11" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="1" left="89" top="11" width="104" height="21"/>
+              <Static id="st_custNm01" text="연락처" cssclass="sta_WF_schTitle" left="212" top="11" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_mobNo" taborder="2" left="285" top="11" width="120" height="21"/>
+              <Static id="st_date01" text="가계약번호" cssclass="sta_WF_schTitle" left="436" top="10" width="80" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_provsnNoF" taborder="3" left="535" top="11" width="107" height="21"/>
+              <Edit id="ed_provsnNoT" taborder="4" left="656" top="11" width="107" height="21"/>
+              <Static id="Static19" text="~" left="643" top="12" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDHomeShoppingContractContact_tab02.xfdl
+ * 설    명 : 홈쇼핑가계약상담_조회2
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2019-07-25	wjim		[20190716_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDHomeShoppingContractContact_tab02_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);
+}
+]]></Script>
+  </Form>
+</FDL>

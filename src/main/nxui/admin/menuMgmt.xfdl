@@ -1,0 +1,2569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="pageMgmt" inheritanceid="" position="absolute" titletext="메뉴등록관리" onload="form_onload" onbeforeclose="form_onbeforeclose" left="0" width="1260" top="0" height="740">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" position="absolute" left="509" right="0" top="104" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="Static02" position="absolute" left="509" right="0" top="104" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Edit id="edt_URL01" taborder="1" position="absolute" left="515" right="19" top="110" height="20"/>
+        <Static id="Static04" position="absolute" left="509" right="0" top="228" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="st_Title" text="메뉴목록" wordwrap="english" position="absolute" left="14" width="204" top="6" height="22" cssclass="sta_WF_title" domainId="nexa.menu.list"/>
+        <Grid id="grd_menu" taborder="3" scrollpixel="default" useinputpanel="false" selecttype="row" autofittype="col" treeuseline="false" treeusecheckbox="false" treeinitstatus="expand,all" position="absolute" cellsizingtype="col" left="0" width="359" top="42" bottom="0" binddataset="ds_menu" treeuseimage="true" treeusebutton="no" treeuseexpandkey="true">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="327"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" text="bind:MENU_NAME" treelevel="bind:MENU_LEVEL"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_Insert" taborder="4" text="추가" onclick="btn_Insert_onclick" position="absolute" style="font:dotum,8, bold;" right="252" width="58" top="4" height="23" cssclass="btn_WF_CRUD" domainId="nexa.add"/>
+        <Button id="btn_Delete" taborder="5" text="삭제" onclick="fn_Delete" position="absolute" style="font:dotum,8, bold;" right="192" width="58" top="4" height="23" cssclass="btn_WF_CRUD" domainId="nexa.delete"/>
+        <Button id="btn_Save" taborder="6" text="저장" position="absolute" style="font:dotum,8, bold;" right="72" width="58" top="4" height="23" cssclass="btn_WF_CRUD" domainId="nexa.save" onclick="btn_Save_onclick"/>
+        <Button id="btn_moveUp" taborder="1" position="absolute" onclick="btn_moveUp_onclick" left="257" width="23" top="5" height="23" cssclass="btn_WF_suttleT"/>
+        <Button id="btn_moveDown" taborder="1" position="absolute" onclick="btn_moveDown_onclick" left="283" width="23" top="5" height="23" cssclass="btn_WF_suttleB"/>
+        <Button id="btn_moveLeft" taborder="1" position="absolute" onclick="btn_moveLeft_onclick" left="309" width="23" top="5" height="23" cssclass="btn_WF_suttleL"/>
+        <Button id="btn_moveRight" taborder="1" position="absolute" onclick="btn_moveRight_onclick" left="335" width="23" top="5" height="23" cssclass="btn_WF_suttleR"/>
+        <Grid id="grd_page" taborder="1" binddataset="ds_page" scrollpixel="default" useinputpanel="false" cellsizingtype="col" treeuseline="false" treeusecheckbox="false" treeinitstatus="collapse,all" position="absolute" autofittype="none" readonly="true" left="369" right="0" top="489" bottom="40" domainId="nexa.page.id;nexa.page.name;nexa.page.type;nexa.page.linkage;nexa.page.url" oncelldblclick="grd_page_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="102"/>
+                <Column size="133"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="361"/>
+                <Column size="498"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="화면아이디"/>
+                <Cell col="1" text="화면명"/>
+                <Cell col="2" text="화면타입"/>
+                <Cell col="3" text="화면연동"/>
+                <Cell col="4" text="화면경로"/>
+                <Cell col="5" text="설명"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="text" text="bind:PAGE_ID"/>
+                <Cell col="1" style="align:left middle;" text="bind:PAGE_NAME"/>
+                <Cell col="2" displaytype="combo" style="align: ;" text="bind:PAGE_TYPE" combodataset="ds_PageType" combocodecol="CODE_CD" combodatacol="CODE_NM"/>
+                <Cell col="3" displaytype="combo" style="align: ;" text="bind:PAGE_EXTP" combodataset="ds_ExType" combocodecol="CODE_CD" combodatacol="CODE_NM"/>
+                <Cell col="4" style="align:left middle;" text="bind:PAGE_URL"/>
+                <Cell col="5" text="bind:PAGE_DESC" wordwrap="true"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" position="absolute" left="509" right="0" top="42" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="Static01" position="absolute" left="509" right="0" top="73" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="Static05" position="absolute" left="509" right="0" top="259" height="66" cssclass="sta_WF_detailLabel2"/>
+        <Static id="Static06" position="absolute" left="509" right="0" top="324" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="Static07" position="absolute" left="509" right="0" top="355" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Static id="st_toppage00" text="메뉴아이디" position="absolute" left="369" width="141" top="42" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.menu.id"/>
+        <Edit id="edt_ID" taborder="1" position="absolute" left="515" top="48" height="20" cssclass="input_point" right="7" canchange="edt_ID_canchange"/>
+        <Edit id="edt_Name" taborder="1" position="absolute" left="515" top="79" height="20" cssclass="input_point" right="7"/>
+        <Static id="st_toppage02" text="화면아이디" position="absolute" left="369" width="141" top="104" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.id"/>
+        <Edit id="edt_pageID" taborder="1" position="absolute" readonly="true" left="515" top="110" height="20" right="7"/>
+        <Static id="st_toppage04" text="메뉴오픈타입" position="absolute" left="369" width="141" top="197" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.menu.opty"/>
+        <Static id="st_toppage05" text="메뉴서비스그룹" position="absolute" left="369" width="141" top="228" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.menu.param"/>
+        <Static id="st_toppage06" text="메뉴설명" position="absolute" left="369" width="141" top="259" height="66" cssclass="sta_WF_detailLabel" domainId="nexa.menu.dspt"/>
+        <TextArea id="txt_desc" taborder="1" position="absolute" left="515" top="265" height="54" right="7"/>
+        <Static id="st_toppage07" text="등록자" position="absolute" left="369" width="141" top="355" height="32" cssclass="sta_WF_detailLabel" onclick="st_toppage07_onclick" domainId="nexa.createuser"/>
+        <Edit id="edt_regID" taborder="1" readonly="true" position="absolute" left="515" width="160" top="361" height="20" cssclass="readonly"/>
+        <Static id="st_toppage01" text="메뉴명" position="absolute" left="369" width="141" top="73" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.menu.name"/>
+        <Static id="st_use" text="메뉴상태" position="absolute" left="369" width="141" top="324" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.menu.status"/>
+        <Edit id="edt_Args" taborder="1" position="absolute" left="515" top="234" height="20" right="7"/>
+        <Static id="st_toppage03" text="화면명" position="absolute" left="369" width="141" top="135" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.name"/>
+        <Static id="Static08" position="absolute" left="509" right="0" top="135" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Edit id="edt_pageName" taborder="1" position="absolute" readonly="true" left="515" top="141" height="20" right="7"/>
+        <Static id="Static09" position="absolute" left="509" right="0" top="166" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Edit id="edt_URL" taborder="1" position="absolute" readonly="true" left="513" top="172" height="20" right="9"/>
+        <Static id="st_toppage09" text="등록일" position="absolute" left="369" width="141" top="386" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.createdate"/>
+        <Static id="Static10" position="absolute" left="509" right="0" top="386" height="32" cssclass="sta_WF_detailLabel2"/>
+        <Combo id="cmb_stat" taborder="1" position="absolute" left="515" width="160" top="330" height="20" index="-1" domainId="nexa.view;nexa.unused;nexa.development" innerdataset="@ds_stat" datacolumn="CODE_NM" codecolumn="CODE_CD"/>
+        <Calendar id="cal_regDt" taborder="1" readonly="true" position="absolute" dateformat="yyyy-MM-dd" left="515" width="160" top="392" height="20" cssclass="readonly"/>
+        <Combo id="cmb_Level" taborder="1" position="absolute" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="1" text="domain.level.down" right="312" width="162" top="6" height="21" onitemchanged="cmb_Level_onitemchanged" domainId="nexa.level.down;nexa.level.same;nexa.level.up">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">하위레벨</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">등위레벨</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">3</Col>
+                <Col id="datacolumn">상위레벨</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="st_toppage08" text="화면경로" position="absolute" left="369" width="141" top="166" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.url"/>
+        <Edit id="edt_URL03" taborder="1" position="absolute" left="515" right="7" top="203" height="20"/>
+        <Button id="btn_search" taborder="16" text="검색" onclick="fn_search" cssclass="btn_WF_schArea" top="4" right="8" width="62" height="25" domainId="103"/>
+        <Button id="btn_Cancel" taborder="18" text="취소" onclick="btn_Cancel_onclick" cssclass="btn_WF_CRUD" top="4" right="132" width="58" height="23" domainId="nexa.cancel"/>
+        <Static id="st_searchCondition" taborder="19" text="검색조건" cssclass="sta_WF_schTitle" left="372" top="445" width="64" height="41" domainId="nexa.s_condition"/>
+        <Combo id="cmb_searchCondition" taborder="20" codecolumn="codecolumn" datacolumn="datacolumn" left="438" top="455" width="140" height="20" domainId="nexa.name;nexa.code">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">0</Col>
+                <Col id="datacolumn">명칭</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">코드</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="edt_searchKeyword" taborder="21" left="580" top="455" width="220" height="20" onkeyup="edt_searchKeyword_onkeyup"/>
+        <Button id="btn_search00" taborder="22" text="조회" onclick="fn_pageSearch" cssclass="btn_WF_schArea" right="8" width="62" domainId="nexa.search" top="450" height="25"/>
+        <Static id="Static27" taborder="23" text="h15" cssclass="Guide_color" visible="false" left="0" top="27" right="0" height="15"/>
+        <Static id="Static11" taborder="24" text="h15" cssclass="Guide_color" visible="false" left="367" top="474" right="0" height="15"/>
+        <Div id="div_grid_bottom" taborder="25" left="368" right="0" bottom="21" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="28" cssclass="sta_WF_GridDis" left="0%" top="0" right="0%" bottom="0"/>
+              <Static id="sta_grid_cnt" taborder="29" text="Rows : 0" top="0" right="0" height="20" width="72"/>
+              <Static id="sta_msg" taborder="30" text="There is no data." top="0" height="20" style="color:#444444ff;" width="788" left="6"/>
+              <Button id="btn_find" taborder="31" onclick="div_grid_bottom_btn_find_onclick" cssclass="btn_WF_find" top="2" right="117" height="16" width="36"/>
+              <Button id="btn_format" taborder="33" onclick="div_grid_bottom00_btn_format_onclick" cssclass="btn_WF_format" top="2" right="156" height="16" _format="this.grd_page" width="34"/>
+              <Button id="btn_excel00" taborder="34" cssclass="btn_WF_xls" top="2" right="79" height="16" _excel="this.grd_page" width="35"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_exType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="bigdecimal" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">FORM</Col>
+            <Col id="CODE_NM">일반화면</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152044000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">일반적인 화면으로 연동</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">LINK</Col>
+            <Col id="CODE_NM">웹페이지</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152044000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">웹페이지 연동</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">EXEC</Col>
+            <Col id="CODE_NM">외부연동</Col>
+            <Col id="CODE_SEQ">3</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831155345000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">외부모듈의 실행으로 연동</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_type" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="INT" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="STRING" size="20"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="STRING" size="20"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">MAIN</Col>
+            <Col id="CODE_NM">메인오픈</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">30000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831155247000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831192209000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">메인화면으로 오픈</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">POP</Col>
+            <Col id="CODE_NM">팝업오픈</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">30000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831155247000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831155247000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">팝업화면으로 오픈</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_MenuKey" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="ds_MenuValid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="MENU_ID" type="string" size="20"/>
+          <Column id="MENU_NAME" type="string" size="100"/>
+          <Column id="MENU_URL" type="string" size="200"/>
+          <Column id="MENU_TYPE" type="string" size="10"/>
+          <Column id="MENU_EXTP" type="string" size="10"/>
+          <Column id="MENU_DESC" type="string" size="100"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_ID">title:page.id,required:true</Col>
+            <Col id="MENU_NAME">title:page.name,required:true</Col>
+            <Col id="MENU_URL">title:page.url,required:true</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_page" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_Page_onrowposchanged" cancolumnchange="ds_Page_cancolumnchange">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="PAGE_ID" type="string" size="20"/>
+          <Column id="PAGE_NAME" type="string" size="100"/>
+          <Column id="PAGE_URL" type="string" size="200"/>
+          <Column id="PAGE_TYPE" type="string" size="10"/>
+          <Column id="PAGE_EXTP" type="string" size="10"/>
+          <Column id="PAGE_DESC" type="string" size="100"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="USE_FG" type="string" size="1"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_menu" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_Menu_onrowposchanged" cancolumnchange="ds_Menu_cancolumnchange">
+        <ColumnInfo>
+          <Column id="_chk" type="STRING" size="256"/>
+          <Column id="MENU_ID" type="STRING" size="20"/>
+          <Column id="PAGE_ID" type="STRING" size="20"/>
+          <Column id="MENU_NAME" type="STRING" size="50"/>
+          <Column id="MENU_LEVEL" type="INT" size="10"/>
+          <Column id="MENU_GRP" type="STRING" size="10"/>
+          <Column id="MENU_TOP" type="STRING" size="10"/>
+          <Column id="MENU_SEQ" type="INT" size="10"/>
+          <Column id="MENU_OPTP" type="STRING" size="10"/>
+          <Column id="MENU_ARGS" type="STRING" size="50"/>
+          <Column id="MENU_STAT" type="STRING" size="10"/>
+          <Column id="MENU_DESC" type="STRING" size="100"/>
+          <Column id="CREATE_USER" type="STRING" size="12"/>
+          <Column id="CREATE_DT" type="STRING" size="20"/>
+          <Column id="UPDATE_USER" type="STRING" size="12"/>
+          <Column id="UPDATE_DT" type="STRING" size="20"/>
+          <Column id="PAGE_NAME" type="STRING" size="100"/>
+          <Column id="PAGE_URL" type="STRING" size="200"/>
+          <Column id="PAGE_TYPE" type="STRING" size="10"/>
+          <Column id="PAGE_EXTP" type="STRING" size="10"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_PageType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="bigdecimal" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">MAIN</Col>
+            <Col id="CODE_NM">메인화면</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152055000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">메인화면</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">SUB</Col>
+            <Col id="CODE_NM">보조화면</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831192242000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">메인화면의 SUB화면</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">POP</Col>
+            <Col id="CODE_NM">팝업화면</Col>
+            <Col id="CODE_SEQ">3</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152055000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">팝업화면</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_stat" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="INT" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="STRING" size="20"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="STRING" size="20"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">VIEW</Col>
+            <Col id="CODE_NM">표시</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">50000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831180027000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906174603000</Col>
+            <Col id="CODE_GBN">Y</Col>
+            <Col id="CODE_DESC">메뉴를 표시한다</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">NONE</Col>
+            <Col id="CODE_NM">미사용</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">50000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831180027000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906174603000</Col>
+            <Col id="CODE_GBN">N</Col>
+            <Col id="CODE_DESC">메뉴를 사용할수 없다.</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">MAKE</Col>
+            <Col id="CODE_NM">개발중</Col>
+            <Col id="CODE_SEQ">3</Col>
+            <Col id="GROUP_CD">50000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906174603000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906174603000</Col>
+            <Col id="CODE_GBN">Y</Col>
+            <Col id="CODE_DESC">개발중인 메뉴</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Search" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <ConstColumn id="pageIndex" type="INT" size="30" value="1"/>
+          <ConstColumn id="pageSize" type="INT" size="30" value="5"/>
+          <ConstColumn id="pageUnit" type="INT" size="30" value="5"/>
+          <Column id="SEARCH_CONDITION" type="STRING" size="100"/>
+          <Column id="SEARCH_KEYWORD" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SEARCH_KEYWORD"/>
+            <Col id="SEARCH_CONDITION">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_menuGroup" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="MENU_ID" type="STRING" size="256"/>
+          <Column id="ADD_AUTH" type="STRING" size="256"/>
+          <Column id="EDIT_AUTH" type="STRING" size="256"/>
+          <Column id="DEL_AUTH" type="STRING" size="256"/>
+          <Column id="GROUP_ID" type="STRING" size="256"/>
+          <Column id="PRINT_AUTH" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_menu_bk" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_Menu_onrowposchanged" cancolumnchange="ds_Menu_cancolumnchange">
+        <ColumnInfo>
+          <Column id="_chk" type="STRING" size="256"/>
+          <Column id="MENU_ID" type="STRING" size="20"/>
+          <Column id="PAGE_ID" type="STRING" size="20"/>
+          <Column id="MENU_NAME" type="STRING" size="50"/>
+          <Column id="MENU_LEVEL" type="INT" size="10"/>
+          <Column id="MENU_GRP" type="STRING" size="10"/>
+          <Column id="MENU_TOP" type="STRING" size="10"/>
+          <Column id="MENU_SEQ" type="INT" size="10"/>
+          <Column id="MENU_OPTP" type="STRING" size="10"/>
+          <Column id="MENU_ARGS" type="STRING" size="50"/>
+          <Column id="MENU_STAT" type="STRING" size="10"/>
+          <Column id="MENU_DESC" type="STRING" size="100"/>
+          <Column id="CREATE_USER" type="STRING" size="12"/>
+          <Column id="CREATE_DT" type="STRING" size="20"/>
+          <Column id="UPDATE_USER" type="STRING" size="12"/>
+          <Column id="UPDATE_DT" type="STRING" size="20"/>
+          <Column id="PAGE_NAME" type="STRING" size="100"/>
+          <Column id="PAGE_URL" type="STRING" size="200"/>
+          <Column id="PAGE_TYPE" type="STRING" size="10"/>
+          <Column id="PAGE_EXTP" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_ID">1000</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">사용자관리</Col>
+            <Col id="MENU_LEVEL">0</Col>
+            <Col id="MENU_GRP">1000</Col>
+            <Col id="MENU_TOP"/>
+            <Col id="MENU_SEQ">0</Col>
+            <Col id="MENU_OPTP"/>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831181214000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">1002</Col>
+            <Col id="PAGE_ID">TEMPLATE004</Col>
+            <Col id="MENU_NAME">사용자 등록관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">1000</Col>
+            <Col id="MENU_TOP">1000</Col>
+            <Col id="MENU_SEQ">1</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905191340000</Col>
+            <Col id="PAGE_NAME">GRID TAB</Col>
+            <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">1004</Col>
+            <Col id="PAGE_ID">ADMSAMP002</Col>
+            <Col id="MENU_NAME">사용자 그룹관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">1000</Col>
+            <Col id="MENU_TOP">1000</Col>
+            <Col id="MENU_SEQ">2</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER"/>
+            <Col id="UPDATE_DT">20120906144301000</Col>
+            <Col id="PAGE_NAME">사용자 그룹관리</Col>
+            <Col id="PAGE_URL">admin::UserGroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">1003</Col>
+            <Col id="PAGE_ID">ADMSAMP009</Col>
+            <Col id="MENU_NAME">그룹별 사용자관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">1000</Col>
+            <Col id="MENU_TOP">1000</Col>
+            <Col id="MENU_SEQ">3</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER"/>
+            <Col id="UPDATE_DT">20120906134400000</Col>
+            <Col id="PAGE_NAME">그룹별 사용자관리</Col>
+            <Col id="PAGE_URL">admin::GroupUserMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">1005</Col>
+            <Col id="PAGE_ID">ADMSAMP003</Col>
+            <Col id="MENU_NAME">그룹별 메뉴관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">1000</Col>
+            <Col id="MENU_TOP">1000</Col>
+            <Col id="MENU_SEQ">4</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER"/>
+            <Col id="UPDATE_DT">20120906144249000</Col>
+            <Col id="PAGE_NAME">그룹별 메뉴관리</Col>
+            <Col id="PAGE_URL">admin::GroupMenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">2000</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">기초관리</Col>
+            <Col id="MENU_LEVEL">0</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP"/>
+            <Col id="MENU_SEQ">5</Col>
+            <Col id="MENU_OPTP"/>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831181214000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">2001</Col>
+            <Col id="PAGE_ID">ADMSAMP004</Col>
+            <Col id="MENU_NAME">공통코드관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP">2000</Col>
+            <Col id="MENU_SEQ">6</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906182817000</Col>
+            <Col id="PAGE_NAME">공통코드관리</Col>
+            <Col id="PAGE_URL">admin::CodeMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">2003</Col>
+            <Col id="PAGE_ID">ADMSAMP005</Col>
+            <Col id="MENU_NAME">메뉴등록관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP">2000</Col>
+            <Col id="MENU_SEQ">7</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831181214000</Col>
+            <Col id="PAGE_NAME">메뉴등록관리</Col>
+            <Col id="PAGE_URL">admin::MenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">2005</Col>
+            <Col id="PAGE_ID">ADMSAMP008</Col>
+            <Col id="MENU_NAME">화면등록관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP">2000</Col>
+            <Col id="MENU_SEQ">8</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">화면관리</Col>
+            <Col id="PAGE_URL">admin::PageMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">2004</Col>
+            <Col id="PAGE_ID">ADMSAMP006</Col>
+            <Col id="MENU_NAME">그룹등록관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP">2000</Col>
+            <Col id="MENU_SEQ">9</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905201049000</Col>
+            <Col id="PAGE_NAME">그룹등록관리</Col>
+            <Col id="PAGE_URL">admin::GroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">5001</Col>
+            <Col id="PAGE_ID">ADMSAMP007</Col>
+            <Col id="MENU_NAME">게시판관리</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">2000</Col>
+            <Col id="MENU_TOP">2000</Col>
+            <Col id="MENU_SEQ">10</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906174117000</Col>
+            <Col id="PAGE_NAME">게시판</Col>
+            <Col id="PAGE_URL">board::Boardview.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">5000</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">게시판</Col>
+            <Col id="MENU_LEVEL">0</Col>
+            <Col id="MENU_GRP">5000</Col>
+            <Col id="MENU_TOP"/>
+            <Col id="MENU_SEQ">11</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">NONE</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906181239000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6000</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">Template</Col>
+            <Col id="MENU_LEVEL">0</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP"/>
+            <Col id="MENU_SEQ">12</Col>
+            <Col id="MENU_OPTP"/>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184625000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">60001</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">템플릿</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">6000</Col>
+            <Col id="MENU_SEQ">13</Col>
+            <Col id="MENU_OPTP"/>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905182055000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184826000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6001</Col>
+            <Col id="PAGE_ID">TEMPLATE001</Col>
+            <Col id="MENU_NAME">GRID BASIC</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">14</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905191250000</Col>
+            <Col id="PAGE_NAME">GRID BASIC</Col>
+            <Col id="PAGE_URL">template::TEMPLATE001.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6002</Col>
+            <Col id="PAGE_ID">TEMPLATE002</Col>
+            <Col id="MENU_NAME">GRID FORM</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">15</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE002.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6003</Col>
+            <Col id="PAGE_ID">TEMPLATE003</Col>
+            <Col id="MENU_NAME">GRID POPUP</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">16</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID POPUP</Col>
+            <Col id="PAGE_URL">template::TEMPLATE003.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6004</Col>
+            <Col id="PAGE_ID">TEMPLATE004</Col>
+            <Col id="MENU_NAME">GRID TAB</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">17</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID TAB</Col>
+            <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6005</Col>
+            <Col id="PAGE_ID">TEMPLATE006</Col>
+            <Col id="MENU_NAME">SHUTTLE</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">18</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">SHUTTLE</Col>
+            <Col id="PAGE_URL">template::TEMPLATE006.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6006</Col>
+            <Col id="PAGE_ID">TEMPLATE007</Col>
+            <Col id="MENU_NAME">GRID SUBGRID</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">19</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE007.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6007</Col>
+            <Col id="PAGE_ID">TEMPLATE008</Col>
+            <Col id="MENU_NAME">TREE SUBGRID</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">20</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">TREE SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE008.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6008</Col>
+            <Col id="PAGE_ID">TEMPLATE009</Col>
+            <Col id="MENU_NAME">TREE FORM</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">21</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">TREE FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE009.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6009</Col>
+            <Col id="PAGE_ID">TEMPLATE010</Col>
+            <Col id="MENU_NAME">GRID FILTERING</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">22</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID FILTERING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE010.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6010</Col>
+            <Col id="PAGE_ID">TEMPLATE011</Col>
+            <Col id="MENU_NAME">GRID MONTHLY CALENDAR</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">23</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID MONTHLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE011.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6011</Col>
+            <Col id="PAGE_ID">TEMPLATE012</Col>
+            <Col id="MENU_NAME">GRID WEEKLY CALENDAR</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">24</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID WEEKLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE012.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6012</Col>
+            <Col id="PAGE_ID">TEMPLATE013</Col>
+            <Col id="MENU_NAME">FILE ATTACHMENT</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">25</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">FILE ATTACHMENT</Col>
+            <Col id="PAGE_URL">template::TEMPLATE013.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6013</Col>
+            <Col id="PAGE_ID">TEMPLATE014</Col>
+            <Col id="MENU_NAME">GRID SUMMARY</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">26</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">GRID SUMMARY</Col>
+            <Col id="PAGE_URL">template::TEMPLATE014.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">6014</Col>
+            <Col id="PAGE_ID">TEMPLATE101</Col>
+            <Col id="MENU_NAME">PAGING</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60001</Col>
+            <Col id="MENU_SEQ">27</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831181214000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905182055000</Col>
+            <Col id="PAGE_NAME">PAGING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE101.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">60002</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">가이드</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">6000</Col>
+            <Col id="MENU_SEQ">28</Col>
+            <Col id="MENU_OPTP"/>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905191224000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600011</Col>
+            <Col id="PAGE_ID">CLASSGUIDE01</Col>
+            <Col id="MENU_NAME">클래스 EDIT</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">29</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905191224000</Col>
+            <Col id="PAGE_NAME">클래스 EDIT</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600012</Col>
+            <Col id="PAGE_ID">CLASSGUIDE02</Col>
+            <Col id="MENU_NAME">클래스 STATIC</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">30</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184826000</Col>
+            <Col id="PAGE_NAME">클래스 STATIC</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600013</Col>
+            <Col id="PAGE_ID">COMPGUIDE01</Col>
+            <Col id="MENU_NAME">컴포넌트 STATIC</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">31</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184826000</Col>
+            <Col id="PAGE_NAME">컴포넌트 STATIC</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600014</Col>
+            <Col id="PAGE_ID">COMPGUIDE02</Col>
+            <Col id="MENU_NAME">컴포넌트 BUTTON</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">32</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184826000</Col>
+            <Col id="PAGE_NAME">컴포넌트 BUTTON</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600015</Col>
+            <Col id="PAGE_ID">COMPGUIDE03</Col>
+            <Col id="MENU_NAME">컴포넌트 CALENDAR</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">33</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184826000</Col>
+            <Col id="PAGE_NAME">컴포넌트 CALENDAR</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600017</Col>
+            <Col id="PAGE_ID">COMPGUIDE05</Col>
+            <Col id="MENU_NAME">컴포넌트 POPUP</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">34</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184826000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184834000</Col>
+            <Col id="PAGE_NAME">컴포넌트 POPUP</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600016</Col>
+            <Col id="PAGE_ID">COMPGUIDE04</Col>
+            <Col id="MENU_NAME">컴포넌트 SHAPE</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">35</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905184351000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905184834000</Col>
+            <Col id="PAGE_NAME">컴포넌트 SHAPE</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600018</Col>
+            <Col id="PAGE_ID">COMPGUIDE06</Col>
+            <Col id="MENU_NAME">컴포넌트 ALERT</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">36</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905190645000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905190645000</Col>
+            <Col id="PAGE_NAME">컴포넌트 ALERT</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600019</Col>
+            <Col id="PAGE_ID">COMPGUIDE07</Col>
+            <Col id="MENU_NAME">컴포넌트 GRID1</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">37</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905190645000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905190645000</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600020</Col>
+            <Col id="PAGE_ID">COMPGUIDE08</Col>
+            <Col id="MENU_NAME">컴포넌트 GRID2</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">38</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905190645000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905190645000</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_08.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600021</Col>
+            <Col id="PAGE_ID">COMPGUIDE09</Col>
+            <Col id="MENU_NAME">컴포넌트 TAB1</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">39</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905190645000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905190645000</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_09.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600022</Col>
+            <Col id="PAGE_ID">COMPGUIDE10</Col>
+            <Col id="MENU_NAME">컴포넌트 TAB2</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60002</Col>
+            <Col id="MENU_SEQ">40</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905190645000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905190645000</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_10.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">60003</Col>
+            <Col id="PAGE_ID"/>
+            <Col id="MENU_NAME">화면패턴</Col>
+            <Col id="MENU_LEVEL">1</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">6000</Col>
+            <Col id="MENU_SEQ">41</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME"/>
+            <Col id="PAGE_URL"/>
+            <Col id="PAGE_TYPE"/>
+            <Col id="PAGE_EXTP"/>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600031</Col>
+            <Col id="PAGE_ID">PATTERN001</Col>
+            <Col id="MENU_NAME">Detail</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">42</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600032</Col>
+            <Col id="PAGE_ID">PATTERN002</Col>
+            <Col id="MENU_NAME">MultiDetail</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">43</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">MultiDetail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600033</Col>
+            <Col id="PAGE_ID">PATTERN003</Col>
+            <Col id="MENU_NAME">List/Detail</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">44</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">List/Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600034</Col>
+            <Col id="PAGE_ID">PATTERN004</Col>
+            <Col id="MENU_NAME">Master/Detail(1:n)</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">45</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">Master/Detail(1:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600035</Col>
+            <Col id="PAGE_ID">PATTERN005</Col>
+            <Col id="MENU_NAME">Master/Detail(n:n)</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">46</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">Master/Detail(n:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600036</Col>
+            <Col id="PAGE_ID">PATTERN006</Col>
+            <Col id="MENU_NAME">TAB</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">47</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">TAB</Col>
+            <Col id="PAGE_URL">pattern::Pattern_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_ID">600037</Col>
+            <Col id="PAGE_ID">PATTERN007</Col>
+            <Col id="MENU_NAME">Shuttle</Col>
+            <Col id="MENU_LEVEL">2</Col>
+            <Col id="MENU_GRP">6000</Col>
+            <Col id="MENU_TOP">60003</Col>
+            <Col id="MENU_SEQ">48</Col>
+            <Col id="MENU_OPTP">MAIN</Col>
+            <Col id="MENU_ARGS"/>
+            <Col id="MENU_STAT">VIEW</Col>
+            <Col id="MENU_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110710000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110749000</Col>
+            <Col id="PAGE_NAME">Shuttle</Col>
+            <Col id="PAGE_URL">pattern::Pattern_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="_chk">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_page_bk" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_Page_onrowposchanged" cancolumnchange="ds_Page_cancolumnchange">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="PAGE_ID" type="string" size="20"/>
+          <Column id="PAGE_NAME" type="string" size="100"/>
+          <Column id="PAGE_URL" type="string" size="200"/>
+          <Column id="PAGE_TYPE" type="string" size="10"/>
+          <Column id="PAGE_EXTP" type="string" size="10"/>
+          <Column id="PAGE_DESC" type="string" size="100"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="USE_FG" type="string" size="1"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP001</Col>
+            <Col id="PAGE_NAME">사용자 권한관리</Col>
+            <Col id="PAGE_URL">admin::Authority.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171524000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP002</Col>
+            <Col id="PAGE_NAME">사용자 그룹관리</Col>
+            <Col id="PAGE_URL">admin::UserGroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906112106000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP003</Col>
+            <Col id="PAGE_NAME">그룹별 메뉴관리</Col>
+            <Col id="PAGE_URL">admin::GroupMenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER"/>
+            <Col id="UPDATE_DT">20120906144224000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP004</Col>
+            <Col id="PAGE_NAME">공통코드관리</Col>
+            <Col id="PAGE_URL">admin::CodeMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP005</Col>
+            <Col id="PAGE_NAME">메뉴등록관리</Col>
+            <Col id="PAGE_URL">admin::MenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP006</Col>
+            <Col id="PAGE_NAME">그룹등록관리</Col>
+            <Col id="PAGE_URL">admin::GroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP007</Col>
+            <Col id="PAGE_NAME">게시판</Col>
+            <Col id="PAGE_URL">board::Boardview.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP008</Col>
+            <Col id="PAGE_NAME">화면관리</Col>
+            <Col id="PAGE_URL">admin::PageMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">ADMSAMP009</Col>
+            <Col id="PAGE_NAME">그룹별 사용자관리</Col>
+            <Col id="PAGE_URL">admin::GroupUserMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER"/>
+            <Col id="CREATE_DT">20120906134321000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">CLASSGUIDE01</Col>
+            <Col id="PAGE_NAME">클래스 EDIT</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114243000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">CLASSGUIDE02</Col>
+            <Col id="PAGE_NAME">클래스 STATIC</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114243000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE01</Col>
+            <Col id="PAGE_NAME">컴포넌트 STATIC</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE02</Col>
+            <Col id="PAGE_NAME">컴포넌트 BUTTON</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE03</Col>
+            <Col id="PAGE_NAME">컴포넌트 CALENDAR</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE04</Col>
+            <Col id="PAGE_NAME">컴포넌트 SHAPE</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE05</Col>
+            <Col id="PAGE_NAME">컴포넌트 POPUP</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE06</Col>
+            <Col id="PAGE_NAME">컴포넌트 ALERT</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE07</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE08</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_08.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE09</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_09.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">COMPGUIDE10</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_10.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN001</Col>
+            <Col id="PAGE_NAME">Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN002</Col>
+            <Col id="PAGE_NAME">MultiDetail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN003</Col>
+            <Col id="PAGE_NAME">List/Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN004</Col>
+            <Col id="PAGE_NAME">Master/Detail(1:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN005</Col>
+            <Col id="PAGE_NAME">Master/Detail(n:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN006</Col>
+            <Col id="PAGE_NAME">TAB</Col>
+            <Col id="PAGE_URL">pattern::Pattern_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171524000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">PATTERN007</Col>
+            <Col id="PAGE_NAME">Shuttle</Col>
+            <Col id="PAGE_URL">pattern::Pattern_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE001</Col>
+            <Col id="PAGE_NAME">GRID BASIC</Col>
+            <Col id="PAGE_URL">template::TEMPLATE001.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE002</Col>
+            <Col id="PAGE_NAME">GRID FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE002.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE003</Col>
+            <Col id="PAGE_NAME">GRID POPUP</Col>
+            <Col id="PAGE_URL">template::TEMPLATE003.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE004</Col>
+            <Col id="PAGE_NAME">GRID TAB</Col>
+            <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE006</Col>
+            <Col id="PAGE_NAME">SHUTTLE</Col>
+            <Col id="PAGE_URL">template::TEMPLATE006.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE007</Col>
+            <Col id="PAGE_NAME">GRID SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE007.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE008</Col>
+            <Col id="PAGE_NAME">TREE SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE008.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE009</Col>
+            <Col id="PAGE_NAME">TREE FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE009.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE010</Col>
+            <Col id="PAGE_NAME">GRID FILTERING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE010.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE011</Col>
+            <Col id="PAGE_NAME">GRID MONTHLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE011.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE012</Col>
+            <Col id="PAGE_NAME">GRID WEEKLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE012.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE013</Col>
+            <Col id="PAGE_NAME">FILE ATTACHMENT</Col>
+            <Col id="PAGE_URL">template::TEMPLATE013.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE014</Col>
+            <Col id="PAGE_NAME">GRID SUMMARY</Col>
+            <Col id="PAGE_URL">template::TEMPLATE014.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="PAGE_ID">TEMPLATE101</Col>
+            <Col id="PAGE_NAME">PAGING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE101.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edt_ID" propid="value" datasetid="ds_menu" columnid="MENU_ID"/>
+      <BindItem id="item1" compid="edt_Name" propid="value" datasetid="ds_menu" columnid="MENU_NAME"/>
+      <BindItem id="item2" compid="edt_pageID" propid="value" datasetid="ds_menu" columnid="PAGE_ID"/>
+      <BindItem id="item5" compid="txt_desc" propid="value" datasetid="ds_menu" columnid="MENU_DESC"/>
+      <BindItem id="item6" compid="edt_regID" propid="value" datasetid="ds_menu" columnid="CREATE_USER"/>
+      <BindItem id="item4" compid="edt_Args" propid="value" datasetid="ds_menu" columnid="MENU_ARGS"/>
+      <BindItem id="item7" compid="edt_URL01" propid="value" datasetid="ds_Menu" columnid="PAGE_URL"/>
+      <BindItem id="item9" compid="edt_pageName" propid="value" datasetid="ds_menu" columnid="PAGE_NAME"/>
+      <BindItem id="item10" compid="edt_URL03" propid="value" datasetid="ds_menu" columnid="MENU_OPTP"/>
+      <BindItem id="item11" compid="edt_URL" propid="value" datasetid="ds_menu" columnid="PAGE_URL"/>
+      <BindItem id="item12" compid="cal_regDt" propid="value" datasetid="ds_menu" columnid="CREATE_DT"/>
+      <BindItem id="item17" compid="cmb_searchCondition" propid="value" datasetid="ds_Search" columnid="SEARCH_CONDITION"/>
+      <BindItem id="item3" compid="cmb_stat" propid="value" datasetid="ds_menu" columnid="MENU_STAT"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 업무메뉴 메뉴등록 관리
+ * 02. 메뉴명   : MenuMgmt.xfdl
+ * 03. 메뉴설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 메뉴 변수 선언부
+ ************************************************************************/
+ this.strMenuId ="";
+/***********************************************************************
+ * Form Function
+ ************************************************************************/
+
+// Form Load 시 공통 기능 처리
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+	Ex.core.init(obj,740); 	
+}
+
+//사용자 정의 폼 로드 함수(form_init 고정)
+this.form_init = function(obj)
+{
+    this.fn_search();
+    this.fn_group();
+	
+}
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+
+//목록조회 Search
+this.fn_search = function()
+{
+	var sSvcID        	= "search";                    
+    var sController   	= "nexacroController.do";
+    
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_menu=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectMenuListMgmt");// Map형태
+    sArgs += Ex.util.setParam("GROUP_ID", application.gv_userAuth);
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+}
+this.fn_pageSearch = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "searchPage";                    
+    var sController   	= "nexacroController.do";
+    
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_page=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectPageList");// Map형태
+    
+    if (this.cmb_searchCondition.value == 0)
+	{
+		sArgs += Ex.util.setParam("PAGE_NAME",this.edt_searchKeyword.value);
+	}
+	else if (this.cmb_searchCondition.value == 1)
+	{
+		sArgs += Ex.util.setParam("PAGE_ID",this.edt_searchKeyword.value);
+	}
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+}
+this.fn_group = function()
+{
+	var sSvcID        	= "searchGroup";                    
+    var sController   	= "nexacroController.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_menuGroup=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectGroupMenuList");// Map형태
+    
+    Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+}
+
+// 저장처리
+this.fn_save = function ()
+{
+	// 유효성 검사 후 이상 없는 경우 Grid 내의 모든 변경 내용 저장
+
+	var sSvcID        	= "save";                    
+    var sController   	= "nexacroController.do";
+
+    var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs = "";	
+	
+	sInDatasets   	= "input1=ds_menu:U";
+	sOutDatasets  	= "";
+	sArgs += Ex.util.setParam("method","save"); 
+	sArgs += Ex.util.setParam("sqlId","modyfyMenuTree");	// Map형태
+	sArgs += Ex.util.setParam("forceSqlFlag","N");
+    
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs);
+}
+this.fn_groupSave = function ()
+{
+	// 유효성 검사 후 이상 없는 경우 Grid 내의 모든 변경 내용 저장
+
+	var sSvcID        	= "saveGroup";                    
+    var sController   	= "nexacroController.do";
+
+    var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	
+	sInDatasets   	= "input1=ds_menuGroup:U";
+	sOutDatasets  	= "";
+	sArgs += Ex.util.setParam("method","save"); 
+	sArgs += Ex.util.setParam("sqlId","modyfyGroupMenuTree");
+	sArgs += Ex.util.setParam("forceSqlFlag","N");
+    
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs);
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		return Ex.core.comMsg("alert",strErrorMsg);		
+	}
+	
+	if (strSvcId == "search") 
+	{	
+	   
+	
+	}
+	if (strSvcId == "searchGroup")
+	{
+	}
+	if (strSvcId == "searchPage")
+	{
+	}
+	if (strSvcId == "save") 
+	{		
+		return;
+		this.fn_search();
+	}
+	if (strSvcId == "saveGroup")
+	{
+		return;
+	}
+}
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+
+// 메뉴 추가 버튼 클릭시 이벤트 처리
+this.btn_Insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_insert();
+}
+
+// 메뉴 삭제 버튼 클릭시 이벤트 처리
+this.btn_Delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	this.fn_Delete();
+}
+
+
+// 메뉴 취소 버튼 클릭시 이벤트 처리
+this.btn_Cancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_Cancel();
+	
+}
+
+// 추가
+this.fn_insert = function ()
+{
+	var nCurRowMenu = this.ds_menu.rowposition;
+	var nCurRowPage = this.ds_page.rowposition;
+	var nRowMenu = this.ds_menu.insertRow(nCurRowMenu + 1);
+
+	
+	this.ds_menu.setColumn(nRowMenu, "CREATE_DT", Ex.util.todayTime());
+	this.ds_menu.setColumn(nRowMenu, "UPDATE_DT", Ex.util.todayTime());
+	this.ds_menu.setColumn(nRowMenu, "MENU_SEQ", this.ds_menu.getColumn(nCurRowMenu,"MENU_SEQ") + 1);
+	this.ds_menu.setColumn(nRowMenu, "MENU_GRP", this.ds_menu.getColumn(nCurRowMenu,"MENU_ID"));
+	this.ds_menu.setColumn(nRowMenu, "MENU_NAME", this.edt_Name.value);
+
+	this.ds_menu.setColumn(nRowMenu, "MENU_LEVEL", 0);
+	this.ds_menu.setColumn(nRowMenu, "MENU_OPTP", "MAIN");
+	this.ds_menu.setColumn(nRowMenu, "MENU_STAT", "VIEW");
+	
+	this.ds_menu.setColumn(nRowMenu, "PAGE_ID", this.ds_page.getColumn(nCurRowPage, "PAGE_ID"));
+	this.ds_menu.setColumn(nRowMenu, "PAGE_NAME", this.ds_page.getColumn(nCurRowPage, "PAGE_NAME"));
+	this.ds_menu.setColumn(nRowMenu, "PAGE_URL", this.ds_page.getColumn(nCurRowPage, "PAGE_URL"));
+			
+	
+	if (nCurRowMenu == -1) 
+	{
+		return;
+	}
+
+	switch (this.cmb_Level.value) 
+	{
+		case "1":
+			this.ds_menu.setColumn(nRowMenu, "MENU_LEVEL", this.ds_menu.getColumn(nCurRowMenu, "MENU_LEVEL") + 1);
+			trace(this.ds_menu.getColumn(nRowMenu,"MENU_LEVEL"));
+			break;
+		case "2":
+			this.ds_menu.setColumn(nRowMenu, "MENU_LEVEL", this.ds_menu.getColumn(nCurRowMenu, "MENU_LEVEL"));
+			break;
+		case "3":
+			break;
+	}
+
+	var nTopRow = this.grd_menu.getTreeParentRow(nRowMenu);
+	if (nTopRow > -1) 
+	{
+		if(this.ds_menu.getColumn(nRowMenu, "MENU_LEVEL") == 0)
+		{
+			alert(1);
+			this.ds_menu.setColumn(nRowMenu, "MENU_GRP", this.ds_menuGroup.getColumn(nRowMenu, "MENU_ID"));
+			this.ds_menu.setColumn(nRowMenu, "MENU_SEQ", 1);
+		}
+		else {
+			this.ds_menu.setColumn(nRowMenu, "MENU_GRP", this.ds_menu.getColumn(nTopRow, "MENU_ID"));
+		}
+		this.ds_menu.setColumn(nRowMenu, "MENU_TOP", this.ds_menu.getColumn(nTopRow, "MENU_ID"));
+	}
+	
+}
+this.fn_filterGtroup = function()
+{
+	this.ds_menuGroup.filter("GROUP_ID=='"+application.gv_userAuth+"'");
+}
+// 메뉴 삭제
+this.fn_Delete = function ()
+{
+	this.fn_deleteGroup();
+	var nRowMenu = this.ds_menu.rowposition;
+	var nRowPage = this.ds_page.rowposition;
+	this.ds_menu.deleteRow(nRowMenu);
+	this.ds_page.deleteRow(nRowPage);
+}
+this.fn_deleteGroup = function()
+{
+	var nRowMenu = this.ds_menu.rowposition;
+	
+	var strGroup = this.ds_menu.getColumn(nRowMenu, "MENU_ID");
+	trace(strGroup);
+	for (var i = 0; i < this.ds_menuGroup.rowcount; i++)
+	{
+		if (this.ds_menuGroup.getColumn(i, "MENU_ID") == strGroup)
+		{
+			this.ds_menuGroup.deleteRow(i);
+			break;
+		}
+	}
+}
+this.fn_Cancel = function()
+{
+	if (this.ds_menu.rowposition < 0) 
+	{
+		return;
+	}
+
+// 	this.ds_menu.setColumn(this.ds_menu.rowposition, "PAGE_ID", "");
+// 	this.ds_menu.setColumn(this.ds_menu.rowposition, "PAGE_NAME", "");
+// 	this.ds_menu.setColumn(this.ds_menu.rowposition, "PAGE_URL", "");
+
+	this.ds_menu.reset();
+}
+this.fn_insertGroup = function()
+{
+	
+}
+this.btn_moveUp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if (this.ds_menu.rowposition <= 0) 
+	{
+		return;
+	}
+
+	var nCurRow = this.ds_menu.rowposition;
+	nCurRow = this.ds_menu.moveRow(nCurRow, nCurRow - 1);
+	this.ds_menu.setColumn(nCurRow, "MENU_SEQ", nCurRow);
+
+	if (nCurRow == 0)
+	{
+		this.ds_menu.setColumn(nCurRow, "MENU_LEVEL", 0);
+		this.ds_menu.setColumn(nCurRow, "MENU_TOP", "");
+		this.ds_menu.setColumn(nCurRow, "MENU_GRP", this.ds_menu.getColumn(nCurRow, "MENU_ID"));
+	}	
+
+	var nTopRow = this.grd_menu.getTreeParentRow(nCurRow);
+	if (nTopRow > -1) 
+	{
+		this.ds_menu.setColumn(nCurRow, "MENU_LEVEL", this.ds_menu.getColumn(nTopRow, "MENU_LEVEL") + 1);
+	}
+	this.grd_menu.redraw();
+}
+
+this.btn_moveDown_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if (this.ds_menu.rowposition < 0) 
+	{
+		return;
+	}
+
+	var nCurRow = this.ds_menu.rowposition;
+	nCurRow = this.ds_menu.moveRow(nCurRow, nCurRow + 1);
+
+	this.ds_menu.setColumn(nCurRow, "MENU_SEQ", nCurRow);
+	this.grd_menu.redraw();
+}
+
+this.btn_moveLeft_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var nCurRow = this.ds_menu.rowposition;
+	var nLevel = this.ds_menu.getColumn(nCurRow, "MENU_LEVEL");
+
+	if (nLevel <= 0) 
+	{
+		return;
+	}
+
+	this.ds_menu.setColumn(nCurRow, "MENU_LEVEL", nLevel - 1);
+	this.grd_menu.redraw();
+}
+
+this.btn_moveRight_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if (this.ds_menu.rowposition < 0) 
+	{
+		return;
+	}
+
+	var nCurRow = this.ds_menu.rowposition;
+	var nLevel = this.ds_menu.getColumn(nCurRow, "MENU_LEVEL");
+
+	this.ds_menu.setColumn(nCurRow, "MENU_LEVEL", nLevel + 1);
+	this.grd_menu.redraw();
+}
+
+// 검색시 Enter 키 이벤트 처리
+this.edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13)
+	{
+		this.fn_search();
+	}
+}
+this.btn_Save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	/*this.fn_insertGroupMenu();*/
+	this.fn_groupSave();
+	this.fn_save();	
+}
+
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+
+//팝업 후처리 작업
+this.fn_popupAfter = function(sPopupId,val)
+{
+
+}
+
+//페이징 후처리 작업
+this.fn_pageAfter = function(sObjId,nViewPage)
+{
+
+}
+
+this.edt_ID_canchange = function(obj:Edit,  e:nexacro.ChangeEventInfo)
+{
+	this.strMenuId = obj.value;
+	var nRowMenuGroup = this.ds_menuGroup.addRow();
+	var strGroup = this.strMenuId;
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "MENU_ID", strGroup);
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "ADD_AUTH", 1);
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "EDIT_AUTH", 1);
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "DEL_AUTH", 1);
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "GROUP_ID", application.gv_userAuth);
+	this.ds_menuGroup.setColumn(nRowMenuGroup, "PRINT_AUTH", 1);
+}
+
+this.grd_page_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var nRowPage = this.ds_page.rowposition;
+	this.edt_pageID.set_value(this.ds_page.getColumn(nRowPage, "PAGE_ID"));
+	this.edt_pageName.set_value(this.ds_page.getColumn(nRowPage, "PAGE_NAME"));
+	this.edt_URL.set_value(this.ds_page.getColumn(nRowPage, "PAGE_URL"));
+	this.edt_Args.set_value(this.ds_page.getColumn(nRowPage, "PAGE_URL").split("::")[0]);
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

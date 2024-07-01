@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMROffice_pop" classname="RTCOMMROffice_pop" left="0" top="0" width="400" height="480" titletext="렌탈지점 조회" onload="RTCOMMROffice_pop_onload" onkeyup="RTCOMMROffice_pop_onkeyup">
+    <Layouts>
+      <Layout width="400" height="480">
+        <Grid id="grd_list" taborder="0" binddataset="ds_list" useinputpanel="false" cellsizingtype="col" autofittype="col" autosizebandtype="head" cellclickbound="cell" left="10" top="66" right="10" height="380" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" oncelldblclick="grd_list_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="280"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="지점코드"/>
+                <Cell col="1" text="지점명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:rentalOffice"/>
+                <Cell col="1" text="bind:rentalOfficeNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" right="10" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="27" text="지점" cssclass="sta_WF_schTitle" left="20" top="10" width="63" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_searchKeyword" taborder="28" left="62" top="10" width="246" height="21" onkeyup="div_search_edt_searchKeyword_onkeyup"/>
+              <Button id="btn_search" taborder="29" text="검색" cssclass="btn_WF_CRUD" top="9" right="18" width="45" height="22" domainId="nexa.add" onclick="div_search_btn_search_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" top="456" right="54" width="41" height="21" domainId="nexa.add" onclick="btn_choice_onclick"/>
+        <Button id="btn_close" taborder="3" text="닫기" top="456" right="9" width="41" height="21" domainId="nexa.add" onclick="btn_close_onclick"/>
+      </Layout>
+      <Layout name="Layout00" screenid="Screen0" width="1024" height="1024"/>
+      <Layout name="Layout01" screenid="Screen1" width="1024" height="1024"/>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_select" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 렌탈지사 조회 팝업
+ * 02. 그룹명   : RTCOMMRGroup_pop.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+this.ParserStr = "^&^";
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+		
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "listRentalOffice":
+				if(this.ds_list.rowcount == 0) {
+					alert("조회된 데이터가 없습니다.");
+					this.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+					this.div_search.edt_searchKeyword.setFocus(true);
+					return;					
+				}			
+				break;
+				
+			default:
+				break;
+		}
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//조회
+	//-------------------------------------------------------------------------------
+	this.fn_search = function(){
+		var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); 
+		var userId = application.gds_userInfo.getColumn(0, "userId"); 	
+		var rentalGroup = this.parent.p_rentalGroup;	// 선택된 렌탈그룹
+		
+		var sSvcID        	= "listRentalOffice";                    
+		var sController   	= "/listRentalOffice.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";		
+			sArgs += Ex.util.setParam("usrGroup", userGrp);			//사용자그룹
+			sArgs += Ex.util.setParam("usrId", userId);				//사용자Id
+			sArgs += Ex.util.setParam("rentalGroup", rentalGroup);	//선택된 렌탈그룹
+			sArgs += Ex.util.setParam("keyword", this.div_search.edt_searchKeyword.text);
+			
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//그리드 더블클릭 시 오픈페이지에 선택 전달      
+	//-------------------------------------------------------------------------------
+	this.fn_choice = function(){
+
+		//변경할내용세팅	
+		var idx = this.ds_list.rowposition;
+		if( idx != -1 ) {
+			this.ds_select.clearData();		
+			this.ds_select.addRow();
+			this.ds_select.copyRow(0,this.ds_list,idx);
+			
+			this.close(this.opener._setReturn(this.ds_select,this.parent.p_arg));
+		}else{
+			alert("선택된 데이터가 없습니다.");
+		}
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//검색어 입력창 ENTER KEY
+	//-------------------------------------------------------------------------------
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if( e.keycode == "13" ){
+			this.fn_search();
+		}
+	}
+	
+	//-------------------------------------------------------------------------------   
+	// 검색버튼 클릭
+	//-------------------------------------------------------------------------------
+	this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_search();
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//그리드 더블클릭
+	//-------------------------------------------------------------------------------
+	this.grd_list_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		this.fn_choice();
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//선택버튼 클릭
+	//-------------------------------------------------------------------------------
+	this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_choice();
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//닫기버튼 클릭
+	//-------------------------------------------------------------------------------
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------
+	this.RTCOMMROffice_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_search();
+	}
+	
+	//-------------------------------------------------------------------------------   
+	//폼 ESC KEY
+	//-------------------------------------------------------------------------------
+	this.RTCOMMROffice_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 27){
+			this.close();
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

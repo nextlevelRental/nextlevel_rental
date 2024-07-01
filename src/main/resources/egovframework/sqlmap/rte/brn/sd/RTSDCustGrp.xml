@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="custGrp">
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0102">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpNo"     	jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="grpDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sptDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="custGrp.saveCustGrp1" parameterMap="p_IUDRtsd0102">
+		{call Pkg_Rtsd0102.p_IUDRtsd0102( ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	<resultMap id="r_sRtsd0102_Select" class="java.util.HashMap">
+		<result property="grpNo" 		column="GRP_NO" />
+		<result property="grpDay" 		column="GRP_DAY" />
+		<result property="sptDay" 		column="SPT_DAY" />
+		<result property="grpYn" 		column="GRP_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+		<result property="custGrpCount"	column="CUST_GRP_COUNT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0102_Select" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0102_Select" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpDayStart" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpDayEnd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="custGrp.listGrpNo1" parameterMap="p_sRtsd0102_Select">
+		{call Pkg_Rtsd0102.p_sRtsd0102(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="r_sRtsd0103_Select" class="java.util.HashMap">
+		<result property="grpNo" 		column="GRP_NO" />
+		<result property="custNo" 		column="CUST_NO" />
+		<result property="grpDay" 		column="GRP_DAY" />
+		<result property="sptDay" 		column="SPT_DAY" />
+		<result property="grpYn" 		column="GRP_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+		<result property="insertFlag" 	column="INSERT_FLAG" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0103_Select" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0103_Select" />
+		<parameter property="grpNo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="custGrp.listGrpNo2" parameterMap="p_sRtsd0103_Select">
+		{call Pkg_Rtsd0103.p_sRtsd0103(?, ?)}
+	</procedure>
+	
+	<parameterMap id="pCustGrpCustNo" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="rCustGrpCustNo" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="rCustGrpCustNo" class="java.util.HashMap"/>
+	<procedure  id="custGrp.selectCustGrpCustNo" resultClass="java.util.Map" parameterMap="pCustGrpCustNo">
+		{call ? := Pkg_Rtsd0103.p_sRtsd0103_SelectCustNo (?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_saveCustGrp2">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sptDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="grpYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="custGrp.saveCustGrp2" parameterMap="p_saveCustGrp2">
+		{call Pkg_Rtsd0103.p_IUDRtsd0103(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap class="java.util.Map" id="params_p_IUDRtsd0201">
+			<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+			<parameter property="birthDay" 	 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="custNm" 		 	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="mobNo" 		 	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="genderCd" 	 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="seq"				jdbcType="NUMERIC" 								   mode="INOUT" />
+			<parameter property="yn" 				javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="prgmCd" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd01N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd02N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd03N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd04N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd05N"			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd06N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd07N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd08N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd09N" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd10N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd11N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd12N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd13N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd14N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd15N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd16N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd17N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd18N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="iNd19N"          	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd01N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd02N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd03N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd04N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd05N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd06N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd07N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd08N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd09N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd10N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd11N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd12N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd13N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd14N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd15N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd16N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd17N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd18N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd19N"         	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="eNd20N"            javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="regId" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+			<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+			<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+			<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+		</parameterMap>
+	<procedure id="custGrp.createIRSafeKey" parameterMap="params_p_IUDRtsd0201">
+		{call Pkg_Rtsd0201.p_IUDRtsd0201(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<parameterMap id="params_p_IUDRtsd0203" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey"  		mode="IN"   		jdbcType="VARCHAR" />
+		<parameter property="seq"    		mode="INOUT"   	jdbcType="NUMERIC" />
+		<parameter property="yn"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd01"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd02"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd03"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd04"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd05"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd06"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd07"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd08"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd09"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd10"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd11"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd12"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd13"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd14"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd15"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd16"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd17"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd18"   		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd19"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd20"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd21"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd22"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd23"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="iNd24"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd01"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd02"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd03"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd04"     	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd05"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd06"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd07"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd08"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd09"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd10"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd11"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd12"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd13"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd14"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd15"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd16"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd17"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd18"   	 	mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd19"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd20"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd21"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd22"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd23"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd24"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd25"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd26"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd27"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd28"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd29"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd30"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd31"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd32"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd33"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd34"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd35"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd36"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd37"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd38"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd39"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd40"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd41"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd42"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd43"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd44"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd45"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="eNd46"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="regId"    		mode="IN"   jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  	mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" 		mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" 		mode="OUT" />
+	</parameterMap>
+
+	<procedure id="custGrp.createNiceTrust" parameterMap="params_p_IUDRtsd0203">
+		{call Pkg_Rtsd0203.p_IUDRtsd0203(	?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+													?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+
+	
+	<resultMap id="pUserChanCdList" class="java.util.HashMap">
+		<result property="chanCd" column="CHAN_CD" />								
+	</resultMap>
+	<parameterMap id="rUserChanCdList" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="pUserChanCdList" />
+		<parameter property="saleCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="custGrp.userChanCdList" parameterMap="rUserChanCdList">
+		{call  Pkg_Rtsd0045.p_userChanCdList (?, ?)}
+	</procedure>
+	
+</sqlMap>

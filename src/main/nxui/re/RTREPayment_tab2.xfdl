@@ -1,0 +1,754 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="변경 HISTORY" left="0" width="1122" top="0" height="510" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_subHist" taborder="10" text="DIV00" left="10" top="248" width="1104" height="247">
+          <Layouts>
+            <Layout>
+              <Grid id="grd_AfterList" taborder="3" binddataset="ds_afList" useinputpanel="false" left="0" top="141" height="100" width="1102">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="60"/>
+                      <Column size="80"/>
+                      <Column size="85"/>
+                      <Column size="93"/>
+                      <Column size="83"/>
+                      <Column size="87"/>
+                      <Column size="106"/>
+                      <Column size="80"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="120"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="결제일"/>
+                      <Cell col="1" text="결제방법"/>
+                      <Cell col="2" text="출금계좌&#13;&#10;은행"/>
+                      <Cell col="3" text="출금계좌번호"/>
+                      <Cell col="4" text="예금주"/>
+                      <Cell col="5" text="카드이체&#13;&#10;카드사"/>
+                      <Cell col="6" text="카드이체&#13;&#10;카드번호"/>
+                      <Cell col="7" text="유효기간"/>
+                      <Cell col="8" text="법정생년월일"/>
+                      <Cell col="9" text="사업자번호"/>
+                      <Cell col="10" text="BatchKey"/>
+                      <Cell col="11" text="등록자"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:afpayDdNm"/>
+                      <Cell col="1" text="bind:apayMthdNm"/>
+                      <Cell col="2" text="bind:afbankNm"/>
+                      <Cell col="3" text="bind:afacctNo"/>
+                      <Cell col="4" text="bind:afcustNm"/>
+                      <Cell col="5" text="bind:afcardcomNm"/>
+                      <Cell col="6" text="bind:afcadNo"/>
+                      <Cell col="7" text="bind:afexpireYm" mask="####-##"/>
+                      <Cell col="8" text="bind:afebirDay" mask="##-##-##"/>
+                      <Cell col="9" text="bind:afbusNo" mask="###-##-#####"/>
+                      <Cell col="10" text="bind:afbatchKey"/>
+                      <Cell col="11" text="bind:afregId"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="grd_BeforeList" taborder="1" binddataset="ds_bfList" useinputpanel="false" left="0" top="0" height="109" width="1102">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="60"/>
+                      <Column size="80"/>
+                      <Column size="85"/>
+                      <Column size="93"/>
+                      <Column size="83"/>
+                      <Column size="87"/>
+                      <Column size="106"/>
+                      <Column size="80"/>
+                      <Column size="100"/>
+                      <Column size="100"/>
+                      <Column size="120"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="결제일"/>
+                      <Cell col="1" text="결제방법"/>
+                      <Cell col="2" text="출금계좌&#13;&#10;은행"/>
+                      <Cell col="3" text="출금계좌번호"/>
+                      <Cell col="4" text="예금주"/>
+                      <Cell col="5" text="카드이체&#13;&#10;카드사"/>
+                      <Cell col="6" text="카드이체&#13;&#10;카드번호"/>
+                      <Cell col="7" text="유효기간"/>
+                      <Cell col="8" text="법정생년월일"/>
+                      <Cell col="9" text="사업자번호"/>
+                      <Cell col="10" text="BatchKey"/>
+                      <Cell col="11" text="등록자"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:bfpayDdNm"/>
+                      <Cell col="1" text="bind:bpayMthdNm"/>
+                      <Cell col="2" text="bind:bfbankNm"/>
+                      <Cell col="3" text="bind:bfacctNo"/>
+                      <Cell col="4" text="bind:bfcustNm"/>
+                      <Cell col="5" text="bind:bfcardcomNm"/>
+                      <Cell col="6" text="bind:bfcadNo"/>
+                      <Cell col="7" text="bind:bfexpireYm" mask="####-##"/>
+                      <Cell col="8" text="bind:bfebirDay" mask="##-##-##"/>
+                      <Cell col="9" text="bind:bfbusNo" mask="###-##-#####"/>
+                      <Cell col="10" text="bind:bfbatchKey"/>
+                      <Cell col="11" text="bind:bfregNm"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static06" taborder="4" text="변경후" cssclass="sta_WF_subTitle" left="0" top="116" width="84" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="19" text="변경전" cssclass="sta_WF_subTitle" left="10" top="224" width="120" height="20"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1102">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="0" text="조회" onclick="fn_search" cssclass="btn_WF_CRUD" right="57" bottom="9" width="45" height="22" domainId="nexa.search" enable="true"/>
+              <Static id="st_searchCondition" taborder="1" text="계약번호" cssclass="sta_WF_schTitle" left="20" top="10" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_ordNo" taborder="3" left="88" top="10" width="140" height="21" enable="true" onkeyup="edt_ordNo_onkeyup"/>
+              <Button id="btn_popUp" taborder="4" onclick="fn_odrPopUp" left="208" top="9" width="20" height="21" cssclass="btn_WF_edtSch"/>
+              <Edit id="edt_custNoKeyword" taborder="5" left="467" top="10" width="140" height="21" enable="false"/>
+              <Edit id="edt_custNo" taborder="6" onkeyup="custNo_onkeyup" left="326" top="10" width="140" height="21"/>
+              <Button id="btn_popUp2" taborder="7" left="448" top="9" width="20" height="21" onclick="fn_custPopUp" cssclass="btn_WF_edtSch"/>
+              <Static id="st_searchCondition00" taborder="8" text="고객번호" cssclass="sta_WF_schTitle" left="258" top="10" width="64" height="20" domainId="nexa.s_condition"/>
+              <Button id="Button00" taborder="9" text="엑셀" onclick="Button00_onclick" cssclass="btn_WF_CRUD" left="1047" top="10" width="45" height="22"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="sta_title" taborder="2" text="Records Found" cssclass="sta_WF_GridFound2" left="94" top="61" right="930" height="16" visible="false"/>
+        <Static id="sta_total_cnt" taborder="3" text="0" cssclass="sta_WF_GridFound" left="-29" top="61" right="1066" height="16" style="align:right middle;" visible="false"/>
+        <Static id="sta_result" taborder="4" text="검색결과" cssclass="sta_WF_GridFound" left="-66" top="68" right="1122" height="16" style="align:left middle;font:bold 9 Verdana;"/>
+        <Grid id="grd_List" taborder="5" useinputpanel="false" left="10" top="64" height="150" binddataset="ds_List" oncellclick="grd_List_oncellclick" width="1102" onselectchanged="grd_List_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="0"/>
+                <Column size="93"/>
+                <Column size="150"/>
+                <Column size="91"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="93"/>
+                <Column size="123"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="77"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="차량번호"/>
+                <Cell col="2" text="고객번호"/>
+                <Cell col="3" text="고객명"/>
+                <Cell col="4" text="상품명"/>
+                <Cell col="5" text="결제방법"/>
+                <Cell col="6" text="결제일"/>
+                <Cell col="7" text="은행"/>
+                <Cell col="8" text="계좌번호"/>
+                <Cell col="9" text="예금주"/>
+                <Cell col="10" text="카드사"/>
+                <Cell col="11" text="카드번호"/>
+                <Cell col="12" text="등록자코드"/>
+                <Cell col="13" text="등록자명"/>
+                <Cell col="14" text="등록일자"/>
+                <Cell col="15" text="수정자코드"/>
+                <Cell col="16" text="수정자명"/>
+                <Cell col="17" text="수정일자"/>
+                <Cell col="18" style="align: ;" text="변경사유"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:carNo"/>
+                <Cell col="2" displaytype="none" text="bind:password"/>
+                <Cell col="3" text="bind:custNm"/>
+                <Cell col="4" text="bind:matNm"/>
+                <Cell col="5" text="bind:apayMthdNm"/>
+                <Cell col="6" text="bind:afpayDdNm"/>
+                <Cell col="7" text="bind:afbankNm"/>
+                <Cell col="8" text="bind:afacctNo"/>
+                <Cell col="9" text="bind:afcustNm"/>
+                <Cell col="10" text="bind:afcardcomNm"/>
+                <Cell col="11" text="bind:afcadNo"/>
+                <Cell col="12" text="bind:regId"/>
+                <Cell col="13" text="bind:regNm"/>
+                <Cell col="14" displaytype="date" text="bind:regDt" calendardisplaynulltype="none"/>
+                <Cell col="15" text="bind:chgId"/>
+                <Cell col="16" text="bind:chgNm"/>
+                <Cell col="17" displaytype="date" text="bind:chgDt" calendardisplaynulltype="none"/>
+                <Cell col="18" style="align:left;" text="bind:rpcRsn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button01" taborder="20" text="엑셀" onclick="Button01_onclick" cssclass="btn_WF_CRUD" left="1067" top="224" width="45" height="22"/>
+        <Button id="Button02" taborder="21" text="엑셀" cssclass="btn_WF_CRUD" left="1067" top="362" width="45" height="22" onclick="Button02_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_List" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rpcSeq" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="rpcDay" type="STRING" size="256"/>
+          <Column id="rpcUid" type="STRING" size="256"/>
+          <Column id="rpcRsn" type="STRING" size="256"/>
+          <Column id="fileGrpSeq" type="STRING" size="256"/>
+          <Column id="bfcustNo" type="STRING" size="256"/>
+          <Column id="bftcgrpNo" type="STRING" size="256"/>
+          <Column id="bfpayMthd" type="STRING" size="256"/>
+          <Column id="bpayMthdNm" type="STRING" size="256"/>
+          <Column id="bfpayDd" type="STRING" size="256"/>
+          <Column id="bfpayDdNm" type="STRING" size="256"/>
+          <Column id="bfaccSeq" type="STRING" size="256"/>
+          <Column id="bfbankCd" type="STRING" size="256"/>
+          <Column id="bfbankNm" type="STRING" size="256"/>
+          <Column id="bfacctNo" type="STRING" size="256"/>
+          <Column id="bfcustNm" type="STRING" size="256"/>
+          <Column id="bfcrdSeq" type="STRING" size="256"/>
+          <Column id="bfcardcomNm" type="STRING" size="256"/>
+          <Column id="bfcadNo" type="STRING" size="256"/>
+          <Column id="bfexpireYm" type="STRING" size="256"/>
+          <Column id="bfebirDay" type="STRING" size="256"/>
+          <Column id="bfbusNo" type="STRING" size="256"/>
+          <Column id="bfbatchKey" type="STRING" size="256"/>
+          <Column id="bfregId" type="STRING" size="256"/>
+          <Column id="bfregNm" type="STRING" size="256"/>
+          <Column id="bfaccStat" type="STRING" size="256"/>
+          <Column id="bfacrqSt" type="STRING" size="256"/>
+          <Column id="bfacrqFg" type="STRING" size="256"/>
+          <Column id="bfacrqDay" type="STRING" size="256"/>
+          <Column id="bfacrqSeq" type="STRING" size="256"/>
+          <Column id="bfrpcSeq" type="STRING" size="256"/>
+          <Column id="afcustNo" type="STRING" size="256"/>
+          <Column id="aftcgrpNo" type="STRING" size="256"/>
+          <Column id="afpayMthd" type="STRING" size="256"/>
+          <Column id="apayMthdNm" type="STRING" size="256"/>
+          <Column id="afpayDd" type="STRING" size="256"/>
+          <Column id="afpayDdNm" type="STRING" size="256"/>
+          <Column id="afaccSeq" type="STRING" size="256"/>
+          <Column id="afbankCd" type="STRING" size="256"/>
+          <Column id="afbankNm" type="STRING" size="256"/>
+          <Column id="afacctNo" type="STRING" size="256"/>
+          <Column id="afcustNm" type="STRING" size="256"/>
+          <Column id="afcrdSeq" type="STRING" size="256"/>
+          <Column id="afcardcomNm" type="STRING" size="256"/>
+          <Column id="afcadNo" type="STRING" size="256"/>
+          <Column id="afexpireYm" type="STRING" size="256"/>
+          <Column id="afebirDay" type="STRING" size="256"/>
+          <Column id="afbusNo" type="STRING" size="256"/>
+          <Column id="afbatchKey" type="STRING" size="256"/>
+          <Column id="afregId" type="STRING" size="256"/>
+          <Column id="afregNm" type="STRING" size="256"/>
+          <Column id="afaccStat" type="STRING" size="256"/>
+          <Column id="afacrqSt" type="STRING" size="256"/>
+          <Column id="afacrqFg" type="STRING" size="256"/>
+          <Column id="afacrqDay" type="STRING" size="256"/>
+          <Column id="afacrqSeq" type="STRING" size="256"/>
+          <Column id="abrpcSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_bfList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rpcSeq" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="rpcDay" type="STRING" size="256"/>
+          <Column id="rpcUid" type="STRING" size="256"/>
+          <Column id="rpcRsn" type="STRING" size="256"/>
+          <Column id="fileGrpSeq" type="STRING" size="256"/>
+          <Column id="bfcustNo" type="STRING" size="256"/>
+          <Column id="bftcgrpNo" type="STRING" size="256"/>
+          <Column id="bfpayMthd" type="STRING" size="256"/>
+          <Column id="bpayMthdNm" type="STRING" size="256"/>
+          <Column id="bfpayDd" type="STRING" size="256"/>
+          <Column id="bfpayDdNm" type="STRING" size="256"/>
+          <Column id="bfaccSeq" type="STRING" size="256"/>
+          <Column id="bfbankCd" type="STRING" size="256"/>
+          <Column id="bfbankNm" type="STRING" size="256"/>
+          <Column id="bfacctNo" type="STRING" size="256"/>
+          <Column id="bfcustNm" type="STRING" size="256"/>
+          <Column id="bfcrdSeq" type="STRING" size="256"/>
+          <Column id="bfcardcomNm" type="STRING" size="256"/>
+          <Column id="bfcadNo" type="STRING" size="256"/>
+          <Column id="bfexpireYm" type="STRING" size="256"/>
+          <Column id="bfebirDay" type="STRING" size="256"/>
+          <Column id="bfbusNo" type="STRING" size="256"/>
+          <Column id="bfbatchKey" type="STRING" size="256"/>
+          <Column id="bfregId" type="STRING" size="256"/>
+          <Column id="bfregNm" type="STRING" size="256"/>
+          <Column id="bfaccStat" type="STRING" size="256"/>
+          <Column id="bfacrqSt" type="STRING" size="256"/>
+          <Column id="bfacrqFg" type="STRING" size="256"/>
+          <Column id="bfacrqDay" type="STRING" size="256"/>
+          <Column id="bfacrqSeq" type="STRING" size="256"/>
+          <Column id="bfrpcSeq" type="STRING" size="256"/>
+          <Column id="afcustNo" type="STRING" size="256"/>
+          <Column id="aftcgrpNo" type="STRING" size="256"/>
+          <Column id="afpayMthd" type="STRING" size="256"/>
+          <Column id="apayMthdNm" type="STRING" size="256"/>
+          <Column id="afpayDd" type="STRING" size="256"/>
+          <Column id="afpayDdNm" type="STRING" size="256"/>
+          <Column id="afaccSeq" type="STRING" size="256"/>
+          <Column id="afbankCd" type="STRING" size="256"/>
+          <Column id="afbankNm" type="STRING" size="256"/>
+          <Column id="afacctNo" type="STRING" size="256"/>
+          <Column id="afcustNm" type="STRING" size="256"/>
+          <Column id="afcrdSeq" type="STRING" size="256"/>
+          <Column id="afcardcomNm" type="STRING" size="256"/>
+          <Column id="afcadNo" type="STRING" size="256"/>
+          <Column id="afexpireYm" type="STRING" size="256"/>
+          <Column id="afebirDay" type="STRING" size="256"/>
+          <Column id="afbusNo" type="STRING" size="256"/>
+          <Column id="afbatchKey" type="STRING" size="256"/>
+          <Column id="afregId" type="STRING" size="256"/>
+          <Column id="afregNm" type="STRING" size="256"/>
+          <Column id="afaccStat" type="STRING" size="256"/>
+          <Column id="afacrqSt" type="STRING" size="256"/>
+          <Column id="afacrqFg" type="STRING" size="256"/>
+          <Column id="afacrqDay" type="STRING" size="256"/>
+          <Column id="afacrqSeq" type="STRING" size="256"/>
+          <Column id="abrpcSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_afList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rpcSeq" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="rpcDay" type="STRING" size="256"/>
+          <Column id="rpcUid" type="STRING" size="256"/>
+          <Column id="rpcRsn" type="STRING" size="256"/>
+          <Column id="fileGrpSeq" type="STRING" size="256"/>
+          <Column id="bfcustNo" type="STRING" size="256"/>
+          <Column id="bftcgrpNo" type="STRING" size="256"/>
+          <Column id="bfpayMthd" type="STRING" size="256"/>
+          <Column id="bpayMthdNm" type="STRING" size="256"/>
+          <Column id="bfpayDd" type="STRING" size="256"/>
+          <Column id="bfpayDdNm" type="STRING" size="256"/>
+          <Column id="bfaccSeq" type="STRING" size="256"/>
+          <Column id="bfbankCd" type="STRING" size="256"/>
+          <Column id="bfbankNm" type="STRING" size="256"/>
+          <Column id="bfacctNo" type="STRING" size="256"/>
+          <Column id="bfcustNm" type="STRING" size="256"/>
+          <Column id="bfcrdSeq" type="STRING" size="256"/>
+          <Column id="bfcardcomNm" type="STRING" size="256"/>
+          <Column id="bfcadNo" type="STRING" size="256"/>
+          <Column id="bfexpireYm" type="STRING" size="256"/>
+          <Column id="bfebirDay" type="STRING" size="256"/>
+          <Column id="bfbusNo" type="STRING" size="256"/>
+          <Column id="bfbatchKey" type="STRING" size="256"/>
+          <Column id="bfregId" type="STRING" size="256"/>
+          <Column id="bfregNm" type="STRING" size="256"/>
+          <Column id="bfaccStat" type="STRING" size="256"/>
+          <Column id="bfacrqSt" type="STRING" size="256"/>
+          <Column id="bfacrqFg" type="STRING" size="256"/>
+          <Column id="bfacrqDay" type="STRING" size="256"/>
+          <Column id="bfacrqSeq" type="STRING" size="256"/>
+          <Column id="bfrpcSeq" type="STRING" size="256"/>
+          <Column id="afcustNo" type="STRING" size="256"/>
+          <Column id="aftcgrpNo" type="STRING" size="256"/>
+          <Column id="afpayMthd" type="STRING" size="256"/>
+          <Column id="apayMthdNm" type="STRING" size="256"/>
+          <Column id="afpayDd" type="STRING" size="256"/>
+          <Column id="afpayDdNm" type="STRING" size="256"/>
+          <Column id="afaccSeq" type="STRING" size="256"/>
+          <Column id="afbankCd" type="STRING" size="256"/>
+          <Column id="afbankNm" type="STRING" size="256"/>
+          <Column id="afacctNo" type="STRING" size="256"/>
+          <Column id="afcustNm" type="STRING" size="256"/>
+          <Column id="afcrdSeq" type="STRING" size="256"/>
+          <Column id="afcardcomNm" type="STRING" size="256"/>
+          <Column id="afcadNo" type="STRING" size="256"/>
+          <Column id="afexpireYm" type="STRING" size="256"/>
+          <Column id="afebirDay" type="STRING" size="256"/>
+          <Column id="afbusNo" type="STRING" size="256"/>
+          <Column id="afbatchKey" type="STRING" size="256"/>
+          <Column id="afregId" type="STRING" size="256"/>
+          <Column id="afregNm" type="STRING" size="256"/>
+          <Column id="afaccStat" type="STRING" size="256"/>
+          <Column id="afacrqSt" type="STRING" size="256"/>
+          <Column id="afacrqFg" type="STRING" size="256"/>
+          <Column id="afacrqDay" type="STRING" size="256"/>
+          <Column id="afacrqSeq" type="STRING" size="256"/>
+          <Column id="abrpcSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 결제정보관리 > 결제정보관리 > 결제정보변경 > 변경 HISTORY
+ * 02. 그룹명   : RTREPayment_tab2.xfdl
+ * 03. 그룹설명 : 리스트=> 암호화-카드번호, 암호화-계좌번호
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	 nvl = function(p_value) {
+		var strVal = new String(p_value);
+		if(strVal == null || strVal == "null" || strVal == "undefined"){
+			return "";
+		} else {
+			return strVal.trim();
+		}
+	}
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------    	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.setBtnAuth(this.div_search);
+		
+		var auth = Ex.core.o_auth;
+		if( auth.exptAuthYn == "N" ){
+			this.Button00.set_enable(false);
+			this.Button01.set_enable(false);
+			this.Button02.set_enable(false);
+		}
+	} 
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  
+    // callback함수
+    //-------------------------------------------------------------------------------      
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "listPaymentHist":
+				if(this.ds_List.rowcount == 0) 
+				{
+					this.grd_List.set_nodatatext("조회된 데이터가 없습니다.");
+				}	
+				this.sta_total_cnt.set_text(this.ds_List.rowcount);
+				this.grd_List_oncellclick(this.grd_List,0);
+				
+				break;
+			case "listCustInfo":
+				if(this.ds_cust.rowcount > 0 ) {
+					this.div_search.edt_custNoKeyword.set_value(this.ds_cust.getColumn(0, "custNm"));
+					this.fn_search();
+				}	
+				break;					
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//검색 시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}
+    //-------------------------------------------------------------------------------  	
+	//검색결과 그리드 클릭시
+    //-------------------------------------------------------------------------------  	
+	this.grd_List_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		//변경전 변경후 리스트 COPY
+		if(this.ds_List.rowcount > 0) {
+			this.ds_afList.clearData();
+			this.ds_bfList.clearData();
+			this.ds_afList.addRow();
+			this.ds_bfList.addRow();
+			this.ds_afList.copyRow(0,this.ds_List, e.row);
+			this.ds_bfList.copyRow(0,this.ds_List, e.row);
+		}
+		else {
+			this.div_subHist.grd_BeforeList.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_subHist.grd_AfterList.set_nodatatext("조회된 데이터가 없습니다.");			
+		}
+	}	
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_search = function() 
+	{
+		this.sta_total_cnt.set_text(0);	
+		this.ds_List.clearData();
+		this.ds_bfList.clearData();
+		this.ds_afList.clearData();
+		
+		if(nvl(this.div_search.edt_ordNo.value) == "" && nvl(this.div_search.edt_custNo.value) == "") 
+		{
+			this.alert("조회조건을 입력하세요.");
+			return;
+		}
+		else 
+		{
+			var sSvcID        	= "listPaymentHist";                    
+			var sController   	= "ntrms/re/listPaymentHist.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_List=output";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			
+			var srchOrdNo  	= this.div_search.edt_ordNo.value;
+			var srchCustNo  = this.div_search.edt_custNo.value;
+			
+			sArgs += Ex.util.setParam("ordNo", nvl(srchOrdNo));
+			sArgs += Ex.util.setParam("custNo", nvl(srchCustNo));
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+		}
+	}	
+   
+
+    //-------------------------------------------------------------------------------  	
+	//계약번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.edt_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_ordNo.value) == "") {
+				this.alert("계약번호를 입력하세요");
+				this.div_search.edt_ordNo.setFocus();
+				return;
+			}
+			this.fn_search();
+		}		
+	}
+		
+    //-------------------------------------------------------------------------------  	
+	//고객번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		this.div_search.edt_custNoKeyword.set_value("");	
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_custNo.value) == "") {
+				this.alert("고객번호를 입력하세요");
+				this.div_search.edt_custNo.setFocus();
+				return;
+			}
+			//고객명조회
+			this.fn_getCustNm();
+		}		
+	}	
+    //-------------------------------------------------------------------------------  
+	//주문번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	  var args ={p_arg:""};
+	  Ex.core.popup(this,"계약번호찾기","comm::RTCOMMOrderNo_pop.xfdl",args,"modaless=false");			
+	}
+	
+    //-------------------------------------------------------------------------------  	
+	//고객번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_formId:this.id, p_custNo:nvl(this.div_search.edt_custNo.value), p_custNm:nvl(this.div_search.edt_custNoKeyword.value)};
+		Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+	}
+		
+    //-------------------------------------------------------------------------------  	
+	//고객명 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getCustNm = function() {
+		var sSvcID        	= "listCustInfo";                    
+		var sController   	= "rtms/comm/listCustInfo.do";
+		var sInDatasets   	= "user_=ds_user";
+		var sOutDatasets  	= "ds_cust=mapCustInfo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("custNo", this.div_search.edt_custNo.value);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+	
+    //-------------------------------------------------------------------------------  
+	// 계약번호조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnOrderNoInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			this.div_search.edt_ordNo.set_value(arr[0].getColumn(0,"ordNo"));
+			this.fn_search();
+		}
+	}	
+		
+    //-------------------------------------------------------------------------------  
+	// 고객조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnCustInfo = function(arr) {
+		this.div_search.edt_custNo.set_value(arr[0].getColumn(0,"custNo"));
+		this.div_search.edt_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));
+		this.fn_search();
+	}
+	
+	 //-------------------------------------------------------------------------------  	
+	//엑셀저장
+    //-------------------------------------------------------------------------------  	
+	this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		//var grdArry = new Array();
+		//grdArry[0] = this.grd_List;
+		//grdArry[1] = this.div_subHist.grd_BeforeList;
+		//grdArry[2] = this.div_subHist.grd_AfterList;
+		Ex.core.exportExcel(this, this.grd_List);	
+	}
+	
+	this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.div_subHist.grd_BeforeList);
+	}
+
+	this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.div_subHist.grd_AfterList);
+	}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREVcntTest" classname="RTREVcntTest" left="0" top="0" width="1024" height="768" titletext="New Form" onload="RTREVcntTest_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_KcpIf" taborder="0" text="KCP연동" left="25.78%" top="26" right="66.21%" height="22" onclick="btn_KcpIf_onclick"/>
+        <WebBrowser id="web_Test_01" left="25.68%" top="53" right="44.92%" height="212" taborder="1" url="http://localhost/interface/kcp/kcp_main.jsp" visible="true" onusernotify="web_Test_01_onusernotify" style="border:1 solid #808080ff ;"/>
+        <Edit id="ed_payMthdNm" taborder="2" maxlength="80" visible="true" left="101" top="27" width="151" height="21" value="가상계좌"/>
+        <Edit id="ed_payMthdCd" taborder="3" value="001000000000" maxlength="80" left="101" top="54" width="151" height="21"/>
+        <Edit id="ed_ordNo" taborder="4" value="D17000001234" maxlength="80" left="101" top="81" width="151" height="21"/>
+        <Static id="stc_payMthdNm" taborder="6" text="지불방법(이름)" left="0.88%" top="26" right="90.33%" height="21"/>
+        <Static id="stc_payMthdCd" taborder="7" text="지불방법(코드)" left="0.88%" top="53" right="90.33%" height="21"/>
+        <Static id="stc_ordNo" taborder="8" text="주문번호" left="0.88%" top="80" right="90.33%" height="21"/>
+        <Static id="stc_goodNm" taborder="9" text="상품명" left="0.88%" top="107" right="90.33%" height="21"/>
+        <Edit id="ed_goodNm" taborder="10" value="타이어 렌탈" maxlength="80" left="101" top="108" width="151" height="21"/>
+        <Static id="stc_goodMny" taborder="11" text="결제금액" left="0.88%" top="134" right="90.33%" height="21"/>
+        <Edit id="ed_goodMny" taborder="12" value="19900" maxlength="80" left="101" top="135" width="151" height="21" inputtype="number"/>
+        <Static id="stc_buyrNm" taborder="13" text="주문자명" left="0.88%" top="161" right="90.33%" height="21"/>
+        <Static id="stc_buyrMail" taborder="14" text="E-mail" left="0.88%" top="188" right="90.33%" height="21"/>
+        <Static id="stc_buyrTel1" taborder="15" text="전화번호" left="0.88%" top="215" right="90.33%" height="21"/>
+        <Static id="stc_buyrTel2" taborder="16" text="휴대폰번호" left="0.88%" top="242" right="90.33%" height="21"/>
+        <Edit id="ed_buyrNm" taborder="17" value="임꼬마" maxlength="80" left="101" top="162" width="151" height="21"/>
+        <Edit id="ed_buyrMail" taborder="18" value="phychedelic@naver.com" maxlength="80" left="101" top="189" width="151" height="21"/>
+        <Edit id="ed_buyrTel01" taborder="19" value="02-6420-0630" maxlength="80" left="101" top="216" width="151" height="21"/>
+        <Edit id="ed_buyrTel02" taborder="20" value="010-9488-3061" maxlength="80" left="101" top="243" width="151" height="21"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="bind_repNm" compid="ed_payMthdNm" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item0" compid="ed_payMthdCd" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item1" compid="ed_ordNo" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item2" compid="ed_goodNm" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item3" compid="ed_goodMny" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item4" compid="ed_buyrNm" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item5" compid="ed_buyrMail" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item6" compid="ed_buyrTel01" propid="value" datasetid="ds_cust" columnid="repNm"/>
+      <BindItem id="item7" compid="ed_buyrTel02" propid="value" datasetid="ds_cust" columnid="repNm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+this.RTREVcntTest_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+}
+
+this.btn_KcpIf_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var doc = this.web_Test_01.document;
+		
+	doc.getElementById("pay_method_name").value = this.ed_payMthdNm.text;	
+	doc.getElementById("pay_method_cd").value   = this.ed_payMthdCd.text;
+	doc.getElementById("ord_no").value          = this.ed_ordNo.text;
+	doc.getElementById("good_name").value       = this.ed_goodNm.text;
+	doc.getElementById("good_mny").value        = this.ed_goodMny.text;
+	doc.getElementById("buyr_name").value       = this.ed_buyrNm.text;
+	doc.getElementById("buyr_mail").value       = this.ed_buyrMail.text;
+	doc.getElementById("buyr_tel1").value       = this.ed_buyrTel01.text;
+	doc.getElementById("buyr_tel2").value       = this.ed_buyrTel02.text;
+	
+	doc.getElementById("btnProc").click();
+}
+
+this.web_Test_01_onusernotify = function(obj:WebBrowser, e:nexacro.WebTitleChangeEventInfo) {
+	this.alert("웹브라우져 값 : " + nvl(this.web_Test_01.document.getElementById("testVal02").value));
+}]]></Script>
+  </Form>
+</FDL>

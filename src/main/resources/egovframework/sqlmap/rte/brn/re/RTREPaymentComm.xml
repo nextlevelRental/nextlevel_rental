@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="paymentComm">
+	<!-- 수납거래번호 채번 -->
+	<parameterMap id="paramGet0041RecvSeq" class="java.util.Map">
+		<parameter property="recvSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0041RecvSeq" />
+	</parameterMap>
+	<resultMap id="resultGet0041RecvSeq" class="java.util.Map">
+		<result property="recvSeq" column="RECV_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0041RecvSeq" parameterMap="paramGet0041RecvSeq">
+		{call ? := PKG_RTRE0041.f_sRtre0041RecvSeq()}
+	</procedure>
+	
+	<!-- 카드즉시출금결제 수납일련번호 채번 -->
+	<parameterMap id="paramGet0200RcrdSeq" class="java.util.Map">
+		<parameter property="rcrdSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0200RcrdSeq"/>
+	</parameterMap>
+	<resultMap id="resultGet0200RcrdSeq" class="java.util.Map">
+		<result property="rcrdSeq" column="RCRD_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0200RcrdSeq" parameterMap="paramGet0200RcrdSeq">
+		{call ? := PKG_RTRE0200.f_sRtre0200RcrdSeq()}
+	</procedure>
+	
+	<!-- 카드즉시출금결제 저장 -->
+	<parameterMap id="paramSaveCrdImmWthdrMst" class="java.util.HashMap">
+		<parameter property="rcrdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 카드수납일련번호	-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="recpAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납금액			-->
+		<parameter property="recpTp"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구구분			-->
+		<parameter property="recpPay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납방법			-->
+		<parameter property="recpFg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납유형			-->
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호			-->
+		<parameter property="appNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 승인번호			-->
+		<parameter property="recvSeq"		jdbcType="VARCHAR" mode="IN"/>	<!-- 카드수납거래번호	-->
+		<parameter property="cncStat"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납취소여부		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCrdImmWthdrMst" resultClass="java.util.HashMap" parameterMap="paramSaveCrdImmWthdrMst">
+		{call PKG_RTRE0200.p_InsertRtre0200CrdImmWthdrMst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금결제 상세 저장 -->
+	<parameterMap id="paramSaveCrdImmWthdrDtl" class="java.util.HashMap">
+		<parameter property="rcrdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 카드수납일련번호	-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="schdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구순번			-->
+		<parameter property="recpTp"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구구분			-->
+		<parameter property="zfbdt"			jdbcType="VARCHAR" mode="IN"/>	<!-- 청구일자			-->
+		<parameter property="saleAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구금액			-->
+		<parameter property="arreAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 미납금액			-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCrdImmWthdrDtl" resultClass="java.util.HashMap" parameterMap="paramSaveCrdImmWthdrDtl">
+		{call PKG_RTRE0200.p_InsertRtre0201CrdImmWthdrDtl(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금결제 카드정보 저장 -->
+	<parameterMap id="paramSaveCrdImmWthdrCrd" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="secCrdNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 카드번호		-->
+		<parameter property="crdCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 카드사코드	-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCrdImmWthdrCrd" resultClass="java.util.HashMap" parameterMap="paramSaveCrdImmWthdrCrd">
+		{call PKG_RTRE0200.p_InsertRtre0202CrdImmWthdrCrd(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금 수납처리 -->
+	<parameterMap id="paramCreateRcrdReceive" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.createRcrdReceive" resultClass="java.util.HashMap" parameterMap="paramCreateRcrdReceive">
+		{call PKG_RTRE0200.p_CreateRTRE0200RcrdReceive(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금결제이력 수납일련번호 채번 -->
+	<parameterMap id="paramGet0200HstRcrdSeq" class="java.util.Map">
+		<parameter property="rcrdSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0200HstRcrdSeq" />
+	</parameterMap>
+	<resultMap id="resultGet0200HstRcrdSeq" class="java.util.Map">
+		<result property="rcrdSeq" column="RCRD_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0200HstRcrdSeq" parameterMap="paramGet0200HstRcrdSeq">
+		{call ? := PKG_RTRE0200.f_sRtre0200HstRcrdSeq()}
+	</procedure>
+	
+	<!-- 카드즉시출금결제이력 저장 -->
+	<parameterMap id="paramSaveCardPaymentHst" class="java.util.HashMap">
+		<parameter property="rcrdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납일련번호			-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호		-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호				-->
+		<parameter property="recpAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납금액				-->
+		<parameter property="email"			jdbcType="VARCHAR" mode="IN"/>	<!-- 주문자 E-Mail			-->
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호				-->
+		<parameter property="secCrdNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 카드번호				-->
+		<parameter property="crdCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 카드사코드			-->
+		<parameter property="crdNm"			jdbcType="VARCHAR" mode="IN"/>	<!-- 카드사명				-->
+		<parameter property="appTime"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결제승인시간			-->
+		<parameter property="appNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 승인번호				-->
+		<parameter property="noinf"			jdbcType="VARCHAR" mode="IN"/>	<!-- 무이자할부여부			-->
+		<parameter property="noinfType"		jdbcType="VARCHAR" mode="IN"/>	<!-- 무이자할부 이벤트 구분	-->
+		<parameter property="quota"			jdbcType="VARCHAR" mode="IN"/>	<!-- 할부개월				-->
+		<parameter property="resCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 결과코드				-->
+		<parameter property="resMsg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결과내용				-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID				-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCardPaymentHst" resultClass="java.util.HashMap" parameterMap="paramSaveCardPaymentHst">
+		{call PKG_RTRE0200.p_InsertRtre0200CrdImmWthdrHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금취소 저장 -->
+	<parameterMap id="paramSaveCrdImmWthdrCancel" class="java.util.HashMap">
+		<parameter property="rcrdDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 카드수납일자		-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납거래번호		-->
+		<parameter property="cncRseq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납취소거래번호	-->
+		<parameter property="cncTno"		jdbcType="VARCHAR" mode="IN"/>	<!-- KCP취소거래번호	-->
+		<parameter property="prtCncRmnnAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 수납취소후남은금액	-->
+		<parameter property="refundYn"		jdbcType="VARCHAR" mode="IN"/>	<!-- 환불여부			-->
+		<parameter property="chgId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 변경자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCrdImmWthdrCancel" resultClass="java.util.HashMap" parameterMap="paramSaveCrdImmWthdrCancel">
+		{call PKG_RTRE0200.p_UpdateRtre0200CrdCancel(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 카드즉시출금취소이력 거래취소번호 채번 -->
+	<parameterMap id="paramGet0200HstCncSeq" class="java.util.Map">
+		<parameter property="cncSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0200HstCncSeq" />
+		<parameter property="tno"	 jdbcType="VARCHAR" mode="IN"/> <!-- 거래번호 -->
+	</parameterMap>
+	<resultMap id="resultGet0200HstCncSeq" class="java.util.Map">
+		<result property="cncSeq" column="CNC_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0200HstCncSeq" parameterMap="paramGet0200HstCncSeq">
+		{call ? := PKG_RTRE0200.f_sRtre0200HstCncSeq(?)}
+	</procedure>
+	
+	<!-- 카드즉시출금취소이력 저장 -->
+	<parameterMap id="paramSaveCardCancelHst" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="cncSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 거래취소순번	-->
+		<parameter property="modType"		jdbcType="VARCHAR" mode="IN"/>	<!-- 요청종류		-->
+		<parameter property="modMny"		jdbcType="NUMERIC" mode="IN"/>	<!-- 취소요청금액	-->
+		<parameter property="remMny"		jdbcType="NUMERIC" mode="IN"/>	<!-- 취소가능금액	-->
+		<parameter property="modDesc"		jdbcType="VARCHAR" mode="IN"/>	<!-- 취소사유		-->
+		<parameter property="resCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 결과코드		-->
+		<parameter property="resMsg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결과내용		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveCardCancelHst" resultClass="java.util.HashMap" parameterMap="paramSaveCardCancelHst">
+		{call PKG_RTRE0200.p_InsertRtre0200CrdCancelHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제 수납일련번호 채번 -->
+	<parameterMap id="paramGet0210RactSeq" class="java.util.Map">
+		<parameter property="ractSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0210RactSeq" />
+	</parameterMap>
+	<resultMap id="resultGet0210RactSeq" class="java.util.Map">
+		<result property="ractSeq" column="RACT_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0210RactSeq" parameterMap="paramGet0210RactSeq">
+		{call ? := PKG_RTRE0210.f_sRtre0210RactSeq()}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제 주문일련번호 채번 -->
+	<parameterMap id="paramGet0210POidSeq" class="java.util.Map">
+		<parameter property="pOidSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0210POidSeq" />
+		<parameter property="tordNo"  jdbcType="VARCHAR" mode="IN"/> <!-- 계약번호 -->
+	</parameterMap>
+	<resultMap id="resultGet0210POidSeq" class="java.util.Map">
+		<result property="pOidSeq" column="P_OID_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0210POidSeq" parameterMap="paramGet0210POidSeq">
+		{call ? := PKG_RTRE0210.f_sRtre0210POidSeq(?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제 저장 -->
+	<parameterMap id="paramSaveAccImmWthdrMst" class="java.util.HashMap">
+		<parameter property="ractSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 계좌수납일련번호	-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="recpAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납금액			-->
+		<parameter property="recpTp"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구구분			-->
+		<parameter property="recpPay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납방법			-->
+		<parameter property="recpFg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납유형			-->
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호			-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 계좌수납거래번호	-->
+		<parameter property="cncStat"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납취소여부		-->
+		<parameter property="pOidSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 주문일련번호		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccImmWthdrMst" resultClass="java.util.HashMap" parameterMap="paramSaveAccImmWthdrMst">
+		{call PKG_RTRE0210.p_InsertRtre0210AccImmWthdrMst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제 상세 저장 -->
+	<parameterMap id="paramSaveAccImmWthdrDtl" class="java.util.HashMap">
+		<parameter property="ractSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 계좌수납일련번호	-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="schdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구순번			-->
+		<parameter property="recpTp"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구구분			-->
+		<parameter property="zfbdt"			jdbcType="VARCHAR" mode="IN"/>	<!-- 청구일자			-->
+		<parameter property="saleAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구금액			-->
+		<parameter property="arreAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 미납금액			-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccImmWthdrDtl" resultClass="java.util.HashMap" parameterMap="paramSaveAccImmWthdrDtl">
+		{call PKG_RTRE0210.p_InsertRtre0211AccImmWthdrDtl(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제 계좌정보 저장 -->
+	<parameterMap id="paramSaveAccImmWthdrAcc" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="secBnkNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 계좌번호		-->
+		<parameter property="bnkCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 은행코드		-->
+		<parameter property="custNm"		jdbcType="VARCHAR" mode="IN"/>	<!-- 예금주명		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccImmWthdrAcc" resultClass="java.util.HashMap" parameterMap="paramSaveAccImmWthdrAcc">
+		{call PKG_RTRE0210.p_InsertRtre0212AccImmWthdrAcc(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금 수납처리 -->
+	<parameterMap id="paramCreateRactReceive" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.createRactReceive" resultClass="java.util.HashMap" parameterMap="paramCreateRactReceive">
+		{call PKG_RTRE0210.p_CreateRTRE0210RactReceive(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제이력 수납일련번호 채번 -->
+	<parameterMap id="paramGet0210HstReqSeq" class="java.util.Map">
+		<parameter property="reqSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0210HstReqSeq" />
+		<parameter property="ordCd"	 jdbcType="VARCHAR" mode="IN"/> <!-- 계약번호 -->
+		<parameter property="custNo" jdbcType="VARCHAR" mode="IN"/> <!-- 고객번호 -->
+	</parameterMap>
+	<resultMap id="resultGet0210HstReqSeq" class="java.util.Map">
+		<result property="reqSeq" column="REQ_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0210HstReqSeq" parameterMap="paramGet0210HstReqSeq">
+		{call ? := PKG_RTRE0210.f_sRtre0210HstReqSeq(?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금결제이력 저장 -->
+	<parameterMap id="paramSaveAccPaymentHst" class="java.util.HashMap">
+		<parameter property="reqSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 요청순번		-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호		-->
+		<parameter property="ordCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호		-->
+		<parameter property="workGb"		jdbcType="VARCHAR" mode="IN"/>	<!-- 요청업무		-->
+		<parameter property="method"		jdbcType="VARCHAR" mode="IN"/>	<!-- 메소드명		-->
+		<parameter property="payGb"			jdbcType="VARCHAR" mode="IN"/>	<!-- 업무구분		-->
+		<parameter property="pMid"			jdbcType="VARCHAR" mode="IN"/>	<!-- 상점아이디	-->
+		<parameter property="pOid"			jdbcType="VARCHAR" mode="IN"/>	<!-- 주문번호		-->
+		<parameter property="pTrDt"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래일자		-->
+		<parameter property="pTrTime"		jdbcType="VARCHAR" mode="IN"/>	<!-- 거래시간		-->
+		<parameter property="pAccNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 계좌번호		-->
+		<parameter property="pBankCd"		jdbcType="VARCHAR" mode="IN"/>	<!-- 은행코드		-->
+		<parameter property="pCustId"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객id		-->
+		<parameter property="pCustNm"		jdbcType="VARCHAR" mode="IN"/>	<!-- 예금주명		-->
+		<parameter property="pUname"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결제고객성명	-->
+		<parameter property="pGoods"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결제상품명	-->
+		<parameter property="pAmt"			jdbcType="NUMERIC" mode="IN"/>	<!-- 거래금액		-->
+		<parameter property="pRm"			jdbcType="VARCHAR" mode="IN"/>	<!-- 생년월일		-->
+		<parameter property="pBname"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통장인자명	-->
+		<parameter property="pHash"			jdbcType="VARCHAR" mode="IN"/>	<!-- Hash데이터	-->
+		<parameter property="pTrNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="pSatus"		jdbcType="VARCHAR" mode="IN"/>	<!-- 거래상태		-->
+		<parameter property="pErrCd"		jdbcType="VARCHAR" mode="IN"/>	<!-- 거절코드		-->
+		<parameter property="pRmesg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 메시지		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccPaymentHst" resultClass="java.util.HashMap" parameterMap="paramSaveAccPaymentHst">
+		{call PKG_RTRE0210.p_InsertRtre0210AccImmWthdrHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 취소시퀀스 -->
+	<parameterMap id="paramGetCncRSeq" class="java.util.Map">
+		<parameter property="cncRseq" jdbcType="INTEGER" mode="OUT" resultMap="resultGetCncRSeq"/>
+	</parameterMap>
+	<resultMap id="resultGetCncRSeq" class="java.util.Map">
+		<result property="cncRseq" column="RPC_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.getCncRSeq" parameterMap="paramGetCncRSeq">
+		{call ? := Pkg_Rtre0041.f_sRtre0041RecvSeq()}		
+	</procedure>
+	
+	<!-- 계좌즉시출금취소 저장 -->
+	<parameterMap id="paramSaveAccImmWthdrCancel" class="java.util.HashMap">
+		<parameter property="ractDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 카드수납일자		-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납거래번호		-->
+		<parameter property="cncRseq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납취소거래번호	-->
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호			-->
+		<parameter property="prtCncRmnnAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 수납취소후남은금액	-->
+		<parameter property="refundYn"		jdbcType="VARCHAR" mode="IN"/>	<!-- 환불여부			-->
+		<parameter property="chgId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 변경자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccImmWthdrCancel" resultClass="java.util.HashMap" parameterMap="paramSaveAccImmWthdrCancel">
+		{call PKG_RTRE0210.p_UpdateRtre0210AccCancel(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금취소이력 거래취소번호 채번 -->
+	<parameterMap id="paramGet0210HstCncSeq" class="java.util.Map">
+		<parameter property="cncSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0210HstCncSeq" />
+		<parameter property="tno"	 jdbcType="VARCHAR" mode="IN"/> <!-- 거래번호 -->
+	</parameterMap>
+	<resultMap id="resultGet0210HstCncSeq" class="java.util.Map">
+		<result property="cncSeq" column="CNC_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0210HstCncSeq" parameterMap="paramGet0210HstCncSeq">
+		{call ? := PKG_RTRE0210.f_sRtre0210HstCncSeq(?)}
+	</procedure>
+	
+	<!-- 계좌즉시출금취소이력 저장 -->
+	<parameterMap id="paramSaveAccImmWthdrCancelHst" class="java.util.HashMap">
+		<parameter property="tno"			jdbcType="VARCHAR" mode="IN"/>	<!-- 거래번호		-->
+		<parameter property="cncSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 거래취소번호	-->
+		<parameter property="modType"		jdbcType="VARCHAR" mode="IN"/>	<!-- 요청종류		-->
+		<parameter property="modMny"		jdbcType="NUMERIC" mode="IN"/>	<!-- 취소요청금액	-->
+		<parameter property="remMny"		jdbcType="NUMERIC" mode="IN"/>	<!-- 취소가능금액	-->
+		<parameter property="modDesc"		jdbcType="VARCHAR" mode="IN"/>	<!-- 취소사유		-->
+		<parameter property="resCd"			jdbcType="VARCHAR" mode="IN"/>	<!-- 결과코드		-->
+		<parameter property="resMsg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결과내용		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID		-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.saveAccCancelHst" resultClass="java.util.HashMap" parameterMap="paramSaveAccImmWthdrCancelHst">
+		{call PKG_RTRE0210.p_InsertRtre0210AccCancelHst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌발급 요청일련번호 채번 -->
+	<parameterMap id="paramGet0220RvaSeq" class="java.util.Map">
+		<parameter property="rvaSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0220RvaSeq" />
+	</parameterMap>
+	<resultMap id="resultGet0220RvaSeq" class="java.util.Map">
+		<result property="rvaSeq" column="RVA_SEQ"/>
+	</resultMap>
+	<procedure id="paymentComm.get0220RvaSeq" parameterMap="paramGet0220RvaSeq">
+		{call ? := PKG_RTRE0220.f_sRtre0220RvaSeq()}
+	</procedure>
+	
+	<!-- 가상계좌번호 추출 -->
+	<parameterMap id="paramGet0220AcctNo" class="java.util.Map">
+		<parameter property="acctNo" jdbcType="VARCHAR" mode="OUT" resultMap="resultGet0220AcctNo" />
+		<parameter property="bankCd" jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+	<resultMap id="resultGet0220AcctNo" class="java.util.Map">
+		<result property="acctNo" column="ACCT_NO"/>
+	</resultMap>
+	<procedure id="paymentComm.get0220AcctNo" parameterMap="paramGet0220AcctNo">
+		{call ? := PKG_RTRE0220.f_sRtre0220AcctNo(?)}
+	</procedure>
+	
+	<!-- 가상계좌(VAN) 발급 Insert -->
+	<parameterMap id="paramVaccIssuedMst" class="java.util.HashMap">
+		<parameter property="rvaSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 요청일련번호		-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="custNm"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객명			-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="rvaAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 요청금액			-->
+		<parameter property="bankCd"		jdbcType="VARCHAR" mode="IN"/>	<!-- 은행코드			-->
+		<parameter property="acctNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 가상계좌번호		-->
+		<parameter property="expiryAcc"		jdbcType="VARCHAR" mode="IN"/>	<!-- 결제만료일		-->
+		<parameter property="dpsNm"			jdbcType="VARCHAR" mode="IN"/>	<!-- 입금자명			-->
+		<parameter property="smsSendTrgtNo"	jdbcType="VARCHAR" mode="IN"/>	<!-- SMS발송대상번호	-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.vaccIssuedMst" resultClass="java.util.HashMap" parameterMap="paramVaccIssuedMst">
+		{call PKG_RTRE0220.p_InsertRtre0220VaccIssuedMst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌(VAN) 상세 발급 Insert -->
+	<parameterMap id="paramVaccIssuedDtl" class="java.util.HashMap">
+		<parameter property="rvaSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 요청일련번호		-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="tordNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 통합청구계약번호	-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="schdSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구순번			-->
+		<parameter property="recpTp"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구구분			-->
+		<parameter property="demdDt"		jdbcType="VARCHAR" mode="IN"/>	<!-- 청구일자			-->
+		<parameter property="zfbdt"			jdbcType="VARCHAR" mode="IN"/>	<!-- 만기계산기준일		-->
+		<parameter property="saleAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 청구금액			-->
+		<parameter property="arreAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 연체금액			-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.vaccIssuedDtl" resultClass="java.util.HashMap" parameterMap="paramVaccIssuedDtl">
+		{call PKG_RTRE0220.p_InsertRtre0221VaccIssuedDtl(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌원장 Update -->
+	<parameterMap id="paramVaccIssued" class="java.util.HashMap">
+		<parameter property="bankCd"		jdbcType="VARCHAR" mode="IN"/>	<!-- 은행코드		-->
+		<parameter property="acctNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 가상계좌번호	-->
+		<parameter property="cmfNm"			jdbcType="VARCHAR" mode="IN"/>	<!-- 입금자명		-->
+		<parameter property="trAmt"			jdbcType="NUMERIC" mode="IN"/>	<!-- 총거래금액	-->
+		<parameter property="trendIl"		jdbcType="VARCHAR" mode="IN"/>	<!-- 입금가능만료일	-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="paymentComm.vaccIssued" resultClass="java.util.HashMap" parameterMap="paramVaccIssued">
+		{call PKG_RTRE0220.p_UpdateVacsVactVaccIssued(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

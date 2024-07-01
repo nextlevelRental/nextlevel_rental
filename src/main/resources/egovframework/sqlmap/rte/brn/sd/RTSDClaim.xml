@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="cleim">
+	<resultMap id="claimResultMap" class="java.util.HashMap">
+		<result property="ordNo" column="ORD_NO" /> <!-- 계약번호 -->		
+		<result property="schdSeq" column="SCHD_SEQ" /> <!-- 청구순번 -->	
+		<result property="recpTp" column="RECP_TP" /> <!-- 청구구분 -->	
+		<result property="recpTpNm" column="RECP_TP_NM" /> 	<!-- 청구구분Nm -->	
+		<result property="recpNu" column="RECP_NU" /> <!-- 청구회차 -->	 
+		<result property="scdStat" column="SCD_STAT" /> <!-- 스케줄상태코드 -->	 
+		<result property="scdStatNm" column="SCD_STAT_NM" /> <!-- 스케줄상태 Nm -->
+		<result property="saleAmt" column="SALE_AMT" /> <!-- 매출금액 -->	 
+		<result property="saleNamt" column="SALE_NAMT" /> <!-- 원금 -->	 
+		<result property="saleVamt" column="SALE_VAMT" /> <!--부가세  -->	 
+		<result property="recpAmt" column="RECP_AMT" /> <!-- 수납금액(VAT포함) -->	 
+		<result property="arreAmt" column="ARRE_AMT" /> <!-- 연체금액(VAT포함) -->	 
+		<result property="demdDt" column="DEMD_DT" /> <!-- 청구일자 -->	 
+		<result property="zlspr" column="ZLSPR" /> <!-- 청구보류 -->	 
+		<result property="rcDay" column="RC_DAY" /> <!-- 수납일자 -->	 
+		<result property="rcYn" column="RC_YN" /> <!-- 수납여부 -->	 
+		<result property="taxDt" column="TAX_DT" /> <!-- 세금계산서발행일자 -->	 
+		<result property="taxNo" column="TAX_NO" /> <!-- 세금계산서번호 -->	 
+		<result property="canclDay" column="CANCL_DAY" /> <!-- 중도완납일 -->
+		<result property="begDay" column="BEG_DAY" /> <!-- 중도완납일 -->
+		<result property="endDay" column="END_DAY" /> <!-- 중도완납일 -->
+		<result property="zfbDay" column="ZFB_DAY" /> <!-- 만기계산기준일 -->	 
+		<result property="custNo" column="CUST_NO" /> <!-- 고객번호 -->	 
+		<result property="salesGroup" column="SALES_GROUP" /> <!-- 지사 -->	 
+		<result property="salesOffice" column="SALES_OFFICE" /> <!-- 지점 -->	 
+		<result property="agencyCd" column="AGENCY_CD" /> <!-- 장착대리점 -->
+		<result property="delayYn" column="DELAY_YN" /> <!-- 연체이자적용여부 -->	 
+		<result property="delayRate" column="DELAY_RATE" /> <!-- 연체 이자율 -->	 
+		<result property="useYn" column="USE_YN" /> <!-- 사용여부 -->	 
+		<result property="regId" column="REG_ID" /> <!-- 등록자 ID -->	 
+		<result property="regDt" column="REG_DT" /> <!-- 등록일 -->	 
+		<result property="chgId" column="CHG_ID" /> <!-- 변경자ID -->	 
+		<result property="chgDt" column="CHG_DT" /> <!-- 변경일 -->	   
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>
+	
+	<parameterMap id="param" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="claimResultMap" />         
+		<parameter property="demdFdt" 	jdbcType="VARCHAR" mode="IN" /> <!-- 청구일자 시작 -->
+		<parameter property="demdTdt" 	jdbcType="VARCHAR" mode="IN" /> <!-- 청구일자 종료 -->
+		<parameter property="salesGroup" jdbcType="VARCHAR" mode="IN" /> <!-- 지사 -->
+		<parameter property="salesOffice" jdbcType="VARCHAR" mode="IN" /> <!-- 지점 -->
+		<parameter property="agencyCd" jdbcType="VARCHAR" mode="IN" /> <!-- 장착 대리점 -->
+		<parameter property="ordNo" jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호 -->
+		<parameter property="custNo" jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+		<parameter property="scdStat" jdbcType="VARCHAR" mode="IN" /> <!-- 스케줄상태코드 -->
+		<parameter property="recpTp" jdbcType="VARCHAR" mode="IN" /> <!-- 청구구분 -->      
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->      
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->       
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->  
+	</parameterMap> 
+	
+	<procedure id="claim.listClaim" parameterMap="param">
+		{call
+		Pkg_Rtsd0109.p_sRtsd0109(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info7_advice" classname="RTSDContractStatus_tab_info7_advice" left="0" top="0" width="1147" height="150" titletext="[STEP7]상담내역">
+    <Layouts>
+      <Layout>
+        <Static id="Static09" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="1" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_adviceCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

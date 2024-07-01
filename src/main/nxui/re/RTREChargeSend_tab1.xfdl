@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREChargeSend_tab1" classname="test_form" left="0" top="0" width="1147" height="496" titletext="벤더정보업데이트" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static02" taborder="16" cssclass="Guide_color" visible="false" left="0" top="87" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static06" taborder="18" text="업로드자료" cssclass="sta_WF_subTitle" left="10" top="72" width="84" height="20"/>
+        <Static id="Static03" taborder="22" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="23" cssclass="Guide_color" visible="false" left="8" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_HomeShoppingList" taborder="24" binddataset="ds_vendorList" useinputpanel="false" suppresslevel="allcompare" oncellclick="grid_closeList_oncellclick" left="9" top="96" width="1098" height="341">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="벤더코드"/>
+                <Cell col="1" text="벤더명"/>
+                <Cell col="2" text="전화번호"/>
+                <Cell col="3" text="휴대폰번호"/>
+                <Cell col="4" text="대리점코드"/>
+                <Cell col="5" text="세금계산서"/>
+                <Cell col="6" text="렌탈지사"/>
+                <Cell col="7" text="렌탈지점"/>
+                <Cell col="8" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:lifnr"/>
+                <Cell col="1" displaytype="normal" text="bind:vndrNm"/>
+                <Cell col="2" displaytype="normal" text="bind:telNo"/>
+                <Cell col="3" displaytype="normal" text="bind:mobNo"/>
+                <Cell col="4" displaytype="normal" text="bind:agencyCd"/>
+                <Cell col="5" displaytype="normal" text="bind:taxRqcd"/>
+                <Cell col="6" displaytype="normal" text="bind:rntOfc"/>
+                <Cell col="7" displaytype="normal" text="bind:rntPnt"/>
+                <Cell col="8" displaytype="normal" text="bind:useYn"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총"/>
+                <Cell col="1" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="25" left="9" top="10" width="1098" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_procDay" taborder="120" text="업로드 엑셀파일" cssclass="sta_WF_schTitle" left="31" top="12" width="108" height="21"/>
+              <Static id="Static26" taborder="121" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="122" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="123" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Button id="btn_fileChoice" taborder="124" text="파일선택" onclick="div_search_btn_fileChoice_onclick" left="169" top="12" width="100" height="21"/>
+              <Static id="Static00" taborder="125" text="FIX w20" cssclass="Guide_color" visible="false" left="149" top="0" width="20" height="45"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static07" taborder="26" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_excelUp">
+        <ColumnInfo>
+          <Column id="COL_01" type="STRING" size="256"/>
+          <Column id="COL_02" type="STRING" size="256"/>
+          <Column id="COL_03" type="STRING" size="256"/>
+          <Column id="COL_04" type="STRING" size="256"/>
+          <Column id="COL_05" type="STRING" size="256"/>
+          <Column id="COL_06" type="STRING" size="256"/>
+          <Column id="COL_07" type="STRING" size="256"/>
+          <Column id="COL_08" type="STRING" size="256"/>
+          <Column id="COL_09" type="STRING" size="256"/>
+          <Column id="COL_10" type="STRING" size="256"/>
+          <Column id="COL_11" type="STRING" size="256"/>
+          <Column id="COL_12" type="STRING" size="256"/>
+          <Column id="COL_13" type="STRING" size="256"/>
+          <Column id="COL_14" type="STRING" size="256"/>
+          <Column id="COL_15" type="STRING" size="256"/>
+          <Column id="COL_16" type="STRING" size="256"/>
+          <Column id="COL_17" type="STRING" size="256"/>
+          <Column id="COL_18" type="STRING" size="256"/>
+          <Column id="COL_19" type="STRING" size="256"/>
+          <Column id="COL_20" type="STRING" size="256"/>
+          <Column id="COL_21" type="STRING" size="256"/>
+          <Column id="COL_22" type="STRING" size="256"/>
+          <Column id="COL_23" type="STRING" size="256"/>
+          <Column id="COL_24" type="STRING" size="256"/>
+          <Column id="COL_25" type="STRING" size="256"/>
+          <Column id="COL_26" type="STRING" size="256"/>
+          <Column id="COL_27" type="STRING" size="256"/>
+          <Column id="COL_28" type="STRING" size="256"/>
+          <Column id="COL_29" type="STRING" size="256"/>
+          <Column id="COL_30" type="STRING" size="256"/>
+          <Column id="COL_31" type="STRING" size="256"/>
+          <Column id="COL_32" type="STRING" size="256"/>
+          <Column id="COL_33" type="STRING" size="256"/>
+          <Column id="COL_34" type="STRING" size="256"/>
+          <Column id="COL_35" type="STRING" size="256"/>
+          <Column id="COL_36" type="STRING" size="256"/>
+          <Column id="COL_37" type="STRING" size="256"/>
+          <Column id="COL_38" type="STRING" size="256"/>
+          <Column id="COL_39" type="STRING" size="256"/>
+          <Column id="COL_40" type="STRING" size="256"/>
+          <Column id="COL_41" type="STRING" size="256"/>
+          <Column id="COL_42" type="STRING" size="256"/>
+          <Column id="COL_43" type="STRING" size="256"/>
+          <Column id="COL_44" type="STRING" size="256"/>
+          <Column id="COL_45" type="STRING" size="256"/>
+          <Column id="COL_46" type="STRING" size="256"/>
+          <Column id="COL_47" type="STRING" size="256"/>
+          <Column id="COL_48" type="STRING" size="256"/>
+          <Column id="COL_49" type="STRING" size="256"/>
+          <Column id="COL_50" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_vendorList">
+        <ColumnInfo>
+          <Column id="lifnr" type="STRING" size="256"/>
+          <Column id="vndrNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="taxRqcd" type="STRING" size="256"/>
+          <Column id="piDstryYn" type="STRING" size="256"/>
+          <Column id="rntOfc" type="STRING" size="256"/>
+          <Column id="rntPnt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+
+this.url = application.services["svcurl"].url+"XImport";	// 엑셀 import용 URL
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if (nErrorCode < 0)	{
+		this.alert(strErrorMsg);
+		return;
+	}
+	
+	switch (strSvcId){
+		case "saveVendorList":
+			this.alert("저장이 완료되었습니다.");
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.fn_init();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.fn_initBtn();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.parent.parent.setButton("C",this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var sSvcID      	= "saveVendorList";  
+	var sController   	= "ntrms/re/saveVendorList.do";
+	var sInDatasets   	= "input=ds_vendorList:A";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/**
+ * 파일선택 버튼의 클릭 이벤트 처리
+ */
+this.div_search_btn_fileChoice_onclick = function(obj,e) {
+
+	this.ds_excelUp.clearData();
+
+	if(this.importObj) 
+	{ 
+		this.importObj.destroy(); 
+		this.importObj = null; 
+	}
+	
+	this.importObj = new nexacro.ExcelImportObject("Import01",this);
+	this.importObj.parent.addChild("Import01",this.importObj);
+	this.importObj.set_importtype(nexacro.ImportTypes.EXCEL);
+	this.importObj.addEventHandler("onsuccess", this.Import01_onsuccess, this);
+	this.importObj.addEventHandler("onerror", this.Import01_onerror, this);
+	this.importObj.set_importurl(this.url);
+	this.importObj.importData("", "[command=getsheetdata;Output=ds_excelUp;body=!A2:AZ;]", "[ds_excelUp=ds_excelUp]","");
+
+	Ex.core.set_wait(true);
+}
+
+/**
+ * 엑셀업로드 성공 시 처리
+ */
+this.Import01_onsuccess = function(obj,e) {
+
+	// 엑셀업로드 데이터셋을 가계약목록 데이터셋으로 복사
+	if (this.fn_copyUpDataset()) {
+		this.alert("엑셀 데이터 READ 완료!");
+	} else {
+		this.alert("업로드 데이터 복사 실패!");
+	}
+	
+	Ex.core.set_wait(false);
+}
+
+/**
+ * 엑셀업로드 실패 시 처리
+ */
+this.Import01_onerror = function(obj,e) {
+	this.alert("엑셀업로드 실패!");
+	
+	Ex.core.set_wait(false);
+}
+
+/**
+ * 엑셀업로드 데이터셋을 벤더목록 데이터셋으로 복사
+ */
+this.fn_copyUpDataset = function () {
+	
+	this.ds_vendorList.clearData();
+	this.ds_vendorList.set_enableevent(false);
+
+	for (var i=0; i < this.ds_excelUp.getRowCount(); i++) {
+		var idxAddRow     = this.ds_vendorList.addRow();		
+		
+		this.ds_vendorList.setColumn(idxAddRow, "lifnr", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(0))));
+		this.ds_vendorList.setColumn(idxAddRow, "vndrNm", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(1))));
+		this.ds_vendorList.setColumn(idxAddRow, "telNo", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(2))));
+		this.ds_vendorList.setColumn(idxAddRow, "mobNo", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(3))));
+		this.ds_vendorList.setColumn(idxAddRow, "agencyCd", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(4))));
+		this.ds_vendorList.setColumn(idxAddRow, "taxRqcd", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(5))));
+		this.ds_vendorList.setColumn(idxAddRow, "rntOfc", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(7))));
+		this.ds_vendorList.setColumn(idxAddRow, "rntPnt", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(9))));
+		this.ds_vendorList.setColumn(idxAddRow, "piDstryYn", "N");
+		this.ds_vendorList.setColumn(idxAddRow, "useYn", this.ds_excelUp.getColumn(idxAddRow, nvl(this.ds_excelUp.getColID(11))));		
+	}
+	
+	this.ds_vendorList.set_enableevent(true);
+
+	return true;
+}
+]]></Script>
+  </Form>
+</FDL>

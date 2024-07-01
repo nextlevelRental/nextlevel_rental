@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAllowancePay" classname="RTREAllowancePay" left="0" top="0" width="1147" height="496" titletext="충당금 지급관리" onload="RTREAllowancePay_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_agency" taborder="12" text="대리점코드" cssclass="sta_WF_schTitle" left="8" top="10" width="100" height="21"/>
+              <Static id="Static03" taborder="13" cssclass="Guide_color" visible="false" left="371" top="0" width="30" height="44"/>
+              <Static id="Static22" taborder="14" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static02" taborder="15" cssclass="Guide_color" visible="false" left="0" top="30" right="0" height="12"/>
+              <Edit id="ed_agencyCd" taborder="16" onchanged="div_search_ed_agencyCd_onchanged" left="112" top="10" width="120" height="21"/>
+              <Edit id="ed_agencyNm" taborder="17" enable="false" left="251" top="10" width="120" height="21"/>
+              <Button id="bt_agency" taborder="18" onclick="div_search_bt_agency_onclick" cssclass="btn_WF_edtSch" left="231" top="9" width="21" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="1" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="2" text="지급내역" cssclass="sta_WF_subTitle" left="0" top="61" width="169" height="20"/>
+        <Grid id="grid_rtcs0202" taborder="3" binddataset="ds_payList" useinputpanel="false" cellsizingtype="col" autofittype="col" nodatatext="조회된 데이터가 없습니다." onselectchanged="grid_rtcs0202_onselectchanged" left="0" top="86" width="1122" height="306">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="67"/>
+                <Column size="40"/>
+                <Column size="73"/>
+                <Column size="122"/>
+                <Column size="71"/>
+                <Column size="91"/>
+                <Column size="173"/>
+                <Column size="60"/>
+                <Column size="84"/>
+                <Column size="121"/>
+                <Column size="80"/>
+                <Column size="118"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="등록년월"/>
+                <Cell col="1" text="순번"/>
+                <Cell col="2" text="대리점코드"/>
+                <Cell col="3" text="대리점명"/>
+                <Cell col="4" text="지급일자"/>
+                <Cell col="5" text="지급금액"/>
+                <Cell col="6" text="지급사유"/>
+                <Cell col="7" text="사용여부"/>
+                <Cell col="8" text="등록자"/>
+                <Cell col="9" text="등록일시"/>
+                <Cell col="10" text="수정자"/>
+                <Cell col="11" text="수정일시"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:regYm" mask="####-##" tooltiptext="bind:awSeq"/>
+                <Cell col="1" text="bind:regSeq" tooltiptext="bind:agencyCd"/>
+                <Cell col="2" text="bind:agencyCd" tooltiptext="bind:agencyNm"/>
+                <Cell col="3" text="bind:agencyNm"/>
+                <Cell col="4" displaytype="date" text="bind:payDay" tooltiptext="bind:warehCd"/>
+                <Cell col="5" style="align:right;" text="bind:payAmt" tooltiptext="bind:warehNm"/>
+                <Cell col="6" displaytype="normal" text="bind:payMsg" calendardisplaynulltype="none" tooltiptext="bind:begday"/>
+                <Cell col="7" displaytype="normal" text="bind:useYn" calendardisplaynulltype="none" tooltiptext="bind:endday"/>
+                <Cell col="8" text="bind:regId" tooltiptext="bind:useYn"/>
+                <Cell col="9" text="bind:regDt" mask="####-##-## ##:##:##"/>
+                <Cell col="10" text="bind:chgId"/>
+                <Cell col="11" text="bind:chgDt" mask="####-##-## ##:##:##"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" text="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="4" cssclass="sta_WF_detailLabel2" left="0" top="435" width="1122" height="31"/>
+        <Static id="st_payDay" taborder="5" text="지급일자" cssclass="sta_WF_detailLabelP" left="448" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_payAmt" taborder="6" text="지급금액" cssclass="sta_WF_detailLabelP" left="718" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_agency" taborder="7" text="대리점코드" cssclass="sta_WF_detailLabelP" left="0" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static05" taborder="8" cssclass="sta_WF_detailLabel2" left="0" top="465" width="1122" height="31"/>
+        <Static id="st_payMsg" taborder="10" text="지급사유" cssclass="sta_WF_detailLabelP" left="0" top="465" width="100" height="31" domainId="nexa.s_condition"/>
+        <Button id="btn_delete" taborder="11" text="삭제" onclick="btn_delete_onclick" left="1081" top="405" width="41" height="21" domainId="nexa.save"/>
+        <Button id="btn_insert" taborder="12" text="신규" onclick="btn_insert_onclick" left="1036" top="405" width="41" height="21" domainId="nexa.save"/>
+        <Calendar id="cal_payDay" taborder="13" dateformat="yyyy-MM-dd" onchanged="cal_begday_onchanged" left="553" top="440" width="160" height="21" style="align:middle;"/>
+        <Combo id="cb_useYn" taborder="15" autoselect="true" innerdataset="ds_useYn" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="823" top="470" width="160" height="21"/>
+        <Static id="Static11" taborder="16" text="새부내용" cssclass="sta_WF_subTitle" left="0" top="407" width="169" height="20"/>
+        <Edit id="ed_agencyCd" taborder="17" enable="false" left="104" top="440" width="88" height="21"/>
+        <Button id="bt_agency" taborder="18" onclick="bt_agency_onclick" cssclass="btn_WF_edtSch" enable="true" left="190" top="439" width="21" height="21"/>
+        <Edit id="ed_agencyNm" taborder="19" enable="false" left="210" top="440" width="232" height="21"/>
+        <Static id="Static00" taborder="23" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="st_useYn00" taborder="24" text="사용여부" cssclass="sta_WF_detailLabelP" left="718" top="465" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_payMsg" taborder="25" left="104" top="470" width="610" height="21" maxlength="100"/>
+        <MaskEdit id="ed_payAmt" taborder="26" mask="###,###,##0" left="823" top="440" width="160" height="21"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item2" compid="cal_payDay" propid="value" datasetid="ds_payList" columnid="payDay"/>
+      <BindItem id="item3" compid="cb_useYn" propid="value" datasetid="ds_payList" columnid="useYn"/>
+      <BindItem id="item0" compid="ed_agencyCd" propid="value" datasetid="ds_payList" columnid="agencyCd"/>
+      <BindItem id="item1" compid="ed_agencyNm" propid="value" datasetid="ds_payList" columnid="agencyNm"/>
+      <BindItem id="item5" compid="ed_payMsg" propid="value" datasetid="ds_payList" columnid="payMsg"/>
+      <BindItem id="item24" compid="ed_payAmt" propid="value" datasetid="ds_payList" columnid="payAmt"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_payList">
+        <ColumnInfo>
+          <Column id="regYm" type="STRING" size="256"/>
+          <Column id="regSeq" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="payDay" type="STRING" size="256"/>
+          <Column id="payAmt" type="STRING" size="256"/>
+          <Column id="payMsg" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTREAllowancePay.xfdl
+ * 설    명 : 충당금 지급내역 관리
+ * 작 성 자 : wjim
+ * 변경이력 
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * ---------------------------------
+ * 2017-11-23	wjim		[20171117_02] 신규 개발
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTREAllowancePay_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	// 화면 초기화
+	Ex.core.init(obj);
+	// 상단 공통버튼 세팅 (조회, 저장, 엑셀)
+	this.parent.setButton("E|C|S", this);
+	
+}
+
+/**
+ * 조회조건-대리점 찾기 버튼 클릭 이벤트 처리
+ * - 대리점조회 화면이 팝업
+ */
+this.div_search_bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args = {p_arg : "RTCSWarehAgencyRegister_select"};	// [대리점 창고 관리] 화면 참고
+	Ex.core.popup(this, "대리점 조회", "comm::RTCOMMAgency_pop.xfdl", args, "modaless=false");
+}
+
+/**
+ * 조회조건-대리점 찾기 결과 처리
+ * - 대리점조회 팝업화면에서 선택한 정보가 조회조건에 세팅
+ */ 
+this.returnAgencyCdSelect = function(res) {
+	this.div_search.ed_agencyCd.set_value(res[0]);	//대리점코드
+	this.div_search.ed_agencyNm.set_value(res[1]);	//대리점명
+}
+
+/**
+ * '조회' 버튼의 클릭 이벤트 처리
+ */
+this.fn_search = function() {
+	// 기존 조회결과 초기화
+	this.ds_payList.deleteAll();
+	
+	var agencyCd = nvl(this.div_search.ed_agencyCd.value);
+	var userId   = application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+	
+	var sSvcID        	= "listMain";                    
+	var sController   	= "/rtms/re/getAllowancePayList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_payList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("agencyCd", agencyCd);
+	sArgs += Ex.util.setParam("userId", userId);
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/**
+ * '저장' 버튼의 클릭 이벤트 처리
+ */
+this.fn_save = function() {
+	// 저장 필수값 확인
+	if (!this.FN_saveCheckRequired()) {
+		return false;
+	}
+	
+	// 저장대상이 있는지 확인
+	if (!this.FN_saveCheckChange()) {
+		this.alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+	
+	// 저장대상이 1건인지 확인
+	if (!this.FN_saveCheckChangeCount()) {
+		this.alert('변경된 데이터가 1건 이상입니다.');
+		return false;
+	}
+	
+	var sSvcID        	= "saveMain";                    
+	var sController   	= "/rtms/re/saveAllowancePayList.do";
+	var sInDatasets   	= "input=ds_payList:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 저장 필수값 확인
+ */
+this.FN_saveCheckRequired = function(){
+	var returnFlag = true;
+	var cnt = this.ds_payList.getRowCount();
+	var msg = " 값이 없습니다.";
+	
+	for (var i=0; i < cnt; i++) {
+		if ((this.ds_payList.getRowType(i) == 2) || (this.ds_payList.getRowType(i) == 4)) {
+			var agencyCd= nvl(this.ds_payList.getColumn(i,"agencyCd"));
+			var payDay 	= nvl(this.ds_payList.getColumn(i,"payDay"));
+			var useYn 	= nvl(this.ds_payList.getColumn(i,"useYn"));
+			
+			if (agencyCd == "") { 	
+				this.alert("대리점코드" + msg);
+				this.ds_payList.set_rowposition(i);
+				this.ed_agencyCd.setFocus(true);
+				returnFlag = false;
+				break;
+			}
+			if (payDay == "") {
+			 	this.alert("지급일자"   + msg);
+			 	this.ds_payList.set_rowposition(i);
+			 	this.cal_payDay.setFocus(true);
+			 	returnFlag = false;
+			 	break;
+			}
+			if (useYn == "") {
+				this.alert("사용여부"   + msg);
+				this.ds_payList.set_rowposition(i);
+				this.cb_useYn.setFocus(true);
+				returnFlag = false;
+				break;
+			}
+		}
+	}
+	
+	return returnFlag;
+}
+
+/**
+ * 저장대상이 있는지 확인
+ * - 신규, 변경된 행이 있는가?
+ */
+this.FN_saveCheckChange = function() {
+	var returnFlag = true;
+	var cnt = this.ds_payList.getRowCount();
+	
+	for (var i=0; i < cnt; i++) {
+		if ((this.ds_payList.getRowType(i) == 2) || (this.ds_payList.getRowType(i) == 4)) {
+			returnFlag = true;
+			break;
+		} else {
+			returnFlag = false;
+		}
+	}
+	
+	return returnFlag;
+}
+
+/**
+ * 저장대상이 1건인지 확인
+ * - 1건이 아닌 경우 저장 불가
+ */
+this.FN_saveCheckChangeCount = function() {
+	var returnFlag = true;
+	var changeCount = 0;	
+	var cnt = this.ds_payList.getRowCount();
+	
+	for (var i=0 ; i < cnt ; i++) {
+		if ((this.ds_payList.getRowType(i) == 2) || (this.ds_payList.getRowType(i) == 4)) {
+			changeCount++;
+		}
+	}
+	
+	if (changeCount == 1){
+		returnFlag = true;
+	} else {
+		returnFlag = false;
+	}
+	
+	return returnFlag;
+}
+
+/**
+ * '신규' 버튼의 클릭 이벤트 처리
+ */
+this.btn_insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	if (this.FN_addRow()) {
+		this.FN_addValue();
+	}
+}
+
+/**
+ * 행추가가 가능한지 확인
+ * - 이미 추가, 수정된 행이 있으면 신규 행 추가 불가
+ */
+this.FN_addRow = function() {
+	var addRowFlag = false;
+	var cnt = this.ds_payList.getRowCount();
+	
+	if (cnt == 0) {
+		addRowFlag = true;
+	} else {		
+		for (var i=0; i < cnt; i++) {
+			if (this.ds_payList.getRowType(i) == 2 || this.ds_payList.getRowType(i) == 4) {
+				this.alert("추가,수정된 행이 있으므로 추가하실 수 없습니다.\n저장 후 다시 작업하세요.");
+				this.ds_payList.set_rowposition(i);
+				addRowFlag = false;
+				break;
+			} else {
+				addRowFlag = true;
+			}
+		}
+	}
+	return addRowFlag;
+}
+
+/**
+ * 행추가 실행
+ */
+this.FN_addValue = function(){
+	// 행추가
+	var nRow = this.ds_payList.addRow();
+	// 초기값 세팅
+	this.cb_useYn.set_value("Y");
+}
+
+/**
+ * '삭제' 버튼의 클릭 이벤트 처리
+ * - 신규 추가된 행을 삭제
+ */
+this.btn_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var delRow = -1;
+	var cnt = this.ds_payList.getRowCount();
+	
+	for (var i=0; i < cnt ; i++) {
+		if (this.ds_payList.getRowType(i) == 2) {
+			delRow = i;
+		} else {
+			delRow = -1
+		}
+	}
+	
+	if (delRow != -1) {
+		this.ds_payList.deleteRow(delRow);
+	} else {
+		alert("삭제할 행이 없습니다.");
+	}
+}
+
+/**
+ * 세부내용-대리점 찾기 버튼 클릭 이벤트 처리
+ * - 대리점조회 화면이 팝업
+ */
+this.bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var args = {p_arg : "RTCSWarehAgencyRegister_insert"}; // [대리점 창고 관리] 화면 참고
+	Ex.core.popup(this, "대리점 조회", "comm::RTCOMMAgency_pop.xfdl", args, "modaless=false");
+}
+
+/**
+ *세부내용-대리점 찾기 결과 처리
+ * - 대리점조회 팝업화면에서 선택한 정보가 세부내용에 세팅
+ */ 
+this.returnAgencyCdInsert = function(res) {
+	this.ed_agencyCd.set_value( res[0] );
+	this.ed_agencyNm.set_value( res[1] );
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+	
+	switch (strSvcId) {		    
+		// 조회
+		case "listMain":
+			var rowCt = this.ds_payList.getRowCount();
+
+			if (rowCt == 0) {
+				this.alert("조회된 데이터가 없습니다.");
+				this.grid_rtcs0202.set_nodatatext("조회된 데이터가 없습니다.");
+			} 
+			
+			break;
+
+		// 저장
+		case "saveMain":
+			this.alert(strErrorMsg);
+		
+			if (nErrorCode == "0") {
+				this.fn_search();
+			}
+			
+			break;
+		
+		// 기타	
+		default:
+			break;
+	}
+}]]></Script>
+  </Form>
+</FDL>

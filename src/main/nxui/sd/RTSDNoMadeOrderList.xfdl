@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDNoMadeOrderList" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="신규 오더 미생성 리스트" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="110" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static26" taborder="42" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1147" height="12"/>
+              <Static id="Static00" taborder="43" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" width="1147" height="12"/>
+              <Static id="Static02" taborder="44" text="계약번호" cssclass="sta_WF_schTitle" left="22" top="42" width="80" height="21"/>
+              <Static id="Static03" taborder="45" text="FIX h12" cssclass="Guide_color" visible="false" left="8" top="64" width="1147" height="12"/>
+              <Static id="Static04" taborder="46" text="휴대폰번호" cssclass="sta_WF_schTitle" left="22" top="74" width="80" height="21"/>
+              <Static id="Static05" taborder="47" text="FIX h12" cssclass="Guide_color" visible="false" left="16" top="96" width="1147" height="12"/>
+              <Static id="st_warehCd01" taborder="48" text="렌탈지사" cssclass="sta_WF_schTitle" left="20" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_salesGroup" taborder="49" onkeyup="div_search_ed_warehNm_onkeyup" left="120" top="11" width="68" height="21"/>
+              <Button id="bt_salesGroupCd" taborder="50" cssclass="btn_WF_edtSch" left="188" top="10" width="21" height="21" onclick="Div00_bt_salesGroupCd_onclick"/>
+              <Edit id="ed_salesGroupNm" taborder="51" lengthunit="ascii" maxlength="150" enable="false" left="211" top="11" width="118" height="21"/>
+              <Static id="st_warehCd00" taborder="52" text="렌탈지점" cssclass="sta_WF_schTitle" left="428" top="13" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_salesOffice" taborder="53" onkeyup="div_search_ed_warehCd_onkeyup" left="499" top="11" width="68" height="21"/>
+              <Button id="bt_salesOfficeCd" taborder="54" cssclass="btn_WF_edtSch" left="567" top="10" width="21" height="21" onclick="Div00_bt_salesOfficeCd_onclick"/>
+              <Edit id="ed_salesOfficeNm" taborder="55" lengthunit="ascii" maxlength="150" enable="false" left="589" top="11" width="118" height="21"/>
+              <Edit id="ed_agencyCd" taborder="57" enable="false" left="895" top="11" width="71" height="21"/>
+              <Button id="bt_agency" taborder="58" onclick="div_cust_btn_postSearch1_onclick" cssclass="btn_WF_edtSch" enable="true" left="946" top="11" width="20" height="21" domainId="nexa.save"/>
+              <Edit id="ed_agencyNm" taborder="59" enable="false" left="966" top="11" width="71" height="21"/>
+              <Static id="st_warehCd02" taborder="60" text="장착대리점" cssclass="sta_WF_schTitle" left="814" top="13" width="86" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="61" inputfilter="space" lengthunit="ascii" onkeydown="div_search_ed_ordNo_onkeydown" left="120" top="44" width="140" height="21"/>
+              <Button id="btn_ordNoPopup" taborder="62" cssclass="btn_WF_edtSch" left="240" top="43" width="20" height="21" onclick="Div00_btn_ordNoPopup_onclick"/>
+              <Static id="Static01" taborder="63" text="접수일자" cssclass="sta_WF_schTitle" left="815" top="43" width="80" height="21"/>
+              <Calendar id="cal_Ord_Fday" taborder="64" dateformat="yyyy-MM-dd" left="895" top="43" width="100" height="21"/>
+              <Static id="Static07" taborder="65" text="~" left="997" top="43" width="9" height="21"/>
+              <Calendar id="cal_Ord_Tday" taborder="66" dateformat="yyyy-MM-dd" onchanged="Div00_Calendar02_onchanged" canchange="Div00_Calendar02_canchange" left="1009" top="43" width="100" height="21"/>
+              <Static id="Static06" taborder="67" text="장착일자" cssclass="sta_WF_schTitle" left="815" top="75" width="80" height="21"/>
+              <Calendar id="cal_Proc_Fday" taborder="68" dateformat="yyyy-MM-dd" left="895" top="75" width="100" height="21"/>
+              <Static id="Static08" taborder="69" text="~" left="997" top="75" width="9" height="21"/>
+              <Calendar id="cal_Proc_Tday" taborder="70" dateformat="yyyy-MM-dd" onchanged="Div00_Calendar02_onchanged" canchange="Div00_Calendar02_canchange" left="1009" top="75" width="100" height="21"/>
+              <Edit id="ed_mobNo" taborder="71" displaynulltext="('-')하이픈 제거" left="120" top="76" width="120" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="128" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1122" height="357">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="0"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="150"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="120"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="계약상태"/>
+                <Cell col="2" text="휴대폰"/>
+                <Cell col="3" text="계약일자"/>
+                <Cell col="4" text="장착일자"/>
+                <Cell col="5" text="상품코드"/>
+                <Cell col="6" text="상품명"/>
+                <Cell col="7" text="본수"/>
+                <Cell col="8" text="거점"/>
+                <Cell col="9" text="재고유형"/>
+                <Cell col="10" text="채널"/>
+                <Cell col="11" text="채널중분류"/>
+                <Cell col="12" text="대리점코드"/>
+                <Cell col="13" text="대리점"/>
+                <Cell col="14" text="오더번호"/>
+                <Cell col="15" text="딜리번리번호"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ordNo" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:statNm"/>
+                <Cell col="2" text="bind:mobNo"/>
+                <Cell col="3" displaytype="text" edittype="none" text="bind:ordDay" mask="####-##-##"/>
+                <Cell col="4" displaytype="text" text="bind:procDay" mask="####-##-##" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="normal" text="bind:matCd" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="normal" text="bind:matNm" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="normal" text="bind:cntNm" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="normal" text="bind:rcYn" calendardisplaynulltype="none"/>
+                <Cell col="9" text="bind:outStockTypeNm"/>
+                <Cell col="10" text="bind:chanNm"/>
+                <Cell col="11" text="bind:chanMclsNm"/>
+                <Cell col="12" text="bind:agencyCd"/>
+                <Cell col="13" text="bind:agencyNm"/>
+                <Cell col="14" text="bind:vbeln"/>
+                <Cell col="15" text="bind:vbelnD"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="108"/>
+        <Static id="Static10" taborder="8" cssclass="Guide_color" visible="false" left="0" top="110" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="rcYn" type="STRING" size="256"/>
+          <Column id="outStockTypeNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="vbeln" type="STRING" size="256"/>
+          <Column id="vbelnD" type="STRING" size="256"/>
+          <Column id="vbelnR" type="STRING" size="256"/>
+          <Column id="vbelnDR" type="STRING" size="256"/>
+          <Column id="giDay" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsRentalInfo" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item8" compid="Div00.ed_agencyCd" propid="value" datasetid="ds_list" columnid="agencyCd"/>
+      <BindItem id="item9" compid="Div00.ed_agencyNm" propid="value" datasetid="ds_list" columnid="agencyNm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.firstDate  = "";
+this.lastDate  = "";
+this.orgToDate = "";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.get_date();
+	this.parent.setButton("E|S", this);
+	
+	this.fn_userRentalGroupInfo();
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+this.fn_userRentalGroupInfo = function()
+{
+	this.dsRentalInfo.clearData();
+	
+	var sSvcID        	= "userRentalGroupInfo";                    
+	var sController   	= "/rtms/sd/userRentalGroupInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsRentalInfo=ds_output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sArgs 			+= Ex.util.setParam("userId", application.gds_userInfo.getColumn(0, "userId"));
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+	
+this.fn_init = function(){
+	
+	var userId = application.gds_userInfo.getColumn(0, "userId"); 	//id
+	var userNm = application.gds_userInfo.getColumn(0, "userNm"); 	//이름
+	var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+	
+	var vkgrp = this.dsRentalInfo.getColumn(0, "rentalGroup"); 	//지사코드
+	var vkgrpNm = this.dsRentalInfo.getColumn(0, "rentalGroupNm"); //지사Nm
+	var vkbur = this.dsRentalInfo.getColumn(0, "rentalOffice"); 	//지점코드
+	var vkburNm = this.dsRentalInfo.getColumn(0, "rentalOfficeNm"); //지점NM
+	
+	var vkazc = application.gds_userInfo.getColumn(0, "vkazc");	 	//대리점
+	var vkazcNm = application.gds_userInfo.getColumn(0, "vkazcNm"); //대리점NM
+	
+	if(userGrp != "01" && userGrp != "02" && userGrp != "RM"){ 
+	
+		this.Div00.ed_salesGroup.set_enable(false); 			//지사code 비활성
+		this.Div00.ed_salesGroupNm.set_enable(false); 		//지사name 비활성
+		this.Div00.bt_salesGroupCd.set_visible(false); 		//지사button visible
+		this.Div00.ed_salesOffice.set_enable(false); 		//지점code 비활성 
+		this.Div00.ed_salesOfficeNm.set_enable(false); 		//지점name 비활성
+		this.Div00.bt_salesOfficeCd.set_visible(false); 	//지점button visible
+		this.Div00.ed_agencyCd.set_enable(false); 			//장착대리점code 비활성
+		this.Div00.ed_agencyNm.set_enable(false); 			//장착대리점name 비활성
+		this.Div00.bt_agency.set_visible(false); 			//장착대리점button visible
+		
+		this.Div00.ed_salesGroup.set_value(vkgrp);
+		this.Div00.ed_salesGroupNm.set_value(vkgrpNm);
+		this.Div00.ed_salesOffice.set_value(vkbur);
+		this.Div00.ed_salesOfficeNm.set_value(vkburNm);
+		this.Div00.ed_agencyCd.set_value(userId);	
+		this.Div00.ed_agencyNm.set_value(userNm);
+	}
+
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var saleGroup = 		"";  //렌탈지사	
+	var saleOffice = 		""; //렌탈지점
+	
+	var ordDayF = 			nvl(this.Div00.cal_Ord_Fday.value); //접수일자FROM	
+	var ordDayT = 			nvl(this.Div00.cal_Ord_Tday.value); //접수일자TO
+	
+	var procDayF = 			nvl(this.Div00.cal_Proc_Fday.value); //장착일자FROM	
+	var procDayT = 			nvl(this.Div00.cal_Proc_Tday.value); //장착일자TO
+	
+	var agencyCd = 		    nvl(this.Div00.ed_agencyCd.value); 	//대리점코드	
+	var ordNo = 		    nvl(this.Div00.ed_ordNo.value); 	//주문번호	
+	var mobNo = 		    nvl(this.Div00.ed_mobNo.value); 	//휴대폰번호	
+	
+	var userGrp 	= application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+	var bfVkgrp 	= application.gds_userInfo.getColumn(0, "vkgrp"); 	//지사코드
+	var bfVkgrpNm 	= application.gds_userInfo.getColumn(0, "vkgrpNm"); //지사Nm
+	var bfVkbur 	= application.gds_userInfo.getColumn(0, "vkbur"); 	//지점코드
+	var bfVkburNm 	= application.gds_userInfo.getColumn(0, "vkburNm"); //지점NM
+	var afVkgrp 	= this.Div00.ed_salesGroup.value; 					//팝업 지사코드
+	var afVkgrpNm 	= this.Div00.ed_salesGroupNm.value; 					//팝업 지사Nm
+	var afVkbur 	= this.Div00.ed_salesOffice.value; 					//팝업 지점코드
+	var afVkburNm 	= this.Div00.ed_salesOfficeNm.value; 				//팝업 지점Nm
+	
+	
+	if(userGrp == "04") { //지점
+		if(bfVkgrp != afVkgrp || bfVkgrpNm != afVkgrpNm) {
+			alert("타 조직내역 조회 불가합니다.");
+			return;
+		}
+		if(bfVkbur != afVkbur || bfVkburNm != afVkburNm) {
+			alert("타 조직내역 조회 불가합니다.");
+			return;
+		}
+	}
+	
+	if(userGrp == "03" || userGrp == "07") { //지사
+		if(bfVkgrp != afVkgrp || bfVkgrpNm != afVkgrpNm) {
+			alert("타 조직내역 조회 불가합니다.");
+			return;
+		}
+	}
+	
+	
+	var rentalGroup 	= nvl(this.Div00.ed_salesGroup.value); 	//렌탈지사
+	var rentalOffice 	= nvl(this.Div00.ed_salesOffice.value); 	//렌탈지점
+	var userId      	= application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/rtms/sd/listOrderList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("ordFDay", 	ordDayF);
+	sArgs += Ex.util.setParam("ordTDay", 	ordDayT);
+	sArgs += Ex.util.setParam("procFDay", 	procDayF);
+	sArgs += Ex.util.setParam("procTDay", 	procDayT);
+	sArgs += Ex.util.setParam("agencyCd", 	agencyCd);
+	sArgs += Ex.util.setParam("ordNo", 		ordNo);
+	sArgs += Ex.util.setParam("mobNo", 		mobNo);
+	sArgs += Ex.util.setParam("mode", 		"01");
+	sArgs += Ex.util.setParam("rentalGroup", rentalGroup);
+	sArgs += Ex.util.setParam("rentalOffice", rentalOffice);
+	sArgs += Ex.util.setParam("userGrp", userGrp);
+	sArgs += Ex.util.setParam("userId", userId);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	if(strSvcId == "getDate") {
+		this.Div00.cal_Ord_Fday.set_value(this.firstDate);
+		this.Div00.cal_Ord_Tday.set_value(this.lastDate);
+	}
+	if (strSvcId == "userRentalGroupInfo"){		
+		if (this.dsRentalInfo.getColumn(0, "rentalGroup") == "" || this.dsRentalInfo.getColumn(0, "rentalGroup") == null) return;
+		
+		this.fn_init();
+	}
+	if (strSvcId == "searchList") 
+	{
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		}
+	}
+	
+}
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+this.Div00_bt_salesGroupCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDNoMadeProcOrderList"};
+	Ex.core.popup(this,"지사정보 조회","comm::RTCOMMVkgrp_pop.xfdl",args,"modaless=false");
+}
+
+this.Div00_bt_salesOfficeCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDNoMadeProcOrderList", p_rentalGroup:this.Div00.ed_salesGroup.value};
+    Ex.core.popup(this,"지점정보 조회","comm::RTCOMMVkbur_pop.xfdl",args,"modaless=false");
+}
+
+this._setReturn = function(val){	
+	var cd = val[0];
+	var nm = val[1];
+	var gb = val[2];
+	if(gb == "vkgrp") {
+		this.Div00.ed_salesGroup.set_value(cd);
+		this.Div00.ed_salesGroupNm.set_value(nm);
+	} else if(gb == "vkbur" ) {
+		this.Div00.ed_salesOffice.set_value(cd);
+		this.Div00.ed_salesOfficeNm.set_value(nm);
+	} else if(gb == "vkazc" ) {
+		this.Div00.ed_agencyCd.set_value(cd);
+		this.Div00.ed_agencyNm.set_value(nm);
+	}
+	
+}
+
+this.Div00_bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_vkgrpCd:this.Div00.ed_salesGroup.value, p_vkgrpNm:this.Div00.ed_salesGroupNm.value, 
+				p_vkburCd:this.Div00.ed_salesOffice.value, p_vkburNm:this.Div00.ed_salesOfficeNm.value, 
+				p_formId : "RTSDNoMadeProcOrderList"};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+
+this.return_agency = function(arr) {
+	this.div_search.ed_salesGroupNm.set_value(arr[0]);
+	this.div_search.ed_salesGroup.set_value(arr[1]);
+	this.div_search.ed_salessOfficeNm.set_value(arr[2]);
+	this.div_search.ed_salesOffice.set_value(arr[3]);
+	this.div_search.ed_agencyNm.set_value(arr[4]);
+	this.div_search.ed_agencyCd.set_value(arr[5]);
+}
+
+this.Div00_btn_ordNoPopup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTSDNoMadeProcOrderList"};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl", args ,"modaless=false");
+}
+
+this.returnOrderNoInfo = function(val) {
+	this.Div00.ed_ordNo.set_value(val);
+}]]></Script>
+  </Form>
+</FDL>

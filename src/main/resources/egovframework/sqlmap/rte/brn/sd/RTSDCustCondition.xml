@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="custCondition">
+	
+	<!-- 고객정보 -->
+	<resultMap id="custResultListresultMap" class="java.util.HashMap">
+	    <result property="custNo"      column="CUST_NO"  />                                                     
+		<result property="custNm"      column="CUST_NM"  />                                                    
+		<result property="custTpNm"    column="CUST_TP_NM" />
+		<result property="birthDay"     column="BIRTH_DAY"/>
+		<result property="genderNm"    column="GENDER_NM" />
+		<result property="mobNo"       column="MOB_NO"    />                
+		<result property="emailAddr"   column="EMAIL_ADDR"  />              
+		<result property="addr"        column="ADDR" />   
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="custResultListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="custResultListresultMap" />   
+		<parameter property="custNm"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객명   -->
+		<parameter property="birthDay"  jdbcType="VARCHAR" mode="IN" /> <!-- 생년월일 -->
+		<parameter property="mobNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 휴대폰번호 -->
+		<parameter property="carNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 차량번호 -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호 -->
+	</parameterMap>	 
+	
+    <procedure id="custCondition.getCustResultList" parameterMap="custResultListParam">
+		{call Pkg_Rtsd0100.p_sRtsd0100CustAnalysis01(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 차량정보  -->
+	<resultMap id="carResultListresultMap" class="java.util.HashMap">
+	    <result property="makerCdNm"      column="MAKER_CD_NM"  />                                                     
+		<result property="mcNm"      	  column="MC_NM"  />                                                    
+		<result property="carNo"          column="CAR_NO" />
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="carResultListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="carResultListresultMap" />   
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호   -->
+	</parameterMap>	 
+	
+    <procedure id="custCondition.getCarResultList" parameterMap="carResultListParam">
+		{call Pkg_Rtsd0108.p_sRtsd0108CustAnalysis02(?, ?)}
+	</procedure>
+	
+	<!-- 계약현황 -->
+	<resultMap id="orderResultListresultMap" class="java.util.HashMap">
+	    <result property="ordNo"       column="ORD_NO" />           <!-- 계약번호       -->
+		<result property="statNm"      column="STAT_NM" />          <!-- 계약상태       -->
+		<result property="ordDay"      column="ORD_DAY"  />        <!-- 접수일자       -->
+		<result property="oprocDay"    column="OPROC_DAY" />       <!-- 계약-장착일자  -->
+		<result property="regDt"       column="REG_DT"    />       <!-- 계약접수시간   -->
+		<result property="procDay"     column="PROC_DAY"  />       <!-- 장착완료일자   -->
+		<result property="procTm"      column="PROC_TM"   />       <!-- 장착완료시간   -->
+		<result property="petternCd"    column="PETTERN_CD"  />     <!-- 상품패턴       -->
+		<result property="matCd"       column="MAT_CD"      />     <!-- 상품코드       -->
+		<result property="matNm"       column="MAT_NM"      />     <!-- 상품명         -->
+		<result property="cntNm"       column="CNT_NM"      />     <!-- 타이어본수     -->
+		<result property="periodNm"     column="PERIOD_NM"   />     <!-- 계약기간       -->
+		<result property="regiAmt"      column="REGI_AMT"    />     <!-- 렌탈등록비     -->
+		<result property="monAmt"       column="MON_AMT"     />     <!-- 월렌탈료       -->
+		<result property="custNm"       column="CUST_NM"     />     <!-- 고객명         -->
+		<result property="agencyNm"      column="AGENCY_NM"   />     <!-- 장착대리점     -->
+		<result property="salesGroupNm"   column="SALES_GROUP_NM" />   <!-- 지사           -->
+		<result property="salesOfficeNm"  column="SALES_OFFICE_NM" />  <!-- 지점           -->
+		<result property="modelNm"       column="MODEL_NM" />        <!-- 차종+사양명    -->
+		<result property="carNo"         column="CAR_NO" />          <!-- 차량번호       -->
+		<result property="ordAgent"      column="ORD_AGENT" />       <!-- 판매인번호     -->
+		<result property="orgAgnm"       column="ORG_AGNM"  />       <!-- 판매인명       -->
+		<result property="genderCd"      column="GENDER_CD" />       <!-- 성별           -->
+		<result property="cMileage"      column="C_MILEAGE" />       <!-- 현재주행거리   -->
+		<result property="age"           column="AGE" />             <!-- 나이           -->
+		<result property="addrArea"      column="ADDR_AREA" />       <!-- 지역           -->
+		<result property="seasonNm"      column="SEASON_NM" />       <!-- 계절구분       -->
+		<result property="mfNm"          column="MF_NM" />           <!-- 구매전 제조사  -->
+		<result property="chanNm"        column="CHAN_NM" />         <!-- 채널구분       -->
+		<result property="mobNo"         column="MOB_NO"  />         <!-- 핸드폰번호     -->
+		<result property="telNo"         column="TEL_NO"  />         <!-- 전화번호       -->
+		<result property="cancDay"       column="CANC_DAY" />        <!-- 중도완납일     -->
+		<result property="osDay"        column="OS_DAY" />          <!-- 소유권이전일   -->
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="orderResultListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="orderResultListresultMap" />   
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호   -->
+	</parameterMap>	 
+	
+    <procedure id="custCondition.getOrderResultList" parameterMap="orderResultListParam">
+		{call Pkg_Rtsd0104.p_sRtsd0104CustAnalysis03(?, ?)}
+	</procedure>
+	
+	<!-- 결제내역 -->
+	<resultMap id="paymentListresultMap" class="java.util.HashMap">	
+		<result property="ordNo"   		column="ORD_NO" />			<!--주문번호  -->
+		<result property="vehicleNo"  	column="CAR_NO" />	      	<!--차량번호  -->
+		<result property="custNo"  		column="CUST_NO" />	      	<!--고객번호  -->
+		<result property="custTp"  		column="CUST_TP" />	      	<!--고객유형  -->
+		<result property="custTp2" 		column="CUST_TP2" />	    <!--고객유형2      -->
+		<result property="custNm"  		column="CUST_NM" />	      	<!--고객명  		-->
+		<result property="productNm"  	column="MAT_NM" />	      	<!--상품명			-->
+		<result property="payMthd"  	column="PAY_MTHD" />        <!--결제방법     		-->
+		<result property="payMthdNm"  	column="PAY_MTHD_NM" />     <!--결제방법     		-->		
+		<result property="payDd"  		column="PAY_DD" />        	<!--결제일     		-->		
+		<result property="tcgrpNo"  	column="TCGRP_NO" />        <!--통합청구번호		-->		
+		<result property="batchKey"  	column="BATCH_KEY" />   	<!--배치키     		-->		
+		<result property="accStat"  	column="ACC_STAT" />        <!--계좌신청상태		-->	
+		<result property="bankCd"  		column="BANK_CD" />        	<!--은행코드     		-->
+		<result property="bankNm"  		column="BANK_NM" />        	<!--은행명     		-->				
+		<result property="acctNo"  		column="ACCT_NO" />      	<!--계좌번호		-->		
+		<result property="depositor"  	column="DEPOSITOR" />      	<!--예금주			-->		
+		<result property="accSeq"  		column="ACC_SEQ" />      	<!--계좌순번		-->		
+		<result property="crdSeq"  		column="CRD_SEQ" />      	<!--카드순번		-->		
+		<result property="cardcomCd"  	column="CARDCOM_CD" />      <!--카드사코드		-->
+		<result property="cardcomNm"  	column="CARDCOM_NM" />      <!--카드사명		-->		
+		<result property="cardNo"  		column="CARD_NO" />      	<!--카드번호		-->		
+		<result property="ebirDay"  	column="EBIR_DAY" />      	<!--법정생년월일		-->		
+		<result property="buslNo"  		column="BUSL_NO" />      	<!--사업자번호		-->		
+		<result property="arrearsAmt"  	column="ARREARS_AMT" />     <!--미납액			-->	
+		<result property="expireYm"  	column="EXPIRE_YM" />     	<!--유효기간		-->
+		<result property="deleteTp"  	column="DELETE_TP" />     	<!--삭제가능여부		-->		
+		<result property="accChk"  		column="ACC_CHK" />     	<!--계좌확인상태		-->		
+		<result property="bkeyChk"  	column="BKEY_CHK" />     	<!--카드확인상태		-->	
+		<result property="oBirthDay"  	column="O_BIRTHDAY" />     	<!--사업주 법정생년월일		-->	
+		<result property="oCustNm"  	column="O_CUSTNM" />     	<!--사업주명		-->
+		<result property="pCustTp"  	column="PCUST_TP" />     	<!--사결제고객구분		-->
+		<result property="oBuslNo"  	column="O_BUSL_NO" />				
+		<result property="birthDay"  	column="BIRTH_DAY" />
+		<result property="mobNo"  		column="MOB_NO" />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="paymentListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="paymentListresultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<procedure id="custCondition.getPaymentList" parameterMap="paymentListParam">
+		{call Pkg_Rtre0050.p_sRtre0050List(?, ?, ?)}
+	</procedure>	
+	
+	<!-- 프리미엄서비스 -->
+	<resultMap id="premiumserviceListResultMap" class="java.util.HashMap">
+		 <result property="ordNo"        column="ORD_NO"      />              <!-- 계약번호      -->
+		 <result property="procDay"      column="PROC_DAY"    />              <!-- 처리일         -->
+         <result property="serviceCd"    column="SERVICE_CD"  />              <!-- 서비스 코드    -->
+         <result property="serviceNm"    column="SERVICE_NM" 	/>			  <!-- 서비스명(항목)  -->
+         <result property="procInCd"    column="PROC_IN_CD" 	/>			  <!-- 처리자ID       -->
+         <result property="procInNm"    column="PROC_IN_NM" 	/>			  <!-- 처리자명(서비스점) -->
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="premiumserviceListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="premiumserviceListResultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<procedure id="custCondition.getPremiumServiceList" parameterMap="premiumserviceListParam">
+		{call PKG_RTCS0007.p_sRtcs0007ServiceHistory(?, ?)}
+	</procedure>	
+	
+	<!-- 인바운드콜 -->
+	<resultMap id="inboundCallListResultMap" class="java.util.HashMap">
+		<result property="recvTpNm"        column="RECV_TP_NM" 	   />			 <!-- 상담유형명        -->
+		<result property="recvDay"         column="RECV_DAY"        />            <!-- 통화일자          -->
+		<result property="recvTm"          column="RECV_TM"         />            <!-- 통화시간          -->
+		<result property="resuStNm"        column="RESU_ST_NM"	   />		     <!-- 처리상태명        -->
+		<result property="ordNo"           column="ORD_NO"         />            <!-- 계약번호          -->
+		<result property="custNm"          column="CUST_NM"        />            <!-- 고객명            -->
+		<result property="callNo"          column="CALL_NO"        />            <!-- 인바운드 상담번호 -->
+		<result property="userIdNm"        column="USER_ID_NM"     />      	     <!-- 상담사명          -->
+		<result property="telNo"           column="TEL_NO"         />            <!-- 상담전화번호      -->
+		<result property="callDtl"         column="CALL_DTL"       />            <!-- 상담내용          -->
+		<result property="carNo"           column="CAR_NO"         />            <!-- 차량번호          -->
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="inboundCallListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="inboundCallListResultMap" />   
+		<parameter property="mobNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<procedure id="custCondition.getInboundCallList" parameterMap="inboundCallListParam">
+		{call PKG_RTCS0102.p_sRtcs0102CustAnalysis08(?, ?, ?)}
+	</procedure>	
+	
+	<!-- 아웃바운드콜 -->
+	<resultMap id="outboundCallListResultMap" class="java.util.HashMap">
+		<result property="jobTpNm"  	column="JOB_TP_NM" />
+		<result property="callDay"  	column="CALL_DAY" />
+		<result property="callStatusNm"	column="CALL_STATUS_NM" />
+		<result property="ordNo" 		column="ORD_NO" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="jobDay"  		column="JOB_DAY" />
+		<result property="callNo"  		column="CALL_NO" />
+		<result property="userIdNm"		column="USER_ID_NM" />
+		<result property="mobNo"  		column="MOB_NO" />
+		<result property="telNo"  		column="TEL_NO" />
+		<result property="callDtl" 		column="CALL_DTL" />
+	</resultMap>
+	
+	 <parameterMap class="java.util.Map" id="outboundCallListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="outboundCallListResultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<procedure id="custCondition.getOutboundCallList" parameterMap="outboundCallListParam">
+		{call PKG_RTCS0102.p_sRtcs0102CustAnalysis09(?, ?)}
+	</procedure>
+		
+	<!-- 클레임접수 -->
+	<resultMap id="claimReceiptListResultMap" class="java.util.HashMap">
+		<result property="recvTpNm"       column="RECV_TP_NM" 	/>		       <!-- 상담유형명        -->
+		<result property="recvDay"        column="RECV_DAY"    />              <!-- 통화일자          -->
+		<result property="recvTm"         column="RECV_TM"     />              <!-- 통화시간          -->
+		<result property="resuStNm"       column="RESU_ST_NM" 	/>		       <!-- 처리상태명        -->
+		<result property="ordNo"           column="ORD_NO"      />             <!-- 계약번호          -->
+		<result property="custNm"          column="CUST_NM"     />             <!-- 고객명            -->
+		<result property="callNo"          column="CALL_NO"     />             <!-- 인바운드 상담번호 -->
+		<result property="userIdNm"        column="USER_ID_NM"  />         	   <!-- 상담사명          -->
+		<result property="telNo"           column="TEL_NO"      />             <!-- 상담전화번호      -->
+		<result property="callDtl"         column="CALL_DTL"    />             <!-- 상담내용          -->
+		<result property="carNo"           column="CAR_NO"      />             <!-- 차량번호          -->
+		<result property="regionName"      column="REGION_NAME" />             <!-- 지역              -->
+		<result property="cityName"        column="CITY_NAME"   />             <!-- 도시              -->
+		<result property="empName"         column="EMP_NAME"    />             <!-- AS담당자          -->
+	</resultMap>
+	
+	 <parameterMap class="java.util.Map" id="claimReceiptListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="claimReceiptListResultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<procedure id="custCondition.getClaimReceiptList" parameterMap="claimReceiptListParam">
+		{call PKG_RTCS0102.p_sRtcs0102CustAnalysis10(?, ?)}
+	</procedure>	
+	
+		<!-- 계약현황New -->
+	<resultMap id="orderResultListresultMapNew" class="java.util.HashMap">
+	    <result property="ordNo"       column="ORD_NO" />           <!-- 계약번호       -->
+		<result property="statNm"      column="STAT_NM" />          <!-- 계약상태       -->
+		<result property="ordDay"      column="ORD_DAY"  />        <!-- 접수일자       -->
+		<result property="oprocDay"    column="OPROC_DAY" />       <!-- 계약-장착일자  -->
+		<result property="regDt"       column="REG_DT"    />       <!-- 계약접수시간   -->
+		<result property="procDay"     column="PROC_DAY"  />       <!-- 장착완료일자   -->
+		<result property="procTm"      column="PROC_TM"   />       <!-- 장착완료시간   -->
+		<result property="custNm"       column="CUST_NM"     />     <!-- 고객명         -->
+		<result property="agencyNm"      column="AGENCY_NM"   />     <!-- 장착대리점     -->
+		<result property="salesGroupNm"   column="SALES_GROUP_NM" />   <!-- 지사           -->
+		<result property="salesOfficeNm"  column="SALES_OFFICE_NM" />  <!-- 지점           -->
+		<result property="modelNm"       column="MODEL_NM" />        <!-- 차종+사양명    -->
+		<result property="carNo"         column="CAR_NO" />          <!-- 차량번호       -->
+		<result property="ordAgent"      column="ORD_AGENT" />       <!-- 판매인번호     -->
+		<result property="orgAgnm"       column="ORG_AGNM"  />       <!-- 판매인명       -->
+		<result property="genderCd"      column="GENDER_CD" />       <!-- 성별           -->
+		<result property="cMileage"      column="C_MILEAGE" />       <!-- 현재주행거리   -->
+		<result property="age"           column="AGE" />             <!-- 나이           -->
+		<result property="addrArea"      column="ADDR_AREA" />       <!-- 지역           -->
+		<result property="seasonNm"      column="SEASON_NM" />       <!-- 계절구분       -->
+		<result property="mfNm"          column="MF_NM" />           <!-- 구매전 제조사  -->
+		<result property="chanNm"        column="CHAN_NM" />         <!-- 채널구분       -->
+		<result property="mobNo"         column="MOB_NO"  />         <!-- 핸드폰번호     -->
+		<result property="telNo"         column="TEL_NO"  />         <!-- 전화번호       -->
+		<result property="cancDay"       column="CANC_DAY" />        <!-- 중도완납일     -->
+		<result property="osDay"        column="OS_DAY" />          <!-- 소유권이전일   -->
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="orderResultListParamNew"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="orderResultListresultMapNew" />   
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호   -->
+	</parameterMap>	 
+	
+    <procedure id="custCondition.getOrderResultListNew" parameterMap="orderResultListParamNew">
+		{call Pkg_Rtsd0104.p_sRtsd0104CustAnalysis03New(?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMPreminumService2_pop" classname="RTCOMMPreminumService2_pop" left="0" top="0" width="536" height="342" titletext="New Form" onload="RTCOMMPreminumService2_pop_onload" onkeyup="RTCOMMPreminumService2_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="10" top="10" right="10" height="72" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Combo id="cb_ord" taborder="74" innerdataset="@ds_ord" codecolumn="cd" datacolumn="cdNm" enable="false" left="84" top="40" width="88" height="20" domainId="nexa.name;nexa.code" visible="false"/>
+              <Static id="st_cnt" taborder="75" text="채널" cssclass="sta_WF_schTitle" left="183" top="40" width="100" height="20" domainId="nexa.s_condition" visible="false"/>
+              <Combo id="cb_chan" taborder="76" innerdataset="@ds_chan" codecolumn="cd" datacolumn="cdNm" enable="false" left="232" top="40" width="102" height="20" domainId="nexa.name;nexa.code" visible="false"/>
+              <Static id="st_season" taborder="77" text="주문구분" cssclass="sta_WF_schTitle" left="12" top="40" width="100" height="20" domainId="nexa.s_condition" visible="false"/>
+              <Static id="st_season00" taborder="78" text="렌탈기간" cssclass="sta_WF_schTitle" left="12" top="12" width="100" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_period" taborder="79" innerdataset="@ds_period" codecolumn="cd" datacolumn="cdNm" enable="false" left="84" top="12" width="88" height="20" domainId="nexa.name;nexa.code"/>
+              <Static id="st_cnt00" taborder="80" text="본수" cssclass="sta_WF_schTitle" left="183" top="12" width="100" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_cnt" taborder="81" innerdataset="ds_cnt" codecolumn="cd" datacolumn="cdNm" enable="false" left="232" top="12" width="102" height="20" domainId="nexa.name;nexa.code"/>
+              <Static id="st_season01" taborder="82" text="계절구분" cssclass="sta_WF_schTitle" left="343" top="12" width="100" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_season" taborder="83" innerdataset="ds_season" codecolumn="cd" datacolumn="cdNm" enable="false" left="412" top="12" width="88" height="20" domainId="nexa.name;nexa.code"/>
+              <Button id="btn_search" taborder="84" text="조회" onclick="div_search_btn_search_onclick" cssclass="btn_WF_CRUD" top="37" right="12" width="45" height="22" domainId="nexa.add" visible="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_close" taborder="1" text="닫기" onclick="btn_close_onclick" top="301" right="234" width="41" height="21" domainId="nexa.add"/>
+        <Grid id="grid_preminum" taborder="2" binddataset="ds_preminumMst" useinputpanel="false" cellsizingtype="col" oncellclick="grid_preminum_oncellclick" left="10" top="92" right="276" height="199">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="153"/>
+                <Column size="78"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="프리미엄서비스 "/>
+                <Cell col="1" text="추가렌탈료"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:psNm" suppress="1" suppressalign="first"/>
+                <Cell col="1" displaytype="number" style="align:right;" text="bind:servAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="3" text="선택" onclick="btn_choice_onclick" top="301" right="279" width="41" height="21" domainId="nexa.add"/>
+        <Grid id="grid_svcDetail" taborder="4" binddataset="ds_svcDetail" useinputpanel="false" cellsizingtype="col" left="276" top="92" right="11" height="199">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="153"/>
+                <Column size="78"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상세서비스"/>
+                <Cell col="1" text="서비스횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:prsNm" suppress="1" suppressalign="first"/>
+                <Cell col="1" text="bind:servCnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cnt" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_season" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminum" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servVnt" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="servPAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminumCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servVnt" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminumMst" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_svcDetail" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ord" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chan" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_period" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCOMMPreminumService2_pop.xfdl
+ * 설    명 : 선택형 프리미엄 서비스 조회 및 선택(팝업)
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2018-02-20	wjim		[20180212_01] 신규 개발
+ * 2018-03-01	wjim		[20180301_01] 본수 저장기준 변경
+ *                          - 기존 : 기준정보상의 본수 (ZZ으로 발생할 수 있음)
+ *                          - 변경 : 계약상의 본수
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs"; 
+
+// 전역변수 선언
+this.fDayTp     = "";	//일자구분
+this.fApplyDate = "";	//적용일자
+this.fOrdId     = "";	//주문구분(S029)
+this.fChanCd    = "";	//채널구분(S030)
+this.fSeasonCd  = "";	//계절구분(S014)
+this.fCntCd     = "";	//본수(S022)
+this.fPeriodCd  = "";	//렌탈기간(S021)
+this.fMstRow    = -1;	//현재 선택된 프리미엄 서비스
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTCOMMPreminumService2_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	// 부모화면에서 넘어온 파라미터를 전역변수로 세팅
+	this.fDayTp     = nvl(this.parent.dayTp);		//일자구분
+	this.fApplyDate = nvl(this.parent.applyDate);	//적용일자
+	this.fOrdId     = nvl(this.parent.ordId);		//주문구분(S029)
+	this.fChanCd    = nvl(this.parent.chanCd);		//채널구분(S030)
+	this.fSeasonCd  = nvl(this.parent.seasonCd);	//계절구분(S014)
+	this.fCntCd     = nvl(this.parent.cntCd);		//본수(S022)
+	this.fPeriodCd  = nvl(this.parent.periodCd);	//렌탈기간(S021)
+	
+	this.fn_init();	
+}
+
+/**
+ * 초기화
+ * - 콤보용 공통코드 조회
+ */
+this.fn_init = function() {	
+	var sSvcID      	= "initRTCOMMPreminumService";  
+	var sController   	= "rtms/comm/initRTCOMMPreminumService.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_ord=mapDsOrd ds_chan=mapDsChan ds_season=mapDsSeason ds_period=mapDsPeriod ds_cnt=mapDsCnt";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+/**
+ * '조회' 버튼의 클릭 이벤트 처리
+ */
+this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	// 기존 조회결과 DataSet 초기화
+	this.ds_preminum.deleteAll();
+	
+	// 프리미엄 서비스 마스터 조회
+	var sSvcID       = "preminumMstList";                    
+	var sController  = "rtms/comm/preminumMstList.do";
+	var sInDatasets  = "";
+	var sOutDatasets = "ds_preminumMst=preminumMstMap";
+	var sArgs 		 = "";	
+	var fn_callBack  = "fn_callBack";
+	
+	sArgs += Ex.util.setParam("dayTp"    , this.fDayTp);
+	sArgs += Ex.util.setParam("applyDate", this.fApplyDate);
+	sArgs += Ex.util.setParam("ordId"    , this.fOrdId);
+	sArgs += Ex.util.setParam("chanCd"   , this.fChanCd);
+	sArgs += Ex.util.setParam("seasonCd" , this.fSeasonCd);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * '프리미엄서비스' 그리드 셀 클릭 이벤트 처리
+ * - 상세서비스 조회
+ */
+this.grid_preminum_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	this.fMstRow = e.row;
+	
+	// 기존 조회결과 DataSet 초기화
+	this.ds_svcDetail.deleteAll();
+	
+	// 프리미엄 서비스 상세 조회
+	var sSvcID       = "listSvcDetail";                    
+	var sController  = "rtms/comm/listPreminumDetail.do";
+	var sInDatasets  = "";
+	var sOutDatasets = "ds_svcDetail=preminumDetailMap";
+	var sArgs 		 = "";	
+	var fn_callBack  = "fn_callBack";
+	
+	sArgs += Ex.util.setParam("psCd"    , this.ds_preminumMst.getColumn(e.row, "psCd"));
+	sArgs += Ex.util.setParam("periodCd", this.fPeriodCd);
+	sArgs += Ex.util.setParam("cntCd"   , this.fCntCd);
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * '선택' 버튼의 클릭 이벤트 처리
+ */
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.FN_choice();
+}
+
+/*
+ * 프리미엄 서비스 선택 시 처리
+ */
+this.FN_choice = function(){
+	this.ds_preminum.clearData();
+	var mstRow = this.ds_preminumMst.get
+	
+	for (var i = 0; i < this.ds_svcDetail.getRowCount(); i++) {
+		this.ds_preminum.addRow();
+		
+		this.ds_preminum.setColumn(i, "psCd"    , this.ds_preminumMst.getColumn(this.fMstRow, "psCd"));
+		this.ds_preminum.setColumn(i, "psNm"    , this.ds_preminumMst.getColumn(this.fMstRow, "psNm"));
+		this.ds_preminum.setColumn(i, "seq"     , this.ds_preminumMst.getColumn(this.fMstRow, "seq"));
+		this.ds_preminum.setColumn(i, "strDay"  , this.ds_preminumMst.getColumn(this.fMstRow, "strDay"));
+		this.ds_preminum.setColumn(i, "endDay"  , this.ds_preminumMst.getColumn(this.fMstRow, "endDay"));
+		this.ds_preminum.setColumn(i, "seasonCd", this.ds_preminumMst.getColumn(this.fMstRow, "seasonCd"));
+		this.ds_preminum.setColumn(i, "servPAmt", this.ds_preminumMst.getColumn(this.fMstRow, "servAmt"));
+		
+		this.ds_preminum.setColumn(i, "prsDcd"  , this.ds_svcDetail.getColumn(i, "prsDcd"));
+		this.ds_preminum.setColumn(i, "prsNm"   , this.ds_svcDetail.getColumn(i, "prsNm"));
+		//this.ds_preminum.setColumn(i, "cntCd"   , this.ds_svcDetail.getColumn(i, "cntCd"));	// [20180301_01] 이전
+		this.ds_preminum.setColumn(i, "cntCd"   , this.fCntCd);									// [20180301_01]
+		this.ds_preminum.setColumn(i, "servCnt0", this.ds_svcDetail.getColumn(i, "servCnt"));
+		this.ds_preminum.setColumn(i, "servCntr", this.ds_svcDetail.getColumn(i, "servCnt"));
+		this.ds_preminum.setColumn(i, "servAmt" , this.ds_svcDetail.getColumn(i, "servAmt"));
+		this.ds_preminum.setColumn(i, "regId"   , this.ds_svcDetail.getColumn(i, "regId"));
+		
+	}
+	
+	this.ds_preminumCp.copyData(this.ds_preminum);
+	var arr = [this.ds_preminumCp];
+	this.close(this.opener.returnPreminum(arr));
+}
+
+/**
+ * '닫기' 버튼의 클릭 이벤트 처리
+ */
+this.btn_close_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	this.close();
+}
+
+/**
+ * 키 입력 이벤트 처리
+ * - ESC : 화면 close
+ */
+this.RTCOMMPreminumService2_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo) {
+	if (e.keycode == 27) {
+		this.close();
+	}
+}
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkAuthGrpuCd) {
+	if (strSvcId == "initRTCOMMPreminumService") {
+		this.div_search.cb_ord.set_value(this.fOrdId);
+		this.div_search.cb_chan.set_value(this.fChanCd);
+		this.div_search.cb_season.set_value(this.fSeasonCd);
+		this.div_search.cb_period.set_value(this.fPeriodCd);
+		this.div_search.cb_cnt.set_value(this.fCntCd);		
+	
+		// 조회
+		this.div_search_btn_search_onclick();
+	}
+	
+	if (strSvcId == "preminumMstList") {
+		var rowCt = this.ds_preminumMst.getRowCount();
+		
+		if (rowCt == 0) {
+			this.alert("선택가능한 프리미엄서비스가 없습니다.");
+			this.grid_preminum.set_nodatatext( "조회된 데이터가 없습니다." );
+		}
+	}
+	
+	if (strSvcId == "listSvcDetail") {
+		var rowCt = this.ds_svcDetail.getRowCount();
+		
+		if (rowCt == 0) {
+			this.alert("해당 프리미엄서비스에 상세서브스가 존재하지 않습니다.");
+			this.grid_svcDetail.set_nodatatext( "조회된 데이터가 없습니다." );
+		}
+	}
+}]]></Script>
+  </Form>
+</FDL>

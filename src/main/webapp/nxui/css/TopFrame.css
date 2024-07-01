@@ -1,0 +1,191 @@
+﻿/******************************************* Top Frame *******************************************/
+
+/* Button */
+Button.btn_TF_utill, Button.btn_TF_utill:selected
+{
+	background			: @gradation;
+	gradation			: linear 0,0 #604367 0,100 #3c2841;
+	font				: -11 Dotum;
+	border				: 1 solid #66556b, 0 none, 0 none, 0none;
+	bordertype			: round 1 1;
+	color				: #c3bfc5;
+	shadow 				: outer 1,1 1 #000000ff;
+	padding				: 0 0 1 0
+}
+Button.btn_TF_utill:mouseover, Button.btn_TF_utill:focused
+{
+	border				: 1 solid #66556b, 0 none, 0 none, 0none;
+	background			: @gradation;
+	gradation			: linear 0,0 #8c5695 0,100 #5a1166;
+	font				: -11 Dotum;
+	color				: #ffffff;
+}
+Button.btn_TF_utill:pushed
+{
+	border				: 1 solid #66556b, 0 none, 0 none, 0none;
+	background			: @gradation;
+	gradation			: linear 0,0 #5a1166 0,100 #8c5695;
+	font				: -11 Dotum;
+	color				: #ffffff;
+}
+Button.btn_TF_utill:disabled
+{
+	opacity				: 50;
+}
+
+Button.btn_TF_search, Button.btn_TF_search:selected
+{
+	background			: URL('image::btn_TF_serBgN.png') stretch 4,4;
+	gradation			: ;
+	font				: 9 Dotum;
+	border				: 0 none;
+	bordertype			: round 2 2;
+	color				: #3a0b42;
+	shadow 				: outer 1,1 1 #000000ff;
+	padding				: 1 0 0 0;
+}
+Button.btn_TF_search:mouseover, Button.btn_TF_search:focused
+{
+	background			: URL('image::btn_TF_serBgM.png') stretch 4,4;
+	border				: 0 none;
+	bordertype			: round 2 2;
+	color				: #630672;
+}
+Button.btn_TF_search:pushed
+{
+	background			: URL('image::btn_TF_serBgP.png') stretch 4,4;
+	border				: 0 none;
+	bordertype			: round 2 2;
+	color				: #630672;
+}
+Button.btn_TF_search:disabled
+{
+	background			: URL('image::btn_TF_serBgD.png') stretch 4,4;
+	border				: 0 none;
+	bordertype			: round 2 2;
+	color				: #b0a7b2;
+}
+
+Button.btn_TF_menu, Button.btn_TF_menu:selected
+{
+	background			: #5a1166;
+	gradation			: ;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	font				: bold 13 Gulim;
+	color				: #ffffff;
+	padding				: 0 0 2 0;
+}
+Button.btn_TF_menu:mouseover, Button.btn_TF_menu:focused
+{
+	background			: URL('image::btn_TF_menuM.png') stretch 4,4;
+	gradation			: ;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	font				: bold 13 Gulim;
+	color				: #ffffff;
+}
+Button.btn_TF_menu:pushed
+{
+	background			: URL('image::btn_TF_menuM.png') stretch 4,4;
+	gradation			: ;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	font				: underline bold 13 Gulim;
+	color				: #ffffff;
+}
+Button.btn_TF_menu:disabled
+{
+	opacity				: 50;
+}
+
+/* 2014-09-23 Top 메뉴 선택 상태 시작 */
+Button.btn_TOP_Menu_On
+{
+	background			: transparent URL('theme://images/btn_TOP_Menu_O.png') stretch 10,10;
+	border				: 0 none;
+	font				: 13 Dotum;
+	color				: #0567a6;
+	align				: center middle;
+}
+Button.btn_TOP_Menu_On:mouseover, Button.btn_TOP_Menu_On:pushed, Button.btn_TOP_Menu_On:focused, Button.btn_TOP_Menu_On:selected
+{
+	background			: transparent URL('theme://images/btn_TOP_Menu_O.png') stretch 10,10;
+	border				: 0 none;
+	font				: 13 Dotum;
+	color				: #0567a6;
+	align				: center middle;
+}
+Button.btn_TOP_Menu_On:disabled
+{
+	background			: transparent URL('theme://images/btn_TOP_Menu_S.png') stretch 10,10;
+	border				: 0 none;
+	font				: 13 Dotum;
+	color				: #528cba;
+	align				: center middle;
+}
+
+
+/* Edit*/
+Edit.edt_TF_search
+{
+	accessibility			: ;
+	align				: left middle;
+	background			: #6b2976;
+	border				: 1 solid #92539c;
+	bordertype			: normal 0 0;
+	color				: #ffffff;
+	cursor				: ;
+	font				: ;
+	gradation			: ;
+	opacity				: ;
+	padding				: 0 5 0 5;
+	compositecolor			: #3da2df;
+	selectbackground		: #3da2df;
+	selectcolor			: #ffffff;
+}
+Edit.edt_TF_search:mouseover, Edit.edt_TF_search:focused
+{
+	background			: #551c5e;
+	border				: 1 solid #92539c;
+}
+Edit.edt_TF_search:disabled
+{
+	background			: #f7f7f7;
+	border				: 1 solid #d5d5d5;
+	color				: #999999;
+}
+
+
+/* Static */
+Static.sta_TF_topBg
+{
+	background			: #2a0c38;
+}
+Static.sta_TF_logo
+{
+	background			: URL('image::sta_TF_logo.png');
+}
+Static.sta_TF_logo2
+{
+	background			: URL('image::sta_TF_logo2.png');
+}
+Static.sta_TF_name
+{
+	align				: right middle;
+	background			: transparent;
+	font				: bold 9 Dotum;
+	color				: #ffffff;
+}
+Static.sta_TF_name:focused
+{
+	font				: underline bold 9 Dotum;
+}
+Static.sta_TF_welcome
+{
+	align				: right middle;
+	background			: transparent;
+	font				: 9 Dotum;
+	color				: #ffffff;
+}
+/******************************************* Top Frame End****************************************/

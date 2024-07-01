@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample014" classname="testWebBrowser" left="0" top="0" width="1024" height="768" titletext="웹브라우저태그생성샘플" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <WebBrowser id="WebBrowser00" left="46" top="323" width="538" height="245" taborder="0"/>
+        <Button id="Button00" taborder="1" text="html태그삽입샘플" left="46" top="272" width="112" height="41" onclick="Button00_onclick"/>
+        <GroupBox id="GroupBox00" text="Example" taborder="2" left="44" top="50" right="0" height="218" style="font:bold 9 Verdana;"/>
+        <Static id="Static15" taborder="3" text="&#9;var str_html = &quot;&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;html&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;head&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;title&gt;타이틀&lt;/title&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;meta content='text/html; charset=euc-kr' http-equiv=Content-Type&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;style type='text/css'&gt; p, td, li {font-family:굴림체, arial; font-size:10pt; margin-top:5px;margin-bottom:5px;} body{margin:10px 10px 10px 10px; line-height:1.2; font-family:굴림체, arial; font-size:10pt;}&lt;/style&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;meta name=GENERATOR content=ActiveSquare&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;/head&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;body&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;p&gt;P TAG TEST&lt;/p&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;p&gt;P TAG TEST&lt;/p&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;p&gt;P TAG TEST&lt;/p&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;/body&gt;\n&quot;;&#13;&#10;&#9;&#9;str_html += &quot;&lt;/html&gt;\n&quot;; &#13;&#10;this.WebBrowser00.document.body.innerHTML = str_html&#13;&#10;}" cssclass="sample_example" left="56" top="69" right="1" height="192" style="background:#ffd70055;margin:0 0 0 0;padding:5 5 5 5;"/>
+        <Static id="Static01" taborder="4" text="1.웹브라우저태그생성샘플" cssclass="sample_Title" left="41" top="8" width="332" height="36"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : 
+* BUSINESS    : 
+* FILE NAME   : 
+* PROGRAMMER  :
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+ 
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+     Ex.core.init(obj);
+}
+
+this.testWebBrowser_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.WebBrowser00.set_url("about:blank");
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var str_html = "";
+		str_html += "<html>\n";
+		str_html += "<head>\n";
+		str_html += "<title>타이틀</title>\n";
+		str_html += "<meta content='text/html; charset=euc-kr' http-equiv=Content-Type>\n";
+		str_html += "<style type='text/css'> p, td, li {font-family:굴림체, arial; font-size:10pt; margin-top:5px;margin-bottom:5px;} body{margin:10px 10px 10px 10px; line-height:1.2; font-family:굴림체, arial; font-size:10pt;}</style>\n";
+		str_html += "<meta name=GENERATOR content=ActiveSquare>\n";
+		str_html += "</head>\n";
+		str_html += "<body>\n";
+		str_html += "<p>P TAG TEST</p>\n";
+		str_html += "<p>P TAG TEST</p>\n";
+		str_html += "<p>P TAG TEST</p>\n";
+		str_html += "</body>\n";
+		str_html += "</html>\n"; 
+
+		this.WebBrowser00.document.body.innerHTML = str_html
+}
+]]></Script>
+  </Form>
+</FDL>

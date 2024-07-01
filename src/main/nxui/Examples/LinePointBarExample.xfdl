@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="linepoint" classname="EcoChartSample" left="0" top="0" width="1024" height="723" titletext="linepoint" style="background:#ffffffff;" onload="StackBarSample_onload">
+    <Layouts>
+      <Layout>
+        <EcoChart id="ecochart" top="67" left="20" height="637" style="background:#ffffffff;border:0 solid #808080ff ;bordertype:round 15 15 ;" right="48"/>
+        <Static id="st_male" taborder="18" top="37" height="20" width="111" right="198" style="align:right middle;"/>
+        <Static id="st_female" taborder="19" top="37" height="20" width="94" right="29" style="align:right middle;"/>
+        <Static id="Static01" taborder="22" text="Line Point &amp; Bar Highight" cssclass="WF_sta_Title" left="1.95%" top="10" right="4.69%" height="47"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_daily" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="date" type="STRING" size="256"/>
+          <Column id="month" type="STRING" size="256"/>
+          <Column id="pc" type="INT" size="256"/>
+          <Column id="mobile" type="INT" size="256"/>
+          <Column id="atm" type="INT" size="256"/>
+          <Column id="phone" type="INT" size="256"/>
+          <Column id="twoChannel" type="INT" size="256"/>
+          <Column id="trading" type="INT" size="256"/>
+          <Column id="calling" type="INT" size="256"/>
+          <Column id="visitCounter" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="date">01-10</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">36000</Col>
+            <Col id="mobile">9</Col>
+            <Col id="atm">47</Col>
+            <Col id="phone">21</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">2</Col>
+            <Col id="visitCounter">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-11</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">32000</Col>
+            <Col id="mobile">10</Col>
+            <Col id="atm">35</Col>
+            <Col id="phone">28</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">2</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-12</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">63000</Col>
+            <Col id="mobile">11</Col>
+            <Col id="atm">49</Col>
+            <Col id="phone">2</Col>
+            <Col id="twoChannel">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">1</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-13</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">74000</Col>
+            <Col id="mobile">14</Col>
+            <Col id="atm">18</Col>
+            <Col id="phone">31</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">3</Col>
+            <Col id="visitCounter">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-14</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">5000</Col>
+            <Col id="mobile">9</Col>
+            <Col id="atm">13</Col>
+            <Col id="phone">10</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">1</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-15</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">27000</Col>
+            <Col id="mobile">5</Col>
+            <Col id="atm">56</Col>
+            <Col id="phone">36</Col>
+            <Col id="twoChannel">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">2</Col>
+            <Col id="visitCounter">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-16</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">71000</Col>
+            <Col id="mobile">14</Col>
+            <Col id="atm">50</Col>
+            <Col id="phone">1</Col>
+            <Col id="twoChannel">2</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">1</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-17</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">25000</Col>
+            <Col id="mobile">2</Col>
+            <Col id="atm">47</Col>
+            <Col id="phone">32</Col>
+            <Col id="twoChannel">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">1</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-18</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">41000</Col>
+            <Col id="mobile">12</Col>
+            <Col id="atm">28</Col>
+            <Col id="phone">24</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">0</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-19</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">39000</Col>
+            <Col id="mobile">13</Col>
+            <Col id="atm">49</Col>
+            <Col id="phone">26</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">1</Col>
+            <Col id="visitCounter">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-20</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">43000</Col>
+            <Col id="mobile">8</Col>
+            <Col id="atm">23</Col>
+            <Col id="phone">32</Col>
+            <Col id="twoChannel">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">2</Col>
+            <Col id="visitCounter">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-21</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">12000</Col>
+            <Col id="mobile">2</Col>
+            <Col id="atm">33</Col>
+            <Col id="phone">11</Col>
+            <Col id="visitCounter">1</Col>
+            <Col id="trading">1</Col>
+            <Col id="twoChannel">0</Col>
+            <Col id="calling">4</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-22</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">21210</Col>
+            <Col id="mobile">23</Col>
+            <Col id="atm">14</Col>
+            <Col id="phone">10</Col>
+            <Col id="visitCounter">1</Col>
+            <Col id="trading">1</Col>
+            <Col id="calling">1</Col>
+            <Col id="twoChannel">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-23</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">52100</Col>
+            <Col id="mobile">12</Col>
+            <Col id="atm">22</Col>
+            <Col id="phone">28</Col>
+            <Col id="visitCounter">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">5</Col>
+            <Col id="twoChannel">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-24</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">44000</Col>
+            <Col id="mobile">5</Col>
+            <Col id="atm">20</Col>
+            <Col id="phone">25</Col>
+            <Col id="visitCounter">0</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">2</Col>
+            <Col id="twoChannel">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-25</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">32033</Col>
+            <Col id="mobile">3</Col>
+            <Col id="atm">18</Col>
+            <Col id="phone">23</Col>
+            <Col id="visitCounter">0</Col>
+            <Col id="trading">1</Col>
+            <Col id="calling">2</Col>
+            <Col id="twoChannel">0</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-26</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">12000</Col>
+            <Col id="mobile">13</Col>
+            <Col id="atm">40</Col>
+            <Col id="phone">10</Col>
+            <Col id="visitCounter">1</Col>
+            <Col id="trading">1</Col>
+            <Col id="calling">1</Col>
+            <Col id="twoChannel">1</Col>
+          </Row>
+          <Row>
+            <Col id="date">01-27</Col>
+            <Col id="month">2014-01</Col>
+            <Col id="pc">29999</Col>
+            <Col id="mobile">17</Col>
+            <Col id="atm">12</Col>
+            <Col id="phone">8</Col>
+            <Col id="visitCounter">1</Col>
+            <Col id="trading">0</Col>
+            <Col id="calling">0</Col>
+            <Col id="twoChannel">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+var chart;
+
+this.StackBarSample_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.drawChart();
+}
+
+
+this.drawChart = function()
+{
+	if (!chart)
+	{
+		var config = {
+			"type": "Basic",
+			"chart": {
+				"id": "line-point-bar chart",
+				"bindDataset": "ds_daily",
+				"bindCategory": "date",
+				"colors": "color12",
+				"plotRightBorderWidth": 1
+			},
+			"categoryAxis": {
+				"id": "categoryAxis X",
+				"autoscaleMargin": 0.03,
+				"tickLength": 10,
+				"titleFontSize": 11,
+				"titleFontType": "bold",
+				"lineColor": "red",
+				"labelRotate": -40,
+				"labelMargin": 30
+			},
+			"valueAxis": [
+				{
+					"id": "ValueAxis Y1",
+					"title": "sales  count",
+					"position": "left",
+					"autoscaleMargin": 0.03,
+					"titleMargin": 50,
+					"showGridLine": "false",
+					"lineOpacity": 0.5,
+					"tickColor": "#1abd9c",
+					"tickWidth": 3,
+					"tickLength": 10,
+					"labelMargin": 15,
+					"titleFontSize": 11,
+					"titleFontType": "bold"
+				},
+				{
+					"id": "ValueAxis Y2",
+					"show": true,
+					"showGridLine": true,
+					"position": "right",
+					"tickLength": 12,
+					"tickWidth": 2,
+					"labelMargin": 13
+				}
+			],
+			"series": [
+				{
+					"id": "Series 1",
+					"title": "pc",
+					"bindValue": "pc",
+					"xaxis": "categoryAxis X",
+					"yaxis": "ValueAxis Y1",
+					"showBar": true,
+					"barOpacity": 0.5,
+					"showHighLight": true,
+					"highLightFillColor": "red"
+				},
+				{
+					"id": "Series 2",
+					"title": "mobile",
+					"bindValue": "mobile",
+					"xaxis": "categoryAxis X",
+					"yaxis": "ValueAxis Y2",
+					"showPoint": true,
+					"showLine": true,
+					"showHighLight": true,
+					"pointRadius": 6,
+					"highLightOpacity": 0.4,
+					"highLightRadius": 23
+				}
+			],
+			"legend": {
+				"position": "right",
+				"valign": "top",
+				"columns": 1,
+				"autoMargins": false,
+				"marginTop": 100,
+				"marginRight": 20,
+				"labelFontSize": 10,
+				"labelFontType": "bold",
+				"markerSize": 16,
+				"verticalGap": 35,
+				"switchable": false
+			},
+			"tooltip": {
+				"text": "[%value] sales: [%y]",
+				"fontFace": "Meiryo UI",
+				"fontSize": 9,
+				"fontType": "bold",
+				"fontColor": "#ffffff",
+				"borderWidth": 1,
+				"borderStyle": "solid",
+				"borderColor": "#717a83",
+				"color": "#717a83cc",
+				"opacity": 1,
+				"hookWidth": 10,
+				"hookHeight": 10,
+				"offsetX": 0,
+				"offsetY": 20
+			}
+		};
+	
+		this.ecochart.set_config(config);
+	}
+	
+	this.ecochart.draw();
+	
+	chart = this.ecochart.getChart();
+}
+]]></Script>
+  </Form>
+</FDL>

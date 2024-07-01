@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="orderChange">
+	
+	<resultMap id="changeResultMap" class="java.util.HashMap">
+		<result property="inputDay"  		column="INPUT_DAY" /> 			<!-- 입력일자 -->  
+		<result property="ordNo"    			column="ORD_NO" /> 			<!-- 주문번호 -->   
+		<result property="seq"   				column="SEQ" /> 					<!-- 순번 -->    
+		<result property="agencyCdBf"  		column="AGENCY_CD_BF" /> 	<!-- 변경전대리점코드 -->    
+		<result property="agencyNmBf"    	column="AGENCY_NM_BF" /> 	<!-- 변경전대리점명 -->   
+		<result property="agencyCdAf"   	column="AGENCY_CD_AF" /> 	<!-- 변경후대리점코드 -->   
+		<result property="agencyNmAf" 		column="AGENCY_NM_AF" /> 	<!-- 변경후대리점명 -->    
+		<result property="instDay"  			column="INST_DAY" />			<!-- 장착일자 -->  	 
+		<result property="instTm"             column="INST_TM" />				<!-- 장착시간 -->   
+		<result property="omsOrderNo"  	column="OMS_ORDERNO" />	<!-- OMS주문번호 -->  
+		<result property="tmsOrderId"   	column="TMS_ORDERID" />		<!-- TMS ORDER ID -->   
+		<result property="agencyDiffYn"  	column="AGENCY_DIFF_YN" />	<!-- 대리점변경여부 -->
+		<result property="ordNoNew"  	    column="ORD_NO_NEW" />	    <!-- 신규주문번호 -->  
+		<result property="regDt"   			column="REG_DT" />				<!-- 등록일자 --> 
+	</resultMap>
+       
+    <parameterMap id="changeParam" class="java.util.Map">             
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="changeResultMap" />
+		<parameter property="inputDayF"  		jdbcType="VARCHAR" mode="IN" /> 	<!-- 조회시작일자 -->
+		<parameter property="inputDayT"  		jdbcType="VARCHAR" mode="IN" /> 	<!-- 조회종료일자 -->
+		<parameter property="agencyDiffYn"  	jdbcType="VARCHAR" mode="IN" /> 	<!-- 대리점변경여부 -->
+	</parameterMap> 
+	
+	<procedure id="orderChange.orderChangeList" parameterMap="changeParam">
+		{call Pkg_Rtsd0215.p_sRTSD0215(?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

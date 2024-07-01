@@ -1,0 +1,794 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="ColorPickerPopup" classname="OColorDialog" inheritanceid="" position="absolute" titletext="Color 선택" onmousemove="ColorPickerPopup_onmousemove" onload="ColorPickerPopup_onload" left="0" top="0" width="527" height="344">
+    <Layouts>
+      <Layout>
+        <Static id="Static10" taborder="90" left="0" top="0" width="527" height="344" style="background:#e4e5e9ff;border:1 solid #748ba6ff ;bordertype:round 4 4 ;"/>
+        <Static id="Static00" text="Basic Color" position="absolute" left="17" top="10" width="122" height="15" taborder="0"/>
+        <Button id="selectColorBoder11" taborder="1" position="absolute" left="244" top="212" width="16" height="48" cssclass="Editer_btn_clrAdd"/>
+        <Static id="b11" position="absolute" text="" onclick="basicColor_onclick" left="15" top="26" width="27" height="27" taborder="2" cssclass="Editer_sta_clrBox"/>
+        <Static id="b21" position="absolute" text="" onclick="basicColor_onclick" left="15" top="53" width="27" height="27" taborder="3" cssclass="Editer_sta_clrBox"/>
+        <Static id="b31" position="absolute" text="" onclick="basicColor_onclick" left="15" top="80" width="27" height="27" taborder="4" cssclass="Editer_sta_clrBox"/>
+        <Static id="b41" position="absolute" text="" onclick="basicColor_onclick" left="15" top="107" width="27" height="27" taborder="5" cssclass="Editer_sta_clrBox"/>
+        <Static id="b51" position="absolute" text="" onclick="basicColor_onclick" left="15" top="134" width="27" height="27" taborder="6" cssclass="Editer_sta_clrBox"/>
+        <Static id="b61" position="absolute" text="" onclick="basicColor_onclick" left="15" top="161" width="27" height="27" taborder="7" cssclass="Editer_sta_clrBox"/>
+        <Static id="b12" position="absolute" text="" onclick="basicColor_onclick" left="44" top="26" width="27" height="27" taborder="8" cssclass="Editer_sta_clrBox"/>
+        <Static id="b13" position="absolute" text="" onclick="basicColor_onclick" left="73" top="26" width="27" height="27" taborder="9" cssclass="Editer_sta_clrBox"/>
+        <Static id="b14" position="absolute" text="" onclick="basicColor_onclick" left="102" top="26" width="27" height="27" taborder="10" cssclass="Editer_sta_clrBox"/>
+        <Static id="b15" position="absolute" text="" onclick="basicColor_onclick" left="131" top="26" width="27" height="27" taborder="11" cssclass="Editer_sta_clrBox"/>
+        <Static id="b16" position="absolute" text="" onclick="basicColor_onclick" left="160" top="26" width="27" height="27" taborder="12" cssclass="Editer_sta_clrBox"/>
+        <Static id="b17" position="absolute" text="" onclick="basicColor_onclick" left="189" top="26" width="27" height="27" taborder="13" cssclass="Editer_sta_clrBox"/>
+        <Static id="b18" position="absolute" text="" onclick="basicColor_onclick" left="218" top="26" width="27" height="27" taborder="14" cssclass="Editer_sta_clrBox"/>
+        <Button id="btnCancel" taborder="77" text="Cancel" onclick="btnCancel_onclick" position="absolute" left="189" top="308" width="71" height="25" cssclass="WF_btn_Pnt"/>
+        <Button id="btnApply" taborder="76" text="OK" onclick="btnApply_onclick" position="absolute" left="263" top="308" width="71" height="25" cssclass="WF_btn_Pnt"/>
+        <Static id="b22" position="absolute" onclick="basicColor_onclick" text="" left="44" top="53" width="27" height="27" taborder="17" cssclass="Editer_sta_clrBox"/>
+        <Static id="b32" position="absolute" onclick="basicColor_onclick" text="" left="44" top="80" width="27" height="27" taborder="18" cssclass="Editer_sta_clrBox"/>
+        <Static id="b42" position="absolute" onclick="basicColor_onclick" text="" left="44" top="107" width="27" height="27" taborder="19" cssclass="Editer_sta_clrBox"/>
+        <Static id="b52" position="absolute" onclick="basicColor_onclick" text="" left="44" top="134" width="27" height="27" taborder="20" cssclass="Editer_sta_clrBox"/>
+        <Static id="b62" position="absolute" onclick="basicColor_onclick" text="" left="44" top="161" width="27" height="27" taborder="21" cssclass="Editer_sta_clrBox"/>
+        <Static id="b23" position="absolute" onclick="basicColor_onclick" text="" left="73" top="53" width="27" height="27" taborder="22" cssclass="Editer_sta_clrBox"/>
+        <Static id="b33" position="absolute" onclick="basicColor_onclick" text="" left="73" top="80" width="27" height="27" taborder="23" cssclass="Editer_sta_clrBox"/>
+        <Static id="b43" position="absolute" onclick="basicColor_onclick" text="" left="73" top="107" width="27" height="27" taborder="24" cssclass="Editer_sta_clrBox" style="background:#ffffffff URL('image::editer/Editer_sta_clrBox.png');"/>
+        <Static id="b53" position="absolute" onclick="basicColor_onclick" text="" left="73" top="134" width="27" height="27" taborder="25" cssclass="Editer_sta_clrBox"/>
+        <Static id="b63" position="absolute" onclick="basicColor_onclick" text="" left="73" top="161" width="27" height="27" taborder="26" cssclass="Editer_sta_clrBox"/>
+        <Static id="b24" position="absolute" onclick="basicColor_onclick" text="" left="102" top="53" width="27" height="27" taborder="27" cssclass="Editer_sta_clrBox"/>
+        <Static id="b34" position="absolute" onclick="basicColor_onclick" text="" left="102" top="80" width="27" height="27" taborder="28" cssclass="Editer_sta_clrBox"/>
+        <Static id="b44" position="absolute" onclick="basicColor_onclick" text="" left="102" top="107" width="27" height="27" taborder="29" cssclass="Editer_sta_clrBox"/>
+        <Static id="b54" position="absolute" onclick="basicColor_onclick" text="" left="102" top="134" width="27" height="27" taborder="30" cssclass="Editer_sta_clrBox"/>
+        <Static id="b64" position="absolute" onclick="basicColor_onclick" text="" left="102" top="161" width="27" height="27" taborder="31" cssclass="Editer_sta_clrBox"/>
+        <Static id="b25" position="absolute" onclick="basicColor_onclick" text="" left="131" top="53" width="27" height="27" taborder="32" cssclass="Editer_sta_clrBox"/>
+        <Static id="b35" position="absolute" onclick="basicColor_onclick" text="" left="131" top="80" width="27" height="27" taborder="33" cssclass="Editer_sta_clrBox"/>
+        <Static id="b45" position="absolute" onclick="basicColor_onclick" text="" left="131" top="107" width="27" height="27" taborder="34" cssclass="Editer_sta_clrBox"/>
+        <Static id="b55" position="absolute" onclick="basicColor_onclick" text="" left="131" top="134" width="27" height="27" taborder="35" cssclass="Editer_sta_clrBox"/>
+        <Static id="b65" position="absolute" onclick="basicColor_onclick" text="" left="131" top="161" width="27" height="27" taborder="36" cssclass="Editer_sta_clrBox"/>
+        <Static id="b26" position="absolute" onclick="basicColor_onclick" text="" left="160" top="53" width="27" height="27" taborder="37" cssclass="Editer_sta_clrBox"/>
+        <Static id="b36" position="absolute" onclick="basicColor_onclick" text="" left="160" top="80" width="27" height="27" taborder="38" cssclass="Editer_sta_clrBox"/>
+        <Static id="b46" position="absolute" onclick="basicColor_onclick" text="" left="160" top="107" width="27" height="27" taborder="39" cssclass="Editer_sta_clrBox"/>
+        <Static id="b56" position="absolute" onclick="basicColor_onclick" text="" left="160" top="134" width="27" height="27" taborder="40" cssclass="Editer_sta_clrBox"/>
+        <Static id="b66" position="absolute" onclick="basicColor_onclick" text="" left="160" top="161" width="27" height="27" taborder="41" cssclass="Editer_sta_clrBox"/>
+        <Static id="b27" position="absolute" onclick="basicColor_onclick" text="" left="189" top="53" width="27" height="27" taborder="42" cssclass="Editer_sta_clrBox"/>
+        <Static id="b37" position="absolute" onclick="basicColor_onclick" text="" left="189" top="80" width="27" height="27" taborder="43" cssclass="Editer_sta_clrBox"/>
+        <Static id="b47" position="absolute" onclick="basicColor_onclick" text="" left="189" top="107" width="27" height="27" taborder="44" cssclass="Editer_sta_clrBox"/>
+        <Static id="b57" position="absolute" onclick="basicColor_onclick" text="" left="189" top="134" width="27" height="27" taborder="45" cssclass="Editer_sta_clrBox"/>
+        <Static id="b67" position="absolute" onclick="basicColor_onclick" text="" left="189" top="161" width="27" height="27" taborder="46" cssclass="Editer_sta_clrBox"/>
+        <Static id="b28" position="absolute" onclick="basicColor_onclick" text="" left="218" top="53" width="27" height="27" taborder="47" cssclass="Editer_sta_clrBox"/>
+        <Static id="b38" position="absolute" onclick="basicColor_onclick" text="" left="218" top="80" width="27" height="27" taborder="48" cssclass="Editer_sta_clrBox"/>
+        <Static id="b48" position="absolute" onclick="basicColor_onclick" text="" left="218" top="107" width="27" height="27" taborder="49" cssclass="Editer_sta_clrBox"/>
+        <Static id="b58" position="absolute" onclick="basicColor_onclick" text="" left="218" top="134" width="27" height="27" taborder="50" cssclass="Editer_sta_clrBox"/>
+        <Static id="b68" position="absolute" onclick="basicColor_onclick" text="" left="218" top="161" width="27" height="27" taborder="51" cssclass="Editer_sta_clrBox"/>
+        <ImageViewer id="colorImage" taborder="85" position="absolute" image="URL('image::editer/colorDialog.jpg')" tabstop="false" onclick="colorImage_onclick" left="260" top="29" width="221" height="172" style="border:0 none #808080ff ;bordertype:normal 0 0 ;"/>
+        <Static id="lightnessBar" position="absolute" style="background:@gradation;gradation:linear 0,0 white 0,100 black [50% blue];" text="" onclick="lightnessBar_onclick" left="492" top="29" width="13" height="171" taborder="53"/>
+        <Static id="previewColor" onclick="basicColor_onclick" position="absolute" text="" left="260" top="211" width="72" height="48" style="background:red;" taborder="54"/>
+        <Static id="Static01" text="색|단색" position="absolute" left="363" top="365" width="56" height="12" taborder="55"/>
+        <Static id="Static03" text="Set" position="absolute" left="344" top="236" width="32" height="23" taborder="56"/>
+        <Static id="Static04" text="Lum" position="absolute" left="344" top="261" width="32" height="23" taborder="57"/>
+        <Static id="Static02" text="Hue" position="absolute" left="344" top="211" width="36" height="23" taborder="58"/>
+        <Static id="Static05" text="Green" position="absolute" left="423" top="236" width="48" height="23" taborder="59"/>
+        <Static id="Static06" text="Blue" position="absolute" left="423" top="261" width="32" height="23" taborder="60"/>
+        <Static id="Static07" text="Red" position="absolute" left="423" top="211" width="32" height="23" taborder="61"/>
+        <Static id="Static08" text="Custom Add Color" position="absolute" left="17" top="191" width="168" height="15" taborder="62"/>
+        <Static id="u0" position="absolute" text="" onclick="userColor_onclick" left="15" top="209" width="27" height="27" taborder="63" cssclass="Editer_sta_clrBox"/>
+        <Static id="u2" position="absolute" text="" onclick="userColor_onclick" left="44" top="209" width="27" height="27" taborder="64" cssclass="Editer_sta_clrBox"/>
+        <Static id="u4" position="absolute" text="" onclick="userColor_onclick" left="73" top="209" width="27" height="27" taborder="65" cssclass="Editer_sta_clrBox"/>
+        <Static id="u6" position="absolute" text="" onclick="userColor_onclick" left="102" top="209" width="27" height="27" taborder="66" cssclass="Editer_sta_clrBox"/>
+        <Static id="u8" position="absolute" text="" onclick="userColor_onclick" left="131" top="209" width="27" height="27" taborder="67" cssclass="Editer_sta_clrBox"/>
+        <Static id="u10" onclick="userColor_onclick" position="absolute" text="" left="160" top="209" width="27" height="27" taborder="68" cssclass="Editer_sta_clrBox"/>
+        <Static id="u12" onclick="userColor_onclick" position="absolute" text="" left="189" top="209" width="27" height="27" taborder="69" cssclass="Editer_sta_clrBox"/>
+        <Static id="u14" onclick="userColor_onclick" position="absolute" text="" left="218" top="209" width="27" height="27" taborder="70" cssclass="Editer_sta_clrBox"/>
+        <Static id="u1" position="absolute" text="" onclick="userColor_onclick" left="15" top="236" width="27" height="27" taborder="71" cssclass="Editer_sta_clrBox"/>
+        <Static id="u3" position="absolute" text="" onclick="userColor_onclick" left="44" top="236" width="27" height="27" taborder="72" cssclass="Editer_sta_clrBox"/>
+        <Static id="u5" onclick="userColor_onclick" position="absolute" text="" left="73" top="236" width="27" height="27" taborder="73" cssclass="Editer_sta_clrBox"/>
+        <Static id="u7" onclick="userColor_onclick" position="absolute" text="" left="102" top="236" width="27" height="27" taborder="74" cssclass="Editer_sta_clrBox"/>
+        <Static id="u9" onclick="userColor_onclick" position="absolute" text="" left="131" top="236" width="27" height="27" taborder="75" cssclass="Editer_sta_clrBox"/>
+        <Static id="u11" onclick="userColor_onclick" position="absolute" text="" left="160" top="236" width="27" height="27" taborder="15" cssclass="Editer_sta_clrBox"/>
+        <Static id="u13" onclick="userColor_onclick" position="absolute" text="" left="189" top="236" width="27" height="27" taborder="16" cssclass="Editer_sta_clrBox"/>
+        <Static id="u15" onclick="userColor_onclick" position="absolute" text="" left="218" top="236" width="27" height="27" taborder="52" cssclass="Editer_sta_clrBox"/>
+        <Button id="btnAddUserColor" taborder="84" text="Add" position="absolute" onclick="btnAddUserColor_onclick" left="260" top="263" width="72" height="21"/>
+        <Button id="btn_cancel01" taborder="86" text="사용자 지정 색 만들기 &gt;&gt;" position="absolute" enable="false" left="30" top="360" width="232" height="22"/>
+        <ImageViewer id="selectPointer" taborder="87" transparenthittest="true" position="absolute" style="background:transparent;border:0 solid #e5e5e5ff ;" tabstop="false" left="267" top="14" width="19" height="19" image="URL('image::select.GIF')"/>
+        <ImageViewer id="slider" taborder="88" image="URL('image::editer/Editr_arrow.png')" position="absolute" style="background:#ffffff00;cursor:hand;" tabstop="false" onmousemove="slider_onmousemove" onlbuttonup="slider_onlbuttonup" left="505" top="45" width="9" height="15"/>
+        <Static id="Static09" taborder="89" cssclass="WF_sta_lineDiv" left="0" top="297" width="525" height="1"/>
+        <Edit id="ed_r" taborder="81" position="absolute" ontextchanged="onChangeRgbValue" left="465" top="211" width="40" height="23"/>
+        <Edit id="ed_g" taborder="82" position="absolute" ontextchanged="onChangeRgbValue" left="465" top="236" width="40" height="23"/>
+        <Edit id="ed_b" taborder="83" position="absolute" ontextchanged="onChangeRgbValue" left="465" top="261" width="40" height="23"/>
+        <Edit id="ed_h" taborder="78" position="absolute" ontextchanged="onChangeHslValue" left="374" top="211" width="40" height="23"/>
+        <Edit id="ed_s" taborder="79" position="absolute" ontextchanged="onChangeHslValue" left="374" top="236" width="40" height="23"/>
+        <Edit id="ed_v" taborder="80" position="absolute" ontextchanged="onChangeHslValue" left="374" top="261" width="40" height="23"/>
+        <Button id="selectColorBoder" taborder="93" left="120" top="1" width="27" height="27" style="background:transparent URL('image::editer/Editer_sta_clrBox_O.png');shadow:outer 0,0 0 #0000004a;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <InitValue>
+      <ImageViewer id="selectPointer" transparenthittest="true"/>
+    </InitValue>
+    <Script type="xscript5.0"><![CDATA[/*
+ * Color Picker Sample at XPLATFORM
+ * 
+ *
+ * Copyright (c) 2013 EcoSystem of TOBESOFT
+ * Licensed Free under XPLATFORM.
+*/
+
+/**
+ * 기본색상(48개)을 선택할 수 있는 Color Picker.
+ * Hue의 범위는 0 ~ 240도.
+ */  
+
+this.initColor = '#000000';
+
+//HSL과 RGB값을 가진 Color객체 
+this.colorValue = {R:0, G:0, B:0, A:255, H:0, S:0, V:0};
+//팝업호출시 전달받은 색상
+this.receiveColor = "#000000"; 
+//선택한 "사용자 색"관련 컴포넌트
+this.userColorComponent = this.u0;
+
+//selectPointer 폭
+this.selectPointerWidth;
+//selectPointer 높이
+this.selectPointerHeight;
+
+//명도선택판 높이
+this.lightnessBarHeight;
+//명도선택판 Top Position
+this.lightnessBarTop;
+//명도선택판 Bottom Position
+this.lightnessBarBottom;
+
+//slider Left Position
+this.sliderLeft;
+//slider 높이
+this.sliderHeight;
+
+this.fixSize = 19;
+
+this.ColorPickerPopup_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.selectPointerWidth = 20;
+	this.selectPointerHeight = 20;
+	
+	this.lightnessBarHeight = this.lightnessBar.height;
+	this.lightnessBarTop = this.lightnessBar.top;
+	this.lightnessBarBottom = this.lightnessBar.bottom;
+	
+	this.sliderLeft = this.slider.left;
+	this.sliderHeight = 10;
+
+	//기본색 
+	var basicColors= Eco.Color.basicColors;
+	var horizontalLen = basicColors[0].length; //8
+	var verticalLen   = basicColors.length; //6
+	var i = j = 0;
+	var row, col, color, currentItem;
+	
+	//전달받은 색상이 "기본 색"일 때 
+	//이에 해당하는 컴포넌트
+	var matchComponent = this.b61; //기본검정색
+
+	//팝업호출시 전달받은 색상
+	
+ 	if(!Eco.isEmpty(this.initColor)) 
+ 	{
+		this.receiveColor = this.initColor; 
+	}
+	
+	var baseColor = Eco.Color;
+	
+	//"기본 색"관련 컴포넌트에 배경색 설정
+	for(var i=0; i<verticalLen; i++)
+	{
+		row = i+1;
+		
+		for(var j=0; j<horizontalLen; j++)
+		{
+			col = j+1;
+			color = baseColor.basicColors[i][j];
+			color += " URL('image::editer/Editer_sta_clrBox.png')";
+			
+			currentItem = this.components["b"+row+col];
+			currentItem.style.set_background(color);
+			
+			if( color == this.receiveColor )
+			{
+				matchComponent = currentItem;
+			}			
+		
+		}
+	}
+	
+	
+
+ 	//색선택 표시용 테두리 설정
+ 	this.setSelectColorBorder(matchComponent);
+ 	
+ 	//colorValue 설정
+ 	this.setColor(this.receiveColor);
+	
+	this.setValue();
+	
+ 	this.onChangeRGB();
+	
+	this.setPreview();
+	
+ 	this.setLightnessBar();
+	
+	
+// 	//"사용자 지정 색" 존재시 배경색 설정
+// 	for( i = 0 ; i < 16 ; i++ )
+// 	{
+// 		var userColor;
+// 		userColor = application.getPrivateProfile("ColorDialog/u"+i);
+// 		
+// 		if( "x"+userColor != "x" )
+// 		{
+// 			this.components["u"+i].style.background = userColor;
+// 		}
+// 			
+// 	}		
+
+}  
+  
+
+  
+  
+/*========================================================================
+	Function Area
+========================================================================*/
+/**
+ * color를 헥사문자열값으로 반환.
+ * @example
+ *   getHexColor(); //return "#FF0000"
+ */	
+this.getHexColor = function()
+{
+// 	trace("## getHexColor >>> this.colorValue.R="+this.colorValue.R);
+// 	trace("## getHexColor >>> this.colorValue.G="+this.colorValue.G);
+// 	trace("## getHexColor >>> this.colorValue.B="+this.colorValue.B);
+	
+	return Eco.Color.rgbToHex(this.colorValue.R, this.colorValue.G, this.colorValue.B, this.colorValue.A);
+}
+
+
+this.checkRgbaValue = function(r,g,b,a)
+{
+	var len = arguments.length;
+	
+	if(len < 3) return false;
+	var i = 0,
+	    value;
+	for( ; i < len; i++)
+	{
+		value = arguments[i];
+		if(value < 0 || value > 255) return false;
+	}
+	
+	return true;
+}
+
+/**
+ * this.colorValue 설정
+ * @param {string | number} firstValue Color 값 문자열 또는 Red 값 ( 0 ~ 255 ).
+ * @param {number=} green Green 값.( 0 ~ 255 )의 입력범위를 가집니다.
+ * @param {number=} blue Blue 값.( 0 ~ 255 )의 입력범위를 가집니다.
+ * @param {number=} alpha Alpha 값.( 0 ~ 255 ) 의 입력범위를 가집니다.
+ * @example
+ *   this.setColor("#FF0000");
+ *   this.setColor(255,0,0);
+ */
+this.setColor = function(firstValue,green,blue,alpha)
+{
+	//trace("\n\n  this.setColor >> f=" + firstValue + ", g=" + green + ", b=" + blue + ", a=" + alpha);
+	
+	//var color = new Color;
+	var color = {r: 0, g: 0, b: 0, a: 0};
+	color.setColor = function(r,g,b,a){
+		this.r = r;
+		this.g = g;
+		this.b = b;
+		
+		if(Eco.isEmpty(a)) return;
+		
+		this.a = a;
+	};
+	
+	var ret;
+	
+	//trace("\n typeof(firstValue)="+ typeof(firstValue));
+	
+	if( typeof(firstValue) == "string" && Eco.isEmpty(green))
+	{
+		ret = Eco.Color.hexToRgb(firstValue);
+		
+		//trace("\n typeof(firstValue)="+ typeof(firstValue) + ", ret="+ret);
+		
+		if(ret)
+		{
+			color.setColor(ret[0], ret[1], ret[2], ret[3]);
+			//trace("\n color.r="+ color.r + ", color.a="+color.a);
+			ret = true;
+		}
+	}
+	else
+	{
+		if( alpha == null )
+		{
+			color.setColor(firstValue,green,blue);
+			ret = this.checkRgbaValue(firstValue,green,blue);
+			
+		}
+		else
+		{
+			color.setColor(firstValue,green,blue,alpha);
+			ret = this.checkRgbaValue(firstValue,green,blue,alpha);
+		}
+	}
+		
+	if( ret == true )
+	{
+		//trace("여기 $$$!!!color.r="+color.r+ ", color.g="+color.g +  ", color.b="+color.b);
+		this.colorValue.R = color.r;
+		this.colorValue.G = color.g;
+		this.colorValue.B = color.b;
+		this.colorValue.A = color.a;
+		
+		var hsv = Eco.Color.rgbToHsl(color.r, color.g, color.b);
+		//trace("여기 !!!hsv="+hsv);
+		
+		this.colorValue.H = hsv[0];
+		this.colorValue.S = hsv[1];
+		this.colorValue.V = hsv[2];
+		
+	}
+	else
+	{
+// 		trace("aaa ret="+ret);
+// 		trace("aaa color.r="+color.r+ ", color.g="+color.g);
+		this.colorValue.R = 255;
+		this.colorValue.G = 255;
+		this.colorValue.B = 255;
+		this.colorValue.A = 255;
+
+		var hsv = Eco.Color.rgbToHsl(color.r, color.g, color.b);
+		this.colorValue.H = hsv[0];
+		this.colorValue.S = hsv[1];
+		this.colorValue.V = hsv[2];
+		
+	}	
+
+	
+	return ret;
+}
+
+/**
+ * HSL,RGB표시용 컴포넌트 값설정.
+ * colorValue의 값을 사용한다.
+ */	
+this.setValue = function()
+{
+	//trace("this.setValue >> this.colorValue.H=" + this.colorValue.H + ", this.colorValue.V=" + this.colorValue.V + ", this.colorValue.S=" + this.colorValue.S);
+	this.ed_h.set_value(this.colorValue.H);
+	this.ed_v.set_value(this.colorValue.V);
+	this.ed_s.set_value(this.colorValue.S);
+	
+	this.ed_r.set_value(this.colorValue.R);
+	this.ed_g.set_value(this.colorValue.G);
+	this.ed_b.set_value(this.colorValue.B);
+}
+
+
+//RGB와 연관된 컴포넌트의 값을 업데이트합니다.
+this.setRgbValue = function()
+{
+	this.ed_r.set_value( this.colorValue.R );
+	this.ed_g.set_value( this.colorValue.G);
+	this.ed_b.set_value( this.colorValue.B);
+}
+
+this.setHslValue = function()
+{
+	
+	this.ed_h.set_value( this.colorValue.H);
+	this.ed_v.set_value( this.colorValue.V);
+	this.ed_s.set_value( this.colorValue.S);
+}
+
+
+/**
+ * 미리보기 컴포넌트의 배경색을 설정합니다.
+ */
+this.setPreview = function()
+{
+    var hexColor = this.getHexColor();
+    
+    //BB.log.debug("setPreview >>> hexColor="+hexColor);
+    //알파값이 적용되지 않음...2014.05.13
+    var removeAlpha = hexColor.substr(0, hexColor.length - 2); 
+    this.previewColor.style.set_background(removeAlpha);
+	
+}
+
+
+/**
+ * 명도선택판 배경색을 설정합니다.
+ */
+this.setLightnessBar = function()
+{
+	var hexColor;
+	
+	//명도가 0이면 모든색상이 검은색으로만 나오는 문제 보완.
+	//BB.log.debug("*******   setLightnessBar >>> this.colorValue.V="+this.colorValue.V);
+	if(this.colorValue.V < 1)
+	{
+		var rgb = Eco.Color.hslToRgb(this.colorValue.H,this.colorValue.S, 120);
+		//BB.log.debug("rgb="+rgb);
+		hexColor = Eco.Color.rgbToHex(rgb[0],rgb[1],rgb[2],this.colorValue.A);
+	} 
+	else 
+	{
+		hexColor = this.getHexColor();
+	}
+	
+	
+	//BB.log.debug("hexColor="+hexColor);
+	    //알파값이 적용되지 않음...2014.05.13
+    var removeAlpha = hexColor.substr(0, hexColor.length - 2); 
+
+	
+	//this.lightnessBar.style.gradation = "linear 0,0 white 0,100 black [70% " + hexColor + "]";
+	this.lightnessBar.style.set_gradation("linear 0%,0% white 0%,100% black [70% " + removeAlpha + "]");
+}
+
+
+
+
+
+/**
+ * "기본 색" 및 "사용자 지정 색" 컴포넌트를 대상으로
+ * selectColorBoder를 이동시켜 선택된 컴포넌트를 표시한다.
+ * @param {component} xpComp 테두리가 위치할 컴포넌트 객체.
+ */
+this.setSelectColorBorder = function(xpComp)
+{
+	this.selectColorBoder.move(xpComp.left, xpComp.top);	
+}
+
+/**
+ * RGB값 변경시 처리함수.
+ * SelectPointer와 Slider를 color에 맞게 이동시킨다.
+ */
+this.onChangeRGB = function()
+{
+	this.moveSelectPointer();
+	this.moveSlider();	
+}
+
+
+//명도선택판에서 선택된 명도로
+//관련된 정보를 업데이트합니다.
+this.onChangeLightnessBar = function()
+{
+	var sliderTop = nexacro.toNumber(this.slider.top);
+	var lightnessBarTop = nexacro.toNumber(this.lightnessBar.top);
+	
+	//trace("onChangeLightnessBar >>> sliderTop="+sliderTop + ", this.lightnessBarTop="+this.lightnessBarTop);
+	
+	var adjustTop = sliderTop + (this.sliderHeight/2);
+	var topGap  = adjustTop - this.lightnessBarTop;
+	
+	//trace("onChangeLightnessBar >>> adjustTop="+adjustTop + ", topGap="+topGap);
+	
+	var lightRate = nexacro.round((240 * 1)/174, 2); //명도배율. 1일때	
+	var light = 240 - nexacro.round(topGap * lightRate);
+	
+	this.ed_v.set_value(light);
+	
+ 	var rgb = Eco.Color.hslToRgb(this.ed_h.value, this.ed_s.value, light);
+	//trace("onChangeLightnessBar >>> light="+light + ", rgb="+rgb);
+	
+	this.setColor(rgb[0], rgb[1], rgb[2]);
+	this.setPreview();
+	this.setRgbValue();
+	
+}
+
+//색상,채도,명도 입력시 처리
+this.onChangeHslValue = function(obj)
+{
+	var value = obj.value;
+	if(Eco.isEmpty(value)) return;
+	
+	this.setValidate(obj);
+	
+	var h = parseInt(this.ed_h.value);
+	var s = parseInt(this.ed_s.value);
+	var l = parseInt(this.ed_v.value);
+	
+	var rgb = Eco.Color.hslToRgb(h,s,l);
+	this.setColor(rgb[0], rgb[1], rgb[2]);
+	this.setPreview();
+	this.setLightnessBar();
+		
+	this.setRgbValue();
+	this.moveSlider();
+	this.moveSelectPointer();
+}
+
+//R,G,B 입력시 처리
+this.onChangeRgbValue = function(obj)
+{
+	var value = obj.value;
+	if(Eco.isEmpty(value)) return;
+	
+	this.setValidate(obj);
+	
+	var r = parseInt(this.ed_r.value);
+	var g = parseInt(this.ed_g.value);
+	var b = parseInt(this.ed_b.value);
+	
+	this.setColor(r, g, b);
+ 	this.setPreview();
+ 	this.setLightnessBar();
+
+ 	this.setHslValue();
+ 	this.moveSlider();
+ 	this.moveSelectPointer();
+}
+
+
+this.setValidate = function(obj)
+{
+	var max_val;
+	
+	if( obj === this.ed_h || obj === this.ed_s || obj === this.ed_v )
+	{
+		max_val = 240;
+	}
+	
+	if( obj === this.ed_r || obj === this.ed_g || obj === this.ed_b ) 
+	{
+		max_val = 255;
+	}
+
+	if( obj.value > max_val ) 
+	{
+		obj.set_value(max_val);
+		obj.setCaretPos(-1); //입력 Caret을 마지막으로 이동
+	}
+}
+
+
+//색채선택판에서 선택된 색으로 
+//관련된 정보를 업데이트합니다.
+this.onChangeHueSat = function()
+{
+	var pointerLeft = this.selectPointer.left;
+	var pointerTop = this.selectPointer.top;
+	var colorImageLeft = this.colorImage.left;
+	var colorImageTop = this.colorImage.top;
+	
+	var adjustLeft = pointerLeft + (this.selectPointerWidth/2);
+	var adjustTop  = pointerTop  + (this.selectPointerHeight/2);
+	
+	var leftGap = adjustLeft - colorImageLeft;
+	var topGap  = adjustTop - colorImageTop;
+	
+	var hue = sat = 0;
+	var hueRate = nexacro.round((240 * 1)/208, 2); //색상배율. 1일때.
+	var satRate = nexacro.round((240 * 1)/174, 2); //채도배율. 1일때	
+	
+	hue = nexacro.round(leftGap * hueRate);
+	sat = 240 - nexacro.round(topGap * satRate);
+
+	light = this.ed_v.value;
+	
+	//BB.log.debug("## onChangeHueSat >>> hue="+hue + " , sat="+sat+ " , light="+light);
+	//alert("## onChangeHueSat >>> hue="+hue + " , sat="+sat+ " , light="+light);
+	
+	var rgb = Eco.Color.hslToRgb(hue,sat,light);
+	
+	this.ed_h.set_value(hue);
+	this.ed_v.set_value(light);
+	this.ed_s.set_value(sat);
+	this.ed_r.set_value(rgb[0]);
+	this.ed_g.set_value(rgb[1]);
+	this.ed_b.set_value(rgb[2]);
+	
+	//BB.log.debug("## rgb[0]="+rgb[0] + " , rgb[1]="+rgb[1]+ " , rgb[2]="+rgb[2]);
+	this.setColor(rgb[0], rgb[1], rgb[2]);
+	this.setPreview();
+	this.setLightnessBar();	
+	
+}
+
+
+
+/**
+ * selectPointer 이동.
+ * left position은 색상(hue)과 연동.
+ * top position은 채도(saturation)와 연동.
+ */
+this.moveSelectPointer = function()
+{
+	//var left = top = 0;	// IE8 디버그 모드에서 비정상 작동
+	var left = 0,
+		top = 0;
+	var hue = this.colorValue.H;
+	var sat = this.colorValue.S;
+	
+	if(hue < 1)
+	{
+		left = nexacro.toNumber(this.colorImage.left);
+		
+	}
+	else if(hue <= 240 )
+	{
+		var rate = nexacro.round((208 * 1)/240, 2); //색상이 1일 때 배율.
+		left = nexacro.round(rate * hue);
+		left += nexacro.toNumber(this.colorImage.left);
+		left -= (this.selectPointerWidth/2);	
+	}
+	else 
+	{
+		left = nexacro.toNumber(this.colorImage.left) + nexacro.toNumber(this.colorImage.width);
+		left -= (this.selectPointerWidth/2);
+	}
+	
+	if(sat < 1)
+	{
+		//trace("a 1");
+		top = nexacro.toNumber(this.colorImage.top) + nexacro.toNumber(this.colorImage.height);
+		top -= ((this.selectPointerWidth/2)+3);
+	}
+	else if(sat <= 240 )
+	{
+		
+		var rate = nexacro.round((174 * 1)/240, 2); //채도가 1일 때 배율.
+		top = nexacro.round(rate * sat);
+		
+		
+		top = nexacro.toNumber(this.colorImage.top) + nexacro.toNumber(this.colorImage.height) - top;
+		//top = nexacro.toNumber(this.colorImage.bottom) - top;
+		
+		top -= ((this.selectPointerWidth/2) -3) ;	
+		
+	}
+	else 
+	{
+		top = nexacro.toNumber(this.colorImage.top);
+		top -= (this.selectPointerWidth/2);
+	}	
+	 
+
+	this.selectPointer.move(left, top);
+	
+}
+
+
+/**
+ * slider 이동.
+ * top position은 명도와 연동.
+ */
+this.moveSlider = function()
+{
+	var left, top;
+	var lightness = this.colorValue.V;
+	
+	left = nexacro.toNumber(this.slider.left);
+
+	if(lightness < 1)
+	{
+		top = nexacro.toNumber(this.lightnessBar.top) + nexacro.toNumber(this.lightnessBar.height) - (this.sliderHeight/2);
+	} 
+	else if(lightness <= 240)
+	{
+		var rate = nexacro.round((174 * 1)/240, 2); //명도가 1일때 배율.
+		top = nexacro.round(rate * lightness);
+		top = nexacro.toNumber(this.lightnessBar.top) + nexacro.toNumber(this.lightnessBar.height) - top;
+		top -= (this.sliderHeight/2);
+	}
+	else
+	{
+		top = nexacro.toNumber(this.lightnessBar.top) + (this.sliderHeight/2);
+	}
+
+	//trace("this.moveSlider >> left=" + left + ", top=" + top); 
+	this.slider.move(left, top);
+}
+
+	
+//기본색 클릭시 이벤트 처리
+this.basicColor_onclick = function(obj:Static,  e:nexacro.ClickEventInfo)
+{
+	this.setSelectColorBorder(obj);
+	//this.setColor(obj.style.background.toString());
+	this.setColor(obj.style.background.color.toString());
+	this.setValue();
+	this.onChangeRGB();
+	
+	this.setPreview();
+	this.setLightnessBar();
+}
+
+this.btnApply_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var selcolor = this.previewColor.style.background.color.toString().substr(0,7);
+	this.parent.setColor(selcolor);
+}
+
+this.btnCancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.parent.setColor();
+}
+
+
+//색채선택판 마우스클릭 이벤트
+this.colorImage_onclick = function(obj:ImageViewer,  e:nexacro.ClickEventInfo)
+{
+	var left = nexacro.toNumber(obj.left);
+	var top = nexacro.toNumber(obj.top);
+	var cx = e.clientX;
+	var cy = e.clientY;
+	var width = nexacro.round(this.fixSize / 2);
+	var height = nexacro.round(this.fixSize / 2);
+
+	this.selectPointer.move(nexacro.toNumber(obj.left) + e.clientX - nexacro.round(nexacro.toNumber(this.fixSize)/2)
+	                         , nexacro.toNumber(obj.top) + e.clientY - nexacro.round(nexacro.toNumber(this.fixSize)/2));
+
+	this.onChangeHueSat();
+}
+
+
+//명도선택판 마우스클릭 이벤트
+this.lightnessBar_onclick = function(obj:Static,  e:nexacro.ClickEventInfo)
+{
+	//this.slider.move(nexacro.toNumber(this.slider.left), obj.top + e.clientY- (this.slider.height/2));
+	this.slider.move(nexacro.toNumber(this.slider.left)
+	                   , nexacro.toNumber(obj.top) + e.clientY - nexacro.round(15/2));	
+	
+	this.onChangeLightnessBar();
+}
+
+
+this.btnAddUserColor_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//trace("this.previewColor.style.background="+this.previewColor.style.background);
+	this.userColorComponent.style.set_background(this.previewColor.style.background);
+	//application.setPrivateProfile("ColorDialog/"+this.userColorComponent.name, this.userColorComponent.style.background.toString());
+	
+	
+	//trace("this.userColorComponent.name="+this.userColorComponent.name);
+	var id = parseInt(this.userColorComponent.name.substr(1))+1;
+	
+	id = (id%16);
+	//trace("after id="+id);
+	
+	this.userColorComponent = this.components["u"+((parseInt(this.userColorComponent.name.substr(1))+1)%16)];
+}
+
+//"사용자 지정 색" 클릭시 이벤트 처리
+this.userColor_onclick = function(obj:Static,  e:nexacro.ClickEventInfo)
+{
+	this.userColorComponent = obj;
+
+	this.setSelectColorBorder(obj);
+	//this.setColor(obj.style.background.toString());
+	this.setColor(obj.style.background.color.toString());
+	this.setValue();
+ 	this.setPreview();
+ 	this.setLightnessBar();
+
+ 	//selectPointer 이동 
+ 	this.moveSelectPointer();
+}
+
+
+
+
+
+
+
+
+]]></Script>
+  </Form>
+</FDL>

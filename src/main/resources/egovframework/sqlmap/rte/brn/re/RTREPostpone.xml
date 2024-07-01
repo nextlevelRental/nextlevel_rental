@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTREPostponeMapDAO">
+
+	<resultMap id="r_sRtre0125Postpone" class="java.util.HashMap">
+		<result property="postpYm"  	column="POSTP_YM" />
+		<result property="postpTp"  	column="POSTP_TP" />
+		<result property="postpTpNm"  	column="POSTP_TP_NM" />
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="custTp"  		column="CUST_TP" />
+		<result property="custTpNm"  	column="CUST_TP_NM" />
+		<result property="ordNo"  		column="ORD_NO" />
+		<result property="matCd"  		column="MAT_CD" />
+		<result property="matNm"  		column="MAT_NM" />
+		<result property="procDay"  	column="PROC_DAY" />
+		<result property="ordQty"  		column="ORD_QTY" />
+		<result property="agencyCd"  	column="AGENCY_CD" />
+		<result property="AgencyNm"  	column="AGENCY_NM" />
+		<result property="ordAgent"  	column="ORD_AGENT" />
+		<result property="ordAgnm"  	column="ORD_AGNM" />
+		<result property="postpStat"  	column="POSTP_STAT" />
+		<result property="postpStatNm"  column="POSTP_STAT_NM" />
+		<result property="postpTerm"  	column="POSTP_TERM" />
+		<result property="acqAmt"  		column="ACQ_AMT" />
+		<result property="lyTppAmt"  	column="LY_TPP_AMT" />
+		<result property="cyPpAmt"  	column="CY_PP_AMT" />
+		<result property="cyTppAmt"  	column="CY_TPP_AMT" />
+		<result property="cmPpAmt"  	column="CM_PP_AMT" />
+		<result property="cmRamt"  		column="CM_R_AMT" />
+		<result property="totalCnt"		column="TOTAL_CNT" />
+		<result property="rowNum"		column="ROW_NUM" />
+	</resultMap>
+	<!--
+	<parameterMap id="p_sRtre0125Postpone" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0125Postpone" />
+		<parameter property="postpYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />    
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTREPostponeMapDAO.rTREPostponeList" parameterMap="p_sRtre0125Postpone">
+		{call Pkg_Rtre0125.p_sRtre0125Postpone(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	-->
+	<parameterMap id="p_sRtre0125Postpone" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0125Postpone" />
+		<parameter property="postpYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="pageNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="getCnt"	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />    
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTREPostponeMapDAO.rTREPostponeList" parameterMap="p_sRtre0125Postpone">
+		{call Pkg_Rtre0125.p_sRtre0125PostponePage(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_sRtre0125PostponeExcel" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0125Postpone" />
+		<parameter property="postpYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="postpStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />    
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTREPostponeMapDAO.rTREPostponeListExcel" parameterMap="p_sRtre0125PostponeExcel">
+		{call Pkg_Rtre0125.p_sRtre0125Postpone(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>
+
+

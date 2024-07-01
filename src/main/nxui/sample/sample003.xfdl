@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample003" classname="" position="absolute" titletext="validation샘플" onload="form_onload" left="0" top="0" width="1150" height="827">
+    <Layouts>
+      <Layout>
+        <Static id="static01" taborder="68" left="26" top="40" width="396" height="573" style="background:aliceblue;"/>
+        <Edit id="Edit04" taborder="45" left="116" top="195" width="149" height="20" _check="MAX_LENGTH_UTF8:5" _msg="edit"/>
+        <Edit id="Edit00" taborder="83" left="116" top="56" width="149" height="20" _check="MAX:5" _msg="Edit00"/>
+        <Button id="btnGridVali" taborder="2" text="그리드 체크" left="318" top="627" width="79" height="19" onclick="btnGridVali_onclick"/>
+        <Button id="Button02" taborder="3" text="행추가" onclick="Button02_onclick" left="240" top="625" width="71" height="22"/>
+        <Static id="Static41" taborder="7" text="NUM|ZERO" left="284" top="576" width="90" height="20"/>
+        <TextArea id="TextArea06" taborder="8" left="118" top="576" width="150" height="20" _check="NUM|ZERO" _msg="TextArea06" scrollbars="none"/>
+        <Static id="Static40" taborder="9" text="textarea :" left="18" top="576" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static39" taborder="10" text="NUM|ZERO" left="284" top="546" width="90" height="20"/>
+        <Static id="Static38" taborder="11" text="maskedit :" left="18" top="546" width="90" height="20" style="align:right middle;"/>
+        <MaskEdit id="MaskEdit06" taborder="12" type="string" mask="#####" left="118" top="546" width="150" height="20" _check="NUM|ZERO" _msg="MaskEidt06"/>
+        <Static id="Static37" taborder="13" text="NUM|ZERO" left="284" top="516" width="90" height="20"/>
+        <Edit id="Edit06" taborder="14" left="118" top="516" width="149" height="20" _check="NUM|ZERO" _msg="Edit02"/>
+        <Static id="Static36" taborder="15" text="edit :" left="18" top="516" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static22" taborder="16" text="textarea :" left="18" top="492" width="90" height="20" style="align:right middle;"/>
+        <TextArea id="TextArea03" taborder="17" left="118" top="492" width="150" height="20" _check="MIN_LENGTH:3|MAX_LENGTH:5" _msg="TextArea03" scrollbars="none"/>
+        <MaskEdit id="MaskEdit03" taborder="18" type="string" mask="#####" left="118" top="462" width="150" height="20" _check="MIN_LENGTH_UTF8:3|MAX_LENGTH_UTF8:5" _msg="MaskEdit03"/>
+        <Static id="Static21" taborder="19" text="maskedit :" left="18" top="462" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static20" taborder="20" text="edit :" left="18" top="435" width="90" height="20" style="align:right middle;"/>
+        <Edit id="Edit03" taborder="21" left="118" top="435" width="149" height="20" _check="MIN_LENGTH_UTF8:3|MAX_LENGTH_UTF8:5" _msg="Edit03"/>
+        <Static id="Static23" taborder="22" left="272" top="463" width="312" height="33" text="MIN_LENGTH_UTF8:3&#13;&#10;|MAX_LENGTH_UTF8:5"/>
+        <Static id="Static19" taborder="23" text="textarea :" left="18" top="411" width="90" height="20" style="align:right middle;"/>
+        <TextArea id="TextArea02" taborder="24" left="118" top="411" width="150" height="20" _check="NUM" _msg="textArea02" scrollbars="none"/>
+        <Static id="Static18" taborder="25" text="NUM" left="284" top="411" width="40" height="20"/>
+        <Static id="Static16" taborder="26" text="NUM" left="284" top="381" width="40" height="20"/>
+        <Static id="Static08" taborder="27" text="maskedit :" left="18" top="381" width="90" height="20" style="align:right middle;"/>
+        <MaskEdit id="MaskEdit02" taborder="28" type="string" mask="#####" left="118" top="381" width="150" height="20" _check="NUM" _msg="MaskEdit02"/>
+        <Static id="Static35" taborder="29" text="textarea :" left="16" top="323" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static34" taborder="30" text="maskedit :" left="16" top="293" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static33" taborder="31" text="edit :" left="16" top="271" width="90" height="20" style="align:right middle;"/>
+        <Edit id="Edit05" taborder="32" left="116" top="271" width="149" height="20" _check="MIN_LENGTH_UTF8:3" _msg="edit"/>
+        <MaskEdit id="MaskEdit05" taborder="33" type="string" mask="#####" left="116" top="293" width="150" height="20" _check="MIN_LENGTH_UTF16:3" _msg="MaskEdit05"/>
+        <TextArea id="TextArea05" taborder="34" left="116" top="323" width="150" height="20" _check="MIN_LENGTH_ASCII:3" _msg="textArea05"/>
+        <Static id="Static32" taborder="35" text="MIN_LENGTH_ASCII:3" left="282" top="323" width="142" height="20"/>
+        <Static id="Static31" taborder="36" text="MIN_LENGTH_UTF16:3" left="272" top="293" width="144" height="20"/>
+        <Static id="Static30" taborder="37" text="MIN_LENGTH_UTF8:3" left="282" top="271" width="135" height="20"/>
+        <Static id="Static29" taborder="38" text="MAX_LENGTH_ASCII:5" left="278" top="247" width="162" height="20"/>
+        <TextArea id="TextArea04" taborder="39" left="116" top="247" width="150" height="20" _check="MAX_LENGTH_ASCII:5" _msg="textArea" scrollbars="none"/>
+        <Static id="Static28" taborder="40" text="textarea :" left="16" top="247" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static27" taborder="41" text="maskedit :" left="16" top="217" width="90" height="20" style="align:right middle;"/>
+        <MaskEdit id="MaskEdit04" taborder="42" type="string" mask="#####" left="116" top="217" width="150" height="20" _check="MAX_LENGTH_UTF16:5" _msg="maskEdit"/>
+        <Static id="Static26" taborder="43" text="MAX_LENGTH_UTF16:5" left="274" top="217" width="176" height="20"/>
+        <Static id="Static25" taborder="44" text="MAX_LENGTH_UTF8:5" left="274" top="195" width="143" height="24" wordwrap="false"/>
+        <Static id="Static24" taborder="46" text="edit :" left="16" top="195" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static17" taborder="47" text="NUM" left="284" top="351" width="40" height="20"/>
+        <Static id="Static14" taborder="48" text="MIN:3" left="282" top="125" width="40" height="20"/>
+        <Static id="Static13" taborder="49" text="MIN:3" left="282" top="147" width="40" height="20"/>
+        <Static id="Static12" taborder="50" text="MIN:3" left="282" top="171" width="40" height="20"/>
+        <Static id="Static11" taborder="51" text="MAX:5" left="282" top="102" width="40" height="20"/>
+        <Static id="Static10" taborder="52" text="MAX:5" left="282" top="80" width="40" height="20"/>
+        <Static id="Static09" taborder="53" text="MAX:5" left="282" top="58" width="40" height="20"/>
+        <Edit id="Edit02" taborder="54" left="118" top="351" width="149" height="20" _check="NUM" _msg="Eidt02"/>
+        <Static id="Static07" taborder="55" text="edit :" left="18" top="351" width="90" height="20" style="align:right middle;"/>
+        <TextArea id="TextArea01" taborder="56" left="116" top="171" width="150" height="20" _check="MIN:3" _msg="textArea" scrollbars="none"/>
+        <Static id="Static06" taborder="57" text="textarea :" left="16" top="171" width="90" height="20" style="align:right middle;"/>
+        <MaskEdit id="MaskEdit01" taborder="58" type="string" mask="#####" left="116" top="147" width="150" height="20" _check="MIN:3" _msg="maskEdit"/>
+        <Static id="Static05" taborder="59" text="maskedit :" left="16" top="147" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static04" taborder="61" text="edit :" left="16" top="125" width="90" height="20" style="align:right middle;"/>
+        <TextArea id="TextArea00" taborder="62" left="116" top="102" width="150" height="20" tooltiptext="컴포넌트3" _check="MAX:5" _msg="textArea" scrollbars="none"/>
+        <Static id="Static03" taborder="63" text="textarea :" left="16" top="102" width="90" height="20" style="align:right middle;"/>
+        <MaskEdit id="MaskEdit00" taborder="64" type="string" mask="@@@@@" left="116" top="80" width="150" height="20" tooltiptext="컴포넌트2" _check="MAX:5" _msg="maskEdit00"/>
+        <Static id="Static01" taborder="65" text="maskedit :" left="16" top="80" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static02" taborder="67" text="edit :" left="16" top="58" width="90" height="20" style="align:right middle;"/>
+        <Static id="Static00" taborder="69" text="&#13;&#10;&#13;&#10;1. Grid 에서 _check 속성에 정합성 체크 조건을 넣으면 해당 조건에 맞춰 validation 체크를 진행한다.&#13;&#10;사용자 속성에서 사용할 수 있는 속성 종류는 다음과 같다.&#13;&#10;MIN:2 - 최소값 지정 ':' 문자로 구분하며 'MIN:최소값' 형태로 지정한다.&#13;&#10;MAX:3 - 최대값 지정 ':' 문자로 구분하며 'MAX:최대값' 형태로 지정한다.&#13;&#10;MIN_LENGTH_UTF8:3 - 최소길이 지정 ':' 문자로 구분하며 'MIN_LENGTH:최소길이' 형태로 지정한다.&#13;&#10;MAX_LENGTH_UTF8:5 - 최대길이 지정 ':' 문자로 구분하며 'MAX_LENGTH:최대길이' 형태로 지정한다.&#13;&#10;NUM - 숫자형인지 여부 지정&#13;&#10;ZERO - '0' 이 빈값인지 여부 지정&#13;&#10;&#13;&#10;2. 속성들은 '|' 값으로 구분할 수 있다.&#13;&#10;&#13;&#10;3. 여러컬럼을 지정할 경우 '^' 값으로 구분시켜 사용한다.&#13;&#10;&#13;&#10;4. Grid 의 Cell edittype 이 'none' 이 아닐때 validation 을 진행한다. &#13;&#10;(Cell edittype 이 아무것도 잡혀있지 않으면 검사 대상이 아니다)&#13;&#10;&#13;&#10;5. 속성에 조건을 넣지않고 '컬럼명' 만 입력할 경우 단순 필수값 여부만 체크한다.&#13;&#10;" left="422" top="546" width="702" height="262" style="background:#ffd70055;margin:0 0 0 0;padding:5 5 5 5;"/>
+        <Button id="btn_InitVal3" taborder="72" text="setInitVal3" onclick="btn_InitVal3_onclick" left="212" top="10" width="80" height="19"/>
+        <Button id="btn_InitVal2" taborder="73" text="setInitVal2" onclick="btn_InitVal2_onclick" left="124" top="10" width="80" height="19"/>
+        <Button id="btn_InitVal" taborder="74" text="setInitVal" onclick="btn_InitVal_onclick" left="42" top="10" width="80" height="19"/>
+        <Static id="Static15" taborder="76" text="1. component dd 별 validation 속성을 지정하기 위해선 _check 속성에 조건을 지정하면 된다.&#13;&#10;1-1. Misc 속성에 이미 _check 가 존재하는 확장 컴포넌트의 경우 별도의 사용자 속성을 추가할 필요가 없다.&#13;&#10;1-2. 확장 컴포넌트가 아닌 일반 컴포넌트의 경우( Edit, Mask, TextArea... )  Properties 창에서 사용자 속성을 추가 한다.&#13;&#10;사용자 속성에서 사용할 수 있는 속성 종류는 다음과 같다.&#13;&#10;MIN:2 - 최소값 지정 ':' 문자로 구분하며 'MIN:최소값' 형태로 지정한다.&#13;&#10;MAX:3 - 최대값 지정 ':' 문자로 구분하며 'MAX:최대값' 형태로 지정한다.&#13;&#10;MIN_LENGTH_UTF8:3 - 한 문자당 영문1, 다국어 2~5의 값으로 합산함.':' 문자로 구분하며 'MIN_LENGTH_UTF8:최소길이' 형태로 지정한다.&#13;&#10;MIN_LENGTH_UTF16:3 - 한문자당 1의 값으로 합산함. ':' 문자로 구분하며 'MIN_LENGTH_UTF16:최소길이' 형태로 지정한다.&#13;&#10;MIN_LENGTH_ASCII:3 - 한문자당 영문 1, 한글 2의 값으로 합산함.':' 문자로 구분하며 'MIN_LENGTH_ASCII:최소길이' 형태로 지정한다.&#13;&#10;&#13;&#10;MAX_LENGTH_UTF8:5 -  한 문자당 영문1, 다국어 2~5의 값으로 합산함.':' 문자로 구분하며 'MAX_LENGTH_UTF8:최대길이' 형태로 지정한다.&#13;&#10;MAX_LENGTH_UTF16:5 - 한문자당 1의 값으로 합산함. ':' 문자로 구분하며 'MAX_LENGTH_UTF16:최대길이' 형태로 지정한다.&#13;&#10;MAX_LENGTH_ASCII:5 - 한문자당 영문 1, 한글 2의 값으로 합산함.:' 문자로 구분하며 'MAX_LENGTH_ASCII:최대길이' 형태로 지정한다.&#13;&#10;&#13;&#10;NUM - 숫자형인지 여부 지정&#13;&#10;ZERO - '0' 이 빈값인지 여부 지정&#13;&#10;&#13;&#10;2. 속성들은 '|' 값으로 구분할 수 있다.&#13;&#10;&#13;&#10;3. 항목명에대한 메세지 구분입력&#13;&#10;_msg 프로퍼티 추가 : Edit00 &#13;&#10;output : Edit00은 필수 입력입니다.&#13;&#10;&#13;&#10;" left="422" top="18" width="706" height="393" style="background:#ffd70055;margin:0 0 0 0;padding:5 5 5 5;"/>
+        <ImageViewer id="ImageViewer01" taborder="77" image="URL('image::sample02.png')" left="869" top="411" width="265" height="97" stretch="fit"/>
+        <ImageViewer id="ImageViewer00" taborder="78" image="URL('image::sample01.png')" left="656" top="264" width="205" height="281" stretch="fit"/>
+        <Button id="Button00" taborder="79" text="전체vali 실행" onclick="fn_RunVali" left="1019" top="0" width="101" height="18"/>
+        <Grid id="Grid00" taborder="6" binddataset="ds_list" autoenter="select" useinputpanel="false" cellmovingtype="col" autofittype="col" left="42" top="652" width="370" height="140" tooltiptype="hover" _check="Column0|MAX:5">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="보상&#10;고사주수&#10;(주)"/>
+                <Cell col="1" text="Column1"/>
+                <Cell col="2" text="Column2"/>
+                <Cell col="3" text="Column3"/>
+                <Cell col="4" text="Column4&#13;&#10;테스트1"/>
+                <Cell col="5" text="Column5"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:Column0"/>
+                <Cell col="1" edittype="normal" text="bind:Column1"/>
+                <Cell col="2" edittype="normal" text="bind:Column2"/>
+                <Cell col="3" edittype="normal" text="bind:Column3"/>
+                <Cell col="4" edittype="normal" text="bind:Column4"/>
+                <Cell col="5" edittype="normal" text="bind:Column5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="Edit01" taborder="84" left="116" top="125" width="149" height="20" _check="MIN:3" _msg="Edit01"/>
+        <Static id="Static42" taborder="85" text="MIN_LENGTH_UTF8:3&#13;&#10;|MAX_LENGTH_UTF8:5" left="272" top="431" width="312" height="33"/>
+        <ImageViewer id="ImageViewer02" taborder="87" image="URL('image::msgvali.png')" left="864" top="296" width="268" height="110" stretch="fit"/>
+        <Button id="btn_valiTest" taborder="88" text="특정대상Comp vali" left="297" top="10" width="124" height="20" onclick="btn_valiTest_onclick"/>
+        <Div id="div_test" taborder="89" left="451" top="426" width="160" height="108" text="Div00">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit01" taborder="0" left="11" top="13" width="149" height="20" _check="MIN:3" _msg="Edit01"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : 
+* BUSINESS    : 
+* FILE NAME   : 
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+   var nHeight = 827;
+    //폼로드시 공통함수 
+	Ex.core.init(obj,nHeight);
+}
+
+
+
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+
+
+this.btn_InitVal_onclick = function(obj:Button,   e:nexacro.ClickEventInfo)
+{
+	this.Edit00.set_value("1");
+	this.MaskEdit00.set_value("1");
+	this.TextArea00.set_value("1");
+	
+	this.Edit01.set_value("1");
+	this.MaskEdit01.set_value("1");
+	this.TextArea01.set_value("1");
+	
+	this.Edit02.set_value("A");
+	this.MaskEdit02.set_value("1");
+	this.TextArea02.set_value("A");
+	
+	this.Edit03.set_value("1");
+	this.MaskEdit03.set_value("1");
+	this.TextArea03.set_value("1");
+	
+	this.Edit04.set_value("1");
+	this.MaskEdit04.set_value("1");
+	this.TextArea04.set_value("1");
+	
+	this.Edit05.set_value("1");
+	this.MaskEdit05.set_value("1");
+	this.TextArea05.set_value("1");
+	
+	this.Edit06.set_value("1");
+	this.MaskEdit06.set_value("1");
+	this.TextArea06.set_value("1");
+}
+
+this.btn_InitVal2_onclick = function(obj:Button,   e:nexacro.ClickEventInfo)
+{
+	this.Edit00.set_value("123");
+	this.MaskEdit00.set_value("123");
+	this.TextArea00.set_value("123");
+	
+	this.Edit01.set_value("123");
+	this.MaskEdit01.set_value("123");
+	this.TextArea01.set_value("123");
+	
+	this.Edit02.set_value("AAA");
+	this.MaskEdit02.set_value("123");
+	this.TextArea02.set_value("BBB");
+	
+	this.Edit03.set_value("123");
+	this.MaskEdit03.set_value("123");
+	this.TextArea03.set_value("123");
+	
+	this.Edit04.set_value("AAA");
+	this.MaskEdit04.set_value("123");
+	this.TextArea04.set_value("BBB");
+	
+	this.Edit05.set_value("123");
+	this.MaskEdit05.set_value("123");
+	this.TextArea05.set_value("123");
+	
+	this.Edit06.set_value("123");
+	this.MaskEdit06.set_value("123");
+	this.TextArea06.set_value("123");
+}
+
+this.btn_InitVal3_onclick = function(obj:Button,   e:nexacro.ClickEventInfo)
+{
+	this.Edit00.set_value("123456");
+	this.MaskEdit00.set_value("123456");
+	this.TextArea00.set_value("123456");
+	
+	this.Edit01.set_value("123456");
+	this.MaskEdit01.set_value("123456");
+	this.TextArea01.set_value("123456");
+	
+	this.Edit02.set_value("CCCCCC");
+	this.MaskEdit02.set_value("123456");
+	this.TextArea02.set_value("DDDDDD");
+	
+	this.Edit03.set_value("123456");
+	this.MaskEdit03.set_value("123456");
+	this.TextArea03.set_value("123456");
+	
+	this.Edit04.set_value("CCCCCC");
+	this.MaskEdit04.set_value("123456");
+	this.TextArea04.set_value("DDDDDD");
+	
+	this.Edit05.set_value("123456");
+	this.MaskEdit05.set_value("123456");
+	this.TextArea05.set_value("123456");
+	
+	this.Edit06.set_value("123456");
+	this.MaskEdit06.set_value("123456");
+	this.TextArea06.set_value("123456");
+}
+
+
+this.Edit07_canchange = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+    trace(" e.posttet >>> "   + e.posttext);
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_list.addRow();
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		if(!Ex.vali.isValidGridValue(this.Grid00))
+		{
+		   alert( "OK" );
+		}
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	
+}
+
+
+//전체 validation 실행
+this.fn_RunVali = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	if(Ex.vali.isValidComp(this) ) {
+		alert( "OK" );
+	}
+}
+
+
+
+this.Button06_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+}
+
+
+//Grid validation 체크테스트
+this.btnGridVali_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		
+		/*grid validation 
+		*@ {nxComp} this
+		*@ {nxComp} validation 할 component
+		*/
+		if(Ex.vali.isValidGridValue(this.Grid00))
+		{
+		   application.alert( "OK" );
+		}
+}
+
+this.btnTest_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.Edit01.setFocus();
+}
+
+// 특정 대상 컴퍼넌트 validation
+this.btn_valiTest_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	
+	var res  = Ex.vali.isValidComponentValue(this.Edit01);
+	
+	
+	trace(" res :  " + res);
+}
+]]></Script>
+  </Form>
+</FDL>

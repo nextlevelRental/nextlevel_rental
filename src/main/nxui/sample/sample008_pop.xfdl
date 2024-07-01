@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Test035_pop" classname="Test035_pop" left="0" top="0" width="1000" height="350" onload="form_onload" cssclass="from_POP" titletext="팝업대상/파라미터 반환 샘플 팝업">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="0" text="문자열 반환" left="22" top="118" width="148" height="29" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="Array 반환(문자열)" left="198" top="118" width="183" height="29" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="2" text="Array 반환(문자열 &amp;&amp; 데이타셋)" left="421" top="110" width="492" height="29" onclick="Button02_onclick"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="421" top="182" width="241" height="82" binddataset="ds_1">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Column0"/>
+                <Cell col="1" text="Column1"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:Column0"/>
+                <Cell col="1" edittype="normal" text="bind:Column1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="4" useinputpanel="false" left="672" top="182" width="241" height="82" binddataset="ds_2">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="Column0"/>
+                <Cell col="1" disptype="normal" text="Column1"/>
+                <Cell col="2" disptype="normal" text="Column2"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:Column0"/>
+                <Cell col="1" disptype="normal" text="bind:Column1"/>
+                <Cell col="2" disptype="normal" text="bind:Column2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button03" taborder="5" text="행 삭제" left="587" top="268" width="77" height="24" onclick="Button03_onclick"/>
+        <Static id="Static00" taborder="6" text="호출한 부모장으로 파라미터 전달 샘플2" left="25" top="58" width="341" height="45" style="color:red;font:bold 12 arial;"/>
+        <Button id="Button04" taborder="7" text="Json 반환(문자열 &amp;&amp; 데이타셋)" left="421" top="145" width="492" height="29" onclick="Button04_onclick"/>
+        <Button id="Button05" taborder="8" text="데이타셋" left="424" top="64" width="485" height="38" onclick="Button05_onclick"/>
+        <Button id="btn_popup111" taborder="10" text="팝업" left="24" top="164" width="137" height="28" onclick="btn_popup111_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">aaa</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">bbb</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">111</Col>
+            <Col id="Column1">222</Col>
+            <Col id="Column2">333</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : HGR Industrial Surplus
+* BUSINESS    : system
+* FILE NAME   : 
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+this.ParserStr = "^&^";
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+alert('1');
+trace(" p_arg : " + this.parent.p_arg);
+    //폼로드시 공통함수 
+	Ex.core.init(obj);
+}
+
+// 값 반환
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.close("testvalue");
+	//trace("Button00_onclick ");
+	this.gfn_popupClose("testValue");
+}
+
+// Array 반환(값 반환)
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//var rtnArr = [1,2,3];	// 안됨
+	
+	var arr = ["testvalue1", "testvalue2", "testvalue3"];
+	//var rtnArr = arr.join(this.ParserStr); 
+	
+	this.gfn_popupClose(arr);
+	//this.close(rtnArr);
+}
+
+// Array 반환(n개의 데이타셋 반환)
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var arr = ["testvalue", this.ds_1.saveXML("ds_1", "a"), this.ds_2.saveXML()];
+	//var arr = ["testvalue", this.ds_1, this.ds_2];
+	//var rtnArr = arr.join(this.ParserStr);
+	
+	this.gfn_popupClose(arr);
+	//this.close(rtnArr);
+}
+
+// Object Json 반환(n개의 데이타셋 반환)
+this.Button04_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//var objJson = {"key1":"testvalue", "key2":encodeURI(this.ds_1.saveXML("ds_1", "a")), "key3":encodeURI(this.ds_2.saveXML())};
+	
+	var objJson = new Object();
+	objJson.key1 = "testvalue";
+	objJson.key2 = encodeURI(this.ds_1.saveXML("ds_1", "a"));
+	objJson.key3 = encodeURI(this.ds_2.saveXML());
+	
+	//var rtnObj = this.gf_JSONToString(objJson);
+	this.gfn_popupClose(objJson);
+	//this.close(rtnObj);
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ds_1.deleteRow(this.ds_1.rowposition);
+}
+
+
+/******************************************************************************
+ * Function name: gf_JSONToString
+ * Description	: JSON Object를 JSON String으로 변환하여 리턴한다.
+ * Parameter 	: JSON Object
+ * Return		: JSON String
+ ******************************************************************************/
+this.gf_JSONToString = function(object)
+{
+    var isArray = (object.join && object.pop && object.push
+                    && object.reverse && object.shift && object.slice && object.splice);
+    var results = [];
+ 
+    for (var i in object) {
+        var value = object[i];
+         
+		results.push((isArray ? "" : "\"" + i.toString() + "\" : ") 
+						+ (typeof value == "string" ? "\"" + value + "\"" : value));
+    }
+     
+    return (isArray ? "[" : "{") + results.join(", ") + (isArray ? "]" : "}");
+}
+
+/******************************************************************************
+ * Function name: gf_StringToJSON
+ * Description	: JSON String을 JSON Object으로 변환하여 리턴한다.
+ * Parameter 	: JSON String
+ * Return		: JSON Object
+ ******************************************************************************/
+this.gf_StringToJSON = function(strJson)
+{
+    return eval("(" + strJson + ")");
+}
+// 
+// this.fn_popupClose = function(val)
+// {
+// 
+//     trace("val ==>"+val);
+//     trace("type ==>"+typeof(val));
+//     var rtnVal;
+//     
+//     
+//     if(typeof(val) == "object")
+//     {
+//     
+//         var sStringVal = val.toString();
+//                 
+//         switch(sStringVal)
+//         {
+//             case "[object Object]" :
+//                 trace("object type");
+//             break;
+//             
+//             case "[object Dataset]" :
+//                 rtnVal = val.saveXML();
+//             break;
+//             
+//             default :
+//                 
+//                 rtnVal = val.join(this.ParserStr);
+//             break;
+//         
+//         }
+//     }
+//     else
+//     {
+//         rtnVal = val;
+//     }
+//     
+//     trace("rtnVal ==>"+rtnVal);
+//    // this.close(rtnVal);
+// 
+// }
+
+// this.fn_getArrayToDatasetParse = function(val)
+// {
+//     var sStringVal;
+//     
+//    for(var i=0; i<val.length; i++)
+//    {
+//        sStringVal = val[i].toString();
+//        
+//    }
+// }
+this.Button05_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfn_popupClose(this.ds_1.saveXML());
+}
+
+this.Test035_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	trace("AAAAAAAAAAAAAAAAAAAAAAAA");
+}
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	
+	var arr = ["testvalue", this.ds_1.saveXML("ds_1", "a"), this.ds_2.saveXML()];
+	//var arr = ["testvalue", this.ds_1, this.ds_2];
+	//var rtnArr = arr.join(this.ParserStr);
+	
+	this.gfn_popupClose(arr);
+}
+
+this.btn_popup111_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	 this.gfn_openPopup("StringReturnSample2222","sample::hrSample08_pop2.xfdl","","");	
+	 
+}
+
+
+// 팝업 Callback
+this.fn_popupAfter = function(sPopupId, Variant)
+{
+
+	var rtn = this.gfn_getPopupRtn();
+alert(" rtn1111 : "  +rtn);
+}
+]]></Script>
+  </Form>
+</FDL>

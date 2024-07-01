@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheck_tab_info_result" classname="RTCSRegularCheck_tab_info_result" left="0" top="0" width="1147" height="150" titletext="처리결과[02]">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Edit id="npDesc" taborder="5" left="406" top="10" width="629" height="21" readonly="false" enable="true"/>
+        <Static id="st_payDd" taborder="6" text="미처리사유" cssclass="sta_WF_detailLabel" left="276" top="5" width="125" height="31"/>
+        <Edit id="chkStatNm" taborder="7" left="130" top="10" width="142" height="21" readonly="true" enable="false"/>
+        <Static id="st_payMthd" taborder="8" text="작업상태" cssclass="sta_WF_detailLabel" left="0" top="5" width="125" height="31"/>
+        <Static id="Static00" taborder="9" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Edit id="procTm" taborder="12" left="659" top="40" width="118" height="21" readonly="false" enable="false"/>
+        <Static id="st_accChk" taborder="13" text="처리시간" cssclass="sta_WF_detailLabel" left="529" top="35" width="125" height="31"/>
+        <Static id="Static11" taborder="27" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="28" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Static id="st_accSeq" taborder="36" text="마일리지(현재)" cssclass="sta_WF_detailLabel" left="0" top="35" width="125" height="31"/>
+        <Edit id="aMileage" taborder="37" readonly="true" left="130" top="40" width="142" height="21" enable="false"/>
+        <Static id="st_acctNo" taborder="38" text="처리일자" cssclass="sta_WF_detailLabel" left="276" top="35" width="125" height="31"/>
+        <Button id="change_save" taborder="40" text="저장" top="9" height="23" width="39" onclick="result_save_onclick" enable="false" left="1065"/>
+        <Calendar id="procDay" taborder="41" left="406" top="40" height="20" width="119" enable="false"/>
+        <Static id="st_accChk00" taborder="42" text="처리자" cssclass="sta_WF_detailLabel" left="782" top="35" width="125" height="31"/>
+        <Edit id="ed_rMrCd" taborder="43" enable="false" left="912" top="40" width="46" height="21"/>
+        <Edit id="ed_rMrNm" taborder="44" enable="false" left="963" top="40" width="137" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="subResult" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="npDesc" type="string" size="32"/>
+          <Column id="ordNo" type="string" size="32"/>
+          <Column id="procTm" type="string" size="32"/>
+          <Column id="chkStat" type="string" size="32"/>
+          <Column id="jobSeq" type="bigdecimal" size="16"/>
+          <Column id="aMileage" type="string" size="32"/>
+          <Column id="equNo" type="string" size="32"/>
+          <Column id="stdYm" type="string" size="32"/>
+          <Column id="procDay" type="string" size="32"/>
+          <Column id="chkStatNm" type="string" size="32"/>
+          <Column id="rMrcd" type="STRING" size="256"/>
+          <Column id="rMrnm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="chkStatNm" propid="value" datasetid="subResult" columnid="chkStatNm"/>
+      <BindItem id="item1" compid="npDesc" propid="value" datasetid="subResult" columnid="npDesc"/>
+      <BindItem id="item2" compid="aMileage" propid="value" datasetid="subResult" columnid="aMileage"/>
+      <BindItem id="item4" compid="procTm" propid="value" datasetid="subResult" columnid="procTm"/>
+      <BindItem id="item3" compid="procDay" propid="value" datasetid="subResult" columnid="procDay"/>
+      <BindItem id="item5" compid="ed_rMrCd" propid="value" datasetid="subResult" columnid="rMrcd"/>
+      <BindItem id="item6" compid="ed_rMrNm" propid="value" datasetid="subResult" columnid="rMrnm"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[ 	include "lib::comLib.xjs";
+ 	
+ 	//====================================================
+	 // 정기정검 작업목록의 처리결과 등록(자료생성)
+	 //====================================================
+	this.result_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		if( confirm( "저장하시겠습니까?") ){
+			var sSvcID        	= "saveInfoResult";                    
+			var sController   	= "rtms/cs/saveInfoResult.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			sInDatasets   		= "in_result=subResult";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+	
+	//===========================================================================
+	// 요청에 대한 응답결과처리 및 메시지처리 
+	//===========================================================================
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+		
+		if (strSvcId == "saveInfoResult"){
+			if (nErrorCode < 0) {
+				alert(strErrorMsg);
+				return;
+			}else{
+				alert(strErrorMsg);
+				this.parent.parent.fn_search()
+			}
+		}
+	}]]></Script>
+  </Form>
+</FDL>

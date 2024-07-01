@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREBondAggregate_tab1" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="연체대상 집계" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="1" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="2" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="130" width="1112" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="11" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="89" width="1112" height="12" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static17" taborder="12" cssclass="sta_WF_detailLabel2" left="10" top="99" width="1103" height="31"/>
+        <Edit id="edt_procStatus" taborder="13" left="144" top="104" width="964" height="21" enable="false"/>
+        <Static id="Static19" taborder="14" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="99" width="130" height="31"/>
+        <Static id="Static06" taborder="15" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="72" right="1028" height="20"/>
+        <Static id="Static03" taborder="19" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="32" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="6" text="연체집계일자" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="7" dateformat="yyyy-MM-dd" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="120" height="21"/>
+              <Static id="Static22" taborder="8" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="9" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="10" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="11" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static45" taborder="33" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="34" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 채권관리 > 채권대상집계 > [STEP 1] 연체대상 집계
+ * 02. 그룹명   : RTREBondAggregate_tab1.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay		= ""; 	//당일
+	this.yesterDay	= ""; 	//전일
+	this.curMonth 	= "";	//당월	
+	this.prevMonth	= ""; 	//전월
+	this.nextMonth	= ""; 	//익월
+	this.procYn		= ""; 	//집계처리가능여부
+	this.currCunt	= "";	//연체대상 집계내역 count
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//월일 조회
+		this.fn_getDayMongth();	
+		//버튼초기화		
+		this.fn_initBtn();		
+	}	
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//월일 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getDayMongth = function() 
+	{
+		var sSvcID      	= "getDayMongth";  
+		var sController   	= "ntrms/re/getDayMongth.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}		
+	//---------------------------------------------------------------------------------
+	// 연체대상 집계 내역 Count
+	//---------------------------------------------------------------------------------	
+	this.fn_aggregateCnt  = function() {
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) > parseInt(this.toDay,10)) 
+			{
+				alert('연체집계일자는 당일 또는 이전날짜만 선택가능합니다.');
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('연체집계일자를 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+			
+		this.procYn = "";						
+		var sSvcID      	= "delyAggregateCnt";  
+		var sController   	= "ntrms/re/delyAggregateCnt.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+				
+    	sArgs += Ex.util.setParam("delyDay"	, nvl(this.div_search.cal_accReqDate.value)); //연체집계기준일자	
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+
+	}		
+ 	//---------------------------------------------------------------------------------
+	// 연체대상 집계
+	//---------------------------------------------------------------------------------	
+	this.fn_aggregate  = function() {
+	
+		this.edt_procStatus.set_value("");
+			
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) > parseInt(this.toDay,10)) 
+			{
+				alert('연체집계일자는 당일 또는 이전날짜만 선택가능합니다.');
+				//this.div_search.cal_accReqDate.set_value(this.yesterDay);			
+				//this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('연체집계일자를 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+		var returnDate = accReqDate.substr(0,4) + "/" + accReqDate.substr(4,2) + "/" + accReqDate.substr(6,2);
+		if(parseInt(this.currCunt,10) > 0) {
+			if(Ex.core.comMsg("confirm","연체집계일자 ("+ returnDate + ")의 집계내역이 존재합니다. \n집계하시겠습니까? (집계시 기존집계내역은 삭제됩니다.)"))
+			{	
+				this.procYn = "Y";
+			}
+			else {
+				return;
+			}
+		}
+		else {
+			this.procYn = "Y";
+		}
+		
+		var sSvcID      	= "delyAggregate";  
+		var sController   	= "ntrms/re/delyAggregate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+				
+		sArgs += Ex.util.setParam("delyDay"	, nvl(this.div_search.cal_accReqDate.value)); //연체집계기준일자	
+		sArgs += Ex.util.setParam("procYn"	, nvl(this.procYn)); //처리가능여부   	
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 				
+	
+
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "delyAggregate") {
+				this.edt_procStatus.set_value(strErrorMsg);
+				return;
+			}
+			//연체대상 집계 내역 Count
+			this.fn_aggregateCnt();				
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			//월일조회
+			case "getDayMongth":
+				this.div_search.cal_accReqDate.set_value(this.yesterDay);
+				//연체대상 집계 내역 Count
+				this.fn_aggregateCnt();
+				break;	
+			//연체대상 집계 내역 Count
+			case "delyAggregateCnt":
+				if(parseInt(this.currCunt,10) > 0) {
+					this.procYn = "Y";
+				}
+			
+				break;					
+			//연체대상 집계
+			case "delyAggregate":
+				this.edt_procStatus.set_value(strErrorMsg);		
+				//연체대상 집계 내역 Count
+				this.fn_aggregateCnt();					
+				break;
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 연체집계일자 변경 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(accReqDate,10) > parseInt(this.toDay,10)) 
+			{
+				alert('연체집계일자는 당일 또는 이전날짜만 선택가능합니다.');
+				//this.div_search.cal_accReqDate.set_value(this.yesterDay);			
+				//this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}
+			else {
+				if(accReqDate.length == 8) {
+					//연체대상 집계 내역 Count
+					this.fn_aggregateCnt();
+				}
+			}
+		}
+		if(accReqDate == "") {
+			alert('연체집계일자를 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("AG",this);		
+		this.edt_procStatus.set_value("");
+	}]]></Script>
+  </Form>
+</FDL>

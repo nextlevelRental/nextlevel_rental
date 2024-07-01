@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDArrivalAlarmList_tab1" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1125" height="445" titletext="발송정보업로드" onload="RTSDArrivalAlarmList_tab1_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="49" cssclass="sta_WF_detailLabel2" left="10" top="90" width="1102" height="31"/>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="44" left="8" top="10" width="1104" height="38" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static26" taborder="95" cssclass="Guide_color" visible="false" left="0" top="-3" width="1122" height="12"/>
+              <Static id="Static07" taborder="96" cssclass="Guide_color" visible="false" left="0" top="30" width="1118" height="12"/>
+              <Static id="Static08" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static00" taborder="99" text="FIX w20" cssclass="Guide_color" visible="false" left="104" top="0" width="20" height="45"/>
+              <Static id="st_procDay00" taborder="100" text="출고일자" cssclass="sta_WF_schTitle" left="25" top="8" width="79" height="21"/>
+              <Calendar id="cal_sendDay" taborder="101" dateformat="yyyy-MM-dd" onchanged="cal_cashReceiptDate_onchanged" left="123" top="9" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static05" taborder="45" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="49" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static06" taborder="46" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="65" width="84" height="20"/>
+        <Static id="Static03" taborder="47" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="80" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static19" taborder="48" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="90" width="130" height="31"/>
+        <Edit id="edt_procStatus" taborder="50" enable="false" left="144" top="95" width="963" height="21"/>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Objects>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="tmpPwYn" type="string" size="32"/>
+          <Column id="lastPwDt" type="datetime" size="17"/>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="failCnt" type="bigdecimal" size="16"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="oldPassword" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="password" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="lastLogonDt" type="datetime" size="17"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="chgDt" type="datetime" size="17"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="regDt" type="datetime" size="17"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="lockYn" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_excelUp">
+        <ColumnInfo>
+          <Column id="COL_01" type="STRING" size="256"/>
+          <Column id="COL_02" type="STRING" size="256"/>
+          <Column id="COL_03" type="STRING" size="256"/>
+          <Column id="COL_04" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="rdcNm" type="STRING" size="256"/>
+          <Column id="invoiceNo" type="STRING" size="256"/>
+          <Column id="giDay" type="STRING" size="256"/>
+          <Column id="giYn" type="STRING" size="256"/>
+          <Column id="sendCnt" type="STRING" size="256"/>
+          <Column id="smsType" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S307">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">1회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">2회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="cdNm">3회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">4</Col>
+            <Col id="cdNm">4회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">5</Col>
+            <Col id="cdNm">5회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">6</Col>
+            <Col id="cdNm">6회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">7</Col>
+            <Col id="cdNm">7회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">8</Col>
+            <Col id="cdNm">8회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">9</Col>
+            <Col id="cdNm">9회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">10</Col>
+            <Col id="cdNm">10회차</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+// 전역변수 선언
+this.url = application.services["svcurl"].url+"XImport";	// 엑셀 import용 URL
+this.fUserId  = "";											// 현재 로그인 사용자의 ID
+this.fUserGrp = "";											// 현재 로그인 사용자의 사용자그룹
+this.toDay = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDArrivalAlarmList_tab1_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.fn_init();	
+	this.fn_getToday();
+	
+	// 사용자그룹 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}
+
+/**
+ * 초기화
+ */
+this.fn_init = function() {
+	this.parent.parent.parent.setButton("AG",this);
+}
+
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+/**
+ * 집계 버튼의 클릭 이벤트 처리
+ */
+this.fn_aggregate = function() {
+
+	var sSvcID        	= "aggregateAlarmList";                    
+	var sController   	= "rtms/sd/aggregateArrivalAlarmList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("dayF"		, this.div_search.cal_sendDay.value);	//발송일자
+	sArgs += Ex.util.setParam("dayT"		, this.div_search.cal_sendDay.value);	//발송일자
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		
+		case "getToday":
+			var yyyy = this.toDay.substring(0, 4);
+			var mm = this.toDay.substring(4, 6);
+			var dd = this.toDay.substring(6, 8);
+				
+			var _calcDate = new Date(yyyy, mm, dd);
+			_calcDate.setDate(_calcDate.getDate() -1);
+			
+			var _yyyy = _calcDate.getFullYear();
+			var _mm = _calcDate.getMonth();
+			if(_mm.toString().length == 1){
+				_mm = "0" + _calcDate.getMonth();
+			}
+			
+			var _dd = _calcDate.getDate();
+			if(_dd.toString().length == 1){
+				_dd = "0" + _calcDate.getDate();
+			}
+	
+			this.div_search.cal_sendDay.set_value(_yyyy + "" + _mm + "" + _dd);
+			break;
+			
+		case "aggregateAlarmList":
+			this.edt_procStatus.set_value(strErrorMsg);		     
+			break;
+			
+		default:
+			break;
+	}
+}]]></Script>
+  </Form>
+</FDL>

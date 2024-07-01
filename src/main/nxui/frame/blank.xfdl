@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="blank" classname="blank" left="0" top="0" width="1260" height="640" titletext="New Form" onload="form_onload">
+    <Layouts>
+      <Layout/>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+		    ExtNx.core.onload(obj);
+}
+]]></Script>
+  </Form>
+</FDL>

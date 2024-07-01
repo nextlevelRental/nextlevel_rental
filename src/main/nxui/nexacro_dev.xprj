@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project active_adl="xplatform" version="1.3">
+  <ADL id="xplatform" url="hgr_dev.xadl" useajax="false"/>
+  <TypeDefinition url="default_typedef.xml"/>
+  <GlobalVariables url="globalvars_dev.xml"/>
+  <Themes>
+    <RecentlyUsed>
+      <Theme url="hgr.xtheme" extern="false"/>
+    </RecentlyUsed>
+  </Themes>
+</Project>

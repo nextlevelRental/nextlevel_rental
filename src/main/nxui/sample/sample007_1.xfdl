@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample007_1" classname="file" inheritanceid="" position="absolute" titletext="파일업로드(3rd이미지압축)" left="0" top="0" width="1260" height="693" onload="form_onload" ontimer="file_ontimer">
+    <Layouts>
+      <Layout>
+        <GroupBox id="GroupBox03" text="Example" taborder="20" left="11" top="6" right="13" height="159" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;"/>
+        <Button id="btnResizing" taborder="0" text="file dialog open imageresizing" position="absolute" left="40" width="210" top="209" height="39" onclick="btnResizing_onclick"/>
+        <Grid id="Grid01" taborder="7" binddataset="ds1" useinputpanel="false" left="31" top="366" height="159" autofittype="col" right="0">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="78"/>
+                <Column size="49"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="36" band="head"/>
+                <Row size="73"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="rownum"/>
+                <Cell col="1" text="idx"/>
+                <Cell col="2" text="data"/>
+                <Cell col="3" text="filename"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="expr:currow+1"/>
+                <Cell col="1" text="bind:IDX"/>
+                <Cell col="2" displaytype="image" text="bind:DATA"/>
+                <Cell col="3" text="bind:ORIGINAL_NM"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_upload" taborder="8" text="upload" left="40" top="307" width="210" height="39" onclick="btn_upload_onclick"/>
+        <Button id="btn_defaultUpload" taborder="9" text="file dialog default" left="40" top="258" width="210" height="39" onclick="btn_defaultUpload_onclick"/>
+        <Static id="Static15" taborder="11" text="Image Mapping Test" cssclass="sta_WF_Label3" left="24" top="570" width="11.59%" height="104" style="font:bold 9 Verdana;"/>
+        <Button id="btn_fileRemove" taborder="12" text="REMOVE" onclick="div_main_btn_fileRemove_onclick" cssclass="btn_WF" enable="false" top="539" right="16" width="62" height="21"/>
+        <Grid id="grd_list" cssclass="file" taborder="13" binddataset="ds_file" useinputpanel="false" cellsizingtype="col" autofittype="col" oncelldblclick="div_main_grd_list_oncelldblclick" left="13.97%" top="570" right="13" height="104">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="234"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" style="align:center;" text="bind:COL_CHECK"/>
+                <Cell col="1" style="align:left;font:underline 9 Verdana;cursor:hand;" text="bind:ORIGINAL_NM" suppress="0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_fileAdd" taborder="15" text="ADD" cssclass="btn_WF" top="539" right="81" width="62" height="21" onclick="btn_fileAdd_onclick"/>
+        <Button id="btn_save" taborder="16" text="Save" cssclass="btn_WF_Save" top="797" right="7" width="66" height="24" onclick="btn_save_onclick"/>
+        <ImageViewer id="ImageViewer00" taborder="18" left="280" top="169" height="190" stretch="fixaspectratio" width="272"/>
+        <Static id="Static00" taborder="19" text="&#9;//@param : this&#13;&#10;&#9;//@callback : callback name&#13;&#10;&#9;//@type :default: 모든파일 :  image/* (이미지type) &#9;&#13;&#10;&#9;//@multiselect: true : 멀티파일선택 false : 싱글선택&#13;&#10;&#9;Ex.file.getFile({frmobj:this    &#13;&#10;&#9;&#9;&#9;&#9;&#9;&#9;,callback:&quot;fn_imgResizeCallback&quot;&#13;&#10;&#9;                    ,type:&quot;image/*&quot;&#13;&#10;&#9;                    ,resize:[100,500]&#13;&#10;&#9;                    ,multiselect:true});" left="19" top="24" height="133" style="align:left top;" cssclass="sample_example" right="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="IDX" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="BAR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_out" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="IDX" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="BAR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_upFile" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="DATA" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_delFile" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="BOARD_SEQ" type="STRING" size="256"/>
+          <Column id="FILE_SEQ" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="COL_CHECK" type="STRING" size="256"/>
+          <Column id="FILE_SEQ" type="STRING" size="256"/>
+          <Column id="SERVER_NM" type="STRING" size="256"/>
+          <Column id="SERVER_PATH" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Function
+***********************************************************************************/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{
+ 
+	if (nErrorCode < 0) 
+	{
+		return this.gfn_alert(strErrorMsg);		
+	}
+	
+	if (strSvcId == "saveFile") 
+	{
+		trace(this.ds_upFile.saveXML());
+	}
+}
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+   Ex.core.init(obj,693);
+}
+
+/**
+* 파일선택 / 이미지 resizing 100*100 500*500
+* @param {object} o.form >>>> this
+* @param {string} o.type >>>> image type(image/*)         
+* @param {array} resize 형식 [100,500]   [-1]이면 이미지resize처리 안함
+* @param {boolen} multiselect 
+* @return 
+* @example
+* Ex.file.getFile(this,"fn_imgResizeCallback");
+* @memberOf publick
+*/	
+this.btnResizing_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	//@param : this
+	//@callback : callback name
+	//@type :default: 모든파일 :  image/* (이미지type) 	
+	//@multiselect: true : 멀티파일선택 false : 싱글선택
+	Ex.file.getFile({frmobj:this    
+						,callback:"fn_imgResizeCallback"
+	                    ,type:"image/*"
+	                    ,resize:[100,500]
+	                    ,multiselect:true});
+
+}
+
+
+
+/**
+* resizing callbak
+* @param {object} 이미지 obj
+* @return
+* @memberOf private
+*/
+this.fn_imgResizeCallback  = function(objImgDs)
+{
+	trace(" objImgDs : "  +objImgDs);
+	if(Eco.isEmpty(objImgDs)) {
+	//	alert("mc_resizeImage failed");
+		return;
+	}
+	trace(" objImgDs : "  + objImgDs.saveXML());
+	//trace("total data : "  +objImgDs.saveXML());
+	var ds_temp = Ex.util.isCheckDs("ds_temp");
+	var ds_outTemp = Ex.util.isCheckDs("ds_outTemp");
+	
+	//100 pixcel 이미지 filter
+	objImgDs.filter("FILE_SIZE==100");
+	ds_temp.copyData(objImgDs,true);
+	objImgDs.filter("");
+	
+	//500 pixcel 이미지 filter
+	objImgDs.filter("FILE_SIZE==500");
+	ds_outTemp.copyData(objImgDs,true);
+	objImgDs.filter("");
+	
+	
+	this.ds1.clearData();
+
+	if(this.ds1.rowcount == 0)
+	{
+	   this.ds1.assign(ds_temp);
+	   this.ds_file.assign(ds_outTemp);
+	   
+	}
+	else
+	{
+	   this.ds1.appendData(ds_temp);
+	   this.ds_file.appendData(ds_outTemp);
+	}
+	
+	this.ImageViewer00.set_image(this.ds_file.getColumn(0,"DATA"));
+
+   this.setTimer(1,3000);
+}
+
+]]></Script>
+  </Form>
+</FDL>

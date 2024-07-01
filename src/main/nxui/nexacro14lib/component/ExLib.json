@@ -1,0 +1,19 @@
+﻿{
+	"name": "ExLib",
+	"version": "15.0.0.1",
+	"description": "ExLib for nexacro",
+	"license": "",
+	"scripts": [        
+        "ExLib/comm/ani.js",
+        "ExLib/comm/core.js",
+        "ExLib/comm/file.js",
+        "ExLib/comm/util.js",     
+        "ExLib/comm/vali.js",
+        "ExLib/openapi/jquery-1.10.2.js",
+        "ExLib/openapi/mc_animate_nexacro.js",
+        "ExLib/openapi/mc_gdirections.js"
+            
+	]
+}
+//@ sourceURL=ExLib.json
+

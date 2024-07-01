@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rentalMasterAuth">
+	
+	<resultMap id="rentalAuthMstResultMap" class="java.util.HashMap">
+		<result property="userId"       column= "USER_ID" />
+		<result property="userNm"       column= "USER_NM" />  		
+	</resultMap>
+       
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalAuthMstResultMap" />
+		<parameter property="userNm"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMasterAuth.listRentalAuthMstInfo" parameterMap="groupParam">
+		{call PKG_RTCM0110.p_sRentalAuthMst(?, ?)}
+	</procedure>
+
+	<resultMap id="rentalAuthDtlResultMap" class="java.util.HashMap">
+		<result property="chk"          column= "CHK" />
+		<result property="rntMstId"     column= "RNT_MST_ID" />  		
+		<result property="rntOfc"       column= "RNT_OFC" />
+		<result property="rntPnt"       column= "RNT_PNT" />
+		<result property="rntOfcNm"     column= "RNT_OFC_NM" />		
+		<result property="rntPntNm"     column= "RNT_PNT_NM" />					
+	</resultMap>
+       
+	<parameterMap id="officeParam" class="java.util.Map">
+		<parameter property="vcursor"     jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalAuthDtlResultMap" />
+		<parameter property="userId"  	  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cdNm"  	  mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMasterAuth.listRentalAuthDtlInfo" parameterMap="officeParam">
+		{call PKG_RTCM0110.p_sRentalAuthDtl(?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRentalCust" class="java.util.Map">
+		<parameter property="rntMstId"    	 mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="rntOfc"         mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rntPnt"         mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="rentalMasterAuth.saveRentalMstAuth" parameterMap="p_IUDRentalCust">
+		{call PKG_RTCM0110.p_IUDRentalMstAuth(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_DRentalCust" class="java.util.Map">
+        <parameter property="rntMstId"       mode="IN" jdbcType="VARCHAR" />    
+        <parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+        <parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />       
+    </parameterMap>
+	<procedure id="rentalMasterAuth.deleteRentalMstAuth" parameterMap="p_DRentalCust">
+        {call PKG_RTCM0110.p_DRentalMstAuth(?, ?, ?)}
+    </procedure>
+</sqlMap>

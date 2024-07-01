@@ -1,0 +1,1608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDSaleItemRegister" classname="RTSDSaleItemRegister" left="0" top="0" width="1147" height="653" titletext="판매상품등록" onload="RTSDSaleItemRegister_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" right="25" height="45" cssclass="div_WF_searchBg" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="st_SaleItemNm" taborder="0" text="판매상품명" left="25" top="1" height="41" cssclass="sta_WF_schTitle" width="93"/>
+              <Edit id="ed_SaleItemNm" taborder="1" left="119" top="10" height="21" width="140" enable="false"/>
+              <Edit id="ed_SaleItemCd" taborder="2" left="590" top="10" height="21" visible="false" width="140" value="판매상품조회 시 받아오는 판매코드"/>
+              <Static id="Static02" taborder="4" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Button id="btnSaleProdSearch" taborder="5" text="판매상품조회" left="265" top="9" height="25" cssclass="btn_WF_module" width="97" onclick="div_search_btnSaleProdSearch_onclick"/>
+              <Edit id="ed_MaxSaleCd" taborder="6" left="66.91%" top="12" right="21.82%" height="21" visible="false" value="추가버튼 클릭 시 받아오는 판매코드"/>
+              <Static id="st_SaleItemNm00" taborder="7" text="판매상품사용여부" cssclass="sta_WF_schTitle" left="377" top="1" width="123" height="41"/>
+              <Combo id="useYn00" taborder="8" innerdataset="useYn" codecolumn="cd" datacolumn="cdNm" index="0" onitemchanged="div_search_Combo00_onitemchanged" left="45.8%" top="12" right="50.54%" height="17" value="Y" text="Y"/>
+              <Edit id="ed_Seq" taborder="9" visible="false" left="81.22%" top="12" right="7.16%" height="21" displaynulltext="판매상품내 서비스 시퀀스"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="620"/>
+        <Static id="Static03" taborder="2" text="FIX h20" onclick="Static03_onclick" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="판매상품정책" cssclass="sta_WF_subTitle" left="0" top="61" width="110" height="20"/>
+        <Static id="Static04" taborder="4" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" left="0" top="86" right="25" height="66" nodatatext="조회된 데이터가 없습니다." binddataset="ds_saleItemList" autofittype="col" onselectchanged="prdtGrpChange" oncellclick="comboOneClick" autoupdatetype="comboselect" autoenter="select" selecttype="cell" scrollbars="autohorz" oncloseup="Grid00_oncloseup">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="88"/>
+                <Column size="83"/>
+                <Column size="0"/>
+                <Column size="0"/>
+                <Column size="67"/>
+                <Column size="71"/>
+                <Column size="62"/>
+                <Column size="0"/>
+                <Column size="0"/>
+                <Column size="104"/>
+                <Column size="110"/>
+                <Column size="110"/>
+                <Column size="102"/>
+                <Column size="101"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" edittype="none" text="판매상품명"/>
+                <Cell col="1" text="판매시작일"/>
+                <Cell col="2" text="판매종료일"/>
+                <Cell col="3" text="채널구분"/>
+                <Cell col="4" text="홈쇼핑구분"/>
+                <Cell col="5" text="할인율"/>
+                <Cell col="6" text="할인금액"/>
+                <Cell col="7" text="고객유형"/>
+                <Cell col="8" text="연령제한"/>
+                <Cell col="9" text="연령"/>
+                <Cell col="10" text="판매유형 Lv1."/>
+                <Cell col="11" text="판매유형 Lv2."/>
+                <Cell col="12" text="패키지중복할인"/>
+                <Cell col="13" text="선납중복알인"/>
+                <Cell col="14" text="재렌탈중복할인"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:saleNm"/>
+                <Cell col="1" edittype="date" text="bind:saleStrDay"/>
+                <Cell col="2" edittype="date" text="bind:saleEndDay"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:chanCd" combodataset="ds_chanGubun" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:hshopGb" combodataset="ds_hShopGubun" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="5" displaytype="normal" edittype="normal" text="bind:dcRate"/>
+                <Cell col="6" displaytype="number" edittype="masknumber" text="bind:dcAmt"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:custType" combodataset="ds_CustType" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="8" displaytype="combo" edittype="combo" text="bind:ageLimit" combodataset="ds_AgeLimit" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="9" edittype="expr:ageLimit == 'Y' ? 'text' : 'none'" text="bind:age" expr="expr:ageLimit == 'Y' ? age : ''"/>
+                <Cell col="10" displaytype="combo" edittype="combo" text="bind:prdtGrp" combodataset="ds_prdtGrpGubun" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="11" displaytype="combo" edittype="combo" text="bind:prdtGrpDtl" combodataset="ds_prdtGrpGubunDtl" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="12" displaytype="combo" edittype="combo" text="bind:pkgDcYn" combodataset="ds_pgkDcYn" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="13" displaytype="combo" edittype="combo" text="bind:preDcYn" combodataset="ds_preDcYn" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="14" displaytype="combo" edittype="combo" text="bind:rerentalDcYn" combodataset="ds_reRentalYn" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static15" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="42"/>
+        <Static id="Static01" taborder="7" text="FIX h20" onclick="Static03_onclick" cssclass="Guide_color" visible="false" left="0" top="184" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="8" text="판매주제품(타이어)" cssclass="sta_WF_subTitle" left="0" top="200" width="143" height="20"/>
+        <Static id="Static06" taborder="9" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="217" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="btnTirePattenReg" taborder="10" text="타이어(패턴)등록" top="196" height="22" cssclass="btn_WF_module" width="113" right="894" onclick="btnTirePattenReg_onclick"/>
+        <Button id="btnTirePattenDel" taborder="11" text="삭제" left="245" top="196" height="22" cssclass="btn_WF_module" width="45" onclick="btnTirePattenDel_onclick"/>
+        <Grid id="Grid01" taborder="12" useinputpanel="false" left="0" top="226" right="842" height="136" binddataset="ds_tirePattenList" nodatatext="조회된 데이터가 없습니다." autofittype="none" scrollbars="autovert" oncellclick="ds_tireInfoPopUp" selecttype="row" cellsizingtype="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="151"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="패턴코드"/>
+                <Cell col="2" text="제품정보"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" style="align:left;" text="bind:saleGdsCd" editlengthunit="utf16"/>
+                <Cell col="2" displaytype="button" edittype="button" text="상품(제품)정보"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static07" taborder="13" text="판매부가제품(결합상품)" cssclass="sta_WF_subTitle" left="328" top="200" width="174" height="20"/>
+        <Button id="btnSaleAddDelete" taborder="14" text="삭제" top="196" height="22" cssclass="btn_WF_module" width="45" onclick="btnSaleAddDelete_onclick" left="891" enable="false"/>
+        <Button id="btnSaleAddReg" taborder="15" text="부가제품등록" top="196" height="22" cssclass="btn_WF_module" width="97" onclick="btnSaleAddReg_onclick" left="788"/>
+        <Grid id="Grid02" taborder="16" useinputpanel="false" left="320" top="226" height="136" autofittype="col" binddataset="ds_SaleProdList" nodatatext="조회된 데이터가 없습니다." scrollbars="autoboth" width="616">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="15"/>
+                <Column size="86"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="34"/>
+                <Column size="131"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="부가제품명"/>
+                <Cell col="2" text="금액"/>
+                <Cell col="3" text="할인금액"/>
+                <Cell col="4" text="실판매가"/>
+                <Cell col="5" text="제조사"/>
+                <Cell col="6" text="제품군"/>
+                <Cell col="7" text="제품설명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" style="align:left;" text="bind:addGdsNm"/>
+                <Cell col="2" displaytype="number" text="bind:amt" mask="###,###,###,##0"/>
+                <Cell col="3" displaytype="number" text="bind:dcAmt" mask="###,###,###,##0"/>
+                <Cell col="4" displaytype="number" text="bind:actAmt" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="normal" text="bind:makerNm"/>
+                <Cell col="6" displaytype="combo" text="bind:gdsGrp" combodataset="comGrp" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+                <Cell col="7" style="align:left;" text="bind:gdsDesc"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="17" text="FIX h20" onclick="Static03_onclick" cssclass="Guide_color" visible="false" left="0" top="362" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static09" taborder="18" text="등록비관리" cssclass="sta_WF_subTitle" left="743" top="378" width="143" height="20"/>
+        <Grid id="Grid03" taborder="19" useinputpanel="false" left="741" top="403" height="176" autofittype="col" binddataset="ds_RegAmtMgnt" nodatatext="조회된 데이터가 없습니다." right="211">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="95"/>
+                <Column size="160"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="타이어본수"/>
+                <Cell col="1" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cntCd"/>
+                <Cell col="1" displaytype="number" edittype="masknumber" style="align:right;padding:0 3 0 0;" text="bind:amt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static10" taborder="20" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="393" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static11" taborder="21" text="프리미엄 서비스" cssclass="sta_WF_subTitle" left="320" top="377" width="126" height="20"/>
+        <Button id="btnSrvDelete" taborder="22" text="삭제" top="375" right="420" height="22" cssclass="btn_WF_module" width="45" onclick="btnSrvDelete_onclick"/>
+        <Button id="Button01" taborder="23" text="서비스등록" top="375" right="472" height="22" cssclass="btn_WF_module" width="84" onclick="Button01_onclick"/>
+        <Grid id="Grid04" taborder="24" useinputpanel="false" left="320" top="403" right="417" height="176" autofittype="col" binddataset="ds_seviceCd" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="277"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="상세서비스"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:prsNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static12" taborder="25" text="FIX h20" onclick="Static03_onclick" cssclass="Guide_color" visible="false" left="0" top="578" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static13" taborder="26" text="채널구분" cssclass="sta_WF_subTitle" left="0" top="377" width="143" height="20"/>
+        <Static id="Static14" taborder="27" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="609" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grdTree" taborder="28" binddataset="dsTreeList" scrollpixel="default" useinputpanel="false" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,all" left="0" top="403" height="176" style="treeopenbuttonimage:URL('theme://images\ico_WF_treeexpand.png');treeclosebuttonimage:URL('theme://images\ico_WF_treecollapse.png');treecollapseimage:URL('theme://images\ico_WF_treeopen.png');treeexpandimage:URL('theme://images\ico_WF_treehide.png');treeitemimage:URL('theme://images\ico_treeitem.png');treelinetype:1px solid #afafafff ;cursor:hand;" right="842" nodatatext="조회된 데이터가 없습니다." oncelldblclick="grdTree_oncelldblclick" oncellclick="grdTree_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="264"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="판매채널명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" displaytype="tree" edittype="tree" style="line: ;" text="bind:cdNm" expandshow="hide" treestartlevel="0" treelevel="bind:level"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="ed_clsCd" taborder="30" visible="false" top="374" width="108" height="22" right="953"/>
+        <Button id="btnFilter" taborder="31" text="필터" cssclass="btn_WF_module" top="374" right="902" width="45" height="22" onclick="btnFilter_onclick" visible="false"/>
+        <Button id="btnNewChn" taborder="34" text="초기화" cssclass="btn_WF_module" top="374" right="843" width="54" height="22" onclick="btnNewChn_onclick"/>
+        <Static id="st_searchCondition00" taborder="30" text="무제한 사용여부" left="432" top="365" width="96" height="47" domainId="nexa.s_condition"/>
+        <Combo id="Combo00" taborder="31" value="Y" text="Y" innerdataset="useYn" codecolumn="cd" datacolumn="cdNm" index="0" onitemchanged="div_search_Combo00_onitemchanged" left="46.47%" top="380" right="49.78%" height="17"/>
+        <Grid id="Grid05" taborder="35" binddataset="ds_exemption" useinputpanel="false" autofittype="col" left="944" top="403" height="176" right="25">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="118"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="면제회차"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" displaytype="number" edittype="masknumber" text="bind:exmMnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static16" taborder="36" text="면제회차" cssclass="sta_WF_subTitle" left="943" top="378" width="76" height="20"/>
+        <Button id="btn_exemAdd" taborder="37" text="추가" onclick="btn_exemAdd_onclick" cssclass="btn_WF_module" top="375" right="75" width="45" height="22"/>
+        <Button id="btn_exemDel" taborder="38" text="삭제" onclick="btn_exemDel_onclick" cssclass="btn_WF_module" top="375" right="25" width="45" height="22"/>
+        <Static id="Static17" taborder="39" text="내용" cssclass="sta_WF_subTitle" left="943" top="200" width="80" height="20"/>
+        <TextArea id="txt_contents" taborder="40" left="944" top="226" height="136" right="25"/>
+        <Static id="Static18" taborder="41" text="FIX h20" onclick="Static03_onclick" cssclass="Guide_color" visible="false" left="0" top="152" width="1122" height="11" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static19" taborder="42" text="해시태그1" cssclass="sta_WF_subTitle" left="0" top="164" width="72" height="20"/>
+        <Edit id="ed_hashTag1" taborder="43" left="79" top="163" width="140" height="21" onkeyup="ed_hashTag1_onkeyup" maxlength="11"/>
+        <Edit id="ed_hashTag2" taborder="44" left="319" top="163" width="140" height="21" maxlength="12" onkeyup="ed_hashTag2_onkeyup"/>
+        <Edit id="ed_hashTag3" taborder="45" left="559" top="163" width="140" height="21" maxlength="12" onkeyup="ed_hashTag3_onkeyup"/>
+        <Edit id="ed_hashTag4" taborder="46" left="799" top="163" width="140" height="21" maxlength="12" onkeyup="ed_hashTag4_onkeyup"/>
+        <Static id="Static20" taborder="47" text="해시태그2" cssclass="sta_WF_subTitle" left="240" top="164" width="72" height="20"/>
+        <Static id="Static21" taborder="48" text="해시태그3" cssclass="sta_WF_subTitle" left="480" top="164" width="72" height="20"/>
+        <Static id="Static22" taborder="49" text="해시태그4" cssclass="sta_WF_subTitle" left="720" top="164" width="72" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_saleItemList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="saleItem_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="saleStrDay" type="STRING" size="256"/>
+          <Column id="saleEndDay" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="hshopGb" type="STRING" size="256"/>
+          <Column id="hshopGbNm" type="STRING" size="256"/>
+          <Column id="dcRate" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="prdtGrp" type="STRING" size="256"/>
+          <Column id="prdtGrpNm" type="STRING" size="256"/>
+          <Column id="pkgDcYn" type="STRING" size="256"/>
+          <Column id="preDcYn" type="STRING" size="256"/>
+          <Column id="fpayYn" type="STRING" size="256"/>
+          <Column id="fpayYnNm" type="STRING" size="256"/>
+          <Column id="regiCalGb" type="STRING" size="256"/>
+          <Column id="regiCalGbNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="grpSaleGb" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="grpSaleGbNm" type="STRING" size="256"/>
+          <Column id="rerentalDcYn" type="STRING" size="256"/>
+          <Column id="prdtGrpDtl" type="STRING" size="256"/>
+          <Column id="prdtGrpDtlNm" type="STRING" size="256"/>
+          <Column id="custType" type="STRING" size="256"/>
+          <Column id="custTypeNm" type="STRING" size="256"/>
+          <Column id="ageLimit" type="STRING" size="256"/>
+          <Column id="ageLimitNm" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="4000"/>
+          <Column id="hashTag1" type="STRING" size="256"/>
+          <Column id="hashTag2" type="STRING" size="256"/>
+          <Column id="hashTag3" type="STRING" size="256"/>
+          <Column id="hashTag4" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chanGubun">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_hShopGubun">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_prdtGrpGubun">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_pgkDcYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">패키지중복할인</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">패키지중복불가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_preDcYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">선납중복할인</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">선납중복불가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_fpayYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grpSaleGb">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_SaleProdList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="addGdsCd" type="STRING" size="256"/>
+          <Column id="addGdsNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="gdsGb" type="STRING" size="256"/>
+          <Column id="gdsDesc" type="STRING" size="256"/>
+          <Column id="gdsDescDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="gdsGrp" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="actAmt" type="STRING" size="256"/>
+          <Column id="dcYn" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="comGrp">
+        <ColumnInfo>
+          <Column id="cdDesc" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tirePattenList" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="saleGdsCd" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="gdsGb" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_RegAmtMgnt" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_seviceCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">&gt;
+        <ColumnInfo><Column id="check" type="STRING" size="256"/><Column id="prsDcd" type="STRING" size="256"/><Column id="prsNm" type="STRING" size="256"/><Column id="servInfYn" type="STRING" size="256"/><Column id="seq" type="STRING" size="256"/></ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTreeList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="pChanCd" type="STRING" size="256"/>
+          <Column id="orgCd" type="STRING" size="256"/>
+          <Column id="orgNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chnDtl" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="pChanCd" type="STRING" size="256"/>
+          <Column id="orgCd" type="STRING" size="256"/>
+          <Column id="orgNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_exemption" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="exmMnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_reRentalYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">재렌탈중복할인</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">재렌탈중복불가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_prdtGrpGubunDtl">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cdDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_CustType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_AgeLimit" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="txt_contents" propid="value" datasetid="ds_saleItemList" columnid="contents"/>
+      <BindItem id="item2" compid="div_search.useYn00" propid="value" datasetid="useYn" columnid=""/>
+      <BindItem id="item5" compid="ed_hashTag3" propid="value" datasetid="ds_saleItemList" columnid="hashTag3"/>
+      <BindItem id="item6" compid="ed_hashTag4" propid="value" datasetid="ds_saleItemList" columnid="hashTag4"/>
+      <BindItem id="item3" compid="ed_hashTag1" propid="value" datasetid="ds_saleItemList" columnid="hashTag1"/>
+      <BindItem id="item4" compid="ed_hashTag2" propid="value" datasetid="ds_saleItemList" columnid="hashTag2"/>
+      <BindItem id="item1" compid="Combo00" propid="value" datasetid="useYn" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+ * 01. 업무구분 : 주문관리 - 기준정보 - 판매상품등록
+ * 02. 소스명   : RTSDSaleItemRegister.xfdl
+ * 03. 설명     : 판매상품등록
+ * 04. 작성일   : 2018.10.17
+ * 05. 작성자   : 박석은
+ * 06. 수정이력 :
+ ***********************************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************************
+ * ToDo.1.
+ ***********************************************************************************/
+ 
+/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+this.maxSaleCd = "";
+this.sClsCd = ""; //기존(EXT), 신규(NEW) 구분
+/***********************************************************************************
+ * 2. FORM 변수 선언 영역
+***********************************************************************************/
+
+/***********************************************************************************
+ * 3. Common Events and Functions
+***********************************************************************************/
+//----------------------------------------------------------------------------------   
+// Load
+//---------------------------------------------------------------------------------- 
+this.RTSDSaleItemRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+
+//----------------------------------------------------------------------------------   
+// Initialize
+//---------------------------------------------------------------------------------- 	
+this.fn_init = function() {
+	/* 
+	  1. S : 조회
+	  2. C : 저장
+	  3. N : 추가
+	  4. DL: 삭제
+	  5. E : 엑셀
+	  기타: workFrame.xfdl참조
+	*/	
+	
+	this.btnTirePattenReg.set_enable(false);
+	this.btnTirePattenDel.set_enable(false);
+	this.btnSaleAddReg.set_enable(false);
+	this.btnSaleAddDelete.set_enable(false);
+	this.Button01.set_enable(false);
+	this.btnSrvDelete.set_enable(false);
+	this.btn_exemAdd.set_enable(false);
+	this.btn_exemDel.set_enable(false);
+	this.btnFilter.set_enable(false);
+	this.btnNewChn.set_enable(false);
+			
+	this.parent.setButton("C|N", this);
+	
+	var sSvcID      	= "saleItemCommCode";  
+	var sController   	= "/ntrms/sd/saleItemCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		 
+	sOutDatasets += " ds_chanGubun=mapDsChanGubun";
+	sOutDatasets += " ds_hShopGubun=mapDsHShopGubun";
+	sOutDatasets += " ds_prdtGrpGubun=mapDsPrdtGrpGubun";
+	sOutDatasets += " ds_fpayYn=mapDsFrayYn";
+	sOutDatasets += " ds_grpSaleGb=mapDsGrpSaleGb";
+	sOutDatasets += " ds_prdtGrpGubunDtl=mapDsPrdtGrpGubunDtl";
+	sOutDatasets += " ds_CustType=mapDsCustType";
+	sOutDatasets += " ds_AgeLimit=mapDsAgeLimit";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	//this.fn_search();
+	
+	//부가제품등록 제품군 Load
+	var cSvcID        	= "listCommInfo";                    
+	var cController   	= "/rtms/sd/listAddProductCommInfo.do";
+	var cInDatasets   	= "";
+	var cOutDatasets  	= "comGrp=com_grp";
+	var cArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,cSvcID, cController, cInDatasets, cOutDatasets, cArgs, fn_callBack); 
+}
+
+
+/***********************************************************************************
+* 4. Transaction Functions
+***********************************************************************************/
+
+//----------------------------------------------------------------------------------
+// Row 추가
+//----------------------------------------------------------------------------------
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.dsTreeList.clearData();
+	
+	var sSvcID      	= "maxSaleCd";  
+	var sController   	= "ntrms/sd/maxSaleCd.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		 
+	//sOutDatasets += " dsMaxSaleCd=mapDsChanGubun";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//----------------------------------------------------------------------------------
+// Search
+//----------------------------------------------------------------------------------
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.sClsCd = "EXT"; //기존
+	this.dsTreeList.clearData();
+	this.ds_chnDtl.clearData();
+	
+	var saleCd 	= "";
+	
+	if(nvl(this.div_search.ed_SaleItemCd.value) != "") {
+		saleCd = nvl(this.div_search.ed_SaleItemCd.value); /* 기 등록된 판매코드 */
+	} else {
+		saleCd = nvl(this.maxSaleCd); /* 추가시 신규로 받아오는 판매코드 */
+	}
+	
+	var sSvcID		  = "saleItemList";
+	var sController	  = "/ntrms/sd/saleItemList.do";
+	var sInDatasets	  = "";
+	var sOutDatasets  = "";
+		sOutDatasets += " ds_saleItemList=saleItemOutput";
+		sOutDatasets += " ds_tirePattenList=saleTirePatternOutput";
+		sOutDatasets += " ds_SaleProdList=saleProdListOutput";
+		sOutDatasets += " ds_seviceCd=salePrimServiceOutput";
+		sOutDatasets += " ds_RegAmtMgnt=saleRegAmtOutput";
+		sOutDatasets += " dsTreeList=saleChnOutput";
+		sOutDatasets += " ds_exemption=saleExempOutput";
+	var sArgs		  = "";
+		sArgs		 += Ex.util.setParam("saleCd", saleCd);
+	var fn_callBack	  = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//----------------------------------------------------------------------------------
+// Search(채널 신규조회)
+//----------------------------------------------------------------------------------
+this.fn_searchSaleChnList = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.sClsCd = "NEW"; //신규
+	this.dsTreeList.clearData();
+
+	var sSvcID        	= "saleChnList";                    
+	var sController   	= "/ntrms/sd/saleChnList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sOutDatasets	+= " dsTreeList=saleChnOutput";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//----------------------------------------------------------------------------------
+// Search(Filtered 조회)
+//----------------------------------------------------------------------------------
+this.fn_searchFilter = function()
+{
+	this.sClsCd = "NEW"; //신규
+	this.dsTreeList.clearData();
+
+	var sSvcID        	= "saleChannelFilter";                    
+	var sController   	= "/ntrms/sd/saleChannelFilter.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sOutDatasets	+= " dsTreeList=saleChnOutput";
+		sArgs 			+= Ex.util.setParam("orgNm", nvl(this.ed_clsCd.value));
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//----------------------------------------------------------------------------------
+// Search([추가] 채널 상세조회)
+//----------------------------------------------------------------------------------
+this.fn_searchSaleChnDtl = function(sChanCd)
+{
+	this.ds_chnDtl.clearData();
+
+	var sSvcID        	= "saleChnDtl";                    
+	var sController   	= "/ntrms/sd/saleChnDtl.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sOutDatasets	+= " ds_chnDtl=saleChnDtlOutput";
+	
+	sArgs += Ex.util.setParam("pChanCd", sChanCd);
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//----------------------------------------------------------------------------------
+// Search(채널 상세조회: 기존정보 제외)
+//----------------------------------------------------------------------------------
+this.fn_searchExclusiveList = function(sChanCd)
+{
+	var saleCd 		= nvl(this.div_search.ed_SaleItemCd.value); //기 등록된 판매코드
+
+	var sSvcID        	= "exclusiveList";                    
+	var sController   	= "/ntrms/sd/exclusiveList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		sOutDatasets	+= " ds_chnDtl=saleChnDtlOutput";
+
+	sArgs += Ex.util.setParam("saleCd", saleCd);	
+	sArgs += Ex.util.setParam("pChanCd", sChanCd);
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//----------------------------------------------------------------------------------
+// Save
+//----------------------------------------------------------------------------------
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	var changeCount 		  = 0;
+	var changeTireCount 	  = 0;
+	var changeSaleProdCount   = 0;
+	var changeSaleRegAmtCount = 0;
+	var changeSaleSeviceCount = 0;
+	var changeExemptionCount  = 0;
+	var cnt 				  = this.ds_saleItemList.getRowCount();
+	
+	var useYn			= nvl(this.div_search.useYn00.value);
+	this.ds_saleItemList.setColumn(i,"useYn" ,		useYn);
+	
+	var saleCd 	= "";
+	if(nvl(this.div_search.ed_SaleItemCd.value) != '') {
+		saleCd 		= nvl(this.div_search.ed_SaleItemCd.value); //기 등록된 판매코드
+	} else {
+		saleCd 		= nvl(this.maxSaleCd); //추가시 신규로 받아오는 판매코드
+	}
+
+	//판매상품
+	for( var i = 0 ; i < cnt ; i++ ){
+		var iRowType = this.ds_saleItemList.getRowType(i);
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+		
+			if(nvl(this.ds_saleItemList.getColumn(i, "dcRate")) != "") {
+				var sDcRate 		= nvl(this.ds_saleItemList.getColumn(i, "dcRate").replace("%",""));
+				
+				this.ds_saleItemList.setColumn(i,"dcRate", 		sDcRate);
+				
+			}
+			changeCount++;
+		}
+	}
+	//판매주제품(타이어)
+	var tireListCnt = this.ds_tirePattenList.getRowCount();
+	for( var i = 0 ; i < tireListCnt ; i++ ){
+		var iRowType = this.ds_tirePattenList.getRowType(i);
+		
+		this.ds_tirePattenList.setColumn(i,"saleCd", 		saleCd);
+		this.ds_tirePattenList.setColumn(i,"gdsGb", 		"1");
+		this.ds_tirePattenList.setColumn(i,"saleGdsCd",   this.ds_tirePattenList.getColumn(i, "saleGdsCd"));
+
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			changeTireCount++;
+		}
+	}
+	//판매주제품(타이어) 삭제 count
+	var changeTireDelete = this.ds_tirePattenList.getDeletedRowCount();
+	
+	//판매부가제품(결합상품)
+	var saleProdListCnt = this.ds_SaleProdList.getRowCount();
+	for( var i = 0 ; i < saleProdListCnt ; i++ ){
+		var iRowType = this.ds_SaleProdList.getRowType(i);
+		
+		var sSaleGdsCd = nvl(this.ds_SaleProdList.getColumn(i, "addGdsCd"));
+		this.ds_SaleProdList.setColumn(i,"saleCd", 		saleCd);
+		this.ds_SaleProdList.setColumn(i,"addGdsCd", 	sSaleGdsCd);
+		this.ds_SaleProdList.setColumn(i,"gdsGb", 		"2");		
+			
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			changeSaleProdCount++;
+		}
+	}
+	
+	//판매부가제품(결합상품)
+	var changeSalePrdtDelete = this.ds_SaleProdList.getDeletedRowCount();
+	
+	//등록비관리
+	var saleRegAmtList = this.ds_RegAmtMgnt.getRowCount();
+	for( var i = 0 ; i < saleRegAmtList ; i++ ){
+		var iRowType = this.ds_RegAmtMgnt.getRowType(i);
+		
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			this.ds_RegAmtMgnt.setColumn(i,"saleCd", 		saleCd);
+			changeSaleRegAmtCount++;
+		}
+	}
+	
+	
+	//프리미엄서비스
+	var saleSeviceCnt = this.ds_seviceCd.getRowCount();
+
+	this.ds_seviceCd.addColumn("servInfYn", "STRING", "256");
+	this.ds_seviceCd.addColumn("saleCd", "STRING", "256");
+	var servInfYn = this.Combo00.value;
+	for(var i=0;i<saleSeviceCnt;i++){
+	this.ds_seviceCd.setColumn(i,"saleCd",saleCd);
+	this.ds_seviceCd.setColumn(i,"servInfYn",servInfYn);
+		
+		
+	//[20210202_01] kstka 프리미엄서비스 시퀀스 등록
+	this.ds_seviceCd.setColumn(i,"seq", nvl(this.div_search.ed_Seq.value));
+	}
+
+	for( var i = 0 ; i < saleSeviceCnt ; i++ ){
+		var iRowType = this.ds_seviceCd.getRowType(i);		
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+		
+			changeSaleSeviceCount++;
+		}
+	}
+
+	
+	//프리미엄서비스
+	var changePrimSvcDelete = this.ds_seviceCd.getDeletedRowCount();
+	
+	//면제회차
+	var exemptionCnt = this.ds_exemption.getRowCount();
+	this.ds_exemption.set_updatecontrol(false);
+	for( var i = 0 ; i < exemptionCnt ; i++ ){
+		var iRowType = this.ds_exemption.getRowType(i);
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			this.ds_exemption.setColumn(i,"saleCd", 		saleCd);
+			changeExemptionCount++;
+		}
+		this.ds_exemption.setRowType(i, Dataset.ROWTYPE_INSERT);
+	}
+	this.ds_exemption.set_updatecontrol(true);
+	
+	//면제회차
+	var changeExemptionDelete = this.ds_exemption.getDeletedRowCount();
+
+	
+	if( changeCount == 0 && changeTireCount == 0 && changeSaleProdCount == 0 && changeSaleRegAmtCount == 0 && changeSaleSeviceCount == 0 && changeExemptionCount == 0 
+	    && changeTireDelete == 0 && changeSalePrdtDelete == 0 && changePrimSvcDelete == 0 && !Ex.util.isUpdated(this.dsTreeList) && changeExemptionDelete == 0)
+	{
+		alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+	
+	if( !this.fn_saveValidation() ) {
+		return false;
+	}
+
+	
+	/* 상품채널 Dataset은 체크된 항목만 Insert, 기존정보는 Delete */
+	this.ds_chnDtl.clearData();
+	
+	var nRow = -1;
+	
+	for(var i = 0; i < this.dsTreeList.rowcount; i++) {
+		if(nvl(this.dsTreeList.getColumn(i, "chk")) == 1) {
+			nRow = this.ds_chnDtl.addRow();
+			this.ds_chnDtl.copyRow(nRow, this.dsTreeList, i);
+		}
+	}
+	
+	this.ds_chnDtl.addColumn("saleCd", "STRING");
+	
+	for(i = 0; i < this.ds_chnDtl.rowcount; i++) {
+		this.ds_chnDtl.setColumn(i,"saleCd", saleCd);
+	}
+	
+	this.ds_seviceCd.set_updatecontrol(false);
+	
+	for(var i = 0 ; i < saleSeviceCnt ; i++) {
+		this.ds_seviceCd.setRowType(i, Dataset.ROWTYPE_INSERT);
+	}
+	
+	this.ds_seviceCd.set_updatecontrol(true);
+
+
+
+	if(confirm( "저장하시겠습니까?")) {
+		var sSvcID		 = "saveSeleItem";
+		var sController	 = "/ntrms/sd/saleItemSaveDaset.do";
+		var sInDatasets	 = "";
+			sInDatasets	+= " dsSaleItemList=ds_saleItemList:A";
+			sInDatasets	+= " dsTirePattenList=ds_tirePattenList:A";
+			sInDatasets	+= " dsSaleProdList=ds_SaleProdList:A";
+			sInDatasets	+= " dsSeviceCd=ds_seviceCd:A";
+			sInDatasets	+= " dsRegAmtMgnt=ds_RegAmtMgnt:A";
+			sInDatasets	+= " dsExemption=ds_exemption:A";
+			sInDatasets	+= " ds_chnDtl=ds_chnDtl";
+		var sOutDatasets = "";
+		var sArgs		 = "";
+		var fn_callBack	 = "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+//----------------------------------------------------------------------------------
+// Save Validation
+//----------------------------------------------------------------------------------
+this.fn_saveValidation = function(){
+	var nRow = this.ds_saleItemList.rowposition ;
+	var cnt = this.ds_saleItemList.getRowCount();
+	
+	for( var i = 0 ; i < cnt ; i++ ){
+	
+		var iRowType = this.ds_saleItemList.getRowType(i);
+		
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+		
+			var saleNm 		= nvl(this.ds_saleItemList.getColumn(i,"saleNm"));
+			var saleStrDay 	= nvl(this.ds_saleItemList.getColumn(i,"saleStrDay"));
+			var saleEndDay 	= nvl(this.ds_saleItemList.getColumn(i,"saleEndDay"));
+			
+			if(saleNm == "") {
+				alert("판매상품명은 필수 입니다.");
+				return false;
+			}
+			if(saleStrDay == "") {
+				alert("판매시작일은 필수 입니다.");
+				return false;
+			}
+			if(saleEndDay == "") {
+				alert("판매종료일은 필수 입니다.");
+				return false;
+			}
+		}
+	}
+	
+
+	return true;
+}
+
+//할인금액 입력 시 할인률 초기화, 할인율 입력 시 할인금액 초기화
+this.saleItem_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	var sColId 		= e.columnid;
+	var nRow 		= e.row;
+	
+	var currDate 	= new Date();
+	var year 		= currDate.getFullYear().toString().padLeft(4, "0");
+	var month 		= (currDate.getMonth()+1).toString().padLeft(2, "0");
+	var day 		= currDate.getDate().toString().padLeft(2, "0");
+
+	var currentDate = year+month+day;
+
+	if(sColId == "dcAmt"){ //할인금액 입력 시
+		if(nvl( obj.getColumn(nRow, "dcAmt"), 0) != '0') {
+			obj.setColumn(nRow, "dcRate", "0"); //할인율 초기화
+		} 
+	} else if(sColId == "dcRate"){ //할인율 입력 시
+		if(nvl( obj.getColumn(nRow, "dcRate"), 0) != '0') {
+			obj.setColumn(nRow, "dcAmt", "0"); //할인금액 초기화
+		} 
+	} else if(sColId == "saleStrDay") { //판매시작일 입력 시
+		
+		var saleStrDay 	= nvl(this.ds_saleItemList.getColumn(nRow,"saleStrDay"));
+			
+		calStartDate 	= saleStrDay - currentDate;
+		
+		if(saleStrDay != '' && parseInt(calStartDate) < 0) {
+			alert("판매시작일은 현재일보다 작을 수 없습니다.");
+			this.ds_saleItemList.setColumn(nRow,"saleStrDay", "");
+			return false;
+		}
+	} else if(sColId == "saleEndDay") { //판매종료일 입력 시
+		var saleStrDay 	= nvl(this.ds_saleItemList.getColumn(nRow,"saleStrDay"));
+		var saleEndDay 	= nvl(this.ds_saleItemList.getColumn(nRow,"saleEndDay"));
+		
+		if(saleEndDay != '' && parseInt(saleEndDay) < parseInt(saleStrDay)) {
+			alert("판매종료일은 판매시작일보다 작을 수 없습니다.");
+			this.ds_saleItemList.setColumn(nRow,"saleEndDay", "");
+			return false;
+		}
+	}
+}
+
+//판매상품조회 팝업 처리
+this.div_search_btnSaleProdSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//var saleCd = nvl(this.div_search.ed_SaleItemCd.value);
+	var args = {p_formId:""}; 
+	Ex.core.popup(this,"판매상품조회","comm::RTCOMMSellProduct_pop.xfdl",args, "modaless=false");
+}
+
+this._setSaleReturn = function(arg) 
+{
+	var saleCd = nvl(arg[0]);
+	var saleNm = nvl(arg[1]);
+	var Yn = nvl(arg[4]);
+	
+	if(saleCd != "") {
+		this.btnTirePattenReg.set_enable(true);
+		this.btnTirePattenDel.set_enable(true);
+		this.btnSaleAddReg.set_enable(true);
+		this.btnSaleAddDelete.set_enable(true);
+		this.Button01.set_enable(true);
+		this.btnSrvDelete.set_enable(true);
+		this.btn_exemAdd.set_enable(true);
+		this.btn_exemDel.set_enable(true);
+		this.btnFilter.set_enable(true);
+		this.btnNewChn.set_enable(true);
+	}
+
+	
+	this.div_search.ed_SaleItemCd.set_value(saleCd);
+	this.div_search.ed_SaleItemNm.set_value(saleNm);
+	this.div_search.useYn00.set_value(Yn);
+	this.div_search.ed_MaxSaleCd.set_value("");
+	this.fn_search(); //판매상품조회	
+}
+
+//판매주제품(타이어)팝업 처리
+this.btnTirePattenReg_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_args:""}; 
+	Ex.core.popup(this,"타이어(패턴)등록","comm::RTCOMMTire_pop.xfdl",args, "modaless=false");
+}
+
+this._setReturn = function(arr){
+	var rowCnt = arr[0].rowcount;
+	var arrList = new Array();
+	var saleCd = nvl(this.div_search.ed_SaleItemCd.value);
+	
+	if(this.ds_tirePattenList.rowcount > 0) {
+		for(var i=0; i < this.ds_tirePattenList.rowcount; i++) {
+			arrList[i] = this.ds_tirePattenList.getColumn(i, "saleGdsCd");
+		}
+		
+		for(var i=0; i < rowCnt; i++) {
+			if(arrList.length > 0){
+				var chk = true;
+				var petternCd = arr[0].getColumn(i, "petternCd");
+				for(var k=0; k<arrList.length; k++) {
+					if(arrList[k] == petternCd){
+						chk = false;
+						break;
+						
+					}				
+				}
+				if(chk){
+					if(nvl(petternCd,"") != "") {
+						var nRow = this.ds_tirePattenList.addRow();
+						this.ds_tirePattenList.setColumn(nRow,"saleGdsCd",petternCd);
+						this.ds_tirePattenList.setColumn(nRow,"saleCd",saleCd);
+					}
+				}
+			}
+		}
+
+	} else {
+		for(var i=0; i < rowCnt; i++) {
+			
+			var petternCd = arr[0].getColumn(i, "petternCd");
+			if(nvl(petternCd,"") != "") {
+				var nRow = this.ds_tirePattenList.addRow();
+				this.ds_tirePattenList.setColumn(nRow,"saleGdsCd",petternCd);
+				this.ds_tirePattenList.setColumn(nRow,"saleCd",saleCd);
+			}
+		}
+	
+	}
+	
+	console.log(this.ds_tirePattenList.saveXML());
+}
+
+this.ds_tireInfoPopUp = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var sColId 		= e.col;
+	var nRow 		= e.row;
+
+	if(sColId == '2') {
+		var saleCd 	= "";
+		if(nvl(this.div_search.ed_SaleItemCd.value) != '') {
+			saleCd 		= nvl(this.div_search.ed_SaleItemCd.value); //기 등록된 판매코드
+		} else {
+			saleCd 		= nvl(this.maxSaleCd); //추가시 신규로 받아오는 판매코드
+		}
+	
+		var sPetternCd 		= nvl(this.ds_tirePattenList.getColumn(nRow, "saleGdsCd"));
+		var p_strDay = nvl(this.ds_saleItemList.getColumn(0, "saleStrDay"));
+		var p_endDay = nvl(this.ds_saleItemList.getColumn(0, "saleEndDay"));
+		
+		var args ={p_Cd:sPetternCd, p_formId:"RTSDSaleItemRegister", p_saleCd:saleCd, p_strDay:p_strDay, p_endDay:p_endDay };
+		Ex.core.popup(this,"상세(제품)정보","comm::RTCOMMTireDetail_pop.xfdl",args, "modaless=false");
+	}
+}
+
+
+
+//부가제품등록 팝업 처리
+this.btnSaleAddReg_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_args:""}; 
+	Ex.core.popup(this,"부가제품등록","sd::RTSDValueProductRegisterPopup.xfdl",args, "modaless=false");
+}
+
+this._setReturnProduct = function(arr){
+	var rowCnt = arr[0].rowcount;
+
+	var arrList = new Array();
+	
+	if(this.ds_SaleProdList.rowcount > 0) {
+		for(var i=0; i < this.ds_SaleProdList.rowcount; i++) {
+			arrList[i] = this.ds_SaleProdList.getColumn(i, "addGdsCd");
+		}
+		
+		for(var i=0; i < rowCnt; i++) {
+			if(arrList.length > 0){
+				var chk = true;
+				var addGdsCd 	= arr[0].getColumn(i, "addGdsCd");
+				var addGdsNm 	= arr[0].getColumn(i, "addGdsNm");
+				var amt 		= arr[0].getColumn(i, "amt");
+				var dcAmt 		= arr[0].getColumn(i, "dcAmt");
+				var actAmt 		= arr[0].getColumn(i, "actAmt");
+				var makerNm 	= arr[0].getColumn(i, "makerNm");
+				var gdsGrp 		= arr[0].getColumn(i, "gdsGrp");
+				var gdsDesc 	= arr[0].getColumn(i, "gdsDesc");
+				
+				for(var k=0; k<arrList.length; k++) {
+					if(arrList[k] == addGdsCd){
+						chk = false;
+						break;
+					}				
+				}
+				if(chk){
+					var nRow = this.ds_SaleProdList.addRow();
+					this.ds_SaleProdList.setColumn(nRow,"addGdsCd",addGdsCd);
+					this.ds_SaleProdList.setColumn(nRow,"addGdsNm",addGdsNm);
+					this.ds_SaleProdList.setColumn(nRow,"amt",amt);
+					this.ds_SaleProdList.setColumn(nRow,"dcAmt",dcAmt);
+					this.ds_SaleProdList.setColumn(nRow,"actAmt",actAmt);
+					this.ds_SaleProdList.setColumn(nRow,"makerNm",makerNm);
+					this.ds_SaleProdList.setColumn(nRow,"gdsGrp",gdsGrp);
+					this.ds_SaleProdList.setColumn(nRow,"gdsDesc",gdsDesc);
+				}
+			}
+		}
+	} else {
+		for(var i=0; i < rowCnt; i++) {
+			var chk = true;
+			var addGdsCd 	= arr[0].getColumn(i, "addGdsCd");
+			var addGdsNm 	= arr[0].getColumn(i, "addGdsNm");
+			var amt 		= arr[0].getColumn(i, "amt");
+			var dcAmt 		= arr[0].getColumn(i, "dcAmt");
+			var actAmt 		= arr[0].getColumn(i, "actAmt");
+			var makerNm 	= arr[0].getColumn(i, "makerNm");
+			var gdsGrp 		= arr[0].getColumn(i, "gdsGrp");
+			var gdsDesc 	= arr[0].getColumn(i, "gdsDesc");
+			
+			var nRow = this.ds_SaleProdList.addRow();
+			this.ds_SaleProdList.setColumn(nRow,"addGdsCd",addGdsCd);
+			this.ds_SaleProdList.setColumn(nRow,"addGdsNm",addGdsNm);
+			this.ds_SaleProdList.setColumn(nRow,"amt",amt);
+			this.ds_SaleProdList.setColumn(nRow,"dcAmt",dcAmt);
+			this.ds_SaleProdList.setColumn(nRow,"actAmt",actAmt);
+			this.ds_SaleProdList.setColumn(nRow,"makerNm",makerNm);
+			this.ds_SaleProdList.setColumn(nRow,"gdsGrp",gdsGrp);
+			this.ds_SaleProdList.setColumn(nRow,"gdsDesc",gdsDesc);
+		}
+	}
+
+}
+
+
+//프리미엄 서비스 팝업 처리
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_args:""}; 
+	Ex.core.popup(this,"서비스등록","comm::RTCOMMPrmmService_pop.xfdl",args, "modaless=false");
+}
+
+//프리미엄 서비스 팝업 받는곳
+this._setPopPrmmSrvcList=function(arr){
+
+this.ds_seviceCd.addColumn("check", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+
+	var rowCnt = arr[0].rowcount;
+	var arrList = new Array();	
+	if(this.ds_seviceCd.rowcount > 0) {
+		for(var i=0; i < this.ds_seviceCd.rowcount; i++) {
+			arrList[i] = this.ds_seviceCd.getColumn(i, "prsDcd");
+		}		
+		for(var i=0; i < rowCnt; i++) {
+			if(arrList.length > 0){
+				var check = true;
+				var prsDcd 	= arr[0].getColumn(i, "prsDcd");
+				var prsNm 		= arr[0].getColumn(i, "prsNm");				
+				
+				for(var k=0; k<arrList.length; k++) {
+					if(arrList[k] == prsDcd){
+						check = false;
+						break;
+					}				
+				}
+				if(check){
+					var nRow = this.ds_seviceCd.addRow();
+					this.ds_seviceCd.setColumn(nRow,"prsDcd",prsDcd);
+					this.ds_seviceCd.setColumn(nRow,"prsNm",prsNm);					
+				}
+			}
+		}
+	} else {
+		for(var i=0; i < rowCnt; i++) {
+			var check = true;
+			var prsDcd 	= arr[0].getColumn(i, "prsDcd");
+			var prsNm 	= arr[0].getColumn(i, "prsNm");
+			
+			
+			var nRow = this.ds_seviceCd.addRow();
+			this.ds_seviceCd.setColumn(nRow,"prsDcd",prsDcd);
+			this.ds_seviceCd.setColumn(nRow,"prsNm",prsNm);
+		}
+	}
+}
+
+//판매주제품(타이어)삭제
+this.btnTirePattenDel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var dsObj = this.ds_tirePattenList;	
+	var arry = [];
+	
+	for (var i = dsObj.rowcount - 1; i >-1; i--) {
+		if(dsObj.getColumn(i, "chk") == 1){	
+			dsObj.deleteRow(i);
+		}
+	}
+}
+
+//판매부가제품(결합상품) 삭제
+this.btnSaleAddDelete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var dsObj = this.ds_SaleProdList;	
+	var arry = [];
+	
+	for (var i = dsObj.rowcount - 1; i >-1; i--) {
+		if(dsObj.getColumn(i, "chk") == 1){	
+			dsObj.deleteRow(i);
+		}
+	}
+}
+
+//프리미엄 서비스 삭제
+this.btnSrvDelete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var dsObj = this.ds_seviceCd;	
+	var arry = [];
+	
+	for (var i = dsObj.rowcount - 1; i >-1; i--) {
+		if(dsObj.getColumn(i, "check") == 1){	
+			dsObj.deleteRow(i);
+		}
+	}
+}
+
+//면제회차 삭제
+this.btn_exemDel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var dsObj = this.ds_exemption;	
+	var arry = [];
+	
+	for (var i = dsObj.rowcount - 1; i >-1; i--) {
+		if(dsObj.getColumn(i, "check") == 1){	
+			dsObj.deleteRow(i);
+		}
+	}
+}
+
+//[필터] 클릭시
+this.btnFilter_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(Eco.isEmpty(nvl(this.ed_clsCd.value)))
+	{
+		alert("검색할 판매인명을 입력해 주세요.");
+		this.ed_clsCd.setFocus();
+		return false;	
+	}
+	
+	this.fn_searchFilter();
+}
+
+//[신규] 클릭시
+this.btnNewChn_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_searchSaleChnList();	//채널 신규조회	
+}
+
+/***********************************************************************************
+* 5. CallBack Functions
+***********************************************************************************/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+
+	switch (strSvcId) 
+	{	
+		case "saveSeleItem":
+			alert(strErrorMsg);
+			this.fn_search();
+	        break;
+	        
+	    case "maxSaleCd":
+	    	this.btnTirePattenReg.set_enable(true);
+			this.btnTirePattenDel.set_enable(true);
+			this.btnSaleAddReg.set_enable(true);
+			this.btnSaleAddDelete.set_enable(true);
+			this.Button01.set_enable(true);
+			this.btnSrvDelete.set_enable(true);
+			this.btn_exemAdd.set_enable(true);
+			this.btn_exemDel.set_enable(true);
+			this.btnFilter.set_enable(true);
+			this.btnNewChn.set_enable(true);
+	
+			this.div_search.ed_MaxSaleCd.set_value(this.maxSaleCd);
+			this.div_search.ed_SaleItemCd.set_value("");
+			this.ds_saleItemList.clearData();
+			this.ds_tirePattenList.clearData();
+			this.ds_SaleProdList.clearData();
+			this.ds_seviceCd.clearData();
+			this.ds_RegAmtMgnt.clearData();
+			this.ds_exemption.clearData();
+			this.dsTreeList.clearData();
+
+			var nRow = this.ds_saleItemList.addRow();
+			this.Grid00.selectRow(nRow);
+			this.Grid00.setCellPos(0);
+			this.Grid00.showEditor(true);			
+			this.ds_saleItemList.setColumn(nRow,"saleCd",this.maxSaleCd);
+			this.ds_saleItemList.setColumn(nRow,"chanCd"," ");
+			this.ds_saleItemList.setColumn(nRow,"hshopGb"," ");
+			this.ds_saleItemList.setColumn(nRow,"prdtGrp"," ");
+			this.ds_saleItemList.setColumn(nRow,"pkgDcYn","N");
+			this.ds_saleItemList.setColumn(nRow,"preDcYn","N");
+			this.ds_saleItemList.setColumn(nRow,"fpayYn"," ");
+			this.ds_saleItemList.setColumn(nRow,"grpSaleGb"," ");
+			this.ds_saleItemList.setColumn(nRow,"rerentalDcYn","N");
+			
+			for(var i=0; i < 8; i++) {
+				var pRow = this.ds_RegAmtMgnt.addRow();
+				this.ds_RegAmtMgnt.setColumn(pRow,"cntCd",pRow+1);
+				this.ds_RegAmtMgnt.setColumn(pRow,"amt",0);
+			}
+			this.fn_searchSaleChnList();	//채널 신규조회
+			
+			break;
+			
+		case "saleItemList":	//fn_search()
+			var saleRegAmtList = this.ds_RegAmtMgnt.getRowCount();
+			this.ds_tirePattenList.addColumn("chk", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+			this.ds_SaleProdList.addColumn("chk", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+			this.ds_seviceCd.addColumn("check", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+			this.Combo00.set_value(this.ds_seviceCd.getColumn(0, "servInfYn"));
+			var totRegAmtCnt = 8 - saleRegAmtList;
+			for( var i = 0 ; i < totRegAmtCnt ; i++ ){
+				var nRow = this.ds_RegAmtMgnt.addRow();
+				this.ds_RegAmtMgnt.setColumn(nRow,"cntCd",i+1);
+				this.ds_RegAmtMgnt.setColumn(nRow,"amt",nvl(this.ds_RegAmtMgnt.getColumn(nRow, "amt"),0));
+			}			
+			
+			//조회 단체일경우 선택불가(20190222)
+			if(this.ds_saleItemList.getColumn(0,"prdtGrpDtl")== 03 ){
+				this.ds_saleItemList.setColumn(0,"pkgDcYn","N");
+				this.ds_saleItemList.setColumn(0,"preDcYn","N");
+				this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "displaytype", "combo");
+				this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "edittype", "none");
+				this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "displaytype", "combo");
+				this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "edittype", "none");
+			}
+			
+			//[20210202_01] kstka 프리미엄서비스 시퀀스
+			this.div_search.ed_Seq.set_value(this.ds_seviceCd.getColumn(0, "seq"));
+			
+			break;
+			
+		case "saleChnDtl":	//채널 상세조회
+			var nRow = this.ds_chnDtl.rowcount;
+			if(nRow < 1) return false;
+			
+			var nDupRow = this.dsTreeList.findRow("chanCd", this.ds_chnDtl.getColumn(0, "chanCd"));
+			if(nDupRow >= 0) return false;
+			
+			//속도저하 방지를 위해 사전 validation은 최소화
+			
+			var nFindRow = this.dsTreeList.rowposition;
+			nFindRow++;
+			var nRowPos = -1;
+			
+			for(var i=0; i<nRow; i++)
+			{
+				nRowPos = this.dsTreeList.insertRow(nFindRow)
+				this.dsTreeList.copyRow(nRowPos, this.ds_chnDtl, i);
+				nFindRow++;
+			}
+		
+			break;			
+			
+		case "exclusiveList":	//채널 상세조회(기존정보 제외)
+			var nRow = this.ds_chnDtl.rowcount;
+			if(nRow < 1) return false;
+			
+ 			var nDupRow = this.dsTreeList.findRow("chanCd", this.ds_chnDtl.getColumn(0, "chanCd"));
+ 			if(nDupRow >= 0) return false;
+			
+			//속도저하 방지를 위해 사전 validation은 최소화
+			
+			//var nFindRow = this.dsTreeList.rowposition;
+			var nFindRow = this.dsTreeList.rowposition;
+			nFindRow++;
+			var nRowPos = -1;
+			
+			for(var i=0; i<nRow; i++)
+			{
+				nRowPos = this.dsTreeList.insertRow(nFindRow)
+				this.dsTreeList.copyRow(nRowPos, this.ds_chnDtl, i);
+				nFindRow++;
+			}
+		
+			break;			
+	}
+}
+
+//면제회차 추가
+this.btn_exemAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var eRow = this.ds_exemption.addRow();
+	
+}
+
+//채널구분 그리드 더블클릭시
+this.grdTree_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var nRow = e.row;
+	var sChanCd = nvl(this.dsTreeList.getColumn(nRow, "chanCd"));	
+	if(Eco.isNull(sChanCd)) return false;	
+	this.ds_chnDtl.clearData();
+		
+	if(nvl(this.sClsCd) == "NEW")
+	{	
+		this.fn_searchSaleChnDtl(sChanCd);		
+	}
+	else if(nvl(this.sClsCd) == "EXT")
+	{
+		this.fn_searchExclusiveList(sChanCd); //기존정보 제외 조회
+	}
+	else
+	{
+		alert("조회구분 코드 오류입니다.");
+		return false;
+	}
+
+
+}
+
+//판매유형 Lv1. 선택시 판매유형 Lv2 선택
+this.prdtGrpChange = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.ds_prdtGrpGubunDtl.filter("cdDesc == '" + this.ds_saleItemList.getColumn(e.row,"prdtGrp") + "'");	
+	
+}
+
+//콤보박스 한번에 클릭 되게 처리.
+this.comboOneClick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	obj.dropdownCombo();
+}
+
+//채널구분 그리드 클릭시
+this.grdTree_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var nSelRow = e.row;
+	var sPChanCd = "";
+	var sPChanCd2 = "";
+	var nPRow = -1;
+	var nPRow2 = -1;
+	var nLevel = 0;
+
+	if(e.col == 0)	//체크박스 클릭시
+	{
+		if(obj.getCellValue(nSelRow, e.cell) == 1) //선택시
+		{
+			sPChanCd = nvl(this.dsTreeList.getColumn(nSelRow, "pChanCd"));
+			nLevel = nvl(this.dsTreeList.getColumn(nSelRow, "level"));
+			
+			if(nLevel == 2)
+			{
+				if(!Eco.isEmpty(sPChanCd))
+				{
+					nPRow = this.dsTreeList.findRow("chanCd", sPChanCd);
+					if(nPRow != -1)
+					{
+						this.dsTreeList.setColumn(nPRow, "chk", 1);
+					}
+				}
+			}
+			else if(nLevel == 3)
+			{
+				if(!Eco.isEmpty(sPChanCd))
+				{
+					nPRow = this.dsTreeList.findRow("chanCd", sPChanCd);
+					if(nPRow != -1)
+					{
+						this.dsTreeList.setColumn(nPRow, "chk", 1);
+					}	
+					
+					sPChanCd2 = nvl(this.dsTreeList.getColumn(nPRow, "pChanCd"));
+					nPRow2 = this.dsTreeList.findRow("chanCd", sPChanCd2);
+					
+					if(nPRow2 != -1)
+					{
+						this.dsTreeList.setColumn(nPRow2, "chk", 1);
+					}
+				}			
+			}
+		} 
+	}
+}
+
+this.ed_hashTag1_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+ 	if(obj.maxlength <= obj.text.length){	
+		alert("10자이상 입력하실 수 없습니다.");
+ 	}
+}
+
+this.ed_hashTag2_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(obj.maxlength <= obj.text.length){	
+		alert("10자이상 입력하실 수 없습니다.");
+ 	}
+}
+
+this.ed_hashTag3_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(obj.maxlength <= obj.text.length){	
+		alert("10자이상 입력하실 수 없습니다.");
+ 	}
+}
+
+this.ed_hashTag4_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(obj.maxlength <= obj.text.length){	
+		alert("10자이상 입력하실 수 없습니다.");
+ 	}
+}
+
+//단체일경우 선택불가(20190222)
+this.Grid00_oncloseup = function(obj:Grid, e:nexacro.GridEditEventInfo)
+{
+	var nSelRow = e.row;
+	var nSelCell = e.cell;
+	if(e.col== 11 ){
+		if(obj.getCellValue(nSelRow, nSelCell)== 03){
+			this.ds_saleItemList.setColumn(nSelRow,"pkgDcYn","N");
+			this.ds_saleItemList.setColumn(nSelRow,"preDcYn","N");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "displaytype", "combo");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "edittype", "none");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "displaytype", "combo");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "edittype", "none");
+			
+		}else{
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "displaytype", "combo");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "pkgDcYn"), "edittype", "combo");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "displaytype", "combo");
+			this.Grid00.setCellProperty("body", this.Grid00.getBindCellIndex("body", "preDcYn"), "edittype", "combo");
+			
+		}
+	}
+
+}
+]]></Script>
+  </Form>
+</FDL>

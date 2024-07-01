@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccTranDAO">
+	<resultMap id="sRtre0070OrdNoResultMap" class="java.util.HashMap">
+		<result property="rcmsDay"  column="RCMS_DAY" />	<!-- 출금이체일자 -->
+		<result property="ordNo"  	column="ORD_NO" />		<!-- 계약번호 -->
+		<result property="custNo"  	column="CUST_NO" />		<!-- 고객번호 -->
+		<result property="custNm"  	column="CUST_NM" />		<!-- 고객명 -->
+		<result property="rcmsAmt"  column="RCMS_AMT" />	<!-- 출금이체요청금액 -->
+		<result property="recpAmt"  column="RECP_AMT" />	<!-- 수납금액 -->
+		<result property="rcercd"  	column="RCERCD" />		<!-- 출금이체오류코드 -->
+		<result property="rcernm"  	column="RCERNM" />		<!-- 출금이체오류코드명 -->
+		<result property="bankCd"  	column="BANK_CD" />		<!-- 은행코드 -->
+		<result property="bankNm"  	column="BANK_NM" />		<!-- 은행명-->
+		<result property="acctNo"  	column="ACCT_NO" />		<!--계좌번호-->
+		<result property="rqstStat" column="RQST_STAT" />	<!-- 출금이체 상태 -->
+		<result property="rqstStatNm" column="RQST_STAT_NM" />	<!-- 출금이체 상태명 -->
+		<result property="rcmsSeq"  column="RCMS_SEQ" />	<!-- 출금이체 일련번호 -->
+		<result property="recvSeq"  column="RECV_SEQ" />	<!-- 수납거래번호 -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="sRtre0070OrdNoListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0070OrdNoResultMap" />	
+		<parameter property="rcmsDayF"  jdbcType="VARCHAR" mode="IN" />	<!--출금이체일자FROM -->
+		<parameter property="rcmsDayT"  jdbcType="VARCHAR" mode="IN" />	<!--출금이체일자TO   -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />	<!--계약번호              -->
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" />	<!--고객번호              -->
+		<parameter property="rqstStat"  jdbcType="VARCHAR" mode="IN" />	<!--이체상태              -->
+	</parameterMap>
+	<!--출금이체 조회(계약번호별 내역조회)  -->
+	<procedure id="Pkg_Rtre0070.sRtre0070OrdNoList" parameterMap="sRtre0070OrdNoListParam">
+		{call
+		Pkg_Rtre0070.p_sRtre0070AccTranByOrdNo(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<resultMap id="sRtre0070BankResultMap" class="java.util.HashMap">
+		<result property="rcmsDay"  	column="RCMS_DAY" />	<!-- 출금이체일자 -->
+		<result property="bankCd"  		column="BANK_CD" />		<!-- 은행코드 -->
+		<result property="bankNm"  		column="BANK_NM" />		<!-- 은행명-->
+		<result property="reqstCnt"  	column="REQST_CNT" />	<!-- 청구건수-->
+		<result property="reqstAmt"  	column="REQST_AMT" />	<!-- 청구금액-->
+		<result property="srecpCnt"  	column="SRECP_CNT" />	<!-- 정상출금건수-->
+		<result property="srecpAmt"  	column="SRECP_AMT" />	<!-- 정상출금금액-->
+		<result property="hsrcpCnt"  	column="HSRCP_CNT" />	<!-- 부분출금건수-->
+		<result property="hsrcpAmt"  	column="HSRCP_AMT" />	<!-- 부분출금금액-->
+		<result property="trecpAmt"  	column="TRECP_AMT" />	<!-- 출금금액합계-->
+		<result property="erecpCnt"  	column="ERECP_CNT" />	<!-- 오류건수-->
+		<result property="feeAmt"  		column="FEE_AMT" />		<!-- 수수료-->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="sRtre0070BankListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0070BankResultMap" />	
+		<parameter property="rcmsDayF"  jdbcType="VARCHAR" mode="IN" />	<!--출금이체일자FROM -->
+		<parameter property="rcmsDayT"  jdbcType="VARCHAR" mode="IN" />	<!--출금이체일자TO   -->
+	</parameterMap>
+	<!--출금이체 조회(은행별 내역조회)  -->
+	<procedure id="Pkg_Rtre0070.sRtre0070BankList" parameterMap="sRtre0070BankListParam">
+		{call
+		Pkg_Rtre0070.p_sRtre0070AccTranByBank(?, ?, ?)}
+	</procedure>		
+</sqlMap>
+
+

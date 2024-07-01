@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMCarInfoUpdate" classname="RTCOMMCarInfoUpdate" left="0" top="0" width="462" height="192" titletext="차량정보변경" onload="RTCOMMCarInfoUpdate_onload" onkeyup="RTCOMMCarInfoUpdate_onkeyup">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="0" cssclass="sta_WF_detailLabel2" left="20" top="101" width="422" height="31"/>
+        <Static id="Static00" taborder="1" cssclass="sta_WF_detailLabel2" left="20" top="71" width="422" height="31"/>
+        <Static id="Static01" taborder="2" cssclass="sta_WF_detailLabel2" left="20" top="41" width="422" height="31"/>
+        <Static id="Static04" taborder="3" text="차량정보" cssclass="sta_WF_subTitle" left="20" top="20" width="80" height="21"/>
+        <Static id="st_model" taborder="5" text="차종" cssclass="sta_WF_detailLabel" left="20" top="41" width="100" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_makerCd" taborder="6" displaynulltext="브랜드" innerdataset="ds_maker" codecolumn="cd" datacolumn="cdNm" left="124" top="46" width="107" height="21" domainId="nexa.name;nexa.code" onitemchanged="cb_makerCd_onitemchanged"/>
+        <Combo id="cb_model" taborder="7" displaynulltext="모델" innerdataset="ds_model" codecolumn="rn" datacolumn="mcNm" left="235" top="46" width="202" height="21" domainId="nexa.name;nexa.code" onitemchanged="cb_model_onitemchanged"/>
+        <Static id="st_carOwner" taborder="8" text="차량소유자" cssclass="sta_WF_detailLabel" left="20" top="71" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_carOwner" taborder="9" maxlength="60" onkeyup="div_carInfo_ed_carOwner_onkeyup" left="124" top="76" width="107" height="21"/>
+        <Static id="st_carNo" taborder="10" text="차량No" cssclass="sta_WF_detailLabel" left="235" top="71" width="80" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_carNo" taborder="11" maxlength="9" onkeyup="div_carInfo_ed_carNo_onkeyup" onchanged="div_carInfo_ed_carNo_onchanged" left="319" top="76" width="118" height="21"/>
+        <Static id="st_cMileage" taborder="12" text="현재주행거리" cssclass="sta_WF_detailLabel" left="20" top="101" width="100" height="31" domainId="nexa.s_condition"/>
+        <MaskEdit id="ed_cMileage" taborder="13" mask="###,###,###,##0" autoselect="true" autoskip="true" limitbymask="both" onchanged="div_carInfo_ed_cMileage_onchanged" left="124" top="106" width="107" height="21"/>
+        <Static id="st_cMileage2" taborder="14" text="Km" left="238" top="109" width="25" height="20" domainId="nexa.s_condition"/>
+        <Button id="btn_save" taborder="15" text="저장" top="152" width="41" height="21" domainId="nexa.add" left="359" onclick="btn_save_onclick"/>
+        <Button id="btn_close" taborder="16" text="닫기" onclick="btn_close_onclick" top="152" width="41" height="21" domainId="nexa.add" left="404"/>
+        <Static id="Static03" taborder="18" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="192"/>
+        <Static id="Static05" taborder="19" cssclass="Guide_color" visible="false" left="0" top="0" height="20" width="462"/>
+        <Static id="Static06" taborder="20" cssclass="Guide_color" visible="false" left="0" top="132" height="20" width="462"/>
+        <Static id="Static07" taborder="21" cssclass="Guide_color" visible="false" left="0" top="172" height="20" width="462"/>
+        <Static id="Static08" taborder="22" cssclass="Guide_color" visible="false" left="442" top="0" width="20" height="192"/>
+        <Grid id="grid_model" taborder="23" binddataset="ds_model" useinputpanel="false" cellsizingtype="col" nodatatext="지우면절대안됨" visible="false" left="0" top="170" width="438" height="70">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="167"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="rn"/>
+                <Cell col="1" text="makerCd"/>
+                <Cell col="2" text="modelCd"/>
+                <Cell col="3" text="modelNm"/>
+                <Cell col="4" text="contentsCd"/>
+                <Cell col="5" text="conTentsNm"/>
+                <Cell col="6" text="frCd"/>
+                <Cell col="7" text="mcNm"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:rn"/>
+                <Cell col="1" text="bind:makerCd"/>
+                <Cell col="2" text="bind:modelCd"/>
+                <Cell col="3" text="bind:modelNm"/>
+                <Cell col="4" text="bind:contentsCd"/>
+                <Cell col="5" text="bind:conTentsNm"/>
+                <Cell col="6" text="bind:frCd"/>
+                <Cell col="7" text="bind:mcNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item11" compid="cb_makerCd" propid="value" datasetid="ds_rtsd0104" columnid="makerCd"/>
+      <BindItem id="item13" compid="ed_carOwner" propid="value" datasetid="ds_rtsd0104" columnid="carOwner"/>
+      <BindItem id="item14" compid="ed_carNo" propid="value" datasetid="ds_rtsd0104" columnid="carNo"/>
+      <BindItem id="item15" compid="ed_cMileage" propid="value" datasetid="ds_rtsd0104" columnid="cMileage"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_maker" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_model" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_model_onrowposchanged">
+        <ColumnInfo>
+          <Column id="rn" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="conTentsNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_save" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCOMMCarInfoUpdate.xfdl
+ * 설    명 : 차량정보변경(팝업)
+ * 작 성 자 :
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * ...			...			...
+ * 2019-09-06	wjim		[20190903_01] 차량번호 체계 변경 대응
+ *							- 2019.09 부터 8자리(ex.111거1234) 차량번호 배정
+ *							- 차량번호 검증로직 보완
+ ***************************************************************************************************/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt,checkAuthGrpuCd){
+	if(strSvcId == "initRTCOMMCarInfoUpdate"){
+		var makerCd 	= nvl(this.opener.ds_contractStatus.getColumn(0, "makerCd"));
+		var modelCd 	= nvl(this.opener.ds_contractStatus.getColumn(0, "modelCd"));
+		var contentsCd 	= nvl(this.opener.ds_contractStatus.getColumn(0, "contentsCd"));
+		var frCd 		= nvl(this.opener.ds_contractStatus.getColumn(0, "frCd"));
+		
+		var ordNo 		= nvl(this.opener.ds_contractStatus.getColumn(0, "ordNo"));
+		var carNo 		= nvl(this.opener.ds_contractStatus.getColumn(0, "carNo"));
+		var carOwner 	= nvl(this.opener.ds_contractStatus.getColumn(0, "carOwner"));
+		var cMileage 	= nvl(this.opener.ds_contractStatus.getColumn(0, "cMileage"));
+		
+		if( (makerCd == "") || (modelCd == "") || (contentsCd == "") || (frCd=="") || (ordNo == "") || (carNo == "") || (carOwner == "") || (cMileage=="") ){
+			alert("차량정보조회를 실패하였습니다.");
+			this.close();
+		}else{
+			this.ed_carNo.set_value(carNo);
+			this.ed_carOwner.set_value(carOwner);
+			this.ed_cMileage.set_value(cMileage);
+			this.cb_makerCd.set_value(makerCd);
+			this.cb_makerCd_onitemchanged ();
+		}
+	}
+	
+	if(strSvcId == "listModelCombo"){
+		var makerCd = this.opener.ds_contractStatus.getColumn(0, "makerCd");
+		var modelCd = this.opener.ds_contractStatus.getColumn(0, "modelCd");
+		var contentsCd = this.opener.ds_contractStatus.getColumn(0, "contentsCd");
+		var frCd = this.opener.ds_contractStatus.getColumn(0, "frCd");
+		
+		if( nvl(makerCd) != "" && nvl(modelCd) != "" && nvl(contentsCd) != "" && nvl(frCd) ){
+			var nRow = this.ds_model.findRowExpr("makerCd == '"+nvl(makerCd)+"'&& modelCd == '"+nvl(modelCd)+"'&& contentsCd == '"+nvl(contentsCd)+"'&& frCd == '" + nvl(frCd) +"'",-1);
+			var selectRow = this.ds_model.set_rowposition(nRow);
+			this.cb_model.set_value( this.ds_model.getColumn(selectRow,"rn") );
+		}
+	}
+	
+	if( strSvcId == "saveRTCOMMCarInfoUpdate" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			var ordNo = nvl(this.opener.ds_contractStatus.getColumn(0, "ordNo"));
+			this.close(this.opener.FN_carInfoUpdate(ordNo));
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMCarInfoUpdate_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initRTCOMMCarInfoUpdate";  
+	var sController   	= "rtms/sd/initRTCOMMCarInfoUpdate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_maker=mapDsMaker ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cb_makerCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	this.cb_model.set_index(-1);
+	var sSvcID      	= "listModelCombo";  
+	var sController   	= "rtms/comm/listModelCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_model=mapModelCombo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("makerCd", nvl(this.cb_makerCd.value));
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cb_model_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var nRow = this.ds_model.findRowExpr("rn == '"+this.cb_model.value+"'&& mcNm == '"+this.cb_model.text +"'",-1);
+	this.ds_model.set_rowposition(nRow);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var nRow 		= this.ds_model.rowposition;
+	var ordNo 		= nvl(this.opener.ds_contractStatus.getColumn(0, "ordNo"));
+	var makerCd 	= nvl(this.ds_model.getColumn( nRow, "makerCd"));
+	var modelCd 	= nvl(this.ds_model.getColumn( nRow, "modelCd"));
+	var contentsCd	= nvl(this.ds_model.getColumn( nRow, "contentsCd"));
+	var frCd		= nvl(this.ds_model.getColumn( nRow, "frCd"));
+	var carNo		= nvl(this.ed_carNo.value);
+	var carOwner	= nvl(this.ed_carOwner.value);
+	var cMileage	= nvl(this.ed_cMileage.value);
+	
+	if( ordNo == "" ){
+		alert("계약번호 값이 없습니다.");
+		return false;
+	}else if( makerCd == "" ){
+		alert("카메이커 값이 없습니다.");
+		return false;
+	}else if( modelCd == "" ){
+		alert("차종 값이 없습니다.");
+		return false;
+	}else if( contentsCd == "" ){
+		alert("사양 값이 없습니다.");
+		return false;
+	}else if( frCd == "" ){
+		alert("전후 구분 값이 없습니다.");
+		return false;
+	}else if( carNo == "" ){
+		alert("차량번호 구분 값이 없습니다.");
+		this.ed_carNo.setFocus(true);
+		return false;
+	}else if( carOwner == "" ){
+		alert("차량소유자 구분 값이 없습니다.");
+		this.ed_carOwner.setFocus(true);
+		return false;
+	}else if( cMileage == "" ){
+		alert("현재주행거리 구분 값이 없습니다.");
+		this.ed_cMileage.setFocus(true);
+		return false;
+	}else if( this.carNoCheck() ){
+		if( confirm( "저장하시겠습니까?") ){
+			this.ds_save.clearData();
+			var nAddRow = this.ds_save.addRow();
+			this.ds_save.setColumn( nAddRow , "ordNo" ,		ordNo);
+			this.ds_save.setColumn( nAddRow , "makerCd",	makerCd);
+			this.ds_save.setColumn( nAddRow , "modelCd",	modelCd);
+			this.ds_save.setColumn( nAddRow , "contentsCd",	contentsCd);
+			this.ds_save.setColumn( nAddRow , "frCd",		frCd);
+			this.ds_save.setColumn( nAddRow , "carNo",  	carNo);
+			this.ds_save.setColumn( nAddRow , "carOwner",	carOwner);
+			this.ds_save.setColumn( nAddRow , "cMileage",	cMileage);
+			var sSvcID        	= "saveRTCOMMCarInfoUpdate";                    
+			var sController   	= "rtms/sd/saveRTCOMMCarInfoUpdate.do";
+			var sInDatasets   	= " input=ds_save:U ";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+}
+
+this.carNoCheck = function(){	
+	var pattern1       	= /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 				 				// 12저3456
+	var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울12치1234
+	var pattern3 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{1}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울1치1234 // 2016-06-02 이영근, 패턴 추가 < 원래 추가됐어야 하는데 누락되어 [20190903_01] 작업 시 추가
+	var pattern4 	   	= /\d{3}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g;                          		// 123저4567    // [20190903_01] 패턴 추가
+	
+	var carNoVal 		= nvl(this.ed_carNo.value);
+	var carNoValLen 	= carNoVal.length;
+	
+	if( carNoValLen == 7 ){
+		if( !pattern1.test(carNoVal) ){
+			alert("차량번호를 확인하세요.");
+			this.ed_carNo.setFocus(true);
+			return false;
+		}else{
+			return true;
+		}
+	// [20190903_01] 에 의해 패턴 추가
+	}else if( carNoValLen == 8){
+		if( !pattern3.test(carNoVal) && !pattern4.test(carNoVal)){
+			alert("차량번호를 확인하세요.");
+			this.ed_carNo.setFocus(true);
+			return false;
+		}else{
+			return true;
+		}
+	}else if( carNoValLen == 9){
+		if( !pattern2.test(carNoVal) ){
+			alert("차량번호를 확인하세요.");
+			this.ed_carNo.setFocus(true);
+			return false;
+		}else{
+			return true;
+		}
+	}else{
+		alert("차량번호를 확인하세요.");
+		this.ed_carNo.setFocus(true);
+		return false;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMCarInfoUpdate_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}]]></Script>
+  </Form>
+</FDL>

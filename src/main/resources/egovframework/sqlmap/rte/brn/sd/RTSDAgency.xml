@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="agency">
+	<!-- 대리점정보 조회 -->
+	<resultMap id="agencyResultMap" 	class="java.util.HashMap">
+		<result property="agencyCd"				column="AGENCY_CD"	/>
+		<result property="agencyNm"             column="AGENCY_NM"	/>
+		<result property="salesGroup"           column="SALES_GROUP"	/>
+		<result property="salesGroupNm"         column="SALES_GROUP_NM"	/>
+		<result property="salesOffice"          column="SALES_OFFICE"	/>
+		<result property="salesOfficeNm"        column="SALES_OFFICE_NM"	/>
+		<result property="posCd"                column="POS_CD"	/>
+		<result property="city"                 column="CITY"	/>
+		<result property="street"               column="STREET"	/>
+		<result property="sidoCd"               column="SIDO_CD"	/>
+		<result property="sigunCd"              column="SIGUN_CD"	/>
+		<result property="serNo"                column="SER_NO"	/>
+		<result property="telNo"                column="TEL_NO"	/>
+		<result property="mobNo"                column="MOB_NO"	/>
+		<result property="faxNo"                column="FAX_NO"	/>
+		<result property="taxNo"                column="TAX_NO"	/>
+		<result property="repNm"                column="REP_NM"	/>
+		<result property="busiType"             column="BUSI_TYPE"	/>
+		<result property="busiCond"             column="BUSI_COND"	/>
+		<result property="rentalYn"             column="RENTAL_YN"	/>
+		<result property="strDay"               column="STR_DAY"	/>
+		<result property="endDay"               column="END_DAY"	/>
+		<result property="posX"                 column="POS_X"	/>
+		<result property="posY"                 column="POS_Y"	/>
+		<result property="useYn"                column="USE_YN"	/>
+		<result property="seasonGbn"            column="SEASON_GBN"	/>
+		<result property="lmYn"                 column="LM_YN"	/>
+		<result property="fmYn"                 column="FM_YN"	/>
+		<result property="cwYn"                 column="CW_YN"	/>
+		<result property="chYn"                 column="CH_YN"	/>
+		<result property="olimitCnt"            column="OLIMIT_CNT"	/>
+		<result property="regId"                column="REG_ID"	/>
+		<result property="regNm"                column="REG_NM"	/>
+		<result property="regDt"                column="REG_DT"	/>
+		<result property="chgId"                column="CHG_ID"	/>
+		<result property="chgNm"                column="CHG_NM"	/>
+		<result property="chgDt"                column="CHG_DT"	/>
+		<result property="lifnr"                column="LIFNR"	/>
+		<result property="taxRqcd"              column="TAX_RQCD" />
+		<result property="chanLclsCd" 	        column="CHAN_LCLS_CD" />
+		<result property="chanMclsCd"  	        column="CHAN_MCLS_CD" />		
+		<result property="opYn"		  	        column="OP_YN"  />
+		<result property="memo"		  	        column="MEMO"   />
+		<result property="desorptCd"  	        column="DESORPT_CD"   /> <!-- [20180312_01] -->
+		<result property="desorptNm"  	        column="DESORPT_NM"   /> <!-- [20180312_01] -->
+		<result property="alignCd"	  	        column="ALIGN_CD"     /> <!-- [20180312_01] -->
+		<result property="alignNm"	  	        column="ALIGN_NM"     /> <!-- [20180312_01] -->
+		<result property="balanceCd"  	        column="BALANCE_CD"   /> <!-- [20180312_01] -->
+		<result property="balanceNm"  	        column="BALANCE_NM"   /> <!-- [20180312_01] -->
+		<result property="rentalGroup"  	    column="RENTAL_GROUP"   /> 
+		<result property="rentalGroupNm"  	    column="RENTAL_GROUP_NM"   /> 
+		<result property="rentalOffice"  	    column="RENTAL_OFFICE"   /> 
+		<result property="rentalOfficeNm"  	    column="RENTAL_OFFICE_NM"   /> 
+		<result property="prplYn"       	    column="PRPL_YN"   />
+		<result property="apfdEndYn"      	    column="APFD_END_YN"  /> <!-- [20190731_01] -->
+		<result property="chainYn"      	    column="CHAIN_YN"  /> <!-- [20210809_01] -->
+		<result property="rntMstId"      	    column="RNT_MST_ID"  /> <!-- [20221013_01] -->
+		<result property="rntMstNm"      	    column="RNT_MST_NM"  /> <!-- [20221013_01] -->
+		<result property="rntMstMob"      	    column="RNT_MST_MOB"  /> <!-- [20221013_01] -->
+	</resultMap>
+	
+	<parameterMap id="agencyParamMap" class="java.util.Map">
+		<parameter property="vcursor"	mode="OUT" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" resultMap="agencyResultMap"/>
+		<parameter property="agencyCd"	mode="IN"  jdbcType="VARCHAR" />
+		<parameter property="userId"	mode="IN"  jdbcType="VARCHAR" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"	mode="IN"  jdbcType="VARCHAR" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<procedure id="agency.detailAgencyInfo" parameterMap="agencyParamMap">
+		{call Pkg_Rtsd0007.p_sRtsd0007AgencyCode(?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0007_U">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesOffice"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="city"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="street"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sidoCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sigunCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="serNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="faxNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="taxNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="repNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiType"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiCond"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="strDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posX"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posY"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seasonGbn"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lmYn"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fmYn"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cwYn"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chYn"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="olimitCnt"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lifnr"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="taxRqcd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanLclsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanMclsCd"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="opYn"		  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="memo"		  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="desorptCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="alignCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="balanceCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prplYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="apfdEndYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chainYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="agency.saveAgencyInfo" parameterMap="p_IUDRtsd0007_U">
+		{call Pkg_Rtsd0007.p_IUDRtsd0007(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 콜센터용 대리점정보 조회 -->
+	<resultMap id="agencyCallResultMap" 	class="java.util.HashMap">
+		<result property="agencyCd"				column="AGENCY_CD"		/>
+		<result property="sidoCd"               column="SIDO_CD"		/>
+		<result property="sidoNm"               column="SIDO_NM"		/>
+		<result property="sigunCd"              column="SIGUN_CD"		/>
+		<result property="sigunNm"              column="SIGUN_NM"		/>		
+		<result property="agencyNm"             column="AGENCY_NM"		/>
+		<result property="addr"                 column="ADDR"			/>
+		<result property="seasonGbn"            column="SEASON_GBN"		/>
+		<result property="seasonGbnNm"          column="SEASON_GBN_NM"	/>
+		<result property="telNo"                column="TEL_NO"			/>
+		<result property="chYn"                 column="CH_YN"			/>
+		<result property="lmYn"                 column="LM_YN"			/>
+		<result property="chanMclsCd"  	        column="CHAN_MCLS_CD" 	/>
+		<result property="chanMclsNm"  	        column="CHAN_MCLS_NM"	/>
+		<result property="cntProc"  	        column="CNT_PROC"		/>		
+		<result property="memo"     	        column="MEMO"    		/>
+		<result property="desorptCd"  	        column="DESORPT_CD"     /> <!-- 20180312_01 -->
+		<result property="desorptNm"  	        column="DESORPT_NM"     /> <!-- 20180312_01 -->
+		<result property="alignCd"	  	        column="ALIGN_CD"       /> <!-- 20180312_01 -->
+		<result property="alignNm"	  	        column="ALIGN_NM"       /> <!-- 20180312_01 -->
+		<result property="balanceCd"  	        column="BALANCE_CD"     /> <!-- 20180312_01 -->
+		<result property="balanceNm"  	        column="BALANCE_NM"     /> <!-- 20180312_01 -->
+	</resultMap>	
+	<parameterMap id="agencyCallParamMap" class="java.util.Map">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="agencyCallResultMap"/>
+		<parameter property="sidoCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="sigunCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chanMclsCd"	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="lmYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seasonGbn"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="desorptCd"	  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="alignCd"	  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="balanceCd"	  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>	
+	<procedure id="agency.agencyCallList" parameterMap="agencyCallParamMap">
+		{call Pkg_Rtsd0007.p_sRtsd0007Call(?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+    
+</sqlMap>

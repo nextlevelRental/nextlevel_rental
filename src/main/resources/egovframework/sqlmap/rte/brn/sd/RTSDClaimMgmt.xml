@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="claimMgmt">
+
+	<resultMap id="claimResultMap" class="java.util.HashMap">
+		<result property="clmDay"          		   column="CLM_DAY" />          			<!-- 접수일자              -->                                                                                                                    
+		<result property="clmSeq"          		   column="CLM_SEQ" />        			<!-- 일련번호              -->                                                                                                            
+		<result property="custNo"          		   column="CUST_NO" />       				<!-- 고객번호              -->                                                                                                     
+		<result property="ordNo"          	 	   column="ORD_NO" />        				<!-- 계약번호              -->                                                                                                          
+		<result property="custNm"         		   column="CUST_NM" />          			<!-- 고객명               	  -->                                                                                                     
+		<result property="prgrsState"      	   column="PRGRS_STATE" />    			<!-- 처리상태              -->                                                                                          
+		<result property="prgrsStateNm"   column="PRGRS_STATE_NM" />   		<!-- 진행상태이름            -->	                                                                                                                         				                                                                                                                         
+		<result property="clmGb"                    column="CLM_GB" />          			<!-- 방문점검구분            -->                                                                                                      
+		<result property="clmGbNm"        		column="CLM_GB_NM" />  				<!-- 방문점검구분이름          -->                                                                                                               			                                                                                                                
+		<result property="clmTp"           			column="CLM_TP" />          					 <!-- 방문점검유형            -->                                                                                              
+		<result property="clmTpNm"        		column="CLM_TP_NM" />    				 <!-- 방문점검유형이름          -->                                                                                                              			                                                                                                                   
+		<result property="counsId"         			column="COUNS_ID" />     				    <!-- 장착상담사ID           -->                                                                                                 
+		<result property="counsNm"         		column="COUNS_NM" />    				     <!-- 접수상담사             -->                                                                                                           
+		<result property="mobNo"           			column="MOB_NO" />       				 <!-- 연락처               -->                                       
+		<result property="addMobNo"       	column="ADD_MOB_NO" />     				  <!-- 컨텍연락처             -->                                                 
+		<result property="petternCd"       		column="PETTERN_CD" />      			     <!-- 패턴                -->                  
+		<result property="cntCd"           			column="CNT_CD" />       					    <!-- 본수                -->      
+		<result property="cntNm"           			column="CNT_NM"/>        	 					 <!-- 본수이름          	 -->                                                              			                                                                           
+		<result property="procDay"         		column="PROC_DAY" />       				  <!-- 장착일자              -->        
+		<result property="agencyCd"       		 column="AGENCY_CD" />        			<!-- 대리점코드             -->                               
+		<result property="agencyNm"        		column="AGENCY_NM" />       				 <!-- 장착점               -->                                      
+		<result property="modelCd"         		column="MODEL_CD" />        				 <!-- 차종코드              -->                                                  
+		<result property="modelNm"         		column="MODEL_NM" />      					   <!-- 차종명               -->                                                     
+		<result property="carNo"           			column="CAR_NO" />        					   <!-- 차량번호              -->            
+		<result property="posCd"           			column="POS_CD" />        					   <!-- 고객주소-우편번호         -->                                
+		<result property="addr1"            				column="ADDR1" />      					 <!-- 고객주소-주소           -->          
+		<result property="addr2"            				column="ADDR2" />         				 <!-- 고객주소-상세주소         -->                                     
+		<result property="chcRqsMnt"      	column="CHC_RQS_MNT" />   				 <!-- 점검요청월             -->                                                                               
+		<result property="trnRsl"          			column="TRN_RSL"/>       				   <!-- 이관결과              -->                                                
+		<result property="chargRodi"       		column="CHARG_RODI" />   			   <!-- 담당로디안             -->                                                                               
+		<result property="rerentYn"       		column="RE_RENT_YN" />    				   <!-- 재렌탈가능성고객          -->                                                                                        
+		<result property="rgstDtl"         		column="RGST_DTL" />       				    <!-- 접수내용              -->                                                              
+		<result property="prcsnRslts"     	 column="PRCSN_RSLTS" />   				     <!-- 처리결과              -->                                                                        
+		<result property="conHist"         		column="CON_HIST" />       			    	  <!-- 컨택이력              -->                                                        
+		<result property="regDt"           		column="REG_DT" />          				    	 <!-- 등록일               -->                                                 
+		<result property="regId"           			column="REG_ID" />          			    	 <!-- 등록자ID             -->                                                               
+		<result property="chgId"           		column="CHG_ID" />          						 <!-- 변경자ID             -->                                                                           
+		<result property="chgDt"           		column="CHG_DT" />         						  <!-- 변경일              -->
+	</resultMap>
+	
+	<parameterMap id="claimMgmtParam" class="java.util.Map">  
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="claimResultMap" />
+		<parameter property="clmFDay"     jdbcType="VARCHAR"   mode="IN"/>  <!-- 접수일자FROM    -->    
+		<parameter property="clmTDay"     jdbcType="VARCHAR"   mode="IN"/>  <!-- 접수일자TO      -->    
+		<parameter property="clmGb"       jdbcType="VARCHAR"   mode="IN"/>  <!-- 방문점검구분      -->    
+		<parameter property="prgrsState"  jdbcType="VARCHAR"   mode="IN"/>  <!-- 처리상태        -->    
+		<parameter property="ordNo"       jdbcType="VARCHAR"   mode="IN"/>  <!-- 계약번호        -->    
+		<parameter property="custNo"      jdbcType="VARCHAR"   mode="IN"/>  <!-- 고객번호        -->    
+	</parameterMap> 
+
+	<procedure id="claimMgmt.List" parameterMap="claimMgmtParam">
+		{call Pkg_Rtsd0070.p_sRtsd0070Status(?,?,?,?,?,?,?)}		
+	</procedure>
+	
+	
+<!-- 	고객조회 데이터가 없을시 추가가 가능하게 -->
+		<resultMap id="claimResultAddMap" class="java.util.HashMap">
+		<result property="clmDay"          		   column="CLM_DAY" />          			<!-- 접수일자              -->                                                                                                                    
+		<result property="clmSeq"          		   column="CLM_SEQ" />        			<!-- 일련번호              -->                                                                                                            
+		<result property="custNo"          		   column="CUST_NO" />       				<!-- 고객번호              -->                                                                                                     
+		<result property="ordNo"          	 	   column="ORD_NO" />        				<!-- 계약번호              -->                                                                                                          
+		<result property="custNm"         		   column="CUST_NM" />          			<!-- 고객명               	  -->                                                                                                     
+		<result property="prgrsState"      	   column="PRGRS_STATE" />    			<!-- 처리상태              -->                                                                                          
+		<result property="prgrsStateNm"   column="PRGRS_STATE_NM" />   		<!-- 진행상태이름            -->	                                                                                                                         				                                                                                                                         
+		<result property="clmGb"                    column="CLM_GB" />          			<!-- 방문점검구분            -->                                                                                                      
+		<result property="clmGbNm"        		column="CLM_GB_NM" />  				<!-- 방문점검구분이름          -->                                                                                                               			                                                                                                                
+		<result property="clmTp"           			column="CLM_TP" />          					 <!-- 방문점검유형            -->                                                                                              
+		<result property="clmTpNm"        		column="CLM_TP_NM" />    				 <!-- 방문점검유형이름          -->                                                                                                              			                                                                                                                   
+		<result property="counsId"         			column="COUNS_ID" />     				    <!-- 장착상담사ID           -->                                                                                                 
+		<result property="counsNm"         		column="COUNS_NM" />    				     <!-- 접수상담사             -->                                                                                                           
+		<result property="mobNo"           			column="MOB_NO" />       				 <!-- 연락처               -->                                       
+		<result property="addMobNo"       	column="ADD_MOB_NO" />     				  <!-- 컨텍연락처             -->                                                 
+		<result property="petternCd"       		column="PETTERN_CD" />      			     <!-- 패턴                -->                  
+		<result property="cntCd"           			column="CNT_CD" />       					    <!-- 본수                -->      
+		<result property="cntNm"           			column="CNT_NM"/>        	 					 <!-- 본수이름          	 -->                                                              			                                                                           
+		<result property="procDay"         		column="PROC_DAY" />       				  <!-- 장착일자              -->        
+		<result property="agencyCd"       		 column="AGENCY_CD" />        			<!-- 대리점코드             -->                               
+		<result property="agencyNm"        		column="AGENCY_NM" />       				 <!-- 장착점               -->                                      
+		<result property="modelCd"         		column="MODEL_CD" />        				 <!-- 차종코드              -->                                                  
+		<result property="modelNm"         		column="MODEL_NM" />      					   <!-- 차종명               -->                                                     
+		<result property="carNo"           			column="CAR_NO" />        					   <!-- 차량번호              -->            
+		<result property="posCd"           			column="POS_CD" />        					   <!-- 고객주소-우편번호         -->                                
+		<result property="addr1"            				column="ADDR1" />      					 <!-- 고객주소-주소           -->          
+		<result property="addr2"            				column="ADDR2" />         				 <!-- 고객주소-상세주소         -->                                     
+		<result property="chcRqsMnt"      	column="CHC_RQS_MNT" />   				 <!-- 점검요청월             -->                                                                               
+		<result property="trnRsl"          			column="TRN_RSL"/>       				   <!-- 이관결과              -->                                                
+		<result property="chargRodi"       		column="CHARG_RODI" />   			   <!-- 담당로디안             -->                                                                               
+		<result property="rerentYn"       		column="RE_RENT_YN" />    				   <!-- 재렌탈가능성고객          -->                                                                                        
+		<result property="rgstDtl"         		column="RGST_DTL" />       				    <!-- 접수내용              -->                                                              
+		<result property="prcsnRslts"     	 column="PRCSN_RSLTS" />   				     <!-- 처리결과              -->                                                                        
+		<result property="conHist"         		column="CON_HIST" />       			    	  <!-- 컨택이력              -->                                                        
+		<result property="regDt"           		column="REG_DT" />          				    	 <!-- 등록일               -->                                                 
+		<result property="regId"           			column="REG_ID" />          			    	 <!-- 등록자ID             -->                                                               
+		<result property="chgId"           		column="CHG_ID" />          						 <!-- 변경자ID             -->                                                                           
+		<result property="chgDt"           		column="CHG_DT" />         						  <!-- 변경일              -->
+	</resultMap>
+	
+	<parameterMap id="claimMgmtAddParam" class="java.util.Map">  
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="claimResultAddMap" />
+		<parameter property="custNo"      jdbcType="VARCHAR"   mode="IN"/>  <!-- 고객번호        -->    
+	</parameterMap> 
+
+	<procedure id="claimMgmt.addList" parameterMap="claimMgmtAddParam">
+		{call Pkg_Rtsd0070.p_sRtsd0070StatusCust(?,?)}		
+	</procedure>
+	
+	
+	
+
+			<!-- 클레임 관리(IUD) -->
+	<parameterMap id="claimSave" class="java.util.HashMap">
+		<parameter property="dvsn"          jdbcType="VARCHAR" mode="IN" />           <!-- 처리구분(I,U,D)                     -->
+		<parameter property="clmDay"   	         jdbcType="VARCHAR" mode="IN" />   <!-- 요청일자                            -->
+		<parameter property="clmSeq"   	         jdbcType="NUMERIC" mode="INOUT" />   <!-- 요청일련번                                 -->
+		<parameter property="custNo"             jdbcType="VARCHAR" mode="IN" />      <!-- 고객번호                      -->
+		<parameter property="ordNo"              jdbcType="VARCHAR" mode="IN" />      <!-- 계약번호                       -->
+		<parameter property="custNm"             jdbcType="VARCHAR" mode="IN" />      <!-- 고객명                        -->
+		<parameter property="prgrsState"         jdbcType="NUMERIC" mode="IN" />      <!-- 처리상태                     -->
+		<parameter property="clmGb"              jdbcType="VARCHAR" mode="IN" />      <!-- 방문점검구분                              -->
+		<parameter property="clmTp"              jdbcType="NUMERIC" mode="IN" />      <!-- 방문점검유형                          -->
+		<parameter property="counsId"            jdbcType="VARCHAR" mode="IN" />      <!-- 장착상담사ID                       -->
+		<parameter property="counsNm"            jdbcType="VARCHAR" mode="IN" />      <!-- 접수상담사                            -->
+		<parameter property="mobNo"              jdbcType="VARCHAR" mode="IN" />      <!-- 연락처                       -->
+		<parameter property="addMobNo"           jdbcType="VARCHAR" mode="IN" />      <!-- 컨텍연락처                            -->
+		<parameter property="petternCd"          jdbcType="NUMERIC" mode="IN" />      <!-- 패턴                     -->
+		<parameter property="cntCd"              jdbcType="VARCHAR" mode="IN" />      <!-- 본수               -->
+		<parameter property="procDay"            jdbcType="VARCHAR" mode="IN" />      <!-- 장착일자                     -->
+		<parameter property="agencyCd"           jdbcType="VARCHAR" mode="IN" />      <!-- 대리점코드                          -->
+		<parameter property="agencyNm"           jdbcType="VARCHAR" mode="IN" />      <!-- 장착점                   -->
+		<parameter property="modelCd"            jdbcType="VARCHAR" mode="IN" />      <!-- 차종코드                        -->
+		<parameter property="modelNm"            jdbcType="VARCHAR" mode="IN" />      <!-- 차종명                        -->
+		<parameter property="carNo"              jdbcType="NUMERIC" mode="IN" />      <!-- 차량번호     -->
+		<parameter property="posCd"              jdbcType="NUMERIC" mode="IN" />      <!-- 우편번호                         -->
+		<parameter property="addr1"              jdbcType="VARCHAR" mode="IN" />      <!-- 고객주소-주소                         -->
+		<parameter property="addr2"              jdbcType="VARCHAR" mode="IN" />      <!-- 고객주소-상세주소                            -->
+		<parameter property="chcRqsMnt"          jdbcType="VARCHAR" mode="IN" />      <!-- 점검요청월                      -->
+		<parameter property="trnRsl"             jdbcType="VARCHAR" mode="IN" />      <!-- 이관결과                      -->
+		<parameter property="chargRodi"          jdbcType="VARCHAR" mode="IN" />      <!-- 담당로디안                           -->
+		<parameter property="rerentYn"           jdbcType="VARCHAR" mode="IN" />      <!-- 재렌탈가능성고객                                -->
+		<parameter property="rgstDtl"            jdbcType="VARCHAR" mode="IN" />      <!-- 접수내용                     -->
+		<parameter property="prcsnRslts"         jdbcType="VARCHAR" mode="IN" />      <!-- 처리결과                         -->
+		<parameter property="conHist"            jdbcType="VARCHAR" mode="IN" />      <!-- 컨택이력                      -->
+		<parameter property="regId"              jdbcType="VARCHAR" mode="IN" />      <!-- 등록자ID               -->
+		<parameter property="successCode"        jdbcType="NUMERIC" mode="OUT" />     
+		<parameter property="returnMessage"      jdbcType="VARCHAR" mode="OUT" />     
+		<parameter property="errorText"          jdbcType="VARCHAR" mode="OUT" />  
+	</parameterMap>  
+	
+	<procedure id="claimMgmt.Save" resultClass="java.util.HashMap" parameterMap="claimSave">
+		{call PKG_RTSD0070.p_IUDRtsd0070(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+	
+
+                                                       
+
+                                                       
+                                                       
+                                                              </sqlMap>

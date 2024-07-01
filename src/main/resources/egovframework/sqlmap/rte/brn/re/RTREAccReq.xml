@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccReqDAO">
+	<resultMap id="resultMap" class="java.util.HashMap">
+		<result property="ordNo"  		column="ORD_NO" />		<!--계약번호  -->
+		<result property="custNo" 		column="CUST_NO" />		<!--고객코드  -->
+		<result property="custNm"  		column="CUST_NM" />		<!--고객명  -->
+		<result property="carNo"  		column="CAR_NO" />		<!--차량번호-->
+		<result property="rpcDay"  		column="RPC_DAY" />		<!--변경등록일-->
+		<result property="bankCd"  		column="BANK_CD" />		<!--은행코드-->
+		<result property="acctNo"  		column="ACCT_NO" />		<!--계좌번호-->
+		<result property="depositor"  	column="DEPOSITOR" />	<!--예금주-->
+		<result property="ebirDay"  	column="EBIR_DAY" />	<!--법정생년월일-->
+		<result property="buslNo"  		column="BUSL_NO" />		<!--사업자번호-->
+		<result property="acrqDay"  	column="ACRQ_DAY" />	<!--신청일-->
+		<result property="acrqSt"  		column="ACRQ_ST" />		<!--신청상태-->
+		<result property="acerCd"  		column="ACERCD" />		<!--오류내용(계좌신청결과코드)-->
+		<result property="acrqTp"  		column="ACRQ_TP" />		<!--신청구분(계좌유형)-->
+		<result property="payDd"  		column="PAY_DD" />		<!--결제일-->
+		<result property="acrqFg"  		column="ACRQ_FG" />		<!--계좌신청발생구분-->
+		<result property="rpcUid"  		column="RPC_UID" />		<!--결제변경요청자-->
+	</resultMap>
+        
+	<parameterMap class="java.util.Map" id="parameters"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultMap" />   
+		<parameter property="fromDt"     jdbcType="VARCHAR" mode="IN" /> <!-- 계좌신청일From -->
+		<parameter property="toDt"     	 jdbcType="VARCHAR" mode="IN" /> <!-- 계좌신청일To -->
+		<parameter property="acrqTp"     jdbcType="VARCHAR" mode="IN" /> <!-- 계좌신청구분 -->
+		<parameter property="ordNo"      jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호 -->
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+		<parameter property="acrqSt"     jdbcType="VARCHAR" mode="IN" /> <!-- 계좌신청 처리상태 -->
+		<parameter property="rpcUid"     jdbcType="VARCHAR" mode="IN" /> <!-- 결제변경요청자 -->
+		
+	</parameterMap>	
+	
+	<!-- 계좌신청 리스트 -->
+	<procedure id="accreq.sRtre0060AccReqList" parameterMap="parameters">
+		{call
+		Pkg_Rtre0060.p_sRtreAccReq0060List(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>			
+</sqlMap>
+
+

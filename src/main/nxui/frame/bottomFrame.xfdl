@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="BottomFrame" classname="BottomFrame" left="0" top="0" width="1362" height="34" titletext="Bottom Frame" style="background:#ffffffff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" left="322" top="12" height="12" cssclass="sta_BF_logo" text="경상남도 양산시 충렬로 355 넥센타이어주식회사     Copyright ⓒ 2015 NEXENTIRE. All Rights Reserved." width="694"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info4_agree" classname="RTSDContractStatus_tab_info4_agree" left="0" top="0" width="1147" height="150" titletext="[STEP4]동의,인증">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Edit id="ed_crdtStat" taborder="3" left="685" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_crdtStat" taborder="4" text="신용조회상태" cssclass="sta_WF_detailLabel" left="555" top="5" width="125" height="31"/>
+        <Edit id="ed_certYn" taborder="5" left="408" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_certYn" taborder="6" text="본인인증상태" cssclass="sta_WF_detailLabel" left="278" top="5" width="125" height="31"/>
+        <Edit id="ed_certNm" taborder="7" left="130" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_certNm" taborder="8" text="본인인증방법" cssclass="sta_WF_detailLabel" left="0" top="5" width="125" height="31"/>
+        <Static id="Static00" taborder="9" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Edit id="ed_nagYn" taborder="16" left="130" top="40" width="142" height="21" readonly="true"/>
+        <Static id="st_nagYn" taborder="17" text="정보제공동의" cssclass="sta_WF_detailLabel" left="0" top="35" width="125" height="31"/>
+        <Static id="Static01" taborder="27" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="28" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Static id="st_statCd1" taborder="29" text="계약서" cssclass="sta_WF_detailLabel" left="278" top="35" width="125" height="31"/>
+        <Edit id="ed_statCd1" taborder="30" readonly="true" left="408" top="40" width="142" height="21"/>
+        <Static id="st_statCd2" taborder="31" text="장착확인" cssclass="sta_WF_detailLabel" left="556" top="35" width="125" height="31"/>
+        <Edit id="ed_statCd2" taborder="32" readonly="true" left="686" top="40" width="142" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_agree" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="certNm" type="STRING" size="256"/>
+          <Column id="certYn" type="STRING" size="256"/>
+          <Column id="crdtStat" type="STRING" size="256"/>
+          <Column id="nagYn" type="STRING" size="256"/>
+          <Column id="statCd1" type="STRING" size="256"/>
+          <Column id="statCd2" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_certNm" propid="value" datasetid="ds_agree" columnid="certNm"/>
+      <BindItem id="item1" compid="ed_certYn" propid="value" datasetid="ds_agree" columnid="certYn"/>
+      <BindItem id="item2" compid="ed_crdtStat" propid="value" datasetid="ds_agree" columnid="crdtStat"/>
+      <BindItem id="item3" compid="ed_nagYn" propid="value" datasetid="ds_agree" columnid="nagYn"/>
+      <BindItem id="item4" compid="ed_statCd1" propid="value" datasetid="ds_agree" columnid="statCd1"/>
+      <BindItem id="item5" compid="ed_statCd2" propid="value" datasetid="ds_agree" columnid="statCd2"/>
+    </Bind>
+  </Form>
+</FDL>

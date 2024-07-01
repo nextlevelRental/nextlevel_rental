@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDOrdAgentOrder" classname="RTCMSellersOrder" left="0" top="0" width="1147" height="496" titletext="판매인주문현황리스트" onload="RTSDOrdAgentOrder_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_ordAgentOrder" taborder="0" binddataset="ds_ordAgentList" useinputpanel="false" cellsizingtype="col" cellmovingtype="col" nodatatext="조회된 데이터가 없습니다." left="-2" top="112" width="1122" height="381">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="96"/>
+                <Column size="100"/>
+                <Column size="300"/>
+                <Column size="40"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="96"/>
+                <Column size="160"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="106"/>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="40"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="계약상태" autosizecol="limitmax"/>
+                <Cell col="2" text="계약일자"/>
+                <Cell col="3" text="계약시간"/>
+                <Cell col="4" text="장착일자"/>
+                <Cell col="5" text="장착시간"/>
+                <Cell col="6" text="가계약번호"/>
+                <Cell col="7" text="패턴"/>
+                <Cell col="8" text="상품명"/>
+                <Cell col="9" text="본수"/>
+                <Cell col="10" text="계약기간"/>
+                <Cell col="11" text="등록비"/>
+                <Cell col="12" text="월렌탈료"/>
+                <Cell col="13" text="고객명"/>
+                <Cell col="14" text="휴대폰번호"/>
+                <Cell col="15" text="대리점"/>
+                <Cell col="16" text="지사"/>
+                <Cell col="17" text="지점"/>
+                <Cell col="18" text="차종"/>
+                <Cell col="19" text="차량번호"/>
+                <Cell col="20" text="판매처"/>
+                <Cell col="21" text="성별"/>
+                <Cell col="22" text="주행거리"/>
+                <Cell col="23" text="연령"/>
+                <Cell col="24" text="지역"/>
+                <Cell col="25" text="계절구분"/>
+                <Cell col="26" text="판매인명"/>
+                <Cell col="27" text="판매인코드"/>
+                <Cell col="28" text="주문등록자"/>
+                <Cell col="29" text="사번"/>
+                <Cell col="30" text="문자발송" tooltiptext="문자발송"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:statNm"/>
+                <Cell col="2" displaytype="date" edittype="none" text="bind:ordDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="3" text="bind:regDt"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="5" text="bind:procTm"/>
+                <Cell col="6" text="bind:provsnNo"/>
+                <Cell col="7" text="bind:petternCd"/>
+                <Cell col="8" text="bind:matNm"/>
+                <Cell col="9" text="bind:cntNm"/>
+                <Cell col="10" text="bind:periodNm"/>
+                <Cell col="11" style="align:right;" text="bind:regiAmt"/>
+                <Cell col="12" style="align:right;" text="bind:monAmt"/>
+                <Cell col="13" text="bind:custNm"/>
+                <Cell col="14" text="bind:mobNo"/>
+                <Cell col="15" text="bind:agencyNm"/>
+                <Cell col="16" text="bind:salesGroupNm"/>
+                <Cell col="17" text="bind:salesOfficeNm"/>
+                <Cell col="18" text="bind:modelNm"/>
+                <Cell col="19" text="bind:carNo"/>
+                <Cell col="20" text="bind:orgAgnm"/>
+                <Cell col="21" text="bind:genderCd"/>
+                <Cell col="22" text="bind:cMileage"/>
+                <Cell col="23" text="bind:age"/>
+                <Cell col="24" text="bind:addrArea"/>
+                <Cell col="25" text="bind:seasonNm"/>
+                <Cell col="26" text="bind:orgAgnm"/>
+                <Cell col="27" text="bind:ordAgent"/>
+                <Cell col="28" text="bind:regId"/>
+                <Cell col="29" text="bind:empNo"/>
+                <Cell col="30" text="bind:firstDay"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총합계"/>
+                <Cell col="1" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;regiAmt&quot;)"/>
+                <Cell col="12" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;monAmt&quot;)"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+                <Cell col="24"/>
+                <Cell col="25"/>
+                <Cell col="26"/>
+                <Cell col="27"/>
+                <Cell col="28"/>
+                <Cell col="29"/>
+                <Cell col="30"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1122" height="75" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="105" text="판매인명" cssclass="sta_WF_schTitle" left="30" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordAgentCd" taborder="106" lengthunit="ascii" maxlength="10" enable="true" left="117" top="12" width="120" height="21" onkeyup="div_search_ed_ordAgentCd_onkeyup"/>
+              <Button id="bt_ordAgent" taborder="107" cssclass="btn_WF_edtSch" left="235" top="11" width="21" height="21" onclick="div_search_bt_ordAgent_onclick"/>
+              <Edit id="ed_ordAgentNm" taborder="108" lengthunit="ascii" maxlength="150" enable="false" left="256" top="12" width="120" height="21"/>
+              <Static id="Static06" taborder="116" text="장착일자" cssclass="sta_WF_schTitle" left="764" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="dt_procFday" taborder="117" dateformat="yyyy-MM-dd" left="844" top="11" width="110" height="21"/>
+              <Calendar id="dt_procTday" taborder="118" dateformat="yyyy-MM-dd" left="973" top="11" width="110" height="21"/>
+              <Static id="Static07" taborder="119" text="~" left="958" top="11" width="10" height="21"/>
+              <Static id="Static09" taborder="120" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static05" taborder="121" text="접수일자" cssclass="sta_WF_schTitle" left="400" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="dt_ordFday" taborder="122" dateformat="yyyy-MM-dd" left="480" top="11" width="120" height="21"/>
+              <Static id="Static08" taborder="123" text="~" left="603" top="11" width="10" height="21"/>
+              <Calendar id="dt_ordTday" taborder="124" dateformat="yyyy-MM-dd" left="619" top="11" width="120" height="21"/>
+              <Static id="Static22" taborder="125" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="12"/>
+              <Static id="Static13" taborder="126" cssclass="Guide_color" visible="false" left="375" top="0" width="25" height="71"/>
+              <Static id="Static14" taborder="127" cssclass="Guide_color" visible="false" left="739" top="0" width="25" height="113"/>
+              <Static id="Static15" taborder="128" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="71"/>
+              <Static id="Static10" taborder="129" cssclass="Guide_color" visible="false" left="0" top="32" width="1118" height="6"/>
+              <Static id="Static12" taborder="130" cssclass="Guide_color" visible="false" left="0" top="59" width="1118" height="12"/>
+              <Static id="Static03" taborder="131" text="계약번호" cssclass="sta_WF_schTitle" left="30" top="38" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="132" left="117" top="38" width="120" height="21"/>
+              <Button id="bt_ordNo" taborder="133" onclick="div_search_bt_ordNo_onclick" cssclass="btn_WF_edtSch" left="235" top="38" width="21" height="21"/>
+              <Static id="Static04" taborder="134" text="고객번호" cssclass="sta_WF_schTitle" left="400" top="38" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNo" taborder="135" onkeyup="div_search_ed_custCd_onkeyup" left="480" top="38" width="120" height="21"/>
+              <Button id="bt_custNo" taborder="136" onclick="div_search_bt_custNo_onclick" cssclass="btn_WF_edtSch" left="598" top="38" width="21" height="21"/>
+              <Edit id="ed_custNm" taborder="137" enable="false" left="619" top="38" width="120" height="21"/>
+              <CheckBox id="chk_empNo" taborder="138" text="임직원상품" left="68.6%" top="38" right="17.98%" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_search" taborder="2" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" left="945" right="16" bottom="735" height="25" domainId="nexa.search"/>
+        <Static id="Static02" taborder="3" cssclass="Guide_color" visible="false" left="0" top="75" width="1147" height="20"/>
+        <Static id="Static21" taborder="4" text="메인 LIST" cssclass="sta_WF_subTitle" left="0" top="91" width="169" height="20"/>
+        <Static id="Static01" taborder="5" cssclass="Guide_color" visible="false" left="0" top="105" width="1147" height="10"/>
+        <Static id="Static00" taborder="6" cssclass="Guide_color" visible="false" left="1121" top="0" width="26" height="496"/>
+        <Button id="btn_deliveryPop" taborder="7" text="배송현황조회" onclick="btn_deliveryPop_onclick" left="1036" top="85" width="80" height="21" domainId="nexa.save"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_ordAgentList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seqSeq" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="regiAmt" type="INT" size="256"/>
+          <Column id="monAmt" type="INT" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="oprocDay" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="ordNm" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="saleId" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="regiNm" type="STRING" size="256"/>
+          <Column id="campYn" type="STRING" size="256"/>
+          <Column id="cDcrate" type="STRING" size="256"/>
+          <Column id="cDcamt" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="cusTpNm" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="gDcrate" type="STRING" size="256"/>
+          <Column id="gDcamt" type="STRING" size="256"/>
+          <Column id="lDcrate" type="STRING" size="256"/>
+          <Column id="lDcamt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="bordNo" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesGroupNm" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="salesOfficeNm" type="STRING" size="256"/>
+          <Column id="engNm" type="STRING" size="256"/>
+          <Column id="agDesc" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="contentsNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="frNm" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="256"/>
+          <Column id="accSeq" type="STRING" size="256"/>
+          <Column id="crdSeq" type="STRING" size="256"/>
+          <Column id="accChk" type="STRING" size="256"/>
+          <Column id="accStat" type="STRING" size="256"/>
+          <Column id="accStatNm" type="STRING" size="256"/>
+          <Column id="bkeyChk" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="billYn" type="STRING" size="256"/>
+          <Column id="crdtStat" type="STRING" size="256"/>
+          <Column id="crdt_statNm" type="STRING" size="256"/>
+          <Column id="certCd" type="STRING" size="256"/>
+          <Column id="certNm" type="STRING" size="256"/>
+          <Column id="certStat" type="STRING" size="256"/>
+          <Column id="cert_statNm" type="STRING" size="256"/>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgCd" type="STRING" size="256"/>
+          <Column id="orgHq" type="STRING" size="256"/>
+          <Column id="orgL1" type="STRING" size="256"/>
+          <Column id="orgL2" type="STRING" size="256"/>
+          <Column id="orgL3" type="STRING" size="256"/>
+          <Column id="orgL4" type="STRING" size="256"/>
+          <Column id="insOrg" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="cmsagYn" type="STRING" size="256"/>
+          <Column id="conMthd" type="STRING" size="256"/>
+          <Column id="pcertYn" type="STRING" size="256"/>
+          <Column id="fcDay" type="STRING" size="256"/>
+          <Column id="agDay" type="STRING" size="256"/>
+          <Column id="agSeq" type="STRING" size="256"/>
+          <Column id="inputDt" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="Column102" type="STRING" size="256"/>
+          <Column id="lrCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="fDcrate1" type="STRING" size="256"/>
+          <Column id="fDcamt1" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="valYn" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="osId" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="flYn" type="STRING" size="256"/>
+          <Column id="frYn" type="STRING" size="256"/>
+          <Column id="rlYn" type="STRING" size="256"/>
+          <Column id="rrYn" type="STRING" size="256"/>
+          <Column id="orgAgnm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="ageAge" type="STRING" size="256"/>
+          <Column id="addrArea" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="empNo" type="STRING" size="256"/>
+          <Column id="firstDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDOrdAgentOrder.xfdl
+ * 설    명 : 판매인주문리스트
+ * 작 성 자 : 
+ * 변경이력
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * ---------------------------------
+ * ...
+ * 2017-09-28	wjim		[20170922_03] 주문등록자, 가계약번호 추가
+ * 2019-03-07	wjim		[20190301_01] 콜센터 사용자그룹에 영업관리자와 동일하게 판매인 조회조건 기본세팅 되지 않도록 수정
+ * 2019-05-24	wjim		[20190524_01] 휴대폰번호 추가
+ ***************************************************************************************************/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay = "";													//현재날짜
+this.p_arg = "RTCMOrdAgentOrder";
+this.userGrp = application.gds_userInfo.getColumn(0, "userGrp");	//01 : 영업관리자//02 : 콜센터//03 : 지사//04 : 지점	//05 : 대리점
+this.userId  = application.gds_userInfo.getColumn(0, "userId");	
+this.userNm  = application.gds_userInfo.getColumn(0, "userNm");
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "getToday" ){
+		if( this.toDay != "" ){
+			var firstDate =  Eco.date.getFirstDate(this.toDay);
+			//var lastDay   =  this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+			this.div_search.dt_ordFday.set_value(firstDate);
+			this.div_search.dt_ordTday.set_value(this.toDay);
+			
+			//this.div_search.dt_procFday.set_value(firstDate);
+			//this.div_search.dt_procTday.set_value(lastDay);
+		}
+	}
+	
+	if( strSvcId == "selectOrdAgentOrderList" ){
+		var rowCt = this.ds_ordAgentList.getRowCount();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grid_ordAgentOrder.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDOrdAgentOrder_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("E|S", this);	
+	
+	// 다음 사용자 그룹인 경우 판매인 조회조건 기본 세팅여부 제외
+	// - 영업관리자, 콜센터([20190301_01]에 의해 추가)
+	if ( this.userGrp != "01" && this.userGrp != "02" ) {
+		this.div_search.ed_ordAgentCd.set_value(this.userId);
+		this.div_search.ed_ordAgentNm.set_value(this.userNm);
+	}
+	
+	if ( this.userGrp == "09" ) {
+		this.div_search.ed_ordAgentCd.set_enable(false);
+		this.div_search.bt_ordAgent.set_enable(false);
+	} else {
+		this.div_search.ed_ordAgentCd.set_enable(true);
+		this.div_search.bt_ordAgent.set_enable(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_ordNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl", args ,"modaless=false");
+}
+this.returnOrderNo = function(res) {
+	this.div_search.ed_ordNo.set_value(res);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_custNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg };
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}
+this.returnCustInfo = function(res) {
+	this.div_search.ed_custNo.set_value(res[0]);
+	this.div_search.ed_custNm.set_value(res[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_ordAgent_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"판매인 조회","comm::RTCOMMOrdAgentList_pop.xfdl",args, "modaless=false");
+}
+this.FN_sellers = function(res){
+	this.div_search.ed_ordAgentCd.set_value(res[0]);
+	this.div_search.ed_ordAgentNm.set_value(res[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_custCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	this.div_search.ed_custNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_ordAgentCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	this.div_search.ed_ordAgentNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var ordNo 	= nvl(this.div_search.ed_ordNo.value);
+	var custNo 	= nvl(this.div_search.ed_custNo.value);
+	var orgAgentCd 	= nvl(this.div_search.ed_ordAgentCd.value);
+	
+	var ordFday 	= nvl(this.div_search.dt_ordFday.value);
+	var ordTday 	= nvl(this.div_search.dt_ordTday.value);
+	var procFday 	= nvl(this.div_search.dt_procFday.value);
+	var procTday 	= nvl(this.div_search.dt_procTday.value);
+		
+	var empNoYn     = nvl(this.div_search.chk_empNo.value);
+	if(empNoYn == "true"){
+		empNoYn = "Y";
+	}else{
+		empNoYn = "N";
+	}
+	
+	if( ordFday > ordTday){
+		alert("접수일자를 확인하세요.");
+		this.div_search.dt_ordFday.setFocus(true);
+		return false;
+	}else if( procFday > procTday){
+		alert("장착일자를 확인하세요.");
+		this.div_search.dt_procFday.setFocus(true);
+		return false;
+	}else{
+		var sSvcID        	= "selectOrdAgentOrderList";                    
+		var sController   	= "rtms/sd/selectOrdAgentOrderList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_ordAgentList=selectOrdAgentOrderListMap";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("ordNo",  	ordNo);
+		sArgs += Ex.util.setParam("custNo",  	custNo);
+		sArgs += Ex.util.setParam("orgAgentCd", orgAgentCd);
+		sArgs += Ex.util.setParam("ordFday",  	ordFday);
+		sArgs += Ex.util.setParam("ordTday",  	ordTday);
+		sArgs += Ex.util.setParam("procFday",  	procFday);
+		sArgs += Ex.util.setParam("procTday",  	procTday);
+		sArgs += Ex.util.setParam("empNoYn",  	empNoYn);
+		
+		this.ds_ordAgentList.clearData();
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel= function(){
+	Ex.core.exportExcel(this, this.grid_ordAgentOrder);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+this.btn_deliveryPop_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(this.ds_ordAgentList.rowcount == 0){
+		alert("조회된 계약이 없습니다.");
+		return;
+	}
+	
+	var args = {  ordNo :   nvl(this.ds_ordAgentList.getColumn(this.ds_ordAgentList.rowposition, "ordNo")), reqNum : "0" };
+	Ex.core.popup(this,"배송조회팝업","comm::RTCOMMDeliveryBoard_pop.xfdl",args, "modaless=false");
+}
+]]></Script>
+  </Form>
+</FDL>

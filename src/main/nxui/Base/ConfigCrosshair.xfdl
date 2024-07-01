@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configCrosshair" classname="config_xaxis" left="0" top="0" width="320" height="320" titletext="차트 crosshair 설정" style="background:#d4d9dfff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="Crosshair" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static09" taborder="36" text="lineColor" left="6.56%" top="232" right="46.56%" height="20"/>
+        <Static id="Static08" taborder="37" text="lineStyle" left="6.56%" top="195" right="46.56%" height="20"/>
+        <Static id="Static02" taborder="47" text="mode" left="6.56%" top="93" right="46.56%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.56%" top="56" right="46.56%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.81%" top="54" right="6.25%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus" readonly="true"/>
+        <Static id="Static25" taborder="97" left="6.25%" top="135" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Combo id="cmb_lineStyle" taborder="156" innerdataset="@ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="193" right="5.94%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <Static id="Static07" taborder="157" text="lineWidth" left="6.56%" top="158" right="46.56%" height="20"/>
+        <Edit id="edt_lineColor" taborder="159" left="52.81%" top="230" right="6.25%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <Static id="Static16" taborder="163" left="6.56%" top="270" right="46.56%" height="20" text="lineOpacity"/>
+        <Combo id="cmb_mode" taborder="177" innerdataset="ds_smode" codecolumn="code" datacolumn="data" left="52.81%" top="91" right="5.94%" height="24" onsetfocus="common_onsetfocus" onkillfocus="common_onkillfocus"/>
+        <MaskEdit id="mae_lineWidth" taborder="178" onsetfocus="common_onsetfocus" canchange="common_canchange_integer" left="52.81%" top="156" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_lineOpacity" taborder="179" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.81%" top="268" right="6.88%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item24" compid="cmb_lineStyle" propid="value" datasetid="ds_crosshair" columnid="lineStyle"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_crosshair" columnid="id"/>
+      <BindItem id="item5" compid="edt_lineColor" propid="value" datasetid="ds_crosshair" columnid="lineColor"/>
+      <BindItem id="item1" compid="cmb_mode" propid="value" datasetid="ds_crosshair" columnid="mode"/>
+      <BindItem id="item2" compid="mae_lineWidth" propid="value" datasetid="ds_crosshair" columnid="lineWidth"/>
+      <BindItem id="item8" compid="mae_lineOpacity" propid="value" columnid="lineOpacity" datasetid="ds_crosshair"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var	parent = this.parent;
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchange_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

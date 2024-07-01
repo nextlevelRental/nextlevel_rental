@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="arrearsPayment">
+	<!-- 미납내역상세 조회 -->
+	<parameterMap class="java.util.Map" id="unpaidListParam">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="unpaidListResultMap" />
+		<parameter property="ordNo"	  jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호 -->
+		<parameter property="custNo"  jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+	</parameterMap>
+	<resultMap id="unpaidListResultMap" class="java.util.HashMap">
+		<result property="ordNo"   column="ORD_NO" />	<!-- 계약번호		-->
+		<result property="schdSeq" column="SCHD_SEQ" />	<!-- 청구순번		-->
+		<result property="recpNu"  column="RECP_NU" />	<!-- 청구회차		-->
+		<result property="recpTp"  column="RECP_TP" />	<!-- 청구구분코드	-->
+		<result property="recpNm"  column="RECP_NM" />	<!-- 청구구분명	-->
+		<result property="zfbDay"  column="ZFB_DAY" />	<!-- 만기계산기준일	-->
+		<result property="demdDt"  column="DEMD_DT" />	<!-- 청구일자		-->
+		<result property="saleAmt" column="SALE_AMT" />	<!-- 청구금액		-->
+		<result property="recpAmt" column="RECP_AMT" />	<!-- 수납금액		-->
+		<result property="arreAmt" column="ARRE_AMT" />	<!-- 미납금액		-->
+		<result property="vaccIssue" column="VACC_ISSUE" />	<!-- 가상계좌발급여부		-->
+	</resultMap>
+	<procedure id="arrearsPayment.retrieveUnpaidList" parameterMap="unpaidListParam">
+		{call Pkg_Rtsd0109.p_sRtsd0109UnpaidList(?, ?, ?)}
+	</procedure>
+</sqlMap>

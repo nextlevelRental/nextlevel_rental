@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRERglrchkCommMang" classname="RTRERglrchkCommMang" left="0" top="0" width="1122" height="496" titletext="정기점검수수료 관리" onload="RTRERglrchkCommMang_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="Tab02" taborder="0" left="0" top="0" width="1122" height="496" tabindex="0" scrollbars="autoboth" style="showextrabutton:false;" onchanged="Tab02_onchanged">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="[STEP 1] 지급대상 집계" url="re::RTRERglrchkCommMang_tab1.xfdl"/>
+            <Tabpage id="tabpage2" text="[STEP 2] 변경대상 업로드" url="re::RTRERglrchkCommMang_tab2.xfdl"/>
+            <Tabpage id="tabpage3" text="지급대상 조회" url="re::RTRERglrchkCommMang_tab3.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static01" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="496" positionstep="1"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTRERglrchkCommMang.xfdl
+ * 설    명 : 정기점검수수료 관리
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-05-26	wjim		신규 개발
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTRERglrchkCommMang_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	// 폼 로드 공통함수
+	Ex.core.init(obj);
+}
+
+/**
+ * 탭 이동 완료 시 이벤트 처리
+ */
+this.Tab02_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo) {
+	// 탭 페이지별 화면 초기화
+	switch (obj.tabindex) {
+		case 0:
+			this.Tab02.tabpage1.fn_init();
+			break;		
+		case 1:
+			this.Tab02.tabpage2.fn_init();		
+			break;		
+		case 2:
+			this.Tab02.tabpage3.fn_init();		
+			break;									
+		default:
+			break;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

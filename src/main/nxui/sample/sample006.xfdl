@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample006" classname="WebEditorTest" left="0" top="0" width="1260" height="411" titletext="Eco웹에디터샘플" onload="WebEditorTest_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" left="55" top="54" width="710" height="293" text="Div00" url="extComp::WebEditor.xfdl" scrollbars="none" style="background:#e4e5e9ff;border:0 none #808080ff ;" titletext="웹에디터샘플">
+          <Layouts/>
+        </Div>
+        <Button id="Button01" taborder="1" text="본문 내용 추기하기" onclick="Button01_onclick" left="6.35%" top="8" right="76.83%" height="39"/>
+        <Button id="Button00" taborder="2" text="본문 내용 가져오기" onclick="Button00_onclick" left="24.13%" top="8" right="59.05%" height="39"/>
+      </Layout>
+    </Layouts>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : sample006
+* BUSINESS    : Eco웹에디터샘플
+* FILE NAME   : sample006
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+*
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+this.WebEditorTest_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var userConfig = { 
+		editor : {
+			showToolbar : true,
+			
+// 			btn_font, btn_fontsize, btn_color, btn_bkcolor, btn_bold, btn_italic, btn_underline, btn_strikechar, 'separator', 
+// 			btn_left, btn_center, btn_right, btn_full, btn_indentout, btn_indentin, btn_numberlist, btn_marklist, 'separator', 
+// 			btn_layoutTable, btn_blockquote, btn_link, ecoFileComp, btn_specialchar, fileup_image, btn_template, 'separator', 
+
+			// toolbarButtons length 0이면 toolbar invisible처리함
+			//toolbarButtons : "",
+			
+			//toolbarButtons : ["font", "fontsize", "separator", "left", "center", "separator", "full", "right", "separator", "layoutTable", "blockquote", "link", "template"],
+			//toolbarButtons : ["blockquote", "template", "|", "left", "center", "bold",  "right", "|", "link", "color", "bkcolor", "|", "layoutTable"],
+		//	toolbarButtons : ["blockquote", "template", "|", "bold", "italic", "underline",  "|", "left", "center", "right", "|","link", "color", "bkcolor", "|", "layoutTable"],
+			
+			//toolbarButtons : ["font", "fontsize", "color", "bkcolor", "|", "bold", "italic", "underline", "strikechar", "|", "link", "specialchar", "image", "layoutTable"],
+// 			toolbarButtons : [	
+// 				"font", "fontsize", "color", "bkcolor", "|", "bold", "italic", "underline", "strikechar", "|", 
+// 				"left", "center", "right", "full", "|", "indentout", "indentin", "numberlist", "marklist", "|",
+// 				"layoutTable", "blockquote", "link", "file", "specialchar", "image", "template"
+// 			],
+			
+// 			toolbarButtons : [	
+// 				"font", "fontsize", "color", "bkcolor", "bold", "italic", "underline", "strikechar", "separator", 
+// 				"left", "center", "right", "full", "indentout", "indentin", "numberlist", "marklist", "separator",
+// 				"layoutTable", "blockquote", "specialchar",  "template"
+// 			],
+			
+			toolbarButtons : [	
+				"font", "fontsize","color", "bkcolor", "bold", "italic", "underline", "strikechar", "separator", 
+				"left", "center", "right", "full", "indentout", "indentin", "numberlist", "marklist", "separator",
+				"layoutTable", "blockquote", "specialchar",  "template"
+			],
+			
+			allowResize : true,
+			host : application.gv_host,
+			loadCallback : this.onloadEditor,
+			resizeCallback : this.onresizeEditor,
+			contentHeight: 514,	// minHeight 100, maxHeight : Div00 height 가 form height 초과시 onresizeEditor에서 로직 추가로 처리
+			//contentWidth: ,
+			style: {
+				color: "#000000",
+				fontFamily: "Verdana",
+				fontSize: "10pt",
+				backgroundColor: "#ffffff",
+				lineHeight: "1",	// 줄간격 - zoo
+				padding: "10px"
+			}
+		},
+
+	};
+	
+	this.Div00.init(userConfig, obj);
+}
+
+
+this.onloadEditor = function(obj:WebBrowser, e:nexacro.WebLoadCompEventInfo)
+{
+	//trace("[Test onloadEditor] ==========> " + obj + "," + e);
+}
+
+this.onresizeEditor = function(obj:Form, e:nexacro.SizeEventInfo)
+{
+//trace("	e.cy : "  +e.cy);
+
+	
+	//trace("[Test onresizeEditor] ==========> " + obj + "," + this.name);
+}
+
+
+this.onremoveImage = function(name)
+{
+	trace("[Test onremoveImage] ==========> " + name);
+}
+
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	trace(this.Div00.getContent());
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//var contents = '<font color="#004080" size="4"><strong>끝나지 않은 투쟁, 게으르고 싶은 욕망과의  싸움</strong> </font><br>내 안에는 하늘로 날아오르고 싶은 독수리가 한 마리 있고,<p><img width="460" height="401" id="Div_D56AF022_9810_4EF4_042C_1A87059E17DA" style="width: 313px; height: 234px; float: left;" src="http://localhost:8080/nexacro/repository/K-31.png"><br></p><br>진창에서 뒹굴고 싶은 하마도 한 마리 있다.<br>성공의 비결은 뒹굴고 싶은 욕망보다<br>날아오르고 싶은 마음을 따르는 것이다.<br>그것은 결코 끝나지 않은 투쟁이다.<br>- 칼 샌드버그 <br>';
+	var contents = '<font color="#004080" size="4"><strong>끝나지 않은 투쟁, 게으르고 싶은 욕망과의  싸움</strong> </font><br>내 안에는 하늘로 날아오르고 싶은 독수리가 한 마리 있고,<br>진창에서 뒹굴고 싶은 하마도 한 마리 있다.<br>성공의 비결은 뒹굴고 싶은 욕망보다<br>날아오르고 싶은 마음을 따르는 것이다.<br>그것은 결코 끝나지 않은 투쟁이다.<br>- 칼 샌드버그 <br>';
+	this.Div00.setContent(contents);
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	trace(this.Div00.getAttachImages());
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMTranReceiptDtl_pop" classname="RTCMVkgrp" left="0" top="0" width="800" height="400" cssclass="from_POP" onload="form_onload" titletext="수납세부조회 팝업" onkeyup="RTCOMMTranReceiptDtl_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Static id="sta_subTitle" taborder="4" cssclass="sta_WF_subTitle" left="10" top="16" width="354" height="20"/>
+        <Grid id="grd_List" taborder="5" binddataset="ds_List" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" oncelldblclick="fn_return" left="10" top="41" right="10" height="308">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수납일자"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객번호"/>
+                <Cell col="3" text="고객명"/>
+                <Cell col="4" text="청구구분"/>
+                <Cell col="5" text="회차"/>
+                <Cell col="6" text="만기일자"/>
+                <Cell col="7" text="수납금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:recvDay" calendardisplaynulltype="none"/>
+                <Cell col="1" style="align:left;" text="bind:ordNo"/>
+                <Cell col="2" text="bind:custNo"/>
+                <Cell col="3" text="bind:custNm"/>
+                <Cell col="4" text="bind:recpTpNm"/>
+                <Cell col="5" text="bind:recpNu" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="date" text="bind:zfbDay" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="number" style="align:right middle;" text="bind:recpAmt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_List.getSum(&quot;recpAmt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="6" text="닫기" onclick="fn_close" top="359" right="380" width="41" height="21" domainId="nexa.save"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_List" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" useclientlayout="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="zfbDay" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > CMS관리 > 출금이체조회 > 수납세부조회 팝업
+ * 02. 그룹명   : RTCOMMTranReceiptDtl_pop.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+    //-------------------------------------------------------------------------------  
+	//폼로드시 공통함수     	
+    //-------------------------------------------------------------------------------  	     
+	this.form_onload = function (obj:Form, e:LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		if(nvl(this.parent.p_gubun) != "") {
+			if(this.parent.p_gubun == "card") {
+				this.sta_subTitle.set_text("카드이체 수납세부 내역");
+			}
+			if(this.parent.p_gubun == "cms") {
+				this.sta_subTitle.set_text("출금이체 수납세부 내역");			
+			}	
+			if(this.parent.p_gubun == "cash") {
+				this.sta_subTitle.set_text("현금영수증 발행 수납세부 내역");			
+			}	
+			if(this.parent.p_gubun == "prePay") {
+				this.sta_subTitle.set_text("선수금 정리 세부 내역");			
+			}				
+		}
+		else {
+				this.sta_subTitle.set_text("");			
+		}
+		this.fn_search();
+	}
+	 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//목록조회 Search
+    //-------------------------------------------------------------------------------  	
+	this.fn_search = function()
+	{
+		var sSvcID        	= "tranReceiptDetail";                    
+		var sController   	= "ntrms/comm/tranReceiptDetail.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_List=output";
+		var sArgs 			= "";		
+			sArgs 			+= Ex.util.setParam("recvSeq",this.parent.p_recvSeq);
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  
+    // callback 함수
+    //-------------------------------------------------------------------------------      	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{  
+	  
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "tranReceiptDetail":
+				if(this.ds_List.rowcount == 0) {
+					this.grd_List.set_nodatatext("조회된 데이터가 없습니다.");
+					return;
+				}
+				break;
+				
+			default:
+				break;
+		}
+	}
+	
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//닫기버튼 클릭시
+    //-------------------------------------------------------------------------------  	
+	this.fn_close = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}
+	
+	this.RTCOMMTranReceiptDtl_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 27){
+			this.close();
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

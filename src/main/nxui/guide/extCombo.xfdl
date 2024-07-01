@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="extCombo" classname="extCombo" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="1" text="innerdataset 설정" left="19.34%" top="25" right="65.63%" height="21" onclick="Button00_onclick"/>
+        <Grid id="Grid00" taborder="2" useinputpanel="false" left="36.72%" top="24" right="48.34%" height="157" binddataset="ds_inner">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="code"/>
+                <Cell col="1" disptype="normal" text="name"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:code"/>
+                <Cell col="1" disptype="normal" text="bind:name"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <ExtCombo id="ExtCombo00" taborder="4" text="ExtCombo00" left="3.32%" top="24" right="81.15%" height="23" _select_type="select" _enable="true"/>
+        <Button id="Button01" taborder="5" text="code 얻어오기" left="19.82%" top="58" right="70.31%" height="21" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="6" text="초기값 넣기" left="19.82%" top="122" right="70.31%" height="21" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="7" text="value얻어오기" left="19.73%" top="82" right="70.41%" height="21" onclick="Button03_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_inner">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">A타입</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">B타입</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">C타입</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_temp">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="CHECKED" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="name">A타입</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="name">B타입</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="name">C타입</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.ExtCombo00.setInnerDataset(this.ds_inner,"code","name")
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    alert(this.ExtCombo00.getValue());
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	alert(this.ExtCombo00.getText());
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var aCode = new Array("1","2");
+    trace("aCode>>>>>>>>>>>>>"+aCode);
+	this.ExtCombo00.setValue(aCode);
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

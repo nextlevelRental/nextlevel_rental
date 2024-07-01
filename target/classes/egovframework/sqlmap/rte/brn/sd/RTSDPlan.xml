@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="plan">
+	
+	<resultMap id="palnResultMap" class="java.util.HashMap">
+		<result property="planDay"  column="PLAN_DAY" /> <!-- 장착예정일 -->  
+		<result property="ordNo"    column="ORD_NO" /> <!-- 주문번호 -->   
+		<result property="custNm"   column="CUST_NM" /> <!-- 고객명 -->    
+		<result property="modelNm"  column="MODEL_NM" /> <!-- 차종명 -->    
+		<result property="carNo"    column="CAR_NO" /> <!-- 차량번호 -->   
+		<result property="statNm"   column="STAT_NM" /> <!-- 계약상태 -->   
+		<result property="matNm" 	column="MAT_NM" /> <!-- 상품명 -->    
+		<result property="cntNm"  	column="CNT_NM" /> <!-- 타이어본수 -->  	 
+		<result property="periodNm" column="PERIOD_NM" /><!-- 계약기간 -->   
+		<result property="regiAmt"  column="REGI_AMT" /><!-- 렌탈등록비 -->  
+		<result property="monAmt"   column="MON_AMT" /><!-- 월렌탈료 -->   
+		<result property="instDay"  column="INST_DAY" /><!-- 장착일 --> 
+		<result property="seasonCd"   column="SEASON_CD" />
+		<result property="seasonNm"  column="SEASON_NM" />
+	</resultMap>
+       
+    <parameterMap id="palnParam" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="palnResultMap" />
+		<parameter property="agencyCd"  jdbcType="VARCHAR" mode="IN" /> <!-- 장착 대리점 -->
+		<parameter property="procFday"  jdbcType="VARCHAR" mode="IN" /> <!-- 장착일자FROM -->
+		<parameter property="procTday"  jdbcType="VARCHAR" mode="IN" /> <!-- 장착일자TO -->
+		<parameter property="statCd"  	jdbcType="VARCHAR" mode="IN" /> <!-- 상태 -->
+		<parameter property="ordNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 주문번호 -->
+		<parameter property="custNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+	</parameterMap> 
+	
+	<procedure id="plan.listPlan" parameterMap="palnParam">
+		{call
+		 Pkg_Rtsd0104.p_sRtsd0104ProcTargetList(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="p_InsertRtsd0108" class="java.util.Map">             
+		<parameter property="ordNo"   		jdbcType="VARCHAR" mode="IN" /> <!-- 주문번호 -->
+		<parameter property="procDay"  		jdbcType="VARCHAR" mode="IN" /> <!-- 장착일자 -->
+		<parameter property="regId"  		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="plan.insertPlan" parameterMap="p_InsertRtsd0108">
+		{call
+		Pkg_Rtsd0108.p_InsertRtsd0108(?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

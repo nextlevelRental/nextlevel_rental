@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSHappyCallCounselor" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="계약서 신분증 여부 확인" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="46" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="22" text="조회일자" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="Calendar01" taborder="36" dateformat="yyyy-MM-dd" left="105" top="10" width="100" height="21" value="null"/>
+              <Static id="Static26" taborder="42" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1147" height="12"/>
+              <Static id="Static00" taborder="43" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" width="1147" height="12"/>
+              <Static id="Static16" taborder="44" text="FIX w20" cssclass="Guide_color" visible="false" left="205" top="-2" width="20" height="62"/>
+              <Static id="Static02" taborder="45" text="분석유무" cssclass="sta_WF_schTitle" left="225" top="10" width="80" height="21"/>
+              <Combo id="Combo00" taborder="46" text="Combo00" left="27.37%" top="11" right="66.55%" height="20" innerdataset="@dsCombo" codecolumn="cd" datacolumn="cdNm"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="61" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1122" height="431" oncellclick="Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="120"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="조회일자"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="분석결과"/>
+                <Cell col="3" displaytype="normal" text="파일조회"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:stdYm" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="2" text="bind:resYn"/>
+                <Cell col="3" displaytype="button" text="파일" calendardisplaynulltype="none"/>
+                <Cell col="4" displaytype="date" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="date" text="bind:cancDay" calendardisplaynulltype="none"/>
+                <Cell col="6" text="bind:transTp"/>
+                <Cell col="7" displaytype="date" text="bind:sendDay" calendardisplaynulltype="none"/>
+                <Cell col="8" text="bind:eaiYn"/>
+                <Cell col="9" text="bind:transDay"/>
+                <Cell col="10" text="bind:sapYn"/>
+                <Cell col="11" text="bind:vbeln"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="46"/>
+        <Static id="Static10" taborder="8" cssclass="Guide_color" visible="false" left="0" top="46" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+        <FileDownload id="FileDownload" taborder="10" retry="0" text="FileDownload" left="5.41%" top="515" right="76.2%" height="64" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="stdYm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="resCd" type="STRING" size="256"/>
+          <Column id="resYn" type="STRING" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsCombo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">성공</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">실패</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.yesterDay  = "";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.get_date();
+	this.parent.setButton("S", this);
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var stdYm = 			nvl(this.Div00.Calendar01.value); //조회일자	
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/rtms/sd/listAnalyzePDFResult.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	
+	sArgs += Ex.util.setParam("stdYm", stdYm);
+	sArgs += Ex.util.setParam("resYn", this.Div00.Combo00.value);
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	if(strSvcId == "getDate") {
+		this.Div00.Calendar01.set_value(this.yesterDay);
+		this.Div00.Combo00.set_index(0);
+	}
+	if (strSvcId == "searchList") 
+	{
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		} else {
+			
+		}
+	}
+	
+}
+
+this.Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 3){
+		var nRow = this.dsList.rowposition;
+		if( nRow != -1 ){
+			var ordNo    = nvl(this.dsList.getColumn(nRow , "ordNo"));
+			var sheetId  = "02"; //계약서
+			var fileName = nvl(this.dsList.getColumn(nRow , "fileName"));
+			if( (ordNo != "") && (sheetId != "") && (fileName!="") ){
+				var sFileUrl = "/ntrms/sd/tabInfo9EleSigFileDown.do?ordNo="+ordNo+"&sheetId="+sheetId+"&fileName="+fileName;
+
+				this.FileDownload.set_downloadurl(sFileUrl);
+				var bSucc = this.FileDownload.download();
+			}else{
+				alert("서식조회할 정보가 없습니다.");
+				return false;
+			}
+		}else{
+			alert("서식조회할 정보를 선택하세요.");
+			return false;
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

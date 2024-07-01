@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="register">
+	
+	<!--  해피콜 상담사 등록조회 -->
+	<resultMap id="registerResultMap" class="java.util.HashMap">
+		<result property="jobTpNm" 		column="JOB_TP_NM" /> 		<!-- 상담유형명  -->
+		<result property="callNo" 		column="CALL_NO" /> 		<!-- 상담번호    -->
+		<result property="userIdNm" 	column="USER_ID_NM" /> 		<!-- 상담사명    -->
+		<result property="callStatus" column="CALL_STATUS" /> 	<!-- 통화상태    -->
+		<result property="callStatusNm" column="CALL_STATUS_NM" /> 	<!-- 통화상태Nm    -->
+		<result property="ordNo" 		column="ORD_NO" />  		<!-- 계약번호    -->
+		<result property="agencyNm" 	column="AGENCY_NM" /> 		<!-- 대리점      -->
+		<result property="custNm" 		column="CUST_NM" /> 		<!-- 고객명      -->
+		<result property="mobNo" 		column="MOB_NO" /> 			<!-- 휴대폰번호  -->
+		<result property="telNo" 		column="TEL_NO" /> 			<!-- 전화번호    -->
+		<result property="jobCnt" 		column="RETRY_CNT" /> 		<!-- 시도건수    -->
+		<result property="jobDay" 		column="JOB_DAY" /> 		<!-- 처리일자    -->
+		<result property="callDay" 		column="CALL_DAY" /> 		<!-- 통화일자    -->
+		<result property="callDtl" 		column="CALL_DTL" /> 		<!-- 상담내용    -->
+		<result property="procInNm" 	column="PROC_IN_NM" />
+		<result property="servSeq" 		column="SERV_SEQ" /> 		<!-- 서비스 순번 -->
+		<result property="servCd" 		column="SERVICE_CD" /> 		<!-- 서비스코드 -->
+		<result property="servNm" 		column="SERVICE_NM" /> 		<!-- 서비스명 -->
+	</resultMap>
+	<parameterMap id="p_sRtcs0100Regf" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="registerResultMap" />
+		<parameter property="jobTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담유형        -->
+		<parameter property="jobDay1" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리일자FROM  -->
+		<parameter property="jobDay2" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리일자TO    -->
+		<parameter property="userId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담사ID     -->             
+		<parameter property="callStatus" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화상태        -->             
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명          -->             
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 장착대리점      -->             
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 휴대번호        -->
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 전화번호        -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 아이디        -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap> 
+	<procedure id="register.listRegister" parameterMap="p_sRtcs0100Regf">
+		{call
+		Pkg_Rtcs0100.p_sRtcs0100Regf(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+  
+	<!--  해피콜 계약정보 -->
+		<resultMap id="registerInfoMap" class="java.util.HashMap">
+		<result property="ordNo" 		column="ORD_NO" /> 			<!-- 계약번호     -->
+		<result property="custNm" 		column="CUST_NM" /> 		<!-- 고객명       -->
+		<result property="mobNo"		column="MOB_NO" /> 			<!-- 휴대폰번호   -->
+		<result property="telNo" 		column="TEL_NO" />  		<!-- 전화번호     -->
+		<result property="agencyNm" 	column="AGENCY_NM" /> 		<!-- 장착대리점   -->
+		<result property="procDay" 		column="PROC_DAY" /> 		<!-- 장착일자     -->
+		<result property="matCd" 		column="MAT_CD" /> 			<!-- 상품명 코드  -->
+		<result property="matNm" 		column="MAT_NM" /> 			<!-- 상품명 Nm    -->
+		<result property="regiNm" 		column="REGI_NM" /> 		<!-- 등록비       -->
+		<result property="monAmt" 		column="MON_AMT" /> 		<!-- 월렌탈료     -->
+		<result property="cntCd" 		column="CNT_CD" /> 			<!-- 타이어본수   -->
+		<result property="periodNm" 	column="PERIOD_NM" /> 		<!-- 렌탈기간(월) -->			
+		<result property="manufactureDrop" 	column="MANUFACTURE_DROP" /> <!-- 제조사 Nm  -->
+		<result property="modelNm" 		    column="MODEL_NM" /> 		 <!-- 모델명     -->
+		<result property="widthDrop" 		column="WIDTH_DROP" /> 		 <!-- 단면폭     -->
+		<result property="ratioDrop" 		column="RATIO_DROP" /> 		 <!-- 편평비     -->
+		<result property="inchDrop" 	    column="INCH_DROP" /> 		 <!-- 인치       -->			
+	</resultMap>
+	<parameterMap id="p_sRtcs0100Ctf" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="registerInfoMap" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 계약번호  -->        
+	</parameterMap> 
+	<procedure id="register.registerInfo" parameterMap="p_sRtcs0100Ctf">
+		{call
+		Pkg_Rtcs0100.p_sRtcs0100Ctf(?, ?)}
+	</procedure>
+	
+	<!--  해피콜대상 상담 등록 -->
+	<parameterMap id="p_UpdateRtcs0100reg" class="java.util.Map">
+		<parameter property="callNo" 			jdbcType="NUMERIC" mode="IN" /> <!-- 상담번호        -->
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호        --> 
+		<parameter property="callDtl" 			jdbcType="VARCHAR" mode="IN" /> <!-- 상담내용        -->
+		<parameter property="callStatus" 		jdbcType="VARCHAR" mode="IN" /> <!-- 통화상태        --> 
+		<parameter property="jobCnt" 			jdbcType="NUMERIC" mode="IN" /> <!-- 시도건수        -->
+		<parameter property="callDay" 			jdbcType="VARCHAR" mode="IN" /> <!-- 통화일자        -->
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" /> <!-- 등록자ID   -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure  id="register.updateRegister" resultClass="java.util.Map" parameterMap="p_UpdateRtcs0100reg">
+		{call 
+		Pkg_Rtcs0100.p_UpdateRtcs0100reg(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 해피콜 질의 답변 관리 I,U,D-->
+	<parameterMap id="p_IUDRtcs0101" class="java.util.Map">
+		<parameter property="dvsn"  		   javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="callNo" 		   jdbcType="NUMERIC" mode="IN" /> <!-- 상담번호           -->	
+		<parameter property="objectQus01" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 질문1 코드         -->
+		<parameter property="objectQus02" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 질문2 코드         -->	
+		<parameter property="objectQus03"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문3 코드         -->	
+		<parameter property="objectQus04"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문4 코드         -->	
+		<parameter property="objectQus05"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문5 코드         -->	
+		<parameter property="objectQus06"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문6 코드         -->	
+		<parameter property="objectQus07"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문7 코드         -->	
+		<parameter property="objectQus08"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문8 코드         -->	
+		<parameter property="objectQus09"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문9 코드         -->	
+		<parameter property="objectQus10"      jdbcType="VARCHAR" mode="IN" /> <!-- 질문10 코드        -->	
+		<parameter property="objectAns01" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 답번1코드          -->	
+		<parameter property="objectAns02"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번2코드          -->	
+		<parameter property="objectAns03"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번3코드          -->	
+		<parameter property="objectAns04"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번4코드          -->	
+		<parameter property="objectAns05"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번5코드          -->	
+		<parameter property="objectAns06"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번6코드          -->	
+		<parameter property="objectAns07"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번7코드          -->	
+		<parameter property="objectAns08"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번8코드          -->	
+		<parameter property="objectAns09"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번9코드          -->	
+		<parameter property="objectAns10"      jdbcType="VARCHAR" mode="IN" /> <!-- 답번10코드         -->	
+		<parameter property="objectJumsu01"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수1          -->	
+		<parameter property="objectJumsu02"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수2          -->	
+		<parameter property="objectJumsu03"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수3          -->	
+		<parameter property="objectJumsu04"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수4          -->	
+		<parameter property="objectJumsu05"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수5          -->	
+		<parameter property="objectJumsu06"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수6          -->	
+		<parameter property="objectJumsu07"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수7          -->	
+		<parameter property="objectJumsu08"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수8          -->	
+		<parameter property="objectJumsu09"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수9          -->	
+		<parameter property="objectJumsu10"    jdbcType="VARCHAR" mode="IN" /> <!-- 점수10         -->	
+		<parameter property="subjectQus1" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 질문 코드 1 -->	
+		<parameter property="subjectQus2" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 질문 코드 2 -->	
+		<parameter property="subjectQus3" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 질문 코드 3 -->	
+		<parameter property="subjectQus4" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 질문 코드 4 -->	
+		<parameter property="subjectQus5" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 질문 코드 5 -->	
+		<parameter property="subjectAns1" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 답변 1     -->	
+		<parameter property="subjectAns2" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 답변 2     -->	
+		<parameter property="subjectAns3" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 답변 3     -->	
+		<parameter property="subjectAns4" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 답변 4     -->	
+		<parameter property="subjectAns5" 	   jdbcType="VARCHAR" mode="IN" /> <!-- 주관식 답변 5     -->	
+		<parameter property="regId" 		   jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID        -->	
+		
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure  id="register.insertIUD" resultClass="java.util.Map" parameterMap="p_IUDRtcs0101">
+		{call 
+		Pkg_Rtcs0101.p_IUDRtcs0101(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+								   ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+								   ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+								   ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 
+								   ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 이전 타이어제조사 관련 정보 -->
+	<parameterMap id="p_IUDrtcs0120" class="java.util.Map">		
+		<parameter property="dvsn"  		    javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호           --> 		
+		<parameter property="manufactureDrop" 	jdbcType="VARCHAR" mode="IN" /> <!-- 제조사             -->	
+		<parameter property="modelNm" 	        jdbcType="VARCHAR" mode="IN" /> <!-- 모델명             -->			
+		<parameter property="widthDrop" 	    jdbcType="VARCHAR" mode="IN" /> <!-- 단면폭             -->	
+		<parameter property="ratioDrop" 		jdbcType="VARCHAR" mode="IN" /> <!-- 편평비             -->			
+		<parameter property="inchDrop" 		    jdbcType="VARCHAR" mode="IN" /> <!-- 인치               -->		
+		<parameter property="regId" 		    jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID        -->	
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />	
+	</parameterMap>
+	<procedure  id="register.rtcs0120Register" resultClass="java.util.Map" parameterMap="p_IUDrtcs0120">
+		{call 
+		Pkg_Rtcs0120.p_IUDRtcs0120(?, ?, ?, ?, ?, ?, ?, ?, ?,?,?)}
+	</procedure>	
+	
+	<!-- 질문내용 select -->
+	<resultMap id="questionResultMap" class="java.util.HashMap">
+		<result property="question01" 	column="QUESTION01" /> 	<!-- 질문번호1 --> 
+		<result property="question02" 	column="QUESTION02" /> 	<!-- 질문번호2 -->  
+		<result property="question03" 	column="QUESTION03" /> 	<!-- 질문번호3 -->  
+		<result property="question04" 	column="QUESTION04" /> 	<!-- 질문번호4 -->  
+		<result property="question05" 	column="QUESTION05" /> 	<!-- 질문번호5 -->  
+		<result property="question06" 	column="QUESTION06" /> 	<!-- 질문번호6 -->  
+		<result property="question07" 	column="QUESTION07" /> 	<!-- 질문번호7 -->  
+		<result property="question08" 	column="QUESTION08" /> 	<!-- 질문번호8 -->  
+		<result property="question09" 	column="QUESTION09" /> 	<!-- 질문번호9 -->  
+		<result property="question10" 	column="QUESTION10" /> 	<!-- 질문번호10 -->
+		
+		<result property="objectQus01" 	column="OBJECT_QUS_01" /> 	<!-- 질문번호1 CODE값 -->
+		<result property="objectQus02" 	column="OBJECT_QUS_02" /> 	<!-- 질문번호2 CODE값 -->
+		<result property="objectQus03" 	column="OBJECT_QUS_03" /> 	<!-- 질문번호3 CODE값 -->
+		<result property="objectQus04" 	column="OBJECT_QUS_04" /> 	<!-- 질문번호4 CODE값 -->
+		<result property="objectQus05" 	column="OBJECT_QUS_05" /> 	<!-- 질문번호5 CODE값 -->
+		<result property="objectQus06" 	column="OBJECT_QUS_06" /> 	<!-- 질문번호6 CODE값 -->
+		<result property="objectQus07" 	column="OBJECT_QUS_07" /> 	<!-- 질문번호7 CODE값 -->
+		<result property="objectQus08" 	column="OBJECT_QUS_08" /> 	<!-- 질문번호8 CODE값 -->
+		<result property="objectQus09" 	column="OBJECT_QUS_09" /> 	<!-- 질문번호9 CODE값 -->
+		<result property="objectQus10" 	column="OBJECT_QUS_10" /> 	<!-- 질문번호10 CODE값 -->
+		
+	</resultMap>
+	<parameterMap id="p_sRtcs0101ANS" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="questionResultMap" />
+		<parameter property="callNo" 		jdbcType="NUMERIC" mode="IN" /> <!-- 상담번호  -->
+	</parameterMap> 
+	<procedure id="register.listQuestion" parameterMap="p_sRtcs0101ANS">
+		{call
+		Pkg_Rtcs0101.p_sRtcs0101ANS(?, ?)}
+	</procedure>
+
+	<!-- 답변내용 select -->
+	<resultMap id="answerResultMap22" class="java.util.HashMap">
+		<result property="answerCd" 	column="ANSWER_CD" /> 	<!-- 답변코드 --> 
+		<result property="answer" 		column="ANSWER" /> 		<!-- 답변내용 --> 
+	</resultMap>
+	<parameterMap id="p_sRtcs0101Answer" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="answerResultMap22" />
+		<parameter property="answerNo" 		jdbcType="VARCHAR" mode="IN" /> <!-- 답변코드  -->
+	</parameterMap> 
+	<procedure id="register.listAnswer" parameterMap="p_sRtcs0101Answer">
+		{call
+		Pkg_Rtcs0101.p_sRtcs0101Answer(?, ?)}
+	</procedure>
+
+
+	<resultMap id="r_sRtcs0100ServiceHistory" class="java.util.HashMap">
+		<result property="serviceCd" 		column="SERVICE_CD" />
+		<result property="serviceNm" 		column="SERVICE_NM" />
+		<result property="procInCd" 		column="PROC_IN_CD" />
+		<result property="procInNm" 		column="PROC_IN_NM" />
+		<result property="procDay" 			column="PROC_DAY" />
+		<result property="procTm"	 		column="PROC_TM" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0100ServiceHistory" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0100ServiceHistory" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="servSeq" 	jdbcType="VARCHAR" mode="IN" />     
+	</parameterMap> 
+	<procedure id="register.sRtcs0100ServiceHistory" parameterMap="p_sRtcs0100ServiceHistory">
+		{call Pkg_Rtcs0100.p_sRtcs0100ServiceHistory(?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,189 @@
+﻿/******************************************* MDI ****************************************************/
+/* Button */
+Button.btn_MDI_home
+{
+	background			: #e5e4e4;
+	border				: 1 solid #a8a8a2;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_homeN.png');
+}
+Button.btn_MDI_home:mouseover, Button.btn_MDI_home:focused, Button.btn_MDI_home:selected
+{
+	background			: #b154bc;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_homeM.png');
+}
+Button.btn_MDI_home:pushed
+{
+	background			: #b154bc;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_homeM.png');
+	padding				: 1 0 -1 0;
+}
+Button.btn_MDI_home:disabled
+{
+	background			: #f2f2ef;
+	border				: 1 solid #a8a8a2;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_homeD.png');
+}
+
+Button.btn_MDI_pre, Button.btn_MDI_pre:selected
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_preN.png');
+}
+Button.btn_MDI_pre:mouseover, Button.btn_MDI_pre:focused
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_preM.png');
+}
+Button.btn_MDI_pre:pushed
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_preM.png');
+	padding				: 1 0 -1 0;
+}
+Button.btn_MDI_pre:disabled
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_preD.png');
+}
+
+Button.btn_MDI_nxt, Button.btn_MDI_nxt:selected
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_nxtN.png');
+}
+Button.btn_MDI_nxt:mouseover, Button.btn_MDI_nxt:focused
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_nxtM.png');
+}
+Button.btn_MDI_nxt:pushed
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_nxtM.png');
+	padding				: 1 0 -1 0;
+}
+Button.btn_MDI_nxt:disabled
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_MDI_nxtD.png');
+}
+
+
+/* Static */
+Static.sta_MDI_bg
+{
+	background			: #f2f2ef;
+	border				: 1 solid #a8a8a2;
+}
+Static.sta_MDI_btnbg
+{
+	background			: URL('image::img_MDI_btnBg.png');
+	border				: 0 none;
+}
+
+
+/* Tab */
+Tab.tab_MDI
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	buttonbackground		: #f2f2ef;
+	buttonborder			: 1 solid #a8a8a2;
+	buttonbordertype		: normal 0 0;
+	buttonpadding			: 11 10 10 15;
+	color				: #666666;
+	font				: 9 Dotum;
+	showextrabutton			: true;
+}
+Tab.tab_MDI:mouseover, Tab.tab_MDI:focused
+{
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	buttonbackground		: #e5e4e4;
+	buttonborder			: 1 solid #a8a8a2;
+	buttonbordertype		: normal 0 0;
+	buttonpadding			: 11 10 10 15;
+	color				: #000000;
+	font				: 9 Dotum;
+	showextrabutton			: true;
+}
+Tab.tab_MDI:pushed, Tab.tab_MDI:selected
+{
+	color				: #000000;
+	font				: underline 9 Dotum;
+	buttonbackground		: #ffffff;
+	buttonborder			: 0 solid #a8a8a2;
+	buttonpadding			: 11 10 10 15;
+}
+Tab.tab_MDI:disabled
+{
+	color				: #99999;
+	buttonborder			: 1 solid #a8a8a2;
+	buttonbackground		: #e5e4e4;
+}
+
+/*The Controlbutton was fixed at  W:24px H:12px */
+Tab.tab_MDI>#extrabutton, Tab.tab_MDI>#extrabutton:mouseover, Tab.tab_MDI>#extrabutton:focused
+{
+	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::tab_MDI_XN.png');
+	imagealign			: center middle;
+}
+Tab.tab_MDI>#extrabutton:pushed, Tab.tab_MDI>#extrabutton:selected
+{
+	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::tab_MDI_XS.png');
+	imagealign			: center middle;
+}
+Tab.tab_MDI>#extrabutton:disabled
+{
+	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::tab_MDI_XD.png');
+	imagealign			: center middle;
+}
+
+/******************************************* MDI End******************************************************/
+
+/******************************************* Bottom Frame ************************************************/
+Static.sta_BF_logo
+{
+	background			: #ffffff URL('image::img_BF_logo.png') left middle;
+	border				: 0 none;
+	font				: -11 Dotum;
+	color				: #999999;
+	padding				: 0 0 0 135;
+}
+/*************************************** Bottom Frame End ************************************************/

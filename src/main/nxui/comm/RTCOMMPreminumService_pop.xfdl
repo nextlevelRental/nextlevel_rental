@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMPreminumService_pop" classname="RTCOMMPreminumService_pop" left="0" top="0" width="450" height="342" titletext="프리미엄서비스 팝업" onload="RTCOMMPreminumService_pop_onload" onkeyup="RTCOMMPreminumService_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="2" left="10" top="10" height="72" scrollbars="none" cssclass="div_WF_searchBg" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_applyDate" taborder="66" text="적용일자" cssclass="sta_WF_schTitle" left="20" top="10" height="19" domainId="nexa.s_condition" width="100"/>
+              <Combo id="cb_season" taborder="67" innerdataset="@ds_season" codecolumn="cd" datacolumn="cdNm" left="89" top="36" height="20" domainId="nexa.name;nexa.code" enable="false" index="-1" width="120"/>
+              <Static id="st_cnt" taborder="68" text="타이어갯수" cssclass="sta_WF_schTitle" left="239" top="10" height="20" domainId="nexa.s_condition" width="100"/>
+              <Combo id="cb_cnt" taborder="69" innerdataset="ds_cnt" codecolumn="cd" datacolumn="cdNm" left="320" top="10" height="20" domainId="nexa.name;nexa.code" enable="false" index="-1" width="86"/>
+              <Static id="st_season" taborder="70" text="계절용" cssclass="sta_WF_schTitle" left="20" top="36" height="20" domainId="nexa.s_condition" width="100"/>
+              <Calendar id="cal_applyDate" taborder="71" left="89" top="10" height="20" dateformat="yyyy-MM-dd" value="null" width="120"/>
+              <Button id="btn_search" taborder="72" text="조회" cssclass="btn_WF_CRUD" top="37" height="22" domainId="nexa.add" onclick="div_search_btn_search_onclick" right="20" width="45"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_close" taborder="4" text="닫기" onclick="btn_close_onclick" top="301" height="21" domainId="nexa.add" width="41" right="10"/>
+        <Grid id="grid_preminum" taborder="5" binddataset="ds_preminum" useinputpanel="false" left="10" top="92" height="199" right="10" oncellclick="grid_preminum_oncellclick" oncelldblclick="grid_preminum_oncelldblclick" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="170"/>
+                <Column size="129"/>
+                <Column size="129"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="프리미엄서비스 "/>
+                <Cell col="1" text="상세서비스"/>
+                <Cell col="2" text="서비스횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:psNm" suppress="1" suppressalign="first"/>
+                <Cell col="1" text="bind:prsNm"/>
+                <Cell col="2" text="bind:servVnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="6" text="선택" onclick="btn_choice_onclick" top="301" height="21" domainId="nexa.add" width="41" right="55"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cnt" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_season" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminum" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servVnt" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preminumCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servVnt" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs"; 
+	
+	
+	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkAuthGrpuCd)
+	{
+		if( strSvcId == "initRTCOMMPreminumService"){
+			this.div_search_btn_search_onclick();
+		}
+		
+		if( strSvcId == "preminumList" ){
+			var rowCt = this.ds_preminum.getRowCount();
+			if( rowCt == 0 ){
+				alert("선택가능한 프리미엄서비스가 없어 계약저장 실패하였습니다.\n영업관리팀 확인바랍니다.");
+				this.grid_preminum.set_nodatatext( "조회된 데이터가 없습니다." );
+			}
+		}
+	}
+	
+	
+	
+	this.RTCOMMPreminumService_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+	}
+
+
+
+	this.fn_init = function(){
+		this.div_search.cal_applyDate.set_value( this.parent.ordDay );
+		this.div_search.cb_cnt.set_value( this.parent.cntCd );
+		this.div_search.cb_season.set_value( this.parent.seasonCd );
+		
+		var sSvcID      	= "initRTCOMMPreminumService";  
+		var sController   	= "rtms/comm/initRTCOMMPreminumService.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_cnt=mapDsCnt ds_season=mapDsSeason";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		
+		var sSvcID        	= "preminumList";                    
+		var sController   	= "rtms/comm/preminumList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_preminum=preminumMap";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("applyDate", 	nvl(this.div_search.cal_applyDate.value));
+		sArgs += Ex.util.setParam("cnt", 		nvl(this.div_search.cb_cnt.value));
+		sArgs += Ex.util.setParam("season", 	nvl(this.div_search.cb_season.value));
+		
+		this.ds_preminum.deleteAll();
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	this.grid_preminum_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		this.FN_choice();
+	}
+
+	this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.FN_choice();
+	}
+
+	this.FN_choice = function(){
+		for( var i = 0 ; i < this.ds_preminum.getRowCount() ; i++){
+			this.ds_preminum.setColumn(i, "servCnt0", this.ds_preminum.getColumn(i, "servVnt"));
+			this.ds_preminum.setColumn(i, "servCntr", this.ds_preminum.getColumn(i, "servVnt"));
+		}
+		this.ds_preminumCp.copyData(this.ds_preminum);
+		var arr = [this.ds_preminumCp];
+		this.close(this.opener.returnPreminum(arr));
+	}
+	
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}
+
+
+	this.RTCOMMPreminumService_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 27){
+			this.close();
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

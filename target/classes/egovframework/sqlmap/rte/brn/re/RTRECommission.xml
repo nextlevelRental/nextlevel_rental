@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rtreCommissionMapDAO">
+	
+	<parameterMap class="java.util.Map" id="rtreCommissionParams"> 
+		<parameter property="period"     	jdbcType="VARCHAR" mode="IN"  /> <!--마감월  -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />  <!--사용자아이디  --> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+    <!-- 판매수수료 기초집계(대리점,방판, 타이어뱅크) -->
+	<procedure id="rtreCommissionMapDAO.rtreAgencyComm" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5040.p_CreateRtre5040AgencyComm(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 판매수수료 기초집계(오픈몰) -->
+	<procedure id="rtreCommissionMapDAO.rtreMallComm" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5040.p_CreateRtre5040MallComm(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 서비스수수료 기초집계 -->
+	<procedure id="rtreCommissionMapDAO.serviceChargeAggregate" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5060.p_CreateRtre5060ServiceComm(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 충당금 설정처리 -->
+	<procedure id="rtreCommissionMapDAO.allowanceAggregate" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5080.p_CreateRtre5080Allowance(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 장착수수료 기초집계 -->
+	<procedure id="rtreCommissionMapDAO.installCommission" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5050.p_CreateRtre5050InstallComm(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 수수료 이연처리 -->
+	<procedure id="rtreCommissionMapDAO.commPostPone" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre0120.p_CreateRtre0120CommPostpone(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 판매인별 수수료 내역집계 -->
+	<procedure id="rtreCommissionMapDAO.agentCommission" parameterMap="rtreCommissionParams">
+		{call Pkg_Rtre5070.p_CreateRtre5070AgentComm(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 판매처별 수수료 현황 -->
+    <resultMap id="saleCommissionresultMap" class="java.util.HashMap">
+	    <result property="slcmYm"			column="SLCM_YM"          /> <!--마감년월       -->  
+	    <result property="salesGroupNm"		column="SALES_GROUP_NM"   /> <!--지사명         -->
+		<result property="salesOffice"		column="SALES_OFFICE"     /> <!--지점           -->
+		<result property="salesGroup"		column="SALES_GROUP"      /> <!--지사           -->
+		<result property="salesOfficeNm"	column="SALES_OFFICE_NM"  /> <!--지점명         -->
+		<result property="agencyCd"			column="AGENCY_CD"        /> <!--판매처코드     -->
+		<result property="agencyNm"			column="AGENCY_NM"        /> <!--판매처명       -->
+		<result property="lifnr"			column="LIFNR"            /> <!--벤더코드       -->
+		<result property="salecAmt"			column="SALEC_AMT"        /> <!--판매수수료     -->
+		<result property="proccAmt"			column="PROCC_AMT"        /> <!--장착수수료     -->
+		<result property="svccAmt"			column="SVCC_AMT"         /> <!--서비스수수료   -->
+		<result property="tcommAmt"			column="TCOMM_AMT"        /> <!--총수수료       -->
+		<result property="mfapfdAmt"		column="MFAPFD_AMT"       /> <!--충당금설정금액 -->  
+		<result property="rentalGroup"		column="RENTAL_GROUP"     />
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />
+		<result property="rentalOffice"		column="RENTAL_OFFICE"    />
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM" /> 
+		<result property="rtslcBonus"		column="RTSLC_BONUS"      /> <!-- 대리점판매인센티브--> 
+		<result property="ntslcBonus"		column="NTSLC_BONUS"      /> <!-- 방문판매 인센티브 -->
+		<result property="qtNtslcBonus"		column="QT_NTSLC_BONUS"   /> <!-- 방문판매분기시상금-->
+		<result property="rodianBonus"		column="RODIAN_BONUS"     /> <!-- 로디안판매인센티브-->
+		<result property="svslcAmt"			column="SVSLC_AMT"        /> <!-- 서비스판매수수료  --> <!-- [20190611_01] -->
+		<result property="slcBonus"			column="SLC_BONUS"        /> <!-- 판매장려수수료    --> <!-- [20190611_01] -->
+	</resultMap>
+    
+    <parameterMap class="java.util.Map" id="saleCommissionListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="saleCommissionresultMap" /> 
+		<parameter property="slcmFr"       jdbcType="VARCHAR" mode="IN" />          <!--조회일자From          -->
+		<parameter property="slcmTo"       jdbcType="VARCHAR" mode="IN" />          <!--조회일자To            -->
+		<parameter property="agencyCd"     jdbcType="VARCHAR" mode="IN" />          <!--렌탈전문점            -->
+		<parameter property="rentalGroup"   jdbcType="VARCHAR" mode="IN" />          <!--지사코드              -->
+		<parameter property="rentalOffice"  jdbcType="VARCHAR" mode="IN" />          <!--지점코드              -->
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<procedure id="saleCommission.getSaleCommissionList" parameterMap="saleCommissionListParam">
+		{call Pkg_Rtre5070.p_sRtre5070AgentList(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 충당금 적립 계약 조회 -->
+    <resultMap id="allowanceSavingContractresultMap" class="java.util.HashMap">
+	    <result property="slcmYm"         column="SLCM_YM" />           <!-- 마감년월   -->   
+		<result property="salesGroup"     column="SALES_GROUP" />       <!--지사        -->
+		<result property="salesGroupNm"   column="SALES_GROUP_NM" />    <!--지사명      -->
+		<result property="salesOffice"    column="SALES_OFFICE" />      <!--지점        -->
+		<result property="salesOfficeNm"  column="SALES_OFFICE_NM" />   <!--지점명      -->
+		<result property="agencyCd"  	  column="AGENCY_CD" />         <!--판매처코드  -->
+		<result property="agencyNm"       column="AGENCY_NM" />         <!--판매처명    -->
+		<result property="lifnr"          column="LIFNR" />             <!--벤더코드    -->
+		<result property="ordNo"          column="ORD_NO" />            <!--계약번호    -->
+		<result property="procDay"        column="PROC_DAY" />          <!--설치일자    -->
+		<result property="matCd"          column="MAT_CD" />            <!--상품코드    -->
+		<result property="petternCd"      column="PETTERN_CD" />        <!--패턴        -->
+		<result property="tireSize"       column="TIRE_SIZE" />         <!--사이즈      --> 
+		<result property="cntCd"          column="CNT_CD" />            <!--수량        -->
+		<result property="apfdAmt"        column="APFD_AMT" />          <!--개당충당금  -->
+		<result property="apfdsAmt"       column="APFDS_AMT" />         <!--총 충당금   -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+   </resultMap>
+    
+    <parameterMap class="java.util.Map" id="allowanceSavingContractListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="allowanceSavingContractresultMap" />     
+		<parameter property="slcmYmF"      jdbcType="VARCHAR" mode="IN" />          <!--조회일자From          -->
+		<parameter property="slcmYmT"      jdbcType="VARCHAR" mode="IN" />          <!--조회일자To            -->
+		<parameter property="agencyCd"     jdbcType="VARCHAR" mode="IN" />          <!--렌탈전문점            -->
+		<parameter property="salesGroup"   jdbcType="VARCHAR" mode="IN" />          <!--지사코드              -->
+		<parameter property="salesOffice"  jdbcType="VARCHAR" mode="IN" />          <!--지점코드              -->
+		<parameter property="regId"        jdbcType="VARCHAR" mode="IN" />          <!--등록자 ID             -->
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->   
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<procedure id="allowanceSavingContract.getAllowanceSavingContractList" parameterMap="allowanceSavingContractListParam">
+		{call Pkg_Rtre5040.p_sRtre5040AppSaveOrdList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 충당금 현황(검색내역) -->
+	<resultMap id="allowanceResultListresultMap" class="java.util.HashMap">
+		<result property="salesGroup"     column="SALES_GROUP"/>       <!--지사       -->
+		<result property="salesGroupNm"   column="SALES_GROUP_NM" />   <!--지사명     -->
+		<result property="salesOffice"    column="SALES_OFFICE" />     <!--지점       -->
+		<result property="salesOfficeNm"  column="SALES_OFFICE_NM" />  <!--지점명     -->
+		<result property="agencyCd"  	  column="AGENCY_CD" />        <!--판매처코드 -->
+		<result property="agencyNm"       column="AGENCY_NM" />        <!--판매처명   -->
+		<result property="lifnr"          column="LIFNR" />            <!--벤더코드   -->     
+		<result property="apfdAmt"        column="APFD_AMT" />         <!--충당금액   -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="allowanceResultListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="allowanceResultListresultMap" />     
+		<parameter property="agencyCd"     jdbcType="VARCHAR" mode="IN" />          <!--렌탈전문점            -->
+		<parameter property="salesGroup"   jdbcType="VARCHAR" mode="IN" />          <!--지사코드              -->
+		<parameter property="salesOffice"  jdbcType="VARCHAR" mode="IN" />          <!--지점코드              -->
+		<parameter property="regId"        jdbcType="VARCHAR" mode="IN" />          <!--등록자 ID           -->
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<procedure id="allowanceResult.getAllowanceResultList" parameterMap="allowanceResultListParam">
+		{call  Pkg_Rtre5080.p_sRtre5080AgencyAppStatus(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 충당금 현황(판매처별 세부내역) -->
+	<resultMap id="agencyResultListresultMap" class="java.util.HashMap">
+		<result property="agencyCd"     column="AGENCY_CD" />    <!--판매처코드      -->
+		<result property="agencyNm"     column="AGENCY_NM" />    <!--판매처명        -->
+		<result property="apfdDay"      column="APFD_DAY"  />    <!--충당금처리일자  -->
+		<result property="apfdTp"       column="APFD_TP"   />    <!--충당금구분      -->
+		<result property="apfdNm"  	    column="APFD_NM"   />    <!--창당금구분명    -->
+		<result property="apfdPamt"     column="APFD_PAMT" />    <!--충당금 발생금액 -->
+		<result property="apfdMamt"     column="APFD_MAMT" />    <!--충당금 차감금액 -->   
+		<result property="apfdMsg"      column="APFD_MSG"  />    <!--충당금처리 사유 -->
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="agencyResultListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="agencyResultListresultMap" />     
+		<parameter property="agencyCd"     jdbcType="VARCHAR" mode="IN" />          <!--렌탈전문점            -->
+	</parameterMap>
+	
+	<procedure id="allowanceResult.getAgencyResultList" parameterMap="agencyResultListParam">
+		{call  Pkg_Rtre5080.p_sRtre5080AgencyAppList(?, ?)}
+	</procedure>
+	
+	<!-- 충당금 지급내역 조회 [20171117_02] -->
+	<resultMap id="rsltmapAllowanceGetPayList" class="java.util.HashMap">
+		<result property="regYm"     		column="REG_YM"    />    			<!--등록년월        -->
+		<result property="regSeq"     		column="REG_SEQ"   />    			<!--등록순번        -->
+		<result property="agencyCd"			column="AGENCY_CD" />    			<!--대리점코드      -->
+		<result property="agencyNm"			column="AGENCY_NM" />    			<!--대리점명        -->
+		<result property="payDay"     		column="PAY_DAY"   />    			<!--지급일자        -->
+		<result property="payAmt"     		column="PAY_AMT"   />    			<!--지급금액        -->
+		<result property="payMsg"     		column="PAY_MSG"   />    			<!--지급사유        -->
+		<result property="useYn"     		column="USE_YN"    />    			<!--사용여부        -->
+		<result property="regId"     		column="REG_ID"    />    			<!--등록자ID        -->
+		<result property="regDt"     		column="REG_DT"    />    			<!--등록일          -->
+		<result property="chgId"     		column="CHG_ID"    />    			<!--변경자ID        -->
+		<result property="chgDt"     		column="CHG_DT"    />    			<!--변경일          -->		
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="paramAllowanceGetPayList">
+		<parameter property="vcursor"		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rsltmapAllowanceGetPayList" />     
+		<parameter property="regYm"     	jdbcType="VARCHAR" mode="IN" />		<!--등록년월        -->
+		<parameter property="regSeq"     	jdbcType="NUMERIC" mode="IN" />		<!--등록순번        -->
+		<parameter property="agencyCd"     	jdbcType="VARCHAR" mode="IN" />		<!--대리점코드      -->
+		<parameter property="payDay"     	jdbcType="VARCHAR" mode="IN" />		<!--지급일자        -->
+		<parameter property="payAmt"     	jdbcType="NUMERIC" mode="IN" />		<!--지급금액        -->
+		<parameter property="payMsg"     	jdbcType="VARCHAR" mode="IN" />		<!--지급사유        -->
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />		<!--사용여부        -->
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />		<!--등록자ID        -->
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<procedure id="allowance.getPayList" parameterMap="paramAllowanceGetPayList">
+		{call  PKG_RTRE0150.p_sRtre0150(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 충당금 지급내역 저장 [20171117_02] -->
+	<parameterMap id="paramAllowanceSavePayList" class="java.util.HashMap">
+		<parameter property="dvsn"      	jdbcType="VARCHAR" mode="IN"  />	<!--처리구분(I,U,D) -->
+		<parameter property="regYm"     	jdbcType="VARCHAR" mode="IN"  />	<!--등록년월        -->	
+		<parameter property="regSeq"     	jdbcType="NUMERIC" mode="IN"  />	<!--등록순번        -->
+		<parameter property="agencyCd"     	jdbcType="VARCHAR" mode="IN"  />	<!--대리점코드      -->
+		<parameter property="payDay"     	jdbcType="VARCHAR" mode="IN"  />	<!--지급일자        -->
+		<parameter property="payAmt"     	jdbcType="NUMERIC" mode="IN"  />	<!--지급금액        -->
+		<parameter property="payMsg"     	jdbcType="VARCHAR" mode="IN"  />	<!--지급사유        -->
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN"  />	<!--사용여부        -->	
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"  />	<!--등록자ID        -->
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="allowance.savePayList" resultClass="java.util.HashMap" parameterMap="paramAllowanceSavePayList">
+		{call PKG_RTRE0150.p_IUDRtre0150(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!--  -->
+	<resultMap id="individualCommissionListresultMap" class="java.util.HashMap">
+		<result property="salesGroup"       column="SALES_GROUP"     />    <!-- 지사           --> 
+		<result property="salesGroupNM"     column="SALES_GROUP_NM"  />    <!-- 지사명         --> 
+		<result property="salesOffice"      column="SALES_OFFICE"    />    <!-- 지점           --> 
+		<result property="salesOfficeNm"    column="SALES_OFFICE_NM" />    <!-- 지점명         --> 
+		<result property="agencyCd"  	    column="AGENCY_CD"       />    <!-- 판매처코드     --> 
+		<result property="agencyNm"     	column="AGENCY_NM"       />    <!-- 판매처명       --> 
+		<result property="lifnr"     		column="LIFNR"           />    <!-- 벤더코드       -->  
+		<result property="chanCd"      		column="CHAN_CD"         />    <!-- 채널코드       -->
+		<result property="chanNm"     		column="CHAN_NM"         />    <!-- 채널명         -->
+	    <result property="ordNo"     		column="ORD_NO"          />    <!-- 계약번호       -->
+	    <result property="custNo"      		column="CUST_NO"         />    <!-- 고객번호       -->
+	    <result property="custNm"      		column="CUST_NM"         />    <!-- 고객명         -->
+	    <result property="commTp"  	    	column="COMM_TP"         />    <!-- 수수료항목코드 -->
+		<result property="commNm"           column="COMM_NM"         />    <!-- 수수료항목명   -->
+		<result property="commAmt"          column="COMM_AMT"        />    <!-- 수수료금액     -->
+		<result property="commDay"          column="COMM_DAY"        />    <!-- 수수료기준일자 -->
+		<result property="matCd"            column="MAT_CD"          />    <!-- 상품코드       -->
+		<result property="matNm"            column="MAT_NM"          />    <!-- 상품명         -->
+		<result property="cntCd"            column="CNT_CD"          />    <!-- 타이어본수     -->
+		<result property="taxRqcdNm"        column="TAX_RQCD_NM"     />    <!-- 세금계산서발행법 -->
+		<result property="chanLclsCd"       column="CHAN_LCLS_CD"    />    <!-- 채널대분류코드 -->
+		<result property="chanMclsCd"       column="CHAN_MCLS_CD"    />    <!-- 채널중분류코드 -->
+		<result property="chanLclsNm"       column="CHAN_LCLS_NM"    />    <!-- 채널대분류명   -->
+		<result property="chanMclsNm"       column="CHAN_MCLS_NM"    />    <!-- 채널중분류명   -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="individualCommissionListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="individualCommissionListresultMap" />     
+		<parameter property="procDayF"     jdbcType="VARCHAR" mode="IN" />          <!--조회일자From          -->
+		<parameter property="procDayT"     jdbcType="VARCHAR" mode="IN" />          <!--조회일자To            -->
+		<parameter property="agencyCd"     jdbcType="VARCHAR" mode="IN" />          <!--렌탈전문점            -->
+		<parameter property="salesGroup"   jdbcType="VARCHAR" mode="IN" />          <!--지사코드              -->
+		<parameter property="salesOffice"  jdbcType="VARCHAR" mode="IN" />          <!--지점코드              -->
+		<parameter property="chanCd"       jdbcType="VARCHAR" mode="IN" />          <!--채널구분              -->
+		<parameter property="commTp"       jdbcType="VARCHAR" mode="IN" />          <!--수수료항목            -->
+		<parameter property="regId"        jdbcType="VARCHAR" mode="IN" />          <!--등록자 ID             -->
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->   
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	
+	<!-- 개별 수수료 내역 조회(실시간 실적조회) -->
+	<procedure id="individualCommission.listIndividualCommissionList" parameterMap="individualCommissionListParam">
+		{call  Pkg_Rtre5070.p_sRtre5070ChargeRealList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 개별 수수료 내역 조회(실적조회) -->
+	<procedure id="individualCommission.getIndividualCommissionList" parameterMap="individualCommissionListParam">
+		{call  Pkg_Rtre5070.p_sRtre5070ChargeList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<!-- 방문점검수수료 기초집계 조회 -->
+	<resultMap id="resultListRegularchkComm" class="java.util.HashMap">
+		<result property="slcmYm"       	column="SLCM_YM"    />
+		<result property="ordNo"      		column="ORD_NO"     /> 
+		<result property="equNo"      		column="EQU_NO"     />
+		<result property="servSeq" 			column="SERV_SEQ"   />
+		<result property="servDseq"			column="SERV_DSEQ"  />
+		<result property="stdYm"     		column="STD_YM"     />
+		<result property="jobSeq"    		column="JOB_SEQ"    /> 
+		<result property="procMrCd"  		column="PROC_MR_CD" /> 
+		<result property="procMrNm"			column="PROC_MR_NM" /> 
+		<result property="procDay"     		column="PROC_DAY"   />  
+		<result property="procTm"      		column="PROC_TM"    />
+		<result property="jobDseq" 			column="JOB_DSEQ"   />
+	    <result property="bldMngNo"     	column="BLD_MNG_NO" />
+	    <result property="addr1"      		column="ADDR1"      />
+	    <result property="addr2"      		column="ADDR2"      />
+	    <result property="amtComm"  		column="AMT_COMM"   />
+	    <result property="chgJobseq" 		column="CHG_JOB_SEQ"/>
+		<result property="regId"			column="REG_ID"     />
+		<result property="regDt"			column="REG_DT"     />
+		<result property="chgId"			column="CHG_ID"     />
+		<result property="chgDt"			column="CHG_DT"     />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="paramListRegularchkComm">
+		<parameter property="vcursor"		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultListRegularchkComm" />     
+		<parameter property="slcmYm"		jdbcType="VARCHAR" mode="IN" />		
+	</parameterMap>
+	
+	<procedure id="rtreCommissionMapDAO.listRegularchkComm" parameterMap="paramListRegularchkComm">
+		{call  PKG_RTRE5090.p_sRtre5090(?, ?)}
+	</procedure>
+	
+	<!-- 방문점검수수료 기초집계 -->
+	<parameterMap class="java.util.Map" id="paramRegularchkCommAggregate">
+		<parameter property="slcmYm"		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="amtComm"		jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	
+	<procedure id="rtreCommissionMapDAO.regularchkCommAggregate" parameterMap="paramRegularchkCommAggregate">
+		{call PKG_RTRE5090.p_CreateRtre5090RegularchkComm(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 방문점검수수료 추가 기초집계 - 인포씨즈 -->
+	<parameterMap class="java.util.Map" id="paramRegularchkCommAggregateNew"> 
+        <parameter property="slcmYm"        jdbcType="VARCHAR" mode="IN"  />
+        <parameter property="regId"         jdbcType="VARCHAR" mode="IN"  /> 
+        <parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" />
+        <parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+        <parameter property="errortext"     jdbcType="VARCHAR" mode="OUT" />
+    </parameterMap>
+	<procedure id="rtreCommissionMapDAO.regularchkCommAggregateNew" parameterMap="paramRegularchkCommAggregateNew">
+        {call PKG_RTRE5090.p_CreateRtre5090RegularchkNew(?, ?, ?, ?, ?)}
+    </procedure>
+	
+	
+	<!-- 방문점검수수료 변경 작업회차 채번 -->
+	<resultMap id="resultGetRegularchkCommJobseq" class="java.util.HashMap"/>
+	
+	<parameterMap id="paramGetRegularchkCommJobseq" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="resultGetRegularchkCommJobseq" />
+		<parameter property="slcmYm"     	jdbcType="VARCHAR" mode="IN"  />
+	</parameterMap>
+	
+	<procedure id="rtreCommissionMapDAO.getRegularchkCommJobseq" parameterMap="paramGetRegularchkCommJobseq">
+		{call ? := PKG_RTRE5100.f_sRtre5100JobSeq(?)}
+	</procedure>	
+	
+	<!-- 방문점검수수료 변경정보 IUD -->
+	<parameterMap id="paramSaveRegularchkComm" class="java.util.HashMap">
+		<parameter property="dvsn"      	jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="slcmYm"     	jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="jobSeq"     	jdbcType="NUMERIC" mode="IN"  />
+		<parameter property="stdYm"     	jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="ordNo"      	jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="amtComm"     	jdbcType="NUMERIC" mode="IN"  />
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="rtreCommissionMapDAO.saveRegularchkComm" resultClass="java.util.HashMap" parameterMap="paramSaveRegularchkComm">
+		{call PKG_RTRE5100.p_IUDRtre5100(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

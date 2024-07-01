@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRESaleCharge" classname="test" left="0" top="0" width="1147" height="496" titletext="판매수수료 기초집계" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Radio id="Radio01" taborder="0" left="1208" top="337" width="280" height="50"/>
+        <Radio id="Radio00" taborder="1" left="1174" top="170" width="280" height="50"/>
+        <Static id="Static45" taborder="4" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="9" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Div id="div_search" taborder="14" left="0" top="0" height="107" scrollbars="none" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout width="1102" height="135">
+              <Static id="st_searchCondition" taborder="110" text="기준일자" cssclass="sta_WF_schTitle" left="20" top="10" width="100" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_referDate" taborder="111" dateformat="yyyy-MM" editformat="yyyy-MM" left="120" top="10" width="120" height="21" onchanged="cal_referDate_onchanged"/>
+              <Static id="Static22" taborder="112" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="10"/>
+              <Static id="Static06" taborder="113" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="103"/>
+              <Static id="Static23" taborder="114" cssclass="Guide_color" visible="false" left="0" top="31" width="1118" height="10"/>
+              <Static id="Static00" taborder="115" cssclass="Guide_color" visible="false" left="0" top="62" width="1118" height="10"/>
+              <Static id="Static01" taborder="116" cssclass="Guide_color" visible="false" left="0" top="93" width="1118" height="10"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static17" taborder="15" cssclass="sta_WF_detailLabel2" left="0" top="142" height="31" width="1122"/>
+        <Edit id="edt_procStatus" taborder="16" enable="false" left="134" top="147" width="982" height="21"/>
+        <Static id="Static19" taborder="17" text="작업상태" cssclass="sta_WF_detailLabelP" left="0" top="142" width="130" height="31"/>
+        <Static id="Static06" taborder="18" text="작업상태" cssclass="sta_WF_subTitle" left="0" top="118" width="100" height="20"/>
+        <Radio id="rdo_svrPos" taborder="22" codecolumn="codecolumn" datacolumn="datacolumn" value="0" onitemclick="rdo_svrPos_onitemclick" left="20" top="72" width="135" height="21">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">오픈몰</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="rdo_locPos" taborder="23" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="1" onitemclick="rdo_locPos_onitemclick" left="20" top="41" width="198" height="21">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">대리점, 방판, 타이어뱅크</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static10" taborder="24" cssclass="Guide_color" visible="false" left="0" top="107" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="26" cssclass="Guide_color" visible="false" left="0" top="133" width="1147" height="10" style="border:0 none #808080,1 solid #d2020bff;"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 수수료 > 판매수수료 기초집계
+ * 02. 그룹명   : RTRESalesCharge.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 			= ""; 	//현재날짜
+	this.prevLastDate 	= "";	//전월 말일
+	this.prevFirstDate	= "";	//전월1일
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload  = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 
+		this.fn_init();		
+	} 
+	
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	    this.fn_init = function() {
+		//기준일자 조회
+		this.fn_getInitDate();
+		//버튼초기화
+	    this.fn_initBtn();	
+	    
+	}	
+		 		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 	//---------------------------------------------------------------------------------
+	// 기준일자 조회
+	//---------------------------------------------------------------------------------
+	
+	this.fn_getInitDate  = function() {
+		var sSvcID      	= "getToday";  
+	    var sController   	= "/rtms/comm/getToday.do";
+	    var sInDatasets   	= "";
+	    var sOutDatasets  	= "";
+	    var sArgs 			= "";	
+	    var fn_callBack		= "fn_callBack";
+	    
+	    Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+	}
+	
+ 	//---------------------------------------------------------------------------------
+	// 판매수수료 기초집계
+	//---------------------------------------------------------------------------------
+	this.fn_aggregate  = function() {
+	    this.edt_procStatus.set_value("");
+	    
+		if(nvl(this.div_search.cal_referDate.value) == "") {
+			alert('기준일자를 입력하세요');
+			this.div_search.cal_referDate.setFocus();
+			return;
+		}
+		  
+		    if(this.rdo_locPos.value == "1") {
+				var sSvcID      	= "rtreAgencyComm";  
+				var sController   	= "/ntrms/re/rtreAgencyComm.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				
+				sArgs += Ex.util.setParam("period"		, nvl(this.div_search.cal_referDate.value).substr(0,6));	//기준일자(마감월)
+				
+			    Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	        
+	        } else if(this.rdo_svrPos.value == "1") {
+				var sSvcID      	= "rtreMallComm";  
+				var sController   	= "/ntrms/re/rtreMallComm.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+			
+				sArgs += Ex.util.setParam("period"		, nvl(this.div_search.cal_referDate.value).substr(0,6));	//기준일자(마감월)
+					
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);  
+			}
+		  
+		
+		
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "rtreAgencyComm") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else if(strSvcId == "rtreMallComm") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);	
+			}	
+
+		}
+		switch (strSvcId) 
+		{  
+		    case "getToday":
+		        prevLastDate = this.toDay.substr(0,4)+(this.toDay.substr(4,2)-1);
+		        this.div_search.cal_referDate.set_value(prevLastDate);			//전월	
+		        break;
+			case "rtreAgencyComm":
+				this.edt_procStatus.set_value(strErrorMsg);	
+				break;
+			case "rtreMallComm":
+				this.edt_procStatus.set_value(strErrorMsg);	
+				break;	
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 기준일자 변경 이벤트
+    //-------------------------------------------------------------------------------  		
+	this.cal_referDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var serviceChargeDay = String(this.div_search.cal_referDate.value);
+		
+		var nDiffDay = Eco.date.getDiffDay(serviceChargeDay, this.toDay);
+		
+		if(parseInt(nDiffDay,10) < 0) {
+		
+			alert("기준일자는 현재일 이후 날짜는 입력하실수 없습니다.");
+			this.div_search.cal_referDate.set_value("");
+			this.div_search.cal_referDate.setFocus();
+			return;
+		}
+				
+	}	
+	
+	//-------------------------------------------------------------------------------  	
+	// 대리점, 방판, 타이어뱅크 이벤트
+    //------------------------------------------------------------------------------- 	
+	this.rdo_locPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{
+	    this.edt_procStatus.set_value("");  
+	    
+	    this.rdo_locPos.set_value("1");		
+		this.rdo_svrPos.set_value("0");
+	  }
+
+	//-------------------------------------------------------------------------------  	
+	// 오픈몰 이벤트
+    //------------------------------------------------------------------------------- 	
+	this.rdo_svrPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{ 
+	    this.edt_procStatus.set_value("");  
+	    
+	    this.rdo_locPos.set_value("0");		
+		this.rdo_svrPos.set_value("1");    
+		 
+	}
+	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */
+		this.parent.setButton("AG",this);			
+	}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

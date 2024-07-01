@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccTranProcDAO">
+	
+	<resultMap id="accTranTargetResultMap" class="java.util.HashMap">	
+		<result property="rcmsday"  	column="RCMS_DAY" />		<!--출금이체 일자         -->
+		<result property="rqstStat"   	column="RQST_STAT" />		<!--이체 상태            	-->
+		<result property="rqstStatNm" 	column="RQST_STAT_NM" />	<!--이체 상태명           	-->
+		<result property="bankCd"  		column="BANK_CD" />	      	<!--운행코드            	-->
+		<result property="bankNm"  		column="BANK_NM" />	      	<!--은행명  		-->
+		<result property="rqcnt"  		column="RQCNT" />	      	<!--신청건수		-->
+		<result property="rqamt"  		column="RQAMT" />	    <!--출금이체요청금액   -->
+	</resultMap>	
+	
+	<parameterMap class="java.util.Map" id="accTranTargetParam"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="accTranTargetResultMap" />   
+		<parameter property="rcmsDay"   	jdbcType="VARCHAR" mode="IN" /><!-- 출금이체일자 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+ 		
+	<!--출금이체 대상 리스트  -->
+	<procedure id="accTranProc.listaccTranTarget" parameterMap="accTranTargetParam">
+		{call
+		Pkg_Rtre0070.p_sRtre0070AccTranTargetList(?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 출금이체 대상집계 파리미터맵-->
+	<parameterMap class="java.util.Map" id="agParameters">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--요청일자             -->
+		<parameter property="stdexDd"		jdbcType="VARCHAR" mode="IN" />      <!--결제일이체기준    -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디        -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<!-- 출금이체 대상집계-->
+	<procedure id="accTranProc.tranAggregate" parameterMap="agParameters">
+		{call Pkg_Rtre0099.p_CreateRtre0099TransAccum(?, ?,	?,	?,	?,	?)}
+	</procedure>		
+	
+	<!-- 출름이체 송신대상 내역 생성-->
+	<resultMap id="accTranMakeResultMap" class="java.util.HashMap">
+		<result property="rqstDay"  column="RQST_DAY" />
+		<result property="fileNm"  	column="FILE_NM" />
+		<result property="rowSeq"  	column="ROW_SEQ" />
+		<result property="fileTp"  	column="FILE_TP" />
+		<result property="fileSeq"  column="FILE_SEQ" />
+		<result property="rowData"  column="ROW_DATA" />
+		<result property="delYn"  	column="DEL_YN" />
+		<result property="regId"  	column="REG_ID" />
+		<result property="regDt"  	column="REG_DT" />
+		<result property="chgId"  	column="CHG_ID" />
+		<result property="chgDt"  	column="CHG_DT" />
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="accTranMakeParameters">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="accTranMakeResultMap" />	
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--계좌신청일     -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="fileTp"		jdbcType="VARCHAR" mode="IN" />      <!--송수신 파일구분-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디   -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="crlfYn" 		jdbcType="VARCHAR" mode="OUT" />	 <!-- CRLF여부   -->
+	</parameterMap>		
+	<procedure id="accTranProc.accTranMakeData" parameterMap="accTranMakeParameters">
+		{call  Pkg_Rtre0098.p_InsertRtre0098TransAccum(?, ?, ?,	?,?, ?,	?, ?, ?)}
+	</procedure>		
+</sqlMap>
+

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdvicetStatus_tab_info6_collection" classname="RTSDContractStatus_tab_info8" left="0" top="0" width="1147" height="150" titletext="[STEP7]수금이력">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Grid id="grid_history" taborder="1" binddataset="ds_list05" useinputpanel="false" left="0" top="5" width="750" height="135" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="98"/>
+                <Column size="70"/>
+                <Column size="90"/>
+                <Column size="114"/>
+                <Column size="88"/>
+                <Column size="93"/>
+                <Column size="190"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="수납일자"/>
+                <Cell col="2" text="청구회차"/>
+                <Cell col="3" text="수납유형"/>
+                <Cell col="4" text="수납유형"/>
+                <Cell col="5" text="수납금액"/>
+                <Cell col="6" text="수납취소 여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordNo"/>
+                <Cell col="1" text="bind:recvDay"/>
+                <Cell col="2" text="bind:recpNu"/>
+                <Cell col="3" text="bind:recpPay"/>
+                <Cell col="4" text="bind:recpFg"/>
+                <Cell col="5" text="bind:recpAmt"/>
+                <Cell col="6" text="bind:cncStat"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1"/>
+                <Cell col="2" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5" displaytype="number" expr="expr:dataset.getSum(&quot;recpAmt&quot;)"/>
+                <Cell col="6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list05" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTnm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPnm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFnm" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="cncStat" type="STRING" size="256"/>
+          <Column id="tNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="bankRecpDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

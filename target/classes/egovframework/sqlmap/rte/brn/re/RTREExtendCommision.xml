@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rtreExtendCommission">
+	<parameterMap class="java.util.Map" id="rtreExtendParam"> 
+		<parameter property="slcmYm"		jdbcType="VARCHAR" mode="IN"/>	<!-- 마감월		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 사용자아이디	-->
+		<parameter property="successCode"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	
+	<!-- 
+	<procedure id="rtreExtendCommission.incentiveAgg" parameterMap="rtreExtendParam">
+		{call PKG_RNT_RTRE7070.PRC_SALE_INCENTIVE_AGG(?, ?, ?, ?)}
+	</procedure>
+	-->
+	<procedure id="rtreExtendCommission.incentiveAgg" parameterMap="rtreExtendParam">
+	{call PKG_RNT_RTRE7000.PRC_SALE_INCENTIVE_AGG(?, ?, ?, ?)}
+	</procedure>
+	
+	<procedure id="rtreExtendCommission.sbsAgg" parameterMap="rtreExtendParam">
+		{call PKG_RNT_RTRE7000.PRC_SALE_SBS_AGG(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 인센티브 기초집계 조회 -->
+	<parameterMap class="java.util.Map" id="paramIncBasAggrList">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultIncBasAggrList"/>
+		<parameter property="slcmYm"  jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultIncBasAggrList" class="java.util.HashMap">
+		<result property="commTpNm"	column="COMM_TP_NM"/>
+		<result property="userNm"	column="USER_NM"/>
+		<result property="execTm"	column="EXEC_TM"/>
+	</resultMap>
+	<procedure id="rtreExtendCommission.retrieveIncBasAggrList" parameterMap="paramIncBasAggrList">
+		{call PKG_RNT_COM.PRC_LIST_INC_BAS_AGGR(?, ?)}
+	</procedure>
+	
+	<!-- 인센티브 /장려금 판매집계 조회 -->
+	<parameterMap class="java.util.Map" id="paramIncSbsSlsAggrList">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultIncSbsSlsAggrList"/>
+		<parameter property="slcmYm"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aggGrp"  jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultIncSbsSlsAggrList" class="java.util.HashMap">
+		<result property="slcmYm"	   column="SLCM_YM"/>		<!-- 집계년월			-->
+		<result property="agencyCd"	   column="AGENCY_CD"/>		<!-- 판매인코드		-->
+		<result property="agencyNm"	   column="AGENCY_NM"/>		<!-- 판매인명			-->
+		<result property="userGrpCd"   column="USER_GRP_CD"/>	<!-- 판매인구분코드		-->
+		<result property="userGrpNm"   column="USER_GRP_NM"/>	<!-- 판매인구분명		-->
+		<result property="agncIncn"	   column="AGNC_INCN"/>		<!-- 대리점인센티브		-->
+		<result property="aflVslsIncn" column="AFL_VSLS_INCN"/>	<!-- 제휴방판인센티브	-->
+		<result property="rdnIncn"	   column="RDN_INCN"/>		<!-- 로디안인센티브		-->
+		<result property="agncSbs"	   column="AGNC_SBS"/>		<!-- 대리점장려금		-->
+		<result property="aflVslsSbs"  column="AFL_VSLS_SBS"/>	<!-- 제휴방판장려금		-->
+		<result property="rdnSbs"	   column="RDN_SBS"/>		<!-- 로디안장려금		-->
+		<result property="userNm"	   column="USER_NM"/>		<!-- 수행자			-->
+		<result property="execTm"	   column="EXEC_TM"/>		<!-- 수행시각			-->
+	</resultMap>
+	<procedure id="rtreExtendCommission.retrieveIncSbsSlsAggrList" parameterMap="paramIncSbsSlsAggrList">
+		{call PKG_RNT_COM.PRC_LIST_INC_SBS_SLS_AGGR(?, ?, ?)}
+	</procedure>
+	
+	<!-- 집계수행이력 조회 -->
+	<parameterMap class="java.util.Map" id="paramAggrExecHstList">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultAggrExecHstList"/>
+		<parameter property="slcmYm"  jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultAggrExecHstList" class="java.util.HashMap">
+		<result property="slcmYm"	 column="SLCM_YM"/>		<!-- 마감년월		-->
+		<result property="userNm"	 column="USER_NM"/>		<!-- 수행자		-->
+		<result property="slsCd"	 column="SLS_CD"/>		<!-- 판매코드		-->
+		<result property="slsNm"	 column="SLS_NM"/>		<!-- 판매코드명	-->
+		<result property="bnsCd"	 column="BNS_CD"/>		<!-- 보너스코드	-->
+		<result property="bnsNm"	 column="BNS_NM"/>		<!-- 보너스코드명	-->
+		<result property="pymCd"	 column="PYM_CD"/>		<!-- 지급코드		-->
+		<result property="pymNm"	 column="PYM_NM"/>		<!-- 지급코드명	-->
+		<result property="startTm"	 column="START_TM"/>	<!-- 시작시간		-->
+		<result property="endTm"	 column="END_TM"/>		<!-- 종료시간		-->
+		<result property="execTm"	 column="EXEC_TM"/>		<!-- 수행시각		-->
+		<result property="aplCnt"	 column="APL_CNT"/>		<!-- 적용건수		-->
+	</resultMap>
+	<procedure id="rtreExtendCommission.retrieveAggrExecHstList" parameterMap="paramAggrExecHstList">
+		{call PKG_RNT_COM.PRC_LIST_AGGR_EXEC_HST(?, ?)}
+	</procedure>
+</sqlMap>

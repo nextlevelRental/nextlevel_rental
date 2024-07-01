@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	- DispatcherServlet application context for Application's web tier.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<!--
+		- The controllers are autodetected POJOs labeled with the @Controller annotation.
+	-->
+ 	<context:component-scan base-package="egovframework">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+	</context:component-scan>
+
+
+	<!--
+		- The form-based controllers within this application provide @RequestMapping 
+		- annotations at the type level for path mapping URLs and @RequestMapping 
+		- at the method level for request type mappings (e.g., GET and POST). 
+		- In contrast, ClinicController - which is not form-based - provides 
+		- @RequestMapping only at the method level for path mapping URLs.
+		-
+		- DefaultAnnotationHandlerMapping is driven by these annotations and is 
+		- enabled by default with Java 5+.
+	-->
+	
+
+	<bean id="extAnnotationMapper"
+		class="egovframework.rte.cmmn.ria.support.ExtAnnotationHandlerMapping">
+		<property name="order" value="0" />
+		<property name="rule">
+			<value>select</value>
+		</property>
+		<property name="urls">
+			<list>
+				<value>/sampleController.do</value>
+			</list>
+		</property>
+		<property name="interceptors">
+			<list>
+				<ref bean="riaHandler" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="riaHandler" class="egovframework.rte.cmmn.ria.support.RiaInterceptor">
+		<property name="uiDTO">
+			<list>
+				<bean class="egovframework.rte.cmmn.ria.nexacro.map.NexacroMapDTO" />
+			</list>
+		</property>
+	</bean>
+
+	
+	<bean id="loginCheckFilter" class="egovframework.ntrms.kr.co.brn.interceptors.LoginCheckInterceptor" />
+	
+	<bean id="loginCheckMapper" class="egovframework.rte.ptl.mvc.handler.SimpleUrlAnnotationHandlerMapping" 
+		p:order="0">
+	 	<property name="interceptors">
+		 	<list>
+		 		<ref local="loginCheckFilter" />
+		 	</list>
+	 	</property>
+	 	<property name="urls">
+		<set>
+			<!-- 테스트 -->
+			<!-- <value>/ntrms/*/*.do</value> -->
+			<value>/*.do</value>
+			<value>/*/*.do</value>
+			<value>/*/*/*.do</value>
+		</set>
+	 	</property>
+	 </bean> 
+
+	 
+	<bean id="authenticInterceptor" class="egovframework.ntrms.kr.co.brn.interceptors.AuthenticInterceptor" >
+		<property name="permittedURL">
+			<set>
+				<value>/authController.do</value>
+				<value>/loginCheck.do</value>
+			</set>
+		</property>
+	</bean>
+
+	
+	
+	<bean id="localeChangeInterceptor" class="egovframework.rte.cmmn.ria.support.interceptor.LocaleChangeInterceptor">
+		<property name="paramName" value="lang" />
+	</bean>
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
+	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
+			</list>
+		</property>
+	</bean> 
+	
+
+	<!-- 
+	<bean id="annotationMapper"
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="order" value="1" />
+		<property name="interceptors">
+			<list>
+				<ref bean="localeChangeInterceptor" />
+			</list>
+		</property>
+	</bean>
+	 -->
+	<!--
+		- This bean processes annotated handler methods, applying Application-specific PropertyEditors
+		- for request parameter binding. It overrides the default AnnotationMethodHandlerAdapter.
+	-->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="webBindingInitializer">
+			<bean class="egovframework.rte.cmmn.web.EgovBindingInitializer"/>
+		</property>
+		<property name="customArgumentResolvers">
+			<list>
+				<bean class="egovframework.rte.cmmn.ria.support.CustomRiaArgumentResolver">
+					<property name="uiAdaptor">
+						<ref bean="nexacroMapAdaptor" />
+					</property>
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="nexacroMapAdaptor" class="egovframework.rte.cmmn.ria.nexacro.map.NexacroAdaptorImp" />
+	<!-- bean name="xpVOAdaptor" class="egovframework.rte.cmmn.ria.nexacro.vo.NexacroAdaptorVOImp" /-->
+	<!--
+		- This bean resolves specific types of exceptions to corresponding logical 
+		- view names for error views. The default behaviour of DispatcherServlet 
+		- is to propagate all exceptions to the servlet container: this will happen 
+		- here with all other types of exceptions.
+	-->
+	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="defaultErrorView" value="egovframework/cmmn/egovError"/>
+		<property name="exceptionMappings">
+			<props>
+			<!-- 
+				<prop key="org.springframework.dao.DataAccessException">cmmn/dataAccessFailure</prop>
+				<prop key="org.springframework.transaction.TransactionException">cmmn/dataAccessFailure</prop>
+				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">cmmn/egovBizException</prop>
+			 -->	
+			 	<prop key="org.springframework.dao.DataAccessException">err/error</prop>
+				<prop key="org.springframework.transaction.TransactionException">err/error</prop>
+				<prop key="egovframework.rte.fdl.cmmn.exception.EgovBizException">err/error</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--
+		- This bean configures the 'prefix' and 'suffix' properties of 
+		- InternalResourceViewResolver, which resolves logical view names 
+		- returned by Controllers. For example, a logical view name of "vets" 
+		- will be mapped to "/WEB-INF/jsp/vets.jsp".
+	-->
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		p:order="0" />
+		
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1" 
+	p:viewClass="org.springframework.web.servlet.view.JstlView" 
+	p:prefix="/WEB-INF/jsp/" p:suffix=".jsp"/>
+	
+	<bean id="nexacroMapView" class="egovframework.rte.cmmn.ria.nexacro.map.NexacroMapView" />
+	<!-- bean id="xplatformObjectView" class="egovframework.rte.cmmn.ria.xplatform.vo.XPlatformObjectView" /-->
+	
+	<!--
+		- Message source for this context, loaded from localized "messages_xx" files.
+		- Could also reside in the root application context, as it is generic,
+		- but is currently just used within Application's web tier.
+	-->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"
+			p:basename="messages"/>
+			
+	
+    <!-- For Pagination Tag -->
+    <!-- bean id="imageRenderer" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationRenderer"/>
+
+    <bean id="paginationManager" class="egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager">
+        <property name="rendererType">
+            <map>
+                <entry key="image" value-ref="imageRenderer"/> 
+            </map>
+        </property>
+    </bean-->
+<!-- 
+    <bean id="hello" class="egovframework.rte.fdl.scheduling.job.Hello" />
+    
+    <bean name="myJob" class="org.springframework.scheduling.quartz.JobDetailFactoryBean"
+        p:jobClass="egovframework.rte.fdl.scheduling.job.SayHelloJob"
+        p:durability="true">
+    	<property name="jobDataAsMap">
+      		<map>
+        		<entry key="hello" value-ref="hello" />
+      		</map>
+    	</property>
+
+  	</bean>
+  	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"
+        p:jobDetail-ref="myJob"
+        p:startDelay="10000"
+        p:cronExpression="0/5 * * * * ?" 
+        />
+  	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+    	<property name="triggers">
+      		<list>
+       			<ref bean="cronTrigger" />
+      		</list>
+    	</property>
+  	</bean>
+ -->
+ 
+ 
+<!-- 	<bean id="egov.propertyConfigurer"  class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/egovframework/properties/resource.properties</value>
+			</list>
+		</property>    
+	</bean> -->
+
+</beans>

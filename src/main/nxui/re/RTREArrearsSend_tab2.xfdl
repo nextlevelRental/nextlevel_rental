@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREArrearsSend_tab2" classname="test_form" left="0" top="0" width="1147" height="496" titletext="당월연체집계내역 조회" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="14" cssclass="Guide_color" visible="false" left="0" top="61" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static02" taborder="16" cssclass="Guide_color" visible="false" left="0" top="92" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="17" text="Div00" left="10" top="10" width="1102" height="49" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="8" text="기준일자" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static06" taborder="10" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="78"/>
+              <Static id="Static44" taborder="11" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static24" taborder="18" cssclass="Guide_color" visible="false" left="231" top="0" width="30" height="78"/>
+              <Calendar id="cal_delyDay" taborder="0" dateformat="yyyy-MM-dd" left="131" top="12" width="100" height="21"/>
+              <Static id="Static23" taborder="27" cssclass="Guide_color" visible="false" left="1" top="33" height="12" width="1117"/>
+              <Static id="Static22" taborder="28" cssclass="Guide_color" visible="false" left="1" top="0" height="12" width="1117"/>
+              <Static id="Static00" taborder="32" cssclass="Guide_color" visible="false" left="744" top="0" width="30" height="78"/>
+              <Static id="st_searchCondition00" taborder="33" text="제외대상" cssclass="sta_WF_schTitle" left="260" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Edit id="edt_ordNo" taborder="34" inputfilter="space" lengthunit="ascii" left="380" top="12" width="108" height="21"/>
+              <Button id="btn_delete" taborder="35" text="삭제" cssclass="btn_WF_CRUD" left="505" top="12" width="59" height="22" onclick="div_search_btn_delete_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static06" taborder="18" text="조회결과" cssclass="sta_WF_subTitle" left="10" top="77" width="84" height="20"/>
+        <Static id="Static03" taborder="22" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grd_list" taborder="23" binddataset="ds_list" useinputpanel="false" oncellclick="grd_list_oncellclick" oncelldblclick="grd_list_oncelldblclick" left="9" top="102" width="1102" height="68">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="135"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="연체기준일자"/>
+                <Cell col="1" text="건수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" style="cursor:hand;" text="bind:delyDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="text" edittype="none" style="align: ;cursor:hand;" text="bind:arrCnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="24" cssclass="Guide_color" visible="false" left="8" top="0" right="17" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="delyDay" type="STRING" size="256"/>
+          <Column id="arrCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 	= ""; 	//현재날짜
+this.toHour = "";	//현재시간
+this.currCount = ""; //집계건수
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if (nErrorCode < 0)	{
+		return Ex.core.comMsg("alert",strErrorMsg);		
+	}
+
+	switch (strSvcId){
+		case "getDate":
+			//var sFirstDay = Eco.date.getFirstDate(this.toDay);	//해당일짜의 1일 가져오기
+			this.div_search.cal_delyDay.set_value(this.toDay);
+			break;	
+		case "arrSendAggregateCnt":
+			this.ds_list.clearData();
+			this.ds_list.addRow();
+			this.ds_list.setColumn(0, "delyDay", this.div_search.cal_delyDay.value);
+			this.ds_list.setColumn(0, "arrCnt", this.currCount);
+			break;
+		case "arrAggregateDelete":
+			if (nErrorCode == 0)	{
+				this.alert("삭제처리가 완료되었습니다.");
+			}
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.fn_init();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.get_date();
+	this.fn_initBtn();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.get_date = function() {
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.parent.parent.setButton("S",this);
+}		
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	if(this.fn_getValid()) {
+		var sSvcID      	= "arrSendAggregateCnt";  
+		var sController   	= "ntrms/re/arrSendAggregateCnt.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("delyDay"		, nvl(this.div_search.cal_delyDay.value));		//기준일자		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getValid = function(){
+	if(nvl(this.div_search.cal_delyDay.value) == "") {
+		alert('기준일자를 입력하세요');
+		this.div_search.cal_delyDay.setFocus();
+		return false;
+	}
+	return true;
+}
+
+this.div_search_btn_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID      	= "arrAggregateDelete";  
+	var sController   	= "ntrms/re/arrAggregateDelete.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo"		, nvl(this.div_search.edt_ordNo.value));		//계약번호	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+]]></Script>
+  </Form>
+</FDL>

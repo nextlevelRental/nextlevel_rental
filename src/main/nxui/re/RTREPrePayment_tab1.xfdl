@@ -1,0 +1,818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREPrePayment_tab1" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="선수금 관리(계약별)" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="2" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="437" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static45" taborder="4" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="5" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static21" taborder="7" text="선수금 내역" cssclass="sta_WF_subTitle" left="10" top="109" width="86" height="20"/>
+        <Static id="Static02" taborder="8" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="124" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="285" width="1110" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="18" text="Div00" left="10" top="10" width="1092" height="82" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="69" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="70" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="71" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="79" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <Static id="Static45" taborder="80" text="5 px" visible="false" left="125" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static46" taborder="81" text="5 px" visible="false" left="130" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static02" taborder="82" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="66" right="431" height="12"/>
+              <Static id="Static01" taborder="83" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="-1" top="33" width="20" height="45"/>
+              <Static id="st_searchCondition" taborder="84" text="선수금 상태" left="379" top="8" width="114" height="30" domainId="nexa.s_condition" cssclass="sta_WF_schTitle"/>
+              <Static id="Static24" taborder="85" text="FIX w30" cssclass="Guide_color" visible="false" left="346" top="0" width="30" height="44"/>
+              <Static id="Static00" taborder="89" text="FIX w30" cssclass="Guide_color" visible="false" left="346" top="32" width="30" height="44"/>
+              <Combo id="cbo_RqstStat" taborder="2" innerdataset="ds_R021" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="491" top="12" width="160" height="21" index="0" text="전체"/>
+              <Static id="st_searchCondition01" taborder="91" text="계약번호" cssclass="sta_WF_schTitle" left="24" top="12" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_ordNo" taborder="0" left="92" top="12" width="140" height="21" onkeyup="edt_ordNo_onkeyup"/>
+              <Button id="btn_odrPopUp" taborder="1" onclick="fn_odrPopUp" cssclass="btn_WF_edtSch" left="212" top="11" width="20" height="21"/>
+              <Static id="st_searchCondition02" taborder="94" text="고객번호" cssclass="sta_WF_schTitle" left="24" top="45" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_custNo" taborder="3" inputfilter="space" lengthunit="ascii" onkeyup="custNo_onkeyup" left="92" top="45" width="140" height="21"/>
+              <Button id="btn_custPopUp" taborder="4" onclick="fn_custPopUp" cssclass="btn_WF_edtSch" left="212" top="44" width="20" height="21"/>
+              <Edit id="edt_custNoKeyword" taborder="97" inputfilter="space" lengthunit="ascii" enable="false" left="237" top="45" width="160" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="19" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="93" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="20" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="21" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="437" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static47" taborder="22" text="5 px" visible="false" left="127" top="53" right="966" height="21" style="color:red;"/>
+        <Static id="Static06" taborder="23" text="선수금 정리내역" cssclass="sta_WF_subTitle" left="10" top="301" width="110" height="20"/>
+        <Static id="Static07" taborder="24" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="316" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grd_detail" taborder="25" binddataset="ds_detail" useinputpanel="false" oncelldblclick="grd_detail_oncelldblclick" left="10" top="326" width="1092" height="167" oncellclick="grd_detail_oncellclick" autofittype="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="140"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="150"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="선수금정리일자"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="고객번호"/>
+                <Cell col="4" text="고객명"/>
+                <Cell col="5" text="정리금액"/>
+                <Cell col="6" text="수납방법"/>
+                <Cell col="7" text="수납유형"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="expr:(recpFg == '21') ?  &quot;checkbox&quot; : &quot;none&quot;" text="bind:check" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="date" edittype="none" style="cursor:hand;" text="bind:sbsDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="2" displaytype="text" edittype="readonly" style="cursor:hand;" text="bind:ordNo" calendardisplay="display"/>
+                <Cell col="3" style="cursor:hand;" text="bind:custNo"/>
+                <Cell col="4" displaytype="normal" edittype="none" style="cursor:hand;" text="bind:custNm"/>
+                <Cell col="5" displaytype="number" style="align:right middle;cursor:hand;selectline: ;" text="bind:sbsAmt" mask="###,###,###,##0"/>
+                <Cell col="6" style="cursor:hand;" text="bind:recpPayNm"/>
+                <Cell col="7" style="cursor:hand;" text="bind:recpFgNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" style="align:right middle;"/>
+                <Cell col="3"/>
+                <Cell col="4" style="align:right middle;"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_detail.getSum(&quot;sbsAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_Confirm" taborder="26" text="정리" onclick="btn_Confirm_onclick" cssclass="btn_WF_module" enable="true" left="1007" top="107" width="45" height="22"/>
+        <Button id="btn_Cancel" taborder="27" text="정리취소" cssclass="btn_WF_module" left="981" top="299" width="71" height="22" onclick="btn_Cancel_onclick"/>
+        <Grid id="grd_list" taborder="28" useinputpanel="false" left="10" top="133" width="1092" height="150" binddataset="ds_list" oncellclick="grd_list_oncellclick" onselectchanged="grd_list_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="발생일자"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="고객번호"/>
+                <Cell col="4" text="고객명"/>
+                <Cell col="5" text="선수금 발생금액"/>
+                <Cell col="6" text="정리금액"/>
+                <Cell col="7" text="선수금 잔액"/>
+                <Cell col="8" text="수납방법"/>
+                <Cell col="9" text="선수금상태"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="expr:(balAmt &gt; 0) ?  &quot;checkbox&quot; : &quot;none&quot;" style="controlaccessibility: ;" text="bind:check" calendardisplay="edit"/>
+                <Cell col="1" displaytype="date" edittype="none" text="bind:pndDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:ordNo" calendardisplay="display"/>
+                <Cell col="3" text="bind:custNo"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:custNm"/>
+                <Cell col="5" displaytype="number" style="align:right middle;cursor: ;" text="bind:pndAmt" mask="###,###,###,##0"/>
+                <Cell col="6" displaytype="number" style="align:right middle;cursor: ;" text="bind:sbsAmt" mask="###,###,###,##0"/>
+                <Cell col="7" displaytype="number" style="align:right middle;" text="bind:balAmt" mask="###,###,###,##0"/>
+                <Cell col="8" text="bind:recpPayNm"/>
+                <Cell col="9" text="bind:pndStatNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" style="align:right middle;"/>
+                <Cell col="3"/>
+                <Cell col="4" style="align:right middle;"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;pndAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="6" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;sbsAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="7" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;balAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="29" text="엑셀" cssclass="btn_WF_CRUD" left="1057" top="107" width="45" height="22" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="30" text="엑셀" cssclass="btn_WF_CRUD" left="1057" top="299" width="45" height="22" onclick="Button01_onclick"/>
+        <Button id="btn_Refund" taborder="31" text="환불" cssclass="btn_WF_module" left="956" top="107" width="45" height="22" onclick="btn_Refund_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="pndDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="pndAmt" type="STRING" size="256"/>
+          <Column id="sbsAmt" type="STRING" size="256"/>
+          <Column id="balAmt" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPayNm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFgNm" type="STRING" size="256"/>
+          <Column id="pndStat" type="STRING" size="256"/>
+          <Column id="pndStatNm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R021" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_detail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="sbsSeq" type="STRING" size="256"/>
+          <Column id="sbsIseq" type="STRING" size="256"/>
+          <Column id="sbsDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="sbsAmt" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPayNm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFgNm" type="STRING" size="256"/>
+          <Column id="sbsTp" type="STRING" size="256"/>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_refund" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="pndDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="pndAmt" type="STRING" size="256"/>
+          <Column id="sbsAmt" type="STRING" size="256"/>
+          <Column id="balAmt" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPayNm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFgNm" type="STRING" size="256"/>
+          <Column id="pndStat" type="STRING" size="256"/>
+          <Column id="pndStatNm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_search.edt_ordNo" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+      <BindItem id="item2" compid="div_search.edt_custNo" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+      <BindItem id="item1" compid="div_search.edt_custNoKeyword" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 마감관리 > 선수금관리 > 선수금관리(계약별)
+ * 02. 그룹명   : RTREPrePayment_tab1.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 		= ""; 	//현재날짜	 
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 			
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//공통코드조회
+		this.fn_getCommCode();		
+		//오늘날짜
+		this.fn_getToday();				
+		//버튼초기화		
+		this.fn_initBtn();	
+		
+		var auth = Ex.core.o_auth;
+		if( auth.exptAuthYn == "N" ){
+			this.Button00.set_enable(false);
+			this.Button01.set_enable(false);
+		}
+	}		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//오늘날짜 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getToday = function() 
+	{
+		var sSvcID        	= "getDate";                    
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}			
+ 	//---------------------------------------------------------------------------------
+	// 공통코드 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getCommCode  = function() {
+		this.ds_R021.clearData();
+		var sSvcID      	= "getCommCode";  
+		var sController   	= "ntrms/re/getClosingMngCommCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_R021=outputR021";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+
+ 	//---------------------------------------------------------------------------------
+	// 선수금 내역조회
+	//---------------------------------------------------------------------------------		
+	this.fn_search = function()
+	{
+		this.ds_list.clearData();		
+		this.ds_detail.clearData();
+		
+		var ordNo 	= nvl(this.div_search.edt_ordNo.value); 	//계약번호
+		var custNo 	= nvl(this.div_search.edt_custNo.value);	//고객번호
+		
+		if(ordNo == "" && custNo == "") {
+			alert("계약번호 또는 고객번호를 입력하세요.");
+			if(ordNo == "") {
+				this.div_search.edt_ordNo.setFocus();
+				return;
+			}
+			if(custNo == "") {
+				this.div_search.edt_custNo.setFocus();
+				return;			
+			}			
+		}
+		var sSvcID      	= "getPrePayList";  
+		var sController   	= "ntrms/re/getPrePayList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+	
+		sArgs += Ex.util.setParam("pndStat" , nvl(this.div_search.cbo_RqstStat.value));	//선수금상태
+		sArgs += Ex.util.setParam("ordNo"	, nvl(this.div_search.edt_ordNo.value));	//계약번호	
+		sArgs += Ex.util.setParam("custNo"	, nvl(this.div_search.edt_custNo.value));	//고객번호
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+	
+ 	//---------------------------------------------------------------------------------
+	// 선수금 정리내역
+	//---------------------------------------------------------------------------------		
+	this.fn_detailSearch = function()
+	{
+		this.ds_detail.clearData();	
+		var sSvcID      	= "getPrePayArrangeList";  
+		var sController   	= "ntrms/re/getPrePayArrangeList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_detail=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+    	
+		sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ordNo")));		//계약번호	
+		sArgs += Ex.util.setParam("custNo"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "custNo")));		//고객번호
+		sArgs += Ex.util.setParam("recvSeq"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "recvSeq")));	//수납거래번호
+		sArgs += Ex.util.setParam("ritmSeq"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ritmSeq")));	//거래일련번호
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+	
+ 	//---------------------------------------------------------------------------------
+	// 정리
+	//---------------------------------------------------------------------------------		
+	this.fn_prePayArrange = function()
+	{
+		var sSvcID      	= "prePayArrange";  
+		var sController   	= "ntrms/re/prePayArrange.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+    	sArgs += Ex.util.setParam("sbsDay"	, nvl(this.toDay));		//선수 정리일자(오늘날짜로 세팅)
+		sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ordNo")));		//계약번호	
+		sArgs += Ex.util.setParam("custNo"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "custNo")));		//고객번호
+		sArgs += Ex.util.setParam("recvSeq"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "recvSeq")));	//수납거래번호
+		sArgs += Ex.util.setParam("ritmSeq"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ritmSeq")));	//거래일련번호
+		sArgs += Ex.util.setParam("vType"	, "P");	//처리구분 P:part A:All
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+	
+ 	//---------------------------------------------------------------------------------
+	// 정리취소
+	//---------------------------------------------------------------------------------		
+	this.fn_prePayArrangeCancel = function()
+	{
+		var sSvcID      	= "prePayArrangeCancel";  
+		var sController   	= "ntrms/re/prePayArrangeCancel.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+    	sArgs += Ex.util.setParam("sbsDay"	, nvl(this.ds_detail.getColumn(this.ds_detail.rowposition, "sbsDay")));	//선수 정리일자
+		sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_detail.getColumn(this.ds_detail.rowposition, "ordNo")));	//계약번호	
+		sArgs += Ex.util.setParam("custNo"	, nvl(this.ds_detail.getColumn(this.ds_detail.rowposition, "custNo")));	//고객번호
+		sArgs += Ex.util.setParam("sbsSeq"	, nvl(this.ds_detail.getColumn(this.ds_detail.rowposition, "sbsSeq")));	//정리거래번호
+		sArgs += Ex.util.setParam("sbsIseq"	, nvl(this.ds_detail.getColumn(this.ds_detail.rowposition, "sbsIseq")));//정리거래일련번호
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+
+	}	
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getDate":
+				break;			
+			//공통코드
+			case "getCommCode":
+				this.div_search.cbo_RqstStat.set_index(0);
+				break;		
+			//선수금내역			
+			case "getPrePayList":		
+				this.ds_list.addColumn("check", "STRING", 256);			
+				if(this.ds_list.rowcount == 0) {
+					this.grd_list.set_nodatatext("조회된 결과가 없습니다.");
+				}
+				break;	
+			//선수금 정리내역	
+			case "getPrePayArrangeList":	
+				this.ds_detail.addColumn("check", "STRING", 256);				
+				if(this.ds_detail.rowcount == 0) {
+					this.grd_detail.set_nodatatext("조회된 결과가 없습니다.");
+				}
+				//alert(this.ds_detail.saveXML());
+				break;					
+			//고객명조회	
+			case "listCustInfo":
+				if(this.ds_cust.rowcount > 0 ) {
+					this.div_search.edt_custNoKeyword.set_value(this.ds_cust.getColumn(0, "custNm"));
+					this.fn_search();
+				}	
+				break;		
+			//정리	
+			case "prePayArrange":	
+				alert(strErrorMsg);	
+				this.fn_search();
+				break;		
+			//정리취소	
+			case "prePayArrangeCancel":	
+				alert(strErrorMsg);	
+				this.fn_search();						
+				break;	
+			case "refundPrePay":	
+				alert(strErrorMsg);						
+				break;	
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//검색 시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}	
+    //-------------------------------------------------------------------------------  	
+	//계약번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  		
+	this.edt_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}		
+	}	
+    //-------------------------------------------------------------------------------  	
+	//고객번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		this.div_search.edt_custNoKeyword.set_value("");	
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_custNo.value) == "") {
+				this.alert("고객번호를 입력하세요");
+				this.div_search.edt_custNo.setFocus();
+				return;
+			}
+			//고객명 조회
+			this.fn_getCustNm();
+		}		
+	}	
+	//------------------------------------------------------------------------------
+	//grd_list_oncellclick
+	//------------------------------------------------------------------------------
+	this.grd_list_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		var nIndex = this.grd_list.getCellPos();
+		var colText = this.grd_list.getCellProperty( "Head", nIndex, "text" );	
+		//if(colText=="선택") {
+			this.ds_list.set_enableevent(false);
+			for (var i=0; i<=this.ds_list.rowcount; i++) {
+				if(this.ds_list.rowposition == i) {
+					//선수금 잔액이 있을경우에만 선택가능
+					if(parseInt(this.ds_list.getColumn(i,"balAmt"),10) > 0) {
+						this.ds_list.setColumn(i ,"check","1");					
+					}
+					else {
+						this.ds_list.setColumn(i ,"check","0");	
+					}
+				}
+				else {
+					this.ds_list.setColumn(i,"check","0");
+				}
+			}	
+			this.ds_list.set_enableevent(true);
+		//}
+		//else {
+			//정리금액이 0보다 크면 선수금 정리내역을 조회한다.
+			if(this.ds_list.getColumn(this.ds_list.rowposition, "sbsAmt") > 0) {
+				this.fn_detailSearch();
+			}
+			else {
+				this.ds_detail.clearData();
+			}
+		//}
+	}	
+	//------------------------------------------------------------------------------
+	//grd_detail_oncellclick
+	//------------------------------------------------------------------------------	
+	this.grd_detail_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		var nIndex = this.grd_detail.getCellPos();
+		var colText = this.grd_detail.getCellProperty( "Head", nIndex, "text" );	
+		//if(colText=="선택") {
+			this.ds_detail.set_enableevent(false);
+			for (var i=0; i<=this.ds_detail.rowcount; i++) {
+				if(this.ds_detail.rowposition == i) {
+					//수납유형이 선수대체('21')인 경우에만 선택가능
+					if(this.ds_detail.getColumn(i,"recpFg") == "21") {
+						this.ds_detail.setColumn(i ,"check","1");					
+					}
+					else {
+						this.ds_detail.setColumn(i ,"check","0");	
+					}
+				}
+				else {
+					this.ds_detail.setColumn(i,"check","0");
+				}
+			}	
+			this.ds_detail.set_enableevent(true);		
+	}
+	//------------------------------------------------------------------------------
+	//grd_detail_oncelldblclick
+	//------------------------------------------------------------------------------
+	this.grd_detail_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		var sRecvSeq = this.ds_list.getColumn(this.ds_list.rowposition,"recvSeq");	//수납거래번호
+		var args ={p_recvSeq:sRecvSeq, p_gubun:"prePay"};
+		Ex.core.popup(this,"수납세부조회","comm::RTCOMMTranReceiptDtl_pop.xfdl",args,"modaless=false");	
+	}
+
+	//------------------------------------------------------------------------------
+	//정리 버튼 클릭 이벤트
+	//------------------------------------------------------------------------------	
+	this.btn_Confirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRowCnt = this.ds_list.getCaseCount("check == '1'");
+		//trace(this.ds_list.saveXML());
+		if(nRowCnt == 0) {
+			alert('정리할 내역을 선택하세요.');
+			return;
+		} 
+		if(nRowCnt > 1) {
+			alert('선수금 내역 정리는 단건 처리가능합니다.');
+			return;
+		}
+		
+		this.fn_prePayArrange();
+	}	
+	//------------------------------------------------------------------------------
+	//정리취소버튼 클릭 이벤트
+	//------------------------------------------------------------------------------	
+	this.btn_Cancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRowCnt = this.ds_detail.getCaseCount("check == '1'");
+		//trace(this.ds_detail.saveXML());
+		if(nRowCnt == 0) {
+			alert('정리취소할 내역을 선택하세요.');
+			return;
+		} 
+		if(nRowCnt > 1) {
+			alert('선수금 정리내역 정리취소는 단건 처리가능합니다.');
+			return;
+		}
+		
+		this.fn_prePayArrangeCancel();		
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//고객명 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getCustNm = function() {
+		this.ds_cust.clearData();
+		var sSvcID        	= "listCustInfo";                    
+		var sController   	= "rtms/comm/listCustInfo.do";
+		var sInDatasets   	= "user_=ds_user";
+		var sOutDatasets  	= "ds_cust=mapCustInfo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("custNo", this.div_search.edt_custNo.value);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}		
+    //-------------------------------------------------------------------------------  
+	//계약번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	  var args ={p_arg:""};
+	  Ex.core.popup(this,"계약번호찾기","comm::RTCOMMOrderNo_pop.xfdl",args,"modaless=false");			
+	}
+	
+    //-------------------------------------------------------------------------------  	
+	//고객번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_formId:this.id, p_custNo:nvl(this.div_search.edt_custNo.value), p_custNm:nvl(this.div_search.edt_custNoKeyword.value)};
+		Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+	}	
+    //-------------------------------------------------------------------------------  
+	// 계약번호조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnOrderNoInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			this.div_search.edt_ordNo.set_value(arr[0].getColumn(0,"ordNo"));
+		}
+	}	
+    //-------------------------------------------------------------------------------  
+	// 고객조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnCustInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			if(nvl(arr[0].getColumn(0,"userId")) != "") { 
+				this.div_search.edt_custRegNo.set_value(arr[0].getColumn(0,"userId"));
+			}
+			if(nvl(arr[0].getColumn(0,"userNm")) != "") { 			
+				this.div_search.edt_custRegNoKeyword.set_value(arr[0].getColumn(0,"userNm"));
+			}
+			if(nvl(arr[0].getColumn(0,"custNo")) != "") { 
+				this.div_search.edt_custNo.set_value(arr[0].getColumn(0,"custNo"));			
+			}
+			if(nvl(arr[0].getColumn(0,"custNm")) != "") { 	
+				this.div_search.edt_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));								
+			}
+		}
+	}		
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("S",this);		
+	}
+
+
+
+	this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.grd_list);
+	}
+
+	this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.grd_detail);
+	}
+
+	//-------------------------------------------------------------------------------  
+	// 선수금 환불 처리
+    //-------------------------------------------------------------------------------
+	this.btn_Refund_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var userId = application.gds_userInfo.getColumn(0, "userId");
+		var userGrp = application.gds_userInfo.getColumn(0, "userGrp");
+		//20200611 환불권한은 렌탈팀 이은경사원만 가능
+		//20221101 환불권한은 영업관리자 권한 모두 부여
+		if(userGrp != "01"){
+			this.alert("선수금 환불 권한이 존재하지 않습니다.");
+			return;
+		}
+		
+		var pndStat = this.ds_list.getColumn(this.ds_list.rowposition, "pndStat");
+		
+		if(pndStat == "S"){
+			this.alert("처리할 선수금내역이 존재하지 않습니다.");
+			return;
+		}
+		
+		this.ds_refund.clearData();
+		this.ds_refund.addRow();
+		this.ds_refund.copyRow(0, this.ds_list, this.ds_list.rowposition);
+		
+		var sSvcID        	= "refundPrePay";                    
+		var sController   	= "/ntrms/re/prePayRefund.do";
+		var sInDatasets   	= "ds_refund=ds_refund";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("custNo", this.div_search.edt_custNo.value);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,132 @@
+﻿/* first page */
+Button.WF_btn_page_first, Button.WF_btn_page_first:focused
+{	
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_first.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_first:mouseover, Button.WF_btn_page_first:pushed, Button.WF_btn_page_first:selected
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_first_O.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_first:disabled
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_first_D.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+
+/* prev page */
+Button.WF_btn_page_prev, Button.WF_btn_page_prev:focused
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_prev.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_prev:mouseover, Button.WF_btn_page_prev:pushed, Button.WF_btn_page_prev:selected
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_prev_O.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_prev:disabled
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_prev_D.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+
+/* page */
+Button.WF_btn_page, Button.WF_btn_page:focused
+{
+	align			: center middle;
+	background		: transparent;
+	border			: 0 none #999999;
+	font			: antialias bold 9 Verdana, malgun gothic ;
+	color			: #46586e;
+	shadow			: ;
+}
+Button.WF_btn_page:mouseover, Button.WF_btn_page:pushed, Button.WF_btn_page:selected
+{
+	align			: center middle;
+	background		: transparent;
+	border			: 0 none #999999;
+	font			: antialias bold 9 Verdana, malgun gothic ;
+	color			: #1abd9c;
+	shadow			: ;
+}
+Button.WF_btn_page:disabled
+{
+	align			: center middle;
+	background		: transparent;
+	border			: 0 none #999999;
+	font			: antialias bold 9 Verdana, malgun gothic ;
+	color			: #1abd9c;
+	shadow			: ;
+}
+
+/* next page */
+Button.WF_btn_page_next, Button.WF_btn_page_next:focused
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_next.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_next:mouseover, Button.WF_btn_page_next:pushed, Button.WF_btn_page_next:selected
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_next_O.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_next:disabled
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_next_D.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+
+/* last page */
+Button.WF_btn_page_last, Button.WF_btn_page_last:focused
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_last.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_last:mouseover, Button.WF_btn_page_last:pushed, Button.WF_btn_page_last:selected
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_last_O.png;
+	imagealign		: center middle;
+	shadow			: ;
+}
+Button.WF_btn_page_last:disabled
+{
+	background		: transparent;
+	border			: 0 none #999999;
+	image			: Images::paging/WF_btn_page_last_D.png;
+	imagealign		: center middle;
+	shadow			: ;
+}

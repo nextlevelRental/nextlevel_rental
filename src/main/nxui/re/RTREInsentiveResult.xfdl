@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREInsentiveResult" classname="RTSDSellersResult" left="0" top="0" width="1147" height="496" titletext="판매인실적조회" onload="RTSDSellersResult_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1122" height="49" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_agencyCd" taborder="46" text="수수료 명" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Static id="Static26" taborder="54" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="55" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="56" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="45"/>
+              <Static id="Static09" taborder="57" cssclass="Guide_color" visible="false" left="365" top="0" width="25" height="45"/>
+              <Static id="Static10" taborder="58" cssclass="Guide_color" visible="false" left="730" top="0" width="25" height="45"/>
+              <Static id="Static03" taborder="74" text="~" left="596" top="12" width="9" height="21"/>
+              <Static id="st_procDay" taborder="76" text="채널대분류" cssclass="sta_WF_schTitle" left="391" top="12" width="80" height="21"/>
+              <Combo id="CommTpNm" taborder="78" text="전체" displaynulltext="전체" index="0" left="105" top="12" width="140" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_R042" codecolumn="cd" datacolumn="cdNm"/>
+              <Combo id="chanLclsNm" taborder="79" text="전체" displaynulltext="전체" index="0" left="471" top="12" width="140" height="21" domainId="nexa.name;nexa.code" innerdataset="ds_S090" codecolumn="cd" datacolumn="cdNm"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_ordAgent" taborder="2" binddataset="ds_insentiveList" useinputpanel="false" cellsizingtype="col" left="0" top="89" width="1122" height="407" oncellclick="bt_Pop">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="170"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="0"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="0"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수수료명"/>
+                <Cell col="1" text="기준시작일"/>
+                <Cell col="2" text="기준종료일"/>
+                <Cell col="3" text="채널대분류"/>
+                <Cell col="4" text="채널중분류"/>
+                <Cell col="5" text="시퀀스"/>
+                <Cell col="6" text="최소건수"/>
+                <Cell col="7" text="최대건수"/>
+                <Cell col="8" text="수수료"/>
+                <Cell col="9" text="사용여부"/>
+                <Cell col="10"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="expr:commTp==&quot;C3&quot; ? &quot;button&quot;:&quot;normal&quot;" edittype="expr:commTp==&quot;C3&quot; ? &quot;button&quot;:&quot;none&quot;" text="bind:commTpNm"/>
+                <Cell col="1" edittype="date" text="bind:strDay"/>
+                <Cell col="2" displaytype="normal" edittype="date" text="bind:endDay"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:chanLclsCd" combodataset="ds_S090" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:chanMclsCd" combodataset="ds_S091" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="5" text="bind:chrSeq"/>
+                <Cell col="6" displaytype="number" edittype="text" text="bind:minCnt"/>
+                <Cell col="7" displaytype="number" edittype="text" text="bind:maxCnt"/>
+                <Cell col="8" displaytype="number" edittype="text" text="bind:commAmt"/>
+                <Cell col="9" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="10" text="bind:commTp"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static21" taborder="3" text="메인 LIST" cssclass="sta_WF_subTitle" left="0" top="65" width="169" height="20"/>
+        <Static id="Static02" taborder="4" cssclass="Guide_color" visible="false" left="0" top="49" width="1147" height="20"/>
+        <Static id="Static00" taborder="5" cssclass="Guide_color" visible="false" left="0" top="79" width="1147" height="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_insentiveList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="MinMax">
+        <ColumnInfo>
+          <Column id="commTp" type="STRING" size="256"/>
+          <Column id="commTpNm" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanLclsNm" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="minCnt" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="maxCnt" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="commAmt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R042" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S090" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">사용</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">사용안함</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_S091" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay = "";													//현재날짜
+this.p_arg = "RTREInsentiveResult";
+this.userGrp = application.gds_userInfo.getColumn(0, "userGrp");	//01 : 영업관리자//02 : 콜센터//03 : 지사//04 : 지점	//05 : 대리점
+this.userId  = application.gds_userInfo.getColumn(0, "userId");	
+this.userNm  = application.gds_userInfo.getColumn(0, "userNm");
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+
+	if( strSvcId == "selectOrdAgentList" ){
+		var rowCt = this.ds_insentiveList.getRowCount();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grid_ordAgent.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDSellersResult_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("C|N|S",this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+
+	this.fn_getSusuInfo();
+	this.fn_getChannelInfo();
+	this.fn_getChannelInfo2();
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+//-------------------------------------------------------------------------------  	
+//수수료 종류 조회
+//------------------------------------------------------------------------------- 
+this.fn_getSusuInfo = function() 
+{
+	var sSvcID      	= "getSusuCode";  
+	var sController   	= "/listSusuInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_R042=listBroadCast";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("nodeNm", 	"listBroadCast");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("cd", 	"C3");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("cd2", 	"D1");		    //공통 그룹코드	
+	sArgs += Ex.util.setParam("cd3", 	"D2");		    //공통 그룹코드	
+	sArgs += Ex.util.setParam("cd4", 	"D3");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("cd5", 	"D4");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("cdGrpCd", 	"R042");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("useYn", 		"Y");			    //사용여부
+	
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+//-------------------------------------------------------------------------------  	
+//채널 대분류
+//------------------------------------------------------------------------------- 
+this.fn_getChannelInfo = function() 
+{
+	var sSvcID      	= "getChannelCode";  
+	var sController   	= "/listCommInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_S090=listBroadCast";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("nodeNm", 	"listBroadCast");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("cdGrpCd", 	"S090");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("useYn", 		"Y");			    //사용여부
+	sArgs += Ex.util.setParam("cdNm","");
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+}
+
+//-------------------------------------------------------------------------------  	
+//채널 중분류
+//------------------------------------------------------------------------------- 
+this.fn_getChannelInfo2 = function() 
+{
+	var sSvcID      	= "getChannelCode";  
+	var sController   	= "/listCommInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_S091=listBroadCast";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("nodeNm", 	"listBroadCast");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("cdGrpCd", 	"S091");		    //공통 그룹코드
+	sArgs += Ex.util.setParam("useYn", 		"Y");			    //사용여부
+	sArgs += Ex.util.setParam("cdNm","");
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+}
+
+
+
+this.div_search_cal_procDayS_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_procDayE_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_ordAgentCd_cancharchange = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	this.div_search.ed_ordAgentNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+
+	var sSvcID        	= "selectInsentiveList";                    
+	var sController   	= "rtms/re/selectInsentiveList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_insentiveList=selectInsentiveListMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_insentiveList.clearData();
+	
+	sArgs += Ex.util.setParam("commTp", 	this.div_search.CommTpNm.value);		    //공통 그룹코드
+	sArgs += Ex.util.setParam("chanLclsCd", this.div_search.chanLclsNm.value);		    //공통 그룹코드
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel= function(){
+	Ex.core.exportExcel(this, this.grid_ordAgent);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+this.bt_Pop = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var nR = this.ds_insentiveList.rowposition;
+	
+	if(this.ds_insentiveList.getColumn(nR,"commTp")=="C3"){
+	
+	var cp = this.ds_insentiveList.rowposition;
+	
+	if(this.ds_insentiveList.getColumn(cp,"commTp")!=null||this.ds_insentiveList.getColumn(cp,"commTp")!=""){
+		if(e.col == obj.getBindCellIndex("body", "commTpNm")) {
+			var args ={
+			p_formId :"popupTestForm",p_commTp : this.ds_insentiveList.getColumn(cp,"commTp"),p_chanLcCd : this.ds_insentiveList.getColumn(cp,"chanLclsCd"),
+			p_chanMcCd : this.ds_insentiveList.getColumn(cp,"chanMclsCd"),p_min : this.ds_insentiveList.getColumn(cp,"minCnt"),p_max:this.ds_insentiveList.getColumn(cp,"maxCnt"),
+			p_chrSeq : this.ds_insentiveList.getColumn(cp,"chrSeq"),p_commTpNm:this.ds_insentiveList.getColumn(cp,"commTpNm")
+						};
+			Ex.core.popup(this,"방문점검 서비스 수수료 상세","re::RTREVisitorService_pop.xfdl",args, "modaless=false");
+		}
+	}
+	}
+}
+
+//----------------------------------------------------------------------------------
+// Save
+//----------------------------------------------------------------------------------
+
+this.fn_save = function(){
+
+	var changeCount = 0;
+	var cnt = this.ds_insentiveList.getRowCount();
+		
+	for( var i = 0 ; i < cnt ; i++ ){
+		var iRowType = this.ds_insentiveList.getRowType(i);
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			changeCount++;
+		}
+	}
+	
+	if( changeCount == 0 ) {
+		alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+	
+	else{
+		var sSvcID        	= "saveInsentive";                    
+		var sController   	= "/ntrms/re/saveInsentive.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=ds_insentiveList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+
+//----------------------------------------------------------------------------------
+// Add
+//----------------------------------------------------------------------------------
+	this.fn_add = function() {
+
+	var row = this.ds_insentiveList.getRowCount()-1;
+	if(this.div_search.CommTpNm.value==null||this.div_search.CommTpNm.value==""){
+		alert("수수료를 선택하여 추가해주세요");
+		return;
+	}
+	if(row!=-1){
+	if(this.ds_insentiveList.getColumn(row,"chanLclsCd")==null || this.ds_insentiveList.getColumn(row,"chanLclsCd")==""){
+	alert("채널대분류를 선택해주세요");
+	return;
+	}
+		
+	if(this.ds_insentiveList.getColumn(row,"chanMclsCd")==null || this.ds_insentiveList.getColumn(row,"chanMclsCd")==""){
+	alert("채널대분류를 선택해주세요");
+	return;
+	}
+	}
+	var nRow = this.ds_insentiveList.addRow();
+	
+	this.ds_insentiveList.setColumn(nRow, "commTp", this.div_search.CommTpNm.value);		
+	this.ds_insentiveList.setColumn(nRow, "commTpNm", this.div_search.CommTpNm.text);	
+}
+
+
+this.MinMax = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	var sColId 	= e.columnid;
+	var nRow 	= e.row;
+	var currDate 	= new Date();
+	var year 		= currDate.getFullYear().toString().padLeft(4, "0");
+	var month 		= (currDate.getMonth()+1).toString().padLeft(2, "0");
+	var day 		= currDate.getDate().toString().padLeft(2, "0");
+	var currentDate = year+month+day;
+	
+	if(sColId == "minCnt") { //최소건 입력 시
+		for(var i =0;i<nRow;i++){
+			var curMinCnt2 = nvl(obj.getColumn(i,"minCnt"),0);
+			var prvMinCnt2 = nvl(obj.getColumn(i,"maxCnt"),0);
+			
+			var curMinCnt = nvl(obj.getColumn(nRow,"minCnt"),0);
+			var curMaxCnt = nvl(obj.getColumn(nRow,"maxCnt"),0);
+			
+			var cTp2 = nvl(obj.getColumn(i,"commTp"),0);
+			var cLc2 = nvl(obj.getColumn(i,"chanLclsCd"),0);
+			var cMc2 = nvl(obj.getColumn(i,"chanMclsCd"),0);
+			
+			var cTp = nvl(obj.getColumn(nRow,"commTp"),0);
+			var cLc = nvl(obj.getColumn(nRow,"chanLclsCd"),0);
+			var cMc = nvl(obj.getColumn(nRow,"chanMclsCd"),0);
+			
+			if(cTp==cTp2){
+				if(cLc2==cLc){
+					if(cMc2==cMc){
+						if(parseInt(curMinCnt2)<=parseInt(curMinCnt)){
+							if(parseInt(curMinCnt)<=parseInt(prvMinCnt2)){
+							alert("이전행 보다 값이 작습니다. 다시 입력하여 주십시오");
+							obj.setColumn(nRow, "minCnt", "");
+							return;
+							}
+						}
+					}
+				}
+			}
+		}	
+	}else if(sColId == "maxCnt") {
+		
+		for(var i =0;i<nRow;i++){
+			var curMinCnt2 = nvl(obj.getColumn(i,"minCnt"),0);
+			var prvMinCnt2 = nvl(obj.getColumn(i,"maxCnt"),0);
+			
+			var curMinCnt = nvl(obj.getColumn(nRow,"minCnt"),0);
+			var curMaxCnt = nvl(obj.getColumn(nRow,"maxCnt"),0);
+			
+			var cTp2 = nvl(obj.getColumn(i,"commTp"),0);
+			var cLc2 = nvl(obj.getColumn(i,"chanLclsCd"),0);
+			var cMc2 = nvl(obj.getColumn(i,"chanMclsCd"),0);
+			
+			var cTp = nvl(obj.getColumn(nRow,"commTp"),0);
+			var cLc = nvl(obj.getColumn(nRow,"chanLclsCd"),0);
+			var cMc = nvl(obj.getColumn(nRow,"chanMclsCd"),0);
+			
+			if(cTp==cTp2){
+				if(cLc2==cLc){
+					if(cMc2==cMc){
+	
+						if(parseInt(curMinCnt) >= parseInt(curMaxCnt)) {
+							alert("최대건이 최소건보다 작습니다. 다시 입력하여 주십시오");
+							obj.setColumn(nRow, "maxCnt", "");
+							return;
+						}
+					}
+				}
+			}
+
+			if(parseInt(curMinCnt) >= parseInt(curMaxCnt)) {
+				alert("최대건이 최소건보다 작습니다. 다시 입력하여 주십시오");
+				obj.setColumn(nRow, "maxCnt", "");
+				return;
+			}
+			
+		}
+	}
+	
+	
+// 	if(sColId == "strDay") { //판매시작일 입력 시
+// 		
+// 		var StrDay 	= nvl(this.ds_insentiveList.getColumn(nRow,"strDay"));
+// 			
+// 		calStartDate 	= StrDay - currentDate;
+// 		
+// 		if(StrDay != '' && parseInt(calStartDate) < 0) {
+// 			alert("기준시작일은 현재일보다 작을 수 없습니다.");
+// 			this.ds_insentiveList.setColumn(nRow,"strDay", "");
+// 			return false;
+// 		}
+// 	} else 
+
+
+	if(sColId == "endDay") { //판매종료일 입력 시
+
+		var StrDay 	= nvl(this.ds_insentiveList.getColumn(nRow,"strDay"));
+		var EndDay 	= nvl(this.ds_insentiveList.getColumn(nRow,"endDay"));
+		
+		calEndDate 		= EndDay - StrDay;
+		
+		if(EndDay != '' && parseInt(calEndDate) < 0) {
+			alert("기준종료일은 시작일보다 작을 수 없습니다.");
+			this.ds_insentiveList.setColumn(nRow,"endDay", "");
+			return false;
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

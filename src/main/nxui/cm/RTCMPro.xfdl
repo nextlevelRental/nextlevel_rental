@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test_form" classname="test_form" left="0" top="0" width="1147" height="496" titletext="프로그램 관리" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="16" text="Menu Title" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="0" top="61" width="241" height="20"/>
+        <Static id="Static03" taborder="17" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="18" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="Button00" taborder="19" text="삭제" onclick="btnDel_onclick" cssclass="btn_WF_module" top="58" right="73" width="45" height="22"/>
+        <Button id="Button37" taborder="20" text="추가" onclick="btnAdd_onclick" cssclass="btn_WF_module" top="58" right="25" width="45" height="22"/>
+        <Grid id="Grid00" taborder="6" binddataset="dsList" useinputpanel="false" autofittype="col" top="86" height="409" left="0" right="25" cellsizingtype="col" oncellclick="Grid00_oncellclick" oncelldblclick="Grid00_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="20"/>
+                <Column size="60"/>
+                <Column size="110"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="40"/>
+                <Column size="50"/>
+                <Column size="80"/>
+                <Column size="50"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox" text="선택"/>
+                <Cell col="1" text="프로그램 코드"/>
+                <Cell col="2" text="프로그램 명"/>
+                <Cell col="3" text="프로그램 URL"/>
+                <Cell col="4" text="프로그램 설명"/>
+                <Cell col="5" text="모듈명"/>
+                <Cell col="6" text="사용유무"/>
+                <Cell col="7" text="등록자"/>
+                <Cell col="8" text="등록일자"/>
+                <Cell col="9" text="수정자"/>
+                <Cell col="10" text="수정일자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check" editlimit="0"/>
+                <Cell col="1" edittype="text" editfilter="upper,number,char" text="bind:prgmCd" editlimit="12" editlengthunit="ascii"/>
+                <Cell col="2" edittype="text" editfilter="upper,number,char" text="bind:prgmNm" editlimit="150" editlengthunit="ascii"/>
+                <Cell col="3" edittype="text" editfilter="number,char" text="bind:prgmPath" editlimit="200" editlengthunit="ascii"/>
+                <Cell col="4" edittype="text" text="bind:prgmDesc" editlimit="300" editlengthunit="ascii"/>
+                <Cell col="5" edittype="text" text="bind:mdlCd" editlimit="4" editlengthunit="ascii"/>
+                <Cell col="6" edittype="combo" text="bind:useYn" combodataset="Dataset00" combocodecol="CODE" combodatacol="NAME"/>
+                <Cell col="7" edittype="text" text="bind:regId" editlimit="20" editlengthunit="ascii"/>
+                <Cell col="8" edittype="text" text="bind:regDt"/>
+                <Cell col="9" edittype="text" text="bind:chgId" editlimit="20" editlengthunit="ascii"/>
+                <Cell col="10" edittype="text" text="bind:chgDt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="12" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="24" text="검색" cssclass="sta_WF_schTitle" left="1.99%" top="0" right="91.65%" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cmb_searchCondition" taborder="25" value="-1" text="선택" innerdataset="@dsCb" codecolumn="CODE" datacolumn="NAME" index="0" left="8.55%" top="10" right="81.51%" height="20" domainId="nexa.name;nexa.code" onitemchanged="div_search_cmb_searchCondition_onitemchanged"/>
+              <Edit id="edt_searchKeyword" taborder="26" onkeyup="div_search_edt_searchKeyword_onkeyup" left="19.48%" top="10" right="54.67%" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="15" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsCb" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">0</Col>
+            <Col id="NAME">전체</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">1</Col>
+            <Col id="NAME">프로그램코드</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">2</Col>
+            <Col id="NAME">프로그램명</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prgmCd" type="STRING" size="256"/>
+          <Column id="prgmNm" type="STRING" size="256"/>
+          <Column id="prgmPath" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="prgmDesc" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="D" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column type="string" id="tmpPwYn" size="32"/>
+          <Column type="string" id="lastPwDt" size="32"/>
+          <Column type="bigdecimal" id="failCnt" size="16"/>
+          <Column type="string" id="agentId" size="32"/>
+          <Column type="string" id="oldPassword" size="32"/>
+          <Column type="string" id="chgId" size="32"/>
+          <Column type="string" id="password" size="32"/>
+          <Column type="string" id="userGrp" size="32"/>
+          <Column type="string" id="userNm" size="32"/>
+          <Column type="string" id="lastLogonDt" size="32"/>
+          <Column type="string" id="userId" size="32"/>
+          <Column type="string" id="chgDt" size="32"/>
+          <Column type="string" id="vkbur" size="32"/>
+          <Column type="string" id="regDt" size="32"/>
+          <Column type="string" id="regId" size="32"/>
+          <Column type="string" id="lockYn" size="32"/>
+          <Column type="string" id="vkgrp" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="Dataset00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">Y</Col>
+            <Col id="CODE">Y</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">N</Col>
+            <Col id="CODE">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.parent.setButton("E|C|S", this);
+} 
+
+    
+this.Button05_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.transaction( "MyService01" ,"http://localhost/sampleController.do","input1=Dataset02","D=output","a=b","callbackFunction",true);
+
+}
+//추가버튼
+this.btnAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	var cnt = this.dsList.rowcount - 1;
+	if(this.dsList.getRowType(cnt) == '2') {
+		return;
+	}
+	else {
+		this.dsList.addRow();
+		this.Grid00_oncellclick();
+	}	
+}
+
+this.btnDel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	var col = this.Grid00.currentrow;
+	this.dsList.deleteRow(col);
+}
+
+this.Button06_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.D.addRow();
+}
+
+this.Button07_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var col = this.Grid01.currentrow;
+	this.D.deleteRow(col);
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "proService";                    
+	var sController   	= "/ntrms/cm/proController.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	this.dsList.clearData();
+	var serviceId 	= "proService";
+	var url 		= "src::proController.do";
+	if(this.div_search.cmb_searchCondition.value == 1){ 
+		sArgs = "prgmCd=" + nvl(this.div_search.edt_searchKeyword.value);
+	} else if(this.div_search.cmb_searchCondition.value == 2) {
+		sArgs = "prgmNm=" + nvl(this.div_search.edt_searchKeyword.value);
+	} else {
+		var params = "";
+	}
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return ExtNx.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		if (strSvcId == "proService") 
+		{
+			this.dsList.addColumn("check", "string", 256);
+			var nTotalCnt = this.dsList.rowcount;
+			this.sta_total_cnt.set_text(nTotalCnt);
+			this.grd_Group.hscrollbar ;
+			
+		}
+		
+		if (strSvcId == "saveData") 
+		{
+			alert(strErrorMsg);
+			this.fn_search();
+		}
+	}
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var flag = false;
+	for(var i = 0 ; i < this.dsList.getRowCount() ; i++){
+		if(this.dsList.getRowType(i) == 2 || this.dsList.getRowType(i) == 4 || this.dsList.getRowType(i) == 8){
+			flag = true; 
+			break;
+		}
+	}
+	if(flag){
+		var saveFlag = true;
+		
+		for(var i = 0 ; i < this.dsList.getRowCount() ; i++){
+	
+			var prgmCd 	  = nvl(this.dsList.getColumn(i, "prgmCd")); //프로그램 코드
+			if(prgmCd == "") {
+				alert("프로그램 코드를 선택해주세요.");
+				this.Grid00.selectRow(i);
+				saveFlag = false;
+				break;
+				return false;
+			}
+		}
+	}
+	if( saveFlag ){
+		var sSvcID        	= "saveData";                    
+		var sController   	= "/ntrms/cm/proSaveDaset.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=dsList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("수정된 데이터가 없습니다.");
+	}
+	
+}
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+//cell클릭 이벤트
+this.Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	for (var i=0; i<=this.dsList.rowcount; i++) {
+		if(this.dsList.rowposition == i) {
+			this.dsList.setColumn(this.dsList.rowposition ,"check","1");
+		}
+		else {
+			this.dsList.setColumn(i,"check","0");
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

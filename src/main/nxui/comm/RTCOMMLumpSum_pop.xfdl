@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMLumpSum_pop" classname="RTCOMMLumpSum_pop" left="0" top="0" width="1145" height="580" titletext="일시불 멤버쉽 계약조회" onkeyup="RTCOMMLumpSum_pop_onkeyup" onload="RTCOMMLumpSum_pop_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_ordNoList" taborder="1" useinputpanel="false" left="10" top="88" height="199" binddataset="ds_ordNoList3" oncelldblclick="grid_ordNoList_oncelldblclick" cellsizingtype="col" width="1125">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="40"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="0"/>
+                <Column size="89"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약일자"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객코드"/>
+                <Cell col="3" text="법정생년월일"/>
+                <Cell col="4" text="사업자번호"/>
+                <Cell col="5" text="고객명"/>
+                <Cell col="6" text="성별"/>
+                <Cell col="7" text="내외국인"/>
+                <Cell col="8" text="핸드폰"/>
+                <Cell col="9" text="핸드폰"/>
+                <Cell col="10" text="전화번호"/>
+                <Cell col="11" text="전화번호"/>
+                <Cell col="12" text="전화번호2"/>
+                <Cell col="13" text="전화번호2"/>
+                <Cell col="14" text="주소"/>
+                <Cell col="15" text="주소"/>
+                <Cell col="16" text="차량번호"/>
+                <Cell col="17" text="차종"/>
+                <Cell col="18" text="계약상태"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:ordDay" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="2" text="bind:custNo"/>
+                <Cell col="3" displaytype="normal" text="bind:birthDay" mask="####-**-**"/>
+                <Cell col="4" displaytype="normal" text="bind:buslNo" mask="###-##-#####"/>
+                <Cell col="5" text="bind:custNm"/>
+                <Cell col="6" text="bind:genderNm"/>
+                <Cell col="7" text="bind:lfNm"/>
+                <Cell col="8" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
+                <Cell col="9" text="bind:mobNo"/>
+                <Cell col="10" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
+                <Cell col="11" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="12" text="bind:telNo2" expr="expr:FN_numberMaskReturn(telNo2)"/>
+                <Cell col="13" text="bind:telNo2" expr="expr:FN_numberHyphenInReturn(telNo2)"/>
+                <Cell col="14" text="bind:addr"/>
+                <Cell col="15" text="bind:addr"/>
+                <Cell col="16" text="bind:carNo"/>
+                <Cell col="17" text="bind:carKind"/>
+                <Cell col="18" text="bind:statNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_ordNoSearch" taborder="0" left="10" top="10" height="70" scrollbars="none" cssclass="div_WF_searchBg" width="1125">
+          <Layouts>
+            <Layout width="1125" height="248">
+              <Static id="st_A_custTp" taborder="5" text="고객유형" cssclass="sta_WF_schTitle" left="20" top="13" height="21" domainId="nexa.s_condition" width="100"/>
+              <Radio id="ra_A_custTp" taborder="0" innerdataset="@ds_custTpCd" codecolumn="cd" datacolumn="cdNm" direction="vertical" top="10" height="21" onitemchanged="div_ordNoSearch_ra_A_custTp_onitemchanged" width="120" left="140"/>
+              <Static id="st_A_mobNo" taborder="9" text="핸드폰" cssclass="sta_WF_schTitle" left="540" top="37" height="21" domainId="nexa.s_condition" width="100"/>
+              <MaskEdit id="ed_A_mobNo" taborder="5" type="string" mask="###-####-####" top="37" height="21" width="120" left="660" onkeyup="div_ordNoSearch_ed_A_mobNo_onkeyup"/>
+              <Static id="st_A_custNm" taborder="13" text="고객명" cssclass="sta_WF_schTitle" left="20" top="38" height="21" domainId="nexa.s_condition" width="100"/>
+              <Edit id="ed_A_custNm" taborder="0" top="38" height="21" width="120" left="140" onkeyup="div_ordNoSearch_ed_A_custNm_onkeyup"/>
+              <Div id="div_ordNo01" taborder="4" left="263" top="38" height="30" scrollbars="none" width="277">
+                <Layouts>
+                  <Layout>
+                    <Static id="st_A_birthDay" taborder="8" text="법정생년월일" cssclass="sta_WF_schTitle" visible="true" left="17" top="0" height="21" domainId="nexa.s_condition" width="100"/>
+                    <MaskEdit id="ed_A_birthDay" taborder="1" type="string" mask="####-##-##" top="0" height="21" width="120" left="138" onkeyup="div_ordNoSearch_div_ordNo01_ed_A_birthDay_onkeyup" onsetfocus="div_ordNoSearch_div_ordNo01_ed_A_birthDay_onsetfocus"/>
+                    <Static id="Static06" taborder="16" text="FIX w20" cssclass="Guide_color" visible="false" left="-4" top="0" width="20" height="47"/>
+                    <Static id="Static01" taborder="17" text="FIX w20" cssclass="Guide_color" visible="false" left="118" top="0" width="20" height="26" onclick="div_ordNoSearch_div_ordNo01_Static01_onclick"/>
+                    <Static id="Static02" taborder="18" text="FIX w20" cssclass="Guide_color" visible="false" left="258" top="0" width="20" height="26"/>
+                    <Static id="Static04" taborder="19" text="FIX w20" cssclass="Guide_color" visible="false" left="380" top="0" width="20" height="26"/>
+                    <Static id="Static05" taborder="20" text="FIX w20" cssclass="Guide_color" visible="false" left="520" top="0" width="20" height="26"/>
+                    <Static id="Static07" taborder="21" text="FIX w20" cssclass="Guide_color" visible="false" left="640" top="0" width="20" height="26"/>
+                    <Static id="Static08" taborder="22" text="FIX w20" cssclass="Guide_color" visible="false" left="780" top="0" width="20" height="26"/>
+                    <Static id="Static09" taborder="23" text="FIX w20" cssclass="Guide_color" visible="false" left="900" top="0" width="20" height="26"/>
+                    <Static id="Static03" taborder="24" text="FIX h6" cssclass="Guide_color" visible="false" left="0" top="20" width="1111" height="6"/>
+                    <Static id="Static10" taborder="25" text="FIX w20" cssclass="Guide_color" visible="false" left="1040" top="0" width="20" height="47"/>
+                    <Static id="Static11" taborder="26" text="FIX w20" cssclass="Guide_color" visible="false" left="1105" top="0" width="20" height="47"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="btn_search" taborder="7" text="검색" cssclass="btn_WF_CRUD" top="36" height="22" domainId="nexa.add" onclick="div_ordNoSearch_btn_search_onclick" width="45" left="1060"/>
+              <Static id="Static07" taborder="8" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1121"/>
+              <Static id="Static03" taborder="9" text="FIX h6" cssclass="Guide_color" visible="false" left="0" top="32" height="6" width="1121"/>
+              <Static id="Static06" taborder="10" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="38"/>
+              <Static id="Static02" taborder="11" text="FIX w20" cssclass="Guide_color" visible="false" left="120" top="0" width="20" height="38"/>
+              <Static id="Static00" taborder="12" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="60" height="12" right="0"/>
+              <Static id="Static09" taborder="13" text="FIX w20" cssclass="Guide_color" visible="false" left="900" top="5" width="20" height="27"/>
+              <Static id="Static01" taborder="14" text="FIX w20" cssclass="Guide_color" visible="false" left="260" top="0" width="20" height="38"/>
+              <Static id="st_orderCd" taborder="15" text="주문유형" cssclass="sta_WF_schTitle" left="280" top="13" width="100" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static04" taborder="16" text="FIX w20" cssclass="Guide_color" visible="false" left="380" top="0" width="20" height="38"/>
+              <Combo id="cb_orderCd" taborder="17" left="400" top="12" width="120" height="21" innerdataset="ds_orderCd" codecolumn="cd" datacolumn="cdNm" index="-1" oncloseup="div_ordNoSearch_cb_orderCd_oncloseup"/>
+              <Static id="Static05" taborder="18" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="25" width="20" height="38"/>
+              <Static id="Static08" taborder="19" text="FIX h12" cssclass="Guide_color" visible="false" left="521" top="10" width="600" height="28"/>
+              <Static id="Static10" taborder="20" text="FIX w20" cssclass="Guide_color" visible="false" left="643" top="32" width="17" height="31"/>
+              <Static id="Static11" taborder="21" text="FIX w20" cssclass="Guide_color" visible="false" left="120" top="31" width="20" height="38"/>
+              <Div id="div_ordNo02" taborder="22" left="268" top="36" width="252" height="26" scrollbars="none" visible="false">
+                <Layouts>
+                  <Layout>
+                    <Static id="st_A_buslNo" taborder="144" text="사업자번호" cssclass="sta_WF_schTitle" left="12" top="2" width="100" height="21" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_A_buslNo" taborder="145" type="string" mask="###-##-#####" onsetfocus="div_ordNoSearch_div_ordNo02_ed_A_buslNo_onsetfocus" onkeyup="div_ordNoSearch_div_ordNo02_ed_A_buslNo_onkeyup" left="132" top="3" width="120" height="21"/>
+                    <Static id="Static04" taborder="146" text="FIX w20" cssclass="Guide_color" visible="false" left="380" top="0" width="20" height="47"/>
+                    <Static id="Static05" taborder="147" text="FIX w20" cssclass="Guide_color" visible="false" left="520" top="0" width="20" height="47"/>
+                    <Static id="Static07" taborder="148" text="FIX w20" cssclass="Guide_color" visible="false" left="640" top="0" width="20" height="47"/>
+                    <Static id="Static08" taborder="149" text="FIX w20" cssclass="Guide_color" visible="false" left="780" top="0" width="20" height="47"/>
+                    <Static id="Static09" taborder="150" text="FIX w20" cssclass="Guide_color" visible="false" left="900" top="0" width="20" height="47"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" top="471" height="21" domainId="nexa.add" width="41" left="1049" onclick="btn_choice_onclick"/>
+        <Button id="btn_close" taborder="4" text="닫기" top="471" height="21" domainId="nexa.add" onclick="btn_close_onclick" width="41" left="1094"/>
+        <Div id="div_ordNoDetail" taborder="3" left="10" top="296" height="163" scrollbars="none" right="10" visible="true">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="40" cssclass="sta_WF_detailLabel2" top="30" height="31" left="0" width="1125"/>
+              <Static id="Static01" taborder="41" cssclass="sta_WF_detailLabel2" top="90" height="31" left="0" width="1125"/>
+              <Static id="Static02" taborder="42" cssclass="sta_WF_detailLabel2" top="60" height="31" left="0" width="1125"/>
+              <Static id="Static04" taborder="44" cssclass="sta_WF_detailLabel2" top="120" height="31" left="0" width="1125"/>
+              <Static id="Static10" taborder="39" cssclass="sta_WF_detailLabel2" top="0" height="31" left="0" width="1125"/>
+              <MaskEdit id="ed_birthDay" taborder="0" type="string" mask="####-##-##" left="155" top="35" height="21" enable="false" width="200"/>
+              <Static id="st_birthDay" taborder="1" text="법정생년월일" cssclass="sta_WF_detailLabel" left="0" top="30" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="Static34" taborder="2" cssclass="sta_WF_detailLabel2" left="10" top="433" width="281" height="31"/>
+              <Edit id="ed_custNo" taborder="9" onkeyup="div_search_edt_searchKeyword_onkeyup" left="876" top="5" height="20" width="240" enable="false"/>
+              <Static id="st_custNo" taborder="10" text="고객코드" cssclass="sta_WF_detailLabel" left="721" top="0" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_genderNm" taborder="11" onkeyup="div_search_edt_searchKeyword_onkeyup" left="876" top="35" height="20" width="240" enable="false"/>
+              <Static id="st_genderNm" taborder="12" text="성별" cssclass="sta_WF_detailLabel" left="721" top="30" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_lfNm" taborder="13" onkeyup="div_search_edt_searchKeyword_onkeyup" left="876" top="65" height="20" width="240" enable="false"/>
+              <Static id="st_lfNm" taborder="14" text="내외국인" cssclass="sta_WF_detailLabel" left="721" top="60" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_telNo2" taborder="15" onkeyup="div_search_edt_searchKeyword_onkeyup" left="876" top="95" height="20" width="240" enable="false"/>
+              <Static id="st_telNo2" taborder="16" text="전화번호2" cssclass="sta_WF_detailLabel" left="721" top="90" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_addr" taborder="17" onkeyup="div_search_edt_searchKeyword_onkeyup" left="516" top="125" height="21" enable="false" width="600"/>
+              <Edit id="ed_telNo" taborder="18" onkeyup="div_search_edt_searchKeyword_onkeyup" left="516" top="95" height="20" width="200" enable="false"/>
+              <Static id="st_telNo" taborder="19" text="전화번호" cssclass="sta_WF_detailLabel" left="360" top="90" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="st_addr" taborder="20" text="주소" cssclass="sta_WF_detailLabel" left="360" top="120" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="st_ordNo" taborder="21" text="계약번호" cssclass="sta_WF_detailLabel" left="360" top="0" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_ordNo" taborder="22" onkeyup="div_search_edt_searchKeyword_onkeyup" left="516" top="5" height="20" width="200" enable="true" readonly="true"/>
+              <Edit id="ed_custNm" taborder="23" onkeyup="div_search_edt_searchKeyword_onkeyup" left="516" top="35" height="20" width="200" enable="false"/>
+              <Edit id="ed_carKind" taborder="24" onkeyup="div_search_edt_searchKeyword_onkeyup" left="516" top="65" height="20" width="200" enable="false"/>
+              <Static id="st_carKind" taborder="25" text="차종" cssclass="sta_WF_detailLabel" left="360" top="60" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="st_custNm" taborder="26" text="고객명" cssclass="sta_WF_detailLabel" left="360" top="30" height="31" domainId="nexa.s_condition" width="150"/>
+              <Edit id="ed_statNm" taborder="29" onkeyup="div_search_edt_searchKeyword_onkeyup" left="155" top="125" height="21" width="200" enable="false"/>
+              <Edit id="ed_mobNo" taborder="30" onkeyup="div_search_edt_searchKeyword_onkeyup" left="155" top="95" height="21" width="200" enable="false"/>
+              <Edit id="ed_carNo" taborder="31" onkeyup="div_search_edt_searchKeyword_onkeyup" left="155" top="65" height="21" width="200" enable="false"/>
+              <Static id="st_carNo" taborder="33" text="차량번호" cssclass="sta_WF_detailLabel" left="0" top="60" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="st_mobNo" taborder="34" text="핸드폰" cssclass="sta_WF_detailLabel" left="0" top="90" height="31" domainId="nexa.s_condition" width="150"/>
+              <Static id="st_statNm" taborder="35" text="계약상태" cssclass="sta_WF_detailLabel" left="0" top="120" height="31" domainId="nexa.s_condition" width="150"/>
+              <Calendar id="cal__ordDay" taborder="37" value="20150715" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" left="155" top="5" width="200" height="21" enable="false"/>
+              <Static id="st_ordDay" taborder="38" text="계약일자" cssclass="sta_WF_detailLabel" domainId="nexa.s_condition" left="0" top="0" width="150" height="31"/>
+              <MaskEdit id="ed_buslNo" taborder="32" type="string" mask="###-##-#####" visible="false" left="155" top="35" height="21" width="200" enable="false"/>
+              <Static id="st_buslNo" taborder="45" text="사업자번호" cssclass="sta_WF_detailLabel" visible="false" left="0" top="30" width="150" height="31" domainId="nexa.s_condition"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_custTpCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orderCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ordNoList3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="genderNm" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="lfNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="carKind" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="orderNm" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ordNoListCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="genderNm" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="lfNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="carKind" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item4" compid="div_ordNoDetail.ed_buslNo" propid="value" datasetid="ds_ordNoList3" columnid="buslNo"/>
+      <BindItem id="item7" compid="div_ordNoDetail.ed_carNo" propid="value" datasetid="ds_ordNoList3" columnid="carNo"/>
+      <BindItem id="item6" compid="div_ordNoDetail.ed_mobNo" propid="value" datasetid="ds_ordNoList3" columnid="mobNo"/>
+      <BindItem id="item17" compid="div_ordNoDetail.ed_statNm" propid="value" datasetid="ds_ordNoList3" columnid="statNm"/>
+      <BindItem id="item8" compid="div_ordNoDetail.ed_carKind" propid="value" datasetid="ds_ordNoList3" columnid="carKind"/>
+      <BindItem id="item5" compid="div_ordNoDetail.ed_custNm" propid="value" datasetid="ds_ordNoList3" columnid="custNm"/>
+      <BindItem id="item1" compid="div_ordNoDetail.ed_ordNo" propid="value" datasetid="ds_ordNoList3" columnid="ordNo"/>
+      <BindItem id="item11" compid="div_ordNoDetail.ed_telNo" propid="value" datasetid="ds_ordNoList3" columnid="telNo"/>
+      <BindItem id="item13" compid="div_ordNoDetail.ed_addr" propid="value" datasetid="ds_ordNoList3" columnid="addr"/>
+      <BindItem id="item12" compid="div_ordNoDetail.ed_telNo2" propid="value" datasetid="ds_ordNoList3" columnid="telNo2"/>
+      <BindItem id="item9" compid="div_ordNoDetail.ed_lfNm" propid="value" datasetid="ds_ordNoList3" columnid="lfNm"/>
+      <BindItem id="item10" compid="div_ordNoDetail.ed_genderNm" propid="value" datasetid="ds_ordNoList3" columnid="genderNm"/>
+      <BindItem id="item2" compid="div_ordNoDetail.ed_custNo" propid="value" datasetid="ds_ordNoList3" columnid="custNo"/>
+      <BindItem id="item3" compid="div_ordNoDetail.ed_birthDay" propid="value" datasetid="ds_ordNoList3" columnid="birthDay"/>
+      <BindItem id="item0" compid="div_ordNoDetail.cal__ordDay" propid="value" datasetid="ds_ordNoList3" columnid="ordDay"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+///callBack///
+this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt,checkAuthGrpuCd){
+	if( strSvcId == "initRTCOMMOrderNo" ){
+	
+		var rowCtCustTp = this.ds_custTpCd.rowcount;
+		if( rowCtCustTp != 0 ){
+			this.div_ordNoSearch.ra_A_custTp.set_value( this.ds_custTpCd.getColumn(0,"cd") );
+		}
+		
+		var rowcOrderCd = this.ds_orderCd.rowcount;
+		if( rowcOrderCd != 0 ){
+			
+			var insert = this.ds_orderCd.insertRow( 0 );
+			this.ds_orderCd.setColumn(insert,"cd"," ");
+			this.ds_orderCd.setColumn(insert,"cdNm","전체");
+			if(this.parent.p_arg=="RTSDDirectOrder"){
+				this.div_ordNoSearch.cb_orderCd.set_value("03");
+				this.div_ordNoSearch.cb_orderCd.set_enable(false);
+			}
+			else{
+			this.div_ordNoSearch.cb_orderCd.set_value( " " );
+			}
+				
+			
+			this.ds_orderCd.filter("cd != '02'");
+			
+		}
+	}
+	
+	if( strSvcId == "ordNoList3" ){
+		var ct = this.ds_ordNoList3.rowcount;
+		if( ct == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grid_ordNoList.set_nodatatext( "조회된 데이터가 없습니다." );
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMLumpSum_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{	
+	Ex.core.init(obj);	
+	this.fn_init();	
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+///콤보박스 데이터셋///
+this.fn_init = function(){
+	var sSvcID      	= "initRTCOMMOrderNo";  
+	var sController   	= "rtms/comm/initRTCOMMOrderNo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	sOutDatasets += " ds_custTpCd=mapDsCustTpCd ";
+	sOutDatasets += " ds_orderCd=mapDsOrderCd ";
+	
+	
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||고객유형 radio_button_event|||*/
+this.div_ordNoSearch_ra_A_custTp_onitemchanged = function(obj,e){
+	var custTpVal = nvl(this.div_ordNoSearch.ra_A_custTp.value);
+	this.ds_ordNoList3.clearData();
+	if( custTpVal == "01" ){
+		this.div_ordNoSearch.div_ordNo01.set_visible(true);
+		this.div_ordNoSearch.div_ordNo02.set_visible(false);
+		
+		this.div_ordNoDetail.st_buslNo.set_visible(false);
+		this.div_ordNoDetail.ed_buslNo.set_visible(false);
+		
+		this.div_ordNoDetail.st_birthDay.set_visible(true);
+		this.div_ordNoDetail.ed_birthDay.set_visible(true);
+		
+		this.div_ordNoDetail.st_genderNm.set_visible(true);
+		this.div_ordNoDetail.ed_genderNm.set_visible(true);
+		
+		this.div_ordNoDetail.st_lfNm.set_visible(true);
+		this.div_ordNoDetail.ed_lfNm.set_visible(true);
+		
+		this.div_ordNoDetail.st_telNo2.set_text("전화번호2");
+		
+		this.grid_ordNoList.setRealColSize( 3, 100 );//법정생년월일
+		this.grid_ordNoList.setRealColSize( 4, 0 );//사업자번호
+		this.grid_ordNoList.setRealColSize( 6, 100 );//성별
+		this.grid_ordNoList.setRealColSize( 7, 100 );//내외국인
+		
+		this.grid_ordNoList.setCellProperty( "head", 10, "text", "전화번호2");
+	}else if( custTpVal == "02" ){
+		this.div_ordNoSearch.div_ordNo01.set_visible(false);
+		this.div_ordNoSearch.div_ordNo02.set_visible(true);
+		
+		this.div_ordNoDetail.st_buslNo.set_visible(true);
+		this.div_ordNoDetail.ed_buslNo.set_visible(true);
+		
+		this.div_ordNoDetail.st_birthDay.set_visible(false);
+		this.div_ordNoDetail.ed_birthDay.set_visible(false);
+		
+		this.div_ordNoDetail.st_genderNm.set_visible(false);
+		this.div_ordNoDetail.ed_genderNm.set_visible(false);
+		
+		this.div_ordNoDetail.st_lfNm.set_visible(false);
+		this.div_ordNoDetail.ed_lfNm.set_visible(false);
+		
+		this.div_ordNoDetail.st_telNo2.set_text("회사전화");
+		
+		this.grid_ordNoList.setRealColSize( 3, 0 );//법정생년월일
+		this.grid_ordNoList.setRealColSize( 4, 100 );//사업자번호
+		this.grid_ordNoList.setRealColSize( 6, 0 );//성별
+		this.grid_ordNoList.setRealColSize( 7, 0 );//내외국인
+		this.grid_ordNoList.setCellProperty( "head", 10, "text", "회사전화");
+	}else{
+		return false;
+	}
+}
+/*|||검색|||*/
+this.div_ordNoSearch_btn_search_onclick = function(obj,e){
+	var custTpVal = nvl(this.div_ordNoSearch.ra_A_custTp.value);
+	if( custTpVal == "01" ){
+		var sArgs 			= "";
+		var custTp		= nvl(this.div_ordNoSearch.ra_A_custTp.value);
+		var orderCd 		= nvl(this.div_ordNoSearch.cb_orderCd.value);
+		
+		var custNm 		= nvl(this.div_ordNoSearch.ed_A_custNm.value);
+		var birthDay 	= nvl(this.div_ordNoSearch.div_ordNo01.ed_A_birthDay.value);
+		var mobNo 		= nvl(this.div_ordNoSearch.ed_A_mobNo.value);
+				
+		if( custNm != "" ){
+			if( birthDay == "" ){
+				alert("생년월일 값이 없습니다.");
+				return false;
+			}
+		}
+		if( birthDay != "" ){
+			if( custNm == "" ){
+				alert("고객명 값이 없습니다.");
+				return false;
+			}
+		}
+		if( custNm == "" && birthDay == ""  && mobNo == "" ){
+			alert("고객명, 법정생년월일, 핸드폰 중 하나이상 검색조건 값이 있어야합니다.");
+			return false;
+		}
+		sArgs += Ex.util.setParam("custTp", custTp);
+		sArgs += Ex.util.setParam("orderCd", orderCd);
+		sArgs += Ex.util.setParam("birthDay", birthDay);
+		sArgs += Ex.util.setParam("mobNo", mobNo);
+		sArgs += Ex.util.setParam("custNm", custNm);
+		
+		this.FN_search(sArgs);
+	}else if( custTpVal == "02" ){
+		var sArgs 			= "";
+		var custTp		= nvl(this.div_ordNoSearch.ra_A_custTp.value);
+		var orderCd 	= nvl(this.div_ordNoSearch.cb_orderCd.value);
+		var custNm 		= nvl(this.div_ordNoSearch.ed_A_custNm.value);
+		var buslNo 		= nvl(this.div_ordNoSearch.div_ordNo02.ed_A_buslNo.value);
+		var mobNo 		= nvl(this.div_ordNoSearch.ed_A_mobNo.value);
+		
+		
+		if( custNm != "" ){
+			if( buslNo == "" ){
+				alert("사업자번호 값이 없습니다.");
+				return false;
+			}
+		}
+		if( buslNo != "" ){
+			if( custNm == "" ){
+				alert("법인명 값이 없습니다.");
+				return false;
+			}
+		}
+		if( custNm == "" && buslNo == "" && mobNo == "" ){
+			alert("법인명, 사업자번호, 핸드폰 중 하나이상 검색조건 값이 있어야합니다.");
+			return false;
+		}
+		
+		sArgs += Ex.util.setParam("custTp",custTp);
+		sArgs += Ex.util.setParam("orderCd",orderCd);
+		sArgs += Ex.util.setParam("buslNo",buslNo);
+		sArgs += Ex.util.setParam("custNm",custNm);
+		sArgs += Ex.util.setParam("mobNo",mobNo);
+		
+		this.FN_search(sArgs);
+	}else{
+		return false;
+	}
+}
+/*|||검색|||*/
+this.FN_search = function(sArgs){
+	var sSvcID        	= "ordNoList3";                 
+	var sController   	= "rtms/comm/ordNoList3.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_ordNoList3=ordNoMap3";
+	var sArgs 			= sArgs;	
+	var fn_callBack		= "fn_callBack";
+	this.ds_ordNoList3.deleteAll();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/////on_key_up////////////////////////////////////////////////////////////////////
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_ordNoSearch_ed_A_custNm_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_ordNoSearch_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_ordNoSearch_div_ordNo02_ed_A_buslNo_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_ordNoSearch_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_ordNoSearch_ed_A_mobNo_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_ordNoSearch_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_ordNoSearch_div_ordNo01_ed_A_birthDay_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_ordNoSearch_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMLumpSum_pop_onkeyup = function(obj,e){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+///선택버튼///
+this.btn_choice_onclick = function(obj,e){
+	this.FN_choice();
+}
+
+this.grid_ordNoList_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_choice = function(){
+	var pos = this.ds_ordNoList3.rowposition;
+	if( pos == -1 ){
+		alert("선택된 행이 없습니다.");
+	}else{	
+		if(this.parent.p_arg == "popupTestForm") {
+			var ordNo 	 = this.ds_ordNoList3.getColumn(pos, "ordNo");
+			var birthDay = this.ds_ordNoList3.getColumn(pos, "birthDay");
+			var telNo  	 = this.ds_ordNoList3.getColumn(pos, "telNo");
+			this.close(this.opener.returnOrderNoInfo(ordNo, birthDay, telNo));		
+		}else if (this.parent.p_arg=="RTSDDirectOrder" || this.parent.p_arg=="RTSDMemberOrder"){
+		
+			var ordNo 	 = this.ds_ordNoList3.getColumn(pos, "ordNo");
+			this.close(this.opener.returnOrderNoInfo(ordNo));		
+			
+		}else{
+			this.ds_ordNoListCp.clearData();
+			var idx = this.ds_ordNoListCp.addRow();
+			this.ds_ordNoListCp.copyRow(idx, this.ds_ordNoList3, pos);
+			var arr = [this.ds_ordNoListCp];
+			this.close(this.opener.returnOrderNoInfo(arr));
+		}
+	}
+}
+///취소버튼///
+this.btn_close_onclick = function(obj,e){
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

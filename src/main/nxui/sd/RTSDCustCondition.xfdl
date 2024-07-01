@@ -1,0 +1,1352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCustCondition" classname="RTSD" left="0" top="0" width="1147" height="2175" titletext="고객현황" scrollbars="none" onload="RTSDCustCondition_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="0" height="44" scrollbars="none" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout width="1092" height="142">
+              <Edit id="ed_custNm" taborder="0" left="100" top="9" width="100" onkeyup="FN_onkeyup" height="21"/>
+              <Static id="st_custNm" taborder="5" text="이름" cssclass="sta_WF_schTitle" left="20" top="9" width="80" height="21" domainId="nexa.s_condition"/>
+              <MaskEdit id="ed_birthDay" taborder="1" type="string" mask="####-##-##" onkeyup="FN_onkeyup" left="300" top="9" width="100" height="21"/>
+              <Static id="Static07" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" height="9" width="1118"/>
+              <Static id="Static06" taborder="7" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="40"/>
+              <Static id="st_birthDay" taborder="8" text="생년월일" cssclass="sta_WF_schTitle" left="220" top="9" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="st_mobNo" taborder="9" text="휴대폰" cssclass="sta_WF_schTitle" left="420" top="9" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="10" cssclass="Guide_color" visible="false" left="200" top="0" width="20" height="40"/>
+              <Static id="Static04" taborder="12" cssclass="Guide_color" visible="false" left="400" top="0" width="20" height="40"/>
+              <Static id="st_searchCondition00" taborder="14" text="계약번호" cssclass="sta_WF_schTitle" left="820" top="9" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="4" onkeyup="FN_onkeyup" left="900" top="9" width="120" height="21"/>
+              <Button id="btn_odrPopUp" taborder="15" onclick="fn_odrPopUp" cssclass="btn_WF_edtSch" left="1001" top="9" width="20" height="21"/>
+              <Static id="st_searchCondition03" taborder="16" text="차량번호" cssclass="sta_WF_schTitle" left="620" top="9" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_carNo" taborder="3" maxlength="80" left="700" top="9" width="100" height="21" onkeyup="FN_onkeyup"/>
+              <Static id="Static10" taborder="19" cssclass="Guide_color" visible="false" left="800" top="0" width="20" height="40"/>
+              <Static id="Static03" taborder="24" cssclass="Guide_color" visible="false" left="0" top="30" height="10" width="1118"/>
+              <Static id="Static08" taborder="26" cssclass="Guide_color" visible="false" left="599" top="0" width="20" height="40"/>
+              <Edit id="ed_mobNo" taborder="27" maxlength="80" onkeyup="FN_onkeyupMobNo" left="500" top="9" width="100" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="1" text="고객정보" cssclass="sta_WF_subTitle" left="0" top="55" width="100" height="20"/>
+        <Grid id="grd_list01" taborder="3" binddataset="ds_list01" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="0" top="80" height="200" width="1122" cellclickbound="control" autosizingtype="none" autofittype="col" onselectchanged="grd_list01_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="400"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="고객번호"/>
+                <Cell col="1" text="고객명"/>
+                <Cell col="2" text="고객유형"/>
+                <Cell col="3" text="법정생년월일"/>
+                <Cell col="4" text="성별"/>
+                <Cell col="5" text="휴대폰"/>
+                <Cell col="6" text="이메일주소"/>
+                <Cell col="7" text="고 객 주 소"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:custNo"/>
+                <Cell col="1" text="bind:custNm"/>
+                <Cell col="2" text="bind:custTpNm"/>
+                <Cell col="3" text="bind:birthDay" mask="####-##-##"/>
+                <Cell col="4" text="bind:genderNm"/>
+                <Cell col="5" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
+                <Cell col="6" text="bind:emailAddr"/>
+                <Cell col="7" text="bind:addr"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="2" text="차량정보" cssclass="sta_WF_subTitle" left="0" top="291" width="100" height="20"/>
+        <Grid id="grd_list02" taborder="5" binddataset="ds_list02" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="0" top="316" width="350" height="200" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카메이커"/>
+                <Cell col="1" text="차 종"/>
+                <Cell col="2" text="차 량 번 호"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:makerCdNm"/>
+                <Cell col="1" text="bind:mcNm"/>
+                <Cell col="2" text="bind:carNo"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_list03" taborder="7" binddataset="ds_list03" useinputpanel="false" cellsizingtype="col" cellmovingtype="col" nodatatext="조회된 데이터가 없습니다." left="365" top="316" height="200" width="757" autofittype="none" onselectchanged="grd_list03_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="160"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="40"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="계약상태" autosizecol="limitmax"/>
+                <Cell col="2" text="계약일자"/>
+                <Cell col="3" text="계약시간"/>
+                <Cell col="4" text="장착일자"/>
+                <Cell col="5" text="장착시간"/>
+                <Cell col="6" text="고객명"/>
+                <Cell col="7" text="대리점"/>
+                <Cell col="8" text="지사"/>
+                <Cell col="9" text="지점"/>
+                <Cell col="10" text="차종"/>
+                <Cell col="11" text="차량번호"/>
+                <Cell col="12" text="판매인명"/>
+                <Cell col="13" text="판매인코드"/>
+                <Cell col="14" text="성별"/>
+                <Cell col="15" text="주행거리"/>
+                <Cell col="16" text="연령"/>
+                <Cell col="17" text="지역"/>
+                <Cell col="18" text="계절구분"/>
+                <Cell col="19" text="구매전 제조사"/>
+                <Cell col="20" text="채널"/>
+                <Cell col="21" text="핸드폰"/>
+                <Cell col="22" text="전화번호"/>
+                <Cell col="23" text="중도완납일"/>
+                <Cell col="24" text="소유권이전일"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:statNm"/>
+                <Cell col="2" displaytype="date" edittype="none" text="bind:ordDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="3" text="bind:regDt"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="5" text="bind:procTm"/>
+                <Cell col="6" text="bind:custNm"/>
+                <Cell col="7" text="bind:agencyNm"/>
+                <Cell col="8" text="bind:salesGroupNm"/>
+                <Cell col="9" text="bind:salesOfficeNm"/>
+                <Cell col="10" text="bind:modelNm"/>
+                <Cell col="11" text="bind:carNo"/>
+                <Cell col="12" text="bind:orgAgnm"/>
+                <Cell col="13" text="bind:ordAgent"/>
+                <Cell col="14" text="bind:genderCd"/>
+                <Cell col="15" text="bind:cMileage"/>
+                <Cell col="16" text="bind:age"/>
+                <Cell col="17" text="bind:addrArea"/>
+                <Cell col="18" text="bind:seasonNm"/>
+                <Cell col="19" text="bind:mfNm"/>
+                <Cell col="20" text="bind:chanNm"/>
+                <Cell col="21" text="bind:mobNo"/>
+                <Cell col="22" text="bind:telNo"/>
+                <Cell col="23" text="bind:cancDay"/>
+                <Cell col="24" text="bind:osDay"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총합계"/>
+                <Cell col="1" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+                <Cell col="24"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="4" text="계약현황" cssclass="sta_WF_subTitle" left="365" top="291" width="100" height="20"/>
+        <Static id="Static02" taborder="6" cssclass="Guide_color" visible="false" left="0" top="44" height="15" width="1147"/>
+        <Static id="Static03" taborder="8" cssclass="Guide_color" visible="false" left="0" top="70" height="10" width="1147"/>
+        <Static id="Static08" taborder="16" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="1939"/>
+        <Static id="Static10" taborder="18" text="결제내역" cssclass="sta_WF_subTitle" left="0" top="759" width="100" height="28"/>
+        <Grid id="grd_list04" taborder="9" binddataset="ds_list04" useinputpanel="false" left="0" top="786" height="200" nodatatext="조회된 데이터가 없습니다." width="1122" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="91"/>
+                <Column size="96"/>
+                <Column size="100"/>
+                <Column size="128"/>
+                <Column size="80"/>
+                <Column size="102"/>
+                <Column size="121"/>
+                <Column size="111"/>
+                <Column size="114"/>
+                <Column size="0"/>
+                <Column size="0"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="결제방법"/>
+                <Cell col="2" text="결제일"/>
+                <Cell col="3" text="은행"/>
+                <Cell col="4" text="계좌번호"/>
+                <Cell col="5" text="예금주"/>
+                <Cell col="6" text="카드사"/>
+                <Cell col="7" text="카드번호"/>
+                <Cell col="8" text="법정생년월일"/>
+                <Cell col="9" text="사업자번호"/>
+                <Cell col="10" text="삭제가능여부"/>
+                <Cell col="11"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" displaytype="normal" text="bind:payMthdNm"/>
+                <Cell col="2" displaytype="normal" text="bind:payDd" combodataset="expr:payMthd == &quot;A&quot; ? &quot;dsR005&quot; : &quot;dsR006&quot;" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="3" displaytype="normal" text="bind:bankNm"/>
+                <Cell col="4" text="bind:acctNo"/>
+                <Cell col="5" text="bind:depositor"/>
+                <Cell col="6" displaytype="normal" text="bind:cardcomNm"/>
+                <Cell col="7" text="bind:cardNo"/>
+                <Cell col="8" displaytype="normal" text="bind:ebirDay" mask="##-##-##" calendardisplaynulltype="none"/>
+                <Cell col="9" text="bind:buslNo" mask="###-##-#####"/>
+                <Cell col="10" text="bind:deleteTp"/>
+                <Cell col="11" text="bind:tcgrpNo"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static12" taborder="19" cssclass="Guide_color" visible="false" left="0" top="986" height="15" width="1147"/>
+        <Static id="Static13" taborder="20" text="수납현황" cssclass="sta_WF_subTitle" left="0" top="997" width="100" height="20"/>
+        <Grid id="grd_list05" taborder="10" binddataset="ds_list05" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="0" top="1022" width="551" height="200" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="75"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수납일자"/>
+                <Cell col="1" text="수납방법"/>
+                <Cell col="2" text="수납금액"/>
+                <Cell col="3" text="수납유형"/>
+                <Cell col="4" text="청구회차"/>
+                <Cell col="5" text="수납취소여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvDay"/>
+                <Cell col="1" text="bind:recpPnm"/>
+                <Cell col="2" style="align:right;" text="bind:recpAmt"/>
+                <Cell col="3" text="bind:recpFnm"/>
+                <Cell col="4" text="bind:recpNu"/>
+                <Cell col="5" text="bind:cncStat"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static15" taborder="21" text="프리미엄서비스" cssclass="sta_WF_subTitle" left="566" top="997" width="100" height="20"/>
+        <Static id="Static17" taborder="22" text="연체현황" cssclass="sta_WF_subTitle" left="0" top="1233" width="81" height="20"/>
+        <Grid id="grd_list07" taborder="12" binddataset="ds_list07" useinputpanel="false" left="0" top="1258" height="200" nodatatext="조회된 데이터가 없습니다." width="1122">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="150"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="150"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="연체기준일자"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객번호"/>
+                <Cell col="3" text="고객명"/>
+                <Cell col="4" text="상품명"/>
+                <Cell col="5" text="계약기간"/>
+                <Cell col="6" text="차량번호"/>
+                <Cell col="7" text="장착일자"/>
+                <Cell col="8" text="결제방법"/>
+                <Cell col="9" text="결제일"/>
+                <Cell col="10" text="청구구분"/>
+                <Cell col="11" text="연체회차"/>
+                <Cell col="12" text="연체금액"/>
+                <Cell col="13" text="계약처코드"/>
+                <Cell col="14" text="계약처명"/>
+                <Cell col="15" text="계약처연락처"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" style="cursor:hand;" text="bind:delyDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="text" edittype="readonly" style="align: ;cursor:hand;" text="bind:ordNo"/>
+                <Cell col="2" style="cursor:hand;" text="bind:custNo"/>
+                <Cell col="3" style="cursor:hand;" text="bind:custNm"/>
+                <Cell col="4" style="cursor:hand;" text="bind:matNm"/>
+                <Cell col="5" text="bind:periodCd"/>
+                <Cell col="6" style="cursor:hand;" text="bind:carNo"/>
+                <Cell col="7" displaytype="date" style="cursor:hand;" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="8" style="cursor:hand;" text="bind:payMthdNm"/>
+                <Cell col="9" style="cursor:hand;" text="bind:payDd"/>
+                <Cell col="10" style="cursor:hand;" text="bind:recpTpNm"/>
+                <Cell col="11" style="cursor:hand;" text="bind:apprScnt"/>
+                <Cell col="12" displaytype="number" style="align:right middle;cursor:hand;" text="bind:apprAmt" mask="###,###,###,##0"/>
+                <Cell col="13" style="cursor:hand;" text="bind:agency"/>
+                <Cell col="14" style="cursor:hand;" text="bind:agencyNm"/>
+                <Cell col="15" style="cursor:hand;" text="bind:agencyTel"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align: ;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12" displaytype="number" style="align:right middle;" expr="dataset.getSum(&quot;apprAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static19" taborder="23" cssclass="Guide_color" visible="false" left="0" top="1458" height="15" width="1147"/>
+        <Static id="Static20" taborder="24" text="인바운드콜" cssclass="sta_WF_subTitle" left="0" top="1469" width="100" height="20"/>
+        <Grid id="grd_list08" taborder="13" binddataset="ds_list08" useinputpanel="false" cellsizingtype="col" left="0" top="1493" width="800" height="200" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="300"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화시간"/>
+                <Cell col="3" text="처리상태"/>
+                <Cell col="4" text="계약번호"/>
+                <Cell col="5" text="상담번호"/>
+                <Cell col="6" text="상담사"/>
+                <Cell col="7" text="상담전화번호"/>
+                <Cell col="8" text="상담내역"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:recvDay" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:recvTm"/>
+                <Cell col="3" text="bind:resuStNm"/>
+                <Cell col="4" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="5" text="bind:callNo"/>
+                <Cell col="6" text="bind:userIdNm"/>
+                <Cell col="7" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="8" displaytype="normal" edittype="none" text="bind:callDtl" editdisplay="edit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static23" taborder="25" cssclass="Guide_color" visible="false" left="0" top="1693" height="15" width="1147"/>
+        <Static id="Static24" taborder="26" text="아웃바운드콜" cssclass="sta_WF_subTitle" left="0" top="1704" width="103" height="20"/>
+        <Grid id="grd_list09" taborder="14" binddataset="ds_list09" useinputpanel="false" cellsizingtype="col" left="0" top="1729" width="800" height="200" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="300"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화상태"/>
+                <Cell col="3" text="계약번호"/>
+                <Cell col="4" text="고객명"/>
+                <Cell col="5" text="처리일자"/>
+                <Cell col="6" text="상담번호"/>
+                <Cell col="7" text="상담사"/>
+                <Cell col="8" text="휴대번호"/>
+                <Cell col="9" text="전화번호"/>
+                <Cell col="10" text="상담내역"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jobTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:callDay" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:callStatusNm"/>
+                <Cell col="3" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="4" text="bind:custNm"/>
+                <Cell col="5" displaytype="date" text="bind:jobDay" calendardisplaynulltype="none"/>
+                <Cell col="6" text="bind:callNo"/>
+                <Cell col="7" text="bind:userIdNm"/>
+                <Cell col="8" text="bind:mobNo" mask="###-####-####"/>
+                <Cell col="9" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="10" displaytype="normal" edittype="none" text="bind:callDtl"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static26" taborder="27" cssclass="Guide_color" visible="false" left="0" top="1929" height="15" width="1147"/>
+        <Static id="Static27" taborder="28" text="클레임 접수" cssclass="sta_WF_subTitle" left="0" top="1940" width="103" height="20"/>
+        <Static id="Static28" taborder="29" cssclass="Guide_color" visible="false" left="0" top="1955" height="10" width="1147"/>
+        <Grid id="grd_list10" taborder="15" binddataset="ds_list10" useinputpanel="false" cellsizingtype="col" left="0" top="1965" width="800" height="200" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="300"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화시간"/>
+                <Cell col="3" text="처리상태"/>
+                <Cell col="4" text="계약번호"/>
+                <Cell col="5" text="상담번호"/>
+                <Cell col="6" text="상담사"/>
+                <Cell col="7" text="상담전화번호"/>
+                <Cell col="8" text="지역"/>
+                <Cell col="9" text="도시"/>
+                <Cell col="10" text="AS담당자"/>
+                <Cell col="11" text="상담내역"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:recvDay" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:recvTm"/>
+                <Cell col="3" text="bind:resuStNm"/>
+                <Cell col="4" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="5" text="bind:callNo"/>
+                <Cell col="6" text="bind:userIdNm"/>
+                <Cell col="7" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="8" text="bind:regionNo"/>
+                <Cell col="9" text="bind:cityName"/>
+                <Cell col="10" text="bind:empName"/>
+                <Cell col="11" edittype="none" text="bind:callDtl"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_list06" taborder="11" binddataset="ds_list06" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="566" top="1022" height="200" autofittype="col" width="556">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="항목"/>
+                <Cell col="2" text="사용일자"/>
+                <Cell col="3" text="서비스점"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" text="bind:ordNo"/>
+                <Cell col="1" text="bind:serviceNm"/>
+                <Cell col="2" text="bind:procDay"/>
+                <Cell col="3" text="bind:procInNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="30" cssclass="Guide_color" visible="false" left="0" top="280" height="15" right="0"/>
+        <TextArea id="TextArea00" taborder="31" readonly="true" linespace="3" left="815" top="1493" height="200" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" width="307"/>
+        <Static id="Static05" taborder="32" cssclass="Guide_color" visible="false" left="0" top="306" height="10" width="1147"/>
+        <Static id="Static07" taborder="33" cssclass="Guide_color" visible="false" left="0" top="778" height="8" width="1147"/>
+        <Static id="Static11" taborder="34" cssclass="Guide_color" visible="false" left="0" top="1012" height="10" width="1147"/>
+        <Static id="Static16" taborder="35" cssclass="Guide_color" visible="false" left="0" top="1222" height="15" right="0"/>
+        <Static id="Static14" taborder="36" cssclass="Guide_color" visible="false" left="0" top="1248" height="10" width="1147"/>
+        <Static id="Static06" taborder="37" cssclass="Guide_color" visible="false" left="0" top="1484" height="10" width="1147"/>
+        <Static id="Static18" taborder="38" cssclass="Guide_color" visible="false" left="0" top="1719" height="10" width="1147"/>
+        <Static id="Static22" taborder="39" cssclass="Guide_color" visible="false" left="350" top="316" height="215" width="15"/>
+        <Static id="Static25" taborder="40" cssclass="Guide_color" visible="false" left="551" top="1012" width="15" height="224"/>
+        <Static id="Static29" taborder="41" cssclass="Guide_color" visible="false" left="800" top="1484" width="15" height="691"/>
+        <TextArea id="TextArea01" taborder="42" readonly="true" linespace="3" left="815" top="1729" width="307" height="200" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;"/>
+        <TextArea id="TextArea02" taborder="43" readonly="true" linespace="3" left="815" top="1965" width="307" height="200" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;"/>
+        <Static id="Static30" taborder="44" cssclass="Guide_color" visible="false" left="0" top="2165" width="1147" height="10"/>
+        <Static id="Static31" taborder="45" cssclass="Guide_color" visible="false" left="0" top="516" right="0" height="15"/>
+        <Static id="Static32" taborder="46" text="제품정보" cssclass="sta_WF_subTitle" left="365" top="523" width="100" height="28"/>
+        <Static id="Static33" taborder="47" cssclass="Guide_color" visible="false" left="0" top="542" width="1147" height="10"/>
+        <Static id="Static36" taborder="50" cssclass="Guide_color" visible="false" left="350" top="542" width="15" height="224"/>
+        <Static id="Static37" taborder="51" cssclass="Guide_color" visible="false" left="0" top="752" right="0" height="15"/>
+        <Grid id="grd_list12" taborder="57" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="365" top="552" width="757" height="200" binddataset="ds_list12">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="78"/>
+                <Column size="76"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="54"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상품코드"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="등록비"/>
+                <Cell col="3" text="월렌탈료"/>
+                <Cell col="4" text="렌탈기간"/>
+                <Cell col="5" text="계절구분"/>
+                <Cell col="6" text="본수"/>
+                <Cell col="7" text="패턴"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:matCd"/>
+                <Cell col="1" text="bind:matNm"/>
+                <Cell col="2" text="bind:regiAmt"/>
+                <Cell col="3" text="bind:monAmt"/>
+                <Cell col="4" style="align:right;" text="bind:periodNm"/>
+                <Cell col="5" text="bind:seasonNm"/>
+                <Cell col="6" text="bind:cntNm"/>
+                <Cell col="7" text="bind:petternCd"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총합계"/>
+                <Cell col="1" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" displaytype="number" expr="expr:dataset.getSum(&quot;regiAmt&quot;)"/>
+                <Cell col="3" displaytype="number" expr="expr:dataset.getSum(&quot;monAmt&quot;)"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_list11" taborder="58" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="552" width="350" height="200" binddataset="ds_list11">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="57"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="부가제품명"/>
+                <Cell col="1" text="제조사"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" text="bind:addGdsNm"/>
+                <Cell col="1" text="bind:makerNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static34" taborder="59" text="부가제품정보" cssclass="sta_WF_subTitle" left="0" top="523" width="62" height="28"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list01" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="custTpNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list02" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="makerCdNm" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list03" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="oprocDay" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="salesGroupNm" type="STRING" size="256"/>
+          <Column id="salesOfficeNm" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgAgnm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="age" type="STRING" size="256"/>
+          <Column id="addrArea" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="mfNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list04" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" useclientlayout="true" onrowposchanged="ds_List_onrowposchanged">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="vehicleNo" type="STRING" size="256"/>
+          <Column id="accSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="ebirDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="accChk" type="STRING" size="256"/>
+          <Column id="acncId" type="STRING" size="256"/>
+          <Column id="acncDesc" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="crdSeq" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="expireYm" type="STRING" size="256"/>
+          <Column id="bkeyChk" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="productNm" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="256"/>
+          <Column id="arrearsAmt" type="STRING" size="256"/>
+          <Column id="depositor" type="STRING" size="256"/>
+          <Column id="expireY" type="STRING" size="256"/>
+          <Column id="expireM" type="STRING" size="256"/>
+          <Column id="tcgrpNo" type="STRING" size="256"/>
+          <Column id="deleteTp" type="STRING" size="256"/>
+          <Column id="accStat" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="oBirthDay" type="STRING" size="256"/>
+          <Column id="oCustNm" type="STRING" size="256"/>
+          <Column id="pCustTp" type="STRING" size="256"/>
+          <Column id="oBuslNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list05" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTnm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPnm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFnm" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="cncStat" type="STRING" size="256"/>
+          <Column id="tNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="bankRecpDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list06" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="serviceCd" type="STRING" size="256"/>
+          <Column id="serviceNm" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+          <Column id="procInNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list07" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="delyDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="cashNamt" type="STRING" size="256"/>
+          <Column id="cashVamt" type="STRING" size="256"/>
+          <Column id="matNo" type="STRING" size="0"/>
+          <Column id="matNm" type="STRING" size="0"/>
+          <Column id="carNo" type="STRING" size="0"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="0"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="apprScnt" type="STRING" size="256"/>
+          <Column id="apprAmt" type="STRING" size="256"/>
+          <Column id="agency" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="agencyTel" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list08" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list09" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="jobTpNm" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callStatusNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="custNm" type="STRING" size="0"/>
+          <Column id="jobDay" type="STRING" size="0"/>
+          <Column id="callNo" type="STRING" size="0"/>
+          <Column id="userIdNm" type="STRING" size="0"/>
+          <Column id="mobNo" type="STRING" size="0"/>
+          <Column id="telNo" type="STRING" size="0"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list10" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="regionName" type="STRING" size="256"/>
+          <Column id="cityName" type="STRING" size="256"/>
+          <Column id="empName" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list11">
+        <ColumnInfo>
+          <Column id="addGdsNm" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list12">
+        <ColumnInfo>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="TextArea00" propid="value" datasetid="ds_list08" columnid="callDtl"/>
+      <BindItem id="item1" compid="TextArea01" propid="value" datasetid="ds_list09" columnid="callDtl"/>
+      <BindItem id="item2" compid="TextArea02" propid="value" datasetid="ds_list10" columnid="callDtl"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 		= "RTSDCustCondition";
+//this.exportUrl 	= "http://localhost/excel/extExcelExport.jsp"; //테스트url
+//this.exportUrl 	= "http://1.254.67.135:8090/excel/extExcelExport.jsp"; //개발서버
+this.exportUrl 	= "https://portal.tirerental.co.kr/excel/extExcelExport.jsp"; //운영서버
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "getCustResultList" ){
+		var cnt = this.ds_list01.getRowCount();
+		if( cnt == 0 ){
+			alert("조회된 결과가 없습니다.");
+			this.grd_list01.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getCarResultList" ){
+		var cnt = this.ds_list02.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list02.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getOrderResultList" ){
+		var cnt = this.ds_list03.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list03.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getPaymentList" ){
+		var cnt = this.ds_list04.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list04.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getReceiptList" ){
+		var cnt = this.ds_list05.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list05.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getPremiumServiceList" ){
+		var cnt = this.ds_list06.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list06.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getArrearsList" ){
+		var cnt = this.ds_list07.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list07.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getInboundCallList" ){
+		var cnt = this.ds_list08.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list08.set_nodatatext("조회된 결과가 없습니다.");
+		}
+		for(var i = 0 ; i < cnt ; i++){
+				var recvTm = nvl(this.ds_list08.getColumn(i, "recvTm"));
+				if( recvTm != "" ){
+					recvTm = recvTm.substring(0,2)+":"+recvTm.substring(2,4)+":"+recvTm.substring(4);
+					this.ds_list08.setColumn(i, "recvTm", recvTm);
+				}
+		}	
+	}
+	
+	if( strSvcId == "getOutboundCallList" ){
+		var cnt = this.ds_list09.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list09.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	
+	if( strSvcId == "getClaimReceiptList" ){
+		var cnt = this.ds_list10.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list10.set_nodatatext("조회된 결과가 없습니다.");
+		}
+		for(var i = 0 ; i < cnt ; i++){
+				var recvTm = nvl(this.ds_list10.getColumn(i, "recvTm"));
+				if( recvTm != "" ){
+					recvTm = recvTm.substring(0,2)+":"+recvTm.substring(2,4)+":"+recvTm.substring(4);
+					this.ds_list10.setColumn(i, "recvTm", recvTm);
+				}
+			}
+		}
+	if( strSvcId == "getListProductInfoSch" ){
+		var cnt = this.ds_list11.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list11.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+	if( strSvcId == "getListPrdInfo" ){
+		var cnt = this.ds_list12.getRowCount();
+		if( cnt == 0 ){
+			this.grd_list12.set_nodatatext("조회된 결과가 없습니다.");
+		}
+	}
+
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDCustCondition_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.parent.setButton("E|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	this.ds_list01.clearData();
+	this.ds_list02.clearData();		
+	this.ds_list03.clearData();
+	this.ds_list04.clearData();
+	this.ds_list05.clearData();
+	this.ds_list06.clearData();
+	this.ds_list07.clearData();
+	this.ds_list08.clearData();	
+	this.ds_list09.clearData();
+	this.ds_list10.clearData();
+	this.ds_list11.clearData();
+	this.ds_list12.clearData();
+
+	
+	var sSvcID      	= "getCustResultList";  
+	var sController   	= "ntrms/sd/getCustResultList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list01=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	var custNm 		= nvl(this.div_search.ed_custNm.value);
+	var birthDay 	= nvl(this.div_search.ed_birthDay.value);
+	var carNo 		= nvl(this.div_search.ed_carNo.value);
+	var mobNo 		= FN_numberHyphenOut(nvl(this.div_search.ed_mobNo.value));
+	var ordNo 		= nvl(this.div_search.ed_ordNo.value);
+	var searchCt 	= 0;
+	
+	if(custNm == "") {	
+		 if( custNm 	!= ""){ searchCt++; }
+		 if( birthDay 	!= ""){ searchCt++; } 
+		 if( mobNo 		!= ""){ searchCt++; }
+		 if( carNo 		!= ""){ searChCt++; }
+		 if( ordNo 		!= ""){ searChCt++; }
+	}else{
+		searchCt++;
+	}
+	
+	if( searchCt < 1) {
+		alert("이름, 생년월일, 휴대폰번호, 차량번호, 계약번호 항목중 하나는 입력하셔야 합니다.");
+		return false;
+	}else{
+		sArgs += Ex.util.setParam("custNm"		, custNm);
+		sArgs += Ex.util.setParam("birthDay"	, birthDay);
+		sArgs += Ex.util.setParam("mobNo"		, mobNo);
+		sArgs += Ex.util.setParam("carNo"		, carNo);
+		sArgs += Ex.util.setParam("ordNo"		, ordNo);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	var fileName 		= "고객현황.xlsx";
+	var sheetName 		= "고객현황";
+	var exportOption 	= {exportExpr: this.getExportExpr()};
+	var excel 			= new nexacro.ExtExcelExport("exportVertical", this);
+	var font20  		= {face: "Verdana", size: 20, type: "bold"};
+	var font12  		= {face: "Verdana", size: 12};
+	var font12Bold  	= {face: "Verdana", size: 12, type: "bold"};
+	var workbook 		= excel.createWorkbook(fileName, true);
+	var sheet 			= excel.createSheet(workbook, sheetName);	
+	var row, columnBox;
+	var condition 		 = "";
+	var condition2 		= "";
+	
+	excel.set_exportUrl(this.exportUrl);
+	excel.set_sendDataType(0);//0:XML, 2:SSV
+	
+	row  = excel.addRow(sheet, 1);
+	columnBox = excel.addColumnBox(row, 1);
+
+	row = excel.addRow(sheet, 1);
+	columnBox = excel.addColumnBox(row, 1);
+	excel.addBox(columnBox, 0,"textRow", condition, font12, "", "", "right", "middle"); 
+
+	row = excel.addRow(sheet, 0);
+	columnBox = excel.addColumnBox(row, 1);
+	excel.addBox(columnBox, 0,"textRow", condition2, font12, "", "", "right", "middle"); 	
+
+	row = excel.addRow(sheet, 1);
+	columnBox = excel.addColumnBox(row, 1);
+
+	excel.addBox(columnBox, 1, "grid", this.grd_list01, exportOption, "■ 고객정보			", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list02, exportOption, "■ 차량정보			", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list03, exportOption, "■ 계약정보			", font12Bold, "", "", "left");    
+	excel.addBox(columnBox, 1, "grid", this.grd_list04, exportOption, "■ 결제내역			", font12Bold, "", "", "left");    
+	excel.addBox(columnBox, 1, "grid", this.grd_list05, exportOption, "■ 수납현황			", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list06, exportOption, "■ 프리미엄서비스	", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list07, exportOption, "■ 연체현황			", font12Bold, "", "", "left");  
+	excel.addBox(columnBox, 1, "grid", this.grd_list08, exportOption, "■ 인바운드콜		", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list09, exportOption, "■ 아웃바운드콜	", font12Bold, "", "", "left"); 
+	excel.addBox(columnBox, 1, "grid", this.grd_list10, exportOption, "■ 클레임 접수		", font12Bold, "", "", "left"); 
+	excel.addBox(columnBox, 1, "grid", this.grd_list11, exportOption, "■ 부가제품정보	", font12Bold, "", "", "left");
+	excel.addBox(columnBox, 1, "grid", this.grd_list12, exportOption, "■ 제품정보			", font12Bold, "", "", "left"); 
+
+	excel.exportData();
+}
+this.getExportExpr = function(flag){
+	return false;
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:this.p_arg};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
+}
+
+this.returnOrderNo = function(val){
+	this.div_search.ed_ordNo.set_value(val);
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if ( e.keycode == 13 ) {
+		this.fn_search();
+	}
+}
+
+this.FN_onkeyupMobNo = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grd_list01_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	this.ds_list02.clearData();		
+	this.ds_list03.clearData();
+	this.ds_list04.clearData();
+	this.ds_list05.clearData();
+	this.ds_list06.clearData();
+	this.ds_list07.clearData();
+	this.ds_list08.clearData();	
+	this.ds_list09.clearData();
+	this.ds_list10.clearData();
+	this.ds_list11.clearData();
+	this.ds_list12.clearData();
+	
+	var nRow	= this.ds_list01.rowposition;
+	var custNo  = nvl(this.ds_list01.getColumn(nRow, "custNo"));
+	
+	if( custNo != "" ){
+		this.FN_carResultList(custNo);
+		this.FN_orderResultList(custNo);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grd_list03_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var nRow	= this.ds_list03.rowposition;
+	var ordNo  = nvl(this.ds_list03.getColumn(nRow, "ordNo"));
+	
+	this.ds_list04.clearData();
+	this.ds_list05.clearData();
+	this.ds_list06.clearData();
+	this.ds_list07.clearData();
+	this.ds_list08.clearData();	
+	this.ds_list09.clearData();
+	this.ds_list10.clearData();
+	this.ds_list11.clearData();
+	this.ds_list12.clearData();
+	
+	if( ordNo != "" ){
+		this.FN_paymentResultList(ordNo);
+		this.FN_ReceiptList(ordNo);
+		this.FN_PremiumServiceList(ordNo);
+		this.FN_ArrearsList(ordNo);
+		this.FN_InboundCallList();
+		this.FN_OutboundCallList(ordNo);
+		this.FN_ClaimReceiptList(ordNo);
+		this.FN_ListProductInfoSch(ordNo);
+		this.FN_ListPrdInfo(ordNo);
+		
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//차량정보
+this.FN_carResultList = function( custNo ){
+	var sSvcID      	= "getCarResultList";  
+	var sController   	= "ntrms/sd/getCarResultList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list02=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("custNo"	, custNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//계약현황
+this.FN_orderResultList = function( custNo ){
+	var sSvcID      	= "getOrderResultList";  
+	var sController   	= "ntrms/sd/getOrderResultListNew.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list03=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("custNo"	, custNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//결제내역
+this.FN_paymentResultList = function( ordNo ){
+	var sSvcID      	= "getPaymentList";  
+	var sController   	= "ntrms/sd/getPaymentList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list04=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//수납현황
+this.FN_ReceiptList = function( ordNo ){
+	var sSvcID      	= "getReceiptList";  
+	var sController   	= "ntrms/sd/getReceiptList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list05=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";			
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//프리미엄서비스
+this.FN_PremiumServiceList = function( ordNo ){
+	var sSvcID      	= "getPremiumServiceList";  
+	var sController   	= "ntrms/sd/getPremiumServiceList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list06=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//연체현황
+this.FN_ArrearsList = function( ordNo ){
+	var sSvcID      	= "getArrearsList";  
+	var sController   	= "ntrms/sd/getArrearsList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list07=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("delyDay"		, "");		//기준일자
+	sArgs += Ex.util.setParam("apprScntF"	, 1);		//연체회차 시작	
+	sArgs += Ex.util.setParam("apprScntT"	, 999);		//연체회차 종료	
+	sArgs += Ex.util.setParam("custNo"		, "");		//고객번호
+	sArgs += Ex.util.setParam("recpTp"		, "");		//청구구분
+	sArgs += Ex.util.setParam("ordNo"		, ordNo); 	//계약번호
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+//인바운드콜
+this.FN_InboundCallList = function(){
+	var nRow	= this.ds_list03.rowposition;
+	var mobNo	= nvl(this.ds_list03.getColumn(nRow, "mobNo"));
+	var telNo	= nvl(this.ds_list03.getColumn(nRow, "telNo"));
+	
+	var sSvcID      	= "getInboundCallList";  
+	var sController   	= "ntrms/sd/getInboundCallList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list08=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("mobNo", mobNo);
+	sArgs += Ex.util.setParam("telNo", telNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+//아웃바운드콜
+this.FN_OutboundCallList = function( ordNo ){
+	var sSvcID      	= "getOutboundCallList";  
+	var sController   	= "ntrms/sd/getOutboundCallList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list09=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+//클레임접수
+this.FN_ClaimReceiptList = function( ordNo ){
+	var sSvcID      	= "getClaimReceiptList";  
+	var sController   	= "ntrms/sd/getClaimReceiptList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list10=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	
+}	
+//부가제품정보
+this.FN_ListProductInfoSch = function( ordNo ){
+	var sSvcID      	= "getListProductInfoSch";  
+	var sController   	= "rtms/sd/listProductInfoSch.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list11=listProductInfoSch";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo"	, ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+//제품정보
+this.FN_ListPrdInfo = function( ordNo ){
+	var sSvcID      	= "getListPrdInfo";  
+	var sController   	= "rtms/sd/listPrdInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list12=listPrdInfo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo"	, ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}]]></Script>
+  </Form>
+</FDL>

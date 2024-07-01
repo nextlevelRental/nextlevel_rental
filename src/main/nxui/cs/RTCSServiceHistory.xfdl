@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSZeroChangeService" classname="RTCMClaim" left="0" top="0" width="1147" height="492" onload="form_onload" titletext="걱정제로 타이어 교체 서비스 내역 조회">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_list" taborder="4" useinputpanel="false" autofittype="none" left="0" top="74" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다." width="1122" bottom="9" oncellclick="grd_list_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="114"/>
+                <Column size="214"/>
+                <Column size="74"/>
+                <Column size="189"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="서비스명"/>
+                <Cell col="3" text="처리일자"/>
+                <Cell col="4" text="처리자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:dlvcYn"/>
+                <Cell col="1" displaytype="normal" edittype="normal" text="bind:ordNo" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:serviceNm" tooltiptext="bind:serviceNm"/>
+                <Cell col="3" displaytype="date" text="bind:procDay"/>
+                <Cell col="4" text="bind:procInNm" tooltiptext="bind:procInNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_search" taborder="7" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" left="945" right="16" bottom="735" height="25" domainId="nexa.search"/>
+        <Static id="Static21" taborder="9" text="검색결과" cssclass="sta_WF_subTitle" left="1" top="48" width="169" height="20"/>
+        <Static id="Static01" taborder="10" text="Static02" cssclass="Guide_color" left="0" top="64" height="10" visible="false" width="1147"/>
+        <Static id="Static00" taborder="12" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="479"/>
+        <Div id="div_search" taborder="16" left="0" top="0" width="1123" height="39" cssclass="div_WF_searchBg" visible="true">
+          <Layouts>
+            <Layout>
+              <Static id="st_dlvrDay" taborder="118" text="신청일자" cssclass="sta_WF_schTitle" left="28" top="8" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="cal_dlvrDayF" taborder="119" dateformat="yyyy-MM-dd" left="115" top="7" width="110" height="21" value="null" editformat="yyyy-MM-dd" onchanged="div_search_cal_dlvrDayF_onchanged"/>
+              <Static id="Static09" taborder="124" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static12" taborder="128" cssclass="Guide_color" visible="false" left="0" top="72" height="38" width="1118"/>
+              <Static id="Static13" taborder="129" cssclass="Guide_color" visible="false" left="487" top="0" width="31" height="34"/>
+              <Static id="Static14" taborder="130" cssclass="Guide_color" visible="false" left="230" top="0" width="24" height="34"/>
+              <Static id="Static15" taborder="131" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="34"/>
+              <Static id="Static10" taborder="139" cssclass="Guide_color" visible="false" left="0" top="31" width="1118" height="3"/>
+              <Static id="st_searchCondition00" taborder="154" text="계약번호" cssclass="sta_WF_schTitle" left="259" top="7" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="155" inputfilter="space" lengthunit="ascii" onkeydown="div_search_ed_ordNo_onkeydown" left="344" top="7" width="140" height="21"/>
+              <Static id="st_searchCondition01" taborder="156" text="수수료적용" cssclass="sta_WF_schTitle" left="753" top="7" width="89" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_Yn" taborder="157" text="Y" left="75.34%" top="6" right="18.14%" height="20" innerdataset="@ds_Yn" codecolumn="cd" datacolumn="cdNm" index="0" value="Y"/>
+              <Calendar id="cal_dlvrDayT" taborder="120" dateformat="yyyy-MM-dd" left="1001" top="7" width="110" height="21" editformat="yyyy-MM-dd" value="null" visible="false"/>
+              <Static id="st01" taborder="121" text="~" left="985" top="11" width="10" height="21" visible="false"/>
+              <Static id="Static00" taborder="158" cssclass="Guide_color" visible="false" left="713" top="-2" width="31" height="34"/>
+              <Static id="st_searchCondition02" taborder="159" text="서비스" cssclass="sta_WF_schTitle" left="525" top="7" width="89" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_Service" taborder="160" value="B00007" text="걱정제로" innerdataset="@ds_Service" codecolumn="cd" datacolumn="cdNm" index="1" left="53.35%" top="6" right="37%" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_list_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="dlvcYn" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="equNo" type="STRING" size="0"/>
+          <Column id="servSeq" type="STRING" size="0"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="serviceCd" type="STRING" size="256"/>
+          <Column id="serviceNm" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+          <Column id="procInNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_Yn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_list_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Service" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_list_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">B00001</Col>
+            <Col id="cdNm">엔진오일</Col>
+          </Row>
+          <Row>
+            <Col id="cd">B00007</Col>
+            <Col id="cdNm">걱정제로</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="" propid="" datasetid="dsSdStaus" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSServiceHistory.xfdl
+ * 설    명 : 서비스 내역 조회
+ * 작 성 자 : 김선태
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2020-05-26	김선태		신규 개발
+ ***************************************************************************************************/ 
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay 	    = ""; 	   //현재날짜
+//-------------------------------------------------------------------------------   
+//폼로드시 공통함수      
+//-------------------------------------------------------------------------------  	 
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj); 		
+	this.fn_init();
+} 
+//-------------------------------------------------------------------------------   
+//초기화  
+//------------------------------------------------------------------------------- 	
+this.fn_init = function() {
+	//당월 조회
+	this.fn_getToday();	
+
+	//버튼초기화		
+	this.fn_initBtn();
+	
+}		  
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+//당월 조회
+//-------------------------------------------------------------------------------  	
+this.fn_getToday  = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+
+}
+	
+//---------------------------------------------------------------------------------
+// 서비스 내역 조회
+//---------------------------------------------------------------------------------	
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+	var userId 	= application.gds_userInfo.getColumn(0, "userId"); //그룹
+	
+	if(userId != "call01" && userId != "call44" && userId != "call46" && userId != "call49" && userGrp != "01"){
+		this.alert("조회권한이 없습니다.");
+		return;
+	}
+	
+	if (this.fn_getValid()) {	    
+		var dlvrDayF  		= nvl(this.div_search.cal_dlvrDayF.value);	//당월1일
+		var dlvrDayT 		= nvl(this.div_search.cal_dlvrDayT.value);	//현재일		
+		var ordNo   		= nvl(this.div_search.ed_ordNo.text);		//계약번호
+		var dlvcYn           = nvl(this.div_search.cb_Yn.value);		//수수료집계여부
+		var serviceCd       = nvl(this.div_search.cb_Service.value);
+		var userId      	= application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+				
+		var sSvcID        	= "serviceHistory";                    
+		var sController   	= "rtms/cs/selectServiceHistory.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("ordNo"      , ordNo);
+		sArgs += Ex.util.setParam("procDayS"   , dlvrDayF);
+		sArgs += Ex.util.setParam("procDayE"   , dlvrDayT);
+		sArgs += Ex.util.setParam("serviceCd"  , serviceCd);
+		sArgs += Ex.util.setParam("dlvcYn"     , dlvcYn);
+					
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}	
+	
+}
+//---------------------------------------------------------------------------------
+// 엑셀
+//---------------------------------------------------------------------------------
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grd_list);  
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+// callBack함수 
+//------------------------------------------------------------------------------- 
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+
+	switch (strSvcId) 
+	{
+		 //신청일자 
+		 case "getToday":
+			var sFirstDay = Eco.date.getFirstDate(this.toDay);
+			this.div_search.cal_dlvrDayF.set_value(sFirstDay);
+			this.div_search.cal_dlvrDayT.set_value(this.toDay);
+			this.div_search.cal_downDay.set_value(this.toDay);
+		 break;
+		 //신청일자 검색결과				
+		case "serviceHistory":
+			if(this.ds_list.rowcount == 0) {
+			   this.div_search.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			break;
+		case "saveRTCS0008DlvcYn":
+			this.alert("수수료집계여부가 업데이트 되었습니다.");
+			break;
+	}	
+}
+
+//체크여부
+this.fn_getValid = function(){
+	if(nvl(this.div_search.cal_dlvrDayF.value) == "" || nvl(this.div_search.cal_dlvrDayT.value) == "")
+	{
+		alert('신청일자을 다시 입력하세요');
+		this.div_search.cal_procDayF.setFocus();
+		return false;
+	}else{
+		return true;
+	}	
+	
+	if(parseInt(nvl(this.div_search.cal_dlvrDayF.value)) > parseInt(nvl(this.div_search.cal_dlvrDayT.value)))
+	{
+		alert('신청일자을 다시 입력하세요');
+		this.div_search.cal_dlvrDayF.setFocus();
+		return false;
+	}
+  
+	return true;
+}
+
+
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+//---------------------------------------------------------------------------------
+// 버튼생성
+//---------------------------------------------------------------------------------
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.setButton("E|S|",this);		
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/**
+ * 계약번호 찾기 버튼 클릭 이벤트 처리 [20171218_02]
+ * - 계약번호 조회 화면 팝업
+ */
+this.div_search_btn_custPopUp00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var args ={ p_arg : "RTCSRegularCheck" };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+}
+
+/**
+ * 계약번호 찾기 결과 처리 [20171218_02]
+ */
+this.returnOrderNoInfo = function(ordNo){
+	this.div_search.ed_ordNo.set_value(ordNo);
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grd_list_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(this.grd_list.currentcol != 0){
+		return;
+	}
+	
+	var userId 	= application.gds_userInfo.getColumn(0, "userId"); //그룹
+	
+	var dlvcYn = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "dlvcYn"));
+	var ordNo = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ordNo"));
+	var equNo = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "equNo"));
+	var servSeq = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "servSeq"));
+	var seq = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "seq"));
+	
+	dlvcYn = (dlvcYn == "1" ? "Y" : "N");
+	if(dlvcYn == ""){
+		this.alert("수수료집계여부가 정상 선택되지 않았습니다.");
+		return;
+	}
+		
+		
+	var sSvcID        	= "saveRTCS0008DlvcYn";                    
+	var sController   	= "rtms/cs/saveRTCS0008DlvcYn.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo"      , ordNo);
+	sArgs += Ex.util.setParam("equNo"      , equNo);
+	sArgs += Ex.util.setParam("servSeq"    , servSeq);
+	sArgs += Ex.util.setParam("seq"        , seq);
+	sArgs += Ex.util.setParam("dlvcYn"     , dlvcYn);
+	sArgs += Ex.util.setParam("regId"     , dlvcYn);
+				
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cal_dlvrDayF_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var sFirtsDay = Eco.date.getFirstDate(this.toDay);
+	var selectDay = this.div_search.cal_dlvrDayF.value;
+	
+	if(sFirtsDay > selectDay){
+		this.alert("전월 데이터는 조회가 불가합니다.");
+		this.div_search.cal_dlvrDayF.set_value(sFirtsDay);
+		return;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

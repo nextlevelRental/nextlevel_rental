@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="pro">
+	
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="prgmCd" column="PRGM_CD" />
+		<result property="prgmNm" column="PRGM_NM" />
+		<result property="prgmPath" column="PRGM_PATH" />
+		<result property="useYn" column="USE_YN" />
+		<result property="prgmDesc" column="PRGM_DESC" />
+		<result property="mdlCd" column="MDL_CD" />
+		<result property="regId" column="REG_ID" />
+		<result property="regDt" column="REG_DT" />
+		<result property="chgId" column="CHG_ID" />
+		<result property="chgDt" column="CHG_DT" />
+	</resultMap>
+
+
+	<parameterMap id="parameters" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"
+			javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />
+		<parameter property="prgmCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmNm" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	
+	<procedure id="pro.getProList" parameterMap="parameters">
+		{call
+		Pkg_Rtcm0011.p_sRtcm0011(?, ?, ?)}
+	</procedure>
+
+
+	<parameterMap class="java.util.Map" id="insert_Rtcm0011">
+		<parameter property="dvsn"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmCd"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmNm"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmPath"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmDesc"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mdlCd"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="pro.saveProInfo" parameterMap="insert_Rtcm0011">
+		{call
+		Pkg_Rtcm0011.p_IUDRtcm0011(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMDeliveryBoard_pop" classname="RTCMVkbur_pop" left="0" top="0" width="752" height="258" titletext="배송현황조회팝업" onkeyup="RTCOMMSevice_pop_onkeyup" onload="RTCOMMSevice_pop_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_seviceCd" taborder="0" binddataset="ds_deliveryList" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="64" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="8" right="8" height="180" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="주문유형"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="연락처"/>
+                <Cell col="4" text="배송유형"/>
+                <Cell col="5" text="택배사"/>
+                <Cell col="6" text="송장번호"/>
+                <Cell col="7" text="택배배송상태"/>
+                <Cell col="8" text="도착일"/>
+                <Cell col="9" text="도착문자"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:TYPE_NAME"/>
+                <Cell col="1" edittype="readonly" text="bind:BSTKD"/>
+                <Cell col="2" edittype="readonly" text="bind:CUST_NM"/>
+                <Cell col="3" edittype="readonly" text="bind:MOB_NO"/>
+                <Cell col="4" edittype="readonly" text="bind:ABRVW"/>
+                <Cell col="5" edittype="readonly" text="bind:ZCOMPANY"/>
+                <Cell col="6" edittype="readonly" text="bind:ZPARCELINVOICE"/>
+                <Cell col="7" edittype="readonly" text="bind:LOG_STATUS_NAME"/>
+                <Cell col="8" edittype="readonly" text="bind:WADAT_IST"/>
+                <Cell col="9" edittype="readonly" text="bind:SEND_CNT"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" left="8" top="9" width="736" height="44" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1092" height="142">
+              <Static id="Static07" taborder="31" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="9"/>
+              <Static id="Static06" taborder="32" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="40"/>
+              <Static id="st_searchCondition00" taborder="37" text="계약번호" cssclass="sta_WF_schTitle" left="20" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="38" onkeyup="FN_onkeyup" left="100" top="9" width="120" height="21"/>
+              <Button id="btn_odrPopUp" taborder="39" onclick="fn_odrPopUp" cssclass="btn_WF_edtSch" left="201" top="9" width="20" height="21"/>
+              <Static id="Static03" taborder="43" cssclass="Guide_color" visible="false" left="0" top="30" width="1118" height="10"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="ed_reqNum" taborder="2" left="28" top="49" width="120" height="21" visible="false" value="0"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_deliveryList">
+        <ColumnInfo>
+          <Column id="BSTKD" type="STRING" size="256"/>
+          <Column id="VBELN_S" type="STRING" size="256"/>
+          <Column id="VBELN_D" type="STRING" size="256"/>
+          <Column id="WATDAT" type="STRING" size="256"/>
+          <Column id="SHIPMENT" type="STRING" size="256"/>
+          <Column id="WADAT_IST" type="STRING" size="256"/>
+          <Column id="ABRVW" type="STRING" size="256"/>
+          <Column id="ZCOMPANY" type="STRING" size="256"/>
+          <Column id="ZPARCELINVOICE" type="STRING" size="256"/>
+          <Column id="LOG_STATUS" type="STRING" size="256"/>
+          <Column id="LOG_STATUS_NAME" type="STRING" size="256"/>
+          <Column id="TYPE" type="STRING" size="256"/>
+          <Column id="TYPE_NAME" type="STRING" size="256"/>
+          <Column id="CUST_NM" type="STRING" size="256"/>
+          <Column id="MOB_NO" type="STRING" size="256"/>
+          <Column id="SEND_CNT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+// 데이터 호출 후 실행 함수 
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+
+	if(nErrorCode < 0) alert(strErrorMsg);
+	
+	if( strSvcId == "deliveryList" ){
+		
+	}
+}
+
+// 초기 로딩시
+this.RTCOMMSevice_pop_onload = function (obj:Form, e:LoadEventInfo){
+	Ex.core.init(obj);	
+	this.div_search.ed_ordNo.set_value(this.parent.ordNo);
+	this.searchDo(this.parent.ordNo, this.parent.reqNum);
+}
+
+// 검색 버튼클릭시
+this.searchDo = function(ordNo, reqNum){
+	var sSvcID        	= "deliveryList";                    
+	var sController   	= "rtms/sd/deliveryListByOrder.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_deliveryList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", 	ordNo);
+	sArgs += Ex.util.setParam("reqNum", reqNum);
+	
+	this.ds_deliveryList.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTCOMMDeliveryBoard_pop"};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
+}
+
+this.returnOrderNo = function(val){
+    this.div_search.ed_ordNo.set_value(val);
+}
+
+this.FN_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 13 ){	
+		var ordNo = nvl(this.div_search.ed_ordNo.value);
+		var reqNum = nvl(this.ed_reqNum.value);
+		if( ordNo == "" ){
+			alert("계약번호를 입력하세요.");
+			return;
+		}else{
+			this.searchDo(ordNo, reqNum);				
+		}	
+	}
+}]]></Script>
+  </Form>
+</FDL>

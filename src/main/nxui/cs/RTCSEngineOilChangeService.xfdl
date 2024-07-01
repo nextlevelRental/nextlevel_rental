@@ -1,0 +1,937 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSEngineOilChangeService" classname="RTCMClaim" left="0" top="0" width="1147" height="496" onload="form_onload" titletext="엔진오일 교체 서비스 내역 조회">
+    <Layouts>
+      <Layout>
+        <Button id="btn_search" taborder="7" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" left="945" right="16" bottom="735" height="25" domainId="nexa.search"/>
+        <Static id="Static21" taborder="9" text="검색결과" cssclass="sta_WF_subTitle" left="1" top="121" width="169" height="20"/>
+        <Static id="Static01" taborder="10" text="Static02" cssclass="Guide_color" left="0" top="137" height="10" visible="false" width="1147"/>
+        <Static id="Static00" taborder="12" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="479"/>
+        <Div id="div_search" taborder="16" left="0" top="0" width="1121" height="104" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_dlvrDay" taborder="9" text="신청일자" cssclass="sta_WF_schTitle" left="377" top="41" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="cal_dlvrDayF" taborder="10" dateformat="yyyy-MM-dd" left="453" top="40" width="110" height="21" value="null" editformat="yyyy-MM-dd" oneditclick="div_search_cal_slcmFr_oneditclick"/>
+              <Calendar id="cal_dlvrDayT" taborder="11" dateformat="yyyy-MM-dd" left="582" top="40" width="110" height="21" editformat="yyyy-MM-dd" value="null"/>
+              <Static id="st01" taborder="12" text="~" left="566" top="44" width="10" height="21"/>
+              <Static id="Static09" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static12" taborder="14" cssclass="Guide_color" visible="false" left="0" top="63" height="7" width="1118"/>
+              <Static id="Static13" taborder="15" cssclass="Guide_color" visible="false" left="703" top="0" width="31" height="106"/>
+              <Static id="Static14" taborder="16" cssclass="Guide_color" visible="false" left="344" top="0" width="30" height="106"/>
+              <Static id="Static15" taborder="17" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="106"/>
+              <Static id="st_stateCd" taborder="18" text="상태" cssclass="sta_WF_schTitle" left="739" top="41" width="80" height="21"/>
+              <Combo id="cb_stateCd" taborder="19" autoselect="false" innerdataset="@ds_stateCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="809" top="41" width="132" height="21" autoskip="false" index="-1"/>
+              <Static id="Static10" taborder="20" cssclass="Guide_color" visible="false" left="0" top="31" width="1118" height="6"/>
+              <Combo id="cb_dateCd" taborder="21" innerdataset="ds_dateCd" codecolumn="cd" datacolumn="cdNm" left="114" top="40" width="155" height="21" domainId="nexa.name;nexa.code" index="-1" onitemchanged="div_search_cb_dateCd_onitemchanged"/>
+              <Static id="st_downDay" taborder="24" text="집계일자" cssclass="sta_WF_schTitle" left="377" top="41" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="cal_downDay" taborder="25" dateformat="yyyy-MM-dd" oneditclick="div_search_cal_slcmFr_oneditclick" left="453" top="41" width="110" height="21"/>
+              <Static id="st_downDay00" taborder="26" text="일자구분" cssclass="sta_WF_schTitle" left="35" top="42" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static02" taborder="27" text="렌탈지점" cssclass="sta_WF_schTitle" left="378" top="7" width="62" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static03" taborder="28" text="대리점" cssclass="sta_WF_schTitle" left="739" top="7" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="vkgrpNm" taborder="0" lengthunit="ascii" maxlength="150" enable="false" left="222" top="7" width="105" height="21"/>
+              <Edit id="vkgrpCd" taborder="1" lengthunit="ascii" maxlength="3" onkeyup="div_search_vkgrpCd_onkeyup" enable="false" left="114" top="7" width="108" height="21"/>
+              <Static id="Static01" taborder="2" text="렌탈지사" cssclass="sta_WF_schTitle" left="35" top="7" width="67" height="20" domainId="nexa.s_condition"/>
+              <Edit id="vkburCd" taborder="3" lengthunit="ascii" maxlength="4" onkeyup="div_search_vkburCd_onkeyup" enable="false" left="453" top="7" width="120" height="21"/>
+              <Edit id="vkburNm" taborder="4" lengthunit="ascii" maxlength="150" enable="false" left="573" top="7" width="120" height="21"/>
+              <Button id="btn_save01" taborder="5" onclick="showVkbur" cssclass="btn_WF_edtSch" left="553" top="6" width="21" height="21"/>
+              <Edit id="vkazcCd" taborder="6" lengthunit="ascii" maxlength="10" onkeyup="div_search_vkazcCd_onkeyup" enable="false" left="809" top="7" width="120" height="21"/>
+              <Button id="btn_save02" taborder="7" onclick="showVkazc" cssclass="btn_WF_edtSch" left="908" top="7" width="21" height="21"/>
+              <Edit id="vkazcNm" taborder="8" lengthunit="ascii" maxlength="150" enable="false" left="929" top="7" width="120" height="21"/>
+              <Button id="btn_save00" taborder="29" onclick="showVkgrp" cssclass="btn_WF_edtSch" left="201" top="7" width="21" height="21"/>
+              <Static id="st_searchCondition00" taborder="30" text="계약번호" cssclass="sta_WF_schTitle" left="35" top="74" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="31" inputfilter="space" lengthunit="ascii" left="114" top="74" width="136" height="21" onkeyup="ed_ordNo_onkeyup"/>
+              <Button id="btn_custPopUp00" taborder="32" onclick="fn_custPopUp" cssclass="btn_WF_edtSch" left="249" top="73" width="20" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static05" taborder="22" text="Static02" cssclass="Guide_color" visible="false" left="0" top="105" width="1147" height="20"/>
+        <Edit id="userGrp" taborder="33" enable="false" visible="false" left="977" top="73" width="118" height="21"/>
+        <Edit id="userNm" taborder="34" enable="false" visible="false" left="857" top="73" width="118" height="21"/>
+        <Edit id="userId" taborder="35" enable="false" visible="false" left="737" top="73" width="118" height="21"/>
+        <Grid id="grd_list" taborder="36" binddataset="ds_list" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="0" top="147" bottom="10" width="1122">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="200"/>
+                <Column size="80"/>
+                <Column size="300"/>
+                <Column size="300"/>
+                <Column size="120"/>
+                <Column size="70"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="73"/>
+                <Column size="73"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="접수일자"/>
+                <Cell col="1" text="순번"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="렌탈지사"/>
+                <Cell col="4" text="렌탈지점"/>
+                <Cell col="5" text="고객번호"/>
+                <Cell col="6" text="고객명"/>
+                <Cell col="7" text="제조사"/>
+                <Cell col="8" text="차종"/>
+                <Cell col="9" text="차량 No"/>
+                <Cell col="10" text="유종"/>
+                <Cell col="11" text="연식"/>
+                <Cell col="12" text="배기량"/>
+                <Cell col="13" text="배송지구분"/>
+                <Cell col="14" text="수취인"/>
+                <Cell col="15" text="우편번호"/>
+                <Cell col="16" text="배송지 주소"/>
+                <Cell col="17" text="상세주소"/>
+                <Cell col="18" text="고객 핸드폰 번호"/>
+                <Cell col="19" text="대리점코드"/>
+                <Cell col="20" text="대리점"/>
+                <Cell col="21" text="배송지 연락처"/>
+                <Cell col="22" text="택배사"/>
+                <Cell col="23" text="운송장 번호"/>
+                <Cell col="24" text="운송장등록일자"/>
+                <Cell col="25" text="상태"/>
+                <Cell col="26" text="교체예정일자"/>
+                <Cell col="27" text="처리완료일자"/>
+                <Cell col="28" text="차대번호"/>
+                <Cell col="29" text="신청경로"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:dlvrDay" calendardisplaynulltype="none" tooltiptext="bind:dlvrDay"/>
+                <Cell col="1" text="bind:dlvrSeq" tooltiptext="bind:dlvrSeq"/>
+                <Cell col="2" displaytype="text" edittype="readonly" text="bind:ordNo" tooltiptext="bind:ordNo"/>
+                <Cell col="3" displaytype="text" edittype="readonly" text="bind:rentalGroupNm" tooltiptext="bind:custNo"/>
+                <Cell col="4" displaytype="text" edittype="readonly" text="bind:rentalOfficeNm" tooltiptext="bind:custNo"/>
+                <Cell col="5" displaytype="text" edittype="readonly" text="bind:custNo" tooltiptext="bind:custNo"/>
+                <Cell col="6" text="bind:custNm" tooltiptext="bind:custNm"/>
+                <Cell col="7" text="bind:makerNm" tooltiptext="bind:makerNm"/>
+                <Cell col="8" text="bind:modelNm" tooltiptext="bind:modelNm"/>
+                <Cell col="9" text="bind:carNo" tooltiptext="bind:carNo"/>
+                <Cell col="10" text="bind:fuelNm" tooltiptext="bind:fuelNm"/>
+                <Cell col="11" text="bind:yrmlNm" tooltiptext="bind:yrmlNm"/>
+                <Cell col="12" text="bind:dsplmtNm" tooltiptext="bind:dsplmtNm"/>
+                <Cell col="13" text="bind:dlvgbNm" tooltiptext="bind:dlvgbNm"/>
+                <Cell col="14" text="bind:consignee" tooltiptext="bind:consignee"/>
+                <Cell col="15" text="bind:posCd" tooltiptext="bind:posCd"/>
+                <Cell col="16" text="bind:addr1" tooltiptext="bind:addr1"/>
+                <Cell col="17" style="align:left;" text="bind:addr2" tooltiptext="bind:addr2"/>
+                <Cell col="18" text="bind:mobNo" expr="expr:FN_numberHyphenInReturn(mobNo)" tooltiptext="bind:mobNo"/>
+                <Cell col="19" text="bind:agencyCd"/>
+                <Cell col="20" style="align: ;" text="bind:agencyNm" tooltiptext="bind:agencyNm"/>
+                <Cell col="21" text="bind:dlvTel" expr="expr:FN_numberHyphenInReturn(dlvTel)" tooltiptext="bind:dlvTel"/>
+                <Cell col="22" text="bind:dlvEnt" tooltiptext="bind:dlvEnt"/>
+                <Cell col="23" text="bind:trspDoc" tooltiptext="bind:trspDoc"/>
+                <Cell col="24" displaytype="date" text="bind:dlvsDay" calendardisplaynulltype="none" tooltiptext="bind:dlvsDay"/>
+                <Cell col="25" text="bind:dlvstatNm" tooltiptext="bind:dlvstatNm"/>
+                <Cell col="26" displaytype="date" text="bind:servrqDay" calendardisplaynulltype="none" tooltiptext="bind:servrqDay"/>
+                <Cell col="27" displaytype="date" text="bind:procDay" calendardisplaynulltype="none" tooltiptext="bind:procDay"/>
+                <Cell col="28" displaytype="text" edittype="readonly" text="bind:carId" tooltiptext="bind:carId"/>
+                <Cell col="29" text="bind:userGrpNm" tooltiptext="bind:userGrpNm"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+                <Cell col="24"/>
+                <Cell col="25"/>
+                <Cell col="26"/>
+                <Cell col="27"/>
+                <Cell col="28"/>
+                <Cell col="29"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="dlvrSeq" type="STRING" size="0"/>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="custNo" type="STRING" size="0"/>
+          <Column id="custNm" type="STRING" size="0"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="fuelCd" type="STRING" size="256"/>
+          <Column id="fuelNm" type="STRING" size="256"/>
+          <Column id="yrmlCd" type="STRING" size="256"/>
+          <Column id="yrmlNm" type="STRING" size="256"/>
+          <Column id="dsplmtCd" type="STRING" size="256"/>
+          <Column id="dsplmtNm" type="STRING" size="256"/>
+          <Column id="dlvGb" type="STRING" size="256"/>
+          <Column id="dlvgbNm" type="STRING" size="256"/>
+          <Column id="consignee" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="0"/>
+          <Column id="addr1" type="STRING" size="0"/>
+          <Column id="addr2" type="STRING" size="0"/>
+          <Column id="dlvTel" type="STRING" size="0"/>
+          <Column id="dlvDesc" type="STRING" size="256"/>
+          <Column id="dlvStat" type="STRING" size="256"/>
+          <Column id="dlvstatNm" type="STRING" size="256"/>
+          <Column id="dlvEnt" type="STRING" size="256"/>
+          <Column id="trspDoc" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="servrqDay" type="STRING" size="256"/>
+          <Column id="downDay" type="STRING" size="256"/>
+          <Column id="dlvsDay" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="carId" type="STRING" size="256"/>
+          <Column id="userGrpNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stateCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dateCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">신청일자</Col>
+            <Col id="cd">01</Col>
+          </Row>
+          <Row>
+            <Col id="cd">02</Col>
+            <Col id="cdNm">집계일자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsRentalInfo" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="" propid="" datasetid="dsSdStaus" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 엔진오일 교체 서비스 내역 조회
+ * 02. 그룹명   : RTCSEngineOilChangeService.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2015.12.14
+ * 05. 작성자   : 윤용택
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 	    = ""; 	   //현재날짜
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 		
+		this.fn_init();
+	} 
+	
+	
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//당월 조회
+		this.fn_getToday();	
+		//버튼초기화		
+		this.fn_initBtn();
+		//공통코드(상태)
+		this.fn_getStateCode();
+		//선택날짜
+		this.fn_getdateCode();
+		//검색초기화 
+		//this.fn_init1();
+		this.fn_userRentalGroupInfo();
+		
+	}		  
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//-------------------------------------------------------------------------------  	
+	//당월 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getToday  = function() {
+		var sSvcID      	= "getToday";  
+	    var sController   	= "rtms/comm/getToday.do";
+	    var sInDatasets   	= "";
+	    var sOutDatasets  	= "";
+	    var sArgs 			= "";	
+	    var fn_callBack		= "fn_callBack";
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}
+	
+	//-------------------------------------------------------------------------------  	
+	//공통코드(상태)
+    //-------------------------------------------------------------------------------  	
+	this.fn_getStateCode  = function(){
+	
+	var sSvcID      	= "getStateCode";  
+	var sController   	= "ntrms/cs/getengineOilChangeServiceCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_stateCd=outputC019";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}
+	
+	//-------------------------------------------------------------------------------  	
+	//공통코드(선택날짜)
+    //-------------------------------------------------------------------------------  	
+	this.fn_getdateCode  = function(){
+	     this.div_search.cb_dateCd.set_index(0);
+		 this.div_search_cb_dateCd_onitemchanged();  
+	}
+
+	//----------------------------------------------------------------------------------
+	// Search: 사용자 렌탈그룹 조회
+	//----------------------------------------------------------------------------------
+	this.fn_userRentalGroupInfo = function()
+	{
+		this.dsRentalInfo.clearData();
+		
+		var sSvcID        	= "userRentalGroupInfo";                    
+		var sController   	= "/rtms/sd/userRentalGroupInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsRentalInfo=ds_output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+			sArgs 			+= Ex.util.setParam("userId", application.gds_userInfo.getColumn(0, "userId"));
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+		
+	//---------------------------------------------------------------------------------
+	// 엔진오일 교체 서비스 내역 조회
+	//---------------------------------------------------------------------------------	
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var userGrp 	= application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+		var bfVkgrp 	= application.gds_userInfo.getColumn(0, "vkgrp"); 	//지사코드
+		var bfVkgrpNm 	= application.gds_userInfo.getColumn(0, "vkgrpNm"); //지사Nm
+		var bfVkbur 	= application.gds_userInfo.getColumn(0, "vkbur"); 	//지점코드
+		var bfVkburNm 	= application.gds_userInfo.getColumn(0, "vkburNm"); //지점NM
+		var afVkgrp 	= this.div_search.vkgrpCd.value; 					//팝업 지사코드
+		var afVkgrpNm 	= this.div_search.vkgrpNm.value; 					//팝업 지사Nm
+		var afVkbur 	= this.div_search.vkburCd.value; 					//팝업 지점코드
+		var afVkburNm 	= this.div_search.vkburNm.value; 					//팝업 지점Nm
+		
+		/* 렌탈지사지점 Check 해제 */
+// 		if(Eco.isEmpty(afVkgrp)) {
+// 			this.alert("렌탈지사를 선택하세요.");
+// 			return false;
+// 		}
+// 		
+// 		if(Eco.isEmpty(afVkbur)) {
+// 			this.alert("렌탈지점을 선택하세요.");
+// 			return false;
+// 		}
+		
+		if(userGrp == '04') { //지점
+			if(bfVkgrp != afVkgrp || bfVkgrpNm != afVkgrpNm) {
+				alert("타 조직내역 조회 불가합니다.");
+				return;
+			}
+			if(bfVkbur != afVkbur || bfVkburNm != afVkburNm) {
+				alert("타 조직내역 조회 불가합니다.");
+				return;
+			}
+		}
+		
+		if(userGrp == '03' || userGrp == '07') { //지사
+			if(bfVkgrp != afVkgrp || bfVkgrpNm != afVkgrpNm) {
+				alert("타 조직내역 조회 불가합니다.");
+				return;
+			}
+		}	
+		
+		if ( this.div_search.cb_dateCd.value == "01")
+		{
+			if( this.fn_getValid()) 
+			{	    
+				var dlvrDayF  		= nvl(this.div_search.cal_dlvrDayF.value); //당월1일
+				var dlvrDayT 		= nvl(this.div_search.cal_dlvrDayT.value); //현재일
+				var dlvStat         = nvl(this.div_search.cb_stateCd.value);   //상태
+				var salesGroup 		= ""; 	//지사
+				var salesOffice 	= ""; 	//지점
+				var agencyCd 		= nvl(this.div_search.vkazcCd.value); 	//장착대리점		
+				var ordNo			= nvl(this.div_search.ed_ordNo.value); 	//주문번호추가 20160407 한승훈 
+					
+				var rentalGroup 	= nvl(this.div_search.vkgrpCd.value); 	//렌탈지사
+				var rentalOffice 	= nvl(this.div_search.vkburCd.value); 	//렌탈지점
+				var userId      	= application.gds_userInfo.getColumn(0, "userId"); //사용자ID
+				
+				/* 렌탈지사지점 Check 해제 */
+// 				if (rentalGroup == "" || rentalGroup == null)
+// 				{
+// 					alert("렌탈지사를 선택하세요.");
+// 					return false;
+// 				}
+// 				if (rentalOffice == "" || rentalOffice == null)
+// 				{
+// 					alert("렌탈지점을 선택하세요.");
+// 					return false;
+// 				}
+				
+				var sSvcID        	= "engineOilChangeServiceList";                    
+				var sController   	= "nrtms/cs/engineOilChangeServiceList.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "ds_list=output";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				
+				sArgs += Ex.util.setParam("dlvrDayF", dlvrDayF);
+				sArgs += Ex.util.setParam("dlvrDayT", dlvrDayT);
+				sArgs += Ex.util.setParam("dlvStat", dlvStat);
+				sArgs += Ex.util.setParam("ordNo", ordNo);
+				sArgs += Ex.util.setParam("custNo", "");
+				
+				sArgs += Ex.util.setParam("salesGroup", salesGroup);
+				sArgs += Ex.util.setParam("salesOffice", salesOffice);
+				sArgs += Ex.util.setParam("agencyCd", agencyCd);	
+				
+				sArgs += Ex.util.setParam("rentalGroup", rentalGroup);
+				sArgs += Ex.util.setParam("rentalOffice", rentalOffice);
+				sArgs += Ex.util.setParam("userId", userId);		
+				
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			 }
+			  
+		}else{
+				var downDay          = nvl(this.div_search.cal_downDay.value); //집계일자
+			
+				var sSvcID        	= "engineOilChangeServiceDownList";                    
+				var sController   	= "nrtms/cs/engineOilChangeServiceDownList.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "ds_list=output";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				
+				sArgs += Ex.util.setParam("downDay", downDay);
+				
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+				
+		}
+		
+	}
+	
+	
+	//---------------------------------------------------------------------------------
+	// 집계
+	//---------------------------------------------------------------------------------	
+	this.fn_aggregate  = function() {
+		
+		  if( this.fn_getValid()) 
+			{
+				var sSvcID      	= "engineOilChangeServiceExcelDown";  
+				var sController   	= "nrtms/cs/engineOilChangeServiceExcelDown.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+			
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+           }
+	}	
+	
+	
+	//---------------------------------------------------------------------------------
+	// 엑셀
+	//---------------------------------------------------------------------------------
+	this.fn_excel= function() {
+	    Ex.core.exportExcel(this, this.grd_list);  
+	}
+	
+	/*
+	this.fn_excel=function() { 
+		this.FN_exportExcel(this, this.grd_list);
+	}
+	
+	this.FN_exportExcel = function(objForm,obj,sFileName,strSheet)
+	{
+		
+		this.ffobj = objForm;
+		this.fv_exportObject = obj;		    
+		this.fv_exportFileName = sFileName;
+		var updateFlag = false;
+
+		application.set_usewaitcursor(true,true);
+
+		this.ct_sheet = Eco.isEmpty(strSheet) ? "sheet" :strSheet;
+
+		 this.FN_exportExcelProcess();
+
+	}
+	this.FN_exportExcelProcess = function(){
+
+		var obj = this.fv_exportObject;
+		var sFileName = this.sfv_exportFileName;
+		var dToday = new Date();
+		var oGrid;
+		var sSheetName;
+		
+		var strType = obj.toString().toUpperCase();
+		if(!Eco.isEmpty(sFileName)){
+			sFileName = dToday.getTime() + "_" + sFileName;
+		}else{
+			sFileName = dToday.getTime();
+		}
+
+		var exportObj = new ExcelExportObject();
+
+		var sSvcUrl = application.services["svcurl"].url+"XExportImport";
+		this.ffobj.setWaitCursor(true,true);
+	 
+		exportObj.addEventHandler("onsuccess", this._exportExcelSuccess, this);
+		exportObj.addEventHandler("onerror", this._exportExcelFail, this);
+
+		exportObj.set_exporttype(nexacro.ExportTypes.EXCEL2007);
+		exportObj.set_exporturl("http://localhost/XExportImport");
+		exportObj.set_exportfilename(sFileName);
+		updateFlag = true;
+
+		if(strType == "[OBJECT GRID]")
+		{
+			oGrid = obj;
+			sSheetName = this.ct_sheet+"1";
+			exportObj.addExportItem(nexacro.ExportItemTypes.GRID, oGrid,  sSheetName + "!A1","allband","allrecord","suppress","allstyle","background","font", "both");
+		}
+		else
+		{
+			for(var i=0; i<obj.length; i++)
+			{
+				sSheetName = this.ct_sheet+(i+1);
+				oGrid = obj[i];
+				exportObj.addExportItem(nexacro.ExportItemTypes.GRID, oGrid,  sSheetName + "!A1","allband","allrecord","suppress","allstyle","background","font", "both");
+			}
+		}
+
+		exportObj.exportData();
+	}
+	
+	this._exportExcelSuccess = function(){
+	         
+	    if(updateFlag)
+	    {
+			var sSvcID        	= "engineOilChangeServiceExcelDown";                
+			var sController   	= "nrtms/cs/engineOilChangeServiceExcelDown.do";
+			var sInDatasets   	= "input=ds_list:U";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			var fn_callBack		= "fn_callBack";		
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	     }
+		
+		alert("성공");
+		this.ffobj.setWaitCursor(false,true);
+		
+	}
+	
+	this._exportExcelFail = function(){
+		alert("실패");
+		this.ffobj.setWaitCursor(false,true);
+	}
+	
+	*/
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //------------------------------------------------------------------------------- 
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) {
+			alert(strErrorMsg);		
+			return;
+		}
+		
+		if (strSvcId == "userRentalGroupInfo"){		
+			if (this.dsRentalInfo.getColumn(0, "rentalGroup") == "" || this.dsRentalInfo.getColumn(0, "rentalGroup") == null) return;
+			
+			this.fn_init1();
+		}
+		
+		switch (strSvcId) 
+		{
+		
+		     //신청일자 
+		     case "getToday":
+				var sFirstDay = Eco.date.getFirstDate(this.toDay);
+				this.div_search.cal_dlvrDayF.set_value(sFirstDay);
+				this.div_search.cal_dlvrDayT.set_value(this.toDay);
+				this.div_search.cal_downDay.set_value(this.toDay);
+		     break;
+		     case "getStateCode":
+		        this.div_search.cb_stateCd.set_value(" ");
+		     break;
+			 //신청일자 검색결과				
+			case "engineOilChangeServiceList":
+				if(this.ds_list.rowcount == 0) {
+				   this.div_search.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+			    }
+				break;
+			//집계일자 검색결과				
+			case "engineOilChangeServiceDownList":
+				if(this.ds_list.rowcount == 0) {
+				   this.div_search.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+			    }
+				break;
+			case "engineOilChangeServiceExcelDown":	
+				alert('엔진오일 교체신청 대상 집계 처리 합니다.');			
+				break;		
+		}	
+	}
+	
+	//체크여부
+	this.fn_getValid = function(){
+	    if(nvl(this.div_search.cal_dlvrDayF.value) == "" || nvl(this.div_search.cal_dlvrDayT.value) == "")
+	    {
+			alert('신청일자을 다시 입력하세요');
+			this.div_search.cal_procDayF.setFocus();
+			return false;
+		}else{
+			return true;
+		}	
+		
+		if(parseInt(nvl(this.div_search.cal_dlvrDayF.value)) > parseInt(nvl(this.div_search.cal_dlvrDayT.value)))
+		{
+			alert('신청일자을 다시 입력하세요');
+			this.div_search.cal_dlvrDayF.setFocus();
+			return false;
+	    }
+	  
+	    return true;
+	}
+
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		//this.parent.setButton("E|S|AG",this);		
+	}
+	
+	//---------------------------------------------------------------------------------
+	// 검색조건 초기화 설정 
+	//---------------------------------------------------------------------------------
+	this.fn_init1 = function(){
+		
+		var userId = application.gds_userInfo.getColumn(0, "userId"); 	//id
+		var userNm = application.gds_userInfo.getColumn(0, "userNm"); 	//이름
+		var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+		
+		var vkgrp = this.dsRentalInfo.getColumn(0, "rentalGroup"); 	//지사코드
+		var vkgrpNm = this.dsRentalInfo.getColumn(0, "rentalGroupNm"); //지사Nm
+		var vkbur = this.dsRentalInfo.getColumn(0, "rentalOffice"); 	//지점코드
+		var vkburNm = this.dsRentalInfo.getColumn(0, "rentalOfficeNm"); //지점NM
+		
+		var vkazc = application.gds_userInfo.getColumn(0, "vkazc");	 	//대리점
+		var vkazcNm = application.gds_userInfo.getColumn(0, "vkazcNm"); //대리점NM
+		
+		this.userId.set_value(userId);
+		this.userNm.set_value(userNm);
+		this.userGrp.set_value(userGrp);
+		
+		if(userGrp != '01' && userGrp != 'RM'){ 
+		
+			this.div_search.vkgrpCd.set_enable(false); 		//지사code 비활성
+			this.div_search.vkgrpNm.set_enable(false); 		//지사name 비활성
+			this.div_search.btn_save00.set_visible(false); 	//지사button visible
+			this.div_search.vkburCd.set_enable(false); 		//지점code 비활성 
+			this.div_search.vkburNm.set_enable(false); 		//지점name 비활성
+			this.div_search.btn_save01.set_visible(false); 	//지점button visible
+			this.div_search.vkazcCd.set_enable(false); 		//장착대리점code 비활성
+			this.div_search.vkazcNm.set_enable(false); 		//장착대리점name 비활성
+			this.div_search.btn_save02.set_visible(false); 	//장착대리점button visible
+			
+			this.div_search.vkgrpCd.set_value(vkgrp);
+			this.div_search.vkgrpNm.set_value(vkgrpNm);
+			this.div_search.vkburCd.set_value(vkbur);
+			this.div_search.vkburNm.set_value(vkburNm);
+			this.div_search.vkazcCd.set_value(userId);	
+			this.div_search.vkazcNm.set_value(userNm);
+		}
+		/*
+		var userId = application.gds_userInfo.getColumn(0, "userId"); 	//id
+		var userNm = application.gds_userInfo.getColumn(0, "userNm"); 	//이름
+		var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+		var vkgrp = application.gds_userInfo.getColumn(0, "vkgrp"); 	//지사코드
+		var vkgrpNm = application.gds_userInfo.getColumn(0, "vkgrpNm"); //지사Nm
+		var vkbur = application.gds_userInfo.getColumn(0, "vkbur"); 	//지점코드
+		var vkburNm = application.gds_userInfo.getColumn(0, "vkburNm"); //지점NM
+		var vkazc = application.gds_userInfo.getColumn(0, "vkazc");	 	//대리점
+		var vkazcNm = application.gds_userInfo.getColumn(0, "vkazcNm"); //대리점NM
+		
+		this.userId.set_value(userId);
+		this.userNm.set_value(userNm);
+		this.userGrp.set_value(userGrp);
+		
+		if(userGrp == '05'){ 
+			//대리점
+			this.div_search.cb_dateCd.set_enable(false);	//일자구분 비활성
+			this.div_search.vkgrpCd.set_enable(false); 		//지사code 비활성
+			this.div_search.vkgrpNm.set_enable(false); 		//지사name 비활성
+			this.div_search.btn_save00.set_visible(false); 	//지사button visible
+			this.div_search.vkburCd.set_enable(false); 		//지점code 비활성 
+			this.div_search.vkburNm.set_enable(false); 		//지점name 비활성
+			this.div_search.btn_save01.set_visible(false); 	//지점button visible
+			this.div_search.vkazcCd.set_enable(false); 		//장착대리점code 비활성
+			this.div_search.vkazcNm.set_enable(false); 		//장착대리점name 비활성
+			this.div_search.btn_save02.set_visible(false); 	//장착대리점button visible
+			
+			this.div_search.vkgrpCd.set_value(vkgrp);
+			this.div_search.vkgrpNm.set_value(vkgrpNm);
+			this.div_search.vkburCd.set_value(vkbur);
+			this.div_search.vkburNm.set_value(vkburNm);
+			this.div_search.vkazcCd.set_value(userId);	
+			this.div_search.vkazcNm.set_value(userNm);
+		}else if(userGrp == '04'){
+			//지점
+			this.div_search.cb_dateCd.set_enable(false);	//일자구분 비활성
+			this.div_search.vkgrpCd.set_enable(false);	 	//지사code 비활성
+			this.div_search.vkgrpNm.set_enable(false); 		//지사name 비활성
+			this.div_search.btn_save00.set_visible(false); 	//지사button visible
+			this.div_search.vkburCd.set_enable(false); 		//지점code 비활성 
+			this.div_search.vkburNm.set_enable(false); 		//지점name 비활성
+			this.div_search.btn_save01.set_visible(false); 	//지점button visible
+			
+			this.div_search.vkgrpCd.set_value(vkgrp);
+			this.div_search.vkgrpNm.set_value(vkgrpNm);
+			this.div_search.vkburCd.set_value(vkbur);
+			this.div_search.vkburNm.set_value(vkburNm);
+			
+		} else if(userGrp == '03' || userGrp == '07') { 	//지사
+			//지사, 타이어뱅크 
+			this.div_search.cb_dateCd.set_enable(false);	//일자구분 비활성
+			this.div_search.vkgrpCd.set_enable(false); 		//지사code 비활성
+			this.div_search.vkgrpNm.set_enable(false); 		//지사name 비활성
+			this.div_search.btn_save00.set_visible(false); 	//지사button visible
+			this.div_search.vkburCd.set_enable(false); 		//지점code 비활성 
+			this.div_search.vkburNm.set_enable(false); 		//지점name 비활성
+			this.div_search.btn_save01.set_visible(false); 	//지점button visible
+			
+			this.div_search.vkgrpCd.set_value(vkgrp);
+			this.div_search.vkgrpNm.set_value(vkgrpNm);
+		}
+		*/
+	}
+
+	this.div_search_cb_dateCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		var userGrp = application.gds_userInfo.getColumn(0, "userGrp"); //그룹
+		
+		if( this.div_search.cb_dateCd.value == "01"){
+			
+			 this.ds_list.clearData(); 
+			//신청일자
+			this.div_search.st_dlvrDay.set_visible(true);
+			this.div_search.cal_dlvrDayF.set_visible(true);
+			this.div_search.st01.set_visible(true);
+			this.div_search.cal_dlvrDayT.set_visible(true);
+			
+			this.div_search.st_stateCd.set_visible(true);
+			this.div_search.cb_stateCd.set_visible(true);
+			
+			//집계일자
+			this.div_search.st_downDay.set_visible(false);
+			this.div_search.cal_downDay.set_visible(false);
+			this.div_search.ed_ordNo.set_enable(true);
+			this.div_search.btn_custPopUp00.set_enable(true);			
+			this.div_search.ed_ordNo.set_value(""); 	
+			this.parent.setButton("E|S|",this);	
+
+		}else{
+		
+			this.ds_list.clearData(); 
+			//신청일자
+			this.div_search.st_dlvrDay.set_visible(false);
+			this.div_search.cal_dlvrDayF.set_visible(false);
+			this.div_search.st01.set_visible(false);
+			this.div_search.cal_dlvrDayT.set_visible(false);
+			
+			this.div_search.st_stateCd.set_visible(false);
+			this.div_search.cb_stateCd.set_visible(false);
+			
+			//집계일자
+			this.div_search.st_downDay.set_visible(true);
+			this.div_search.cal_downDay.set_visible(true);
+			this.div_search.cal_downDay.set_enable(false);
+			this.div_search.ed_ordNo.set_value(""); 
+			this.div_search.ed_ordNo.set_enable(false);
+			this.div_search.btn_custPopUp00.set_enable(false);
+			this.parent.setButton("E|AG|S",this);	
+		
+		}
+		this.div_search.ed_ordNo.setFocus();
+	}
+	
+	/*지사조회 버튼 클릭 시 */
+	this.showVkgrp = function(obj:Button,  e:nexacro.ClickEventInfo){
+	  var args ={p_arg:"RTSDOrder"};
+	  Ex.core.popup(this,"지사 조회","comm::RTCOMMVkgrp_pop.xfdl",args,"modaless=false");
+	}
+	/*지점조회 버튼 클릭 시 */
+	this.showVkbur = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var args ={p_arg:"RTSDOrder", p_rentalGroup:this.div_search.vkgrpCd.value};
+		Ex.core.popup(this,"지점 조회","comm::RTCOMMVkbur_pop.xfdl",args,"modaless=false");
+	}
+	this._setReturn = function(val){
+		var cd = val[0];
+		var nm = val[1];
+		var gb = val[2];
+		if(gb == "vkgrp") {
+			this.div_search.vkgrpCd.set_value(cd);
+			this.div_search.vkgrpNm.set_value(nm);
+		} else if(gb == "vkbur" ) {
+			this.div_search.vkburCd.set_value(cd);
+			this.div_search.vkburNm.set_value(nm);
+		} else if(gb == "vkazc" ) {
+			this.div_search.vkazcCd.set_value(cd);
+			this.div_search.vkazcNm.set_value(nm);
+		}
+	}
+	
+	/* 대리점조회 버튼 클릭시 */
+	this.showVkazc = function(obj:Button, e:nexacro.ClickEventInfo) {
+		var div = this.div_search;
+		
+		var args = {  vkgrpCd : div.vkgrpCd.value
+					, vkgrpNm : div.vkgrpNm.value
+					, vkburCd : div.vkburCd.value
+					, vkburNm : div.vkburNm.value
+					, vkazcNm : div.vkazcNm.value
+				   };
+		Ex.core.popup(this, "대리점 조회", "comm::RTCOMMAgencyEngineOil_pop.xfdl", args, "modaless=false");
+	}
+	
+	this.returnAgencyCd = function(arr) {
+		this.div_search.vkgrpCd.set_value(arr[0]);
+		this.div_search.vkgrpNm.set_value(arr[1]);
+		this.div_search.vkburCd.set_value(arr[2]);
+		this.div_search.vkburNm.set_value(arr[3]);
+		this.div_search.vkazcCd.set_value(arr[4]);
+		this.div_search.vkazcNm.set_value(arr[5]);
+	}
+	
+	/*계약조회 버튼 클릭시 20160407 추가 한승훈  */
+	this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:"RTSDOrder"};
+		Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl", args ,"modaless=false");
+	}
+	this.returnOrderNoInfo = function(val) {
+		this.div_search.ed_ordNo.set_value(val);
+	}
+	
+	/*계약번호 엔터입력시  20160407 추가 한승훈  */
+	this.ed_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 13 ){	
+			var ordNo = nvl(this.div_search.ed_ordNo.value);
+			if( ordNo == "" ){
+				alert("계약번호를 입력하세요.");
+				return;
+			}else{
+				this.fn_search(null,null);				
+			}	
+		}
+	}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PaymentDAO">
+
+	<!-- 결제정보 이력조회 resultMap-->	
+	<resultMap id="histResultMap" class="java.util.HashMap">	
+		<result property="rpcSeq"  		column="RPC_SEQ" />			<!--결제변경요청순번    -->
+		<result property="ordNo"   		column="ORD_NO" />			<!--주문번호            	-->
+		<result property="carNo"  		column="CAR_NO" />	      	<!--차량번호            	-->
+		<result property="custNo"  		column="CUST_NO" />	      	<!--고객번호            	-->
+		<result property="custNm"  		column="CUST_NM" />	      	<!--고객명  		-->
+		<result property="matCd"  		column="MAT_CD" />	      	<!--상품코드		-->
+		<result property="matNm"  		column="MAT_NM" />	      	<!--상품명			-->
+		<result property="rpcDay"  		column="RPC_DAY" />	      	<!--결제변경요청일      -->
+		<result property="rpcUid"  		column="RPC_UID" />	      	<!--결제변경요청자      -->
+		<result property="rpcRsn"  		column="RPC_RSN" />	      	<!--변경사유            	-->
+		<result property="fileGrpSeq"  	column="FILE_GRP_SEQ" />	<!--첨부파일            	-->
+		<result property="bfcustNo"  	column="BFCUST_NO" />       <!--변경전 고객번호     -->
+		<result property="bftcgrpNo"  	column="BFTCGRP_NO" />      <!--변경전 통합청구번호 -->
+		<result property="bfpayMthd"  	column="BFPAY_MTHD" />      <!--변경전 결제방법     -->
+		<result property="bpayMthdNm"  	column="BPAY_MTHD_NM" />    <!--변경전 결제방법     -->
+		<result property="bfpayDd"  	column="BFPAY_DD" />      	<!--변경전 결제일자     -->
+		<result property="bfpayDdNm"	column="BFPAY_DD_NM" />     <!--변경전 결제일자     -->
+		<result property="bfaccSeq"  	column="BFACC_SEQ" />      	<!--변경전 계좌순번     -->
+		<result property="bfbankCd"  	column="BFBANK_CD" />      	<!--변경전 출금은행코드 -->
+		<result property="bfbankNm"  	column="BFBANK_NM" />      	<!--변경전 출금은형명   -->
+		<result property="bfacctNo"  	column="BFACCT_NO" />      	<!--변경전 출금계좌번호 -->
+		<result property="bfcustNm"  	column="BFCUST_NM" />      	<!--변경전 예금주       -->
+		<result property="bfcrdSeq"  	column="BFCRD_SEQ" />      	<!--변경전 카드순번     -->
+		<result property="bfcardcomNm"  column="BFCARDCOM_NM" />    <!--변경전 카드사명   -->
+		<result property="bfcadNo"  	column="BFCAD_NO" />      	<!--변경전 카드번호     -->
+		<result property="bfexpireYm"  	column="BFEXPIRE_YM" />     <!--변경전 카드 유효기간-->
+		<result property="bfebirDay"  	column="BFEBIR_DAY" />      <!--변경전 법정생년원일 -->
+		<result property="bfbusNo"  	column="BFBUS_NO" />      	<!--변경전 사업자번호   -->
+		<result property="bfbatchKey"  	column="BFBATCH_KEY" />     <!--변경전 BATCH KEY    -->
+		<result property="bfregId"  	column="BFREG_ID" />      	<!--변경전 등록자ID     -->
+		<result property="bfregNm"  	column="BFREG_NM" />      	<!--변경전 등록자명     -->
+		<result property="bfaccStat"  	column="BFACC_STAT" />      <!--변경전 계좌신청상태 -->
+		<result property="bfacrqSt"  	column="BFACRQ_ST" />      	<!--변경전 계좌해지 신청-->
+		<result property="bfacrqFg"  	column="BFACRQ_FG" />     	<!--변경전 계좌신청 발생-->
+		<result property="bfacrqDay"  	column="BFACRQ_DAY" />      <!--변경전 계좌해지 신청-->
+		<result property="bfacrqSeq"  	column="BFACRQ_SEQ" />      <!--변경전 계좌해지 신청-->
+		<result property="bfrpcSeq"  	column="BFRPC_SEQ" />      	<!--이전 변경후 수정내역-->
+		<result property="afcustNo"  	column="AFCUST_NO" />      	<!--변경후 고객번호     -->
+		<result property="aftcgrpNo"  	column="AFTCGRP_NO" />      <!--변경후 통합청구번호 -->
+		<result property="afpayMthd"  	column="AFPAY_MTHD" />      <!--변경후 결제방법     -->
+		<result property="apayMthdNm"  	column="APAY_MTHD_NM" />    <!--변경후 결제방법 	  -->
+		<result property="afpayDd"  	column="AFPAY_DD" />      	<!--변경후 결제일자     -->
+		<result property="afpayDdNm"  	column="AFPAY_DD_NM" />     <!--변경후 결제일자     -->
+		<result property="afaccSeq"  	column="AFACC_SEQ" />      	<!--변경후 계좌순번     -->
+		<result property="afbankCd"  	column="AFBANK_CD" />      	<!--변경후 출금은행코드 -->
+		<result property="afbankNm"  	column="AFBANK_NM" />      	<!--변경후 출금은형명   -->
+		<result property="afacctNo"  	column="AFACCT_NO" />      	<!--변경후 출금계좌번호 -->
+		<result property="afcustNm"  	column="AFCUST_NM" />      	<!--변경후 예금주       -->
+		<result property="afcrdSeq"  	column="AFCRD_SEQ" />      	<!--변경후 카드순번     -->
+		<result property="afcardcomNm"  column="AFCARDCOM_NM" />    <!--변경후카드사명   -->
+		<result property="afcadNo"  	column="AFCAD_NO" />      	<!--변경후 카드번호     -->
+		<result property="afexpireYm"  	column="AFEXPIRE_YM" />     <!--변경후 카드 유효기간-->
+		<result property="afebirDay"  	column="AFEBIR_DAY" />      <!--변경후 법정생년원일 -->
+		<result property="afbusNo"  	column="AFBUS_NO" />      	<!--변경후 사업자번호   -->
+		<result property="afbatchKey"  	column="AFBATCH_KEY" />     <!--변경후 BATCH KEY    -->
+		<result property="afregId"  	column="AFREG_ID" />      	<!--변경후 등록자ID     -->
+		<result property="afaccStat"  	column="AFACC_STAT" />      <!--변경후 계좌신청 상태-->
+		<result property="afacrqSt"  	column="AFACRQ_ST" />      	<!--변경후 계좌신청 처리-->
+		<result property="afacrqFg"  	column="AFACRQ_FG" />      	<!--변경후 계좌신청 발생-->
+		<result property="afacrqDay"  	column="AFACRQ_DAY" />      <!--변경후 계좌신청 처리-->
+		<result property="afacrqSeq"  	column="AFACRQ_SEQ" />      <!--변경후 계좌신청 순번-->
+		<result property="abrpcSeq"  	column="ABRPC_SEQ" />      	<!--이전 변경전 수정내역-->
+		<result property="delYn"  		column="DEL_YN" />          <!--삭제여부            -->
+		<result property="regId"  		column="REG_ID" />          <!--등록자 ID           -->
+		<result property="regNm"  		column="REG_NM" />          <!--등록자명           -->
+		<result property="regDt"  		column="REG_DT" />          <!--등록일              -->
+		<result property="chgId"  		column="CHG_ID" />          <!--변경자 ID           -->
+		<result property="chgNm"  		column="CHG_NM" />          <!--변경자명           -->
+		<result property="chgDt"  		column="CHG_DT" />          <!--변경일              -->		
+	</resultMap>	
+	
+	<!-- 결제정보 조회 resultMap -->	
+	<resultMap id="listResultMap" class="java.util.HashMap">	
+		<result property="ordNo"   		column="ORD_NO" />			<!--주문번호            	-->
+		<result property="vehicleNo"  	column="CAR_NO" />	      	<!--차량번호            	-->
+		<result property="custNo"  		column="CUST_NO" />	      	<!--고객번호            	-->
+		<result property="custTp"  		column="CUST_TP" />	      	<!--고객유형            	-->
+		<result property="custTp2" 		column="CUST_TP2" />	    <!--고객유형2      -->
+		<result property="custNm"  		column="CUST_NM" />	      	<!--고객명  		-->
+		<result property="productNm"  	column="MAT_NM" />	      	<!--상품명			-->
+		<result property="payMthd"  	column="PAY_MTHD" />        <!--결제방법     		-->		
+		<result property="payDd"  		column="PAY_DD" />        	<!--결제일     		-->		
+		
+		<result property="tcgrpNo"  	column="TCGRP_NO" />        <!--통합청구번호		-->		
+		<result property="batchKey"  	column="BATCH_KEY" />   	<!--배치키     		-->		
+		<result property="accStat"  	column="ACC_STAT" />        <!--계좌신청상태		-->	
+			
+		<result property="bankCd"  		column="BANK_CD" />        	<!--은행코드     		-->		
+		<result property="acctNo"  		column="ACCT_NO" />      	<!--계좌번호		-->		
+		<result property="depositor"  	column="DEPOSITOR" />      	<!--예금주			-->		
+		<result property="accSeq"  		column="ACC_SEQ" />      	<!--계좌순번		-->		
+		<result property="crdSeq"  		column="CRD_SEQ" />      	<!--카드순번		-->		
+		<result property="cardcomCd"  	column="CARDCOM_CD" />      <!--카드사코드		-->		
+		<result property="cardNo"  		column="CARD_NO" />      	<!--카드번호		-->		
+		<result property="ebirDay"  	column="EBIR_DAY" />      	<!--법정생년월일		-->		
+		<result property="buslNo"  		column="BUSL_NO" />      	<!--사업자번호		-->		
+		<result property="arrearsAmt"  	column="ARREARS_AMT" />     <!--미납액			-->	
+		<result property="expireYm"  	column="EXPIRE_YM" />     	<!--유효기간		-->
+		<result property="deleteTp"  	column="DELETE_TP" />     	<!--삭제가능여부		-->		
+		<result property="accChk"  		column="ACC_CHK" />     	<!--계좌확인상태		-->		
+		<result property="bkeyChk"  	column="BKEY_CHK" />     	<!--카드확인상태		-->	
+		<result property="oBirthDay"  	column="O_BIRTHDAY" />     	<!--사업주 법정생년월일		-->	
+		<result property="oCustNm"  	column="O_CUSTNM" />     	<!--사업주명		-->
+		<result property="pCustTp"  	column="PCUST_TP" />     	<!--사결제고객구분		-->
+		<result property="oBuslNo"  	column="O_BUSL_NO" />				
+		<result property="birthDay"  	column="BIRTH_DAY" />
+		<result property="mobNo"  		column="MOB_NO" />
+		<result property="safeKey"  	column="SAFEKEY" />
+		<result property="certCd"  		column="CERT_CD" />
+		<result property="mobFirm"  	column="MOB_FIRM" />
+		<result property="lfCd"  		column="LF_CD" />
+		<result property="genderCd"  	column="GENDER_CD" />
+	</resultMap>
+	
+	<!-- 결제정보 변경이력 파리미터맵-->      	
+	<parameterMap class="java.util.Map" id="histParameters"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="histResultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<!-- 결제정보 조회 파리미터맵-->	
+	<parameterMap class="java.util.Map" id="listParameters"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="listResultMap" />   
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>		
+	
+	<!-- 결제정보 리스트 -->
+	<procedure id="payment.sRtre0050List" parameterMap="listParameters">
+		{call
+		Pkg_Rtre0050.p_sRtre0050List(?, ?, ?)}
+	</procedure>	
+	
+	<!-- 결제정보 변경이력 리스트  -->
+	<procedure id="payment.sRtre0050" parameterMap="histParameters">
+		{call
+		Pkg_Rtre0050.p_sRtre0050(?, ?, ?)}
+	</procedure>	
+	
+	<!-- 결제정보 변경저장 파리미터맵-->
+	<parameterMap class="java.util.Map" id="saveParameters">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />	     <!--처리구분(I,U,D)       -->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" />      <!--주문번호              -->
+		<parameter property="rpcDay"		jdbcType="VARCHAR" mode="IN" />      <!--결제변경요청일        -->
+		<parameter property="rpcUid"		jdbcType="VARCHAR" mode="IN" />      <!--결제변경요청자        -->
+		<parameter property="rpcCd"			jdbcType="VARCHAR" mode="IN" />      <!--변경사유코드          -->
+		<parameter property="rpcRsn"		jdbcType="VARCHAR" mode="IN" />      <!--변경사유              -->
+		<parameter property="rcrqDay"		jdbcType="VARCHAR" mode="IN" />      <!--계좌신청 처리일       -->
+		<parameter property="rcrqSeq"		jdbcType="NUMERIC" mode="IN" />      <!--계좌신청 순번         -->
+		<parameter property="fileGrpSeq"	jdbcType="NUMERIC" mode="IN" />      <!--첨부파일              -->
+		<parameter property="bfcustNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 고객번호       -->
+		<parameter property="bftcgrpNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 통합청구번호   -->
+		<parameter property="bfpayMthd"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 결제방법       -->
+		<parameter property="bfpayDd"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 결제일자       -->
+		<parameter property="bfaccSeq"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 계좌순번       -->
+		<parameter property="bfacustNm"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 예금주명       -->
+		<parameter property="bfacustTp"		jdbcType="VARCHAR" mode="IN" />      <!--변경전계좌 고객유형   -->
+		<parameter property="bfaebirDay"	jdbcType="VARCHAR" mode="IN" />      <!--변경전 법정생년월일   -->
+		<parameter property="bfabuslNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 계좌 사업자번호-->
+		<parameter property="bfbankNo"		jdbcType="VARCHAR" mode="IN" />		 <!--변경전 은행코드       -->
+		<parameter property="bfacctNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 계좌번호       -->
+		<parameter property="bfcrdSeq"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 카드순번       -->
+		<parameter property="bfccustNm"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 카드주명       -->
+		<parameter property="bfccustTp"		jdbcType="VARCHAR" mode="IN" />      <!--변경전카드고객유형    -->
+		<parameter property="bfcebirDay"	jdbcType="VARCHAR" mode="IN" />      <!--변경전카드법정생년월일-->
+		<parameter property="bfcbuslNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전카드사업자번호  -->
+		<parameter property="bfcardcomNo"	jdbcType="VARCHAR" mode="IN" />      <!--변경전카드사코드      -->
+		<parameter property="bfcardNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 카드번호       -->
+		<parameter property="bfexpireYm"	jdbcType="VARCHAR" mode="IN" />      <!--변경전 유효기간       -->
+		<parameter property="bfbatchKey"	jdbcType="VARCHAR" mode="IN" />      <!--변경전 BATCH KEY      -->
+		<parameter property="bfaccStat"		jdbcType="VARCHAR" mode="IN" />      <!--변경전 계좌신청상태   -->
+		<parameter property="afcustNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 고객번호       -->
+		<parameter property="aftcgrpNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 통합청구번호   -->
+		<parameter property="afpayMthd"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 결제방법       -->
+		<parameter property="afpayDd"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 결제일자       -->
+		<parameter property="afaccSeq"		jdbcType="VARCHAR" mode="INOUT" />   <!--변경후 계좌순번       -->
+		<parameter property="afacustNm"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 고객명         -->
+		<parameter property="afacustTp"		jdbcType="VARCHAR" mode="IN" />		 <!--변경후 고객유형       -->
+		<parameter property="afaebirDay"	jdbcType="VARCHAR" mode="IN" />      <!--변경후 법정생년월일   -->
+		<parameter property="afabuslNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 사업자번호     -->
+		<parameter property="afbankNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 은행코드       -->
+		<parameter property="afacctNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 계좌번호       -->
+		<parameter property="afaccChk"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 계좌확인상태   -->
+		<parameter property="afcrdSeq"		jdbcType="VARCHAR" mode="INOUT" />  <!--변경후 카드순번       -->
+		<parameter property="afbatchKey"	jdbcType="VARCHAR" mode="IN" />      <!--변경후 BATCH KEY      -->
+		<parameter property="afccustNm"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 카드주명       -->
+		<parameter property="afccustTp"		jdbcType="VARCHAR" mode="IN" />      <!--변경후카드고객유형    -->
+		<parameter property="afcebirDay"	jdbcType="VARCHAR" mode="IN" />      <!--변경후카드법정생년월일-->
+		<parameter property="afcbuslNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후카드사업자번호  -->
+		<parameter property="afcardcomNo"	jdbcType="VARCHAR" mode="IN" />      <!--변경후카드사코드      -->
+		<parameter property="afcardNo"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 카드번호       -->
+		<parameter property="afexpireYm"	jdbcType="VARCHAR" mode="IN" />      <!--변경후 유효기간       -->
+		<parameter property="afbkeyChk"		jdbcType="VARCHAR" mode="IN" />      <!--변경후 카드확인 상태  -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자 ID             -->                       
+		<parameter property="rpcSeq" 		jdbcType="NUMERIC" mode="OUT" />      <!--결제변경요청순번      -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+			 
+	<!-- 결제정보 변경저장-->
+	<procedure id="payment.savePaymentInfo" parameterMap="saveParameters">
+		{call Pkg_Rtre0050.p_IUDRtre0050 (?,	?,	?,	?,	?,	?,	?,	?,	?,	?,
+									?,	?,	?,	?,	?,	?,	?,	?,	?,	?,
+									?,	?,	?,	?,	?,	?,	?,	?,	?,	?,
+									?,	?,	?,	?,	?,	?,	?,	?,	?,	?,
+									?,	?,	?,	?,	?,	?,	?,	?,	?,	?,
+									?,	?,	?,	?,	?,	?,	?)}
+	</procedure>	
+		
+	<!-- 결제정보 삭제 파라미터맵 -->	
+	<parameterMap class="java.util.Map" id="deleteRtRE0050">
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="delTp" 		jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+
+	</parameterMap>		
+	<!-- 결제정보삭제-->
+	<procedure id="payment.delPaymentInfo" parameterMap="deleteRtRE0050">
+		{call
+		Pkg_Rtre0050.p_DeleteRtre0050(?,?,?,?,?,?)}
+	</procedure>		
+
+	
+</sqlMap>
+
+

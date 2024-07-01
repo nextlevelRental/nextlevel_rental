@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="vaccMang">
+	<parameterMap class="java.util.Map" id="vaccMangListParam">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="vaccMangListResult" />
+		<parameter property="bank"	  jdbcType="VARCHAR" mode="IN" />	<!-- 은행코드 -->
+	</parameterMap>
+	
+	<!-- 가상계좌 현황 리스트 -->
+	<procedure id="vaccMang.sRtre0220VaccMangList" parameterMap="vaccMangListParam">
+		{call Pkg_Rtre0220.p_sRtre0220_vaccMang(?, ?)}
+	</procedure>
+	
+	<resultMap id="vaccMangListResult" class="java.util.HashMap">
+		<result property="bankCd"	  column="BANK_CD" />		<!-- 은행코드	-->
+		<result property="bankNm"	  column="BANK_NM" />		<!-- 은행명	-->
+		<result property="totlCnt"	  column="TOTL_CNT" />		<!-- 총건수	-->
+		<result property="isncCnt"	  column="ISNC_CNT" />		<!-- 발급건수	-->
+		<result property="actvCnt"	  column="ACTV_CNT" />		<!-- 활성건수	-->
+		<result property="prdExprCnt" column="PRD_EXPR_CNT" />	<!-- 기간만료건수	-->
+		<result property="isncAvlCnt" column="ISNC_AVL_CNT" />	<!-- 발급가능건수	-->
+	</resultMap>
+	
+	<!-- 기간만료계좌정리 -->
+	<parameterMap class="java.util.Map" id="prdExprArngmParam">
+		<parameter property="bankCd"		jdbcType="VARCHAR" mode="IN" /> <!-- 은행코드 -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" /> <!-- 작업자ID -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	
+	<procedure id="vaccMang.sRtre0220PrdExprArngm" parameterMap="prdExprArngmParam">
+		{call Pkg_Rtre0220.p_Rtre0220_prdExprArngm(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

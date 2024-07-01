@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMSeviceOrdNew_pop" classname="RTCMVkbur_pop" left="0" top="0" width="817" height="485" titletext="서비스등록" onload="RTCOMMSeviceOrd_pop_onload" onkeyup="RTCOMMSeviceOrd_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_seviceCd" taborder="0" binddataset="ds_seviceCd" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="66" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="10" height="380" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="31"/>
+                <Column size="274"/>
+                <Column size="82"/>
+                <Column size="93"/>
+                <Column size="94"/>
+                <Column size="91"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="상세서비스"/>
+                <Cell col="2" text="기간"/>
+                <Cell col="3" text="타이어본수"/>
+                <Cell col="4" text="서비스횟수"/>
+                <Cell col="5" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:prsNm"/>
+                <Cell col="2" text="bind:periodNm"/>
+                <Cell col="3" text="bind:cntNm"/>
+                <Cell col="4" text="bind:servCnt"/>
+                <Cell col="5" text="bind:servAmt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" text="Div00" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="10" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_srvcNm" taborder="24" text="서비스 명" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="81" left="20"/>
+              <Edit id="p_prsNm" taborder="25" top="10" height="21" width="246" left="106" onkeyup="div_search_edt_searchKeyword_onkeyup"/>
+              <Button id="btn_search" taborder="26" text="검색" cssclass="btn_WF_CRUD" top="9" height="22" domainId="nexa.add" width="45" right="18" onclick="div_search_btn_search_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" top="456" right="54" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="456" right="9" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_seviceCd">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prsPk" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_seviceCdTmp">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prsPk" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+
+var p_prsNm = "";
+this.p_periodCd = "";
+this.p_saleCd = "";
+
+// 데이터 호출 후 실행 함수 
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "srvcOrdList" ){
+	console.log(this.ds_seviceCd.saveXML());
+		var ct = this.ds_seviceCd.getRowCount();
+		this.ds_seviceCd.addColumn("check", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+		if( ct == 0){
+			alert("조회된 데이터가 없습니다.");
+			this.div_search.p_prsNm.setFocus(true);
+			p_prsNm = "";
+		}
+	}
+}
+
+// 초기 로딩시
+this.RTCOMMSeviceOrd_pop_onload = function (obj:Form, e:LoadEventInfo){
+	Ex.core.init(obj);
+	this.p_periodCd = this.parent.p_periodCd;	// 부모창에서 보낸 paramtere 값 받기
+	this.p_saleCd = this.parent.p_saleCd;	// 부모창에서 보낸 paramtere 값 받기
+}
+
+// 검색 버튼클릭시
+this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	p_prsNm = p_prsNm == ""?nvl(this.div_search.p_prsNm.value):p_prsNm;  // 버튼 클릭시 input 값 가져오기
+    //trace("1 p_prsNm : " + p_prsNm);
+	var sSvcID        	= "srvcOrdList";                    
+	var sController   	= "rtms/comm/srvcOrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_seviceCd=srvcOrdListMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_seviceCd.clearData();  // dataset clear 한다.
+	sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 키워드명
+	sArgs += Ex.util.setParam("p_periodCd", this.p_periodCd);	// 기간코드
+	sArgs += Ex.util.setParam("p_saleCd", this.p_saleCd);	// 판매코드
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+// 서비스명 키워드 엔터 후 검색
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == 13 ){
+		p_prsNm = p_prsNm == ""?obj.text:p_prsNm;  // 키업할 경우 input 값 가져오기
+		
+		//trace("2 p_prsNm : " + p_prsNm);				
+		var sSvcID        	= "srvcOrdList";                    
+		var sController   	= "rtms/comm/srvcOrdList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_seviceCd=srvcOrdListMap";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.ds_seviceCd.clearData();  // dataset clear 한다.
+		sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 키워드명
+		sArgs += Ex.util.setParam("p_periodCd", this.p_periodCd);	// 기간코드
+		sArgs += Ex.util.setParam("p_saleCd", this.p_saleCd);	// 판매코드
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+
+
+// 선택할 서비스코드를 부모창에 지정한다.
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var result 		= "";
+	var res			= "";
+	var idx  		= this.ds_seviceCd.rowposition;
+	var nCnt 		= this.ds_seviceCd.getRowCount();
+	
+	for( var i = 0 ; i < nCnt ; i++){
+		if(this.ds_seviceCd.getColumn(i,"check")==1){
+							
+			var nRow = this.ds_seviceCdTmp.addRow();
+			this.ds_seviceCdTmp.copyRow(nRow,this.ds_seviceCd, i);
+		}
+	}
+	var arr = [this.ds_seviceCdTmp];
+	console.log(this.ds_seviceCdTmp.saveXML());
+	this.close(this.opener._setPopPrmmSrvcOrdList(arr));
+}	
+
+// 닫기
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+
+// ESC 닫기
+this.RTCOMMSeviceOrd_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

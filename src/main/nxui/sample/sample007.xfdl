@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="WebEditorTest" classname="WebEditorTest" left="0" top="0" width="1260" height="411" titletext="기본파일업/다운로드" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="1" left="11" top="51" right="30" height="49" style="background:lightsteelblue;bordertype:round 10 10 ;"/>
+        <Static id="Static01" taborder="3" left="11" top="115" height="257" style="background:lightsteelblue;bordertype:round 10 10 ;" right="30"/>
+        <Grid id="Grid00" taborder="5" binddataset="ds_File" useinputpanel="false" autofittype="col" left="34" top="125" height="233" right="256">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="FILE_PATH"/>
+                <Cell col="1" disptype="normal" text="FILE_NAME"/>
+                <Cell col="2" disptype="normal" text="FILE_SIZE"/>
+                <Cell col="3" disptype="normal" text="FILE_SAVENM"/>
+                <Cell col="4" disptype="normal" text="FILE_TYPE"/>
+                <Cell col="5" disptype="normal" text="NUM"/>
+                <Cell col="6" disptype="normal" text="CHK"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:FILE_PATH"/>
+                <Cell col="1" disptype="normal" text="bind:FILE_NAME"/>
+                <Cell col="2" disptype="normal" text="bind:FILE_SIZE"/>
+                <Cell col="3" disptype="normal" text="bind:FILE_SAVENM"/>
+                <Cell col="4" disptype="normal" text="bind:FILE_TYPE"/>
+                <Cell col="5" disptype="normal" text="bind:NUM"/>
+                <Cell col="6" disptype="normal" text="bind:CHK"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="Edit00" taborder="6" visible="true" top="67" right="255" height="20" left="34"/>
+        <FileUpload id="FileUpload00" taborder="9" retry="0" index="0" top="16" width="374" height="26" onitemchanged="FileUpload00_onitemchanged" style="buttonsize:100;buttonpadding:0 0 0 10;buttontext:싱글파일선택;align:center middle;" right="39"/>
+        <FileUpload id="FileUpload01" taborder="10" retry="0" index="0" onitemchanged="FileUpload00_onitemchanged" top="127" width="471" height="129" style="buttonsize:100;buttonpadding:0 0 0 10;buttontext:멀티파일선택;align:center middle;" multiselect="true" right="139" itemcount="1" innerdataset="@ds_File" onerror="FileUpload01_onerror" onsuccess="FileUpload01_onsuccess"/>
+        <Button id="Button00" taborder="11" text="upload" top="63" width="80" height="26" onclick="Button00_onclick" right="49"/>
+        <Button id="Button01" taborder="12" text="upload" top="123" width="80" height="26" onclick="Button01_onclick" right="49"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_File" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="FILE_PATH" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_SAVENM" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs"
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+    //폼로드시 공통함수 
+	Ex.core.init(obj);
+}
+
+
+
+this.FileUpload00_onitemchanged = function(obj:FileUpload,  e:nexacro.FileUploadItemChangeEventInfo)
+{
+   if(obj.multiselect)
+    {
+
+		var sFileName;
+		var sFilePath;
+	    var sFullData = e.newvalue;
+
+		obj.set_itemcount(1);
+		var aFilePath = sFullData.split(",");
+		
+		var dsTemp = Eco.util.isCheckDs("dsTemp");
+		    dsTemp.addColumn("FILE_PATH");
+		
+  		    for(var i=0; i<aFilePath.length; i++)
+			{
+				 sFilePath = aFilePath[i];
+				  var dirExpt = sFilePath.lastIndexOf("\\")+1;
+		           sFileName = sFilePath.substr(dirExpt);
+		    
+				
+				var nRow = this.ds_File.addRow();		
+				
+				this.ds_File.setColumn(nRow, "FILE_PATH", sFilePath);
+			    this.ds_File.setColumn(nRow, "FILE_NAME", sFileName);
+			    this.ds_File.setColumn(nRow, "NUM", this.ds_File.rowcount +  1);
+			    this.ds_File.setColumn(nRow, "CHK",1 );	
+					
+			}
+
+	
+			dsTemp.assign(this.ds_File);
+
+		obj.set_itemcount(dsTemp.rowcount);
+		obj.set_innerdataset("");
+		obj.set_innerdataset("dsTemp");
+		obj.set_filecolumn("FILE_NAME"); 
+	
+	}
+	
+    
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfn_fileUpload(this.FileUpload00);
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+   var strUrl = "/multiFileUpload/upload.do?codeCd=13";;
+   	
+	 this.FileUpload01.set_uploadurl(strUrl);
+	 var bSucc = this.FileUpload01.upload(strUrl);
+	 
+	 trace(" bSucc : "  + bSucc);
+	
+	//this.gfn_fileUpload(this.FileUpload01);
+}
+
+this.fn_uploadAfter = function(sObjId,val)
+{
+     if(!Eco.isEmpty(val))
+     {
+
+     }
+}
+
+this.gfn_fileUpload = function(obj)
+{
+     if(nexacro.Browser == "Runtime") return;
+    
+     var nItemCnt = obj.getItemCount(true);
+
+     if(nItemCnt < 1)
+     {
+           Ex.core.showMsg(this,"alert","_alert1","errors.required","업로드할 파일이 없습니다.","default");
+
+         return;
+     }
+
+     var oArg = {pFile:obj};
+     
+     Ex.core.popup(this,"poOrdNumSelji","frame::fileUpDownStatus.xfdl,",oArg,"fn_uploadAfter");
+     
+    
+}
+
+
+//메세지 콜벡 메세지 처리 화면단에 필수로 있어야함
+/**
+* 공통 팝업 open 함수
+* @param {string} callbackId
+* @param {string} OK  OR CANCEL
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.fn_callBackMsg = function(strCallBackId,strResult)
+{
+   trace(" strCallBackId : "  +strCallBackId + " <> strResult : " + strResult);
+   
+     	if(strResult == "OK")
+		{
+		  if(strCallBackId == "confirm_1")
+		  {
+		      alert(" Confirm ok!!!!!");
+		  }
+		}
+		else if(strResult == "CANCEL")
+		{
+		    alert(" CANCEL");
+		}
+}
+
+
+this.obj_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo)
+{
+trace(" e.errormsg " +  e.errormsg);
+   trace(" fail >>>>> " );
+	
+}
+
+this.obj_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo)
+{
+    trace(" success >>>>> " );
+	trace(" e.>>> " + e.errormsg);
+}
+
+this.Button04_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	obj.deleteItem(0);
+}
+
+this.FileUpload01_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo)
+{
+	trace(" upload error msg : "  + e.errormsg);
+}
+
+this.FileUpload01_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo)
+{
+	trace(" success message : " +  e.errormsg);
+}
+
+]]></Script>
+  </Form>
+</FDL>

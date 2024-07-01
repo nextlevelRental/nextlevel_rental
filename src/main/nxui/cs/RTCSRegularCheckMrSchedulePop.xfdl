@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheckMrSchedulePop" classname="RTCSRegularCheckMrSchedulePop" left="0" top="0" width="581" height="485" titletext="로디안 배정내역" onload="RTCSRegularCheckMrSchedulePop_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="0" text="닫기" onclick="btn_close_onclick" left="270" top="459" width="41" height="21" domainId="nexa.save"/>
+        <Static id="Static04" taborder="5" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="595" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="6" text="일자별 배정 건수" cssclass="sta_WF_subTitle" left="10" top="45" width="120" height="21"/>
+        <Static id="Static02" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="62" width="591" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_mrMonDecideCnt" taborder="8" binddataset="ds_mrMonDecideCnt" useinputpanel="false" left="9" top="72" width="208" height="380" oncellclick="grid_mrMonDecideCnt_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="81"/>
+                <Column size="39"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="일자"/>
+                <Cell col="1" text="요일"/>
+                <Cell col="2" text="배정건수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:calDay" mask="####-##-##"/>
+                <Cell col="1" displaytype="normal" style="align:center;color:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);color2:EXPR(calDat==&quot;일&quot;?&quot;red&quot;:calDat==&quot;토&quot;?&quot;blue&quot;:nulll);" text="bind:calDat"/>
+                <Cell col="2" displaytype="normal" style="align:right;" text="bind:cntJob"/>
+              </Band>
+              <Band id="summary">
+                <Cell style="align:right;"/>
+                <Cell col="1" style="align:right;"/>
+                <Cell col="2" style="align:right;" expr="expr:dataset.getSum(&quot;cntJob&quot;)+&quot;(건)&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="9" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="6" width="10" height="470" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_mrDayDecide" taborder="10" binddataset="ds_mrDayDecide" useinputpanel="false" left="233" top="72" width="338" height="380">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="51"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="광역시도"/>
+                <Cell col="1" text="시군구"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="시간"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:center;" text="bind:doNm"/>
+                <Cell col="1" style="align:center;" text="bind:ctNm"/>
+                <Cell col="2" style="align:center;" text="bind:ordNo"/>
+                <Cell col="3" displaytype="normal" style="align:center;" text="bind:planTm" mask="##:##"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="11" text="배정내역" cssclass="sta_WF_subTitle" left="234" top="45" width="120" height="21"/>
+        <Div id="div_search" taborder="12" text="Div00" left="10" top="9" width="561" height="33" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition02" taborder="139" text="로디안" cssclass="sta_WF_schTitle" left="16" top="4" width="54" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_mrCd" taborder="140" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_ctNm_onkeyup" enable="false" left="76" top="4" width="48" height="21" tooltiptext="edit"/>
+              <Edit id="ed_mrNm" taborder="141" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_ctNm_onkeyup" enable="false" left="127" top="4" width="80" height="21" tooltiptext="edit"/>
+              <Static id="st_searchCondition00" taborder="142" text="배정월" cssclass="sta_WF_schTitle" left="224" top="4" width="56" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_ym" taborder="143" dateformat="yyyy-MM" editformat="yyyy-MM" left="286" top="4" width="86" height="21" enable="true" type="normal" onchanged="div_search_cal_ym_onchanged"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static05" taborder="13" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="571" top="6" width="10" height="470" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Objects>
+      <Dataset id="ds_mrMonDecideCnt">
+        <ColumnInfo>
+          <Column id="calMon" type="STRING" size="256"/>
+          <Column id="calDay" type="STRING" size="256"/>
+          <Column id="calDat" type="STRING" size="256"/>
+          <Column id="cntJob" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mrDayDecide">
+        <ColumnInfo>
+          <Column id="mrCd" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="stdYm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="jobSeq" type="STRING" size="256"/>
+          <Column id="doNm" type="STRING" size="256"/>
+          <Column id="ctNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSRegularCheckMrSchedulePop.xfdl
+ * 설    명 : 로디안 일정조회(팝업)
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-04-06	wjim		[20170406_01] 신규 개발
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+// 전역변수
+this.fs_planYm = "";
+this.fs_mrCd   = "";
+this.fs_mrNm   = "";
+this.fs_today  = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTCSRegularCheckMrSchedulePop_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+
+	this.fs_planYm = this.parent.p_planYm;
+	this.fs_mrCd   = this.parent.p_mrCd;
+	this.fs_mrNm   = this.parent.p_mrNm;
+	this.fs_today  = this.parent.p_today;
+	
+	this.div_search.ed_mrCd.set_value(this.fs_mrCd);
+	this.div_search.ed_mrNm.set_value(this.fs_mrNm);
+	this.div_search.cal_ym.set_value(this.fs_planYm);	
+
+	// 일자별 배정건수 조회
+	this.fn_searchMst(this.fs_mrCd, this.fs_planYm);
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		case "listMst":
+			var rowCt = this.ds_mrMonDecideCnt.getRowCount();
+		
+ 			if (rowCt == 0) {
+ 				this.grid_mrMonDecideCnt.set_nodatatext("조회된 데이터가 없습니다.");
+ 			} else {
+				// 오늘날자 row 조회
+				var rowToday = this.ds_mrMonDecideCnt.findRow("calDay", this.fs_today);
+				// 오늘날자 row 선택
+				this.grid_mrMonDecideCnt.selectRow(rowToday);
+				//배정내역 조회
+				this.fn_searchDtl(this.fs_mrCd, this.ds_mrMonDecideCnt.getColumn(rowToday, "calDay"));
+ 			}
+ 						
+			break;
+			
+		case "listDtl":
+			var rowCt = this.ds_mrDayDecide.getRowCount();
+		
+ 			if (rowCt == 0) {
+ 				this.grid_mrDayDecide.set_nodatatext("조회된 데이터가 없습니다.");
+ 			}
+ 						
+			break;
+			
+		default:
+			break;
+	}
+}
+
+/**
+ * 일자별 배정건수 조회
+ */
+this.fn_searchMst = function(pMrCd, pStdYm) {
+	// 기존 조회결과 초기화
+	this.ds_mrMonDecideCnt.deleteAll();
+	
+	var sSvcID        	= "listMst";                    
+	var sController   	= "/rtms/cs/selectMrMonDecideCnt.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_mrMonDecideCnt=ds_mrMonDecideCnt";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("mrCd" , pMrCd);
+	sArgs += Ex.util.setParam("stdYm", pStdYm);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 배정월 변경 이벤트 처리
+ */
+this.div_search_cal_ym_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo) {
+	// 일자별 배정건수 조회
+	this.fn_searchMst(this.fs_mrCd, e.postvalue.toString().substr(0,6));
+}
+
+/**
+ * '일자별 배정 건수' 그리드의 Body 영역 셀 더블 클릭 이벤트 처리
+ */
+this.grid_mrMonDecideCnt_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	//배정내역 조회
+	this.fn_searchDtl(this.fs_mrCd, this.ds_mrMonDecideCnt.getColumn(e.row, "calDay"));
+}
+
+/**
+ * 배정내역 조회
+ */
+this.fn_searchDtl = function(pMrCd, pPlanDay) {
+	// 기존 조회결과 초기화
+	this.ds_mrDayDecide.deleteAll();
+	
+	var sSvcID        	= "listDtl";                    
+	var sController   	= "/rtms/cs/selectMrDayDecide.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_mrDayDecide=ds_mrDayDecide";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("mrCd"   , pMrCd);
+	sArgs += Ex.util.setParam("planDay", pPlanDay);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 닫기 버튼의 클릭 이벤트 처리
+ */
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

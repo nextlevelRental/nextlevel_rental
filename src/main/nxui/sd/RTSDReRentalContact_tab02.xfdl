@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDReRentalContact_tab02" classname="RTSDProvisionalContractContact_tab01" left="0" top="0" width="1123" height="119" titletext="New Form" onload="RTSDProvisionalContractContact_tab01_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="1" width="1119" height="99" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static06" taborder="195" text="연락처" cssclass="sta_WF_schTitle" left="250" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static09" taborder="196" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static05" taborder="197" text="고객명" cssclass="sta_WF_schTitle" left="24" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="198" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="12"/>
+              <Static id="Static13" taborder="199" cssclass="Guide_color" visible="false" left="223" top="0" width="25" height="101"/>
+              <Static id="Static14" taborder="200" cssclass="Guide_color" visible="false" left="448" top="0" width="25" height="101"/>
+              <Static id="Static15" taborder="201" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="109"/>
+              <Static id="Static10" taborder="202" cssclass="Guide_color" visible="false" left="0" top="32" width="1118" height="6"/>
+              <Edit id="ed_custNm" taborder="204" onkeyup="div_search_ed_custCd_onkeyup" left="104" top="12" width="120" height="21"/>
+              <Edit id="ed_mobNo" taborder="208" onkeyup="div_search_ed_custCd_onkeyup" left="337" top="12" width="111" height="21"/>
+              <Static id="Static07" taborder="212" cssclass="Guide_color" visible="false" left="800" top="8" width="25" height="93"/>
+              <Static id="Static11" taborder="224" cssclass="Guide_color" visible="false" left="8" top="83" width="1118" height="12"/>
+              <Static id="st_date01" taborder="231" text="가계약번호" cssclass="sta_WF_schTitle" left="473" top="11" width="80" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_provsnNoF" taborder="232" left="572" top="12" width="107" height="21"/>
+              <Static id="Static19" taborder="233" text="~" left="680" top="13" width="9" height="21"/>
+              <Edit id="ed_provsnNoT" taborder="234" left="693" top="12" width="107" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDReRentalContact_tab01.xfdl
+ * 설    명 : 재렌탈상담_조회2
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2023-06-13	    kstka		[20230613_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDReRentalContact_tab01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);	
+}]]></Script>
+  </Form>
+</FDL>

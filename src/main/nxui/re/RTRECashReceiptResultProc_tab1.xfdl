@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECashReceiptResultProc_tab1" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="[STEP1] 결과파일 반영" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="10" top="203" width="1102" height="31"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" width="1102" height="49" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="54" text="발행일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="56" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="57" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="58" text="5 px" visible="false" left="81" top="44" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="65" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <Calendar id="cal_cashReceiptDate" taborder="66" dateformat="yyyy-MM-dd" onchanged="cal_cashReceiptDate_onchanged" left="131" top="12" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static02" taborder="4" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static46" taborder="5" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static47" taborder="6" text="5 px" visible="false" left="127" top="57" right="966" height="21" style="color:red;"/>
+        <Static id="Static05" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="60" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Edit id="edt_procStatus" taborder="8" left="144" top="208" width="963" height="21" enable="false"/>
+        <Static id="Static06" taborder="9" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="178" width="84" height="20"/>
+        <Static id="Static19" taborder="10" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="203" width="130" height="31"/>
+        <Static id="Static45" taborder="11" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static03" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="193" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static09" taborder="14" cssclass="sta_WF_detailLabel2" left="10" top="101" width="1103" height="31"/>
+        <Static id="Static11" taborder="15" cssclass="sta_WF_detailLabel2" left="10" top="131" width="1103" height="31"/>
+        <Static id="Static08" taborder="17" cssclass="sta_WF_detailLabel" left="10" top="101" width="138" height="31"/>
+        <Edit id="edt_fileSvrLoc" taborder="18" left="153" top="136" width="491" height="21" enable="false"/>
+        <Static id="Static10" taborder="19" cssclass="sta_WF_detailLabel" left="10" top="131" width="138" height="31"/>
+        <Radio id="rdo_locPos" taborder="20" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="1" onitemclick="rdo_locPos_onitemclick" left="18" top="108" width="128" height="20">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">KCP 관리자 Site</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Radio id="rdo_svrPos" taborder="21" codecolumn="codecolumn" datacolumn="datacolumn" value="0" onitemclick="rdo_svrPos_onitemclick" left="18" top="137" width="128" height="20" enableevent="true">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">Server</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static21" taborder="22" text="업로드 파일 위치" cssclass="sta_WF_subTitle" left="10" top="76" width="150" height="20"/>
+        <Static id="Static07" taborder="23" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="91" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static12" taborder="24" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="162" width="1110" height="20" style="background:aqua;color:#333333ff;"/>
+        <FileUpload id="FileUpload00" taborder="26" retry="0" index="0" left="153" top="105" height="25" onitemchanged="FileUpload00_onitemchanged" width="491" style="buttontext:파일선택;cursor:auto;" onsuccess="FileUpload00_onsuccess" onerror="FileUpload00_onerror" innerdataset="@ds_File"/>
+        <Static id="sta_fileDesc" taborder="27" cssclass="sta_WF_text" left="657" top="107" width="447" height="20"/>
+        <Edit id="edt_fileNm" taborder="28" enable="false" left="154" top="106" width="420" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_output" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileid" type="STRING" size="256"/>
+          <Column id="filename" type="STRING" size="256"/>
+          <Column id="filesize" type="STRING" size="256"/>
+          <Column id="savepath" type="STRING" size="256"/>
+          <Column id="ErrorMsg" type="STRING" size="256"/>
+          <Column id="ErrorCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_File" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="FILE_PATH" type="STRING" size="256"/>
+          <Column id="FILE_NAME" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="FILE_SAVENM" type="STRING" size="256"/>
+          <Column id="FILE_TYPE" type="STRING" size="256"/>
+          <Column id="NUM" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R016" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cdDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 현금영수증관리 > 현금영수증 결과처리 > [STEP1] 결과파일반영
+ * 02. 그룹명   : RRTRECashReceiptResultProc_tab1.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 			= ""; 	//현재날짜
+	this.toHour 		= "";	//현재시간
+	this.prevLastDate 	= "";	//전월 말일
+	this.prevFirstDate	= "";	//전월1일
+	this.sFilePath		= "";	//업로드파일경로(로컬)
+	this.sFileName		= "";	//업로드파일명(로컬)
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//발행일 및 수납기간 조회
+		this.fn_getInitDate();
+		//공통코드조회
+		this.fn_getCommCode();			
+		//버튼초기화
+		this.fn_initBtn();	
+		this.FileUpload00.setEventHandler("onsuccess", this.FileUpload00_onsuccess, this);
+		this.FileUpload00.setEventHandler("onerror", this.FileUpload00_onerror, this);	
+	}	
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 	//---------------------------------------------------------------------------------
+	// 발행일 및 수납기간 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getInitDate  = function() {
+		var sSvcID      	= "getCashReceiptDate";  
+		var sController   	= "ntrms/re/getCashReceiptDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}	
+ 	//---------------------------------------------------------------------------------
+	// 공통코드 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getCommCode  = function() {
+		var sSvcID      	= "getCommCode";  
+		var sController   	= "ntrms/re/getAccResultCommCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_R016=outputR016";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}		
+ 	//---------------------------------------------------------------------------------
+	// 업로드
+	//---------------------------------------------------------------------------------
+	this.fn_upload  = function() {
+	
+		var fileTp = "CH01_OUT";
+		var rqstDay = nvl(this.div_search.cal_cashReceiptDate.value);
+		if(rqstDay == "") {
+			alert('발행일을 입력하세요.');
+			this.div_search.cal_cashReceiptDate.setFocus();
+			return;
+		}
+		if(nvl(this.FileUpload00.value) == "") {
+			alert('업로드 파일을 선택하세요.');
+			this.this.FileUpload00.setFocus();
+			return;			
+		}
+
+		var	sChkFileNm = "KCP_BATCH_FILE_CH01_OUT_V3770_"+ rqstDay;
+
+		this.sFilePath = this.FileUpload00.value;  
+		var dirExpt = this.sFilePath.lastIndexOf("\\")+1;	
+		
+		this.sFileName = this.fn_clearFileExt(this.sFilePath.substr(dirExpt));
+
+		if(sChkFileNm != this.sFileName) {
+			alert('선택하신 파일은 업로드 할수 없습니다.');
+			return;
+		}	
+
+		var sController = "/ntrms/re/cashReceiptResultFileUpload.do?fileNm="+this.sFileName+"&rqstDay="+rqstDay+"&fileTp="+fileTp;
+		this.FileUpload00.set_uploadurl(sController);
+		var bSucc = this.FileUpload00.upload(sController);
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);	
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getCashReceiptDate":
+				var nDay = parseInt(this.toDay.substring(6,8),10);
+				//매월1일~5일이면 전월말일로 세팅		
+				if(nDay >= 1 && nDay <= 5) {
+					this.div_search.cal_cashReceiptDate.set_value(this.prevLastDate);	//전월 말일
+				}
+				else {
+					this.div_search.cal_cashReceiptDate.set_value("");	
+				}
+				break;
+			case "getCommCode":
+				var sFileLoc = nvl(this.ds_R016.lookup("cd","CH01_OUT","cdDesc"));
+				this.sta_fileDesc.set_text("* 업로드 하실 파일의 위치는 " + sFileLoc + " 경로입니다.");			
+				break;					
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 발행일 변경 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.cal_cashReceiptDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var cashReceiptDay = String(this.div_search.cal_cashReceiptDate.value);
+		//현재일기준 날짜차이 구하기
+		var nDiffDay = Eco.date.getDiffDay(cashReceiptDay, this.toDay);
+		//5일이전날짜~현재일까지만 입력가능
+		if(parseInt(nDiffDay,10) >= 6) {
+			alert("발행일은 현재일 기준으로 5일이전날짜까지만 입력가능합니다.");
+			this.div_search.cal_cashReceiptDate.set_value("");
+			this.div_search.cal_cashReceiptDate.setFocus();
+			return;
+		}
+		if(parseInt(nDiffDay,10) < 0) {
+			alert("발행일은 현재일 이후 날짜는 입력하실수 없습니다.");
+			this.div_search.cal_cashReceiptDate.set_value("");
+			this.div_search.cal_cashReceiptDate.setFocus();
+			return;
+		}		
+	}	
+    //-------------------------------------------------------------------------------  	
+	// 파일업로드 변경이벤트
+    //-------------------------------------------------------------------------------  	
+	this.FileUpload00_onitemchanged = function(obj:FileUpload,  e:nexacro.FileUploadItemChangeEventInfo)
+	{
+		this.sFilePath = this.FileUpload00.value;  
+		var dirExpt = this.sFilePath.lastIndexOf("\\")+1;	
+		this.edt_fileNm.set_value(this.sFilePath.substr(dirExpt));		
+		this.edt_procStatus.set_value("");	
+	}
+    //-------------------------------------------------------------------------------  	
+	// 파일업로드 에러이벤트
+    //-------------------------------------------------------------------------------  	
+	this.FileUpload00_onerror = function(obj:FileUpload,  e:nexacro.FileUploadErrorEventInfo)
+	{
+		this.edt_procStatus.set_value(e.errormsg);
+	}	
+    //-------------------------------------------------------------------------------  	
+	// 파일업로드 성공이벤트
+    //------------------------------------------------------------------------------- 	
+	this.FileUpload00_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo)
+	{
+		this.edt_procStatus.set_value(e.errormsg);	
+	}	
+	//-------------------------------------------------------------------------------  	
+	// 파일생성위치 클릭이벤트
+    //------------------------------------------------------------------------------- 	
+	this.rdo_locPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{
+		this.rdo_locPos.set_value("1");		
+		this.rdo_svrPos.set_value("0");	
+	}
+    //-------------------------------------------------------------------------------  	
+	// 파일생성위치 클릭이벤트
+    //-------------------------------------------------------------------------------  		
+	this.rdo_svrPos_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+	{
+		this.rdo_locPos.set_value("0");		
+		this.rdo_svrPos.set_value("1");		
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("UP",this);		
+		this.edt_procStatus.set_value("");					
+	}
+	
+	//---------------------------------------------------------------------------------
+	// VAILD 체크
+	//---------------------------------------------------------------------------------	
+	this.fn_valid = function () {
+		var cashReceiptDay = String(this.div_search.cal_cashReceiptDate.value);
+		//현재일기준 날짜차이 구하기
+		var nDiffDay = Eco.date.getDiffDay(cashReceiptDay, this.toDay);
+		//5일이전날짜~현재일까지만 입력가능
+		if(parseInt(nDiffDay,10) >= 6) {
+			alert("발행일은 현재일 기준으로 5일이전날짜까지만 입력가능합니다.");
+			this.div_search.cal_cashReceiptDate.set_value("");
+			this.div_search.cal_cashReceiptDate.setFocus();
+			return;
+		}
+		if(parseInt(nDiffDay,10) < 0) {
+			alert("발행일은 현재일 이후 날짜는 입력하실수 없습니다.");
+			this.div_search.cal_cashReceiptDate.set_value("");
+			this.div_search.cal_cashReceiptDate.setFocus();
+			return;
+		}		
+	}
+	//---------------------------------------------------------------------------------
+	// 파일확장자 제거
+	//---------------------------------------------------------------------------------		
+	this.fn_clearFileExt = function(val) {
+		var retVal = "";
+		var idx = val.lastIndexOf(".");
+		if(idx < 0) {
+			retVal = val;
+		}
+		else {
+			retVal = val.substring(0,idx);
+		}
+		
+		return retVal;
+	}]]></Script>
+  </Form>
+</FDL>

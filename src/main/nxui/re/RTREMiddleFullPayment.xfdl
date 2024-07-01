@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREMiddleFullPayment" classname="RTREMiddleFullPayment" left="0" top="0" width="1147" height="511" titletext="중도완납" onload="RTREMiddleFullPayment_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="0" width="790" height="31"/>
+        <Static id="st_ordNo" taborder="1" text="계약번호" cssclass="sta_WF_detailLabel" left="0" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_ordNoSearch" taborder="2" enable="true" left="104" top="5" width="140" height="20" readonly="false" onchanged="ed_ordNoSearch_onchanged"/>
+        <Button id="btn_orderNoSearch" taborder="3" text="계약번호찾기" onclick="btn_orderNoSearch_onclick" left="250" top="5" width="89" height="21" domainId="nexa.save"/>
+        <Static id="Static21" taborder="4" text="계약정보" cssclass="sta_WF_subTitle" left="0" top="38" width="80" height="21"/>
+        <Static id="Static03" taborder="5" cssclass="sta_WF_detailLabel2" left="0" top="60" height="31" width="1122"/>
+        <Static id="st_custNm" taborder="8" text="고객명" cssclass="sta_WF_detailLabel" left="280" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_custNo" taborder="9" maxlength="6" enable="false" left="125" top="65" width="150" height="21" readonly="true"/>
+        <Static id="st_custNo" taborder="10" text="고객코드" cssclass="sta_WF_detailLabel" left="0" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_custNm" taborder="11" maxlength="6" enable="false" left="405" top="65" width="150" height="21" readonly="true"/>
+        <Static id="Static01" taborder="12" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="729"/>
+        <Static id="Static02" taborder="13" cssclass="sta_WF_detailLabel2" left="0" top="90" width="1122" height="31"/>
+        <Edit id="ed_statNm" taborder="14" maxlength="80" left="406" top="95" width="150" height="21" enable="false" readonly="true"/>
+        <Static id="st_statNm" taborder="15" text="계약상태" cssclass="sta_WF_detailLabel" left="280" top="90" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_saleNm" taborder="16" maxlength="80" left="125" top="95" width="150" height="21" enable="false" readonly="true"/>
+        <Static id="st_saleNm" taborder="17" text="계약유형" cssclass="sta_WF_detailLabel" left="0" top="90" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_chanNm" taborder="18" maxlength="6" enable="false" left="965" top="65" width="150" height="21" readonly="true"/>
+        <Static id="st_chanNm" taborder="7" text="채널구분" cssclass="sta_WF_detailLabel" left="840" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_ordNm" taborder="19" maxlength="6" enable="false" left="685" top="65" width="150" height="21" readonly="true"/>
+        <Static id="Static04" taborder="20" cssclass="sta_WF_detailLabel2" left="0" top="120" width="1122" height="31"/>
+        <Static id="st_telNo04" taborder="21" text="취소일자" cssclass="sta_WF_detailLabel" left="840" top="90" width="120" height="30" domainId="nexa.s_condition"/>
+        <Static id="st_ordDay" taborder="22" text="접수일자" cssclass="sta_WF_detailLabel" left="560" top="90" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static05" taborder="23" cssclass="sta_WF_detailLabel2" left="0" top="150" width="280" height="31"/>
+        <Static id="st_periodNm" taborder="24" text="총렌탈기간" cssclass="sta_WF_detailLabel" left="0" top="120" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_monAmt" taborder="25" text="월렌탈료" cssclass="sta_WF_detailLabel" left="0" top="150" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_psNm" taborder="26" maxlength="80" left="965" top="125" width="150" height="21" enable="false" readonly="true"/>
+        <Static id="st_psNm" taborder="27" text="프리미엄서비스" cssclass="sta_WF_detailLabel" left="840" top="119" width="120" height="32" domainId="nexa.s_condition"/>
+        <Edit id="ed_mapYn" taborder="28" maxlength="6" enable="false" left="685" top="125" width="150" height="21" readonly="true"/>
+        <Static id="st_mapYn" taborder="29" text="중도완납여부" cssclass="sta_WF_detailLabel" left="560" top="120" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_osYn" taborder="30" maxlength="6" enable="false" left="405" top="125" width="150" height="21" readonly="true"/>
+        <Static id="st_osYn" taborder="31" text="소유권이전여부" cssclass="sta_WF_detailLabel" left="280" top="120" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static08" taborder="32" text="결제정보" cssclass="sta_WF_subTitle" left="0" top="318" width="80" height="21"/>
+        <Static id="Static09" taborder="33" cssclass="sta_WF_detailLabel2" left="0" top="370" width="1122" height="31" enable="true"/>
+        <Static id="st_blancAmt" taborder="34" text="렌탈료잔액" cssclass="sta_WF_detailLabel" left="740" top="370" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_recpAmt" taborder="35" text="렌탈료 수납액" cssclass="sta_WF_detailLabel" left="370" top="370" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_saleAmt" taborder="36" text="총렌탈료" cssclass="sta_WF_detailLabel" left="0" top="370" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static10" taborder="37" cssclass="sta_WF_detailLabel2" left="0" top="400" width="1122" height="31"/>
+        <Static id="st_MakeAmt" taborder="38" text="납부예정금액" cssclass="sta_WF_detailLabel" left="740" top="400" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_arre2Amt" taborder="39" text="할인 대상" cssclass="sta_WF_detailLabel" left="370" top="400" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_arre1Amt" taborder="40" text="할인 미대상" cssclass="sta_WF_detailLabel" left="0" top="400" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static11" taborder="41" cssclass="sta_WF_detailLabel2" left="0" top="430" width="1122" height="31"/>
+        <Static id="st_planAmt" taborder="42" text="총납부예정금액" cssclass="sta_WF_detailLabel" left="740" top="430" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_servAmt" taborder="43" text="추가납부금액" cssclass="sta_WF_detailLabel" left="370" top="430" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static12" taborder="44" cssclass="sta_WF_detailLabel2" left="0" top="460" width="1122" height="31"/>
+        <Static id="st_planAmt2" taborder="45" text="수납금액" cssclass="sta_WF_detailLabel" left="740" top="460" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_addr08" taborder="46" text="은행입금일" cssclass="sta_WF_detailLabel" left="370" top="460" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_canclDay" taborder="47" text="중도완납일자" cssclass="sta_WF_detailLabel" left="0" top="460" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_endTp" taborder="48" text="계약종료유형" cssclass="sta_WF_detailLabel" left="345" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_endTpSearch" taborder="49" innerdataset="@ds_endTp" codecolumn="cd" datacolumn="cdNm" enable="true" visible="true" left="450" top="5" width="104" height="21" domainId="nexa.name;nexa.code" onitemchanged="cb_endTpSearch_onitemchanged"/>
+        <Calendar id="cal_cancDay" taborder="50" dateformat="yyyy-MM-dd" left="966" top="95" width="150" height="21" enable="false" readonly="true"/>
+        <Calendar id="cal_ordDay" taborder="51" dateformat="yyyy-MM-dd" left="685" top="95" width="150" height="21" enable="false" readonly="true"/>
+        <Calendar id="cal_canclDay" taborder="52" dateformat="yyyy-MM-dd" left="155" top="465" width="210" height="21" enable="false" visible="true" readonly="false"/>
+        <Calendar id="ed_bankRecpDay" taborder="53" dateformat="yyyy-MM-dd" left="525" top="465" width="210" height="21" enable="true" visible="true"/>
+        <MaskEdit id="ed_recpAmt2" taborder="54" mask="###,###,##0" enable="true" visible="true" left="895" top="465" width="221" height="21"/>
+        <MaskEdit id="ed_planAmt" taborder="55" mask="###,###,##0" enable="false" visible="true" left="895" top="435" width="221" height="21" readonly="true"/>
+        <MaskEdit id="ed_makeAmt" taborder="56" mask="###,###,##0" enable="false" visible="true" left="895" top="405" width="221" height="21" readonly="true"/>
+        <MaskEdit id="ed_blancAmt" taborder="57" mask="###,###,##0" enable="false" visible="true" left="895" top="375" width="221" height="21" readonly="true"/>
+        <MaskEdit id="ed_recpAmt" taborder="58" mask="###,###,##0" enable="false" visible="true" left="525" top="375" width="210" height="21" readonly="true"/>
+        <MaskEdit id="ed_servAmt" taborder="59" mask="###,###,##0" enable="true" visible="true" left="525" top="435" width="210" height="21" onchanged="ed_servAmt_onchanged"/>
+        <MaskEdit id="ed_saleAmt" taborder="60" mask="###,###,##0" enable="false" visible="true" left="155" top="375" height="21" width="210" readonly="true"/>
+        <MaskEdit id="ed_monAmt" taborder="61" mask="###,###,##0" enable="false" visible="true" left="126" top="155" width="150" height="21" readonly="true"/>
+        <Static id="st_cancDay" taborder="62" text="취소일자" cssclass="sta_WF_detailLabel" left="560" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+        <Calendar id="cal_cancDaySearch" taborder="63" dateformat="yyyy-MM-dd" enable="true" left="665" top="5" width="120" height="21" readonly="false" onchanged="cal_cancDaySearch_onchanged"/>
+        <Edit id="ed_psNm00" taborder="64" maxlength="80" enable="false" left="126" top="125" width="150" height="21" readonly="true"/>
+        <Static id="Static07" taborder="65" cssclass="sta_WF_detailLabel2" left="0" top="340" width="1122" height="31"/>
+        <Static id="st_regiAmt" taborder="66" text="회원등록비" cssclass="sta_WF_detailLabel" left="0" top="340" width="150" height="31" domainId="nexa.s_condition"/>
+        <MaskEdit id="ed_regiAmt" taborder="67" readonly="true" mask="###,###,##0" enable="false" left="155" top="345" width="210" height="21"/>
+        <Static id="st_rgcpAmt" taborder="68" text="회원등록비 수납액" cssclass="sta_WF_detailLabel" left="370" top="340" width="150" height="31" domainId="nexa.s_condition"/>
+        <MaskEdit id="ed_rgcpAmt" taborder="69" readonly="true" mask="###,###,##0" enable="false" left="525" top="345" width="210" height="21"/>
+        <Static id="st_rgblancAmt" taborder="70" text="회원등록비잔액" cssclass="sta_WF_detailLabel" left="740" top="340" width="150" height="31" domainId="nexa.s_condition"/>
+        <MaskEdit id="ed_rgblancAmt" taborder="71" readonly="true" mask="###,###,##0" enable="false" left="895" top="345" width="221" height="21"/>
+        <MaskEdit id="ed_arre1Amt" taborder="72" readonly="true" mask="###,###,##0" enable="false" left="155" top="405" width="210" height="21"/>
+        <MaskEdit id="ed_arre2Amt" taborder="73" readonly="true" mask="###,###,##0" enable="false" left="525" top="405" width="210" height="21"/>
+        <Static id="st_balanceAmt" taborder="74" text="선수금 잔액" cssclass="sta_WF_detailLabel" left="0" top="430" width="150" height="31" domainId="nexa.s_condition" style="color:black;font:9 arial;"/>
+        <MaskEdit id="ed_balanceAmt" taborder="75" readonly="true" mask="###,###,##0" enable="false" left="155" top="435" width="210" height="21" style=":disabled {color:red;font:9 맑은 고딕;}"/>
+        <Grid id="grid_prdInfo" taborder="76" binddataset="ds_prdInfo" scrollbars="autohorz" useinputpanel="false" cellsizingtype="col" autofittype="col" left="0" top="213" width="1122" height="99">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="123"/>
+                <Column size="251"/>
+                <Column size="110"/>
+                <Column size="148"/>
+                <Column size="153"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상품코드" expandsize="13"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="수량"/>
+                <Cell col="3" text="장착예정일"/>
+                <Cell col="4" text="장착일"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:matCd"/>
+                <Cell col="1" celltype="none" text="bind:matNm"/>
+                <Cell col="2" celltype="none" displaytype="normal" edittype="none" text="bind:ordQty"/>
+                <Cell col="3" displaytype="date" text="bind:planDay" calendardisplaynulltype="none"/>
+                <Cell col="4" displaytype="date" text="bind:instDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static13" taborder="77" text="제품정보" cssclass="sta_WF_subTitle" left="0" top="189" width="80" height="21"/>
+        <Static id="st_custNm00" taborder="78" text="고객명" cssclass="sta_WF_detailLabel" left="560" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_ordNm" taborder="79" text="주문구분" cssclass="sta_WF_detailLabel" left="560" top="60" width="120" height="31" domainId="nexa.s_condition"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_endTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cancelList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="endTp" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="ordNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="osYn" type="STRING" size="256"/>
+          <Column id="mepYn" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="maMileage" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="saleAmt" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="blancAmt" type="STRING" size="256"/>
+          <Column id="arre1Amt" type="STRING" size="256"/>
+          <Column id="arre2Amt" type="STRING" size="256"/>
+          <Column id="makeAmt" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="planAmt" type="STRING" size="256"/>
+          <Column id="canclDay" type="STRING" size="256"/>
+          <Column id="saleAmt2" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rgcpAmt" type="STRING" size="256"/>
+          <Column id="rgblancAmt" type="STRING" size="256"/>
+          <Column id="balanceAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cancelSave" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="endTp" type="STRING" size="256"/>
+          <Column id="canclDay" type="STRING" size="256"/>
+          <Column id="bankRecpDay" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="arre1Amt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_prdInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="saleGdsCd" type="STRING" size="256"/>
+          <Column id="standard" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="groupSale" type="STRING" size="256"/>
+          <Column id="chnlSale" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="lrCd" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="rentpAmt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="valYn" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="osId" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="flYn" type="STRING" size="256"/>
+          <Column id="frYn" type="STRING" size="256"/>
+          <Column id="rlYn" type="STRING" size="256"/>
+          <Column id="rrYn" type="STRING" size="256"/>
+          <Column id="matDesc" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="gdsGb" type="STRING" size="256"/>
+          <Column id="gdsGrp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_custNo" propid="value" datasetid="ds_cancelList" columnid="custNo"/>
+      <BindItem id="item1" compid="ed_custNm" propid="value" datasetid="ds_cancelList" columnid="custNm"/>
+      <BindItem id="item2" compid="ed_ordNm" propid="value" datasetid="ds_cancelList" columnid="ordNm"/>
+      <BindItem id="item3" compid="ed_chanNm" propid="value" datasetid="ds_cancelList" columnid="chanNm"/>
+      <BindItem id="item4" compid="ed_saleNm" propid="value" datasetid="ds_cancelList" columnid="saleNm"/>
+      <BindItem id="item5" compid="ed_statNm" propid="value" datasetid="ds_cancelList" columnid="statNm"/>
+      <BindItem id="item6" compid="cal_ordDay" propid="value" datasetid="ds_cancelList" columnid="ordDay"/>
+      <BindItem id="item9" compid="cal_cancDay" propid="value" datasetid="ds_cancelList" columnid="cancDay"/>
+      <BindItem id="item13" compid="ed_psNm00" propid="value" datasetid="ds_cancelList" columnid="periodNm"/>
+      <BindItem id="item14" compid="ed_osYn" propid="value" datasetid="ds_cancelList" columnid="osYn"/>
+      <BindItem id="item15" compid="ed_mapYn" propid="value" datasetid="ds_cancelList" columnid="mepYn"/>
+      <BindItem id="item16" compid="ed_psNm" propid="value" datasetid="ds_cancelList" columnid="psNm"/>
+      <BindItem id="item17" compid="ed_monAmt" propid="value" datasetid="ds_cancelList" columnid="monAmt"/>
+      <BindItem id="item18" compid="ed_saleAmt" propid="value" datasetid="ds_cancelList" columnid="saleAmt"/>
+      <BindItem id="item19" compid="ed_recpAmt" propid="value" datasetid="ds_cancelList" columnid="recpAmt"/>
+      <BindItem id="item20" compid="ed_blancAmt" propid="value" datasetid="ds_cancelList" columnid="blancAmt"/>
+      <BindItem id="item23" compid="ed_makeAmt" propid="value" datasetid="ds_cancelList" columnid="makeAmt"/>
+      <BindItem id="item25" compid="ed_planAmt" propid="value" datasetid="ds_cancelList" columnid="planAmt"/>
+      <BindItem id="item27" compid="ed_servAmt" propid="value" datasetid="ds_cancelList" columnid="servAmt"/>
+      <BindItem id="item24" compid="ed_recpAmt2" propid="value" datasetid="ds_cancelSave" columnid="recpAmt"/>
+      <BindItem id="item26" compid="ed_bankRecpDay" propid="value" datasetid="ds_cancelSave" columnid="bankRecpDay"/>
+      <BindItem id="item28" compid="cal_canclDay" propid="value" datasetid="ds_cancelSave" columnid="canclDay"/>
+      <BindItem id="item29" compid="ed_regiAmt" propid="value" datasetid="ds_cancelList" columnid="regiAmt"/>
+      <BindItem id="item30" compid="ed_rgcpAmt" propid="value" datasetid="ds_cancelList" columnid="rgcpAmt"/>
+      <BindItem id="item31" compid="ed_rgblancAmt" propid="value" datasetid="ds_cancelList" columnid="rgblancAmt"/>
+      <BindItem id="item21" compid="ed_arre1Amt" propid="value" datasetid="ds_cancelList" columnid="arre1Amt"/>
+      <BindItem id="item22" compid="ed_arre2Amt" propid="value" datasetid="ds_cancelList" columnid="arre2Amt"/>
+      <BindItem id="item32" compid="ed_balanceAmt" propid="value" datasetid="ds_cancelList" columnid="balanceAmt"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.SUPER_ID   = "wjim";	// 슈퍼유저 ID
+	
+	this.p_arg = "RTSDContractRegister";
+	this.fg_isSuper = "N";	// 슈퍼유저 여부
+	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+		if(strSvcId == "initRTREMiddleFullPayment"){
+			var ct = this.ds_endTp.getRowCount();
+			if( ct != 0 ){
+				this.cb_endTpSearch.set_value( this.ds_endTp.getColumn(this.ds_endTp.rowposition,"cd") );
+			}
+		}
+		
+		if(strSvcId == "pSrtsd0109CancelList") {
+			if(this.ds_cancelList.getRowCount() > 0) {
+				this.ds_cancelSave.setColumn(0, "arre1Amt", this.ds_cancelList.getColumn(0, "arre1Amt"));
+				this.ed_servAmt.setFocus(true);
+				
+				var ordNo 	= nvl(this.ed_ordNoSearch.value);
+				this.FN_ListPrdInfo(ordNo);//2018-12-14 제품정보 그리드 추가
+			}else{
+				alert("조회결과가 없습니다.");
+			}
+		}
+		
+		if(strSvcId == "cancelSave"){
+			if( nErrorCode == "0" ){
+				alert(strErrorMsg);
+				this.reload();
+			}else{
+				alert(strErrorMsg);
+			}
+		}
+		//2018-12-24 제품정보 그리드 추가
+		if( strSvcId == "getListPrdInfo" ){
+			var cnt = this.ds_prdInfo.getRowCount();
+			if( cnt == 0 ){
+				this.grid_prdInfo.set_nodatatext("조회된 결과가 없습니다.");
+			}
+		}
+	}
+	
+	
+	
+	this.RTREMiddleFullPayment_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.FN_init();
+		this.parent.setButton("S", this);
+		/*this.parent.setButton("C|S", this);*/
+	}
+	
+	
+	
+	this.FN_init = function(){
+		// 슈퍼유저여부 확인
+		// - 슈퍼유저인 경우 중도완납일자를 수정할 수 있음
+		if (application.gds_userInfo.getColumn(0, "userId" ) == this.SUPER_ID) {
+			this.fg_isSuper = "Y";
+			this.cal_canclDay.set_enable(true);		// 중도완납일자 수정가능
+		} else {
+			this.fg_isSuper = "N";
+			this.cal_canclDay.set_enable(false);	// 중도완납일자 수정불가(기본세팅)
+		}
+		
+		this.ds_cancelSave.addRow();
+		
+		this.cal_cancDaySearch.set_value(FN_today());
+		this.cal_canclDay.set_value(FN_today());
+		this.ed_bankRecpDay.set_value(FN_today());
+			
+		var sSvcID      	= "initRTREMiddleFullPayment";  
+		var sController   	= "rtms/re/initRTREMiddleFullPayment.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_endTp=mapDsEndTp";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.btn_orderNoSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={ p_arg : this.p_arg };
+		Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+	}
+	this.returnOrderNoInfo = function(ordNo){
+		this.FN_change();
+		this.ed_ordNoSearch.set_value(ordNo);
+	}
+	
+	
+	
+	this.fn_search = function(){
+	
+		this.ds_prdInfo.clearData();//2018-12-24 제품정보 그리드 추가
+		
+		var sSvcID        	= "pSrtsd0109CancelList";                    
+		var sController   	= "rtms/re/pSrtsd0109CancelList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_cancelList=mapCancelList";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.FN_change();
+		
+		var ordNo 	= nvl(this.ed_ordNoSearch.value);
+		var endTp 	= nvl(this.cb_endTpSearch.value);
+		var cancDay = nvl(this.cal_cancDaySearch.value);
+		
+		
+		
+		if( cancDay < FN_today()){
+			if (this.fg_isSuper == "Y") {
+				this.alert("슈퍼유저시군요! 단, 이전날자로 조회/처리 시 해당월 마감여부를 반드시 확인하시기 바랍니다!");
+			} else {
+				alert("이전날짜는 조회할 수가 없습니다.");
+				this.cal_cancDaySearch.set_value( FN_today() );
+				return false;
+			}			
+		}
+			
+			
+	
+		if( ordNo == "" ){
+			alert("계약번호 값이 없습니다.");
+			//this.btn_orderNoSearch_onclick();
+		}
+			
+		
+		
+		sArgs += Ex.util.setParam("ordNo", ordNo);
+		sArgs += Ex.util.setParam("endTp", endTp);
+		sArgs += Ex.util.setParam("cancDay", cancDay);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.FN_change = function(){
+		this.ds_cancelList.clearData();
+		this.ds_cancelSave.clearData();
+		this.ds_cancelSave.addRow();
+		this.cal_canclDay.set_value(FN_today());
+		this.ed_bankRecpDay.set_value(FN_today());
+		this.ds_prdInfo.clearData();//2018-12-24 제품정보 그리드 추가
+	}
+	
+	
+	
+	this.cb_endTpSearch_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		this.FN_change();
+		
+		//C	중도해지
+		//E	중도완납
+		if( obj.value == "C" ){
+			this.st_canclDay.set_text("중도해지일자");
+		}
+		if( obj.value == "E" ){
+			this.st_canclDay.set_text("중도완납일자");
+		}
+	}
+	this.cal_cancDaySearch_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		this.FN_change();
+	}
+	this.ed_ordNoSearch_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+	{
+		this.FN_change();
+	}
+	this.ed_servAmt_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo)
+	{
+		if( obj.value < 0 ){
+			alert("0보다 작습니다.");
+			return false;
+		}else{
+			var makeAmt = parseInt(this.ed_makeAmt.value);
+			var servAmt = parseInt(obj.value);
+			var sum = makeAmt + servAmt;
+			this.ed_planAmt.set_value(sum);
+		}
+	}
+	
+	
+// 	this.fn_save = function(){
+// 		var statCd   = this.ds_cancelList.getColumn(0, "statCd");
+// 		var cancDay1 = nvl(this.cal_cancDaySearch.value);
+// 		var cancDay2 = nvl(this.cal_canclDay.value);
+// 		
+// 		if( cancDay1 != cancDay2 ){
+// 			alert("취소일자랑 중도완납일자랑 다릅니다.\n오늘날짜로 다시 조회 후 저장하세요.");
+// 			return false;
+// 		}
+// 		
+// 		if( statCd == "04"){//계약상태가 장착
+// 			var cnt = this.ds_cancelSave.getRowCount();
+// 			if( cnt == 1 ){
+// 				this.ds_cancelSave.setColumn(0, "ordNo", this.ed_ordNoSearch.value);
+// 				this.ds_cancelSave.setColumn(0, "endTp", this.cb_endTpSearch.value);
+// 				this.ds_cancelSave.setColumn(0, "arre1Amt", this.ed_arre1Amt.value);
+// 				
+// 				var ordNo 		= nvl(this.ds_cancelSave.getColumn(0, "ordNo"));
+// 				var endTp 		= nvl(this.ds_cancelSave.getColumn(0, "endTp"));
+// 				var canclDay 	= nvl(this.ds_cancelSave.getColumn(0, "canclDay"));
+// 				var bankRecpDay = nvl(this.ds_cancelSave.getColumn(0, "bankRecpDay"));
+// 				var recpAmt 	= nvl(this.ds_cancelSave.getColumn(0, "recpAmt"));
+// 				var arre1Amt	= nvl(this.ds_cancelSave.getColumn(0, "arre1Amt"));
+// 				
+// 				var planAmt = this.ds_cancelList.getColumn(0, "planAmt");
+// 				
+// 				if( ordNo == "" ){ 			alert("계약번호 값이 없습니다."); 	return false; }
+// 				if( endTp == "" ){ 			alert("종료유형 값이 없습니다."); 	return false; }
+// 				if( canclDay == "" ){ 		alert("중도완납일 값이 없습니다."); 	return false; }
+// 				if( bankRecpDay == "" ){ 	alert("은행입금일 값이 없습니다."); 	return false; }
+// 				if( recpAmt == "" ){ 		alert("수납금액 값이 없습니다."); 	this.ed_recpAmt2.setFocus(true); return false; }
+// 				if( arre1Amt == "" ){  		alert("할인미대상 값이 없습니다."); 	return false; }
+// 				
+// 				if( recpAmt != planAmt ){	alert("총납부예정금액과 수납금액이 같아야 합니다."); 	return false; }
+// 				
+// 				if( confirm( "중도완납(해지) 처리가 되면 원복이 불가능합니다. 처리하시겠습니까?") ){
+// 					var sSvcID        	= "cancelSave";                    
+// 					var sController   	= "rtms/sd/cancelSave.do";
+// 					var sInDatasets   	= "";
+// 					var sOutDatasets  	= "";
+// 					var sArgs 			= "";	
+// 					sInDatasets   		= "input1=ds_cancelSave:U";
+// 					sOutDatasets  		= "";
+// 					var fn_callBack		= "fn_callBack";
+// 					Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 				}
+// 			}else{
+// 				alert("중도완납 저장을 실패하였습니다.");
+// 				this.reload();
+// 			}
+// 		}else{
+// 			alert("계약상태가 장착이 아닙니다.\n확인바랍니다.");
+// 		}
+// 	}
+	
+		//2018-12-14 제품정보 그리드 추가
+	this.FN_ListPrdInfo = function( ordNo ){
+		var sSvcID      	= "getListPrdInfo";  
+		var sController   	= "rtms/sd/listPrdInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_prdInfo=listPrdInfo";
+		var sArgs 			= "";
+			sArgs		   += Ex.util.setParam("ordNo"	, ordNo);
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+		
+
+]]></Script>
+  </Form>
+</FDL>

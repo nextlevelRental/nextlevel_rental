@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="holi">
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="hDate" 		column="H_DATE" />
+		<result property="hGubun" 		column="H_GUBUN" />
+		<result property="hYear" 		column="H_YEAR" />
+		<result property="hMonth" 		column="H_MONTH" />
+		<result property="hDay" 		column="H_DAY" />
+		<result property="holiYn" 		column="HOLI_YN" />
+		<result property="holiDesc" 	column="HOLI_DESC" />
+		<result property="weekYn" 		column="WEEK_YN" />
+		<result property="remark" 		column="REMARK" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="parameters" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />
+		<parameter property="calStartDate" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="calEndDate" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="edHoliDesc" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="holi.listHoli" parameterMap="parameters">
+		{call Pkg_Rtcm0060.p_sRtcm0060(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="paramCheckHDate" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultCheckHDate" />
+		<parameter property="hDate" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="hGubun" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultCheckHDate" class="java.util.HashMap"/>
+	<procedure  id="holi.checkHDate" resultClass="java.util.Map" parameterMap="paramCheckHDate">
+		{call ? := Pkg_Rtcm0060.f_sRtcm0060Count ( ?, ? )}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcm0060">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="hDate" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="holiYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="holiDesc" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="remark" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="holi.saveHoli" parameterMap="p_IUDRtcm0060">
+		{call Pkg_Rtcm0060.p_IUDRtcm0060(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

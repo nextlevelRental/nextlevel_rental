@@ -1,0 +1,649 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCMGrpReg" classname="RTCMGrpReg" left="0" top="0" width="1147" height="496" titletext="프로그램-권한그룹 연동 등록" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static07" taborder="24" text="권한그룹별 프로그램" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="318" top="56" width="300" height="31"/>
+        <Div id="Div01" taborder="2" text="Div01" top="86" height="184" left="318" right="25">
+          <Layouts>
+            <Layout width="714" height="118">
+              <Grid id="Grid00" taborder="2" binddataset="dsAuth" useinputpanel="false" visible="false" top="0" height="180" right="0" left="1">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="35"/>
+                      <Column size="100"/>
+                      <Column size="130"/>
+                      <Column size="130"/>
+                      <Column size="180"/>
+                      <Column size="60"/>
+                      <Column size="80"/>
+                      <Column size="60"/>
+                      <Column size="35"/>
+                      <Column size="35"/>
+                      <Column size="35"/>
+                      <Column size="35"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="40"/>
+                      <Column size="40"/>
+                      <Column size="40"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell edittype="checkbox"/>
+                      <Cell col="1" text="프로그램 코드"/>
+                      <Cell col="2" text="프로그램명"/>
+                      <Cell col="3" text="프로그램 URL"/>
+                      <Cell col="4" text="프로그램 설명"/>
+                      <Cell col="5" text="모듈코드"/>
+                      <Cell col="6" text="모듈명"/>
+                      <Cell col="7" text="사용유무"/>
+                      <Cell col="8" text="읽기"/>
+                      <Cell col="9" text="저장"/>
+                      <Cell col="10" text="삭제"/>
+                      <Cell col="11" text="인쇄"/>
+                      <Cell col="12" text="엑셀저장"/>
+                      <Cell col="13" text="조직수정"/>
+                      <Cell col="14" text="기타1"/>
+                      <Cell col="15" text="기타2"/>
+                      <Cell col="16" text="기타3"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                      <Cell col="1" text="bind:prgmCd"/>
+                      <Cell col="2" text="bind:prgmNm"/>
+                      <Cell col="3" text="bind:prgmPath"/>
+                      <Cell col="4" text="bind:prgmDesc"/>
+                      <Cell col="5" text="bind:mdlCd"/>
+                      <Cell col="6" text="bind:mdlNm"/>
+                      <Cell col="7" text="bind:useYn"/>
+                      <Cell col="8" text="bind:readAuthYn"/>
+                      <Cell col="9" text="bind:saveAuthYn"/>
+                      <Cell col="10" text="bind:delAuthYn"/>
+                      <Cell col="11" text="bind:prntAuthYn"/>
+                      <Cell col="12" text="bind:exptAuthYn"/>
+                      <Cell col="13" text="bind:chgAuthYn"/>
+                      <Cell col="14" text="bind:etc1AuthYn"/>
+                      <Cell col="15" text="bind:etc2AuthYn"/>
+                      <Cell col="16" text="bind:etc3AuthYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Grid id="Grid01" taborder="3" binddataset="dsAuth" useinputpanel="false" nodatatext="데이터가 없습니다." visible="true" left="1" top="0" height="180" right="1">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="35"/>
+                      <Column size="100"/>
+                      <Column size="130"/>
+                      <Column size="55"/>
+                      <Column size="55"/>
+                      <Column size="55"/>
+                      <Column size="55"/>
+                      <Column size="60"/>
+                      <Column size="60"/>
+                      <Column size="55"/>
+                      <Column size="55"/>
+                      <Column size="55"/>
+                      <Column size="130"/>
+                      <Column size="180"/>
+                      <Column size="60"/>
+                      <Column size="80"/>
+                      <Column size="60"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="30" band="head"/>
+                      <Row size="30"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell edittype="checkbox"/>
+                      <Cell col="1" text="프로그램 코드"/>
+                      <Cell col="2" text="프로그램명"/>
+                      <Cell col="3" text="읽기"/>
+                      <Cell col="4" text="저장"/>
+                      <Cell col="5" text="삭제"/>
+                      <Cell col="6" text="인쇄"/>
+                      <Cell col="7" text="엑셀저장"/>
+                      <Cell col="8" text="조직수정"/>
+                      <Cell col="9" text="기타1"/>
+                      <Cell col="10" text="기타2"/>
+                      <Cell col="11" text="기타3"/>
+                      <Cell col="12" text="프로그램 URL"/>
+                      <Cell col="13" text="프로그램 설명"/>
+                      <Cell col="14" text="모듈코드"/>
+                      <Cell col="15" text="모듈명"/>
+                      <Cell col="16" text="사용유무"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                      <Cell col="1" text="bind:prgmCd"/>
+                      <Cell col="2" text="bind:prgmNm"/>
+                      <Cell col="3" displaytype="combo" edittype="combo" text="bind:readAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="4" displaytype="combo" edittype="combo" text="bind:saveAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="5" displaytype="combo" edittype="combo" text="bind:delAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="6" displaytype="combo" edittype="combo" text="bind:prntAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="7" displaytype="combo" edittype="combo" text="bind:exptAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="8" displaytype="combo" edittype="combo" text="bind:chgAuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="9" displaytype="combo" edittype="combo" text="bind:etc1AuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="10" displaytype="combo" edittype="combo" text="bind:etc2AuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="11" displaytype="combo" edittype="combo" text="bind:etc3AuthYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+                      <Cell col="12" text="bind:prgmPath"/>
+                      <Cell col="13" text="bind:prgmDesc"/>
+                      <Cell col="14" text="bind:mdlCd"/>
+                      <Cell col="15" text="bind:mdlNm"/>
+                      <Cell col="16" text="bind:useYn"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_search" taborder="13" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="35" text="권한 그룹" cssclass="sta_WF_schTitle" left="19" top="0" height="41" domainId="nexa.s_condition" width="72"/>
+              <Combo id="cmb_searchCondition" taborder="36" innerdataset="@ds_grCb" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cmb_searchCondition_onitemchanged" top="10" height="21" domainId="nexa.name;nexa.code" width="140" left="93"/>
+              <Edit id="edt_searchKeyword" taborder="37" onkeyup="div_search_edt_searchKeyword_onkeyup" top="10" height="21" width="260" left="238"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="14" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="15" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="76" width="802" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="17" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="299" top="65" width="20" height="431"/>
+        <Grid id="Grid00" taborder="18" binddataset="dsList" useinputpanel="false" autofittype="none" oncellclick="Div00_Grid00_oncellclick" top="65" height="431" width="300" left="0">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="130"/>
+                <Column size="170"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="권한그룹코드"/>
+                <Cell col="1" text="권한그룹명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:authGrpCd"/>
+                <Cell col="1" text="bind:authGrpNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static06" taborder="19" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+        <Static id="Static08" taborder="21" text="검색" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="318" top="277" width="69" height="31"/>
+        <Static id="Static10" taborder="23" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="297" width="803" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="Grid01" taborder="25" binddataset="dsUser" useinputpanel="false" left="319" top="307" right="25" height="189">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+                <Column size="100"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="180"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="35"/>
+                <Column size="35"/>
+                <Column size="35"/>
+                <Column size="35"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell edittype="checkbox"/>
+                <Cell col="1" text="프로그램 코드"/>
+                <Cell col="2" text="프로그램명"/>
+                <Cell col="3" text="프로그램 URL"/>
+                <Cell col="4" text="프로그램 설명"/>
+                <Cell col="5" text="모듈코드"/>
+                <Cell col="6" text="모듈명"/>
+                <Cell col="7" text="사용유무"/>
+                <Cell col="8" text="읽기"/>
+                <Cell col="9" text="저장"/>
+                <Cell col="10" text="삭제"/>
+                <Cell col="11" text="인쇄"/>
+                <Cell col="12" text="엑셀저장"/>
+                <Cell col="13" text="조직수정"/>
+                <Cell col="14" text="기타1"/>
+                <Cell col="15" text="기타2"/>
+                <Cell col="16" text="기타3"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:prgmCd"/>
+                <Cell col="2" text="bind:prgmNm"/>
+                <Cell col="3" text="bind:prgmPath"/>
+                <Cell col="4" text="bind:prgmDesc"/>
+                <Cell col="5" text="bind:mdlCd"/>
+                <Cell col="6" text="bind:mdlNm"/>
+                <Cell col="7" text="bind:useYn"/>
+                <Cell col="8" text="bind:readAuthYn"/>
+                <Cell col="9" text="bind:saveAuthYn"/>
+                <Cell col="10" text="bind:delAuthYn"/>
+                <Cell col="11" text="bind:prntAuthYn"/>
+                <Cell col="12" text="bind:exptAuthYn"/>
+                <Cell col="13" text="bind:chgAuthYn"/>
+                <Cell col="14" text="bind:etc1AuthYn"/>
+                <Cell col="15" text="bind:etc2AuthYn"/>
+                <Cell col="16" text="bind:etc3AuthYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="cmb_searchCondition2" taborder="7" value="0" text="선택" innerdataset="@ds_grCb2" codecolumn="cd" datacolumn="cdNm" index="0" top="280" height="21" domainId="nexa.name;nexa.code" width="113" left="391"/>
+        <Edit id="edt_searchKeyword2" taborder="6" onkeyup="div_search_edt_searchKeyword2_onkeyup" top="280" height="21" width="149" left="509"/>
+        <Button id="btn_search2" taborder="5" text="조회" height="22" cssclass="btn_WF_module" top="279" onclick="btn_search2_onclick" width="45" left="668"/>
+        <Button id="Button00" taborder="11" top="279" height="23" onclick="Button00_onclick" style="font:11 Verdana;" width="23" cssclass="btn_WF_suttleT" right="54"/>
+        <Button id="Button01" taborder="12" top="279" height="23" onclick="Button01_onclick" style="font:11 Verdana;" width="23" cssclass="btn_WF_suttleB" right="28"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_grCb" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="authGrpCd" type="STRING" size="256"/>
+          <Column id="authGrpNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAuth" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prgmCd" type="STRING" size="256"/>
+          <Column id="prgmNm" type="STRING" size="256"/>
+          <Column id="prgmPath" type="STRING" size="256"/>
+          <Column id="prgmDesc" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="mdlNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="readAuthYn" type="STRING" size="256"/>
+          <Column id="saveAuthYn" type="STRING" size="256"/>
+          <Column id="delAuthYn" type="STRING" size="256"/>
+          <Column id="prntAuthYn" type="STRING" size="256"/>
+          <Column id="exptAuthYn" type="STRING" size="256"/>
+          <Column id="chgAuthYn" type="STRING" size="256"/>
+          <Column id="etc1AuthYn" type="STRING" size="256"/>
+          <Column id="etc2AuthYn" type="STRING" size="256"/>
+          <Column id="etc3AuthYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUser" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prgmCd" type="STRING" size="256"/>
+          <Column id="prgmNm" type="STRING" size="256"/>
+          <Column id="prgmPath" type="STRING" size="256"/>
+          <Column id="prgmDesc" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="mdlNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="authGrpCd" type="STRING" size="256"/>
+          <Column id="readAuthYn" type="STRING" size="256"/>
+          <Column id="saveAuthYn" type="STRING" size="256"/>
+          <Column id="delAuthYn" type="STRING" size="256"/>
+          <Column id="prntAuthYn" type="STRING" size="256"/>
+          <Column id="exptAuthYn" type="STRING" size="256"/>
+          <Column id="chgAuthYn" type="STRING" size="256"/>
+          <Column id="etc1AuthYn" type="STRING" size="256"/>
+          <Column id="etc2AuthYn" type="STRING" size="256"/>
+          <Column id="etc3AuthYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grCb2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+var num;
+var cd;
+var rnum;
+var checkAuthMenuCd;
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) //온로드시 처리작업
+	{
+	
+		Ex.core.init(obj);
+		//this.div_search.cmb_searchCondition.set_index(0);
+		this.fn_search();
+		this.parent.setButton("E|C|S", this);
+	} 
+
+//권한그룹 사용자 좌측 Grid 조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "proRegService";                    
+	var sController   	= "proRegController.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output ds_grCb=output2 ds_grCb2=output3 useYn=output4";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	this.dsList.clearData();
+	if(this.div_search.cmb_searchCondition.value == "AUTHGRPCD"){ 
+		sArgs = "authGrpCd=" + nvl(this.div_search.edt_searchKeyword.value);
+	} else if(this.div_search.cmb_searchCondition.value == "AUTHGRPNM") {
+		if(this.div_search.edt_searchKeyword.getLength() < 2) {
+			alert("2자이상 입력해주세요")
+			return false;
+		} else {
+			sArgs = "authGrpNm=" + nvl(this.div_search.edt_searchKeyword.value);
+		}
+		
+	} else {
+		var params = "";
+	}
+	this.dsAuth.clearData(); //해당 그리드 초기화
+	this.dsUser.clearData(); //해당 그리드 초기화
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//권한그룹 사용자 우측 하단 Grid 조회
+this.btn_search2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	rnum = this.dsList.rowposition;
+	checkAuthMenuCd  = this.dsList.getColumn(rnum, "authGrpCd");
+	var sSvcID        	= "proRegService2";                    
+	var sController   	= "proRegController22.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsUser=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	if(this.cmb_searchCondition2.value == "PRGM_CD"){
+		if(this.edt_searchKeyword2.getLength() == 0) {
+			alert("프로그램 코드를 입력해주세요");
+			return false;
+		} else {
+			sArgs = "prgmCd=" + nvl(this.edt_searchKeyword2.value)+" cd=" + checkAuthMenuCd;;
+		}
+	} else if(this.cmb_searchCondition2.value == "PRGM_NM") {
+		if(this.edt_searchKeyword2.getLength() < 2) {
+			alert("2자이상 입력해주세요")
+			return false;
+		} else {
+			sArgs = "prgmNm=" + nvl(this.edt_searchKeyword2.value)+" cd=" + checkAuthMenuCd;;
+		}
+	} else {
+		alert("검색조건을 선택해주세요.");
+		return false;
+	}
+	this.dsUser.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{
+		if (nErrorCode < 0) 
+		{
+			return ExtNx.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		if (strSvcId == "searchList") 
+		{
+			if(nTotalCnt == 0) {
+				this.Div02.Grid00.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			
+		}
+		
+		if (strSvcId == "saveData") 
+		{
+			alert(strErrorMsg);
+			this.fn_search();
+		}
+		
+		if(strSvcId == "proRegService")
+		{
+			var cd = this.dsList.getColumn( num, "authGrpCd"); //순번에 있는 authGrpCd값 세팅
+			this.dsList.set_rowposition(num); //로우 선택
+			this.searchList(cd);
+			
+			if(this.dsUser.rowcount == 0) {
+				this.Div02.Grid00.set_nodatatext("조회된 데이터가 없습니다.");
+			}	
+		}
+	}
+//저장
+ this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		rnum = this.dsList.rowposition;
+		checkAuthGrpCd  = this.dsList.getColumn(rnum, "authGrpCd");
+		var sSvcID        	= "saveData";                    
+		var sController   	= "proRegSaveDaset.do";
+		var sInDatasets   	= "input=dsAuth:U";
+		var sOutDatasets  	= "";
+		var sArgs 			= "authGrpCd=" + checkAuthGrpCd;
+		var fn_callBack		= "fn_callBack";
+		/*
+		for(var i=0; i < this.dsAuth.getRowCount(); i++) {
+			alert(this.dsAuth.getRowType(i));
+		}
+		
+		if() {
+			sInDatasets   		= "input=dsAuth:U";
+		} else {
+			sInDatasets   		= "input=dsUser:U";
+		}
+		*/
+		sOutDatasets  		= "";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+//상단검색시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+//하단검색시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword2_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.btn_search2_onclick();
+	}
+}
+
+//상단 조회
+this.Div00_Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	num = this.dsList.rowposition; //row 순번가져오기
+	cd = this.dsList.getColumn( num, "authGrpCd"); //순번에 있는 authGrpCd값 세팅
+	this.searchList(cd);
+}
+
+//권한그룹 사용자 우측 상단 하단 Grid 정보 가져오기
+this.searchList = function(cd)
+	{
+		var sSvcID        	= "searchList";                    
+		var sController   	= "proRegController11.do";
+		var sInDatasets   	= "";
+		
+		var sOutDatasets  	= "dsAuth=listAuth dsUser=listUser";
+		var sArgs 			= "cd="+cd;
+
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+//위 버튼
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cnt = this.dsUser.rowcount;
+	var checkCnt = 0;
+	
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsUser.getColumn(i, "check")  == "1") {
+			var prgmCd = this.dsUser.getColumn(i, "prgmCd");
+			var prgmNm = this.dsUser.getColumn(i, "prgmNm");
+			var prgmPath = this.dsUser.getColumn(i, "prgmPath");
+			var prgmDesc = this.dsUser.getColumn(i, "prgmDesc");
+			var mdlCd = this.dsUser.getColumn(i, "mdlCd");
+			var mdlNm = this.dsUser.getColumn(i, "mdlNm");
+			var useYn = this.dsUser.getColumn(i, "useYn");
+			//권한
+			var readAuthYn = this.dsUser.getColumn(i, "readAuthYn");
+			var saveAuthYn = this.dsUser.getColumn(i, "saveAuthYn");
+			var delAuthYn = this.dsUser.getColumn(i, "delAuthYn");
+			var prntAuthYn = this.dsUser.getColumn(i, "prntAuthYn");
+			var exptAuthYn = this.dsUser.getColumn(i, "exptAuthYn");
+			var chgAuthYn = this.dsUser.getColumn(i, "chgAuthYn");
+			var etc1AuthYn = this.dsUser.getColumn(i, "etc1AuthYn");
+			var etc2AuthYn = this.dsUser.getColumn(i, "etc2AuthYn");
+			var etc3AuthYn = this.dsUser.getColumn(i, "etc3AuthYn");
+			
+			//로우 생성및 순번값
+			var idx = this.dsAuth.addRow();
+			
+			// 로우값 컬럼별로 세팅
+			this.dsAuth.setColumn(idx, "prgmCd" , prgmCd);
+			this.dsAuth.setColumn(idx, "prgmNm" , prgmNm);
+			this.dsAuth.setColumn(idx, "prgmPath" , prgmPath);
+			this.dsAuth.setColumn(idx, "prgmDesc" , prgmDesc);
+			this.dsAuth.setColumn(idx, "mdlCd" , mdlCd);
+			this.dsAuth.setColumn(idx, "mdlNm" , mdlNm);
+			this.dsAuth.setColumn(idx, "useYn" , useYn);
+			//권한들 N값으로 세팅
+			this.dsAuth.setColumn(idx, "readAuthYn" , readAuthYn);
+			this.dsAuth.setColumn(idx, "saveAuthYn" , saveAuthYn);
+			this.dsAuth.setColumn(idx, "delAuthYn" , delAuthYn);
+			this.dsAuth.setColumn(idx, "prntAuthYn" , prntAuthYn);
+			this.dsAuth.setColumn(idx, "exptAuthYn" , exptAuthYn);
+			this.dsAuth.setColumn(idx, "chgAuthYn" , chgAuthYn);
+			this.dsAuth.setColumn(idx, "etc1AuthYn" , etc1AuthYn);
+			this.dsAuth.setColumn(idx, "etc2AuthYn" , etc2AuthYn);
+			this.dsAuth.setColumn(idx, "etc3AuthYn" , etc3AuthYn);
+			this.dsUser.deleteRow(i);
+			
+			checkCnt++;
+		}
+	}
+		
+	if(checkCnt == 0) {
+		alert("등록하실 사용자를 선택해주세요.");
+	} /*else {
+		this.Div01.Grid01.set_visible(true);
+		this.Div01.Grid00.set_visible(false);
+	}*/
+}
+
+// 아래버튼
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cnt = this.dsAuth.rowcount;
+	var checkCnt = 0;
+	
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsAuth.getColumn(i, "check")  == "1") {
+			var prgmCd = this.dsAuth.getColumn(i, "prgmCd");
+			var prgmNm = this.dsAuth.getColumn(i, "prgmNm");
+			var prgmPath = this.dsAuth.getColumn(i, "prgmPath");
+			var prgmDesc = this.dsAuth.getColumn(i, "prgmDesc");
+			var mdlCd = this.dsAuth.getColumn(i, "mdlCd");
+			var mdlNm = this.dsAuth.getColumn(i, "mdlNm");
+			var useYn = this.dsAuth.getColumn(i, "useYn");
+			//권한
+			var readAuthYn = this.dsAuth.getColumn(i, "readAuthYn");
+			var saveAuthYn = this.dsAuth.getColumn(i, "saveAuthYn");
+			var delAuthYn = this.dsAuth.getColumn(i, "delAuthYn");
+			var prntAuthYn = this.dsAuth.getColumn(i, "prntAuthYn");
+			var exptAuthYn = this.dsAuth.getColumn(i, "exptAuthYn");
+			var chgAuthYn = this.dsAuth.getColumn(i, "chgAuthYn");
+			var etc1AuthYn = this.dsAuth.getColumn(i, "etc1AuthYn");
+			var etc2AuthYn = this.dsAuth.getColumn(i, "etc2AuthYn");
+			var etc3AuthYn = this.dsAuth.getColumn(i, "etc3AuthYn");
+			
+			//로우 생성및 순번값
+			var idx = this.dsUser.addRow();
+			
+			// 로우값 컬럼별로 세팅
+			this.dsUser.setColumn(idx, "prgmCd" , prgmCd);
+			this.dsUser.setColumn(idx, "prgmNm" , prgmNm);
+			this.dsUser.setColumn(idx, "prgmPath" , prgmPath);
+			this.dsUser.setColumn(idx, "prgmDesc" , prgmDesc);
+			this.dsUser.setColumn(idx, "mdlCd" , mdlCd);
+			this.dsUser.setColumn(idx, "mdlNm" , mdlNm);
+			this.dsUser.setColumn(idx, "useYn" , useYn);
+			//권한들 N값으로 세팅
+			this.dsUser.setColumn(idx, "readAuthYn" , readAuthYn);
+			this.dsUser.setColumn(idx, "saveAuthYn" , saveAuthYn);
+			this.dsUser.setColumn(idx, "delAuthYn" , delAuthYn);
+			this.dsUser.setColumn(idx, "prntAuthYn" , prntAuthYn);
+			this.dsUser.setColumn(idx, "exptAuthYn" , exptAuthYn);
+			this.dsUser.setColumn(idx, "chgAuthYn" , chgAuthYn);
+			this.dsUser.setColumn(idx, "etc1AuthYn" , etc1AuthYn);
+			this.dsUser.setColumn(idx, "etc2AuthYn" , etc2AuthYn);
+			this.dsUser.setColumn(idx, "etc3AuthYn" , etc3AuthYn);
+			this.dsAuth.deleteRow(i);
+			
+			checkCnt++;
+		}
+	}
+	if(checkCnt == 0) {
+		alert("삭제하실 사용자를 선택해주세요.");
+	} /*else {
+		this.Div01.Grid01.set_visible(false);
+	this.Div01.Grid00.set_visible(true);
+	}*/
+	
+}
+
+	this.fn_excel= function() {
+		var objArray1 = new Array();
+		objArray1.push(this.Grid00);
+		objArray1.push(this.Div01.Grid01);
+		objArray1.push(this.Grid01);
+		Ex.core.exportExcel(this, objArray1);
+	}
+]]></Script>
+  </Form>
+</FDL>

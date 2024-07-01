@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="메뉴등록" left="0" width="1147" top="0" height="496" ontimer="form_ontimer" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox" taborder="1"/>
+        <Grid id="grdList" taborder="4" binddataset="dsList" autoenter="select" useinputpanel="false" cellsizingtype="col" autofittype="none" left="319" top="86" right="25" height="410">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="0"/>
+                <Column size="70"/>
+                <Column size="120"/>
+                <Column size="65"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="메뉴코드"/>
+                <Cell col="2" text="메뉴명"/>
+                <Cell col="3" text="메뉴레벨"/>
+                <Cell col="4" text="상위메뉴코드"/>
+                <Cell col="5" text="상위메뉴명"/>
+                <Cell col="6" text="메뉴설명"/>
+                <Cell col="7" text="모듈명"/>
+                <Cell col="8" text="정렬순서"/>
+                <Cell col="9" text="사용유무"/>
+                <Cell col="10" text="등록자"/>
+                <Cell col="11" text="등록일자"/>
+                <Cell col="12" text="수정자"/>
+                <Cell col="13" text="수정일자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:선택"/>
+                <Cell col="1" displaytype="normal" edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" editfilter="upper,number,char" text="bind:menuCd" editlimit="12" editautoselect="true" editlengthunit="ascii"/>
+                <Cell col="2" edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" editfilter="upper,number,char" style="align:left middle;" text="bind:menuNm" editautoselect="true"/>
+                <Cell col="3" edittype="expr:(dataset.getRowType(currow) == 2) ? 'normal' : 'none'" editfilter="digit" text="bind:menuLvl" editlimit="1" editlengthunit="ascii"/>
+                <Cell col="4" edittype="normal" editfilter="upper,number,char" text="bind:uprMenuCd" editlimit="12" editlengthunit="ascii"/>
+                <Cell col="5" edittype="normal" editfilter="upper,number,char" style="align:left middle;" text="bind:uprMenuNm"/>
+                <Cell col="6" edittype="normal" style="align:left middle;" text="bind:menuDesc"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:mdlCd" combodataset="dsMdlCode" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="8" edittype="normal" text="bind:sortOdr" combodisplay="edit"/>
+                <Cell col="9" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="dsYn" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="bind:useYn" combodisplay="display"/>
+                <Cell col="10" displaytype="normal" text="bind:regId"/>
+                <Cell col="11" displaytype="date" text="bind:regDt" mask="yyyy-MM-dd" calendardisplaynulltype="none"/>
+                <Cell col="12" text="bind:chgId"/>
+                <Cell col="13" displaytype="date" text="bind:chgDt" mask="yyyy-MM-dd" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_grid_top" taborder="3" left="10" top="55" right="-10" height="23" scrollbars="none">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Grid id="grdTree" taborder="2" binddataset="dsTreeList" useinputpanel="false" treeuseline="true" treeusecheckbox="false" treeinitstatus="expand,all" left="0" top="86" width="300" cantreestatuschange="grdTree_cantreestatuschange" scrollpixel="default" autofittype="col" oncellclick="grdTree_oncellclick" height="410" treeusebutton="use" style="treeopenbuttonimage:URL('theme://images\ico_WF_treeexpand.png');treeclosebuttonimage:URL('theme://images\ico_WF_treecollapse.png');treecollapseimage:URL('theme://images\ico_WF_treeopen.png');treeexpandimage:URL('theme://images\ico_WF_treehide.png');treeitemimage:URL('theme://images\ico_treeitem.png');treelinetype:1px solid #afafafff ;cursor:hand;" onselectchanged="grdTree_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="209"/>
+              </Columns>
+              <Rows>
+                <Row size="30"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" style="line: ;" text="bind:menuNm" expandshow="hide" treestartlevel="0" treelevel="bind:menuLvl"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="5" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="24" text="검색" cssclass="sta_WF_schTitle" left="20" top="0" width="90" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cmb_searchCondition" taborder="25" codecolumn="cd" datacolumn="cdNm" left="61" top="10" width="140" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_searchCond" index="0" text="선택"/>
+              <Edit id="edt_searchKeyword" taborder="26" onkeyup="div_search_edt_searchKeyword_onkeyup" left="206" top="10" width="260" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="6" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static24" taborder="8" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="468" top="0" right="649" height="44"/>
+        <Static id="Static22" taborder="9" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+        <Static id="Static23" taborder="10" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+        <Static id="Static06" taborder="11" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+        <Static id="Static05" taborder="12" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="299" top="86" width="20" height="410"/>
+        <Static id="Static00" taborder="13" text="메뉴등록" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="0" top="61" width="241" height="20"/>
+        <Static id="Static04" taborder="14" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Button id="Button00" taborder="15" text="삭제" onclick="fn_delete" cssclass="btn_WF_module" top="58" right="73" width="45" height="22" visible="true"/>
+        <Button id="Button37" taborder="16" text="추가" onclick="fn_add" cssclass="btn_WF_module" top="58" right="25" width="45" height="22"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" useclientlayout="true" cancolumnchange="dsList_cancolumnchange">
+        <ColumnInfo>
+          <Column id="선택" type="STRING" size="256"/>
+          <Column id="menuCd" type="STRING" size="256"/>
+          <Column id="menuNm" type="STRING" size="256"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="uprMenuCd" type="STRING" size="256"/>
+          <Column id="uprMenuNm" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="menuDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="sortOdr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_searchCond" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd"/>
+            <Col id="cdNm">선택</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTreeList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="선택" type="STRING" size="256"/>
+          <Column id="menuCd" type="STRING" size="256"/>
+          <Column id="menuNm" type="STRING" size="256"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="uprMenuCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="menuDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMdlCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 메뉴등록
+ * 02. 그룹명   : RTCMMenu.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+var searchWord;			//검색단어
+var searchCond;			//검색조건
+this.resultCnt = "";	//중복메뉴카운트
+this.chkMenuCd = "";	//중복메뉴코드
+var uprMenuCd;			//상위메뉴코드
+var nExistRow; 			//중복체크ROW
+var nRowPos; 			//트리메뉴 포지션
+this.nRowCnt  = "";
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+     
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+		Ex.core.init(obj); 	
+		this.fn_getTreeMenuList();
+		this.parent.setButton("E|C|S", this);
+	} 
+	 
+ 
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//TREE메뉴 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getTreeMenuList = function() {
+		var sSvcID      	= "listTreeMenu";  
+		var sController   	= "ntrms/cm/listTreeMenu.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsTreeList=output ds_searchCond=output2 dsMdlCode=output3 dsYn=output4";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+    //-------------------------------------------------------------------------------  		
+	//목록조회 Search
+    //-------------------------------------------------------------------------------  	
+	this.fn_search = function()
+	{
+		var sSvcID        	= "listMenu";                    
+		var sController   	= "ntrms/cm/listMenu.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		searchWord  = this.div_search.edt_searchKeyword.value;
+		searchCond  = this.div_search.cmb_searchCondition.value;
+
+		if (searchCond == "MENU_CD")
+		{
+			sArgs += Ex.util.setParam("menuCd", searchWord);
+			sArgs += Ex.util.setParam("uprMenuCd", "");
+		}
+		else if (searchCond == "MENU_NM")
+		{
+			sArgs += Ex.util.setParam("menuNm",searchWord);
+			sArgs += Ex.util.setParam("uprMenuCd", "");
+		}
+		else {
+			this.alert("검색조건을 선택하세요.");
+			this.div_search.cmb_searchCondition.setFocus();
+			return;
+		}
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+    //-------------------------------------------------------------------------------  
+	//서브메뉴리스트 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getSubMenuList = function(nRowPos) {
+		
+		this.dsList.clearData();
+		uprMenuCd  = this.dsTreeList.getColumn(nRowPos, "menuCd");
+		
+		var sSvcID        	= "listMenu";                    
+		var sController   	= "ntrms/cm/listMenu.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("uprMenuCd",uprMenuCd);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+    //-------------------------------------------------------------------------------  	
+	//저장
+    //-------------------------------------------------------------------------------  	
+    this.fn_save = function()
+	{
+		var cnt = 0;
+		var menuListSeviceCnt = this.dsList.getRowCount();
+		for( var i = 0 ; i < menuListSeviceCnt ; i++ ){
+			var iRowType = this.dsList.getRowType(i);		
+			if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+				cnt++;
+			}
+		}
+		if(nvl(cnt) != 0){
+			if(this.fn_validCheck()) {	
+				var sSvcID        	= "saveMenuInfo";                    
+				var sController   	= "ntrms/cm/saveMenuInfo.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				sInDatasets   		= "input=dsList:U";
+				sOutDatasets  		= "";
+				var fn_callBack		= "fn_callBack";
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}
+		}else{
+				alert("변경된 데이터가 없습니다!");
+				return false;
+		     }
+	}
+
+// 	this.fn_save = function()
+// 	{
+// 		if(this.fn_validCheck()) {	
+// 			var sSvcID        	= "saveMenuInfo";                    
+// 			var sController   	= "ntrms/cm/saveMenuInfo.do";
+// 			var sInDatasets   	= "";
+// 			var sOutDatasets  	= "";
+// 			var sArgs 			= "";	
+// 			sInDatasets   		= "input=dsList:U";
+// 			sOutDatasets  		= "";
+// 			var fn_callBack		= "fn_callBack";
+// 			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 		}
+// 	}
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "listTreeMenu":
+				this.dsTreeList.set_rowposition(nRowPos)
+				this.fn_getSubMenuList(nRowPos);			
+				break;
+			case "listMenu":
+				//this.grd_Group.set_scrollbars("autoboth");
+				this.nRowCnt = this.dsList.rowcount;
+				if(this.dsList.rowcount == 0)
+				{
+					this.grdList.set_nodatatext("조회된 데이터가 없습니다.");
+					return;
+				}
+				break;
+			case "saveMenuInfo":
+				Ex.core.comMsg("alert",strErrorMsg);
+				this.fn_getTreeMenuList();			
+				break;			
+			case "menuCdExists":
+				var msg = "";
+				if(this.resultCnt > 0) {
+					msg = '입력하신 메뉴코드\'' + this.chkMenuCd + '\'는 존재하고 있습니다.';
+			
+					Ex.core.showMsg(this, "alert", "_alert1", msg, "information");
+					this.dsList.setColumn(nExistRow,"menuCd", "");
+				} 		
+				break;						
+			default:
+				break;
+		}
+	}
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  
+	// 추가 버튼 클릭시 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.dsList.addRow();		
+	
+		var sUprMenuCd = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+		var sUprMenuNm = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuNm");
+		var nMenuLvl   = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuLvl");
+		var sMdlCd     = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "mdlCd");
+
+		this.dsList.setColumn(nRow,"uprMenuCd", sUprMenuCd);
+		this.dsList.setColumn(nRow,"uprMenuNm", sUprMenuNm);
+		this.dsList.setColumn(nRow,"menuLvl"  , nMenuLvl+1);	
+		//this.dsList.setColumn(nRow,"mdlCd"  , this.dsMdlCode.getColumn(0,"cd"));		
+		this.dsList.setColumn(nRow,"mdlCd"  , sMdlCd);		
+		this.dsList.setColumn(nRow,"useYn"  , "Y");					
+	}
+    //-------------------------------------------------------------------------------  
+	//삭제 버튼 클릭시 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.fn_delete = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.dsList.rowposition;
+		if(nRow >= this.nRowCnt) {
+			this.dsList.deleteRow(nRow);
+		}
+	}
+    //-------------------------------------------------------------------------------  
+	//검색 시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}
+    //-------------------------------------------------------------------------------  
+	//grdTree_cantreestatuschange 이벤트 처리
+    //-------------------------------------------------------------------------------  		
+	this.grdTree_cantreestatuschange = function(obj:Grid, e:nexacro.GridTreeStatusEventInfo)
+	{
+		this.treeStatus = 1;
+	}
+    //-------------------------------------------------------------------------------  	
+	//그리드 트리 클릭
+    //-------------------------------------------------------------------------------  	
+	this.grdTree_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		//저장후 선택할 트리메뉴 rowposition 세팅
+		nRowPos = this.dsTreeList.rowposition;
+		this.fn_getSubMenuList(nRowPos);		
+	}
+    //-------------------------------------------------------------------------------  	
+	// dsList_oncolumnchanged 이벤트
+    //-------------------------------------------------------------------------------  
+    /*
+	this.dsList_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+			if(e.columnid == "menuCd") {
+				nExistRow = e.row;
+				this.fn_menuCd_exists(obj.getColumn(e.row, "menuCd"));
+			}		
+	}	
+	*/
+    //-------------------------------------------------------------------------------  	
+	// dsList_cancolumnchange 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.dsList_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if(e.columnid == "menuCd"){
+			//alert(e.newvalue);
+			for(var i=0; i<this.dsList.rowcount; i++) {
+				var nIdx = this.dsList.findRowExpr("menuCd == '"+ e.newvalue + "' && currow != "+e.row+"");
+				if (nIdx > -1){
+					application.alert("입력하신 메뉴코드 '"+ e.newvalue + "' 이 중복되었습니다.");
+					 return false;
+				}			
+			}
+		}
+	}
+	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//엑셀저장
+    //-------------------------------------------------------------------------------  		
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		//Ex.core.exportExcel(this, this.grdList);	
+		var objArray1 = new Array();
+		objArray1.push(this.grdTree);
+		objArray1.push(this.grdList);
+		Ex.core.exportExcel(this, objArray1);
+	}
+    //-------------------------------------------------------------------------------  	
+	//메뉴코드 중복확인
+    //-------------------------------------------------------------------------------  		
+	this.fn_menuCd_exists = function(objVal)
+	{
+		var sSvcID        	= "menuCdExists";                    
+		var sController   	= "ntrms/cm/checkMenuCdExists.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		var sMenuCd			= objVal;
+		sArgs += Ex.util.setParam("menuCd",sMenuCd);
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+    //-------------------------------------------------------------------------------  		
+	//VALID 체크
+    //-------------------------------------------------------------------------------  		
+	this.fn_validCheck = function() {
+
+		this.grdList.set_autoenter("select");
+		this.grdList.showEditor(true);
+			
+		for(var i = 0; i < this.dsList.rowcount; i++) {
+			this.dsList.set_rowposition(i);		
+			if(nvl(this.dsList.getColumn(i,"menuCd")) == "") {
+				alert("메뉴코드를 입력하세요");
+	
+				this.grdList.setCellPos(1);
+				return false;
+			}
+			if(nvl(this.dsList.getColumn(i,"menuNm")) == "") {
+				alert("메뉴명을 입력하세요");
+				this.grdList.setCellPos(2);				
+				return false;
+			}	
+			if(nvl(this.dsList.getColumn(i,"menuLvl")) == "") {
+				alert("메뉴레벨을 입력하세요");
+				this.grdList.setCellPos(3);				
+				return false;
+			}	
+			if(nvl(this.dsList.getColumn(i,"mdlCd")) == "") {
+				alert("모듈명을 선택하세요");
+				this.grdList.setCellPos(7);				
+				return false;
+			}								
+		}	
+		return true;
+	}
+	
+	
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREVisitorService_pop" classname="test_form" left="0" top="0" width="1147" height="496" titletext="방문점검 서비스수수료상세" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="83" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="15" text="방문점검 서비스 실적" cssclass="sta_WF_subTitle" left="0" top="99" width="143" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="114" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="32" width="1122" height="46" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="9" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="10" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="11" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="12" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <Static id="Static01" taborder="16" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="-1" top="33" width="20" height="45"/>
+              <Static id="Static24" taborder="18" text="FIX w30" cssclass="Guide_color" visible="false" left="346" top="0" width="30" height="44"/>
+              <Static id="Static00" taborder="20" text="FIX w30" cssclass="Guide_color" visible="false" left="346" top="32" width="30" height="44"/>
+              <Static id="st_searchCondition" taborder="27" text="수수료명" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Edit id="CommTpNm" taborder="0" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="243" height="21" enable="false"/>
+              <Static id="Static02" taborder="34" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="66" right="431" height="12"/>
+              <Static id="Static46" taborder="35" text="5 px" visible="false" left="130" top="47" width="1" height="30" style="background:red;"/>
+              <Static id="Static45" taborder="36" text="5 px" visible="false" left="125" top="47" width="1" height="30" style="background:red;"/>
+              <Edit id="CommTp" taborder="37" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="67" height="21" visible="false"/>
+              <Edit id="CommTp00" taborder="38" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" visible="false" left="395" top="12" width="67" height="21"/>
+              <Edit id="CommTp01" taborder="39" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" visible="false" left="475" top="12" width="67" height="21"/>
+              <Edit id="CommTp02" taborder="40" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" visible="false" left="555" top="12" width="67" height="21"/>
+              <Edit id="CommTp03" taborder="41" lengthunit="ascii" autoskip="true" onchanged="cal_accReqDate_onchanged" visible="false" left="571" top="12" width="67" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="19" text="판매실적에 따른 방문점검 수수료" cssclass="sta_WF_subTitle" left="600" top="99" width="203" height="20"/>
+        <Grid id="Grid00" taborder="24" useinputpanel="false" left="0" top="124" height="92" binddataset="ds_list" width="453">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="75"/>
+                <Column size="72"/>
+              </Columns>
+              <Rows>
+                <Row size="34" band="head"/>
+                <Row size="43"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="기준시작일"/>
+                <Cell col="1" text="기준종료일"/>
+                <Cell col="2" text="채널대분류"/>
+                <Cell col="3" text="채널중분류"/>
+                <Cell col="4" text="점검서비스 최소건수" wordwrap="char"/>
+                <Cell col="5" text="점검서비스 최대건수" wordwrap="char"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:strDay"/>
+                <Cell col="1" text="bind:endDay"/>
+                <Cell col="2" text="bind:chanLclsNm"/>
+                <Cell col="3" text="bind:chanMclsNm"/>
+                <Cell col="4" text="bind:minCnt"/>
+                <Cell col="5" text="bind:maxCnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_search" taborder="25" text="조회" onclick="btn_search_onclick" cssclass="btn_WF_CRUD" top="9" right="76" width="45" height="22" domainId="nexa.search"/>
+        <Button id="btn_save" taborder="26" text="저장" cssclass="btn_WF_CRUD" top="9" right="28" width="45" height="22" domainId="nexa.search" onclick="btn_save_onclick"/>
+        <Button id="btnSaleListAdd" taborder="27" text="추가" onclick="div_search_btnSaleListAdd_onclick" cssclass="btn_WF_module" top="98" right="76" width="45" height="22"/>
+        <Button id="btn_del" taborder="28" text="삭제" onclick="btn_del_onclick" cssclass="btn_WF_module" top="98" width="45" height="22" domainId="nexa.save" right="28"/>
+        <Grid id="Grid01" taborder="29" useinputpanel="false" left="600" top="124" width="514" height="160" binddataset="ds_list2" oncellclick="Grid01_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="선택"/>
+                <Cell col="1" text="점검서비스 최소건수" wordwrap="char"/>
+                <Cell col="2" text="점검서비스 최대건수" wordwrap="char"/>
+                <Cell col="3" text="판매 실적 최소 건수" wordwrap="char"/>
+                <Cell col="4" text="판매 실적  최대 건수" wordwrap="char"/>
+                <Cell col="5" text="수수료"/>
+                <Cell col="6" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" text="bind:minCnt"/>
+                <Cell col="2" text="bind:maxCnt"/>
+                <Cell col="3" edittype="normal" text="bind:saleMinCnt"/>
+                <Cell col="4" edittype="normal" text="bind:saleMaxCnt"/>
+                <Cell col="5" edittype="normal" text="bind:commAmt"/>
+                <Cell col="6" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="useYn" combocodecol="cd" combodatacol="cdNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="commTpNm" type="STRING" size="256"/>
+          <Column id="chanLclsNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="minCnt" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="maxCnt" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="commTp" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="visitorService2_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="minCnt" type="STRING" size="256"/>
+          <Column id="maxCnt" type="STRING" size="256"/>
+          <Column id="commTp" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="saleMinCnt" type="STRING" size="256"/>
+          <Column id="commAmt" type="STRING" size="256"/>
+          <Column id="saleMaxCnt" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">사용</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">사용안함</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item16" compid="div_search.CommTpNm" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item0" compid="div_search.CommTp" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item1" compid="div_search.CommTp00" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item2" compid="div_search.CommTp01" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item3" compid="div_search.CommTp02" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item4" compid="div_search.CommTp03" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 수수료 > 방문점검 서비스 수수료 상세(팝업)
+ * 02. 그룹명   : RTREVisitorService_pop.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	
+	this.saveFlag	= "";   //저장구분(I:등록,U:수정)
+	this.saveDate	= "";	//등록일자
+	this.custNo		= "";   //고객번호
+	this.ordNo		= "";	//계약번호
+	this.btnFlag	= true;	//팝업버튼 활성화FLAG
+	this.ramgYm		= "";   //채권관리년월
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.div_search.CommTp.set_value(this.parent.p_commTp);
+		this.div_search.CommTpNm.set_value(this.parent.p_commTpNm);
+		this.div_search.CommTp00.set_value(this.parent.p_chanLcCd);
+		this.div_search.CommTp01.set_value(this.parent.p_chanMcCd);
+		this.div_search.CommTp02.set_value(this.parent.p_min);		
+		this.div_search.CommTp03.set_value(this.parent.p_max);
+		this.fn_search();
+		this.fn_search2();
+
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+//  	//---------------------------------------------------------------------------------
+// 	// 공통코드 조회
+// 	//---------------------------------------------------------------------------------
+// 	this.fn_getCommCode  = function() {
+// 		var sSvcID      	= "getCommCode";  
+// 		var sController   	= "ntrms/re/getBondMngCode.do";
+// 		var sInDatasets   	= "";
+// 		var sOutDatasets  	= "ds_R035=outputR035";
+// 		var sArgs 			= "";	
+// 		var fn_callBack		= "fn_callBack";
+// 		
+// 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+// 	}	
+
+ 	//---------------------------------------------------------------------------------
+	// 채권계정 내역 조회
+	//---------------------------------------------------------------------------------		
+	this.fn_search = function()
+	{
+	
+		var sSvcID      	= "visitorService";  
+		var sController   	= "ntrms/re/visitorService.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		sArgs += Ex.util.setParam("commTp"	    , nvl(this.div_search.CommTp.value));		//고객번호
+		sArgs += Ex.util.setParam("chrSeq"	    , nvl(this.parent.p_chrSeq));		//고객번호
+	
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+	
+	 	//---------------------------------------------------------------------------------
+	// 채권계정 내역 조회
+	//---------------------------------------------------------------------------------		
+	this.fn_search2 = function()
+	{
+		var sSvcID      	= "visitorService2";  
+		var sController   	= "ntrms/re/visitorService2.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list2=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		sArgs += Ex.util.setParam("commTp"	    , nvl(this.div_search.CommTp.value));		//고객번호
+	
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}
+
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "visitorService2":
+			this.ds_list2.addColumn("chk", "string", 256);
+			this.ds_list2.addColumn("minCnt", "string", 256);
+			this.ds_list2.addColumn("maxCnt", "string", 256);
+			
+			for(var i=0; i<this.ds_list2.getRowCount();i++){
+			this.ds_list2.setColumn(i,"commTp",this.div_search.CommTp.value);
+			this.ds_list2.setColumn(i,"chanLclsCd",this.div_search.CommTp00.value);
+			this.ds_list2.setColumn(i,"chanMclsCd",this.div_search.CommTp01.value);
+			this.ds_list2.setColumn(i,"minCnt",this.div_search.CommTp02.value);
+			this.ds_list2.setColumn(i,"maxCnt",this.div_search.CommTp03.value);
+			}
+			break;
+			
+		
+			//채권계정내역 조회				
+			case "visitorService":		
+				//			
+				if(this.ds_list.rowcount == 0) {
+					this.Grid00.set_nodatatext("조회된 결과가 없습니다.");
+				}
+				if(this.ds_list.rowcount > 0) {
+					this.ds_list.set_rowposition(0);
+					var pos = this.ds_list.rowposition;					
+				}
+// 				for(var i =0;i<this.ds_list.getRowCount();i++){
+// 				alert(this.ds_list.getColumn(i,"chanLclsCd"));
+// 				alert(this.ds_list.getColumn(i,"chanMclsCd"));
+// 				}
+				
+
+				break;
+			//계약별내역 조회	
+			
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+
+    //-------------------------------------------------------------------------------  	
+	//검색 시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}		
+    //-------------------------------------------------------------------------------  	
+	//고객번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		this.div_search.edt_custNoKeyword.set_value("");	
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_custNo.value) == "") {
+				this.alert("고객번호를 입력하세요");
+				this.div_search.edt_custNo.setFocus();
+				return;
+			}
+			//고객명 조회
+			this.fn_getCustNm();
+		}		
+	}	
+
+	
+this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	for(var i =0; i<this.ds_list2.getRowCount();i++){
+	if(this.ds_list2.getColumn(i,"chk",1)==1){
+		this.ds_list2.deleteRow(this.Grid01.currentrow);
+	}
+	}
+
+}
+
+this.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_search();
+	this.fn_search2();
+}
+
+this.div_search_btnSaleListAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var nCnt = this.ds_list2.getRowCount();
+	var row = this.ds_list2.getRowCount()-1;
+	
+	if(this.ds_list2.getColumn(row,"saleMinCnt")==null || this.ds_list2.getColumn(row,"saleMinCnt")==""){
+	alert("판매실적 최소건수를 입력해주세요");
+	return;
+	}
+		
+	if(this.ds_list2.getColumn(row,"saleMaxCnt")==null || this.ds_list2.getColumn(row,"saleMaxCnt")==""){
+	alert("판매실적 최대건수를 입력해주세요");
+	return;
+	}
+	
+	var nRow = this.ds_list2.addRow();
+
+	this.ds_list2.setColumn(nRow,"commTp",this.div_search.CommTp.value);
+	this.ds_list2.setColumn(nRow,"chanMclsCd",this.div_search.CommTp00.value);
+	this.ds_list2.setColumn(nRow,"chanLclsCd",this.div_search.CommTp01.value);
+	this.ds_list2.setColumn(nRow,"minCnt",this.div_search.CommTp02.value);
+	this.ds_list2.setColumn(nRow,"maxCnt",this.div_search.CommTp03.value);
+}
+
+
+this.visitorService2_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	var sColId 	= e.columnid;
+	var nRow 	= e.row;
+	
+	if(sColId == "saleMinCnt") { //최소건 입력 시
+		
+		for(var i =0;i<nRow;i++){
+			var curMinCnt2 = nvl(obj.getColumn(i,"saleMinCnt"),0);
+			var prvMinCnt2 = nvl(obj.getColumn(i,"saleMaxCnt"),0);
+			var curMinCnt = nvl(obj.getColumn(nRow,"saleMinCnt"),0);
+			var curMaxCnt = nvl(obj.getColumn(nRow,"saleMaxCnt"),0);
+
+			if(parseInt(curMinCnt2)<=parseInt(curMinCnt)){
+				if(parseInt(curMinCnt)<=parseInt(prvMinCnt2)){
+				alert("이전행 보다 값이 작습니다. 다시 입력하여 주십시오");
+				obj.setColumn(nRow, "saleMinCnt", "");
+				return;
+				}
+			}		
+		}
+	} else if(sColId == "saleMaxCnt") { //최대건 입력 시
+
+		var curMinCnt = nvl(obj.getColumn(nRow,"saleMinCnt"),0);
+		var curMaxCnt = nvl(obj.getColumn(nRow,"saleMaxCnt"),0);
+		
+			if(parseInt(curMaxCnt) <= parseInt(curMinCnt)) {
+				alert("최대건이 최소건보다 작습니다. 다시 입력하여 주십시오");
+				obj.setColumn(nRow, "saleMaxCnt", "");
+				return;
+  			}
+			for(var i =0;i<nRow;i++){
+				var curMinCnt2 = nvl(obj.getColumn(i,"saleMinCnt"),0);
+				var prvMinCnt2 = nvl(obj.getColumn(i,"saleMaxCnt"),0);	
+			
+			if(parseInt(curMinCnt)<=parseInt(curMinCnt2)){
+			
+				if(parseInt(curMaxCnt)>=parseInt(prvMinCnt2)){
+					alert("최대건이 이전최소건보다 작습니다. 다시 입력하여 주십시오");
+					obj.setColumn(nRow, "saleMaxCnt", "");
+					return;
+				}
+			}
+			if(parseInt(curMinCnt2)<=parseInt(curMaxCnt)){
+				if(parseInt(curMaxCnt)<parseInt(prvMinCnt2)){
+					alert("최대건이 이전최소건보다 작습니다. 다시 입력하여 주십시오2");
+					obj.setColumn(nRow, "saleMaxCnt", "");
+					return;
+				}
+			}
+		}
+	}
+}
+
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var changeCount = 0;
+	var cnt = this.ds_list2.getRowCount();
+		
+	for( var i = 0 ; i < cnt ; i++ ){
+		var iRowType = this.ds_list2.getRowType(i);
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			changeCount++;
+		}
+	}
+	
+	if( changeCount == 0 ) {
+		alert('변경된 데이터가 없습니다.');
+		return false;
+	}
+
+	if( confirm( "저장하시겠습니까?") ){
+		var sSvcID        	= "saveVisitorService";
+		var sController   	= "/ntrms/re/saveVisitorService.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=ds_list2:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+this.Grid01_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var sColId 		= e.col;
+	var nRow 		= e.row;
+	
+	for (var i=0; i<=this.ds_list2.rowcount; i++) {
+		
+		if(this.ds_list2.rowposition == i) {
+			this.ds_list2.addColumn("chk", "STRING", "256")
+		}
+		else {
+			this.ds_list2.setColumn(i,"chk","0");
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

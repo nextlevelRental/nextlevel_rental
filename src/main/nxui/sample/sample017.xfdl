@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample017" classname="hrSample19_goPage" left="0" top="0" width="1024" height="768" titletext="페이지이동샘플" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_goPage" taborder="0" text="페이지이동실행" left="72" top="92" width="194" height="40" onclick="btn_goPage_onclick" titletext="페이지이동(메인)"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : HGR Industrial Surplus
+* BUSINESS    : gopage main
+* FILE NAME   : hrSample19_goPage.xfdl
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 2014.09.19
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	  //폼로드시 공통함수 
+	Ex.core.init(obj);
+	
+	
+}
+
+this.btn_goPage_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{    
+   var oArg = {
+         arg1 : "test1",
+         arg2 : "test2"
+   };
+
+     Ex.core.goPage("sample::sample017_sub.xfdl",oArg);
+}
+
+this.btn_getparam_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	//getParam
+	var sUrl = Ex.core.getParam["pageUrl"]
+    var oAparamObject = Ex.core.getParam["paramObject"]
+    
+    
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="렌탈마스터 관할 대리점 설정" left="0" width="1147" top="0" height="496" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="0" top="0" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" width="1122" onkeyup="div_search_onkeyup">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="15" text="렌탈마스터 ID/명" cssclass="sta_WF_schTitle" left="25" top="12" width="120" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="23" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1118"/>
+              <Static id="Static23" taborder="24" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="1118"/>
+              <Edit id="edt_userNm" taborder="0" enable="true" left="151" top="10" width="124" height="21" maxlength="100" onkeyup="div_search_edt_grpNm_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="24" text="렌탈마스터" cssclass="sta_WF_subTitle" top="61" height="20" width="81" left="0"/>
+        <Static id="Static06" taborder="27" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" top="0" height="45" width="25" left="0"/>
+        <Static id="Static24" taborder="28" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="277" top="0" height="44" width="25"/>
+        <Grid id="Grid01" taborder="127" useinputpanel="false" left="0" top="85" height="393" binddataset="dsList" width="554" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="0"/>
+                <Column size="158"/>
+                <Column size="319"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="렌탈마스터ID"/>
+                <Cell col="2" text="렌탈마스터명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" displaytype="normal" edittype="none" style="align:center;" text="bind:userId" editlimit="3"/>
+                <Cell col="2" edittype="none" style="align:center;" text="bind:userNm" editlimit="100"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="128" text="Static02" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static04" taborder="129" text="Static02" cssclass="Guide_color" visible="false" left="0" top="75" width="1147" height="10"/>
+        <Static id="Static01" taborder="130" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="690"/>
+        <Static id="Static03" taborder="132" text="Static02" cssclass="Guide_color" visible="false" left="0" top="479" width="1147" height="10"/>
+        <Static id="Static02" taborder="138" text="대리점" cssclass="sta_WF_subTitle" left="563" top="61" width="97" height="20"/>
+        <Grid id="Grid02" taborder="139" binddataset="dsList2" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="563" top="85" width="554" height="393">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="39"/>
+                <Column size="221"/>
+                <Column size="267"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" edittype="none" text="선택"/>
+                <Cell col="1" text="대리점코드"/>
+                <Cell col="2" text="대리점명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" edittype="none" text="bind:agencyCd" editlimit="4"/>
+                <Cell col="2" edittype="none" text="bind:agencyNm" editlimit="100"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsList_onrowposchanged" oncolumnchanged="dsList_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="0"/>
+          <Column id="userNm" type="STRING" size="0"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="dsList2_cancolumnchange">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="rntMstId" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="0"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAuth" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="dsList2_cancolumnchange">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="rntMstId" type="STRING" size="0"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="delChk" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 렌탈마스터 대리점 매핑설정
+ * 02. 그룹명   : 공통관리-렌탈관리
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2022.10.12
+ * 05. 작성자   : 김선태
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ * ToDo.1. 
+ ***********************************************************************
+ */ 
+
+/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************************
+ * 2. FORM 변수 선언 영역
+***********************************************************************************/
+	//팝업에서 전달받은 변수 저장
+	this.arr ;
+
+/***********************************************************************************
+ * 3. Common Events and Functions
+***********************************************************************************/
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 */
+		Ex.core.init(obj); 
+		this.parent.setButton("DL|C|S", this);
+		this.fn_search();
+	} 
+	 
+/***********************************************************************************
+* 4. Transaction Functions
+***********************************************************************************/
+//----------------------------------------------------------------------------------
+// Search: 렌탈지사(M)
+//----------------------------------------------------------------------------------
+	this.fn_search = function()
+	{
+		this.dsList.clearData();
+		this.dsList2.clearData();
+		
+		var sSvcID        	= "listRentalAuthMstInfo";                    
+		var sController   	= "/rtms/sd/listRentalAuthMstInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=ds_output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+			sArgs 			+= Ex.util.setParam("userNm",   nvl(this.div_search.edt_userNm.value));
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+//----------------------------------------------------------------------------------
+// Search: 렌탈대리점(D)
+//----------------------------------------------------------------------------------
+	this.fn_searchDtl = function()
+	{
+		this.dsList2.clearData();
+		
+		if(!this.fn_searchOfficeValidation())
+		{
+			return false;
+		}		
+		
+		var sSvcID        	= "listRentalAuthDtlInfo";                    
+		var sController   	= "/ntrms/cm/getRentalMasterInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList2=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+			sArgs 			+= Ex.util.setParam("rntMstId",   nvl(this.dsList.getColumn(this.dsList.rowposition, "userId")));
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}	
+
+//----------------------------------------------------------------------------------
+// Save - 렌탈지사
+//----------------------------------------------------------------------------------
+	this.fn_save = function()
+	{
+		if(!Ex.util.isUpdated(this.dsList2)) {
+			alert('변경된 데이터가 없습니다.');
+			return false;
+		}
+
+		this.dsAuth.clearData(); 
+		var nRow = -1;
+		var nCnt = 0;
+		for (var i = 0; i < this.dsList2.rowcount; i++)
+		{
+			if (this.dsList2.getColumn(i, "chk") == "1")
+			{
+				nCnt++;
+				nRow = this.dsAuth.addRow();
+				this.dsAuth.setColumn(nRow, "rntMstId", this.dsList.getColumn(this.dsList.rowposition, "userId"));
+				this.dsAuth.setColumn(nRow, "agencyCd", this.dsList2.getColumn(i, "agencyCd"));
+				this.dsAuth.setColumn(nRow, "regId", application.gds_userInfo.getColumn(0, "userId"));
+				this.dsAuth.setColumn(nRow, "delChk", nCnt);
+			}
+		}
+		
+		if( confirm( "저장하시겠습니까?") ){			
+			var sSvcID        	= "saveRentalMsterInfo";                    
+			var sController   	= "/ntrms/cm/saveRentalMasterInfo.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			sArgs 			    += Ex.util.setParam("rntMstId",   this.dsList.getColumn(this.dsList.rowposition, "userId"));
+			sArgs 			    += Ex.util.setParam("regId",   application.gds_userInfo.getColumn(0, "userId"));
+			sInDatasets   		= "dsAuth=dsAuth:U";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+//----------------------------------------------------------------------------------
+// Delete - 렌탈지사
+//----------------------------------------------------------------------------------
+this.fn_delete = function(){
+
+	var sSvcID        	= "deleteRentalMsterInfo";                    
+	var sController   	= "/ntrms/cm/deleteRentalMasterInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	sArgs 			    += Ex.util.setParam("rntMstId",   this.dsList.getColumn(this.dsList.rowposition, "userId"));
+	sArgs 			    += Ex.util.setParam("regId",   application.gds_userInfo.getColumn(0, "userId"));
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+	
+/***********************************************************************************
+* 5. CallBack Functions
+***********************************************************************************/	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) {
+			alert(strErrorMsg);		
+			return;
+		}
+		
+		if (strSvcId == "listRentalAuthMstInfo") { //렌탈마스터조회
+		
+		}
+		
+		if (strSvcId == "getRentalMasterInfo") { //지사/지점조회
+		
+		}
+				
+		if (strSvcId == "saveRentalMsterInfo") { //저장
+			alert(strErrorMsg);
+		}
+		
+		if (strSvcId == "deleteRentalMsterInfo") { //삭제
+			alert(strErrorMsg);
+			this.fn_searchDtl();
+		}
+	}
+
+/***********************************************************************************
+ * 6. User Functions
+***********************************************************************************/
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+	//=======================================
+	// 검색 시 Enter키 이벤트 처리
+	//=======================================
+	this.div_search_edt_grpNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+		if ( e.keycode == 13 ){
+			this.fn_search();
+		}
+	}
+	
+	//----------------------------------------------------------------------------------
+	// [저장]: 렌탈지사
+	//----------------------------------------------------------------------------------
+	this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_save();
+	}
+	
+	//----------------------------------------------------------------------------------
+	// Search Validation: 렌탈지점(D)
+	//----------------------------------------------------------------------------------	
+	this.fn_searchOfficeValidation = function(){
+		if(this.dsList.rowcount < 1)
+		{
+			return false;
+		}	
+		return true;
+	}
+	
+	this.dsList_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+	{
+		this.fn_searchDtl(); //렌탈지점 조회
+	}
+
+	//렌탈지점 사용여부 체크
+	this.dsList2_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if (this.dsList.rowcount < 1) return;
+		
+		var nRow = this.dsList2.rowposition;
+		
+		if (e.columnid == "chk")
+		{
+			if ((this.dsList.getColumn(this.dsList.rowposition, "userId") != this.dsList2.getColumn(nRow, "rntMstId")) 
+				 && !Eco.isEmpty(this.dsList2.getColumn(nRow, "rntMstId"))  )
+			{
+				alert("다른 렌탈마스터ID에 연결되어 있어 선택이 불가능합니다.");
+				return false;
+			}
+				
+			if (e.oldvalue == 0)
+			{
+				this.dsList2.setColumn(nRow, "rntMstId", this.dsList.getColumn(this.dsList.rowposition, "userId"));
+			}
+			else
+			{
+				this.dsList2.setColumn(nRow, "rntMstId", "");
+			}
+		}
+	}]]></Script>
+  </Form>
+</FDL>

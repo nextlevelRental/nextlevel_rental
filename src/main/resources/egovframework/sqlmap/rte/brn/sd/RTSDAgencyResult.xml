@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="agencyResult">	
+	
+	<resultMap id="r_sRtsd0108AgencyResult" class="java.util.HashMap">
+		<result property="agencyNm" 		column="AGENCY_NM" />
+		<result property="salesGroupNm" 	column="SALES_GROUP_NM" />
+		<result property="salesOfficeNm" 	column="SALES_OFFICE_NM" />
+		<result property="ordNo" 			column="ORD_NO" />
+		<result property="pgNm" 			column="PG_NM" />
+		<result property="petternNm" 		column="PETTERN_NM" />
+		<result property="sectionWidth" 	column="SECTION_WIDTH" />
+		<result property="aspectRatio" 		column="ASPECT_RATIO" />
+		<result property="wheelInches" 		column="WHEEL_INCHES" />
+		<result property="plyRating" 		column="PLY_RATING" />
+		<result property="cntNm" 			column="CNT_NM" />
+		<result property="procDay" 			column="PROC_DAY" />
+		<result property="periodNm" 		column="PERIOD_NM" />
+		<result property="custNm" 			column="CUST_NM" />
+		<result property="regiNm" 			column="REGI_NM" />
+		<result property="monAmt" 			column="MON_AMT" />	
+		<result property="orgAgnm" 			column="ORG_AGNM" />	
+		<result property="seasonCd"			column="SEASON_CD" />	
+		<result property="seasonNm"			column="SEASON_NM" />
+		<result property="matCd"			column="MAT_CD" />
+		<result property="ordAgent"			column="ORD_AGENT" />
+		<result property="agencyCd"			column="AGENCY_CD" />
+		<result property="chanLclsCd" 		column="CHAN_LCLS_CD" />
+		<result property="chanMclsCd" 		column="CHAN_MCLS_CD" />		
+		<result property="chanLclsNm" 		column="CHAN_LCLS_NM" />
+		<result property="chanMclsNm" 		column="CHAN_MCLS_NM" />	
+		<result property="cntB00007" 		column="CNT_B00007"       />  <!-- 걱정제로 부여 횟수 [20190226_01] -->
+		<result property="cntB00001" 		column="CNT_B00001"       />  <!-- 엔진오일 부여 횟수 [20190226_01] -->
+		<result property="cntB00002" 		column="CNT_B00002"       />  <!-- 위치교환 부여 횟수 [20190226_01] -->
+		<result property="cntB00008" 		column="CNT_B00008"       />  <!-- 얼라인먼트 부여 횟수 [20190226_01] -->
+		<result property="cntB00003" 		column="CNT_B00003"       />  <!-- 방문점검 부여 횟수 [20190226_01] -->
+		<result property="userId"	 		column="USER_ID"          />
+		<result property="rentalGroup"		column="RENTAL_GROUP"     />  <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />  <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"    />  <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM" />  <!-- 렌탈지점명   20181226 -->	
+	</resultMap>
+	<parameterMap id="p_sRtsd0108AgencyResult" class="java.util.Map">
+		<parameter property="vcursor"		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0108AgencyResult" />
+		<parameter property="agencyCd" 	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesOffice" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayS" 	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayE"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd" 	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->  
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->    
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="agencyResult.selectRTSDAgencyResult" parameterMap="p_sRtsd0108AgencyResult">
+		{call Pkg_Rtsd0108.p_sRtsd0108AgencyResult(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

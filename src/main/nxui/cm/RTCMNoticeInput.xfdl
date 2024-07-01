@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" scrollbars="none" titletext="공지사항 등록폼" left="0" width="800" top="0" height="385" ontimer="form_ontimer" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_grid_bottom" taborder="20" left="0.79%" bottom="21" height="20" scrollbars="none" right="-10">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="23" cssclass="sta_WF_GridDis" left="0%" top="0" right="0%" bottom="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="24" cssclass="sta_WF_detailLabel2" left="0" top="0" height="31" right="0"/>
+        <Static id="Static05" taborder="25" cssclass="sta_WF_detailLabel2" left="0" top="30" height="31" right="0"/>
+        <Static id="Static01" taborder="28" text="공지구분" cssclass="sta_WF_detailLabel" left="0" top="0" width="130" height="31"/>
+        <Static id="Static04" taborder="29" text="제목" cssclass="sta_WF_detailLabel" left="0" top="30" width="130" height="31"/>
+        <Edit id="Edit02" taborder="30" left="148" top="-92" right="561" height="20"/>
+        <Static id="Static00" taborder="31" cssclass="sta_WF_detailLabel2" left="0" top="60" height="31" right="0"/>
+        <Static id="Static03" taborder="32" cssclass="sta_WF_detailLabel2" left="0" top="90" height="31" right="0"/>
+        <Static id="Static06" taborder="35" text="공지기간" cssclass="sta_WF_detailLabel" left="0" top="60" width="130" height="31"/>
+        <Static id="Static07" taborder="36" text="작성자" cssclass="sta_WF_detailLabel" left="0" top="90" width="130" height="31"/>
+        <Static id="Static08" taborder="38" cssclass="sta_WF_detailLabel2" left="0" top="120" height="235" right="0"/>
+        <Static id="Static09" taborder="39" cssclass="sta_WF_detailLabel2" left="0" top="354" height="31" right="0"/>
+        <Static id="Static10" taborder="42" text="공지사항" cssclass="sta_WF_detailLabel" left="0" top="120" width="130" height="235"/>
+        <Static id="Static11" taborder="43" text="파일첨부" cssclass="sta_WF_detailLabel" left="0" top="354" width="130" height="31"/>
+        <Edit id="ntcType" taborder="44" left="133" top="5" height="21" width="617"/>
+        <Edit id="title" taborder="45" left="134" top="35" height="21" width="661"/>
+        <Calendar id="startDt" taborder="47" left="134" top="65" height="21" width="120"/>
+        <Calendar id="endDt" taborder="48" left="270" top="65" height="21" width="120"/>
+        <Static id="Static12" taborder="49" text="~" left="257" top="65" width="9" height="21"/>
+        <Edit id="regId" taborder="50" maxlength="20" visible="false" left="295" top="95" height="21" width="214"/>
+        <Edit id="regNm" taborder="51" maxlength="20" left="134" top="95" height="21" width="157" enable="false"/>
+        <TextArea id="contents" taborder="52" left="134" top="125" right="5" height="224"/>
+        <Button id="btn_Excel" taborder="53" text="파일첨부" onclick="fileUpload" left="641" top="359" height="21" domainId="nexa.s_condition" width="65"/>
+        <Edit id="fileList" taborder="54" left="134" top="359" height="21" width="491" onlbuttonup="fileList_onsetfocus"/>
+        <Button id="btn_save" taborder="55" text="저장" onclick="fn_save" left="709" top="359" width="41" height="21" domainId="nexa.save" valid=""/>
+        <Button id="btn_save00" taborder="56" text="삭제" onclick="fn_delete" left="753" top="359" width="41" height="21" domainId="nexa.save" valid=""/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsFile" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsNotice" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsDetail" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsImg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item7" compid="ntcType" propid="value" datasetid="dsNotice" columnid="ntcType"/>
+      <BindItem id="item8" compid="title" propid="value" datasetid="dsNotice" columnid="title"/>
+      <BindItem id="item9" compid="startDt" propid="value" datasetid="dsNotice" columnid="startDt"/>
+      <BindItem id="item10" compid="endDt" propid="value" datasetid="dsNotice" columnid="endDt"/>
+      <BindItem id="item11" compid="regId" propid="value" datasetid="dsNotice" columnid="regId"/>
+      <BindItem id="item12" compid="regNm" propid="value" datasetid="dsNotice" columnid="regNm"/>
+      <BindItem id="item13" compid="contents" propid="value" datasetid="dsNotice" columnid="contents"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 사용자 등록관리
+ * 02. 그룹명   :
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+	
+	this.prgmCd = "";	//프로그램CD
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+	this.dvsn = "I";
+	this.attchFlSeq = "";
+	
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+		Ex.core.init(obj);
+		var row;
+		var rowCnt = this.parent.p_arg.rowcount;
+		
+		//상세보기 인경우
+		if(rowCnt >0) {
+			this.dvsn = "U";
+			this.setData(this.parent.p_arg);
+			
+		} else {
+			this.dvsn = "I";
+			var row = this.dsNotice.addRow();
+		}
+		
+		if(this.dvsn == "I") {
+			this.startDt.set_value(FN_today());
+		}
+		
+		
+		var objDate = new Date();
+		objDate.addDate(14);
+		
+		var day14   = "";
+		var sYear 	= objDate.getFullYear() + "";
+		var sMonth 	= objDate.getMonth() + 1;
+		var sDate 	= objDate.getDate();
+		if(sMonth.toString().length == 1){
+			sMonth = "0" + sMonth;
+		}
+		if(sDate.toString().length == 1){
+			sDate = "0" + sDate;
+		}
+		day14 = sYear + sMonth + sDate;
+		
+		if(this.dvsn == "I") {
+			this.endDt.set_value(day14);
+		}
+		
+		this.regNm.set_value(application.gds_userInfo.getColumn(0, "userNm"));
+		this.getProgInfo();
+		
+		var auth = Ex.core.o_auth;
+		if( auth.saveAuthYn == "Y" ){
+			this.btn_Excel.set_enable(true);
+			this.btn_save.set_enable(true);
+			this.btn_save00.set_enable(true);
+		}else{
+			this.btn_Excel.set_enable(false);
+			this.btn_save.set_enable(false);
+			this.btn_save00.set_enable(false);
+		}
+	} 
+
+	this.setData = function(obj) {
+		var row = this.dsNotice.addRow();
+		this.dsNotice.setColumn(row, "ntcSeq", 		obj.getColumn(0, "ntcSeq"));
+		this.dsNotice.setColumn(row, "ntcType", 	obj.getColumn(0, "ntcType"));
+		this.dsNotice.setColumn(row, "title", 		obj.getColumn(0, "title"));
+		this.dsNotice.setColumn(row, "contents", 	obj.getColumn(0, "contents"));
+		this.dsNotice.setColumn(row, "startDt", 	obj.getColumn(0, "startDt"));
+		this.dsNotice.setColumn(row, "endDt", 		obj.getColumn(0, "endDt"));
+		this.dsNotice.setColumn(row, "readCnt", 	obj.getColumn(0, "readCnt"));
+		this.dsNotice.setColumn(row, "attchFlSeq", 	obj.getColumn(0, "attchFlSeq"));
+		this.dsNotice.setColumn(row, "delYn", 		obj.getColumn(0, "delYn"));
+		this.dsNotice.setColumn(row, "regId", 		obj.getColumn(0, "regId"));
+		this.dsNotice.setColumn(row, "regDt", 		obj.getColumn(0, "regDt"));
+		this.dsNotice.setColumn(row, "chgId", 		obj.getColumn(0, "chgId"));
+		this.dsNotice.setColumn(row, "chgDt", 		obj.getColumn(0, "chgDt"));
+		this.attchFlSeq = obj.getColumn(0, "attchFlSeq");
+		this.setDetailNoticeInfo();
+	}
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	
+	//첨부파일정보 조회 및 조회수 증가처리
+	this.setDetailNoticeInfo = function() {
+		var sSvcID        	= "setDetailNoticeInfo";                    
+		var sController   	= "/ntrms/cm/setDetailNoticeInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=dsNotice";
+		sOutDatasets  		= "dsImg=listFile";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+	this.inputColumnCheck = function() {
+		if(nvl(this.ntcType.value) == "") {
+			alert("공지구분은 필수입력항목입니다.");
+			this.ntcType.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.title.value) == "") {
+			alert("제목은 필수입력항목입니다.");
+			this.title.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.startDt.value) == "") {
+			alert("공지시작일은 필수입력항목입니다.");
+			this.startDt.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.endDt.value) == "") {
+			alert("공지종료일은 필수입력항목입니다.");
+			this.endDt.setFocus();
+			return false;
+		}
+		
+		if(nvl(this.contents.value) == "") {
+			alert("공지내용은 필수입력항목입니다.");
+			this.contents.setFocus();
+			return false;
+		}
+		return true;
+	}	
+	
+	//저장
+	this.fn_save = function() {
+		
+		if(!this.inputColumnCheck()) {
+			return;
+		}
+	
+		this.dsFile.setRowType(0, Dataset.ROWTYPE_INSERT);
+	
+		if(this.dvsn == "U") {
+			if(this.regId.value != application.gds_userInfo.getColumn(0, "userId")) {
+				alert('본인이 작성한 글만 수정가능합니다.');
+				return;
+			}
+		}
+
+		var sSvcID        	= "saveNoticeInfo";                    
+		var sController   	= "/ntrms/cm/saveNoticeInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "dvsn=" + nvl(this.dvsn) + " prgmCd=" + nvl(this.prgmCd) + " attchFlSeq=" + nvl(this.attchFlSeq);
+		sInDatasets   		= "input=dsNotice userFile=dsFile";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	//삭제처리
+	this.fn_delete = function() {
+		this.dsFile.setRowType(0, Dataset.REASON_DELETE);
+	
+		if(this.dvsn == "U") {
+			if(this.regId.value != application.gds_userInfo.getColumn(0, "userId")) {
+				alert('본인이 작성한 글만 삭제가능합니다.');
+				return;
+			}
+		}
+		
+		var sSvcID        	= "saveNoticeInfo";                    
+		var sController   	= "/ntrms/cm/saveNoticeInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "dvsn=D prgmCd=" + nvl(this.prgmCd) + " attchFlSeq=" + nvl(this.attchFlSeq);
+		sInDatasets   		= "input=dsNotice userFile=dsFile";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) {
+			//return ExtNx.core.comMsg("alert",strErrorMsg);	
+			//ExtNx.core.comMsg("alert",strErrorMsg);
+			alert(strErrorMsg);
+		} else {
+		
+			if (strSvcId == "saveNoticeInfo") {
+				alert(strErrorMsg);
+				this.closeNoticePopUp();
+			} else if(strSvcId == "setDetailNoticeInfo") {
+				var cnt = this.dsImg.rowcount;
+				var fileNm = "";
+				for(var i = 0; i<cnt; i++) {
+					fileNm += this.dsImg.getColumn(i, "filePnm") + ",";
+				}
+				this.fileList.set_value(fileNm);
+			}
+		}
+	}
+	
+	//파일업로드 팝업생성
+	this.fileUpload = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		if(this.dvsn == "U") {
+			if(this.regId.value != application.gds_userInfo.getColumn(0, "userId")) {
+				alert('본인이 작성한 글만 파일업로드 가능합니다.');
+				return;
+			}
+		}
+
+		  var args ={p_arg:""};
+		  Ex.core.popup(this,"","comm::FileUpDownload.xfdl", args, "modaless=false");
+	}
+	
+	
+	
+	
+	//이미지정보 데이타셋 반환
+	this.resultUploadFile = function(val) {
+
+		this.dsFile.copyData(val[0]);
+		var cnt = this.dsFile.rowcount;
+		var fileNm = "";
+		var fileTmp = "";
+		for(var i = 0; i<cnt; i++) {
+			fileNm += this.dsFile.getColumn(i, "filename") + ", ";
+			//fileTmp += this.dsFile.getColumn(i, "filename") + "|";
+		}
+		this.fileList.set_value(fileNm);
+		//this.setImgButton(fileTmp);
+
+	}
+	
+	//공지사항 팝업종료
+	this.closeNoticePopUp = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var arr = [""];	
+		this.close(this.opener.returnUserInfo(arr));
+		//this.gfn_popupClose(arr);
+	}
+	
+	
+this.fileList_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	//등록팝업생성
+	var args ={p_arg:this.dsImg};
+	Ex.core.popup(this,"파일목록","comm::RTCOMMFileList_pop.xfdl", args, "modaless=false");
+}
+
+this.closePop = function() {
+
+}]]></Script>
+  </Form>
+</FDL>

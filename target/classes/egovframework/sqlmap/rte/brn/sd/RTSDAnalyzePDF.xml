@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="analyzePDF">
+	
+	<!-- 신분증분석결과리스트 -->
+	<resultMap id="r_sRtsd0208" class="java.util.HashMap">
+		<result property="stdYm" 	column="STD_YM" />
+		<result property="ordNo" 	column="ORD_NO" />
+		<result property="resCd" 	column="RES_CD" />
+		<result property="resYn" 	column="RES_YN" />
+		<result property="fileName"    column="FILE_NAME" />
+	</resultMap>	
+	<parameterMap id="p_sRtsd0208" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0208" />
+		<parameter property="stdYm" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="resYn" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="analyzePDF.sAnalyzePDFList" parameterMap="p_sRtsd0208">
+		{call Pkg_Rtsd0208.p_sRTSD0208(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

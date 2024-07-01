@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MenuProRegDAO">
+
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="menuCd"  		column="MENU_CD" />                                                
+		<result property="menuNm"  		column="MENU_NM" />                                                
+		<result property="menuLvl"  	column="MENU_LVL" />                                              
+		<result property="mdlCd"  		column="MDL_CD" />                                              
+		<result property="uprMenuCd"  	column="UPR_MENU_CD" />                                         
+		<result property="uprMenuNm"  	column="UP_MENU_NM" />                                         
+		<result property="useYn"  		column="USE_YN" />                                                  
+		<result property="menuDesc"  	column="MENU_DESC" />
+		<result property="sortOdr"  	column="SORT_ODR" />                                               
+		<result property="regId"  		column="REG_ID" />                                                  
+		<result property="regDt"  		column="REG_DT" />                                                  
+		<result property="chgId"  		column="CHG_ID" />                                                  
+		<result property="chgDt"  		column="CHG_DT" />     
+	</resultMap>
+	
+	<resultMap id="procTreeResultMap" class="java.util.HashMap">
+		<result property="menuCd"  		column="MENU_CD" />                                                
+		<result property="menuNm"  		column="MENU_NM" />                                                
+		<result property="menuLvl"  	column="MENU_LVL" />
+		<result property="uprMenuCd"  	column="UPR_MENU_CD" />                                         
+		<result property="mdlCd"  		column="MDL_CD" />                                               
+		<result property="sortOdr"  	column="SORT_ODR" />                                               
+		<result property="menuDesc"  	column="MENU_DESC" />     
+		<result property="useYn"  		column="USE_YN" />                                                  
+	</resultMap>
+	
+	<resultMap id="authResultMap" class="java.util.HashMap">
+		<result property="prgmCd"  		column="PRGM_CD" /> <!-- 프로그램 코드 -->                                             
+		<result property="prgmNm"  		column="PRGM_NM" /> <!-- 프로그램명 -->                                               
+		<result property="sortOdr"  	column="SORT_ODR" /> <!-- 정렬순서 -->                                               
+		<result property="prgmPath"  	column="PRGM_PATH" /> <!-- 프로그램경로 --> 
+		<result property="prgmDesc"  	column="PRGM_DESC" /> <!-- 프로그램설명 -->                                          
+		<result property="mdlCd"  		column="MDL_CD" /> <!-- 모듈코드 -->                                                
+		<result property="mdlNm"  		column="MDL_NM" /> <!-- 모듈명 -->                                               
+		<result property="useYn"  		column="USE_YN" /> <!-- 사용여부 -->     
+		<result property="useYn"  		column="USE_YN_NM" /> <!-- 사용여부명 -->     
+		<result property="regId"  		column="REG_ID" /> <!-- 등록자ID -->                                                 
+		<result property="regDt"  		column="REG_DT" /> <!-- 등록일 -->                                                 
+		<result property="chgId"  		column="CHG_ID" /> <!-- 병경자ID -->                                                 
+		<result property="chgDt"  		column="CHG_DT" /> <!-- 변경일 -->                                            
+	</resultMap>
+	
+	<resultMap id="authNotResultMap" class="java.util.HashMap">
+		<result property="prgmCd"  		column="PRGM_CD" /> <!-- 프로그램 코드 -->                                             
+		<result property="prgmNm"  		column="PRGM_NM" /> <!-- 프로그램명 -->                                             
+		<result property="prgmPath"  	column="PRGM_PATH" /> <!-- 프로그램경로 --> 
+		<result property="prgmDesc"  	column="PRGM_DESC" /> <!-- 프로그램설명 -->                                          
+		<result property="mdlCd"  		column="MDL_CD" /> <!-- 모듈코드 -->                                                
+		<result property="mdlNm"  		column="MDL_NM" /> <!-- 모듈명 -->                                               
+		<result property="useYn"  		column="USE_YN" /> <!-- 사용여부 -->     
+		<result property="useYn"  		column="USE_YN_NM" /> <!-- 사용여부명 -->     
+		<result property="regId"  		column="REG_ID" /> <!-- 등록자ID -->                                                 
+		<result property="regDt"  		column="REG_DT" /> <!-- 등록일 -->                                                 
+		<result property="chgId"  		column="CHG_ID" /> <!-- 병경자ID -->                                                 
+		<result property="chgDt"  		column="CHG_DT" /> <!-- 변경일 -->                                            
+	</resultMap>
+
+	<parameterMap id="parameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />         
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="menuNm" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="uprMenuCd" jdbcType="UPR_MENU_CD" mode="IN" />                         
+	</parameterMap>    
+
+	<parameterMap id="treeParameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procTreeResultMap" />         
+	</parameterMap>   
+	
+	<!-- 메뉴프로그램 등록된 -->
+	<parameterMap id="authParameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="authResultMap" />
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />         
+	</parameterMap> 
+	
+	<!-- 메뉴프로그램 등록안된 -->
+	<parameterMap id="authNotParameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="authNotResultMap" />
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="prgmCd" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="prgmNm" 	jdbcType="VARCHAR" mode="IN" />              
+	</parameterMap> 
+	
+	<procedure id="menuPro.listMenuPro" parameterMap="parameters">
+		{call
+		Pkg_Rtcm0012.p_sRtcm0012(?, ?, ?, ?)}
+	</procedure>
+	
+	<procedure id="menuPro.listMenuTreePro" parameterMap="treeParameters">
+		{call
+		Pkg_Rtcm0012.p_sRtcm0012Tree(?)}
+	</procedure>
+	
+	<procedure id="menuPro.listMenuAuthPro" parameterMap="authParameters">
+		{call
+		Pkg_Rtcm0013.p_sRtcm0013MenuProgram(?, ?)}
+	</procedure>
+	
+	<procedure id="menuPro.listMenuAuthNotPro" parameterMap="authNotParameters">
+		{call
+		 Pkg_Rtcm0013.p_sRtcm0013MenuProgramNot(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="insertRtcm0013">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />	<!-- 처리구분 -->
+		<parameter property="menuCd" 		jdbcType="VARCHAR" mode="IN" /> <!-- 메뉴코드 -->                     
+		<parameter property="prgmCd" 		jdbcType="VARCHAR" mode="IN" /> <!-- 프로그램코드 -->                      
+		<parameter property="sortOdr" 		jdbcType="NUMERIC" mode="IN" /> <!-- 정렬순서 -->                     
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자ID -->                        
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="menuPro.saveMenuInfoPro" parameterMap="insertRtcm0013">
+		{call
+		Pkg_Rtcm0013.p_IUDRtcm0013(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 메뉴코드 중복체크 -->
+	<parameterMap id="exitsMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultId" />
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="resultId" class="java.util.HashMap"/>
+
+</sqlMap>

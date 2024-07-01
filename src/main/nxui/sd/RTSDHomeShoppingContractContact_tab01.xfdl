@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDHomeShoppingContractContact_tab01" classname="RTSDHomeShoppingContractContact_tab01" left="0" top="0" width="1091" height="97" titletext="New Form" onload="RTSDHomeShoppingContractContact_tab01_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="0" width="1091" height="97" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1112" height="49">
+              <Static id="st_date" taborder="42" text="주문접수일" cssclass="sta_WF_schTitle" left="16" top="7" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="st_custNm" taborder="47" text="고객명" cssclass="sta_WF_schTitle" left="356" top="7" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="48" left="429" top="7" width="104" height="21"/>
+              <Combo id="cmb_condProvsnSt" taborder="51" innerdataset="ds_S093_cond" codecolumn="cd" datacolumn="cdNm" displayrowcount="6" onitemchanged="div_search_cmb_condProvsnSt_onitemchanged" left="625" top="34" width="81" height="21"/>
+              <Combo id="cmb_condProvsnStDtl" taborder="52" innerdataset="ds_S094_cond" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="710" top="34" width="144" height="21"/>
+              <Static id="st_custNm00" taborder="54" text="상태" cssclass="sta_WF_schTitle" left="553" top="34" width="52" height="21" domainId="nexa.s_condition"/>
+              <Static id="st_custNm01" taborder="56" text="연락처" cssclass="sta_WF_schTitle" left="552" top="7" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_mobNo" taborder="57" left="625" top="7" width="120" height="21"/>
+              <Static id="st_custNm02" taborder="58" text="상담사" cssclass="sta_WF_schTitle" left="357" top="34" width="52" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_callId" taborder="59" left="429" top="34" width="104" height="21"/>
+              <Static id="st_date00" taborder="62" text="상담일자" cssclass="sta_WF_schTitle" left="16" top="34" width="80" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_condCallDayFrom" taborder="63" dateformat="yyyy-MM-dd" left="116" top="35" width="100" height="21"/>
+              <Static id="Static13" taborder="64" text="~" left="222" top="38" width="9" height="21"/>
+              <Calendar id="cal_condCallDayTo" taborder="65" dateformat="yyyy-MM-dd" left="236" top="35" width="100" height="21"/>
+              <Static id="Static14" taborder="67" text="~" left="222" top="9" width="9" height="21"/>
+              <Static id="st_custNm03" taborder="68" text="방송사" cssclass="sta_WF_schTitle" left="770" top="7" width="52" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cmb_homeshoppingList" taborder="69" innerdataset="ds_S096" codecolumn="cd" datacolumn="cdNm" displayrowcount="6" onitemchanged="div_search_cmb_condProvsnSt_onitemchanged" left="849" top="7" width="141" height="21"/>
+              <Static id="st_custNm04" taborder="71" text="재컨택일자" cssclass="sta_WF_schTitle" left="873" top="34" width="83" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_recallDay" taborder="72" dateformat="yyyy-MM-dd" left="972" top="34" width="100" height="21"/>
+              <Static id="st_date01" taborder="75" text="가계약번호" cssclass="sta_WF_schTitle" left="16" top="64" width="80" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_provsnNoF" taborder="77" left="115" top="65" width="107" height="21"/>
+              <Edit id="ed_provsnNoT" taborder="79" left="236" top="65" width="107" height="21"/>
+              <Static id="Static19" taborder="81" text="~" left="223" top="66" width="9" height="21"/>
+              <Static id="st_imageYn" taborder="82" text="이미지" cssclass="sta_WF_schTitle" left="357" top="65" width="52" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cmb_imgYn" taborder="83" innerdataset="ds_imgYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="6" onitemchanged="div_search_cmb_condProvsnSt_onitemchanged" left="429" top="65" width="81" height="21"/>
+              <Calendar id="cal_condProvsnDayFrom" taborder="84" dateformat="yyyy-MM-dd" left="116" top="7" width="100" height="21"/>
+              <Calendar id="cal_condProvsnDayTo" taborder="85" dateformat="yyyy-MM-dd" left="236" top="7" width="100" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_S093_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S094_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S096" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDHomeShoppingContractContact_tab01.xfdl
+ * 설    명 : 홈쇼핑가계약상담_조회1
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2019-07-16	wjim		[20190716_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDHomeShoppingContractContact_tab01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);
+}
+
+/**
+ * 상태 조회조건 콤보에서 변경된 값이 적용된 후 이벤트 처리
+ */
+this.div_search_cmb_condProvsnSt_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	if (e.postvalue == "") {
+		this.ds_S094_cond.filter("cd == ''");
+	} else {
+		this.ds_S094_cond.filter("cd == '' || cd.substr(0,2) == '" + e.postvalue + "'");
+	}
+	
+	this.div_search.cmb_condProvsnStDtl.set_value("");
+}]]></Script>
+  </Form>
+</FDL>

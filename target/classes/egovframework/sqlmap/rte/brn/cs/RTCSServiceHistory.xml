@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTCSServiceHistory">
+	
+	<resultMap id="r_sRtcs0007ServiceHistoryByDt" class="java.util.HashMap">
+		<result property="dlvcYn"  	column="DLVC_YN" />
+		<result property="ordNo"  		column="ORD_NO" />
+		<result property="equNo"  		column="EQU_NO" />
+		<result property="servSeq"  	column="SERV_SEQ" />
+		<result property="seq"  		column="SEQ" />
+		<result property="procDay"  	column="PROC_DAY" />
+		<result property="procTm"  		column="PROC_TM" />
+		<result property="serviceCd"  	column="SERVICE_CD" />
+		<result property="serviceNm"  	column="SERVICE_NM" />
+		<result property="procInCd"  	column="PROC_IN_CD" />
+		<result property="procInNm"  	column="PROC_IN_NM" />
+	</resultMap>
+	
+	<parameterMap id="p_sRtcs0007ServiceHistoryByDt" class="java.util.Map">             
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0007ServiceHistoryByDt" />
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayS" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayE" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvcYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="serviceCd" 			jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSServiceHistory.serviceHistoryByDt" parameterMap="p_sRtcs0007ServiceHistoryByDt">
+		{call  Pkg_Rtcs0007.p_sRtcs0007ServiceHistoryByDt(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="p_UpdateRtcs0008DlvcYn" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="resCd" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="equNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="servSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seq" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvcYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errorText" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<resultMap id="resCd" class="java.util.HashMap"/>
+	
+	<procedure id="rTCSServiceHistory.p_UpdateRtcs0008DlvcYn" parameterMap="p_UpdateRtcs0008DlvcYn">
+		{call ? := Pkg_Rtcs0008.f_UpdateRtcs0008DlvcYn(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

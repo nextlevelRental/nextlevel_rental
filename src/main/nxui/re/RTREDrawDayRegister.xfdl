@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREDrawDayRegister" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1147" height="477" titletext="출금일등록" onload="RTSDProvisionalContractRegister_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="19" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="486" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="20" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="21" text="출금일리스트" cssclass="sta_WF_subTitle" left="10" top="75" width="120" height="21"/>
+        <Static id="Static02" taborder="22" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="95" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_drawDaytList" taborder="18" useinputpanel="false" autofittype="none" oncellclick="grid_closeList_oncellclick" left="9" top="104" width="1113" height="296" scrollbars="autoboth" binddataset="ds_drawDayList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="출금일자"/>
+                <Cell col="1" text="출금유형"/>
+                <Cell col="2" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:reqDay"/>
+                <Cell col="1" displaytype="normal" style="align:center;" text="bind:reqDiv"/>
+                <Cell col="2" displaytype="normal" style="align:center;" text="bind:useYn"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="23" cssclass="Guide_color" visible="false" left="0" top="400" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static34" taborder="24" cssclass="sta_WF_detailLabel2" left="10" top="439" width="1113" height="31"/>
+        <Static id="st_dayType" taborder="25" text="출금유형" cssclass="sta_WF_detailLabel" left="287" top="439" width="125" height="31"/>
+        <Static id="st_useYn" taborder="26" text="사용여부" cssclass="sta_WF_detailLabel" left="564" top="439" width="125" height="31"/>
+        <Static id="st_drawDayInfo" taborder="42" text="출금일정보" cssclass="sta_WF_subTitle" left="10" top="413" width="80" height="21"/>
+        <Button id="btn_new" taborder="1" text="신규" cssclass="btn_WF_module" left="1027" top="407" width="45" height="22" domainId="nexa.save" onclick="btn_new_onclick" visible="true"/>
+        <Button id="btn_del" taborder="2" text="삭제" cssclass="btn_WF_module" left="1077" top="407" width="45" height="22" domainId="nexa.save" onclick="btn_del_onclick" visible="true"/>
+        <Static id="Static06" taborder="43" cssclass="Guide_color" visible="false" left="0" top="429" width="1147" height="10"/>
+        <Div id="div_search" taborder="44" left="9" top="10" width="1113" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static26" taborder="95" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="96" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="st_custNm00" taborder="100" text="출금월" cssclass="sta_WF_schTitle" left="29" top="12" width="69" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="102" text="FIX w20" cssclass="Guide_color" visible="false" left="96" top="0" width="20" height="45"/>
+              <Static id="Static02" taborder="103" text="FIX w20" cssclass="Guide_color" visible="false" left="259" top="0" width="20" height="45"/>
+              <Calendar id="cal_searDrawDay" taborder="104" dateformat="yyyyMM" left="116" top="12" width="142" height="21" editformat="yyyyMM" type="spin" value="null"/>
+              <Static id="st_custNm01" taborder="106" text="출금종류" cssclass="sta_WF_schTitle" left="285" top="12" width="69" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static00" taborder="107" text="FIX w20" cssclass="Guide_color" visible="false" left="364" top="0" width="20" height="45"/>
+              <Combo id="cb_searDrawDayType" taborder="108" innerdataset="@ds_R066" codecolumn="cd" datacolumn="cdNm" left="34.72%" top="12" right="52.84%" height="20" index="-1"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static07" taborder="45" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="55" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="st_custNo00" taborder="47" text="출금일자" cssclass="sta_WF_detailLabel" left="10" top="439" width="125" height="31"/>
+        <Combo id="cb_dayType" taborder="54" left="36.27%" top="444" right="51.35%" height="20" innerdataset="@ds_R066" codecolumn="cd" datacolumn="cdNm"/>
+        <Combo id="cb_useYn" taborder="55" innerdataset="@ds_C033" codecolumn="cd" datacolumn="cdNm" left="60.59%" top="444" right="27.03%" height="20"/>
+        <Calendar id="cal_drawDay" taborder="56" dateformat="yyyy-MM-dd" left="140" top="444" width="142" height="21" value="null" editformat="yyyy-MM-dd" enable="false"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item7" compid="cb_dayType" propid="value" datasetid="ds_drawDayList" columnid="reqDiv"/>
+      <BindItem id="item8" compid="cb_useYn" propid="value" datasetid="ds_drawDayList" columnid="useYn"/>
+      <BindItem id="item1" compid="cal_drawDay" propid="value" datasetid="ds_drawDayList" columnid="reqDay"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_drawDayList">
+        <ColumnInfo>
+          <Column id="reqDay" type="STRING" size="256"/>
+          <Column id="reqDiv" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R066">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_C033">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_drawDayListCp">
+        <ColumnInfo>
+          <Column id="reqDay" type="STRING" size="256"/>
+          <Column id="reqDiv" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+
+// 전역변수 선언
+this.fUserId  = "";											// 현재 로그인 사용자의 ID
+this.fUserGrp = "";											// 현재 로그인 사용자의 사용자그룹
+this.firstDate  = "";
+this.lastDate  = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.parent.setButton("C|S", this);
+
+	this.FN_listCommInfo();
+	
+	// 사용자그룹 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}	
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+
+	switch (strSvcId) {
+		case "getDate":
+			this.div_search.cal_searDrawDay.set_value(this.firstDate);
+			break;
+	    case "listCommInfo":
+			this.div_search.cb_searDrawDayType.set_index(0);
+			this.get_date();
+			break;
+		case "listDrawDay":
+			this.cal_drawDay.set_enable(false);
+			break;
+		case "saveDrawDay":
+			this.alert("저장이 완료되었습니다.");
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ * 신규 버튼의 클릭 이벤트 처리
+ */
+this.btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	this.ds_drawDayList.addRow();
+	this.cal_drawDay.set_enable(true);
+}
+/**
+ * 삭제 버튼의 클릭 이벤트 처리
+ */
+this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	this.ds_drawDayList.deleteRow(this.ds_drawDayList.rowposition);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_listCommInfo = function(ordNo){
+	var sSvcID        	= "listCommInfo";                    
+	var sController   	= "rtms/re/rTREDrawDayCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_R066=R066 ds_C033=C033";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	
+	
+	var stdYm = nvl(this.div_search.cal_searDrawDay.text);
+	var reqDiv = nvl(this.div_search.cb_searDrawDayType.value);
+	
+	var sSvcID        	= "listDrawDay";                    
+	var sController   	= "rtms/re/rTREDrawDayList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_drawDayList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("stdYm", 	    stdYm);
+	sArgs += Ex.util.setParam("reqDiv", 	reqDiv);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+
+	var sSvcID        	= "saveDrawDay";                    
+	var sController   	= "rtms/re/rTREDrawDayRegist.do";
+	var sInDatasets   	= "input=ds_drawDayList:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}]]></Script>
+  </Form>
+</FDL>

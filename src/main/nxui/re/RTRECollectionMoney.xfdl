@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECollectionMoney" classname="test_form" left="0" top="0" width="1147" height="470" titletext="수금내역 조회" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="470"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="83" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="99" width="81" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="114" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="82" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1128" height="82">
+              <Static id="Static22" taborder="9" text="FIX h12" cssclass="Guide_color" visible="false" left="4" top="0" right="2" height="12"/>
+              <Static id="Static06" taborder="10" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="11" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="12" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="-1" height="12"/>
+              <Static id="Static02" taborder="15" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="66" right="-1" height="12"/>
+              <Static id="Static01" taborder="16" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="-1" top="33" width="20" height="45"/>
+              <Static id="Static24" taborder="18" text="FIX w30" cssclass="Guide_color" visible="false" left="495" top="0" width="30" height="78"/>
+              <Static id="st_searchCondition01" taborder="21" text="고객번호" cssclass="sta_WF_schTitle" left="24" top="12" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNo" taborder="2" inputfilter="space" lengthunit="ascii" left="92" top="12" width="120" height="21" onkeyup="div_search_ed_custNo_onkeyup"/>
+              <Edit id="ed_custNoKeyword" taborder="5" inputfilter="space" lengthunit="ascii" enable="false" left="212" top="12" width="150" height="21"/>
+              <Button id="btn_custPopUp" taborder="3" onclick="fn_custPopUp" cssclass="btn_WF_edtSch" left="193" top="11" width="20" height="21"/>
+              <Static id="st_searchCondition00" taborder="23" text="계약번호" cssclass="sta_WF_schTitle" left="24" top="47" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="24" left="91" top="45" width="120" height="21" onkeyup="div_search_ed_ordNo_onkeyup"/>
+              <Button id="btn_odrPopUp" taborder="25" onclick="fn_odrPopUp" cssclass="btn_WF_edtSch" left="192" top="44" width="20" height="21"/>
+              <Edit id="ed_custNm" taborder="27" maxlength="80" left="599" top="12" width="120" height="21" enable="true"/>
+              <Static id="st_searchCondition02" taborder="28" text="고객명" cssclass="sta_WF_schTitle" left="530" top="13" width="64" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition03" taborder="29" text="차량번호" cssclass="sta_WF_schTitle" left="530" top="46" width="64" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition04" taborder="33" text="전화번호" cssclass="sta_WF_schTitle" left="785" top="13" width="64" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition05" taborder="34" text="휴대폰번호" cssclass="sta_WF_schTitle" left="784" top="46" width="84" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_telNo" taborder="35" maxlength="80" left="874" top="12" width="120" height="21" enable="true"/>
+              <Edit id="ed_mobNo" taborder="36" maxlength="80" left="874" top="45" width="120" height="21" enable="true"/>
+              <Edit id="ed_carNo" taborder="37" maxlength="80" left="599" top="45" width="120" height="21"/>
+              <Static id="Static05" taborder="38" text="FIX w30" cssclass="Guide_color" visible="false" left="750" top="-2" width="30" height="80"/>
+              <Static id="Static09" taborder="39" text="계약상태" cssclass="sta_WF_schTitle" left="277" top="46" width="85" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cmb_ordStat" taborder="40" innerdataset="@ds_S032" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="7" left="347" top="45" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_list02" taborder="2" useinputpanel="false" left="0" top="304" width="560" height="160" oncellclick="grd_list02_oncellclick" binddataset="ds_list02" nodatatext="조회된 데이터가 없습니다." onselectchanged="grd_list02_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="55"/>
+                <Column size="60"/>
+                <Column size="70"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="70"/>
+                <Column size="90"/>
+                <Column size="65"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="청구회차"/>
+                <Cell col="1" text="청구구분"/>
+                <Cell col="2" text="청구일자"/>
+                <Cell col="3" text="청구금액"/>
+                <Cell col="4" text="수납금액"/>
+                <Cell col="5" text="미납금액"/>
+                <Cell col="6" text="최종수납일자"/>
+                <Cell col="7" text="결제일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recpNu"/>
+                <Cell col="1" text="bind:recpNm"/>
+                <Cell col="2" text="bind:zfbDay"/>
+                <Cell col="3" style="align:right;" text="bind:saleAmt"/>
+                <Cell col="4" style="align:right;" text="bind:recpAmt"/>
+                <Cell col="5" style="align:right;" text="bind:arreAmt"/>
+                <Cell col="6" text="bind:rcDay"/>
+                <Cell col="7" text="bind:payDD"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;saleAmt&quot;)"/>
+                <Cell col="4" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;recpAmt&quot;)"/>
+                <Cell col="5" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;arreAmt&quot;)"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="19" text="청구내역" cssclass="sta_WF_subTitle" left="1" top="279" width="81" height="20"/>
+        <Static id="Static04" taborder="21" text="수납내역" cssclass="sta_WF_subTitle" left="585" top="279" width="120" height="20"/>
+        <Button id="Button01" taborder="22" text="엑셀" cssclass="btn_WF_CRUD" left="515" top="277" width="45" height="22" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="23" text="엑셀" cssclass="btn_WF_CRUD" left="1073" top="277" width="45" height="22" onclick="Button02_onclick"/>
+        <Grid id="grd_list01" taborder="25" binddataset="ds_list01" useinputpanel="false" oncellclick="grd_list01_oncellclick" left="2" top="120" width="1117" height="150" nodatatext="조회된 데이터가 없습니다." onselectchanged="grd_list01_oncellclick" autosizingtype="row" extendsizetype="row">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="80"/>
+                <Column size="45"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="고객코드"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="상품명"/>
+                <Cell col="4" text="차량번호"/>
+                <Cell col="5" text="수량"/>
+                <Cell col="6" text="계약일자"/>
+                <Cell col="7" text="장착일자"/>
+                <Cell col="8" text="계약상태"/>
+                <Cell col="9" text="법정생년월일"/>
+                <Cell col="10" text="사업자번호"/>
+                <Cell col="11" text="핸드폰"/>
+                <Cell col="12" text="전화번호"/>
+                <Cell col="13" text="결제방법"/>
+                <Cell col="14" text="결제일"/>
+                <Cell col="15" text="선수금액"/>
+                <Cell col="16" text="연체금액"/>
+                <Cell col="17" text="연체개월"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordNo"/>
+                <Cell col="1" text="bind:custNo"/>
+                <Cell col="2" text="bind:custNm"/>
+                <Cell col="3" text="bind:matNm" autosizerow="limitmax"/>
+                <Cell col="4" text="bind:carNo"/>
+                <Cell col="5" text="bind:cntCd"/>
+                <Cell col="6" text="bind:ordDay"/>
+                <Cell col="7" text="bind:procDay"/>
+                <Cell col="8" text="bind:statNm"/>
+                <Cell col="9" text="bind:birthDay"/>
+                <Cell col="10" text="bind:buslNo"/>
+                <Cell col="11" text="bind:mobNo"/>
+                <Cell col="12" text="bind:telNo"/>
+                <Cell col="13" text="bind:payNm"/>
+                <Cell col="14" text="bind:payDD"/>
+                <Cell col="15" style="align:right;" text="bind:prePaid"/>
+                <Cell col="16" style="align:right;" text="bind:arreAmt"/>
+                <Cell col="17" text="bind:arreMon"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_list03" taborder="26" binddataset="ds_list03" useinputpanel="false" left="581" top="304" width="536" height="160" oncellclick="grd_list03_oncellclick" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="75"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="85"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수납일자"/>
+                <Cell col="1" text="수납방법"/>
+                <Cell col="2" text="수납금액"/>
+                <Cell col="3" text="수납유형"/>
+                <Cell col="4" text="청구회차"/>
+                <Cell col="5" text="수납취소여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvDay"/>
+                <Cell col="1" text="bind:recpPnm"/>
+                <Cell col="2" style="align:right;" text="bind:recpAmt"/>
+                <Cell col="3" text="bind:recpFnm"/>
+                <Cell col="4" text="bind:recpNu"/>
+                <Cell col="5" text="bind:cncStat"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static05" taborder="27" text="청구일자" cssclass="sta_WF_schTitle" left="133" top="278" width="80" height="20" domainId="nexa.s_condition"/>
+        <Button id="Button00" taborder="31" text="조회" onclick="Button00_onclick" cssclass="btn_WF_CRUD" left="466" top="277" width="45" height="22"/>
+        <Calendar id="cal_fromZfbDay" taborder="37" dateformat="yyyy-MM-dd" oneditclick="Div00_cal_fromZfbDay03_oneditclick" left="215" top="278" width="100" height="21"/>
+        <Static id="Static06" taborder="39" text="~" left="320" top="281" width="10" height="21"/>
+        <Calendar id="cal_toZfbDay" taborder="40" dateformat="yyyy-MM-dd" oneditclick="Div00_cal_fromZfbDay03_oneditclick" left="342" top="278" width="100" height="21"/>
+        <Button id="Button03" taborder="41" text="취소" cssclass="btn_WF_CRUD" left="1025" top="277" width="45" height="22" onclick="Button03_onclick" visible="false"/>
+        <Button id="btn_arrears" taborder="42" text="연체금" cssclass="btn_WF_CRUD" top="92" width="57" height="22" right="29" onclick="btn_arrears_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list01" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payNm" type="STRING" size="256"/>
+          <Column id="payDD" type="STRING" size="256"/>
+          <Column id="prePaid" type="STRING" size="256"/>
+          <Column id="arreAmt" type="STRING" size="256"/>
+          <Column id="arreMon" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list02" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpNm" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="zfbDay" type="STRING" size="256"/>
+          <Column id="saleAmt" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="arreAmt" type="STRING" size="256"/>
+          <Column id="rcDay" type="STRING" size="256"/>
+          <Column id="payDD" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list03" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTnm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPnm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFnm" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="cncStat" type="STRING" size="256"/>
+          <Column id="tNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="bankRecpDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_copy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTnm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPnm" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="recpFnm" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="recpNu" type="STRING" size="256"/>
+          <Column id="cncStat" type="STRING" size="256"/>
+          <Column id="tNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="bankRecpDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list04" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpFg" type="STRING" size="256"/>
+          <Column id="tNo" type="STRING" size="256"/>
+          <Column id="cncRseq" type="STRING" size="256"/>
+          <Column id="cncStat" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list05" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="ritmSeq" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="schdSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="saleAmt" type="STRING" size="256"/>
+          <Column id="arreAmt" type="STRING" size="256"/>
+          <Column id="zfbdt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="cncRseq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S032">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+            <Col id="cd"> </Col>
+          </Row>
+          <Row>
+            <Col id="cd">01</Col>
+            <Col id="cdNm">계약접수</Col>
+          </Row>
+          <Row>
+            <Col id="cd">03</Col>
+            <Col id="cdNm">장착대기</Col>
+          </Row>
+          <Row>
+            <Col id="cd">04</Col>
+            <Col id="cdNm">장착완료</Col>
+          </Row>
+          <Row>
+            <Col id="cd">06</Col>
+            <Col id="cdNm">계약취소</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTRECollectionMoney.xfdl
+ * 설    명 : 수금내역 조회
+ * 작 성 자 : 윤용택
+ * 변경이력
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * ---------------------------------
+ * 2015-12-03	윤용택		신규작성
+ * 2017-09-18	wjim		[20170224_01] 가상계좌 개발에 따른 수납팝업 연결 추가
+ * 2017-11-01	wjim		[20171101_01] 수납팝업 사용권한 임시 제한
+ *                          - 가상계좌 내부사용자 최종 운영확인용
+ * 2017-12-19	wjim		[20171219_01] '계약상태' 조회조건 추가
+ *                          - 공통코드 조회기능이 없어 빠른 처리를 위해 데이터셋(ds_S032) 정적생성
+ * 2019-02-22	wjim		[20190222_01] 수납취소 기능 사용권한 제약
+ *                          - '영업관리자' 사용자그룹 사용자만 사용 가능
+ ***************************************************************************************************/
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs"; 
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay		= ""; 	//당일
+this.curMonth 	= "";	//당월	
+
+this.cncRseq    = 0; 	//취소시퀀스
+
+this.userId     = "";	//사용자ID [20171101_01]
+this.userGrp 	= "";	//사용자그룹
+
+//-------------------------------------------------------------------------------   
+//폼로드시 공통함수      
+//-------------------------------------------------------------------------------  	 
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.fn_init();
+
+	// 특정 사용자그룹에게만 '(수납)취소' 버튼 보이기 [20190222_01]
+	this.userGrp 	= application.gds_userInfo.getColumn(0, "userGrp");
+	
+	if (this.userGrp == "01" ) {
+ 		this.Button03.set_visible(true);
+ 	} else {
+ 		this.Button03.set_visible(false);
+ 	}
+} 
+
+//-------------------------------------------------------------------------------   
+//초기화  
+//------------------------------------------------------------------------------- 	
+this.fn_init = function() {
+	//월일 조회
+	this.fn_getDayMongth();	
+	//버튼초기화		
+	this.fn_initBtn();	
+}		 
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+//월일 조회
+//-------------------------------------------------------------------------------  	
+this.fn_getDayMongth = function() 
+{
+	var sSvcID      	= "getDayMongth";  
+	var sController   	= "/ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}	
+//---------------------------------------------------------------------------------
+// 수금내역 조회
+//---------------------------------------------------------------------------------		
+this.fn_search = function()
+{
+	this.ds_list01.clearData();
+	this.ds_list02.clearData();		
+	this.ds_list03.clearData();		
+	this.grd_list02.set_binddataset("");
+	this.grd_list03.set_binddataset("");				
+	this.grd_list01.set_nodatatext("");	
+	this.grd_list02.set_nodatatext("");	
+	this.grd_list03.set_nodatatext("");
+	
+	var sSvcID      	= "getCollectionMoneyList";  
+	var sController   	= "ntrms/re/getCollectionMoneyList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list01=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	var custNo = nvl(this.div_search.ed_custNo.value);
+	var custNm = nvl(this.div_search.ed_custNm.value);
+	var telNo  = nvl(this.div_search.ed_telNo.value);
+	var ordNo  = nvl(this.div_search.ed_ordNo.value);
+	var carNo  = nvl(this.div_search.ed_carNo.value);
+	var mobNo  = nvl(this.div_search.ed_mobNo.value);
+	var statCd = nvl(this.div_search.cmb_ordStat.value);	//계약상태 [20171219_01]
+	
+	
+	if(custNm != "") {
+		 var searchCt = 0;
+		 if( telNo != "")  { searchCt++; } 
+		 if( mobNo != "")  { searchCt++; }
+		 if( carNo != "")  { searChCt++; }
+		 
+		 if( searchCt < 1) {
+		  alert("전화번호, 휴대폰번호, 차량번호 항목중 하나는 입력하셔야 합니다.");
+		  return false;
+		 }else{
+			sArgs += Ex.util.setParam("telNo"	, telNo);	//전화번호	
+			sArgs += Ex.util.setParam("mobNo"   , mobNo);   //휴대폰번호
+			sArgs += Ex.util.setParam("carNo"   , carNo);   //차량번호		
+		 }
+	}
+		
+	sArgs += Ex.util.setParam("custNo", custNo);			//고객번호
+	sArgs += Ex.util.setParam("custNm", custNm);			//고객명
+	sArgs += Ex.util.setParam("telNo" , telNo );			//전화번호	
+	sArgs += Ex.util.setParam("ordNo" , ordNo );			//계약번호
+	sArgs += Ex.util.setParam("carNo" , carNo );			//차량번호
+	sArgs += Ex.util.setParam("mobNo" , mobNo );			//휴대폰번호
+	sArgs += Ex.util.setParam("statCd", statCd);			//계약상태 [20171219_01]
+		
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+//---------------------------------------------------------------------------------
+// 청구 내역 조회
+//---------------------------------------------------------------------------------		
+this.fn_getBillingRecordList = function() 
+{
+	
+	this.grd_list02.set_nodatatext("");		
+	this.ds_list02.clearData();	
+	
+	var sSvcID      	= "getBillingRecordList";  
+	var sController   	= "ntrms/re/getBillingRecordList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list02=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+							
+	sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list01.getColumn(this.ds_list01.rowposition,"ordNo")));     //계약번호
+	sArgs += Ex.util.setParam("zfbFd"	, nvl(this.cal_fromZfbDay.value));	                                      //시작청구일자
+	sArgs += Ex.util.setParam("zfbTd"	, nvl(this.cal_toZfbDay.value));	                                      //종료청구일자
+	
+	//alert(sArgs);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	
+}	
+
+//---------------------------------------------------------------------------------
+// 수납내역 조회
+//---------------------------------------------------------------------------------		
+this.fn_getReceiptList = function()
+{
+	this.grd_list03.set_nodatatext("");		
+	this.ds_list03.clearData();	    
+
+	var sSvcID      	= "getReceiptList";  
+	var sController   	= "ntrms/re/getReceiptList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list03=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+						
+	sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list01.getColumn(this.ds_list01.rowposition,"ordNo")));	//계약번호
+	sArgs += Ex.util.setParam("schdSeq"	, nvl(this.ds_list02.getColumn(this.ds_list02.rowposition,"schdSeq")));	//청구번호
+	
+	
+	//alert(sArgs);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+}
+		
+//---------------------------------------------------------------------------------
+// 온라인 수납취소내역 조회
+//---------------------------------------------------------------------------------		
+this.fn_getCancelReceiptList = function()
+{
+	this.ds_list04.clearData();	    
+
+	var sSvcID      	= "getCancelReceiptList";  
+	var sController   	= "ntrms/re/getCancelReceiptList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list04=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+						
+	sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list01.getColumn(this.ds_list01.rowposition,"ordNo")));	//계약번호
+	sArgs += Ex.util.setParam("recvSeq"	, nvl(this.ds_list03.getColumn(this.ds_list03.rowposition,"recvSeq")));	//청구번호
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+}
+
+//---------------------------------------------------------------------------------
+// 온라인 수납내역 취소
+//---------------------------------------------------------------------------------		
+this.fn_cancelReceipt = function()
+{		
+	var sSvcID      	= "cancelReceipt";  
+	var sController   	= "ntrms/re/cancelReceipt.do";
+	var sInDatasets   	= "input=ds_list04";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+			
+	//alert(sArgs);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+}
+
+//---------------------------------------------------------------------------------
+// 온라인 이외의 계약  수납취소내역 조회
+//---------------------------------------------------------------------------------		
+this.fn_getCancelExOContractList = function()
+{
+	this.ds_list04.clearData();	    
+
+	var sSvcID      	= "getCancelExOContractList";  
+	var sController   	= "ntrms/re/getCancelExOContractList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list05=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+						
+	sArgs += Ex.util.setParam("ordNo"	, nvl(this.ds_list01.getColumn(this.ds_list01.rowposition,"ordNo")));	//계약번호
+	sArgs += Ex.util.setParam("recvSeq"	, nvl(this.ds_list03.getColumn(this.ds_list03.rowposition,"recvSeq")));	//청구번호
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+}
+
+//---------------------------------------------------------------------------------
+// 온라인 이외의 계약 수납내역 취소
+//---------------------------------------------------------------------------------		
+this.fn_cancelExOContract = function() {
+	var ds		= this.ds_list05;
+	
+	var recvDay	= ds.getColumn(0, "recvDay");
+	var recvSeq	= ds.getColumn(0, "recvSeq");
+	var ordNo	= ds.getColumn(0, "ordNo");
+	var custNo	= ds.getColumn(0, "custNo");
+	var cncRseq	= this.cncRseq;
+	
+	var sSvcID		 = "cancelExOContract";
+	var sController	 = "ntrms/re/cancelExOContract.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("recvDay", nvl(recvDay));	/* 수납일자		*/
+		sArgs		+= Ex.util.setParam("recvSeq", nvl(recvSeq));	/* 수납거래번호	*/
+		sArgs		+= Ex.util.setParam("ordNo",   nvl(ordNo));		/* 계약번호		*/
+		sArgs		+= Ex.util.setParam("custNo",  nvl(custNo));	/* 고객번호		*/
+		sArgs		+= Ex.util.setParam("cncRseq", nvl(cncRseq));	/* 취소거래번호	*/
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//---------------------------------------------------------------------------------
+// 온라인 이외의 계약 수납취소 시퀀스
+//---------------------------------------------------------------------------------	
+this.fn_getCncRseq = function()
+{
+	var sSvcID      	= "getCncRseq";  
+	var sController   	= "/ntrms/re/getCncRseq.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+			
+	//alert(sArgs);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+// callBack함수 
+//-------------------------------------------------------------------------------  	
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		return Ex.core.comMsg("alert",strErrorMsg);		
+	}
+	
+	switch (strSvcId) 
+	{
+		//월일 조회
+		case "getDayMongth":
+			 curMonth = this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+			 this.cal_toZfbDay.set_value(curMonth);   //당월말일
+			 break;	
+		//수금내역 조회				
+		case "getCollectionMoneyList":
+			this.ds_list01.set_rowposition(-1);
+			if(this.ds_list01.rowcount == 0) {
+			   this.grd_list01.set_nodatatext("조회된 결과가 없습니다.");
+			   
+			   this.btn_arrearsPayment.set_enable(false);
+			   this.btn_prePaymentDscnt.set_enable(false);
+			   this.btn_middleFullPayment.set_enable(false);
+			   this.btn_paymentCancel.set_enable(false);
+			} else {
+				if(this.ds_list01.rowcount == 1) {
+					this.ds_list01.set_rowposition(0);
+					var pos = this.ds_list01.rowposition;
+					this.ds_copy.clearData();
+					var row = this.ds_copy.addRow();
+					this.ds_copy.copyRow(row, this.ds_list01, pos);
+				} else {
+					this.grd_list01.set_binddataset(this.ds_list01);
+					var pos = this.ds_list01.rowposition;
+					this.ds_copy.clearData();
+					var row = this.ds_copy.addRow();
+					this.ds_copy.copyRow(row, this.ds_list01, pos);
+				}
+				
+				this.btn_arrearsPayment.set_enable(true);
+				this.btn_prePaymentDscnt.set_enable(true);
+				this.btn_middleFullPayment.set_enable(true);
+				this.btn_paymentCancel.set_enable(true);
+			}
+			break;
+		
+		//청구내역 조회
+		case "getBillingRecordList":
+			this.ds_list02.set_rowposition(-1);					
+			if(this.ds_list02.rowcount == 0) {
+				this.grd_list02.set_nodatatext("조회된 결과가 없습니다.");
+			}
+			if(this.ds_list02.rowcount > 0) {
+				this.grd_list02.set_binddataset(this.ds_list02);				
+				var pos = this.ds_list01.rowposition;	
+				this.ds_copy.clearData();
+				var row = this.ds_copy.addRow();
+				this.ds_copy.copyRow(row, this.ds_list01, pos);							
+			}  	
+			break;	
+		//수납내역 조회				
+		case "getReceiptList":
+			this.ds_list03.set_rowposition(-1);					
+			if(this.ds_list03.rowcount == 0) {
+				this.grd_list03.set_nodatatext("조회된 결과가 없습니다.");
+			}
+			if(this.ds_list03.rowcount > 0) {
+				this.grd_list03.set_binddataset(this.ds_list03);	
+				this.ds_copy.clearData();
+			}	  	
+			break;
+		//수납취소내역 조회
+		case "getCancelReceiptList":
+			if(this.ds_list04.rowcount == 0) {
+				this.alert("수납취소내역이 존재하지 않습니다.");
+			}else{
+				this.ds_list04.set_updatecontrol(false);
+				this.ds_list04.setRowType(0, Dataset.ROWTYPE_INSERT);
+				this.ds_list04.set_updatecontrol(true);
+	
+				this.fn_cancelReceipt();
+			}
+			break;
+		case "cancelReceipt":
+			this.alert("정상적으로 처리되었습니다.");
+			break;
+		//수납취소내역 조회
+		case "getCancelExOContractList":
+			if(this.ds_list05.getRowCount() == 0) {
+				//this.alert("수납취소내역이 존재하지 않습니다.");
+			}else{
+				if(this.ds_list05.getRowCount() > 1){
+					this.ds_list05.deleteRow(1);
+				}
+				this.fn_getCncRseq();
+			}
+			break;
+		case "getCncRseq":
+			if(this.cncRseq == 0){
+				alert("취소시퀀스를 가져오지 못했습니다.");
+			}else{
+				this.ds_list05.addColumn("cncRseq", "string");					
+				this.ds_list05.setColumn(0, "cncRseq", this.cncRseq);
+				
+				this.ds_list05.set_updatecontrol(false);					
+				this.ds_list05.setRowType(0, Dataset.ROWTYPE_INSERT);				
+				this.ds_list05.set_updatecontrol(true);
+				
+				this.fn_cancelExOContract();
+			}
+			break;
+		case "cancelExOContract":
+			this.alert("정상적으로 처리되었습니다.");
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ * 수납/취소 popup callback
+ */
+this.fn_popupCallback = function(args) {
+	Ex.core.popup(this, "KCP 카드즉시출금 결과", "re::RTREPaymentCommCrdResult_pop.xfdl", args, "modaless=false");
+}
+
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+//검색 시 Enter키 이벤트 처리
+//------------------------------------------------------------------------------- 
+this.div_search_ed_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	} 
+}
+//-------------------------------------------------------------------------------  	
+//고객번호  Enter키 이벤트 처리
+//-------------------------------------------------------------------------------  	
+this.div_search_ed_custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{  
+	 this.div_search.ed_custNoKeyword.set_value("");	
+	 if ( e.keycode == 13 )
+	{
+		if(nvl(this.div_search.ed_custNo.value) == "") {
+			this.alert("고객번호를 입력하세요");
+			this.div_search.ed_custNo.setFocus();
+			return;
+		}
+		//고객명 조회
+		this.fn_getCustNm();
+	}	
+}
+//------------------------------------------------------------------------------
+//수금내역 클릭시 이벤트
+//------------------------------------------------------------------------------
+this.grd_list01_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.grd_list02.set_binddataset("");
+	this.grd_list03.set_binddataset("");
+	var pos = this.ds_list01.rowposition;	
+	this.ds_copy.clearData();
+	var row = this.ds_copy.addRow();
+	this.ds_copy.copyRow(row, this.ds_list01, pos);
+	this.custNo = nvl(this.ds_list01.getColumn(this.ds_list01.rowposition, "custNo"));
+	var ordDay = nvl(this.ds_list01.getColumn(this.ds_list01.rowposition, "ordDay"));
+	this.cal_fromZfbDay.set_value(ordDay);    //계약일자
+		
+	//청구내역조회
+	this.fn_getBillingRecordList();
+	
+	//수납내역조회
+	this.fn_getReceiptList();				
+ }
+ //------------------------------------------------------------------------------
+ //청구내역 클릭시 이벤트
+ //------------------------------------------------------------------------------
+ this.grd_list02_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.grd_list03.set_binddataset("");
+	var pos = this.ds_list02.rowposition;		
+	this.ds_copy.clearData();
+	var row = this.ds_copy.addRow();
+	this.ds_copy.copyRow(row, this.ds_list02, pos);	
+	
+	this.schdSeq = nvl(this.ds_list02.getColumn(this.ds_list02.rowposition,"schdSeq"));
+	
+	//수납내역조회
+	this.fn_getReceiptList();			
+}
+
+
+ //------------------------------------------------------------------------------
+ //수납내역 클릭시 이벤트
+ //------------------------------------------------------------------------------
+this.grd_list03_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var pos = this.ds_list03.rowposition;
+	//KCP 거래번호
+	var tNo = nvl(this.ds_list03.getColumn(pos, "tNo"));
+	this.grd_list03.set_tooltiptext(tNo);
+	if(tNo != "") {
+	  alert(tNo);
+	}
+	//CMS 계좌
+	var bankCd = nvl(this.ds_list03.getColumn(pos, "bankCd"));
+	if(bankCd != "") {
+	   alert(bankCd);
+	}
+	var bankNm = nvl(this.ds_list03.getColumn(pos, "bankNm"));
+	if(bankNm != "") {
+	   alert(bankNm);
+	}
+	var acctNo = nvl(this.ds_list03.getColumn(pos, "acctNo"));
+	if(acctNo != "") {
+	   alert(acctNo);
+	}
+	//카드이체 정보
+	var cardcomCd = nvl(this.ds_list03.getColumn(pos, "cardcomCd"));
+	if(cardcomCd != "") {
+	   alert(cardcomCd);
+	}
+	var cardcomNm = nvl(this.ds_list03.getColumn(pos, "cardcomNm"));
+	if(cardcomNm != "") {
+	   alert(cardcomNm);
+	}
+	var cardNo = nvl(this.ds_list03.getColumn(pos, "cardNo"));
+	if(cardNo != "") {
+	   alert(cardNo);
+	}	
+}
+//-------------------------------------------------------------------------------  	
+//계약번호 팝업창
+//-------------------------------------------------------------------------------  
+this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTRECollectionMoney"};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
+}
+//-------------------------------------------------------------------------------  
+// 계약조회팝업창 파라미터 반환
+//-------------------------------------------------------------------------------  
+this.returnOrderNo = function(val) {
+	this.div_search.ed_ordNo.set_value(val);
+}
+//-------------------------------------------------------------------------------  	
+//고객명 조회
+//-------------------------------------------------------------------------------  	
+this.fn_getCustNm = function() {
+	var sSvcID        	= "listCustInfo";                    
+	var sController   	= "rtms/comm/listCustInfo.do";
+	var sInDatasets   	= "user_=ds_user";
+	var sOutDatasets  	= "ds_cust=mapCustInfo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("custNo", this.div_search.ed_custNo.value);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}	
+//-------------------------------------------------------------------------------  	
+//고객번호 팝업창
+//-------------------------------------------------------------------------------  	
+this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_formId:this.id, p_custNo:nvl(this.div_search.ed_custNo.value), p_custNm:nvl(this.div_search.ed_custNoKeyword.value)};
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}	
+//-------------------------------------------------------------------------------  
+// 고객조회팝업창 파라미터 반환
+//-------------------------------------------------------------------------------  		
+this.returnCustInfo = function(arr) {
+	if(arr[0].rowcount > 0) 
+	{	
+		if(nvl(arr[0].getColumn(0,"custNo")) != "") { 
+			this.div_search.ed_custNo.set_value(arr[0].getColumn(0,"custNo"));			
+		}
+		if(nvl(arr[0].getColumn(0,"custNm")) != "") { 	
+			this.div_search.ed_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));								
+		}
+	}
+}		
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+//---------------------------------------------------------------------------------
+// 버튼생성
+//---------------------------------------------------------------------------------
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.setButton("E|S",this);
+}
+
+//---------------------------------------------------------------------------------
+// 엑셀
+//---------------------------------------------------------------------------------
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_getBillingRecordList();
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grd_list02);
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grd_list03);
+}
+
+//수납내역취소
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var ordNo = nvl(this.ds_list01.getColumn(this.ds_list01.rowposition,"ordNo"));
+	var ordFlag = ordNo.substr(0, 1);
+	var schdSeq = this.ds_list02.getColumn(this.ds_list02.rowposition, "schdSeq");
+	
+	if(ordFlag == "O" && schdSeq == "0"){ //온라인계약, 등록비인경우만 취소
+		this.fn_getCancelReceiptList();
+	}else{ //온라인계약 제외
+		this.fn_getCancelExOContractList();
+	}
+}
+
+/**
+ * 연체금 수납 버튼 Onclick Event
+ */
+this.btn_arrears_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	if(this.ds_list01.rowposition < 0) {
+		this.alert("대상선택 후에 버튼을 클릭해 주세요.");
+		
+		return false;
+	}
+	
+	var args = {custNo : this.ds_list01.getColumn(this.ds_list01.rowposition, "custNo")};
+	
+	Ex.core.popup(this, "연체금 수납", "re::RTREPaymentComm_tab1.xfdl", args, "modaless=false");	
+}]]></Script>
+  </Form>
+</FDL>

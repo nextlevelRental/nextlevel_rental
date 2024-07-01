@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Test001_createElement" classname="Test001_createElement" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Button id="Button00" taborder="0" text="Button00" left="8.89%" top="62" right="80.96%" height="35" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="1" text="Button01" left="26.37%" top="56" right="63.87%" height="36" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="2" text="Button02" left="15.14%" top="220" right="73.93%" height="43" onclick="Button02_onclick"/>
+        <Button id="Button03" taborder="3" text="Button03" left="28.81%" top="225" right="58.79%" height="34" onclick="Button03_onclick"/>
+        <Button id="Button04" taborder="4" text="Button04" left="46.29%" top="231" right="43.16%" height="25" onclick="Button04_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.f_element();
+}
+
+
+
+this.f_element = function()
+{
+
+   var anchor = document.getElementById("cssani");
+			
+	//	   var anchor = document.all["google"]
+		   
+		   trace(" Eco.isEmpty(anchor) : "  + Eco.isEmpty(anchor));
+		   if(!Eco.isEmpty(anchor)){
+			   anchor.parentNode.removeChild(anchor);   
+		   }
+		   
+		   var script = document.createElement('link');		   
+		       script.setAttribute('id', 'cssani');
+		       script.setAttribute('src', './nexacro14lib/component/ExternalNexacro/openapi/animate.css');
+		       script.setAttribute('type', 'text/css');
+		       document.getElementsByTagName("head")[0].insertBefore(script,document.getElementsByTagName("title")[0]);
+}
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var func = this.funcTest();
+	var fn = Eco._toString.call(func) ;
+	trace(" fn >>>> " + fn);
+	//Eco._toString.call( func );
+	
+	//this.all["funcTest"];
+	
+	//func = (function() {
+//     console.log('함수 호출'); // "함수 호출" 출력
+// 		}());
+// 		trace(" global_context : " + JsNamespace.getGlobalContext()[funcTest].call());
+// 		
+// 		this.all["funcTest"]();
+// 		//this.executeFunctionByName("funcTest", window, arguments);
+		//winndow[funcTest].apply(this);
+		
+	//this.func.call(this);
+}
+// 
+// this.executeFunctionByName = function(functionName, context) {
+//   var args = [].slice.call(arguments).splice(2);
+//   var namespaces = functionName.split(".");
+//   trace(" namespaces : " + namespaces);
+//   var func = namespaces.pop();
+//   for(var i = 0; i < namespaces.length; i++) {
+//     context = context[namespaces[i]];
+//   }
+//   
+//   return context[func].apply(this, args);
+// }
+// 
+this.mainfunc = function(func){
+    
+    alert(" func : " + func);
+    alert(" window.top : " + window.top);
+    window[func].call(this);
+    this[func].apply(this, Array.prototype.slice.call(arguments, 1));
+    //if(arguments.length == 3)
+    //    window[func](arguments[1], arguments[2]);
+    //else if(arguments.length == 4)
+    //    window[func](arguments[1], arguments[2], arguments[3]);
+    //else if(arguments.length == 5)
+    //    window[func](arguments[1], arguments[2], arguments[3], arguments[4]);
+}
+
+function calledfunc1(par1, par2){
+    // Do stuff here
+    
+    alert(" par1 >>>>> ");
+}
+
+function calledfunc2(par1, par2, par3){
+    // Do stuff here
+     alert(" par2 >>>>> ");
+}
+
+
+this.funcTest = function()
+{
+
+    alert(" funcTest ");
+
+}
+
+this.ComFunc = function()
+{
+    var message = "Hello World!";
+    //this.say_hello = function(to)
+    //{
+        alert(message);
+    //}
+    
+    
+    
+}
+
+
+
+
+//var Derek = new Person();
+
+// this.Function00 = function(){alert(">>>");};
+// 
+// this.mainfunc =function(func)
+// {
+//     var args = new Array();
+//     for (var i = 1; i < arguments.length; i++)
+//         args.push(arguments[i]);
+// 
+//     window[func].apply(this, args);
+// }
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+//this.fnFunc() 
+// var Com = new ComFunc();
+// function_name = "this.ComFunc";
+// window[function_name].call();
+alert( myMessage() ); // Hello World  
+
+}
+
+
+var foo = "apple";
+
+function foobar()
+{
+   
+   
+   // var foo = "orange";
+   // alert(window["foo"]); // alerts "apple"
+   // alert(foo); // alerts "orange"
+   // alert(window["foobar"]); // alerts the foobar function
+}
+
+
+// 
+// this.fn_fncT =function()
+// {
+// alert("fn_fncT");
+// 
+// }
+// 
+// function xx(){
+// 
+//    this.testfn = function(){
+//        alert(" test");
+//    };
+// }
+// 
+// var namespace = (function(){
+//     var namespace = {};
+// 
+//     var i  = 0;
+//     var j = '변수';
+// 
+//     function func1(){
+//     }
+//     namespace.func2 = function()
+//     {
+//     
+//         alert(" namespace2");
+//     }
+// 
+// 
+// 
+//     return namespace;
+// })();
+// 
+// 
+// var _ = function(name, container) {
+//   var ns = name.split('.');
+//   var o = container || window;
+//   var i = 0;
+//   var len = ns.length;
+//   for(; i < len; ++i) {
+//     o = o[ns[i]] = o[ns[i]] || {};
+//   }
+//   o._ = function(name){ return window._(name, o);}
+//   return o;
+// };
+// 
+// 
+// var ns1 = {};
+// (function(){
+//     this.name = 'namespace 1';
+//     this.greeting = function() {
+//         console.log('hello, I am in ' + this.name);
+//     };
+// }).apply(ns1);
+(function(ns4) {
+    ns4.name = 'namespace 4';
+    ns4.greeting = function() {
+        console.log('hello, I am in ' + ns4.name);
+    };  
+}(window.ns4 = window.ns4 || {}));
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//namespace.func1();
+	
+     ns4.greeting();
+
+//	this["fn_fncT"]();
+	//foobar();
+}
+
+this.Button04_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	xx();
+	//testfn();
+}
+]]></Script>
+  </Form>
+</FDL>

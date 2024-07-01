@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="메뉴-프로그램 연동 등록" left="0" width="1147" top="0" height="496" ontimer="form_ontimer" onload="form_onload" visible="false">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid01" taborder="44" binddataset="dsAuth" useinputpanel="false" autofittype="col" nodatatext="데이터가 없습니다." left="319" top="86" right="25" height="180">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="139"/>
+                <Column size="60"/>
+                <Column size="154"/>
+                <Column size="136"/>
+                <Column size="111"/>
+                <Column size="68"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="프로그램 코드"/>
+                <Cell col="2" text="정렬코드"/>
+                <Cell col="3" text="프로그램명"/>
+                <Cell col="4" text="프로그램 설명"/>
+                <Cell col="5" text="모듈명"/>
+                <Cell col="6" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:prgmCd"/>
+                <Cell col="2" displaytype="text" edittype="text" text="bind:sortOdr"/>
+                <Cell col="3" text="bind:prgmNm"/>
+                <Cell col="4" text="bind:prgmDesc"/>
+                <Cell col="5" text="bind:mdlNm"/>
+                <Cell col="6" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="35" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="36" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="37" text="권한그룹별 프로그램" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="318" top="61" width="300" height="20"/>
+        <Static id="Static05" taborder="38" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="76" width="802" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="39" text="FIX h20" cssclass="Guide_color" visible="false" left="319" top="266" width="803" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static06" taborder="40" text="검색" onclick="Static00_onclick" cssclass="sta_WF_subTitle" left="318" top="282" width="69" height="20"/>
+        <Static id="Static08" taborder="41" text="FIX h10" cssclass="Guide_color" visible="false" left="319" top="297" width="803" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static09" taborder="42" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="299" top="65" width="20" height="431"/>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="0" top="0" right="25" height="45" cssclass="div_WF_searchBg" scrollbars="none" visible="true">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Grid id="grdTree" taborder="24" binddataset="dsTreeList" useinputpanel="false" treeuseline="true" treeusecheckbox="false" treeinitstatus="expand,all" left="0" top="65" width="300" cantreestatuschange="grdTree_cantreestatuschange" style="treeopenbuttonimage:URL('theme://images\ico_WF_treeexpand.png');treeclosebuttonimage:URL('theme://images\ico_WF_treecollapse.png');treecollapseimage:URL('theme://images\ico_WF_treeopen.png');treeexpandimage:URL('theme://images\ico_WF_treehide.png');treeitemimage:URL('theme://images\ico_treeitem.png');treelinetype:1px solid #afafafff ;cursor:hand;" scrollpixel="default" autofittype="col" oncellclick="grdTree_oncellclick" oncelldblclick="grdTree_oncelldblclick" height="431">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="209"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" style="line: ;" text="bind:menuNm" expandshow="hide" treestartlevel="0" treelevel="bind:menuLvl"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="cmb_searchCondition" taborder="27" value="0" text="선택" innerdataset="@dsPro" codecolumn="cd" datacolumn="cdNm" index="0" top="280" height="21" domainId="nexa.name;nexa.code" width="113" left="391"/>
+        <Edit id="edt_searchKeyword" taborder="28" onkeyup="div_search_edt_searchKeyword_onkeyup" top="280" height="21" width="149" right="489"/>
+        <Button id="btn_search2" taborder="29" text="조회" onclick="btn_search2_onclick" cssclass="btn_WF_module" top="280" height="22" width="45" left="668"/>
+        <Button id="Button00" taborder="30" onclick="Button00_onclick" top="279" height="22" style="font:11 Verdana;" width="22" cssclass="btn_WF_suttleT" right="54"/>
+        <Button id="Button01" taborder="31" onclick="Button01_onclick" top="279" height="22" style="font:11 Verdana;" cssclass="btn_WF_suttleB" width="22" right="29"/>
+        <Grid id="Grid00" taborder="43" binddataset="dsAuthNot" useinputpanel="false" autofittype="col" nodatatext="데이터가 없습니다." left="318" top="307" right="25" height="189">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="139"/>
+                <Column size="154"/>
+                <Column size="136"/>
+                <Column size="111"/>
+                <Column size="68"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="프로그램 코드"/>
+                <Cell col="2" text="프로그램명"/>
+                <Cell col="3" text="프로그램 설명"/>
+                <Cell col="4" text="모듈명"/>
+                <Cell col="5" text="사용유무"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:prgmCd"/>
+                <Cell col="2" text="bind:prgmNm"/>
+                <Cell col="3" text="bind:prgmDesc"/>
+                <Cell col="4" text="bind:mdlNm"/>
+                <Cell col="5" text="bind:useYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsList_oncolumnchanged" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="선택" type="STRING" size="256"/>
+          <Column id="menuCd" type="STRING" size="256"/>
+          <Column id="menuNm" type="STRING" size="256"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="uprMenuCd" type="STRING" size="256"/>
+          <Column id="uprMenuNm" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="menuDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="sortOdr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_searchCond" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">-1</Col>
+            <Col id="cdNm">선택</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsTreeList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="선택" type="STRING" size="256"/>
+          <Column id="menuCd" type="STRING" size="256"/>
+          <Column id="menuNm" type="STRING" size="256"/>
+          <Column id="menuLvl" type="STRING" size="256"/>
+          <Column id="uprMenuCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="menuDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsMdlCode" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAuthNot" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prgmCd" type="STRING" size="256"/>
+          <Column id="prgmNm" type="STRING" size="256"/>
+          <Column id="prgmDesc" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="mdlNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsAuth" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="prgmCd" type="STRING" size="256"/>
+          <Column id="sortOdr" type="INT" size="256"/>
+          <Column id="prgmNm" type="STRING" size="256"/>
+          <Column id="prgmDesc" type="STRING" size="256"/>
+          <Column id="mdlCd" type="STRING" size="256"/>
+          <Column id="mdlNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPro" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 메뉴등록
+ * 02. 그룹명   : RTCMMenu.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+var searchWord;	//검색단어
+var searchCond;	//검색조건
+this.resultCnt = "";	//중복메뉴카운트
+this.chkMenuCd = "";	//중복메뉴코드
+var uprMenuCd;	//상위메뉴코드
+var nExistRow; 	//중복체크ROW
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+     
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+		Ex.core.init(obj); 	
+		this.fn_getTreeMenuList();
+		this.parent.setButton("E|C", this);
+	} 
+	 
+ 
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//TREE메뉴 조회
+	this.fn_getTreeMenuList = function() {
+		var sSvcID      	= "listTreeMenuPro";  
+		var sController   	= "/ntrms/cm/listTreeMenuPro.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsTreeList=output dsPro=output2";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+		
+	//목록조회 Search
+	this.fn_search = function()
+	{
+		var sSvcID        	= "listMenu";                    
+		var sController   	= "/ntrms/cm/listMenu.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=output dsPro=output2";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		searchWord  = this.div_search.edt_searchKeyword.value;
+		searchCond  = this.div_search.cmb_searchCondition.value;
+		
+		if (searchCond == "MENU_CD")
+		{
+			sArgs += Ex.util.setParam("menuCd", searchWord);
+			sArgs += Ex.util.setParam("uprMenuCd", "");
+		}
+		else if (searchCond == "MENU_NM")
+		{
+			sArgs += Ex.util.setParam("menuNm",searchWord);
+			sArgs += Ex.util.setParam("uprMenuCd", "");
+		}
+		else {
+			this.alert("검색조건을 선택하세요.");
+			this.div_search.cmb_searchCondition.setFocus();
+			return;
+		}
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+	//서브메뉴리스트 조회
+	this.fn_getSubMenuList = function() {
+		
+		uprMenuCd  = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+		
+		var sSvcID        	= "listMenu";               
+		var sController   	= "/ntrms/cm/listMenuPro.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=output dsAuth=output2 dsAuthNot=output3";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		
+		sArgs += Ex.util.setParam("uprMenuCd",uprMenuCd);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	}	
+
+	//저장..
+		this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+		{
+		var cnt = 0;
+		var menuListSeviceCnt = this.dsAuth.getRowCount();
+		for( var i = 0 ; i < menuListSeviceCnt ; i++ ){
+			var iRowType = this.dsAuth.getRowType(i);		
+			if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+				cnt++;
+			}
+		}
+		if(nvl(cnt) != 0){
+			rnum = this.dsList.rowposition;
+			menuCd  = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+			
+			var sSvcID        	= "saveData";                    
+			var sController   	= "/ntrms/cm/menuProSaveDaset.do";
+			var sInDatasets   	= "input=dsAuth:U";
+			var sOutDatasets  	= "";
+			var sArgs 			= "menuCd=" + menuCd;
+			var fn_callBack		= "fn_callBack";
+			/*
+			for(var i=0; i < this.dsAuth.getRowCount(); i++) {
+				alert(this.dsAuth.getRowType(i));
+			}
+			
+			if() {
+				sInDatasets   		= "input=dsAuth:U";
+			} else {
+				sInDatasets   		= "input=dsUser:U";
+			}
+			*/
+			sOutDatasets  		= "";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}else{
+				  alert("변경된 데이터가 없습니다!");
+				  return false;
+		         }
+	}
+// 	this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+// 	{
+// 		rnum = this.dsList.rowposition;
+// 		menuCd  = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+// 		
+// 		var sSvcID        	= "saveData";                    
+// 		var sController   	= "/ntrms/cm/menuProSaveDaset.do";
+// 		var sInDatasets   	= "input=dsAuth:U";
+// 		var sOutDatasets  	= "";
+// 		var sArgs 			= "menuCd=" + menuCd;
+// 		var fn_callBack		= "fn_callBack";
+// 		/*
+// 		for(var i=0; i < this.dsAuth.getRowCount(); i++) {
+// 			alert(this.dsAuth.getRowType(i));
+// 		}
+// 		
+// 		if() {
+// 			sInDatasets   		= "input=dsAuth:U";
+// 		} else {
+// 			sInDatasets   		= "input=dsUser:U";
+// 		}
+// 		*/
+// 		sOutDatasets  		= "";
+// 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 	}
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, chkMenuCd)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);		
+		} else {
+		
+			if (strSvcId == "listTreeMenuPro") 
+			{
+				this.fn_getSubMenuList();
+				//this.fn_search_post();
+				//this.grd_Group.set_scrollbars("autoboth");
+			}
+		
+			if(strSvcId == "listMenu") 
+			{
+				this.fn_search_post();
+				this.grd_Group.set_scrollbars("autoboth");	
+			}
+		
+			if (strSvcId == "saveData") 
+			{
+				this.grdTree_oncellclick();
+				alert(strErrorMsg);
+				
+			}
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+
+	// 추가 버튼 클릭시 이벤트 처리
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+
+		if(this.dsList.getRowCount() == 0) {
+			//this.fn_addColumnInfo();
+		}
+		var nRow = this.dsList.addRow();		
+	
+		var sUprMenuCd = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+		var sUprMenuNm = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuNm");
+		var nMenuLvl   = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuLvl");
+
+		this.dsList.setColumn(nRow,"uprMenuCd", sUprMenuCd);
+		this.dsList.setColumn(nRow,"uprMenuNm", sUprMenuNm);
+		this.dsList.setColumn(nRow,"menuLvl"  , nMenuLvl+1);		
+		this.dsList.setColumn(nRow,"useYn"  , "Y");		
+	}
+
+	//삭제 버튼 클릭시 이벤트 처리
+	this.fn_delete = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.dsList.rowposition;
+		this.dsList.deleteRow(nRow);
+	}
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+
+	this.fn_addColumnInfo = function() 
+	{
+			var o_cinfo =  new ColumnInfo();		
+			o_cinfo.set_type("STRING");
+			o_cinfo.set_size("256");
+ 		
+			this.dsList.addColumnInfo("선택" ,o_cinfo);
+			this.dsList.addColumnInfo("menuCd" ,o_cinfo);
+			this.dsList.addColumnInfo("menuNm" ,o_cinfo);
+			this.dsList.addColumnInfo("menuLvl" ,o_cinfo);
+			this.dsList.addColumnInfo("uprMenuCd" ,o_cinfo);
+			this.dsList.addColumnInfo("uprMenuNm" ,o_cinfo);
+			this.dsList.addColumnInfo("mdlCd" ,o_cinfo);
+			this.dsList.addColumnInfo("useYn" ,o_cinfo);
+			this.dsList.addColumnInfo("menuDesc" ,o_cinfo);
+			this.dsList.addColumnInfo("sortOdr" ,o_cinfo);
+			this.dsList.addColumnInfo("regId" ,o_cinfo);
+			this.dsList.addColumnInfo("regDt" ,o_cinfo);
+			this.dsList.addColumnInfo("chgId" ,o_cinfo);			
+			this.dsList.addColumnInfo("chgDt" ,o_cinfo);													
+		
+	}
+	//조회 후처리
+	this.fn_search_post = function()
+	{
+		var nTotalCnt = this.dsList.rowcount;
+		//this.div_grid_top.sta_total_cnt.set_text(nTotalCnt);
+		//alert(this.grdList.hscrollbar);
+		this.grdTree.hscrollbar;
+	}
+
+	//팝업 후처리 작업
+	this.fn_popupAfter = function(sPopupId,val)
+	{
+
+	}
+
+	//페이징 후처리 작업
+	this.fn_pageAfter = function(sObjId,nViewPage)
+	{
+ 
+	}
+
+	this.grdTree_cantreestatuschange = function(obj:Grid, e:nexacro.GridTreeStatusEventInfo)
+	{
+		this.treeStatus = 1;
+	}
+
+	//그리드 트리 클릭시
+	this.grdTree_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		//trace(e.canvasX);
+		this.fn_getSubMenuList();
+		/*
+		var objDs = this[obj.binddataset];
+		if (this.treeStatus == 1){
+			this.treeStatus = 0;
+			return;
+		}
+
+		var childRow = obj.getTreeChildRow(objDs.rowposition, 0, true);
+
+		// 자식 노드가 존재할 경우
+		if (childRow >= 0) 
+		{
+			var gridRow = obj.getTreeRow(objDs.rowposition);
+			if (obj.isTreeCollapsedRow(childRow, true)) 
+			{
+				obj.setTreeStatus(gridRow, true);
+			}
+			else 
+			{
+				obj.setTreeStatus(gridRow, false);
+			}
+		}
+		this.treeStatus = 0;	
+		*/
+
+	}
+	
+	//엑셀저장
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.grdList, "메뉴등록");
+	}
+	
+	//VALID 체크
+	this.fn_validCheck = function() {
+
+		this.grdList.set_autoenter("select");
+		this.grdList.showEditor(true);
+		//this.dsList.set_rowposition(this.dsList.getRowCount()-1);						
+		for(var i = 0; i < this.dsList.rowcount; i++) {
+			this.dsList.set_rowposition(i);		
+			if(nvl(this.dsList.getColumn(i,"menuCd")) == "") {
+				alert("메뉴코드를 입력하세요");
+	
+				this.grdList.setCellPos(1);
+				return false;
+			}
+			if(nvl(this.dsList.getColumn(i,"menuNm")) == "") {
+				alert("메뉴명을 입력하세요");
+				this.grdList.setCellPos(2);				
+				return false;
+			}	
+			if(nvl(this.dsList.getColumn(i,"menuLvl")) == "") {
+				alert("메뉴레벨을 입력하세요");
+				this.grdList.setCellPos(3);				
+				return false;
+			}	
+			if(nvl(this.dsList.getColumn(i,"mdlCd")) == "") {
+				alert("모듈명을 선택하세요");
+				this.grdList.setCellPos(7);				
+				return false;
+			}								
+		}	
+		return true;
+	}
+
+	this.dsList_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+			if(e.columnid == "menuCd") {
+				nExistRow = e.row;
+				this.fn_menuCd_exists(obj.getColumn(e.row, "menuCd"));
+			}		
+	}
+	
+//조회버튼
+this.btn_search2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	rnum = this.dsList.rowposition;
+	checkAuthMenuCd  = this.dsList.getColumn(rnum, "authGrpCd");
+	var sSvcID        	= "authNotService";                    
+	var sController   	= "/ntrms/cm/authNotInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsAuthNot=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	uprMenuCd  = this.dsTreeList.getColumn(this.dsTreeList.rowposition, "menuCd");
+	
+	if(this.cmb_searchCondition.value == "PRGM_CD"){
+		if(this.edt_searchKeyword.getLength() == 0) {
+			alert("프로그램 코드를 입력해주세요");
+			this.cmb_searchCondition.setFocus();
+			return false;
+		} else {
+			sArgs = "prgmCd=" + nvl(this.edt_searchKeyword.value)+" menuCd=" + uprMenuCd;;
+		}
+	} else if(this.cmb_searchCondition.value == "PRGM_NM") {
+		if(this.edt_searchKeyword.getLength() < 2) {
+			alert("2자이상 입력해주세요")
+			this.edt_searchKeyword.setFocus();
+			return false;
+		} else {
+			sArgs = "prgmNm=" + nvl(this.edt_searchKeyword.value)+" menuCd=" + uprMenuCd;;
+		}
+	} else {
+		alert("검색조건을 선택해주세요.");
+		return false;
+	}
+	this.dsAuthNot.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//위 버튼
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cnt = this.dsAuthNot.rowcount;
+	var checkCnt = 0;
+	
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsAuthNot.getColumn(i, "check")  == "1") {
+			var prgmCd = this.dsAuthNot.getColumn(i, "prgmCd");
+			var sortOdr = 0;
+			var prgmNm = this.dsAuthNot.getColumn(i, "prgmNm");
+			var prgmDesc = this.dsAuthNot.getColumn(i, "prgmDesc");
+			var mdlNm = this.dsAuthNot.getColumn(i, "mdlNm");
+			var useYn = this.dsAuthNot.getColumn(i, "useYn");
+			
+			//로우 생성및 순번값
+			var idx = this.dsAuth.addRow();
+			
+			// 로우값 컬럼별로 세팅
+			this.dsAuth.setColumn(idx, "prgmCd" , prgmCd);
+			this.dsAuth.setColumn(idx, "sortOdr" , sortOdr);
+			this.dsAuth.setColumn(idx, "prgmNm" , prgmNm);
+			this.dsAuth.setColumn(idx, "prgmDesc" , prgmDesc);
+			this.dsAuth.setColumn(idx, "mdlNm" , mdlNm);
+			this.dsAuth.setColumn(idx, "useYn" , useYn);
+			this.dsAuthNot.deleteRow(i);
+			
+			checkCnt++;
+		}
+	}
+		
+	if(checkCnt == 0) {
+		alert("등록할 프로그램을 선택해주세요.");
+	} 
+}
+// 아래버튼
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cnt = this.dsAuth.rowcount;
+	var checkCnt = 0;
+	
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsAuth.getColumn(i, "check")  == "1") {
+			var prgmCd = this.dsAuth.getColumn(i, "prgmCd");
+			var prgmNm = this.dsAuth.getColumn(i, "prgmNm");
+			var prgmDesc = this.dsAuth.getColumn(i, "prgmDesc");
+			var mdlNm = this.dsAuth.getColumn(i, "mdlNm");
+			var useYn = this.dsAuth.getColumn(i, "useYn");
+			
+			//로우 생성및 순번값
+			var idx = this.dsAuthNot.addRow();
+			
+			// 로우값 컬럼별로 세팅
+			this.dsAuthNot.setColumn(idx, "prgmCd" , prgmCd);
+			this.dsAuthNot.setColumn(idx, "prgmNm" , prgmNm);
+			this.dsAuthNot.setColumn(idx, "prgmDesc" , prgmDesc);
+			this.dsAuthNot.setColumn(idx, "mdlNm" , mdlNm);
+			this.dsAuthNot.setColumn(idx, "useYn" , useYn);
+			
+			this.dsAuth.deleteRow(i);
+			
+			checkCnt++;
+		}
+	}
+	if(checkCnt == 0) {
+		alert("삭제하실 사용자를 선택해주세요.");
+	} 
+	
+}
+
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.btn_search2_onclick();
+	}
+}
+
+	this.fn_excel= function() {
+		//Ex.core.exportExcel(this, this.Grid01);
+		var objArray1 = new Array();
+		objArray1.push(this.grdTree);
+		objArray1.push(this.Grid01);
+		objArray1.push(this.Grid00);
+		Ex.core.exportExcel(this, objArray1);
+	}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="prePayment">
+	<!-- 선납개월 선택항목 조회 -->
+	<parameterMap class="java.util.Map" id="paramPrptMonList">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPrptMonList"/>
+	</parameterMap>
+	<resultMap id="resultPrptMonList" class="java.util.HashMap">
+		<result property="cd"	 column="CD"/>		<!-- 코드		-->
+		<result property="cdNm"	 column="CD_NM"/>	<!-- 코드명	-->
+		<result property="cdVal" column="CD_VAL"/>	<!-- 코드값	-->
+	</resultMap>
+	<procedure id="prePayment.retrievePrptMonList" parameterMap="paramPrptMonList">
+		{call Pkg_Rtre0160.p_sRtre0160PrptMonList(?)}
+	</procedure>
+	
+	<!-- 선납금액계산 -->
+	<parameterMap class="java.util.Map" id="paramPrePymntAmtCalc">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPrePymntAmtCalc"/>
+		<parameter property="ordNo"	  jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호 -->
+		<parameter property="dcCd"	  jdbcType="VARCHAR" mode="IN"/>	<!-- 할인코드 -->
+		<parameter property="prptMon" jdbcType="NUMERIC" mode="IN"/>	<!-- 선납개월 -->
+	</parameterMap>
+	<resultMap id="resultPrePymntAmtCalc" class="java.util.HashMap">
+		<result property="totPrptAmt"	  column="TOT_PRPT_AMT"/>		<!-- 총선납대상금액	-->
+		<result property="monTotPrptAmt"  column="MON_TOT_PRPT_AMT"/>	<!-- 총월렌탈료	-->
+		<result property="realMonPrptAmt" column="REAL_MON_PRPT_AMT"/>	<!-- 할인 월렌탈료	-->
+		<result property="realPrptAmt"	  column="REAL_PRPT_AMT"/>		<!-- 선납금액		-->
+		<result property="totDcAmt"		  column="TOT_DC_AMT"/>			<!-- 총 할인금액	-->
+		<result property="arreAmt"		  column="ARRE_AMT"/>			<!-- 미납금액		-->
+		<result property="totRecpAmt"	  column="TOT_RECP_AMT"/>		<!-- 총 납부금액	-->
+		<result property="startSeq"		  column="START_SEQ"/>			<!-- 시작회차		-->
+		<result property="endSeq"		  column="END_SEQ"/>			<!-- 종료회차		-->
+		<result property="dcRate"		  column="DC_RATE"/>			<!-- 할인률		-->
+		<result property="dcAmt"		  column="DC_AMT"/>				<!-- 할인금액		-->
+	</resultMap>
+	<procedure id="prePayment.retrievePrePymntAmtCalc" parameterMap="paramPrePymntAmtCalc">
+		{call Pkg_Rtre0160.p_sRtre0160PrePymntAmtCalc(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 납부예정상세 조회 -->
+	<parameterMap class="java.util.Map" id="paramPymntSchdlDtlList">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPymntSchdlDtlList"/>
+		<parameter property="ordNo"	  jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호 -->
+		<parameter property="dcCd"	  jdbcType="VARCHAR" mode="IN"/>	<!-- 할인코드 -->
+		<parameter property="prptMon" jdbcType="NUMERIC" mode="IN"/>	<!-- 선납개월 -->
+	</parameterMap>
+	<resultMap id="resultPymntSchdlDtlList" class="java.util.HashMap">
+		<result property="ordNo"	column="ORD_NO"/>		<!-- 계약번호			-->
+		<result property="schdSeqU"	column="SCHD_SEQ_U"/>	<!-- 청구순번 Update	-->
+		<result property="schdSeqI"	column="SCHD_SEQ_I"/>	<!-- 청구순번 Insert	-->
+		<result property="recpTp"	column="RECP_TP"/>		<!-- 수납유형코드		-->
+		<result property="recpTpNm"	column="RECP_TP_NM"/>	<!-- 수납유형명			-->
+		<result property="recpNu"	column="RECP_NU"/>		<!-- 납부회차			-->
+		<result property="saleAmt"	column="SALE_AMT"/>		<!-- 월렌탈료			-->
+		<result property="dcAmt"	column="DC_AMT"/>		<!-- 선납할인금액		-->
+		<result property="recpAmt"	column="RECP_AMT"/>		<!-- 수납금액			-->
+		<result property="arreAmt"	column="ARRE_AMT"/>		<!-- 미납금액			-->
+		<result property="zfbDay"	column="ZFB_DAY"/>		<!-- 청구마감일			-->
+	</resultMap>
+	<procedure id="prePayment.retrievePymntSchdlDtlList" parameterMap="paramPymntSchdlDtlList">
+		{call Pkg_Rtre0160.p_sRtre0160PymntSchdlDtlList(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 선납할인가능여부체크 -->
+	<parameterMap class="java.util.Map" id="paramCheckPrePaymentAbleYn">
+		<parameter property="prptYn" jdbcType="VARCHAR" mode="OUT" resultMap="resultCheckPrePaymentAbleYn"/>
+		<parameter property="ordNo"	 jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호 -->
+		<parameter property="dcCd"	 jdbcType="VARCHAR" mode="IN"/>	<!-- 할인코드 -->
+	</parameterMap>
+	<resultMap id="resultCheckPrePaymentAbleYn" class="string">
+		<result property="prptYn" column="PRPT_YN"/>	<!-- 선납할인가능여부 -->
+	</resultMap>
+	<procedure id="prePayment.checkPrePaymentAbleYn" parameterMap="paramCheckPrePaymentAbleYn">
+		{call ? := Pkg_Rtre0160.f_Rtsd0160PrePymntChk(?, ?)}
+	</procedure>
+	
+	<!-- 선납요청일련번호 채번 -->
+	<parameterMap id="paramGet0160PrptSeq" class="java.util.Map">
+		<parameter property="prptSeq" jdbcType="INTEGER" mode="OUT" resultMap="resultGet0160PrptSeq"/>
+	</parameterMap>
+	<resultMap id="resultGet0160PrptSeq" class="java.util.Map">
+		<result property="prptSeq" column="PRPT_SEQ"/>
+	</resultMap>
+	<procedure id="prePayment.get0160PrptSeq" parameterMap="paramGet0160PrptSeq">
+		{call ? := PKG_RTRE0160.f_sRtre0160PrptSeq()}
+	</procedure>
+	
+	<!-- 선납내역 저장 -->
+	<parameterMap id="paramSavePrePaymentMst" class="java.util.HashMap">
+		<parameter property="prptSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 선납요청일련번호	-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN"/>	<!-- 고객번호			-->
+		<parameter property="recpFg"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납유형			-->
+		<parameter property="recpPay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 수납방법			-->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 수납거래번호		-->
+		<parameter property="recpTrno"		jdbcType="VARCHAR" mode="IN"/>	<!-- 납부별수납고유번호	-->
+		<parameter property="prptMnct"		jdbcType="NUMERIC" mode="IN"/>	<!-- 선납개월			-->
+		<parameter property="prptDscnRt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 선납할인율		-->
+		<parameter property="totRntAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 총렌탈금액		-->
+		<parameter property="totPrptDcamt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 총할인금액		-->
+		<parameter property="totPrptAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 납입예정금액		-->
+		<parameter property="prptBlncAmt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 미납금액			-->
+		<parameter property="prptSttgTmbt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 선납시작회차		-->
+		<parameter property="prptFnshTmbt"	jdbcType="NUMERIC" mode="IN"/>	<!-- 선납종료회차		-->
+		<parameter property="recvDay"		jdbcType="VARCHAR" mode="IN"/>	<!-- 선납수납일자		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="prePayment.savePrePaymentMst" resultClass="java.util.HashMap" parameterMap="paramSavePrePaymentMst">
+		{call PKG_RTRE0160.p_InsertRtre0160PrePymntMst(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 선납내역 상세 저장 -->
+	<parameterMap id="paramSavePrePaymentDtl" class="java.util.HashMap">
+		<parameter property="prptSeq"		jdbcType="NUMERIC" mode="IN"/>	<!-- 선납요청일련번호		-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="schdSeqI"		jdbcType="NUMERIC" mode="IN"/>	<!-- 스케쥴순번	 Insert	-->
+		<parameter property="saleAmt"		jdbcType="NUMERIC" mode="IN"/>	<!-- 총렌탈금액			-->
+		<parameter property="dcAmt"			jdbcType="NUMERIC" mode="IN"/>	<!-- 선납할인금액		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN"/>	<!-- 등록자 ID			-->
+		<parameter property="successCode"	jdbcType="NUMERIC" mode="OUT"/>
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT"/>
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT"/>
+	</parameterMap>
+	<procedure id="prePayment.savePrePaymentDtl" resultClass="java.util.HashMap" parameterMap="paramSavePrePaymentDtl">
+		{call PKG_RTRE0160.p_InsertRtre0161PrePymntDtl(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 선납 Update Data 조회 -->
+	<parameterMap class="java.util.Map" id="paramPrePymntUpdateList">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultPrePymntUpdateList"/>
+		<parameter property="ordNo"	   jdbcType="VARCHAR" mode="IN"/>	<!-- 계약번호			-->
+		<parameter property="prptSeq"  jdbcType="NUMERIC" mode="IN"/>	<!-- 선납순번			-->
+		<parameter property="schdSeqU" jdbcType="NUMERIC" mode="IN"/>	<!-- 청구순번 Update	-->
+		<parameter property="schdSeqI" jdbcType="NUMERIC" mode="IN"/>	<!-- 청구순번 Insert	-->
+	</parameterMap>
+	<resultMap id="resultPrePymntUpdateList" class="java.util.HashMap">
+		<result property="ordNo"	   column="ORD_NO"/>		<!-- 계약번호				-->
+		<result property="schdSeqU"	   column="SCHD_SEQ_U"/>	<!-- 청구순번 Update		-->
+		<result property="schdSeqI"	   column="SCHD_SEQ_I"/>	<!-- 청구순번 Insert		-->
+		<result property="scdStatU"	   column="SCD_STAT_U"/>	<!-- 스케쥴상태코드 Update	-->
+		<result property="commDvsn"	   column="COMM_DVSN"/>		<!-- 처리구분(I, U, D)		-->
+		<result property="recpTp"	   column="RECP_TP"/>		<!-- 청구구분				-->
+		<result property="recpNu"	   column="RECP_NU"/>		<!-- 청구회차				-->
+		<result property="scdStatI"	   column="SCD_STAT_I"/>	<!-- 스케쥴상태코드 Insert	-->
+		<result property="saleAmt"	   column="SALE_AMT"/>		<!-- 매출금액(VAT 포함)		-->
+		<result property="saleNamt"	   column="SALE_NAMT"/>		<!-- 원금					-->
+		<result property="saleVamt"	   column="SALE_VAMT"/>		<!-- 부가세				-->
+		<result property="recpAmt"	   column="RECP_AMT"/>		<!-- 수납금액(VAT 포함)		-->
+		<result property="arreAmt"	   column="ARRE_AMT"/>		<!-- 연체금액(VAT 포함)		-->
+		<result property="demdDt"	   column="DEMD_DT"/>		<!-- 청구일자				-->
+		<result property="zlspr"	   column="ZLSPR"/>			<!-- 청구보류				-->
+		<result property="rcDay"	   column="RC_DAY"/>		<!-- 수납일자				-->
+		<result property="rcYn"		   column="RC_YN"/>			<!-- 수납여부				-->
+		<result property="taxDt"	   column="TAX_DT"/>		<!-- 세금계산서발행일자(예정)	-->
+		<result property="taxNo"	   column="TAX_NO"/>		<!-- 세금계산서번호			-->
+		<result property="zfbDay"	   column="ZFB_DAY"/>		<!-- 만기계산기준일			-->
+		<result property="canclDay"	   column="CANCL_DAY"/>		<!-- 중도완납일				-->
+		<result property="custNo"	   column="CUST_NO"/>		<!-- 고객번호				-->
+		<result property="salesGroup"  column="SALES_GROUP"/>	<!-- 지사					-->
+		<result property="salesOffice" column="SALES_OFFICE"/>	<!-- 지점					-->
+		<result property="agencyCd"	   column="AGENCY_CD"/>		<!-- 장착대리점				-->
+		<result property="begDay"	   column="BEG_DAY"/>		<!-- 시작일				-->
+		<result property="endDay"	   column="END_DAY"/>		<!-- 종료일				-->
+		<result property="delayYn"	   column="DELAY_YN"/>		<!-- 연체이자적용여부			-->
+		<result property="delayRate"   column="DELAY_RATE"/>	<!-- 연체이자율				-->
+		<result property="payMthd"	   column="PAY_MTHD"/>		<!-- 결제구분				-->
+		<result property="payDd"	   column="PAY_DD"/>		<!-- 이체일				-->
+		<result property="useYn"	   column="USE_YN"/>		<!-- 사용여부				-->
+	</resultMap>
+	<procedure id="prePayment.prePymntUpdateList" parameterMap="paramPrePymntUpdateList">
+		{call Pkg_Rtre0160.p_sRtre0160PrePymntUpdateList(?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

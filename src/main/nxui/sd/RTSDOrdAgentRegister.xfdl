@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDOrdAgentRegister" classname="RTSDOrdAgentRegister" left="0" top="0" width="1147" height="553" titletext="판매인 등록" onload="RTSDOrdAgentRegister_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_rtsd0113" taborder="0" binddataset="ds_rtsd0113" useinputpanel="false" cellsizingtype="col" cellmovingtype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="120" width="1122" height="218" onselectchanged="grid_rtsd0113_onselectchanged" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="110"/>
+                <Column size="90"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="75"/>
+                <Column size="75"/>
+                <Column size="70"/>
+                <Column size="88"/>
+                <Column size="100"/>
+                <Column size="88"/>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="30"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매인번호"/>
+                <Cell col="1" text="판매인명"/>
+                <Cell col="2" text="전화번호"/>
+                <Cell col="3" text="채널코드"/>
+                <Cell col="4" text="채널명"/>
+                <Cell col="5" text="대분류"/>
+                <Cell col="6" text="중분류"/>
+                <Cell col="7" text="벤더코드"/>
+                <Cell col="8" text="렌탈지사코드"/>
+                <Cell col="9" text="렌탈지사명"/>
+                <Cell col="10" text="렌탈지점코드"/>
+                <Cell col="11" text="렌탈지점명"/>
+                <Cell col="12" text="노출순서"/>
+                <Cell col="13" text="사용유무"/>
+                <Cell col="14"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordAgent"/>
+                <Cell col="1" text="bind:orgAgnm"/>
+                <Cell col="2" text="bind:orgAgtel"/>
+                <Cell col="3" text="bind:chanCd"/>
+                <Cell col="4" text="bind:chanNm"/>
+                <Cell col="5" text="bind:chanLclsNm"/>
+                <Cell col="6" text="bind:chanMclsNm"/>
+                <Cell col="7" text="bind:lifnr"/>
+                <Cell col="8" text="bind:rentalGroup"/>
+                <Cell col="9" text="bind:rentalGroupNm"/>
+                <Cell col="10" text="bind:rentalOffice"/>
+                <Cell col="11" text="bind:rentalOfficeNm"/>
+                <Cell col="12" text="bind:num"/>
+                <Cell col="13" text="bind:useNm"/>
+                <Cell col="14" text="bind:taxRqcd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1122" height="80" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="138" text="판매인명" cssclass="sta_WF_schTitle" left="30" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordAgentCd" taborder="139" lengthunit="ascii" maxlength="10" onkeyup="div_search_ed_ordAgentCd_onkeyup" left="117" top="12" width="120" height="21" onchanged="div_search_ed_ordAgentCd_onchanged"/>
+              <Button id="bt_ordAgent" taborder="140" onclick="div_search_bt_ordAgent_onclick" cssclass="btn_WF_edtSch" left="235" top="12" width="21" height="21"/>
+              <Edit id="ed_ordAgentNm" taborder="141" lengthunit="ascii" maxlength="150" enable="false" left="256" top="12" width="120" height="21"/>
+              <Static id="Static09" taborder="146" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static05" taborder="147" text="사용여부" cssclass="sta_WF_schTitle" left="400" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="151" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="12"/>
+              <Static id="Static13" taborder="152" cssclass="Guide_color" visible="false" left="375" top="0" width="25" height="44"/>
+              <Static id="Static14" taborder="153" cssclass="Guide_color" visible="false" left="739" top="0" width="25" height="44"/>
+              <Static id="Static15" taborder="154" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="44"/>
+              <Static id="Static12" taborder="156" cssclass="Guide_color" visible="false" left="0" top="64" width="1118" height="12"/>
+              <Combo id="cb_useYn" taborder="157" autoselect="true" innerdataset="ds_useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="480" top="12" width="120" height="21"/>
+              <Static id="st_chanLclsCd" taborder="158" text="대분류" cssclass="sta_WF_schTitle" left="30" top="44" width="80" height="21"/>
+              <Combo id="cb_chanLclsCd" taborder="159" autoselect="true" innerdataset="@dsChanLclsCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="div_search_cb_chanLclsCd_onitemchanged" left="117" top="44" width="120" height="21"/>
+              <Static id="st_chanMclsCd" taborder="160" text="중분류" cssclass="sta_WF_schTitle" left="400" top="44" width="80" height="21"/>
+              <Combo id="cb_chanMclsCd" taborder="161" autoselect="true" innerdataset="@dsChanMclsCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="480" top="44" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_search" taborder="2" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" left="945" right="16" bottom="735" height="25" domainId="nexa.search"/>
+        <Static id="Static02" taborder="3" cssclass="Guide_color" visible="false" left="0" top="80" width="1147" height="20"/>
+        <Static id="Static21" taborder="4" text="메인 LIST" cssclass="sta_WF_subTitle" left="0" top="96" width="169" height="20"/>
+        <Static id="Static01" taborder="5" cssclass="Guide_color" visible="false" left="0" top="110" width="1147" height="10"/>
+        <Static id="Static00" taborder="6" cssclass="Guide_color" visible="false" left="1121" top="0" width="26" height="550"/>
+        <Static id="Static03" taborder="10" cssclass="Guide_color" visible="false" left="0" top="336" width="1147" height="10"/>
+        <Static id="Static04" taborder="11" text="변경할 내용" cssclass="sta_WF_subTitle" left="0" top="352" width="169" height="20"/>
+        <Static id="Static05" taborder="12" cssclass="Guide_color" visible="false" left="0" top="366" width="1147" height="10"/>
+        <Static id="Static06" taborder="13" cssclass="sta_WF_detailLabel2" left="0" top="405" width="1121" height="31"/>
+        <Static id="Static07" taborder="14" cssclass="sta_WF_detailLabel2" left="0" top="435" width="1121" height="31"/>
+        <Static id="Static10" taborder="15" cssclass="sta_WF_detailLabel2" left="0" top="375" width="1121" height="31"/>
+        <Edit id="ed_orgAgtel" taborder="18" enable="true" left="873" top="380" width="240" height="20" onkeyup="ed_orgAgtel_onkeyup"/>
+        <Static id="st_orgAgtel" taborder="19" text="전화번호" cssclass="sta_WF_detailLabelP" left="718" top="375" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_taxRqcd" taborder="21" text="세금계산서 발행여부" cssclass="sta_WF_detailLabel" left="718" top="405" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_lifnr" taborder="23" text="벤더코드" cssclass="sta_WF_detailLabel" left="718" top="435" width="150" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_orgAgnm" taborder="24" text="판매인명" cssclass="sta_WF_detailLabelP" left="357" top="375" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_orgAgnm" taborder="25" readonly="false" left="462" top="380" width="250" height="20" enable="true"/>
+        <Edit id="ed_num" taborder="26" enable="true" left="462" top="410" width="250" height="20" maxlength="10" inputtype="number"/>
+        <Static id="st_salesOffice" taborder="28" text="지점" cssclass="sta_WF_detailLabel" left="357" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_num" taborder="29" text="노출순서" cssclass="sta_WF_detailLabel" left="357" top="405" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_salesGroup" taborder="31" text="지사" cssclass="sta_WF_detailLabel" left="0" top="435" width="100" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_ordAgent" taborder="33" text="판매인번호" cssclass="sta_WF_detailLabelP" left="0" top="375" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_ordAgent" taborder="38" readonly="false" onkeyup="div_search_edt_searchKeyword_onkeyup" left="105" top="380" width="172" height="20" enable="true" maxlength="10" inputtype="number,english"/>
+        <Button id="bt_ordAgent" taborder="39" text="중복확인" left="282" top="380" width="70" height="21" domainId="nexa.add" onclick="bt_ordAgent_onclick"/>
+        <Edit id="ed_salesGroupCd" taborder="41" readonly="true" left="105" top="440" width="80" height="21" enable="false"/>
+        <Button id="bt_salesGroup" taborder="42" cssclass="btn_WF_edtSch" left="183" top="439" width="21" height="21" onclick="bt_salesGroup_onclick" enable="true"/>
+        <Edit id="ed_salesGroupNm" taborder="43" readonly="true" left="204" top="440" width="148" height="21" enable="false"/>
+        <Edit id="ed_salesOfficeCd" taborder="44" readonly="true" left="462" top="440" width="80" height="21" enable="false"/>
+        <Edit id="ed_salesOfficeNm" taborder="46" readonly="true" left="561" top="440" width="151" height="21" enable="false"/>
+        <Edit id="ed_lifnr" taborder="47" enable="true" left="873" top="441" width="240" height="20" maxlength="10" inputtype="number,english"/>
+        <Combo id="cb_taxRqcd" taborder="48" autoselect="true" innerdataset="@ds_taxRqCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="873" top="409" width="240" height="21"/>
+        <Combo id="cb_chanCd" taborder="49" autoselect="true" innerdataset="@ds_chanCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="105" top="409" width="246" height="21"/>
+        <Static id="st_chanCd" taborder="50" text="채널" cssclass="sta_WF_detailLabelP" visible="true" left="0" top="405" width="100" height="31" domainId="nexa.s_condition"/>
+        <Button id="btn_insert" taborder="51" text="추가" left="1080" top="353" width="41" height="21" domainId="nexa.add" onclick="btn_insert_onclick"/>
+        <Button id="btn_delete" taborder="52" text="취소" onclick="btn_delete_onclick" left="1035" top="353" width="41" height="21" domainId="nexa.add"/>
+        <Static id="Static08" taborder="53" cssclass="sta_WF_detailLabel2" left="0" top="465" width="1121" height="31"/>
+        <Static id="st_useYn" taborder="54" text="사용여부" cssclass="sta_WF_detailLabel" left="0" top="465" width="100" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_useYn" taborder="55" autoselect="true" innerdataset="@ds_useYn2" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="105" top="470" width="246" height="21"/>
+        <Button id="bt_salesOffice" taborder="56" cssclass="btn_WF_edtSch" left="540" top="439" width="21" height="21" onclick="bt_salesOffice_onclick" enable="true"/>
+        <Combo id="cb_chanLclsCd" taborder="57" autoselect="true" innerdataset="dsChanLclsCdIns" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="cb_chanLclsCd_onitemchanged" enable="false" left="462" top="470" width="250" height="21"/>
+        <Static id="st_chanLclsCd" taborder="58" text="채널 대분류" cssclass="sta_WF_detailLabel" left="357" top="465" width="100" height="31" style="background:#f2f2efff left middle;padding:0 10 0 10;"/>
+        <Static id="st_chgNm01" taborder="59" text="채널 중분류" cssclass="sta_WF_detailLabel" left="718" top="465" width="150" height="31" style="background:#f2f2efff left middle;padding:0 10 0 10;"/>
+        <Combo id="cb_chanMclsCd" taborder="60" autoselect="true" innerdataset="dsChanMclsCdIns" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="false" left="873" top="470" width="240" height="21"/>
+        <Static id="Static09" taborder="61" cssclass="sta_WF_detailLabel2" left="0" top="495" width="1121" height="31"/>
+        <Static id="st_useYn00" taborder="62" text="렌탈지역" cssclass="sta_WF_detailLabel" left="0" top="495" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_salesGroupCd00" taborder="68" readonly="true" enable="false" left="105" top="500" width="80" height="21"/>
+        <Button id="bt_salesGroup00" taborder="69" onclick="bt_salesGroup00_onclick" cssclass="btn_WF_edtSch" left="183" top="500" width="21" height="21" enable="false"/>
+        <Edit id="ed_salesGroupNm00" taborder="70" readonly="true" enable="false" left="204" top="500" width="148" height="21"/>
+        <Edit id="ed_salesGroupCd01" taborder="71" readonly="true" enable="false" left="105" top="500" width="37" height="21" visible="false"/>
+        <Edit id="ed_salesGroupNm01" taborder="72" readonly="true" enable="false" left="204" top="500" width="36" height="21" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtsd0113" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgAgnm" type="STRING" size="256"/>
+          <Column id="orgAgtel" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="lifnr" type="STRING" size="256"/>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="taxRqcd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="sgNm" type="STRING" size="256"/>
+          <Column id="soNm" type="STRING" size="256"/>
+          <Column id="taxRqnm" type="STRING" size="256"/>
+          <Column id="useNm" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="chanLclsNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chanCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_taxRqCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanLclsCdIns" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanMclsCdIns" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanMclsCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanLclsCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_ordAgent" propid="value" datasetid="ds_rtsd0113" columnid="ordAgent"/>
+      <BindItem id="item1" compid="ed_orgAgnm" propid="value" datasetid="ds_rtsd0113" columnid="orgAgnm"/>
+      <BindItem id="item2" compid="ed_orgAgtel" propid="value" datasetid="ds_rtsd0113" columnid="orgAgtel"/>
+      <BindItem id="item3" compid="cb_chanCd" propid="value" datasetid="ds_rtsd0113" columnid="chanCd"/>
+      <BindItem id="item4" compid="ed_num" propid="value" datasetid="ds_rtsd0113" columnid="num"/>
+      <BindItem id="item5" compid="cb_taxRqcd" propid="value" datasetid="ds_rtsd0113" columnid="taxRqcd"/>
+      <BindItem id="item6" compid="ed_salesGroupCd" propid="value" datasetid="ds_rtsd0113" columnid="salesGroup"/>
+      <BindItem id="item7" compid="ed_salesOfficeCd" propid="value" datasetid="ds_rtsd0113" columnid="salesOffice"/>
+      <BindItem id="item8" compid="ed_lifnr" propid="value" datasetid="ds_rtsd0113" columnid="lifnr"/>
+      <BindItem id="item9" compid="cb_useYn" propid="value" datasetid="ds_rtsd0113" columnid="useYn"/>
+      <BindItem id="item12" compid="cb_chanLclsCd" propid="value" datasetid="ds_rtsd0113" columnid="chanLclsCd"/>
+      <BindItem id="item13" compid="cb_chanMclsCd" propid="value" datasetid="ds_rtsd0113" columnid="chanMclsCd"/>
+      <BindItem id="item10" compid="ed_salesGroupCd00" propid="value" datasetid="ds_rtsd0113" columnid="rentalGroupNm"/>
+      <BindItem id="item11" compid="ed_salesGroupNm00" propid="value" datasetid="ds_rtsd0113" columnid="rentalOfficeNm"/>
+      <BindItem id="item14" compid="ed_salesGroupCd01" propid="value" datasetid="ds_rtsd0113" columnid="rentalGroup"/>
+      <BindItem id="item15" compid="ed_salesGroupNm01" propid="value" datasetid="ds_rtsd0113" columnid="rentalOffice"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명: RDSDOrdAgentRegister.xfdl                                                             *
+ * 설    명: 판매인 등록                                                                           *
+ * 작 성 자:                                                                                       *  
+ * 변경이력: ver1.1 2016-04-21 이영근, 대리점 채널 대분류,중분류 항목 추가                         *
+ ***************************************************************************************************/
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 	 	 = "RTSDOrdAgentRegister"; 
+this.cntOrdAgent = "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+	
+	if( strSvcId == "initRTSDOrdAgentRegister" ){
+		var useYnCnt = this.ds_useYn.getRowCount();
+		if( useYnCnt != 0 ){
+			this.div_search.cb_useYn.set_value("Y");
+		}
+		
+		// 2016-04-19 이영근, 채널 대분류, 중분류 추가
+		this.dsChanMclsCd.addColumn("lcd","string");
+		for(var i=0; i<this.dsChanMclsCd.rowcount; i++){
+			this.dsChanMclsCd.setColumn(i,"lcd",this.dsChanMclsCd.getColumn(i,"cd").substr(0,2));
+		}		
+		
+		this.dsChanLclsCdIns.copyData(this.dsChanLclsCd);
+		this.dsChanMclsCdIns.copyData(this.dsChanMclsCd);		
+		
+		var chanLclsCdCnt = this.dsChanLclsCd.getRowCount();
+		if(chanLclsCdCnt != 0){
+			var nRow = this.dsChanLclsCd.insertRow(0);
+			this.dsChanLclsCd.setColumn(0,"cd"," ");
+			this.dsChanLclsCd.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanLclsCd.set_value(" ");
+		}
+		
+		var chanMclsCdCnt = this.dsChanMclsCd.getRowCount();
+		if(chanMclsCdCnt != 0){
+			var nRow = this.dsChanMclsCd.insertRow(0);
+			this.dsChanMclsCd.setColumn(0,"cd"," ");
+			this.dsChanMclsCd.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanMclsCd.set_value(" ");
+			this.div_search.cb_chanMclsCd.enable = false;
+		}		
+	}
+	
+	if( strSvcId == "selectRTSDOrdAgentRegister" ){
+		var nRowCount = this.ds_rtsd0113.getRowCount();
+		if(nRowCount != 0){
+			this.ds_rtsd0113.set_updatecontrol(false);
+			for( var i = 0 ; i < nRowCount ; i++ ){
+				this.ds_rtsd0113.setColumn(i, "orgAgtel",FN_numberHyphenInReturn(nvl(this.ds_rtsd0113.getColumn(i,"orgAgtel"))));
+			}
+			this.ds_rtsd0113.set_updatecontrol(true);
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_rtsd0113.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_ordAgentCd.setFocus(true);
+		}
+		
+		// 2016-04-20 이영근, 그리드 내 채널 대분류/중분류 정보 표기
+		this.ds_rtsd0113.updatecontrol = false;
+		var tpLclsNm = "";
+		var tpLclsCd = "";
+		var tpMclsNm = "";
+		var tpMclsCd = "";
+		for(var i=0; i<nRowCount; i++)
+		{
+			tpLclsCd = this.ds_rtsd0113.getColumn(i, "chanLclsCd");
+			tpLclsNm = this.dsChanLclsCd.getColumn(this.dsChanLclsCd.findRow("cd",tpLclsCd),"cdNm");
+			this.ds_rtsd0113.setColumn(i,"chanLclsNm",tpLclsNm);
+			tpMclsCd = this.ds_rtsd0113.getColumn(i, "chanMclsCd");
+			tpMclsNm = this.dsChanMclsCd.getColumn(this.dsChanMclsCd.findRow("cd",tpMclsCd),"cdNm");
+			this.ds_rtsd0113.setColumn(i,"chanMclsNm",tpMclsNm);			
+		}
+		this.ds_rtsd0113.updatecontrol = true;			
+	}
+	
+	if( strSvcId == "saveRTSDOrdAgentRegister" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			this.div_search.ed_ordAgentCd.set_value(this.ed_ordAgent.value);
+			this.div_search.cb_useYn.set_value(this.cb_useYn.value);
+			this.fn_search();
+		}
+	}
+	
+	if( strSvcId == "checkOrdAgent" ){
+		if( this.cntOrdAgent != "0" ) {
+			alert('입력하신 판매인번호 \'' + this.ed_ordAgent.value + '\'는 존재하고 있습니다.'); 
+			this.ed_ordAgent.set_value('');
+			this.ed_ordAgent.setFocus(true);
+		}else{
+			this.ed_ordAgent.set_enable(false);
+			this.bt_ordAgent.set_enable(false);
+			this.ed_orgAgnm.setFocus(true);
+			alert('사용가능한 판매인번호 입니다.');
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDOrdAgentRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("S|E|C", this);
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTSDOrdAgentRegister";  
+	var sController   	= "rtms/sd/initRTSDOrdAgentRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	sOutDatasets += " ds_useYn2=mapDsUseYn2 ";
+	sOutDatasets += " ds_chanCd=mapDsChanCd ";
+	sOutDatasets += " ds_taxRqCd=mapDsTaxRqCd ";
+	sOutDatasets += " dsChanLclsCd=mapDsChanLclsCd ";
+	sOutDatasets += " dsChanMclsCd=mapDsChanMclsCd ";	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var ordAgentCd 	= nvl(this.div_search.ed_ordAgentCd.value);
+	var useYn  		= nvl(this.div_search.cb_useYn.value);
+	var chanLclsCd	= nvl(this.div_search.cb_chanLclsCd.value);
+	var chanMclsCd	= nvl(this.div_search.cb_chanMclsCd.value);	
+	var userId      = application.gds_userInfo.getColumn(0, "userId"); //사용자ID	
+
+	var sSvcID        	= "selectRTSDOrdAgentRegister";                    
+	var sController   	= "rtms/sd/selectRTSDOrdAgentRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0113=mapRtsd0113";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordAgentCd", ordAgentCd);
+	sArgs += Ex.util.setParam("useYn", useYn);
+	sArgs += Ex.util.setParam("chanLclsCd", chanLclsCd);
+	sArgs += Ex.util.setParam("chanMclsCd", chanMclsCd);
+	sArgs += Ex.util.setParam("userId", userId);	
+	this.ds_rtsd0113.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grid_rtsd0113);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var flag 	   = 0;
+	var insertFlag = false;
+	
+	var nCnt = this.ds_rtsd0113.getRowCount();
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType  = this.ds_rtsd0113.getRowType(i);
+		var ordAgent = nvl(this.ds_rtsd0113.getColumn(i, "ordAgent"));
+		var orgAgnm  = nvl(this.ds_rtsd0113.getColumn(i, "orgAgnm"));
+		var orgAgtel = nvl(this.ds_rtsd0113.getColumn(i, "orgAgtel"));
+		var orgAgtel = nvl(this.ds_rtsd0113.getColumn(i, "orgAgtel"));
+		
+		
+		var chanCd	 = nvl(this.ds_rtsd0113.getColumn(i, "chanCd"));
+		var msg 	 = " 값이 없습니다.";
+		
+		if( ordAgent == "" ){ alert("판매인번호"+msg);	this.ds_rtsd0113.set_rowposition(i); this.ed_ordAgent.setFocus(true); 	return false; }
+		if( orgAgnm == "" ){  alert("판매인명"+msg);   this.ds_rtsd0113.set_rowposition(i); this.ed_orgAgnm.setFocus(true); 	return false; }
+		if( orgAgtel == "" ){ alert("전화번호"+msg); 	this.ds_rtsd0113.set_rowposition(i); this.ed_orgAgtel.setFocus(true); 	return false; }
+		if( chanCd == "" ){   alert("채널"+msg); 		this.ds_rtsd0113.set_rowposition(i); this.cb_chanCd.setFocus(true); 	return false; }
+		if( FN_numberHyphenOut(nvl(this.ds_rtsd0113.getColumn(i,"orgAgtel"))).length < 8 ){
+			alert("전화번호를 확인하세요.");
+			this.ds_rtsd0113.set_rowposition(i);
+			this.ed_orgAgtel.setFocus(true);
+			return false;
+		}
+		
+		if( (rowType == 2) || (rowType == 4) ){
+			flag++;
+		}
+		if( rowType == 2 ){
+			insertFlag = true;
+		}
+		
+	}
+	
+	if( flag == 1 ){
+		if( insertFlag && (this.cntOrdAgent == "") ){
+			alert("판매인정보 중복확인을 하세요.");
+			this.bt_ordAgent.setFocus(true);
+			return false;
+		}else{
+			var sSvcID        	= "saveRTSDOrdAgentRegister";                    
+			var sController   	= "rtms/sd/saveRTSDOrdAgentRegister.do";
+			var sInDatasets   	= " input=ds_rtsd0113:U ";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			for( var i = 0 ; i < nCnt ; i++){
+				if( (this.ds_rtsd0113.getRowType(i) == 2) || (this.ds_rtsd0113.getRowType(i) == 4) ){
+					this.ds_rtsd0113.setColumn(i, "orgAgtel",FN_numberHyphenOut(nvl(this.ds_rtsd0113.getColumn(i,"orgAgtel"))));
+				}
+			}
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}else if( flag > 1){
+		alert("수정되거나 추가된 정보가 2건 이상이므로 저장할 수 없습니다.");
+		return false;
+	}else{
+		alert("변경된 정보가 없습니다.");
+		return false;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_ordAgentCd_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	if(e.keycode == 13){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_ordAgentCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	this.div_search.ed_ordAgentNm.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_ordAgent_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"판매인 조회","comm::RTCOMMOrdAgentList_pop.xfdl",args, "modaless=false");
+}
+this.FN_sellers = function(res){
+	this.div_search.ed_ordAgentCd.set_value(res[0]);
+	this.div_search.ed_ordAgentNm.set_value(res[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtsd0113_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var nRow = this.ds_rtsd0113.rowposition;
+	var rowType = this.ds_rtsd0113.getRowType(nRow);
+	
+	this.cb_chanLclsCd.set_enable(true);
+	this.cb_chanMclsCd.set_enable(true);	
+	
+	if( rowType == 2 ){
+		this.ed_ordAgent.set_enable(true);
+		this.bt_ordAgent.set_enable(true);
+		//this.bt_salesGroup.set_enable(true);
+		//this.bt_salesOffice.set_enable(true);
+		
+	}else{
+		this.ed_ordAgent.set_enable(false);
+		this.bt_ordAgent.set_enable(false);
+		//this.bt_salesGroup.set_enable(false);
+		//this.bt_salesOffice.set_enable(false);
+	
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var nRow = this.ds_rtsd0113.rowposition;
+	var rowType = this.ds_rtsd0113.getRowType(nRow);
+	if( rowType == 2 ){
+		this.ds_rtsd0113.deleteRow(nRow);
+	}else{
+		alert("조회 정보나 수정된 정보는 취소할 수 없습니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var flag = false;
+	var nCnt = this.ds_rtsd0113.getRowCount();
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType = this.ds_rtsd0113.getRowType(i);
+		if( (rowType == 2) || (rowType == 4) ){
+			flag = true;
+			break;
+		}
+	}
+	
+	if( flag ){
+		alert("변경된 정보나 추가된 정보가 있으므로 추가할 수 없습니다.");
+	}else{
+		var nRow = this.ds_rtsd0113.addRow();
+		this.ds_rtsd0113.setColumn( nRow, "useYn", "Y");
+		this.ds_rtsd0113.setColumn( nRow, "taxRqcd", "R");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_ordAgent_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if(nvl(this.ed_ordAgent.value) == "") {
+		alert("판매인번호를  입력해주십시오.");
+		this.ed_ordAgent.setFocus(true);
+		return;
+	}else{
+		var sSvcID        	= "checkOrdAgent";                    
+		var sController   	= "rtms/sd/checkOrdAgent.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sArgs += Ex.util.setParam("ordAgent",this.ed_ordAgent.value);
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ed_orgAgtel_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_salesGroup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"지사 조회","comm::RTCOMMVkgrp_pop_old.xfdl",args,"modaless=false");
+}
+this.return_salesGroup = function(val) {
+	var nm = val[0];
+	var cd = val[1];
+	this.ed_salesGroupCd.set_value(cd);
+	this.ed_salesGroupNm.set_value(nm);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_salesOffice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"지점 조회","comm::RTCOMMVkbur_pop_old.xfdl",args,"modaless=false");
+}
+this.return_salesOffice = function(val) {
+	var nm = val[0];
+	var cd = val[1];
+	this.ed_salesOfficeCd.set_value(cd);
+	this.ed_salesOfficeNm.set_value(nm);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+// 2016-04-19 이영근, 채널 중분류 값 변경시 이벤트
+this.div_search_cb_chanLclsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	if(this.div_search.cb_chanLclsCd.value == " "){
+		this.div_search.cb_chanMclsCd.enable = false;
+	}else{
+		this.div_search.cb_chanMclsCd.enable = true;
+	}
+	this.dsChanMclsCd.filter("lcd=='"+this.div_search.cb_chanLclsCd.value+"' || lcd==null");
+	this.div_search.cb_chanMclsCd.set_value(" ");
+}
+
+this.cb_chanLclsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.dsChanMclsCdIns.filter("lcd=='"+this.cb_chanLclsCd.value+"'");
+}
+this.bt_salesGroup00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_argGrpNo:""};
+	Ex.core.popup(this,"렌탈지역등록","sd::RTSDRentalAreaRegisterPopup2_new.xfdl",args, "modaless=false");
+}
+
+//----------------------------------------------------------------------------------
+// 팝업반환값(렌탈지역등록)
+//----------------------------------------------------------------------------------
+	this._setReturnRentalArea = function(val){
+		var sDsNm = val[0];
+		var nRowCnt = sDsNm.rowcount;
+		
+		var rentalGroup=sDsNm.getColumn(0,"rentalGroup");
+		var rentalOffice=sDsNm.getColumn(0,"rentalOffice");
+		var rentalGroupNm=sDsNm.getColumn(0,"rentalGroupNm");
+		var rentalOfficeNm =sDsNm.getColumn(0,"rentalOfficeNm");
+
+		this.ed_salesGroupCd01.set_value(rentalGroup);		
+		this.ed_salesGroupNm01.set_value(rentalOffice);
+		this.ed_salesGroupCd00.set_value(rentalGroupNm);
+		this.ed_salesGroupNm00.set_value(rentalOfficeNm);		
+	}
+]]></Script>
+  </Form>
+</FDL>

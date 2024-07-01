@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccResultDAO">
+	<!--결과파일 반영조회  -->
+	<resultMap id="accResultListMap" class="java.util.HashMap">	
+		<result property="acrqDay"  	column="ACRQ_DAY" />		<!--계좌신청일            -->
+		<result property="acrqTp"   	column="ACRQ_TP" />			<!--신청구분            	-->
+		<result property="acrqTpNm"  	column="ACRQ_TP_NM" />		<!--신청구분명            	-->
+		<result property="bankCd"  		column="BANK_CD" />	      	<!--운행코드            	-->
+		<result property="bankNm"  		column="BANK_NM" />	      	<!--은행명  		-->
+		<result property="acrqSt"  		column="ACRQ_ST" />	      	<!--신청결과            	-->
+		<result property="acrqStNm"  	column="ACRQ_ST_NM" />	    <!--신청결과명 		-->		
+		<result property="rowCnt"  		column="ROW_CNT" />	      	<!--건수		-->
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="accResultListParam"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="accResultListMap" />   
+		<parameter property="acrqDay"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acrqFg"   		jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="accResult.listaccResult" parameterMap="accResultListParam">
+		{call
+		Pkg_Rtre0060.p_sRtre0060AccResultList(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+			
+	<!--결과파일 반영  -->
+	<parameterMap class="java.util.Map" id="accFileMakeParam">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--계좌신청일     -->
+		<parameter property="acrqFg"		jdbcType="VARCHAR" mode="IN" />      <!--계좌신청 발생구분 -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="fileData"		jdbcType="CLOB"    mode="IN" />      <!--파일데이터      -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디   -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="accResult.saveFileMakeData" parameterMap="accFileMakeParam">
+		{call  Pkg_Rtre0099.p_InsertRtre0099AcrqFileUpload(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<!-- 계촤신청 결과반영(회사접수분)-->
+	<parameterMap class="java.util.Map" id="accReqResultApplyAParam">
+		<parameter property="rqstDay"		jdbcType="VARCHAR" mode="IN" />      <!--계좌신청일자              -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디          -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="accResult.accReqResultApplyA" parameterMap="accReqResultApplyAParam">
+		{call Pkg_Rtre0099.p_UpdateRtre0099FileUpResultA(?, ?,	?,	?,	?)}
+	</procedure>		
+	
+	<!-- 계촤신청 결과반영(은행접수분)-->
+	<parameterMap class="java.util.Map" id="accReqResultApplyBParam">
+		<parameter property="rqstDay"		jdbcType="VARCHAR" mode="IN" />      <!--계좌신청일자              -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디          -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="accResult.accReqResultApplyB" parameterMap="accReqResultApplyBParam">
+		{call  Pkg_Rtre0099.p_UpdateRtre0099FileUpResultB(?, ?, ?,	?,	?)}
+	</procedure>	
+		
+	<!-- 계좌신청 결과파일 생성(은행접수분) -->		
+	<resultMap id="makeFileApplyBResultMap" class="java.util.HashMap">
+		<result property="rqstDay"  column="RQST_DAY" />
+		<result property="fileNm"  	column="FILE_NM" />
+		<result property="rowSeq"  	column="ROW_SEQ" />
+		<result property="fileTp"  	column="FILE_TP" />
+		<result property="fileSeq"  column="FILE_SEQ" />
+		<result property="rowData"  column="ROW_DATA" />
+		<result property="delYn"  	column="DEL_YN" />
+		<result property="regId"  	column="REG_ID" />
+		<result property="regDt"  	column="REG_DT" />
+		<result property="chgId"  	column="CHG_ID" />
+		<result property="chgDt"  	column="CHG_DT" />
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="makeFileApplyBParam">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="makeFileApplyBResultMap" />	
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--계좌신청일     -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디   -->
+		<parameter property="crlfYn" 		jdbcType="VARCHAR" mode="OUT" />	 <!-- CRLF여부   -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="accResult.makeFileApplyB" parameterMap="makeFileApplyBParam">
+		{call  Pkg_Rtre0098.p_InsertRtre0098EB12Batch(?, ?, ?,	?,	?,	?,	?, ?)}
+	</procedure>		
+</sqlMap>
+
+

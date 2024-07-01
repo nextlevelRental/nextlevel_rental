@@ -1,0 +1,1345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDRerentalContact" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="재렌탈계약 상담" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+        <Div id="div_detail" taborder="11" left="0" top="339" width="1133" height="153" scrollbars="none" style="border:0 solid #808080ff ;">
+          <Layouts>
+            <Layout>
+              <Edit id="ed_bldMngNo" taborder="113" enable="false" left="432" top="35" width="78" height="21"/>
+              <Static id="Static34" taborder="56" cssclass="sta_WF_detailLabel2" left="0" top="30" width="1122" height="31"/>
+              <Static id="st_rentalAmt" taborder="57" text="잔여렌탈료" cssclass="sta_WF_detailLabel" left="0" top="30" width="130" height="31"/>
+              <Edit id="ed_rentalAmt" taborder="58" enable="false" left="134" top="35" width="142" height="21"/>
+              <Edit id="ed_posCd" taborder="60" enable="false" left="414" top="35" width="71" height="21"/>
+              <Static id="Static06" taborder="61" cssclass="sta_WF_detailLabel2" left="0" top="60" width="561" height="31"/>
+              <Static id="st_carNo" taborder="62" text="차량번호" cssclass="sta_WF_detailLabelP" left="0" top="60" width="130" height="31"/>
+              <Edit id="ed_carNo" taborder="63" enable="false" left="134" top="65" width="142" height="21"/>
+              <Static id="Static26" taborder="68" cssclass="sta_WF_detailLabel2" left="0" top="0" width="1122" height="31"/>
+              <Static id="st_custNm" taborder="69" text="고객명" cssclass="sta_WF_detailLabel" left="0" top="0" width="130" height="31"/>
+              <Edit id="ed_custNm" taborder="70" enable="false" left="134" top="5" width="142" height="21"/>
+              <Static id="st_osDay" taborder="71" text="계약만료일" cssclass="sta_WF_detailLabelP" left="560" top="0" width="130" height="31"/>
+              <Static id="Static10" taborder="72" cssclass="sta_WF_detailLabel2" left="0" top="90" width="1122" height="31"/>
+              <Static id="st_reqDesc" taborder="73" text="고객요청사항" cssclass="sta_WF_detailLabelP" left="0" top="90" width="130" height="31"/>
+              <Edit id="ed_reqDesc" taborder="74" enable="true" left="134" top="95" width="142" height="21"/>
+              <Static id="Static11" taborder="75" cssclass="sta_WF_detailLabel2" left="560" top="60" width="562" height="31"/>
+              <Static id="st_ordDay" taborder="76" text="예약접수일" cssclass="sta_WF_detailLabelP" left="560" top="60" width="130" height="31"/>
+              <Calendar id="ca_osDay" taborder="81" dateformat="yyyy-MM-dd" onchanged="div_detail_ca_dlvrDay_onchanged" left="694" top="5" width="143" height="21"/>
+              <Edit id="ed_addr1" taborder="82" enable="false" left="485" top="35" width="371" height="21"/>
+              <Static id="st_addr" taborder="84" text="주소" cssclass="sta_WF_detailLabelP" left="280" top="30" width="130" height="31"/>
+              <Static id="st_mobNo" taborder="86" text="연락처" cssclass="sta_WF_detailLabel" left="280" top="0" width="130" height="31"/>
+              <Edit id="ed_mobNo" taborder="87" enable="true" left="414" top="5" width="142" height="21" readonly="true"/>
+              <Static id="st_contactCnt" taborder="90" text="컨택횟수" cssclass="sta_WF_detailLabel" left="840" top="0" width="130" height="31"/>
+              <Edit id="ed_contactCnt" taborder="91" onkeyup="div_detail_ed_dlvTel_onkeyup" enable="false" left="974" top="5" width="143" height="21"/>
+              <Static id="st_stat" taborder="92" text="상태" cssclass="sta_WF_detailLabelP" left="280" top="60" width="130" height="31"/>
+              <Static id="st_addMobNo" taborder="94" text="추가연락처" cssclass="sta_WF_detailLabelP" left="840" top="60" width="130" height="31"/>
+              <Static id="st_ordNoList" taborder="95" text="보유계약번호" cssclass="sta_WF_detailLabelP" left="280" top="90" width="130" height="31"/>
+              <Edit id="ed_addMobNo" taborder="98" enable="true" left="974" top="65" width="143" height="21"/>
+              <Combo id="cb_ordNoList" taborder="102" left="36.54%" top="96" right="50.93%" height="20" innerdataset="@dsOrdList" codecolumn="ordNo" datacolumn="ordNo" onitemchanged="div_detail_cb_ordNoList_onitemchanged"/>
+              <Edit id="ed_ordDetl" taborder="106" enable="false" left="560" top="95" width="557" height="21" displaynulltext="차종/차량번호/계약일자/수량/프리미엄서비스"/>
+              <Calendar id="ca_ordDay" taborder="107" dateformat="yyyy-MM-dd" onchanged="div_detail_ca_dlvrDay_onchanged" left="694" top="65" width="143" height="21"/>
+              <Combo id="cb_stat" taborder="108" left="36.54%" top="66" right="57.37%" height="20" innerdataset="@dsS103_1" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_detail_cb_stat_onitemchanged"/>
+              <Combo id="cb_statDetl" taborder="110" left="42.37%" top="66" right="50.93%" height="20" innerdataset="@dsS104_1" codecolumn="cd" datacolumn="cdNm"/>
+              <Button id="bt_addr" taborder="111" onclick="div_detail_bt_addr_onclick" cssclass="btn_WF_edtSch" enable="true" left="466" top="34" width="20" height="21" domainId="nexa.save"/>
+              <Edit id="ed_addr2" taborder="112" enable="false" left="859" top="35" width="259" height="21"/>
+              <Static id="Static00" taborder="114" cssclass="sta_WF_detailLabel2" left="0" top="120" width="1122" height="31"/>
+              <Static id="st_reqDesc01" taborder="117" text="재컨택일자" cssclass="sta_WF_detailLabelP" left="0" top="120" width="130" height="31"/>
+              <Calendar id="ca_recallDay" taborder="118" dateformat="yyyy-MM-dd" onchanged="div_detail_ca_dlvrDay_onchanged" left="134" top="125" width="143" height="21"/>
+              <Static id="st_reqDesc02" taborder="119" text="진계약번호" cssclass="sta_WF_detailLabelP" left="280" top="120" width="130" height="31"/>
+              <Edit id="ed_realOrdNo" taborder="120" left="560" top="125" width="142" height="21" imemode="alpha" inputfilter="dot,comma,sign,symbol,space" inputtype="number,english"/>
+              <Combo id="cb_realOrdList" taborder="121" innerdataset="@dsRealOrdList" codecolumn="num" datacolumn="ordNo" left="36.54%" top="125" right="50.93%" height="20"/>
+              <Button id="btn_realOrdAdd" taborder="122" text="추가" left="62.22%" top="125" right="33.54%" height="20" onclick="div_detail_btn_realOrdAdd_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_new" taborder="12" text="상담전환" onclick="btn_new_onclick" cssclass="btn_WF_module" left="999" top="315" width="72" height="22" domainId="nexa.save" visible="true"/>
+        <Button id="btn_del" taborder="13" text="삭제" onclick="btn_del_onclick" cssclass="btn_WF_module" left="1077" top="315" width="45" height="22" domainId="nexa.save" visible="false"/>
+        <Button id="btn_contact" taborder="15" text="상담" cssclass="btn_WF_module" visible="true" left="1077" top="315" width="45" height="22" domainId="nexa.save" onclick="btn_contact_onclick"/>
+        <Button id="btn_addr_save" taborder="16" text="저장" left="1075" top="374" width="45" height="22" domainId="nexa.save" onclick="btn_addr_save_onclick" visible="false"/>
+        <Edit id="ed_newOrdNo" taborder="18" readonly="false" left="850" top="315" width="142" height="21" displaynulltext="전환할 주문번호를 입력해주세요."/>
+        <Tab id="tab_cond" taborder="19" left="0%" top="0" right="2.27%" height="147" canchange="tab_cond_canchange" tabindex="0" scrollbars="autoboth">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="조건1" url="sd::RTSDReRentalContact_tab01.xfdl"/>
+            <Tabpage id="tabpage2" text="조건2" url="sd::RTSDReRentalContact_tab02.xfdl"/>
+            <Tabpage id="tabpage3" text="조건3" url="sd::RTSDReRentalContact_tab03.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Grid id="grid_rerental" taborder="5" useinputpanel="false" top="145" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1122" height="167" oncellclick="grid_rerental_oncellclick" onvscroll="grid_rerental_onvscroll">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="82"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="0"/>
+                <Column size="93"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="60"/>
+                <Column size="90"/>
+                <Column size="40"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="101"/>
+                <Column size="84"/>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="가계약번호"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="휴대폰"/>
+                <Cell col="4" text="계약일자"/>
+                <Cell col="5" text="계약기간"/>
+                <Cell col="6" text="장착일자"/>
+                <Cell col="7" text="연락처"/>
+                <Cell col="8" text="상태"/>
+                <Cell col="9" text="세부상태"/>
+                <Cell col="10" text="컨택"/>
+                <Cell col="11" text="재컨택일자"/>
+                <Cell col="12" text="재컨택시간"/>
+                <Cell col="13" text="상품명"/>
+                <Cell col="14" text="수량"/>
+                <Cell col="15" text="프리미엄서비스"/>
+                <Cell col="16" text="중도완납여부"/>
+                <Cell col="17" text="상담일자"/>
+                <Cell col="18" text="상담사"/>
+                <Cell col="19" text="걱정제로잔여횟수"/>
+                <Cell col="20" text="우편번호"/>
+                <Cell col="21" text="주소"/>
+                <Cell col="22" text="상세주소"/>
+                <Cell col="23" text="동의하지않음"/>
+                <Cell col="24" text="SMS동의"/>
+                <Cell col="25" text="전화동의"/>
+                <Cell col="26" text="이메일동의"/>
+                <Cell col="27" text="우편동의"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:provsnNo"/>
+                <Cell col="1" displaytype="normal" edittype="readonly" text="bind:ordNo" editdisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="2" edittype="none" text="bind:custNm"/>
+                <Cell col="3" text="bind:mobNo"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:ordDay" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:period" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="date" edittype="none" text="bind:procDay" editdisplay="display" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:mobNo" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="combo" text="bind:provsnSt" combodataset="dsS103" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="9" displaytype="combo" text="bind:provsnStDtl" combodataset="dsS104" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="10" text="bind:callSeq"/>
+                <Cell col="11" displaytype="date" text="bind:recallDay" mask="####-##-##" editdisplay="display" calendardisplaynulltype="none"/>
+                <Cell col="12" displaytype="normal" text="bind:recallTm" mask="##:##" maskchar="_" editdisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="13" displaytype="normal" edittype="none" text="bind:patternNm" calendardisplaynulltype="none"/>
+                <Cell col="14" displaytype="normal" edittype="none" text="bind:cntCd" calendardisplaynulltype="none"/>
+                <Cell col="15" displaytype="combo" edittype="none" text="bind:psCd" combodataset="dsS043" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="16" edittype="none" text="bind:mfpYn"/>
+                <Cell col="17" displaytype="date" edittype="none" text="bind:callDay" mask="####-##-##"/>
+                <Cell col="18" text="bind:callId"/>
+                <Cell col="19" text="bind:b00007"/>
+                <Cell col="20" text="bind:posCd"/>
+                <Cell col="21" text="bind:addr1"/>
+                <Cell col="22" text="bind:addr2"/>
+                <Cell col="23" text="bind:cagYn"/>
+                <Cell col="24" text="bind:cagYn1"/>
+                <Cell col="25" text="bind:cagYn2"/>
+                <Cell col="26" text="bind:cagYn3"/>
+                <Cell col="27" text="bind:cagYn4"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" displaytype="number" expr="dataset.getCountNF(0)"/>
+                <Cell col="3"/>
+                <Cell col="4" text="건"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+                <Cell col="24"/>
+                <Cell col="25"/>
+                <Cell col="26"/>
+                <Cell col="27"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_rerentalForExcel" taborder="20" binddataset="dsListForExcel" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." onvscroll="grid_rerental_onvscroll" oncellclick="grid_rerental_oncellclick" oncelldblclick="grid_rerental_oncelldblclick" left="6" top="199" width="1122" height="167" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="82"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="0"/>
+                <Column size="93"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="60"/>
+                <Column size="90"/>
+                <Column size="40"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="101"/>
+                <Column size="84"/>
+                <Column size="100"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="가계약번호"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="휴대폰"/>
+                <Cell col="4" text="계약일자"/>
+                <Cell col="5" text="계약기간"/>
+                <Cell col="6" text="장착일자"/>
+                <Cell col="7" text="연락처"/>
+                <Cell col="8" text="상태"/>
+                <Cell col="9" text="세부상태"/>
+                <Cell col="10" text="컨택"/>
+                <Cell col="11" text="재컨택일자"/>
+                <Cell col="12" text="재컨택시간"/>
+                <Cell col="13" text="상품명"/>
+                <Cell col="14" text="수량"/>
+                <Cell col="15" text="프리미엄서비스"/>
+                <Cell col="16" text="중도완납여부"/>
+                <Cell col="17" text="상담일자"/>
+                <Cell col="18" text="상담사"/>
+                <Cell col="19" text="걱정제로잔여횟수"/>
+                <Cell col="20" text="우편번호"/>
+                <Cell col="21" text="주소"/>
+                <Cell col="22" text="상세주소"/>
+                <Cell col="23" text="상담내용"/>
+                <Cell col="24" text="동의하지않음"/>
+                <Cell col="25" text="SMS동의"/>
+                <Cell col="26" text="전화동의"/>
+                <Cell col="27" text="이메일동의"/>
+                <Cell col="28" text="우편동의"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:provsnNo"/>
+                <Cell col="1" displaytype="normal" edittype="readonly" text="bind:ordNo" editdisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="2" edittype="none" text="bind:custNm"/>
+                <Cell col="3" text="bind:mobNo"/>
+                <Cell col="4" displaytype="date" edittype="none" text="bind:ordDay" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="normal" edittype="none" text="bind:period" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="date" edittype="none" text="bind:procDay" editdisplay="display" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:mobNo" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="combo" text="bind:provsnSt" combodataset="dsS103" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="9" displaytype="combo" text="bind:provsnStDtl" combodataset="dsS104" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="10" text="bind:callSeq"/>
+                <Cell col="11" displaytype="date" text="bind:recallDay" mask="####-##-##" editdisplay="display" calendardisplaynulltype="none"/>
+                <Cell col="12" displaytype="normal" text="bind:recallTm" mask="##:##" maskchar="_" editdisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="13" displaytype="normal" edittype="none" text="bind:patternNm" calendardisplaynulltype="none"/>
+                <Cell col="14" displaytype="normal" edittype="none" text="bind:cntCd" calendardisplaynulltype="none"/>
+                <Cell col="15" displaytype="combo" edittype="none" text="bind:psCd" combodataset="dsS043" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="16" edittype="none" text="bind:mfpYn"/>
+                <Cell col="17" displaytype="date" edittype="none" text="bind:callDay" mask="####-##-##"/>
+                <Cell col="18" text="bind:callId"/>
+                <Cell col="19" text="bind:b00007"/>
+                <Cell col="20" text="bind:posCd"/>
+                <Cell col="21" text="bind:addr1"/>
+                <Cell col="22" text="bind:addr2"/>
+                <Cell col="23" text="bind:callDtl"/>
+                <Cell col="24" text="bind:cagYn"/>
+                <Cell col="25" text="bind:cagYn1"/>
+                <Cell col="26" text="bind:cagYn2"/>
+                <Cell col="27" text="bind:cagYn3"/>
+                <Cell col="28" text="bind:cagYn4"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" displaytype="number" expr="dataset.getCountNF(0)"/>
+                <Cell col="3"/>
+                <Cell col="4" text="건"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+                <Cell col="24"/>
+                <Cell col="25"/>
+                <Cell col="26"/>
+                <Cell col="27"/>
+                <Cell col="28"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsS103" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsS103_onrowposchanged">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS104" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsS104_onrowposchanged">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsOrdList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="cdText" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS030" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_provsnList">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="patternNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="period" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="realOrdNo" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="osDayF" type="STRING" size="256"/>
+          <Column id="osDayT" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="callSeq" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="fOrdNo" type="STRING" size="256"/>
+          <Column id="orgAgent" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS103_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS104_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListForExcel" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="cnt" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
+          <Column id="osDayT" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="stat" type="STRING" size="256"/>
+          <Column id="statDetl" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="contactDesc" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="sumArreAmt" type="STRING" size="256"/>
+          <Column id="prvOrdNo" type="STRING" size="256"/>
+          <Column id="custReq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="callSeq" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="nagYn" type="STRING" size="256"/>
+          <Column id="cagYn" type="STRING" size="256"/>
+          <Column id="cagYn1" type="STRING" size="256"/>
+          <Column id="cagYn2" type="STRING" size="256"/>
+          <Column id="cagYn3" type="STRING" size="256"/>
+          <Column id="cagYn4" type="STRING" size="256"/>
+          <Column id="cthYn1" type="STRING" size="256"/>
+          <Column id="cthYn2" type="STRING" size="256"/>
+          <Column id="cthYn3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="patternNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="period" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="realOrdNo" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="osDayF" type="STRING" size="256"/>
+          <Column id="osDayT" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="callSeq" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="fOrdNo" type="STRING" size="256"/>
+          <Column id="orgAgent" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
+          <Column id="b00007" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+          <Column id="nagYn" type="STRING" size="256"/>
+          <Column id="cagYn" type="STRING" size="256"/>
+          <Column id="cagYn1" type="STRING" size="256"/>
+          <Column id="cagYn2" type="STRING" size="256"/>
+          <Column id="cagYn3" type="STRING" size="256"/>
+          <Column id="cagYn4" type="STRING" size="256"/>
+          <Column id="cthYn1" type="STRING" size="256"/>
+          <Column id="cthYn2" type="STRING" size="256"/>
+          <Column id="cthYn3" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS043" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList00" onload="dsList00_onload">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="patternNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="period" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="realOrdNo" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="osDayF" type="STRING" size="256"/>
+          <Column id="osDayT" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="callSeq" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="fOrdNo" type="STRING" size="256"/>
+          <Column id="orgAgent" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
+          <Column id="b00007" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRealOrdList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="dsS103_onrowposchanged">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="div_detail.ed_custNm" propid="value" datasetid="dsList" columnid="custNm"/>
+      <BindItem id="item1" compid="div_detail.ed_mobNo" propid="value" datasetid="dsList" columnid="mobNo"/>
+      <BindItem id="item2" compid="div_detail.ca_osDay" propid="value" datasetid="dsList" columnid="osDayT"/>
+      <BindItem id="item3" compid="div_detail.ed_addMobNo" propid="value" datasetid="dsList" columnid="contactGet"/>
+      <BindItem id="item4" compid="div_detail.ed_reqDesc" propid="value" datasetid="dsList" columnid="custReq"/>
+      <BindItem id="item6" compid="div_detail.ca_ordDay" propid="value" datasetid="dsList" columnid="planDay"/>
+      <BindItem id="item7" compid="div_detail.ed_rentalAmt" propid="value" datasetid="dsList" columnid="sumArreAmt"/>
+      <BindItem id="item8" compid="div_detail.ed_posCd" propid="value" datasetid="dsList" columnid="posCd"/>
+      <BindItem id="item9" compid="div_detail.ed_addr1" propid="value" datasetid="dsList" columnid="addr1"/>
+      <BindItem id="item10" compid="div_detail.cb_stat" propid="value" datasetid="dsList" columnid="provsnSt"/>
+      <BindItem id="item11" compid="div_detail.cb_statDetl" propid="value" datasetid="dsList" columnid="provsnStDtl"/>
+      <BindItem id="item12" compid="div_detail.ed_carNo" propid="value" datasetid="dsList" columnid="carNo"/>
+      <BindItem id="item13" compid="div_detail.cb_ordNoList" propid="value" datasetid="dsList" columnid="ordNo"/>
+      <BindItem id="item5" compid="div_detail.ed_contactCnt" propid="value" datasetid="dsList" columnid="callSeq"/>
+      <BindItem id="item14" compid="div_detail.ed_addr2" propid="value" datasetid="dsList" columnid="addr2"/>
+      <BindItem id="item15" compid="div_detail.ed_bldMngNo" propid="value" datasetid="dsList" columnid="bldMngNo"/>
+      <BindItem id="item17" compid="div_detail.ca_recallDay" propid="value" datasetid="dsList" columnid="recallDay"/>
+      <BindItem id="item16" compid="div_detail.cb_realOrdList" propid="value" datasetid="dsList" columnid="realOrdNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+this.toDay  = "";
+this.firstDate = "";
+this.lastDate = "";
+this.fUserGrp  = "";
+this.fUserId = "";
+this.seller = "666666";
+
+// Server호출 관련 정보
+var unit_sel_rownum=500; // 한번 Server호출시 가져올 row갯수
+var start_sel_rowno=1;   // Server호출시 시작할 row no
+var start_page_no=1;     // 현재 조회된 페이지 번호
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_initYmd();
+	this.fn_init();
+	this.parent.setButton("E|C|S", this);
+	
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}
+
+/**
+ * 서버기준 오늘 날자 조회 후 세팅
+ */
+this.fn_initYmd = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//java comm에서 현재 날짜 가져오기
+// this.get_date = function() 
+// {
+// 	var sSvcID        	= "getDate";                    
+// 	var sController   	= "/rtms/sd/getDate.do";
+// 	var sInDatasets   	= "";
+// 	var sOutDatasets  	= "";
+// 	var sArgs 			= "";	
+// 	var fn_callBack		= "fn_callBack";
+// 	
+// 	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+// }
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	start_sel_rowno = 1;
+	start_page_no = 1;
+	
+	this.dsList.clearData();	
+	
+	this.getData(this.grid_rerental.vscrollbar.max, "tracklast");
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	if (strSvcId == "getToday") {}
+	if (strSvcId == "searchList") 
+	{
+		var cnt = this.dsList00.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		} else {
+			
+		    this.fn_ordList();
+		}
+	}
+	if(strSvcId == "selectRTSD0108"){
+		this.fn_setOrdInfo();
+	}
+	if(strSvcId == "selectRTSDReRental"){
+	    this.dsS103_1.copyData(this.dsS103);
+	    this.dsS104_1.copyData(this.dsS104);
+	    this.dsS103_1.set_keystring("S:+cd");
+	    
+		this.tab_cond.tabpage1.dsS103.copyData(this.dsS103);
+		this.tab_cond.tabpage1.dsS104.copyData(this.dsS104);
+		this.tab_cond.tabpage1.dsS103.set_keystring("S:+cd");
+		
+		this.dsS030.insertRow(0);
+		this.dsS030.setColumn(0, "cd", "");
+		this.dsS030.setColumn(0, "cdNm", "전체");
+		
+		this.dsS103.insertRow(0);
+		this.dsS103.setColumn(0, "cd", "");
+		this.dsS103.setColumn(0, "cdNm", "전체");
+		
+		this.dsS104.insertRow(0);
+		this.dsS104.setColumn(0, "cd", "");
+		this.dsS104.setColumn(0, "cdNm", "전체");
+		
+		this.dsS043.insertRow(0);
+		this.dsS043.setColumn(0, "cd", "");
+		this.dsS043.setColumn(0, "cdNm", "전체");
+	}	
+	if (strSvcId == "createRtsd0123"){}
+	if (strSvcId == "searchListForExcel"){Ex.core.exportExcel(this, this.grid_rerentalForExcel);}
+}
+
+this.fn_excel= function() {
+	this.fn_searchExcel();
+	//Ex.core.exportExcel(this, this.grid_rerental);
+}
+
+/**
+ * 저장 버튼의 클릭 이벤트 처리
+ */
+this.fn_save = function() {	
+
+	var provsnNo = this.dsList.getColumn(this.dsList.rowposition, "provsnNo");
+	
+	//sudo - RTSD0121 UPDATE
+	this.ds_provsnList.clearData();
+	this.ds_provsnList.addRow();
+	
+	this.ds_provsnList.set_updatecontrol(false);
+	this.ds_provsnList.setRowType(0, Dataset.ROWTYPE_UPDATE);
+	this.ds_provsnList.set_updatecontrol(true);
+	
+	this.ds_provsnList.setColumn(0, "provsnNo", nvl(provsnNo));
+	this.ds_provsnList.setColumn(0, "custNm", this.div_detail.ed_custNm.text);
+	this.ds_provsnList.setColumn(0, "mobNo", this.div_detail.ed_mobNo.text);
+	this.ds_provsnList.setColumn(0, "posCd", this.div_detail.ed_posCd.text);
+	this.ds_provsnList.setColumn(0, "addr1", this.div_detail.ed_addr1.text);
+	this.ds_provsnList.setColumn(0, "addr2", this.div_detail.ed_addr1.text);
+	this.ds_provsnList.setColumn(0, "carNo", this.div_detail.ed_carNo.text);
+	this.ds_provsnList.setColumn(0, "cntCd", this.dsList.getColumn(this.dsList.rowposition, "cntCd"));
+	this.ds_provsnList.setColumn(0, "period", this.dsList.getColumn(this.dsList.rowposition, "periodCd"));
+	this.ds_provsnList.setColumn(0, "provsnSt", this.div_detail.cb_stat.value); //접수
+	this.ds_provsnList.setColumn(0, "provsnStDtl", this.div_detail.cb_statDetl.value); //초기배정
+	this.ds_provsnList.setColumn(0, "custReq", nvl(this.div_detail.ed_reqDesc.text));
+	this.ds_provsnList.setColumn(0, "ordNo", this.dsList.getColumn(this.dsList.rowposition, "ordNo"));
+	this.ds_provsnList.setColumn(0, "planDay", nvl(this.div_detail.ca_ordDay.value));
+	this.ds_provsnList.setColumn(0, "contactGet", nvl(this.div_detail.ed_addMobNo.text));
+	this.ds_provsnList.setColumn(0, "regiCd", this.fUserId); //판매인코드
+	this.ds_provsnList.setColumn(0, "callSeq", this.dsList.getColumn(this.dsList.rowposition, "callSeq"));
+	this.ds_provsnList.setColumn(0, "recallDay", this.dsList.getColumn(this.dsList.rowposition, "recallDay"));
+	this.ds_provsnList.setColumn(0, "recallTm", this.dsList.getColumn(this.dsList.rowposition, "recallTm"));
+	
+	var obj = {items:[]};
+	for(var i=0; i<this.dsRealOrdList.rowcount; i++){
+		var item = {
+			num : i + 1,
+			ordNo : this.dsRealOrdList.getColumn(i, "ordNo")
+		};
+		
+		obj.items[i] = item;
+	}
+	
+	var strJSON = JSON.stringify(obj);
+
+	this.ds_provsnList.setColumn(0, "realOrdNo", strJSON);
+/*	this.ds_provsnList.setColumn(0, "hshopTp", this.seller); //판매인코드*/
+	
+	if (confirm( "저장하시겠습니까?")) {
+		var sSvcID        	= "saveProvsn";                    
+		var sController   	= "rtms/sd/saveRerentalContract.do";
+		var sInDatasets   	= "ds_provsnList=ds_provsnList:U";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+//상담
+this.btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(nvl(this.ed_newOrdNo.text) == ""){
+		this.alert("주문번호가 입력되지 않았습니다.");
+		this.ed_newOrdNo.setFocus();
+		return false;
+	}
+	
+	var sSvcID        	= "createRtsd0123";                    
+	var sController   	= "rtms/sd/createRtsd0123.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", this.ed_newOrdNo.text);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+// this.btn_update_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+// {
+// 	var provsnNo = this.dsList.getColumn(this.dsList.rowposition, "provsnNo");
+// 	
+// 	//sudo - RTSD0121 UPDATE
+// 	this.ds_provsnList.clearData();
+// 	this.ds_provsnList.addRow();
+// 	
+// // 	if(nvl(provsnNo) == ""){
+// //  		this.alert("가계약으로 전환되지 않았습니다. 가계약전환하여 상담내역을 생성하여 주십시오.");
+// //  		return false;
+// // 					
+// // 	}
+// 
+// 	this.ds_provsnList.set_updatecontrol(false);
+// 	this.ds_provsnList.setRowType(0, Dataset.ROWTYPE_UPDATE);
+// 	this.ds_provsnList.set_updatecontrol(true);
+// 	
+// 	this.ds_provsnList.setColumn(0, "provsnNo", nvl(provsnNo));
+// 	this.ds_provsnList.setColumn(0, "custNm", this.div_detail.ed_custNm.text);
+// 	this.ds_provsnList.setColumn(0, "mobNo", this.div_detail.ed_mobNo.text);
+// 	this.ds_provsnList.setColumn(0, "posCd", this.div_detail.ed_posCd.text);
+// 	this.ds_provsnList.setColumn(0, "addr1", this.div_detail.ed_addr1.text);
+// 	this.ds_provsnList.setColumn(0, "addr2", this.div_detail.ed_addr1.text);
+// 	this.ds_provsnList.setColumn(0, "carNo", this.div_detail.ed_carNo.text);
+// 	this.ds_provsnList.setColumn(0, "cntCd", this.dsList.getColumn(this.dsList.rowposition, "cntCd"));
+// 	this.ds_provsnList.setColumn(0, "period", this.dsList.getColumn(this.dsList.rowposition, "periodCd"));
+// 	this.ds_provsnList.setColumn(0, "provsnSt", this.div_detail.cb_stat.value); //접수
+// 	this.ds_provsnList.setColumn(0, "provsnStDtl", this.div_detail.cb_statDetl.value); //초기배정
+// 	this.ds_provsnList.setColumn(0, "custReq", nvl(this.div_detail.ed_reqDesc.text));
+// 	this.ds_provsnList.setColumn(0, "ordNo", this.dsList.getColumn(this.dsList.rowposition, "ordNo"));
+// 	this.ds_provsnList.setColumn(0, "planDay", nvl(this.div_detail.ca_ordDay.value));
+// 	this.ds_provsnList.setColumn(0, "contactGet", nvl(this.div_detail.ed_addMobNo.text));
+// 	this.ds_provsnList.setColumn(0, "regiCd", this.fUserId); //판매인코드
+// 	this.ds_provsnList.setColumn(0, "callSeq", this.dsList.getColumn(this.dsList.rowposition, "callSeq"));
+// 	this.ds_provsnList.setColumn(0, "recallDay", this.dsList.getColumn(this.dsList.rowposition, "recallDay"));
+// 	this.ds_provsnList.setColumn(0, "recallTm", this.dsList.getColumn(this.dsList.rowposition, "recallTm"));
+// 	this.ds_provsnList.setColumn(0, "realOrdNo", this.dsList.getColumn(this.dsList.rowposition, "realOrdNo"));
+// /*	this.ds_provsnList.setColumn(0, "hshopTp", this.seller); //판매인코드*/
+// 	
+// 	if (confirm( "저장하시겠습니까?")) {
+// 		var sSvcID        	= "saveProvsn";                    
+// 		var sController   	= "rtms/sd/saveRerentalContract.do";
+// 		var sInDatasets   	= "ds_provsnList=ds_provsnList:U";
+// 		var sOutDatasets  	= "";
+// 		var sArgs 			= "";	
+// 		var fn_callBack		= "fn_callBack";
+// 		
+// 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 	}
+// }
+
+//삭제
+// this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+// {
+// 	var provsnNo = this.dsList.getColumn(this.dsList.rowposition, "provsnNo");
+// 	
+// 	//sudo - RTSD0121 DELETE
+// 	this.ds_provsnList.set_updatecontrol(false);
+// 	this.ds_provsnList.setRowType(Dataset.ROWTYPE_DELETE);
+// 	this.ds_provsnList.set_updatecontrol(true);
+// 	
+// 	this.ds_provsnList.clearData();
+// 	this.ds_provsnList.addRow();
+// 	this.ds_provsnList.setColumn(0, "provsnNo", this.dsList.getColumn(this.dsList.rowposition, "provsnNo"));
+// 	this.ds_provsnList.setColumn(0, "custNm", this.div_detail.ed_custNm.text);
+// 	this.ds_provsnList.setColumn(0, "mobNo", this.div_detail.ed_mobNo.text);
+// 	this.ds_provsnList.setColumn(0, "addr", this.div_detail.ed_addr.text);
+// 	this.ds_provsnList.setColumn(0, "carNo", this.div_detail.ed_carNo.text);
+// 	this.ds_provsnList.setColumn(0, "cntCd", this.dsList.getColumn(this.dsList.rowposition, "cntCd"));
+// 	this.ds_provsnList.setColumn(0, "period", this.dsList.getColumn(this.dsList.rowposition, "periodCd"));
+// 	this.ds_provsnList.setColumn(0, "provsnSt", "10"); //접수
+// 	this.ds_provsnList.setColumn(0, "provsnStDtl", "1010"); //초기배정
+// 	this.ds_provsnList.setColumn(0, "custReq", this.div_detail.ed_reqDesc.text);
+// 	this.ds_provsnList.setColumn(0, "ordNo", this.dsList.getColumn(this.dsList.rowposition, "ordNo"));
+// /*	this.ds_provsnList.setColumn(0, "rsrvDay", this.div_detail.ca_ordDay.value);*/
+// 	this.ds_provsnList.setColumn(0, "contactGet", this.div_detail.ed_addMobNo.text);
+// 	
+// 	this.ds_provsnList.set_updatecontrol(false);
+// 	this.ds_provsnList.setRowType(Dataset.ROWTYPE_DELETE);
+// 	this.ds_provsnList.set_updatecontrol(true);
+// 	
+// 	if (confirm( "저장하시겠습니까?")) {
+// 		var sSvcID        	= "saveProvsn";                    
+// 		var sController   	= "rtms/sd/saveProvisionalContract.do";
+// 		var sInDatasets   	= "ds_provsnList=ds_provsnList:U";
+// 		var sOutDatasets  	= "";
+// 		var sArgs 			= "";	
+// 		var fn_callBack		= "fn_callBack";
+// 		
+// 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 	}
+// }
+
+//===========================================================================
+// 공통코드
+//===========================================================================
+this.fn_init = function() {
+	
+	var sSvcID      	= "selectRTSDReRental";  
+	var sController   	= "/rtms/sd/initRTSDReRental.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "dsS030=output1 dsS103=output2 dsS104=output3 dsS043=output4";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+}
+
+//===========================================================================
+// 해당고객의 주문리스트
+//===========================================================================
+this.fn_ordList = function() {
+	
+	var sSvcID      	= "selectRTSD0108";  
+	var sController   	= "/rtms/sd/rtsd0108OrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "dsOrdList=dsResult";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	
+	sArgs += Ex.util.setParam("custNo", this.dsList.getColumn(this.dsList.rowposition, "custNo"));
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+}
+
+//===========================================================================
+// 계약번호조회를 위한 팝업호출
+//===========================================================================
+this.div_search_bt_ordNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+}
+
+this.returnOrderNoInfo = function(ordNo){
+	this.tab_cond.tabpage1.div_search.ordNo.set_value(ordNo);
+}
+
+this.grid_rerental_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	//this.fn_ordList();
+	this.fn_setOrdInfo();
+}
+
+this.fn_setOrdInfo = function(){
+
+	var idx = 0;
+ 	for(var i=0; i<this.dsOrdList.rowcount; i++){
+ 		if(this.dsOrdList.getColumn(i, "ordNo") == this.div_detail.cb_ordNoList.text){
+ 			idx = i;
+ 			break;
+ 		}
+ 	}
+	
+	this.div_detail.ed_ordDetl.set_value(this.dsOrdList.getColumn(idx, "cdText"));
+
+	this.div_detail.ed_realOrdNo.set_value("");
+	this.dsRealOrdList.clearData();
+	
+	var obj = JSON.parse(this.dsList.getColumn(this.dsList.rowposition, "realOrdNo"));
+	for(var i=0; i<obj.items.length; i++){
+	
+		var nRow = this.dsRealOrdList.addRow();
+		this.dsRealOrdList.setColumn(nRow, "num", obj.items[i].num);
+		this.dsRealOrdList.setColumn(nRow, "ordNo", obj.items[i].ordNo);
+	}
+	
+	this.div_detail.cb_realOrdList.set_index(0);
+}
+
+this.div_detail_cb_ordNoList_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.fn_setOrdInfo();
+}
+
+this.btn_contact_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var provsnNo = this.dsList.getColumn(this.dsList.rowposition, "provsnNo");
+	if (this.dsList.getRowCount() < 1) {
+		this.alert("상담할 재렌탈대상이 존재하지 않습니다.");
+		return false;
+	}
+
+	var arr ={
+		  p_provsnNo : provsnNo
+		, p_today    : this.toDay
+		, p_userGrp  : this.fUserGrp
+		, p_mobNo    : this.div_detail.ed_mobNo.text
+	};
+			
+	Ex.core.popup(this, "재렌탈계약상담", "sd::RTSDRerentalContractContactPopUp.xfdl", arr, "modaless=false");
+}
+
+this.div_detail_bt_addr_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTSDCustRegister_1"};
+	Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");
+}
+
+//===========================================
+// 우편번호 찾기 팝업호출 후처리.
+//===========================================
+this.FN_postCd = function( res, division ){
+	if( division == "addr1"){
+		this.div_detail.ed_posCd.set_value( res[0] );
+		this.div_detail.ed_addr1.set_value( res[1] );
+		this.div_detail.ed_addr2.set_value( res[2] );
+		this.div_detail.ed_bldMngNo.set_value(res[3]);
+	}
+}
+
+//===========================================================================
+// 고객주소변경(고객원장)
+//===========================================================================
+this.btn_addr_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var custNo = this.dsList.getColumn(this.dsList.rowposition, "custNo");
+	var posCd = this.dsList.getColumn(this.dsList.rowposition, "posCd");
+	var bldMngNo = this.dsList.getColumn(this.dsList.rowposition, "bldMngNo");
+	var addr1 = this.dsList.getColumn(this.dsList.rowposition, "addr1");
+	var addr2 = this.dsList.getColumn(this.dsList.rowposition, "addr2");
+	var emailAddr = this.dsList.getColumn(this.dsList.rowposition, "emailAddr");
+	var telNo = this.dsList.getColumn(this.dsList.rowposition, "telNo");
+	var mobNo = this.dsList.getColumn(this.dsList.rowposition, "mobNo");
+
+	this.ds_cust.clearData();
+	this.ds_cust.addRow();
+	
+	this.ds_cust.setColumn(0, "custNo", custNo);
+	this.ds_cust.setColumn(0, "mobNo", mobNo);
+	this.ds_cust.setColumn(0, "telNo", telNo);
+	this.ds_cust.setColumn(0, "addr1", addr1);
+	this.ds_cust.setColumn(0, "addr2", addr2);
+	this.ds_cust.setColumn(0, "emailAddr", emailAddr);
+	this.ds_cust.setColumn(0, "bldMngNo", bldMngNo);
+	this.ds_cust.setColumn(0, "posCd", posCd);
+	
+	var sSvcID        	= "updateCustInfo";                    
+	var sController   	= "/rtms/sd/updateCustInfo.do";
+	var sInDatasets   	= "input=ds_cust:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.div_search_ed_custNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 ){
+		this.fn_search();
+	}
+}
+
+this.div_search_ed_mobNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 ){
+		this.fn_search();
+	}
+}
+
+this.grid_rerental_onvscroll = function(obj:Grid, e:nexacro.ScrollEventInfo)
+{
+	this.getData(e.pos, e.type);
+}
+
+this.dsList00_onload = function(obj:Dataset, e:nexacro.DSLoadEventInfo)
+{
+	 if(e.reason == 0){ 
+		this.dsList.appendData(this.dsList00, true, true);
+	 }
+}
+
+this.grid_calc = function(){
+	 start_page_no++;
+	 start_sel_rowno += unit_sel_rownum; 
+}
+
+this.getData = function(pos, type){
+	
+	var _args = "";
+	var day = 1000 * 60 * 60 * 24;
+	
+	var provsnDiffDay = 0;
+	var osDiffDay = 0;
+	
+	if (this.tab_cond.tabindex == 0) {
+	
+		var procdayF = this.tab_cond.tabpage1.div_search.dt_procFday.value;
+		var procdayT = this.tab_cond.tabpage1.div_search.dt_procTday.value;
+		
+		var osdayF = this.tab_cond.tabpage1.div_search.cal_osDayFrom.value;
+		var osdayT = this.tab_cond.tabpage1.div_search.cal_osDayTo.value;
+		
+		//장착일자
+		if(nvl(procdayF) != "" || nvl(procdayT) != ""){
+		
+			var provsnFrom = this.tab_cond.tabpage1.div_search.dt_procFday.text.split('-');
+			var provsnTo = this.tab_cond.tabpage1.div_search.dt_procTday.text.split('-');
+			
+			
+
+			if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+				alert("장착일은 시작일/종료일 모두 입력해야 합니다.");
+				return;
+			}		
+			
+			var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1] - 1, provsnFrom[2]);
+			var provsnToDate = new Date(provsnTo[0], provsnTo[1] - 1, provsnTo[2]);
+
+			var provsnDiff = provsnToDate - provsnFromDate;
+			
+			var provsnDiffDay = parseInt(provsnDiff/day);	
+		}
+		
+		if(provsnDiffDay > 30) {
+			this.alert("장착일 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+		
+		//계약만료일자
+		if(nvl(osdayF) != "" || nvl(osdayT) != ""){
+		
+			var provsnFrom = this.tab_cond.tabpage1.div_search.cal_osDayFrom.text.split('-');
+			var provsnTo = this.tab_cond.tabpage1.div_search.cal_osDayTo.text.split('-');
+
+			if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+				alert("계약만료일은 시작일/종료일 모두 입력해야 합니다.");
+				return;
+			}		
+			
+			var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1] - 1, provsnFrom[2]);
+			var provsnToDate = new Date(provsnTo[0], provsnTo[1] - 1, provsnTo[2]);
+
+			var provsnDiff = provsnToDate - provsnFromDate;
+			
+			var provsnDiffDay = parseInt(provsnDiff/day);	
+		}
+		
+		if(osDiffDay > 30) {
+			this.alert("계약만료일 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+	
+		_args += Ex.util.setParam("procDayF", procdayF);
+		_args += Ex.util.setParam("procDayT", procdayT);
+		_args += Ex.util.setParam("custNm", this.tab_cond.tabpage1.div_search.ed_custNm.value);
+		_args += Ex.util.setParam("mobNo", this.tab_cond.tabpage1.div_search.ed_mobNo.value);
+		_args += Ex.util.setParam("callId", this.tab_cond.tabpage1.div_search.ed_callId.value);
+		_args += Ex.util.setParam("provsnSt", this.tab_cond.tabpage1.div_search.cb_stat.value);
+		_args += Ex.util.setParam("provsnStDtl", this.tab_cond.tabpage1.div_search.cb_statDetl.value);
+		_args += Ex.util.setParam("recallDay", this.tab_cond.tabpage1.div_search.cal_recallDay.value);
+	    _args += Ex.util.setParam("provsnNoF", this.tab_cond.tabpage1.div_search.ed_provsnNoF.value);
+		_args += Ex.util.setParam("provsnNoT", this.tab_cond.tabpage1.div_search.ed_provsnNoT.value);
+		_args += Ex.util.setParam("osDayF", this.tab_cond.tabpage1.div_search.cal_osDayFrom.value);
+		_args += Ex.util.setParam("osDayT", this.tab_cond.tabpage1.div_search.cal_osDayTo.value);
+		_args += Ex.util.setParam("ordNo", this.tab_cond.tabpage1.div_search.ed_ordNo.value);
+		
+	} else if (this.tab_cond.tabindex == 1) {
+	
+		_args += Ex.util.setParam("custNm", this.tab_cond.tabpage2.div_search.ed_custNm.value);
+		_args += Ex.util.setParam("mobNo", this.tab_cond.tabpage2.div_search.ed_mobNo.value);
+		_args += Ex.util.setParam("provsnNoF", this.tab_cond.tabpage2.div_search.ed_provsnNoF.value);
+		_args += Ex.util.setParam("provsnNoT", this.tab_cond.tabpage2.div_search.ed_provsnNoT.value);
+	
+	} else {
+	
+		_args += Ex.util.setParam("recallDay", this.tab_cond.tabpage3.div_search.cal_recallDay.value);
+		_args += Ex.util.setParam("callId", this.tab_cond.tabpage3.div_search.ed_callId.value);
+	}
+	
+	if(pos == this.grid_rerental.vscrollbar.max){
+		if(type == "tracklast"||type == "last" ||type == "wheellast"){ 
+		
+		
+			var sSvcID        	= "searchList";             
+			var sController   	= "/rtms/sd/listReRental.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "dsList00=reRentalList";
+			var sArgs 			= ""
+			var fn_callBack		= "fn_callBack";
+			
+			this.dsList00.clearData();
+			
+			_args += Ex.util.setParam("rowStart", start_sel_rowno);
+			_args += Ex.util.setParam("rowEnd", Number(start_sel_rowno) + Number(unit_sel_rownum) - 1);
+			
+			sArgs = _args;
+			
+			this.grid_calc();			
+
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+		}
+	}
+}
+
+this.fn_searchExcel = function(){
+
+	var _args = "";
+	var day = 1000 * 60 * 60 * 24;
+	
+	var provsnDiffDay = 0;
+	var osDiffDay = 0;
+	
+	if (this.tab_cond.tabindex == 0) {
+	
+		var procdayF = this.tab_cond.tabpage1.div_search.dt_procFday.value;
+		var procdayT = this.tab_cond.tabpage1.div_search.dt_procTday.value;
+		
+		var osdayF = this.tab_cond.tabpage1.div_search.cal_osDayFrom.value;
+		var osdayT = this.tab_cond.tabpage1.div_search.cal_osDayTo.value;
+		
+		//장착일자
+		if(nvl(procdayF) != "" || nvl(procdayT) != ""){
+		
+			var provsnFrom = this.tab_cond.tabpage1.div_search.dt_procFday.text.split('-');
+			var provsnTo = this.tab_cond.tabpage1.div_search.dt_procTday.text.split('-');
+
+			if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+				alert("주문접수일은 시작일/종료일 모두 입력해야 합니다.");
+				return;
+			}		
+			
+			var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1] - 1, provsnFrom[2]);
+			var provsnToDate = new Date(provsnTo[0], provsnTo[1] - 1, provsnTo[2]);
+
+			var provsnDiff = provsnToDate - provsnFromDate;
+			
+			var provsnDiffDay = parseInt(provsnDiff/day);	
+		}
+		
+		if(provsnDiffDay > 30) {
+			this.alert("주문접수일 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+	
+		//계약만료일자
+		if(nvl(osdayF) != "" || nvl(osdayT) != ""){
+		
+			var provsnFrom = this.tab_cond.tabpage1.div_search.cal_osDayFrom.text.split('-');
+			var provsnTo = this.tab_cond.tabpage1.div_search.cal_osDayTo.text.split('-');
+
+			if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+				alert("계약만료일은 시작일/종료일 모두 입력해야 합니다.");
+				return;
+			}		
+			
+			var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1] - 1, provsnFrom[2]);
+			var provsnToDate = new Date(provsnTo[0], provsnTo[1] - 1, provsnTo[2]);
+
+			var provsnDiff = provsnToDate - provsnFromDate;
+			
+			var provsnDiffDay = parseInt(provsnDiff/day);	
+		}
+		
+		if(osDiffDay > 30) {
+			this.alert("계약만료일 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+		
+		_args += Ex.util.setParam("procDayF", procdayF);
+		_args += Ex.util.setParam("procDayT", procdayT);
+		_args += Ex.util.setParam("custNm", this.tab_cond.tabpage1.div_search.ed_custNm.value);
+		_args += Ex.util.setParam("mobNo", this.tab_cond.tabpage1.div_search.ed_mobNo.value);
+		_args += Ex.util.setParam("callId", this.tab_cond.tabpage1.div_search.ed_callId.value);
+		_args += Ex.util.setParam("provsnSt", this.tab_cond.tabpage1.div_search.cb_stat.value);
+		_args += Ex.util.setParam("provsnStDtl", this.tab_cond.tabpage1.div_search.cb_statDetl.value);
+		_args += Ex.util.setParam("recallDay", this.tab_cond.tabpage1.div_search.cal_recallDay.value);
+	    _args += Ex.util.setParam("provsnNoF", this.tab_cond.tabpage1.div_search.ed_provsnNoF.value);
+		_args += Ex.util.setParam("provsnNoT", this.tab_cond.tabpage1.div_search.ed_provsnNoT.value);
+		
+		_args += Ex.util.setParam("osDayF", this.tab_cond.tabpage1.div_search.cal_osDayFrom.value);
+		_args += Ex.util.setParam("osDayT", this.tab_cond.tabpage1.div_search.cal_osDayTo.value);
+		
+	} else if (this.tab_cond.tabindex == 1) {
+	
+		_args += Ex.util.setParam("custNm", this.tab_cond.tabpage2.div_search.ed_custNm.value);
+		_args += Ex.util.setParam("mobNo", this.tab_cond.tabpage2.div_search.ed_mobNo.value);
+		_args += Ex.util.setParam("provsnNoF", this.tab_cond.tabpage2.div_search.ed_provsnNoF.value);
+		_args += Ex.util.setParam("provsnNoT", this.tab_cond.tabpage2.div_search.ed_provsnNoT.value);
+	
+	} else {
+	
+		_args += Ex.util.setParam("recallDay", this.tab_cond.tabpage3.div_search.cal_recallDay.value);
+		_args += Ex.util.setParam("callId", this.tab_cond.tabpage3.div_search.ed_callId.value);
+	}
+	
+	var sSvcID        	= "searchListForExcel";             
+	var sController   	= "/rtms/sd/listReRentalForExcel.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsListForExcel=reRentalListForExcel";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsListForExcel.clearData();
+	
+	sArgs = _args;		
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//재렌탈 상담팝업에서 넘겨온 데이터
+this.returnPopup = function(arr){
+
+ 	this.dsList.setColumn(this.dsList.rowposition, "recallDay", arr.p_recallDay);
+ 	this.dsList.setColumn(this.dsList.rowposition, "recallTm", arr.p_recallTm);
+ 	this.dsList.setColumn(this.dsList.rowposition, "callSeq", arr.p_callSeq);
+}
+
+this.div_detail_btn_realOrdAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var realOrdNo = this.div_detail.ed_realOrdNo.value;
+	if(realOrdNo != ""){
+		
+		var nRow = this.dsRealOrdList.findRowExpr("ordNo=='" + realOrdNo + "'");
+		if(nRow < 0){
+		
+			nRow = this.dsRealOrdList.addRow();
+			this.dsRealOrdList.setColumn(nRow, "num", nRow);
+			this.dsRealOrdList.setColumn(nRow, "ordNo", this.div_detail.ed_realOrdNo.value);
+		}
+	}
+}
+
+this.div_detail_cb_stat_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.dsS104_1.filter("");
+	if (e.postvalue == "") {
+		this.dsS104_1.filter("cd == ''");
+	} else {
+		this.dsS104_1.filter("cd == '' || cd.substr(0,1) == '" + e.postvalue.substring(0,1) + "'");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

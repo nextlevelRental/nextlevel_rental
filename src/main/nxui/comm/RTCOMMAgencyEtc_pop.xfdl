@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMAgencyEtc_pop" classname="RTCOMMAgencyEtc_pop" left="0" top="0" width="1024" height="491" titletext="대리점조회" onload="RTCOMMAgencyEtc_pop_onload" onkeyup="RTCOMMAgencyEtc_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="7" text="닫기" onclick="btn_close_onclick" left="974" top="460" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_choice" taborder="5" text="선택" onclick="btn_choice_onclick" left="928" top="460" width="41" height="21" domainId="nexa.add"/>
+        <Grid id="grid_agency" taborder="3" binddataset="ds_agencyPop" useinputpanel="false" cellsizingtype="col" oncelldblclick="grid_agency_oncelldblclick" left="10" top="65" width="1004" height="385">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="250"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="200"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="대리점코드"/>
+                <Cell col="1" text="대리점명"/>
+                <Cell col="2" text="지사코드"/>
+                <Cell col="3" text="지사명"/>
+                <Cell col="4" text="지점코드"/>
+                <Cell col="5" text="지점명"/>
+                <Cell col="6" text="우편번호"/>
+                <Cell col="7" text="주소"/>
+                <Cell col="8" text="상세주소"/>
+                <Cell col="9" text="전화번호"/>
+                <Cell col="10" text="대표명"/>
+                <Cell col="11" text="렌탈대리점 여부 "/>
+                <Cell col="12" text="경정비"/>
+                <Cell col="13" text="수입차경정비"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:agencyCd"/>
+                <Cell col="1" style="align:left;" text="bind:agencyNm"/>
+                <Cell col="2" text="bind:salesGroup"/>
+                <Cell col="3" text="bind:salesGroupNm"/>
+                <Cell col="4" text="bind:salesOffice"/>
+                <Cell col="5" text="bind:salesOfficeNm"/>
+                <Cell col="6" text="bind:posCd"/>
+                <Cell col="7" style="align:left;" text="bind:city"/>
+                <Cell col="8" style="align:left;" text="bind:street"/>
+                <Cell col="9" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="10" text="bind:repNm"/>
+                <Cell col="11" text="bind:rentalYn"/>
+                <Cell col="12" text="bind:lmYn"/>
+                <Cell col="13" text="bind:fmYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="0" text="Div00" left="10" top="10" width="1004" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="4" text="조회" onclick="btn_search_onclick" cssclass="btn_WF_CRUD" left="935" top="10" width="45" height="22" domainId="nexa.search"/>
+              <Static id="st_searchAgency" taborder="5" text="대리점" cssclass="sta_WF_schTitle" left="332" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_agencyNm" taborder="2" onkeyup="div_search_edt_searchKeyword_onkeyup" left="412" top="10" width="140" height="21"/>
+              <Static id="st_searchRentalYn00" taborder="6" text="지역" cssclass="sta_WF_schTitle" left="20" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static04" taborder="7" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="41"/>
+              <Static id="Static22" taborder="8" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="1000"/>
+              <Static id="Static00" taborder="9" cssclass="Guide_color" visible="false" left="298" top="0" width="30" height="41"/>
+              <Static id="Static01" taborder="10" cssclass="Guide_color" visible="false" left="552" top="0" width="30" height="41"/>
+              <Static id="Static02" taborder="11" cssclass="Guide_color" visible="false" left="0" top="31" width="1000" height="10"/>
+              <Radio id="ra_lmFmYn" taborder="3" left="662" top="10" width="200" height="21" codecolumn="codecolumn" datacolumn="datacolumn" direction="vertical">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">01</Col>
+                      <Col id="datacolumn">경정비</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">02</Col>
+                      <Col id="datacolumn">수입차경정비</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Static id="Static03" taborder="12" cssclass="Guide_color" visible="false" left="980" top="0" width="20" height="41"/>
+              <Static id="st_searchAgency00" taborder="13" text="정비구분" cssclass="sta_WF_schTitle" left="582" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_S016" taborder="14" left="99" top="10" width="100" height="21" innerdataset="@ds_S016" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_S016_onitemchanged"/>
+              <Combo id="cb_S017" taborder="15" innerdataset="@ds_S017" codecolumn="cd" datacolumn="cdNm" left="198" top="10" width="100" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static22" taborder="1" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="1024"/>
+        <Static id="Static03" taborder="2" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="491"/>
+        <Static id="Static04" taborder="4" cssclass="Guide_color" visible="false" left="0" top="481" height="10" width="1024"/>
+        <Static id="Static01" taborder="6" cssclass="Guide_color" visible="false" left="1014" top="0" width="10" height="491"/>
+        <Static id="Static00" taborder="8" cssclass="Guide_color" visible="false" left="8" top="450" height="10" right="0"/>
+        <Static id="Static02" taborder="9" cssclass="Guide_color" visible="false" left="0" top="55" height="10" width="1024"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_agencyPop" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesGroupNm" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="salesOfficeNm" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="city" type="STRING" size="256"/>
+          <Column id="street" type="STRING" size="256"/>
+          <Column id="sidoCd" type="STRING" size="256"/>
+          <Column id="sigunCd" type="STRING" size="256"/>
+          <Column id="serNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="taxNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="rentalYn" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="posX" type="STRING" size="256"/>
+          <Column id="posY" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="lmYn" type="STRING" size="256"/>
+          <Column id="fmYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S016" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S017" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "initRTCOMMAgencyEtcPop" ){
+		var nCnt = this.ds_S016.getRowCount()
+		if( nCnt != 0 ){
+			var insertRow = this.ds_S016.insertRow(0);
+			this.ds_S016.setColumn(insertRow, "cd", " ");
+			this.ds_S016.setColumn(insertRow, "cdNm", "전체");
+			this.div_search.cb_S016.set_value(" ");
+			this.div_search.ra_lmFmYn.set_value("01");
+		}
+	}
+	
+	if( strSvcId == "selectSigunCd" ){
+		var nCnt = this.ds_S017.getRowCount()
+		if( nCnt != 0 ){
+			var insertRow = this.ds_S017.insertRow(0);
+			this.ds_S017.setColumn(insertRow, "cd", " ");
+			this.ds_S017.setColumn(insertRow, "cdNm", "전체");
+			this.div_search.cb_S017.set_value(" ");
+		}
+	}
+	
+	if( strSvcId == "listAgencyPop" ){
+		var ct = this.ds_agencyPop.rowcount;
+		if( ct != 0 ){
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_agency.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_searchAgency.setFocus();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMAgencyEtc_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTCOMMAgencyEtcPop";  
+	var sController   	= "rtms/comm/initRTCOMMAgencyEtcPop.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_S016=mapDsS016 ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var agencyNm 	= nvl(this.div_search.ed_agencyNm.value);
+	var salesGroup 	= "";
+	var salesOffice = "";
+	var rentalYn 	= "Y"
+	var sidoCd      = nvl(this.div_search.cb_S016.value);
+    var sigunCd     = nvl(this.div_search.cb_S017.value);
+    
+	var lmFnYn		= nvl(this.div_search.ra_lmFmYn.value);
+	var lmYn		= "";
+	var fnYn		= "";
+	if( lmFnYn == "01" ){
+		lmYn		= "Y";
+		fnYn		= "";
+	}else{
+		lmYn		= "";
+		fnYn		= "Y";
+	}
+	
+	var sSvcID        	= "listAgencyPop";                    
+	var sController   	= "rtms/comm/listAgencyPop.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_agencyPop=mapAgencyPop";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	this.ds_agencyPop.deleteAll();
+	sArgs += Ex.util.setParam("agencyNm", 		agencyNm);
+	sArgs += Ex.util.setParam("salesGroup", 	salesGroup);
+	sArgs += Ex.util.setParam("salesOffice", 	salesOffice);
+	sArgs += Ex.util.setParam("rentalYn", 		rentalYn);
+	sArgs += Ex.util.setParam("sidoCd", 		sidoCd);
+	sArgs += Ex.util.setParam("sigunCd", 		sigunCd);
+	sArgs += Ex.util.setParam("lmYn", 			lmYn);
+	sArgs += Ex.util.setParam("fnYn", 			fnYn);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_choice();
+}
+this.grid_agency_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.FN_choice();
+}
+this.FN_choice = function(){
+	var idx = this.ds_agencyPop.rowposition;
+	if( idx != -1 ){
+		var agencyCd  		= this.ds_agencyPop.getColumn(idx, "agencyCd");
+		var agencyNm  		= this.ds_agencyPop.getColumn(idx, "agencyNm");
+		var salesGroup		= this.ds_agencyPop.getColumn(idx, "salesGroup");
+		var salesOffice 	= this.ds_agencyPop.getColumn(idx, "salesOffice");
+		var salesGroupNm 	= this.ds_agencyPop.getColumn(idx, "salesGroupNm");
+		var salesOfficeNm 	= this.ds_agencyPop.getColumn(idx, "salesOfficeNm");
+		var telNo  			= this.ds_agencyPop.getColumn(idx, "telNo");
+		var posCd  			= this.ds_agencyPop.getColumn(idx, "posCd");
+		var city  			= this.ds_agencyPop.getColumn(idx, "city");
+		var street  		= this.ds_agencyPop.getColumn(idx, "street");
+		var arr = [ agencyCd, agencyNm, telNo, posCd, city, street];
+		this.close(this.opener.returnAgencyCd(arr));
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMAgencyEtc_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_S016_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var cdDesc = nvl(this.div_search.cb_S016.value);
+	if( cdDesc != "" ){
+		var sSvcID        	= "selectSigunCd";                    
+		var sController   	= "rtms/comm/selectSigunCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_S017=mapDsS017";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		this.ds_S017.deleteAll();
+		sArgs += Ex.util.setParam("salesGroup", "S017");
+		sArgs += Ex.util.setParam("cdDesc", cdDesc);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

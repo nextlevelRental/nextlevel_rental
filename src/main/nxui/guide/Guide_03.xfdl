@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_03" classname="Guide_01" left="0" top="0" width="1070" height="730" titletext="CheckBoc/Radio/Tab">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="CheckBox" left="17" top="16" width="273" height="20" cssclass="Guide_title"/>
+        <Static id="Static07" taborder="6" text="Normal" cssclass="pseudo" left="58" top="51" width="123" height="22"/>
+        <Static id="Static08" taborder="7" text="Disabled" cssclass="pseudo" left="218" top="51" width="123" height="22"/>
+        <Static id="Static05" taborder="34" cssclass="Guide_line" left="10" top="144" right="10" height="8"/>
+        <CheckBox id="CheckBox00" taborder="35" text="체크박스" left="72" top="80" width="120" height="21"/>
+        <CheckBox id="CheckBox01" taborder="36" text="체크박스" left="222" top="80" width="120" height="21" enable="false"/>
+        <CheckBox id="CheckBox02" taborder="37" text="체크박스" left="72" top="108" width="120" height="21" value="true"/>
+        <CheckBox id="CheckBox03" taborder="38" text="체크박스" left="222" top="108" width="120" height="21" value="true" enable="false"/>
+        <Static id="Static01" taborder="39" text="Normal" cssclass="pseudo" left="58" top="205" width="123" height="22"/>
+        <Static id="Static02" taborder="40" text="Disabled" cssclass="pseudo" left="207" top="205" width="123" height="22"/>
+        <Static id="Static03" taborder="45" text="Radio" cssclass="Guide_title" left="17" top="170" width="273" height="16"/>
+        <Radio id="Radio01" taborder="47" columncount="0" innerdataset="@ds_rdo" codecolumn="lv" datacolumn="data" left="222" top="232" width="120" height="51" enable="false" index="1" value="1"/>
+        <Static id="Static04" taborder="48" cssclass="Guide_line" left="10" top="291" right="10" height="8"/>
+        <Static id="Static06" taborder="49" text="Tab" cssclass="Guide_title" left="17" top="317" width="273" height="16"/>
+        <Tab id="Tab00" taborder="50" left="45" top="379" width="457" height="137" tabindex="0" scrollbars="autoboth">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="tabpage1">
+              <Layouts>
+                <Layout width="457" height="109"/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="tabpage2"/>
+            <Tabpage id="tabpage3" text="tabpage3"/>
+            <Tabpage id="tabpage4" text="tabpage4"/>
+            <Tabpage id="tabpage5" text="tabpage5"/>
+            <Tabpage id="tabpage6" text="tabpage6"/>
+          </Tabpages>
+        </Tab>
+        <Tab id="Tab01" taborder="51" left="45" top="563" width="457" height="137" tabindex="0" scrollbars="autoboth" style="showextrabutton:true;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="tabpage1">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="tabpage2"/>
+            <Tabpage id="tabpage3" text="tabpage3"/>
+            <Tabpage id="tabpage4" text="tabpage4"/>
+            <Tabpage id="tabpage5" text="tabpage5"/>
+            <Tabpage id="tabpage6" text="tabpage6"/>
+            <Tabpage id="tabpage7" text="tabpage7"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static09" taborder="52" text="showextrabutton = None" cssclass="pseudo" left="45" top="352" width="316" height="22" style="align:left middle;"/>
+        <Static id="Static10" taborder="53" text="showextrabutton = true" cssclass="pseudo" left="45" top="536" width="330" height="22" style="align:left middle;"/>
+        <Tab id="Tab02" taborder="54" left="577" top="379" width="457" height="137" tabindex="0" scrollbars="autoboth" tabposition="bottom">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="tabpage1"/>
+            <Tabpage id="tabpage2" text="tabpage2"/>
+            <Tabpage id="tabpage3" text="tabpage3"/>
+            <Tabpage id="tabpage4" text="tabpage4"/>
+            <Tabpage id="tabpage5" text="tabpage5"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static11" taborder="57" text="tabposition = Bottom" cssclass="pseudo" left="577" top="352" width="316" height="22" style="align:left middle;"/>
+        <Static id="Static29" taborder="60" cssclass="Guide_Hsize" visible="false" left="72" top="77" width="13" height="5"/>
+        <Static id="Static15" taborder="65" cssclass="Guide_Hsize" visible="false" left="235" top="87" width="8" height="5"/>
+        <Static id="Static16" taborder="66" cssclass="Guide_Hsize" visible="false" left="73" top="232" width="13" height="5"/>
+        <Static id="Static20" taborder="70" cssclass="Guide_Hsize" visible="false" left="236" top="242" width="8" height="5"/>
+        <Static id="Static27" taborder="75" cssclass="Guide_Hsize" visible="false" left="112" top="390" width="15" height="6"/>
+        <Static id="Static28" taborder="76" cssclass="Guide_Vsize" visible="false" left="81" top="380" width="5" height="9"/>
+        <Static id="Static33" taborder="79" cssclass="Guide_Vsize" visible="false" left="81" top="402" width="5" height="8"/>
+        <Static id="Static34" taborder="80" cssclass="Guide_area" visible="false" left="128" top="564" width="29" height="29"/>
+        <Static id="Static35" taborder="82" cssclass="Guide_Hsize" visible="false" left="113" top="575" width="15" height="5"/>
+        <Static id="Static38" taborder="84" cssclass="Guide_area" visible="false" left="488" top="393" width="14" height="14"/>
+        <Static id="Static39" taborder="85" cssclass="Guide_area" visible="false" left="472" top="393" width="14" height="14"/>
+        <Static id="Static41" taborder="87" cssclass="Guide_Hsize" visible="false" left="472" top="386" width="14" height="6"/>
+        <Static id="Static42" taborder="88" cssclass="Guide_Vsize" visible="false" left="466" top="393" width="5" height="14"/>
+        <Radio id="Radio02" taborder="89" index="1" innerdataset="@ds_rdo" codecolumn="lv" datacolumn="data" value="1" enable="true" left="5.05%" top="232" right="83.74%" height="51"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rdo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="lv" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lv">0</Col>
+            <Col id="data">라디오 버튼</Col>
+          </Row>
+          <Row>
+            <Col id="lv">1</Col>
+            <Col id="data">라디오 버튼</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+this.Radio00_onitemclick = function(obj:Radio, e:nexacro.RadioMouseEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

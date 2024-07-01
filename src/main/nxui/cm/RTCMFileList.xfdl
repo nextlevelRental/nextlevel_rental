@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test_form" classname="test_form" left="0" top="0" width="1147" height="496" titletext="파일목록조회" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="6" binddataset="dsFileList" useinputpanel="false" autofittype="none" left="0" top="92" right="25" height="404" oncelldblclick="Grid00_oncelldblclick" autoenter="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="62"/>
+                <Column size="173"/>
+                <Column size="116"/>
+                <Column size="121"/>
+                <Column size="73"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="0"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="76"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="그룹번호"/>
+                <Cell col="2" text="파일명"/>
+                <Cell col="3" text="물리적 파일명"/>
+                <Cell col="4" text="파일경로"/>
+                <Cell col="5" text="파일사이즈"/>
+                <Cell col="6" text="프로그램 코드"/>
+                <Cell col="7" text="고객번호"/>
+                <Cell col="8" text="주문번호"/>
+                <Cell col="9" text="사용여부"/>
+                <Cell col="10" text="등록자 ID"/>
+                <Cell col="11" text="등록일"/>
+                <Cell col="12" text="변경자 ID"/>
+                <Cell col="13" text="변경일"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:fileSeq" autosizecol="limitmax"/>
+                <Cell col="1" text="bind:fileGrpSeq" autosizecol="limitmax"/>
+                <Cell col="2" text="bind:fileLnm" autosizecol="limitmax"/>
+                <Cell col="3" text="bind:filePnm" autosizecol="limitmax"/>
+                <Cell col="4" text="bind:filePath" autosizecol="limitmax"/>
+                <Cell col="5" text="bind:fileSize" autosizecol="limitmax"/>
+                <Cell col="6" text="bind:uplpgCd" autosizecol="limitmax"/>
+                <Cell col="7" text="bind:custNo" autosizecol="limitmax"/>
+                <Cell col="8" text="bind:ordNo" autosizecol="limitmax"/>
+                <Cell col="9" text="bind:useYn" autosizecol="limitmax"/>
+                <Cell col="10" text="bind:regId" autosizecol="limitmax"/>
+                <Cell col="11" displaytype="date" text="bind:regDt" autosizecol="limitmax"/>
+                <Cell col="12" text="bind:chgId" autosizecol="limitmax"/>
+                <Cell col="13" displaytype="date" text="bind:chgDt" autosizecol="limitmax"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="12" text="Div00" left="0" top="0" right="25" height="72" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="24" text="파일명" cssclass="sta_WF_schTitle" top="40" height="20" domainId="nexa.s_condition" width="72" left="20"/>
+              <Edit id="fileLnm" taborder="26" onkeyup="enterKeySearch" top="39" height="21" width="255" left="87"/>
+              <Calendar id="regFdt" taborder="29" top="12" height="21" readonly="false" width="120" left="87"/>
+              <Calendar id="regTdt" taborder="30" top="12" height="21" readonly="false" width="120" left="222"/>
+              <Static id="st_searchCondition00" taborder="31" text="작성일" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="72" left="20"/>
+              <Static id="st_searchCondition01" taborder="32" text="프로그램" cssclass="sta_WF_schTitle" top="13" height="20" domainId="nexa.s_condition" width="72" left="752"/>
+              <Edit id="uplpgCd" taborder="33" onkeyup="enterKeySearch" top="12" height="21" width="111" left="819"/>
+              <Static id="st_searchCondition02" taborder="34" text="고객번호" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="72" left="372"/>
+              <Edit id="custNo" taborder="35" onkeyup="enterKeySearch" top="12" height="21" width="120" left="440"/>
+              <Edit id="ordNo" taborder="36" onkeyup="enterKeySearch" top="39" height="21" width="120" left="440"/>
+              <Static id="st_searchCondition03" taborder="37" text="주문번호" cssclass="sta_WF_schTitle" top="39" height="20" domainId="nexa.s_condition" width="72" left="372"/>
+              <Button id="Button00" taborder="38" top="11" height="21" width="20" left="540" cssclass="btn_WF_edtSch"/>
+              <Button id="Button01" taborder="39" top="38" height="21" width="20" left="540" cssclass="btn_WF_edtSch"/>
+              <Edit id="custNm" taborder="40" onkeyup="enterKeySearch" top="12" height="21" width="157" left="565"/>
+              <Edit id="ordNm" taborder="41" onkeyup="enterKeySearch" top="39" height="21" width="157" left="565"/>
+              <Button id="Button02" taborder="42" top="11" height="21" onclick="bt_prog_onclick" cssclass="btn_WF_edtSch" width="20" left="910"/>
+              <Edit id="uplpgNm" taborder="43" onkeyup="enterKeySearch" top="12" height="21" width="139" left="935"/>
+              <Static id="Static03" taborder="44" text="~" left="209" top="11" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="72" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsFileList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileSeq" type="STRING" size="256"/>
+          <Column id="fileGrpSeq" type="STRING" size="256"/>
+          <Column id="fileLnm" type="STRING" size="256"/>
+          <Column id="filePnm" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="fileSize" type="STRING" size="256"/>
+          <Column id="uplpgCd" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+	this.prgmCd;	//프로그램CD
+	
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+		Ex.core.init(obj);
+		var d = this.DateDemo().replace("/", "");
+		this.div_search.regFdt.set_value(d + "01");
+		var cDate = new Date(this.DateDemo() + "/01");
+		cDate.addMonth(1);
+		cDate.addDate(-1);
+		var lastDay = cDate.getDate();
+		this.div_search.regTdt.set_value(d + lastDay);
+		
+		this.setBtnAuth(this.div_search);
+		this.fn_search();
+		this.parent.setButton("E|S", this);
+	} 
+
+
+	this.DateDemo = function(){
+	
+		var obj, y, m, d, s = "";
+		obj = new Date();
+		s += obj.getFullYear() + "/";
+		m = obj.getMonth() + 1;
+		if(String(m).length == 1) {
+			m = "0" + m;
+		} 
+		s += m + "";
+		return(s);
+	}
+
+
+
+	//조회
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var sSvcID        	= "listFileInfo";                    
+		var sController   	= "/ntrms/cm/listFileInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsFileList=listFileInfo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		sArgs += " regFdt=" + nvl(this.div_search.regFdt.value);
+		sArgs += " regTdt=" + nvl(this.div_search.regTdt.value);
+		sArgs += " uplpgCd=" + nvl(this.div_search.uplpgCd.value);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	//프로그램 정보조회
+	this.bt_prog_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:""};
+		Ex.core.popup(this,"listUser","comm::RTCMPro_pop.xfdl",args, "modaless=false");
+	}
+	
+		
+	this.returnFileInfo = function(arr) {
+		var cd = arr[0].getColumn(0, "prgmCd");
+		var nm = arr[0].getColumn(0, "prgmNm");
+		
+		this.div_search.uplpgCd.set_value(cd);
+		this.div_search.uplpgNm.set_value(nm);
+	}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return ExtNx.core.comMsg("alert",strErrorMsg);		
+		} else {
+			if(strSvcId == "listFileInfo") {
+				return;
+			}
+		}
+	}
+
+
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.Grid00);
+	}]]></Script>
+  </Form>
+</FDL>

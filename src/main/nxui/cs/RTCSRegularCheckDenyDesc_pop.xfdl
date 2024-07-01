@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheckDenyDesc_pop" classname="RTCSRegularCheckDenyDesc_pop" left="0" top="0" width="260" height="152" titletext="New Form" onload="RTCSRegularCheckDenyDesc_pop_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_confirm" taborder="0" text="확인" top="123" right="132" width="41" height="21" domainId="nexa.add" onclick="btn_confirm_onclick"/>
+        <Button id="btn_cancle" taborder="1" text="취소" top="123" right="87" width="41" height="21" domainId="nexa.add" onclick="btn_cancle_onclick"/>
+        <TextArea id="ta_desc" taborder="2" readonly="false" maxlength="490" oneditclick="ta_callDtl_oneditclick" left="1.92%" top="4" right="1.54%" height="111" wordwrap="char"/>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSRegularCheckDenyDesc_pop.xfdl
+ * 설    명 : 정기점검 거부철회 내용입력(팝업)
+ * 작 성 자 : wjim
+ * 변경이력 
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-08-03	wjim		[20170726_01] 신규 개발
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+// 전역변수 선언
+this.fs_mode = "";	// 거부철회구분
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTCSRegularCheckDenyDesc_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	// 팝업 호출한 모화면의 전달 파라미터를 전역변수로 할당
+	this.fs_mode = this.parent.p_mode;	// 계약번호
+}
+
+/**
+ * 확인 버튼의 클릭 이벤트 처리
+ */
+this.btn_confirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close(this.opener.returnInputDesc("confirm", this.fs_mode, this.ta_desc.text));
+}
+
+/**
+ * 취소 버튼의 클릭 이벤트 처리
+ */
+this.btn_cancle_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close(this.opener.returnInputDesc("cancel", this.fs_mode, ""));
+}]]></Script>
+  </Form>
+</FDL>

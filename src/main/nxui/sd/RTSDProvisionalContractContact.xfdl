@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDProvisionalContractContact" classname="RTSDProvisionalContractContact" left="0" top="0" width="1147" height="496" titletext="New Form" onload="RTSDProvisionalContractContact_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="3" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="92" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="5" text="가계약목록" cssclass="sta_WF_subTitle" left="10" top="116" width="120" height="21"/>
+        <Static id="Static02" taborder="6" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="132" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="7" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="486" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="8" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Grid id="grid_provsnList" taborder="9" binddataset="ds_provsnList" useinputpanel="false" left="9" top="142" width="1113" height="157" oncelldblclick="grid_provsnList_oncelldblclick" oncellclick="grid_provsnList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="108"/>
+                <Column size="73"/>
+                <Column size="103"/>
+                <Column size="65"/>
+                <Column size="93"/>
+                <Column size="178"/>
+                <Column size="57"/>
+                <Column size="89"/>
+                <Column size="40"/>
+                <Column size="71"/>
+                <Column size="72"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="76"/>
+                <Column size="66"/>
+                <Column size="101"/>
+                <Column size="36"/>
+                <Column size="33"/>
+                <Column size="56"/>
+                <Column size="58"/>
+                <Column size="82"/>
+                <Column size="96"/>
+                <Column size="217"/>
+                <Column size="265"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매처"/>
+                <Cell col="1" text="주문접수일"/>
+                <Cell col="2" text="가계약번호"/>
+                <Cell col="3" text="고객명"/>
+                <Cell col="4" text="연락처"/>
+                <Cell col="5" text="주소"/>
+                <Cell col="6" text="상태"/>
+                <Cell col="7" text="세부상태"/>
+                <Cell col="8" text="컨택"/>
+                <Cell col="9" text="재컨택일자"/>
+                <Cell col="10" text="재컨택시간"/>
+                <Cell col="11" text="진계약번호"/>
+                <Cell col="12" text="차종"/>
+                <Cell col="13" text="타이어규격"/>
+                <Cell col="14" displaytype="normal" text="차량번호"/>
+                <Cell col="15" text="패턴"/>
+                <Cell col="16" text="개수"/>
+                <Cell col="17" text="기간"/>
+                <Cell col="18" text="등록비"/>
+                <Cell col="19" text="월렌탈료"/>
+                <Cell col="20" text="장착희망일"/>
+                <Cell col="21" text="e-mail"/>
+                <Cell col="22" text="고객요청사항"/>
+                <Cell col="23" text="연락처수집방법"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" text="bind:hshopTp" combodataset="ds_user" combocodecol="userId" combodatacol="userNm"/>
+                <Cell col="1" text="bind:provsnDay" mask="####-##-##" suppress="0"/>
+                <Cell col="2" text="bind:provsnNo" suppress="0"/>
+                <Cell col="3" displaytype="normal" style="align:center;" text="bind:custNm"/>
+                <Cell col="4" displaytype="normal" style="align:center;" text="bind:mobNo"/>
+                <Cell col="5" displaytype="normal" style="align:left;" text="bind:addr"/>
+                <Cell col="6" displaytype="combo" text="bind:provsnSt" combodataset="ds_S093" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="7" displaytype="combo" text="bind:provsnStDtl" combodataset="ds_S094" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="8" text="bind:contactCnt"/>
+                <Cell col="9" text="bind:recallDay" mask="####-##-##"/>
+                <Cell col="10" text="bind:recallTm" mask="##:##"/>
+                <Cell col="11" text="bind:ordNo"/>
+                <Cell col="12" displaytype="normal" style="align:center;" text="bind:mcNm"/>
+                <Cell col="13" displaytype="normal" style="align:center;" text="bind:specNm" combodataset="ds_R051" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="14" displaytype="normal" style="align:center;" text="bind:carNo"/>
+                <Cell col="15" displaytype="normal" style="align:center;" text="bind:patternNm"/>
+                <Cell col="16" displaytype="normal" style="align:right;" text="bind:cnt"/>
+                <Cell col="17" displaytype="normal" style="align:right;" text="bind:period" combodataset="ds_reltCd" combocodecol="cd" combodatacol="nm" combodisplay="edit"/>
+                <Cell col="18" displaytype="number" style="align:right;" text="bind:regiAmt"/>
+                <Cell col="19" displaytype="number" style="align:right;" text="bind:rentAmt"/>
+                <Cell col="20" displaytype="normal" style="align:center;" text="bind:planDay" mask="####-##-##"/>
+                <Cell col="21" displaytype="normal" style="align:center;" text="bind:emailAddr"/>
+                <Cell col="22" style="align:left;" text="bind:custReq"/>
+                <Cell col="23" displaytype="normal" style="align:left;" text="bind:contactGet"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3" text="총계"/>
+                <Cell col="4" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12" style="align:right;"/>
+                <Cell col="13"/>
+                <Cell col="14" displaytype="normal" style="align:right;"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static34" taborder="10" cssclass="sta_WF_detailLabel2" left="10" top="375" width="1113" height="31"/>
+        <Static id="st_custNo" taborder="18" text="고객명" cssclass="sta_WF_detailLabel" left="10" top="375" width="125" height="31"/>
+        <Edit id="ed_custNo" taborder="17" maxlength="50" left="140" top="380" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_custNm" taborder="34" text="연락처" cssclass="sta_WF_detailLabel" left="287" top="375" width="125" height="31"/>
+        <Edit id="ed_mobNo" taborder="35" maxlength="14" left="417" top="380" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="Static03" taborder="36" cssclass="sta_WF_detailLabel2" left="10" top="405" width="1113" height="31"/>
+        <Edit id="ed_patternNm" taborder="23" maxlength="100" left="971" top="410" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_statNm" taborder="37" text="패턴" cssclass="sta_WF_detailLabel" left="841" top="405" width="125" height="31"/>
+        <Edit id="ed_carNo" taborder="22" maxlength="8" left="694" top="410" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_saleNm" taborder="38" text="차량번호" cssclass="sta_WF_detailLabel" left="564" top="405" width="125" height="31"/>
+        <Edit id="ed_specNm" taborder="21" maxlength="20" left="417" top="410" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_chanNm" taborder="39" text="타이어규격" cssclass="sta_WF_detailLabel" left="287" top="405" width="125" height="31"/>
+        <Edit id="ed_mcNm" taborder="20" maxlength="50" left="140" top="410" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_ordNm" taborder="40" text="차종" cssclass="sta_WF_detailLabel" left="10" top="405" width="125" height="31"/>
+        <Static id="Static08" taborder="41" cssclass="sta_WF_detailLabel2" left="10" top="435" width="1113" height="31"/>
+        <Static id="st_cancDay" taborder="42" text="월렌탈료" cssclass="sta_WF_detailLabel" left="434" top="435" width="82" height="31"/>
+        <Static id="st_procDay" taborder="43" text="렌탈등록비" cssclass="sta_WF_detailLabel" left="270" top="435" width="82" height="31"/>
+        <Static id="st_planDay" taborder="44" text="계약기간" cssclass="sta_WF_detailLabel" left="140" top="435" width="82" height="31"/>
+        <Static id="st_ordDay" taborder="45" text="타이어개수" cssclass="sta_WF_detailLabel" left="10" top="435" width="82" height="31"/>
+        <Static id="Static13" taborder="46" cssclass="sta_WF_detailLabel2" left="10" top="465" width="1113" height="31"/>
+        <Edit id="ed_period" taborder="25" inputtype="number" left="227" top="440" width="38" height="21" readonly="true" enable="true"/>
+        <Edit id="ed_regiAmt" taborder="26" inputtype="number" left="357" top="440" width="72" height="21" readonly="true" enable="true"/>
+        <Static id="st_ordQty" taborder="47" text="연락처수집방법" cssclass="sta_WF_detailLabel" left="414" top="465" width="125" height="31"/>
+        <Edit id="ed_emailAddr" taborder="30" maxlength="100" left="267" top="470" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_matNm" taborder="48" text="e-mail" cssclass="sta_WF_detailLabel" left="180" top="465" width="82" height="31"/>
+        <Static id="st_matCd" taborder="49" text="장착희망일" cssclass="sta_WF_detailLabel" left="10" top="465" width="82" height="31"/>
+        <Edit id="ed_rentAmt" taborder="27" inputtype="number" left="521" top="440" width="72" height="21" readonly="true" enable="true"/>
+        <Static id="cust_birth_title" taborder="50" text="주소" cssclass="sta_WF_detailLabel" left="564" top="375" width="125" height="31"/>
+        <Edit id="ed_addr" taborder="19" maxlength="200" left="694" top="380" width="419" height="21" readonly="true" enable="true"/>
+        <Edit id="ed_contactGet" taborder="31" maxlength="200" left="544" top="470" width="316" height="21" readonly="true" enable="true"/>
+        <Static id="st_contractInfo" taborder="51" text="가계약정보" cssclass="sta_WF_subTitle" left="10" top="318" width="80" height="21"/>
+        <Edit id="ed_cnt" taborder="24" inputtype="number" left="97" top="440" width="38" height="21" readonly="true" enable="true"/>
+        <Static id="Static06" taborder="52" cssclass="Guide_color" visible="false" left="0" top="298" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static07" taborder="53" cssclass="Guide_color" visible="false" left="683" top="486" width="1147" height="10"/>
+        <MaskEdit id="me_planDay" taborder="29" type="string" mask="####-##-##" enable="true" left="97" top="470" width="78" height="21" readonly="true" style="align:left middle;"/>
+        <Button id="btn_contact" taborder="54" text="상담" onclick="btn_del_onclick" cssclass="btn_WF_module" left="1077" top="313" width="45" height="22" domainId="nexa.save"/>
+        <Static id="Static09" taborder="55" cssclass="sta_WF_detailLabel2" left="10" top="345" width="1113" height="31"/>
+        <Edit id="ed_ordNo" taborder="16" readonly="false" maxlength="100" left="1006" top="350" width="107" height="21" enable="false"/>
+        <Static id="st_statNm00" taborder="56" text="진계약번호" cssclass="sta_WF_detailLabel" left="920" top="345" width="82" height="31"/>
+        <Static id="st_saleNm00" taborder="57" text="상태" cssclass="sta_WF_detailLabel" left="545" top="345" width="82" height="31"/>
+        <Edit id="ed_provsnNo" taborder="12" readonly="true" maxlength="20" left="270" top="350" width="107" height="21" enable="true"/>
+        <Static id="st_chanNm00" taborder="58" text="가계약번호" cssclass="sta_WF_detailLabel" left="184" top="345" width="82" height="31"/>
+        <Static id="st_ordNm00" taborder="59" text="주문접수일" cssclass="sta_WF_detailLabel" left="10" top="345" width="82" height="31"/>
+        <MaskEdit id="me_provsnDay" taborder="11" readonly="true" type="string" mask="####-##-##" left="96" top="350" width="84" height="21" style="align:left middle;" enable="true"/>
+        <Static id="st_saleNm01" taborder="60" text="컨택횟수" cssclass="sta_WF_detailLabel" left="381" top="345" width="82" height="31"/>
+        <Edit id="ed_contactCnt" taborder="13" maxlength="8" left="467" top="350" width="74" height="21" readonly="true" enable="true"/>
+        <Combo id="cmb_provsnSt" taborder="14" innerdataset="@ds_S093" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="631" top="350" width="81" height="21" readonly="false" enable="false" onitemchanged="cmb_provsnSt_onitemchanged"/>
+        <Combo id="cmb_provsnStDtl" taborder="15" innerdataset="@ds_S094" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="716" top="350" width="200" height="21" readonly="false" enable="false"/>
+        <Grid id="grid_provsnExcelList" taborder="62" useinputpanel="false" left="28.6%" top="109" right="35.14%" height="147" binddataset="ds_provsnExcelList" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="126"/>
+                <Column size="80"/>
+                <Column size="117"/>
+                <Column size="465"/>
+                <Column size="133"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="115"/>
+                <Column size="35"/>
+                <Column size="32"/>
+                <Column size="69"/>
+                <Column size="68"/>
+                <Column size="80"/>
+                <Column size="213"/>
+                <Column size="55"/>
+                <Column size="106"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="154"/>
+                <Column size="237"/>
+                <Column size="48"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="201"/>
+                <Column size="67"/>
+                <Column size="65"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell style="font:8 arial;" text="주문접수일"/>
+                <Cell col="1" style="font:8 arial;" text="가계약번호"/>
+                <Cell col="2" style="font:8 arial;" text="고객명"/>
+                <Cell col="3" style="font:8 arial;" text="연락처"/>
+                <Cell col="4" style="font:8 arial;" text="주소"/>
+                <Cell col="5" style="font:8 arial;" text="차종"/>
+                <Cell col="6" style="font:8 arial;" text="타이어규격"/>
+                <Cell col="7" style="font:8 arial;" text="차량번호"/>
+                <Cell col="8" style="font:8 arial;" text="패턴"/>
+                <Cell col="9" style="font:8 arial;" text="개수"/>
+                <Cell col="10" style="font:8 arial;" text="기간"/>
+                <Cell col="11" style="font:8 arial;" text="등록비"/>
+                <Cell col="12" style="font:8 arial;" text="월렌탈료"/>
+                <Cell col="13" style="font:8 arial;" text="장착희망일"/>
+                <Cell col="14" style="font:8 arial;" text="e-mail"/>
+                <Cell col="15" style="font:8 arial;" text="상태"/>
+                <Cell col="16" style="font:8 arial;" text="세부상태"/>
+                <Cell col="17" style="font:8 arial;" text="진계약번호"/>
+                <Cell col="18" style="font:8 arial;" text="판매처"/>
+                <Cell col="19" style="font:8 arial;" text="연락처수집방법"/>
+                <Cell col="20" style="font:8 arial;" text="고객요청사항"/>
+                <Cell col="21" style="font:8 arial;" text="컨택횟수"/>
+                <Cell col="22" style="font:8 arial;" text="상담일자"/>
+                <Cell col="23" style="font:8 arial;" text="상담시간"/>
+                <Cell col="24" style="font:8 arial;" text="상담내용"/>
+                <Cell col="25" style="font:8 arial;" text="재컨택일자"/>
+                <Cell col="26" style="font:8 arial;" text="재컨택시간"/>
+                <Cell col="27" style="font:8 arial;" text="상담사"/>
+              </Band>
+              <Band id="body">
+                <Cell style="font:8 굴림체;" text="bind:provsnDay" suppress="1"/>
+                <Cell col="1" style="font:8 굴림체;" text="bind:provsnNo" suppress="2"/>
+                <Cell col="2" style="font:8 굴림체;" text="bind:custNm" suppress="3"/>
+                <Cell col="3" style="font:8 굴림체;" text="bind:mobNo" suppress="4"/>
+                <Cell col="4" style="align:left;font:8 굴림체;" text="bind:addr" suppress="5"/>
+                <Cell col="5" style="font:8 굴림체;" text="bind:mcNm" suppress="6"/>
+                <Cell col="6" style="font:8 굴림체;" text="bind:specNm" suppress="7"/>
+                <Cell col="7" style="font:8 굴림체;" text="bind:carNo" suppress="8"/>
+                <Cell col="8" style="font:8 굴림체;" text="bind:patternNm" suppress="9"/>
+                <Cell col="9" style="font:8 굴림체;" text="bind:cnt" suppress="10"/>
+                <Cell col="10" style="font:8 굴림체;" text="bind:period" suppress="11"/>
+                <Cell col="11" style="font:8 굴림체;" text="bind:regiAmt" suppress="12"/>
+                <Cell col="12" style="font:8 굴림체;" text="bind:rentAmt" suppress="13"/>
+                <Cell col="13" style="font:8 굴림체;" text="bind:planDay" suppress="14"/>
+                <Cell col="14" style="align:left;font:8 굴림체;" text="bind:emailAddr" suppress="15"/>
+                <Cell col="15" displaytype="combo" style="font:8 굴림체;" text="bind:provsnSt" suppress="16" combodataset="ds_S093" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="16" displaytype="combo" style="font:8 굴림체;" text="bind:provsnStDtl" suppress="17" combodataset="ds_S094" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="17" style="font:8 굴림체;" text="bind:ordNo" suppress="18"/>
+                <Cell col="18" displaytype="combo" style="font:8 굴림체;" text="bind:hshopTp" suppress="19" combodataset="ds_user" combocodecol="userId" combodatacol="userNm"/>
+                <Cell col="19" style="align:left;font:8 굴림체;" text="bind:contactGet" suppress="20"/>
+                <Cell col="20" style="font:8 굴림체;" text="bind:custReq" suppress="21"/>
+                <Cell col="21" style="font:8 굴림체;" text="bind:contactCnt" suppress="22"/>
+                <Cell col="22" style="font:8 굴림체;" text="bind:callDay"/>
+                <Cell col="23" style="font:8 굴림체;" text="bind:callTm"/>
+                <Cell col="24" style="align:left;font:8 굴림체;" text="bind:callDtl"/>
+                <Cell col="25" style="font:8 굴림체;" text="bind:recallDay"/>
+                <Cell col="26" style="font:8 굴림체;" text="bind:recallTm"/>
+                <Cell col="27" style="font:8 굴림체;" text="bind:callChgId"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_ordQty00" taborder="63" text="고객요청사항" cssclass="sta_WF_detailLabel" left="597" top="435" width="92" height="31"/>
+        <Edit id="ed_contactGet00" taborder="28" readonly="true" maxlength="200" left="694" top="440" width="419" height="21"/>
+        <Static id="st_matCd00" taborder="64" text="재컨택일자" cssclass="sta_WF_detailLabel" left="865" top="465" width="82" height="31"/>
+        <MaskEdit id="me_recallDay" taborder="32" readonly="true" type="string" mask="####-##-##" left="952" top="470" width="78" height="21" style="align:left middle;"/>
+        <MaskEdit id="me_recallTm" taborder="33" readonly="true" type="string" mask="##:##" left="1035" top="470" width="78" height="21" style="align:left middle;"/>
+        <FileDownload id="FileDownload" taborder="65" retry="0" text="파일다운로드" visible="false" enableevent="false" left="766" top="314" width="100" height="21"/>
+        <Button id="btn_img" taborder="67" text="이미지" cssclass="btn_WF_module" left="1028" top="313" width="45" height="22" domainId="nexa.save" onclick="btn_img_onclick" visible="false"/>
+        <Tab id="tab_cond" taborder="68" left="0.7%" top="0" right="2.27%" height="115" tabindex="0" scrollbars="autoboth" canchange="tab_cond_canchange">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="조건1" url="sd::RTSDProvisionalContractContact_tab01.xfdl"/>
+            <Tabpage id="tabpage2" text="조건2" url="sd::RTSDProvisionalContractContact_tab02.xfdl"/>
+            <Tabpage id="tabpage3" text="조건3" url="sd::RTSDProvisionalContractContact_tab03.xfdl"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ed_custNo" propid="value" datasetid="ds_provsnList" columnid="custNm"/>
+      <BindItem id="item1" compid="ed_mobNo" propid="value" datasetid="ds_provsnList" columnid="mobNo"/>
+      <BindItem id="item5" compid="ed_patternNm" propid="value" datasetid="ds_provsnList" columnid="patternNm"/>
+      <BindItem id="item4" compid="ed_carNo" propid="value" datasetid="ds_provsnList" columnid="carNo"/>
+      <BindItem id="item3" compid="ed_specNm" propid="value" datasetid="ds_provsnList" columnid="specNm"/>
+      <BindItem id="item2" compid="ed_mcNm" propid="value" datasetid="ds_provsnList" columnid="mcNm"/>
+      <BindItem id="item13" compid="ed_period" propid="value" datasetid="ds_provsnList" columnid="period"/>
+      <BindItem id="item12" compid="ed_regiAmt" propid="value" datasetid="ds_provsnList" columnid="regiAmt"/>
+      <BindItem id="item11" compid="ed_emailAddr" propid="value" datasetid="ds_provsnList" columnid="emailAddr"/>
+      <BindItem id="item16" compid="ed_rentAmt" propid="value" datasetid="ds_provsnList" columnid="rentAmt"/>
+      <BindItem id="item23" compid="ed_addr" propid="value" datasetid="ds_provsnList" columnid="addr"/>
+      <BindItem id="item26" compid="ed_contactGet" propid="value" datasetid="ds_provsnList" columnid="contactGet"/>
+      <BindItem id="item6" compid="ed_cnt" propid="value" datasetid="ds_provsnList" columnid="cnt"/>
+      <BindItem id="item25" compid="me_planDay" propid="value" datasetid="ds_provsnList" columnid="planDay"/>
+      <BindItem id="item7" compid="ed_ordNo" propid="value" datasetid="ds_provsnList" columnid="ordNo"/>
+      <BindItem id="item9" compid="ed_provsnNo" propid="value" datasetid="ds_provsnList" columnid="provsnNo"/>
+      <BindItem id="item10" compid="me_provsnDay" propid="value" datasetid="ds_provsnList" columnid="provsnDay"/>
+      <BindItem id="item15" compid="ed_contactCnt" propid="value" datasetid="ds_provsnList" columnid="contactCnt"/>
+      <BindItem id="item17" compid="cmb_provsnSt" propid="value" datasetid="ds_provsnList" columnid="provsnSt"/>
+      <BindItem id="item8" compid="cmb_provsnStDtl" propid="value" datasetid="ds_provsnList" columnid="provsnStDtl"/>
+      <BindItem id="item14" compid="ed_contactGet00" propid="value" datasetid="ds_provsnList" columnid="custReq"/>
+      <BindItem id="item18" compid="me_recallDay" propid="value" datasetid="ds_provsnList" columnid="recallDay"/>
+      <BindItem id="item19" compid="me_recallTm" propid="value" datasetid="ds_provsnList" columnid="recallTm"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_provsnList" canrowposchange="ds_provsnList_canrowposchange">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="provsnTp" type="STRING" size="256"/>
+          <Column id="provsnDay" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="specNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="patternNm" type="STRING" size="256"/>
+          <Column id="cnt" type="STRING" size="256"/>
+          <Column id="period" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="hshopTp" type="STRING" size="256"/>
+          <Column id="hshopOrdno" type="STRING" size="256"/>
+          <Column id="airDay" type="STRING" size="256"/>
+          <Column id="airTm" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="contactCnt" type="STRING" size="256"/>
+          <Column id="custReq" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+          <Column id="atflPathNm" type="STRING" size="256"/>
+          <Column id="atflNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S093" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S094" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S093_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S094_cond" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_provsnExcelList" canrowposchange="ds_provsnList_canrowposchange">
+        <ColumnInfo>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="provsnTp" type="STRING" size="256"/>
+          <Column id="provsnDay" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="specNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="patternNm" type="STRING" size="256"/>
+          <Column id="cnt" type="STRING" size="256"/>
+          <Column id="period" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="provsnSt" type="STRING" size="256"/>
+          <Column id="provsnStDtl" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="hshopTp" type="STRING" size="256"/>
+          <Column id="hshopOrdno" type="STRING" size="256"/>
+          <Column id="airDay" type="STRING" size="256"/>
+          <Column id="airTm" type="STRING" size="256"/>
+          <Column id="contactGet" type="STRING" size="256"/>
+          <Column id="contactCnt" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callTm" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="callChgId" type="STRING" size="256"/>
+          <Column id="custReq" type="STRING" size="256"/>
+          <Column id="recallDay" type="STRING" size="256"/>
+          <Column id="recallTm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="tmpPwYn" type="string" size="32"/>
+          <Column id="lastPwDt" type="datetime" size="17"/>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="failCnt" type="bigdecimal" size="16"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="oldPassword" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="password" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="lastLogonDt" type="datetime" size="17"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="chgDt" type="datetime" size="17"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="regDt" type="datetime" size="17"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="lockYn" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDProvisionalContractContact.xfdl
+ * 설    명 : (방판)가계약상담
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * ...			...			...
+ * 2017-01-18	wjim		[2017018_01] 상태수정 기준 변경
+ *							- 변경전 : '완료'상태 전이 시 이후 수정 불가
+ *							- 변경후 : '완료'상태 이후에도 수정 가능
+ * 2017-06-20	wjim		[20170612_01] SMS연동
+ *							- 상담팝업으로 SMS관련항목 연동
+ * 2019-07-09	wjim		[20190708_01] 엑셀 다운로드를 조회와 transaction 분리
+ * 2019-07-30	wjim		[20190716_01] 조회조건 tab 적용
+ * 2019-08-08	wjim		[20190808_01] 조회조건3 상담사 조회조건 추가
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+// 전역변수
+this.toDay    = "";
+this.END_STCD = "50";	// 완료 상태코드					
+this.fUserId  = "";		// 현재 로그인 사용자의 ID
+this.fUserGrp = "";		// 현재 로그인 사용자의 사용자그룹
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractContact_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.parent.setButton("E|C|S", this);
+	this.fn_init();
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {
+	// 공통코드 조회
+	this.fn_getCommCode();
+	// 기준년월 조회
+	this.fn_initYmd();
+	// 방판 판매처 조회
+	this.fn_getSaleInfo()
+	// 사용자정보 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}
+
+/**
+ * 공통코드 조회
+ */ 
+this.fn_getCommCode  = function() {
+	var sSvcID      	= "getCommCode";  
+	var sController   	= "rtms/sd/commCodeProvisionalContract.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_S093=ds_S093 ds_S094=ds_S094";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+}	
+
+/**
+ * 서버기준 오늘 날자 조회 후 세팅
+ */
+this.fn_initYmd = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "ntrms/re/getDayMongth.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/**
+ * 방판 판매처 조회
+ */ 
+this.fn_getSaleInfo = function() {
+	var sSvcID      	= "getSaleInfo";  
+	var sController   	= "listUserInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_user=listUser";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("userGrp", '09');
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+}
+
+/**
+ * 조회 버튼의 클릭 이벤트 처리
+ */
+this.fn_search = function() {
+	var sArgs = "";
+	
+	sArgs += Ex.util.setParam("provsnTp", "B"                   );
+	sArgs += Ex.util.setParam("tabIndex", this.tab_cond.tabindex);
+	
+	if (this.tab_cond.tabindex == 0) {
+	
+		var day = 1000 * 60 * 60 * 24;
+		var custNm = this.tab_cond.tabpage1.div_search.ed_custNm.text;
+		var mobNo = this.tab_cond.tabpage1.div_search.ed_mobNo.text;
+		var recallDay = this.tab_cond.tabpage1.div_search.cal_recallDay.value;
+		
+		//고객명, 휴대폰번호, 재컨택일자중 조건이 하나라도 걸려 있지 않으면 
+		//조회일 기준으로 30일까지만 조회
+		//2018.12.06 김선태
+		if(nvl(custNm) == "" && nvl(mobNo) == "" && nvl(recallDay) == ""){	
+			//주문접수일
+			var provsnFrom = this.tab_cond.tabpage1.cal_condProvsnDayFrom.text.split('-');
+			var provsnTo = this.tab_cond.tabpage1.cal_condProvsnDayTo.text.split('-');
+
+			if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+				alert("주문접수일은 시작일/종료일 모두 입력해야 합니다.");
+				return;
+			}
+			
+			
+			var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1], provsnFrom[2]);
+			var provsnToDate = new Date(provsnTo[0], provsnTo[1], provsnTo[2]);
+
+			var provsnDiff = provsnToDate - provsnFromDate;
+				
+			var provsnDiffDay = parseInt(provsnDiff/day);
+			
+			//상담일자
+			var callFrom = this.tab_cond.tabpage1.div_search.cal_condCallDayFrom.text.split('-');
+			var callTo = this.tab_cond.tabpage1.div_search.cal_condCallDayTo.text.split('-');
+			
+			var callFromDate = new Date(callFrom[0], callFrom[1], callFrom[2]);
+			var callToDate = new Date(callTo[0], callTo[1], callTo[2]);
+			
+			var callDiff = callToDate - callFromDate;
+			
+			var callDiffDay = parseInt(callDiff/day);
+			
+			if(provsnDiffDay > 30) {
+				alert("주문접수일 조회기간은 30일 이내로 지정해 주세요.");
+				return;
+			}
+			
+			if(callDiffDay > 30) {
+				alert("상담일자 조회기간은 30일 이내로 지정해 주세요.");
+				return;
+			}
+		}
+		
+		sArgs += Ex.util.setParam("provsnTp"     , "B"                                      );
+		sArgs += Ex.util.setParam("provsnDayFrom", this.tab_cond.tabpage1.cal_condProvsnDayFrom.value         );
+		sArgs += Ex.util.setParam("provsnDayTo"  , this.tab_cond.tabpage1.cal_condProvsnDayTo.value           );
+		sArgs += Ex.util.setParam("custNm"       , this.tab_cond.tabpage1.div_search.ed_custNm.value          );
+		sArgs += Ex.util.setParam("provsnSt"     , this.tab_cond.tabpage1.div_search.cmb_condProvsnSt.value   );
+		sArgs += Ex.util.setParam("provsnStDtl"  , this.tab_cond.tabpage1.div_search.cmb_condProvsnStDtl.value);
+		sArgs += Ex.util.setParam("mobNo"        , this.tab_cond.tabpage1.div_search.ed_mobNo.value           );
+		sArgs += Ex.util.setParam("callId"       , this.tab_cond.tabpage1.div_search.ed_callId.value          );
+		sArgs += Ex.util.setParam("callDayFrom"  , this.tab_cond.tabpage1.div_search.cal_condCallDayFrom.value);
+		sArgs += Ex.util.setParam("callDayTo"    , this.tab_cond.tabpage1.div_search.cal_condCallDayTo.value  );
+		sArgs += Ex.util.setParam("hshopTp"      , this.tab_cond.tabpage1.div_search.cmb_condSaleId.value     );
+		sArgs += Ex.util.setParam("recallDay"    , this.tab_cond.tabpage1.div_search.cal_recallDay.value      ); //재컨택일자
+	
+	} else if (this.tab_cond.tabindex == 1) {
+		sArgs += Ex.util.setParam("custNm"       , this.tab_cond.tabpage2.div_search.ed_custNm.value          );
+		sArgs += Ex.util.setParam("mobNo"        , this.tab_cond.tabpage2.div_search.ed_mobNo.value           );
+		sArgs += Ex.util.setParam("provsnNoF"    , this.tab_cond.tabpage2.div_search.ed_provsnNoF.text        );
+		sArgs += Ex.util.setParam("provsnNoT"    , this.tab_cond.tabpage2.div_search.ed_provsnNoT.text        );
+	
+	} else if (this.tab_cond.tabindex == 2) {
+		sArgs += Ex.util.setParam("recallDay"    , this.tab_cond.tabpage3.div_search.cal_recallDay.value      );
+		sArgs += Ex.util.setParam("callId"       , this.tab_cond.tabpage3.div_search.ed_callId.value          ); // 상담사 [20190808_01]
+	}		
+	
+	// 기존 조회결과 초기화
+	this.ds_provsnList.deleteAll();
+	
+	var sSvcID        	= "listProvsn";                    
+	var sController   	= "rtms/sd/listProvisionalContract.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_provsnList=ds_provsnList";
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 저장 버튼의 클릭 이벤트 처리
+ */
+this.fn_save = function() {
+	//주문완료건에 진계약번호가 입력되지 않았는지 체크
+	var strStCd    = this.ds_provsnList.getColumn(this.ds_provsnList.rowposition, "provsnSt");	
+	
+	if(strStCd == this.END_STCD && this.ed_ordNo.text == ""){
+		this.alert("주문완료::진계약번호가 입력되지 않았습니다.");
+		return false;
+	}
+	
+	if( !Ex.util.isUpdated(this.ds_provsnList)) {
+			alert('변경된 데이터가 없습니다.');
+			return false;
+	}
+	
+	if (confirm( "저장하시겠습니까?")) {
+		var sSvcID        	= "saveProvsn";                    
+		var sController   	= "rtms/sd/saveProvisionalContract.do";
+		var sInDatasets   	= "ds_provsnList=ds_provsnList:U";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}	
+}
+
+/**
+ * 엑셀 버튼의 클릭 이벤트 처리
+ */
+this.fn_excel= function() {
+
+	if (this.tab_cond.tabindex != 0) {
+		this.alert("조건1에서만 엑셀조회 및 다운로드 가능합니다.");
+		return;
+	}
+
+	var day = 1000 * 60 * 60 * 24;
+	var custNm = this.tab_cond.tabpage1.div_search.ed_custNm.text;
+	var mobNo = this.tab_cond.tabpage1.div_search.ed_mobNo.text;
+	var recallDay = this.tab_cond.tabpage1.div_search.cal_recallDay.value;
+	
+	//고객명, 휴대폰번호, 재컨택일자중 조건이 하나라도 걸려 있지 않으면 
+	//조회일 기준으로 30일까지만 조회
+	//2018.12.06 김선태
+	if(nvl(custNm) == "" && nvl(mobNo) == "" && nvl(recallDay) == ""){	
+		//주문접수일
+		var provsnFrom = this.tab_cond.tabpage1.cal_condProvsnDayFrom.text.split('-');
+		var provsnTo = this.tab_cond.tabpage1.cal_condProvsnDayTo.text.split('-');
+
+		if(nvl(provsnFrom ) == "" || nvl(provsnTo) == "") {
+			alert("주문접수일은 시작일/종료일 모두 입력해야 합니다.");
+			return;
+		}
+		
+		var provsnFromDate = new Date(provsnFrom[0], provsnFrom[1], provsnFrom[2]);
+		var provsnToDate = new Date(provsnTo[0], provsnTo[1], provsnTo[2]);
+
+		var provsnDiff = provsnToDate - provsnFromDate;
+			
+		var provsnDiffDay = parseInt(provsnDiff/day);
+		
+		//상담일자
+		var callFrom = this.tab_cond.tabpage1.div_search.cal_condCallDayFrom.text.split('-');
+		var callTo = this.tab_cond.tabpage1.div_search.cal_condCallDayTo.text.split('-');
+		
+		var callFromDate = new Date(callFrom[0], callFrom[1], callFrom[2]);
+		var callToDate = new Date(callTo[0], callTo[1], callTo[2]);
+		
+		var callDiff = callToDate - callFromDate;
+		
+		var callDiffDay = parseInt(callDiff/day);
+		
+		if(provsnDiffDay > 30) {
+			alert("주문접수일 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+		
+		if(callDiffDay > 30) {
+			alert("상담일자 조회기간은 30일 이내로 지정해 주세요.");
+			return;
+		}
+	}	
+	
+	// 기존 조회결과 초기화
+	this.ds_provsnExcelList.deleteAll();
+	
+	var sSvcID        	= "listExcelProvsn";                    
+	var sController   	= "rtms/sd/listExcelProvisionalContract.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_provsnExcelList=ds_provsnExcelList";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("provsnTp"     , "B"                                      );
+	sArgs += Ex.util.setParam("provsnDayFrom", this.tab_cond.tabpage1.cal_condProvsnDayFrom.value         );
+	sArgs += Ex.util.setParam("provsnDayTo"  , this.tab_cond.tabpage1.cal_condProvsnDayTo.value           );
+	sArgs += Ex.util.setParam("custNm"       , this.tab_cond.tabpage1.div_search.ed_custNm.value          );
+	sArgs += Ex.util.setParam("provsnSt"     , this.tab_cond.tabpage1.div_search.cmb_condProvsnSt.value   );
+	sArgs += Ex.util.setParam("provsnStDtl"  , this.tab_cond.tabpage1.div_search.cmb_condProvsnStDtl.value);
+	sArgs += Ex.util.setParam("mobNo"        , this.tab_cond.tabpage1.div_search.ed_mobNo.value           );
+	sArgs += Ex.util.setParam("callId"       , this.tab_cond.tabpage1.div_search.ed_callId.value          );
+	sArgs += Ex.util.setParam("callDayFrom"  , this.tab_cond.tabpage1.div_search.cal_condCallDayFrom.value);
+	sArgs += Ex.util.setParam("callDayTo"    , this.tab_cond.tabpage1.div_search.cal_condCallDayTo.value  );
+	sArgs += Ex.util.setParam("hshopTp"      , this.tab_cond.tabpage1.div_search.cmb_condSaleId.value     );
+	
+	sArgs += Ex.util.setParam("recallDay"    , this.tab_cond.tabpage1.div_search.cal_recallDay.value      ); //재컨택일자
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
+	//Ex.core.exportExcel(this, this.grid_provsnExcelList);
+}
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		case "getCommCode":
+			// 조회조건-상태 초기화
+			this.tab_cond.tabpage1.ds_S093_cond.copyData(this.ds_S093);			
+			var insert = this.ds_S093_cond.insertRow(0);
+			this.tab_cond.tabpage1.ds_S093_cond.setColumn(insert,"cd","");
+			this.tab_cond.tabpage1.ds_S093_cond.setColumn(insert,"cdNm","전체");
+			this.tab_cond.tabpage1.div_search.cmb_condProvsnSt.set_value("");
+			// 조회조건-(세부)상태 초기화
+			this.tab_cond.tabpage1.ds_S094_cond.copyData(this.ds_S094);			
+			insert = this.ds_S094_cond.insertRow(0);
+			this.tab_cond.tabpage1.ds_S094_cond.setColumn(insert,"cd","");
+			this.tab_cond.tabpage1.ds_S094_cond.setColumn(insert,"cdNm","전체");
+			this.tab_cond.tabpage1.div_search.cmb_condProvsnStDtl.set_value("");
+		    break;
+		     
+		case "getToday":
+			this.tab_cond.tabpage1.cal_condProvsnDayFrom.set_value(this.toDay);
+			this.tab_cond.tabpage1.cal_condProvsnDayTo.set_value(this.toDay);
+			break;
+			
+		case "getSaleInfo":			
+			if (this.fUserGrp == "09") {
+				this.tab_cond.tabpage1.div_search.cmb_condSaleId.set_value(this.fUserId);
+				this.tab_cond.tabpage1.div_search.cmb_condSaleId.set_enable(false);
+			} else if (this.fUserGrp == "01" || this.fUserGrp == "02") {
+				var insert = this.ds_user.insertRow(0);
+				this.ds_user.setColumn(insert, "userId", "");
+				this.ds_user.setColumn(insert, "userNm", "전체");
+				this.tab_cond.tabpage1.div_search.cmb_condSaleId.set_value("");
+				this.tab_cond.tabpage1.div_search.cmb_condSaleId.set_enable(true);
+			} else {
+				this.tab_cond.tabpage1.div_search.cmb_condSaleId.set_enable(false);
+			}
+			
+			break;
+			
+		case "listProvsn":
+			var rowCt = this.ds_provsnList.getRowCount();
+		
+			if( rowCt == 0 ){
+				this.alert("조회된 데이터가 없습니다.");
+				this.grid_provsnList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			
+			this.fn_setStComboActive(0);
+			this.fn_filtStDtl("ROW_IDX", 0);
+			
+			break;
+			
+		case "listExcelProvsn":
+			var rowCt = this.ds_provsnExcelList.getRowCount();
+			
+			if (rowCt == 0) {
+				this.alert("조회된 엑셀데이터가 없습니다.");
+				this.grid_provsnExcelList.set_nodatatext("조회된 데이터가 없습니다.");
+			} else {
+				Ex.core.exportExcel(this, this.grid_provsnExcelList);
+			}
+			
+			break;
+			
+		case "saveProvsn":
+			this.alert(strErrorMsg);
+			break;
+		
+		default:
+			break;
+	}
+}
+
+/**
+ * 가계약정보의 상태 콤보 활성화 여부 동적 처리
+ */
+this.fn_setStComboActive = function (pRowIdx) {	
+	var strStCd    = this.ds_provsnList.getColumn(pRowIdx, "provsnSt");	
+	var strRowType = this.ds_provsnList.getRowType(pRowIdx);
+	
+	if (this.fUserGrp == "01" || this.fUserGrp == "02") {
+		/* [2017018_01]
+		if (strStCd == this.END_STCD && strRowType != Dataset.ROWTYPE_UPDATE) {
+			this.cmb_provsnSt.set_enable(false);
+			this.cmb_provsnStDtl.set_enable(false);
+		} else {
+			this.cmb_provsnSt.set_enable(true);
+			this.cmb_provsnStDtl.set_enable(true);
+		}
+		*/
+		this.cmb_provsnSt.set_enable(true);
+		this.cmb_provsnStDtl.set_enable(true);
+	} else {
+		this.cmb_provsnSt.set_enable(false);
+ 		this.cmb_provsnStDtl.set_enable(false);
+	} 	
+}
+
+/**
+ * 상태에 따른 상세상태 콤보 필터링
+ */
+this.fn_filtStDtl = function (pMod, pArg) {
+	var strStCd;
+	
+	if (pMod == "VALUE") {
+		strStCd = pArg;
+	} else if (pMod == "ROW_IDX") {
+		strStCd = this.ds_provsnList.getColumn(pArg, "provsnSt");
+	}
+	
+ 	this.ds_S094.filter("cd.substr(0,2) == '" + strStCd + "'");
+}
+
+/**
+ * 가계약목록 데이터셋의 행의 위치가 변경되기 전 이벤트 처리
+ */
+this.ds_provsnList_canrowposchange = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo) {
+	// 상태만 수정하고 상세상태를 선택하지 않은 상태로 다른 행으로 이동하려 할 때 오류 처리
+	if (e.newrow != -1) {
+		if (!this.fn_chkStDtl(e.oldrow)) {
+			this.alert("상세상태값이 정상적으로 선택되지 않았습니다.");
+			return false;
+		}
+		
+		this.fn_filtStDtl("ROW_IDX", e.newrow);				// 상세상태 콤보 필터링
+		this.fn_setStComboActive(e.newrow);					// 상태 콤보 활성화 설정
+		this.fn_setOrdNoEdActive("ROW_IDX", e.newrow);		// 진계약번호 입력창 활성화 설정
+	}	
+}
+
+/**
+ * 상태와 세부상태의 매핑이 정상인지 확인
+ */
+this.fn_chkStDtl = function (pRowIdx) {
+	var chkResult = true;
+		
+	var strProvsnSt    = this.ds_provsnList.getColumn(pRowIdx, "provsnSt");
+	var strProvsnStDtl = this.ds_provsnList.getColumn(pRowIdx, "provsnStDtl");
+	
+	if (strProvsnSt != strProvsnStDtl.substr(0,2)) {
+		chkResult = false;
+	}
+	
+	return chkResult;
+}
+
+/**
+ * 상태와 세부상태의 매핑이 정상인지 확인
+ */
+this.fn_chkOrdNo = function (pRowIdx) {
+	var chkResult = true;
+
+	var strProvsnSt    = this.ds_provsnList.getColumn(pRowIdx, "provsnSt");
+	var strProvsnSt    = this.ds_provsnList.getColumn(pRowIdx, "ordNo");
+	
+	if (strProvsnSt ) {
+		chkResult = false;
+	}
+	
+	return chkResult;
+}
+
+/**
+ * 가계약정보의 진계약번호 입력창 활성화여부 동적 처리
+ */
+this.fn_setOrdNoEdActive = function (pMod, pArg) {	
+	var strStCd;
+	var strRowType;
+	
+	if (pMod == "VALUE") {
+		strStCd    = pArg;
+		strRowType = Dataset.ROWTYPE_UPDATE;
+	} else if (pMod == "ROW_IDX") {
+		strStCd    = this.ds_provsnList.getColumn(pArg, "provsnSt");
+		strRowType = this.ds_provsnList.getRowType(pArg);
+	}
+	
+	if (this.fUserGrp == "01" || this.fUserGrp == "02") {
+		/* [2017018_01]
+		if (strStCd == this.END_STCD && strRowType == Dataset.ROWTYPE_UPDATE) {
+			this.ed_ordNo.set_enable(true);
+		} else {
+			this.ed_ordNo.set_enable(false);
+		}
+		*/
+		this.ed_ordNo.set_enable(true);
+	} else {
+		this.ed_ordNo.set_enable(false);
+	}	
+}
+
+/**
+ * 가계약목록 그리드의 Body 영역 셀 클릭 이벤트 처리
+ * - 첨부파일이 존재하는 경우에만 [이미지]버튼 보이기
+ */
+this.grid_provsnList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	var strAtflPathNm = nvl(this.ds_provsnList.getColumn(e.row, "atflPathNm"));	// 첨부파일경로명
+	var strAtflNm     = nvl(this.ds_provsnList.getColumn(e.row, "atflNm"));		// 첨부파일명
+
+	if (strAtflPathNm != "" && strAtflNm != "") {
+		this.btn_img.set_visible(true);
+	} else {
+		this.btn_img.set_visible(false);
+	}
+}
+
+/**
+ * 가계약목록 그리드의 Body 영역 셀 더블 클릭 이벤트 처리
+ */
+this.grid_provsnList_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+	this.btn_del_onclick();
+}
+
+/**
+ * 이미지 버튼의 클릭 이벤트 처리
+ */
+this.btn_img_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var strAtflPathNm = nvl(this.ds_provsnList.getColumn(this.grid_provsnList.currentrow, "atflPathNm"));	// 첨부파일경로명
+	var strAtflNm     = nvl(this.ds_provsnList.getColumn(this.grid_provsnList.currentrow, "atflNm"));		// 첨부파일명
+	
+	if (strAtflPathNm != "" && strAtflNm != "") {
+		//this.alert("strAtflPathNm = [" + strAtflPathNm + "]");
+		//this.alert("strAtflNm = [" + strAtflNm + "]");
+		
+		var sFileUrl = "/rtms/sd/fileDownCustTire.do?filePath=" + strAtflPathNm + "&fileName=" + strAtflNm;
+		this.FileDownload.set_downloadurl(sFileUrl);
+		var bSucc = this.FileDownload.download();
+	} else {
+		this.alert("첨부파일정보가 존재하지 않습니다([" + strAtflPathNm + "][" + strAtflNm + "])");
+		return false;
+	}
+}
+
+/**
+ * 상담 버튼의 클릭 이벤트 처리
+ */
+this.btn_del_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {	
+	if (this.ds_provsnList.getRowCount() < 1) {
+		this.alert("상담할 가계약대상이 존재하지 않습니다.");
+		return false;
+	}
+	
+	var strProvsnNo = this.ds_provsnList.getColumn(this.grid_provsnList.currentrow, "provsnNo");
+
+	// 팝업화면 연동 파라미터 세팅
+	// - 연락처 추가 [20170612_01]
+	var arr ={
+		  p_provsnNo : strProvsnNo
+		, p_today    : this.toDay
+		, p_userGrp  : this.fUserGrp
+		, p_mobNo    : this.ed_mobNo.text
+	};
+			
+	Ex.core.popup(this, "가계약상담", "sd::RTSDProvisionalContractContactPopUp.xfdl", arr, "modaless=false");
+}
+
+/**
+ * 상태 콤보에서 변경된 값이 적용된 후 이벤트 처리
+ */
+this.cmb_provsnSt_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	this.fn_filtStDtl("VALUE", e.postvalue);			// 상세상태 콤보 필터링	
+	this.fn_setOrdNoEdActive("VALUE", e.postvalue);		// 진계약번호 입력항목 활성화
+}
+
+
+/**
+ * TabPage가 변경되기 직전 이벤트 처리
+ * - 기존 조회결과가 존재하는 경우 확인 후 삭제
+ */
+this.tab_cond_canchange = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo) {
+	if (this.ds_provsnList.getRowCount() > 0) {
+		if (this.confirm("조회조건탭을 변경하면 기존 조회결과가 초기화됩니다.\n진행하시겠습니까?")) {
+			// 기존 조회결과 초기화
+			this.ds_provsnList.deleteAll();
+		} else {
+			return false;
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

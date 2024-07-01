@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdviceStatus_tab_info9_Message" classname="RTSDContractStatus_tab_info9_EleSig" left="0" top="0" width="1147" height="150" titletext="[STEP9]SMS내역">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Grid id="grid_history" taborder="1" binddataset="ds_message" useinputpanel="false" autofittype="col" left="0" top="5" width="801" height="135">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="119"/>
+                <Column size="132"/>
+                <Column size="150"/>
+                <Column size="194"/>
+                <Column size="199"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="발송일시"/>
+                <Cell col="1" text="메시지구분"/>
+                <Cell col="2" text="휴대폰번호"/>
+                <Cell col="3" text="발송자"/>
+                <Cell col="4" text="내용"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:regDt"/>
+                <Cell col="1" text="bind:msgGb"/>
+                <Cell col="2" text="bind:rcvPhnId"/>
+                <Cell col="3" text="bind:regNm"/>
+                <Cell col="4" text="bind:sndMsg"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_mail" taborder="3" text="조회" left="1025" top="11" width="65" height="21" domainId="nexa.save" onclick="btn_mail_onclick" visible="true"/>
+        <Edit id="ed_mobNo" taborder="6" left="82.3%" top="8" right="8.81%" height="27"/>
+        <Edit id="Edit00" taborder="8" left="74.54%" top="8" right="18.57%" height="29" value="휴대폰번호" style="background:#f2f2efff left middle;"/>
+        <TextArea id="TextArea00" taborder="9" left="74.54%" top="44" right="3.4%" height="96" style="border:1 solid #a6a6a9ff,1 solid #d5d5d5ff,1 solid #d5d5d5ff,1 solid #a6a6a9ff;color:#777777ff;" oneditclick="TextArea00_oneditclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_message" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsPrice_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="msgGb" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="rcvPhnId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="sndMsg" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="TextArea00" propid="value" datasetid="ds_message" columnid="sndMsg"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 	 = "RTCSAdviceStatus_tab_info9_Message";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "listmessage2" ){
+	console.log(ds_message.saveXML());
+		alert(strErrorMsg);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_mail_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+
+var mobNo = this.ed_mobNo.value;
+
+	var sSvcID        	= "listmessage";                    
+	var sController   	= "rtms/sd/listmessage.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_message=mapMessage";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("mobNo", 	mobNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+]]></Script>
+  </Form>
+</FDL>

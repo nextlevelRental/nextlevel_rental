@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAcquisition" classname="test_form" left="0" top="0" width="1147" height="496" titletext="자산별 매출원가 취득처리" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="50" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="9" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="10" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static23" taborder="12" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+              <Static id="Static24" taborder="18" text="FIX w30" cssclass="Guide_color" visible="false" left="346" top="0" width="30" height="44"/>
+              <Static id="st_searchCondition" taborder="27" text="마감월" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Edit id="edtYear" taborder="0" inputtype="digit" lengthunit="ascii" maxlength="4" autoskip="true" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="60" height="21"/>
+              <Static id="st_searchCondition06" taborder="29" text="년" left="195" top="12" width="20" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edtMonth" taborder="1" inputtype="digit" lengthunit="ascii" maxlength="2" autoskip="true" onchanged="cal_accReqDate_onchanged" left="221" top="12" width="40" height="21"/>
+              <Static id="st_searchCondition07" taborder="31" text="월" left="265" top="12" width="20" height="20" domainId="nexa.s_condition"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static05" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="130" width="1112" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="15" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="89" width="1112" height="12" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static17" taborder="16" cssclass="sta_WF_detailLabel2" left="0" top="99" width="1122" height="31"/>
+        <Edit id="edt_procStatus" taborder="17" enable="false" left="134" top="104" width="983" height="21"/>
+        <Static id="Static19" taborder="18" text="작업상태" cssclass="sta_WF_detailLabelP" left="0" top="99" width="130" height="31"/>
+        <Static id="Static06" taborder="19" text="작업상태" cssclass="sta_WF_subTitle" left="0" top="72" right="1036" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Bind>
+      <BindItem id="item16" compid="div_search.edtYear" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item17" compid="div_search.edtMonth" propid="value" datasetid="ds_chgInfo" columnid="expireM"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 마감관리 > 자산별 매출원가 취득처리
+ * 02. 그룹명   : RTREAcquisition.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay		= ""; 	//당일
+	this.yesterDay	= ""; 	//전일
+	this.curMonth 	= "";	//당월	
+	this.prevMonth	= ""; 	//전월
+	this.nextMonth	= ""; 	//익월
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 		
+		this.fn_init();
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//월일 조회
+		this.fn_getDayMongth();	
+		//버튼초기화		
+		this.fn_initBtn();	
+	}		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//월일 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getDayMongth = function() 
+	{
+		var sSvcID      	= "getDayMongth";  
+		var sController   	= "ntrms/re/getDayMongth.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+ 	//---------------------------------------------------------------------------------
+	// 집계
+	//---------------------------------------------------------------------------------		
+	this.fn_aggregate  = function() {
+		this.edt_procStatus.set_value("");
+		this.closingYm = nvl(this.div_search.edtYear.value) + "" + nvl(this.div_search.edtMonth.value);
+		
+		if(nvl(this.div_search.edtYear.value) == "") {
+			alert('마감월을 입력하세요.');
+			this.div_search.edtYear.setFocus();
+			return;
+		}
+		if(nvl(this.div_search.edtMonth.value) == "") {
+			alert('마감월을 입력하세요.');
+			this.div_search.edtMonth.setFocus();
+			return;
+		}	
+			
+		if(!this.fn_chkYm(this.div_search.edtYear.value, this.div_search.edtMonth.value))
+		{
+			return;
+		}	
+		
+		application.set_httptimeout(300); // 2016-05-03 이영근, 타임아웃 시간 5분으로 연장
+		
+		var sSvcID      	= "acquisitionAggregate";  
+		var sController   	= "ntrms/re/acquisitionAggregate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+								
+		sArgs += Ex.util.setParam("period"		, this.closingYm); //마감월
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+	
+ 
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{	
+			if(strSvcId == "acquisitionAggregate") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);	
+			}			
+		}
+		
+		switch (strSvcId) 
+		{
+			//월일 조회
+			case "getDayMongth":
+				this.div_search.edtYear.set_value(this.prevMonth.substr(0,4));
+				this.div_search.edtMonth.set_value(this.prevMonth.substr(4,2));	
+				break;	
+			//집계		
+			case "acquisitionAggregate":		
+				this.edt_procStatus.set_value(strErrorMsg);	
+				break;	
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 대상년월 변경 이벤트
+    //-------------------------------------------------------------------------------  	
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		if(nvl(this.div_search.edtMonth.value) != "" && obj.getLength() == 1) {
+			if(parseInt(this.div_search.edtMonth.value,10) < 10) {
+				this.div_search.edtMonth.set_value("0" + obj.value);
+			}
+		}	
+		
+		this.closingYm = nvl(this.div_search.edtYear.value) + "" + nvl(this.div_search.edtMonth.value);
+
+		if(this.closingYm != "") {
+			if(this.closingYm.length == 6) {
+				if(!this.fn_chkYm(this.div_search.edtYear.value, this.div_search.edtMonth.value))
+				{
+					return;
+				}
+				else {
+				}
+			}
+			else {
+				var nYear = nvl(this.div_search.edtYear.value);
+				var nMonth = nvl(this.div_search.edtMonth.value);
+				if(nYear.length < 4) {
+					alert('마감월을 입력하세요.');
+					this.div_search.edtYear.setFocus();
+					return false;
+				}
+				if(nMonth.length < 2) {
+					alert('마감월을 입력하세요.');
+					this.div_search.edtMonth.setFocus();
+					return false;
+				}				
+			}
+		}
+	}		
+		
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------   
+    // 존재하는 날자(유효한 날자) 인지 체크   
+    //-------------------------------------------------------------------------------   
+    this.fn_chkYm = function(nYear,nMonth) 
+    {
+		if(nYear.length < 4) {
+			alert('마감월을 입력하세요.');
+			this.div_search.edtYear.setFocus();
+			return false;
+		}
+		if(nMonth.length < 2) {
+			alert('마감월을 입력하세요.');
+			this.div_search.edtMonth.setFocus();
+			return false;
+		}	
+		    
+		if (nYear < 1900 || nYear > 3000)   
+		{ 
+			this.alert("사용할수 없는 마감월이 입력되었습니다.");
+			this.div_search.edtYear.setFocus();			
+			return false;
+		}   
+	  
+		if (nMonth < 1 || nMonth > 12)   
+		{  
+			this.alert("사용할수 없는 마감월이 입력되었습니다.");
+			this.div_search.edtMonth.setFocus();			
+			return false;		
+		}  
+		
+		var yyyymm = nYear + "" + nMonth;
+		
+		if(parseInt(yyyymm,10) > parseInt(this.curMonth,10)) {
+			alert("현재이후년월로 집계할수 없습니다.");
+			return false;
+		}
+		return true;
+    }	
+
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.setButton("AG",this);		
+	}
+ ]]></Script>
+  </Form>
+</FDL>

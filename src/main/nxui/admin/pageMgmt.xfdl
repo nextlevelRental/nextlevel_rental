@@ -1,0 +1,1065 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="pageMgmt" inheritanceid="" position="absolute" titletext="화면등록관리" onload="form_onload" onbeforeclose="form_onbeforeclose" left="0" width="1260" top="0" height="401" oninit="form_oninit">
+    <Layouts>
+      <Layout>
+        <Static id="Static10" taborder="23" cssclass="sta_WFSA_BG" left="15" top="38" right="15" height="46"/>
+        <Static id="Static00" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" top="93" height="32" left="782"/>
+        <Static id="Static01" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="124" height="32"/>
+        <Static id="Static02" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="155" height="32"/>
+        <Static id="Static03" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="186" height="32"/>
+        <Static id="Static04" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="217" height="32"/>
+        <Static id="Static05" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="248" height="58"/>
+        <Static id="Static06" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;padding:0 0 0 23;align:left middle;" right="0" width="261" top="305" height="32"/>
+        <Static id="Static07" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="336" height="32"/>
+        <Static id="Static08" position="absolute" style="background:#ffffffff;border:1 solid #c6c6c5ff ;align:center middle;" right="0" width="261" top="367" height="32"/>
+        <Grid id="grd_page" taborder="3" binddataset="ds_page" scrollpixel="default" useinputpanel="false" selecttype="row" autofittype="col" treeuseline="false" treeusecheckbox="false" treeinitstatus="collapse,all" position="absolute" cellsizingtype="col" left="0" right="411" top="93" bottom="40" domainId="nexa.page.id;nexa.page.name;nexa.page.type;nexa.page.linkage">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="102"/>
+                <Column size="133"/>
+                <Column size="64"/>
+                <Column size="76"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="화면 아이디"/>
+                <Cell col="1" text="화면명"/>
+                <Cell col="2" text="화면타입"/>
+                <Cell col="3" text="화면연동"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:PAGE_ID"/>
+                <Cell col="1" style="align:left middle;" text="bind:PAGE_NAME"/>
+                <Cell col="2" displaytype="combo" text="bind:PAGE_TYPE" combodataset="ds_Type" combocodecol="CODE_CD" combodatacol="CODE_NM"/>
+                <Cell col="3" displaytype="combo" text="bind:PAGE_EXTP" combodataset="ds_ExType" combocodecol="CODE_CD" combodatacol="CODE_NM"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_toppage00" text="페이지아이디" position="absolute" right="260" width="141" top="93" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.id"/>
+        <Edit id="edt_ID" taborder="8" position="absolute" readonly="false" right="7" width="248" top="99" height="20" cssclass="input_point"/>
+        <Edit id="edt_Name" taborder="9" position="absolute" right="7" width="248" top="130" height="20" cssclass="input_point"/>
+        <Static id="st_toppage02" text="페이지URL" position="absolute" right="260" width="141" top="155" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.url"/>
+        <Edit id="edt_URL" taborder="10" position="absolute" right="7" width="248" top="161" height="20" cssclass="input_point"/>
+        <Static id="st_toppage04" text="페이지유형" position="absolute" right="260" width="141" top="186" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.type"/>
+        <Combo id="cmb_type" taborder="12" position="absolute" right="7" width="248" top="192" height="20" index="-1" codecolumn="CODE_CD" datacolumn="CODE_NM" domainId="nexa.mainpage;nexa.subpage;nexa.popup" innerdataset="@ds_Type"/>
+        <Static id="st_toppage05" text="화면연동" position="absolute" right="260" width="141" top="217" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.linkage"/>
+        <Combo id="cmb_Extp" taborder="13" position="absolute" right="7" width="248" top="223" height="20" index="-1" domainId="nexa.normalpage;nexa.web;nexa.extn" innerdataset="@ds_ExType" datacolumn="CODE_NM" codecolumn="CODE_CD"/>
+        <Static id="st_toppage06" text="페이지설명" position="absolute" right="260" width="141" top="248" height="58" cssclass="sta_WF_detailLabel" domainId="nexa.page.dspt"/>
+        <TextArea id="txt_desc" taborder="14" position="absolute" right="7" width="248" top="254" height="46"/>
+        <Static id="st_toppage07" text="등록자아이디" position="absolute" right="260" width="141" top="336" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.createuser"/>
+        <Edit id="edt_regID" taborder="15" position="absolute" readonly="true" right="7" width="248" top="342" height="20" cssclass="readonly"/>
+        <Static id="st_toppage08" text="등록일" position="absolute" right="260" width="141" top="367" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.createdate"/>
+        <Calendar id="cal_regDt" taborder="16" position="absolute" enable="true" readonly="true" right="7" width="248" top="373" height="20" cssclass="readonly"/>
+        <Static id="st_toppage01" text="페이지명" position="absolute" right="260" width="141" top="124" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.name"/>
+        <Static id="st_use" text="도메인사용여부" position="absolute" right="260" width="141" top="305" height="32" cssclass="sta_WF_detailLabel" domainId="nexa.page.use"/>
+        <CheckBox id="chk_useYN" taborder="1" position="absolute" right="237" width="18" top="311" height="20" cssclass="sta_WF_detailLabel" value="false" onclick="chk_useYN_onclick" truevalue="1" falsevalue="0"/>
+        <Div id="div_search" taborder="28" left="0" top="0" right="0" height="41" text="Div00" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="19" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" right="7" bottom="7" width="62" height="25" domainId="nexa.search"/>
+              <Static id="st_searchCondition" taborder="20" text="검색조건" cssclass="sta_WF_schTitle" left="20" top="0" width="64" height="41" domainId="nexa.s_condition"/>
+              <Combo id="cmb_searchCondition" taborder="21" codecolumn="codecolumn" datacolumn="datacolumn" left="86" top="10" width="140" height="20" domainId="nexa.name;nexa.code">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">0</Col>
+                      <Col id="datacolumn">명칭</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">코드</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="edt_searchKeyword" taborder="22" left="228" top="10" width="260" height="20" onkeyup="div_search_edt_searchKeyword_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_grid_top" taborder="29" left="0" top="55" right="0" height="23" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_title" taborder="20" text="Records Found" cssclass="sta_WF_GridFound2" left="26" top="3" width="132" height="16"/>
+              <Static id="sta_total_cnt" taborder="21" text="0" cssclass="sta_WF_GridFound" left="0" top="3" width="22" height="16" style="align:right middle;"/>
+              <Button id="btn_add" taborder="22" text="추가" onclick="fn_add" cssclass="btn_WF_CRUD" top="0" right="128" width="58" height="23" domainId="nexa.add"/>
+              <Button id="btn_delete" taborder="23" text="삭제" onclick="fn_delete" cssclass="btn_WF_CRUD" top="0" right="68" width="58" height="23" domainId="nexa.delete"/>
+              <Button id="btn_save" taborder="24" text="저장" onclick="fn_save" cssclass="btn_WF_CRUD" top="0" right="8" width="58" height="23" domainId="nexa.save"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static27" taborder="30" text="h15" cssclass="Guide_color" visible="false" left="0" top="78" right="0" height="15"/>
+        <Div id="div_grid_bottom" taborder="31" left="0" right="411" bottom="21" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="33" cssclass="sta_WF_GridDis" left="0%" top="0" right="0%" bottom="0"/>
+              <Static id="sta_grid_cnt" taborder="34" text="Rows : 0" top="0" height="20" width="80" right="0"/>
+              <Static id="sta_msg" taborder="35" text="There is no data." left="4" top="0" height="20" style="color:#444444ff;" width="757"/>
+              <Button id="btn_find" taborder="36" onclick="div_grid_bottom_btn_find_onclick" cssclass="btn_WF_find" top="2" height="16" width="36" right="126"/>
+              <Button id="btn_format" taborder="37" onclick="div_grid_bottom00_btn_format_onclick" cssclass="btn_WF_format" top="2" right="164" height="16" _format="this.grd_page" width="33"/>
+              <Button id="btn_excel00" taborder="38" cssclass="btn_WF_xls" top="2" right="91" height="16" _excel="this.grd_page" width="33"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_page" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_page_onrowposchanged" cancolumnchange="ds_page_cancolumnchange">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="PAGE_ID" type="string" size="20"/>
+          <Column id="PAGE_NAME" type="string" size="100"/>
+          <Column id="PAGE_URL" type="string" size="200"/>
+          <Column id="PAGE_TYPE" type="string" size="10"/>
+          <Column id="PAGE_EXTP" type="string" size="10"/>
+          <Column id="PAGE_DESC" type="string" size="100"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="USE_FG" type="string" size="1"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP001</Col>
+            <Col id="PAGE_NAME">사용자 권한관리</Col>
+            <Col id="PAGE_URL">admin::Authority.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171524000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP002</Col>
+            <Col id="PAGE_NAME">사용자 그룹관리</Col>
+            <Col id="PAGE_URL">admin::UserGroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906112106000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP003</Col>
+            <Col id="PAGE_NAME">그룹별 메뉴관리</Col>
+            <Col id="PAGE_URL">admin::GroupMenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906144224000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP004</Col>
+            <Col id="PAGE_NAME">공통코드관리</Col>
+            <Col id="PAGE_URL">admin::CodeMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP005</Col>
+            <Col id="PAGE_NAME">메뉴등록관리</Col>
+            <Col id="PAGE_URL">admin::MenuMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP006</Col>
+            <Col id="PAGE_NAME">그룹등록관리</Col>
+            <Col id="PAGE_URL">admin::GroupMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173453000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP007</Col>
+            <Col id="PAGE_NAME">게시판</Col>
+            <Col id="PAGE_URL">board::Boardview.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP008</Col>
+            <Col id="PAGE_NAME">화면관리</Col>
+            <Col id="PAGE_URL">admin::PageMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">ADMSAMP009</Col>
+            <Col id="PAGE_NAME">그룹별 사용자관리</Col>
+            <Col id="PAGE_URL">admin::GroupUserMgmt.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906134321000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">CLASSGUIDE01</Col>
+            <Col id="PAGE_NAME">클래스 EDIT</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114243000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">CLASSGUIDE02</Col>
+            <Col id="PAGE_NAME">클래스 STATIC</Col>
+            <Col id="PAGE_URL">guide::CLASS_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114243000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE01</Col>
+            <Col id="PAGE_NAME">컴포넌트 STATIC</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE02</Col>
+            <Col id="PAGE_NAME">컴포넌트 BUTTON</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE03</Col>
+            <Col id="PAGE_NAME">컴포넌트 CALENDAR</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE04</Col>
+            <Col id="PAGE_NAME">컴포넌트 SHAPE</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE05</Col>
+            <Col id="PAGE_NAME">컴포넌트 POPUP</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE06</Col>
+            <Col id="PAGE_NAME">컴포넌트 ALERT</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE07</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE08</Col>
+            <Col id="PAGE_NAME">컴포넌트 GRID2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_08.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE09</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB1</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_09.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">COMPGUIDE10</Col>
+            <Col id="PAGE_NAME">컴포넌트 TAB2</Col>
+            <Col id="PAGE_URL">guide::COMP_GUIDE_10.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120905114007000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120905114007000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN001</Col>
+            <Col id="PAGE_NAME">Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_01.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN002</Col>
+            <Col id="PAGE_NAME">MultiDetail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_02.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN003</Col>
+            <Col id="PAGE_NAME">List/Detail</Col>
+            <Col id="PAGE_URL">pattern::Pattern_03.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN004</Col>
+            <Col id="PAGE_NAME">Master/Detail(1:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_04.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN005</Col>
+            <Col id="PAGE_NAME">Master/Detail(n:n)</Col>
+            <Col id="PAGE_URL">pattern::Pattern_05.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN006</Col>
+            <Col id="PAGE_NAME">TAB</Col>
+            <Col id="PAGE_URL">pattern::Pattern_06.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171524000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">PATTERN007</Col>
+            <Col id="PAGE_NAME">Shuttle</Col>
+            <Col id="PAGE_URL">pattern::Pattern_07.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120906110509000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120906110509000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE001</Col>
+            <Col id="PAGE_NAME">GRID BASIC</Col>
+            <Col id="PAGE_URL">template::TEMPLATE001.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE002</Col>
+            <Col id="PAGE_NAME">GRID FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE002.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE003</Col>
+            <Col id="PAGE_NAME">GRID POPUP</Col>
+            <Col id="PAGE_URL">template::TEMPLATE003.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE004</Col>
+            <Col id="PAGE_NAME">GRID TAB</Col>
+            <Col id="PAGE_URL">template::TEMPLATE004.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE006</Col>
+            <Col id="PAGE_NAME">SHUTTLE</Col>
+            <Col id="PAGE_URL">template::TEMPLATE006.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE007</Col>
+            <Col id="PAGE_NAME">GRID SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE007.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE008</Col>
+            <Col id="PAGE_NAME">TREE SUBGRID</Col>
+            <Col id="PAGE_URL">template::TEMPLATE008.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE009</Col>
+            <Col id="PAGE_NAME">TREE FORM</Col>
+            <Col id="PAGE_URL">template::TEMPLATE009.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE010</Col>
+            <Col id="PAGE_NAME">GRID FILTERING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE010.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE011</Col>
+            <Col id="PAGE_NAME">GRID MONTHLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE011.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE012</Col>
+            <Col id="PAGE_NAME">GRID WEEKLY CALENDAR</Col>
+            <Col id="PAGE_URL">template::TEMPLATE012.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120903141810000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE013</Col>
+            <Col id="PAGE_NAME">FILE ATTACHMENT</Col>
+            <Col id="PAGE_URL">template::TEMPLATE013.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE014</Col>
+            <Col id="PAGE_NAME">GRID SUMMARY</Col>
+            <Col id="PAGE_URL">template::TEMPLATE014.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+          <Row>
+            <Col id="_chk"/>
+            <Col id="PAGE_ID">TEMPLATE101</Col>
+            <Col id="PAGE_NAME">PAGING</Col>
+            <Col id="PAGE_URL">template::TEMPLATE101.xfdl</Col>
+            <Col id="PAGE_TYPE">MAIN</Col>
+            <Col id="PAGE_EXTP">FORM</Col>
+            <Col id="PAGE_DESC"/>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831173454000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120910171504000</Col>
+            <Col id="USE_FG">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Search" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <ConstColumn id="pageIndex" type="INT" size="30" value="1"/>
+          <ConstColumn id="pageSize" type="INT" size="30" value="5"/>
+          <ConstColumn id="pageUnit" type="INT" size="30" value="5"/>
+          <Column id="SEARCH_CONDITION" type="STRING" size="100"/>
+          <Column id="SEARCH_KEYWORD" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SEARCH_KEYWORD"/>
+            <Col id="SEARCH_CONDITION">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_ExType" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="bigdecimal" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">FORM</Col>
+            <Col id="CODE_NM">일반화면</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152044000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">일반적인 화면으로 연동</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">LINK</Col>
+            <Col id="CODE_NM">웹페이지</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152044000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">웹페이지 연동</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">EXEC</Col>
+            <Col id="CODE_NM">외부연동</Col>
+            <Col id="CODE_SEQ">3</Col>
+            <Col id="GROUP_CD">10000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151943000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831155345000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">외부모듈의 실행으로 연동</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_Type" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="_chk" type="string" size="256"/>
+          <Column id="CODE_CD" type="string" size="10"/>
+          <Column id="CODE_NM" type="string" size="20"/>
+          <Column id="CODE_SEQ" type="bigdecimal" size="38"/>
+          <Column id="GROUP_CD" type="string" size="10"/>
+          <Column id="USE_FG" type="string" size="1"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+          <Column id="UPDATE_DT" type="undefined" size="0"/>
+          <Column id="CODE_GBN" type="string" size="12"/>
+          <Column id="CODE_DESC" type="string" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE_CD">MAIN</Col>
+            <Col id="CODE_NM">메인화면</Col>
+            <Col id="CODE_SEQ">1</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152055000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">메인화면</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">SUB</Col>
+            <Col id="CODE_NM">보조화면</Col>
+            <Col id="CODE_SEQ">2</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831192242000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">메인화면의 SUB화면</Col>
+          </Row>
+          <Row>
+            <Col id="CODE_CD">POP</Col>
+            <Col id="CODE_NM">팝업화면</Col>
+            <Col id="CODE_SEQ">3</Col>
+            <Col id="GROUP_CD">20000</Col>
+            <Col id="USE_FG">1</Col>
+            <Col id="CREATE_USER">test</Col>
+            <Col id="CREATE_DT">20120831151436000</Col>
+            <Col id="UPDATE_USER">test</Col>
+            <Col id="UPDATE_DT">20120831152055000</Col>
+            <Col id="CODE_GBN"/>
+            <Col id="CODE_DESC">팝업화면</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_PageKey" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="ds_PageValid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="PAGE_ID" type="string" size="20"/>
+          <Column id="PAGE_NAME" type="string" size="100"/>
+          <Column id="PAGE_URL" type="string" size="200"/>
+          <Column id="PAGE_TYPE" type="string" size="10"/>
+          <Column id="PAGE_EXTP" type="string" size="10"/>
+          <Column id="PAGE_DESC" type="string" size="100"/>
+          <Column id="CREATE_USER" type="string" size="12"/>
+          <Column id="CREATE_DT" type="undefined" size="0"/>
+          <Column id="UPDATE_USER" type="string" size="12"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="PAGE_ID">title:page.id,required:true</Col>
+            <Col id="PAGE_NAME">title:page.name,required:true</Col>
+            <Col id="PAGE_URL">title:page.url,required:true</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edt_ID" propid="value" datasetid="ds_page" columnid="PAGE_ID"/>
+      <BindItem id="item1" compid="edt_Name" propid="value" datasetid="ds_page" columnid="PAGE_NAME"/>
+      <BindItem id="item2" compid="edt_URL" propid="value" datasetid="ds_page" columnid="PAGE_URL"/>
+      <BindItem id="item5" compid="txt_desc" propid="value" datasetid="ds_page" columnid="PAGE_DESC"/>
+      <BindItem id="item6" compid="edt_regID" propid="value" datasetid="ds_page" columnid="CREATE_USER"/>
+      <BindItem id="item7" compid="cal_regDt" propid="value" datasetid="ds_page" columnid="CREATE_DT"/>
+      <BindItem id="item8" compid="chk_useYN" propid="value" datasetid="ds_page" columnid="USE_FG"/>
+      <BindItem id="item3" compid="cmb_type" propid="value" datasetid="ds_page" columnid="PAGE_TYPE"/>
+      <BindItem id="item4" compid="cmb_Extp" propid="value" datasetid="ds_page" columnid="PAGE_EXTP"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 업무화면 화면등록 관리
+ * 02. 화면명   : PageMgmt.xfdl
+ * 03. 화면설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * 화면 변수 선언부
+ ************************************************************************/
+ 
+/***********************************************************************
+ * Form Function
+ ************************************************************************/
+// Form Load 시 공통 기능 처리
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+	Ex.core.init(obj); 	 
+}
+
+//사용자 정의 폼 로드 함수(form_init 고정)
+this.form_init = function(obj)
+{
+	// 검색처리
+ 	this.fn_search();
+}
+
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+
+//목록조회 Search
+this.fn_search = function()
+{
+	var sSvcID        	= "search";                    
+    var sController   	= "nexacroController.do";
+    
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_page=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectPageList");// Map형태
+    
+/*    sArgs += Ex.util.setParam("V_CONFIG_TITLE",this.div_search.edt_searchKeyword.value);*/
+    if (this.div_search.cmb_searchCondition.value == 0)
+	{
+		sArgs += Ex.util.setParam("PAGE_NAME",this.div_search.edt_searchKeyword.value);
+	}
+	else if (this.div_search.cmb_searchCondition.value == 1)
+	{
+		sArgs += Ex.util.setParam("PAGE_ID",this.div_search.edt_searchKeyword.value);
+	}
+    
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+}
+
+//저장
+this.fn_save = function()
+{
+	var sSvcID        	= "save";                    
+    var sController   	= "nexacroController.do";
+
+    var sInDatasets   	= "input1=ds_page:U";
+	var sOutDatasets  	= "";
+	var sArgs = "";	
+
+	sArgs += Ex.util.setParam("method","save"); 
+	sArgs += Ex.util.setParam("sqlId","modyfyPage");   // Map형태
+	sArgs += Ex.util.setParam("forceSqlFlag","N");
+    
+    
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs);
+}
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		return ExtNx.core.comMsg("alert",strErrorMsg);		
+	}
+	
+	if (strSvcId == "search") 
+	{
+		this.fn_search_post();
+	}
+	
+	if (strSvcId == "save") 
+	{
+		this.fn_search();
+	}
+}
+
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+
+// 추가 버튼 이벤트 처리
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_page.addRow();
+	this.ds_page.setColumn(nRow, "CREATE_DT", Ex.util.todayTime());
+	this.ds_page.setColumn(nRow, "UPDATE_DT", Ex.util.todayTime());
+}
+// 삭제 버튼 이벤트 처리
+this.fn_delete = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_page.rowposition;
+	
+	this.ds_page.deleteRow(nRow);
+	
+
+}
+//검색시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+this.fn_search_post = function()
+{
+	//페이징 없는 경우
+	var nTotalCnt = this.ds_page.rowcount;
+    var nCnt = this.ds_page.rowcount;
+
+	this.div_grid_top.sta_total_cnt.set_text(nTotalCnt);
+	this.div_grid_bottom.sta_grid_cnt.set_text("Rows : "+nTotalCnt);
+	this.div_grid_bottom.sta_msg.set_text("Select has been complted successfully.");	
+	this.div_grid_bottom.sta_grid_cnt.set_text("Rows : " + nCnt);
+}
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+//팝업 후처리 작업
+this.fn_popupAfter = function(sPopupId,val)
+{
+
+}
+
+//페이징 후처리 작업
+this.fn_pageAfter = function(sObjId,nViewPage)
+{
+
+}
+
+
+this.chk_useYN_onclick = function(obj:CheckBox,  e:nexacro.ClickEventInfo)
+{
+	
+}
+
+this.div_grid_bottom_btn_find_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.gfn_findPopup(this.grd_page);
+}
+
+this.div_grid_bottom_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this.grd_page);
+}
+]]></Script>
+  </Form>
+</FDL>

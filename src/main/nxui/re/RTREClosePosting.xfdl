@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREClosePosting" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1147" height="498" titletext="마감전표확인" onload="RTSDProvisionalContractRegister_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="19" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="410" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="20" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="21" text="조회결과" cssclass="sta_WF_subTitle" left="10" top="75" width="120" height="21"/>
+        <Static id="Static02" taborder="22" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="95" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_postingList" taborder="18" useinputpanel="false" autofittype="none" left="9" top="104" width="1113" height="380" scrollbars="autoboth" binddataset="ds_postingList" oncellclick="grid_postingList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="99"/>
+                <Column size="213"/>
+                <Column size="40"/>
+                <Column size="106"/>
+                <Column size="96"/>
+                <Column size="110"/>
+                <Column size="57"/>
+                <Column size="40"/>
+                <Column size="69"/>
+                <Column size="40"/>
+                <Column size="81"/>
+                <Column size="178"/>
+                <Column size="95"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="197"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell/>
+                <Cell col="1" text="전표항목코드"/>
+                <Cell col="2" text="전표항목명"/>
+                <Cell col="3" text="순번"/>
+                <Cell col="4" text="SAP전표연동여부"/>
+                <Cell col="5" displaytype="normal" text="SAP전표번호"/>
+                <Cell col="6" text="SAP전표연동결과"/>
+                <Cell col="7" text="수기전표"/>
+                <Cell col="8" text="취소"/>
+                <Cell col="9" text="Item No."/>
+                <Cell col="10" text="Pstky"/>
+                <Cell col="11" text="계정코드"/>
+                <Cell col="12" text="계정명"/>
+                <Cell col="13" text="Tax Code"/>
+                <Cell col="14" text="Cost Center"/>
+                <Cell col="15" text="금액"/>
+                <Cell col="16" text="차변"/>
+                <Cell col="17" text="대변"/>
+                <Cell col="18" text="설명"/>
+                <Cell col="19" text="차대"/>
+                <Cell col="20" text="등록ID"/>
+                <Cell col="21" text="등록일시"/>
+                <Cell col="22" text="수정자ID"/>
+                <Cell col="23" text="수정일시"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="expr:eSubrc=='S' ? 'none':'checkbox'" edittype="expr:eSubrc=='S' ? 'none':'checkbox'" text="bind:chk"/>
+                <Cell col="1" displaytype="normal" text="bind:stmtCd"/>
+                <Cell col="2" displaytype="normal" style="align:center;" text="bind:stmtNm"/>
+                <Cell col="3" displaytype="normal" style="align:center;" text="bind:stmtSeq"/>
+                <Cell col="4" displaytype="normal" style="align:center;" text="bind:stmtTgtYn"/>
+                <Cell col="5" displaytype="normal" edittype="normal" style="align:center;" text="bind:eBelnr"/>
+                <Cell col="6" displaytype="combo" edittype="combo" text="bind:eSubrc" combodataset="ds_C033" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="7" text="bind:manualYn"/>
+                <Cell col="8" text="bind:cncYn"/>
+                <Cell col="9" text="bind:itmSeq"/>
+                <Cell col="10" text="bind:bschl"/>
+                <Cell col="11" text="bind:hkont"/>
+                <Cell col="12" text="bind:hkontNm"/>
+                <Cell col="13" text="bind:mwskz"/>
+                <Cell col="14" text="bind:kostl"/>
+                <Cell col="15" displaytype="number" text="bind:dmbtr" mask="###,###,###"/>
+                <Cell col="16" displaytype="number" text="bind:dmbtrD" mask="###,###,###"/>
+                <Cell col="17" displaytype="number" text="bind:dmbtrC" mask="###,###,###"/>
+                <Cell col="18" text="bind:sgtxt"/>
+                <Cell col="19" text="bind:sideNm"/>
+                <Cell col="20" text="bind:regId"/>
+                <Cell col="21" displaytype="date" text="bind:regDt" mask="yyyy-MM-dd"/>
+                <Cell col="22" text="bind:chgId"/>
+                <Cell col="23" displaytype="date" text="bind:chgDt" mask="yyyy-MM-dd"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13"/>
+                <Cell col="14"/>
+                <Cell col="15"/>
+                <Cell col="16"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+                <Cell col="19"/>
+                <Cell col="20"/>
+                <Cell col="21"/>
+                <Cell col="22"/>
+                <Cell col="23"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="23" cssclass="Guide_color" visible="false" left="0" top="484" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Div id="div_search" taborder="44" left="9" top="10" width="1113" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static26" taborder="95" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="96" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="st_payMm" taborder="100" text="마감월" cssclass="sta_WF_schTitle" left="29" top="12" width="69" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="102" text="FIX w20" cssclass="Guide_color" visible="false" left="96" top="0" width="20" height="45"/>
+              <Static id="Static02" taborder="103" text="FIX w20" cssclass="Guide_color" visible="false" left="258" top="0" width="20" height="45"/>
+              <Calendar id="cal_closeYm" taborder="104" dateformat="yyyy-MM" left="116" top="12" width="142" height="21" value="null" editformat="yyyy-MM"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static07" taborder="45" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="55" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Edit id="ed_f10n" taborder="46" left="85.61%" top="74" right="2.18%" height="20" displaynulltext="0"/>
+        <Static id="st_f10n" taborder="47" text="F10N" cssclass="sta_WF_schTitle" left="910" top="75" width="69" height="21" domainId="nexa.s_condition"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item9" compid="div_search.cal_closeYm" propid="value" datasetid="ds_provsnList" columnid="planDay"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_postingList">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="zmonth" type="STRING" size="256"/>
+          <Column id="stmtCd" type="STRING" size="256"/>
+          <Column id="stmtNm" type="STRING" size="256"/>
+          <Column id="stmtSeq" type="STRING" size="256"/>
+          <Column id="bukrs" type="STRING" size="256"/>
+          <Column id="budat" type="STRING" size="256"/>
+          <Column id="bldat" type="STRING" size="256"/>
+          <Column id="bktxt" type="STRING" size="256"/>
+          <Column id="waers" type="STRING" size="256"/>
+          <Column id="eSubrc" type="STRING" size="256"/>
+          <Column id="eBelnr" type="STRING" size="256"/>
+          <Column id="eRemsg" type="STRING" size="256"/>
+          <Column id="manualYn" type="STRING" size="256"/>
+          <Column id="stmtTgtYn" type="STRING" size="256"/>
+          <Column id="cncYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="itmSeq" type="STRING" size="256"/>
+          <Column id="bschl" type="STRING" size="256"/>
+          <Column id="hkont" type="STRING" size="256"/>
+          <Column id="hkontNm" type="STRING" size="256"/>
+          <Column id="mwskz" type="STRING" size="256"/>
+          <Column id="kostl" type="STRING" size="256"/>
+          <Column id="dmbtr" type="STRING" size="256"/>
+          <Column id="dmbtrD" type="STRING" size="256"/>
+          <Column id="dmbtrC" type="STRING" size="256"/>
+          <Column id="sgtxt" type="STRING" size="256"/>
+          <Column id="sideCd" type="STRING" size="256"/>
+          <Column id="sideNm" type="STRING" size="256"/>
+          <Column id="itmRegId" type="STRING" size="256"/>
+          <Column id="itmRegDt" type="STRING" size="256"/>
+          <Column id="itmChgId" type="STRING" size="256"/>
+          <Column id="itmChgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R066">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_C033">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">S</Col>
+            <Col id="cdNm">S</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_postingListCp">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="zmonth" type="STRING" size="256"/>
+          <Column id="stmtCd" type="STRING" size="256"/>
+          <Column id="stmtSeq" type="STRING" size="256"/>
+          <Column id="bukrs" type="STRING" size="256"/>
+          <Column id="budat" type="STRING" size="256"/>
+          <Column id="bldat" type="STRING" size="256"/>
+          <Column id="bktxt" type="STRING" size="256"/>
+          <Column id="waers" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+
+// 전역변수 선언
+this.fUserId  = "";											// 현재 로그인 사용자의 ID
+this.fUserGrp = "";											// 현재 로그인 사용자의 사용자그룹
+this.firstDate  = "";
+this.lastDate  = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.parent.setButton("E|AG|S|N", this);
+	
+	this.get_date();
+	
+	// 사용자그룹 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}	
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+
+	switch (strSvcId) {
+		case "getDate":
+			this.div_search.cal_closeYm.set_value(this.firstDate);
+			break;
+	    case "listCommInfo":
+			break;
+		case "listClosePosting":
+			
+			var rowCt = this.ds_postingList.getRowCount();
+		
+			if( rowCt == 0 ){
+				this.alert("조회된 데이터가 없습니다.");
+				this.grid_postingList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+							
+			break;
+		case "aggregatePostingData":
+			this.alert("집계완료되었습니다.");
+			break;
+		case "ifRTREClosePostingEai":
+			// 전송 후 결과 재조회
+			this.fn_search();
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_listClosePosting = function(){
+
+	var closeYm = nvl(this.div_search.cal_closeYm.value).substring(0, 6);
+	
+	var sSvcID        	= "listClosePosting";                    
+	var sController   	= "rtms/re/rTREClosePostingList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_postingList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("closeYm", 	closeYm);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	
+	this.FN_listClosePosting();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//EAI인터페이스
+this.fn_add = function() {
+
+	this.rowCnt = this.ds_postingList.getRowCount();
+	
+	//공통입력값만 추출하여 전송
+	var nRow = this.ds_postingList.findRowExpr("chk == '1'");
+
+	this.ds_postingListCp.addRow();
+	this.ds_postingListCp.setColumn(0, "chk", this.ds_postingList.getColumn(nRow, "chk"));
+	this.ds_postingListCp.setColumn(0, "zmonth", this.ds_postingList.getColumn(nRow, "zmonth"));
+	this.ds_postingListCp.setColumn(0, "stmtCd", this.ds_postingList.getColumn(nRow, "stmtCd"));
+	this.ds_postingListCp.setColumn(0, "stmtSeq", this.ds_postingList.getColumn(nRow, "stmtSeq"));
+	this.ds_postingListCp.setColumn(0, "bukrs", this.ds_postingList.getColumn(nRow, "bukrs"));
+	this.ds_postingListCp.setColumn(0, "budat", this.ds_postingList.getColumn(nRow, "budat"));
+	this.ds_postingListCp.setColumn(0, "bldat", this.ds_postingList.getColumn(nRow, "bldat"));
+	this.ds_postingListCp.setColumn(0, "bktxt", this.ds_postingList.getColumn(nRow, "bktxt"));
+	this.ds_postingListCp.setColumn(0, "waers", this.ds_postingList.getColumn(nRow, "waers"));
+
+	if (this.rowCnt > 0) {		
+		var sSvcID        	= "ifRTREClosePostingEai";                    
+		var sController   	= "rtms/re/ifRTREClosePostingEai.do";
+		var sInDatasets   	= "ds_postingList=ds_postingListCp:U";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("ifId", 	"NTRMS_122");	//인터페이스ID
+		
+		// EAI I/F 수행시간을 고려하여 timeout 시간(초) 조정 (default = 60 sec)
+		application.set_httptimeout(330);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	} else {
+		this.alert("전송할 건이 없습니다.");
+		return false;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_aggregate = function(){
+
+	if(nvl(this.ed_f10n.value) == ""){
+		alert("F10N 금액이 입려되지 않았습니다.");
+		return;
+	}
+	
+	var sSvcID        	= "aggregatePostingData";                    
+	var sController   	= "rtms/re/aggregatePostingData.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("closeYm", 	nvl(this.div_search.cal_closeYm.value).substring(0, 6));	//마감월
+	sArgs += Ex.util.setParam("f10nAmt", 	nvl(this.ed_f10n.value));									//F10N 금액
+	
+	// EAI I/F 수행시간을 고려하여 timeout 시간(초) 조정 (default = 60 sec)
+	application.set_httptimeout(330);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+
+	var sSvcID        	= "updatePostingData";                    
+	var sController   	= "rtms/re/updatePostingData.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("closeYm", 	nvl(this.div_search.cal_closeYm.value).substring(0, 6));	//마감월
+	sArgs += Ex.util.setParam("stmtCd", 	nvl(this.div_search.cal_closeYm.value).substring(0, 6));	//계정항목
+	sArgs += Ex.util.setParam("eSubrc", 	"N");														//인터페이스결과
+	sArgs += Ex.util.setParam("eBelnr", 	this.ds_postingList.getColumn(this.ds_postingList.rowposition, "eBelnr"));	//전표번호													//인터페이스결과
+	sArgs += Ex.util.setParam("eRemsg", 	this.ds_postingList.getColumn(this.ds_postingList.rowposition, "eRemsg"));	//인터페이스결과메세지													//인터페이스결과
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_postingList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// 체크박스를 체크했을 때
+	if ((obj.getCellPos() == 0) && (obj.getCellValue(obj.currentrow, obj.getCellPos()) == 1)) {
+		var stmtCd = this.ds_postingList.getColumn(obj.currentrow, "stmtCd");
+		var nRow = this.ds_postingList.findRowExpr("stmtCd == '" + stmtCd + "'");
+		var chk = this.ds_postingList.getColumn(obj.currentrow, "chk");
+		
+		//전체 초기화
+		for(var i=0; i<this.ds_postingList.rowcount; i++){
+			this.ds_postingList.setColumn(i, "chk", 0);
+		}
+		
+		for(var i=0; i<this.ds_postingList.rowcount; i++){
+			if(this.ds_postingList.getColumn(i, "stmtCd") == stmtCd){
+				this.ds_postingList.setColumn(i, "chk", 1);
+			}
+		}
+
+	}else if((obj.getCellPos() == 0) && (obj.getCellValue(obj.currentrow, obj.getCellPos()) == 0)){
+		//전체 초기화
+		for(var i=0; i<this.ds_postingList.rowcount; i++){
+			this.ds_postingList.setColumn(i, "chk", 0);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo){
+	Ex.core.exportExcel(this, this.grid_postingList, "마감전표내역");
+}]]></Script>
+  </Form>
+</FDL>

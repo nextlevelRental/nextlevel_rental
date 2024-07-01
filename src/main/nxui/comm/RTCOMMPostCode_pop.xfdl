@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMPostCode_pop" classname="RTCMPostCode_pop" left="0" top="0" width="720" height="521" titletext="우편번호조회" onload="RTCMPostCode_pop_onload" onkeyup="RTCOMMPostCode_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_postCode" taborder="4" useinputpanel="false" left="10" top="173" height="300" binddataset="ds_postCode" oncelldblclick="grid_postCode_oncelldblclick" onvscroll="grid_postCode_onvscroll" scrollpixel="none" onselectchanged="grid_postCode_onselectchanged" cellsizingtype="col" width="700">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="350"/>
+                <Column size="195"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="우편번호"/>
+                <Cell col="1"/>
+                <Cell col="2" text="주소"/>
+                <Cell col="3" text="상세주소"/>
+              </Band>
+              <Band id="body">
+                <Cell rowspan="2" text="bind:areaNum"/>
+                <Cell col="1" text="도로명"/>
+                <Cell col="2" style="align:left;" text="bind:rnAddr1D"/>
+                <Cell col="3" style="align:left;" text="bind:rnAddr2D"/>
+                <Cell row="1" col="1" text="지번"/>
+                <Cell row="1" col="2" style="align:left;" text="bind:rnAddr1B"/>
+                <Cell row="1" col="3" style="align:left;" text="bind:rnAddr2B"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sta_searchCt2" taborder="2" text="0" cssclass="sta_WF_GridFound" top="146" height="20" style="align:right middle;font:bold 9 Dotum;" width="45" left="160"/>
+        <Static id="sta_searchCt3" taborder="3" text="건 입니다." cssclass="sta_WF_GridFound2" top="146" width="57" height="20" left="205"/>
+        <Static id="sta_searchCt" taborder="1" text="검색한 결과 총" cssclass="sta_WF_GridFound2" top="146" width="82" height="20" left="12"/>
+        <Div id="div_search" taborder="0" left="10" top="10" right="10" height="126" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="5" text="조회" onclick="btn_search_onclick" cssclass="btn_WF_CRUD" top="87" right="20" width="45" height="22" domainId="nexa.add"/>
+              <Static id="st_searchModel" taborder="49" text="주소유형" cssclass="sta_WF_schTitle" left="308" top="11" width="86" height="20" domainId="nexa.s_condition" visible="false"/>
+              <Static id="st_searchAddr" taborder="52" text="시도/구군" cssclass="sta_WF_schTitle" left="308" top="35" width="86" height="20" domainId="nexa.s_condition" visible="false"/>
+              <Static id="st_searchMbNm" taborder="53" text="건물번호" cssclass="sta_WF_schTitle" left="308" top="87" width="86" height="20" domainId="nexa.s_condition" visible="false"/>
+              <Static id="st_searchRdDngNm" taborder="54" text="도로명/지번 주소 입력" cssclass="sta_WF_schTitle" left="20" top="14" width="150" height="20" domainId="nexa.s_condition"/>
+              <Radio id="ra_searchAddr" taborder="0" index="0" codecolumn="codecolumn" datacolumn="datacolumn" value="D" direction="vertical" onitemchanged="div_search_ra_searchAddr_onitemchanged" left="402" top="10" width="200" height="22" visible="false">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">D</Col>
+                      <Col id="datacolumn">도로명주소</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">B</Col>
+                      <Col id="datacolumn">지번 주소</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Combo id="cb_searchDo" taborder="1" displaynulltext="선택" innerdataset="@ds_do" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_searchDo_onitemchanged" left="400" top="34" width="140" height="21" domainId="nexa.name;nexa.code" visible="false"/>
+              <Combo id="cb_searchCt" taborder="2" displaynulltext="선택" innerdataset="@ds_ct" codecolumn="cd" datacolumn="cdNm" left="545" top="34" width="140" height="21" domainId="nexa.name;nexa.code" visible="false"/>
+              <Edit id="ed_searchRdDngNm" taborder="3" left="176" top="13" height="21" width="140" onkeyup="div_search_ed_searchRdDngNm_onkeyup"/>
+              <Edit id="ed_searchMbNm" taborder="4" left="400" top="88" width="140" height="21" onkeyup="div_search_ed_searchMbNm_onkeyup" visible="false"/>
+              <Static id="st_searchRdDngNm2" taborder="55" text="예시) 지번 : 방배동 796-27&#13;&#10;        도로명 : 방배로 226&#13;&#10;        건물명 : 넥센강남타워 " left="176" top="40" width="170" height="45" domainId="nexa.s_condition"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="5" text="선택" onclick="btn_choice_onclick" top="482" right="54" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="6" text="닫기" onclick="btn_close_onclick" top="482" right="9" width="41" height="21" domainId="nexa.add"/>
+        <Static id="sta_searchCt1" taborder="7" text="0" cssclass="sta_WF_GridFound" left="94" top="146" width="45" height="20" style="align:right middle;font:bold 9 Dotum;"/>
+        <Static id="sta_searchCt00" taborder="8" cssclass="sta_WF_GridFound" left="302" top="146" width="44" height="20" style="align:right middle;font:bold 9 Dotum;"/>
+        <Static id="sta_searchCt04" taborder="9" text="/" cssclass="sta_WF_GridFound" left="140" top="146" width="20" height="20" style="align:center middle;font:bold 9 Dotum;"/>
+        <Edit id="ed_addr2" taborder="10" left="10" top="483" width="302" height="21" displaynulltext="상세주소" maxlength="100"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_postCode" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rnAddr1D" size="256"/>
+          <Column id="rnAddr2D" size="256"/>
+          <Column id="rnAddr1B" size="256"/>
+          <Column id="rnAddr2B" size="256"/>
+          <Column id="bldMngNo" size="256"/>
+          <Column id="areaNum" size="256"/>
+          <Column id="doNm" size="256"/>
+          <Column id="doNmE" size="256"/>
+          <Column id="ctNm" size="256"/>
+          <Column id="ctNmE" size="256"/>
+          <Column id="emNm" size="256"/>
+          <Column id="emNmE" size="256"/>
+          <Column id="rdCd" size="256"/>
+          <Column id="rdNm" size="256"/>
+          <Column id="rdNmE" size="256"/>
+          <Column id="undrGrnd" size="256"/>
+          <Column id="bldMb" size="256"/>
+          <Column id="bldSb" size="256"/>
+          <Column id="mdNm" size="256"/>
+          <Column id="bldNm1" size="256"/>
+          <Column id="bDngCd" size="256"/>
+          <Column id="bDngNm" size="256"/>
+          <Column id="bRiNm" size="256"/>
+          <Column id="hDngNm" size="256"/>
+          <Column id="sCd" size="256"/>
+          <Column id="lotMb" size="256"/>
+          <Column id="dngSeq" size="256"/>
+          <Column id="lotSb" size="256"/>
+          <Column id="zipNum" size="256"/>
+          <Column id="seq" size="256"/>
+          <Column id="sidoCd" size="256"/>
+          <Column id="sigunCd" size="256"/>
+          <Column id="useYn" size="256"/>
+          <Column id="regId" size="256"/>
+          <Column id="regDt" size="256"/>
+          <Column id="chgId" size="256"/>
+          <Column id="chgDt" size="256"/>
+          <Column id="totalCnt" size="256"/>
+          <Column id="siNm" type="STRING" size="256"/>
+          <Column id="sggNm" type="STRING" size="256"/>
+          <Column id="emdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_postCode2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rnAddr1D" size="256"/>
+          <Column id="rnAddr2D" size="256"/>
+          <Column id="rnAddr1B" size="256"/>
+          <Column id="rnAddr2B" size="256"/>
+          <Column id="bldMngNo" size="256"/>
+          <Column id="areaNum" size="256"/>
+          <Column id="doNm" size="256"/>
+          <Column id="doNmE" size="256"/>
+          <Column id="ctNm" size="256"/>
+          <Column id="ctNmE" size="256"/>
+          <Column id="emNm" size="256"/>
+          <Column id="emNmE" size="256"/>
+          <Column id="rdCd" size="256"/>
+          <Column id="rdNm" size="256"/>
+          <Column id="rdNmE" size="256"/>
+          <Column id="undrGrnd" size="256"/>
+          <Column id="bldMb" size="256"/>
+          <Column id="bldSb" size="256"/>
+          <Column id="mdNm" size="256"/>
+          <Column id="bldNm1" size="256"/>
+          <Column id="bDngCd" size="256"/>
+          <Column id="bDngNm" size="256"/>
+          <Column id="bRiNm" size="256"/>
+          <Column id="hDngNm" size="256"/>
+          <Column id="sCd" size="256"/>
+          <Column id="lotMb" size="256"/>
+          <Column id="dngSeq" size="256"/>
+          <Column id="lotSb" size="256"/>
+          <Column id="zipNum" size="256"/>
+          <Column id="seq" size="256"/>
+          <Column id="sidoCd" size="256"/>
+          <Column id="sigunCd" size="256"/>
+          <Column id="useYn" size="256"/>
+          <Column id="regId" size="256"/>
+          <Column id="regDt" size="256"/>
+          <Column id="chgId" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="totalCnt" size="256"/>
+          <Column id="siNm" type="STRING" size="256"/>
+          <Column id="sggNm" type="STRING" size="256"/>
+          <Column id="emdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_do" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ct" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	this.args 	= "";
+	this.pageNo = 1;
+    this.getCnt = "10";
+    
+    this.RTCMPostCode_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		//this.fn_init();
+	}
+	
+
+	this.fn_init = function(){
+		var sSvcID      	= "listDoCombo";  
+		var sController   	= "rtms/comm/listDoCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_do=mapListDoCombo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if( strSvcId == "listPostPageCodePop" ){
+			var nRowCount2 = this.ds_postCode2.getRowCount();
+			if(nRowCount2 != 0){
+				if(this.pageNo == 1){
+					this.ds_postCode.clearData();
+				}
+				this.ds_postCode.appendData(this.ds_postCode2);
+				var nRowCount = this.ds_postCode.getRowCount();
+				
+				this.sta_searchCt1.set_text(this.ds_postCode2.getColumn(0,"totalCnt"));
+				this.sta_searchCt2.set_text(nRowCount);
+			}else{
+				this.ds_postCode2.clearData();
+				this.ds_postCode.clearData();
+				this.sta_searchCt1.set_text(0);
+				this.sta_searchCt2.set_text(0);
+				this.pageNo = 1;				
+				alert("조회된 데이터가 없습니다.");
+				this.grid_postCode.set_nodatatext("조회된 데이터가 없습니다.");
+				this.div_search.ed_searchRdDngNm.setFocus(true);
+			}
+		}
+
+		if(strSvcId == "listCtCombo") {
+			this.div_search.cb_searchCt.set_value("");
+		}
+		if(strSvcId == "listDoCombo") {
+
+		}
+	}
+	
+	
+	
+	this.RTCOMMPostCode_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 27){
+			this.close();
+		}
+	}
+
+
+
+	this.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.ds_postCode.clearData();
+		this.ds_postCode2.clearData();
+		this.pageNo = 1;
+		this.FN_search();
+	}   
+	
+	
+	this.div_search_ed_searchRdDngNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{	
+		if( e.keycode == "13" ){
+			this.ds_postCode.clearData();
+			this.ds_postCode2.clearData();
+			this.pageNo = 1;		
+			this.FN_search();
+		}
+	}
+	
+	
+	
+	this.div_search_ed_searchMbNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if( e.keycode == "13" ){
+			this.FN_search();
+		}
+	}
+	
+	
+	
+	this.grid_postCode_onvscroll = function(obj:Grid, e:nexacro.ScrollEventInfo)
+	{
+		
+		if( e.type == "selectlastover" || e.type == "tracklastover" || e.type == 'wheellastover' ) {
+			var ct1 = this.ds_postCode2.getColumn(0,"totalCnt");
+			var ct2 = this.ds_postCode.getRowCount();
+			if( ct1 != ct2 ){
+				this.pageNo++;
+				this.FN_search();
+			}
+		}
+	}
+	
+	
+	
+	this.grid_postCode_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+	{
+		var row = this.ds_postCode.rowposition + 1;
+		var ct = this.ds_postCode.getRowCount();
+		var ct1 = this.ds_postCode2.getColumn(0,"totalCnt");
+		var ct2 = this.ds_postCode.getRowCount();
+		if( ct1 != ct2 ){
+			if( row == ct ){
+				this.pageNo++;
+				this.FN_search();
+			}
+		}
+	}
+	
+	
+	this.FN_search = function(){
+		var edSearchRdDngNmVal 	= nvl(this.div_search.ed_searchRdDngNm.value);
+
+		if( edSearchRdDngNmVal == "" ){
+			alert( this.div_search.st_searchRdDngNm.text + " 값이 없습니다." );
+			this.div_search.ed_searchRdDngNm.setFocus(true);
+			return;			
+		}
+		
+		if( this.pageNo > 10 ){
+			alert( "검색결과가 너무 많습니다.\n 다시 조회하세요.");
+			this.div_search.ed_searchRdDngNm.setFocus(true);
+		}else{
+			var sSvcID        	= "listPostPageCodePop";                    
+			var sController   	= "rtms/comm/listPostPageCodePop.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_postCode2=mapPostPageCode";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			
+			sArgs += Ex.util.setParam("rdDngNm", 	edSearchRdDngNmVal);
+			sArgs += Ex.util.setParam("pageNo", 	this.pageNo);
+			sArgs += Ex.util.setParam("getCnt", 	this.getCnt);
+			//alert(sArgs);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+	
+
+
+	this.div_search_cb_searchDo_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		this.ds_ct.clearData();
+		var cbSearchDoVal 	= nvl(this.div_search.cb_searchDo.value);
+		
+		var sSvcID      	= "listCtCombo";  
+		var sController   	= "rtms/comm/listCtCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_ct=mapListCtCombo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if( cbSearchDoVal != "" ){
+			sArgs += Ex.util.setParam("doNm", cbSearchDoVal);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+
+
+	this.div_search_ra_searchAddr_onitemchanged = function(obj:Radio, e:nexacro.ItemChangeEventInfo)
+	{
+		if( e.postvalue == "D"){
+			this.div_search.st_searchRdDngNm.set_text("동명/도로명");
+			this.div_search.st_searchMbNm.set_text("건물번호");
+		}else{
+			this.div_search.st_searchRdDngNm.set_text("동명/리");
+			this.div_search.st_searchMbNm.set_text("번지");
+		}
+		this.div_search.ed_searchRdDngNm.set_value("");
+		this.div_search.ed_searchMbNm.set_value("");
+	}
+	
+	
+	
+	this.grid_postCode_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		this.FN_choice();
+	}
+	
+	
+	
+	this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.FN_choice();
+	}
+	
+	
+	
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}
+
+
+
+	this.FN_choice = function(){
+		var nRow = this.ds_postCode.rowposition;
+		
+		if( nRow == -1 ){
+			alert("선택된 데이터가 없습니다.");
+		}else{
+			if( nvl(this.ed_addr2.value) == "" ){
+				if( confirm( "상세주소 입력하시겠습니까?") ){
+					this.ed_addr2.setFocus(true);
+				}else{
+					this.FN_choice2();
+				}
+			}else{
+				this.FN_choice2();
+			}
+		}
+	}
+	this.FN_choice2 = function(){
+		var areaNum = "";
+		var addr1 = "";
+		var addr2 = "";
+		var bldMngNo = "";
+		var nRow = this.ds_postCode.rowposition;
+		
+		//20200304 kstka 시구동 정보 추가
+		var siNm = "";
+		var sggNm = "";
+		var emdNm = "";
+		
+		var res = "";
+		var division = "";
+		
+		areaNum 	+= this.ds_postCode.getColumn(nRow, "areaNum");
+		addr1 		+= this.ds_postCode.getColumn(nRow, "rnAddr1D");
+		addr2 		+= this.ds_postCode.getColumn(nRow, "rnAddr2D")+" "+nvl(this.ed_addr2.value);
+		bldMngNo 	+= this.ds_postCode.getColumn(nRow, "bldMngNo");
+			
+		siNm		+=  this.ds_postCode.getColumn(nRow, "siNm");       
+		sggNm		+=  this.ds_postCode.getColumn(nRow, "sggNm");       
+		emdNm		+=  this.ds_postCode.getColumn(nRow, "emdNm");       
+
+		res = [ areaNum, addr1, addr2, bldMngNo, siNm, sggNm, emdNm ];
+		
+		if( this.parent.p_arg == "RTSDCustRegister_1" ){		//고객등록화면:::RTSDCustRegister.xfdl:::고객주소
+			division = ["addr1"];
+			this.close( this.opener.FN_postCd(res, division) );
+		}else if( this.parent.p_arg == "RTSDCustRegister_2"){	//고객등록화면:::RTSDCustRegister.xfdl:::보조주소
+			division = ["addr2"];
+			this.close( this.opener.FN_postCd(res, division) );
+		}else if( this.parent.p_arg == "RTCSAdviceStatus_tab_info1_custInfo_1"){	//고객등록화면:::RTSDCustRegister.xfdl:::보조주소
+			division = ["addr1"];
+			this.close( this.opener.FN_postCd(res, division) );
+		}else if( this.parent.p_arg == "RTCSAdviceStatus_tab_info1_custInfo_2"){	//고객등록화면:::RTSDCustRegister.xfdl:::보조주소
+			division = ["addr2"];
+			this.close( this.opener.FN_postCd(res, division) );
+		}else if(this.parent.p_arg == "RTCSCarmasterMemReg") {
+			this.close( this.opener.FN_postCd(res) );
+		}else if(this.parent.p_arg == "RTCSWarehouseRegister") {
+			this.close( this.opener.FN_postCd(res) );
+		}else if(this.parent.p_arg == "RTCSEngineOilRepSer") {
+			this.close( this.opener.FN_postCd(res) );
+		}else if(this.parent.p_arg == "RTSDClaimMgmt_pop") {
+			this.close( this.opener.FN_postCd(res) );
+		}
+		else{
+		
+		}
+	}
+	
+]]></Script>
+  </Form>
+</FDL>

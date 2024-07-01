@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRESETTLEDirectHisCheck_tab2" classname="RTREKCPPayHisCheck_tab2" left="0" top="0" width="1147" height="496" titletext="[STEP2]세틀뱅크결제내역조회" onload="RTRESETTLEDirectHisCheck_tab2_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1117">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="29" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="1113"/>
+              <Static id="Static23" taborder="30" cssclass="Guide_color" visible="false" left="0" top="31" height="10" width="1113"/>
+              <Static id="st_searchCondition" taborder="31" text="체크일자" cssclass="sta_WF_schTitle" left="20" top="10" width="100" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_checkDay" taborder="32" dateformat="yyyy-MM-dd" enable="true" left="120" top="10" width="120" height="21" onchanged="div_search_cal_checkDay_onchanged"/>
+              <Static id="Static03" taborder="33" text="체크회차" cssclass="sta_WF_schTitle" left="261" top="10" width="100" height="21"/>
+              <Combo id="cb_checkSet" taborder="34" innerdataset="ds_checkSet" codecolumn="checkSet" datacolumn="setNm" displayrowcount="5" left="361" top="10" width="120" height="21"/>
+              <Static id="Static00" taborder="35" cssclass="Guide_color" visible="false" left="241" top="0" width="20" height="41"/>
+              <Static id="Static02" taborder="36" cssclass="Guide_color" visible="false" left="481" top="0" width="20" height="41"/>
+              <Static id="Static06" taborder="37" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="41"/>
+              <Combo id="cb_checkYn" taborder="38" innerdataset="@ds_checkYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="601" top="10" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="2" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="496"/>
+        <Static id="Static03" taborder="5" text="차이여부" cssclass="sta_WF_schTitle" left="501" top="12" width="100" height="21"/>
+        <Grid id="grid_list" taborder="7" binddataset="ds_list" useinputpanel="false" cellsizingtype="col" left="0" top="81" bottom="0" width="1117" nodatatext="조회된 데이터가 없습니다." autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="90"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="70"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="체크일자"/>
+                <Cell col="1" text="체크회차"/>
+                <Cell col="2" text="차이여부명"/>
+                <Cell col="3" text="계약번호"/>
+                <Cell col="4" text="결제방법"/>
+                <Cell col="5" text="은행명"/>
+                <Cell col="6" text="카드사명"/>
+                <Cell col="7" text="거래상태"/>
+                <Cell col="8" text="거래금액"/>
+                <Cell col="9" text="취소금액"/>
+                <Cell col="10" text="취소가능금액"/>
+                <Cell col="11" text="수납금액"/>
+                <Cell col="12" text="승인일자"/>
+                <Cell col="13" text="취소일자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:checkDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:checkSet"/>
+                <Cell col="2" text="bind:diffYnNm"/>
+                <Cell col="3" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="4" text="bind:recpPayNm"/>
+                <Cell col="5" text="bind:bankNm"/>
+                <Cell col="6" text="bind:cardcomNm"/>
+                <Cell col="7" text="bind:stDesc"/>
+                <Cell col="8" displaytype="number" style="align:right;" text="bind:appAmt"/>
+                <Cell col="9" displaytype="number" style="align:right;" text="bind:cncAmt"/>
+                <Cell col="10" displaytype="number" style="align:right;" text="bind:cncpAmt"/>
+                <Cell col="11" displaytype="number" style="align:right;" text="bind:recpAmt"/>
+                <Cell col="12" displaytype="date" text="bind:appDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="13" displaytype="date" text="bind:cncDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;appAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="9" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;cncAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="10" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;cncpAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="11" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;recpAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="12" style="align:right;"/>
+                <Cell col="13" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="8" cssclass="Guide_color" visible="false" left="0" top="45" height="15" width="1147"/>
+        <Static id="Static21" taborder="9" text="조회결과" cssclass="sta_WF_subTitle" left="0" top="56" width="100" height="20"/>
+        <Static id="Static00" taborder="10" cssclass="Guide_color" visible="false" left="0" top="71" height="10" width="1147"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_checkSet" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="checkSet" type="STRING" size="256"/>
+          <Column id="setNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_checkYn" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="checkDay" type="STRING" size="256"/>
+          <Column id="checkSet" type="STRING" size="256"/>
+          <Column id="cseqCseq" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="recpPay" type="STRING" size="256"/>
+          <Column id="recpPayNm" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="appAmt" type="STRING" size="256"/>
+          <Column id="stDesc" type="STRING" size="256"/>
+          <Column id="appDay" type="STRING" size="256"/>
+          <Column id="cncDay" type="STRING" size="256"/>
+          <Column id="pcncDay" type="STRING" size="256"/>
+          <Column id="tnoTno" type="STRING" size="256"/>
+          <Column id="appDesc" type="STRING" size="256"/>
+          <Column id="cncAmt" type="STRING" size="256"/>
+          <Column id="cncpAmt" type="STRING" size="256"/>
+          <Column id="recpAmt" type="STRING" size="256"/>
+          <Column id="diffYn" type="STRING" size="256"/>
+          <Column id="diffYnNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg = "RTRESETTLEDirectHisCheck_tab1";
+this.toDay = "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "getToday" ){
+		if( this.toDay != "" ){
+			this.div_search.cal_checkDay.set_value(this.toDay);
+			this.fn_initSelectCheckSet();
+		}
+	}
+	
+	if( strSvcId == "initRTRESETTLEDirectHisCheck" ){
+		var nAddRow = this.ds_checkYn.insertRow(0);
+		this.ds_checkYn.setColumn(nAddRow, "cd", " ");
+		this.ds_checkYn.setColumn(nAddRow, "cdNm", "전체");
+		this.div_search.cb_checkYn.set_value("Y");
+	}
+	
+	if( strSvcId == "checkSetRtre0045" ){
+		var nCnt = this.ds_checkSet.getRowCount();
+		if( nCnt != 0 ){
+			this.div_search.cb_checkSet.set_value(nCnt);
+		}	
+	}
+	
+	if( strSvcId == "selectSRtre0045" ){
+		
+		var listCnt = this.ds_list.getRowCount();
+		if( listCnt == 0 ){
+			this.grid_list.set_nodatatext("조회된 데이터가 없습니다.");
+			alert("조회된 데이터가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/	
+this.RTRESETTLEDirectHisCheck_tab2_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 	
+	this.fn_init();
+}
+this.fn_init = function(){
+	this.fn_getToday();
+	this.fn_initCombo();
+	this.parent.parent.parent.setButton("E|S",this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initCombo = function(){
+	var sSvcID        	= "initRTRESETTLEDirectHisCheck";
+	var sController   	= "rtms/re/initRTRESETTLEDirectHisCheck.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	sOutDatasets += " ds_checkYn=mapDsCheckYn ";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initSelectCheckSet = function(){
+	var sSvcID        	= "checkSetRtre0045";
+	var sController   	= "rtms/re/checkSetRtre0045.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_checkSet=selectCheckSetMap";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("checkDay", this.div_search.cal_checkDay.value);
+	this.ds_checkSet.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var checkDay = nvl(this.div_search.cal_checkDay.value);
+	var checkSet = nvl(this.div_search.cb_checkSet.value);
+	var diffYn 	 = nvl(this.div_search.cb_checkYn.value);
+	this.ds_list.clearData();
+	var sSvcID        	= "selectSRtre0045";                    
+	var sController   	= "rtms/re/selectSRtre0045.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_list=selectSRtre0045Map ";
+	sArgs += Ex.util.setParam("checkDay", checkDay);
+	sArgs += Ex.util.setParam("checkSet", checkSet);
+	sArgs += Ex.util.setParam("diffYn",   diffYn);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.grid_list);
+}
+this.div_search_cal_checkDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	this.fn_initSelectCheckSet();
+}
+]]></Script>
+  </Form>
+</FDL>

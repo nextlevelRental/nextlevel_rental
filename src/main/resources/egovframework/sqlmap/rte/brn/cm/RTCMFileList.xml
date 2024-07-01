@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="listFileDAO">
+
+	<resultMap id="listFileResultMap" class="java.util.HashMap">
+		<result property="fileSeq"  	column="FILE_SEQ" />
+		<result property="fileGrpSeq"  	column="FILE_GRP_SEQ" />
+		<result property="fileLnm"  	column="FILE_LNM" />
+		<result property="filePnm"  	column="FILE_PNM" />
+		<result property="filePath"  	column="FILE_PATH" />
+		<result property="fileSize"  	column="FILE_SIZE" />
+		<result property="uplpgCd"  	column="UPLPG_CD" />
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="ordNo"  		column="ORD_NO" />
+		<!-- <result property="useYn"  		column="USE_YN" /> -->
+		<result property="regId"  		column="REG_ID" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+	
+	<!-- 파일정보 조회 파라미터정의 -->
+	<parameterMap class="java.util.Map" id="list_Rtcm0040">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="listFileResultMap" />
+		<parameter property="regFdt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regTdt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileLnm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="uplpgCd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="upload.listFileInfo" parameterMap="list_Rtcm0040">
+		{call Pkg_Rtcm0040.p_sRtcm0040(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- PoC 점수 조회 (테스트용) -->
+	<resultMap id="rstListPocScore" class="java.util.HashMap">
+		<result property="id"  		column="ID" />
+		<result property="sw"  		column="SW" />
+		<result property="ar"  		column="AR" />
+		<result property="inch"  	column="INCH" />
+		<result property="maker"  	column="MAKER" />
+		<result property="pattern" 	column="PATTERN" />
+		<result property="idxRr"  	column="IDX_RR" />
+		<result property="idxWet"  	column="IDX_WET" />
+		<result property="sale"  	column="SALE" />
+		<result property="scrRr"  	column="SCR_RR" />
+		<result property="scrWet"  	column="SCR_WET" />
+		<result property="scrSale" 	column="SCR_SALE" />
+		<result property="scrTot"  	column="SCR_TOT" />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="paramListPocScore">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rstListPocScore" />
+		<parameter property="sw" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ar" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="inch" 		jdbcType="VARCHAR" mode="IN" />		
+	</parameterMap>
+	
+	<procedure id="poc.listPocScore" parameterMap="paramListPocScore">
+		{call Pkg_TEST.p_sPocIdx(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MetaInfo version="1.0">
+	<Object id="nexacro.EcoChart">
+		<ObjectInfo
+			inheritance="nexacro.Component"
+			typename="nexacro.EcoChart"
+			csstypename="EcoChart"
+			csscontrolname="EcoChart"
+			group="UIComponent"
+			csspseudo="true"
+			container="false"
+			composite="true"
+			tabstop="true"
+			cssstyle="true"
+			contents="true"
+			formats="true"
+			contentseditor="auto"
+			defaultwidth="300"
+			defaultheight="200"
+			requirement="Runtime,HTML5"
+			description="EcoChart"/>
+	</Object>
+</MetaInfo>

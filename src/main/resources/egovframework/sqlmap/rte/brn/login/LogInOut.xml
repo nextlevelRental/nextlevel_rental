@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+
+	
+	<!-- 영업시스템 로그인(파라미터 맵선언) -->
+	<parameterMap class="java.util.Map" id="userParams">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="userResultMap" />
+		<parameter property="userId" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="password" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userIp" 	jdbcType="VARCHAR" mode="IN" />
+		
+	</parameterMap>	
+	
+	<!-- 영업시스템 로그인(결과 맵선언) -->
+	<resultMap id="userResultMap" class="java.util.HashMap">
+		<result property="userId"  		column="USER_ID"  />
+		<result property="userNm"  		column="USER_NM"  />
+		<result property="password"  	column="PASSWORD" />
+		<result property="oldPassword"  column="OLD_PASSWORD" />
+		<result property="agentId"  	column="AGENT_ID" />
+		<result property="agentNm"  	column="AGENT_NM" />
+		<result property="vkbur"  		column="VKBUR" />
+		<result property="vkburNm"  	column="VKBUR_NM" />
+		<result property="vkgrp"  		column="VKGRP" />
+		<result property="vkgrpNm"  	column="VKGRP_NM" />
+		<result property="userGrp"  	column="USER_GRP" />
+		<result property="userGrpNm"  	column="USER_GRP_NM" />
+		<result property="lastPwDt"  	column="LAST_PW_DT" />
+		<result property="lastpwdtChk"  column="LASTPWDT_CHK" />
+		<result property="lastLogonDt"  column="LAST_LOGON_DT" />
+		<result property="failCnt"  	column="FAIL_CNT" />
+		<result property="tmpPwYn"  	column="TMP_PW_YN" />
+		<result property="lockYn"  		column="LOCK_YN" />
+		<result property="regId"  		column="REG_ID" />
+		<result property="regNm"  		column="REG_NM" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgNm"  		column="CHG_NM" />
+	 	<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+	
+	<procedure id="login.getUserinfo" parameterMap="userParams">
+		{call Pkg_Rtcm0001.p_sRtcm0001LoginInfo(?, ?, ?, ?)}
+	</procedure>
+
+	 
+	 
+	 
+	 
+	<resultMap id="r_sRtcm0012UserTreeAuth" class="java.util.HashMap">
+	    <result property="rowSeq"       column="ROW_SEQ"              />
+	    <result property="menuType"     column="MENU_TYPE"            />
+	    <result property="menuCd"       column="MENU_CD"              />
+	    <result property="menuNm"       column="MENU_NM"              />
+	    <result property="menuLvl"      column="MENU_LVL"             />
+	    <result property="uprMenuCd"    column="UPR_MENU_CD"          />
+	    <result property="menuCdTop"    column="MENU_CD_TOP"          />
+	    <result property="mdlCd"        column="MDL_CD" 			  />
+	    <result property="sortOdr"      column="SORT_ODR"             />
+	    <result property="menuDesc"     column="MENU_DESC"            />
+	    <result property="useYn"        column="USE_YN"               />
+	    <result property="prgmPath"     column="PRGM_PATH"            />
+	    <result property="userId"       column="USER_ID"              />
+	    <result property="prgmCd"       column="PRGM_CD"              />
+	    <result property="readAuthYn"   column="READ_AUTH_YN"         />
+	    <result property="saveAuthYn"   column="SAVE_AUTH_YN"         />
+	    <result property="delAuthYn"    column="DEL_AUTH_YN"          />
+	    <result property="prntAuthYn"   column="PRNT_AUTH_YN"         />
+	    <result property="exptAuthYn"   column="EXPT_AUTH_YN"         />
+	    <result property="chgAuthYn"    column="CHG_AUTH_YN"          />
+	    <result property="etc1AuthYn"   column="ETC1_AUTH_YN"         />
+	    <result property="etc2AuthYn"   column="ETC2_AUTH_YN"         />
+	    <result property="etc3AuthYn"   column="ETC3_AUTH_YN"         />
+	</resultMap>
+
+	<parameterMap class="java.util.Map" id="p_sRtcm0012UserTreeAuth">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcm0012UserTreeAuth" />
+		<parameter property="userId" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userIp" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	 
+	<procedure id="login.loginMenu" parameterClass="java.util.Map" parameterMap="p_sRtcm0012UserTreeAuth">
+	    {call Pkg_Rtcm0012.p_sRtcm0012UserTreeAuth(?, ?, ?)}
+    </procedure>  
+	 
+	 
+	
+		
+	<select id="loginConfig" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		<!-- SELECT CONFIG_CD, CONFIG_VALUE FROM TBP_CONFIG -->
+	</select>
+	
+	<select id="mtLevel" parameterClass="java.lang.String" resultClass="java.lang.String">
+		<!-- SELECT   max(decide_type) as decide_type 
+		FROM TBP_M_INQUIRY_DECIDE_USER 
+		WHERE user_id = #user_id# -->
+	</select>
+	
+	<select id="selectGroupUser" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+			<!-- SELECT 
+			'A001' GROUP_ID,
+			'ivanezz' USER_ID
+			FROM DUAL -->    
+	</select>			
+	
+	
+	<!-- 사용자 비밀번호변경 -->
+	
+	<parameterMap class="java.util.Map" id="p_chgUserPwd">
+		<parameter property="userId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="password" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oldPassword" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reason" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	
+	<procedure id="user.chgUserPwd" parameterMap="p_chgUserPwd">
+		{call Pkg_Rtcm0001.p_UpdateRtcm0001PassWord(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<!-- 사용자 비밀번호유효성체크 -->
+	<parameterMap class="java.util.Map" id="passWordVerification_p">
+		<parameter property="userId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="password" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	
+	<procedure id="user.getPassWordVerification" parameterMap="passWordVerification_p">
+		{call Pkg_Rtcm0001.p_sPassWordVerification(?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

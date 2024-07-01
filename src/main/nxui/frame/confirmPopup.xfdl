@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="alertPopup" classname="alert" left="0" top="0" width="370" height="160" titletext="alertPopup" onload="alertPopup_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_ok" taborder="0" text="확인" left="130" top="121" width="45" height="20" onclick="btn_ok_onclick"/>
+        <Static id="stc_icon" taborder="1" left="16" top="46" width="50" height="50" style="background:transparent URL('image::alert_question.png');"/>
+        <Static id="stc_message" taborder="2" left="82" top="29" width="264" height="76"/>
+        <Button id="btn_cancel" taborder="3" text="취소" left="194" top="121" width="45" height="20" onclick="btn_cancel_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::lib_common.xjs"
+
+var fv_sMsgType;
+var fv_sMessage;
+this.alertPopup_onload = function(obj:Form, e:TOBE.LoadEventInfo)
+{
+	fv_sMsgType = this.parent.pMsgType;
+	fv_sMessage = this.parent.pMessage;
+	
+	this.stc_message.set_text(Ex.util.isReplaceEmpty(fv_sMessage));
+	
+}
+
+this.btn_ok_onclick = function(obj:Button,  e:TOBE.ClickEventInfo)
+{
+	this.close(true);
+}
+
+this.btn_cancel_onclick = function(obj:Button,  e:TOBE.ClickEventInfo)
+{
+	this.close(false);
+}
+]]></Script>
+  </Form>
+</FDL>

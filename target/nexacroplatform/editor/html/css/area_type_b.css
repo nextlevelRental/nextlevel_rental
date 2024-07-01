@@ -1,0 +1,25 @@
+.area_type{
+    BODY {background: #FFFFFF}
+    A:link {color: #80FF00}
+    A:visited {color: #FF00FF}
+	border-bottom-color: #999;
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	border-collapse: separate;
+	border-left-color: #999;
+	border-left-style: dashed;
+	border-left-width: 1px;
+	border-right-color: #999;
+	border-right-style: dashed;
+	border-right-width: 1px;
+	border-top-color: #999;
+	border-top-style: dashed;
+	border-top-width: 1px;
+	color: #46586e;
+	font-family: verdana;
+	font-size: 12px;
+	line-height: 1.5;
+	text-align: left;
+	vertical-align: top;
+	word-wrap: break-word;
+}

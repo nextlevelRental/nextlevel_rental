@@ -1,0 +1,737 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRESalesCommMang_tab1" classname="salesCommMang_tab1" left="0" top="0" width="1147" height="460" titletext="[STEP1]판매수수료 등록" onload="RTRESalesCommMang_tab1_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static08" taborder="27" cssclass="sta_WF_detailLabel2" left="0" top="399" width="1117" height="31"/>
+        <Static id="Static01" taborder="0" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="460"/>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1117" height="80" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Edit id="ed_matNm" taborder="1" enable="false" left="500" top="12" width="180" height="21"/>
+              <Static id="st_mat" taborder="5" text="상품코드" cssclass="sta_WF_schTitle" left="275" top="12" width="80" height="21"/>
+              <Static id="st_chanCd" taborder="6" text="채널" cssclass="sta_WF_schTitle" left="705" top="12" width="80" height="21"/>
+              <Static id="st_standardDay" taborder="7" text="기준일자" cssclass="sta_WF_schTitle" left="25" top="12" width="80" height="21"/>
+              <Static id="Static26" taborder="8" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static08" taborder="10" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static09" taborder="11" cssclass="Guide_color" visible="false" left="245" top="0" width="25" height="41"/>
+              <Static id="Static10" taborder="12" cssclass="Guide_color" visible="false" left="680" top="0" width="25" height="41"/>
+              <Static id="Static11" taborder="13" cssclass="Guide_color" visible="false" left="1088" top="0" width="25" height="41"/>
+              <Combo id="cb_chanCd" taborder="4" autoselect="true" innerdataset="@ds_chanCdSelect" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="785" top="12" width="140" height="21"/>
+              <Calendar id="dt_standardDay" taborder="0" dateformat="yyyy-MM-dd" left="105" top="12" width="140" height="21" onkeyup="div_search_dt_standardDay_onkeyup"/>
+              <Edit id="ed_matCd" taborder="3" enable="true" left="360" top="12" width="140" height="21" tooltiptext="edit" onkeyup="div_search_ed_matCd_onkeyup"/>
+              <Button id="bt_mat" taborder="14" cssclass="btn_WF_edtSch" left="481" top="12" width="20" height="21" onclick="div_search_bt_mat_onclick"/>
+              <Static id="st_chanLclsCd" taborder="15" text="대분류" cssclass="sta_WF_schTitle" left="25" top="44" width="80" height="21"/>
+              <Static id="st_chanMclsCd" taborder="16" text="중분류" cssclass="sta_WF_schTitle" left="275" top="44" width="80" height="21"/>
+              <Combo id="cb_chanLclsCd" taborder="17" autoselect="true" innerdataset="@dsChanLclsCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="105" top="44" width="140" height="21" onitemchanged="div_search_cb_chanLclsCd_onitemchanged"/>
+              <Combo id="cb_chanMclsCd" taborder="18" autoselect="true" innerdataset="@dsChanMclsCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="361" top="44" width="140" height="21"/>
+              <Static id="Static07" taborder="19" cssclass="Guide_color" visible="false" left="0" top="65" width="1118" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="2" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="94" width="140" height="20"/>
+        <Static id="Static04" taborder="4" cssclass="Guide_color" visible="false" left="0" top="109" width="1147" height="10"/>
+        <Static id="Static00" taborder="5" cssclass="Guide_color" visible="false" left="0" top="79" width="1147" height="20"/>
+        <Static id="Static02" taborder="21" cssclass="Guide_color" visible="false" left="0" top="329" width="1147" height="10"/>
+        <Static id="Static05" taborder="22" text="변경할 내용" cssclass="sta_WF_subTitle" left="0" top="314" width="140" height="20"/>
+        <Static id="Static06" taborder="23" cssclass="Guide_color" visible="false" left="0" top="297" width="1147" height="20"/>
+        <Static id="Static43" taborder="24" cssclass="sta_WF_detailLabel2" left="0" top="339" height="31" width="1117"/>
+        <Static id="st_mat" taborder="25" text="상품코드" cssclass="sta_WF_detailLabelP" left="0" top="339" width="130" height="31"/>
+        <Edit id="ed_matNm" taborder="6" left="235" top="344" width="135" height="21" enable="false"/>
+        <Static id="Static07" taborder="26" cssclass="sta_WF_detailLabel2" left="0" top="369" width="1117" height="31"/>
+        <Static id="Static09" taborder="28" cssclass="sta_WF_detailLabel2" left="0" top="429" width="1117" height="31"/>
+        <Static id="st_strDay" taborder="29" text="시작일자" cssclass="sta_WF_detailLabelP" left="375" top="339" width="130" height="31"/>
+        <Static id="st_regNm" taborder="30" text="등록자" cssclass="sta_WF_detailLabel" left="750" top="339" width="70" height="31"/>
+        <Edit id="ed_regNm" taborder="10" left="825" top="344" height="21" width="100" enable="false"/>
+        <Static id="st_chanCd" taborder="31" text="채널" cssclass="sta_WF_detailLabelP" left="0" top="369" width="130" height="31"/>
+        <Static id="st_endDay" taborder="32" text="종료일자" cssclass="sta_WF_detailLabelP" left="375" top="369" width="130" height="31"/>
+        <Static id="st_regDt" taborder="33" text="등록일자" cssclass="sta_WF_detailLabel" left="934" top="339" width="70" height="31"/>
+        <Static id="st_slcmAmt" taborder="34" text="판매수수료" cssclass="sta_WF_detailLabelP" left="0" top="399" width="130" height="31"/>
+        <Static id="st_useYn" taborder="35" text="사용여부" cssclass="sta_WF_detailLabelP" left="375" top="399" width="130" height="31"/>
+        <Static id="st_chgNm" taborder="36" text="수정자" cssclass="sta_WF_detailLabel" left="750" top="369" width="70" height="31"/>
+        <Edit id="ed_chgNm" taborder="16" left="825" top="374" height="21" width="100" enable="false"/>
+        <Static id="st_apfdAmt" taborder="37" text="충당설정금액" cssclass="sta_WF_detailLabelP" left="0" top="429" width="130" height="31"/>
+        <Static id="st_chgDt" taborder="38" text="수정일자" cssclass="sta_WF_detailLabel" left="934" top="369" width="70" height="31"/>
+        <Combo id="cb_useYn" taborder="15" autoselect="true" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="510" top="404" width="235" height="21" enable="false"/>
+        <Edit id="ed_matCd" taborder="8" left="135" top="344" width="100" height="21" enable="false"/>
+        <Button id="bt_mat" taborder="7" cssclass="btn_WF_edtSch" left="215" top="344" width="20" height="21" enable="false" onclick="bt_mat_onclick"/>
+        <Combo id="cb_chanCd" taborder="11" autoselect="true" innerdataset="@ds_chanCdInsert" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="135" top="374" width="235" height="21" enable="false"/>
+        <Spin id="ed_apfdAmt" taborder="17" left="135" top="434" width="235" height="21" type="normal" enable="false" displaycomma="true" max="100000000"/>
+        <Calendar id="dt_strDay" taborder="9" readonly="false" dateformat="yyyy-MM-dd" cssclass="readonly" left="510" top="344" width="235" height="21" value="null" enable="false" onchanged="dt_strDay_onchanged"/>
+        <Calendar id="dt_endDay" taborder="12" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" left="510" top="374" width="235" height="21" enable="false" value="null"/>
+        <Calendar id="dt_regDt" taborder="13" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" left="1009" top="344" width="100" height="21" value="null" enable="false"/>
+        <Calendar id="dt_chgDt" taborder="18" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" left="1009" top="374" width="100" height="21" value="null" enable="false"/>
+        <Button id="bt_insert" taborder="20" text="추가" left="1076" top="313" width="41" height="21" onclick="bt_insert_onclick"/>
+        <Button id="bt_delete" taborder="19" text="삭제" left="1029" top="313" width="41" height="21" onclick="bt_delete_onclick"/>
+        <Grid id="gr_list" taborder="3" binddataset="ds_list" useinputpanel="false" left="0" top="120" width="1117" height="177" autofittype="col" onselectchanged="gr_list_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="220"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="90"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상품코드"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="채널"/>
+                <Cell col="3" text="대분류"/>
+                <Cell col="4" text="중분류"/>
+                <Cell col="5" text="시작일자"/>
+                <Cell col="6" text="종료일자"/>
+                <Cell col="7" text="판매수수료"/>
+                <Cell col="8" text="충당설정금액"/>
+                <Cell col="9" text="사용유무"/>
+                <Cell col="10" text="등록자"/>
+                <Cell col="11" text="등록일자"/>
+                <Cell col="12" text="수정자"/>
+                <Cell col="13" text="수정일자"/>
+                <Cell col="14" text="사용여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:matCd" tooltiptext="bind:matCd"/>
+                <Cell col="1" text="bind:matNm" tooltiptext="bind:matNm"/>
+                <Cell col="2" text="bind:chanNm" tooltiptext="bind:chanNm"/>
+                <Cell col="3" text="bind:chanLclsNm" tooltiptext="bind:chanLclsNm"/>
+                <Cell col="4" text="bind:chanMclsNm" tooltiptext="bind:chanMclsNm"/>
+                <Cell col="5" displaytype="date" text="bind:strDay" calendardisplaynulltype="none" tooltiptext="bind:strDay"/>
+                <Cell col="6" displaytype="date" text="bind:endDay" calendardisplaynulltype="none" tooltiptext="bind:endDay"/>
+                <Cell col="7" displaytype="number" style="align:right;" text="bind:slcmAmt" mask="###,###,###,##0" tooltiptext="bind:slcmAmt"/>
+                <Cell col="8" displaytype="number" style="align:right;" text="bind:apfdAmt" mask="###,###,###,##0" tooltiptext="bind:apfdAmt"/>
+                <Cell col="9" displaytype="combo" text="bind:useYn" combodataset="ds_useYn" combocodecol="cd" combodatacol="cdNm" tooltiptext="bind:useYn"/>
+                <Cell col="10" text="bind:regNm" tooltiptext="bind:regNm"/>
+                <Cell col="11" displaytype="date" text="bind:regDt" calendardisplay="edit" calendardisplaynulltype="none" tooltiptext="bind:regDt"/>
+                <Cell col="12" text="bind:chgNm" tooltiptext="bind:chgNm"/>
+                <Cell col="13" displaytype="date" text="bind:chgDt" calendardisplay="edit" calendardisplaynulltype="none" tooltiptext="bind:chgDt"/>
+                <Cell col="14" text="bind:matUseYn"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" text="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+                <Cell col="11" style="align:right;"/>
+                <Cell col="12" style="align:right;"/>
+                <Cell col="13" style="align:right;"/>
+                <Cell col="14"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Spin id="ed_slcmAmt" taborder="14" left="135" top="404" width="235" height="21" enable="false" displaycomma="true" max="100000000"/>
+        <Static id="st_chanLclsCd" taborder="39" text="채널 대분류" cssclass="sta_WF_detailLabel" left="375" top="429" width="130" height="31" style="background:#f2f2efff URL('image::ico_WF_detailLabelP.png') left middle;padding:0 10 0 16;"/>
+        <Static id="st_chgNm01" taborder="40" text="채널 중분류" cssclass="sta_WF_detailLabel" left="750" top="429" width="130" height="31" style="background:#f2f2efff URL('image::ico_WF_detailLabelP.png') left middle;padding:0 10 0 16;"/>
+        <Combo id="cb_chanLclsCd" taborder="41" autoselect="true" innerdataset="@dsChanLclsCdIns" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="false" left="510" top="434" width="235" height="21" onitemchanged="cb_chanLclsCd_onitemchanged"/>
+        <Combo id="cb_chanMclsCd" taborder="42" autoselect="true" innerdataset="@dsChanMclsCdIns" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="false" left="885" top="434" width="223" height="21"/>
+        <Grid id="Grid00" taborder="43" useinputpanel="false" left="34.79%" top="477" right="31.65%" height="99" binddataset="dsChanMclsCd" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="72"/>
+                <Column size="79"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="bind:cd"/>
+                <Cell col="1" expr="bind:cdNm"/>
+                <Cell col="2" expr="lcd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_chanCdSelect" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chanCdInsert" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list" useclientlayout="true" updatecontrol="true" canrowposchange="ds_list_canrowposchange">
+        <ColumnInfo>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="slcmAmt" type="INT" size="256"/>
+          <Column id="apfdAmt" type="INT" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="oldStrDay" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+          <Column id="chanLclsNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="matUseYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_save" useclientlayout="true" updatecontrol="true">
+        <ColumnInfo>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="slcmAmt" type="INT" size="256"/>
+          <Column id="apfdAmt" type="INT" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="oldStrDay" type="STRING" size="256"/>
+          <Column id="chanLclsCd" type="STRING" size="256"/>
+          <Column id="chanMclsCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanLclsCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanMclsCd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanLclsCdIns" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsChanMclsCdIns" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_matNm" propid="value" datasetid="ds_list" columnid="matNm"/>
+      <BindItem id="item1" compid="ed_matCd" propid="value" datasetid="ds_list" columnid="matCd"/>
+      <BindItem id="item2" compid="dt_strDay" propid="value" datasetid="ds_list" columnid="strDay"/>
+      <BindItem id="item3" compid="ed_regNm" propid="value" datasetid="ds_list" columnid="regNm"/>
+      <BindItem id="item4" compid="cb_chanCd" propid="value" datasetid="ds_list" columnid="chanCd"/>
+      <BindItem id="item5" compid="dt_endDay" propid="value" datasetid="ds_list" columnid="endDay"/>
+      <BindItem id="item6" compid="dt_regDt" propid="value" datasetid="ds_list" columnid="regDt"/>
+      <BindItem id="item7" compid="ed_slcmAmt" propid="value" datasetid="ds_list" columnid="slcmAmt"/>
+      <BindItem id="item8" compid="cb_useYn" propid="value" datasetid="ds_list" columnid="useYn"/>
+      <BindItem id="item9" compid="ed_chgNm" propid="value" datasetid="ds_list" columnid="chgNm"/>
+      <BindItem id="item10" compid="ed_apfdAmt" propid="value" datasetid="ds_list" columnid="apfdAmt"/>
+      <BindItem id="item11" compid="dt_chgDt" propid="value" datasetid="ds_list" columnid="chgDt"/>
+      <BindItem id="item12" compid="cb_chanLclsCd" propid="value" datasetid="ds_list" columnid="chanLclsCd"/>
+      <BindItem id="item13" compid="cb_chanMclsCd" propid="value" datasetid="ds_list" columnid="chanMclsCd"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명: RDRESalesCommMang_tab1.xfdl                                                           *
+ * 설    명: 판매수수료 관리                                                                       *
+ * 작 성 자:                                                                                       *  
+ * 변경이력: ver1.1 2016-04-19 이영근, 대리점 채널 대분류,중분류 항목 추가                         *
+ ***************************************************************************************************/
+ 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 		= "RTRESalesCommMang_tab1";
+this.toDay 		= "";
+this.addMonth 	= "";
+this.firstDay	= "";
+this.lastDay	= "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "RTRESalesCommMang_tab1" ){
+		var chanCdCnt1 = this.ds_chanCdSelect.getRowCount();
+		if( chanCdCnt1 != 0 ){
+			var deleteArr = new Array();
+			for( var  i = 0 ; i < chanCdCnt1 ; i++ ){
+				var cd = this.ds_chanCdSelect.getColumn( i, "cd" );
+				if( (cd != "01") && (cd != "03") && (cd != "05") ){
+					deleteArr.push(i);
+				}
+			}
+			this.ds_chanCdSelect.deleteMultiRows(deleteArr);
+			
+			var nRow = this.ds_chanCdSelect.insertRow(0);
+			this.ds_chanCdSelect.setColumn(0,"cd"," ");
+			this.ds_chanCdSelect.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanCd.set_value(" ");
+		}
+		
+		var chanCdCnt2 = this.ds_chanCdInsert.getRowCount();
+		if( chanCdCnt2 != 0 ){
+			var deleteArr = new Array();
+			for( var  i = 0 ; i < chanCdCnt2 ; i++ ){
+				var cd = this.ds_chanCdInsert.getColumn( i, "cd" );
+				if( (cd != "01") && (cd != "03") && (cd != "05") ){
+					deleteArr.push(i);
+				}
+			}
+			this.ds_chanCdInsert.deleteMultiRows(deleteArr);
+		}
+		
+		// 2016-04-19 이영근, 채널 대분류, 중분류 추가
+		this.dsChanMclsCd.addColumn("lcd","string");
+		for(var i=0; i<this.dsChanMclsCd.rowcount; i++){
+			this.dsChanMclsCd.setColumn(i,"lcd",this.dsChanMclsCd.getColumn(i,"cd").substr(0,2));
+		}		
+		
+		this.dsChanLclsCdIns.copyData(this.dsChanLclsCd);
+		this.dsChanMclsCdIns.copyData(this.dsChanMclsCd);		
+		
+		var chanLclsCdCnt = this.dsChanLclsCd.getRowCount();
+		if(chanLclsCdCnt != 0){
+			var nRow = this.dsChanLclsCd.insertRow(0);
+			this.dsChanLclsCd.setColumn(0,"cd"," ");
+			this.dsChanLclsCd.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanLclsCd.set_value(" ");
+		}
+		
+		var chanMclsCdCnt = this.dsChanMclsCd.getRowCount();
+		if(chanMclsCdCnt != 0){
+			var nRow = this.dsChanMclsCd.insertRow(0);
+			this.dsChanMclsCd.setColumn(0,"cd"," ");
+			this.dsChanMclsCd.setColumn(0,"cdNm","전체");
+			this.div_search.cb_chanMclsCd.set_value(" ");
+			this.div_search.cb_chanMclsCd.enable = false;
+		}
+			
+		
+		
+
+	}
+	
+	if( strSvcId == "getToday" ){
+		if( this.toDay != "" ){
+			this.div_search.dt_standardDay.set_value( this.toDay );
+			this.addMonth	= Eco.date.addMonth( this.toDay, 1 );
+			this.firstDay  	= Eco.date.getFirstDate( this.toDay );
+			this.lastDay   	= this.addMonth.substr(0,4)+this.addMonth.substr(4,2)+Eco.date.getLastDayOfMonth(this.addMonth);
+		}
+	}
+	
+	if( strSvcId == "selectRTRESalesCommMang" ){
+		var rowCt = this.ds_list.getRowCount();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.gr_list.set_nodatatext("조회된 데이터가 없습니다.");
+		}else{
+			if( nvl(this.div_search.ed_matCd.value) != "" ){
+				this.div_search.ed_matNm.set_value( this.ds_list.getColumn(0, "matNm") );
+			}else{
+				this.div_search.ed_matNm.set_value( "" );
+			}
+			this.gr_list_onselectchanged();
+		}
+		
+		// 2016-04-20 이영근, 그리드 내 채널 대분류/중분류 정보 표기
+		this.ds_list.updatecontrol = false;
+		var tpLclsNm = "";
+		var tpLclsCd = "";
+		var tpMclsNm = "";
+		var tpMclsCd = "";
+		for(var i=0; i<rowCt; i++)
+		{
+			tpLclsCd = this.ds_list.getColumn(i, "chanLclsCd");
+			tpLclsNm = this.dsChanLclsCd.getColumn(this.dsChanLclsCd.findRow("cd",tpLclsCd),"cdNm");
+			this.ds_list.setColumn(i,"chanLclsNm",tpLclsNm);
+			tpMclsCd = this.ds_list.getColumn(i, "chanMclsCd");
+			tpMclsNm = this.dsChanMclsCd.getColumn(this.dsChanMclsCd.findRow("cd",tpMclsCd),"cdNm");
+			this.ds_list.setColumn(i,"chanMclsNm",tpMclsNm);			
+		}
+		this.ds_list.updatecontrol = true;
+	}
+	
+	if( strSvcId == "saveRTRESalesCommMang" ){
+		alert(strErrorMsg);
+		if( nErrorCode < 0 ){
+		
+		}else{
+			this.fn_search();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTRESalesCommMang_tab1_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_setButton();
+	this.fn_init();
+	this.fn_getToday();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_setButton = function(){
+	this.parent.parent.parent.setButton("E|C|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "RTRESalesCommMang_tab1";  
+	var sController   	= "rtms/re/RTRESalesCommMang_tab1.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_chanCdSelect=mapDsChanCdSelect ";
+	sOutDatasets += " ds_chanCdInsert=mapDsChanCdInsert ";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	sOutDatasets += " dsChanLclsCd=mapDsChanLclsCd ";
+	sOutDatasets += " dsChanMclsCd=mapDsChanMclsCd ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_mat_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_formId : "RTRESalesCommMang_tab1_Select" };
+	Ex.core.popup(this,"상품조회","comm::RTCOMMCampProductPopUp.xfdl",args, "modaless=false");
+}
+this.returnProductSelect = function(arr){
+	this.div_search.ed_matCd.set_value(arr.cd);
+	this.div_search.ed_matNm.set_value(arr.nm);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_mat_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_formId : "RTRESalesCommMang_tab1_Insert" };
+	Ex.core.popup(this,"상품조회","comm::RTCOMMCampProductPopUp.xfdl",args, "modaless=false");
+}
+this.returnProductInsert = function(arr){
+	this.ed_matCd.set_value(arr.cd);
+	this.ed_matNm.set_value(arr.nm);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var standardDay = nvl(this.div_search.dt_standardDay.value);
+	var matCd 		= nvl(this.div_search.ed_matCd.value);
+	var chanCd 		= nvl(this.div_search.cb_chanCd.value);
+	var chanLclsCd	= nvl(this.div_search.cb_chanLclsCd.value);
+	var chanMclsCd	= nvl(this.div_search.cb_chanMclsCd.value);
+	
+	var sSvcID        	= "selectRTRESalesCommMang";
+	var sController   	= "rtms/re/selectRTRESalesCommMang.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list=outList";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	this.ds_list.clearData();
+	sArgs += Ex.util.setParam("standardDay", standardDay);
+	sArgs += Ex.util.setParam("matCd", matCd);
+	sArgs += Ex.util.setParam("chanCd", chanCd);
+	sArgs += Ex.util.setParam("chanLclsCd", chanLclsCd);
+	sArgs += Ex.util.setParam("chanMclsCd", chanMclsCd);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.gr_list);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var flag 		= -1;
+	var saveFlag 	= -1;
+	var nCnt 		= this.ds_list.getRowCount();
+	var msg 		= " 값이 없습니다.";
+	
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType = this.ds_list.getRowType(i);
+		if( rowType == 2 || rowType == 4 ){
+			flag++;
+		}
+	}
+	
+	if( flag == -1 ){
+		alert("추가 또는 수정된 정보가 없습니다.");
+		return false;
+	}
+	
+	if( flag != 0 ){
+		alert("추가 또는 수정된 정보가 "+flag+"건 이므로 저장할 수가 없습니다.");
+		return false;
+	}
+	
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType = this.ds_list.getRowType(i);
+		if( rowType == 2 || rowType == 4 ){
+			saveFlag = i;
+			break;
+		}
+	}
+	
+	var matCd   	= nvl(this.ds_list.getColumn( saveFlag, "matCd" ));
+	var chanCd  	= nvl(this.ds_list.getColumn( saveFlag, "chanCd" ));
+	var strDay  	= nvl(this.ds_list.getColumn( saveFlag, "strDay" ));
+	var endDay  	= nvl(this.ds_list.getColumn( saveFlag, "endDay" ));
+	var slcmAmt 	= nvl(this.ds_list.getColumn( saveFlag, "slcmAmt" ));
+	var apfdAmt 	= nvl(this.ds_list.getColumn( saveFlag, "apfdAmt" ));
+	var useYn   	= nvl(this.ds_list.getColumn( saveFlag, "useYn" ));
+	var oldStrDay   = nvl(this.ds_list.getColumn( saveFlag, "oldStrDay" ));
+	var chanLclsCd   = nvl(this.ds_list.getColumn( saveFlag, "chanLclsCd" ));
+	var chanMclsCd   = nvl(this.ds_list.getColumn( saveFlag, "chanMclsCd" ));
+	
+	var saveType	= this.ds_list.getRowType( saveFlag );
+	
+	if( matCd == "" ){ 			alert( "상품코드"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( chanCd == "" ){ 	alert( "채널구분"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( strDay == "" ){ 	alert( "시작일자"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( endDay == "" ){ 	alert( "종료일자"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( slcmAmt == "" ){ 	alert( "판매수수료"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( apfdAmt == "" ){ 	alert( "충당설정금액"+msg );	this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( useYn == "" ){ 	alert( "사용유무"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( chanLclsCd == "" ){ 	alert( "채널 대분류"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( chanMclsCd == "" ){ 	alert( "채널 중분류"+msg );		this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( (saveType == 2) && ( (strDay < this.firstDay) || (strDay > this.lastDay) ) ){
+		alert("현재일자 기준으로 1일부터 익월말일까지 입력가능합니다.");
+		this.ds_list.set_rowposition(saveFlag);
+		return false;
+	}else if( (saveType == 4) && ( (strDay < this.firstDay) || (strDay > this.lastDay) ) ){	//(oldStrDay < this.firstDay) ||
+		alert("기존 내역의 값이 현재월보다 작은경우 변경 불가하며 변경하는 값은 당월 ~ 익월까지 입력가능합니다.");
+		this.ds_list.set_rowposition(saveFlag);
+		return false;
+	}else{
+		this.ds_save.clearData();
+		var saveAddRow  = this.ds_save.addRow();
+		var copy 		= this.ds_save.copyRow( saveAddRow, this.ds_list, saveFlag );
+		
+		if( copy ){
+			this.ds_save.set_updatecontrol(false);
+			this.ds_save.setRowType( saveAddRow, saveType );
+			this.ds_save.set_updatecontrol(true);
+			
+			if( confirm( "저장하시겠습니까?" ) ){
+				var sSvcID        	= "saveRTRESalesCommMang";                
+				var sController   	= "rtms/re/saveRTRESalesCommMang.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";
+				sInDatasets   		= "input=ds_save:U";
+				sOutDatasets  		= "";
+				var fn_callBack		= "fn_callBack";		
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}
+		}else{
+			alert("SYSTEM ERROR");
+			return false;
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var deleteRowFlag = false;
+	var nCnt = this.ds_list.getRowCount();
+	
+	if( nCnt == 0 ){
+		alert("삭제할 정보가 없습니다.");
+	}else{
+		var nRow = this.ds_list.rowposition;
+		if( this.ds_list.getRowType(nRow) == 2 ){
+			if( confirm( "삭제하시겠습니까?" ) ){
+				this.ds_list.deleteRow(nRow);
+			}
+		}else{
+			alert("해당정보는 삭제할 수가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var insertRowFlag = false;
+	var nCnt = this.ds_list.getRowCount();
+	
+	if( nCnt == 0 ){
+		insertRowFlag = true;
+	}else{
+		for( var i = 0 ; i < nCnt ;  i++ ){
+			var type = this.ds_list.getRowType(i);
+			if( (type == 2) || (type == 4) ){
+				alert("추가 또는 수정된 정보가 있으므로 추가할 수 없습니다.");
+				insertRowFlag = false;
+				break;
+			}else{
+				insertRowFlag = true;
+			}
+		}
+	}
+	
+	if( insertRowFlag ){
+		var addRow = this.ds_list.addRow();
+		this.ds_list.setColumn( addRow, "useYn", "Y" );
+		this.ds_list.setColumn( addRow, "endDay", "99991231" );
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.gr_list_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var strDay = this.ds_list.getColumn( this.ds_list.rowposition, "strDay" );
+	var endDay = this.ds_list.getColumn( this.ds_list.rowposition, "endDay" );
+	this.oldStrDay = strDay;
+	
+	if( this.ds_list.getRowType( this.ds_list.rowposition ) == 2 ){
+		this.cb_useYn.set_enable(false);
+		
+		this.bt_mat.set_enable(true);
+		this.cb_chanCd.set_enable(true);
+		
+		this.dt_strDay.set_enable(true);
+		this.ed_slcmAmt.set_enable(true);
+		this.ed_apfdAmt.set_enable(true);
+		
+		this.cb_chanLclsCd.set_enable(true);
+		this.cb_chanMclsCd.set_enable(true);
+	}else{
+		this.bt_mat.set_enable(false);
+		this.cb_chanCd.set_enable(false);
+		
+		this.cb_chanLclsCd.set_enable(false);
+		this.cb_chanMclsCd.set_enable(false);		
+		
+		if( (strDay.substr(0,6) < this.toDay.substr(0,6)) || (endDay != "99991231") ){
+			this.cb_useYn.set_enable(false);
+			
+			this.dt_strDay.set_enable(false);
+			this.ed_slcmAmt.set_enable(false);
+			this.ed_apfdAmt.set_enable(false);
+		}else{
+			this.cb_useYn.set_enable(true);
+			
+			this.dt_strDay.set_enable(true);
+			this.ed_slcmAmt.set_enable(true);
+			this.ed_apfdAmt.set_enable(true);			
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_matCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_dt_standardDay_onkeyup = function(obj:Calendar, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ds_list_canrowposchange = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo){
+	var nCnt = this.ds_list.getRowCount();
+	var flag = false;
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var stat = this.ds_list.getRowType(i);
+		if( stat == 4 || stat == 8 ){
+			alert("추가 또는 수정된 정보가 있습니다.\n저장 후 진행하세요.");
+			flag = false;
+			break;
+		}else{
+			flag = true;
+		}
+	}
+	return flag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.dt_strDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var nRow 	 	= this.ds_list.rowposition;
+	var saveType 	= this.ds_list.getRowType( nRow );
+	var returnFlag 	= true;
+	if( (saveType == 2) && ( (e.postvalue < this.firstDay) || (e.postvalue > this.lastDay) ) ){
+		alert("현재일자 기준으로 1일부터 익월말일까지 입력가능합니다.");
+		returnFlag = false;
+	}
+	
+	if( (saveType == 4) && ( (e.prevalue < this.firstDay) || (this.firstDay > e.postvalue) || (e.postvalue > this.lastDay) ) ){
+		alert("기존 내역의 값이 현재월보다 작은경우 변경 불가하며 변경하는 값은 당월 ~ 익월까지 입력가능합니다.");
+		returnFlag = false;
+	}
+	
+	if(returnFlag){
+		this.ds_list.setColumn( nRow, "oldStrDay", this.ds_list.getColumn(nRow, "strDay") );
+	}else{
+		this.dt_strDay.set_value(e.prevalue);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+// 2016-04-19 이영근, 채널 중분류 값 변경시 이벤트
+this.div_search_cb_chanLclsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	if(this.div_search.cb_chanLclsCd.value == " "){
+		this.div_search.cb_chanMclsCd.enable = false;
+	}else{
+		this.div_search.cb_chanMclsCd.enable = true;
+	}
+	this.dsChanMclsCd.filter("lcd=='"+this.div_search.cb_chanLclsCd.value+"' || lcd==null");
+	this.div_search.cb_chanMclsCd.set_value(" ");
+}
+
+this.cb_chanLclsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.dsChanMclsCdIns.filter("lcd=='"+this.cb_chanLclsCd.value+"'");
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSQuestion" classname="RTCSQuestion" left="0" top="0" width="1147" height="745" titletext="질문관리" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="44" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="12" left="0" top="-1" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Combo id="Combo00" taborder="0" innerdataset="@useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="326" top="10" width="140" height="21"/>
+              <Static id="Static03" taborder="1" text="사용여부" cssclass="sta_WF_schTitle" left="258" top="11" width="68" height="20"/>
+              <Edit id="Edit00" taborder="2" lengthunit="ascii" maxlength="3" left="88" top="10" width="140" height="21"/>
+              <Static id="Static01" taborder="3" text="질문번호" cssclass="sta_WF_schTitle" left="20" top="11" width="66" height="20"/>
+              <Button id="Button00" taborder="4" text="질문조회" visible="false" top="10" right="95" width="71" height="22" cssclass="btn_WF_CRUD"/>
+              <Button id="Button13" taborder="5" text="답변조회" visible="false" top="10" right="20" width="71" height="22" cssclass="btn_WF_CRUD"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="7" left="0" top="64" right="25" height="427">
+          <Layouts>
+            <Layout>
+              <Static id="Static17" taborder="115" cssclass="sta_WF_detailLabel2" left="0" top="147" right="0" height="245"/>
+              <Static id="Static03" taborder="95" cssclass="sta_WF_detailLabel2" left="0" top="391" width="281" height="31"/>
+              <Static id="Static07" taborder="98" cssclass="sta_WF_detailLabel2" left="280" top="391" width="281" height="31"/>
+              <Static id="Static11" taborder="101" cssclass="sta_WF_detailLabel2" left="560" top="391" width="281" height="31"/>
+              <Static id="Static14" taborder="104" cssclass="sta_WF_detailLabel2" left="841" top="391" right="0" height="31"/>
+              <Static id="Static45" taborder="47" cssclass="sta_WF_detailLabel2" left="280" top="0" width="281" height="31"/>
+              <Static id="Static34" taborder="51" cssclass="sta_WF_detailLabel2" left="0" top="0" width="281" height="31"/>
+              <Static id="Static39" taborder="52" cssclass="sta_WF_detailLabel2" left="0" top="30" height="88" right="0"/>
+              <Static id="Static35" taborder="53" text="질문번호" cssclass="sta_WF_detailLabelP" left="0" top="0" width="130" height="31"/>
+              <Edit id="questionNo" taborder="54" left="134" top="5" width="142" height="21" lengthunit="ascii" maxlength="3"/>
+              <Static id="Static36" taborder="55" text="질문내용" cssclass="sta_WF_detailLabel" left="0" top="30" width="130" height="88"/>
+              <Static id="Static27" taborder="60" text="사용여부" cssclass="sta_WF_detailLabel" left="280" top="0" width="130" height="31"/>
+              <Static id="Static01" taborder="65" cssclass="sta_WF_detailLabel2" left="2" top="117" height="31" right="0"/>
+              <Static id="Static09" taborder="71" text="답변번호" cssclass="sta_WF_detailLabelP" left="0" top="117" width="130" height="31"/>
+              <Static id="Static47" taborder="86" cssclass="sta_WF_detailLabel2" left="560" top="0" width="281" height="31"/>
+              <Static id="Static49" taborder="87" cssclass="sta_WF_detailLabel2" left="841" top="0" right="0" height="31"/>
+              <Static id="Static31" taborder="89" text="평가반영여부" cssclass="sta_WF_detailLabel" left="840" top="0" width="130" height="31"/>
+              <Static id="Static28" taborder="91" text="질문유형" cssclass="sta_WF_detailLabel" left="560" top="0" width="130" height="31"/>
+              <Combo id="cbo_useYn" taborder="92" innerdataset="@useYn" codecolumn="cd" datacolumn="cdNm" index="-1" left="414" top="5" width="142" height="21"/>
+              <Static id="Static00" taborder="93" text="수정일자" cssclass="sta_WF_detailLabel" left="0" top="391" width="130" height="31"/>
+              <Edit id="regId" taborder="94" left="134" top="396" width="142" height="21" readonly="true"/>
+              <Static id="Static05" taborder="96" text="수정자" cssclass="sta_WF_detailLabel" left="280" top="391" width="130" height="31"/>
+              <Edit id="regDt" taborder="97" left="414" top="396" width="142" height="21" readonly="true"/>
+              <Static id="Static08" taborder="99" text="등록일자" cssclass="sta_WF_detailLabel" left="560" top="391" width="130" height="31"/>
+              <Edit id="chgId" taborder="100" left="694" top="396" width="142" height="21" readonly="true"/>
+              <Static id="Static13" taborder="102" text="등록자" cssclass="sta_WF_detailLabel" left="840" top="391" width="130" height="31"/>
+              <Edit id="chgDt" taborder="103" left="974" top="396" width="143" height="21" readonly="true"/>
+              <Combo id="questionTp" taborder="105" innerdataset="@dsQuestionTp" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="694" top="5" width="142" height="21" displaynulltext="선택"/>
+              <Combo id="confYn" taborder="106" innerdataset="@useYn" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="974" top="5" width="142" height="21" displaynulltext="선택"/>
+              <Static id="Static16" taborder="114" text="답변내용" cssclass="sta_WF_detailLabel" left="0" top="147" width="130" height="245"/>
+              <Edit id="answerNo" taborder="116" left="134" top="122" width="142" height="21" lengthunit="ascii" maxlength="3" ontextchanged="Div00_answerNo_ontextchanged"/>
+              <TextArea id="question" taborder="117" left="134" top="35" width="982" height="78" lengthunit="ascii" maxlength="2000"/>
+              <TextArea id="TextArea01" taborder="118" left="134" top="152" width="982" height="235" lengthunit="ascii" maxlength="2000"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="11" useinputpanel="false" left="0" top="506" height="183" binddataset="dsList" right="25" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="questionNo"/>
+                <Cell col="1" disptype="normal" text="useYn"/>
+                <Cell col="2" disptype="normal" text="questionTp"/>
+                <Cell col="3" disptype="normal" text="question"/>
+                <Cell col="4" disptype="normal" text="confYn"/>
+                <Cell col="5" disptype="normal" text="answerNo"/>
+                <Cell col="6" disptype="normal" text="regId"/>
+                <Cell col="7" disptype="normal" text="regDt"/>
+                <Cell col="8" disptype="normal" text="chgId"/>
+                <Cell col="9" disptype="normal" text="chgDt"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:questionNo"/>
+                <Cell col="1" disptype="normal" text="bind:useYn"/>
+                <Cell col="2" disptype="normal" text="bind:questionTp"/>
+                <Cell col="3" disptype="normal" text="bind:question"/>
+                <Cell col="4" disptype="normal" text="bind:confYn"/>
+                <Cell col="5" disptype="normal" text="bind:answerNo"/>
+                <Cell col="6" disptype="normal" text="bind:regId"/>
+                <Cell col="7" disptype="normal" text="bind:regDt"/>
+                <Cell col="8" disptype="normal" text="bind:chgId"/>
+                <Cell col="9" disptype="normal" text="bind:chgDt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="744"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="questionNo" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="questionTp" type="STRING" size="256"/>
+          <Column id="question" type="STRING" size="256"/>
+          <Column id="confYn" type="STRING" size="256"/>
+          <Column id="answerNo" type="STRING" size="256"/>
+          <Column id="answer" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="useYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsQuestionTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">선택</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPram" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="answer" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.questionNo" propid="value" datasetid="dsList" columnid="questionNo"/>
+      <BindItem id="item1" compid="Div00.cbo_useYn" propid="value" datasetid="dsList" columnid="useYn"/>
+      <BindItem id="item2" compid="Div00.questionTp" propid="value" datasetid="dsList" columnid="questionTp"/>
+      <BindItem id="item3" compid="Div00.confYn" propid="value" datasetid="dsList" columnid="confYn"/>
+      <BindItem id="item4" compid="Div00.question" propid="value" datasetid="dsList" columnid="question"/>
+      <BindItem id="item5" compid="Div00.answerNo" propid="value" datasetid="dsList" columnid="answerNo"/>
+      <BindItem id="item6" compid="Div00.regId" propid="value" datasetid="dsList" columnid="chgDt"/>
+      <BindItem id="item7" compid="Div00.regDt" propid="value" datasetid="dsList" columnid="chgId"/>
+      <BindItem id="item8" compid="Div00.chgId" propid="value" datasetid="dsList" columnid="regDt"/>
+      <BindItem id="item9" compid="Div00.chgDt" propid="value" datasetid="dsList" columnid="regId"/>
+      <BindItem id="item10" compid="Div00.TextArea01" propid="value" datasetid="dsList" columnid="answer"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("C|N|S", this);
+	//this.dsList.addRow();
+}
+
+//콤보박스 세팅, readonly
+this.fn_init = function(){
+	var sSvcID      	= "initCombo";  
+	var sController   	= "/ntrms/cs/initQuestion.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "useYn=output dsQuestionTp=output2";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//추가
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsList.clearData();
+	this.dsList.addRow();
+	//this.dsList.selectRow(nRow);
+	//this.dsList.addColumn();
+	this.Div00.questionNo.set_enable(true);
+	this.Div00.answerNo.set_enable(true);
+	this.Div00.questionNo.setFocus(true);
+	this.div_search.Edit00.set_value("");
+	this.div_search.Combo00.set_index(-1);
+	this.Div00.cbo_useYn.set_index(0);
+}
+
+
+//답변
+this.Div00_answerNo_ontextchanged = function(obj:Edit,  e:nexacro.TextChangedEventInfo)
+{
+	var answerNo = nvl(this.Div00.answerNo.value);
+
+	var sSvcID        	= "answerList";            
+	var sController   	= "/ntrms/cs/answerList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsPram=output";
+	var sArgs 			= "answerNo="+answerNo;	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var questionNo = 	nvl(this.div_search.Edit00.value); //질문번호
+	var useYn = 		nvl(this.div_search.Combo00.value); //사용여부	
+	
+	if(questionNo == "" || questionNo == null || questionNo.length == 0) {
+		alert("질문번호를 입력해주세요.");
+		return;
+	}
+	
+	var sSvcID        	= "questionList";                    
+	var sController   	= "/ntrms/cs/questionList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("questionNo", questionNo);
+	sArgs += Ex.util.setParam("useYn", useYn);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);				
+			return;
+		} 
+		
+		if (strSvcId == "questionList") 
+		{
+			var cnt = this.dsList.getRowCount();
+			if( cnt <= 0) {
+				alert("조회된 데이터가 없습니다.");
+				this.Edit00.setFocus(true);  //focus
+			} else {
+				this.Div00.questionNo.set_enable(false);
+				//this.Div00.answerNo.set_enable(false);
+			}
+		}
+		
+		if(strSvcId == "answerList") {
+			this.Div00.TextArea01.set_value(this.dsPram.getColumn(0, "answer"));
+		}
+		
+		if (strSvcId == "initCombo") {
+			//alert(this.useYn.getColumn(0, "cd"));
+			this.Div00.cbo_useYn.set_index(0);
+			//this.Div00.questionTp.set_value("");
+		}		
+		
+		if (strSvcId == "saveData") {
+			alert(strErrorMsg);
+			this.dsList.clearData();
+		}
+	}
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var questionNo = nvl(this.Div00.questionNo.value); //질문번호
+		var useYn = nvl(this.Div00.cbo_useYn.value); //사용여부
+		var questionTp = nvl(this.Div00.questionTp.value); // 질문유형
+		var confYn = nvl(this.Div00.confYn.value); //평가반영여부
+		var question = nvl(this.Div00.question.value); //질문내용
+		var answerNo = nvl(this.Div00.answerNo.value); //답변번호
+		
+		if(questionNo == null || questionNo == "" || questionNo.length == 0) {
+			alert("질문번호를 입력해주세요.");
+			return;
+		}
+		
+		if(answerNo == null || answerNo == "" || answerNo.length == 0) {
+			alert("답변번호를 입력해주세요");
+			return;
+		}
+		
+		if(questionNo.length != 3) {
+			alert("질문번호 3자리수로");
+			return;
+		}
+		
+		if(answerNo.length != 3) {
+			alert("답변번호 3자리수로");
+			return;
+		}
+		
+		if(questionTp == null || questionTp == "" || questionTp.length == 0) {
+			alert("질문유형을 선택해주세요.");
+			return;
+		}
+		
+		if(confYn == null || confYn == "" || confYn.length == 0) {
+			alert("평가반영여부를 선택해주세요.");
+			return;
+		}
+		
+		var sSvcID        	= "saveData";
+		var sController   	= "/ntrms/cs/questionSaveDaset.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=dsList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+/*		
+		sArgs += Ex.util.setParam("questionNo", questionNo);
+		sArgs += Ex.util.setParam("useYn", useYn);
+		sArgs += Ex.util.setParam("questionTp", questionTp);
+		sArgs += Ex.util.setParam("confYn", confYn);
+		sArgs += Ex.util.setParam("question", question);
+		sArgs += Ex.util.setParam("answerNo", answerNo);
+*/	
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,485 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMDlvrRegister" classname="RTCSDlvrRegister" left="0" top="0" width="975" height="536" titletext="출고등록" onload="RTCOMMDlvrRegister_onload" onkeyup="RTCOMMDlvrRegister_onkeyup">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" text="계약자정보" cssclass="sta_WF_subTitle" left="15" top="10" width="169" height="20"/>
+        <Grid id="grid_rtcs0203_1" taborder="1" binddataset="ds_keepHistory_1" useinputpanel="false" cellsizingtype="col" autofittype="col" left="15" top="247" width="945" height="63">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="제조사"/>
+                <Cell col="2" text="패턴"/>
+                <Cell col="3" text="폭"/>
+                <Cell col="4" text="시리즈"/>
+                <Cell col="5" text="인치"/>
+                <Cell col="6" text="PR"/>
+                <Cell col="7" text="수량"/>
+              </Band>
+              <Band id="body">
+                <Cell text="앞/뒷바퀴"/>
+                <Cell col="1" displaytype="normal" edittype="readonly" text="bind:mfNm" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="2" displaytype="normal" edittype="readonly" text="bind:patternCd" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="3" displaytype="normal" edittype="readonly" style="align:center;" text="bind:selectionWidth" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="4" displaytype="normal" edittype="readonly" style="align:center;" text="bind:aspectRatio" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="5" displaytype="normal" edittype="readonly" style="align:center;" text="bind:wheelInches" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="6" displaytype="normal" edittype="readonly" style="align:center;" text="bind:plyRating" editdisplay="display" calendardisplay="edit"/>
+                <Cell col="7" displaytype="normal" edittype="readonly" style="align:center;" text="bind:tireCnt" editdisplay="display" calendardisplay="edit"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="2" cssclass="Guide_color" visible="false" left="0" top="30" width="975" height="10"/>
+        <Static id="Static01" taborder="3" cssclass="sta_WF_detailLabel2" left="15" top="40" width="945" height="30"/>
+        <Static id="st_ordNo" taborder="4" text="계약번호" cssclass="sta_WF_detailLabel" left="15" top="40" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_carKind" taborder="5" text="차종" cssclass="sta_WF_detailLabel" left="330" top="40" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_telNo" taborder="6" text="자택전화" cssclass="sta_WF_detailLabel" left="646" top="40" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static02" taborder="7" cssclass="sta_WF_detailLabel2" left="15" top="69" width="945" height="30"/>
+        <Static id="st_cust" taborder="8" text="고객명" cssclass="sta_WF_detailLabel" left="15" top="69" width="120" height="30" domainId="nexa.s_condition"/>
+        <Static id="st_carNo" taborder="9" text="차량번호" cssclass="sta_WF_detailLabel" left="330" top="69" width="120" height="30" domainId="nexa.s_condition"/>
+        <Static id="st_mobNo" taborder="10" text="핸드폰" cssclass="sta_WF_detailLabel" left="646" top="69" width="120" height="30" domainId="nexa.s_condition"/>
+        <Static id="Static05" taborder="11" cssclass="Guide_color" visible="false" left="0" top="101" width="975" height="20"/>
+        <Static id="Static06" taborder="12" text="보관서비스 제공자 정보" cssclass="sta_WF_subTitle" left="15" top="117" width="169" height="20"/>
+        <Static id="Static07" taborder="13" cssclass="Guide_color" visible="false" left="0" top="132" width="975" height="10"/>
+        <Static id="Static08" taborder="14" cssclass="sta_WF_detailLabel2" left="15" top="142" width="945" height="31"/>
+        <Static id="st_buslNo01" taborder="15" text="렌탈전문점" cssclass="sta_WF_detailLabel" left="15" top="142" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_custNm01" taborder="16" text="전화번호" cssclass="sta_WF_detailLabel" left="330" top="142" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_agencyMobNo" taborder="17" enable="true" left="454" top="147" width="187" height="20" readonly="true"/>
+        <Static id="st_genderNm01" taborder="18" text="보관번호" cssclass="sta_WF_detailLabel" left="646" top="142" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static09" taborder="19" cssclass="sta_WF_detailLabel2" left="15" top="172" width="945" height="31"/>
+        <Static id="st_buslNo02" taborder="20" text="보관지명" cssclass="sta_WF_detailLabel" left="15" top="172" width="120" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_custNm02" taborder="21" text="주소" cssclass="sta_WF_detailLabel" left="330" top="172" width="120" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_addr" taborder="22" enable="true" left="454" top="177" width="500" height="20" readonly="true"/>
+        <Static id="Static10" taborder="23" cssclass="Guide_color" visible="false" left="0" top="203" width="975" height="20"/>
+        <Static id="Static11" taborder="24" text="보관내역 (앞/뒤 바퀴가 같은 경우)" cssclass="sta_WF_subTitle" left="15" top="222" width="300" height="20"/>
+        <Static id="Static12" taborder="25" cssclass="Guide_color" visible="false" left="15" top="237" width="945" height="10"/>
+        <Static id="Static13" taborder="26" cssclass="Guide_color" visible="false" left="0" top="310" width="975" height="20"/>
+        <Static id="Static14" taborder="27" text="보관내역 (앞/뒤 바퀴가 다른 경우)" cssclass="sta_WF_subTitle" left="15" top="326" width="300" height="20"/>
+        <Static id="Static15" taborder="28" cssclass="Guide_color" visible="false" left="15" top="341" width="945" height="10"/>
+        <Grid id="grid_rtcs0203_2" taborder="29" binddataset="ds_keepHistory_2" useinputpanel="false" cellsizingtype="col" autofittype="col" left="15" top="351" width="945" height="93">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="제조사"/>
+                <Cell col="2" text="패턴"/>
+                <Cell col="3" text="폭"/>
+                <Cell col="4" text="시리즈"/>
+                <Cell col="5" text="인치"/>
+                <Cell col="6" text="PR"/>
+                <Cell col="7" text="수량"/>
+              </Band>
+              <Band id="body">
+                <Cell text="앞바퀴"/>
+                <Cell col="1" displaytype="normal" edittype="readonly" text="bind:mfNmF" editdisplay="display"/>
+                <Cell col="2" displaytype="normal" edittype="readonly" text="bind:patternCdF" editdisplay="display"/>
+                <Cell col="3" displaytype="normal" edittype="readonly" style="align:center;" text="bind:selectionWidthF" editdisplay="display"/>
+                <Cell col="4" displaytype="normal" edittype="readonly" style="align:center;" text="bind:aspectRatioF" editdisplay="display"/>
+                <Cell col="5" displaytype="normal" edittype="readonly" style="align:center;" text="bind:wheelInchesF" editdisplay="display"/>
+                <Cell col="6" displaytype="normal" edittype="readonly" style="align:center;" text="bind:plyRatingF" editdisplay="display"/>
+                <Cell col="7" displaytype="normal" edittype="readonly" style="align:center;" text="bind:tireCntF" editdisplay="display"/>
+                <Cell row="1" text="뒷바퀴"/>
+                <Cell row="1" col="1" displaytype="normal" edittype="readonly" text="bind:mfNmR" editdisplay="display"/>
+                <Cell row="1" col="2" displaytype="normal" edittype="readonly" text="bind:patternCdR" editdisplay="display"/>
+                <Cell row="1" col="3" displaytype="normal" edittype="readonly" style="align:center;" text="bind:selectionWidthR" editdisplay="display"/>
+                <Cell row="1" col="4" displaytype="normal" edittype="readonly" style="align:center;" text="bind:aspectRatioR" editdisplay="display"/>
+                <Cell row="1" col="5" displaytype="normal" edittype="readonly" style="align:center;" text="bind:wheelInchesR" editdisplay="display"/>
+                <Cell row="1" col="6" displaytype="normal" edittype="readonly" style="align:center;" text="bind:plyRatingR" editdisplay="display"/>
+                <Cell row="1" col="7" displaytype="normal" edittype="readonly" style="align:center;" text="bind:tireCntR" editdisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static16" taborder="30" cssclass="sta_WF_detailLabel2" left="15" top="454" width="945" height="31"/>
+        <Static id="st_buslNo03" taborder="31" text="출고일자" cssclass="sta_WF_detailLabel" left="15" top="454" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_ordNo" taborder="32" enable="true" left="139" top="44" width="187" height="21" readonly="true"/>
+        <Edit id="ed_carNo" taborder="36" enable="true" left="454" top="74" width="187" height="21" readonly="true"/>
+        <Edit id="ed_carKind" taborder="37" enable="true" left="454" top="45" width="187" height="21" readonly="true"/>
+        <Edit id="ed_custTelNo" taborder="38" enable="true" left="771" top="45" width="183" height="21" readonly="true"/>
+        <Edit id="ed_custMobNo" taborder="39" enable="true" left="771" top="74" width="183" height="21" readonly="true"/>
+        <Edit id="ed_agencyNm" taborder="42" enable="true" left="139" top="147" width="187" height="21" readonly="true"/>
+        <Calendar id="cal_dlvrDay" taborder="44" dateformat="yyyy-MM-dd" left="170" top="459" width="100" height="21" onchanged="cal_dlvrDay_onchanged"/>
+        <Static id="Static00" taborder="45" cssclass="Guide_color" visible="false" left="0" top="0" width="15" height="536"/>
+        <Static id="Static18" taborder="46" cssclass="Guide_color" visible="false" left="960" top="0" width="15" height="536"/>
+        <Static id="Static19" taborder="47" cssclass="Guide_color" visible="false" left="0" top="0" width="975" height="10"/>
+        <Static id="Static20" taborder="48" cssclass="Guide_color" visible="false" left="0" top="485" width="975" height="10"/>
+        <Button id="btn_save" taborder="49" text="저장" onclick="btn_save_onclick" left="870" top="495" width="41" height="21" domainId="nexa.save"/>
+        <Button id="btn_close" taborder="50" text="닫기" onclick="btn_close_onclick" left="919" top="495" width="41" height="21" domainId="nexa.save"/>
+        <Static id="Static21" taborder="51" cssclass="Guide_color" visible="false" left="0" top="516" width="975" height="20"/>
+        <Static id="Static22" taborder="52" cssclass="Guide_color" visible="false" left="910" top="484" width="10" height="52"/>
+        <Static id="Static23" taborder="54" cssclass="Guide_color" visible="false" left="0" top="444" width="975" height="10"/>
+        <Edit id="ed_strgSeq" taborder="57" enable="true" left="771" top="147" width="183" height="20" readonly="true"/>
+        <Edit id="ed_custNm" taborder="58" enable="true" left="139" top="74" width="187" height="21" readonly="true"/>
+        <Edit id="ed_warehNm" taborder="59" enable="true" left="139" top="177" width="187" height="21" readonly="true"/>
+        <Static id="st_genderNm00" taborder="60" text="서비스적용여부" cssclass="sta_WF_detailLabel" left="487" top="454" width="150" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_srsvYn" taborder="61" autoselect="true" innerdataset="ds_useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="641" top="459" width="120" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtcs0203" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="strgSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="custTelNo" type="STRING" size="256"/>
+          <Column id="custMobNo" type="STRING" size="256"/>
+          <Column id="carKind" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="srrgDay" type="STRING" size="256"/>
+          <Column id="strgYn" type="STRING" size="256"/>
+          <Column id="strgStat" type="STRING" size="256"/>
+          <Column id="strgStatNm" type="STRING" size="256"/>
+          <Column id="srsvYn" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="agencyMobNo" type="STRING" size="256"/>
+          <Column id="warehCd" type="STRING" size="256"/>
+          <Column id="warehNm" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="strgDay" type="STRING" size="256"/>
+          <Column id="strgDt" type="STRING" size="256"/>
+          <Column id="strgMthd" type="STRING" size="256"/>
+          <Column id="strgMthdNm" type="STRING" size="256"/>
+          <Column id="strgFilePath" type="STRING" size="256"/>
+          <Column id="strgFileName" type="STRING" size="256"/>
+          <Column id="strgUserId" type="STRING" size="256"/>
+          <Column id="strgUserNm" type="STRING" size="256"/>
+          <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="dlvrDt" type="STRING" size="256"/>
+          <Column id="dlvrFilePath" type="STRING" size="256"/>
+          <Column id="dlvrFileName" type="STRING" size="256"/>
+          <Column id="dlvrUserId" type="STRING" size="256"/>
+          <Column id="dlvrUserNm" type="STRING" size="256"/>
+          <Column id="mfCd" type="STRING" size="256"/>
+          <Column id="mfNm" type="STRING" size="256"/>
+          <Column id="patternCd" type="STRING" size="256"/>
+          <Column id="selectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="tireCnt" type="STRING" size="256"/>
+          <Column id="mfCdF" type="STRING" size="256"/>
+          <Column id="mfNmF" type="STRING" size="256"/>
+          <Column id="patternCdF" type="STRING" size="256"/>
+          <Column id="selectionWidthF" type="STRING" size="256"/>
+          <Column id="aspectRatioF" type="STRING" size="256"/>
+          <Column id="wheelInchesF" type="STRING" size="256"/>
+          <Column id="plyRatingF" type="STRING" size="256"/>
+          <Column id="tireCntF" type="STRING" size="256"/>
+          <Column id="mfCdR" type="STRING" size="256"/>
+          <Column id="mfNmR" type="STRING" size="256"/>
+          <Column id="patternCdR" type="STRING" size="256"/>
+          <Column id="selectionWidthR" type="STRING" size="256"/>
+          <Column id="aspectRatioR" type="STRING" size="256"/>
+          <Column id="wheelInchesR" type="STRING" size="256"/>
+          <Column id="plyRatingR" type="STRING" size="256"/>
+          <Column id="tireCntR" type="STRING" size="256"/>
+          <Column id="totTireCnt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_keepHistory_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="mfNm" type="STRING" size="256"/>
+          <Column id="patternCd" type="STRING" size="256"/>
+          <Column id="selectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="tireCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_keepHistory_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="mfNmF" type="STRING" size="256"/>
+          <Column id="patternCdF" type="STRING" size="256"/>
+          <Column id="selectionWidthF" type="STRING" size="256"/>
+          <Column id="aspectRatioF" type="STRING" size="256"/>
+          <Column id="wheelInchesF" type="STRING" size="256"/>
+          <Column id="plyRatingF" type="STRING" size="256"/>
+          <Column id="tireCntF" type="STRING" size="256"/>
+          <Column id="mfNmR" type="STRING" size="256"/>
+          <Column id="patternCdR" type="STRING" size="256"/>
+          <Column id="selectionWidthR" type="STRING" size="256"/>
+          <Column id="aspectRatioR" type="STRING" size="256"/>
+          <Column id="wheelInchesR" type="STRING" size="256"/>
+          <Column id="plyRatingR" type="STRING" size="256"/>
+          <Column id="tireCntR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_ordNo" propid="value" datasetid="ds_rtcs0203" columnid="ordNo"/>
+      <BindItem id="item1" compid="ed_carKind" propid="value" datasetid="ds_rtcs0203" columnid="carKind"/>
+      <BindItem id="item2" compid="ed_custTelNo" propid="value" datasetid="ds_rtcs0203" columnid="custTelNo"/>
+      <BindItem id="item3" compid="ed_custNm" propid="value" datasetid="ds_rtcs0203" columnid="custNm"/>
+      <BindItem id="item4" compid="ed_carNo" propid="value" datasetid="ds_rtcs0203" columnid="carNo"/>
+      <BindItem id="item5" compid="ed_custMobNo" propid="value" datasetid="ds_rtcs0203" columnid="custMobNo"/>
+      <BindItem id="item6" compid="ed_agencyNm" propid="value" datasetid="ds_rtcs0203" columnid="agencyNm"/>
+      <BindItem id="item7" compid="ed_agencyMobNo" propid="value" datasetid="ds_rtcs0203" columnid="agencyMobNo"/>
+      <BindItem id="item8" compid="ed_strgSeq" propid="value" datasetid="ds_rtcs0203" columnid="strgSeq"/>
+      <BindItem id="item9" compid="ed_warehNm" propid="value" datasetid="ds_rtcs0203" columnid="warehNm"/>
+      <BindItem id="item10" compid="ed_addr" propid="value" datasetid="ds_rtcs0203" columnid="addr"/>
+      <BindItem id="item11" compid="cal_dlvrDay" propid="value" datasetid="ds_rtcs0203" columnid="dlvrDay"/>
+      <BindItem id="item12" compid="cb_srsvYn" propid="value" datasetid="ds_rtcs0203" columnid="srsvYn"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 	 = "RTCOMMDlvrRegister";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 	 = ""; 				//현재날짜
+this.grid_1_AddFlag = false;	//보관내역(앞/뒤 바퀴가 같은 경우) 체크해제시 false
+this.grid_2_AddFlag = false;	//보관내역(앞/뒤 바퀴가 다른 경우) 체크해제시 false
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTCOMMStrgRegister" ){
+		var useYnCt = this.ds_useYn.getRowCount();
+		if( useYnCt > 0 ){
+			this.cb_srsvYn.set_value( "Y" );
+		}
+	}
+	
+	if( strSvcId == "getToday" ){
+		if( nvl(this.toDay) != "" ){
+			this.cal_dlvrDay.set_value(this.toDay);
+		}
+	}
+	
+	if( strSvcId == "saveRtcs0203WinterOut" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			var pos = this.ds_rtcs0203.rowposition;
+			var ordNo 		= nvl(this.ds_rtcs0203.getColumn(pos, "ordNo"));
+			var agencyCd 	= nvl(this.ds_rtcs0203.getColumn(pos, "agencyCd"));
+			var agencyNm	= nvl(this.ed_agencyNm.value);
+			var dlvrDay 	= nvl(this.ds_rtcs0203.getColumn(pos, "dlvrDay"));
+			var custNo 		= nvl(this.ds_rtcs0203.getColumn(pos, "custNo"));
+			var custNm		= nvl(this.ed_custNm.value);
+			var warehCd 	= nvl(this.ds_rtcs0203.getColumn(pos, "warehCd"));
+			var warehNm		= nvl(this.ds_rtcs0203.getColumn(pos, "warehNm"));
+			var carNo		= nvl(this.ed_carNo.value);
+			var strgStat 	= "D";
+			var strgMthd 	= nvl(this.ds_rtcs0203.getColumn(pos, "strgMthd"));
+			this.close( this.opener.FNdlvrSave(ordNo, agencyCd, agencyNm, dlvrDay, custNo, custNm, warehCd, warehNm, carNo, strgStat, strgMthd) );
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMDlvrRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+this.fn_init = function(){
+	if( this.parent.p_arg != "" ){
+		this.ds_rtcs0203.clearData();
+		var nRowCnt = this.ds_rtcs0203.copyData( this.parent.p_arg );
+		if( nRowCnt != 0){
+			this.FN_inDataRtcs0203();
+		}else{
+			alert("데이터를 가져오지 못하였습니다.");
+			this.close();
+		}
+	}else{
+		alert("데이터를 가져오지 못하였습니다.");
+		this.close();
+	}
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	var sSvcID      	= "initRTCOMMDlvrRegister";  
+	var sController   	= "rtms/cs/initRTCOMMDlvrRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+this.FN_inDataRtcs0203 = function(){
+	var pos = this.ds_rtcs0203.rowposition;
+	
+	var custTelNo 			= nvl( this.ds_rtcs0203.getColumn( pos, "custTelNo") );
+	var custMobNo 			= nvl( this.ds_rtcs0203.getColumn( pos, "custMobNo") );
+	var agencyMobNo 		= nvl( this.ds_rtcs0203.getColumn( pos, "agencyMobNo") );
+	
+	if( custTelNo != "" ){   this.ds_rtcs0203.setColumn(pos, "custTelNo", FN_numberHyphenInReturn(custTelNo))		}
+	if( custMobNo != "" ){   this.ds_rtcs0203.setColumn(pos, "custMobNo", FN_numberHyphenInReturn(custMobNo))		}
+	if( agencyMobNo != "" ){ this.ds_rtcs0203.setColumn(pos, "agencyMobNo", FN_numberHyphenInReturn(agencyMobNo))	}
+	
+	var mfNm 			= nvl( this.ds_rtcs0203.getColumn( pos, "mfNm") );
+	var patternCd 		= nvl( this.ds_rtcs0203.getColumn( pos, "patternCd") );
+	var selectionWidth 	= nvl( this.ds_rtcs0203.getColumn( pos, "selectionWidth") );
+	var aspectRatio 	= nvl( this.ds_rtcs0203.getColumn( pos, "aspectRatio") );
+	var wheelInches 	= nvl( this.ds_rtcs0203.getColumn( pos, "wheelInches") );
+	var plyRating 		= nvl( this.ds_rtcs0203.getColumn( pos, "plyRating") );
+	var tireCnt			= nvl( this.ds_rtcs0203.getColumn( pos, "tireCnt") );
+	if( (mfNm!="") && (patternCd!="") && (selectionWidth!="") && (aspectRatio!="") && (wheelInches!="") && (plyRating!="") && (tireCnt!="") ){
+		this.ds_keepHistory_1.clearData();
+		var pos_1 = this.ds_keepHistory_1.addRow();
+		this.ds_keepHistory_1.setColumn(pos_1, "mfNm", 			 mfNm);
+		this.ds_keepHistory_1.setColumn(pos_1, "patternCd", 	 patternCd);
+		this.ds_keepHistory_1.setColumn(pos_1, "selectionWidth", selectionWidth);
+		this.ds_keepHistory_1.setColumn(pos_1, "aspectRatio", 	 aspectRatio);
+		this.ds_keepHistory_1.setColumn(pos_1, "wheelInches", 	 wheelInches);
+		this.ds_keepHistory_1.setColumn(pos_1, "plyRating", 	 plyRating);
+		this.ds_keepHistory_1.setColumn(pos_1, "tireCnt", 		 tireCnt);
+		this.grid_1_AddFlag = true;
+	}else{
+		this.grid_1_AddFlag = false;
+	}
+	
+	var mfNmF 				= nvl( this.ds_rtcs0203.getColumn( pos, "mfNmF") );
+	var patternCdF 			= nvl( this.ds_rtcs0203.getColumn( pos, "patternCdF") );
+	var selectionWidthF 	= nvl( this.ds_rtcs0203.getColumn( pos, "selectionWidthF") );
+	var aspectRatioF 		= nvl( this.ds_rtcs0203.getColumn( pos, "aspectRatioF") );
+	var wheelInchesF 		= nvl( this.ds_rtcs0203.getColumn( pos, "wheelInchesF") );
+	var plyRatingF 			= nvl( this.ds_rtcs0203.getColumn( pos, "plyRatingF") );
+	var tireCntF 			= nvl( this.ds_rtcs0203.getColumn( pos, "tireCntF") );
+	var mfNmR 				= nvl( this.ds_rtcs0203.getColumn( pos, "mfNmR") );
+	var patternCdR 			= nvl( this.ds_rtcs0203.getColumn( pos, "patternCdR") );
+	var selectionWidthR 	= nvl( this.ds_rtcs0203.getColumn( pos, "selectionWidthR") );
+	var aspectRatioR 		= nvl( this.ds_rtcs0203.getColumn( pos, "aspectRatioR") );
+	var wheelInchesR 		= nvl( this.ds_rtcs0203.getColumn( pos, "wheelInchesR") );
+	var plyRatingR 			= nvl( this.ds_rtcs0203.getColumn( pos, "plyRatingR") );
+	var tireCntR 			= nvl( this.ds_rtcs0203.getColumn( pos, "tireCntR") );
+	if( ( (mfNmF!="") && (patternCdF!="") && (selectionWidthF!="") && (aspectRatioF!="") && (wheelInchesF!="") && (plyRatingF!="") && (tireCntF!="") )
+		||
+	    ( (mfNmR!="") && (patternCdR!="") && (selectionWidthR!="") && (aspectRatioR!="") && (wheelInchesR!="") && (plyRatingR!="") && (tireCntR!="") )
+	){
+		this.ds_keepHistory_2.clearData();
+		var pos_2 = this.ds_keepHistory_2.addRow();
+		this.ds_keepHistory_2.setColumn(pos_2, "mfNmF", 			mfNmF);
+		this.ds_keepHistory_2.setColumn(pos_2, "patternCdF", 		patternCdF);
+		this.ds_keepHistory_2.setColumn(pos_2, "selectionWidthF", 	selectionWidthF);
+		this.ds_keepHistory_2.setColumn(pos_2, "aspectRatioF", 		aspectRatioF);
+		this.ds_keepHistory_2.setColumn(pos_2, "wheelInchesF", 		wheelInchesF);
+		this.ds_keepHistory_2.setColumn(pos_2, "plyRatingF", 		plyRatingF);
+		this.ds_keepHistory_2.setColumn(pos_2, "tireCntF", 			tireCntF);
+		this.ds_keepHistory_2.setColumn(pos_2, "mfNmR", 			mfNmR);
+		this.ds_keepHistory_2.setColumn(pos_2, "patternCdR", 		patternCdR);
+		this.ds_keepHistory_2.setColumn(pos_2, "selectionWidthR", 	selectionWidthR);
+		this.ds_keepHistory_2.setColumn(pos_2, "aspectRatioR", 		aspectRatioR);
+		this.ds_keepHistory_2.setColumn(pos_2, "wheelInchesR", 		wheelInchesR);
+		this.ds_keepHistory_2.setColumn(pos_2, "plyRatingR", 		plyRatingR);
+		this.ds_keepHistory_2.setColumn(pos_2, "tireCntR", 			tireCntR);
+		this.grid_2_AddFlag = true;
+	}else{
+		this.grid_2_AddFlag = false;
+	}
+	
+	if( ((this.grid_1_AddFlag == true) && (this.grid_2_AddFlag == true)) || ((this.grid_1_AddFlag == false) && (this.grid_2_AddFlag == false))){
+		alert("보관내역을 다시 확인하세요.");
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMStrgRegister_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cal_dlvrDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var strgDay = this.ds_rtcs0203.getColumn(this.ds_rtcs0203.rowposition, "strgDay");
+	var thisValue =  obj.value;
+	//var toDay     =  this.toDay;
+	var lastDay   =  this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+	if( (strgDay > thisValue) || (thisValue > lastDay) ){
+		alert("출고일자는 "+strgDay.substr(0,4)+"-"+strgDay.substr(4,2)+"-"+strgDay.substr(6,2)+" ~ "+lastDay.substr(0,4)+"-"+lastDay.substr(4,2)+"-"+lastDay.substr(6,2)+" 선택가능합니다.");
+		obj.set_value(this.toDay);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var pos = this.ds_rtcs0203.rowposition;
+	if( pos != -1 ){
+		var ordNo 		 = nvl(this.ds_rtcs0203.getColumn( pos, "ordNo" ));
+		var strgSeq 	 = nvl(this.ds_rtcs0203.getColumn( pos, "strgSeq" ));
+		var dlvrDay 	 = nvl(this.ds_rtcs0203.getColumn( pos, "dlvrDay" ));
+		var srsvYn 		 = nvl(this.ds_rtcs0203.getColumn( pos, "srsvYn" ));
+		var dlvrFilePath = nvl(this.ds_rtcs0203.getColumn( pos, "dlvrFilePath" ));
+		var dlvrFileName = nvl(this.ds_rtcs0203.getColumn( pos, "dlvrFileName" ));
+		var msg			 = " 값이 없습니다.";
+		
+		if( ordNo == "" ){ 		alert("계약번호" + msg); 				return false; }
+		if( strgSeq == "" ){ 	alert("보관순번" + msg); 				return false; }
+		if( dlvrDay == "" ){ 	alert("출고일자" + msg); 				return false; }
+		if( srsvYn == "" ){ 	alert("보관서비스적용여부" + msg); 	return false; }
+		
+		var sSvcID        	= "saveRtcs0203WinterOut";                    
+		var sController   	= "rtms/cs/saveRtcs0203WinterOut.do";
+		var sInDatasets   	= " input=ds_rtcs0203:U ";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("출고 등록할 정보가 없습니다.");
+		return false;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMDlvrRegister_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

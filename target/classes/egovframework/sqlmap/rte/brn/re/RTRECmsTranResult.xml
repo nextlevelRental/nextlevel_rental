@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CmsTranResultDAO">
+
+	<!-- 결과파일 반영-->
+	<parameterMap class="java.util.Map" id="cmsTranResultFileMakeParam">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	  <!--요청일자     	-->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />   <!--파일명            	-->
+		<parameter property="fileTp"		jdbcType="VARCHAR" mode="IN" />   <!--송수신 파일구분	-->
+		<parameter property="fileData"		jdbcType="CLOB"    mode="IN" />   <!--파일데이터      	-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />   <!--등록자아이디   	-->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="cmsTranResult.makeFileData" parameterMap="cmsTranResultFileMakeParam">
+		{call  Pkg_Rtre0098.p_InsertRtre0098FileParsingT(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- CMS수납처리-->
+	<parameterMap class="java.util.Map" id="cmsTranReceiptParam">
+		<parameter property="rcmsDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--출금이체일       		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디          	-->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="cmsTranResult.cmsTranReceipt" parameterMap="cmsTranReceiptParam">
+		{call Pkg_Rtre0070.p_CreateRtre0070TransReceive(?, ?,	?,	?,	?)}
+	</procedure>	
+	
+	<!-- CMS이체결과반영 여부 확인 -->
+	<resultMap id="resultCmsTranEnd" class="java.util.HashMap"/>
+	
+	<parameterMap id="paramCmsTranEnd" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="resultCmsTranEnd" />
+		<parameter property="rcmsDay"     	jdbcType="VARCHAR" mode="IN"  />
+	</parameterMap>
+	
+	<procedure id="cmsTran.cmsTranEnd" parameterMap="paramCmsTranEnd">
+		{call ? := Pkg_Rtre0070.f_sRtre0070ResultCount(?)}
+	</procedure>	
+	
+	
+</sqlMap>
+
+

@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCustGrp" classname="RTSDCustGrp" left="0" top="0" width="1147" height="496" titletext="지역별 미스터로디안 등록" onload="RTSDCustGrp_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1121" top="0" right="0" height="496"/>
+        <Static id="Static03" taborder="2" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="55" right="25" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="3" text="Div00" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1112" left="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition00" taborder="49" text="광역시/도" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="71" left="20"/>
+              <Static id="st_searchCondition01" taborder="50" text="면/동" cssclass="sta_WF_schTitle" top="13" height="20" domainId="nexa.s_condition" width="72" left="553"/>
+              <Static id="st_searchCondition02" taborder="52" text="시/군/구" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="71" left="289"/>
+              <Static id="Static24" taborder="63" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="260" top="0" width="30" height="44"/>
+              <Static id="Static00" taborder="64" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="523" top="0" width="30" height="44"/>
+              <Static id="Static01" taborder="67" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="90" top="0" width="30" height="44"/>
+              <Edit id="Ed_doNm" taborder="68" left="120" top="12" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_doNm_onkeyup"/>
+              <Edit id="Ed_ctNm" taborder="69" left="383" top="12" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_ctNm_onkeyup"/>
+              <Static id="Static02" taborder="70" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="353" top="0" width="30" height="44"/>
+              <Edit id="Ed_emNm" taborder="71" left="627" top="12" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_emNm_onkeyup"/>
+              <Static id="Static03" taborder="72" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="597" top="0" width="30" height="44"/>
+              <Static id="st_searchCondition03" taborder="73" text="도로명" cssclass="sta_WF_schTitle" left="797" top="13" width="72" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static04" taborder="74" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="846" top="0" width="30" height="44"/>
+              <Edit id="Ed_rdNm" taborder="75" lengthunit="ascii" maxlength="30" onkeyup="div_search_Ed_emNm_onkeyup" left="876" top="12" width="140" height="21" tooltiptext="edit"/>
+              <Static id="Static05" taborder="76" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="767" top="0" width="30" height="44"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="bt_saveCustGrp1" taborder="7" text="일괄적용" cssclass="btn_WF_module" top="75" height="21" width="71" left="1051" onclick="bt_saveCustGrp1_onclick"/>
+        <Grid id="grid_custGrp1" taborder="10" useinputpanel="false" left="10" top="105" width="1112" height="390" binddataset="dsList" onselectchanged="grid_custGrp1_onselectchanged" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="광역시/도 명"/>
+                <Cell col="2" text="시/군/구 명"/>
+                <Cell col="3" text="면동"/>
+                <Cell col="4" text="도로명"/>
+                <Cell col="5" text="지번건수"/>
+                <Cell col="6" text="미스터로디안"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check"/>
+                <Cell col="1" text="bind:doNm"/>
+                <Cell col="2" text="bind:ctNm"/>
+                <Cell col="3" text="bind:emNm"/>
+                <Cell col="4" text="bind:rdNm"/>
+                <Cell col="5" text="bind:cnt"/>
+                <Cell col="6" text="bind:carmasterNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_searchCondition01" taborder="11" text="Mr. Roadian" cssclass="sta_WF_schTitle" left="776" top="75" width="104" height="20" domainId="nexa.s_condition"/>
+        <Edit id="Ed_carmasterNm" taborder="12" left="881" top="75" width="140" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="80" enable="false"/>
+        <Static id="Static00" taborder="13" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="851" top="61" width="30" height="44"/>
+        <Static id="Static01" taborder="14" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="1021" top="61" width="30" height="44"/>
+        <Button id="btn_postSearch1" taborder="15" onclick="div_cust_btn_postSearch1_onclick" cssclass="btn_WF_edtSch" left="1001" top="74" width="20" height="21" domainId="nexa.save"/>
+        <Edit id="Ed_carmasterNu" taborder="16" left="881" top="75" width="52" height="21" tooltiptext="edit" lengthunit="ascii" maxlength="10" visible="false"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="doNm" type="STRING" size="256"/>
+          <Column id="ctNm" type="STRING" size="256"/>
+          <Column id="emNm" type="STRING" size="256"/>
+          <Column id="rdNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="carmasterNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.resultGrpNo = "";
+	
+	this.selectGrpNo = "0";
+	this.selectCustNo = "0";
+	
+		
+	//onloard
+	this.RTSDCustGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 
+		this.parent.setButton("E|C|S", this);
+	}
+	
+    /***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{
+		if( strSvcId == "initRTCMCustGrp" ){
+			this.div_search.cal_grpDayStart.set_value(FN_beforeMonths());
+			this.div_search.cal_grpDayEnd.set_value(FN_today());
+		}
+		
+		if( strSvcId == "carmasterAreaList" ){
+			this.dsList.addColumn("check", "string", 256);
+			//alert(this.dsList.saveXML());
+			var cnt = this.dsList.getRowCount();
+			if( cnt <= 0) {
+				alert("조회된 데이터가 없습니다.");
+				return;
+			} else {
+				
+			}
+		}
+		if(strSvcId == "saveData") {
+			alert(strErrorMsg);
+			this.fn_search();
+		}
+		
+	}
+	
+
+//조회
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var doNm 	= nvl(this.div_search.Ed_doNm.value); //광역시/도 세팅
+		var ctNm 	= nvl(this.div_search.Ed_ctNm.value); //시/군/구 세팅
+		var emNm 	= nvl(this.div_search.Ed_emNm.value); //면/동 세팅
+		var rdNm 	= nvl(this.div_search.Ed_rdNm.value); //도로명
+		if(doNm == "") {
+			alert("광역시/도 명을 입력해주세요")
+			return;
+		}
+		
+		this.dsList.addColumn("check", "string", 256);
+		
+		var sSvcID        	= "carmasterAreaList";                    
+		var sController   	= "ntrms/cs/carmasterAreaList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.dsList.clearData();
+		
+		sArgs += Ex.util.setParam("doNm", doNm);
+		sArgs += Ex.util.setParam("ctNm", ctNm);
+		sArgs += Ex.util.setParam("emNm", emNm);
+		sArgs += Ex.util.setParam("rdNm", rdNm);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var cnt = this.dsList.rowcount;
+	var checkCnt = 0;
+	
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsList.getColumn(i, "check")  == "1") {
+			var carmasterNm = nvl(this.dsList.getColumn(i, "carmasterNm"));
+			var rdNm = nvl(this.dsList.getColumn(i, "rdNm"));
+			if(carmasterNm == "") {
+				alert('도로명 "' + rdNm + '" 건 미스터로디안을 지정해주세요');
+				return;
+			}
+			checkCnt++;
+		}
+	}
+	
+	if(checkCnt == 0) {
+		alert("미스터로디안 적용 대상을 선택해주세요.");
+		return;
+	}
+	
+	var sSvcID        	= "saveData";
+	var sController   	= "ntrms/cs/carmasterAreaSave.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	sInDatasets   		= "input=dsList:U";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+	
+//일괄적용 button
+this.bt_saveCustGrp1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.dsList.addColumn("carmasterNu", "string", 256);
+	this.dsList.addColumn("carmasterNm", "string", 256);
+	
+	var carmasterNu = nvl(this.Ed_carmasterNu.value); //미스터로디안 코드
+	var carmasterNm = nvl(this.Ed_carmasterNm.value); //미스터로디안 이름
+	
+	if(carmasterNu == "" || carmasterNm == "") {
+		alert("미스터로디안을 입력해주세요.");
+		return;
+	}
+	if( confirm( '미스터로디안 "' + carmasterNm + '" 을 적용시키겠습니까?') ){
+		var cnt = this.dsList.rowcount;
+		var checkCnt = 0;
+		for(var i = cnt; i >= 0; i--) {
+			if(this.dsList.getColumn(i, "check")  == "1") {
+				this.dsList.setColumn(i, "carmasterNu", carmasterNu);
+				this.dsList.setColumn(i, "carmasterNm", carmasterNm);
+				checkCnt++;
+			}
+		}
+	}else{
+		return false;
+	}
+	
+	if(checkCnt == 0) {
+		alert("미스터로디안 적용 대상을 선택해주세요.");
+	} else {
+		
+	}
+}
+
+//미스터로디안 찾기
+this.div_cust_btn_postSearch1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_formId : "RTCSCarMaster"};
+	Ex.core.popup(this,"Mr. Roadian 찾기","cs::RTCSCarMaster_pop.xfdl",args, "modaless=false");
+}
+//팝업 리턴
+this.returnCarmaster = function(val1, val2){
+	this.Ed_carmasterNu.set_value(val1);
+	this.Ed_carmasterNm.set_value(val2);
+}
+
+
+//광역시/도 enter
+this.div_search_Ed_doNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+//시/군/구 enter
+this.div_search_Ed_ctNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+//면/동 enter
+this.div_search_Ed_emNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.grid_custGrp1, "리스트");
+	}
+]]></Script>
+  </Form>
+</FDL>

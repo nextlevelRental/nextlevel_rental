@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTREDrawDayRegisterDAO">
+
+	<!-- 출금스케쥴 정보 조회 -->
+	<resultMap id="r_sRtre0055List" class="java.util.HashMap">
+		<result property="reqDay"		column="REQ_DAY"         />
+		<result property="reqDiv"    	column="REQ_DIV"         />
+		<result property="reqDivNm"	column="REQ_DIV_NM"       />
+		<result property="useYn"		column="USE_YN"       />
+		<result property="regId"		column="REG_ID"    />
+		<result property="regDt"		column="REG_DT"       />
+		<result property="chgId"		column="CHG_ID"       />
+		<result property="chgDt"		column="CHG_DT"  />
+	</resultMap>
+	<parameterMap id="p_sRtre0055List" class="java.util.Map">
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0055List" />
+		<parameter property="stdYm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reqDiv" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTREDrawDayRegisterDAO.rTREDrawDayList" parameterMap="p_sRtre0055List">
+		{call Pkg_Rtre0055.p_sRtre0055(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 출금스케쥴 정보 관리 -->
+	<parameterMap id="paramIUDRtre0055" class="java.util.HashMap">
+		<parameter property="dvsn"    			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reqDay"   		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reqDiv" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"  			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"  			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"    jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="returnMessage"    jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"  		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTREDrawDayRegisterDAO.IUDRtre0055" resultClass="java.util.HashMap" parameterMap="paramIUDRtre0055">
+		{call Pkg_Rtre0055.p_IUDRtre0055(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_02" classname="Guide_01" left="0" top="0" width="820" height="730" titletext="Combo/ListBox/Spin/Calendar">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="20" text="Combo / ListBox" left="17" top="16" width="273" height="16" cssclass="Guide_title"/>
+        <Static id="Static05" taborder="21" left="10" top="261" height="8" cssclass="Guide_line" right="10"/>
+        <Static id="Static07" taborder="22" text="Normal" cssclass="pseudo" left="69" top="48" width="123" height="22"/>
+        <Static id="Static08" taborder="23" text="Disabled" cssclass="pseudo" left="239" top="48" width="123" height="22"/>
+        <Static id="Static09" taborder="24" text="Readonly" cssclass="pseudo" left="409" top="48" width="123" height="22"/>
+        <Combo id="Combo00" taborder="0" left="70" top="98" width="160" height="21" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" index="0" displayrowcount="5" text="넥센타이어" value="0"/>
+        <Combo id="Combo02" taborder="2" readonly="true" left="410" top="98" width="160" height="21" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" displayrowcount="5" cssclass="readonly" index="0" text="넥센타이어" value="0"/>
+        <ListBox id="ListBox00" taborder="5" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" left="240" top="149" width="160" height="97" enable="false"/>
+        <ListBox id="ListBox01" taborder="6" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" left="410" top="149" width="160" height="97" readonly="true" index="2" value="2" onitemclick="ListBox01_onitemclick"/>
+        <ListBox id="ListBox02" taborder="4" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" left="70" top="149" width="160" height="97" index="2" value="2"/>
+        <Static id="Static01" taborder="25" text="Spin" cssclass="Guide_title" left="17" top="287" width="273" height="16"/>
+        <Spin id="Spin00" taborder="7" value="100" left="70" top="349" width="160" height="21"/>
+        <Spin id="Spin02" taborder="9" value="100" left="410" top="349" width="160" height="21" readonly="true" cssclass="readonly"/>
+        <Static id="Static02" taborder="26" text="Normal" cssclass="pseudo" left="70" top="322" width="123" height="22"/>
+        <Static id="Static04" taborder="28" text="Readonly" cssclass="pseudo" left="410" top="322" width="123" height="22"/>
+        <Static id="Static06" taborder="29" cssclass="Guide_line" left="10" top="405" right="10" height="8"/>
+        <Static id="Static10" taborder="30" text="Calendar" cssclass="Guide_title" left="17" top="431" width="273" height="16"/>
+        <Static id="Static11" taborder="31" text="Normal" cssclass="pseudo" left="70" top="466" width="123" height="22"/>
+        <Static id="Static12" taborder="32" text="Disabled" cssclass="pseudo" left="218" top="466" width="123" height="22"/>
+        <Static id="Static13" taborder="33" text="Readonly" cssclass="pseudo" left="368" top="466" width="123" height="22"/>
+        <Calendar id="Calendar00" taborder="11" left="70" top="489" width="120" height="21" value="20150715" dateformat="yyyy-MM-dd"/>
+        <Calendar id="Calendar01" taborder="12" value="20150715" dateformat="yyyy-MM-dd" left="218" top="489" width="120" height="21" enable="false"/>
+        <Calendar id="Calendar02" taborder="13" value="20150715" dateformat="yyyy-MM-dd" left="368" top="489" width="120" height="21" readonly="true" cssclass="readonly"/>
+        <Calendar id="Calendar03" taborder="15" value="20150715" dateformat="yyyy-MM-dd" enable="false" left="218" top="534" width="120" height="21" type="spin"/>
+        <Calendar id="Calendar04" taborder="16" value="20150715" readonly="true" dateformat="yyyy-MM-dd" left="368" top="534" width="120" height="21" type="spin"/>
+        <Calendar id="Calendar05" taborder="14" value="20150715" dateformat="yyyy-MM-dd" left="70" top="534" width="120" height="21" type="spin"/>
+        <Calendar id="Calendar06" taborder="19" value="20150715" dateformat="yyyy-MM-dd" left="569" top="489" width="156" height="180" type="monthonly" style="usetrailingday:true;padding:0 0 0 0;"/>
+        <Static id="Static17" taborder="43" text="Monthonly" cssclass="pseudo" left="539" top="463" width="123" height="22"/>
+        <Static id="Static31" taborder="49" text="Class : readonly" cssclass="Guide_class" left="410" top="123" width="120" height="21"/>
+        <Static id="Static19" taborder="51" text="Class : readonly" cssclass="Guide_class" left="410" top="376" width="120" height="21"/>
+        <Static id="Static21" taborder="53" text="Class : readonly" cssclass="Guide_class" left="368" top="559" width="120" height="21"/>
+        <Static id="Static34" taborder="62" cssclass="Guide_Hsize" visible="false" left="82" top="512" width="100" height="3"/>
+        <Static id="Static40" taborder="68" cssclass="Guide_Hsize" visible="false" left="569" top="670" width="177" height="5"/>
+        <Static id="Static03" taborder="74" text="Disabled" cssclass="pseudo" left="240" top="322" width="123" height="22"/>
+        <Combo id="Combo01" taborder="75" innerdataset="@ds_cmb" codecolumn="lv" datacolumn="data" displayrowcount="5" enable="false" left="240" top="98" width="160" height="21" index="0" text="넥센타이어" value="0"/>
+        <Spin id="Spin01" taborder="76" value="100" enable="false" left="240" top="349" width="160" height="21"/>
+        <Static id="Static24" taborder="77" text="FIX h21" cssclass="Guide_color" visible="false" left="570" top="98" width="45" height="21"/>
+        <Static id="Static14" taborder="78" text="FIX h21" cssclass="Guide_color" visible="false" left="562" top="349" width="45" height="21"/>
+        <Static id="Static15" taborder="79" text="20" cssclass="Guide_color" visible="false" left="210" top="323" width="20" height="23"/>
+        <Static id="Static16" taborder="80" text="20" cssclass="Guide_color" visible="false" left="170" top="477" width="20" height="23"/>
+        <Static id="Static18" taborder="81" text="FIX h21" cssclass="Guide_color" visible="false" left="480" top="489" width="45" height="21"/>
+        <Static id="Static20" taborder="82" text="h21" cssclass="Guide_color" visible="false" left="720" top="489" width="25" height="21"/>
+        <Static id="Static22" taborder="83" text="h21" cssclass="Guide_color" visible="false" left="720" top="510" width="25" height="21"/>
+        <Static id="Static23" taborder="84" text="h180" cssclass="Guide_color" visible="false" left="545" top="489" width="35" height="180"/>
+        <Static id="Static25" taborder="85" text="w156" cssclass="Guide_color" visible="false" left="569" top="657" width="156" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cmb" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="lv" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="lv">0</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+          <Row>
+            <Col id="lv">1</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+          <Row>
+            <Col id="lv">2</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+          <Row>
+            <Col id="lv">3</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+          <Row>
+            <Col id="lv">4</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+          <Row>
+            <Col id="lv">5</Col>
+            <Col id="data">넥센타이어</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[]]></Script>
+  </Form>
+</FDL>

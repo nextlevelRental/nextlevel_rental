@@ -1,0 +1,1096 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSInboundAdviceRegister" classname="inboundAdviceRegister" left="0" top="0" width="1147" height="1040" titletext="인바운드상담등록" onload="RTCSInboundAdviceRegister_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="상담전화번호" cssclass="sta_WF_schTitle" left="8" top="10" width="100" height="21"/>
+              <Static id="Static01" taborder="4" text="고객명" cssclass="sta_WF_schTitle" left="265" top="10" width="100" height="21"/>
+              <Static id="Static24" taborder="5" cssclass="Guide_color" visible="false" left="231" top="0" width="30" height="44"/>
+              <Static id="Static03" taborder="6" cssclass="Guide_color" visible="false" left="624" top="0" width="30" height="44"/>
+              <Static id="Static22" taborder="7" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="12"/>
+              <Static id="Static02" taborder="8" cssclass="Guide_color" visible="false" left="0" top="30" right="0" height="12"/>
+              <Edit id="ed_custNm" taborder="2" left="369" top="10" width="118" height="21" onkeyup="div_search_ed_custNm_onkeyup" password="false"/>
+              <Edit id="ed_custNo" taborder="9" left="506" top="10" width="118" height="21" enable="false"/>
+              <Button id="btn_custNmSearch" taborder="3" cssclass="btn_WF_edtSch" left="485" top="9" width="21" height="21" onclick="div_search_btn_custNmSearch_onclick"/>
+              <Static id="Static04" taborder="11" text="일자" cssclass="sta_WF_schTitle" left="658" top="10" width="79" height="21"/>
+              <Calendar id="cal_startDay" taborder="12" dateformat="yyyy-MM-dd" left="726" top="10" width="100" height="21" value="20150901"/>
+              <Static id="Static07" taborder="13" text="~" left="829" top="10" width="9" height="21"/>
+              <Calendar id="cal_endDay" taborder="14" dateformat="yyyy-MM-dd" left="841" top="10" width="100" height="21"/>
+              <Edit id="ed_telNo" taborder="16" maxlength="15" left="111" top="10" width="121" height="21" onkeyup="div_search_ed_telNo_onkeyup"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_ordList" taborder="17" binddataset="ds_ordList" useinputpanel="false" cellsizingtype="col" left="0" top="86" height="200" width="1122" oncelldblclick="grid_ordList_oncelldblclick" oncellclick="grid_ordList_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="95"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="계약상태"/>
+                <Cell col="2" text="장착일자(예정)"/>
+                <Cell col="3" text="상품명"/>
+                <Cell col="4" text="타이어본수"/>
+                <Cell col="5" text="계약기간"/>
+                <Cell col="6" text="등록비"/>
+                <Cell col="7" text="월렌탈료"/>
+                <Cell col="8" text="차종"/>
+                <Cell col="9" text="차량번호"/>
+                <Cell col="10" text="휴대번호"/>
+                <Cell col="11" text="전화번호"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" text="bind:ordNo"/>
+                <Cell col="1" text="bind:statCdNm"/>
+                <Cell col="2" displaytype="date" text="bind:procDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="3" text="bind:matCd"/>
+                <Cell col="4" text="bind:cntNm"/>
+                <Cell col="5" text="bind:periodNm"/>
+                <Cell col="6" displaytype="number" style="align:right;" text="bind:regiNm" mask="###,###,##0"/>
+                <Cell col="7" displaytype="number" style="align:right;" text="bind:monAmt" mask="###,###,##0"/>
+                <Cell col="8" text="bind:modelNm"/>
+                <Cell col="9" text="bind:carNo"/>
+                <Cell col="10" displaytype="normal" edittype="none" text="bind:mobNo" mask="###-####-####"/>
+                <Cell col="11" displaytype="normal" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="15" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static03" taborder="16" text="계약 리스트" cssclass="sta_WF_subTitle" left="0" top="61" width="169" height="20"/>
+        <Static id="Static04" taborder="18" cssclass="Guide_color" visible="false" left="0" top="76" width="1147" height="10"/>
+        <Static id="Static01" taborder="25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="1040"/>
+        <Static id="Static02" taborder="26" text="아웃바운드 상담리스트" cssclass="sta_WF_subTitle" left="0" top="302" width="169" height="20"/>
+        <Static id="Static05" taborder="27" cssclass="Guide_color" visible="false" left="0" top="317" width="1147" height="10"/>
+        <Static id="Static06" taborder="28" cssclass="Guide_color" visible="false" left="0" top="286" width="1147" height="20"/>
+        <Grid id="grid_rtcs0102Out" taborder="19" binddataset="ds_rtcs0102Out" useinputpanel="false" cellsizingtype="col" onselectchanged="grid_carMasterSelect_onselectchanged" left="0" top="327" width="800" height="200">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화상태"/>
+                <Cell col="3" text="계약번호"/>
+                <Cell col="4" text="고객명"/>
+                <Cell col="5" text="처리일자"/>
+                <Cell col="6" text="상담번호"/>
+                <Cell col="7" text="상담사"/>
+                <Cell col="8" text="휴대번호"/>
+                <Cell col="9" text="전화번호"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:jobTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:callDay" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:callStatusNm"/>
+                <Cell col="3" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="4" text="bind:custNm"/>
+                <Cell col="5" displaytype="date" text="bind:jobDay" calendardisplaynulltype="none"/>
+                <Cell col="6" text="bind:callNo"/>
+                <Cell col="7" text="bind:userIdNm"/>
+                <Cell col="8" text="bind:mobNo" mask="###-####-####"/>
+                <Cell col="9" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static07" taborder="29" cssclass="Guide_color" visible="false" left="0" top="527" width="1147" height="20"/>
+        <Static id="Static08" taborder="30" text="인바운드 상담리스트" cssclass="sta_WF_subTitle" left="0" top="543" width="169" height="20"/>
+        <Static id="Static09" taborder="31" cssclass="Guide_color" visible="false" left="0" top="558" width="1147" height="10"/>
+        <Grid id="grid_rtcs0102In" taborder="21" binddataset="ds_rtcs0102In" useinputpanel="false" cellsizingtype="col" left="0" top="568" width="800" height="200" onselectchanged="grid_rtcs0102In_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화시간"/>
+                <Cell col="3" text="처리상태"/>
+                <Cell col="4" text="계약번호"/>
+                <Cell col="5" text="상담번호"/>
+                <Cell col="6" text="상담사"/>
+                <Cell col="7" text="상담전화번호"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:recvDay" calendardisplaynulltype="none"/>
+                <Cell col="2" text="expr:recvTm == &quot;&quot; ? &quot;&quot;:recvTm.substring(0,2)+&quot;:&quot;+recvTm.substring(2,4)+&quot;:&quot;+recvTm.substring(4)"/>
+                <Cell col="3" text="bind:resuStNm"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:ordNo"/>
+                <Cell col="5" text="bind:callNo"/>
+                <Cell col="6" text="bind:userIdNm"/>
+                <Cell col="7" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static10" taborder="32" cssclass="sta_WF_detailLabel2" left="0" top="812" height="31" width="1122"/>
+        <Static id="Static11" taborder="33" cssclass="sta_WF_detailLabel2" left="0" top="842" width="1122" height="31"/>
+        <Static id="Static12" taborder="34" cssclass="sta_WF_detailLabel2" left="0" top="920" width="1122" height="100"/>
+        <Static id="Static35" taborder="35" text="상담일자" cssclass="sta_WF_detailLabelP" left="0" top="812" width="80" height="31"/>
+        <Static id="Static13" taborder="36" text="상담시간" cssclass="sta_WF_detailLabelP" left="189" top="812" width="80" height="31"/>
+        <Static id="Static14" taborder="37" text="상담전화번호" cssclass="sta_WF_detailLabelP" left="491" top="812" width="100" height="31"/>
+        <Edit id="ed_carNo" taborder="6" left="825" top="817" width="112" height="21" onchanged="ed_carNo_onchanged" maxlength="10"/>
+        <Static id="Static15" taborder="38" text="차량번호" cssclass="sta_WF_detailLabelP" left="732" top="812" width="90" height="31"/>
+        <Static id="Static17" taborder="39" text="고객번호" cssclass="sta_WF_detailLabel" left="590" top="842" width="80" height="31"/>
+        <Edit id="ed_custNo" taborder="11" left="675" top="847" width="141" height="21" onchanged="ed_custNo_onchanged" enable="false"/>
+        <Static id="Static18" taborder="40" text="상담유형" cssclass="sta_WF_detailLabelP" left="0" top="842" width="80" height="31"/>
+        <Static id="Static20" taborder="41" text="지역" cssclass="sta_WF_detailLabelP" left="189" top="842" width="80" height="31"/>
+        <Combo id="cb_region" taborder="9" autoselect="true" index="-1" displayrowcount="5" left="276" top="847" width="120" height="21" innerdataset="@ds_region" codecolumn="cd" datacolumn="cdNm" onitemchanged="cb_city_onitemchanged"/>
+        <Combo id="cb_city" taborder="10" autoselect="true" index="-1" displayrowcount="5" left="402" top="847" width="120" height="21" innerdataset="@ds_city" codecolumn="cd" datacolumn="cdNm"/>
+        <Combo id="cb_recvTp" taborder="8" autoselect="true" index="0" displayrowcount="5" onitemchanged="div_search_cb_makerSearch_onitemchanged" left="84" top="847" width="100" height="21" innerdataset="@ds_recvTp" codecolumn="cd" datacolumn="cdNm"/>
+        <TextArea id="TextArea00" taborder="20" readonly="true" linespace="3" visible="true" left="825" top="327" height="200" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" width="297"/>
+        <TextArea id="TextArea01" taborder="22" readonly="true" linespace="3" visible="true" left="825" top="568" height="200" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" width="297"/>
+        <TextArea id="ed_callDtl" taborder="14" readonly="false" linespace="3" visible="true" left="84" top="926" height="89" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" width="1033" maxlength="4000"/>
+        <Static id="Static21" taborder="42" text="상담내용" cssclass="sta_WF_detailLabelP" left="0" top="920" width="80" height="100"/>
+        <Static id="Static22" taborder="43" cssclass="Guide_color" visible="false" left="0" top="768" width="1147" height="20"/>
+        <Static id="Static23" taborder="44" cssclass="Guide_color" visible="false" left="800" top="286" width="25" height="502"/>
+        <Static id="Static24" taborder="45" cssclass="Guide_color" visible="false" left="0" top="1020" width="1147" height="20"/>
+        <Calendar id="cal_recvDay" taborder="1" dateformat="yyyy-MM-dd" enable="false" left="85" top="818" width="100" height="20"/>
+        <Static id="Static25" taborder="46" text="시" left="326" top="817" width="15" height="21"/>
+        <Static id="Static26" taborder="47" text="분" left="404" top="817" width="15" height="21"/>
+        <Static id="Static27" taborder="48" text="초" left="474" top="817" width="15" height="21"/>
+        <Static id="Static29" taborder="49" cssclass="sta_WF_detailLabel2" left="0" top="872" width="1122" height="50"/>
+        <Static id="Static28" taborder="50" text="SMS내용" cssclass="sta_WF_detailLabel" left="0" top="872" width="80" height="50"/>
+        <TextArea id="ed_smsTx" taborder="13" linespace="3" left="84" top="877" width="1033" height="40" style="compositecolor:#444444ff;linespace:3;background:#ffffffff;color:#9a080aff;shadow:outer 0,0 0 gray;" maxlength="300"/>
+        <Button id="btn_new" taborder="23" text="신규" left="957" top="788" width="80" height="21" domainId="nexa.save" onclick="btn_new_onclick"/>
+        <Button id="btn_save" taborder="24" text="저장" left="1042" top="788" width="80" height="21" domainId="nexa.save" onclick="btn_save_onclick"/>
+        <Edit id="ed_hh" taborder="2" left="275" top="818" width="45" height="21" inputtype="number" maxlength="2" onchanged="ed_hh_onchanged" enable="false"/>
+        <Edit id="ed_mi" taborder="3" left="351" top="818" width="45" height="21" inputtype="number" maxlength="2" onchanged="ed_mi_onchanged" enable="false"/>
+        <Edit id="ed_ss" taborder="4" left="425" top="818" width="45" height="21" inputtype="number" maxlength="2" onchanged="ed_ss_onchanged" enable="false"/>
+        <Static id="Static19" taborder="51" text="고객명" cssclass="sta_WF_detailLabelP" left="941" top="812" width="70" height="31"/>
+        <Edit id="ed_custNm" taborder="7" left="1015" top="817" width="100" height="21" maxlength="50" lengthunit="ascii"/>
+        <Static id="Static16" taborder="52" text="계약번호" cssclass="sta_WF_detailLabel" left="821" top="842" width="90" height="31"/>
+        <Edit id="ed_ordNo" taborder="12" left="915" top="847" width="201" height="21" onchanged="ed_ordNo_onchanged" enable="true" readonly="true"/>
+        <Edit id="ed_telNo" taborder="5" maxlength="15" left="595" top="817" width="133" height="21" onkeyup="ed_telNo_onkeyup"/>
+        <Button id="Button00" taborder="53" text="엑셀" cssclass="btn_WF_CRUD" left="1077" top="59" width="45" height="22" onclick="Button00_onclick"/>
+        <Button id="Button01" taborder="54" text="엑셀" cssclass="btn_WF_CRUD" left="1077" top="300" width="45" height="22" onclick="Button01_onclick"/>
+        <Button id="Button02" taborder="55" text="엑셀" cssclass="btn_WF_CRUD" left="1077" top="541" width="45" height="22" onclick="Button02_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_recvTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_region" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_city" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ordList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statCdNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="regiNm" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtcs0102Out" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="jobTp" type="STRING" size="256"/>
+          <Column id="jobTpNm" type="STRING" size="256"/>
+          <Column id="callDay" type="STRING" size="256"/>
+          <Column id="callStatusNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="jobDay" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtcs0102In" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvTp" type="STRING" size="256"/>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="resuSt" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="smsTx" type="STRING" size="256"/>
+          <Column id="regionNo" type="STRING" size="256"/>
+          <Column id="cityNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtcs0102" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="recvTp" type="STRING" size="256"/>
+          <Column id="resuSt" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="claimNo" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="endTm" type="STRING" size="256"/>
+          <Column id="smsTx" type="STRING" size="256"/>
+          <Column id="regionNo" type="STRING" size="256"/>
+          <Column id="cityNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="cal_recvDay" propid="value" datasetid="ds_rtcs0102" columnid="recvDay"/>
+      <BindItem id="item1" compid="ed_telNo" propid="value" datasetid="ds_rtcs0102" columnid="telNo"/>
+      <BindItem id="item3" compid="cb_recvTp" propid="value" datasetid="ds_rtcs0102" columnid="recvTp"/>
+      <BindItem id="item4" compid="ed_custNo" propid="value" datasetid="ds_rtcs0102" columnid="custNo"/>
+      <BindItem id="item6" compid="ed_carNo" propid="value" datasetid="ds_rtcs0102" columnid="carNo"/>
+      <BindItem id="item7" compid="ed_smsTx" propid="value" datasetid="ds_rtcs0102" columnid="smsTx"/>
+      <BindItem id="item8" compid="ed_callDtl" propid="value" datasetid="ds_rtcs0102" columnid="callDtl"/>
+      <BindItem id="item9" compid="cb_region" propid="value" datasetid="ds_rtcs0102" columnid="regionNo"/>
+      <BindItem id="item10" compid="cb_city" propid="value" datasetid="ds_rtcs0102" columnid="cityNo"/>
+      <BindItem id="item5" compid="ed_custNm" propid="value" datasetid="ds_rtcs0102" columnid="custNm"/>
+      <BindItem id="item2" compid="ed_ordNo" propid="value" datasetid="ds_rtcs0102" columnid="ordNo"/>
+      <BindItem id="item11" compid="TextArea00" propid="value" datasetid="ds_rtcs0102Out" columnid="callDtl"/>
+      <BindItem id="item12" compid="TextArea01" propid="value" datasetid="ds_rtcs0102In" columnid="callDtl"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSInboundAdviceRegister.xfdl
+ * 설    명 : 인바운드 상담등록
+ * 작 성 자 : 
+ * 변경이력 
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * ---------------------------------
+ * 2018-02-06	wjim		[20180206_01] EAI를 통한 QMS 연동을 고려하여 인바운드 상담등록 저장 트랜젝션 시간 연장
+ * 2018-08-08	wjim		[20180808_01] AS접수 시 QMS 연동을 고려하여 고객명 최대 입력 크기 제한 (20byte)
+ ***************************************************************************************************/
+ 
+include "lib::comLib.xjs"; 
+this.p_arg = "RTCSInboundAdviceRegister";
+this.selectSysdate = "0";
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	
+	if( strSvcId == "initRTCSInboundAdviceRegister" ){
+		var recvTpCnt = this.ds_recvTp.getRowCount();
+		if( recvTpCnt == 0 ){
+			alert("상담유형 값이 없으므로 신규 저장 하실 수 없습니다.");
+			this.btn_new.set_enable(false);
+			this.btn_save.set_enable(false);
+		}else{
+			this.btn_new.set_enable(true);
+			this.btn_save.set_enable(true);
+		}
+	}
+	
+	if( strSvcId == "selectRTCSInboundAdviceRegister" ){
+	
+		var ordListCt = this.ds_ordList.getRowCount();
+		if( ordListCt == 0 ){
+			this.grid_ordList.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+
+		var rtcs0102OutListCt = this.ds_rtcs0102Out.getRowCount();
+		if( rtcs0102OutListCt == 0 ){
+			this.grid_rtcs0102Out.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+		
+		var rtcs0102InListCt = this.ds_rtcs0102In.getRowCount();
+		if( rtcs0102InListCt == 0 ){
+			this.grid_rtcs0102In.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+		
+ 		if( ordListCt == 0 ){
+ 			alert("조회된 데이터가 없습니다.");
+ 		}
+	}
+	
+	if( strSvcId == "selectRTCSInboundAdviceDetail" ){
+
+
+ 		var rtcs0102OutListCt = this.ds_rtcs0102Out.getRowCount();
+ 		if( rtcs0102OutListCt == 0 ){
+ 			this.grid_rtcs0102Out.set_nodatatext("조회된 데이터가 없습니다.");
+ 		}
+ 		
+ 		var rtcs0102InListCt = this.ds_rtcs0102In.getRowCount();
+ 		if( rtcs0102InListCt == 0 ){
+ 			this.grid_rtcs0102In.set_nodatatext("조회된 데이터가 없습니다.");
+ 		}
+ 		
+ 		if( rtcs0102OutListCt == 0 && rtcs0102InListCt == 0){
+ 			alert("조회된 데이터가 없습니다.");
+ 		}
+	}
+	
+	if( strSvcId == "saveRTCSInboundAdviceRegister" ){
+		if( nErrorCode == "0" ){
+			alert(strErrorMsg);
+			this.reload();
+		}else{
+			alert(strErrorMsg);
+		}
+	}
+	
+	if( strSvcId == "selectSysdate" ){
+		if( this.selectSysdate != "0" ){
+			this.cal_recvDay.set_value( this.selectSysdate.substring(0,9) );
+			this.ed_hh.set_value( this.selectSysdate.substring(8,10) );
+			this.ed_mi.set_value( this.selectSysdate.substring(10,12) );
+		}
+	}
+}
+
+
+
+this.RTCSInboundAdviceRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("S", this);
+	
+	var auth = Ex.core.o_auth;
+	if( auth.exptAuthYn == "N" ){
+		this.Button00.set_enable(false);
+		this.Button01.set_enable(false);
+		this.Button02.set_enable(false);
+	}
+}
+
+
+
+this.fn_init = function(){
+	//this.div_search.cal_startDay.set_value(FN_firstDay());
+	this.div_search.cal_endDay.set_value(FN_today());
+	
+	var sSvcID      	= "initRTCSInboundAdviceRegister";  
+	var sController   	= "rtms/cs/initRTCSInboundAdviceRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		 
+	sOutDatasets += " ds_recvTp=mapDsRecvTp ";
+	sOutDatasets += " ds_region=sRtcs0103RegionMap ";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+
+this.div_search_ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	FN_numberHyphenIn(obj, e);
+}
+
+
+
+this.fn_search = function(){
+	
+	var telNo  = FN_numberHyphenOut(nvl(this.div_search.ed_telNo.value));
+	var custNm = nvl(this.div_search.ed_custNm.value);
+	var custNo = nvl(this.div_search.ed_custNo.value);
+	
+	var startDay	= nvl(this.div_search.cal_startDay.text);
+	var endDay  	= nvl(this.div_search.cal_endDay.text);
+	
+	var newDate_start = new Date(startDay);
+	var yy_start = newDate_start.getYear();
+	var newDate_end = new Date(endDay);
+	var yy_end = newDate_end.getYear();
+	
+	var today = new Date();
+    var diff_date = (new Date(endDay) - new Date(startDay)) / 1000 / 60 / 60 / 24;
+    
+	if(nvl(yy_start).length < 4 || nvl(yy_end).length < 4){
+		this.alert("조회일자를 잘못입력하셨습니다.");
+		return;
+	}	
+	
+	if(new Date(startDay) < new Date("2015-09-01")){
+		this.alert("조회일자를 잘못입력하셨습니다.");
+		return;
+	}
+	
+// 	if(diff_date > 180){
+// 		this.alert("조회기간은 180일 이내로 제한됩니다.");
+// 		return;
+// 	}
+	
+	if( nvl(telNo) == "" && nvl(custNm) == "" && nvl(custNo) == "" && nvl(startDay) == "" && nvl(endDay) == ""){
+		alert("조회조건 값이 없습니다.");
+		return;
+	}
+	
+	if((nvl(startDay) == "" && nvl(endDay) != "") || (nvl(startDay) != "" && nvl(endDay) == "")){
+		alert("조회일자는 from-to를 모두 입력해주십시오.");
+		return;
+	}
+
+	if( nvl(telNo) == "" && nvl(custNm) == "" && nvl(custNo) == ""){
+		alert("조회일자와 조회조건 값 1개는 필수입니다.");
+		return;
+	}
+	
+	if( nvl(startDay) == "" && nvl(endDay) == ""){
+		alert("조회일자와 조회조건 값 1개는 필수입니다.");
+		return;
+	}
+	
+	
+//	if( telNo != "" || custNm != "" || custNo != ""){
+
+		var sSvcID        	= "selectRTCSInboundAdviceRegister";                    
+		var sController   	= "rtms/cs/selectRTCSInboundAdviceRegister.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sOutDatasets += " ds_ordList=sRtcs0102CtfMap ";
+ 		sOutDatasets += " ds_rtcs0102Out=sRtcs0102ObfMap ";
+ 		sOutDatasets += " ds_rtcs0102In=sRtcs0102IbfMap ";
+		
+		sArgs += Ex.util.setParam("telNo",  	telNo);
+		sArgs += Ex.util.setParam("custNm",  	custNm);
+		sArgs += Ex.util.setParam("custNo",  	custNo);
+		sArgs += Ex.util.setParam("startDay",	startDay.replace(/-/g, ""));
+		sArgs += Ex.util.setParam("endDay",  	endDay.replace(/-/g, ""));
+		
+		this.ds_ordList.clearData();
+		this.ds_rtcs0102Out.clearData();
+		this.ds_rtcs0102In.clearData();
+		this.ds_rtcs0102.clearData();
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+//  	}else{
+//  		alert("조회조건 값이 없습니다.");
+//  	}
+}
+
+
+
+this.div_search_btn_custNmSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}
+this.FN_custNo = function(res){
+	this.div_search.ed_telNo.set_value(FN_numberHyphenInReturn(res[0]));
+	this.div_search.ed_custNm.set_value(res[1]);
+	this.div_search.ed_custNo.set_value(res[2]);
+	
+	this.ds_ordList.clearData();
+	this.ds_rtcs0102Out.clearData();
+	this.ds_rtcs0102In.clearData();
+	this.ds_rtcs0102.clearData();
+}
+
+this.FN_register = function(){
+
+	if( confirm( "인바운드 상담 등록하시겠습니까?")){
+		this.FN_new();
+		var rowPo1 = this.ds_ordList.rowposition;
+		var rowPo2 = this.ds_rtcs0102.rowposition;
+		
+		this.ds_rtcs0102.setColumn(rowPo2, "telNo", 	FN_numberHyphenInReturn(nvl(this.ds_ordList.getColumn(rowPo1, "mobNo"))) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "carNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "carNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "custNm", 	nvl(this.ds_ordList.getColumn(rowPo1, "custNm")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "custNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "custNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "ordNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "ordNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "chanCd", 	nvl(this.ds_ordList.getColumn(rowPo1, "chanCd")) 	);
+		
+		this.ed_custNo.set_enable(false);
+		this.ed_ordNo.set_enable(false);
+	}
+}
+
+this.grid_ordList_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if( confirm( "인바운드 상담 등록하시겠습니까?")){
+		this.FN_new();
+		var rowPo1 = this.ds_ordList.rowposition;
+		var rowPo2 = this.ds_rtcs0102.rowposition;
+		
+		this.ds_rtcs0102.setColumn(rowPo2, "telNo", 	FN_numberHyphenInReturn(nvl(this.ds_ordList.getColumn(rowPo1, "mobNo"))) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "carNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "carNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "custNm", 	nvl(this.ds_ordList.getColumn(rowPo1, "custNm")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "custNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "custNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "ordNo", 	nvl(this.ds_ordList.getColumn(rowPo1, "ordNo")) 	);
+		this.ds_rtcs0102.setColumn(rowPo2, "chanCd", 	nvl(this.ds_ordList.getColumn(rowPo1, "chanCd")) 	);
+		
+		this.ed_custNo.set_enable(false);
+		this.ed_ordNo.set_enable(false);
+	}
+}
+
+
+
+this.div_search_ed_custNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	this.div_search.ed_custNo.set_value("");
+}
+ 
+
+
+this.ed_custNo_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	if( obj.value.length != 10 ){
+		alert("고객번호를 다시 확인하세요.");
+		//obj.set_value("");
+		var rowPo 	= this.ds_rtcs0102.rowposition;
+		this.ds_rtcs0102.setColumn(rowPo, "custNo", "");
+		obj.setFocus();
+	}
+}
+
+
+
+this.ed_ordNo_onchanged = function(obj:Edit,  e:nexacro.ChangeEventInfo)
+{
+	if( obj.value.length != 12 ){
+		alert("주문번호를 다시 확인하세요.");
+		//obj.set_value("");
+		var rowPo 	= this.ds_rtcs0102.rowposition;
+		this.ds_rtcs0102.setColumn(rowPo, "ordNo", "");
+		obj.setFocus();
+	}
+}
+
+
+
+this.ed_carNo_onchanged = function(obj:Edit,  e:nexacro.ChangeEventInfo)
+{
+	//var pattern1      = /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 					 			// 12저3456
+	//var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{1}|d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 	// 서울12치1234
+	var pattern1       	= /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 				 				// 12저3456
+	var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울12치1234
+	var carNoVal 		= nvl(this.ed_carNo.value);
+	var carNoValLen 	= carNoVal.length;
+	
+	if( carNoValLen == 7 ){
+		if( !pattern1.test(carNoVal) ){
+			alert( "차량번호를 확인하세요." );
+			this.ed_carNo.setFocus(true);
+			this.ed_carNo.set_value("");
+			return false;
+		}
+	}else if( carNoValLen == 8 || carNoValLen == 9){
+		if( !pattern2.test(carNoVal) ){
+			alert( "차량번호를 확인하세요." );
+			this.ed_carNo.setFocus(true);
+			this.ed_carNo.setSelect();
+			return false;
+		}
+	}else{
+		alert( "차량번호를 확인하세요." );
+		this.ed_carNo.setFocus(true);
+		this.ed_carNo.set_value("");
+		return false;
+	}
+}
+
+
+
+this.ed_hh_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	if( obj.value != "" ){
+		var hh = nvl(parseInt(obj.value));
+		if( 0 > hh || hh > 25 ){
+			alert("상담시간 시는 0 ~ 24 시까지 입력하셔야 합니다.");
+			this.ed_hh.set_value(0);
+			this.ed_hh.setFocus();
+		}
+	}
+}
+
+
+
+this.ed_mi_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	if( obj.value != "" ){
+		var mi = nvl(parseInt(obj.value));
+		if( 0 > mi || mi > 59 ){
+			alert("상담시간 분은 0 ~ 59 분까지 입력하셔야 합니다.");
+			this.ed_mi.set_value(0);
+			this.ed_mi.setFocus();
+		}
+	}
+}
+
+
+
+this.ed_ss_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	if( obj.value != "" ){
+		var ss = nvl(parseInt(obj.value));
+		if( 0 > ss || ss > 59 ){
+			alert("상담시간 분은 0 ~ 59 분까지 입력하셔야 합니다.");
+			this.ed_ss.set_value(0);
+			this.ed_ss.setFocus();
+		}
+	}
+}
+
+
+
+this.cb_city_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var regionNo = nvl(this.cb_region.value);
+	
+	if( regionNo != ""){
+		var sSvcID        	= "sRtcs0103City";                    
+		var sController   	= "rtms/cs/sRtcs0103City.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sOutDatasets += " ds_city=sRtcs0103CityMap ";
+		
+		sArgs += Ex.util.setParam("regionNo",  regionNo);
+		
+		this.ds_city.clearData();
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+
+
+this.btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.FN_new();
+	this.ed_custNo.set_enable(false);
+	this.ed_ordNo.set_enable(false);
+}
+
+
+
+this.FN_new = function(){
+	this.ds_rtcs0102.clearData();
+	this.ds_rtcs0102.addRow();
+	//this.ed_hh.set_value("");
+	//this.ed_mi.set_value("");
+	this.ed_ss.set_value("00");
+	//this.ed_hh.set_enable(true);
+	//this.ed_mi.set_enable(true);
+	//this.ed_ss.set_enable(true);
+	this.FN_setEnableTrue();
+	this.FN_selectSysdate();
+	this.ed_telNo.setFocus(true);
+}
+
+
+
+this.FN_stringByteLength = function(p_val){
+	var objString = new String(p_val);
+	var stringByteLength = 0;
+	for(var i=0; i<objString.length; i++)
+	{
+		if( escape(objString.charAt(i)).length >= 4)  stringByteLength += 3;
+		else if(escape(objString.charAt(i)) == "%A7") stringByteLength += 3;
+		else if(escape(objString.charAt(i)) != "%0D") stringByteLength++;
+	}
+	return stringByteLength;
+}
+
+
+this.ed_telNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	FN_numberHyphenIn(obj, e);
+}
+
+this.FN_selectSysdate = function(){
+	var sSvcID      	= "selectSysdate";  
+	var sController   	= "rtms/cs/selectSysdate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/**
+ * 저장 버튼 클릭 이벤트 처리
+ * - 인바운드 상담내역 저장
+ */ 
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var rowCt 	= this.ds_rtcs0102.getRowCount();
+	var rowPo 	= this.ds_rtcs0102.rowposition;
+	var msg 	= " 값이 없습니다.";
+
+	if( rowCt == 1 ){
+		var hh = nvl(this.ed_hh.value);
+		var mi = nvl(this.ed_mi.value);
+		var ss = nvl(this.ed_ss.value);
+		var recvTmCreate = "";
+		
+		if( hh == "" ){
+			alert("상담시간 값이 없습니다.");
+			this.ed_hh.setFocus(true);
+			return false;
+		}
+		if( mi == "" ){
+			alert("상담시간 값이 없습니다.");
+			this.ed_mi.setFocus(true);
+			return false;
+		}
+		if( ss == "" ){
+			alert("상담시간 값이 없습니다.");
+			this.ed_ss.setFocus(true);
+			return false;
+		}
+		
+		if( hh.length == 1){
+			recvTmCreate += 0+hh;
+		}else{
+			recvTmCreate += hh;
+		}
+		
+		if( mi.length == 1){
+			recvTmCreate += 0+mi;
+		}else{
+			recvTmCreate += mi;
+		}
+		
+		if( ss.length == 1){
+			recvTmCreate += 0+ss;
+		}else{
+			recvTmCreate += ss;
+		}
+		
+		if( recvTmCreate.length != 6){
+			alert("상담시간을 다시 확인해주세요.");
+		}else{
+			this.ds_rtcs0102.setColumn(rowPo, "recvTm", recvTmCreate);
+		}
+		
+		this.ds_rtcs0102.setColumn(rowPo, "resuSt", "E");
+		
+		var recvDay 	= nvl(this.ds_rtcs0102.getColumn(rowPo, "recvDay"));
+		var recvTm 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "recvTm"));
+		var recvTp 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "recvTp"));
+		var ordNo 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "ordNo"));
+		var custNo 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "custNo"));
+		var custNm 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "custNm"));
+		var telNo 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "telNo"));
+		var callDtl 	= nvl(this.ds_rtcs0102.getColumn(rowPo, "callDtl"));
+		var smsTx 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "smsTx"));
+		var regionNo 	= nvl(this.ds_rtcs0102.getColumn(rowPo, "regionNo"));
+		var cityNo 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "cityNo"));
+		var carNo 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "carNo"));
+		var chanCd 		= nvl(this.ds_rtcs0102.getColumn(rowPo, "chanCd"));
+		
+		if( this.FN_stringByteLength(smsTx) > 100 ){
+			alert("SMS내용 크기가 100byte를 초과했습니다.\n한글일경우 33자, 영문일경우 100자\n입니다. ");
+			return false;
+		}
+		
+		if( this.FN_stringByteLength(callDtl) > 4000 ){
+			alert("SMS내용 크기가 4000byte를 초과했습니다.\n한글일경우 1333자, 영문일경우 4000자\n입니다. ");
+			return false;
+		}
+		
+		if( recvTp == "" ){
+			alert("상담유형" + msg);
+			this.cb_recvTp.setFocus(true);
+			return false;
+		}else if( recvDay == "" ){
+			alert("상담일자" + msg);
+			return false;
+		}else if( recvTm == "" ){
+			alert("상담시간" + msg);
+			this.ed_hh.setFocus(true);
+			return false;
+		}else if( telNo == "" ){
+			alert("상담전화번호" + msg);
+			this.ed_telNo.setFocus(true);
+			return false;
+		}else if( custNm == "" ){
+			alert("고객명" + msg);
+			this.ed_custNm.setFocus(true);
+			return false;
+		}else if( callDtl == "" ){
+			alert("상담내용" + msg);
+			this.ed_callDtl.setFocus(true);
+			return false;
+		}else{
+			if( recvTp == "I1" ){//AS접수일 경우 체크
+			
+				if( custNo == "" ){
+					alert("고객번호" + msg);
+					return false;
+				}else if( ordNo == "" ){
+					alert("계약번호" + msg);
+					return false;
+				}else if( regionNo == "" ){
+					alert("지역" + msg);
+					this.cb_region.setFocus(true);
+					return false;
+				}else if( cityNo == "" ){
+					alert("지역" + msg);
+					this.cb_city.setFocus(true);
+					return false;
+				}else if( smsTx == "" ){
+					alert("SMS내용" + msg);
+					this.ed_smsTx.setFocus(true);
+					return false;
+				}else if( !FN_mobNoCheck(telNo) ){
+					alert("상담유형이 AS접수일 경우 휴대폰번호만 등록가능합니다.");
+					this.ed_telNo.setFocus(true);
+					return false;
+				}else if ( chanCd ==""){
+					alert("채널구분" + msg);
+					return false;
+				// [20180808_01] 고객명 입력 크기 제한
+				// - QMS 해당 컬럼 사이즈가 20byte 임
+				// - QMS 연동 시 UTF-8 로 인코딩 됨 (한글:3byte)
+				}else if ( Eco.string.getLength(custNm, "utf8") > 20 ){
+					var msg2 = "고객명 크기가 20 byte를 초과(" + Eco.string.getLength(custNm, "utf8") + ")했습니다.";
+					msg2 += "\n한글일 경우 6자, 영문일 경우 20자 입니다.";
+					
+					alert(msg2);
+					this.ed_custNm.setFocus(true);
+					return false;
+				}else{
+					this.FN_goSave();
+				}
+			}else{
+				this.FN_goSave();
+			}				
+		}
+	}
+}
+
+this.FN_goSave = function(){
+	
+	if( confirm( "저장하시겠습니까?")){
+	
+		this.ds_rtcs0102.setColumn(0, "telNo", FN_numberHyphenOut(nvl(this.ds_rtcs0102.getColumn(0, "telNo"))));
+	
+		var sSvcID        	= "saveRTCSInboundAdviceRegister";                    
+		var sController   	= "rtms/cs/saveRTCSInboundAdviceRegister.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets			+= " input=ds_rtcs0102:U ";
+		var fn_callBack		= "fn_callBack";
+		
+		// [20180206_01] EAI I/F 시 time-out 시간을 고려하여 transaction 시간 연장
+		// - 이 부분이 없으면 time-out 에러메시지가 출력이 안됨
+		application.set_httptimeout(300);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+this.grid_rtcs0102In_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+{
+	this.ds_rtcs0102.deleteAll();
+	var nRow = this.ds_rtcs0102In.rowposition;
+	var addRow = this.ds_rtcs0102.addRow();
+	
+	this.ds_rtcs0102.setColumn(addRow, "callNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "callNo")) );
+	this.ds_rtcs0102.setColumn(addRow, "recvDay", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "recvDay")) );	
+	this.ds_rtcs0102.setColumn(addRow, "recvTm", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "recvTm")) );
+	this.ds_rtcs0102.setColumn(addRow, "userId", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "userId")) );
+	this.ds_rtcs0102.setColumn(addRow, "recvTp", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "recvTp")) );
+	this.ds_rtcs0102.setColumn(addRow, "resuSt", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "resuSt")) );
+	this.ds_rtcs0102.setColumn(addRow, "ordNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "ordNo")) );
+	this.ds_rtcs0102.setColumn(addRow, "custNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "custNo")) );
+	this.ds_rtcs0102.setColumn(addRow, "custNm", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "custNm")) );
+	this.ds_rtcs0102.setColumn(addRow, "telNo", 	FN_numberHyphenInReturn(nvl(this.ds_rtcs0102In.getColumn(nRow, "telNo"))) );
+	this.ds_rtcs0102.setColumn(addRow, "callDtl", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "callDtl")) );
+	this.ds_rtcs0102.setColumn(addRow, "claimNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "claimNo")) );
+	this.ds_rtcs0102.setColumn(addRow, "endDay", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "endDay")) );
+	this.ds_rtcs0102.setColumn(addRow, "endTm", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "endTm")) );
+	this.ds_rtcs0102.setColumn(addRow, "smsTx", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "smsTx")) );
+	this.ds_rtcs0102.setColumn(addRow, "regionNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "regionNo")) );
+	this.cb_city_onitemchanged();
+	this.ds_rtcs0102.setColumn(addRow, "cityNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "cityNo")) );
+	this.ds_rtcs0102.setColumn(addRow, "carNo", 	nvl(this.ds_rtcs0102In.getColumn(nRow, "carNo")) );
+	
+	var recvTm = nvl(this.ds_rtcs0102In.getColumn(nRow, "recvTm"));
+	if( recvTm.length == 6 ){
+		this.ed_hh.set_value( recvTm.substring(0,2) );
+		this.ed_mi.set_value( recvTm.substring(2,4) );
+		this.ed_ss.set_value( recvTm.substring(4) 	);
+	}
+	this.ds_rtcs0102.set_updatecontrol(false);
+	this.ds_rtcs0102.setRowType(addRow, 4);
+	this.ds_rtcs0102.set_updatecontrol(true);
+	
+	this.FN_setEnableFalse();		
+}
+
+this.FN_setEnableFalse = function(){
+	var recvTp = nvl(this.ds_rtcs0102.getColumn(this.ds_rtcs0102.rowposition, "recvTp"));
+	this.cal_recvDay.set_enable(false);
+	this.ed_hh.set_enable(false);
+	this.ed_mi.set_enable(false);
+	this.ed_ss.set_enable(false);
+	this.ed_telNo.set_enable(false);
+	this.ed_carNo.set_enable(false);
+	this.ed_custNm.set_enable(false);
+	this.cb_recvTp.set_enable(false);
+	this.cb_region.set_enable(false);
+	this.cb_city.set_enable(false);
+	this.ed_custNo.set_enable(false);
+	if( recvTp == "I1" ){//AS접수일 경우 체크
+		this.btn_save.set_enable(false);
+	}else{
+		this.btn_save.set_enable(true);
+	}
+}
+
+this.FN_setEnableTrue = function(){
+	this.cal_recvDay.set_enable(false);
+	this.ed_hh.set_enable(true);
+	this.ed_mi.set_enable(true);
+	this.ed_ss.set_enable(true);
+	this.ed_telNo.set_enable(true);
+	this.ed_carNo.set_enable(true);
+	this.ed_custNm.set_enable(true);
+	this.cb_recvTp.set_enable(true);
+	this.cb_region.set_enable(true);
+	this.cb_city.set_enable(true);
+	this.ed_custNo.set_enable(true);
+	this.btn_save.set_enable(true);
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grid_ordList);
+}
+
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grid_rtcs0102Out);
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grid_rtcs0102In);
+}
+
+this.grid_ordList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+// 	if(e.cell == 0){
+// 		this.FN_register();
+// 	}else{
+// 	
+// 		var custNo = nvl(this.ds_ordList.getColumn(this.ds_ordList.rowposition, "custNo"));
+// 		
+// 		var sSvcID        	= "selectRTCSInboundAdviceDetail";                    
+// 		var sController   	= "rtms/cs/selectRTCSInboundAdviceDetail.do";
+// 		var sInDatasets   	= "";
+// 		var sOutDatasets  	= "";
+// 		var sArgs 			= "";	
+// 		var fn_callBack		= "fn_callBack";
+// 		
+// 		sOutDatasets  = " ds_rtcs0102Out=sRtcs0102ObfMap ";
+// 		sOutDatasets += " ds_rtcs0102In=sRtcs0102IbfMap ";
+// 		
+// 		
+// 		sArgs += Ex.util.setParam("custNo",  	custNo);
+// 		
+// 		this.ds_rtcs0102Out.clearData();
+// 		this.ds_rtcs0102In.clearData();
+// 		
+// 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+// 	}
+}
+]]></Script>
+  </Form>
+</FDL>

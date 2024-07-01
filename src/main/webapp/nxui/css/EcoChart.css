@@ -1,0 +1,4464 @@
+﻿/*******************************************************/
+/***** 프로젝트명 : ecoChrt		********/
+/***** 작성일 : 2014.05.15			********/
+/***** 작성자 : TOBESOFT ecoChart tobecho	********/
+/***** 배포일 : 2015.0#.##			********/
+/***** 수정자 : 				********/
+/***** 수정일 : 				********/
+/*******************************************************/
+
+/***** FrameObject Group Start *****/
+
+MainFrame, MainFrame:deactivate
+{
+	background		: transparent ;
+	border			: 1 solid #2a2b31;
+	bordertype		: round 5 5;
+	menubarheight		: 28;
+	statusbarheight		: 26;
+	titlebarheight		: 38;
+	color			: #ffffff;
+}
+
+TitleBarControl
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #686a6f 0,100 #464850;
+	border			: 0 none #808080;
+	bordertype		: round 5 5 lefttop righttop;
+	align			: left middle;
+	font			: antialias bold 12 Meiryo UI, malgun gothic;
+	color			: #ffffff;
+	icon			: ;
+}
+TitleBarControl:deactivate, TitleBarControl:disabled
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #686a6f 0,100 #464850;
+	border			: 0 none #808080;
+	bordertype 		: round 5 5 lefttop righttop;
+	align			: left middle;
+	font			: ;
+	color			: #a9aeb6;
+	icon			: ;
+	padding			: 2 0 0 0;
+	margin			: 0 0 0 0;
+}
+TitleBarControl>#minbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/Titlebar_btn_min.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+TitleBarControl>#minbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+TitleBarControl>#minbutton:pushed
+{
+	background		: #3c3c44;
+}
+
+TitleBarControl>#minbutton:deactivate, TitleBarControl>#minbutton:nested
+{
+	image			: url('Images::frame/Titlebar_btn_min.png');
+}
+TitleBarControl>#maxbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/Titlebar_btn_max.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+TitleBarControl>#maxbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+TitleBarControl>#maxbutton:pushed
+{
+	background		: #3c3c44;
+}
+TitleBarControl>#maxbutton:deactivate,ChildFrame>#TitleBarControl>#maxbutton:nested
+{
+	image			: url('Images::frame/Titlebar_btn_max.png');
+}
+TitleBarControl>#normalbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/Titlebar_btn_normal.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+TitleBarControl>#normalbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+TitleBarControl>#normalbutton:pushed
+{
+	background		: #3c3c44;
+}
+TitleBarControl>#normalbutton:deactivate,
+TitleBarControl>#normalbutton:nested
+{
+	image			:url('Images::frame/Titlebar_btn_normal.png');
+}
+TitleBarControl>#closebutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/Titlebar_btn_close.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+TitleBarControl>#closebutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+TitleBarControl>#closebutton:pushed
+{
+	background		: #3c3c44;
+}
+TitleBarControl>#closebutton:deactivate, TitleBarControl>#closebutton:nested
+{
+	image			: url('Images::frame/Titlebar_btn_close.png');
+	border			: 3 solid red;
+}
+
+VFrameSet, HFrameSet, FrameSet
+{
+	background		: transparent ;
+	border			: 0 none ;
+}
+FrameSet
+{
+	background		: transparent;
+	border			: 0 none #2a2b31;
+}
+ChildFrame
+{
+	background		: transparent;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	titlebarheight		: 25;
+	statusbarheight		: 0;
+}
+ChildFrame:deactivate
+{
+	background		: transparent;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	titlebarheight		: 25;
+	statusbarheight		: 0;
+}
+
+ChildFrame>#TitleBarControl
+{
+	align			: left middle;
+	background		: @gradation;
+	gradation		: linear 0,0 #686a6f 0,100 #464850 ;
+	border			: 0 none #808080;
+	bordertype		: round 3 3 lefttop righttop;
+	color			: #ffffff; 
+	font			: antialias bold 9 Meiryo UI, malgun gothic;
+	padding			: 0 0 0 -5;
+}
+ChildFrame>#TitleBarControl:deactivate
+{
+	gradation		: linear 0,0 #d5d5d5 0,100 #a5a5a5 ;
+	border			: 0 none #808080;
+}
+
+ChildFrame>#TitleBarControl>#minbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/CTitlebar_btn_min.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+ChildFrame>#TitleBarControl>#minbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+ChildFrame>#TitleBarControl>#minbutton:pushed
+{
+	background		: #3c3c44;
+}
+
+ChildFrame>#TitleBarControl>#minbutton:deactivate,ChildFrame>#TitleBarControl>#minbutton:nested
+{
+	image			: url('Images::frame/CTitlebar_btn_min.png');
+}
+
+ChildFrame>#TitleBarControl>#maxbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/CTitlebar_btn_max.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+ChildFrame>#TitleBarControl>#maxbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+ChildFrame>#TitleBarControl>#maxbutton:pushed
+{
+	background		: #3c3c44;
+}
+
+ChildFrame>#TitleBarControl>#maxbutton:deactivate,ChildFrame>#TitleBarControl>#maxbutton:nested
+{
+	image			: url('Images::frame/CTitlebar_btn_max.png');
+}
+
+ChildFrame>#TitleBarControl>#normalbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/CTitlebar_btn_normal.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+ChildFrame>#TitleBarControl>#normalbutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+ChildFrame>#TitleBarControl>#normalbutton:pushed
+{
+	background		: #3c3c44;
+}
+
+ChildFrame>#TitleBarControl>#normalbutton:deactivate,
+ChildFrame>#TitleBarControl>#normalbutton:nested
+{
+	image			:url('Images::frame/CTitlebar_btn_normal.png');
+}
+
+ChildFrame>#TitleBarControl>#closebutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 0 1 0 1;
+	image			: url('Images::frame/CTitlebar_btn_close.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+ChildFrame>#TitleBarControl>#closebutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+ChildFrame>#TitleBarControl>#closebutton:pushed
+{
+	background		: #3c3c44;
+}
+
+ChildFrame>#TitleBarControl>#closebutton:deactivate, ChildFrame>#TitleBarControl>#closebutton:nested
+{
+	image			: url('Images::frame/CTitlebar_btn_close.png');
+	border			: 3 solid red;
+}
+
+TabFrame
+{
+	background		: #efefef;
+	gradation		: ;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	font			: ;
+	color			: #5a280b;
+	align			: left middle;
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #ffffff 0,100 #dcdcd4;
+	buttonborder		: 2 double #a8a8a2 #ffffff;
+	buttonbordertype	: round 2 2 lefttop righttop;
+	buttonmargin		: 0 -8 0 8;
+	buttonpadding		: 5 5 5 5;
+	icon			: ;
+	tabborder 		: ;
+	tabbordertype		: ;
+	titlebarheight		: ;
+	statusbarheight		: ;
+}
+TabFramePage
+{
+	background		: transparent;
+}
+
+ApplicationMenu
+{
+	background 		: @gradation;
+	gradation		: linear 0,0 #fefefe 0,100 #dbdbd3;
+	align			: center middle;
+	border 			: 1 solid #a8a8a2;
+	font 			: ;
+	color			: #5a280b;
+	itemcolor 		: #5a280b;
+	itempadding 		: 20 20 20 20 ;
+	itembackground 		: transparent;
+	itemgradation		: 0,0 #f8fbfdb3 0,100 #92c9f3b3;
+	checkboximage 		: ;
+	popupbackground 	: #f2f2ef;
+	popupborder 		: 1 solid #a8a8a2;
+	popupbordertype 	: normal;
+	popuppadding 		: 0 0 0 0;
+	popupcolor 		: #46463d;
+	popupfont 		: ;
+	popupitemheight 	: 20;
+	popupitempadding	: 1 6 1 8;
+	popupitemborder 	: 1 solid #fcfcfb, 1 solid #fcfcfb, 1 solid #e7e7e2, 1 solid #fcfcfb;
+	popupitembackground 	: #f2f2ef;
+	popupitemalign 		: left middle;
+	expandimage 		: ;
+}
+ApplicationMenu:mouseover
+{
+	itembackground 		: transparent ;
+	color			: #3da2df;
+	popupitembackground	: @gradation;
+	popupitemgradation	: linear 0,0 #94bdd5 0,100 #2f89cd [48% #4da3db][50% #3696d7];
+	popupitemborder 	: 1 solid #4485ad, 3 double #fcfcfb #4485ad, 1 solid #4485ad, 3 double #fcfcfb #4485ad;
+	popupitempadding 	: 1 4 1 6;
+	popupcolor		: #ffffff;
+	expandimage 		: ;
+}
+ApplicationMenu:selected
+{
+	color			: #ffffff;
+	itembackground 		: ;
+}
+ApplicationMenu:disabled
+{
+	color			: #999999;
+}
+
+StatusBarControl
+{
+	background		: @gradation ;
+	gradation		: linear 0,0 #9b9b9b 0,100 #abafb5 [2% #dddddd] [7% #caccd0];
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom ;
+	gripimage		: Images::frame/ico_gripImg.png;
+	progressbargab		: 30;
+	progressbarheight	: 12;
+	progressbarwidth	: 200;
+	zoomcombogab		: ;
+	zoomcomboheight		: ;
+	zoomcombowidth		: ;
+	color			: #777777;
+	padding			: 0 0 0 35;
+	font			: antialias bold 9 Meiryo UI, malgun gothic;
+}
+StatusBarControl>#progressbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #abaeb4 0,100 #caccd0;
+	border			: 0 none #808080;
+	bordertype		: round 9 9;
+	font 			: ;
+	color			: #46586e ;
+	align			: center middle;
+	smooth			: true;
+	direction		: forward;
+	bartype			: normal;
+	barcolor		: @gradation;
+	bargradation		: linear 0,0 #8a8c95 0,100 #90929a;
+	padding			: 2 1 1 1;
+	margin			: 0 23 0 0;
+}
+StatusBarControl>#zoomcombo
+{
+}
+
+StatusBarControl>#zoomcombo>#comboedit
+{
+}
+
+StatusBarControl>#zoomcombo>#dropbutton
+{
+}
+
+StatusBarControl>#zoomcombo>#combolist
+{
+}
+
+
+
+Form
+{
+	align			: ;
+	background		: #ffffff ;
+	border			: 0 none #808080ff ;
+	bordertype		: normal 0 0 ;
+	color			: #46586e;
+	cursor			: ;
+	font			: antialias 9 Meiryo UI, malgun gothic;
+	gradation		: ;
+	opacity			: ;
+	padding			: ;
+	shadow			: ;	
+	stepalign		: ;
+	stepshowtype		: ;
+}VScrollBarControl
+{
+	background		: url('Images::frame/scrollbarV_BG.png') repeat-y ;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+VScrollBarControl>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+
+VScrollBarControl>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+
+VScrollBarControl>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+
+HScrollBarControl
+{
+	background		: url('Images::frame/scrollbarH_BG.png') repeat-x ;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+HScrollBarControl>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+
+HScrollBarControl>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+
+HScrollBarControl>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+
+ResizeButtonControl
+{
+	background		: url('Images::frame/btn_resize.png') right top ;
+	border 			: 0 none ;
+}
+
+Alert
+{
+	background		: #ffffff;
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3;
+	font			: ;	
+	color			: #000000;	
+	align			: ;
+	cursor			: ;
+	margin			: ;	
+	padding			: ;	
+	icon			: ;	
+	iconsize		: ;	
+	buttonheight		: 24;	
+	buttonwidth		: 60;	
+	okbuttontext		: OK ;
+	titlebackground		: @gradation ;
+	titlegradation		: linear 0,0 #686a6f 0,100 #464850 ;
+	titlefont		: ;	
+	titlecolor		: #ffffff;	
+	titleheight		: 25;
+	titlepadding		: 0 0 0 11;
+	titletext		: Alert;
+}
+Alert>#closebutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 3 3 -5 -5;
+	image			: url('Images::fram/btn_CTitlebarForm_close.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+Alert>#closebutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+Alert>#closebutton:pushed
+{
+	background		: #3c3c44;
+}
+Alert>#okbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #7d7f80;
+	bordertype		: round 4 4;
+	color			: #555555;
+	font			: ;
+	align			: center middle;
+	imagealign		: center middle;
+	focusborder		: 0 none #808080;
+}
+
+Alert>#okbutton:mouseover
+{
+	gradation		: linear 0,0 #ffffff 0,100 #efefef;
+}
+
+Alert>#okbutton:pushed
+{
+	gradation		: linear 0,0 #e2e2e2 0,100 #fefefe;
+}
+
+Alert>#okbutton:focused, Alert>#okbutton:selected
+{
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+}
+
+Alert>#okbutton:disabled
+{
+	background		: #d1d1d1 ;
+	color			: #777777 ;
+	border			: 1 solid #7d7f80 ;
+}
+
+Confirm
+{
+	background		: #ffffff;
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3;
+	font			: ;	
+	color			: #000000;	
+	align			: ;
+	cursor			: ;
+	margin			: ;	
+	padding			: ;	
+	icon			: ;	
+	iconsize		: ;	
+	buttonheight		: 24;	
+	buttonwidth		: 60;	
+	okbuttontext		: OK ;
+	cancelbuttontext	: cancel;
+	titlebackground		: @gradation ;
+	titlegradation		: linear 0,0 #686a6f 0,100 #464850 ;
+	titlefont		: ;	
+	titlecolor		: #ffffff;	
+	titleheight		: 25;
+	titlepadding		: 0 0 0 11;
+	titletext		: Alert;
+}
+Confirm>#closebutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #707178 0,100 #2c2e34 [47% #4d4e56][53% #3e3f46];
+	border			: 1 solid #2a2b31;
+	bordertype		: round 3 3 ;
+	margin			: 3 3 -5 -5;
+	image			: url('Images::fram/btn_CTitlebarForm_close.png');
+	imagealign		: center middle;
+	pusheddrawoffset	: 0 0;
+}
+
+Confirm>#closebutton:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #717279 0,100 #51525b [47% #5d5e67][53% #51525b];
+}
+
+Confirm>#closebutton:pushed
+{
+	background		: #3c3c44;
+}
+
+Confirm>#okbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #7d7f80;
+	bordertype		: round 4 4;
+	color			: #555555;
+	font			: ;
+	align			: center middle;
+	imagealign		: center middle;
+	focusborder		: 0 none #808080;
+}
+
+Confirm>#okbutton:mouseover
+{
+	gradation		: linear 0,0 #ffffff 0,100 #efefef;
+}
+
+Confirm>#okbutton:pushed
+{
+	gradation		: linear 0,0 #e2e2e2 0,100 #fefefe;
+}
+
+Confirm>#okbutton:focused, Confirm>#okbutton:selected
+{
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+}
+
+Confirm>#okbutton:disabled
+{
+	background		: #d1d1d1 ;
+	color			: #777777 ;
+	border			: 1 solid #7d7f80 ;
+}
+
+Confirm>#cancelbutton
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #7d7f80;
+	bordertype		: round 4 4;
+	color			: #555555;
+	font			: ;
+	align			: center middle;
+	imagealign		: center middle;
+	focusborder		: 0 none #808080;
+}
+
+Confirm>#cancelbutton:mouseover
+{
+	gradation		: linear 0,0 #ffffff 0,100 #efefef;
+}
+
+Confirm>#cancelbutton:pushed
+{
+	gradation		: linear 0,0 #e2e2e2 0,100 #fefefe;
+}
+
+Confirm>#cancelbutton:focused, Confirm>#cancelbutton:selected
+{
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+}
+
+Confirm>#cancelbutton:disabled
+{
+	background		: #d1d1d1 ;
+	color			: #777777 ;
+	border			: 1 solid #7d7f80 ;
+}
+/***** FrameObject Group End *****/
+
+/***** Basic Component Start *****/
+Button,Button:focused
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #eceeef;
+	border			: 1 solid #7d7f80;
+	bordertype		: round 4 4;
+	color			: #46586e;
+	font			: ;
+	align			: center middle;
+	imagealign		: center middle;
+	shadow			: drop 0,1 1 #00000024;
+	focusborder		: 0 none #808080;
+	pusheddrawoffset	: 0 0;
+	cursor			: hand;
+	padding			: 0 0 2 0;
+}
+
+Button:mouseover, Button:selected
+{
+	color			: #000000;
+	border			: 1 solid #2f313c;
+	gradation		: linear 0,0 #ffffff 0,50 #e6e7e8;
+}
+
+Button:pushed
+{
+	color			: #000000;
+	border			: 1 solid #2f313c;
+	gradation		: linear 0,0 #eceeef 0,100 #fefefe;
+	shadow			: drop 0,0 0 #00000050;
+}
+
+Button:disabled
+{
+	gradation		: linear 0,0 #ffffff 0,100 #edeff0;
+	color			: #999999 ;
+	border			: 1 solid #7d7f80 ;
+	shadow			: drop 0,0 0 #00000050;
+}
+
+Calendar
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	font			: ;
+	color			: #444444;
+	align			: left middle;
+	buttonsize		: ;
+	dayfont			: ;
+	daycolor		: #666666;
+	dayborder		: 0 none #808080;
+	daysize			: 32 32;	
+	popupalign		: left bottom;
+	popupbackground		: #ffffff;
+	popupborder		: 1 solid #c1c1c1;
+	popupbordertype		: round 4 4;
+	popupsize		: 226 265;
+	usetrailingday		: true;
+}
+
+Calendar:mouseover
+{
+	border			: 1 solid #1abd9c;
+	daybackground		: #ffffbe;
+	dayborder		: 1 solid #fb9906;
+	daybordertype		: round 3 3;
+}
+
+Calendar:selected
+{
+	border			: 1 solid #1abd9c;
+	daybackground		: #ffebbc;
+	dayborder		: 1 solid #fb9906;
+	daybordertype		: round 3 3;
+}
+Calendar:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+}
+
+Calendar>#calendaredit
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: normal;
+	font			: antialias 9 Meiryo UI, malgun gothic;
+	color			: #46586e;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #ffffff ;
+	selectbackground	: transparent;
+	padding			: 0 5 0 5;
+}
+
+Calendar>#calendaredit:mouseover
+{
+	border			: 0 none #1abd9c;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+Calendar>#calendaredit:focused
+{
+	border			: 0 none #1abd9c;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+Calendar>#calendaredit:disabled
+{
+	background		: transparent;
+	border			: 0 none #1abd9c;
+	color			: #888888;
+}
+
+Calendar>#dropbutton, Calendar>#dropbutton:focused
+{
+	background		: transparent url('Images::base/btn_calendar_N.png') stretch;
+	border			: 0 none;
+}
+Calendar>#dropbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_calendar_O.png') stretch;
+	border			: 0 none;
+}
+Calendar>#dropbutton:disabled
+{
+	background		: transparent url('Images::base/btn_calendar_N.png') stretch;
+	border			: 0 none #1abd9c;
+	opacity			: 50;
+}
+
+Calendar>#spin, Calendar>#spin:mouseover, Calendar>#spin:focused
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+}
+Calendar>#spinupbutton, Calendar>#spinupbutton:focused
+{
+	background		: transparent url('Images::base/btn_spinup_N.png') stretch;
+	border			: 0 none;
+}
+
+Calendar>#spinupbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_spinup_O.png') stretch;
+}
+
+Calendar>#spinupbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spinup_P.png') stretch;
+}
+
+Calendar>#spinupbutton:disabled
+{
+	background		: transparent url('Images::base/btn_spinup_D.png') stretch;
+	border			: 0 none;
+}
+
+Calendar>#spindownbutton, Calendar>#spindownbutton:focused
+{
+	background		: transparent url('Images::base/btn_spindn_N.png') stretch;
+	border			: 0 none;
+}
+
+Calendar>#spindownbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+}
+
+Calendar>#spindownbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+}
+
+Calendar>#spindownbutton:disabled
+{
+	background		: transparent url('Images::base/btn_spindn_D.png') stretch;
+	border			: 0 none;
+}
+
+Calendar>#popupcalendar
+{
+	ncpadding		: 39 0 0 0;
+	bodybackground		: #ffffff;
+	bodyborder		: 0 none #c1c1c1;
+	bodybordertype		: round 4 4;
+	daybackground		: transparent;
+	dayborder		: 0 none #808080;
+	dayfont			: antialias 11 Meiryo UI, malgun gothic;
+	daycolor		: #46586e;
+	headerbackground	: transparent;
+	headerborder		: 0 none #808080;
+	headerfont		: antialias 19 Meiryo UI, malgun gothic;
+	headercolor		: #46586e;
+	headerformat		: yyyy.MM;
+	headerheight		: 40;
+	saturdayborder		: 0 none #808080;
+	saturdayfont		: ;
+	saturdaycolor		: #117dbb;
+	sundayborder		: 0 none #808080;
+	sundayfont		: ;
+	sundaycolor		: #ca3e26;
+	todaybackground		: #7e8089;
+	todayborder		: 1 solid #7e8089;
+	todayfont		: antialias bold 9 Meiryo UI, malgun gothic;
+	todaycolor		: #ffffff;
+	trailingdayborder	: 0 none #808080;
+	trailingdaybackground	: transparent;
+	trailingdaycolor	: #c1c1c1;
+	weekbackground		: @gradation;
+	weekgradation		: linear 0,0 #ffffff 0,100 #868686 [97% #d9d9da][99% #868686];
+	weekfont		: antialias bold 11 Meiryo UI, malgun gothic;
+	weekcolor		: #46586e;
+	weekformat		: S M T W T F S;
+}
+Calendar>#popupcalendar:mouseover
+{
+	saturdaybackground	: #ffffbe;
+	saturdayborder		: 1 solid #7e8089;
+	sundaybackground	: #ffffbe;
+	sundayborder		: 1 solid #7e8089;
+}
+
+Calendar>#popupcalendar:selected
+{
+	todaycolor		: #ffffff;
+	saturdaybackground	: #ffebbc;
+	saturdayborder		: 1 solid #fb9906;
+	sundaybackground	: #ffffbe;
+	sundayborder		: 1 solid #7e8089;
+}
+
+Calendar>#popupcalendar>#prevbutton
+{
+	background		: transparent url('Images::base/btn_CalPrev_N.png') stretch;
+	border			: 0 none #808080;
+}
+
+Calendar>#popupcalendar>#prevbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_CalPrev_O.png') stretch;
+}
+Calendar>#popupcalendar>#prevbutton:pushed
+{
+	background		: transparent url('Images::base/btn_CalPrev_P.png') stretch;
+	shadow			: drop 0,0 0 #808080;
+}
+Calendar>#popupcalendar>#prevbutton:focused
+{
+	background		: transparent url('Images::base/btn_CalPrev_N.png') stretch;
+	border			: 0 none #808080;
+}
+Calendar>#popupcalendar>#nextbutton
+{
+	background		: transparent url('Images::base/btn_CalNext_N.png') stretch;
+	border			: 0 none #808080;
+}
+
+Calendar>#popupcalendar>#nextbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_CalNext_O.png') stretch;
+}
+Calendar>#popupcalendar>#nextbutton:pushed
+{
+	background		: transparent url('Images::base/btn_CalNext_P.png') stretch;
+	shadow			: drop 0,0 0 #808080;
+}
+Calendar>#popupcalendar>#nextbutton:focused
+{
+	background		: transparent url('Images::base/btn_CalNext_N.png') stretch;
+	border			: 0 none #808080;
+}
+
+Calendar>#popupcalendar>#monthspin, Calendar>#popupcalendar>#yearspin
+{
+	background		: #ffffff;
+	border			: 1 solid #b2bbc3 ;
+	bordertype		: normal;
+	font			: ;
+	color			: #555555;
+	align			: left middle;
+	buttonsize		: ;
+	padding			: 0 0 0 3;
+}
+
+Calendar>#popupcalendar>#monthspin>#spinedit, Calendar>#popupcalendar>#yearspin>#spinedit
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: antialias 19 Meiryo UI, malgun gothic;
+	color			: #555555;
+	padding			: 0 0 0 3;
+	align			: left middle;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+}
+
+Calendar>#popupcalendar>#monthspin>#spinupbutton, Calendar>#popupcalendar>#yearspin>#spinupbutton
+{
+	background		: transparent url('Images::base/btn_spinup_N.png') stretch;
+	border			: 0 none;
+}
+Calendar>#popupcalendar>#monthspin>#spinupbutton:mouseover, Calendar>#popupcalendar>#yearspin>#spinupbutton:mouseover,
+Calendar>#popupcalendar>#monthspin>#spinupbutton:pushed, Calendar>#popupcalendar>#yearspin>#spinupbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spinup_O.png') stretch;
+	border			: 0 none;
+}
+
+Calendar>#popupcalendar>#monthspin>#spindownbutton, Calendar>#popupcalendar>#yearspin>#spindownbutton
+{
+	background		: transparent url('Images::base/btn_spindn_N.png') stretch;
+	border			: 0 none;
+}
+Calendar>#popupcalendar>#monthspin>#spindownbutton:mouseover, Calendar>#popupcalendar>#yearspin>#spindownbutton:mouseover,
+Calendar>#popupcalendar>#monthspin>#spindownbutton:pushed, Calendar>#popupcalendar>#yearspin>#spindownbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+	border			: 0 none;
+}
+
+CheckBox, CheckBox:focused
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #eceeef 0,100 #fefefe;
+	buttonborder		: 1 solid #7d7f80;
+	buttonbordertype	: round 3 3;
+	buttonimage		: url('Images::base/img_check.png');
+	buttonalign		: center middle;
+	buttonsize		: 19;
+	textpadding		: 0 0 0 5;
+}
+
+CheckBox:mouseover
+{
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #ffffff 0,50 #e6e7e8;
+	buttonborder		: 1 solid #1abd9c;
+	buttonbordertype	: round 3 3;
+	color			: #46586e;
+}
+CheckBox:disabled
+{
+	buttonborder		: 1 solid #b2bbc3;
+	buttonbackground	: #e2e2e2ff;
+	buttonimage		: url('Images::base/img_check_D.png');
+}
+
+Combo, Combo:focused
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	font			: ;
+	color			: #46586e;
+	align			: left middle;
+	itembackground		: #ffffff;
+	itemheight		: 19;
+	itemborder		: 0 none;
+	itempadding		: 0 7 0 7;
+	itemcolor		: #46586e;
+	itemfont		: ;
+	buttonsize 		: ;
+}
+Combo:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	itembackground		: #d7d8dc;
+}
+Combo:selected
+{
+	border	   		: 1 solid #1abd9c;
+	itembackground		: #7e8089;
+	itemcolor 		: #ffffff ;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+Combo:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc4;
+	itembackground		: #888888 ;
+}
+
+Combo>#comboedit, Combo>#comboedit:mouseover
+{
+	background		: transparent;
+	border			: 0 none #000000;
+	bordertype		: round 3 3 lefttop leftbottom ;
+	color			: #46586e;
+	padding			: 0 0 0 7;
+	align			: left middle;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #316ac5 ;
+	selectcolor		: #ffffff ;
+	selectbackground	: transparent;
+	font			: antialias 9 Meiryo UI, malgun gothic;
+}
+Combo>#comboedit:focused
+{
+	background		: ;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+Combo>#comboedit:disabled
+{
+	border			: 0 none #000000;
+}
+
+Combo>#dropbutton, Combo>#dropbutton:focused
+{
+	background 		: @gradation URL('Images::base/cmb_btn_drop.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #e4e4e4 ;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	bordertype		: ;
+
+}
+Combo>#dropbutton:mouseover
+{
+	background		: @gradation URL('Images::base/cmb_btn_drop_O.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+}
+
+Combo>#dropbutton:pushed
+{
+	background		: @gradation URL('Images::base/cmb_btn_drop_O.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+}
+
+Combo>#dropbutton:disabled
+{
+	background		: @gradation URL('Images::base/cmb_btn_drop_D.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	gradation 		: linear 0,0 #ffffff 0,100 #eeeeee ;
+}
+
+Combo>#combolist
+{
+	align			: left middle ;
+	border			: 1 solid #333637 ;
+	bordertype		: round 4 4;
+	padding			: 0 0 0 0;
+}
+
+Combo>#combolist>#vscrollbar
+{
+	background		: #ffffff;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+Combo>#combolist>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+
+Combo>#combolist>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+
+Combo>#combolist>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+
+
+
+Combo>#combolist>#hscrollbar
+{
+	background		: #ffffff;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+Combo>#combolist>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+
+Combo>#combolist>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+
+Combo>#combolist>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+
+Div
+{
+	border			: 0 none;
+	color			: #46586e;
+	font			: ;
+	align			: center middle;
+}
+Div>#vscrollbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #cdcfd2 100,0 #ffffff;
+	border			: 0 none #808080,0 none #808080,1 solid #b3b6bc,1 solid #b3b6bc ;
+	bordertype		: normal;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+Div>#vscrollbar>#trackbar
+{
+	background		: #caccd0;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 0,0 0 #808080;
+}
+
+Div>#vscrollbar>#trackbar:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #dddee0 100,0 #dddee0;
+}
+
+Div>#vscrollbar>#trackbar:pushed
+{
+	background		: #b3b6bc;
+	border			: 0 none #808080;
+}
+
+Div>#hscrollbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #cdcfd2 0,100 #ffffff;
+	border			: 1 solid #b3b6bc,0 none #808080,0 none #808080,0 solid #808080 ;
+	bordertype		: normal;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+Div>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+
+Div>#hscrollbar>#trackbar:mouseover
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #dddee0 0,100 #dddee0;
+}
+
+Div>#hscrollbar>#trackbar:pushed
+{
+	background		: #b3b6bc;
+	border			: 0 none #808080;
+}
+Div>#resizebutton
+{
+	background		: transparent url('Images::frame/btn_resize.png') right top ;
+	border 			: 0 none ;
+}
+
+Edit
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	align			: left middle ;
+	font			: ;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 0 7 0 7 ;
+}
+
+Edit:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+}
+Edit:focused
+{
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+
+Edit:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+
+ExportProgress
+{
+ 	background		: #e9edef;
+	gradation		: ;
+	border			: 1 solid #41536e;
+	bordertype		: round 3 3;
+	font 			: ;
+	padding			: 0 10 0 10;
+	color			: #3f3f3fb3;
+	align			: center middle;
+	opacity			: 100%;
+	blur			: ;
+	glow			: ;
+	transformation		: ;
+}
+ExportProgress>#statustext
+{
+	background		: transprant;
+	border			: 0 solid #B1B5B9b3;
+	color          		: #444444;
+	padding			: 0 5 0 5;
+	bordertype		: ;
+	align			: left middle;
+	font 			: ;
+	opacity			: 100%;
+	shadow			: ;
+	blur			: ;
+	outerglow		: ;
+	gradation		: ;
+	transformation		: ;
+}
+ExportProgress>#progressbar
+{
+	background      	: @gradation;
+	gradation       	: linear 0,0 #ffffff 0,100 #ffffff [5% #e5e5e5];
+	border          	: 1 solid #6a6a6ab3;
+	bordertype      	: round 3 3;
+	font 			: ;
+	padding         	: 0 0 -2 0;
+	color           	: black;
+	align           	: center middle;
+	opacity         	: 100%;
+	shadow          	: ;
+	blur            	: ;
+	outerglow       	: ;
+	transformation  	: ;
+	smooth			: true;
+	barcolor		: @gradation;
+	bargradation		: linear 0,0 #fff15bff 0,100 #d35500ff [5% #fdae3dff];
+	direction		: forward;
+	startimage		: ;
+	endimage		: ;
+	progressimage		: ;
+	bartype			: normal;
+}
+
+/*FileUpload 지원안됨*/
+FileUpload
+{
+	background	 	: transparent;
+	border			: 0 none;
+	buttonbackground 	: @gradation;
+	buttonborder	 	: 1 solid #7d7f80 ;
+	buttonbordertype 	: round 3 3;
+	buttoncolor	 	: #46586e;
+	buttonfont	 	: ;
+	buttongradation  	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonmargin	 	: 0 0 -2 0 ;
+	buttonpadding	 	: 0 0 0 0 ;
+	buttonsize	 	: 70 ;
+	buttontext	 	: File Search ;
+	color	         	: #46586e;
+	editbackground		: #ffffff;
+	editborder		: 1 solid #b2bbc3 ;
+	editbordertype   	: round 3 3;
+	editcolor	 	: #444444;
+	editfont	 	: ;
+	editmargin	 	: 0 2 -2 0 ;
+	editpadding	 	: 0 7 0 7;
+	editselectbackground	: #444444 ;
+	editselectcolor		: #ffffff;
+}
+
+FileUpload:focused, FileUpload:mouseover
+{
+	editborder	   	: 1 solid #1abd9c;
+}
+
+FileUpload:disabled
+{
+	editbackground		: #e2e2e2;
+	editcolor		: #888888;
+	editborder		: 1 solid #b2bbc3;
+}
+
+/*FileDownload 지원안됨*/
+FileDownload
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #7d7f80;
+	bordertype		: round 3 3;
+	color			: #46586e;
+	font			: ;
+	focusborder		: 0 none;
+	align			: center middle;
+	cursor			: hand ;
+	pusheddrawoffset	: 0 0;
+}
+
+FileDownload:mouseover
+{
+	gradation		: linear 0,0 #ffffff 0,100 #efefef;
+}
+
+FileDownload:pushed
+{
+	gradation		: linear 0,0 #e2e2e2 0,100 #fefefe;
+}
+
+FileDownload:focused, FileDownload:selected
+{
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #f29335;
+}
+
+FileDownload:disabled
+{
+	background		: #d1d1d1 ;
+	color			: #777777 ;
+	border			: 1 solid #7d7f80 ;
+}
+
+/*GroupBox 지원안됨*/
+GroupBox
+{
+	background		: #ffffff;
+	border 			: 1 solid #f48400;
+	bordertype		: round 4 4;
+	color			: #46586e;
+	align			: left middle;
+	font 			: ;
+	titlepadding		: 0 6 0 6;
+	titlealign 		: topleft ;
+	titleimagealign 	: lefttext middle ;
+}
+
+GroupBox:disabled
+{
+	border 			: 1px solid #cccccc ;
+	color			: #aaaaaa;
+}
+
+GraphicPath
+{
+	background		: transparent;
+	color			: #444444;
+	align			: center middle;
+	font			: ;
+}
+
+
+
+Grid
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5;
+	focusborder		: 0 none;
+	treeopenbuttonimage	: url('Images::base/ico_treeclose.png');
+	treeclosebuttonimage	: url('Images::base/ico_treeopen.png');
+	treecollapseimage	: ;
+	treeexpandimage		: ;
+	treeitemimage		: url('Images::base/ico_treeitem.png');
+	treelinetype		: 1 dotted #a5b6b6;
+	color                   : #46586e ;
+}
+
+Grid>#head
+{
+	background		: @gradation ;
+	gradation		: linear 0,0 #fefeff 0,100 #d9d9da;
+	border			: 0 none, 0 none, 1 solid #9b9b9b, 0 none ;
+	cellbackground		: ;
+	cellcolor		: #46586e;
+	cellfont		: ;
+	cellline		: 1 solid #b1b1b1;
+}
+
+Grid>#body
+{
+	background		: transparent ;
+	border			: 0 none;
+	align			: center middle;
+	font			: antialias 9 Meiryo UI, malgun gothic;
+	color			: #46586e;
+	cellalign		: center middle;
+	cellbackground		: #ffffff center middle ;
+	cellbackground2		: #f1f1f3 center middle ;
+	cellline		: 0 none, 0 none, 1 solid #ffffff, 0 none;
+	celllinetype		: normal;
+	cellfont		: ;
+	cellcolor		: #46586e;
+	selectbackground	: #7e8089 center middle;
+	selectborder		: 0 none, 0 none, 1 solid #ffffff, 0 none;
+	selectfont		: antialias 9 Meiryo UI, malgun gothic;
+	selectcolor		: #ffffff;
+}
+Grid>#body:mouseover
+{
+	cellbackground		: #c3c5cb center middle ;
+	cellbackground2		: #c3c5cb center middle ;
+	selectbackground	: #7e8089 center middle ;
+	selectcolor		: #ffffff center middle ;
+	selectfont 		: antialias 9 Meiryo UI, malgun gothic ;
+}
+
+Grid>#summary
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #fefefe 0,100 #e7e7e7;
+	border			: 0 none;
+	cellbackground		: transparent ;
+	cellcolor		: #46586e;
+	cellfont		: ;
+	cellline		: 1 solid #b1b1b1;
+	cellalign       	: right middle;
+}
+
+Grid>#vscrollbar
+{
+	background		: url('Images::frame/scrollbarV_BG.png') repeat-y ;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+Grid>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 4 4 righttop rightbottom;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+
+Grid>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+
+Grid>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+	shadow			: drop 0,0 0 #00000033;
+}
+
+Grid>#hscrollbar
+{
+	background		: url('Images::frame/scrollbarH_BG.png') repeat-x ;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+Grid>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 4 4 leftbottom rightbottom;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+
+Grid>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+
+Grid>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+	shadow			: drop 0,0 0 #00000033;
+}
+
+
+Grid>#controlprogressbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #ffffff [3% #f2f2f2][25% #ffffff];
+	border			: 1 solid #8c98a0;
+	bordertype		: round 3 3;
+	font 			: ;
+	color			: #46586e ;
+	align			: center middle;
+	smooth			: true;
+	direction		: forward;
+	bartype			: normal;
+	barcolor		: @gradation;
+	bargradation		: linear 0,0 #ffc067 0,100 #ff9805;
+	padding			: 2 3 3 3;
+
+	/*
+	align			: center middle;
+	background		: #c5cad1;
+	barcolor		: #1a9dbc;
+	bargradation		: ;
+	bartype			: normal;
+	border			: 0 none #999999;
+	bordertype		: round 13 13;
+	color			: #ffffff;
+	cursor			: ;
+	direction		: forward;
+	endimage		: ;
+	padding			: 3 3 4 3;
+	progressimage		: image::basic/img_progress.png;
+	shadow			: ;
+	smooth			: true;
+	startimage		: ;
+	*/
+	
+}
+
+Grid>#controlprogressbar:disabled
+{
+
+	background		: #eaeaea ;
+	bargradation		: linear 0,0 #c7c7c7 0,100 #c0c0c0;
+	/*
+	border			: 1 solid #d5d5d5;
+	background		: #ffffff ;
+	progressimage  		: image::basic/img_progress_D.png;
+	color			: #999999;
+	*/
+}
+
+Grid>#resizebutton
+{
+	background		: transparent url('Images::frame/btn_resize.png') right top ;
+	border 			: 0 none ;
+}
+
+Grid.grd_tree>#body>Cell
+{
+    padding         : 0 0 0 -16;
+}
+
+ImageViewer
+{
+	background		: #ffffff;
+	border 			: 1 solid #b2bbc3;
+	font 			: ;
+	color			: #46586e;
+	align			: center middle;
+	focusborder		: 0 none #808080;
+}
+
+ImageViewer:mouseover, ImageViewer:focused
+{
+	border 			: 1 solid #f48400ff;
+}
+
+ImageViewer:disabled
+{
+	color			: #a5a5a5;
+	border			: 1 solid #e5e5e5;
+}
+
+ListBox
+{
+	background		: #ffffff;
+	color			: #46586e;
+	border			: 1 solid #adb5bd;
+	bordertype		: round 4 4;
+	align			: left middle;
+	font			: ;
+	itembackground		: transparent;
+	itemheight		: 19;
+	itemborder		: 0 none;
+	itempadding		: 0 7 0 7;
+	shadow			: ;
+	padding			: 1 1 1 0;
+}
+
+ListBox:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	itembackground		: #d7d8dc;
+}
+
+ListBox:selected
+{
+	border	   		: 1 solid #1abd9c;
+	color			: #ffffff ;
+	itembackground		:#7e8089;
+}
+
+ListBox:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+ListBox>#vscrollbar
+{
+	background		: transparent;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+ListBox>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+
+ListBox>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+
+ListBox>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+
+ListBox>#hscrollbar
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize	: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+
+ListBox>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+
+ListBox>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+
+ListBox>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+
+MaskEdit
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	align			: left middle ;
+	font			: ;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 0 7 0 7 ;
+}
+
+MaskEdit:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+}
+
+MaskEdit:focused
+{
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+
+MaskEdit:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+
+/* itemfont는 fontfamily를 상속받지 않음 */
+Menu,Menu:focused
+{
+	background 		: #353a3b;
+	align			: center middle;
+	border 			: 0 none #808080;
+	font 			: antialias bold 11 Meiryo UI, malgun gothic;
+	color			: #caccd0;
+	padding			: 0 0 0 0;
+	itemcolor 		: #b9d8ff ;
+	itempadding 		: 0 28 0 28 ;
+	itembackground		: url('Images::base/menu_bg.png') right middle;
+	itemfont 		: antialias bold 10 Meiryo UI, malgun gothic;
+	checkboximage 		: ;
+	popupbackground 	: #353a3b;
+	popupgradation		: ;
+	popupborder 		: 2 solid #3c3c44;
+	popupbordertype 	: normal 0 0;
+	popuppadding 		: 0 0 0 0;
+	popupcolor 		: #9ea4ad;
+	popupfont 		: antialias bold 10 Meiryo UI, malgun gothic;
+	popupitemheight 	: 30;
+	popupitempadding 	: 0 7 0 10;
+	popupitemborder 	: 0 none;
+	popupitembackground     : #353a3b;
+	popupitemalign 		: left middle;
+	expandimage 		: Images::base/ico_menu_expand.png;
+	cursor			: hand;
+}
+Menu:mouseover
+{
+	background 		: #353a3b;
+	popupitembackground 	: #484d4e;
+	popupcolor 		: #ffffff;
+	popupfont 		: antialias bold 10 Meiryo UI, malgun gothic;
+	itembackground		: @gradation;
+	itemgradation		: linear 0,0 #36373c 0,100 #4a4b50 [45% #19191b] [50% #101011] [55% #19191b] [95% #34353a];
+	color			: #1abd9c;
+	expandimage 		: Images::base/ico_menu_expand_O.png;
+}
+Menu:selected
+{
+	background 		: #353a3b;
+	popupitembackground 	: #353a3b;
+	popupcolor 		: #ffffff;
+	popupfont 		: antialias bold 10 Meiryo UI, malgun gothic;
+	itembackground		: @gradation;
+	itemgradation		: linear 0,0 #36373c 0,100 #4a4b50 [45% #19191b] [50% #101011] [55% #19191b] [95% #34353a];
+	color			: #1abd9c;
+	expandimage 		: Images::base/ico_menu_expand_O.png;
+}
+
+ProgressBar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #ffffff [3% #f2f2f2][25% #ffffff];
+	border			: 1 solid #8c98a0;
+	bordertype		: round 3 3;
+	font 			: ;
+	color			: #46586e ;
+	align			: center middle;
+	smooth			: true;
+	direction		: forward;
+	bartype			: normal;
+	barcolor		: @gradation;
+	bargradation		: linear 0,0 #ffc067 0,100 #ff9805;
+	padding			: 2 3 3 3;
+}
+
+ProgressBar:disabled
+{
+	background		: #eaeaea ;
+	bargradation		: linear 0,0 #c7c7c7 0,100 #c0c0c0;
+}
+
+PopupDiv, PopupDiv:disabled, PopupDiv:focused, PopupDiv:mouseover
+{
+	align			: center middle;
+	background		: #ffffff;
+	border			: 2 solid #3c3c44;
+	bordertype		: round 4 4;
+	color			: #444444;
+	cursor			: ;
+	font			: ;
+	gradation		: ;
+	opacity			: ;
+	padding			: 0 0 0 0;
+	shadow			: drop 0,1 2 #00000066;
+	stepalign		: ;
+	stepshowtype		: ;
+}
+
+/*PopupMenu 지원안됨*/
+PopupMenu
+{
+	background		: #f4f7f9;
+	color			: #46586e;
+	border			: 1 solid #f48400 ;
+	bordertype		: normal;
+	align			: left middle;
+	font			: ;
+	itembackground		: transparent;
+	itemheight		: 19;
+	itemborder 		: 0 none #808080,1 solid #f48400,1 solid #f48400,0 none #808080 ;
+	itempadding		: 0 7 0 7;
+	expandimage     	: url('Images::base/ico_PopupMenu.png') ;
+	padding         	: 0 0 0 0 ;
+}
+
+PopupMenu:mouseover
+{
+	itembackground		: #d7d8dc;
+}
+
+PopupMenu:selected, PopupMenu:focused, PopupMenu:pushed
+{
+	color			: #ffffff ;
+	itembackground		: url('Images::base/cmb_list_BGS.png') repeat-x;
+}
+
+Radio
+{
+	background		: transparent;
+	border			: 0 none #808080;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonalign		: left middle;
+	buttonbackground	: @gradation;
+	buttonborder		: 1 solid #7d7f80;	
+	buttongradation		: linear 0,0 #eceeef 0,100 #fefefe;	
+	buttonimage		: Images::base/radio_ico.png;	
+	buttonsize		: 20;
+	textpadding		: 0 0 0 5;
+	focusborder		: 0 none #808080;
+}
+
+Radio:mouseover, Radio:selected
+{
+	buttonbackground	: @gradation;
+	buttonborder		: 1 solid #1abd9c;	
+	buttongradation		: linear 0,0 #fefefe 0,100 #eceeef;
+}
+
+Radio:disabled
+{
+	buttonbackground	: #aaaaaa;
+	buttonimage		: url('Images::base/radio_ico_D.png') ;
+}
+
+/*Shape 지원안됨*/
+Shape
+{
+	background		: transparent;
+	color			: #ffffff;
+	align			: center middle;
+	font 			: ;
+	border 			: 0 none #808080;
+	fillbrush 		: solid #a4acb7 true ;
+	strokepen 		: 1 solid #a4acb7 ;
+	shadow			: 0,0 0	#080808;
+}
+Shape:disabled
+{
+	background		: #e5e7eb;
+	color			: #ffffff;
+	strokepen 		: 1 solid #e5e7eb;
+	fillbrush 		: solid #e5e7eb true ;
+}
+
+Spin
+{
+	background		: #ffffff URL('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	font			: ;
+	buttonsize		: 26;
+	align			: left middle;
+}
+Spin:focused, Spin:mouseover, Spin:pushed
+{
+	border			: 1 solid #1abd9c;
+	background		: #ffffff URL('Images::base/bg_input.png') left top repeat-x;
+}
+Spin:disabled
+{
+	background		: #f2f2f2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+Spin>#spinedit, Spin>#spinedit:mouseover, Spin>#spinedit:disabled
+{
+	background		: transparent;
+	border			: 0 none ;
+	color			: #46586e;
+	padding			: 0 0 0 7;
+	align			: left middle;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #ffffff ;
+	selectbackground	: transparent;
+	font			: ;
+}
+Spin>#spinupbutton, Spin>#spinupbutton:focused
+{
+	background		: url('Images::base/btn_spinup_N.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #f1f1f1 ;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spinupbutton:mouseover
+{
+	background		: url('Images::base/btn_spinup_O.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spinupbutton:pushed
+{
+	background		: url('Images::base/btn_spinup_P.png') stretch;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spinupbutton:disabled
+{
+	background		: url('Images::base/btn_spinup_D.png') stretch;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spindownbutton, Spin>#spindownbutton:focused
+{
+	background		: url('Images::base/btn_spindn_N.png') stretch;
+	gradation 		: linear 0,0 #f1f1f1 0,100 #e4e4e4 ;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spindownbutton:mouseover
+{
+	background		: url('Images::base/btn_spindn_O.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spindownbutton:pushed
+{
+	background		: url('Images::base/btn_spindn_P.png') stretch;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+Spin>#spindownbutton:disabled
+{
+	background		: url('Images::base/btn_spindn_D.png') stretch;
+	border			: 0 none;
+	image			: ;
+	imagealign		: center middle;
+}
+/* Splitter 지원안함*/
+Splitter
+{
+	background		: #c5cad1;
+	gradation		: ;
+	border			: 0 none #808080;
+	bordertype		: round 3 3;
+}
+Splitter:mouseover,Splitter:pushed
+{
+	background		: #1a9dbc;
+	gradation		: ;
+	border			: 0 none #808080;
+	bordertype		: round 3 3;
+}
+
+Static
+{
+	align			: left middle;
+	background		: transparent;
+	border			: 0 none;
+	color			: #34495e;
+	font			: ;
+}
+Static:disabled
+{
+	color			: #aaaaaa ;
+}
+
+StepControl
+{
+	align			: center middle;
+	background		: transparent;
+	border			: 0 none #868686ff;
+	bordertype		: normal;
+	buttonbackground	: @gradation;
+	buttonborder		: 1 solid #868686ff;
+	buttonbordertype	: round 7 7;
+	buttongradation		: linear 0,0 #fdfdfd 0,100 #f0f0f0;
+	buttonimage		: url('Images::base/step_Point.png');
+	buttonpadding		: 0 5 0 5;
+	buttonsize		: 16;
+	color			: #3f3f3f;
+	cursor			: hand;
+	font			: bold;
+	gradation		: ;
+	opacity			: ;
+	padding			: 5 5 5 5;
+	shadow			: ;
+}
+StepControl:mouseover
+{
+	buttonimage		: url('Images::base/step_Point.png');
+	buttonborder		: 1 solid #ff6600;
+}
+StepControl:pushed
+{
+	buttonimage		: url('Images::base/step_Point.png');
+	buttonborder		: 1 solid #ff6600;
+}
+StepControl:disabled
+{
+	opacity 		: 50;
+}
+
+Tab
+{
+	background 		: transparent;
+	border			: 1 solid #bdbfc3;
+	bordertype		: normal;
+	align			: center middle;
+	font 			: antialias bold 12 Meiryo UI, malgun gothic;
+	color 			: #46586e;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: normal;
+	buttonpadding		: 4 14 5 14;
+	buttonmargin 		: 0 0 0 0 ;
+}
+Tab:mouseover
+{
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	color 			: #1abd9c;
+}
+
+Tab:selected, Tab:focused
+{
+	buttonbackground	: #ffffff;
+	buttongradation 	: ;
+	color 			: #1abd9c;
+	font 			: antialias bold 12 Meiryo UI, malgun gothic ;
+}
+Tab>#spinupbutton
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::base/btn_tab_spinup_N.png') center middle;
+}
+
+Tab>#spinupbutton:mouseover
+{
+	background		: url('Images::base/btn_tab_spinup_S.png') center middle;
+}
+
+Tab>#spinupbutton:disabled
+{
+	background		: url('Images::base/btn_tab_spinup_D.png') center middle;
+	border			: 0 none;
+}
+
+Tab>#spindownbutton
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::base/btn_tab_spindn_N.png') center middle;
+}
+
+Tab>#spindownbutton:mouseover
+{
+	background		: url('Images::base/btn_tab_spindn_S.png') center middle;
+}
+
+Tab>#spindownbutton:disabled
+{
+	background		: url('Images::base/btn_tab_spindn_D.png') center middle;
+	border			: 0 none;
+}
+
+Tab>#extrabutton
+{
+	background		: transparent;
+	image			: url('Images::base/btn_tab_extra.png');
+	imagealign		: center middle;
+	padding			: 2 0 0 0;
+}
+Tabpage
+{
+	background		: #ffffff;
+}
+/******/
+Tab.tab_left
+{
+	border			: 1 solid #abb1b5;
+	bordertype		: round 4 4 leftbottom righttop rightbottom;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 lefttop leftbottom;
+	buttonpadding		: 6 15 8 15;
+}
+Tab.tab_left:mouseover
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 lefttop leftbottom;
+	buttonpadding		: 6 15 8 15;
+	color 			: #ff6600;
+}
+
+Tab.tab_left:selected
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: #ffffff;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 lefttop leftbottom;
+	color			: #ff6600;
+	font 			: antialias bold 9 Meiryo UI, malgun gothic;
+}
+
+Tab.tab_right
+{
+	border			: 1 solid #abb1b5;
+	bordertype		: round 4 4 lefttop leftbottom rightbottom;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 righttop rightbottom;
+	buttonpadding		: 6 15 8 15;
+}
+Tab.tab_right:mouseover
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 righttop rightbottom;
+	buttonpadding		: 6 15 8 15;
+	color 			: #ff6600;
+}
+
+Tab.tab_right:selected
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: #ffffff;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 righttop rightbottom;
+	color			: #ff6600;
+	font 			: antialias bold 9 Meiryo UI, malgun gothic;
+}
+Tab.tab_bottom
+{
+	border			: 1 solid #abb1b5;
+	bordertype		: round 4 4 lefttop righttop rightbottom;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 leftbottom rightbottom;
+	buttonpadding		: 6 15 8 15;
+}
+Tab.tab_bottom:mouseover
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 leftbottom rightbottom;
+	buttonpadding		: 6 15 8 15;
+	color 			: #ff6600;
+}
+
+Tab.tab_bottom:selected
+{
+	border			: 1 solid #abb1b5;
+	buttonbackground	: #ffffff;
+	buttonborder		: 1 solid #abb1b5;
+	buttonbordertype	: round 4 4 leftbottom rightbottom;
+	color			: #ff6600;
+	font 			: antialias bold 9 Meiryo UI, malgun gothic;
+}
+
+TextArea
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	align			: left top ;
+	font			: ;
+	linespace		: 1;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 1 1 1 7;
+	linespace		: 5;
+}
+TextArea:focused, TextArea:mouseover
+{
+	border			: 1 solid #1abd9c;
+}
+TextArea:focused
+{
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+TextArea:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+TextArea>#vscrollbar
+{
+	background		: transparent ;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+TextArea>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+TextArea>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+TextArea>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+TextArea>#hscrollbar
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+TextArea>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+TextArea>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+TextArea>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+Tooltip
+{
+	background		: #bcd71e;
+	border			: 0 none #a67756;
+	bordertype		: normal 0 0;
+	font			: ;
+	color			: #ffffff;
+	align			: left middle;
+	padding			: 2 5 2 5;
+}
+
+/***** Control Component Start *****/
+
+ButtonControl, ButtonControl:focused
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #7d7f80;
+	bordertype		: normal;
+	color			: #46586e;
+	font			: ;
+	align			: center middle;
+	imagealign		: center middle;
+}
+
+ButtonControl:mouseover
+{
+	gradation		: linear 0,0 #ffffff 0,100 #efefef;
+}
+
+ButtonControl:pushed
+{
+	gradation		: linear 0,0 #e2e2e2 0,100 #fefefe;
+}
+ButtonControl:selected
+{
+	gradation		: linear 0,0 #ffffff 0,100 #e4e4e4;
+	border			: 1 solid #f29335;
+}
+
+ButtonControl:disabled
+{
+	background		: #d1d1d1 ;
+	color			: #777777 ;
+	border			: 1 solid #7d7f80 ;
+}
+
+CalendarControl
+{
+	background		: #ffffff;
+	border			: 1 solid #8e97a0;
+	bordertype		: normal;
+	font			: ;
+	color			: #444444;
+	align			: left middle;
+	buttonsize		: ;
+	dayfont			: ;
+	daycolor		: #666666;
+	dayborder		: 0 none #808080;
+	daybordertype		: round 3 3;
+	daysize			: 32 32;
+	popupalign		: left bottom;
+	popupbackground		: #ffffff;
+	popupborder		: 1 solid #c1c1c1;
+	popupbordertype		: round 4 4;
+	popupsize		: 225 265;
+	usetrailingday		: true;
+}
+
+CalendarControl:mouseover
+{
+	border			: 1 solid #1abd9c;
+	daybackground		: #ffffbe;
+	dayborder		: 1 solid #fb9906;
+}
+
+CalendarControl:selected
+{
+	border			: 1 solid #1abd9c;
+	daybackground		: #ffebbc;
+	dayborder		: 1 solid #fb9906;
+}
+
+CalendarControl>#calendaredit
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #ffffff ;
+	selectbackground	: transparent;
+	padding			: 0 5 0 5;
+}
+
+CalendarControl>#calendaredit:mouseover
+{
+	border			: ;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+CalendarControl>#calendaredit:focused
+{
+	border			: ;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+CalendarControl>#calendaredit:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+}
+
+CalendarControl>#dropbutton
+{
+	background		: transparent url('Images::base/btn_calendar_N.png') stretch;
+	border			: 0 none;
+}
+CalendarControl>#dropbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_calendar_O.png') stretch;
+	border			: 0 none;
+}
+
+CalendarControl>#spinupbutton
+{
+	background		: transparent url('Images::base/btn_spinup_N.png') stretch;
+	border			: 0 none;
+}
+
+CalendarControl>#spinupbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_spinup_O.png') stretch;
+}
+
+CalendarControl>#spinupbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spinup_P.png') stretch;
+}
+
+CalendarControl>#spinupbutton:disabled
+{
+	background		: transparent url('Images::base/btn_spinup_D.png') stretch;
+}
+
+CalendarControl>#spindownbutton
+{
+	background		: transparent url('Images::base/btn_spindn_N.png') stretch;
+	border			: 0 none;
+}
+
+CalendarControl>#spindownbutton:mouseover
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+}
+
+CalendarControl>#spindownbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+}
+
+CalendarControl>#spindownbutton:disabled
+{
+	background		: transparent url('Images::base/btn_spindn_D.png') stretch;
+}
+
+CalendarControl>#popupcalendar
+{
+	ncpadding		: 39 0 0 0;
+	bodybackground		: #ffffff;
+	bodyborder		: 0 none #c1c1c1;
+	bodybordertype		: round 5 5;
+	daybackground		: transparent;
+	dayborder		: 0 none #808080;
+	dayfont			: ;
+	daycolor		: #46586e;
+	headerbackground	: transparent;
+	headerborder		: 0 none #808080;
+	headerfont		: antialias 19 Meiryo UI,malgun gothic;
+	headercolor		: #46586e;
+	headerformat		: yyyy.MM;
+	headerheight		: 40;
+	saturdayborder		: 0 none #808080;
+	saturdayfont		: ;
+	saturdaycolor		: #117dbb;
+	sundayborder		: 0 none #808080;
+	sundayfont		: ;
+	sundaycolor		: #ca3e26;
+	todaybackground		: #7e8089;
+	todayborder		: 1 solid #7e8089;
+	todayfont		: antialias 11 Meiryo UI, malgun gothic;
+	todaycolor		: #ffffff;
+	trailingdayborder	: 0 none #808080;
+	trailingdaybackground	: transparent;
+	trailingdaycolor	: #c1c1c1;
+	weekbackground		: @gradation;
+	weekgradation		: linear 0,0 #ffffff 0,100 #868686 [97% #d9d9da][99% #868686];
+	weekfont		: antialias 11 Meiryo UI,  malgun gothic;
+	weekcolor		: #46586e;
+	weekformat		: S M T W T F S;
+}
+CalendarControl>#popupcalendar:mouseover
+{
+	saturdaybackground	: #ffffbe;
+	saturdayborder		: 1 solid #7e8089;
+	sundaybackground	: #ffffbe;
+	sundayborder		: 1 solid #7e8089;
+}
+CalendarControl>#popupcalendar:selected
+{
+	todaycolor		: #ffffff;
+	saturdaybackground	: #ffebbc;
+	saturdayborder		: 1 solid #fb9906;
+	sundaybackground	: #ffffbe;
+	sundayborder		: 1 solid #7e8089;
+}
+
+CalendarControl>#popupcalendar>#prevbutton
+{
+	background		: url('Images::base/btn_CalPrev_N.png') center middle;
+	border			: 0 none #808080;
+}
+
+CalendarControl>#popupcalendar>#prevbutton:mouseover
+{
+	background		: url('Images::base/btn_CalPrev_O.png') center middle;
+}
+CalendarControl>#popupcalendar>#prevbutton:pushed
+{
+	background		: url('Images::base/btn_CalPrev_P.png') center middle;
+	shadow			: drop 0,0 0 #808080;
+}
+CalendarControl>#popupcalendar>#nextbutton
+{
+	background		: url('Images::base/btn_CalNext_N.png') center middle;
+	border			: 0 none #808080;
+}
+
+CalendarControl>#popupcalendar>#nextbutton:mouseover
+{
+	background		: url('Images::base/btn_CalNext_O.png') center middle;
+}
+CalendarControl>#popupcalendar>#nextbutton:pushed
+{
+	background		: url('Images::base/btn_CalNext_P.png') center middle;
+	shadow			: drop 0,0 0 #808080;
+}
+
+CalendarControl>#popupcalendar>#monthspin, CalendarControl>#popupcalendar>#yearspin
+{
+	background		: #ffffff;
+	border			: 1 solid #b2bbc3 ;
+	bordertype		: normal;
+	font			: ;
+	color			: #555555;
+	align			: left middle;
+	buttonsize		: ;
+	padding			: 0 0 0 3;
+}
+
+CalendarControl>#popupcalendar>#monthspin>#spinedit, CalendarControl>#popupcalendar>#yearspin>#spinedit
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: antialias 19 Meiryo UI, malgun gothic;
+	color			: #555555;
+	padding			: 0 0 0 3;
+	align			: left middle;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+}
+
+CalendarControl>#popupcalendar>#monthspin>#spinupbutton, CalendarControl>#popupcalendar>#yearspin>#spinupbutton
+{
+	background		: transparent url('Images::base/btn_spinup_N.png') stretch;
+	border			: 0 none;
+}
+CalendarControl>#popupcalendar>#monthspin>#spinupbutton:mouseover, CalendarControl>#popupcalendar>#yearspin>#spinupbutton:mouseover,
+CalendarControl>#popupcalendar>#monthspin>#spinupbutton:pushed, CalendarControl>#popupcalendar>#yearspin>#spinupbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spinup_O.png') stretch;
+	border			: 0 none;
+}
+
+CalendarControl>#popupcalendar>#monthspin>#spindownbutton, CalendarControl>#popupcalendar>#yearspin>#spindownbutton
+{
+	background		: transparent url('Images::base/btn_spindn_N.png') stretch;
+	border			: 0 none;
+}
+
+CalendarControl>#popupcalendar>#monthspin>#spindownbutton:mouseover, CalendarControl>#popupcalendar>#yearspin>#spindownbutton:mouseover,
+CalendarControl>#popupcalendar>#monthspin>#spindownbutton:pushed, CalendarControl>#popupcalendar>#yearspin>#spindownbutton:pushed
+{
+	background		: transparent url('Images::base/btn_spindn_O.png') stretch;
+	border			: 0 none;
+}
+CheckBoxControl
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #ffffff ;
+	buttonborder		: 1 solid #b2bbc3;
+	buttonbordertype	: round 3 3;
+	buttonimage		: url('Images::base/img_check.png');
+	buttonalign		: left center;
+	buttonsize		: 17;
+	textpadding		: 0 0 0 5;
+}
+CheckBoxControl:mouseover
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #ffffff 0,100 #e4e4e4 ;
+	buttonborder		: 1 solid #b2bbc3;
+	buttonbordertype	: round 3 3;
+	buttonimage		: url('Images::base/img_check.png');
+	buttonalign		: left center;
+	buttonsize		: 17;
+	textpadding		: 0 0 0 5;
+}
+CheckBoxControl:pushed
+{
+	background		: transparent;
+	border			: 0 none ;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonbackground	: @gradation;
+	buttongradation 	: linear 0,0 #e4e4e4 0,100 #ffffff ;
+	buttonborder		: 1 solid #b2bbc3;
+	buttonbordertype	: round 3 3;
+	buttonimage		: url('Images::base/img_check.png');
+	buttonalign		: left center;
+	buttonsize		: 17;
+	textpadding		: 0 0 0 5;
+}
+
+ComboControl
+{
+	background		: #ffffff;
+	border			: 1 solid #b2bbc3;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e;
+	align			: left middle;
+	itembackground		: #f6f6f6;
+	itemheight		: 19;
+	itemborder		: 0 none;
+	itempadding		: 0 7 0 7;
+	itemcolor		: #46586e;
+	buttonsize 		: ;
+}
+
+ComboControl:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	itembackground		: #d7d8dc;
+}
+
+ComboControl:focused, ComboControl:selected
+{
+	border	   		: 1 solid #1abd9c;
+	itembackground		: url('Images::base/cmb_list_BGS.png') repeat-x ;
+	itemcolor 		: #ffffff ;
+}
+
+ComboControl:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc4;
+	itembackground		: #888888 ;
+}
+
+ComboControl>#comboedit
+{
+	background		: transparent;
+	border			: 0 none ;
+	color			: #46586e;
+	padding			: 0 0 0 7;
+	align			: left middle;
+	font			: ;
+}
+
+ComboControl>#dropbutton
+{
+	background		: @gradation URL('Images::base/cmb_btn_drop.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #e4e4e4 ;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	bordertype		: normal;
+	image 			: ;
+}
+ComboControl>#dropbutton:mouseover
+{
+	background		: @gradation url('Images::base/cmb_btn_drop_O.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	image 			: ;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+}
+
+ComboControl>#dropbutton:pushed
+{
+	background		: @gradation url('Images::base/cmb_btn_drop_O.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	image 			: ;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+}
+
+ComboControl>#dropbutton:disabled
+{
+	background		: @gradation url('Images::base/cmb_btn_drop_D.png') stretch;
+	border			: 0 none, 0 none, 0 none, 1 solid #abb1b6;
+	image 			: ;
+	gradation 		: linear 0,0 #ffffff 0,100 #eeeeee ;
+}
+ComboControl>#combolist
+{
+	align			: left middle ;
+	border			: 1 solid #f48400 ;
+	bordertype		: normal ;
+	font			: ;
+}
+EditControl
+{
+	background		: #ffffff;
+	border			: 1 solid #b2bbc3;
+	bordertype		: normal;
+	color			: #46586e ;
+	align			: left middle ;
+	font			: ;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 0 7 0 7 ;
+}
+
+EditControl:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	background		: #ffffff url('Images::base/edit_bg_N.png') repeat-x left top;
+}
+EditControl:focused
+{
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+
+EditControl:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+
+MaskEditControl
+{
+	background		: #ffffff;
+	border			: 1 solid #b2bbc3;
+	bordertype		: normal;
+	color			: #46586e ;
+	align			: left middle ;
+	font			: ;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 0 7 0 7 ;
+}
+MaskEditControl:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	background		: #ffffff;
+}
+
+MaskEditControl:focused
+{
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+
+MaskEditControl:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+
+SpinControl
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	font			: ;
+	buttonsize		: ;
+	align			: left middle;
+}
+SpinControl:focused, SpinControl:mouseover, SpinControl:pushed
+{
+	border			: 1 solid #1abd9c;
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+}
+SpinControl:disabled
+{
+	background		: #f2f2f2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+SpinControl>#spinedit, SpinControl>#spinedit:mouseover, SpinControl>#spinedit:disabled
+{
+	background		: transparent;
+	border			: 0 none ;
+	color			: #46586e;
+	padding			: 0 0 0 7;
+	align			: left middle;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #ffffff ;
+	selectbackground	: transparent;
+	font			: ;
+}
+SpinControl>#spinupbutton, SpinControl>#spinupbutton:focused
+{
+	background		: url('Images::base/btn_spinup_N.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #f1f1f1 ;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spinupbutton:mouseover
+{
+	background		: url('Images::base/btn_spinup_O.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spinupbutton:pushed
+{
+	background		: url('Images::base/btn_spinup_P.png') stretch;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spinupbutton:disabled
+{
+	background		: url('Images::base/btn_spinup_D.png') stretch;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spindownbutton, SpinControl>#spindownbutton:focused
+{
+	background		: url('Images::base/btn_spindn_N.png') stretch;
+	gradation 		: linear 0,0 #f1f1f1 0,100 #e4e4e4 ;
+	border			: 0 none;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spindownbutton:mouseover
+{
+	background		: url('Images::base/btn_spindn_O.png') stretch;
+	gradation 		: linear 0,0 #ffffff 0,100 #cccccc ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spindownbutton:pushed
+{
+	background		: url('Images::base/btn_spindn_P.png') stretch;
+	gradation 		: linear 0,0 #e4e4e4 0,100 #ffffff ;
+	image 			: ;
+	imagealign		: center middle;
+}
+
+SpinControl>#spindownbutton:disabled
+{
+	background		: url('Images::base/btn_spindn_D.png') stretch;
+	border			: 0 none;
+	image			: ;
+	imagealign		: center middle;
+}
+
+TextAreaControl
+{
+	background		: #ffffff;
+	border			: 1 solid #8e97a0 ;
+	bordertype		: normal 0 0;
+	color			: #46586e ;
+	align			: left top ;
+	font			: ;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 1 1 1 7;
+	linespace		: 5;
+}
+TextAreaControl:focused, TextAreaControl:mouseover
+{
+	border	   		: 1 solid #1abd9c;
+	bordertype		: normal 0 0;
+}
+TextAreaControl:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+	bordertype		: normal 0 0;
+}
+
+/***** Control Component Start *****/
+
+/***** 필수입력 - required_input - Start*****/
+.required_input, .required_input:focused, .required_input:mouseover, .required_input:pushed
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #f79a00;
+	shadow			: drop 0,0 0 #00000024;
+}
+
+CheckBox.required_input,CheckBox.required_input:focused
+{
+	background		: transparent;
+	border			: 0 none;
+	buttonborder		: 1 solid #f79a00;
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #e6e7e8 0,50 #ffffff;
+}
+CheckBox.required_input:mouseover,CheckBox.required_input:pushed
+{
+	background		: transparent;
+	border			: 0 none;
+	buttonborder		: 1 solid #f79a00;
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #ffffff 0,50 #e6e7e8;
+}
+
+Radio.required_input,Radio.required_input:mouseover,Radio.required_input:pushed,Radio.required_input:focused
+{
+	background		: transparent;
+	border			: 0 none #808080;
+	font			: ;
+	padding			: 0 0 0 0;
+	color			: #46586e ;
+	align			: left middle;
+	buttonalign		: left middle;
+	buttonbackground	: @gradation;
+	buttonborder		: 1 solid #f79a00;	
+	buttongradation		: linear 0,0 #eceeef 0,100 #fefefe;	
+	buttonimage		: Images::base/radio_ico.png;	
+	buttonsize		: 20;
+	textpadding		: 0 0 0 5;
+	focusborder		: 0 none #808080;
+}
+Radio.required_input:mouseover,Radio.required_input:pushed
+{
+	buttonbackground	: @gradation;	
+	buttongradation		: linear 0,0 #fefefe 0,100 #eceeef;
+}
+
+/***** 필수입력 Class - required_input - End*****/
+
+/**** READONLY (Attribute Selector) ****/
+Edit:readonly
+{
+	background		: transparent;
+	border			: 1 solid #b2bbc3;
+	padding			: 0 6 0 6;
+	color			: 2c3e50;
+}
+
+
+
+TextArea:readonly
+{
+	background		: transparent;
+	border			: 1 solid #b2bbc3;
+	padding			: 1 1 1 1;
+	color			: 2c3e50;
+}MaskEdit:readonly
+{
+	background		: transparent;
+	border			: 1 solid #b2bbc3;
+	padding			: 0 6 0 6;
+	color			: 2c3e50;
+}
+
+Spin:readonly
+{
+	background		: #transparent;
+	border			: 1 solid #b2bbc3;
+	buttonsize		: -3;
+	itembackground		: red;
+	color			: 2c3e50;
+}
+
+Combo:readonly
+{
+	background		: #transparent;
+	border			: 1 solid #b2bbc3;
+	buttonsize		: -3;
+	color			: 2c3e50;
+}
+
+Calendar:readonly
+{
+	background		: #transparent;
+	border			: 1 solid #b2bbc3;
+	buttonsize		: -3;
+	color			: 2c3e50;
+}
+
+/***** BASIC COMPONENT END *****/
+
+
+/************ Class Components Start   ***********************/
+
+/************ Bottom Frame Class ****************/
+
+
+/************ Left Frame Class ****************/
+
+Grid.LF_grd_TreeMenu
+{
+	align			: left middle;
+	background		: #6f7a85;
+	border			: 0 none #808080ff;
+	bordertype		: normal;
+	color			: #ffffff;
+	cursor			: ;
+	font			: antialias bold 11 Meiryo UI, malgun gothic;
+	gradation		: ;
+	line			: ;
+	opacity			: ;
+	padding			: ;
+	shadow			: ;
+	treeclosebuttonimage	: url('Images::class/WF_grd_TreeClose.png');
+	treecollapseimage	: ;
+	treeexpandimage		: ;
+	treeitemimage		: url('Images::class/WF_grd_TreeItem.png');
+	treeitemmargin		: ;
+	treelinetype		: 0 none #a5b6b6ff ;
+	treeopenbuttonimage	: url('Images::class/WF_grd_TreeOpen.png');
+}
+Grid.LF_grd_TreeMenu:mouseover
+{
+	treeclosebuttonimage	: url('Images::class/WF_grd_TreeCloseO.png');
+	treeitemimage		: url('Images::class/WF_grd_TreeItemO.png');
+	treelinetype		: 0 none #a5b6b6ff ;
+	treeopenbuttonimage	: url('Images::class/WF_grd_TreeOpenO.png');
+}
+
+Grid.LF_grd_TreeMenu>#body
+{
+	background		: ;
+	border			: 0 none #808080ff ;
+	bordertype		: ;
+	cellalign		: left middle;
+	cellbackground		: #6f7a85;
+	cellbackground2		: #6f7a85;
+	cellcolor		: #ffffff;
+	cellcolor2		: #ffffff;
+	cellfont		: antialias bold 11 Meiryo UI, malgun gothic;
+	cellgradation		: ;
+	cellgradation2		: ;
+	cellline		: 0 none #808080ff,0 none #808080ff,1 solid #505a64,0 none #808080ff;
+	celllinespace		: 0;
+	celllinetype		: ;
+	cellpadding		: 0 0 0 0;
+	gradation		: ;
+	selectbackground	: #d4d9df;
+	selectgradation		: ;
+	selectline		: ;
+	selectlinetype		: ;
+	selectfont		: antialias bold 11 Meiryo UI, malgun gothic;
+	selectcolor		: #1abd9c;
+}
+Grid.LF_grd_TreeMenu>#body:mouseover
+{
+	cellbackground		: #7c8793;
+	cellbackground2		: #7c8793;
+	cellcolor		: #ffffff;
+	cellcolor2		: #ffffff;
+	cellfont		: ;
+	selectbackground	: #0084e5;
+	selectgradation		: ;
+	selectline		: ;
+	selectfont		: antialias bold 11 Meiryo UI, malgun gothic;
+	selectcolor		: #1abd9c;
+}
+Grid.LF_grd_TreeMenu>#vscrollbar
+{
+	background		: #0859a3;
+	gradation		: linear 0,0 #cdcfd2 100,0 #ffffff;
+	border			: 0 none,0 none,0 none,1 solid #0859a3 ;
+	bordertype		: normal;
+	scrollbarsize		: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+Grid.LF_grd_TreeMenu>#vscrollbar>#trackbar
+{
+	background		: #1a70bd;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	image			: url('Images::class/ScrollbarV_grd_Grip.png');
+	imagealign		: center middle;
+	shadow			: drop 0,0 0 #808080;
+}
+Grid.LF_grd_TreeMenu>#vscrollbar>#trackbar:mouseover
+{
+	background		: #686bf4;
+	gradation		: ;
+	image			: url('Images::class/ScrollbarV_grd_GripP.png');
+	imagealign		: center middle;
+}
+Grid.LF_grd_TreeMenu>#vscrollbar>#trackbar:pushed
+{
+	background		: #1a70bd;
+	border			: 0 none #808080;
+	image			: url('Images::class/ScrollbarV_grd_GripP.png');
+	imagealign		: center middle;
+}
+Grid.LF_grd_TreeMenu>#hscrollbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #cdcfd2 0,100 #ffffff;
+	border			: 1 solid #b3b6bc,0 none #808080,0 none #808080,0 solid #808080 ;
+	bordertype		: normal;
+	scrollbarsize	: 11;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+Grid.LF_grd_TreeMenu>#hscrollbar>#trackbar
+{
+	background		: #1a70bd;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	image			: url('Images::class/ScrollbarH_grd_Grip.png');
+	imagealign		: center middle;
+}
+Grid.LF_grd_TreeMenu>#hscrollbar>#trackbar:mouseover
+{
+	background		: #686bf4;
+	gradation		: linear 0,0 #dddee0 0,100 #dddee0;
+	image			: url('Images::class/ScrollbarH_grd_GripP.png');
+	imagealign		: center middle;
+}
+Grid.LF_grd_TreeMenu>#hscrollbar>#trackbar:pushed
+{
+	background		: #1a70bd;
+	border			: 0 none #808080;
+	image			: url('Images::class/ScrollbarH_grd_GripP.png');
+	imagealign		: center middle;
+}
+Grid.LF_grd_TreeMenu>#resizebutton
+{
+	background		: transparent url('Images::frame/btn_resize.png') right top ;
+	border 			: 0 none ;
+}
+
+Static.LF_sta_Bg
+{
+	background		: 686bf4;
+	gradation		: linear 0,0 #3c3c44 100,100 #35353d [85% #3c3c44];
+}
+Static.LF_sta_Logo
+{
+	background		: @gradation url('Images::class/LF_sta_Logo.png') center middle;
+	gradation		: linear 0,0 #5659e6 0,100 #4c4fcf [97% #4245b7];
+	border			: 3 solid #eb707e, 0 none, 0 none, 0 none;
+}
+
+/************ Login Area Class ****************/
+
+/************ Main Frame Class ****************/
+
+Button.MF_btn_IconList, Button.MF_btn_IconList:focused
+{
+	align			: center bottom;
+	background		: #ffffff url('Images::class/MF_002_Eco.png') center middle;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #c4c4c3;
+	bordertype		: round 7 7;
+	font			: antialias bold 10 Meiryo UI, 10 malgun gothic ;
+	color			: #46586e;
+	padding			: 0 0 10 0;
+	shadow			: ;
+}
+Button.MF_btn_IconList:mouseover, Button.MF_btn_IconList:selected
+{
+	align			: center bottom;
+	background		: #ffffff;
+	border			: 5 solid #1abd9c;
+	bordertype		: round 7 7;
+	color			: #5659e7;
+	padding			: 0 0 6 0;
+}
+
+Button.MF_btn_IconList:pushed
+{
+	align			: center bottom;
+	background		: #ffffff;
+	border			: 5 solid #5659e7;
+	bordertype		: round 7 7;
+	color			: #5659e7;
+	padding			: 0 0 6 0;
+}
+
+Button.MF_btn_IconList:disabled
+{
+	align			: center bottom;
+	background		: #ffffff;
+	border			: 1 solid #939496ff;
+	bordertype		: round 7 7;
+	color			: #ffffff80;
+	padding			: 0 0 10 0;
+}
+
+/************ Top Frame Class ****************/
+
+Button.TF_btn_Home, Button.TF_btn_Home:focused
+{
+	align			: center middle;
+	background		: @gradation url('Images::class/MDI_btn_Home.png') center middle;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	font			: antialias bold 12 Meiryo UI, 12 malgun gothic ;
+	color			: #ffffff;
+	padding			: 0 0 0 25;
+	shadow			: ;
+}
+Button.TF_btn_Home:mouseover
+{
+	align			: center middle;
+	background		: @gradation url('Images::class/MDI_btn_HomeO.png') center middle;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #ffffff;
+	padding			: 0 0 0 25;
+}
+Button.TF_btn_Home:selected, Button.TF_btn_Home:pushed
+{
+	align			: center middle;
+	background		: #ffffff url('Images::class/MDI_btn_HomeO.png') center middle;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #939496ff, 1 solid #939496ff, 1 solid #ffffff, 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #ffffff;
+	padding			: 0 0 0 25;
+}
+Button.TF_btn_Home:disabled
+{
+	align			: center middle;
+	background		: #eeeeee url('Images::class/MDI_btn_Home.png') center middle;
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #ffffff80;
+	padding			: 0 0 0 25;
+}
+
+Button.TF_btn_MDI, Button.TF_btn_MDI:focused
+{
+	align			: left middle;
+	background		: @gradation ;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #46586e;
+	padding			: 0 0 0 20;
+	shadow			: ;
+}
+Button.TF_btn_MDI:mouseover
+{
+	align			: left middle;
+	background		: @gradation ;
+	gradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #5659e7;
+	padding			: 0 0 0 20;
+}
+Button.TF_btn_MDI:pushed, Button.TF_btn_MDI:selected
+{
+	align			: left middle;
+	background		: #ffffff;
+	border			: 1 solid #939496ff, 1 solid #939496ff, 1 solid #ffffff, 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #5659e7;
+	padding			: 0 0 0 20;
+}
+
+Button.TF_btn_MDI:disabled
+{
+	align			: left middle;
+	background		: #eeeeee;
+	border			: 1 solid #939496ff;
+	bordertype		: round 5 5 lefttop righttop;
+	color			: #ffffff80;
+	padding			: 0 0 0 20;
+}
+
+Button.TF_btn_MDIClose, Button.TF_btn_MDIClose:focused
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_Extra.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #46586e;
+	padding			: 0 0 0 0;
+	shadow			: ;
+}
+Button.TF_btn_MDIClose:mouseover
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_ExtraO.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+Button.TF_btn_MDIClose:pushed, Button.TF_btn_MDIClose:selected
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_ExtraO.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+
+Button.TF_btn_MDIClose:disabled
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_Extra.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #ffffff80;
+	padding			: 0 0 0 0;
+}
+
+Button.TF_btn_MDINext, Button.TF_btn_MDINext:focused
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpindnN.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #46586e;
+	padding			: 0 0 0 0;
+	shadow			: ;
+}
+Button.TF_btn_MDINext:mouseover, Button.TF_btn_MDINext:selected
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpindnO.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+Button.TF_btn_MDINext:pushed
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpindnP.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+Button.TF_btn_MDINext:disabled
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpindnD.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #ffffff80;
+	padding			: 0 0 0 0;
+}
+
+Button.TF_btn_MDIPrev, Button.TF_btn_MDIPrev:focused
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpinupN.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #46586e;
+	padding			: 0 0 0 0;
+	shadow			: ;
+}
+Button.TF_btn_MDIPrev:mouseover, Button.TF_btn_MDIPrev:selected
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpinupO.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+Button.TF_btn_MDIPrev:pushed
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpinupP.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #1abd9c;
+	padding			: 0 0 0 0;
+}
+Button.TF_btn_MDIPrev:disabled
+{
+	align			: center middle;
+	background		: transparent url('Images::class/MDI_tab_SpinupD.png') center middle;
+	border			: 0 none;
+	bordertype		: normal;
+	color			: #ffffff80;
+	padding			: 0 0 0 0;
+}
+
+Static.TF_sta_Bg
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #dedfe2 [50% #f8f9f9] [75% #e6e8ea] [95% #e1e2e5];
+	border			: 3 solid #eb707e, 0 none, 1 solid #939496ff, 0 none;
+}
+
+Tab.TF_tab_MDI
+{
+	background		: ;
+	border			: 0 none #939496;
+	bordertype		: normal ;
+	align			: center middle;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #ffffff;
+	buttonborder		: 1 solid #939496ff;
+	buttonbordertype	: round 5 5 lefttop righttop;
+	buttonbackground	: @gradation;
+	buttongradation		: linear 0,0 #c5c7c9ff 0,100 #939496 [5% #b9bbbdff][10% #bfc0c1ff][55% #ccccccff][97% #acaeb0ff];
+	buttonpadding		: 11 0 11 18;
+	showextrabutton 	: true ;
+}
+Tab.TF_tab_MDI:selected, Tab.TF_tab_MDI:focused,Tab.TF_tab_MDI:mouseover
+{
+	font			: ;
+	color 		        : #5659e7;
+	buttongradation		: linear 0,0 #f7f7f7ff 0,100 #fefefeff [5% #e5e5e5ff];
+}
+Tab.TF_tab_MDI>#spinupbutton
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::class/MDI_tab_SpinupN.png') center middle;
+}
+Tab.TF_tab_MDI>#spinupbutton:mouseover
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::class/MDI_tab_SpinupO.png') center middle;
+}
+Tab.TF_tab_MDI>#spinupbutton:disabled
+{
+	background		: url('Images::class/MDI_tab_SpinupD.png') center middle;
+}
+Tab.TF_tab_MDI>#spindownbutton
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::class/MDI_tab_SpindnN.png') center middle;
+}
+Tab.TF_tab_MDI>#spindownbutton:mouseover
+{
+	border			: 0 none;
+	bordertype		: normal;
+	background		: url('Images::class/MDI_tab_SpindnO.png') center middle;
+}
+Tab.TF_tab_MDI>#spindownbutton:disabled
+{
+	background		: url('Images::class/MDI_tab_SpindnD.png') center middle;
+}
+Tab.TF_tab_MDI>#extrabutton
+{
+	background		: transparent;
+	border			: normal 0 0;
+	bordertype		: 0 none;
+	image			: Images::class/MDI_tab_Extra.png;
+	imagealign		: center middle;
+	padding			: 2 0 0 0;
+	imagepadding		: 0 0 0 0 ;
+	margin			: 0 0 0 0 ;
+}
+Tab.TF_tab_MDI>#extrabutton:mouseover
+{
+	background		: transparent;
+	border			: normal 0 0;
+	bordertype		: 0 none;
+	image			: Images::class/MDI_tab_SpindnO.png;
+	imagealign		: center middle;
+	padding			: 2 0 0 0;
+	imagepadding		: 0 0 0 0 ;
+	margin			: 0 0 0 0 ;
+}
+
+/************		Work Frame	*************/
+
+Button.WF_btn_Help, Button.WF_btn_Help:focused
+{
+	align			: center middle;
+	background		: #1abd9c url('Images::class/WF_btn_Help.png') left middle;
+	border			: 1 solid #08a384;
+	bordertype		: round 3 3;
+	font			: antialias bold 12 Meiryo UI, malgun gothic ;
+	color			: #ffffff;
+	padding			: 0 0 0 25;
+}
+Button.WF_btn_Help:mouseover, Button.WF_btn_Help:selected, Button.WF_btn_Help:pushed
+{
+	align			: center middle;
+	background		: #5659e7 url('Images::class/WF_btn_Help.png') left middle;
+	border			: 1 solid #484bd9;
+	color			: #ffffff;
+	padding			: 0 0 0 25;
+}
+
+Button.WF_btn_Help:disabled
+{
+	align			: center middle;
+	background		: #6c849f url('Images::class/WF_btn_Help.png') left middle
+	border			: 1 solid #7d7f80;
+	color			: #ffffff80;
+	padding			: 0 0 0 25;
+}
+
+Button.WF_btn_Inner, Button.WF_btn_Inner:focused
+{
+	border			: 1 solid #7d7f80;
+	bordertype		: round 3 3;
+	gradation		: linear 0,0 #f3f3f3 0,100 #dddddd ;
+	font			: antialias bold 9 Meiryo UI, malgun gothic ;
+	color			: #525969;
+	shadow			: drop 0,1 2 #00000050;
+}
+Button.WF_btn_Inner:mouseover, Button.WF_btn_Inner:selected
+{
+	border			: 1 solid #7d7f80;
+	color			: #000000;
+	gradation		: linear 0,0 #ffffff 0,100 #dedede;
+}
+
+Button.WF_btn_Inner:pushed
+{
+	border			: 1 solid #7d7f80;
+	color			: #000000;
+	gradation		: linear 0,0 #e2e2e2 0,100 #f3f3f3 ;
+	shadow			: drop 0,0 0 #00000024;
+}
+
+Button.WF_btn_Inner:disabled
+{
+	border			: 1 solid #7d7f80;
+	color			: #999999;
+	gradation		: linear 0,0 #f3f3f3 0,100 #e3e3e3;
+}
+
+Button.WF_btn_Point, Button.WF_btn_Point:focused
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #838996 0,100 #535a6a [5% #717784] [45% #666c7a][50% #5d6473] [55% #5d6473];
+	border			: 1 solid #444a56;
+	bordertype		: round 4 4;
+	color			: #ffffff;
+	font			: antialias bold 9 Meiryo UI, malgun gothic ;
+	shadow			: drop 0,1 2 #00000050;
+}
+Button.WF_btn_Point:mouseover, Button.WF_btn_Point:selected
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #a4a9b6 0,100 #7c8290 [40% #696f7c][45% #5c6271][50% #555c6d];
+	color			: #ffffff;
+	border			: 1 solid #444a56;
+}
+
+Button.WF_btn_Point:pushed
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #8b909d 0,100 #8f95a4 [5% #666b79] ;
+	color			: #ffffff ;
+	shadow			: drop 0,0 0 #00000050;
+	border			: 1 solid #444a56;
+}
+
+Button.WF_btn_Point:disabled
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #737987 0,100 #626979;
+	border			: 1 solid #444a56;
+	color			: #b5b9c0;
+	shadow			: drop 0,0 0 #00000050;
+}
+
+Button.WF_btn_SearchS, Button.WF_btn_SearchS:focused
+{
+	background		: @gradation url('Images::class/WF_btn_SearchS.png') stretch;
+	bordertype		: round 3 3;
+}
+
+Button.WF_btn_Prev
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #a2a3ab 0,100 #7e8089 [50% #86888f][50% #7e8089];
+	border			: 1 solid #666666;
+	bordertype		: round 15 15;
+	image			: url('Images::class/WF_btn_SchedulePrev.png');
+	shadow			: drop 0,1 1 #00000050;
+}
+
+Button.WF_btn_Next
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #a2a3ab 0,100 #7e8089 [50% #86888f][50% #7e8089];
+	border			: 1 solid #666666;
+	bordertype		: round 15 15;
+	image			: url('Images::class/WF_btn_ScheduleNext.png');
+	shadow			: drop 0,1 1 #00000050;
+}
+
+Button.WF_btn_ScheduleChk:focused,Button.WF_btn_ScheduleChk:selected,Button.WF_btn_ScheduleChk:pushed,Button.WF_btn_ScheduleChk:mouseover
+{
+	border			: 0 none #808080;
+	align			: center top;
+	font			: antialias bold 9 Meiryo UI, malgun gothic;
+	color			: #19191b;
+	background		: url('Images::class/WF_btn_ScheduleChk.png') center bottom;
+	padding			: 1 0 0 0;
+	shadow			: drop 0,0 0 #808080;
+}
+
+CheckBox.WF_chk_Switch, CheckBox.WF_chk_Switch:focused
+{
+	align			: left middle;
+	background		: transparent;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e ;
+	buttonalign		: left middle;
+	buttonborder		: 0 none #00000000;
+	buttonbordertype	: normal 0 0;
+	buttonbackground	: transparent URL('Images::class/WF_chk_Switch_N.png') center middle;
+	buttonimage		: URL('Images::class/WF_chk_Switch.png');
+	buttonsize		: 50;
+	color			: #7f8c9a;
+	textpadding		: 0 0 0 5;
+}
+CheckBox.WF_chk_Switch:mouseover, CheckBox.WF_chk_Switch:pushed
+{
+	align			: left middle;
+	background		: transparent;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	buttonalign		: left middle;
+	buttonborder		: 0 none;
+	buttonbordertype	: normal 0 0;
+	buttonbackground	: URL('Images::class/WF_chk_Switch_N.png') center middle;
+	buttonimage		: URL('Images::class/WF_chk_Switch.png');
+	buttonsize		: 50;
+	color			: #1abd9c;	
+	textpadding		: 0 0 0 5;
+}
+CheckBox.WF_chk_Switch, CheckBox.WF_chk_Switch:disabled
+{
+	align			: left middle;
+	background		: transparent;
+	border			: 0 none #808080;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e ;
+	buttonalign		: left middle;
+	buttonborder		: 0 none #00000000;
+	buttonbordertype	: normal 0 0;
+	buttonbackground	: transparent URL('Images::class/WF_chk_Switch_N.png') center middle;
+	buttonimage		: URL('Images::class/WF_chk_Switch.png');
+	buttonsize		: 50;
+	color			: #7f8c9a;
+	textpadding		: 0 0 0 5;
+}
+
+Div.WF_div_View, Div.WF_div_View:mouseover
+{
+	border			: 0 none;
+	bordertype		: normal;
+}
+Div.WF_div_View>#vscrollbar
+{
+	background		: transparent ;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 13;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+	padding		 	: 0 3 0 0;
+}
+Div.WF_div_View>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+Div.WF_div_View>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+Div.WF_div_View>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+Div.WF_div_View>#hscrollbar
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+Div.WF_div_View>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+Div.WF_div_View>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+Div.WF_div_View>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+Div.WF_div_View>#ResizeButtonControl
+{
+	background		: url('Images::frame/btn_resize.png') right top ;
+	border 			: 0 none ;
+}
+
+Grid.WF_grd_Chart
+{
+	background		: #ffffff;
+	border			: 1 solid #b5b7bb;
+	bordertype		: round 7 7;
+	focusborder		: 0 none;
+	treeopenbuttonimage	: url('Images::class/WF_grd_TreeClose.png');
+	treeclosebuttonimage	: url('Images::class/WF_grd_TreeOpen.png');
+	treecollapseimage	: ;
+	treeexpandimage		: ;
+	treeitemimage		: url('Images::class/WF_grd_TreeItem.png');
+	treelinetype		: 1 dotted #a5b6b6;
+	color                   : #46586e ;
+}
+Grid.WF_grd_Chart>#head
+{
+	background		: @gradation ;
+	gradation		: linear 0,0 #fefeff 0,100 #d9d9da;
+	border			: 0 none, 0 none, 1 solid #9b9b9b, 0 none ;
+	cellbackground		: ;
+	cellcolor		: #46586e;
+	cellfont		: ;
+	cellline		: 0 none #808080;
+}
+Grid.WF_grd_Chart>#body
+{
+	background		: transparent ;
+	border			: 0 none;
+	align			: center middle;
+	font			: ;
+	color			: #46586e;
+	cellalign		: center middle;
+	cellbackground		: #ffffff;
+	cellbackground2		: #f1f1f3;
+	cellline		: 0 none, 0 none, 1 solid #ffffff, 0 none;
+	celllinetype		: normal;
+	cellfont		: ;
+	cellcolor		: #46586e;
+	selectbackground	: #7e8089;
+	selectborder		: 0 none, 0 none, 1 solid #ffffff, 0 none;
+	selectfont		: ;
+	selectcolor		: #ffffff;
+}
+Grid.WF_grd_Chart>#body:mouseover
+{
+	cellbackground		: #c3c5cb;
+	cellbackground2		: #c3c5cb;
+	selectbackground	: #7e8089;
+	selectcolor		: #ffffff;
+}
+Grid.WF_grd_Chart>#summary
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #fefefe 0,100 #e7e7e7;
+	border			: 0 none;
+	cellbackground		: transparent;
+	cellcolor		: #46586e;
+	cellfont		: ;
+	cellline		: 1 solid #b1b1b1;
+	cellalign       	: right middle;
+}
+Grid.WF_grd_Chart>#controlbutton,Grid.WF_grd_Chart>#controlbutton:mouseover,Grid.WF_grd_Chart>#controlbutton:selected,
+Grid.WF_grd_Chart>#controlbutton:focused,Grid.WF_grd_Chart>#controlbutton:pushed
+{
+	background		: transparent url('Images::class/WF_grd_Launch.png') stretch;
+	border			: 0 none #808080;
+	pusheddrawoffset	: 1 1;
+}
+
+Grid.WF_grd_Message
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5;
+	focusborder		: 0 none;
+	treeopenbuttonimage	: url('Images::class/WF_grd_TreeClose.png');
+	treeclosebuttonimage	: url('Images::base/WF_grd_TreeOpen.png');
+	treecollapseimage	: ;
+	treeexpandimage		: ;
+	treeitemimage		: url('Images::base/WF_grd_TreeItem.png');
+	treelinetype		: 1 dotted #a5b6b6;
+	color                   : #46586e ;
+}
+
+Grid.WF_grd_Message>#head
+{
+	background		: @gradation ;
+	gradation		: linear 0,0 #fefeff 0,100 #d9d9da;
+	border			: 0 none, 0 none, 1 solid #9b9b9b, 0 none ;
+	cellbackground		: ;
+	cellcolor		: #46586e;
+	cellfont		: ;
+	cellline		: 1 solid #b1b1b1;
+}
+Grid.WF_grd_Message>#body
+{
+	background		: transparent ;
+	border			: 0 none;
+	align			: center middle;
+	font			: ;
+	color			: #46586e;
+	cellalign            	: center middle;
+	cellbackground		: #ffffff;
+	cellbackground2		: #f1f1f3;
+	cellline		: 0 none #808080,1 solid #9b9b9b;
+	celllinetype		: normal;
+	cellfont		: ;
+	cellcolor		: #46586e;
+	selectbackground	: #7e8089;
+	selectborder		: 0 none, 0 none, 1 solid #ffffff, 0 none;
+	selectfont		: ;
+	selectcolor		: #ffffff;
+}
+Grid.WF_grd_Message>#body:mouseover
+{
+	cellbackground		: #c3c5cb;
+	cellbackground2		: #c3c5cb;
+	selectbackground	: #7e8089;
+	selectcolor		: #ffffff;
+}
+
+Static.WF_sta_Dsc
+{
+	color			: #546687 ;
+	padding     		: 0 0 0 20 ;
+	background		: url('Images::class/WF_sta_Dsc.png') left middle ;
+}
+
+Static.WF_sta_DscP
+{
+	color			: #ea5810 ;
+	padding     		: 0 0 0 20 ;
+	background		: url('Images::class/WF_sta_DscP.png') left middle ;
+}
+
+Static.WF_sta_DscP
+{
+	color			: #546687 ;
+	padding     		: 0 0 0 20 ;
+	background		: url('Images::class/WF_sta_Location.png') left middle ;
+}
+
+Static.WF_sta_Popup
+{
+	align			: left middle;
+	background		: url('Images::class/WF_sta_Popup.png') left middle;
+	padding			: 0 0 0 20;
+	color			: #ffffff;
+	font			: antialias bold 11 Meiryo UI, malgun gothic;
+}
+Static.WF_sta_Title
+{
+	align			: left middle;
+	background		: url('Images::class/WF_sta_Title.png') left middle;
+	border			: 0 none, 0 none, 2 solid #5659e7, 0 none;
+	padding			: 1 0 0 28;
+	color			: #5659e7;
+	font			: antialias bold 12 Meiryo UI, malgun gothic;
+}
+
+Static.WF_sta_SubTitle
+{
+	align			: left middle;
+	background		: url('Images::class/WF_sta_SubTitle.png') left middle;
+	padding			: 0 0 2 19;
+	color			: #46586e;
+	font			: antialias bold 9 Meiryo UI, malgun gothic;
+}
+
+/************		Work Frame Data Area	*************/
+
+Static.WFT_sta_Bg
+{
+	background		: #caccd0;
+	border			: 1 solid #939496,0 none #808080,1 solid #939496,0 none #808080;
+}
+
+Static.WFDA_sta_LabelThrough
+{
+	background		: #f6f8f9;
+	border			: 1 solid #c6cbce, 0 none, 1 solid #c6cbce, 0 none;
+	padding			: 0 0 0 11;
+}
+
+Static.WFDA_sta_LabelLT, Static.WFDA_sta_LabelLT:disabled, Static.WFDA_sta_LabelLT:mouseover
+{
+	background		: #f1f1f1;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 lefttop;
+	font			: ;
+	color			: #46586e;
+	align			: right middle ;
+	padding			: 0 11 0 0;
+}
+
+Static.WFDA_sta_LabelNormal, Static.WFDA_sta_LabelNormal:disabled, Static.WFDA_sta_LabelNormal:mouseover
+{
+	background		: #f1f1f1;
+	border			: 1 solid #c0c0c0;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e;
+	align			: right middle ;
+	padding			: 0 11 0 0;
+}
+
+Static.WFDA_sta_LabelLB, Static.WFDA_sta_LabelLB:disabled, Static.WFDA_sta_LabelLB:mouseover
+{
+	background		: #f1f1f1;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 leftbottom;
+	font			: ;
+	color			: #46586e;
+	align			: right middle ;
+	padding			: 0 11 0 0;
+}
+
+Static.WFDA_sta_LabelLTLB, Static.WFDA_sta_LabelLTLB:disabled, Static.WFDA_sta_LabelLTLB:mouseover
+{
+	background		: #f1f1f1;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 lefttop leftbottom;
+	font			: ;
+	color			: #46586e;
+	align			: right middle ;
+	padding			: 0 11 0 0;
+}
+
+Static.WFDA_sta_BlockRT, Static.WFDA_sta_BlockRT:disabled, Static.WFDA_sta_BlockRT:mouseover
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 righttop;
+	font			: ;
+	color			: #46586e;
+	align			: left middle ;
+	padding			: 0 0 0 11;
+}
+
+Static.WFDA_sta_BlockNormal, Static.WFDA_sta_BlockNormal:disabled, Static.WFDA_sta_BlockNormal:mouseover
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: normal;
+	font			: ;
+	color			: #46586e;
+	align			: left middle ;
+	padding			: 0 0 0 11;
+}
+
+Static.WFDA_sta_BlockRB, Static.WFDA_sta_BlockRB:disabled, Static.WFDA_sta_BlockRB:mouseover
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 rightbottom;
+	font			: ;
+	color			: #46586e;
+	align			: left middle ;
+	padding			: 0 0 0 11;
+}
+Static.WFDA_sta_BlockRTRB, Static.WFDA_sta_BlockRTRB:disabled, Static.WFDA_sta_BlockRTRB:mouseover
+{
+	background		: #ffffff;
+	border			: 1 solid #c0c0c0;
+	bordertype		: round 5 5 righttop rightbottom;
+	font			: ;
+	color			: #46586e;
+	align			: left middle ;
+	padding			: 0 0 0 11;
+}
+
+/************		Work Frame Search Area	*************/
+
+Button.WFSA_btn_Search,Button.WFSA_btn_Search:focused
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #ff8c00 0,100 #bf430e [5% #fe6900] [45% #ef6906][50% #db5c17] [90% #c84a12][95% #bf430e];
+	border			: 1 solid #b92c00;
+	bordertype		: round 4 4;
+	color			: #ffffffff;
+	font			: antialias bold 9 Meiryo UI, malgun gothic ;
+	align			: right middle;
+	image			: url('Images::class/WFSA_btn_Search.png');
+	imagealign		: left middle;
+	shadow			: drop 0,1 2 #00000050;
+	padding			: 0 6 0 6;
+}
+Button.WFSA_btn_Search:mouseover, Button.WFSA_btn_Search:selected
+{
+	border			: 1 solid #b92c00;
+	gradation		: linear 0,0 #ffca00 0,100 #f49103 [45% #ef6a06] [50% #d75817] [55% #cb4b16];
+	color			: #ffffffff;
+}
+
+Button.WFSA_btn_Search:pushed
+{
+	border			: 1 solid #b92c00;
+	gradation		: linear 0,0 #f2a709 0,100 #ff6c00 [5% #dc5d17];
+	color			: #ffffffff;
+	shadow			: drop 0,0 0 #00000050;
+}
+
+Button.WFSA_btn_Search:disabled
+{
+	border			: 1 solid #b92c00;
+	background		: #e97b2b ;
+	color			: #eaaf8e ;
+	shadow			: drop 0,0 0 #00000050;
+}
+
+Static.WFSA_sta_Bg
+{
+	border			: 1 solid #ff9000;
+	bordertype		: round 5 5;
+	background		: @gradation;
+	gradation		: linear 0,0 #ffffff 0,100 #f1f1f1;
+	shadow			: drop 1,1 1 #00000024;
+}
+
+Static.WFSA_sta_Label
+{
+	background		: url('Images::base/WFSA_sta_Label.png') left middle;
+	padding			: 0 0 0 8;
+	color			: #46586e;
+}
+
+
+/************ ETC cless start ****************/
+
+Static.WF_sta_Orange
+{
+	background		: transparent ;
+	border			: 0 none #c6cbce ;
+	bordertype		: normal 0 0;
+	font 			: ;
+	color			: #f79a00;
+	padding			: 0 0 0 0;
+	shadow			: ;
+}
+
+Static.WFDA_sta_header
+{
+	background		: @gradation ;
+	gradation		: linear 0,0 #ffffff 0,100 #e1e1e1 ;
+	border			: 0 none #156ab0, 1 solid #c6c6c6, 1 solid #c6c6c6, 1 solid #c6c6c6 ;
+	bordertype		: normal 0 0;
+	align			: center middle;
+	color			: #46586e;
+	font 			: antialias bold 10 Meiryo UI, 10 malgun gothic;
+	padding			: 0 0 0 0;
+}
+Static.WFDA_sta_label
+{
+	align			: left middle;
+	background		: #f6f8f9;
+	border			: 1 solid #c6cbce;
+	font			: antialias bold 10 Meiryo UI, malgun gothic;
+	color			: #46586e;
+	padding			: 0 0 0 11;
+}
+Static.WFDA_sta_BoxR
+{
+	background		: #ffffff ;
+	border			: 1 solid #c6cbce ;
+	bordertype		: normal 0 0;
+	font			: ;
+	padding			: 0 0 4 11;
+	shadow			: ;
+}
+Static.WFDA_sta_Box
+{
+	background		: #ffffff ;
+	border			: 1 solid #c6cbce ;
+	bordertype		: normal 0 0;
+	font 			: ;
+	padding			: 0 0 4 11;
+	shadow			: ;
+}
+
+TextArea.WFDA_text_Box
+{
+	background		: #ffffff url('Images::base/bg_input.png') left top repeat-x;
+	border			: 1 solid #bdbfc3ff,0 none #8e97a0ff,0 none #8e97a0ff,0 none #8e97a0ff ;
+	bordertype		: round 4 4;
+	color			: #46586e ;
+	align			: left top ;
+	font			: antialias 9 Meiryo UI, malgun gothic;
+	caretcolor		: #316ac5 ;
+	compositecolor		: #ffffff ;
+	linespace		: 1;
+	selectcolor		: #444444 ;
+	selectbackground	: transparent;
+	padding			: 7 7 1 0;
+	linespace		: 5;
+}
+TextArea.WFDA_text_Box:mouseover
+{
+	border			: 1 solid #1abd9c;
+}
+TextArea.WFDA_text_Box:focused
+{
+	border			: 1 solid #1abd9c;
+	selectcolor		: #ffffff;
+	selectbackground	: #316ac5;
+}
+TextArea.WFDA_text_Box:disabled
+{
+	background		: #e2e2e2;
+	color			: #888888;
+	border			: 1 solid #b2bbc3;
+}
+TextArea.WFDA_text_Box>#vscrollbar
+{
+	background		: transparent ;
+	border			: 0 none ;
+	bordertype		: round 5 5 righttop rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+TextArea.WFDA_text_Box>#vscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarV_trackbar_grip.png');
+	imagealign		: center middle;
+	shadow			: drop 1,1 3 #00000033;
+}
+TextArea.WFDA_text_Box>#vscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 100,0 #d0d6dc;
+}
+TextArea.WFDA_text_Box>#vscrollbar>#trackbar:pushed
+{
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	image			: url('Images::frame/scrollbarV_trackbar_grip_P.png');
+	imagepadding     	: 0 1 0 1 ;
+}
+TextArea.WFDA_text_Box>#hscrollbar
+{
+	background		: transparent;
+	border			: 0 none;
+	bordertype		: round 5 5 leftbottom rightbottom;
+	scrollbarsize		: 7;
+	incbtnsize		: 0;
+	decbtnsize		: 0;
+	barminsize		: 40;
+}
+TextArea.WFDA_text_Box>#hscrollbar>#trackbar
+{
+	background		: @gradation;
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+	border			: 1 solid #9b9b9b;
+	bordertype		: round 6 6;
+	image			: url('Images::frame/scrollbarH_trackbar_grip.png');
+	imagealign		: center middle;
+}
+TextArea.WFDA_text_Box>#hscrollbar>#trackbar:mouseover
+{
+	gradation		: linear 0,0 #eaebec 0,100 #d0d6dc;
+}
+TextArea.WFDA_text_Box>#hscrollbar>#trackbar:pushed
+{
+	image			: url('Images::frame/scrollbarH_trackbar_grip_P.png');
+	background		: #f0e0cb;
+	border			: 1 solid #e0932f;
+	imagepadding		: 1 0 1 0 ;
+}
+
+.WF_grd_Cell
+{
+	accessibility		: ;
+	align			: ;
+	background		: #505a64;
+	background2		: #505a64;
+	backgroundimage		: ;
+	color			: ;
+	color2			: ;
+	controlaccessibility	: ;
+	controlalign		: ;
+	controlbackground	: ;
+	controlborder		: ;
+	controlbordertype	: ;
+	controlbuttonsize	: ;
+	controlcolor		: ;
+	controlfont		: ;
+	controlgradation	: ;
+	cursor			: ;
+	font			: ;
+	gradation		: ;
+	gradation2		: ;
+	line			: ;
+	linespace		: ;
+	padding			: ;
+	selectbackground	: #1abd9c;
+	selectcolor		: ;
+	selectfont		: ;
+	selectgradation		: ;
+	selectline		: ;
+}

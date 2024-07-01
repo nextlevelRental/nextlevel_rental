@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test_form" classname="test_form" left="0" top="0" width="1147" height="496" titletext="공지사항목록" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="6" binddataset="dsList" useinputpanel="false" autofittype="none" top="86" oncelldblclick="Grid00_oncelldblclick" left="0" height="410" right="25">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="107"/>
+                <Column size="499"/>
+                <Column size="115"/>
+                <Column size="152"/>
+                <Column size="92"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="공지구분"/>
+                <Cell col="2" text="제목"/>
+                <Cell col="3" text="첨부파일 정보"/>
+                <Cell col="4" text="작성자"/>
+                <Cell col="5" text="작성일"/>
+                <Cell col="6" text="조회수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ntcSeq"/>
+                <Cell col="1" text="bind:ntcType"/>
+                <Cell col="2" style="align:left;" text="bind:title"/>
+                <Cell col="3" text="bind:fileCnt"/>
+                <Cell col="4" text="bind:regId"/>
+                <Cell col="5" displaytype="date" text="bind:regDt"/>
+                <Cell col="6" text="bind:readCnt"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="12" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="24" text="검색" cssclass="sta_WF_schTitle" left="20" top="9" height="20" domainId="nexa.s_condition" width="70"/>
+              <Combo id="cmb_searchCondition" taborder="25" value="-1" text="선택" codecolumn="codecolumn" datacolumn="datacolumn" index="0" top="10" height="21" domainId="nexa.name;nexa.code" onitemchanged="div_search_cmb_searchCondition_onitemchanged" width="140" left="61">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">0</Col>
+                      <Col id="datacolumn">제목</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">1</Col>
+                      <Col id="datacolumn">작성자</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Edit id="edt_searchKeyword" taborder="26" onkeyup="enterKeySearch" top="10" height="21" width="260" left="206"/>
+              <Calendar id="regFdt" taborder="29" top="9" height="21" readonly="false" width="120" left="550"/>
+              <Calendar id="regTdt" taborder="30" top="9" height="21" readonly="false" width="120" left="685"/>
+              <Static id="st_searchCondition00" taborder="31" text="작성일" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="70" left="496"/>
+              <Static id="Static12" taborder="32" text="~" left="673" top="9" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="61" width="81" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="76" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="fileCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsCopy" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ntcSeq" type="STRING" size="256"/>
+          <Column id="ntcType" type="STRING" size="256"/>
+          <Column id="title" type="STRING" size="256"/>
+          <Column id="contents" type="STRING" size="256"/>
+          <Column id="startDt" type="STRING" size="256"/>
+          <Column id="endDt" type="STRING" size="256"/>
+          <Column id="readCnt" type="STRING" size="256"/>
+          <Column id="attchFlSeq" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+	this.prgmCd;	//프로그램CD
+	
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+		
+		Ex.core.init(obj);
+		
+		var d = this.DateDemo().replace("/", "");
+		this.div_search.regFdt.set_value(d + "01");
+		var cDate = new Date(this.DateDemo() + "/01");
+		cDate.addMonth(1);
+		cDate.addDate(-1);
+		var lastDay = cDate.getDate();
+		this.div_search.regTdt.set_value(d + lastDay);
+		
+		this.fn_search();
+	} 
+
+
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.Grid00);
+	}
+
+	this.DateDemo = function(){
+	
+		var obj, y, m, d, s = "";
+		obj = new Date();
+		s += obj.getFullYear() + "/";
+		m = obj.getMonth() + 1;
+		if(String(m).length == 1) {
+			m = "0" + m;
+		} 
+		s += m + "";
+		return(s);
+	}
+
+
+	this.btnAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		this.dsList.addRow();
+	}
+
+	this.btnDel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		var col = this.Grid00.currentrow;
+		this.dsList.deleteRow(col);
+	}
+
+	this.Button06_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		this.D.addRow();
+	}
+
+	this.Button07_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		var col = this.Grid01.currentrow;
+		this.D.deleteRow(col);
+	}
+
+	//조회
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var sSvcID        	= "listNoticeInfo";                    
+		var sController   	= "/ntrms/cm/listNoticeInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsList=listNotice";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if(this.div_search.cmb_searchCondition.value == '0'){ 
+			sArgs += " title=" + nvl(this.div_search.edt_searchKeyword.value);
+		} else if(this.div_search.cmb_searchCondition.value == 1) {
+			sArgs += " userNm=" + nvl(this.div_search.edt_searchKeyword.value);
+		} 
+		sArgs += " regFdt=" + nvl(this.div_search.regFdt.value);
+		sArgs += " regTdt=" + nvl(this.div_search.regTdt.value);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return ExtNx.core.comMsg("alert",strErrorMsg);		
+		} else {
+			if (strSvcId == "proService") {
+				var nTotalCnt = this.dsList.rowcount;
+				this.sta_total_cnt.set_text(nTotalCnt);
+				this.grd_Group.hscrollbar ;
+			
+			} if (strSvcId == "save") {
+				this.fn_search();
+			}
+			
+			if(strSvcId == "listNoticeInfo") {
+				this.parent.setButton("N|S", this);
+			}
+		}
+	}
+
+
+	
+	//등록팝업생성
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo){
+	  var args ={p_arg:""};
+	  Ex.core.popup(this,"공지사항","cm::RTCMNoticeInput.xfdl",args, "modaless=false");
+	  //this.dsList.addRow();
+	}
+	//팝업종료후 재조회실행
+	this.returnUserInfo = function(val) {
+		this.fn_search();
+	}
+	
+	
+	
+	this.enterKeySearch = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 ){
+			this.btn_search_onclick();
+		}
+	}
+
+	this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.Grid01.appendContentsCol(2);
+	}
+	
+	//상세보기
+	this.Grid00_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		var pos = this.dsList.rowposition;
+		this.dsCopy.deleteAll();
+		var row = this.dsCopy.addRow();
+		this.dsCopy.copyRow(row, this.dsList, pos);
+		
+		//등록팝업생성
+		var args ={p_arg:this.dsCopy};
+		Ex.core.popup(this,"공지사항","cm::RTCMNoticeInput.xfdl", args, "modaless=false");
+	}
+]]></Script>
+  </Form>
+</FDL>

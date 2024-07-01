@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="carStandardRegister">
+
+
+
+	<resultMap id="r_sRtsd0004ContentsCdSelect" class="java.util.HashMap">
+		<result property="cd"  	column="CONTENTS_CD" />
+		<result property="cdNm" column="CONTENTS_CD_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004ContentsCdSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004ContentsCdSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004ContentsCdSelect" parameterMap="p_sRtsd0004ContentsCdSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004ContentsCd(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0004FrCdSelect" class="java.util.HashMap">
+		<result property="cd"  	column="FR_CD" />
+		<result property="cdNm" column="FR_CD_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004FrCdSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004FrCdSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004FrCdSelect" parameterMap="p_sRtsd0004FrCdSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004FrCd(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<resultMap id="r_sRtsd0004PlyRatingCdSelect" class="java.util.HashMap">
+		<result property="cd"  	column="PLY_RATING" />
+		<result property="cdNm" column="PLY_RATING_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004PlyRatingCdSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004PlyRatingCdSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004PlyRatingCdSelect" parameterMap="p_sRtsd0004PlyRatingCdSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004PlyRatingCd(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0004SectionWidthSelect" class="java.util.HashMap">
+		<result property="cd"  	column="SECTION_WIDTH" />
+		<result property="cdNm" column="SECTION_WIDTH_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004SectionWidthSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004SectionWidthSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004SectionWidthSelect" parameterMap="p_sRtsd0004SectionWidthSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004SectionWidth(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0004AspectRatioSelect" class="java.util.HashMap">
+		<result property="cd"  	column="ASPECT_RATIO" />
+		<result property="cdNm" column="ASPECT_RATIO_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004AspectRatioSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004AspectRatioSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004AspectRatioSelect" parameterMap="p_sRtsd0004AspectRatioSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004AspectRatio(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0004WheelInchesSelect" class="java.util.HashMap">
+		<result property="cd"  	column="WHEEL_INCHES" />
+		<result property="cdNm" column="WHEEL_INCHES_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004WheelInchesSelect" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004WheelInchesSelect" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004WheelInchesSelect" parameterMap="p_sRtsd0004WheelInchesSelect">
+		{call Pkg_Rtsd0004.p_sRtsd0004WheelInches(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0004Select" class="java.util.HashMap">
+		<result property="modelCd"  column="MODEL_CD" />
+		<result property="contentsCd"  column="CONTENTS_CD" />
+		<result property="frCd"  column="FR_CD" />
+		<result property="sectionWidth"  column="SECTION_WIDTH" />
+		<result property="aspectRatio"  column="ASPECT_RATIO" />
+		<result property="wheelInches"  column="WHEEL_INCHES" />
+		<result property="plyRating"  column="PLY_RATING" />
+		<result property="wheelQty"  column="WHEEL_QTY" />
+		<result property="wheelLimitQty"  column="WHEEL_LIMIT_QTY" />
+		<result property="classCd"  column="CLASS_CD" />
+		<result property="useYn"  column="USE_YN" />
+		<result property="regId"  column="REG_ID" />
+		<result property="regDt"  column="REG_DT" />
+		<result property="chgId"  column="CHG_ID" />
+		<result property="chgDt"  column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0004Select" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0004Select" />
+		<parameter property="modelCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carStandardRegister.sRtsd0004Select" parameterMap="p_sRtsd0004Select">
+		{call Pkg_Rtsd0004.p_sRtsd0004(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0004">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sectionWidth"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="aspectRatio"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelInches"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="plyRating"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelQty"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="wheelLimitQty"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="carStandardRegister.saveRTSDCarStandardRegister" parameterMap="p_IUDRtsd0004">
+		{call Pkg_Rtsd0004.p_IUDRtsd0004(
+										 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+										,?, ?, ?, ?, ?, ?
+										)}
+	</procedure>
+</sqlMap>

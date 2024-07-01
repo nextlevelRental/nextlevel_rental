@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTRESETTLEVanHisCheckMapDAO">
+	<resultMap id="r_sRtre0046CheckSet" class="java.util.HashMap">
+		<result property="checkSet"	column="CHECK_SET" />
+		<result property="setNm"	column="SET_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtre0046CheckSet" class="java.util.Map">
+		<parameter property="vcursor"		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0046CheckSet" />
+		<parameter property="checkDay" 	 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTRESETTLEVanHisCheckMapDAO.selectCheckSet" parameterMap="p_sRtre0046CheckSet">
+		{call Pkg_Rtre0046.p_sRtre0046CheckSet(?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtre0046">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dupGb" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="checkDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="checkSet" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cseq" 				jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recpPay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bankNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cardcomNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appAmt" 			jdbcType="NUMERIC" mode="IN" />
+		<parameter property="stDesc" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appDay" 			jdbcType="DATE"	   mode="IN" />
+		<parameter property="cncDay" 			jdbcType="DATE"    mode="IN" />
+		<parameter property="pcncDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tno" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appDesc" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cncpAmt" 			jdbcType="NUMERIC" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTRESETTLEVanHisCheckMapDAO.SETTLEVanUploadFile" parameterMap="p_IUDRtre0046">
+		{call Pkg_Rtre0046.p_IUDRtre0046(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_UpdateRtre0046Check">
+		<parameter property="checkDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="checkSet" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="jobGb" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTRESETTLEVanHisCheckMapDAO.resultUpdateRtre0046Check" parameterMap="p_UpdateRtre0046Check">
+		{call Pkg_Rtre0046.p_UpdateRtre0046Check(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtre0046" class="java.util.HashMap">
+		<result property="checkDay" 	column="CHECK_DAY" />
+		<result property="checkSet" 	column="CHECK_SET" />
+		<result property="cseqCseq" 	column="CSEQ" />
+		<result property="ordNo" 		column="ORD_NO" />
+		<result property="custNm" 		column="CUST_NM" />
+		<result property="recpPay" 		column="RECP_PAY" />
+		<result property="recpPayNm" 	column="RECP_PAY_NM" />
+		<result property="bankNm" 		column="BANK_NM" />
+		<result property="cardcomNm" 	column="CARDCOM_NM" />
+		<result property="appAmt" 		column="APP_AMT" />
+		<result property="stDesc" 		column="ST_DESC" />
+		<result property="appDay" 		column="APP_DAY" />
+		<result property="cncDay" 		column="CNC_DAY" />
+		<result property="pcncDay" 		column="PCNC_DAY" />
+		<result property="tnoTno" 		column="TNO" />
+		<result property="appDesc" 		column="APP_DESC" />
+		<result property="cncAmt" 		column="CNC_AMT" />
+		<result property="cncpAmt" 		column="CNCP_AMT" />
+		<result property="recpAmt" 		column="RECP_AMT" />
+		<result property="diffYn" 		column="DIFF_YN" />
+		<result property="diffYnNm" 	column="DIFF_YN_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtre0046" class="java.util.Map">
+		<parameter property="vcursor"		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0046" />
+		<parameter property="checkDay" 	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="checkSet"  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="diffYn" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTRESETTLEVanHisCheckMapDAO.selectSRtre0046" parameterMap="p_sRtre0046">
+		{call Pkg_Rtre0046.p_sRtre0046(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>
+
+

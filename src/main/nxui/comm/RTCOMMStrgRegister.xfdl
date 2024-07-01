@@ -1,0 +1,1074 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMStrgRegister" classname="RTCSKeepRegister" left="0" top="0" width="975" height="536" titletext="보관등록" onkeyup="RTCOMMStrgRegister_onkeyup" onload="RTCOMMStrgRegister_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="1" text="계약자정보" cssclass="sta_WF_subTitle" left="15" top="10" width="169" height="20"/>
+        <Grid id="grid_rtcs0203_1" taborder="16" binddataset="ds_keepHistory_1" useinputpanel="false" cellsizingtype="col" autofittype="col" left="15" top="247" height="63" width="945" enable="true" onheadclick="grid_rtcs0203_1_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="25"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="구분"/>
+                <Cell col="2" text="제조사"/>
+                <Cell col="3" text="패턴"/>
+                <Cell col="4" text="폭"/>
+                <Cell col="5" text="시리즈"/>
+                <Cell col="6" text="인치"/>
+                <Cell col="7" text="PR"/>
+                <Cell col="8" text="수량"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="none" text="bind:check"/>
+                <Cell col="1" text="앞/뒷바퀴"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:mfCd" combodataset="ds_mfCd_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:patternCd" editdisplay="display" combodisplay="edit"/>
+                <Cell col="4" displaytype="combo" edittype="combo" style="align:center;" text="bind:selectionWidth" combodataset="ds_selectionWidth_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="5" displaytype="combo" edittype="combo" style="align:center;" text="bind:aspectRatio" combodataset="ds_aspectRatio_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="6" displaytype="combo" edittype="combo" style="align:center;" text="bind:wheelInches" combodataset="ds_wheelInches_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="7" displaytype="combo" edittype="combo" style="align:center;" text="bind:plyRating" combodataset="ds_plyRating_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="8" displaytype="combo" edittype="combo" style="align:center;" text="bind:tireCnt" combodataset="ds_tireCnt_1" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static04" taborder="22" cssclass="Guide_color" visible="false" left="0" top="30" height="10" width="975"/>
+        <Static id="Static01" taborder="23" cssclass="sta_WF_detailLabel2" left="15" top="40" height="30" width="945"/>
+        <Static id="st_ordNo" taborder="24" text="계약번호" cssclass="sta_WF_detailLabel" visible="true" left="15" top="40" width="110" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_carKind" taborder="25" text="차종" cssclass="sta_WF_detailLabel" left="381" top="40" width="110" height="31" domainId="nexa.s_condition" visible="true"/>
+        <Static id="st_telNo" taborder="26" text="자택전화" cssclass="sta_WF_detailLabel" left="670" top="40" width="110" height="31" domainId="nexa.s_condition" visible="true"/>
+        <Static id="Static02" taborder="27" cssclass="sta_WF_detailLabel2" left="15" top="69" height="30" width="945"/>
+        <Static id="st_cust" taborder="28" text="고객명" cssclass="sta_WF_detailLabel" visible="true" left="15" top="69" width="110" height="30" domainId="nexa.s_condition"/>
+        <Static id="st_carNo" taborder="29" text="차량번호" cssclass="sta_WF_detailLabel" left="381" top="69" width="110" height="30" domainId="nexa.s_condition" visible="true"/>
+        <Static id="st_mobNo" taborder="30" text="핸드폰" cssclass="sta_WF_detailLabel" left="670" top="69" width="110" height="30" domainId="nexa.s_condition" visible="true"/>
+        <Static id="Static05" taborder="31" cssclass="Guide_color" visible="false" left="0" top="101" height="20" width="975"/>
+        <Static id="Static06" taborder="32" text="보관서비스 제공자 정보" cssclass="sta_WF_subTitle" left="15" top="117" width="169" height="20"/>
+        <Static id="Static07" taborder="33" cssclass="Guide_color" visible="false" left="0" top="132" height="10" width="975"/>
+        <Static id="Static08" taborder="34" cssclass="sta_WF_detailLabel2" left="15" top="142" height="31" width="945"/>
+        <Static id="st_buslNo01" taborder="35" text="렌탈전문점" cssclass="sta_WF_detailLabel" visible="true" left="15" top="142" width="110" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_custNm01" taborder="36" text="전화번호" cssclass="sta_WF_detailLabel" left="381" top="142" width="110" height="31" domainId="nexa.s_condition" visible="true"/>
+        <Edit id="ed_telNo2" taborder="12" enable="true" left="495" top="147" width="170" height="20" readonly="true"/>
+        <Static id="st_genderNm01" taborder="37" text="서비스적용여부" cssclass="sta_WF_detailLabel" left="670" top="142" width="110" height="31" domainId="nexa.s_condition" visible="true"/>
+        <Static id="Static09" taborder="38" cssclass="sta_WF_detailLabel2" left="15" top="172" height="31" width="945"/>
+        <Static id="st_buslNo02" taborder="39" text="보관지명" cssclass="sta_WF_detailLabel" visible="true" left="15" top="172" width="110" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_custNm02" taborder="40" text="주소" cssclass="sta_WF_detailLabel" left="381" top="172" width="110" height="31" domainId="nexa.s_condition" visible="true"/>
+        <Edit id="ed_addr" taborder="15" enable="true" left="495" top="177" height="20" width="459" readonly="true"/>
+        <Static id="Static10" taborder="41" cssclass="Guide_color" visible="false" left="0" top="203" height="20" width="975"/>
+        <Static id="Static11" taborder="42" text="보관내역 (앞/뒤 바퀴가 같은 경우)" cssclass="sta_WF_subTitle" left="15" top="222" width="300" height="20"/>
+        <Static id="Static12" taborder="43" cssclass="Guide_color" visible="false" left="15" top="237" height="10" width="945"/>
+        <Static id="Static13" taborder="44" cssclass="Guide_color" visible="false" left="0" top="310" height="20" width="975"/>
+        <Static id="Static14" taborder="45" text="보관내역 (앞/뒤 바퀴가 다른 경우)" cssclass="sta_WF_subTitle" left="15" top="326" width="300" height="20"/>
+        <Static id="Static15" taborder="46" cssclass="Guide_color" visible="false" left="15" top="341" height="10" width="945"/>
+        <Grid id="grid_rtcs0203_2" taborder="17" binddataset="ds_keepHistory_2" useinputpanel="false" cellsizingtype="col" autofittype="col" left="15" top="351" height="93" width="945" onheadclick="grid_rtcs0203_2_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="25"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox"/>
+                <Cell col="1" text="구분"/>
+                <Cell col="2" text="제조사"/>
+                <Cell col="3" text="패턴"/>
+                <Cell col="4" text="폭"/>
+                <Cell col="5" text="시리즈"/>
+                <Cell col="6" text="인치"/>
+                <Cell col="7" text="PR"/>
+                <Cell col="8" text="수량"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="none" text="bind:check"/>
+                <Cell col="1" text="앞바퀴"/>
+                <Cell col="2" displaytype="combo" edittype="combo" text="bind:mfCdF" combodataset="ds_mfCd_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="3" displaytype="text" edittype="text" text="bind:patternCdF" editdisplay="display" combodisplay="edit"/>
+                <Cell col="4" displaytype="combo" edittype="combo" style="align:center;" text="bind:selectionWidthF" combodataset="ds_selectionWidth_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="5" displaytype="combo" edittype="combo" style="align:center;" text="bind:aspectRatioF" combodataset="ds_aspectRatio_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="6" displaytype="combo" edittype="combo" style="align:center;" text="bind:wheelInchesF" combodataset="ds_wheelInches_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="7" displaytype="combo" edittype="combo" style="align:center;" text="bind:plyRatingF" combodataset="ds_plyRating_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell col="8" displaytype="combo" edittype="combo" style="align:center;" text="bind:tireCntF" combodataset="ds_tireCnt_2" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" displaytype="checkbox" edittype="none" text="bind:check"/>
+                <Cell row="1" col="1" text="뒷바퀴"/>
+                <Cell row="1" col="2" displaytype="combo" edittype="combo" text="bind:mfCdR" combodataset="ds_mfCd_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" col="3" displaytype="text" edittype="text" text="bind:patternCdR" editdisplay="display" combodisplay="edit"/>
+                <Cell row="1" col="4" displaytype="combo" edittype="combo" style="align:center;" text="bind:selectionWidthR" combodataset="ds_selectionWidth_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" col="5" displaytype="combo" edittype="combo" style="align:center;" text="bind:aspectRatioR" combodataset="ds_aspectRatio_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" col="6" displaytype="combo" edittype="combo" style="align:center;" text="bind:wheelInchesR" combodataset="ds_wheelInches_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" col="7" displaytype="combo" edittype="combo" style="align:center;" text="bind:plyRatingR" combodataset="ds_plyRating_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+                <Cell row="1" col="8" displaytype="combo" edittype="combo" style="align:center;" text="bind:tireCntR" combodataset="ds_tireCnt_3" combocodecol="cd" combodatacol="cdNm" combodisplaynulltext="선택" combodisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static16" taborder="47" cssclass="sta_WF_detailLabel2" left="15" top="454" height="31" width="945"/>
+        <Static id="st_buslNo03" taborder="48" text="보관일자" cssclass="sta_WF_detailLabel" visible="true" left="15" top="454" width="150" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_ordNo" taborder="0" left="129" top="44" width="247" height="21" enable="true" readonly="false" onkeyup="ed_ordNo_onkeyup"/>
+        <Button id="bt_ordNo" taborder="2" cssclass="btn_WF_edtSch" left="355" top="43" width="21" height="21" onclick="bt_ordNo_onclick"/>
+        <Edit id="ed_custNo" taborder="5" enable="true" left="129" top="74" width="125" height="21" readonly="true"/>
+        <Edit id="ed_custNm" taborder="6" enable="true" left="254" top="74" width="122" height="21" readonly="true"/>
+        <Edit id="ed_carNo" taborder="7" left="495" top="74" width="170" height="21" enable="true" readonly="true"/>
+        <Edit id="ed_carKind" taborder="3" left="495" top="45" width="170" height="21" enable="true" readonly="true"/>
+        <Edit id="ed_telNo" taborder="4" left="784" top="45" width="170" height="21" enable="true" readonly="true"/>
+        <Edit id="ed_mobNo" taborder="8" left="784" top="74" width="170" height="21" enable="true" readonly="true"/>
+        <Edit id="ed_agencyCd" taborder="9" enable="true" left="129" top="147" width="110" height="21" readonly="true"/>
+        <Button id="bt_agencyCd" taborder="10" cssclass="btn_WF_edtSch" left="237" top="146" width="21" height="21" onclick="bt_agencyCd_onclick"/>
+        <Edit id="ed_agencyNm" taborder="11" enable="true" left="257" top="147" width="119" height="21" readonly="true"/>
+        <Combo id="cb_wareh" taborder="14" autoselect="true" innerdataset="@ds_UseAgencyWarehCB" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="129" top="177" width="247" height="21" displaynulltext="선택" onitemchanged="cb_wareh_onitemchanged"/>
+        <Calendar id="cal_strgDay" taborder="18" dateformat="yyyy-MM-dd" left="170" top="459" width="100" height="21" onchanged="cal_strgDay_onchanged"/>
+        <Static id="Static00" taborder="49" cssclass="Guide_color" visible="false" left="0" top="0" width="15" height="530"/>
+        <Static id="Static18" taborder="50" cssclass="Guide_color" visible="false" left="960" top="0" width="15" height="530"/>
+        <Static id="Static19" taborder="51" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="975"/>
+        <Static id="Static20" taborder="52" cssclass="Guide_color" visible="false" left="0" top="485" height="10" width="975"/>
+        <Button id="btn_save" taborder="20" text="저장" left="870" top="495" width="41" height="21" domainId="nexa.save" onclick="btn_save_onclick"/>
+        <Button id="btn_close" taborder="21" text="닫기" left="919" top="495" width="41" height="21" domainId="nexa.save" onclick="btn_close_onclick"/>
+        <Static id="Static21" taborder="53" cssclass="Guide_color" visible="false" left="0" top="516" height="20" width="975"/>
+        <Static id="Static22" taborder="54" cssclass="Guide_color" visible="false" left="910" top="484" width="10" height="52"/>
+        <Combo id="cb_srsvYn" taborder="13" autoselect="true" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="784" top="147" height="21" width="170" readonly="false"/>
+        <Static id="Static23" taborder="55" cssclass="Guide_color" visible="false" left="0" top="444" height="10" width="975"/>
+        <Static id="st_buslNo04" taborder="56" text="보관증 수령 방법" cssclass="sta_WF_detailLabel" left="487" top="454" width="150" height="31" domainId="nexa.s_condition"/>
+        <Combo id="cb_strgMthd" taborder="19" autoselect="true" displaynulltext="선택" innerdataset="@ds_strgMthd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="641" top="459" width="120" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_ordNoList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="genderNm" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="lfNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="carKind" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtcs0203" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="strgSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="srrgDay" type="STRING" size="256"/>
+          <Column id="strgYn" type="STRING" size="256"/>
+          <Column id="strgStat" type="STRING" size="256"/>
+          <Column id="srsvYn" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="warehCd" type="STRING" size="256"/>
+          <Column id="strgDay" type="STRING" size="256"/>
+          <Column id="strgDt" type="STRING" size="256"/>
+          <Column id="strgMthd" type="STRING" size="256"/>
+          <Column id="strgFilePath" type="STRING" size="256"/>
+          <Column id="strgFileName" type="STRING" size="256"/>
+          <Column id="strgUserId" type="STRING" size="256"/>
+          <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="dlvrDt" type="STRING" size="256"/>
+          <Column id="dlvrFilePath" type="STRING" size="256"/>
+          <Column id="dlvrFileName" type="STRING" size="256"/>
+          <Column id="dlvrUserId" type="STRING" size="256"/>
+          <Column id="mfCd" type="STRING" size="256"/>
+          <Column id="patternCd" type="STRING" size="256"/>
+          <Column id="selectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="tireCnt" type="STRING" size="256"/>
+          <Column id="mfCdF" type="STRING" size="256"/>
+          <Column id="patternCdF" type="STRING" size="256"/>
+          <Column id="selectionWidthF" type="STRING" size="256"/>
+          <Column id="aspectRatioF" type="STRING" size="256"/>
+          <Column id="wheelInchesF" type="STRING" size="256"/>
+          <Column id="plyRatingF" type="STRING" size="256"/>
+          <Column id="tireCntF" type="STRING" size="256"/>
+          <Column id="mfCdR" type="STRING" size="256"/>
+          <Column id="patternCdR" type="STRING" size="256"/>
+          <Column id="selectionWidthR" type="STRING" size="256"/>
+          <Column id="aspectRatioR" type="STRING" size="256"/>
+          <Column id="wheelInchesR" type="STRING" size="256"/>
+          <Column id="plyRatingR" type="STRING" size="256"/>
+          <Column id="tireCntR" type="STRING" size="256"/>
+          <Column id="totTireCnt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_UseAgencyWareh" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="warehCd" type="STRING" size="256"/>
+          <Column id="warehNm" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_UseAgencyWarehCB" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_strgMthd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_keepHistory_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="mfCd" type="STRING" size="256"/>
+          <Column id="patternCd" type="STRING" size="256"/>
+          <Column id="selectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="tireCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_keepHistory_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="mfCdF" type="STRING" size="256"/>
+          <Column id="patternCdF" type="STRING" size="256"/>
+          <Column id="selectionWidthF" type="STRING" size="256"/>
+          <Column id="aspectRatioF" type="STRING" size="256"/>
+          <Column id="wheelInchesF" type="STRING" size="256"/>
+          <Column id="plyRatingF" type="STRING" size="256"/>
+          <Column id="tireCntF" type="STRING" size="256"/>
+          <Column id="mfCdR" type="STRING" size="256"/>
+          <Column id="patternCdR" type="STRING" size="256"/>
+          <Column id="selectionWidthR" type="STRING" size="256"/>
+          <Column id="aspectRatioR" type="STRING" size="256"/>
+          <Column id="wheelInchesR" type="STRING" size="256"/>
+          <Column id="plyRatingR" type="STRING" size="256"/>
+          <Column id="tireCntR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mfCd_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_selectionWidth_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatio_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInches_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRating_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tireCnt_1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mfCd_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_selectionWidth_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatio_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInches_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRating_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tireCnt_2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mfCd_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_selectionWidth_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_aspectRatio_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_wheelInches_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_plyRating_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tireCnt_3" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_ordNo" propid="value" datasetid="ds_rtcs0203" columnid="ordNo"/>
+      <BindItem id="item1" compid="ed_agencyCd" propid="value" datasetid="ds_rtcs0203" columnid="agencyCd"/>
+      <BindItem id="item2" compid="cb_wareh" propid="value" datasetid="ds_rtcs0203" columnid="warehCd"/>
+      <BindItem id="item3" compid="cb_srsvYn" propid="value" datasetid="ds_rtcs0203" columnid="srsvYn"/>
+      <BindItem id="item4" compid="cal_strgDay" propid="value" datasetid="ds_rtcs0203" columnid="strgDay"/>
+      <BindItem id="item5" compid="cb_strgMthd" propid="value" datasetid="ds_rtcs0203" columnid="strgMthd"/>
+      <BindItem id="item6" compid="ed_custNo" propid="value" datasetid="ds_rtcs0203" columnid="custNo"/>
+      <BindItem id="item7" compid="ed_carKind" propid="value" datasetid="ds_ordNoList" columnid="carKind"/>
+      <BindItem id="item8" compid="ed_telNo" propid="value" datasetid="ds_ordNoList" columnid="telNo"/>
+      <BindItem id="item10" compid="ed_custNm" propid="value" datasetid="ds_ordNoList" columnid="custNm"/>
+      <BindItem id="item11" compid="ed_carNo" propid="value" datasetid="ds_ordNoList" columnid="carNo"/>
+      <BindItem id="item12" compid="ed_mobNo" propid="value" datasetid="ds_ordNoList" columnid="mobNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs"; 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 	 = "RTCOMMStrgRegister";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 	 = ""; 				//현재날짜
+this.grid_1_AddFlag = false;	//보관내역(앞/뒤 바퀴가 같은 경우) 체크해제시 false
+this.grid_2_AddFlag = false;	//보관내역(앞/뒤 바퀴가 다른 경우) 체크해제시 false
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTCOMMStrgRegister" ){
+		var useYnCt = this.ds_useYn.getRowCount();
+		if( useYnCt > 0 ){
+			this.cb_srsvYn.set_value( "Y" );
+		}
+		/*
+		var mfCd_1Cnt 				= this.ds_mfCd_1.getRowCount();
+		var selectionWidth_1Cnt 	= this.ds_selectionWidth_1.getRowCount();
+		var aspectRatio_1_Cnt 		= this.ds_aspectRatio_1.getRowCount();
+		var wheelInches_1_Cnt 		= this.ds_wheelInches_1.getRowCount();
+		var plyRating_1_Cnt 		= this.ds_plyRating_1.getRowCount();
+		var tireCnt_1_Cnt 			= this.ds_tireCnt_1.getRowCount();
+		var mfCd_2_Cnt 				= this.ds_mfCd_2.getRowCount();
+		var selectionWidth_2_Cnt 	= this.ds_selectionWidth_2.getRowCount();
+		var aspectRatio_2_Cnt 		= this.ds_aspectRatio_2.getRowCount();
+		var wheelInches_2_Cnt 		= this.ds_wheelInches_2.getRowCount();
+		var plyRating_2_Cnt 		= this.ds_plyRating_2.getRowCount();
+		var tireCnt_2_Cnt 			= this.ds_tireCnt_2.getRowCount();
+		var mfCd_3_Cnt 				= this.ds_mfCd_3.getRowCount();
+		var selectionWidth_3_Cnt 	= this.ds_selectionWidth_3.getRowCount();
+		var aspectRatio_3_Cnt 		= this.ds_aspectRatio_3.getRowCount();
+		var wheelInches_3_Cnt 		= this.ds_wheelInches_3.getRowCount();
+		var plyRating_3_Cnt 		= this.ds_plyRating_3.getRowCount();
+		var tireCnt_3_Cnt 			= this.ds_tireCnt_3.getRowCount();
+	
+		var mfCd_1Cnt 				= this.ds_strgStat.getRowCount();
+		var selectionWidth_1Cnt 	= this.ds_strgMthd.getRowCount();
+		var aspectRatio_1_Cnt 		= this.ds_strgStat.getRowCount();
+		var wheelInches_1_Cnt 		= this.ds_strgMthd.getRowCount();
+		var plyRating_1_Cnt 		= this.ds_strgStat.getRowCount();
+		var tireCnt_1_Cnt 			= this.ds_strgMthd.getRowCount();
+		var mfCd_2_Cnt 				= this.ds_strgStat.getRowCount();
+		var selectionWidth_2_Cnt 	= this.ds_strgMthd.getRowCount();
+		var aspectRatio_2_Cnt 		= this.ds_strgStat.getRowCount();
+		var wheelInches_2_Cnt		= this.ds_strgMthd.getRowCount();
+		var plyRating_2_Cnt 		= this.ds_strgStat.getRowCount();
+		var tireCnt_2_Cnt 			= this.ds_strgMthd.getRowCount();
+		var mfCd_3_Cnt 				= this.ds_strgStat.getRowCount();
+		var selectionWidth_3_Cnt 	= this.ds_strgMthd.getRowCount();
+		var aspectRatio_3_Cnt 		= this.ds_strgStat.getRowCount();
+		var wheelInches_3_Cnt 		= this.ds_strgMthd.getRowCount();
+		var plyRating_3_Cnt 		= this.ds_strgStat.getRowCount();
+		var tireCnt_3_Cnt 			= this.ds_strgMthd.getRowCount();
+		*/
+		
+		var insert1 = this.ds_mfCd_1.insertRow( 0 );
+		this.ds_mfCd_1.setColumn(insert1,"cd"," ");
+		this.ds_mfCd_1.setColumn(insert1,"cdNm","선택");
+
+		var insert2 = this.ds_selectionWidth_1.insertRow( 0 );
+		this.ds_selectionWidth_1.setColumn(insert2,"cd"," ");
+		this.ds_selectionWidth_1.setColumn(insert2,"cdNm","선택");
+
+		var insert3 = this.ds_aspectRatio_1.insertRow( 0 );
+		this.ds_aspectRatio_1.setColumn(insert3,"cd"," ");
+		this.ds_aspectRatio_1.setColumn(insert3,"cdNm","선택");
+
+		var insert4 = this.ds_wheelInches_1.insertRow( 0 );
+		this.ds_wheelInches_1.setColumn(insert4,"cd"," ");
+		this.ds_wheelInches_1.setColumn(insert4,"cdNm","선택");
+
+		var insert5 = this.ds_plyRating_1.insertRow( 0 );
+		this.ds_plyRating_1.setColumn(insert5,"cd"," ");
+		this.ds_plyRating_1.setColumn(insert5,"cdNm","선택");
+
+		var insert6 = this.ds_tireCnt_1.insertRow( 0 );
+		this.ds_tireCnt_1.setColumn(insert6,"cd"," ");
+		this.ds_tireCnt_1.setColumn(insert6,"cdNm","선택");
+
+		var insert7 = this.ds_mfCd_2.insertRow( 0 );
+		this.ds_mfCd_2.setColumn(insert7,"cd"," ");
+		this.ds_mfCd_2.setColumn(insert7,"cdNm","선택");
+
+		var insert8 = this.ds_selectionWidth_2.insertRow( 0 );
+		this.ds_selectionWidth_2.setColumn(insert8,"cd"," ");
+		this.ds_selectionWidth_2.setColumn(insert8,"cdNm","선택");
+
+		var insert9 = this.ds_aspectRatio_2.insertRow( 0 );
+		this.ds_aspectRatio_2.setColumn(insert9,"cd"," ");
+		this.ds_aspectRatio_2.setColumn(insert9,"cdNm","선택");
+
+		var insert10 = this.ds_wheelInches_2.insertRow( 0 );
+		this.ds_wheelInches_2.setColumn(insert10,"cd"," ");
+		this.ds_wheelInches_2.setColumn(insert10,"cdNm","선택");
+
+		var insert11 = this.ds_plyRating_2.insertRow( 0 );
+		this.ds_plyRating_2.setColumn(insert11,"cd"," ");
+		this.ds_plyRating_2.setColumn(insert11,"cdNm","선택");
+
+		var insert12 = this.ds_tireCnt_2.insertRow( 0 );
+		this.ds_tireCnt_2.setColumn(insert12,"cd"," ");
+		this.ds_tireCnt_2.setColumn(insert12,"cdNm","선택");
+
+		var insert13 = this.ds_mfCd_3.insertRow( 0 );
+		this.ds_mfCd_3.setColumn(insert13,"cd"," ");
+		this.ds_mfCd_3.setColumn(insert13,"cdNm","선택");
+
+		var insert14 = this.ds_selectionWidth_3.insertRow( 0 );
+		this.ds_selectionWidth_3.setColumn(insert14,"cd"," ");
+		this.ds_selectionWidth_3.setColumn(insert14,"cdNm","선택");
+
+		var insert15 = this.ds_aspectRatio_3.insertRow( 0 );
+		this.ds_aspectRatio_3.setColumn(insert15,"cd"," ");
+		this.ds_aspectRatio_3.setColumn(insert15,"cdNm","선택");
+
+		var insert16 = this.ds_wheelInches_3.insertRow( 0 );
+		this.ds_wheelInches_3.setColumn(insert16,"cd"," ");
+		this.ds_wheelInches_3.setColumn(insert16,"cdNm","선택");
+
+		var insert17 = this.ds_plyRating_3.insertRow( 0 );
+		this.ds_plyRating_3.setColumn(insert17,"cd"," ");
+		this.ds_plyRating_3.setColumn(insert17,"cdNm","선택");
+
+
+		var insert = this.ds_tireCnt_3.insertRow( 0 );
+		this.ds_tireCnt_3.setColumn(insert,"cd"," ");
+		this.ds_tireCnt_3.setColumn(insert,"cdNm","선택");
+		
+		
+		this.FN_gridRtcs0203_1_None();
+		this.FN_gridRtcs0203_2_None();
+	}
+	
+	if( strSvcId == "getToday" ){
+		if( nvl(this.toDay) != "" ){
+			this.cal_strgDay.set_value(this.toDay);
+		}
+	}
+	
+	if( strSvcId == "pSRtcs0202UseAgencyWareh" ){
+		var cnt = this.ds_UseAgencyWareh.getRowCount();
+		if( cnt != 0 ){
+			for( var i = 0 ; i < cnt ; i++ ){
+				this.ds_UseAgencyWarehCB.insertRow( i );
+				this.ds_UseAgencyWarehCB.setColumn(i, "cd",   this.ds_UseAgencyWareh.getColumn(i, "warehCd"));
+				this.ds_UseAgencyWarehCB.setColumn(i, "cdNm", this.ds_UseAgencyWareh.getColumn(i, "warehNm"));
+			}
+			if( cnt == 1){
+				this.cb_wareh.set_index(0);
+				this.cb_wareh.set_enable(false);
+				this.cb_wareh_onitemchanged();
+			}else{
+				this.cb_wareh.set_index(-1);
+				this.cb_wareh.set_enable(true);
+				this.cb_wareh_onitemchanged();
+			}
+		}
+	}
+	
+	if( strSvcId == "saveRtcs0203WinterIn" ){
+		alert(strErrorMsg);
+		if( nErrorCode == "0" ){
+			var pos = this.ds_rtcs0203.rowposition;
+			var ordNo 		= nvl(this.ds_rtcs0203.getColumn(pos, "ordNo"));
+			var agencyCd 	= nvl(this.ds_rtcs0203.getColumn(pos, "agencyCd"));
+			var agencyNm	= nvl(this.ed_agencyNm.value);
+			var strgDay 	= nvl(this.ds_rtcs0203.getColumn(pos, "strgDay"));
+			var custNo 		= nvl(this.ds_rtcs0203.getColumn(pos, "custNo"));
+			var custNm		= nvl(this.ed_custNm.value);
+			var warehCd 	= nvl(this.ds_rtcs0203.getColumn(pos, "warehCd"));
+			var warehNm		= nvl(this.cb_wareh.text);
+			var carNo		= nvl(this.ed_carNo.value);
+			var strgStat 	= nvl(this.ds_rtcs0203.getColumn(pos, "strgStat"));
+			var strgMthd 	= nvl(this.ds_rtcs0203.getColumn(pos, "strgMthd"));
+			this.close( this.opener.FNstrgSave(ordNo, agencyCd, agencyNm, strgDay, custNo, custNm, warehCd, warehNm, carNo, strgStat, strgMthd) );
+		}
+	}
+	
+	if( strSvcId == "ordNoList" ){
+		var cnt_1 = this.ds_ordNoList.getRowCount();
+		var pos_1 = this.ds_ordNoList.rowposition;
+		
+		var cnt_2 = this.ds_rtcs0203.getRowCount();
+		var pos_2 = this.ds_rtcs0203.rowposition;
+		
+		if( cnt_1 != 1 ){
+			alert("계약번호를 확인하세요");
+			this.ds_ordNoList.clearData();
+			this.ds_rtcs0203.setColumn( pos_2, "ordNo", "" );
+			this.ds_rtcs0203.setColumn( pos_2, "custNo", "" );
+			this.RTCOMMStrgRegister_onload();
+		}else{
+			if( (cnt_2 == 1) ){
+				var seasonCd = nvl(this.ds_ordNoList.getColumn(pos_1,"seasonCd"));
+				var statCd 	 = nvl(this.ds_ordNoList.getColumn(pos_1,"statCd"));
+				
+				if( (statCd != "03") && (statCd != "04") ){
+					alert("보관등록을 할 수 없는 계약상태입니다.");
+					this.ed_ordNo.set_value("");
+					this.ed_custNo.set_value("");
+					this.ds_ordNoList.clearData();
+				}else if( seasonCd != "02" ){
+					alert("계절 구분 겨울용이 아니므로 보관 등록을 할 수가 없습니다.");
+					this.ed_ordNo.set_value("");
+					this.ed_custNo.set_value("");
+					this.ds_ordNoList.clearData();
+				}else{
+					this.ds_rtcs0203.setColumn( pos_2,  "ordNo",  this.ds_ordNoList.getColumn(pos_1,"ordNo") );
+					this.ds_rtcs0203.setColumn( pos_2,  "custNo", this.ds_ordNoList.getColumn(pos_1,"custNo") );
+					this.ds_ordNoList.setColumn( pos_2, "telNo",  FN_numberHyphenInReturn(this.ds_ordNoList.getColumn(pos_1,"telNo")) );
+					this.ds_ordNoList.setColumn( pos_2, "mobNo",  FN_numberHyphenInReturn(this.ds_ordNoList.getColumn(pos_1,"mobNo")) );
+				}
+			}else{
+				alert("SYSTEM ERROR : 보관등록 DATA SET");
+			}
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMStrgRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+this.fn_init = function(){
+	this.ds_rtcs0203.clearData();
+	this.ds_rtcs0203.addRow();
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+	var sSvcID      	= "initRTCOMMStrgRegister";  
+	var sController   	= "rtms/cs/initRTCOMMStrgRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	sOutDatasets += " ds_strgMthd=mapDsStrgMthd ";
+	sOutDatasets += " ds_mfCd_1=mapDsMfCd_1 "						//타이어제조사
+	sOutDatasets += " ds_selectionWidth_1=mapDsSelectionWidth_1 "	//폭
+	sOutDatasets += " ds_aspectRatio_1=mapDsAspectRatio_1 "			//시리즈
+	sOutDatasets += " ds_wheelInches_1=mapDsWheelInches_1 "			//인치
+	sOutDatasets += " ds_plyRating_1=mapDsPlyRating_1 "				//강도
+	sOutDatasets += " ds_tireCnt_1=mapDsTireCnt_1 "					//수량
+	sOutDatasets += " ds_mfCd_2=mapDsMfCd_2 "						//타이어제조사
+	sOutDatasets += " ds_selectionWidth_2=mapDsSelectionWidth_2 "	//폭
+	sOutDatasets += " ds_aspectRatio_2=mapDsAspectRatio_2 "			//시리즈
+	sOutDatasets += " ds_wheelInches_2=mapDsWheelInches_2 "			//인치
+	sOutDatasets += " ds_plyRating_2=mapDsPlyRating_2 "				//강도
+	sOutDatasets += " ds_tireCnt_2=mapDsTireCnt_2 "					//수량
+	sOutDatasets += " ds_mfCd_3=mapDsMfCd_3 "						//타이어제조사
+	sOutDatasets += " ds_selectionWidth_3=mapDsSelectionWidth_3 "	//폭
+	sOutDatasets += " ds_aspectRatio_3=mapDsAspectRatio_3 "			//시리즈
+	sOutDatasets += " ds_wheelInches_3=mapDsWheelInches_3 "			//인치
+	sOutDatasets += " ds_plyRating_3=mapDsPlyRating_3 "				//강도
+	sOutDatasets += " ds_tireCnt_3=mapDsTireCnt_3 "					//수량
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_ordNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
+}
+this.returnOrderNo = function(arr){
+	this.ds_ordNoList.clearData();
+	var nRow = this.ds_ordNoList.addRow();
+	this.ds_ordNoList.setColumn( nRow, "ordNo", arr[0] );
+	
+	this.ed_ordNo.set_value(arr[0]);
+	this.ed_carKind.set_value(arr[1]);
+	if(nvl(arr[2]) != ""){
+		this.ed_telNo.set_value( FN_numberHyphenInReturn(arr[2]) );
+	}
+	this.ed_custNo.set_value(arr[3]);
+	this.ed_custNm.set_value(arr[4]);
+	this.ed_carNo.set_value(arr[5]);
+	if(nvl(arr[6]) != ""){
+		this.ed_mobNo.set_value( FN_numberHyphenInReturn(arr[6]) );
+	}
+	
+	var seasonCd = nvl(arr[7]);
+	if( seasonCd != "02" ){
+		alert("계절 구분 겨울용이 아니므로 보관 등록을 할 수가 없습니다.");
+		this.ed_ordNo.set_value("");
+		this.ed_custNo.set_value("");
+		this.ds_ordNoList.clearData();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_agencyCd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args = {p_arg : this.p_arg};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+this.returnAgencyCd = function(res) {
+	this.ed_agencyCd.set_value( res[0] );
+	this.ed_agencyNm.set_value( res[1] );
+	this.ed_telNo2.set_value( FN_numberHyphenInReturn(res[2]) );
+	this.FN_selectWarehStrgReg( res[0] );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_selectWarehStrgReg = function( agencyCd ){
+	if( nvl(agencyCd) != ""){
+		var sSvcID      	= "pSRtcs0202UseAgencyWareh";  
+		var sController   	= "/rtms/cs/pSRtcs0202UseAgencyWareh.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= " ds_UseAgencyWareh=mapUseAgencyWareh";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("agencyCd", agencyCd);
+		this.ds_UseAgencyWareh.clearData();
+		this.ds_UseAgencyWarehCB.clearData();
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cb_wareh_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var cd   = this.cb_wareh.value;
+	var cdNm = this.cb_wareh.text;
+	var nRow  = this.ds_UseAgencyWareh.findRowExpr("warehCd == '"+cd+"' && warehNm == '"+cdNm+"'");
+	var addr  = nvl(this.ds_UseAgencyWareh.getColumn( nRow, "addr"));
+	this.ed_addr.set_value( addr );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtcs0203_1_onheadclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if( e.cell == this.grid_rtcs0203_1.getBindCellIndex( "body", "check") ){
+		if( this.ds_keepHistory_1.getColumn(0,"check") == 0){
+			this.FN_gridRtcs0203_1_Combo();
+		}else{
+			this.FN_gridRtcs0203_1_None();
+		}
+	}
+}
+this.FN_gridRtcs0203_1_Combo = function(){
+	this.grid_rtcs0203_1.setCellProperty("Body",2,"edittype","combo");
+	this.grid_rtcs0203_1.setCellProperty("Body",3,"edittype","text");
+	this.grid_rtcs0203_1.setCellProperty("Body",4,"edittype","combo");
+	this.grid_rtcs0203_1.setCellProperty("Body",5,"edittype","combo");
+	this.grid_rtcs0203_1.setCellProperty("Body",6,"edittype","combo");
+	this.grid_rtcs0203_1.setCellProperty("Body",7,"edittype","combo");
+	this.grid_rtcs0203_1.setCellProperty("Body",8,"edittype","combo");
+	
+	this.grid_rtcs0203_1.setCellProperty("Body",2,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",3,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",4,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",5,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",6,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",7,"combodisplaynulltext","선택");
+	this.grid_rtcs0203_1.setCellProperty("Body",8,"combodisplaynulltext","선택");
+	
+	this.grid_1_AddFlag = true;
+}
+this.FN_gridRtcs0203_1_None = function(inx){
+	this.ds_keepHistory_1.clearData();
+	var nRow_1 = this.ds_keepHistory_1.addRow();
+	this.ds_keepHistory_1.setColumn(nRow_1,"check","0");
+	
+	this.grid_rtcs0203_1.setCellProperty("Body",2,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",3,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",4,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",5,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",6,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",7,"edittype","none");
+	this.grid_rtcs0203_1.setCellProperty("Body",8,"edittype","none");
+	
+	this.grid_rtcs0203_1.setCellProperty("Body",2,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",3,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",4,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",5,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",6,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",7,"combodisplaynulltext","-");
+	this.grid_rtcs0203_1.setCellProperty("Body",8,"combodisplaynulltext","-");
+	
+	this.grid_1_AddFlag = false;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rtcs0203_2_onheadclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if( e.cell == this.grid_rtcs0203_2.getBindCellIndex( "body", "check") ){
+		if( this.ds_keepHistory_2.getColumn(0,"check") == 0){
+			this.FN_gridRtcs0203_2_Combo();
+		}else{
+			this.FN_gridRtcs0203_2_None();
+		}
+	}
+}
+this.FN_gridRtcs0203_2_Combo = function(){
+	this.grid_rtcs0203_2.setCellProperty("Body", 2, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 3, "edittype", "text");
+	this.grid_rtcs0203_2.setCellProperty("Body", 4, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 5, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 6, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 7, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 8, "edittype", "combo");
+													
+	this.grid_rtcs0203_2.setCellProperty("Body", 11, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 12, "edittype", "text");
+	this.grid_rtcs0203_2.setCellProperty("Body", 13, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 14, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 15, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 16, "edittype", "combo");
+	this.grid_rtcs0203_2.setCellProperty("Body", 17, "edittype", "combo");
+													
+	this.grid_rtcs0203_2.setCellProperty("Body", 2, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 3, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 4, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 5, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 6, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 7, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 8, "combodisplaynulltext", "선택");
+													
+	this.grid_rtcs0203_2.setCellProperty("Body", 11, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 12, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 13, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 14, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 15, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 16, "combodisplaynulltext", "선택");
+	this.grid_rtcs0203_2.setCellProperty("Body", 17, "combodisplaynulltext", "선택");
+	
+	this.grid_2_AddFlag = true;
+}
+this.FN_gridRtcs0203_2_None = function(){
+	this.ds_keepHistory_2.clearData();
+	var nRow_2 = this.ds_keepHistory_2.addRow();
+	this.ds_keepHistory_2.setColumn(nRow_2,"check","0");
+	
+	this.grid_rtcs0203_2.setCellProperty("Body", 2, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 3, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 4, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 5, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 6, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 7, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 8, "edittype", "none");
+	
+	this.grid_rtcs0203_2.setCellProperty("Body", 11, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 12, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 13, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 14, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 15, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 16, "edittype", "none");
+	this.grid_rtcs0203_2.setCellProperty("Body", 17, "edittype", "none");
+	
+	this.grid_rtcs0203_2.setCellProperty("Body", 2, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 3, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 4, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 5, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 6, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 7, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 8, "combodisplaynulltext", "-");
+	
+	this.grid_rtcs0203_2.setCellProperty("Body", 11, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 12, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 13, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 14, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 15, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 16, "combodisplaynulltext", "-");
+	this.grid_rtcs0203_2.setCellProperty("Body", 17, "combodisplaynulltext", "-");
+	
+	this.grid_2_AddFlag = false;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_save_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var row  	  = this.ds_rtcs0203.rowposition;
+	var ordNoRow  = this.ds_ordNoList.rowposition;
+	
+	if( (row != -1) && (ordNoRow != -1) ){
+		if( this.ds_rtcs0203.getColumn( row, "ordNo" ) != this.ds_ordNoList.getColumn( ordNoRow, "ordNo" ) ){
+			alert("조회했던 계약번호가 다르므로 저장할 수 없습니다.");
+			return false;
+		}
+	}
+	
+	if( row != -1 ){
+		var ordNo 		= nvl(this.ds_rtcs0203.getColumn(row,"ordNo"));
+		var custNo 		= nvl(this.ds_rtcs0203.getColumn(row,"custNo"));
+		var srsvYn 		= nvl(this.ds_rtcs0203.getColumn(row,"srsvYn"));
+		var agencyCd 	= nvl(this.ds_rtcs0203.getColumn(row,"agencyCd"));
+		var warehCd 	= nvl(this.ds_rtcs0203.getColumn(row,"warehCd"));
+		var strgDay 	= nvl(this.ds_rtcs0203.getColumn(strgDay,"strgDay"));
+		var strgMthd 	= nvl(this.ds_rtcs0203.getColumn(strgMthd,"strgMthd"));
+		var msg			= " 값이 없습니다.";
+		
+		if( ordNo == "" ){ 		alert("계약번호" + msg); 			return false; }
+		if( custNo == "" ){ 	alert("고객번호" + msg); 			return false; }
+		if( srsvYn == "" ){ 	alert("서비스적용여부" + msg); 	return false; }
+		if( agencyCd == "" ){ 	alert("렌탈전문점" + msg); 		return false; }
+		if( warehCd == "" ){ 	alert("보관지명" + msg); 			return false; }
+		if( strgDay == "" ){ 	alert("보관일자" + msg); 			return false; }
+		if( strgMthd == "" ){ 	alert("보관증수령방법" + msg); 	return false; }
+		if( this.grid_1_AddFlag == true && this.grid_2_AddFlag == true){
+			alert("보관내역 (앞/뒤 바퀴가 같은경우) 또는 (앞/뒤 바퀴가 다른경우) 둘중에 하나만 입력 되어야합니다.");
+			return false;
+		}
+		if( this.grid_1_AddFlag == false && this.grid_2_AddFlag == false){
+			alert("보관내역 (앞/뒤 바퀴가 같은경우) 또는 (앞/뒤 바퀴가 다른경우) 둘중에 하나가 입력 되어야합니다.");
+			return false;
+		}
+		
+		var row_1			= this.ds_keepHistory_1.rowposition;
+		var mfCd 			= nvl(this.ds_keepHistory_1.getColumn( row_1, "mfCd"));
+		var patternCd 		= nvl(this.ds_keepHistory_1.getColumn( row_1, "patternCd"));
+		var selectionWidth 	= nvl(this.ds_keepHistory_1.getColumn( row_1, "selectionWidth"));
+		var aspectRatio 	= nvl(this.ds_keepHistory_1.getColumn( row_1, "aspectRatio"));
+		var wheelInches 	= nvl(this.ds_keepHistory_1.getColumn( row_1, "wheelInches"));
+		var plyRating 		= nvl(this.ds_keepHistory_1.getColumn( row_1, "plyRating"));
+		var tireCnt 		= nvl(this.ds_keepHistory_1.getColumn( row_1, "tireCnt"));
+		
+		var row_2			= this.ds_keepHistory_1.rowposition;
+		var mfCdF			= nvl(this.ds_keepHistory_2.getColumn( row_2, "mfCdF"));
+		var patternCdF		= nvl(this.ds_keepHistory_2.getColumn( row_2, "patternCdF"));
+		var selectionWidthF	= nvl(this.ds_keepHistory_2.getColumn( row_2, "selectionWidthF"));
+		var aspectRatioF	= nvl(this.ds_keepHistory_2.getColumn( row_2, "aspectRatioF"));
+		var wheelInchesF	= nvl(this.ds_keepHistory_2.getColumn( row_2, "wheelInchesF"));
+		var plyRatingF		= nvl(this.ds_keepHistory_2.getColumn( row_2, "plyRatingF"));
+		var tireCntF		= nvl(this.ds_keepHistory_2.getColumn( row_2, "tireCntF"));
+		var mfCdR			= nvl(this.ds_keepHistory_2.getColumn( row_2, "mfCdR"));
+		var patternCdR		= nvl(this.ds_keepHistory_2.getColumn( row_2, "patternCdR"));
+		var selectionWidthR	= nvl(this.ds_keepHistory_2.getColumn( row_2, "selectionWidthR"));
+		var aspectRatioR	= nvl(this.ds_keepHistory_2.getColumn( row_2, "aspectRatioR"));
+		var wheelInchesR	= nvl(this.ds_keepHistory_2.getColumn( row_2, "wheelInchesR"));
+		var plyRatingR		= nvl(this.ds_keepHistory_2.getColumn( row_2, "plyRatingR"));
+		var tireCntR		= nvl(this.ds_keepHistory_2.getColumn( row_2, "tireCntR"));
+
+		if( this.grid_1_AddFlag == true ){
+			if( mfCd == "" ){ 			alert("제조사" + msg); return false;}
+			if( patternCd == "" ){ 		alert("패턴" + msg); 	return false;}
+			if( selectionWidth == "" ){ alert("폭" + msg); 		return false;}
+			if( aspectRatio == "" ){ 	alert("시리즈" + msg); return false;}
+			if( wheelInches == "" ){ 	alert("인치" + msg); 	return false;}
+			if( plyRating == "" ){ 		alert("PR" + msg); 		return false;}
+			if( tireCnt == "" ){ 		alert("수량" + msg); 	return false;}
+		}
+		
+		if( this.grid_2_AddFlag == true ){
+			if( ((mfCdF == "") && (patternCdF == "") && (selectionWidthF == "") && (aspectRatioF == "") && (wheelInchesF == "") && (plyRatingF == "") && (tireCntF == "")) 
+				&&
+				((mfCdR == "") && (patternCdR == "") && (selectionWidthR == "") && (aspectRatioR == "") && (wheelInchesR == "") && (plyRatingR == "") && (tireCntR == ""))
+			){
+				alert("보관내역(앞/뒤 바퀴가 다른경우) 앞바퀴 또는 뒷바퀴 정보를 입력해야됩니다.");
+				return false;
+			}
+		
+			if( (mfCdF != "") || (patternCdF != "") || (selectionWidthF != "") || (aspectRatioF != "") || (wheelInchesF != "") || (plyRatingF != "") || (tireCntF != "") ){
+				if( mfCdF == "" ){ 			alert("(앞바퀴)제조사" + msg);	return false;}
+				if( patternCdF == "" ){ 	alert("(앞바퀴)패턴" + msg); 		return false;}
+				if( selectionWidthF == "" ){alert("(앞바퀴)폭" + msg); 		return false;}
+				if( aspectRatioF == "" ){ 	alert("(앞바퀴)시리즈" + msg);	return false;}
+				if( wheelInchesF == "" ){ 	alert("(앞바퀴)인치" + msg); 		return false;}
+				if( plyRatingF == "" ){ 	alert("(앞바퀴)PR" + msg); 		return false;}
+				if( tireCntF == "" ){ 		alert("(앞바퀴)수량" + msg); 		return false;}
+			}
+			
+			if( (mfCdR != "") || (patternCdR != "") || (selectionWidthR != "") || (aspectRatioR != "") || (wheelInchesR != "") || (plyRatingR != "") || (tireCntR != "") ){
+				if( mfCdR == "" ){ 			alert("(뒷바퀴)제조사" + msg);	return false;}
+				if( patternCdR == "" ){ 	alert("(뒷바퀴)패턴" + msg); 		return false;}
+				if( selectionWidthR == "" ){alert("(뒷바퀴)폭" + msg); 		return false;}
+				if( aspectRatioR == "" ){ 	alert("(뒷바퀴)시리즈" + msg);	return false;}
+				if( wheelInchesR == "" ){ 	alert("(뒷바퀴)인치" + msg); 		return false;}
+				if( plyRatingR == "" ){ 	alert("(뒷바퀴)PR" + msg); 		return false;}
+				if( tireCntR == "" ){ 		alert("(뒷바퀴)수량" + msg); 		return false;}
+			}
+		}
+		
+		if( this.grid_1_AddFlag == true ){
+			this.ds_rtcs0203.setColumn( row, "mfCd", 			mfCd );
+			this.ds_rtcs0203.setColumn( row, "patternCd", 		patternCd );
+			this.ds_rtcs0203.setColumn( row, "selectionWidth", 	selectionWidth );
+			this.ds_rtcs0203.setColumn( row, "aspectRatio", 	aspectRatio );
+			this.ds_rtcs0203.setColumn( row, "wheelInches", 	wheelInches );
+			this.ds_rtcs0203.setColumn( row, "plyRating", 		plyRating );
+			this.ds_rtcs0203.setColumn( row, "tireCnt", 		tireCnt );
+		}
+		
+		if( this.grid_2_AddFlag == true ){
+			this.ds_rtcs0203.setColumn( row, "mfCdF", 			mfCdF );
+			this.ds_rtcs0203.setColumn( row, "patternCdF", 		patternCdF );
+			this.ds_rtcs0203.setColumn( row, "selectionWidthF", selectionWidthF );
+			this.ds_rtcs0203.setColumn( row, "aspectRatioF", 	aspectRatioF );
+			this.ds_rtcs0203.setColumn( row, "wheelInchesF", 	wheelInchesF );
+			this.ds_rtcs0203.setColumn( row, "plyRatingF", 		plyRatingF );
+			this.ds_rtcs0203.setColumn( row, "tireCntF", 		tireCntF );
+			this.ds_rtcs0203.setColumn( row, "mfCdR", 			mfCdR );
+			this.ds_rtcs0203.setColumn( row, "patternCdR", 		patternCdR );
+			this.ds_rtcs0203.setColumn( row, "selectionWidthR", selectionWidthR );
+			this.ds_rtcs0203.setColumn( row, "aspectRatioR", 	aspectRatioR );
+			this.ds_rtcs0203.setColumn( row, "wheelInchesR", 	wheelInchesR );
+			this.ds_rtcs0203.setColumn( row, "plyRatingR", 		plyRatingR );
+			this.ds_rtcs0203.setColumn( row, "tireCntR", 		tireCntR );
+		}
+		
+		this.ds_rtcs0203.setColumn( row, "strgStat", "S" );//보관상태
+		this.ds_rtcs0203.setColumn( row, "strgYn", "Y" );  //보관여부
+		
+		var sSvcID        	= "saveRtcs0203WinterIn";                    
+		var sController   	= "rtms/cs/saveRtcs0203WinterIn.do";
+		var sInDatasets   	= " input=ds_rtcs0203:U ";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("보관 등록할 정보가 없습니다.");
+		return false;
+	}
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMStrgRegister_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.cal_strgDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var thisValue =  obj.value;
+	var firstDate =  Eco.date.getFirstDate(this.toDay);
+	var lastDay   =  this.toDay.substr(0,4)+this.toDay.substr(4,2)+Eco.date.getLastDayOfMonth(this.toDay);
+	
+	if( !(( firstDate <= thisValue ) && (thisValue <= lastDay)) ){
+		alert("보관일자는 "+firstDate+" ~ "+lastDay+" 선택가능합니다.");
+		obj.set_value(this.toDay);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ed_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if(e.keycode == 13 ){
+		var ordNo = nvl(this.ed_ordNo.value);
+		if( ordNo != "" ){
+			var sSvcID        	= "ordNoList";                    
+			var sController   	= "rtms/comm/ordNoList.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_ordNoList=ordNoMap";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			this.ds_ordNoList.deleteAll();
+			sArgs += Ex.util.setParam("ordNo",ordNo);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

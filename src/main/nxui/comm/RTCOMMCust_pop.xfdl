@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMCust_pop" classname="RTCOMMCust_pop" left="0" top="0" width="1085" height="450" titletext="고객찾기" onload="RTCOMMCust_pop_onload" onkeyup="RTCOMMCust_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_cust" taborder="1" binddataset="ds_cust" useinputpanel="false" left="10" top="120" height="286" oncelldblclick="grid_cust_oncelldblclick" cellsizingtype="col" right="10">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="80"/>
+                <Column size="280"/>
+                <Column size="210"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="고객번호"/>
+                <Cell col="1" text="고객명"/>
+                <Cell col="2" text="법정생년월일"/>
+                <Cell col="3" text="사업자번호"/>
+                <Cell col="4" text="전화번호"/>
+                <Cell col="5" text="전화번호"/>
+                <Cell col="6" text="휴대폰번호"/>
+                <Cell col="7" text="휴대폰번호"/>
+                <Cell col="8" text="우편번호"/>
+                <Cell col="9" text="주소"/>
+                <Cell col="10" text="상세주소"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:center;" text="bind:custNo"/>
+                <Cell col="1" style="align:center;" text="bind:custNm"/>
+                <Cell col="2" style="align:center;" text="bind:birthDay" mask="####-##-##"/>
+                <Cell col="3" style="align:center;" text="bind:buslNo" mask="###-##-#####"/>
+                <Cell col="4" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
+                <Cell col="5" style="align:center;" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="6" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
+                <Cell col="7" style="align:center;" text="bind:mobNo"/>
+                <Cell col="8" style="align:center;" text="bind:posCd"/>
+                <Cell col="9" edittype="readonly" style="align:left;" text="bind:addr1"/>
+                <Cell col="10" style="align:left;" text="bind:addr2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="0" left="10" top="10" height="100" scrollbars="none" cssclass="div_WF_searchBg" width="1065">
+          <Layouts>
+            <Layout width="1092" height="142">
+              <Button id="btn_search" taborder="9" text="검색" onclick="div_search_btn_search_onclick" cssclass="btn_WF_CRUD" top="61" height="22" domainId="nexa.add" width="45" right="20"/>
+              <Static id="st_custTp" taborder="10" text="고객유형" cssclass="sta_WF_schTitle" left="20" top="10" height="21" domainId="nexa.s_condition" width="100"/>
+              <Edit id="ed_custNm" taborder="1" enable="true" left="140" top="35" height="21" width="120"/>
+              <Radio id="ra_custTp" taborder="0" left="140" top="12" height="21" index="-1" innerdataset="@ds_custTp" codecolumn="cd" datacolumn="cdNm" direction="vertical" onitemchanged="div_search_ra_custTp_onitemchanged" width="120"/>
+              <Static id="st_buslNo" taborder="11" text="사업자번호" cssclass="sta_WF_schTitle" left="280" top="35" height="21" domainId="nexa.s_condition" visible="false" width="100"/>
+              <Static id="st_telNo" taborder="14" text="전화번호" cssclass="sta_WF_schTitle" left="280" top="61" height="21" domainId="nexa.s_condition" width="100"/>
+              <Static id="st_telNo2" taborder="13" text="전화번호2" cssclass="sta_WF_schTitle" left="540" top="61" height="21" domainId="nexa.s_condition" width="100"/>
+              <Edit id="ed_telNo" taborder="7" enable="true" left="400" top="61" height="21" width="120" onkeyup="div_search_ed_telNo_onkeyup" inputtype="number"/>
+              <Edit id="ed_telNo2" taborder="8" enable="true" left="660" top="61" height="21" onkeyup="div_search_ed_telNo2_onkeyup" width="120" inputtype="number"/>
+              <Static id="st_custNm" taborder="12" text="고객명" cssclass="sta_WF_schTitle" left="20" top="35" height="21" domainId="nexa.s_condition" width="100"/>
+              <Static id="st_birthDay" taborder="18" text="법정생년월일" cssclass="sta_WF_schTitle" left="280" top="35" height="21" domainId="nexa.s_condition" width="100"/>
+              <Static id="st_genderCd" taborder="16" text="성별" cssclass="sta_WF_schTitle" left="540" top="35" height="21" domainId="nexa.s_condition" width="100"/>
+              <Combo id="cb_genderCd" taborder="4" displaynulltext="선택" innerdataset="ds_genderCd" codecolumn="cd" datacolumn="cdNm" left="660" top="35" height="21" domainId="nexa.name;nexa.code" width="120"/>
+              <Static id="st_lfCd" taborder="17" text="내/외국인" cssclass="sta_WF_schTitle" left="800" top="35" height="21" domainId="nexa.s_condition" width="100"/>
+              <Combo id="cb_lfCd" taborder="5" displaynulltext="선택" innerdataset="ds_lfCd" codecolumn="cd" datacolumn="cdNm" left="920" top="35" height="21" domainId="nexa.name;nexa.code" width="120"/>
+              <Static id="st_mobNo" taborder="15" text="휴대폰" cssclass="sta_WF_schTitle" left="20" top="61" height="21" domainId="nexa.s_condition" width="100"/>
+              <MaskEdit id="ed_mobNo" taborder="6" type="string" mask="###-####-####" left="140" top="61" height="21" width="120" onsetfocus="div_search_ed_mobNo_onsetfocus" oneditclick="div_search_ed_mobNo_oneditclick"/>
+              <MaskEdit id="ed_birthDay" taborder="3" type="string" mask="####-##-##" left="400" top="35" height="21" width="120" oneditclick="div_search_ed_birthDay_oneditclick" onsetfocus="div_search_ed_birthDay_onsetfocus" onkeyup="div_search_ed_birthDay_onkeyup"/>
+              <MaskEdit id="ed_buslNo" taborder="2" type="string" mask="###-##-#####" left="400" top="35" height="21" width="120" oneditclick="div_search_ed_buslNo_oneditclick" onsetfocus="div_search_ed_buslNo_onsetfocus" onkeyup="div_search_ed_buslNo_onkeyup"/>
+              <Static id="Static07" taborder="19" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1041"/>
+              <Static id="Static00" taborder="20" cssclass="Guide_color" visible="false" left="0" top="84" width="1041" height="12"/>
+              <Static id="Static06" taborder="21" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="96"/>
+              <Static id="Static02" taborder="23" cssclass="Guide_color" visible="false" left="0" top="55" height="6" width="1041"/>
+              <Static id="Static03" taborder="24" cssclass="Guide_color" visible="false" left="0" top="31" width="1041" height="6"/>
+              <Static id="Static04" taborder="25" cssclass="Guide_color" visible="false" left="260" top="0" width="20" height="96"/>
+              <Static id="Static05" taborder="26" cssclass="Guide_color" visible="false" left="380" top="0" width="20" height="96"/>
+              <Static id="Static08" taborder="27" cssclass="Guide_color" visible="false" left="520" top="0" width="20" height="96"/>
+              <Static id="Static09" taborder="28" cssclass="Guide_color" visible="false" left="640" top="0" width="20" height="96"/>
+              <Static id="Static10" taborder="29" cssclass="Guide_color" visible="false" left="780" top="0" width="20" height="96"/>
+              <Static id="Static11" taborder="30" cssclass="Guide_color" visible="false" left="900" top="0" width="20" height="96"/>
+              <Static id="Static12" taborder="31" cssclass="Guide_color" visible="false" left="1041" top="0" height="96" width="20"/>
+              <Static id="Static01" taborder="32" cssclass="Guide_color" visible="false" left="120" top="0" width="20" height="96"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" top="416" height="21" domainId="nexa.add" width="41" right="55"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="416" height="21" domainId="nexa.add" width="41" right="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="addrSum1" type="STRING" size="256"/>
+          <Column id="addrSum2" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_custCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="addrSum1" type="STRING" size="256"/>
+          <Column id="addrSum2" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_custTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_genderCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lfCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt,checkAuthGrpuCd){
+	if (strSvcId == "initRTCOMMCustPop"){
+		if( this.ds_custTp.rowcount != 0 ){
+			this.div_search.ra_custTp.set_value( this.ds_custTp.getColumn(0,"cd") );
+			this.div_search_ra_custTp_onitemchanged();
+		}
+	}
+	if(strSvcId == "listCustInfo"){
+		var rowCt = this.ds_cust.getRowCount();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.grid_cust.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+	
+	if (strSvcId == "saveCustRegister"){
+		
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMCust_pop_onload = function(obj,e){
+	Ex.core.init(obj);
+	this.fn_init();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initRTCOMMCustPop";  
+	var sController   	= "rtms/comm/initRTCOMMCustPop.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_custTp=mapDsCustTp ds_genderCd=mapDsGenderCd ds_lfCd=mapDsLfcd";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ra_custTp_onitemchanged = function(obj,e){
+	this.ds_cust.deleteAll();
+	if( this.div_search.ra_custTp.value == "01" ){
+		this.div_search.st_custNm.set_text("고객명");
+		
+		this.div_search.st_birthDay.set_visible(true);
+		this.div_search.ed_birthDay.set_visible(true);
+		
+		this.div_search.st_buslNo.set_visible(false);
+		this.div_search.ed_buslNo.set_visible(false);
+		
+		this.div_search.st_mobNo.set_visible(true);
+		this.div_search.ed_mobNo.set_visible(true);
+
+		this.div_search.st_genderCd.set_visible(true);
+		this.div_search.cb_genderCd.set_visible(true);
+
+		this.div_search.st_lfCd.set_visible(true);
+		this.div_search.cb_lfCd.set_visible(true);
+		
+		this.grid_cust.setRealColSize( 2, 100 );//법정생년월일
+		this.grid_cust.setRealColSize( 3, 0 );//사업자번호
+		
+		this.grid_cust.setCellProperty( "Head", 1, "text", "고객명");
+		
+		this.div_search.st_telNo.move(280,61);
+		this.div_search.ed_telNo.move(400,61);
+		
+		this.div_search.st_telNo2.move(540,61);
+		this.div_search.ed_telNo2.move(660,61);
+	}else{
+		this.div_search.st_custNm.set_text("법인명");
+		
+		this.div_search.st_birthDay.set_visible(false);
+		this.div_search.ed_birthDay.set_visible(false);
+		
+		this.div_search.st_buslNo.set_visible(true);
+		this.div_search.ed_buslNo.set_visible(true);
+		
+		this.div_search.st_mobNo.set_visible(false);
+		this.div_search.ed_mobNo.set_visible(false);
+
+		this.div_search.st_genderCd.set_visible(false);
+		this.div_search.cb_genderCd.set_visible(false);
+
+		this.div_search.st_lfCd.set_visible(false);
+		this.div_search.cb_lfCd.set_visible(false);
+		
+		this.grid_cust.setRealColSize( 2, 0 );//법정생년월일
+		this.grid_cust.setRealColSize( 3, 100 );//사업자번호
+			
+		this.grid_cust.setCellProperty( "Head", 1, "text", "법인명");
+		
+		this.div_search.st_telNo.move(540,35);
+		this.div_search.ed_telNo.move(660,35);
+		
+		this.div_search.st_telNo2.move(800,35);
+		this.div_search.ed_telNo2.move(920,35);
+	}
+	this.div_search.ed_custNm.set_value("");
+	this.div_search.ed_telNo.set_value("");
+	this.div_search.ed_mobNo.set_value("");
+	this.div_search.ed_telNo2.set_value("");
+	this.div_search.ed_buslNo.set_value("");
+	this.div_search.ed_birthDay.set_value("");
+	this.div_search.cb_genderCd.set_index(-1);
+	this.div_search.cb_lfCd.set_index(-1);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_search_onclick = function(obj,e){
+	var sSvcID        	= "listCustInfo";                    
+	var sController   	= "rtms/comm/listCustInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_cust=mapCustInfo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+		
+	var custTp 		= nvl(this.div_search.ra_custTp.value);	
+	var custNm 		= nvl(this.div_search.ed_custNm.value);
+	
+	var birthDay 	= nvl(this.div_search.ed_birthDay.value);
+	var buslNo 		= nvl(this.div_search.ed_buslNo.value);
+	
+	var mobNo 		= nvl(this.div_search.ed_mobNo.value);
+	var telNo 		= nvl(FN_numberHyphenOut(nvl(this.div_search.ed_telNo.value)));
+	var telNo2 		= nvl(FN_numberHyphenOut(nvl(this.div_search.ed_telNo2.value)));
+	
+	var genderCd 	= nvl(this.div_search.cb_genderCd.value);
+	var lfCd 		= nvl(this.div_search.cb_lfCd.value);
+	var ordId		= nvl(this.parent.ordId);
+		
+	if( custTp == "01" ){
+		var searchCt = 0;
+		if( custNm != "")	{ searchCt++; }
+		if( birthDay != "")	{ searchCt++; }
+		if( mobNo != "")	{ searchCt++; }
+		if( telNo != "")	{ searchCt++; }
+		
+		if( searchCt <= 1){
+			alert("고객명, 법정생년월일, 핸드폰, 전화번호 중 최소 2개는 입력하셔야합니다.");
+			return false;
+		}else{
+			sArgs += Ex.util.setParam("birthDay", birthDay);
+			sArgs += Ex.util.setParam("mobNo", mobNo);
+			sArgs += Ex.util.setParam("genderCd", genderCd);
+			sArgs += Ex.util.setParam("lfCd", lfCd);
+		}
+	}else{
+		var searchCt = 0;
+		if( custNm != "")	{ searchCt++; }
+		if( buslNo != "")	{ searchCt++; }
+		
+		if( searchCt < 1){
+			alert("법인명 , 사업자번호 중 최소 1개는 입력하셔야합니다.");
+			return false;
+		}else{
+			sArgs += Ex.util.setParam("buslNo", buslNo);
+		}
+	}
+	
+	sArgs += Ex.util.setParam("custTp",custTp);
+	sArgs += Ex.util.setParam("custNm", custNm);
+	sArgs += Ex.util.setParam("telNo", telNo);
+	sArgs += Ex.util.setParam("telNo2", telNo2);
+	sArgs += Ex.util.setParam("ordId", ordId);
+	
+	this.ds_cust.clearData();
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_cust_oncelldblclick = function(obj,e){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_choice_onclick = function(obj,e){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_choice = function(){
+	var pos = this.ds_cust.rowposition;
+	
+	if( pos == -1 ){
+		alert("선택된 데이터가 없습니다.");
+	}else{
+		if( this.parent.p_arg == "RTSDCustGrp_1" ){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			res = [ custNo ];
+			this.close( this.opener.FN_custNo_1(res) );
+		}else if( this.parent.p_arg == "RTSDCustGrp_2" ){
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			res = [ custNm, custNo ];
+			this.close( this.opener.FN_custNo_2(res) );
+		}else if( this.parent.p_arg == "RTCSInboundAdviceRegister" ){
+			var mobNo 	= this.ds_cust.getColumn(pos, "mobNo");
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			res = [ mobNo, custNm, custNo ];
+			this.close( this.opener.FN_custNo(res) );
+		}else if( this.parent.p_arg == "RTCSKeepHistory"   || this.parent.p_arg=="RTCSEngineOilRepSer" || this.parent.p_arg=="RTCSZeroSed_makerNmervice"){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			res = [ custNo,custNm ];
+			this.close( this.opener.returnCustNo(res) );
+		}else if( this.parent.p_arg == "RTCMOrdAgentOrder" ){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			res = [ custNo, custNm ];
+			this.close( this.opener.returnCustInfo(res) );
+		}else if( this.parent.p_arg == "RTSDBillModify" ){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			res = [ custNo, custNm ];
+			this.close( this.opener.returnCustInfo(res) );
+		}else if( this.parent.p_arg == "RTCSZeroRepService" ){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			var custNm 	= this.ds_cust.getColumn(pos, "custNm");
+			res = [ custNo, custNm ];
+			this.close( this.opener.returnCustInfo(res) );
+		}else if( this.parent.p_arg == "RTSDClaimMgmt_pop" ){
+			var custNo 	= this.ds_cust.getColumn(pos, "custNo");
+			res = [ custNo ];
+			this.close( this.opener.returnCustInfo(res) );
+		}else{
+			this.ds_custCp.clearData();
+			var idx = this.ds_custCp.addRow();
+			this.ds_custCp.copyRow(idx, this.ds_cust, pos);
+			var arr = [this.ds_custCp];
+			this.close(this.opener.returnCustInfo(arr));
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj,e){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_telNo_onkeyup = function(obj,e){
+	FN_numberHyphenIn(obj, e);
+}
+this.div_search_ed_telNo2_onkeyup = function(obj,e){
+	FN_numberHyphenIn(obj, e);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_mobNo_onsetfocus = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_mobNo_oneditclick = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_buslNo_oneditclick = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_buslNo_onsetfocus = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_birthDay_oneditclick = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_birthDay_onsetfocus = function(obj,e){
+	this.FN_setSelect(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_setSelect = function(obj){
+	obj.setSelect(0);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMCust_pop_onkeyup = function(obj,e){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_buslNo_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_search_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_birthDay_onkeyup = function(obj,e){
+	if( e.keycode == "13" ){
+		this.div_search_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

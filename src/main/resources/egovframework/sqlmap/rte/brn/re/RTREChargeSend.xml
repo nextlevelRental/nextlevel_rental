@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="chargeSend">
+	<!-- 벤더정보등록 -->
+	<parameterMap class="java.util.Map" id="paramIUDRtre0130">
+		<parameter property="dvsn" 					jdbcType="VARCHAR" mode="IN" />	  <!--등록구분          			 -->
+		<parameter property="lifnr"					jdbcType="VARCHAR" mode="IN" />      <!--주문번호    				 -->
+		<parameter property="vndrNm"				jdbcType="VARCHAR" mode="IN" />      <!--순번     					 -->
+		<parameter property="telNo"					jdbcType="VARCHAR" mode="IN" />      <!--청구제외구분               -->
+		<parameter property="mobNo"				jdbcType="VARCHAR" mode="IN" />      <!--사용여부               	  -->
+		<parameter property="agencyCd"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="taxRqcd"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntOfc"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntPnt"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="useYn"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryYn"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryId"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryDt"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="chargeSend.saveVendorList" parameterMap="paramIUDRtre0130">
+		{call Pkg_Rtre0130.p_IUDRtre0130(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 수수료내역등록 -->
+	<parameterMap class="java.util.Map" id="paramIUDRtre0300">
+		<parameter property="dvsn" 					jdbcType="VARCHAR" mode="IN" />	  <!--등록구분          			 -->
+		<parameter property="slcmYm"				jdbcType="VARCHAR" mode="IN" />      <!--주문번호    				 -->
+		<parameter property="lifnr"					jdbcType="VARCHAR" mode="IN" />      <!--순번     					 -->
+		<parameter property="commTamt"			jdbcType="VARCHAR" mode="IN" />      <!--청구제외구분               -->
+		<parameter property="commNamt"			jdbcType="VARCHAR" mode="IN" />      <!--사용여부               	  -->
+		<parameter property="commVamt"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="slipNo"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="vndrNm"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="vndrMobNo"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="agencyCd"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="taxRqcd"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntOfc"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntPnt"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntMstId"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntMobNo"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="rntEmail"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="smsYn"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="smsDt"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryYn"			jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryId"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="piDstryDt"				jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="chargeSend.saveChargeList" parameterMap="paramIUDRtre0300">
+		{call Pkg_Rtre0300.p_IUDRtre0300(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 수수료내역업데이트 -->
+	<parameterMap class="java.util.Map" id="paramUpdateRtre0300">
+		<parameter property="slcmYm"				jdbcType="VARCHAR" mode="IN" />      <!--주문번호    				 -->
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="chargeSend.aggregateSms" parameterMap="paramUpdateRtre0300">
+		{call Pkg_Rtre0300.p_UpdateRtre0300(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 수수료내역발송 -->
+	<parameterMap class="java.util.Map" id="paramSendSms">
+		<parameter property="slcmYm"				jdbcType="VARCHAR" mode="IN" />      <!--주문번호    				 -->
+		<parameter property="regId"					jdbcType="VARCHAR" mode="IN" />      <!--결제수단               	  -->
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 			jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="chargeSend.saveSendSms" parameterMap="paramSendSms">
+		{call Pkg_Rtre0300.p_ChargeSendSms(?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

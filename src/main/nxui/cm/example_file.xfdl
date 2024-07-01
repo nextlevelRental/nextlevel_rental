@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="example_file" classname="example_file" left="0" top="0" width="1024" height="768" titletext="New Form" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btnResizing" taborder="0" text="다중이미지 업로드" onclick="btnResizing_onclick" left="1.56%" top="17" right="57.62%" height="39"/>
+        <ImageViewer id="ImageViewer00" taborder="1" stretch="fixaspectratio" left="1.56%" top="70" right="57.81%" height="256"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds1" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="IDX" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="BAR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_file" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="COL_CHECK" type="STRING" size="256"/>
+          <Column id="FILE_SEQ" type="STRING" size="256"/>
+          <Column id="SERVER_NM" type="STRING" size="256"/>
+          <Column id="SERVER_PATH" type="STRING" size="256"/>
+          <Column id="FILE_SIZE" type="STRING" size="256"/>
+          <Column id="ORIGINAL_NM" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+	* Common Library
+	***********************************************************************************/
+	include "lib::comLib.xjs";
+	/***********************************************************************************
+	* Global/Local Variable
+	***********************************************************************************/
+
+	/***********************************************************************************
+	* Form Function
+	***********************************************************************************/
+
+
+	/***********************************************************************************
+	* Form Event
+	***********************************************************************************/
+	this.form_onload = function (obj:Form, e:LoadEventInfo){
+	   Ex.core.init(obj,693);
+	}
+
+	/**
+	* 파일선택 / 이미지 resizing 100*100 500*500
+	* @param {object} o.form >>>> this
+	* @param {string} o.type >>>> image type(image/*)         
+	* @param {array} resize 형식 [100,500]   [-1]이면 이미지resize처리 안함
+	* @param {boolen} multiselect 
+	* @return 
+	* @example
+	* Ex.file.getFile(this,"fn_imgResizeCallback");
+	* @memberOf publick
+	*/	
+	this.btnResizing_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		//@param : this
+		//@callback : callback name
+		//@type :default: 모든파일 :  image/* (이미지type) 	
+		//@multiselect: true : 멀티파일선택 false : 싱글선택
+		Ex.file.getFile({frmobj:this    
+							,callback:"fn_imgResizeCallback"
+							,type:"image/*"
+							,resize:[100, 500]
+							,multiselect:true});
+	}
+
+
+
+	/**
+	* resizing callbak
+	* @param {object} 이미지 obj
+	* @return
+	* @memberOf private
+	*/
+	this.fn_imgResizeCallback  = function(objImgDs) {
+		trace(" objImgDs : "  +objImgDs);
+		if(Eco.isEmpty(objImgDs)) {
+			return;
+		}
+		trace(" objImgDs : "  + objImgDs.saveXML());
+		var ds_temp = Ex.util.isCheckDs("ds_temp");
+		var ds_outTemp = Ex.util.isCheckDs("ds_outTemp");
+		
+		//100 pixcel 이미지 filter
+		objImgDs.filter("FILE_SIZE==100");
+		ds_temp.copyData(objImgDs,true);
+		objImgDs.filter("");
+		
+		//500 pixcel 이미지 filter
+		objImgDs.filter("FILE_SIZE==500");
+		ds_outTemp.copyData(objImgDs,true);
+		objImgDs.filter("");
+
+		this.ds1.clearData();
+
+		if(this.ds1.rowcount == 0){
+		   this.ds1.assign(ds_temp);
+		   this.ds_file.assign(ds_outTemp); 
+		} else {
+		   this.ds1.appendData(ds_temp);
+		   this.ds_file.appendData(ds_outTemp);
+		}
+		this.ImageViewer00.set_image(this.ds_file.getColumn(0,"DATA"));
+		
+		for(var i = 0; i<this.ds_file.getRowCount(); i++) {
+	
+			alert(this.ds_file.getColumn(i, "COL_CHECK"));
+			alert(this.ds_file.getColumn(i, "FILE_SEQ"));
+			alert(this.ds_file.getColumn(i, "SERVER_NM"));
+			alert(this.ds_file.getColumn(i, "SERVER_PATH"));
+			alert(this.ds_file.getColumn(i, "FILE_SIZE"));
+			alert(this.ds_file.getColumn(i, "ORIGINAL_NM"));
+			alert(this.ds_file.getColumn(i, "DATA"));
+		}
+		
+		this.setTimer(1,3000);
+	}]]></Script>
+  </Form>
+</FDL>

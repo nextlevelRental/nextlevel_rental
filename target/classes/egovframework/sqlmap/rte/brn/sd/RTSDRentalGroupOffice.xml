@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rentalGroupOffice">
+	
+	<resultMap id="groupOfficeResultMap" class="java.util.HashMap">
+		<result property="chk"            column="CHK"/>
+		<result property="agencyCd"       column="AGENCY_CD"/>
+		<result property="agencyNm"       column="AGENCY_NM"/>
+		<result property="salesGroup"     column="SALES_GROUP"/>
+		<result property="salesOffice"    column="SALES_OFFICE"/>
+		<result property="telNo"          column="TEL_NO"/>
+		<result property="chanCd"         column="CHAN_CD"/>
+		<result property="lifnr"          column="LIFNR"/>
+		<result property="taxRqcd"        column="TAX_RQCD"/>
+		<result property="rentalYn"       column="RENTAL_YN"/>
+		<result property="chanLclsCd"     column="CHAN_LCLS_CD"/>
+		<result property="chanMclsCd"     column="CHAN_MCLS_CD"/>
+		<result property="rentalGroup"    column="RENTAL_GROUP"/>
+		<result property="rentalGroupNm"  column="RENTAL_GROUP_NM"/>
+		<result property="rentalOffice"   column="RENTAL_OFFICE"/>
+		<result property="rentalOfficeNm" column="RENTAL_OFFICE_NM"/>				
+		<result property="chnCl" 		  column="CHN_CL"/>
+		<result property="rentalGroupNew"  	column="RENTAL_GROUP_NEW"/>
+		<result property="rentalGroupNmNew" column="RENTAL_GROUP_NM_NEW"/>
+		<result property="rentalOfficeNew" 	column="RENTAL_OFFICE_NEW"/>
+		<result property="rentalOfficeNmNew" column="RENTAL_OFFICE_NM_NEW"/>
+	</resultMap>
+       
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="groupOfficeResultMap" />
+		<parameter property="rentalGroup"  mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="rentalOffice" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="chnCd"		   mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalGroupOffice.listRentalGroupOffice" parameterMap="groupParam">
+		{call PKG_RTVW0033.p_sRtvw0033(?, ?, ?, ?)}
+	</procedure>
+
+	<parameterMap id="p_IUDRTVW0033_I" class="java.util.Map">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chnCl"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="agencyCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalGroupNew"   	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalOfficeNew" 	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="rentalGroupOffice.saveRentalGroupOffice" parameterMap="p_IUDRTVW0033_I">
+		{call PKG_RTVW0033.p_IUDRtvw0033(?, ?, ?, ?, ?, ?, ?, ?, ?)} 
+	</procedure>	
+</sqlMap>

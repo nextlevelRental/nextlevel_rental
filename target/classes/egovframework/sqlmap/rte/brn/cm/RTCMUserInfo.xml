@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="userInfoDAO">
+
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="userId" column="USER_ID" />
+		<result property="userNm" column="USER_NM" />
+		<result property="password" column="PASSWORD" />
+		<result property="oldPassword" column="OLD_PASSWORD" />
+		<result property="agentId" column="AGENT_ID" />
+		<result property="agentNm" column="AGENT_NM" />
+		<result property="vkbur" column="VKBUR" />
+		<result property="vkburNm" column="VKBUR_NM" />
+		<result property="vkgrp" column="VKGRP" />
+		<result property="vkgrpNm" column="VKGRP_NM" />
+		<result property="userGrp" column="USER_GRP" />
+		<result property="userGrpNm" column="USER_GRP_NM" />
+		<result property="lastPwDt" column="LAST_PW_DT"/>
+		<result property="lastLogonDt" column="LAST_LOGON_DT" />
+		<result property="failCnt" column="FAIL_CNT" />
+		<result property="tmpPwYn" column="TMP_PW_YN" />
+		<result property="lockYn" column="LOCK_YN" />
+		<result property="regId" column="REG_ID" />
+		<result property="regDt"  column="REG_DT" />
+		<result property="chgId" column="CHG_ID" />
+		<result property="chgDt"  column="CHG_DT" />
+	</resultMap>
+
+
+	<parameterMap id="parameters" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />
+		<parameter property="userId" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userNm" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userGrp" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	
+	<procedure id="user.listUserInfo" parameterMap="parameters">
+		{call
+		Pkg_Rtcm0001.p_sRtcm0001(?, ?, ?, ?)}
+	</procedure>
+
+	
+	<parameterMap class="java.util.Map" id="insert_Rtcm0001">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="password" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agentId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vkbur" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vkgrp" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userGrp" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lockYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="user.saveUserInfo" parameterMap="insert_Rtcm0001">
+		{call Pkg_Rtcm0001.p_IUDRtcm0001(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 사용자그룹 목록조회 -->
+	<parameterMap id="paramUserGroup" class="java.util.Map">
+		<parameter property="vcursor2" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultUserGroup" />
+		<parameter property="cdNm" 		jdbcType="VARCHAR" mode="IN" />
+		<!-- <parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" /> -->
+	</parameterMap>
+	
+	<resultMap id="resultUserGroup" class="java.util.HashMap">
+		<result property="cd" 	column="CD" />
+		<result property="cdNm" column="CD_NM" />
+	</resultMap>
+	
+	<procedure id="user.getUserGrp" parameterMap="paramUserGroup">
+		{call Pkg_Rtcm0051.p_sRtcm0051CodeName(?, 'C001', ?, 'Y')}
+	</procedure>
+	<!-- 사용자그룹정보 조회 종료 -->
+	
+	<!-- 사용자 중복체크 -->
+	<parameterMap id="exitsMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultId" />
+		<parameter property="userId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="resultId" class="java.util.HashMap"/>
+		
+	<procedure  id="user.checkIdExists" resultClass="java.util.Map" parameterMap="exitsMap">
+		{call ? := PKG_RTCM0001.F_SRTCM0001COUNT ( ? )}
+	</procedure>
+	
+	
+	<!-- 비밀번호 초기화 -->
+	<parameterMap id="clearPwMap" class="java.util.Map">
+		<parameter property="userId" 			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="password"			jdbcType="VARCHAR" mode="IN"/>
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure  id="user.clearPwd" resultClass="java.util.Map" parameterMap="clearPwMap">
+		{call Pkg_Rtcm0001.p_UpdateRtcm0001Init(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+</sqlMap>

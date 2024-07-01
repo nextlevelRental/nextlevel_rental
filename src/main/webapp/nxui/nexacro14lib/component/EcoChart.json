@@ -1,0 +1,14 @@
+﻿{
+	"name": "EcoChart",
+	"version": "1.0.0.0",
+	"description": "nexacro platform 14 Unified Framework Library",
+	"license": "",
+	"scripts": [
+				"EcoChart/EcoChart.js",
+				"EcoChart/EcoChartElement.js"
+	],
+	"objInfo": [
+		"EcoChart.info"
+	]
+}
+//@ sourceURL=EcoChart.json

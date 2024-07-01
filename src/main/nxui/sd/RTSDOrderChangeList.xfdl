@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDOrderChangeList" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="주문 변경 현황 (TMS)" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="46" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="22" text="변경일자" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="Calendar02" taborder="34" dateformat="yyyy-MM-dd" left="219" top="10" width="100" height="21" value="null" onchanged="Div00_Calendar02_onchanged" canchange="Div00_Calendar02_canchange"/>
+              <Static id="Static07" taborder="35" text="~" left="207" top="10" width="9" height="21"/>
+              <Calendar id="Calendar01" taborder="36" dateformat="yyyy-MM-dd" left="105" top="10" width="100" height="21" value="null"/>
+              <Radio id="RadioBox" taborder="41" index="0" innerdataset="@dsRadio" codecolumn="cd" datacolumn="cdNm" value="Y" left="324" top="8" height="27" onitemclick="Div00_Radio_onitemclick" direction="vertical" width="222"/>
+              <Static id="Static26" taborder="42" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1147" height="12"/>
+              <Static id="Static00" taborder="43" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" width="1147" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="61" binddataset="dsList" left="0" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="1122" height="431">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="120"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호(구코드)"/>
+                <Cell col="1" text="변경전 코드"/>
+                <Cell col="2" text="대리점명"/>
+                <Cell col="3" text="변경후 코드"/>
+                <Cell col="4" text="대리점명"/>
+                <Cell col="5" text="OMS주문번호"/>
+                <Cell col="6" text="계약번호(신규)"/>
+                <Cell col="7" text="코드변경여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" edittype="readonly" text="bind:agencyCdBf"/>
+                <Cell col="2" edittype="readonly" text="bind:agencyNmBf"/>
+                <Cell col="3" displaytype="normal" edittype="readonly" text="bind:agencyCdAf" calendardisplaynulltype="none"/>
+                <Cell col="4" edittype="readonly" text="bind:agencyNmAf"/>
+                <Cell col="5" displaytype="normal" edittype="readonly" text="bind:omsOrderNo" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="normal" edittype="readonly" text="bind:ordNoNew" calendardisplaynulltype="none"/>
+                <Cell col="7" text="bind:agencyDiffYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="46"/>
+        <Static id="Static10" taborder="8" cssclass="Guide_color" visible="false" left="0" top="46" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="agencyCdBf" type="STRING" size="256"/>
+          <Column id="agencyNmBf" type="STRING" size="256"/>
+          <Column id="agencyCdAf" type="STRING" size="256"/>
+          <Column id="agencyNmAf" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="omsOrderNo" type="STRING" size="256"/>
+          <Column id="tmsOrderId" type="STRING" size="256"/>
+          <Column id="inputDay" type="STRING" size="256"/>
+          <Column id="confYn" type="STRING" size="256"/>
+          <Column id="ordNoNew" type="STRING" size="256"/>
+          <Column id="agencyDiffYn" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsRadio" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">거점변경</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">거점미변경</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.firstDate  = "";
+this.lastDate  = "";
+this.orgToDate = "";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.get_date();
+	this.parent.setButton("E|S", this);
+	//this.dsList.addRow();
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var inputDayF = 			nvl(this.Div00.Calendar01.value); //변경일자FROM	
+	var inputDayT = 			nvl(this.Div00.Calendar02.value); //변경일자TO
+	var agencyDiffYn = 			nvl(this.Div00.RadioBox.value);   //전송Radio value
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/rtms/sd/orderChangeList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("inputDayF", inputDayF);
+	sArgs += Ex.util.setParam("inputDayT", inputDayT);
+	sArgs += Ex.util.setParam("agencyDiffYn", agencyDiffYn);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	if(strSvcId == "getDate") {
+		this.Div00.Calendar01.set_value(this.firstDate);
+		this.Div00.Calendar02.set_value(this.lastDate);
+	}
+	if (strSvcId == "searchList") 
+	{
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		} else {
+			
+		}
+	}
+	
+}
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+//달력2
+this.Div00_Calendar02_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	var bfDate = String(this.Div00.Calendar01.value);
+	var afDate = String(this.Div00.Calendar02.value);
+	var yyyy = bfDate.substring(0,4);
+	var mm = bfDate.substring(4,6);
+	mm = parseInt(mm) + 1
+	mm = String(mm);
+	
+	if(mm.length == 1) {
+		mm = "0" + mm;
+	} 
+	var dd = bfDate.substring(6,8);
+	
+	var temp_date = yyyy + "" + mm + "" + dd;
+	temp_date = parseInt(temp_date);
+	afDate = parseInt(afDate);
+	
+	if(temp_date < afDate){
+		alert("1개월 이내");
+		this.Div00.Calendar02.set_value(this.orgToDate);
+		return;
+	}
+}
+
+//Calendar02 체인지 이벤트 바뀌기전.
+this.Div00_Calendar02_canchange = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	this.orgToDate = obj.value;
+}
+]]></Script>
+  </Form>
+</FDL>

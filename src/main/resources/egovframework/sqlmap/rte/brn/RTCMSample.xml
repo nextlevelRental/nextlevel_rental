@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="testDAO">
+
+
+	<parameterMap class="java.util.Map"  id="arrayParam">
+		<parameter property="ary01"  jdbcType="VARSTRING"  typeName="VARSTRING"  typeHandler="egovframework.ntrms.kr.co.exec.dao.CallBackHandler" mode="IN" />
+		<parameter property="ary02"  jdbcType="VARSTRING"  typeName="VARSTRING"  typeHandler="egovframework.ntrms.kr.co.exec.dao.CallBackHandler" mode="IN"/>
+		<parameter property="ary_out" jdbcType="NUMERIC"   mode="OUT"/>
+		
+	</parameterMap>
+	
+	<procedure id="sample.arrayInput" parameterMap="arrayParam">
+		{call Pkg_Rtcm0001.p_sRtcm0001(?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

@@ -1,0 +1,15 @@
+﻿{
+	"name": "EcoChart",
+	"version": "1.0.0.0",
+	"description": "nexacro platform 14 Unified Framework Library",
+	"license": "",
+	"scripts": [
+				"Excel/ExtExcel.js",
+				"Excel/ExtFileUpDownload.js"
+	],
+	"objInfo": [
+		"ExtExcel.info",
+		"ExtFileUpDownload.info"
+	]
+}
+//@ sourceURL=EcoChart.json

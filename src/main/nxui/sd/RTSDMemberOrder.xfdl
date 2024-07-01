@@ -1,0 +1,3879 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDMemberOrder" classname="RTSDOrderRegister" left="0" top="0" width="1147" height="900" onload="RTSDMemberOrder_onload" titletext="멤버쉽 주문등록" scrollbars="none">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="47" cssclass="sta_WF_detailLabel2" left="360" top="0" width="262" height="31"/>
+        <Div id="Div00" taborder="0" text="Div00" left="-82.48%" top="213" right="149.87%" height="150"/>
+        <Static id="Static00" taborder="1" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="900"/>
+        <Div id="div_preminum" taborder="2" left="-2" top="1394" width="529" height="170" style="background:@gradation;" scrollbars="none" enable="false" visible="false">
+          <InitValue/>
+        </Div>
+        <Grid id="grid_svrCd" taborder="3" binddataset="ds_rtsd0013" autoupdatetype="comboselect" useinputpanel="false" cellsizingtype="col" cellclickbound="cell" oncellclick="prmmSvrComboSet" left="590" top="345" right="3.05%" height="147" scrollbars="autoboth">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="191"/>
+                <Column size="85"/>
+                <Column size="92"/>
+                <Column size="131"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상세서비스"/>
+                <Cell col="1" text="기간"/>
+                <Cell col="2" text="타이어본수"/>
+                <Cell col="3" text="서비스횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:prsNm"/>
+                <Cell col="1" text="bind:periodNm"/>
+                <Cell col="2" text="bind:cntNm"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:servCnt" combodataset="ds_svrCnt" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="p_cntCd" taborder="4" enable="false" visible="false" left="19.62%" top="407" right="77.16%" height="21"/>
+        <Edit id="p_periodCd" taborder="5" enable="false" visible="false" left="15.43%" top="407" right="81.34%" height="21"/>
+        <Edit id="p_matCd" taborder="6" enable="false" visible="false" left="11.25%" top="407" right="85.53%" height="21"/>
+        <Static id="Static01" taborder="7" text="제품정보" cssclass="sta_WF_subTitle" left="0" top="408" width="111" height="21"/>
+        <Grid id="grid_product" taborder="14" binddataset="ds_productInfo" autoupdatetype="itemselect" useinputpanel="false" enable="false" left="0" top="433" right="65.13%" height="87" oncloseup="grid_product_oncloseup">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="0"/>
+                <Column size="133"/>
+                <Column size="0"/>
+                <Column size="155"/>
+                <Column size="0"/>
+                <Column size="105"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="matCd"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="periodCd"/>
+                <Cell col="3" text="렌탈기간"/>
+                <Cell col="4" text="cntCd"/>
+                <Cell col="5" text="본수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:matCd"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:matCd" combodataset="ds_MatCd" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="2" text="bind:periodCd"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:periodCd" combodataset="ds_period" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="4" text="bind:cntCd"/>
+                <Cell col="5" displaytype="combo" edittype="none" text="bind:cntCd" combodataset="ds_cnt" combocodecol="cd" combodatacol="cdNm" combodisplayrowcount="-1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="15" text="프리미엄서비스" cssclass="sta_WF_subTitle" left="590" top="321" width="111" height="21"/>
+        <CheckBox id="ch_resultArsCall" taborder="17" text="출금이체동의여부" value="0" truevalue="1" falsevalue="0" enable="false" visible="false" left="0" top="32" width="125" height="16"/>
+        <CheckBox id="ch_resultPayInfo" taborder="18" text="카드인증성공여부" enable="false" visible="false" left="128" top="32" width="125" height="16"/>
+        <Radio id="ra_sale" taborder="23" innerdataset="@ds_sale" codecolumn="cd" datacolumn="cdNm" direction="vertical" onitemchanged="ra_sale_onitemchanged" visible="false" left="99" top="48" width="233" height="21"/>
+        <Edit id="ed_grpNo" taborder="24" displaynulltext="고객결합번호" enable="false" visible="false" left="255" top="32" width="97" height="20"/>
+        <Edit id="ed_grpYn" taborder="25" displaynulltext="고객결합여부" enable="false" visible="false" left="355" top="32" width="90" height="20"/>
+        <Div id="div_payInfo" taborder="26" left="700" top="40" width="422" height="160" style="background:@gradation;" scrollbars="none" enable="false">
+          <Layouts>
+            <Layout>
+              <Div id="div_card" taborder="13" left="0%" top="60" width="422" height="98" style="background:@gradation;" scrollbars="none" visible="false">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="21" cssclass="sta_WF_detailLabel2" left="0" top="0" width="422" height="31"/>
+                    <Static id="st_C_custNm" taborder="22" text="카드주명" cssclass="sta_WF_detailLabel" left="0" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_C_custNm" taborder="23" maxlength="80" enable="false" left="84" top="5" width="122" height="21"/>
+                    <Static id="st_C_ebirDay" taborder="24" text="법정생년월일" cssclass="sta_WF_detailLabel" left="210" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_C_ebirDay" taborder="25" type="string" mask="######" onchanged="div_payInfo_div_card_ed_C_ebirDay_onchanged" enable="false" left="295" top="5" width="122" height="21"/>
+                    <Static id="st_C_buslNo" taborder="26" text="사업자번호" cssclass="sta_WF_detailLabel" visible="false" left="210" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_C_buslNo" taborder="27" type="string" mask="###-##-#####" onchanged="div_payInfo_div_card_ed_C_buslNo_onchanged" enable="false" visible="false" left="294" top="5" width="123" height="21"/>
+                    <Static id="Static01" taborder="28" cssclass="sta_WF_detailLabel2" left="0" top="30" width="422" height="31"/>
+                    <Static id="st_C_bankCd" taborder="29" text="카드사" cssclass="sta_WF_detailLabel" left="0" top="30" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Combo id="cb_C_bankCd" taborder="30" innerdataset="@ds_C_bank" codecolumn="cd" datacolumn="cdNm" enable="false" left="84" top="35" width="122" height="21" domainId="nexa.name;nexa.code"/>
+                    <Static id="st_C_acctNo" taborder="31" text="카드번호" cssclass="sta_WF_detailLabel" left="210" top="30" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_C_cardNo" taborder="32" inputtype="number" maxlength="16" canchange="div_payInfo_div_card_ed_C_cardNo_canchange" enable="false" left="294" top="35" width="123" height="21"/>
+                    <Static id="Static03" taborder="33" cssclass="sta_WF_detailLabel2" left="0" top="60" width="422" height="31"/>
+                    <Static id="st_C_expireYM" taborder="34" text="유효년월" cssclass="sta_WF_detailLabel" left="0" top="60" width="80" height="31" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_C_expireY" taborder="35" type="string" mask="####" enable="false" left="140" top="65" width="40" height="21"/>
+                    <Static id="st_y" taborder="36" text="년" left="186" top="65" width="20" height="21" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_C_expireM" taborder="37" type="string" mask="##" enable="false" left="84" top="65" width="25" height="21"/>
+                    <Static id="st_m" taborder="38" text="월" left="116" top="65" width="20" height="21" domainId="nexa.s_condition"/>
+                    <Static id="st_C_bankPayDay" taborder="39" text="결제일" cssclass="sta_WF_detailLabel" left="210" top="60" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Combo id="cb_C_bankPayDay" taborder="40" displaynulltext="선택" innerdataset="ds_C_bankPayDay" codecolumn="cd" datacolumn="cdNm" left="294" top="65" width="60" height="21" domainId="nexa.name;nexa.code"/>
+                    <Button id="btn_cardConfirm" taborder="41" text="카드인증" onclick="div_payInfo_div_card_btn_cardConfirm_onclick" left="359" top="65" width="58" height="21" domainId="nexa.save"/>
+                  </Layout>
+                </Layouts>
+                <InitValue/>
+              </Div>
+              <Static id="Static03" taborder="14" cssclass="sta_WF_detailLabel2" left="0" top="30" width="422" height="31"/>
+              <Static id="st_payMthd" taborder="15" text="결제방법" cssclass="sta_WF_detailLabel" left="0" top="30" width="80" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_payMthd" taborder="16" displaynulltext="선택" innerdataset="@ds_payMthd" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_payInfo_cb_payMthd_onitemchanged" left="84" top="35" width="80" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_payCustTp" taborder="17" text="구분" cssclass="sta_WF_detailLabel" left="236" top="30" width="54" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_payCustTp" taborder="18" displaynulltext="선택" innerdataset="@ds_payCustTp" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_payInfo_cb_payCustTp_onitemchanged" enable="false" left="294" top="35" width="123" height="21" domainId="nexa.name;nexa.code"/>
+              <Button id="btn_payChoice" taborder="19" text="불러오기" onclick="div_payInfo_btn_payChoice_onclick" left="169" top="35" width="62" height="21" domainId="nexa.save"/>
+              <Static id="Static01" taborder="20" cssclass="sta_WF_detailLabel2" left="720" top="-170" width="425" height="31"/>
+              <Static id="Static21" taborder="21" text="결제정보" cssclass="sta_WF_subTitle" left="0" top="5" width="80" height="21"/>
+              <CheckBox id="ed_ebirDayCheck" taborder="22" text="생년월일체크" value="true" enable="false" visible="false" left="84" top="5" width="120" height="16"/>
+              <CheckBox id="ed_buslNoCheck" taborder="23" text="사업자번호체크" value="true" enable="false" visible="false" left="204" top="5" width="120" height="16"/>
+              <Button id="btn_custNew" taborder="24" text="신규" onclick="div_payInfo_btn_custNew_onclick" left="372" top="5" width="50" height="21" domainId="nexa.save"/>
+              <Div id="div_acc" taborder="25" left="0%" top="60" width="422" height="96" style="background:@gradation;" scrollbars="none">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static02" taborder="18" cssclass="sta_WF_detailLabel2" left="0" top="0" width="422" height="31"/>
+                    <Static id="Static00" taborder="19" cssclass="sta_WF_detailLabel2" left="0" top="30" width="422" height="31"/>
+                    <Static id="st_B_bankCd" taborder="20" text="은행" cssclass="sta_WF_detailLabel" left="0" top="30" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Combo id="cb_B_bankCd" taborder="21" innerdataset="@ds_B_bank" codecolumn="cd" datacolumn="cdNm" enable="false" left="85" top="35" width="120" height="21" domainId="nexa.name;nexa.code"/>
+                    <Static id="st_B_acctNo" taborder="22" text="계좌번호" cssclass="sta_WF_detailLabel" left="210" top="30" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_B_acctNo" taborder="23" inputtype="number" maxlength="20" enable="false" left="295" top="35" width="120" height="21"/>
+                    <Static id="Static01" taborder="24" cssclass="sta_WF_detailLabel2" left="0" top="60" width="422" height="31"/>
+                    <Static id="st_B_bankPayDay" taborder="25" text="결제일" cssclass="sta_WF_detailLabel" left="0" top="60" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Combo id="cb_B_bankPayDay" taborder="26" displaynulltext="선택" innerdataset="@ds_B_bankPayDay" codecolumn="cd" datacolumn="cdNm" left="85" top="65" width="60" height="21" domainId="nexa.name;nexa.code"/>
+                    <Button id="btn_accConfirm" taborder="27" text="계좌인증" onclick="div_payInfo_div_acc_btn_accConfirm_onclick" left="151" top="65" width="50" height="21" domainId="nexa.save"/>
+                    <Static id="st_B_custNm" taborder="28" text="예금주명" cssclass="sta_WF_detailLabel" left="0" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_B_custNm" taborder="29" maxlength="80" enable="false" left="85" top="5" width="120" height="21"/>
+                    <Static id="st_B_buslNo" taborder="30" text="사업자번호" cssclass="sta_WF_detailLabel" visible="false" left="210" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_B_buslNo" taborder="31" type="string" mask="###-##-#####" onchanged="div_payInfo_div_acc_ed_B_buslNo_onchanged" enable="false" visible="false" left="295" top="5" width="120" height="21"/>
+                    <MaskEdit id="ed_B_ebirDay" taborder="32" type="string" mask="######" onchanged="div_payInfo_div_acc_ed_B_ebirDay_onchanged" enable="false" left="295" top="5" width="120" height="21"/>
+                    <Static id="st_B_ebirDay" taborder="33" text="법정생년월일" cssclass="sta_WF_detailLabel" left="210" top="0" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Static id="st_B_arsCall" taborder="34" text="이체동의" cssclass="sta_WF_detailLabel" left="210" top="60" width="80" height="31" domainId="nexa.s_condition"/>
+                    <Button id="btn_arsCall" taborder="35" text="출금이체동의" onclick="div_payInfo_div_acc_btn_accConfirm_onclick" left="295" top="65" width="80" height="21" domainId="nexa.save"/>
+                  </Layout>
+                </Layouts>
+                <InitValue/>
+              </Div>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Static id="Static03" taborder="27" cssclass="sta_WF_detailLabel2" left="0" top="-668" width="425" height="31"/>
+        <Grid id="grid_model" taborder="28" binddataset="ds_model" useinputpanel="false" cellsizingtype="col" nodatatext="지우면절대안됨" visible="false" left="0" top="1392" width="679" height="62">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="167"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="rn"/>
+                <Cell col="1" text="makerCd"/>
+                <Cell col="2" text="modelCd"/>
+                <Cell col="3" text="modelNm"/>
+                <Cell col="4" text="contentsCd"/>
+                <Cell col="5" text="conTentsNm"/>
+                <Cell col="6" text="frCd"/>
+                <Cell col="7" text="mcNm"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:rn"/>
+                <Cell col="1" text="bind:makerCd"/>
+                <Cell col="2" text="bind:modelCd"/>
+                <Cell col="3" text="bind:modelNm"/>
+                <Cell col="4" text="bind:contentsCd"/>
+                <Cell col="5" text="bind:conTentsNm"/>
+                <Cell col="6" text="bind:frCd"/>
+                <Cell col="7" text="bind:mcNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_custInfo" taborder="30" left="0" top="40" width="681" height="273" style="background:@gradation;" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="Static17" taborder="198" cssclass="sta_WF_detailLabel2" left="-1" top="30" width="682" height="31"/>
+              <MaskEdit id="ed_buslNo" taborder="199" type="string" mask="###-##-#####" enable="false" visible="false" left="337" top="35" width="115" height="21"/>
+              <Static id="st_buslNo" taborder="200" text="사업자번호" cssclass="sta_WF_detailLabel" visible="false" left="232" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_custTp" taborder="201" text="고객유형" cssclass="sta_WF_detailLabel" left="0" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_custTp" taborder="202" innerdataset="@ds_custTp" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_custInfo_cb_custTp_onitemchanged" enable="false" left="104" top="35" width="124" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_birthDay" taborder="203" text="법정생년월일" cssclass="sta_WF_detailLabel" left="232" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+              <MaskEdit id="ed_birthDay" taborder="204" type="string" mask="####-##-##" enable="false" left="336" top="35" width="116" height="21"/>
+              <Static id="st_custNm" taborder="205" text="고객명" cssclass="sta_WF_detailLabel" left="456" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="206" maxlength="80" enable="false" left="560" top="35" width="115" height="21"/>
+              <Static id="st_custNo" taborder="207" text="고객번호" left="404" top="5" width="100" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNo" taborder="208" enable="false" left="456" top="5" width="110" height="21"/>
+              <Static id="Static01" taborder="209" cssclass="sta_WF_detailLabel2" left="-1" top="60" width="682" height="31"/>
+              <Static id="st_genderCd" taborder="210" text="성별" cssclass="sta_WF_detailLabel" left="0" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_repNm" taborder="211" maxlength="80" enable="false" visible="false" left="104" top="65" width="347" height="21"/>
+              <Combo id="cb_genderCd" taborder="212" innerdataset="@ds_genderCd" codecolumn="cd" datacolumn="cdNm" enable="false" left="104" top="65" width="124" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_repNm" taborder="213" text="대표자명" cssclass="sta_WF_detailLabel" visible="false" left="0" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_lfCd" taborder="214" text="내/외국인" cssclass="sta_WF_detailLabel" left="232" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_lfCd" taborder="215" innerdataset="@ds_lfCd" codecolumn="cd" datacolumn="cdNm" enable="false" left="336" top="65" width="116" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_telNo" taborder="216" text="전화번호" cssclass="sta_WF_detailLabel" left="456" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_telNo" taborder="217" maxlength="80" enable="false" left="560" top="65" width="115" height="21"/>
+              <Button id="btn_custNew" taborder="218" text="신규" onclick="div_custInfo_btn_custNew_onclick" left="570" top="5" width="41" height="21" domainId="nexa.save"/>
+              <Button id="btn_custNoSearch" taborder="219" text="고객조회" onclick="div_custInfo_btn_custNoSearch_onclick" left="615" top="5" width="65" height="21" domainId="nexa.save"/>
+              <Static id="Static21" taborder="220" text="고객정보" cssclass="sta_WF_subTitle" left="0" top="5" width="80" height="21"/>
+              <Static id="Static02" taborder="221" cssclass="sta_WF_detailLabel2" left="-1" top="90" width="682" height="31"/>
+              <Edit id="ed_busiType" taborder="222" maxlength="80" enable="false" left="104" top="95" width="124" height="21"/>
+              <Static id="st_busiType" taborder="223" text="업종" cssclass="sta_WF_detailLabel" left="0" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+              <Static id="st_busiCond" taborder="224" text="업태" cssclass="sta_WF_detailLabel" left="232" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_busiCond" taborder="225" maxlength="80" enable="false" left="336" top="95" width="338" height="21"/>
+              <Div id="div_custInfoDetail" taborder="226" left="0" top="120" width="681" height="152" style="background:@gradation;">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static04" taborder="90" cssclass="sta_WF_detailLabel2" left="0" top="120" width="681" height="31"/>
+                    <Static id="Static03" taborder="91" cssclass="sta_WF_detailLabel2" left="-1" top="0" width="682" height="31"/>
+                    <Edit id="ed_emailAddr1" taborder="92" inputtype="number,english,symbol" maxlength="35" enable="false" left="560" top="5" width="116" height="21"/>
+                    <Static id="st_emailAddr" taborder="93" text="e-mail주소" cssclass="sta_WF_detailLabel" left="456" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Combo id="cb_mobFirm" taborder="94" innerdataset="@ds_mobFirm" codecolumn="cd" datacolumn="cdNm" enable="false" left="336" top="5" width="116" height="21" domainId="nexa.name;nexa.code"/>
+                    <Static id="st_mobFirm" taborder="95" text="통신사" cssclass="sta_WF_detailLabel" left="232" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+                    <MaskEdit id="ed_mobNo" taborder="96" type="string" mask="###-####-####" enable="false" left="104" top="5" width="124" height="21"/>
+                    <Static id="st_mobNo" taborder="97" text="휴대폰" cssclass="sta_WF_detailLabel" left="0" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Static id="Static00" taborder="98" cssclass="sta_WF_detailLabel2" left="-1" top="30" width="682" height="31"/>
+                    <Edit id="ed_addr1" taborder="99" maxlength="100" enable="false" left="336" top="35" width="340" height="21"/>
+                    <Static id="st_addr1" taborder="100" text="주소" cssclass="sta_WF_detailLabel" left="232" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_posCd" taborder="101" inputtype="number" maxlength="6" enable="false" left="104" top="35" width="124" height="21"/>
+                    <Static id="st_posCd" taborder="102" text="고객주소" cssclass="sta_WF_detailLabel" left="0" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Static id="Static01" taborder="103" cssclass="sta_WF_detailLabel2" left="-1" top="60" width="682" height="31"/>
+                    <Static id="st_addr2" taborder="104" text="주소" cssclass="sta_WF_detailLabel" left="232" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_addr12" taborder="105" maxlength="100" enable="false" left="336" top="65" width="340" height="21"/>
+                    <Edit id="ed_posCd2" taborder="106" inputtype="number" maxlength="6" enable="false" left="104" top="65" width="124" height="21"/>
+                    <Static id="st_posCd2" taborder="107" text="근무지주소" cssclass="sta_WF_detailLabel" left="0" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Static id="Static02" taborder="108" cssclass="sta_WF_detailLabel2" left="0" top="90" width="681" height="31"/>
+                    <Static id="st_nagYn" taborder="109" text="정보제공동의" cssclass="sta_WF_detailLabel" left="232" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Static id="st_telNo2" taborder="110" text="회사전화" cssclass="sta_WF_detailLabel" left="456" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Edit id="ed_telNo2" taborder="111" inputtype="number" maxlength="6" enable="false" left="560" top="95" width="116" height="21"/>
+                    <Static id="st_credit" taborder="112" text="신용조회" cssclass="sta_WF_detailLabel" left="232" top="120" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Button id="btn_creditSelect" taborder="113" text="신용조회" onclick="div_custInfo_div_custInfoDetail_btn_creditSelect_onclick" visible="false" left="464" top="125" width="65" height="21" domainId="nexa.save"/>
+                    <Combo id="cb_nagYn" taborder="114" displaynulltext="선택" innerdataset="ds_nagYn" codecolumn="cd" datacolumn="cdNm" enable="false" left="335" top="95" width="116" height="21" domainId="nexa.name;nexa.code"/>
+                    <Combo id="cb_credit" taborder="115" displaynulltext="선택" innerdataset="@ds_credit" codecolumn="cd" datacolumn="cdNm" enable="false" left="337" top="125" width="123" height="21" domainId="nexa.name;nexa.code"/>
+                    <Static id="st_certification" taborder="116" text="본인인증" cssclass="sta_WF_detailLabel" left="0" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Radio id="ra_certification" taborder="117" innerdataset="@ds_certification" codecolumn="cd" datacolumn="cdNm" direction="vertical" enable="false" left="104" top="95" width="124" height="20"/>
+                    <Static id="st_certi" taborder="118" text="휴대폰 인증" cssclass="sta_WF_detailLabel" left="0" top="120" width="100" height="31" domainId="nexa.s_condition"/>
+                    <Button id="btn_certification" taborder="119" text="인증" onclick="div_cust_btn_certificationConfirm_onclick" enable="false" left="104" top="125" width="41" height="21" domainId="nexa.save"/>
+                    <WebBrowser id="nice_interface" left="151" top="124" width="124" height="24" taborder="120" url="https://portal.tirerental.co.kr/interface/di_safekey/main.jsp" visible="false" onusernotify="web_onusernotify"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="st_cCustnm" taborder="227" text="담당자명" cssclass="sta_WF_detailLabel" visible="false" left="0" top="210" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_Ccustnm" taborder="228" maxlength="80" enable="false" visible="false" left="104" top="215" width="124" height="21"/>
+              <Static id="st_cTelno" taborder="229" text="담당자        전화번호" wordwrap="char" cssclass="sta_WF_detailLabel" visible="false" left="232" top="210" width="100" height="31" style="align:left middle;" domainId="nexa.s_condition"/>
+              <Edit id="ed_cTelno" taborder="230" maxlength="80" onkeyup="div_cust_ed_cTelno_onkeyup" enable="false" visible="false" left="336" top="215" width="115" height="21"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Div id="div_carInfo" taborder="31" left="700" top="190" width="422" height="140" style="background:@gradation;" scrollbars="none" enable="false">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="63" cssclass="sta_WF_detailLabel2" left="0" top="30" width="422" height="31"/>
+              <Static id="st_model" taborder="64" text="차종" cssclass="sta_WF_detailLabel" left="0" top="30" width="100" height="31" domainId="nexa.s_condition"/>
+              <Combo id="cb_makerCd" taborder="65" displaynulltext="브랜드" innerdataset="@ds_maker" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_carInfo_cb_makerCd_onitemchanged" left="104" top="35" width="107" height="21" domainId="nexa.name;nexa.code"/>
+              <Combo id="cb_model" taborder="66" displaynulltext="모델" innerdataset="@ds_model" codecolumn="rn" datacolumn="mcNm" onitemchanged="div_carInfo_cb_model_onitemchanged" left="215" top="35" width="202" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="Static00" taborder="67" cssclass="sta_WF_detailLabel2" left="0" top="60" width="422" height="31"/>
+              <Static id="st_carOwner" taborder="68" text="차량소유자" cssclass="sta_WF_detailLabel" left="0" top="60" width="100" height="31" domainId="nexa.s_condition"/>
+              <Edit id="ed_carOwner" taborder="69" maxlength="60" onkeyup="div_carInfo_ed_carOwner_onkeyup" left="104" top="65" width="107" height="21"/>
+              <Edit id="ed_carNo" taborder="70" maxlength="9" onkeyup="div_carInfo_ed_carNo_onkeyup" onchanged="div_carInfo_ed_carNo_onchanged" left="299" top="65" width="118" height="21"/>
+              <Static id="st_carNo" taborder="71" text="차량No" cssclass="sta_WF_detailLabel" left="215" top="60" width="80" height="31" domainId="nexa.s_condition"/>
+              <Static id="Static02" taborder="72" cssclass="sta_WF_detailLabel2" left="0" top="90" width="422" height="31"/>
+              <Static id="st_cMileage" taborder="73" text="현재주행거리" cssclass="sta_WF_detailLabel" left="0" top="90" width="100" height="31" domainId="nexa.s_condition"/>
+              <MaskEdit id="ed_cMileage" taborder="74" mask="###,###,###,##0" autoselect="true" autoskip="true" limitbymask="both" onchanged="div_carInfo_ed_cMileage_onchanged" left="104" top="95" width="107" height="21"/>
+              <Edit id="ed_model" taborder="75" maxlength="9" enable="false" visible="false" left="103" top="5" width="120" height="21"/>
+              <Static id="Static04" taborder="76" text="차량정보" cssclass="sta_WF_subTitle" left="0" top="5" width="80" height="21"/>
+              <Static id="st_cMileage2" taborder="77" text="Km" left="218" top="98" width="25" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_model01" taborder="78" maxlength="9" enable="false" visible="false" left="287" top="5" width="37" height="21"/>
+              <Edit id="ed_model00" taborder="79" maxlength="9" enable="false" visible="false" left="247" top="5" width="37" height="21"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Static id="Static04" taborder="32" text="판매정보" cssclass="sta_WF_subTitle" left="0" top="321" width="89" height="21"/>
+        <Static id="Static05" taborder="33" text="Static05" cssclass="sta_WF_detailLabel2" left="0" top="345" width="440" height="31"/>
+        <Static id="st_SalePrdtNm" taborder="34" text="판매상품명" cssclass="sta_WF_detailLabel" left="120" top="345" width="87" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_BtnSalePrdt" taborder="35" cssclass="sta_WF_detailLabel" left="0" top="345" width="121" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_SaleCd" taborder="36" enable="false" visible="false" left="71.93%" top="319" right="15.61%" height="21"/>
+        <Button id="btn_SalePrdtSearch" taborder="37" text="판매상품조회" onclick="btn_SalePrdtSearch_onclick" left="15" top="350" width="89" height="21"/>
+        <Edit id="ed_SaleProdNm" taborder="38" enable="false" left="213" top="351" width="220" height="20"/>
+        <Static id="Static17" taborder="39" cssclass="sta_WF_detailLabel2" left="0" top="0" width="352" height="31"/>
+        <Static id="st_ordNo" taborder="40" text="계약번호" cssclass="sta_WF_detailLabel" left="0" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_orderNo" taborder="41" enable="false" left="104" top="5" width="150" height="20"/>
+        <Button id="btn_orderNoSearch" taborder="42" text="계약번호찾기" onclick="btn_orderNoSearch_onclick" left="258" top="5" width="89" height="21" domainId="nexa.save"/>
+        <Div id="div_sumInfo" taborder="43" top="504" right="35" height="60" style="background:@gradation;" scrollbars="none" left="590">
+          <Layouts>
+            <Layout>
+              <Div id="Div00" taborder="30" text="Div00" left="-82.79%" top="253" right="149.85%" height="150"/>
+              <Static id="Static04" taborder="31" cssclass="sta_WF_detailLabel2" left="0" top="22" width="234" height="31"/>
+              <Static id="st_agencyCd" taborder="32" text="월납입금" cssclass="sta_WF_detailLabel" left="0" top="22" width="85" height="31" domainId="nexa.s_condition"/>
+              <Static id="Static21" taborder="33" text="결제정보" cssclass="sta_WF_subTitle" left="0" top="-4" width="120" height="21"/>
+              <Edit id="ed_totalPrice" taborder="34" inputtype="number" displaynulltext="0" maxlength="80" enable="false" left="90" top="27" width="138" height="21" style=":disabled {align:right middle;}"/>
+            </Layout>
+          </Layouts>
+          <InitValue/>
+        </Div>
+        <Button id="btnOrderAdd" taborder="44" text="주문서 저장" onclick="btnOrderAdd_onclick" cssclass="btn_WF_CRUD" top="530" right="215" width="84" height="22"/>
+        <Edit id="ed_borderNo" taborder="45" enable="false" left="464" top="5" width="150" height="20"/>
+        <Static id="st_bordNo" taborder="46" text="이전계약번호" cssclass="sta_WF_detailLabel" left="360" top="0" width="100" height="31" domainId="nexa.s_condition"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_custTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_certification" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_genderCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_lfCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mobFirm" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_payMthd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_payCustTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_B_bank" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_C_bank" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_B_bankPayDay" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_C_bankPayDay" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_nagYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_credit" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_maker" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sale" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orgAgent" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orgAgent2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_model" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="ds_model_onrowposchanged">
+        <ColumnInfo>
+          <Column id="rn" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="conTentsNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0100" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="addr" type="STRING" size="256"/>
+          <Column id="addrSum1" type="STRING" size="256"/>
+          <Column id="addrSum2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0110" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="certDay" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="certCd" type="STRING" size="256"/>
+          <Column id="certYn" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0111" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="agDay" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="nagYn" type="STRING" size="256"/>
+          <Column id="cagYn" type="STRING" size="256"/>
+          <Column id="cagYn1" type="STRING" size="256"/>
+          <Column id="cagYn2" type="STRING" size="256"/>
+          <Column id="cagYn3" type="STRING" size="256"/>
+          <Column id="cagYn4" type="STRING" size="256"/>
+          <Column id="cthYn1" type="STRING" size="256"/>
+          <Column id="cthYn2" type="STRING" size="256"/>
+          <Column id="cthYn3" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="inputDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0104" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="saleId" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="campYn" type="STRING" size="256"/>
+          <Column id="cDcrate" type="STRING" size="256"/>
+          <Column id="cDcamt" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="gDcrate" type="STRING" size="256"/>
+          <Column id="gDcamt" type="STRING" size="256"/>
+          <Column id="lDcrate" type="STRING" size="256"/>
+          <Column id="lDcamt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="bordNo" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="engNm" type="STRING" size="256"/>
+          <Column id="agDesc" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="256"/>
+          <Column id="accSeq" type="STRING" size="256"/>
+          <Column id="crdSeq" type="STRING" size="256"/>
+          <Column id="accChk" type="STRING" size="256"/>
+          <Column id="accStat" type="STRING" size="256"/>
+          <Column id="bkeyChk" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="billYn" type="STRING" size="256"/>
+          <Column id="crdtStat" type="STRING" size="256"/>
+          <Column id="certCd" type="STRING" size="256"/>
+          <Column id="certStat" type="STRING" size="256"/>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="orgCd" type="STRING" size="256"/>
+          <Column id="orgHq" type="STRING" size="256"/>
+          <Column id="orgL1" type="STRING" size="256"/>
+          <Column id="orgL2" type="STRING" size="256"/>
+          <Column id="orgL3" type="STRING" size="256"/>
+          <Column id="orgL4" type="STRING" size="256"/>
+          <Column id="insOrg" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="cmsagYn" type="STRING" size="256"/>
+          <Column id="conMthd" type="STRING" size="256"/>
+          <Column id="pcertYn" type="STRING" size="256"/>
+          <Column id="tcgrpNo" type="STRING" size="256"/>
+          <Column id="vbeln" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="fcDay" type="STRING" size="256"/>
+          <Column id="agDay" type="STRING" size="256"/>
+          <Column id="agSeq" type="STRING" size="256"/>
+          <Column id="inputDt" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="prdtGrp" type="STRING" size="256"/>
+          <Column id="prdtGrpNm" type="STRING" size="256"/>
+          <Column id="payGb" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="sumMonAmt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ordNo"/>
+            <Col id="ordDay"/>
+            <Col id="ordId"/>
+            <Col id="chanCd"/>
+            <Col id="saleId"/>
+            <Col id="periodCd"/>
+            <Col id="cntCd"/>
+            <Col id="regiCd"/>
+            <Col id="campYn"/>
+            <Col id="cDcrate"/>
+            <Col id="cDcamt"/>
+            <Col id="custNo"/>
+            <Col id="custTp"/>
+            <Col id="safekey"/>
+            <Col id="grpYn"/>
+            <Col id="grpNo"/>
+            <Col id="gDcrate"/>
+            <Col id="gDcamt"/>
+            <Col id="lDcrate"/>
+            <Col id="lDcamt"/>
+            <Col id="fDcrate"/>
+            <Col id="fDcamt"/>
+            <Col id="bordNo"/>
+            <Col id="statCd"/>
+            <Col id="procDay"/>
+            <Col id="cancDay"/>
+            <Col id="agencyCd"/>
+            <Col id="salesGroup"/>
+            <Col id="salesOffice"/>
+            <Col id="engNm"/>
+            <Col id="agDesc"/>
+            <Col id="makerCd"/>
+            <Col id="modelCd"/>
+            <Col id="contentsCd"/>
+            <Col id="frCd"/>
+            <Col id="carNo"/>
+            <Col id="carOwner"/>
+            <Col id="cMileage"/>
+            <Col id="reqText"/>
+            <Col id="payMthd"/>
+            <Col id="payDd"/>
+            <Col id="accSeq"/>
+            <Col id="crdSeq"/>
+            <Col id="accChk"/>
+            <Col id="accStat"/>
+            <Col id="bkeyChk"/>
+            <Col id="batchKey"/>
+            <Col id="billYn"/>
+            <Col id="crdtStat"/>
+            <Col id="certCd"/>
+            <Col id="certStat"/>
+            <Col id="ordAgent"/>
+            <Col id="orgCd"/>
+            <Col id="orgHq"/>
+            <Col id="orgL1"/>
+            <Col id="orgL2"/>
+            <Col id="orgL3"/>
+            <Col id="orgL4"/>
+            <Col id="insOrg"/>
+            <Col id="psCd"/>
+            <Col id="cmsagYn"/>
+            <Col id="conMthd"/>
+            <Col id="pcertYn"/>
+            <Col id="tcgrpNo"/>
+            <Col id="vbeln"/>
+            <Col id="regId"/>
+            <Col id="regDt"/>
+            <Col id="chgId"/>
+            <Col id="chgDt"/>
+            <Col id="fcDay"/>
+            <Col id="agDay"/>
+            <Col id="agSeq"/>
+            <Col id="inputDt"/>
+            <Col id="filePath"/>
+            <Col id="fileName"/>
+            <Col id="seasonCd"/>
+            <Col id="statNm"/>
+            <Col id="saleCd"/>
+            <Col id="saleNm"/>
+            <Col id="prdtGrp"/>
+            <Col id="prdtGrpNm"/>
+            <Col id="payGb"/>
+            <Col id="regiAmt"/>
+            <Col id="sumMonAmt"/>
+            <Col id="monAmt"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_rtsd0106" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="lrCd" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="rentpAmt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="valYn" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="osId" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="flYn" type="STRING" size="256"/>
+          <Column id="frYn" type="STRING" size="256"/>
+          <Column id="rlYn" type="STRING" size="256"/>
+          <Column id="rrYn" type="STRING" size="256"/>
+          <Column id="matDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_price" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="sectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="demendQty" type="STRING" size="256"/>
+          <Column id="pgCd" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="wheelQty" type="STRING" size="256"/>
+          <Column id="wheelLimitQty" type="STRING" size="256"/>
+          <Column id="classCd" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="priceCd" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="cDcamt" type="STRING" size="256"/>
+          <Column id="campYn" type="STRING" size="256"/>
+          <Column id="gDcrate" type="STRING" size="256"/>
+          <Column id="gDcamt" type="STRING" size="256"/>
+          <Column id="lDcrate" type="STRING" size="256"/>
+          <Column id="lDcamt" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="matDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rateAmt" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cDcamt" type="STRING" size="256"/>
+          <Column id="campYn" type="STRING" size="256"/>
+          <Column id="gDcrate" type="STRING" size="256"/>
+          <Column id="gDcamt" type="STRING" size="256"/>
+          <Column id="lDcrate" type="STRING" size="256"/>
+          <Column id="lDcamt" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtre0010" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="accSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="ebirDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="accChk" type="STRING" size="256"/>
+          <Column id="acncId" type="STRING" size="256"/>
+          <Column id="acncDesc" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="expireY" type="STRING" size="256"/>
+          <Column id="expireM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtre0020" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="crdSeq" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="ebirDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="expireYm" type="STRING" size="256"/>
+          <Column id="bkeyChk" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="acncId" type="STRING" size="256"/>
+          <Column id="acncDesc" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="expireY" type="STRING" size="256"/>
+          <Column id="expireM" type="STRING" size="256"/>
+          <Column id="returnCode" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0014" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="dcTp" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="dcRate" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsNice" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdLevel" type="string" size="32"/>
+          <Column id="chgDt" type="string" size="32"/>
+          <Column id="seq" type="bigdecimal" size="16"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="regDt" type="string" size="32"/>
+          <Column id="crGrade" type="bigdecimal" size="16"/>
+          <Column id="creDay" type="string" size="32"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="safekey" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsNice2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdLevel" type="string" size="32"/>
+          <Column id="returnCode" type="string" size="32"/>
+          <Column id="trustLevel" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBis" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsBis2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsBatch" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="res_cd" type="STRING" size="256"/>
+          <Column id="res_msg" type="STRING" size="256"/>
+          <Column id="group_id" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="returnCode" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="pay_type" type="STRING" size="256"/>
+          <Column id="pay_id" type="STRING" size="256"/>
+          <Column id="pay_cert_no" type="STRING" size="256"/>
+          <Column id="pay_issue_cd" type="STRING" size="256"/>
+          <Column id="pay_issue_nm" type="STRING" size="256"/>
+          <Column id="ccertDay" type="STRING" size="256"/>
+          <Column id="ccertSeq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0113" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="tel" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0113Combo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0205">
+        <ColumnInfo>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="smsMsg" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rtsd0115">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_reRental">
+        <ColumnInfo>
+          <Column id="COL1" type="STRING" size="256"/>
+          <Column id="COL2" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_saleItemList">
+        <ColumnInfo>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="saleStrDay" type="STRING" size="256"/>
+          <Column id="saleEndDay" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="hshopGb" type="STRING" size="256"/>
+          <Column id="hshopGbNm" type="STRING" size="256"/>
+          <Column id="dcRate" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="prdtGrp" type="STRING" size="256"/>
+          <Column id="prdtGrpNm" type="STRING" size="256"/>
+          <Column id="pkgDcYn" type="STRING" size="256"/>
+          <Column id="preDcYn" type="STRING" size="256"/>
+          <Column id="fpayYn" type="STRING" size="256"/>
+          <Column id="fpayYnNm" type="STRING" size="256"/>
+          <Column id="regiCalGb" type="STRING" size="256"/>
+          <Column id="regiCalGbNm" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="grpSaleGb" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="grpSaleGbNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_ValuePrdtInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="saleMonAmtChg">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="addGdsCd" type="STRING" size="256"/>
+          <Column id="addGdsNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="actAmt" type="STRING" size="256"/>
+          <Column id="dcYn" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="gdsGrp" type="STRING" size="256"/>
+          <Column id="gdsDesc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="comGrp">
+        <ColumnInfo>
+          <Column id="cdDesc" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+          <Column id="cd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dcYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">할부</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">할부불가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_seviceCd" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="prsPk" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contactDeliInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="amt" type="INT" size="256" prop="SUM"/>
+          <Column id="rentAmt" type="INT" size="256" prop="SUM"/>
+          <Column id="regiAmt" type="INT" size="256" prop="SUM"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="prsPk" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sumPayInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="setRegiAmt">
+        <ColumnInfo>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="regiAmtChg" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="sumSaleAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_RegAmtMgnt" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">0</Col>
+            <Col id="cdNm">0</Col>
+          </Row>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">1</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_MatCd">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_period">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cnt">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_productInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="lrCd" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="rentpAmt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="valYn" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="osId" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="flYn" type="STRING" size="256"/>
+          <Column id="frYn" type="STRING" size="256"/>
+          <Column id="rlYn" type="STRING" size="256"/>
+          <Column id="rrYn" type="STRING" size="256"/>
+          <Column id="matDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ordNo"/>
+            <Col id="seq"/>
+            <Col id="ordId"/>
+            <Col id="periodCd"/>
+            <Col id="cntCd">04</Col>
+            <Col id="regiCd"/>
+            <Col id="frCd"/>
+            <Col id="lrCd"/>
+            <Col id="matCd"/>
+            <Col id="ordQty"/>
+            <Col id="regiAmt"/>
+            <Col id="rentAmt"/>
+            <Col id="rentpAmt"/>
+            <Col id="fDcrate"/>
+            <Col id="fDcamt"/>
+            <Col id="monDcamt"/>
+            <Col id="monAmt"/>
+            <Col id="planDay"/>
+            <Col id="planTm"/>
+            <Col id="instDay"/>
+            <Col id="instTm"/>
+            <Col id="instYn"/>
+            <Col id="valYn"/>
+            <Col id="equNo"/>
+            <Col id="osId"/>
+            <Col id="osDay"/>
+            <Col id="statCd"/>
+            <Col id="flYn"/>
+            <Col id="frYn"/>
+            <Col id="rlYn"/>
+            <Col id="rrYn"/>
+            <Col id="matDesc"/>
+            <Col id="regId"/>
+            <Col id="regDt"/>
+            <Col id="chgId"/>
+            <Col id="chgDt"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_rtsd0013" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="prmmSvrComboGet">
+        <ColumnInfo>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="servInfAmt" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="servAmtSum" type="STRING" size="256"/>
+          <Column id="servAmtSumOrg" type="STRING" size="256"/>
+          <Column id="servCntOrg" type="STRING" size="256"/>
+          <Column id="servInfYN" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="prsPk" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_svrCnt">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">1회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">2회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="cdNm">3회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">4</Col>
+            <Col id="cdNm">4회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">5</Col>
+            <Col id="cdNm">5회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">6</Col>
+            <Col id="cdNm">6회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">7</Col>
+            <Col id="cdNm">7회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">8</Col>
+            <Col id="cdNm">8회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">9</Col>
+            <Col id="cdNm">9회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">999</Col>
+            <Col id="cdNm">무제한</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item11" compid="div_carInfo.cb_makerCd" propid="value" datasetid="ds_rtsd0104" columnid="makerCd"/>
+      <BindItem id="item13" compid="div_carInfo.ed_carOwner" propid="value" datasetid="ds_rtsd0104" columnid="carOwner"/>
+      <BindItem id="item14" compid="div_carInfo.ed_carNo" propid="value" datasetid="ds_rtsd0104" columnid="carNo"/>
+      <BindItem id="item15" compid="div_carInfo.ed_cMileage" propid="value" datasetid="ds_rtsd0104" columnid="cMileage"/>
+      <BindItem id="item12" compid="div_carInfo.ed_model" propid="value" datasetid="ds_rtsd0104" columnid="modelCd"/>
+      <BindItem id="item24" compid="div_custInfo.ed_buslNo" propid="value" datasetid="ds_rtsd0100" columnid="buslNo"/>
+      <BindItem id="item22" compid="div_custInfo.cb_custTp" propid="value" datasetid="ds_rtsd0100" columnid="custTp"/>
+      <BindItem id="item25" compid="div_custInfo.ed_birthDay" propid="value" datasetid="ds_rtsd0100" columnid="birthDay"/>
+      <BindItem id="item27" compid="div_custInfo.ed_custNm" propid="value" datasetid="ds_rtsd0100" columnid="custNm"/>
+      <BindItem id="item23" compid="div_custInfo.ed_custNo" propid="value" datasetid="ds_rtsd0100" columnid="custNo"/>
+      <BindItem id="item28" compid="div_custInfo.ed_repNm" propid="value" datasetid="ds_rtsd0100" columnid="repNm"/>
+      <BindItem id="item29" compid="div_custInfo.cb_genderCd" propid="value" datasetid="ds_rtsd0100" columnid="genderCd"/>
+      <BindItem id="item30" compid="div_custInfo.cb_lfCd" propid="value" datasetid="ds_rtsd0100" columnid="lfCd"/>
+      <BindItem id="item31" compid="div_custInfo.ed_telNo" propid="value" datasetid="ds_rtsd0100" columnid="telNo"/>
+      <BindItem id="item33" compid="div_custInfo.ed_busiType" propid="value" datasetid="ds_rtsd0100" columnid="busiType"/>
+      <BindItem id="item34" compid="div_custInfo.ed_busiCond" propid="value" datasetid="ds_rtsd0100" columnid="busiCond"/>
+      <BindItem id="item32" compid="div_custInfo.div_custInfoDetail.ed_mobNo" propid="value" datasetid="ds_rtsd0100" columnid="mobNo"/>
+      <BindItem id="item35" compid="div_custInfo.div_custInfoDetail.cb_mobFirm" propid="value" datasetid="ds_rtsd0100" columnid="mobFirm"/>
+      <BindItem id="item36" compid="div_custInfo.div_custInfoDetail.ed_emailAddr1" propid="value" datasetid="ds_rtsd0100" columnid="emailAddr"/>
+      <BindItem id="item37" compid="div_custInfo.div_custInfoDetail.ed_posCd" propid="value" datasetid="ds_rtsd0100" columnid="posCd"/>
+      <BindItem id="item38" compid="div_custInfo.div_custInfoDetail.ed_addr1" propid="value" datasetid="ds_rtsd0100" columnid="addrSum1"/>
+      <BindItem id="item39" compid="div_custInfo.div_custInfoDetail.ed_posCd2" propid="value" datasetid="ds_rtsd0100" columnid="posCd2"/>
+      <BindItem id="item40" compid="div_custInfo.div_custInfoDetail.ed_addr12" propid="value" datasetid="ds_rtsd0100" columnid="addrSum2"/>
+      <BindItem id="item42" compid="div_custInfo.div_custInfoDetail.ed_telNo2" propid="value" datasetid="ds_rtsd0100" columnid="telNo2"/>
+      <BindItem id="item19" compid="div_custInfo.div_custInfoDetail.cb_credit" propid="value" datasetid="ds_rtsd0104" columnid="crdtStat"/>
+      <BindItem id="item41" compid="div_custInfo.div_custInfoDetail.ra_certification" propid="value" datasetid="ds_rtsd0104" columnid="certCd"/>
+      <BindItem id="item51" compid="div_custInfo.ed_Ccustnm" propid="value" datasetid="ds_rtsd0100" columnid="cCustnm"/>
+      <BindItem id="item52" compid="div_custInfo.ed_cTelno" propid="value" datasetid="ds_rtsd0100" columnid="cTelno"/>
+      <BindItem id="item26" compid="div_payInfo.cb_payMthd" propid="value" datasetid="ds_rtsd0104" columnid="payMthd"/>
+      <BindItem id="item1" compid="div_payInfo.div_card.ed_C_custNm" propid="value" datasetid="ds_rtre0020" columnid="custNm"/>
+      <BindItem id="item2" compid="div_payInfo.div_card.ed_C_ebirDay" propid="value" datasetid="ds_rtre0020" columnid="ebirDay"/>
+      <BindItem id="item3" compid="div_payInfo.div_card.ed_C_buslNo" propid="value" datasetid="ds_rtre0020" columnid="buslNo"/>
+      <BindItem id="item4" compid="div_payInfo.div_card.cb_C_bankCd" propid="value" datasetid="ds_rtre0020" columnid="cardcomCd"/>
+      <BindItem id="item5" compid="div_payInfo.div_card.ed_C_cardNo" propid="value" datasetid="ds_rtre0020" columnid="cardNo"/>
+      <BindItem id="item45" compid="div_payInfo.div_card.ed_C_expireY" propid="value" datasetid="ds_rtre0020" columnid="expireY"/>
+      <BindItem id="item46" compid="div_payInfo.div_card.ed_C_expireM" propid="value" datasetid="ds_rtre0020" columnid="expireM"/>
+      <BindItem id="item9" compid="div_payInfo.div_acc.cb_B_bankCd" propid="value" datasetid="ds_rtre0010" columnid="bankCd"/>
+      <BindItem id="item10" compid="div_payInfo.div_acc.ed_B_acctNo" propid="value" datasetid="ds_rtre0010" columnid="acctNo"/>
+      <BindItem id="item6" compid="div_payInfo.div_acc.ed_B_custNm" propid="value" datasetid="ds_rtre0010" columnid="custNm"/>
+      <BindItem id="item8" compid="div_payInfo.div_acc.ed_B_buslNo" propid="value" datasetid="ds_rtre0010" columnid="buslNo"/>
+      <BindItem id="item7" compid="div_payInfo.div_acc.ed_B_ebirDay" propid="value" datasetid="ds_rtre0010" columnid="ebirDay"/>
+      <BindItem id="item47" compid="ed_grpYn" propid="value" datasetid="ds_rtsd0104" columnid="grpYn"/>
+      <BindItem id="item44" compid="ed_grpNo" propid="value" datasetid="ds_rtsd0104" columnid="grpNo"/>
+      <BindItem id="item20" compid="ra_sale" propid="value" datasetid="ds_rtsd0104" columnid="saleId"/>
+      <BindItem id="item17" compid="p_matCd" propid="value" datasetid="ds_productInfo" columnid="matCd"/>
+      <BindItem id="item18" compid="p_periodCd" propid="value" datasetid="ds_productInfo" columnid="periodCd"/>
+      <BindItem id="item21" compid="p_cntCd" propid="value" datasetid="ds_productInfo" columnid="cntCd"/>
+      <BindItem id="item0" compid="ed_orderNo" propid="value" datasetid="ds_rtsd0104" columnid="ordNo"/>
+      <BindItem id="item16" compid="div_carInfo.ed_model01" propid="value" datasetid="ds_rtsd0104" columnid="frCd"/>
+      <BindItem id="item43" compid="div_carInfo.ed_model00" propid="value" datasetid="ds_rtsd0104" columnid="contentsCd"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDMemberOrder.xfdl
+ * 설    명 : 주문등록
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * ...			...			...
+ * 2016-09-26	wjim		온라인장착 가능여부 추가
+ * 2016-12-06	wjim		[20161206_02] 사용자그룹 추가작업
+ *							- '콜센터(아웃바운드)'(13) 추가
+ *							- '콜센터'(02)와 동일한 권한 부여
+ * 2018-02-12	wjim		[20180212_01] 선택형 프리미엄 서비스 도입
+ *							- 프리미엄 서비스 정보 세팅 시점 변경
+ *							- '상품-가격정보' 선택 > 프리미엄서비스 팝업 선택
+ ***************************************************************************************************/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 			= "RTSDMemberOrder";
+this.resultOrdNo 	= "0";
+this.p_modelCd  	= "";
+this.p_makerCd 		= "";
+this.p_contentsCd 	= "";
+this.p_frCd 		= "";
+this.selectGrpNo 	= "0";	//고객결합번호
+this.selectSaleCd	= 0;
+this.payAddRowFlag  = true;
+this.accCardCheck   = false;//계좌인증 확인여부. true일때만 저장가능.
+this.orgAgtel		= "";
+this.toDay 			= "";   //현재날짜
+this.addDay			= "";	//현재날짜+3
+this.selectChanCd	= "XX";
+this.Sumpay			= "";
+this.userGrp 		=  "02";//application.gds_userInfo.getColumn(0, "userGrp");	//사용자 그룹 		--> *01:영업관리자, *02:콜센터, *03:지사, *04:지점, *05:대리점, *13:콜센터(아웃바운드)
+this.onlineLoginId	= "ONL_SYS";
+this.certificationFlag	= false;
+
+this.reRental       = false; //[김선태]재렌탈 추가
+
+this.addPrdtAmt		= "";
+this.payStatCd      = "00";
+this.getcheckOrdNo  = "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//공통 fn_callBack START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if (strSvcId == "initRTSDMemberOrder"){
+		this.fn_getToday();
+		this.FN_cust01();
+		
+		var insert1 = this.ds_B_bankPayDay.insertRow( 0 );
+		this.ds_B_bankPayDay.setColumn(insert1,"cd","-1");
+		this.ds_B_bankPayDay.setColumn(insert1,"cdNm","선택");
+		
+		var insert2 = this.ds_C_bankPayDay.insertRow( 0 );
+		this.ds_C_bankPayDay.setColumn(insert2,"cd","-1");
+		this.ds_C_bankPayDay.setColumn(insert2,"cdNm","선택");
+		
+		var sSvcID      	= "MemberOrderCombo";  
+		var sController   	= "/rtms/sd/MemberOrderCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sOutDatasets += " ds_MatCd=mapMatCd ";
+		sOutDatasets += " ds_period=mapPeriod ";
+		sOutDatasets += " ds_cnt=mapCnt ";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	if(strSvcId == "MemberOrderCombo"){
+		this.ds_period.filter("cd <='24'");
+	}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/	
+	if(strSvcId == "sRtsd0113UserGrp"){
+		var rtsd0113Cnt = this.ds_rtsd0113.getRowCount();
+		var regId 		= this.ds_rtsd0100.getColumn(0,"regId");
+		var custTp 		= this.ds_rtsd0100.getColumn(0,"custTp");
+
+		if( rtsd0113Cnt != 0 ){
+			//[20161206_02]
+			if( (this.userGrp == "02") || (this.userGrp == "09") || (this.userGrp == "13") || (this.userGrp == "01" && regId != this.onlineLoginId && custTp == "02" ) ){
+				for( var i = 0 ; i < rtsd0113Cnt ; i++ ){
+					var cd   = this.ds_rtsd0113.getColumn(i, "cd");
+					var cdNm = this.ds_rtsd0113.getColumn(i, "cdNm");
+					var nRow = this.ds_rtsd0113Combo.addRow();
+					this.ds_rtsd0113Combo.setColumn(nRow, "cd", cd);
+					this.ds_rtsd0113Combo.setColumn(nRow, "cdNm", cdNm);
+				}
+				
+				if( this.userGrp == "09" ){
+					var findRow = this.ds_rtsd0113Combo.findRow( "cd", this.userId );
+					if(	findRow != -1 ){
+						this.div_salesmanInfo.cb_orgAgent.set_value(this.userId);
+						this.div_salesmanInfo.cb_orgAgent.set_enable(false);
+					}else{
+						alert("판매불가한 판매원입니다.");
+						return this.go("sd::RTSDMemberOrder.xfdl");
+					}
+				}else{
+					this.div_salesmanInfo.cb_orgAgent.set_enable(true);
+				}
+			}
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "getToday"){
+		var sSvcID      	= "selectFirstDay";  
+		var sController   	= "/rtms/sd/selectFirstDay.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("toDay"	,this.toDay); 
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "selectFirstDay"){
+		
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "listRtsd0104"){
+		trace("aaa");
+		if(nvl(this.ds_rtsd0104.getColumn(0,"ordNo").substring(0,1)) == 'L') {
+			alert("일시불 주문등록은 일시불 주문등록 메뉴를 이용해 주시기 바랍니다.");
+			this.FN_initializationDataSet();
+			return;
+		}
+
+		var rtsd0104Cnt = this.ds_rtsd0104.getRowCount();
+		if( rtsd0104Cnt != 0 ){
+		
+			
+			this.p_makerCd 		= nvl(this.ds_rtsd0104.getColumn(0,"makerCd"));
+			this.p_modelCd 		= nvl(this.ds_rtsd0104.getColumn(0,"modelCd"));
+			this.p_contentsCd 	= nvl(this.ds_rtsd0104.getColumn(0,"contentsCd"));
+			this.p_frCd 		= nvl(this.ds_rtsd0104.getColumn(0,"frCd"));
+			
+			this.div_carInfo_cb_makerCd_onitemchanged();
+
+			var payMthd = nvl(this.ds_rtsd0104.getColumn(0,"payMthd"));
+			var payDd 	= nvl(this.ds_rtsd0104.getColumn(0,"payDd"));
+			if( payMthd == "A" ){
+				this.div_payInfo.div_acc.cb_B_bankPayDay.set_value(payDd);
+			}else if( payMthd == "C" ){
+				this.div_payInfo.div_card.cb_C_bankPayDay.set_value(payDd);
+			}else{
+			}
+			//this.FN_listRtsd0106();
+			if(this.ed_orderNo.value != ""){
+				if(this.ds_rtsd0104.getColumn(0,"ordId")==04){
+					this.ed_SaleCd.set_value(this.ds_rtsd0104.getColumn(0,"saleCd"));
+					this.ed_SaleProdNm.set_value(this.ds_rtsd0104.getColumn(0,"saleNm"));
+					this.p_periodCd.set_value(this.ds_rtsd0104.getColumn(0,"periodCd"));
+					this.fn_searchProduct(); 	// 계약별 제품정보 불러오기				
+					this.fn_searchPrmmSrvc(); 	// 계약별 프리미엄 서비스  불러오기 
+					this.fn_getSumpay();		// 총합계					
+					if(this.ds_rtsd0104.getColumn(0,"statCd")==01){
+						this.btnOrderAdd.set_visible(false);
+					}
+				}
+			}
+			
+		
+		}else{
+			alert("계약조회 :계약정보가 없습니다.");
+		}
+
+		var rtsd0100Cnt = this.ds_rtsd0100.getRowCount();
+		if( rtsd0100Cnt != 0 ){
+			this.div_custInfo_cb_custTp_onitemchanged();
+			this.FN_telNoChange();
+			this.div_custInfo.cb_custTp.set_value(this.ds_rtsd0100.getColumn(0,"custTp"));
+		}else{
+			alert("계약조회 : 고객정보가 없습니다.");
+		}
+
+		var rtsd0110Cnt = this.ds_rtsd0110.getRowCount();
+		if( rtsd0110Cnt != 0 ){
+			this.div_custInfo.div_custInfoDetail.ra_certification.set_value( this.ds_rtsd0110.getColumn(0, "certCd") );
+			var certCd = nvl(this.ds_rtsd0110.getColumn(0, "certCd"));
+			if(certCd == "02"){
+		/*		this.div_etcInfo.ch_pcertYn.set_value(true);*/
+			}else{
+				/*this.div_etcInfo.ch_pcertYn.set_value(false);*/
+				this.certificationFlag = true; // 2016-06-13 이영근, 휴대폰 인증한 경우
+			}
+		}else{
+			//alert("계약조회 : 본인인증 이력정보가 없습니다.");
+		} 
+
+		var rtsd0111Cnt = this.ds_rtsd0111.getRowCount();
+		if( rtsd0111Cnt != 0 ){
+			this.div_custInfo.div_custInfoDetail.cb_nagYn.set_value( this.ds_rtsd0111.getColumn(this.ds_rtsd0111.rowposition, "nagYn") );
+		}else{
+			//alert("계약조회 : 개인정보제공 동의정보가 없습니다.");
+		}
+				
+		var rtre0010Cnt = this.ds_rtre0010.getRowCount();
+		var rtre0020Cnt = this.ds_rtre0020.getRowCount();
+
+		if( rtre0010Cnt != 0 ){
+			this.div_payInfo.cb_payCustTp.set_value( this.ds_rtre0010.getColumn(0,"custTp") );
+			this.ch_resultPayInfo.set_value( this.ds_rtre0010.getColumn(0,"accChk") == "Y" ? true : false);
+			//this.FN_payInfo_enable();
+			this.payAddRowFlag = false;
+			this.div_payInfo_cb_payMthd_onitemchanged();
+			this.FN_payInfo_enable();
+		}else{
+		}
+		if( rtre0020Cnt != 0 ){
+			this.ds_rtre0020.set_updatecontrol(false);
+			var sExpireYm = nvl(this.ds_rtre0020.getColumn(0,"expireYm"));
+			var sExpireY = "";
+			var sExpireM = "";
+			if(sExpireYm != ""){
+				if(sExpireYm.length == 6){
+					sExpireY = sExpireYm.substr(0,4);
+					sExpireM = sExpireYm.substr(4,2);
+				}
+			}
+			this.ds_rtre0020.setColumn(0, "expireY", sExpireY);
+			this.ds_rtre0020.setColumn(0, "expireM", sExpireM);
+			this.ds_rtre0020.setRowType(0, Dataset.ROWTYPE_NORMAL);
+			this.ds_rtre0020.set_updatecontrol(true);
+			this.div_payInfo.cb_payCustTp.set_value( this.ds_rtre0020.getColumn(0,"custTp") );
+			this.ch_resultPayInfo.set_value( this.ds_rtre0020.getColumn(0,"bkeyChk") == "Y" ? true : false);
+			//this.FN_payInfo_enable();
+			this.payAddRowFlag = false;
+			this.div_payInfo_cb_payMthd_onitemchanged();
+			this.FN_payInfo_enable();
+		}else{
+		}
+		
+		if( rtre0010Cnt == 0 && rtre0020Cnt == 0 ){
+			//alert("계약조회 : 결제정보가 없습니다.");
+		}
+		this.FN_divChangeTrue();		
+	}		
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "listRtsd0106"){
+		var prdInfoCnt = this.ds_productInfo.getRowCount(); // 제품정보
+		if( prdInfoCnt == 0 ){
+			this.alert("계약조회 : 제품정보가 없습니다.");
+		}
+		
+		/*
+		var rtsd0106Cnt= this.ds_rtsd0106.getRowCount();
+		if( rtsd0106Cnt != 0){
+		}else{
+		}
+		
+		var priceCnt = this.ds_price.getRowCount();
+		if( priceCnt != 0 ){
+			this.ds_price.setColumn(0,"cDcamt", this.ds_rtsd0104.getColumn(0,"cDcamt"));
+			this.ds_price.setColumn(0,"campYn", this.ds_rtsd0104.getColumn(0,"campYn"));
+			this.ds_price.setColumn(0,"gDcrate", this.ds_rtsd0104.getColumn(0,"gDcrate"));
+			this.ds_price.setColumn(0,"gDcamt", this.ds_rtsd0104.getColumn(0,"gDcamt"));
+			this.ds_price.setColumn(0,"lDcrate", this.ds_rtsd0104.getColumn(0,"lDcrate"));
+			this.ds_price.setColumn(0,"lDcamt", this.ds_rtsd0104.getColumn(0,"lDcamt"));
+			this.ds_price.setColumn(0,"fDcamt", this.ds_rtsd0104.getColumn(0,"fDcamt"));
+			
+			this.ds_price.setColumn(0,"monAmt", this.ds_rtsd0106.getColumn(0,"monAmt"));
+			this.ds_price.setColumn(0,"matDesc", this.ds_rtsd0106.getColumn(0,"matDesc"));
+		}else{
+			alert("계약조회 : 상품 정보가 없습니다.");
+		}
+		
+		var rtsd0013Cnt = this.ds_rtsd0013.getRowCount();
+		if( rtsd0013Cnt != 0 ){
+		}else{
+			//alert("계약조회 : 계약별 프리미엄서비스 정보가 없습니다.");
+		}
+		
+		var rtsd0014Cnt = this.ds_rtsd0014.getRowCount();
+		if( rtsd0014Cnt != 0 ){
+		}else{
+			//alert("계약조회 : 계약별 캠페인적용 정보가 없습니다.");
+		}
+		*/
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "listModelCombo"){
+		if( nvl(this.p_modelCd) != "" && nvl(this.p_makerCd) != "" && nvl(this.p_contentsCd) != "" && nvl(this.p_frCd) ){
+			var nRow = this.ds_model.findRowExpr("makerCd == '"+nvl(this.p_makerCd)+"'&& modelCd == '"+nvl(this.p_modelCd)+"'&& contentsCd == '"+nvl(this.p_contentsCd)+"'&& frCd == '" + nvl(this.p_frCd) +"'",-1);
+			var selectRow = this.ds_model.set_rowposition(nRow);
+			this.div_carInfo.cb_model.set_value( this.ds_model.getColumn(selectRow,"rn") );
+			this.p_modelCd="";
+			this.p_makerCd="";
+			this.p_contentsCd="";
+			this.p_frCd="";
+		}
+		
+// 		this.btnAddPrdt.set_enable(true);
+// 		this.btnAddPrdtDel.set_enable(true);
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "listCustInfo"){
+		//고객결합여부
+		if( nvl(this.selectGrpNo) != "0" ){
+			this.ed_grpNo.set_value(nvl(this.selectGrpNo));
+			this.ed_grpYn.set_value("Y");
+		}else{
+			this.ed_grpNo.set_value("");
+			this.ed_grpYn.set_value("N");
+		}
+		
+		var rtsd0110Cnt = this.ds_rtsd0110.getRowCount();
+		if( rtsd0110Cnt != 0){
+			var certCd = nvl(this.ds_rtsd0110.getColumn(0, "certCd"));
+			this.div_custInfo.div_custInfoDetail.ra_certification.set_value( certCd );
+			if(certCd == "02"){
+				/*this.div_etcInfo.ch_pcertYn.set_value(true);*/
+			}else{
+				/*this.div_etcInfo.ch_pcertYn.set_value(false);*/
+				this.certificationFlag = true; // 2016-06-13 이영근, 휴대폰 인증한 경우
+			}
+		}else{
+			//alert("계약조회 : 본인인증 이력정보가 없습니다.");
+		}
+		
+		var rtsd0111Cnt = this.ds_rtsd0111.getRowCount();
+		if( rtsd0111Cnt != 0){
+			this.div_custInfo.div_custInfoDetail.cb_nagYn.set_value( this.ds_rtsd0111.getColumn(this.ds_rtsd0111.rowposition, "nagYn") );
+		}else{
+			//alert("계약조회 : 개인정보제공 동의정보가 없습니다.");
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+// 	if(strSvcId == "selectRtsd0108SaleCdCount"){
+// 		if( nvl(this.selectSaleCd) != 0 ){
+// 			this.ra_sale.set_value("02");
+// 		}else{
+// 			this.ra_sale.set_value("01");
+// 		}
+// 	}
+	
+	if(strSvcId == "selectRtsd0108SaleCdCount"){
+		if( this.reRental == true){ //[김선태]재렌탈 추가
+			this.ra_sale.set_value("04");
+		}else{
+			this.ra_sale.set_value("01");
+		}
+	}	
+	
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "saveMemberOrder"){
+		if(nErrorCode == "-2"){
+			alert(strErrorMsg);
+		}else if( nErrorCode == "0" && this.resultOrdNo != "0" ){
+			this.ed_orderNo.set_value(this.resultOrdNo);
+			if( confirm( strErrorMsg +"\n저장된 계약번호는 \'"+this.resultOrdNo+"\' 입니다." + "\n저장된 계약번호로 조회하시겠습니까?") ){
+				this.FN_listRtsd0104( this.resultOrdNo );
+				this.btnOrderAdd.set_visible(false);
+			}else{
+				this.FN_listRtsd0104( this.resultOrdNo );
+				this.reload();
+			}
+		}else{
+			alert(strErrorMsg);
+		}
+	
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	/* if(strSvcId == "preminumList"){
+		var cnt = this.ds_rtsd0013.getRowCount();
+		if( cnt != 0 ){
+			for( var i = 0 ; i < this.ds_rtsd0013.getRowCount() ; i++){
+				this.ds_rtsd0013.setColumn(i, "servCnt0", this.ds_rtsd0013.getColumn(i, "servVnt"));
+				this.ds_rtsd0013.setColumn(i, "servCntr", this.ds_rtsd0013.getColumn(i, "servVnt"));
+			}
+		}else{
+			
+		}
+	} */
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if (strSvcId == "saveContractRegister"){
+		if(nErrorCode == "-2"){
+			alert(strErrorMsg);
+		}else if( nErrorCode == "0" && this.resultOrdNo != "0" ){
+			if( confirm( strErrorMsg +"\n저장된 계약번호는 \'"+this.resultOrdNo+"\' 입니다." + "\n저장된 계약번호로 조회하시겠습니까?") ){
+				this.accCardCheck   = false;
+				this.ds_sumPayInfo.clearData();				
+				this.FN_listRtsd0104( this.resultOrdNo );
+			}else{
+				this.reload();
+			}
+		}else{
+			alert(strErrorMsg);
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "niceTrustInfoCnt") {
+		if(this.dsNice.getRowCount() > 0) {
+			var userCrGrade = this.dsNice.getColumn(0, "crGrade");	//사용자권한
+			var commCrGrade = this.dsNice.getColumn(0, "cdLevel");	//체크권한
+			if(parseInt(userCrGrade) > commCrGrade) {
+				alert('신용결과 계약불가입니다.');
+				this.div_custInfo.div_custInfoDetail.cb_credit.set_value("N");
+				return;
+			}else{
+				this.div_custInfo.div_custInfoDetail.cb_credit.set_value("Y");
+				this.FN_divChangeTrue();
+			}
+		} else {	//저장된 자료가 없는경우 새롭게 인증진행
+			var safekey = nvl(this.ds_rtsd0100.getColumn(0,"safekey"));
+			var sSvcID        	= "niceTrustInfo";                    
+			var sController   	= "rtms/sd/niceTrustInfo.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "dsNice2=dsNiceCheck";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+			sArgs += Ex.util.setParam("safekey",safekey);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "niceTrustInfo") {
+	this.btn_SalePrdtSearch.set_enable(true);
+		var returnCode = this.dsNice2.getColumn(0, "returnCode");	//성공여부
+		var commCrGrade = this.dsNice2.getColumn(0, "cdLevel");		//체크권한
+		var userCrGrade = this.dsNice2.getColumn(0, "trustLevel");	//사용자권한
+		
+		if( returnCode == "P000" ){
+			if(parseInt(userCrGrade) > commCrGrade) {
+				alert('신용결과 계약불가입니다.');
+				this.div_custInfo.div_custInfoDetail.cb_credit.set_value("N");
+				return;
+			}else{
+				this.div_custInfo.div_custInfoDetail.cb_credit.set_value("Y");
+				this.FN_divChangeTrue();
+			}
+		}else{
+			//this.alert(application.gv_host);
+			if(application.gv_host == "http://localhost/" || application.gv_host == "http://1.254.67.135:9080/"){
+				alert("개발용: 신용조회 무시");
+				this.div_custInfo.div_custInfoDetail.cb_credit.set_value("Y");
+				this.FN_divChangeTrue();			
+			}else{
+				alert("신용조회를 실패하였습니다.");	
+			}
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "existsBisinessSearch") {
+		if(this.dsBis2.getRowCount() > 0) {
+			var yn = this.dsBis2.getColumn(0, "gradeYn");//신용평가정보가 존재하는경우....grade정보 유효성체크
+			if(yn == "N") {
+				alert("해당 법인의 사업자번호는 주문을 진행하실수 없습니다.");
+				return false;
+			}else{
+			
+			}
+		} else {
+		
+			this.createNiceBusinessInfo();//당일 법인등록기준이 없는경우 법인신용평가Interface실행
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "niceBisinessSearch") {
+		var  gradeYn = this.dsBis.getColumn(0, "gradeYn");
+		if(gradeYn == "N") {
+			alert("해당 법인의 사업자번호는 주문을 진행하실수 없습니다.");
+			return false;
+		}else{
+		
+		}
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "batchService"){
+		if(nvl(this.dsBatch.getColumn(0,"res_cd")) == "0000" && nvl( this.dsBatch.getColumn(0, "batchKey") ) != "" ) {
+			alert("카드인증을 성공하였습니다.");
+			this.ch_resultPayInfo.set_value(true);
+			this.div_payInfo.set_enable(false);
+			this.ds_rtre0020.setColumn(0,"batchKey",nvl( this.dsBatch.getColumn(0, "batchKey") ) );
+		}else{
+			if(application.gv_host == "http://localhost/" || application.gv_host == "http://1.254.67.135:9080/"){
+				alert("개발용: 카드조회 무시");
+				this.ch_resultPayInfo.set_value(true);
+				this.div_payInfo.set_enable(false);
+				this.ds_rtre0020.setColumn(0,"batchKey","1234567890" );			
+			}else{		
+				alert("카드인증을 실패하였습니다.");
+				this.ch_resultPayInfo.set_value(false);
+			}
+		}
+		this.accCardCheck = true;
+		this.saveBatchResult();
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "batchResultService"){
+		
+	}
+	if(strSvcId == "Sumpay"){
+		this.contactRowChg();
+	}
+	
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "kftcCmsDocInfo"){
+		if(nvl(this.dsBatch.getColumn(0,"returnCode")) == "0000") {
+			alert('계좌인증 성공하였습니다');
+			this.ch_resultPayInfo.set_value(true);
+			//this.div_payInfo.set_enable(false);
+			this.div_payInfo.div_acc.ed_B_custNm.set_enable(false);
+			this.div_payInfo.div_acc.cb_B_bankCd.set_enable(false);
+			this.div_payInfo.div_acc.ed_B_acctNo.set_enable(false);
+		}
+		else {
+			if(application.gv_host == "http://localhost/" || application.gv_host == "http://1.254.67.135:9080/"){
+				alert("개발용: 계좌인증 무시");
+				this.ch_resultPayInfo.set_value(true);
+				this.div_payInfo.div_acc.ed_B_custNm.set_enable(false);
+				this.div_payInfo.div_acc.cb_B_bankCd.set_enable(false);
+				this.div_payInfo.div_acc.ed_B_acctNo.set_enable(false);			
+			}else{		
+				alert('계좌인증 실패하였습니다');
+				this.ch_resultPayInfo.set_value(false);
+			}
+		}
+		this.accCardCheck = true;
+	}
+	if(strSvcId == "arsCallService"){
+		if(nErrorCode != "0"){
+			this.alert("출금이체동의에 실패하였습니다.\n["+strErrorMsg+"]");
+			this.ch_resultArsCall.set_value(false);
+		}else{
+			this.alert(strErrorMsg);
+			this.ch_resultArsCall.set_value(true);
+			//this.div_payInfo.div_acc.cb_B_bankCd.set_enable(false);
+			//this.div_payInfo.div_acc.ed_B_acctNo.set_enable(false);
+			//this.div_payInfo.set_enable(false);
+		}	
+	}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	//if(strSvcId == "selectSalesmanTel"){
+	//	if( this.orgAgtel != "" ){
+	//		this.div_salesmanInfo.ed_salesmanTel.set_value(FN_numberHyphenInReturn(this.orgAgtel));
+	//	}
+	//}
+	/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+	if(strSvcId == "sRtsd0104ChanCd"){
+		if( (nvl(this.selectChanCd) == "XX") || (nvl(this.selectChanCd) == "") ){
+			alert("채널구분 정보 오류입니다. 영업관리팀 문의바랍니다.");
+			return false;
+		}else{
+			var nRow0104 = this.ds_rtsd0104.rowposition;
+			this.ds_rtsd0104.setColumn( nRow0104, "chanCd", nvl(this.selectChanCd));	
+			this.FN_goSave();
+		}
+	}
+	if(strSvcId == "insertRtsd0110"){
+		if(nErrorCode != "0"){
+			alert("본인인증을 실패하였습니다.");
+			this.certificationFlag	= false;		
+
+		}else{
+			alert("본인인증을 성공하였습니다.");
+			this.certificationFlag	= true;		
+		}
+	}
+	
+	if(strSvcId == "getcheckOrdNo"){//bOrdNo
+		if(this.getcheckOrdNo  == ""){
+			alert("이전 계약번호가 존재하지 않습니다.");
+		}else{
+			alert("이전 계약번호는 "+this.getcheckOrdNo +" 입니다.");
+			this.ed_borderNo.set_value(this.getcheckOrdNo);
+		}
+
+	}
+	
+	//판매상품조회 후 값 가져오기
+	if(strSvcId == "saleItemList") {
+		if(nvl(this.ed_SaleCd.value,"") != "") {
+		this.ed_SaleProdNm.set_value(nvl(this.ds_saleItemList.getColumn(0,"saleNm")));
+		}
+		this.ds_sumPayInfo.addRow();
+		this.contactRowChg();
+	}
+	
+	/*
+	if(strSvcId == "saleRegiAmtInfo") {
+		
+		this.ds_sumPayInfo.addRow();
+		this.ds_sumPayInfo.setColumn(0,"regiAmtChg"," ");
+	}
+	*/
+	//제품별 프리미엄서비스
+	if(strSvcId == "srvcOrdList"){
+	
+		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) == ""){
+			this.alert("해당타이어 " + this.p_cntCd.value + " 본수에 제공되는 프리미엄 상품은 없습니다.");	
+		}
+		// 무제한 선택여부 
+		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
+		}
+// 		else{
+// 			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "displaytype", "combo");
+// 			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "edittype", "combo");
+// 		}
+		this.contactRowChg();
+			
+	}
+	
+	//계약별 제품정보
+	if(strSvcId == "listAddSelProduct2") {
+	
+		if(nvl(this.p_periodCd.value) == ''){
+
+		this.p_periodCd.set_value(this.ds_productInfo.getColumn(0,"periodCd") ); // 처음 등록일 경우
+	}
+		
+		this.ds_sumPayInfo.addRow();
+		//등록비 관련 데이타 조회(2018.10.30)
+		//this.FN_saleRegiAmt();
+		var sPeriod = 0;
+		if(this.ed_orderNo.value != ''){
+			var regiAmt = nvl(this.ds_rtsd0104.getColumn(0,"regiAmt")) == ""?"0":nvl(this.ds_rtsd0104.getColumn(0,"regiAmt"));
+			var sumMonAmt = nvl(this.ds_rtsd0104.getColumn(0,"sumMonAmt")) == ""?"0":nvl(this.ds_rtsd0104.getColumn(0,"sumMonAmt"));
+			
+			if(nvl(this.p_periodCd.value) == '') {
+				sPeriod = 0;
+			} else {
+				sPeriod = this.p_periodCd.value;
+			}
+			trace("sPeriod:"+sPeriod);
+			
+		}
+	}
+	//계약별 프리미엄서비스
+		if(strSvcId == "prmmSrvcOrdList"){
+		//this.alert(this.ds_rtsd0013.getColumn(0, "servInfYN"));
+		// 무제한 선택여부 
+		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
+		}
+// 		else{
+// 			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "displaytype", "combo");
+// 			this.grid_svrCd.setCellProperty("body", this.grid_svrCd.getBindCellIndex("body", "servCnt"), "edittype", "combo");
+// 		}
+		this.contactRowChg();
+	
+	}
+	if(strSvcId == "cntPrdPymInfoList"){
+		
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//fn_callBack END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//ONLOAD FUNCTION START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDMemberOrder_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+//FORM ONLOAD FUNCTION
+	Ex.core.init(obj);
+	this.fn_init(); 
+	this.parent.setButton("", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//UserFunction : 상품-가격정보 변경 및 SELECT BOX DATA SELECT
+this.fn_init = function(){
+		
+	var sSvcID      	= "initRTSDMemberOrder";  
+	var sController   	= "rtms/sd/initRTSDContractRegister.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_custTp=mapDsCustTp ";
+	sOutDatasets += " ds_certification=mapDsCertification ";
+	sOutDatasets += " ds_genderCd=mapDsGenderCd ";
+	sOutDatasets += " ds_lfCd=mapDsLfcd ";
+	sOutDatasets += " ds_mobFirm=mapDsMobFirm ";
+	sOutDatasets += " ds_payMthd=mapDsPayMthd ";
+	sOutDatasets += " ds_payCustTp=mapDsPayCustTp ";
+	sOutDatasets += " ds_B_bank=mapDsBBank ";
+	sOutDatasets += " ds_C_bank=mapDsCBank ";
+	sOutDatasets += " ds_B_bankPayDay=mapDsBankPayDay ";
+	sOutDatasets += " ds_C_bankPayDay=mapDsCardPayDay ";
+	sOutDatasets += " ds_maker=mapDsMaker ";
+	sOutDatasets += " ds_nagYn=mapDsNagYn ";
+	sOutDatasets += " ds_credit=mapDsCredit ";
+	sOutDatasets += " ds_sale=maptDsSale ";	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	//부가제품정보 공통추가(2018.10.26)
+	var sSvcID        	= "listCommInfo";                    
+	var sController   	= "/rtms/sd/listAddProductCommInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "comGrp=com_grp";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	
+	//초기로딩시 판매상품관련 버튼 비활성화
+	this.btn_SalePrdtSearch.set_enable(false);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//UserFunction : SYSDATE
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//ONLOAD FUNCTION END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//고객정보 START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//BUTTON EVENT
+this.div_custInfo_btn_custNew_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if( confirm( "고객등록 화면으로 이동 하시겠습니까?\n※등록하셨던 내용은 사라집니다." ) ){
+		this.go( "sd::RTSDCustRegister.xfdl" );
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//BUTTON EVENT
+this.div_custInfo_btn_custNoSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg };
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}
+this.returnCustInfo = function(ds){
+	
+	this.FN_divChangeFalse();
+ 	if(ds[0].rowcount > 0){
+ 		this.FN_initializationDataSet();
+ 		this.ds_rtsd0100.copyData(ds[0]);
+ 		
+ 		var contactRow = this.ds_rtsd0104.addRow();
+ 		//this.ds_rtsd0106.addRow();
+ 		//this.ds_price.addRow();
+ 		this.ds_rtsd0104.setColumn(contactRow,"carOwner",ds[0].getColumn(0, "custNm"));
+ 		
+ 		this.div_custInfo_cb_custTp_onitemchanged();//고객유형 CHANCE EVENT
+ 		
+ 		this.div_payInfo.cb_payMthd.set_enable(true);
+ 		this.div_payInfo.btn_payChoice.set_visible(true);
+ 		
+ 		this.FN_telNoChange();
+ 		this.FN_listCustInfo( ds[0].getColumn(0, "custNo") );
+ 		
+ 		var regId   = nvl( ds[0].getColumn(0,"regId")  );
+ 		var custTp  = nvl( ds[0].getColumn(0,"custTp") );
+ 		if( this.userGrp == "01" && regId != this.onlineLoginId && custTp == "02" ){//B2B
+ 			this.FN_divChangeTrue();
+ 		}
+ 		this.payAddRowFlag = true;	
+ 		
+ 		//재렌탈 대상 확인
+ 		this.checkOrdNo(ds[0].getColumn(0, "custNo"));
+ 		
+ 	}
+}
+
+this.checkOrdNo = function(custNo){
+	
+	var sSvcID      	= "getcheckOrdNo";  
+	var sController   	= "/rtms/sd/getcheckOrdNo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_reRental=mapDSReRental";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("custNo",custNo);
+	//alert(custNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : DATA SET CLEAR
+this.FN_initializationDataSet = function(){
+	this.ds_rtsd0100.clearData();
+	this.ds_rtsd0110.clearData();
+	this.ds_rtsd0111.clearData();
+	this.ds_rtsd0104.clearData();
+	/*this.ds_productInfo.clearData();*/
+	//this.ds_price.clearData();
+	//this.ds_rateAmt.clearData();
+	this.ds_rtre0010.clearData();
+	this.ds_rtre0020.clearData();
+	this.ds_rtsd0013.clearData();
+	//this.ds_rtsd0014.clearData();
+	this.dsNice.clearData();
+	this.dsNice2.clearData();
+	
+	this.p_periodCd.set_value("");
+	this.p_matCd.set_value("");
+	this.div_payInfo.div_acc.cb_B_bankPayDay.set_value("-1");
+	this.div_payInfo.div_card.cb_C_bankPayDay.set_value("-1");
+	this.div_carInfo.cb_model.set_index(-1);
+	this.div_payInfo.div_card.ed_C_expireY.set_value("");
+	this.div_payInfo.div_card.ed_C_expireM.set_value("");
+	this.ch_resultArsCall.set_value(false);
+	this.btnOrderAdd.set_visible(true);
+	this.div_sumInfo.ed_totalPrice.set_value(0);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : 전화번호 FN_numberHyphenInReturn
+this.FN_telNoChange = function(){
+
+	var telNo  = nvl(this.ds_rtsd0100.getColumn(0,"telNo"));
+	var telNo2 = nvl(this.ds_rtsd0100.getColumn(0,"telNo2"));
+	var cTelno = nvl(this.ds_rtsd0100.getColumn(0,"cTelno"));
+	
+/*	if( telNo != "" ){ 	this.div_custInfo.ed_telNo.set_value( FN_numberHyphenInReturn(telNo) ); 						}*/
+	if( telNo2 != "" ){ this.div_custInfo.div_custInfoDetail.ed_telNo2.set_value( FN_numberHyphenInReturn(telNo2) ); 	}
+	if( cTelno != "" ){ this.div_custInfo.ed_cTelno.set_value( FN_numberHyphenInReturn(cTelno) ); 						}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : 본인인증이력 및 개인정보제공동의 조회
+this.FN_listCustInfo = function( custNo ){
+	var sSvcID        	= "listCustInfo";                    
+	var sController   	= "rtms/sd/listCustInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_rtsd0110=mapRtsd0110 ";	//본인인증이력
+	sOutDatasets += " ds_rtsd0111=mapRtsd0111 ";	//개인정보제공동의
+	this.ds_rtsd0111.clearData();
+	this.ds_rtsd0110.clearData();
+	sArgs += Ex.util.setParam("custNo",custNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION
+this.FN_rtsd0113UserGrp = function(){
+	var sSvcID      	= "sRtsd0113UserGrp";  
+	var sController   	= "/rtms/sd/sRtsd0113UserGrp.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0113=mapRtsd0113UserGrp";
+	var sArgs 			= Ex.util.setParam("userGrp",this.userGrp);
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : FN_divChangeTrue <-> FN_divChangeFalse, 결제정보, 차량정보, 상품-가격정보, 장착점정보, 프리미엄서비스, 판매원정보 TRUE
+this.FN_divChangeTrue = function(){
+	this.div_custInfo_cb_custTp_onitemchanged();
+	this.div_payInfo.set_enable(true);
+	this.div_payInfo.cb_payCustTp.set_enable(false);
+	this.div_carInfo.set_enable(true);
+	//this.div_productInfo.set_enable(true);	
+	//this.div_preminum.set_enable(true);
+
+	var regId   = nvl( this.ds_rtsd0100.getColumn(0,"regId")  );
+	var custTp  = nvl( this.ds_rtsd0100.getColumn(0,"custTp") );
+	
+	// [20161206_02]
+	if( (this.userGrp == "02") || (this.userGrp == "09") || (this.userGrp == "13") || (this.userGrp == "01" && regId != this.onlineLoginId && custTp == "02") ){
+		this.div_salesmanInfo.set_enable(true);//판매원정보
+		this.FN_rtsd0113UserGrp();
+	}
+	
+	//if( this.userGrp == "01" && regId != this.onlineLoginId && custTp == "02" ){
+	//	this.div_salesmanInfo.cb_orgAgent.set_innerdataset(this.ds_orgAgent2);
+	//}else{
+	//	this.div_salesmanInfo.cb_orgAgent.set_innerdataset(this.ds_orgAgent);
+	//}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : FN_divChangeTrue <-> FN_divChangeFalse, 결제정보, 차량정보, 상품-가격정보, 장착점정보, 프리미엄서비스, 판매원정보 FALSE
+this.FN_divChangeFalse = function(){
+	this.div_custInfo_cb_custTp_onitemchanged();
+	this.div_payInfo.set_enable(false);
+	this.div_payInfo.cb_payCustTp.set_enable(false);
+	this.div_carInfo.set_enable(false);
+	this.grid_product.set_enable(false);
+	//this.div_productInfo.set_enable(false);
+	/*this.div_installInfo.set_enable(false);*/
+	//this.div_preminum.set_enable(false);
+	
+	var regId   = nvl( this.ds_rtsd0100.getColumn(0,"regId")  );
+	var custTp  = nvl( this.ds_rtsd0100.getColumn(0,"custTp") );
+	
+	// [20161206_02]
+	if( (this.userGrp == "02") || (this.userGrp == "13") || (this.userGrp == "01" && regId != "ONL_SYS" && custTp == "02") ){
+/*		this.div_salesmanInfo.set_enable(false);*/
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//SELECT BOX FUNCTION : 고객유형 변경
+this.div_custInfo_cb_custTp_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	if( this.div_custInfo.cb_custTp.value != "undefined"){
+		if( this.div_custInfo.cb_custTp.value == "01" ){
+			this.FN_cust01();
+		}else if( this.div_custInfo.cb_custTp.value == "02" ){
+			this.FN_cust02();
+		}else{
+			this.FN_cust01();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//UserFunction : FN_cust01<->FN_cust02 , 고객정보
+this.FN_cust01 = function(){
+	this.div_custInfo.div_custInfoDetail.setOffsetTop(90);
+	this.div_custInfo.st_custNm.set_text("고객명");
+	this.div_custInfo.div_custInfoDetail.st_telNo2.set_text("전화번호");
+	this.div_custInfo.st_birthDay.set_visible(true);						//법정생년월일
+	this.div_custInfo.ed_birthDay.set_visible(true);						//법정생년월일
+	this.div_custInfo.st_buslNo.set_visible(false);							//사업자번호
+	this.div_custInfo.ed_buslNo.set_visible(false);							//사업자번호
+	this.div_custInfo.st_genderCd.set_visible(true);						//성별
+	this.div_custInfo.cb_genderCd.set_visible(true);						//성별
+	this.div_custInfo.st_repNm.set_visible(false);							//대표자명
+	this.div_custInfo.ed_repNm.set_visible(false);							//대표자명
+	this.div_custInfo.st_busiType.set_visible(false);						//업종
+	this.div_custInfo.ed_busiType.set_visible(false);						//업종
+	this.div_custInfo.st_busiCond.set_visible(false);						//업태
+	this.div_custInfo.ed_busiCond.set_visible(false);						//업태
+	this.div_custInfo.st_lfCd.set_visible(true);							//내/외국인
+	this.div_custInfo.cb_lfCd.set_visible(true);							//내/외국인
+	this.div_custInfo.div_custInfoDetail.st_certification.set_visible(true);//본인인증
+	this.div_custInfo.div_custInfoDetail.ra_certification.set_visible(true);//본인인증
+	this.div_custInfo.div_custInfoDetail.st_credit.set_visible(true);
+	this.div_custInfo.div_custInfoDetail.cb_credit.set_visible(true);
+	this.div_custInfo.div_custInfoDetail.btn_creditSelect.set_visible(true);
+	this.div_custInfo.div_custInfoDetail.st_nagYn.set_visible(true);
+	this.div_custInfo.div_custInfoDetail.cb_nagYn.set_visible(true);
+	this.div_custInfo.st_cCustnm.set_visible(false);
+	this.div_custInfo.ed_Ccustnm.set_visible(false);
+	this.div_custInfo.st_cTelno.set_visible(false);
+	this.div_custInfo.ed_cTelno.set_visible(false);
+	
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//UserFunction : FN_cust01<->FN_cust02 , 고객정보
+this.FN_cust02 = function(){
+	this.div_custInfo.div_custInfoDetail.setOffsetTop(120);
+	this.div_custInfo.st_custNm.set_text("법인명");
+	this.div_custInfo.div_custInfoDetail.st_telNo2.set_text("회사전화");
+	this.div_custInfo.st_birthDay.set_visible(false);						 //법정생년월일
+	this.div_custInfo.ed_birthDay.set_visible(false);						 //법정생년월일
+	this.div_custInfo.st_buslNo.set_visible(true);							 //사업자번호
+	this.div_custInfo.ed_buslNo.set_visible(true);							 //사업자번호
+	this.div_custInfo.st_genderCd.set_visible(false);						 //성별
+	this.div_custInfo.cb_genderCd.set_visible(false);						 //성별
+	this.div_custInfo.st_repNm.set_visible(true);							 //대표자명
+	this.div_custInfo.ed_repNm.set_visible(true);							 //대표자명
+	this.div_custInfo.st_busiType.set_visible(true);						 //업종
+	this.div_custInfo.ed_busiType.set_visible(true);						 //업종
+	this.div_custInfo.st_busiCond.set_visible(true);						 //업태
+	this.div_custInfo.ed_busiCond.set_visible(true);						 //업태
+	this.div_custInfo.st_lfCd.set_visible(false);							 //내/외국인
+	this.div_custInfo.cb_lfCd.set_visible(false);							 //내/외국인
+	this.div_custInfo.div_custInfoDetail.st_certification.set_visible(false);//본인인증
+	this.div_custInfo.div_custInfoDetail.ra_certification.set_visible(false);//본인인증
+	this.div_custInfo.div_custInfoDetail.st_credit.set_visible(false);
+	this.div_custInfo.div_custInfoDetail.cb_credit.set_visible(false);
+	this.div_custInfo.div_custInfoDetail.btn_creditSelect.set_visible(false);
+	this.div_custInfo.div_custInfoDetail.st_nagYn.set_visible(false);
+	this.div_custInfo.div_custInfoDetail.cb_nagYn.set_visible(false);
+	this.div_custInfo.st_cCustnm.set_visible(true);
+	this.div_custInfo.ed_Ccustnm.set_visible(true);
+	this.div_custInfo.st_cTelno.set_visible(true);
+	this.div_custInfo.ed_cTelno.set_visible(true);
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//BUTTON EVENT
+this.div_custInfo_div_custInfoDetail_btn_creditSelect_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var custTp  = nvl( this.ds_rtsd0100.getColumn(0,"custTp") );
+	var safekey = nvl(this.ds_rtsd0100.getColumn(0,"safekey"));
+	var nagYn	= nvl(this.div_custInfo.div_custInfoDetail.cb_nagYn.value);
+	
+	if( custTp == "01" ){//개인
+		if( safekey != "" ){
+			// [20161206_02]
+			trace("nagYn:"+nagYn);
+			trace("userGrp:"+this.userGrp);
+			if( (nagYn == "Y") || (this.userGrp == "02") || (this.userGrp == "13") || (this.userGrp == "09") ){
+				var sSvcID        	= "niceTrustInfoCnt";                    
+				var sController   	= "ntrms/sd/niceTrustInfoCnt.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "dsNice=dsNiceCheck";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				sArgs += Ex.util.setParam("safekey",safekey);
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+			}else{
+				alert("정보제공동의가 미동의입니다.");
+			}
+		}else{
+			alert("safekey가 없습니다.");
+		}
+	}else if( custTp == "02" ){//사업자
+		//var buslNo 			=  nvl(this.div_custInfo.ed_buslNo.value);
+		//var sSvcID        	= "existsBisinessSearch";                    
+		//var sController   	= "ntrms/sd/existsBisinessSearch.do";
+		//var sInDatasets   	= "";
+		//var sOutDatasets  	= "dsBis2=ds_bis_out";
+		//var sArgs 			= "";	
+		//var fn_callBack		= "fn_callBack";
+		//sArgs += " businessNo=" + buslNo;
+		//Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}else{
+	
+	}
+	/*
+	//개발일경우 TEST
+	this.div_custInfo.div_custInfoDetail.cb_credit.set_value("Y");
+	this.FN_divChangeTrue();
+	*/
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION :  법인신용조회
+this.createNiceBusinessInfo = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var businessNo 		= nvl(this.div_custInfo.ed_buslNo.value);
+	var sSvcID        	= "niceBisinessSearch";                    
+	var sController   	= "ntrms/sd/niceBisinessSearch.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsBis=ds_bis_out";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += " businessNo=" + businessNo;
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//BUTTON EVENT
+this.btn_orderNoSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMLumpSum_pop.xfdl",args, "modaless=false");	
+}
+this.returnOrderNoInfo = function(ordNo){
+	//this.FN_divChangeFalse();
+	this.FN_listRtsd0104(ordNo);
+	this.div_custInfo.div_custInfoDetail.btn_creditSelect.set_visible(false);
+// 	
+// 	if( this.userGrp == "05" ){
+// 		this.div_installInfo.btn_searchAgency.set_visible(false);
+// 		this.div_installInfo.ed_agencyNm.set_width(370);
+// 	}else{
+// 		this.div_installInfo.btn_searchAgency.set_visible(true);
+// 		this.div_installInfo.ed_agencyNm.set_width(320);
+// 	}	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : 계약정보 SELECT
+this.FN_listRtsd0104 = function( ordNo ){
+
+	this.FN_initializationDataSet();
+	var sSvcID        	= "listRtsd0104";                    
+	var sController   	= "rtms/sd/listRtsd0104.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_rtsd0104=mapRtsd0104 ";//계약정보
+	sOutDatasets += " ds_rtsd0100=mapRtsd0100 ";//고객마스터
+	sOutDatasets += " ds_rtsd0110=mapRtsd0110 ";//본인인증이력
+	sOutDatasets += " ds_rtsd0111=mapRtsd0111 ";//개인정보제공동의
+	sOutDatasets += " ds_rtre0010=mapRtre0010 ";//고객계좌정보
+	sOutDatasets += " ds_rtre0020=mapRtre0020 ";//고객카드정보
+	sOutDatasets += " ds_rtsd0115=mapRtsd0015 ";//SAP인터페이스정보
+	sArgs += Ex.util.setParam("ordNo", 	ordNo);
+	sArgs += Ex.util.setParam("ordType", "N");
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);		
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//고객정보 END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//결제정보 START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//BUTTON EVENT : 결제정보 신규버튼
+this.div_payInfo_btn_custNew_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var nRow0104	= this.ds_rtsd0104.rowposition;
+	var chanCd 		= nvl(this.ds_rtsd0104.getColumn(nRow0104, "chanCd"));
+	var statCd 		= nvl(this.ds_rtsd0104.getColumn(nRow0104, "statCd"));
+
+	if( chanCd == "02" || chanCd == "03" ){
+		alert("온라인, 방판 정보는 수정 처리가 불가 합니다!");
+		return false;
+	}
+	
+// 	if( statCd=="03" || statCd=="04" || statCd=="06" ){
+// 		alert("장착대기, 장착완료, 계약취소 정보는 수정  처리가 불가 합니다!");
+// 		return false;
+// 	}
+	
+	this.payAddRowFlag = true;
+	this.div_payInfo.cb_payMthd.set_enable(true);
+	this.div_payInfo.cb_payCustTp.set_enable(true);
+	this.div_payInfo.cb_payMthd.setFocus(true);
+	this.div_payInfo.btn_payChoice.set_visible(true);
+	this.ds_rtre0010.clearData();
+	this.ds_rtre0020.clearData();
+	this.div_payInfo.div_acc.cb_B_bankPayDay.set_enable(false);
+	this.div_payInfo.div_card.cb_C_bankPayDay.set_enable(false);
+	this.div_payInfo.cb_payMthd.set_index(-1);
+	this.div_payInfo.cb_payCustTp.set_index(-1);
+	this.div_payInfo.cb_payCustTp.set_enable(false);
+	this.div_payInfo.div_acc.btn_accConfirm.set_enable(true);
+	this.div_payInfo.div_card.btn_cardConfirm.set_enable(true);
+	this.ch_resultPayInfo.set_value(false);
+	this.ch_resultArsCall.set_value(false);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//SELECT BOX : 결제정보-결제방법
+this.div_payInfo_cb_payMthd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	if( this.payAddRowFlag ){
+		this.ds_rtre0010.addRow();
+		this.ds_rtre0020.addRow();
+	}		
+	
+	var rowposition = this.ds_rtsd0100.rowposition;
+	var custTp		= nvl(this.ds_rtsd0100.getColumn(rowposition, "custTp"));
+	var custTp2		= nvl(this.ds_rtsd0100.getColumn(rowposition, "custTp2"));
+	
+	if( this.payAddRowFlag){
+		this.div_payInfo.cb_payCustTp.set_value(custTp);
+	}
+	
+	if( custTp2 == "0002"){
+		this.div_payInfo.cb_payCustTp.set_enable(true);
+	}else{
+		this.div_payInfo.cb_payCustTp.set_enable(false);
+	}
+	
+	if( this.div_payInfo.cb_payMthd.value == "A" ){
+		this.ds_rtre0020.clearData();
+		this.div_payInfo.div_acc.set_visible(true);
+		this.div_payInfo.div_card.set_visible(false);
+	}else if( this.div_payInfo.cb_payMthd.value == "C" ){
+		this.ds_rtre0010.clearData();
+		this.div_payInfo.div_acc.set_visible(false);
+		this.div_payInfo.div_card.set_visible(true);
+	}
+	
+	this.div_payInfo_cb_payCustTp_onitemchanged();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//SELECT BOX : 결제방법-구분
+this.div_payInfo_cb_payCustTp_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var rowposition = this.ds_rtsd0100.rowposition;
+	var custTp		= nvl(this.ds_rtsd0100.getColumn(rowposition, "custTp"));
+	var custTp2		= nvl(this.ds_rtsd0100.getColumn(rowposition, "custTp2"));
+	var custNm		= nvl(this.ds_rtsd0100.getColumn(rowposition, "custNm"));
+	var repNm		= nvl(this.ds_rtsd0100.getColumn(rowposition, "repNm"));
+	var oCustnm		= nvl(this.ds_rtsd0100.getColumn(rowposition, "oCustnm"));
+	var buslNo		= nvl(this.ds_rtsd0100.getColumn(rowposition, "buslNo"));
+	var birthDay	= nvl(this.ds_rtsd0100.getColumn(rowposition, "birthDay"));
+	if(birthDay != "") birthDay = birthDay.substr(2);
+	var oBirthday	= nvl(this.ds_rtsd0100.getColumn(rowposition, "oBirthday"));
+	if(oBirthday != "") oBirthday = oBirthday.substr(2);
+	var payMthd =  this.div_payInfo.cb_payMthd.value;
+	var payCustTp =  this.div_payInfo.cb_payCustTp.value;
+	
+	if( payCustTp == "01" ){//개인
+		if( payMthd == "A" ){//계좌
+			this.div_payInfo.div_acc.st_B_ebirDay.set_visible(true);
+			this.div_payInfo.div_acc.ed_B_ebirDay.set_visible(true);
+			
+			this.div_payInfo.div_acc.st_B_buslNo.set_visible(false);
+			this.div_payInfo.div_acc.ed_B_buslNo.set_visible(false);
+			
+			this.div_payInfo.div_acc.ed_B_custNm.set_enable(true);
+			this.div_payInfo.div_acc.ed_B_ebirDay.set_enable(false);
+			this.div_payInfo.div_acc.ed_B_buslNo.set_enable(false);
+			this.div_payInfo.div_acc.cb_B_bankCd.set_enable(true);
+			this.div_payInfo.div_acc.ed_B_acctNo.set_enable(true);
+			this.div_payInfo.div_acc.cb_B_bankPayDay.set_enable(true);
+			
+			this.div_payInfo.div_acc.st_B_arsCall.set_enable(true);
+			this.div_payInfo.div_acc.btn_arsCall.set_enable(true);
+			
+			if( this.payAddRowFlag ){
+				this.div_payInfo.div_acc.ed_B_custNm.set_value(custNm);
+				this.div_payInfo.div_acc.ed_B_ebirDay.set_value(birthDay);
+			}
+			if( custTp2 == "0002" && this.payAddRowFlag ){//개인사업자
+				this.div_payInfo.div_acc.ed_B_custNm.set_value(repNm);
+				this.div_payInfo.div_acc.ed_B_ebirDay.set_enable(true);
+				this.div_payInfo.div_acc.ed_B_buslNo.set_value("");
+			}
+		}
+		
+		if( payMthd == "C" ){//카드
+			this.div_payInfo.div_card.st_C_ebirDay.set_visible(true);
+			this.div_payInfo.div_card.ed_C_ebirDay.set_visible(true);
+			
+			this.div_payInfo.div_card.st_C_buslNo.set_visible(false);
+			this.div_payInfo.div_card.ed_C_buslNo.set_visible(false);
+			
+			this.div_payInfo.div_card.ed_C_custNm.set_enable(true);
+			this.div_payInfo.div_card.ed_C_buslNo.set_enable(false);
+			this.div_payInfo.div_card.cb_C_bankCd.set_enable(true);
+			this.div_payInfo.div_card.ed_C_cardNo.set_enable(true);
+			this.div_payInfo.div_card.ed_C_expireY.set_enable(true);
+			this.div_payInfo.div_card.ed_C_expireM.set_enable(true);
+			
+			this.div_payInfo.div_card.cb_C_bankPayDay.set_enable(true);
+			
+			if( this.payAddRowFlag ){
+				this.div_payInfo.div_card.ed_C_custNm.set_value(custNm);
+				this.div_payInfo.div_card.ed_C_ebirDay.set_value(birthDay);
+			}
+			if( custTp2 == "0002" && this.payAddRowFlag ){//개인사업자
+				this.div_payInfo.div_card.ed_C_custNm.set_value(repNm);
+				this.div_payInfo.div_acc.ed_B_ebirDay.set_enable(true);
+				this.div_payInfo.div_card.ed_C_buslNo.set_value("");
+			}
+		}
+	}
+	
+	if( payCustTp == "02" ){//사업자
+		if( payMthd == "A" ){//계좌
+			this.div_payInfo.div_acc.st_B_ebirDay.set_visible(false);
+			this.div_payInfo.div_acc.ed_B_ebirDay.set_visible(false);
+			
+			this.div_payInfo.div_acc.st_B_buslNo.set_visible(true);
+			this.div_payInfo.div_acc.ed_B_buslNo.set_visible(true);
+			
+			
+			this.div_payInfo.div_acc.ed_B_custNm.set_enable(true);
+			this.div_payInfo.div_acc.ed_B_ebirDay.set_enable(false);
+			this.div_payInfo.div_acc.ed_B_buslNo.set_enable(false);
+			this.div_payInfo.div_acc.cb_B_bankCd.set_enable(true);
+			this.div_payInfo.div_acc.ed_B_acctNo.set_enable(true);
+			this.div_payInfo.div_acc.cb_B_bankPayDay.set_enable(true);
+			
+			this.div_payInfo.div_acc.st_B_arsCall.set_enable(true);
+			this.div_payInfo.div_acc.btn_arsCall.set_enable(true);			
+			
+			if( this.payAddRowFlag ){
+				this.div_payInfo.div_acc.ed_B_custNm.set_value(custNm);
+				this.div_payInfo.div_acc.ed_B_ebirDay.set_value("");
+				this.div_payInfo.div_acc.ed_B_buslNo.set_value(buslNo);
+			}
+		}
+		
+		if( payMthd == "C" ){//카드
+			this.div_payInfo.div_card.st_C_ebirDay.set_visible(false);
+			this.div_payInfo.div_card.ed_C_ebirDay.set_visible(false);
+			
+			this.div_payInfo.div_card.st_C_buslNo.set_visible(true);
+			this.div_payInfo.div_card.ed_C_buslNo.set_visible(true);
+			
+			this.div_payInfo.div_card.ed_C_custNm.set_enable(true);
+			this.div_payInfo.div_card.ed_C_buslNo.set_enable(false);
+			this.div_payInfo.div_card.cb_C_bankCd.set_enable(true);
+			this.div_payInfo.div_card.ed_C_cardNo.set_enable(true);
+			this.div_payInfo.div_card.ed_C_expireY.set_enable(true);
+			this.div_payInfo.div_card.ed_C_expireM.set_enable(true);
+			this.div_payInfo.div_card.cb_C_bankPayDay.set_enable(true);
+			
+			if( this.payAddRowFlag ){
+				this.div_payInfo.div_card.ed_C_custNm.set_value(custNm);
+				this.div_payInfo.div_card.ed_C_ebirDay.set_value("");
+				this.div_payInfo.div_card.ed_C_buslNo.set_value(buslNo);
+			}
+		}
+	}
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_btn_payChoice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var payMthd	= nvl(this.div_payInfo.cb_payMthd.value);
+	var custNo	= nvl(this.div_custInfo.ed_custNo.value);
+	var args	= {p_arg : this.p_arg, p_custNo : custNo, p_gubun : payMthd};
+	
+	if( payMthd == "A" ){
+		Ex.core.popup(this,"고객계좌선택 팝업","comm::RTCOMMAccount_pop.xfdl",args, "modaless=false");
+		this.ch_resultArsCall.set_value(false);
+		//this.ch_resultPayInfo.set_value(false);
+	}else if( payMthd == "C" ){
+		Ex.core.popup(this,"고객계좌선택 팝업","comm::RTCOMMCard_pop.xfdl",args, "modaless=false");
+	}else{
+		alert( this.div_payInfo.st_payMthd.text + "을 선택해주세요.");
+		return this.div_payInfo.cb_payMthd.setFocus(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.returnAccount = function(ds, p_arg){
+	if( ds[0].rowcount > 0 ) {
+		this.ds_rtre0010.clearData();
+		this.ds_rtre0020.clearData();
+		this.payAddRowFlag = false;
+		this.ds_rtre0010.copyData(ds[0]);
+
+		this.div_payInfo.cb_payMthd.set_value( nvl(this.ds_rtre0010.getColumn(0,"payMthd")) );
+		this.div_payInfo.cb_payCustTp.set_value( nvl(this.ds_rtre0010.getColumn(0,"custTp")) );
+		var accChk = nvl(this.ds_rtre0010.getColumn(0,"accChk"));
+		// 2016-08-01 이영근, 계좌 불러오기 후 재계좌인증하도록 변경
+		/*
+		if( accChk == "Y" ) accChk = true;
+		else 				accChk = false;
+		this.ch_resultPayInfo.set_value(accChk);
+		*/
+		
+		this.div_payInfo_cb_payMthd_onitemchanged();
+		this.div_payInfo.cb_payMthd.set_enable(false);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.returnCard = function(ds, p_arg){
+	if( ds[0].rowcount > 0 ) {
+		this.ds_rtre0010.clearData();
+		this.ds_rtre0020.clearData();
+		this.payAddRowFlag = false;
+		this.ds_rtre0020.copyData(ds[0]);
+
+		this.div_payInfo.cb_payMthd.set_value( nvl(this.ds_rtre0020.getColumn(0,"payMthd")) );
+		this.div_payInfo.cb_payCustTp.set_value( nvl(this.ds_rtre0020.getColumn(0,"custTp")) );
+		var bkeyChk = nvl(this.ds_rtre0020.getColumn(0,"bkeyChk"));
+		if( bkeyChk == "Y" ) bkeyChk = true;
+		else 				 bkeyChk = false;
+		this.ch_resultPayInfo.set_value(bkeyChk);
+
+		this.div_payInfo_cb_payMthd_onitemchanged();
+		this.div_payInfo.cb_payMthd.set_enable(false);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_acc_ed_B_ebirDay_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo){
+	var checkEbirDay = FN_YYMMDDCheck(this.div_payInfo.div_acc.ed_B_ebirDay.value)//comLib 생년월일체크
+	if( !checkEbirDay ){
+		alert("생년월일 다시 확인 해 주세요.");
+		this.div_payInfo.ed_ebirDayCheck.set_value("false");
+		this.div_payInfo.div_acc.ed_B_ebirDay.set_value("");
+		this.div_payInfo.div_acc.ed_B_ebirDay.setFocus(true);
+		return false;
+	}else{
+		this.div_payInfo.ed_ebirDayCheck.set_value("true");
+		return true;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_card_ed_C_ebirDay_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo){
+	var checkEbirDay = FN_YYMMDDCheck(this.div_payInfo.div_card.ed_C_ebirDay.value)//comLib 생년월일체크
+	if( !checkEbirDay ){
+		alert("생년월일 다시 확인 해 주세요.");
+		this.div_payInfo.ed_ebirDayCheck.set_value("false");
+		this.div_payInfo.div_card.ed_C_ebirDay.set_value("");
+		this.div_payInfo.div_card.ed_C_ebirDay.setFocus(true);
+		return false;
+	}else{
+		this.div_payInfo.ed_ebirDayCheck.set_value("true");
+		return true;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_acc_ed_B_buslNo_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo){
+	var checkBuslNo = FN_buslNoCheck(this.div_payInfo.div_acc.ed_B_buslNo.value)//comLib 사업자번호체크
+	if( !checkBuslNo ){
+		alert("사업자번호를 다시 확인 해 주세요.");
+		this.div_payInfo.ed_buslNoCheck.set_value("false");
+		this.div_payInfo.div_acc.ed_B_buslNo.set_value("");
+		this.div_payInfo.div_acc.ed_B_buslNo.setFocus(true);
+		return false;
+	}else{
+		this.div_payInfo.ed_buslNoCheck.set_value("true");
+		return true;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_card_ed_C_buslNo_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo){
+	var checkBuslNo = FN_buslNoCheck(this.div_payInfo.div_card.ed_C_buslNo.value)//comLib 사업자번호체크
+	if( !checkBuslNo ){
+		alert("사업자번호를 다시 확인 해 주세요.");
+		this.div_payInfo.ed_buslNoCheck.set_value("false");
+		this.div_payInfo.div_card.ed_C_buslNo.set_value("");
+		this.div_payInfo.div_card.ed_C_buslNo.setFocus(true);
+		return false;
+	}else{
+	
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_card_ed_C_cardNo_canchange = function(obj:Edit, e:nexacro.ChangeEventInfo){
+	var carNoLength = obj.value.length;
+	if(carNoLength > 16){
+		alert("카드번호는 13 ~ 16자리만 입력가능합니다.");
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_acc_btn_accConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var btn_nm = obj.id;
+	this.fn_accConfirm(btn_nm);
+}
+/*계좌인증|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_accConfirm = function(btn_nm) {
+	var userType = nvl(this.div_payInfo.cb_payCustTp.value);			//개인/사업자
+	var bankCd	 = nvl(this.div_payInfo.div_acc.cb_B_bankCd.value);		//은행코드
+	var acctCd 	 = nvl(this.div_payInfo.div_acc.ed_B_acctNo.text);		//계좌번호
+	var bizNo	 = "";	//생년월일 또는 사업자번호
+	if(nvl(this.div_payInfo.cb_payCustTp.value) == "01"){ 				//개인
+		if(btn_nm == "btn_accConfirm")
+			bizNo = nvl(this.div_payInfo.div_acc.ed_B_ebirDay.value);		//생년월일	
+		else
+			bizNo = nvl(this.div_custInfo.ed_birthDay.value);		//생년월일(출금이체동의)
+	}else{
+		bizNo = nvl(this.div_payInfo.div_acc.ed_B_buslNo.value);		//사업자번호
+	}
+	
+	var custNo	 	= nvl(this.ds_rtsd0100.getColumn(this.ds_rtsd0100.rowposition,"custNo"));	//고객번호
+	var custNm	 	= nvl(this.ds_rtsd0100.getColumn(this.ds_rtsd0100.rowposition,"custNm"));	//고객명
+	var ownerNm	 	= nvl(this.div_payInfo.div_acc.ed_B_custNm.value);							//예금주명
+	var bankPayDay	= nvl(this.div_payInfo.div_acc.cb_B_bankPayDay.value);						//결제일
+	
+	var acctCdLen 	= acctCd.length;
+	var acctSubstr	= acctCd.substr(0,3);
+	
+	var bankNm	 = nvl(this.div_payInfo.div_acc.cb_B_bankCd.text);
+	var mobNo	 = nvl(this.div_custInfo.div_custInfoDetail.ed_mobNo.value);
+	
+	
+	if( userType == "" ){
+		alert("개인/사업자 값이 없습니다.");
+		return false;
+	}else if( bankCd == "" ){
+		alert("은행코드 값이 없습니다.");
+		return false;
+	}else if( acctCd == "" ){
+		alert("계좌번호 값이 없습니다.");
+		return false;
+	}else if( bizNo == "" ){
+		alert("생년월일 또는 사업자번호 값이 없습니다.");
+		return false;
+	}else if( custNo == "" ){
+		alert("고객번호 값이 없습니다.");
+		return false;
+	}else if( custNm == "" ){
+		alert("고객명 값이 없습니다.");
+		return false;
+	}else if( ownerNm == "" ){
+		alert("예금주명 값이 없습니다.");
+		return false;
+	}else if( bankPayDay == "" || bankPayDay == -1 ){
+		alert("결제일 값이 없습니다.");
+		return false;
+	}else if( (bankCd == '003') && ((acctCdLen == 10) || (acctCdLen == 11)) ){
+		alert("평생계좌는 자동이체 신청이 불가능합니다.\n기업은행 : 계좌번호가 10자리, 11자리\n신한은행 : 계좌번호가 10자리~14자리면서 앞번호 010 시작");
+		return false;
+	}else if( (bankCd == '088') && ((acctCdLen == 10) || (acctCdLen == 11) || (acctCdLen == 12) || (acctCdLen == 13) || (acctCdLen == 14)) && (acctSubstr == "010") ){
+		alert("평생계좌는 자동이체 신청이 불가능합니다.\n기업은행 : 계좌번호가 10자리, 11자리\n신한은행 : 계좌번호가 10자리~14자리면서 앞번호 010 시작");
+		return false;
+	}else if(this.div_custInfo.div_custInfoDetail.ra_certification.value == "02" || this.certificationFlag == false){
+		// 2016-06-13 이영근, 신분증으로 본인인증한 경우 CMS 등록하지 못하도록 처리
+		alert("결제방법이 'CMS'인 경우, 휴대폰으로 본인인증한 회원만 신청이 가능합니다.");
+		this.div_custInfo.div_custInfoDetail.ra_certification.set_enable( true);
+		this.div_custInfo.div_custInfoDetail.btn_certification.set_enable(true);
+		this.div_custInfo.div_custInfoDetail.ra_certification.set_value("01");
+		this.div_custInfo.div_custInfoDetail.btn_certification.setFocus(true);
+		return false;		
+	}else{
+		if(btn_nm == "btn_accConfirm"){
+			var sSvcID        	= "kftcCmsDocInfo";                    
+			var sController   	= "rtms/sms/kftcCmsDocInfo.do";		
+		}else{
+			// 계좌인증 불가시간대 ARS테스트 시 주석처리(시작)
+			if(this.ch_resultPayInfo.value != true){
+				alert("계좌인증 후 진행해주시기 바랍니다.");
+				return;				
+			}
+			// 계좌인증 불가시간대 ARS테스트 시 주석처리(끝)
+			application.set_httptimeout(300); // 2016-06-08 이영근, 타임아웃 시간 5분으로 연장
+			var sSvcID        	= "arsCallService";                    
+			var sController   	= "rtms/sms/arsCallService.do";				
+		}
+		var sInDatasets   	= "";
+		var sOutDatasets 	= "dsBatch=cmdKey";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += " userType=" + userType + " bankCd=" + bankCd + " acctCd=" + acctCd + " bizNo=" + bizNo;
+		sArgs += " custNo=" + custNo + " custNm=" + custNm + " ownerNm=" + ownerNm + " bankNm=" + bankNm + " mobNo=" + mobNo;
+		trace(sArgs);
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_payInfo_div_card_btn_cardConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	// site_cust_id   	: 고객번호 (입력값)
+	// site_apply_ymd 	: 신청(접수)일자 (오늘날짜)
+	// site_apply_no  	: 신청접수 일련번호 (시퀀스)
+	// group_id 		: 카드사제공 (BA0011000328)
+	// cust_name 		: 고객명 (입력값)
+	// mobile_no		: 핸드폰번호(입력값X 고객코드로 조회후 설정)
+	// email			: 이메일(입력값X 고객코드로 조회후 설정)
+	// pay_type			: 결제수단 카드사제공 (PACA)
+	// pay_id			: 카드번호(화면입력값)
+	// pay_expiry_yy	: 유효기간(년)2자리
+	// pay_expiry_mm    : 유효기간(월)2자리
+	// pay_owner_nm		: 카드소유자명(입력값)
+	// pay_cert_no		: 6자리 + 마스킹처리
+	
+	var payCustTp = nvl(this.div_payInfo.cb_payCustTp.value);				//구분
+	var custNm  	= nvl(this.div_payInfo.div_card.ed_C_custNm.value);		//카드주명
+	var ebirDay 	= nvl(this.div_payInfo.div_card.ed_C_ebirDay.value);	//법정생년월일
+	var buslNo  	= nvl(this.div_payInfo.div_card.ed_C_buslNo.value);		//사업자번호
+	var bankCd 		= nvl(this.div_payInfo.div_card.cb_C_bankCd.value);		//카드사
+	var cardNo 		= nvl(this.div_payInfo.div_card.ed_C_cardNo.value);		//카드번호
+	var expireM 	= nvl(this.div_payInfo.div_card.ed_C_expireM.value);	//유효년월-월
+	var expireY  	= nvl(this.div_payInfo.div_card.ed_C_expireY.value);	//유효년월-년
+	var bankPayDay  = nvl(this.div_payInfo.div_card.cb_C_bankPayDay.value);	//결제일
+	var msg			= " 값이 없습니다.";
+	
+	if( payCustTp == "" ){
+		alert("구분" + msg);
+		this.div_payInfo.cb_payCustTp.setFocus(true);
+		return false;
+	}
+	if( custNm == "" ){
+		alert("카드주명" + msg);
+		this.div_payInfo.ed_C_custNm.setFocus(true);
+		return false;
+	}
+	
+	if( payCustTp == "01" ){
+		if( ebirDay == "" ){
+			alert("법정생년월일" + msg);
+			this.div_payInfo.ed_C_ebirDay.setFocus(true);
+			return false;
+		}
+	}
+	
+	if( payCustTp == "02" ){
+		if( buslNo == "" ){
+			alert("사업자번호" + msg);
+			this.div_payInfo.ed_C_buslNo.setFocus(true);
+			return false;
+		}
+	}
+	
+	if( bankCd == "" ){
+		alert("카드사" + msg);
+		this.div_payInfo.cb_C_bankCd.setFocus(true);
+		return false;
+	}
+	
+	if( expireM == "" ){
+		alert("유효년월" + msg);
+		this.div_payInfo.ed_C_expireM.setFocus(true);
+		return false;
+	}
+	
+	if( expireM < 1 || expireM > 12 ){
+		alert("유효년월 값을 확인하세요.");
+		this.div_payInfo.ed_C_expireM.setFocus(true);
+		return false;
+	}
+	
+	if( expireY == "" ){
+		alert("유효년월" + msg);
+		this.div_payInfo.ed_C_expireY.setFocus(true);
+		return false;
+	}
+	
+	var expire = expireY+expireM;
+	if( this.toDay > expire ){
+		alert("유효년월" + msg);
+		this.div_payInfo.ed_C_expireY.setFocus(true);
+		return false;
+	}
+	if( bankPayDay == "" || bankPayDay == -1 ){
+		alert("결제일" + msg);
+		this.div_payInfo.cb_C_bankPayDay.setFocus(true);
+		return false;
+	}
+	
+	var sSvcID 			= "batchService";
+	var sInDatasets 	= "";
+	var sOutDatasets 	= "dsBatch=batch_output";
+	var sController 	= "/rtms/cms/kcphubBatch.do";
+	var fn_callBack 	= "fn_callBack";
+	var args 			= "";
+	args += " site_cust_id=" + nvl(this.ds_rtsd0100.getColumn(0,"custNo"));			//고객아이디
+	args += " group_id=" 	 + application.gv_group_id ;							//그룹번호
+	args += " cust_name=" 	 + nvl(this.div_payInfo.div_card.ed_C_custNm.value);	//카드소유자명
+	args += " pay_owner_nm=" + nvl(this.div_custInfo.ed_custNm.value);				//카드주명
+	args += " pay_type=" 	 + application.gv_pay_type;								//결제수단	
+	args += " pay_id=" 		 + nvl(this.div_payInfo.div_card.ed_C_cardNo.value);	//카드번호
+	args += " pay_expiry_yy="+ nvl(this.div_payInfo.div_card.ed_C_expireY.value);	//유효년월-년
+	args += " pay_expiry_mm="+ nvl(this.div_payInfo.div_card.ed_C_expireM.value);	//유효년월-월
+	args += " pay_cert_no="  + nvl(this.div_payInfo.div_card.ed_C_ebirDay.value);	//법정생년월일
+	args += " cmbGubun=" 	 + nvl(this.div_payInfo.cb_payCustTp.value);			//구분
+	args += " busl_no=" 	 + nvl(this.div_payInfo.div_card.ed_C_buslNo.value);	//사업자번호
+	args += " cardcomCd=" 	 + nvl(this.div_payInfo.div_card.cb_C_bankCd.value);	//카드사
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, args, fn_callBack);
+}
+/*카드인증후 처리함수|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.saveBatchResult = function() {
+	var sSvcID        	= "batchResultService";                    
+	var sController   	= "ntrms/cm/kcphubBatchResult.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	sInDatasets   		= "input=dsBatch";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_payInfo_enable = function(){
+	this.div_payInfo.cb_payMthd.set_enable(false);
+	this.div_payInfo.cb_payCustTp.set_enable(false);
+	
+	this.div_payInfo.div_card.ed_C_custNm.set_enable(false);
+	this.div_payInfo.div_card.ed_C_ebirDay.set_enable(false);
+	this.div_payInfo.div_card.ed_C_buslNo.set_enable(false);
+	this.div_payInfo.div_card.cb_C_bankCd.set_enable(false);
+	this.div_payInfo.div_card.ed_C_cardNo.set_enable(false);
+	this.div_payInfo.div_card.ed_C_expireY.set_enable(false);
+	this.div_payInfo.div_card.ed_C_expireM.set_enable(false);
+
+	this.div_payInfo.div_acc.ed_B_custNm.set_enable(false);
+	this.div_payInfo.div_acc.ed_B_ebirDay.set_enable(false); 
+	this.div_payInfo.div_acc.ed_B_buslNo.set_enable(false);
+	this.div_payInfo.div_acc.cb_B_bankCd.set_enable(false);
+	this.div_payInfo.div_acc.ed_B_acctNo.set_enable(false);
+	
+	this.div_payInfo.btn_payChoice.set_visible(false);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//결제정보 END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//차량정보 START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//SELECT BOX FUNCTION : 차종-브랜드
+this.div_carInfo_cb_makerCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	this.div_carInfo.cb_model.set_index(-1);
+	this.FN_priceDeleteAll();
+	var sSvcID      	= "listModelCombo";  
+	var sController   	= "rtms/comm/listModelCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_model=mapModelCombo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("makerCd", nvl(this.div_carInfo.cb_makerCd.value));
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//SELECT BOX FUNCTION : 차종-모델
+this.div_carInfo_cb_model_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	nRow = this.ds_model.findRowExpr("rn == '"+this.div_carInfo.cb_model.value+"'&& mcNm == '"+this.div_carInfo.cb_model.text +"'",-1);
+	this.div_carInfo.ed_model00.set_value(this.ds_model.getColumn(nRow,"contentsCd"));
+	this.div_carInfo.ed_model01.set_value(this.ds_model.getColumn(nRow,"frCd"));	
+	this.ds_model.set_rowposition(nRow);
+	this.FN_priceDeleteAll();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : DATASET CLEAR
+this.FN_priceDeleteAll = function(){
+	this.ds_rtsd0013.clearData();
+	this.ds_rtsd0014.clearData();
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//EDIT FUNCTION : 차량번호 변경
+this.div_carInfo_ed_carNo_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo){
+
+	if(this.carNoCheck()){
+	//	this.selectRtsd0108SaleCdCount();
+	}
+	this.FN_priceDeleteAll();
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//DATASET FUNCTION : ROWPOSITION이 변경되었을때
+this.ds_model_onrowposchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo){
+	this.div_carInfo.ed_model.set_value( this.ds_model.getColumn(this.ds_model.rowposition,"modelCd") );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//EDIT FUNCTION : 차량소유자 -> ENTER KEY -> 차량번호로 FOUCS이동
+this.div_carInfo_ed_carOwner_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if ( e.keycode == 13 ){
+		this.div_carInfo.ed_carNo.setFocus(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//EDIT FUNCTION : 차량번호 -> ENTER KEY -> 현재주행거리로 FOUCS이동
+this.div_carInfo_ed_carNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if ( e.keycode == 13 ){
+		this.div_carInfo.ed_cMileage.setFocus(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//EDIT FUNCTION : 현재주행거리 체크
+this.div_carInfo_ed_cMileage_onchanged = function(obj:MaskEdit, e:nexacro.ChangeEventInfo){
+	if( obj.value.length > 7){
+		alert("최대자리수는 7자리입니다.");
+		this.div_carInfo.ed_cMileage.set_value();
+		this.div_carInfo.ed_cMileage.setFocus(true);
+	}
+	if( obj.value < 0){
+		alert("현재주행거리는 0보다 큰 수만 입력가능합니다.");
+		this.div_carInfo.ed_cMileage.set_value();
+		this.div_carInfo.ed_cMileage.setFocus(true);
+	}
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : 차량번호체크
+this.carNoCheck = function(){
+	//var pattern1      = /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 					 			// 12저3456
+	//var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{1}|d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 	// 서울12치1234
+	var pattern1       	= /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 				 				// 12저3456
+	var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울12치1234
+	var pattern3 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{1}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울1치1234 // 2016-06-02 이영근, 패턴 추가
+	var carNoVal 		= nvl(this.div_carInfo.ed_carNo.value);
+	var carNoValLen 	= carNoVal.length;
+	
+	if( carNoValLen == 7 ){
+		if( !pattern1.test(carNoVal) ){
+			alert(nvl(this.div_carInfo.st_carNo.text) + " 를 확인하세요.");
+			this.div_carInfo.ed_carNo.setFocus(true);
+			this.div_carInfo.ed_carNo.setSelect();
+			return false;
+		}else{
+			return true;
+		}
+	}else if( carNoValLen == 9){
+		if( !pattern2.test(carNoVal) ){
+			alert(nvl(this.div_carInfo.st_carNo.text) + " 를 확인하세요.");
+			this.div_carInfo.ed_carNo.setFocus(true);
+			this.div_carInfo.ed_carNo.setSelect();
+			return false;
+		}else{
+			return true;
+		}
+	}else if( carNoValLen == 8){
+		if( !pattern3.test(carNoVal) ){
+			alert(nvl(this.div_carInfo.st_carNo.text) + " 를 확인하세요.");
+			this.div_carInfo.ed_carNo.setFocus(true);
+			this.div_carInfo.ed_carNo.setSelect();
+			return false;
+		}else{
+			return true;
+		}		
+	}else{
+		alert(nvl(this.div_carInfo.st_carNo.text) + " 를 확인하세요.");
+		this.div_carInfo.ed_carNo.setFocus(true);
+		this.div_carInfo.ed_carNo.setSelect();
+		return false;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//USER FUNCTION : 계약유형조회
+this.selectRtsd0108SaleCdCount = function(){
+	var carNo = nvl(this.div_carInfo.ed_carNo.value);
+	if( carNo != "" ){
+		var sSvcID        	= "selectRtsd0108SaleCdCount";                    
+		var sController   	= "rtms/sd/selectRtsd0108SaleCdCount.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("carNo",carNo);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("차량번호가 없습니다.");
+		this.div_carInfo.ed_carNo.setFocus(true);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//차량정보 END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//프리미엄서비스 START - 현재 버튼 비활성화
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+// 프리미엄 서비스횟수 무제한 콤보세팅
+
+this.prmmSvrComboSet = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if(e.col == 3) {
+		this.ds_svrCnt.filter("cd == '999' || cd == " + this.ds_rtsd0013.getColumn(e.row,"servCntOrg"));
+	}	
+}
+
+// 프리미엄 서비스횟수 콤보 발생 이벤트 
+this.prmmSvrComboGet = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	if(obj.getColumn(e.row, "servCnt") == '999'){
+		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servInfAmt"));
+	}else{
+		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servAmtSumOrg"));
+	}
+	this.contactRowChg();
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//프리미엄서비스 END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+
+
+
+
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//기타정보 START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//기타정보 END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+
+
+
+
+
+
+
+
+
+
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//공통 BUTTON START
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if( confirm( "추가 클릭시 기존 입력내용은 사라집니다." ) ){
+		this.reload();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+//공통 BUTTON END
+/*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+this.div_cust_btn_certificationConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var popGb = this.div_custInfo.div_custInfoDetail.ra_certification.value;
+	var doc = this.div_custInfo.div_custInfoDetail.nice_interface.document;
+
+	if(popGb == '01') {			//휴대폰인증인경우
+		doc.getElementById("di_fn_popup").click();
+	} else if(popGb == '02') {	//신분증
+		doc.getElementById("fn_popup").click();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.web_onusernotify = function(obj:WebBrowser, e:nexacro.WebTitleChangeEventInfo){
+	var obj 				= this.div_custInfo.div_custInfoDetail.nice_interface.document;
+	var sName 				= nvl(obj.getElementById("sName").value);
+	var sBirthDate 			= nvl(obj.getElementById("sBirthDate").value);
+	var sGender 			= nvl(obj.getElementById("sGender").value);
+	var sNationalInfo 		= nvl(obj.getElementById("sNationalInfo").value);
+	var sNational 			= "";
+	var custNm 				= nvl(this.div_custInfo.ed_custNm.value);
+	var birthDay 			= nvl(this.div_custInfo.ed_birthDay.value);
+	var genderCd 			= nvl(this.div_custInfo.cb_genderCd.value);
+	var lfCd 	 			= nvl(this.div_custInfo.cb_lfCd.value);
+	
+	if( sGender == "0"){
+		sGender = "2";
+	}
+	
+	if( sNationalInfo == "0" ){
+		sNational = "1";
+	}else if( sNationalInfo == "1" ){
+		sNational = "2";
+	}else{
+		alert("내/외국 인코드값 ERROR");
+	}
+	
+	if( custNm != custNm){
+		alert("입력하신 고객정보와 본인인증정보가 다릅니다.\n다시 본인인증하시기 바랍니다.");
+	}else if( sBirthDate != birthDay ){
+		alert("입력하신 고객정보와 본인인증정보가 다릅니다.\n다시 본인인증하시기 바랍니다.");
+	}else if( sGender != genderCd ){
+		alert("입력하신 고객정보와 본인인증정보가 다릅니다.\n다시 본인인증하시기 바랍니다.");
+	}else if( sNational != lfCd ){
+		alert("입력하신 고객정보와 본인인증정보가 다릅니다.\n다시 본인인증하시기 바랍니다.");
+	}else{
+		this.fn_hpCertifcation();
+	}
+}
+
+this.fn_hpCertifcation = function(){	
+	this.ds_rtsd0110.clearData();
+
+	var nRowRtsd0110 = this.ds_rtsd0110.addRow();
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"safekey",	nvl(this.ds_rtsd0100.getColumn(0,"safekey")) );
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"certCd",	nvl(this.div_custInfo.div_custInfoDetail.ra_certification.value) );
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"certYn",	"Y");
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"mobNo",	nvl(this.ds_rtsd0100.getColumn(0,"mobNo")) );
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"mobFirm",	nvl(this.ds_rtsd0100.getColumn(0,"mobFirm")) );
+	this.ds_rtsd0110.setColumn(nRowRtsd0110, 	"custNo",	nvl(this.ds_rtsd0100.getColumn(0,"custNo")) );
+
+	var sSvcID        	= "insertRtsd0110";                    
+	var sController   	= "rtms/sd/insertRtsd0110.do";
+	var sInDatasets   	= "input2=ds_rtsd0110:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+/********************2018.10.25 이후 추가*******************************************/
+//단체계약조회 팝업 호출
+this.btnGrpContSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var p_argGrpNo = this.ed_grpPkgNum.value;
+	
+	var args ={ p_argGrpNo : p_argGrpNo };
+	Ex.core.popup(this,"단체계약조회","sd::RTSDGroupContractPopup.xfdl",args, "modaless=false");	
+
+}
+
+
+//판매상품조회
+this.btn_SalePrdtSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_formId:this.p_arg,p_prdtGrp:"04"}; 
+	Ex.core.popup(this,"판매상품조회","comm::RTCOMMSellProduct_pop.xfdl",args, "modaless=false");
+}
+
+this._setSaleReturn = function(arg) {
+	var saleCd = nvl(arg[0]);
+	this.ed_SaleCd.set_value(saleCd);	
+	this.grid_product.set_enable(true);
+	this.fn_SalePrdtSearch(); //판매상품조회
+}
+
+this.fn_SalePrdtSearch = function()
+{
+	var saleCd = nvl(this.ed_SaleCd.value);
+	var sSvcID        	= "saleItemList";                    
+	var sController   	= "/ntrms/sd/saleItemList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sOutDatasets		+= " ds_saleItemList=saleItemOutput";
+	
+	sArgs += Ex.util.setParam("saleCd", 		saleCd);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+
+
+//합계납부정보 등록비조정 컬럼
+this.grdRegiChg = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var sColId 		= e.col;
+	var nRow 		= e.row;
+	var cRegiAmt = 0;
+	
+	obj.dropdownCombo();
+
+	for(var i=0; i < this.ds_contactDeliInfo.rowcount ; i++) {
+		//계약상품 납품정보 등록비 합계 구하기
+		if(nvl(this.ds_contactDeliInfo.getColumn(i,"regiAmt"),0) == "") {
+			cRegiAmt = parseInt(cRegiAmt) + 0;
+		} else {
+			cRegiAmt = parseInt(cRegiAmt) + parseInt(this.ds_contactDeliInfo.getColumn(i,"regiAmt"));
+		}
+	}
+			
+	for (var i=0; i<3; i++) {
+		//this.alert("regiAmt : " + this.regiAmt*i);
+		this.ds_RegAmtMgnt.setColumn(i,"cd", cRegiAmt*i);
+		this.ds_RegAmtMgnt.setColumn(i,"cdNm", cRegiAmt*i);
+	}
+	
+	//this.setRegiAmt();
+	
+}
+
+
+this.setRegiAmt = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	var sColId 		= e.columnid;
+	var nRow 		= e.row;	
+	
+	if(sColId == "regiAmtChg") {
+		obj.setColumn(0, "regiAmt", obj.getColumn(0, "regiAmtChg")); //등록비 수정
+		
+		this.contactRowChg();
+	}
+		
+	//등록비 관련 데이타 조회(2018.10.30)
+	//this.FN_saleRegiAmt();
+	
+	
+	
+}
+
+//------------ 계약별 정보 조회 -------------------------------------------------------------------------------
+// 계약번호별 제품정보 조회
+this.fn_searchProduct = function(){
+	this.idx	= this.ds_model.rowposition;
+	var modelCd = nvl(this.div_carInfo.ed_model.value);
+	var ordNo = nvl(this.ed_orderNo.value);
+	var saleCd = nvl(this.ed_SaleCd.value);
+		
+	/*this.alert("modelCd : " + modelCd + "  ordNo : " + ordNo + "  saleCd : " + saleCd);*/
+	
+	var sSvcID        	= "listAddSelProduct2";                    
+	var sController   	= "/rtms/sd/listAddSelProduct2.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_productInfo=listAddSelProduct2";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo",   ordNo);			// 계약번호
+	sArgs += Ex.util.setParam("modelCd", modelCd);			// 모델코드
+	sArgs += Ex.util.setParam("saleCd", saleCd);			// 판매코드
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+// 계약번호별 프리미엄 서비스  정보조회
+this.fn_searchPrmmSrvc = function(){
+	
+	var sSvcID        	= "prmmSrvcOrdList";                    
+	var sController   	= "/rtms/sd/prmmSrvcOrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0013=prmmSrvcOrdList";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo",   this.ed_orderNo.value);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+// 상품별 프리미엄 서비스 정보조회 
+this.fn_getPrmmSrvc = function(){
+
+	var saleCd = nvl(this.ed_SaleCd.value);
+	var periodCd = nvl(this.p_periodCd.value);
+	var cntCd = nvl(this.p_cntCd.value);
+
+	var sSvcID        	= "srvcOrdList";                    
+	var sController   	= "rtms/comm/srvcOrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0013=srvcOrdListMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_rtsd0013.clearData();  // dataset clear 한다.
+	sArgs += Ex.util.setParam("p_saleCd", saleCd);		// 판매코드
+	sArgs += Ex.util.setParam("p_periodCd", periodCd);	// 장착개월수
+	sArgs += Ex.util.setParam("p_cntCd", cntCd);		// 타이어본수
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.fn_getSumpay = function(){
+
+	var saleCd = nvl(this.ed_SaleCd.value);
+	var periodCd = nvl(this.p_periodCd.value);
+	var cntCd = nvl(this.p_cntCd.value);
+
+	var sSvcID        	= "Sumpay";                    
+	var sController   	= "rtms/sd/Sumpay.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("saleCd", saleCd);		// 판매코드
+	sArgs += Ex.util.setParam("periodCd", periodCd);	// 장착개월수
+	sArgs += Ex.util.setParam("cntCd", cntCd);		// 타이어본수
+		
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.contactRowChg = function()
+{
+	var sPeriod			= 0;
+	if(nvl(this.p_periodCd.value) == '') {
+		sPeriod = 0;
+	} else {
+		sPeriod = this.p_periodCd.value;
+	}
+	
+	//trace("sPeriod:"+sPeriod);
+	var sum =0;
+	if( sPeriod > 0) {
+// 		for(var i=0;i<this.ds_rtsd0013.getRowCount();i++){
+// 		}
+	this.div_sumInfo.ed_totalPrice.set_value(nvl(this.addComma(this.mathFloor(this.Sumpay))));		
+	}
+}
+
+this.grid_product_oncloseup = function(obj:Grid, e:nexacro.GridEditEventInfo)
+{
+	this.fn_getPrmmSrvc();
+	this.fn_getSumpay();	
+}
+
+this.btnOrderAdd_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var nRow0100 = this.ds_rtsd0100.rowposition;
+	
+	var nRow0104				= this.ds_rtsd0104.rowposition;
+	var nRow0106 				= this.ds_rtsd0106.rowposition;
+	
+	var contactRowType 			= this.ds_rtsd0104.getRowType(nRow0104);
+	var contractProductRowType 	= this.ds_rtsd0106.getRowType(nRow0106);
+	
+	var modelRow 				= this.ds_model.rowposition;
+	
+	var chanCd 		= nvl(this.ds_rtsd0104.getColumn(nRow0104, "chanCd"));
+	var statCd 		= nvl(this.ds_rtsd0104.getColumn(nRow0104, "statCd"));
+	
+	var payDd 					= "";
+	var payMthd 				= nvl(this.ds_rtsd0104.getColumn(nRow0104, "payMthd"));
+	var accBankPayDay 			= nvl(this.div_payInfo.div_acc.cb_B_bankPayDay.value);
+	var cardBankPayDay 			= nvl(this.div_payInfo.div_card.cb_C_bankPayDay.value);
+	
+	var accountRow 				= this.ds_rtre0010.rowposition;
+	var accountType 			= this.ds_rtre0010.getRowType(accountRow);
+	var cardRow 				= this.ds_rtre0020.rowposition;
+	var cardType 				= this.ds_rtre0020.getRowType(cardRow);
+	var payCustTp 				= nvl(this.div_payInfo.cb_payCustTp.value);
+	
+	var msg						= " 값이 없습니다.";
+
+	var regId  = nvl(this.ds_rtsd0104.getColumn(nRow0104, "regId"));
+	
+	var resultPayInfo = this.ch_resultPayInfo.value;
+	
+// 	if( statCd=="03" || statCd=="04" || statCd=="06" ){
+// 		alert("장착대기, 장착완료, 계약취소 정보는 수정  처리가 불가 합니다!");
+// 		return false;
+// 	}
+	
+	if( this.div_payInfo.ed_buslNoCheck.value == false){
+		alert("사업자번호를 확인하세요.");
+		return false;
+	}
+	
+	if( this.div_payInfo.ed_ebirDayCheck.value == false){
+		alert("법정생년월일을  확인하세요.");
+		return false;
+	}
+	
+	if( nvl(this.div_custInfo.div_custInfoDetail.ed_posCd.value) == "" || nvl(this.div_custInfo.div_custInfoDetail.ed_addr1.value) == ""){
+		alert("주소를 확인하세요.");
+		return false;
+	}
+	
+	var makerCd = nvl(this.ds_rtsd0104.getColumn(nRow0104, "makerCd"));
+	if( makerCd == "" ){
+		alert( "차종 값이" + msg);
+		return this.div_carInfo.cb_makerCd.setFocus(true);
+		return false;
+	}
+	
+	var modelCd = nvl(this.ds_rtsd0104.getColumn(nRow0104, "modelCd"));
+	if( modelCd == "" ){
+		alert( "차종 값이" + msg);
+		return this.div_carInfo.cb_model.setFocus(true);
+		return false;
+	}
+	
+	var contentsCd = nvl(this.ds_model.getColumn( modelRow, "contentsCd"));
+	if( contentsCd == "" ){
+		alert("차종 사양" + msg);
+		return false;
+	}
+	
+	var frCd = nvl(this.ds_model.getColumn( modelRow, "frCd"));
+	if( frCd == "" ){
+		alert("차종 전후" + msg);
+		return false;
+	}
+	
+	var carNo = nvl(this.ds_rtsd0104.getColumn(nRow0104, "carNo"));
+	if( carNo == "" ){
+		alert("차량No" + msg);
+		return false;
+	}
+	
+	
+	var saleCd = this.ed_SaleCd.value;
+	if( saleCd == "" ){
+		alert("판매상품명" + msg);
+		return false;
+	}
+	
+	var matCd = this.p_matCd.value;
+	if( matCd == "" ){
+		alert("상품명" + msg);
+		return false;
+	}
+	var periodCd = this.p_periodCd.value;
+	if( periodCd == "" ){
+		alert("렌탈기간" + msg);
+		return false;
+	}
+	
+	if( payMthd == "" ){ 
+		alert( "결제방법" + msg);
+		this.div_payInfo.cb_payMthd.setFocus(true);
+		return false;
+	}else{
+
+		//C	카드이체	//A	CMS
+		if( this.accCardCheck == false ){
+			if( payMthd == "A"){
+				alert("계좌인증을 하지 않았습니다.");
+				return false;
+			}
+			if( payMthd == "C"){
+				alert("카드인증을 하지 않았습니다.");
+				return false;
+			}
+		}
+
+		if( payMthd == "A" ){
+		
+			if( resultPayInfo == false ){
+				alert("계좌인증 실패 : 계좌인증을 다시 시도해주세요.");
+				return false;
+			}
+			
+			if( accBankPayDay == "" || accBankPayDay == "-1" ){
+				alert( "결제일" + msg);
+				this.div_payInfo.div_acc.cb_B_bankPayDay.setFocus(true);
+				return false;
+			}else{
+				payDd = accBankPayDay;
+				this.ds_rtsd0104.setColumn( nRow0104, "accStat", "0");														//계좌신청상태
+			}
+			this.ds_rtsd0104.setColumn( nRow0104, "accChk", this.ch_resultPayInfo.value == true ? "Y" : "N");				//계좌확인상태
+			this.ds_rtsd0104.setColumn( nRow0104, "bkeyChk", "N");															//배치키생성여부(카드)
+			// 2016-06-8 이영근, ARS 출금동의 확인
+			if(this.ch_resultArsCall.value == "0")
+			{
+				this.alert("출금이체동의 버튼을 클릭해주세요.");
+				this.div_payInfo.div_acc.btn_arsCall.setFocus();
+				return false;
+			}
+		}else if( payMthd == "C" ){
+		
+			if( resultPayInfo == false ){
+				alert("카드인증 실패 : 카드인증을 다시 시도해주세요.");
+				return false;
+			}
+			
+			var batchKey = nvl(this.ds_rtre0020.getColumn(0, "batchKey"));
+			if( batchKey == "" ){
+				alert("BATCHKEY"+ msg);
+				return false;
+			}
+			
+			if( cardBankPayDay == "" || cardBankPayDay == "-1" ){
+				alert( "결제일" + msg);
+				this.div_payInfo.div_card.cb_C_bankPayDay.setFocus(true);
+				return false;
+			}else{
+				payDd = cardBankPayDay;
+				this.ds_rtsd0104.setColumn( nRow0104, "batchKey", batchKey );												//BATCHKEY
+				this.ds_rtsd0104.setColumn( nRow0104, "accStat", "5");														//계좌신청상태
+			}
+			this.ds_rtsd0104.setColumn( nRow0104, "accChk", "N");															//계좌확인상태
+			this.ds_rtsd0104.setColumn( nRow0104, "bkeyChk",this.ch_resultPayInfo.value == true ? "Y" : "N");				//배치키생성여부(카드)
+		}else{
+			alert("결제방법 코드 : ERROR");
+			return this.div_payInfo.cb_payMthd.setFocus(true);
+		}
+	}	
+
+
+														
+	var ordAgent = nvl(this.ds_rtsd0104.getColumn(nRow0104, "ordAgent"));													//판매인번호
+	var regId   = nvl( this.ds_rtsd0100.getColumn(0,"regId")  );
+	var custTp  = nvl( this.ds_rtsd0100.getColumn(0,"custTp") );
+	if(custTp==01){
+
+	}
+	else if(custTp==02){
+	this.ds_rtsd0100.setColumn( nRow0100,"custNm");
+	this.ds_rtsd0100.setColumn( nRow0100,"birthDay","");
+	}
+
+	this.ds_rtsd0104.setColumn( nRow0104, "contentsCd", 	contentsCd);										//사양
+	this.ds_rtsd0104.setColumn( nRow0104, "frCd", 			frCd); 								//전후 구분
+	this.ds_rtsd0104.setColumn( nRow0104, "chanCd","11");
+	this.ds_rtsd0104.setColumn( nRow0104, "saleId","09");
+	this.ds_rtsd0104.setColumn( nRow0104, "periodCd",		nvl(this.p_periodCd.value) );						//기간코드		
+	this.ds_rtsd0104.setColumn( nRow0104, "saleCd",			nvl(this.ed_SaleCd.value) );							//판매코드
+	this.ds_rtsd0104.setColumn( nRow0104, "payGb", "1" ); 														//납부구분	
+	this.ds_rtsd0104.setColumn( nRow0104, "empNo",			"" ); 												//사원번호
+	this.ds_rtsd0104.setColumn( nRow0104, "regiAmt","0");
+	this.ds_rtsd0104.setColumn( nRow0104, "sumMonAmt",nvl(this.delComma(this.div_sumInfo.ed_totalPrice.value)));
+	this.ds_rtsd0104.setColumn( nRow0104, "monAmt",nvl(this.delComma(this.div_sumInfo.ed_totalPrice.value)));
+	
+	this.ds_rtsd0104.setColumn( nRow0104, "cntCd" ,nvl(this.p_cntCd.value) );				//타이어본수	
+	this.ds_rtsd0104.setColumn( nRow0104, "regiCd",			"ZZZZ");			//등록비코드 - 이제사용안함 렌탈등록비가 대처
+
+	this.ds_rtsd0104.setColumn( nRow0104, "custNo",			nvl(this.ds_rtsd0100.getColumn(nRow0100,"custNo")) );			//고객번호
+	this.ds_rtsd0104.setColumn( nRow0104, "custTp",			nvl(this.ds_rtsd0100.getColumn(nRow0100, "custTp")) );			//고객유형
+	this.ds_rtsd0104.setColumn( nRow0104, "safekey",		nvl(this.ds_rtsd0100.getColumn(nRow0100, "safekey")) );			//인증번호
+	this.ds_rtsd0104.setColumn( nRow0104, "campYn",			"N" );			//캠페인적용여부
+	this.ds_rtsd0104.setColumn( nRow0104, "cDcamt",			"0" );			//캠페인할인금액
+	this.ds_rtsd0104.setColumn( nRow0104, "cDcrate",		"" );			//캠페인할인율
+	this.ds_rtsd0104.setColumn( nRow0104, "gDcrate",		"" );			//결합할인율
+	this.ds_rtsd0104.setColumn( nRow0104, "gDcamt",			"0" );			//결합할인액
+	this.ds_rtsd0104.setColumn( nRow0104, "lDcrate",		"10" );			//제한할인율
+	this.ds_rtsd0104.setColumn( nRow0104, "lDcamt",			"0" );			//제한할인액
+	this.ds_rtsd0104.setColumn( nRow0104, "fDcrate",		"" );			//최종할인율
+	this.ds_rtsd0104.setColumn( nRow0104, "fDcamt",			"0" );			//최종할인액
+	
+	this.ds_rtsd0104.setColumn( nRow0104, "payDd", 			payDd);															//이체일
+	this.ds_rtsd0104.setColumn( nRow0104, "fcDay", "")																	//최초청구일자
+	this.ds_rtsd0104.setColumn( nRow0104, "inputDt", "")																	//PAD입력일시
+	this.ds_rtsd0104.setColumn( nRow0104, "filePath", "")																	//계약서 파일경로
+	this.ds_rtsd0104.setColumn( nRow0104, "fileName", "")																	//계약서 파일명
+	//this.ds_rtsd0104.setColumn( nRow0104, "psCd", nvl(this.ds_rtsd0013.getColumn(0, "psCd")));								//프리미엄서비스코드
+	//this.ds_rtsd0104.setColumn( nRow0104, "seasonCd", nvl(this.ds_price.getColumn(0, "seasonCd")));							//계절구분
+	this.ds_rtsd0104.setColumn( nRow0104, "grpYn", "N" );																//단체여부
+	this.ds_rtsd0104.setColumn( nRow0104, "grpNo" );										//단체구분
+	//this.ds_rtsd0104.setColumn( nRow0104, "psCd", nvl(this.ds_rtsd0104.getColumn(0, "psCd")));						//프리미엄서비스코드
+	this.ds_rtsd0104.setColumn( nRow0104, "psCd", "999999" );															//프리미엄서비스코드
+	this.ds_rtsd0104.setColumn( nRow0104, "seasonCd");					//계절구분
+//this.alert("contactRowType : " + contactRowType  +  "  payStatCd : " + this.payStatCd + "  statCd : " + statCd);		
+
+	this.ds_rtsd0104.setColumn( nRow0104, "statCd", "04");															//"01" : 계약접수
+	this.ds_rtsd0104.setColumn( nRow0104, "bordNo", nvl(this.ed_orderNo.value)==""?this.getcheckOrdNo:nvl(this.ed_orderNo.value) );
+	this.ds_rtsd0104.setColumn( nRow0104, "ordNo", "");
+	
+	if( contactRowType =="2" ){ // 신규일경우
+		this.ds_rtsd0104.setColumn( nRow0104, "ordId", "04");																//계약구분 : 렌탈
+		this.ds_rtsd0104.setColumn( nRow0104, "ordDay",this.toDay);
+		this.ds_rtsd0104.setColumn( nRow0104, "chanCd","11");		
+		this.ds_rtsd0104.setColumn( nRow0104, "billYn", "N");																//세금계산서발행여부
+		this.ds_rtsd0104.setColumn( nRow0104, "periodCd",		nvl(this.p_periodCd.value) );						//기간코드		
+		this.ds_rtsd0104.setColumn( nRow0104, "saleCd",			nvl(this.ed_SaleCd.value) );							//판매코드
+		this.ds_rtsd0104.setColumn( nRow0104, "agDay", nvl(this.ds_rtsd0111.getColumn(0, "agDay")));						//개인정보제공동의일
+		this.ds_rtsd0104.setColumn( nRow0104, "agSeq", nvl(this.ds_rtsd0111.getColumn(0, "seq")));							//개인정보제공동의순번
+		this.ds_rtsd0104.setColumn( nRow0104, "cmsagYn","N");																//CMS출금이제동의
+		this.ds_rtsd0104.setColumn( nRow0104, "certStat","Y" );																//본인인증상태
+		this.ds_rtsd0104.setColumn( nRow0104, "saleId",  "09");															//계약유형 : 일반
+		this.ds_rtsd0104.setColumn( nRow0104, "grpYn", "N");																//고객결합여부
+		this.ds_rtsd0104.setColumn( nRow0104, "grpNo" ,"");																	//고객결합번호
+		this.ds_rtsd0104.setColumn( nRow0104, "fDcrate" ,"");																//최종할인율
+		this.ds_rtsd0104.setColumn( nRow0104, "cDcrate" ,"");																//캠페인할인율
+		this.ds_rtsd0104.setColumn( nRow0104, "payMthd", payMthd );														//결제구분
+		this.ds_rtsd0104.setColumn( nRow0104, "ordNo");																	//계약번호
+		
+		
+		this.ds_rtsd0104.setColumn( nRow0104, "fDcrate" ,"");			//최종할인율
+																//이전주문번호
+		this.ds_rtsd0104.setColumn( nRow0104, "procDay" ,"");																//장착일자
+		this.ds_rtsd0104.setColumn( nRow0104, "cancDay" ,"");																//취소일자
+		this.ds_rtsd0104.setColumn( nRow0104, "agencyCd" ,"");																//장착 대리점
+													//지사
+		this.ds_rtsd0104.setColumn( nRow0104, "engNm" ,"");																	//장착기사
+		this.ds_rtsd0104.setColumn( nRow0104, "agDesc" ,"");    															//특이사항(장착점")
+																		//차량번호
+																	//차량소유자
+																	//현재주행거리
+		this.ds_rtsd0104.setColumn( nRow0104, "reqText","");																//비고(기타정보)
+		this.ds_rtsd0104.setColumn( nRow0104, "accSeq","");																	//계좌순번
+		this.ds_rtsd0104.setColumn( nRow0104, "crdSeq","");																	//카드순번
+		this.ds_rtsd0104.setColumn( nRow0104, "crdtStat","");																//신용조회상태
+		this.ds_rtsd0104.setColumn( nRow0104, "certCd","");																	//본인인증방법
+		this.ds_rtsd0104.setColumn( nRow0104, "orgCd","");																	//판매조직
+		this.ds_rtsd0104.setColumn( nRow0104, "orgHq","");																	//판매본부
+		this.ds_rtsd0104.setColumn( nRow0104, "orgL1","");																	//판매조직-1LV
+		this.ds_rtsd0104.setColumn( nRow0104, "orgL2","");																	//판매조직-2LV
+		this.ds_rtsd0104.setColumn( nRow0104, "orgL3","");																	//판매조직-3LV
+		this.ds_rtsd0104.setColumn( nRow0104, "orgL4","");																	//판매조직-4LV
+		this.ds_rtsd0104.setColumn( nRow0104, "insOrg","");																	//입력조직
+		this.ds_rtsd0104.setColumn( nRow0104, "tcgrpNo","");																//통합청구번호
+		this.ds_rtsd0104.setColumn( nRow0104, "vbeln","");																//SO번호
+		this.ds_rtsd0104.setColumn( nRow0104, "regId","");																//등록자 ID
+		
+		this.ds_rtsd0104.setColumn( nRow0104, "conMthd","");
+		this.ds_rtsd0104.setColumn( nRow0104, "ordAgent","");
+		this.ds_rtsd0104.setColumn( nRow0104, "pcertYn","N");
+		this.ds_rtsd0104.setColumn( nRow0104, "seasonCd","");
+		
+	} else if(contactRowType =="1"){
+
+		this.ds_rtsd0104.setColumn( nRow0104, "ordId", "04");
+		this.ds_rtsd0104.setColumn( nRow0104, "ordNo", "");
+		this.ds_rtsd0104.setColumn( nRow0104, "saleNm", nvl(this.ed_SaleProdNm.value));
+	}	
+
+	if( (accountType == "2" || accountType == "4" ) && payMthd == "A" ){
+		this.ds_rtre0010.setColumn( accountRow, "custNo", nvl(this.ds_rtsd0100.getColumn(nRow0100,"custNo")));
+		this.ds_rtre0010.setColumn( accountRow, "custTp", payCustTp);
+		this.ds_rtre0010.setColumn( accountRow, "useYn", "Y");
+		this.ds_rtre0010.setColumn( accountRow, "accChk", this.ch_resultPayInfo.value == true ? "Y" : "N" );
+	}
+	
+	if( (cardType == "2" || cardType == "4") && payMthd == "C" ){
+		this.ds_rtre0020.setColumn( cardRow, "custNo", nvl(this.ds_rtsd0100.getColumn(nRow0100,"custNo")));
+		this.ds_rtre0020.setColumn( cardRow, "custTp", payCustTp);
+		this.ds_rtre0020.setColumn( cardRow, "useYn", "Y");
+		this.ds_rtre0020.setColumn( cardRow, "bkeyChk",  this.ch_resultPayInfo.value == true ? "Y" : "N" );	
+		this.ds_rtre0020.setColumn( cardRow, "batchKey", this.ds_rtre0020.getColumn(0, "batchKey"));
+		var expireY = nvl(this.div_payInfo.div_card.ed_C_expireY.value);
+		var expireM = nvl(this.div_payInfo.div_card.ed_C_expireM.value);
+		var expireYm = expireY+expireM;
+		this.ds_rtre0020.setColumn( cardRow, "expireYm", expireYm);
+	}
+	
+	this.FN_goSave();
+}
+//------------ 저장  -------------------------------------------------------------------------------
+
+
+this.FN_goSave = function(){
+	
+	var ds_productInfo = this.ds_productInfo.getRowCount();
+	this.ds_productInfo.set_updatecontrol(false);
+	for( var i = 0 ; i < this.ds_productInfo.getRowCount() ; i++){
+		
+		//------- 저장시 외부 입력값들 --------
+		this.ds_productInfo.setColumn(i, "saleCd", this.ed_SaleCd.value);		// 판매코드
+		this.ds_productInfo.setColumn(i, "gdsGb", "1");  	// 제품구분
+		this.ds_productInfo.setColumn(i, "gdsGrp", "1");  	// 제품군
+		
+		this.ds_productInfo.setColumn(i, "matNm", ""); // 제품명를 null 처리 한다. 깨짐..
+		this.ds_productInfo.setColumn(i, "saleGdsCd", ""); // 상품코드 null 처리 한다. 깨짐..	
+		
+		this.ds_productInfo.setColumn( i, "ordId","04");														//	주문구분 01:렌탈 S029
+		this.ds_productInfo.setColumn( i, "instYn", "N");														//	장착여부
+		this.ds_productInfo.setColumn( i, "valYn", "N");														//	유효여부
+		this.ds_productInfo.setColumn( i, "osId", "N");															//	소유권이전구분
+		this.ds_productInfo.setColumn( i, "regiCd", "ZZZZ");														//
+		this.ds_productInfo.setColumn( i, "statCd", "04");														//	상태 : S032
+		this.ds_productInfo.setColumn( i, "flYn", "N");															//	장착위-앞,왼쪽
+		this.ds_productInfo.setColumn( i, "frYn", "N");															//	장착위치-앞,오른쪽
+		this.ds_productInfo.setColumn( i, "rlYn", "N");															//	장착위치-뒤,왼쪽
+		this.ds_productInfo.setColumn( i, "rrYn", "N");															//	장착위치-뒤,오른쪽
+		this.ds_productInfo.setColumn( i, "ordNo","");															//	계약번호
+		this.ds_productInfo.setColumn( i, "seq","");																//	순번
+		this.ds_productInfo.setColumn( i, "lrCd", "");															//	좌우
+		this.ds_productInfo.setColumn( i, "rentpAmt","");														//	추가렌탈료(프리미엄서비스)
+		this.ds_productInfo.setColumn( i, "fDcrate","");														//	최종할인율
+		this.ds_productInfo.setColumn( i, "planTm","");															//	장착예정시간(HHMM)
+		this.ds_productInfo.setColumn( i, "instDay","");														//	장착일
+		this.ds_productInfo.setColumn( i, "instTm","");															//	장착시간(HHMM)
+		this.ds_productInfo.setColumn( i, "equNo", "");															//	설비번호
+		this.ds_productInfo.setColumn( i, "osDay", "");															//	소유권이전일자(예정)
+			
+		this.ds_productInfo.setColumn( i, "regId", "");															//	등록자 ID 
+		this.ds_productInfo.setColumn( i, "regDt", "");															//	등록일
+		this.ds_productInfo.setColumn( i, "chgId", "");															//	변경자 ID 
+		this.ds_productInfo.setColumn( i, "chgDt", "");
+		this.ds_productInfo.setColumn( i, "frCd", "Z");
+
+		//---------------------------------------
+		this.ds_productInfo.setRowType(i, Dataset.ROWTYPE_INSERT);
+		
+	}
+	this.ds_productInfo.set_updatecontrol(true);
+	
+	
+	var cnt = this.ds_rtsd0013.getRowCount();
+	if( cnt != 0 ){
+		for( var i = 0; i < cnt; i++){
+			this.ds_rtsd0013.setColumn(i, "servCnt0", this.ds_rtsd0013.getColumn(i, "servCnt"));
+			this.ds_rtsd0013.setColumn(i, "servCntr", this.ds_rtsd0013.getColumn(i, "servCnt"));
+			this.ds_rtsd0013.setColumn(i, "psCd", "999999");
+		}
+	}
+	
+	this.ds_rtsd0013.set_updatecontrol(false);
+	for( var i = 0 ; i < cnt ; i++){
+		this.ds_rtsd0013.setRowType(i, Dataset.ROWTYPE_INSERT);
+	}
+	this.ds_rtsd0013.set_updatecontrol(true);
+
+	if( confirm( "저장하시겠습니까?") ){
+	
+			
+		var sSvcID        	= "saveMemberOrder";                    
+		var sController   	= "/rtms/sd/saveMemberOrder.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		
+		sInDatasets   		+= " dsRtsd0100=ds_rtsd0100:A ";
+		sInDatasets   		+= " dsRtsd0104=ds_rtsd0104:A ";
+		sInDatasets			+= " dsRtsd0106=ds_productInfo:A ";
+		sInDatasets			+= " dsRtsd0013=ds_rtsd0013:A ";
+		sInDatasets			+= " dsRtre0010=ds_rtre0010:A ";
+		sInDatasets			+= " dsRtre0020=ds_rtre0020:A ";		
+
+				
+				
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+// 콤마추가
+this.addComma = function(num) {
+	num+="";	
+	if(num=="" || num=="0") return num;
+	var pattern = /(-?[0-9]+)([0-9]{3})/;
+	while(pattern.test(num)) {
+		num = num.replace(pattern,"$1,$2");
+	}
+	return num;
+}
+
+// 콤마제거
+this.delComma = function(num) {
+	if(num==NaN) return "";
+	if(num=="" || num=="0") return num;
+	if(num==undefined) return "";
+	var strNum = new String(num);
+	var rtnNum = strNum.replace(/\,/g,""); 
+	return rtnNum;
+}
+// 10단위 절삭
+this.mathFloor = function(num){
+	num = Math.floor(eval(num)/10)*10;	
+	return num;
+}
+]]></Script>
+  </Form>
+</FDL>

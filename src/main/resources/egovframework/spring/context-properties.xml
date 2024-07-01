@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+	<bean name="propertiesService" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" destroy-method="destroy">
+		<property name="extFileName">
+		<set>
+			<map>
+               <entry key="encoding" value="UTF-8"/>
+               <entry key="filename" value="file:./src/**/refresh-resource.properties"/>
+            </map>
+        	<value>classpath:/egovframework/egovProps/*.properties</value>
+        </set>
+		</property>
+		<property name="properties">
+	        <map>
+	        	<entry key="AAA" value="1234"/>
+	        </map>
+		</property>
+	</bean>
+
+	<!-- util:properties를 설정해준다. -->
+	<util:properties id="property" location="classpath:/egovframework/egovProps/*.properties" />	
+</beans>	
+
+
+
+

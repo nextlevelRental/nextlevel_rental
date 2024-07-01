@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="smsReg">
+	
+	<resultMap id="results1" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<result property="lrgGrpCd" 		column="LRG_GRP_CD" />
+		<result property="midGrpCd" 	column="MID_GRP_CD" />
+		<result property="midGrpNm" 	column="MID_GRP_NM" />
+		<result property="useYn" 			column="USE_YN" />
+		<result property="regId" 			column="REG_ID" />
+	</resultMap>
+	
+	<parameterMap class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO" id="parameters1">
+		<parameter property="result" 		jdbcType="ORACLECURSOR" 		javaType="java.sql.ResultSet" mode="OUT" resultMap="results1" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 				mode="IN" />
+	</parameterMap>
+		
+	<procedure id="smsReg.selectSmsHeaderCd" parameterMap="parameters1">
+		{ call Pkg_Rtcm0200.p_sRtcm0200( ? , ? ) }
+	</procedure>
+	
+	<resultMap id="results2" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<result property="midGrpCd" 	column="MID_GRP_CD" />
+		<result property="cd" 				column="CD" />
+		<result property="cdNm" 			column="CD_NM" />
+		<result property="msgContents" column="MSG_CONTENTS" />
+		<result property="kakaoMsgCd" column="KAKAO_MSG_CD" />
+		<result property="msgType" 		column="MSG_TYPE" />
+		<result property="reservedType" column="RESERVED_TYPE" />
+		<result property="orderPt" 		column="ORDER_PT" />
+		<result property="useYn" 			column="USE_YN" />
+		<result property="regId" 			column="REG_ID" />
+	</resultMap>
+	
+	<parameterMap class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO" id="parameters2">
+		<parameter property="result" 		jdbcType="ORACLECURSOR" 	javaType="java.sql.ResultSet" mode="OUT" resultMap="results2" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 			mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" 			mode="IN" />
+	</parameterMap>
+		
+	<procedure id="smsReg.selectSmsDetailCd" parameterMap="parameters2">
+		{ call Pkg_Rtcm0201.p_sRtcm0201( ? , ? , ? ) }
+	</procedure>
+	
+	<resultMap id="results3" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<result property="midGrpCd" 	column="MID_GRP_CD" />
+		<result property="cd" 				column="CD" />
+		<result property="paramCd" 		column="PARAM_CD" />
+		<result property="paramCdNm"  column="PARAM_CD_NM" />
+		<result property="paramCdDesc" column="PARAM_CD_DESC" />
+		<result property="orderPt" 		column="ORDER_PT" />
+		<result property="useYn" 			column="USE_YN" />
+		<result property="regId" 			column="REG_ID" />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="parameters3">
+		<parameter property="result" 		jdbcType="ORACLECURSOR" 		javaType="java.sql.ResultSet" mode="OUT" resultMap="results3" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 				mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" 				mode="IN" />
+		<parameter property="paramCd" 	jdbcType="VARCHAR" 				mode="IN" />
+	</parameterMap>
+		
+	<procedure id="smsReg.selectSmsParamInfo" parameterMap="parameters3">
+		{ call Pkg_Rtcm0203.p_sRtcm0203( ? , ? , ? , ? ) }
+	</procedure>
+	
+	<parameterMap class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO" id="parameters4">
+		<parameter property="seqSmsPosSeqNo" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="result4" />
+	</parameterMap>
+	<resultMap id="result4" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO"/>	
+	<procedure id="smsReg.selectSmsPosSeq" parameterMap="parameters4">
+		{ call ? := Pkg_Rtcm0204.f_sRtcm0204SeqNumber() }
+	</procedure>
+	
+	<resultMap id="results5" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<result property="sendPos" 		column="SEND_POS" />
+		<result property="midGrpCd" 	column="MID_GRP_CD" />
+		<result property="cd" 				column="CD" />
+		<result property="remark" 		column="REMARK" />
+		<result property="useYn" 			column="USE_YN" />
+		<result property="regId" 			column="REG_ID" />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="parameters5">
+		<parameter property="result" 		jdbcType="ORACLECURSOR" 		javaType="java.sql.ResultSet" mode="OUT" resultMap="results5" />
+		<parameter property="sendPos" 	jdbcType="VARCHAR" 				mode="IN" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 				mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" 				mode="IN" />
+	</parameterMap>
+		
+	<procedure id="smsReg.selectSmsSendPos" parameterMap="parameters5">
+		{ call Pkg_Rtcm0204.p_sRtcm0204( ? , ? , ? , ? ) }
+	</procedure>
+	
+	<parameterMap id="parameters6" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<parameter property="checkCnt" 	jdbcType="NUMERIC" 			javaType="java.lang.Integer" mode="OUT" resultMap="result6" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 			mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" 			mode="IN" />
+	</parameterMap>
+	<resultMap id="result6" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO"/>
+	<procedure  id="smsReg.checkCd" resultClass="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO" parameterMap="parameters6">
+		{ call ? := Pkg_Rtcm0201.f_sRtcm0201Count ( ? , ? ) }
+	</procedure>
+	
+	<resultMap id="results7" class="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO">
+		<result property="sendPos" 	    	column="SEND_POS" />
+		<result property="midGrpCd" 		column="MID_GRP_CD" />
+		<result property="cd" 					column="CD" />
+		<result property="remark" 	    	column="REMARK" />
+		<result property="useYn" 				column="USE_YN" />
+		<result property="useYnNm"     		column="USE_YN_NM" />
+		<result property="msgContents"     column="MSG_CONTENTS" />
+		<result property="kakaoMsgCd" 	column="KAKAO_MSG_CD" />
+		<result property="msgType" 			column="MSG_TYPE" />
+		<result property="reservedType" 	column="RESERVED_TYPE" />
+	</resultMap>
+	
+	<parameterMap id="parameters7" class="java.util.Map">
+		<parameter property="result" 		jdbcType="ORACLECURSOR" 	javaType="java.sql.ResultSet" mode="OUT" resultMap="results7" />
+		<parameter property="sendPos" 	jdbcType="VARCHAR" 			mode="IN" />
+		<parameter property="midGrpCd" 	jdbcType="VARCHAR" 			mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" 			mode="IN" />
+	</parameterMap>
+	<procedure  id="smsReg.selectSmsMessageInfo" resultClass="egovframework.ntrms.kr.co.brn.cm.vo.RTCMSmsRegVO" parameterMap="parameters7">
+		{ call Pkg_Rtcm0204.p_sMessageInfo ( ? , ? , ? , ? ) }
+	</procedure>
+	
+</sqlMap>

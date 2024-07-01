@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDArrivalAlarmList" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1159" height="534" titletext="도착 알림 문자 발송 관리" onload="RTSDArrivalAlarmList_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="19" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="7" height="500" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="46" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Tab id="Tab00" taborder="47" left="0.69%" top="8" right="2.24%" height="481" tabindex="0" scrollbars="autoboth" onchanged="Tab00_onchanged">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="[STEP 1] 집계" url="sd::RTSDArrivalAlarmList_tab1.xfdl"/>
+            <Tabpage id="tabpage2" text="[STEP 2] 발송" url="sd::RTSDArrivalAlarmList_tab2.xfdl"/>
+            <Tabpage id="tabpage3" text="[STEP 3] 이력조회" url="sd::RTSDArrivalAlarmList_tab3.xfdl"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Objects>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="rdcNm" type="STRING" size="256"/>
+          <Column id="invoiceNo" type="STRING" size="256"/>
+          <Column id="giDay" type="STRING" size="256"/>
+          <Column id="giYn" type="STRING" size="256"/>
+          <Column id="sendCnt" type="STRING" size="256"/>
+          <Column id="smsType" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="tmpPwYn" type="string" size="32"/>
+          <Column id="lastPwDt" type="datetime" size="17"/>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="failCnt" type="bigdecimal" size="16"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="oldPassword" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="password" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="lastLogonDt" type="datetime" size="17"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="chgDt" type="datetime" size="17"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="regDt" type="datetime" size="17"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="lockYn" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_excelUp">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="ordAgentNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="orderNo" type="STRING" size="256"/>
+          <Column id="orderDate" type="STRING" size="256"/>
+          <Column id="deliveryNo" type="STRING" size="256"/>
+          <Column id="deliveryDate" type="STRING" size="256"/>
+          <Column id="arrivalDate" type="STRING" size="256"/>
+          <Column id="deliveryGbn" type="STRING" size="256"/>
+          <Column id="rdcNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="o2oYn" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="vkburNm" type="STRING" size="256"/>
+          <Column id="vkgrpNm" type="STRING" size="256"/>
+          <Column id="carNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+this.RTSDArrivalAlarmList_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.Tab00_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo){
+	switch(obj.tabindex){
+		case 0	: this.Tab00.tabpage1.fn_init(); this.Tab00.tabpage2.ds_list.clearData(); break;
+		case 1	: this.Tab00.tabpage2.fn_init(); this.Tab00.tabpage3.ds_list.clearData(); break;
+		case 2	: this.Tab00.tabpage3.fn_init();
+		default	: break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+]]></Script>
+  </Form>
+</FDL>

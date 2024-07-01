@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="loding" classname="Login" left="0" top="0" width="1260" height="671" titletext="loading" onload="form_onload" ontimer="loding_ontimer" scrollbars="none" onsize="loding_onsize">
+    <Layouts>
+      <Layout width="1260" height="671">
+        <Div id="div_wrap" taborder="0" left="448" top="46" width="590" height="471" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="0" cssclass="sta_LOGIN_Logo" top="91" right="293" width="125" height="64"/>
+              <Div id="divMain" taborder="1" left="11" top="160" width="560" height="311" text="Div00" scrollbars="none">
+                <Layouts>
+                  <Layout>
+                    <ProgressBar id="pgBar" taborder="7" max="100" min="0" blockgap="5" cssclass="loading" left="120" top="89" right="120" height="10" style="bartype:image;"/>
+                    <Static id="Pleas" taborder="8" text="Please wait..." left="88" top="107" right="88" height="19" style="color:#666666ff;align:center middle;font:bold 9 Verdana;"/>
+                    <Static id="Pleas00" taborder="9" text="COPYRIGHT(C) BY 2015 TOBESOFT.CO.LTD. ALL RIGHTS RESERVED" left="94" right="59" bottom="14" height="51" style="color:#888888ff;align:center middle;font:8 Verdana;"/>
+                    <Static id="Static00" taborder="10" cssclass="sta_LOGIN_Bg1" left="0" top="0" right="0" height="2" style="background:#232438ff;"/>
+                    <Static id="Static02" taborder="11" onclick="Static01_onclick" cssclass="sta_LOGIN_Bg2" left="0" right="0" bottom="64" height="1"/>
+                    <Static id="Pleas01" taborder="12" text="Enter your information to deliver" visible="false" left="48" top="140" right="48" height="80" style="align:center middle;font:9 Verdana;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_login" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="USER_NO" type="STRING" size="256"/>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="USER_NO"/>
+            <Col id="PASSWORD"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.edt_loginId" propid="value" datasetid="ds_login" columnid="USER_NO"/>
+      <BindItem id="item1" compid="Div00.edt_loginPw" propid="value" datasetid="ds_login" columnid="PASSWORD"/>
+      <BindItem id="item2" compid="Tab00.tabpage1" propid="text" datasetid="Notice" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : HGR system
+* BUSINESS    : 로딩페이지
+* FILE NAME   : login.xfdl
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : loading
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+this.nPos = 0;
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+
+	    Ex.core.onload(obj);
+		
+		this.form_onsize();
+		this.fn_loginTr();
+		this.setTimer(1001,50);
+}
+
+
+
+/**
+ * 로그인 transaction
+ * @example	
+ * @memberOf this
+ */
+this.fn_loginTr = function()
+{
+    
+    var objLoginId = sessionStorage.getItem("id");  //session에 저장된 id;
+    var objLoginPw =  sessionStorage.getItem("pw"); //pw 저장;
+    var sProgress = false;
+   
+//     if(application.gv_prjType == "false")
+// 	{
+// 
+//       this.fn_menuOpen();	
+// 	}
+// 	else
+// 	{
+        Ex.core.trLogin(this,"root",objLoginId,objLoginPw,sProgress);
+	//}
+	
+
+}
+
+/**
+* 메인프레임 open
+* @return 
+* @example
+* @memberOf public
+*/ 
+
+this.fn_menuOpen = function()
+{
+     this.killTimer(1001);
+    // gv_topframe.fn_setTopMenu();
+
+    //this.parent.setIndexUrl("frame::mainframe.xfdl");
+       this.parent.setIndexUrl("frame::main.xfdl");
+}
+
+/**
+* 로그인 공통 메세지창 함수
+* @param {string} callbackId
+* @param {string} OK  OR CANCEL
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.set_alert = function(msgId,msgCode,msgArr,strMsgType ,sSizeType)
+{
+   Ex.core.showMsg(this,"alert",msgId,msgCode, msgArr,strMsgType ,sSizeType);
+}
+
+
+this.loding_ontimer = function(obj:Form, e:nexacro.TimerEventInfo)
+{
+	if(e.timerid == 1001){
+	   	this.nPos +=1;
+		switch(this.nPos)
+		{
+			case 100 :  
+				
+				// this.div_wrap.divMain.pgBar.set_pos(this.nPos);
+				 this.killTimer(1001);
+			  
+			break;       
+			default : 
+			
+				 this.div_wrap.divMain.pgBar.set_pos(this.nPos); 
+				 
+			break;
+		}
+	}
+	
+}
+
+
+/**
+* form onsize
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.form_onsize = function()
+{
+	
+	var nLeft = (application.mainframe.width / 2) - Math.round((this.div_wrap.getOffsetWidth()) / 2);
+
+	if(nLeft <= 0)
+	{
+		this.div_wrap.setOffsetLeft(0);
+	}
+	else
+	{
+		this.div_wrap.setOffsetLeft(nLeft);
+	}
+	
+}
+
+this.loding_onsize = function(obj:Form, e:nexacro.SizeEventInfo)
+{
+
+	if(!Eco.isFunction(this.form_onsize)) return; 
+	this.form_onsize();
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTREClosePostingDAO">
+
+	<!-- 월마감 EAI 인터페이스 결과 조회 -->
+	<resultMap id="r_sRtre5401List" class="java.util.HashMap">
+		<result property="chk"			column="CHK"         />
+		<result property="zmonth"    column="ZMONTH"         />
+		<result property="stmtCd"		column="STMT_CD"       />
+		<result property="stmtNm"	column="STMT_NM"       />
+		<result property="stmtSeq"	column="STMT_SEQ"    />
+		<result property="bukrs"		column="BUKRS"       />
+		<result property="budat"		column="BUDAT"       />
+		<result property="bldat"		column="BLDAT"  />
+		<result property="bktxt"		column="BKTXT"   />
+		<result property="waers"		column="WAERS"     />
+		<result property="eSubrc"		column="E_SUBRC"   />
+		<result property="eBelnr"		column="E_BELNR"    />
+		<result property="eRemsg"	column="E_REMSG" />
+		<result property="manualYn"	column="MANUAL_YN" />
+		<result property="stmtTgtYn"	column="STMT_TGT_YN" />
+		<result property="cncYn"	    column="CNC_YN" />
+		<result property="regId"	    column="REG_ID" />
+		<result property="regDt"		column="REG_DT"      />
+		<result property="chgId"		column="CHG_ID"      />
+		<result property="chgDt"		column="CHG_DT"      />
+		<result property="itmSeq"		column="ITM_SEQ"      />
+		<result property="bschl"		column="BSCHL"      />
+		<result property="hkont"		column="HKONT"      />
+		<result property="hkontNm"	column="HKONT_NM"      />
+		<result property="mwskz"		column="MWSKZ"      />
+		<result property="kostl"		column="KOSTL"      />
+		<result property="dmbtr"		column="DMBTR"      />
+		<result property="dmbtrD"	column="DMBTR_D"      />
+		<result property="dmbtrC"	column="DMBTR_C"      />
+		<result property="sgtxt"		column="SGTXT"      />
+		<result property="sideCd"		column="SIDE_CD"      />
+		<result property="sideNm"	column="SIDE_NM"      />
+		<result property="itmRegId"	column="ITM_REG_ID"      />
+		<result property="itmRegDt"	column="ITM_REG_DT"      />
+		<result property="itmChgId"	column="ITM_CHG_ID"      />
+		<result property="itmChgDt"	column="ITM_CHG_DT"      />
+	</resultMap>
+	<parameterMap id="p_sRtre5401List" class="java.util.Map">
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre5401List" />
+		<parameter property="closeYm" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTREClosePostingDAO.rTREClosePostingList" parameterMap="p_sRtre5401List">
+		{call Pkg_Rtre5401.p_sRtre5401(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 전표생성 EAI 인터페이스 결과 업데이트 -->
+	<resultMap id="resultUpdatePostIf" class="java.util.HashMap"/>	
+	<parameterMap id="paramUpdatePostIfResult" class="java.util.HashMap">
+		<parameter property="sqlCode"  jdbcType="NUMERIC" mode="OUT" resultMap="resultUpdatePostIf" />
+		<parameter property="zmonth"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="stmtCd"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eSubrc" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eBelnr"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eRemsg"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chgId"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errText"  jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+	</parameterMap>
+	<procedure id="rTREClosePostingDAO.updatePostIfResult" resultClass="java.util.HashMap" parameterMap="paramUpdatePostIfResult">
+		{call ? := Pkg_Rtre5401.f_UpdateRtre5401(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 월마감 전표자료생성  -->
+	<parameterMap id="paramCreatePosting" class="java.util.HashMap">
+		<parameter property="closeYm"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="f10nAmt"     jdbcType="NUMERIC" mode="IN" />
+		<parameter property="regId"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"  jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"    jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"  jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+	</parameterMap>
+	<procedure id="rTREClosePostingDAO.aggregatePostingData" resultClass="java.util.HashMap" parameterMap="paramCreatePosting">
+		{call Pkg_Rtre5401.p_CreateRtre5401CalcTotal(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

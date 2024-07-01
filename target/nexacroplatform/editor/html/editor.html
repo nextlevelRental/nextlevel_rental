@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%; overflow: hidden; margin: 0">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" pageEncoding="utf-8" />
+    <title>Editor sample</title>
+    <link href="./google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+    
+    <script type="text/javascript" src="./classlib/Namespace.js"></script>
+    <script type="text/javascript" src="./classlib/Base.js"></script>
+    <script type="text/javascript" src="./classlib/array.js"></script>
+    <script type="text/javascript" src="./classlib/object.js"></script>
+    <script type="text/javascript" src="./classlib/string.js"></script>
+    <script type="text/javascript" src="./lib/util.js"></script>
+    <script type="text/javascript" src="./lib/closure-range.js"></script>
+    <script type="text/javascript" src="./table.js"></script>
+    <script type="text/javascript" src="./selector.js"></script>
+    <script type="text/javascript" src="./merge.js"></script>
+    <script type="text/javascript" src="./insert.js"></script>
+    <script type="text/javascript" src="./delete.js"></script>
+    <script type="text/javascript" src="./border.js"></script>
+	<script type="text/javascript" src="./google-code-prettify/prettify.js"></script>
+    <script type="text/javascript">
+        window.onload = function ()
+        {
+            var userConfig = {
+            	iframeId : "editorFrame",	// 편집 영역의 iframe id
+            	selectedColor: "#ceefff"	// 표 선택 색상
+            };
+
+            initTable(userConfig);
+            
+            /**********************************************
+            	IE 포커스 문제로 임시방편 추가 
+            **********************************************/
+		    var editor = EditorUtil.elementById("editorFrame");
+		    var editorWin = editor.contentWindow;
+		    var editorDoc = editor.contentDocument || editorWin.document;
+		    var editorBody = editorDoc.body;
+		    
+		    editorBody.onmousedown = function(evt) {
+		    	
+		    	
+		    //	window.frameElement.component.setFocus();
+        	};       
+        }
+        
+		var xpForm;
+		var xpCallBackFunc;
+		
+		function initXP(form, callBackFunc)
+		{
+			
+			//console.log(" callBackFunc >>>>>>>>  " + callBackFunc);
+			xpForm = form;
+			xpCallBackFunc = callBackFunc;
+			//console.log("initXP form: " + form + "  callBackFunc: " + callBackFunc);
+		}
+		
+		function test()
+		{
+			prettyPrint();
+			
+		    var editor = EditorUtil.elementById("editorFrame");
+		    var editorWin = editor.contentWindow;
+		    var editorDoc = editor.contentDocument || editorWin.document;
+		    var editorBody = editorDoc.body;
+		    var pThis = this;
+		    
+		    EditorUtil.addEvent(editorBody, "load", function (evt)
+            {
+                pThis.prettyPrint();
+            });
+		}
+		
+    </script>
+</head>
+
+<body scroll="no" style="height: 100%; overflow: hidden; margin: 0">
+    <div id="editorDiv" style="display:block; width: 100%; height: 100%; border:1px solid #b5b5b5;">
+        <iframe id="editorFrame" name="editorFrame" allowtransparency="true" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+        <!--iframe id="editorFrame" name="editorFrame" frameborder="0" style="width: 100%; height: 100%;"></iframe-->
+    </div>
+    <!--input type="hidden" id="xpForm">
+    <input type="hidden" id="xpCallBackFunc"-->
+    <!--input type="hidden" id="initXP" onclick="initXP()"-->
+    <input type="hidden" id="initXP" onclick="initXP()">
+    <input type="hidden" id="merge" onclick="merge()">
+    <input type="hidden" id="resetMerge" onclick="resetMerge()">
+    <input type="hidden" id="insertRowAbove" onclick="insertRowAbove()">
+    <input type="hidden" id="insertRowBelow" onclick="insertRowBelow()">
+    <input type="hidden" id="insertColLeft" onclick="insertColLeft()">
+    <input type="hidden" id="insertColRight" onclick="insertColRight()">
+    <input type="hidden" id="deleteRow" onclick="deleteRow()">
+    <input type="hidden" id="deleteCol" onclick="deleteCol()">
+    <input type="hidden" id="setBackgroundColor" onclick="setBackgroundColor()">
+    <input type="hidden" id="setBorderColor" onclick="setBorderColor()">
+    <input type="hidden" id="setBorderHeight" onclick="setBorderHeight()">
+    <!--input type="hidden" id="setBorderType" onclick="setBorderType()"-->
+    <input type="hidden" id="setBorderRange" onclick="setBorderRange()">
+    <input type="hidden" id="test" onclick="test()">
+</body>
+
+</html>

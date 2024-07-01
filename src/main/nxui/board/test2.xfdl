@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test" classname="test" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="dasdad" left="25%" top="109" right="34.18%" height="150" style="font:bold 14 arial;"/>
+        <Button id="Button00" taborder="1" text="Button00" left="15.23%" top="8" right="29.39%" height="72"/>
+        <ImageViewer id="ImageViewer00" taborder="2" text="ImageViewer00" left="5.76%" top="107" right="81.25%" height="132" image="URL('..\..\..\..\..\..\Users\Public\Pictures\Sample Pictures\Koala.jpg')"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="15.04%" top="273" right="32.81%" height="113">
+          <Formats/>
+        </Grid>
+        <Button id="Button01" taborder="4" text="Button01" left="2.73%" top="314" right="90.43%" height="68" onclick="Button01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+    //폼로드시 공통함수 
+	Ex.core.init(obj); 	
+}
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	  Eco.Logger.error({message:"UnKnown MenuInfo",elapsed:true,stack:true});
+	  
+	  
+	  alert(" start click ");
+}
+]]></Script>
+  </Form>
+</FDL>

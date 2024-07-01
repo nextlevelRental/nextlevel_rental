@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDRendalAnalysisStatus" classname="RendalAnalysisStatus" left="0" top="0" width="1147" height="496" titletext="렌탈분석현황" onload="RendalAnalysisStatus_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" taborder="4" cssclass="sta_WF_SearchBox" left="10" top="0" right="-10" height="40"/>
+        <Div id="div_search" taborder="5" text="Div00" left="0" top="0" right="25" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static22" taborder="29" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="10"/>
+              <Static id="Static23" taborder="30" cssclass="Guide_color" visible="false" left="1" top="31" width="1117" height="10"/>
+              <Static id="st_day" taborder="31" text="기준일자" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="cal_fDay" taborder="32" dateformat="yyyy-MM-dd" left="105" top="10" width="140" height="21"/>
+              <Static id="Static03" taborder="33" text="~" left="253" top="10" width="9" height="21"/>
+              <Calendar id="cal_eDay" taborder="34" dateformat="yyyy-MM-dd" left="270" top="10" width="140" height="21"/>
+              <Static id="Static08" taborder="35" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static00" taborder="36" cssclass="Guide_color" visible="false" left="410" top="0" width="25" height="41"/>
+              <Static id="st_disGb" taborder="37" text="조건1" cssclass="sta_WF_schTitle" left="435" top="10" width="80" height="21"/>
+              <Radio id="ra_disGb" taborder="38" left="513" top="12" width="180" height="18" direction="vertical" innerdataset="@ds_disGb" codecolumn="cd" datacolumn="cdNm"/>
+              <Static id="Static01" taborder="39" cssclass="Guide_color" visible="false" left="693" top="0" width="25" height="41"/>
+              <Static id="st_valGb" taborder="40" text="조건2" cssclass="sta_WF_schTitle" left="718" top="10" width="80" height="21"/>
+              <Radio id="ra_valGb" taborder="41" direction="vertical" left="796" top="12" width="180" height="18" innerdataset="@ds_valGb" codecolumn="cd" datacolumn="cdNm"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="6" text="분석지표" cssclass="sta_WF_subTitle" left="0" top="55" width="81" height="20"/>
+        <Static id="Static01" taborder="9" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" bottom="0"/>
+        <Grid id="grid_rasMenu" taborder="23" useinputpanel="false" left="0" top="80" width="200" binddataset="ds_rASMenu" style="treeitemimage:URL('theme://images\ico_treeitem.png');cursor:pointer;" treeuseexpandkey="false" treeusebutton="use" treeusecheckbox="false" autosizingtype="none" autoupdatetype="none" autosizebandtype="body" autofittype="col" height="413" onselectchanged="grid_rasMenu_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="41"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="tree" edittype="tree" text="bind:cdNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static10" taborder="24" cssclass="Guide_color" visible="false" left="0" top="45" style="border:0 none #808080,1 solid #d2020bff;" height="15" width="1147"/>
+        <Static id="Static00" taborder="25" cssclass="Guide_color" visible="false" left="0" top="70" style="border:0 none #808080,1 solid #d2020bff;" height="10" width="1147"/>
+        <Static id="Static02" taborder="26" cssclass="Guide_color" visible="false" left="200" top="45" width="25" bottom="0"/>
+        <Grid id="grid_resultCursor" taborder="27" useinputpanel="false" left="225" top="80" width="300" binddataset="ds_resultCursor01" autosizingtype="col" cellsizingtype="none" autosizebandtype="body" autofittype="col" extendsizetype="none" selecttype="row" height="415">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="구분"/>
+                <Cell col="1" text="수량"/>
+                <Cell col="2" text="비중"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:groupNm"/>
+                <Cell col="1" text="bind:cnt"/>
+                <Cell col="2" text="bind:ratio"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계"/>
+                <Cell col="1" style="align:right;" text="expr:dataset.getSum(&quot;cnt&quot;)+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="29" cssclass="Guide_color" visible="false" left="525" top="45" bottom="0" width="10"/>
+        <Static id="Static07" taborder="30" cssclass="sta_WF_detailLabel" left="535" top="80" height="415" visible="true" width="587"/>
+        <EcoChart id="ecochart" left="535" top="80" height="415" style="background:#ffffffff;border:0 solid #808080ff ;bordertype:round 15 15 ;" visible="false" width="587"/>
+        <Grid id="grid_resultCursor10" taborder="31" useinputpanel="false" left="225" top="80" width="500" binddataset="ds_resultCursor10" height="415" autosizingtype="col" autoupdatetype="none" autosizebandtype="body" cellmovingtype="none" cellsizingtype="none" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="월"/>
+                <Cell col="1" text="가입계정수"/>
+                <Cell col="2" text="이탈계정수"/>
+                <Cell col="3" text="누적계정수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ym" expr="expr:nvl(ym) != &quot;&quot; ? ym.substr(0,4)+&quot;-&quot;+ym.substr(4,2) : &quot;&quot;" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="number" style="align:right;" text="bind:joinCnt" mask="###,###,###,##0"/>
+                <Cell col="2" displaytype="number" style="align:right;" text="bind:leaveCnt" mask="###,###,###,##0"/>
+                <Cell col="3" displaytype="number" style="align:right;" text="bind:accrueCnt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계"/>
+                <Cell col="1" text="expr:dataset.getSum(&quot;joinCnt&quot;)+&quot;(건)&quot;"/>
+                <Cell col="2" text="expr:dataset.getSum(&quot;leaveCnt&quot;)+&quot;(건)&quot;"/>
+                <Cell col="3" text="expr:dataset.getSum(&quot;accrueCnt&quot;)+&quot;(건)&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rASMenu" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_disGb" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_valGb" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor01" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor02" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor03" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor04" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor05" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor06" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor07" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor08" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor09" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupCd" type="STRING" size="256"/>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="cnt" type="INT" size="256"/>
+          <Column id="ratio" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_resultCursor10" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="ym" type="STRING" size="256"/>
+          <Column id="joinCnt" type="INT" size="256"/>
+          <Column id="leaveCnt" type="INT" size="256"/>
+          <Column id="accrueCnt" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 		= "";
+this.oldFDay	= "";
+this.p_arg		= "RendalAnalysisStatus";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "initRTSDRendalAnalysisStatus" ){
+		var disCnt = this.ds_disGb.getRowCount()
+		if( disCnt != 0 ){
+			this.div_search.ra_disGb.set_value("1");
+		}
+		
+		var valGb = this.ds_valGb.getRowCount();
+		if( valGb != 0 ){
+			this.div_search.ra_valGb.set_value("1");
+		}
+	}
+	
+	if( strSvcId == "getToday" ){
+		this.div_search.cal_fDay.set_value( Eco.date.getFirstDate(this.toDay) );
+		this.div_search.cal_eDay.set_value( this.toDay );
+	}
+	
+	if( strSvcId == "selectRTSDRendalAnalysisStatus" ){
+		this.oldFDay	= nvl(this.div_search.cal_fDay.value);
+		var rowCt 		= this.ds_resultCursor01.getRowCount();
+		var menuCt		= this.ds_rASMenu.getRowCount();
+		if( rowCt == 0 ){
+			this.grid_resultCursor.set_nodatatext("조회된 데이터가 없습니다.");
+			this.ds_rASMenu.set_rowposition(menuCt-1);
+		}else{
+			this.ecochart.set_visible(true); 
+		}
+		this.grid_rasMenu_onselectchanged();
+	}
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RendalAnalysisStatus_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.parent.setButton("E|S",this);
+}
+this.fn_init = function(){
+	var sSvcID      	= "initRTSDRendalAnalysisStatus";  
+	var sController   	= "rtms/sd/initRTSDRendalAnalysisStatus.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";	 
+	sOutDatasets += " ds_rASMenu=mapDsRASMenu ";
+	sOutDatasets += " ds_disGb=mapDsDisGb ";
+	sOutDatasets += " ds_valGb=mapDsValGb ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var fDay 	= nvl(this.div_search.cal_fDay.value);
+	var eDay 	= nvl(this.div_search.cal_eDay.value);
+	var disGb 	= nvl(this.div_search.ra_disGb.value);
+	var valGb 	= nvl(this.div_search.ra_valGb.value);
+	var msg  	= " 값이 없습니다.";
+	if( fDay == "" ){
+		alert("기준일자"+msg);
+	}else if( eDay == "" ){
+		alert("기준일자"+msg);
+	}else if( fDay > eDay ){
+		alert("기준일자를 확인하세요.");
+	}else if( disGb == "" ){
+		alert("조건1"+msg);
+	}else if( valGb == "" ){
+		alert("조건2"+msg);
+	}else{
+		this.ds_resultCursor01.clearData();
+		this.ds_resultCursor02.clearData();
+		this.ds_resultCursor03.clearData();
+		this.ds_resultCursor04.clearData();
+		this.ds_resultCursor05.clearData();
+		this.ds_resultCursor06.clearData();
+		this.ds_resultCursor07.clearData();
+		this.ds_resultCursor08.clearData();
+		this.ds_resultCursor09.clearData();
+		this.ds_resultCursor10.clearData();
+		var sSvcID      	= "selectRTSDRendalAnalysisStatus";  
+		var sController   	= "rtms/sd/selectRTSDRendalAnalysisStatus.do";
+		var sInDatasets   	= "";
+		var sOutDatasets	= "";
+		var sArgs 			= "";
+		var fn_callBack		= "fn_callBack";
+		sOutDatasets += " ds_resultCursor01=refCursor01Map "//◀01.연령별
+		sOutDatasets += " ds_resultCursor02=refCursor02Map "//◀02.성별
+		sOutDatasets += " ds_resultCursor03=refCursor03Map "//◀03.대리점 지역별
+		sOutDatasets += " ds_resultCursor04=refCursor04Map "//◀04.계약기간별
+		sOutDatasets += " ds_resultCursor05=refCursor05Map "//◀05.on/off별
+		sOutDatasets += " ds_resultCursor06=refCursor06Map "//◀06.채널별
+		sOutDatasets += " ds_resultCursor07=refCursor07Map "//◀07.패턴별
+		sOutDatasets += " ds_resultCursor08=refCursor08Map "//◀08.인치별
+		sOutDatasets += " ds_resultCursor09=refCursor09Map "//◀09.교체유입 제조사
+		sOutDatasets += " ds_resultCursor10=refCursor10Map "//◀10.누적 고객 현황 (미정의상태 -> 우선 교체유입제조사로 임시 사용)
+		sArgs += Ex.util.setParam("fDay",  fDay);
+		sArgs += Ex.util.setParam("eDay",  eDay);
+		sArgs += Ex.util.setParam("disGb", disGb);
+		sArgs += Ex.util.setParam("valGb", valGb);
+		sArgs += Ex.util.setParam("fDayOuter",  "20150904");
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.fn_excel_grid());
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel_grid = function(){
+	var nRow 	= this.ds_rASMenu.rowposition;
+	var cd		= nvl(this.ds_rASMenu.getColumn(nRow, "cd"));
+	switch( cd ){
+		case "010" : return this.grid_resultCursor10; break;
+		default : return this.grid_resultCursor; break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_rasMenu_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var nRow 	= this.ds_rASMenu.rowposition;
+	var cd		= nvl(this.ds_rASMenu.getColumn(nRow, "cd"));
+	var headNm	= nvl(this.ds_rASMenu.getColumn(this.ds_rASMenu.rowposition, "cdNm"));
+	switch( cd ){
+		case "001" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor01 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor01 ); this.FN_changeA(); break;
+		case "002" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor02 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor02 ); this.FN_changeA(); break;
+		case "003" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor03 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor03 ); this.FN_changeA(); break;
+		case "004" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor04 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor04 ); this.FN_changeA(); break;
+		case "005" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor05 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor05 ); this.FN_changeA(); break;
+		case "006" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor06 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor06 ); this.FN_changeA(); break;
+		case "007" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor07 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor07 ); this.FN_changeA(); break;
+		case "008" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor08 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor08 ); this.FN_changeA(); break;
+		case "009" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor09 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor09 ); this.FN_changeA(); break;
+		case "010" : this.grid_resultCursor.setBindDataset( this.ds_resultCursor10 ); this.grid_resultCursor.setCellProperty( "Head", 0, "text", headNm ); this.drawChart( this.ds_resultCursor10 ); this.FN_changeB(); break;
+		default	   :  this.grid_resultCursor.setBindDataset( "" ); 					  this.grid_resultCursor.setCellProperty( "Head", 0, "text", "" );												 this.FN_changeA(); break;
+	}
+}
+this.FN_changeA = function(){
+	this.grid_resultCursor.set_visible(true);
+	this.ecochart.set_visible(true);
+	this.Static07.set_visible(true);
+	this.grid_resultCursor10.set_visible(false);
+	
+	this.div_search.cal_fDay.set_enable(true);
+	this.div_search.ra_disGb.set_enable(true);
+	this.div_search.ra_valGb.set_enable(true);
+	if( this.oldFDay != "" ){
+		this.div_search.cal_fDay.set_value( this.oldFDay );
+	}else{
+		this.div_search.cal_fDay.set_value( Eco.date.getFirstDate(this.toDay) );
+	}
+	//this.div_search.cal_eDay.set_value( this.toDay );
+}
+this.FN_changeB = function(){
+this.grid_resultCursor.set_visible(false);
+	this.ecochart.set_visible(false);
+	this.Static07.set_visible(false);
+	this.grid_resultCursor10.set_visible(true);
+	
+	this.div_search.cal_fDay.set_enable(false);
+	this.div_search.ra_disGb.set_enable(false);
+	this.div_search.ra_valGb.set_enable(false);
+	this.div_search.ra_disGb.set_value( "1" );
+	this.div_search.ra_valGb.set_value( "1" );
+	this.div_search.cal_fDay.set_value( "20150904" );
+	//this.div_search.cal_eDay.set_value( this.toDay );
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//var chart = true;
+this.drawChart = function(dataSet){
+	this.ecochart.removeChart()
+	//if(!chart){
+		var config = {
+			"type": "Pie",
+			"chart": {
+				"id": "donut chart",
+				"bindDataset": dataSet,
+				"bindCategory": "groupNm",
+				"bindValue": "ratio",
+				"colors": "excelColor001",
+				"plotBackgroundColor": "#FFFFFF",
+				"plotBackgroundOpacity": 0.2,
+				"radius": 0.7,
+				"innerRadius": 0.3,
+				"tilt": 0.7,
+				"labelFontSize": 8,
+				"labelRadius": 0.8,
+				"labelColor": "gray",
+				"labelWordwrap": "true",
+				"labelFontType": "bold",
+				"showHighLight": true,
+				"highLightOpacity": 0.6,
+				"highLightRadius": 0.8,
+				"margin": "0"
+			},
+			"legend": {
+				"position": "bottom",
+				"valign": "bottom",
+				"autoMargins": false,
+				"marginTop": "0",
+				"marginLeft": "0",
+				"marginRight": "0",
+				"markerType": "circle",
+				"markerSize": 12,
+				"switchable": false,
+				"useMarkerColorForLabels": false,
+				"equalItemWidths": true,
+				"columns": "5",
+				"align": "center",
+				"marginBottom": "10",
+				"labelFontFace": "Meriyo UI",
+				"labelFontType": "normal"
+			},
+			"tooltip": {
+				"text": "[%x] : [%y]% ",
+				"fontSize": 8
+			}
+		};
+	this.ecochart.set_config(config);
+	//}
+	chart = this.ecochart.getChart();
+	this.ecochart.draw();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+]]></Script>
+  </Form>
+</FDL>

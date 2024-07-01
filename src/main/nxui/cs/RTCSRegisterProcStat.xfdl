@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegisterProcStat" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="512" titletext="정기정검 처리현황" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="20" text="Div00" left="1" top="0" right="13" height="43" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="0" text="지정월" onclick="div_search00_st_searchCondition_onclick" cssclass="sta_WF_schTitle" left="25" top="0" width="71" height="41" domainId="nexa.s_condition"/>
+              <Static id="Static15" taborder="1" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="108"/>
+              <Static id="Static14" taborder="2" cssclass="Guide_color" visible="false" left="232" top="0" width="30" height="89"/>
+              <Calendar id="sdYm" taborder="3" dateformat="yyyy-MM" editformat="yyyy-MM" left="102" top="11" width="120" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="gd_registerProcStatList" taborder="22" binddataset="ds_registerProcStatList" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="1" top="57" right="13" height="420">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="97"/>
+                <Column size="84"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="65"/>
+                <Column size="65"/>
+                <Column size="65"/>
+                <Column size="65"/>
+                <Column size="65"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="로디안"/>
+                <Cell col="1" rowspan="2" text="배정건"/>
+                <Cell col="2" colspan="2" text="처리건/율"/>
+                <Cell col="4" colspan="2" text="컨택건/율"/>
+                <Cell col="6" rowspan="2" text="처리일수"/>
+                <Cell col="7" rowspan="2" text="판매수량"/>
+                <Cell col="8" colspan="5" text="만족도"/>
+                <Cell row="1" col="2" text="건수"/>
+                <Cell row="1" col="3" text="율(%)"/>
+                <Cell row="1" col="4" text="건수"/>
+                <Cell row="1" col="5" text="율(%)"/>
+                <Cell row="1" col="8" text="매우불만족"/>
+                <Cell row="1" col="9" text="불만족"/>
+                <Cell row="1" col="10" text="보통"/>
+                <Cell row="1" col="11" text="만족"/>
+                <Cell row="1" col="12" text="매우만족"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:userNm"/>
+                <Cell col="1" style="align:right;" text="bind:baejungCnt" editlimit="3" editlengthunit="ascii"/>
+                <Cell col="2" style="align:right;" text="bind:processCnt"/>
+                <Cell col="3" edittype="none" style="align:right;" text="bind:processYul"/>
+                <Cell col="4" style="align:right;" text="bind:contactCnt"/>
+                <Cell col="5" style="align:right;" text="bind:contactYul"/>
+                <Cell col="6" edittype="none" style="align:right;" text="bind:processDateCnt" editlengthunit="utf16"/>
+                <Cell col="7" style="align:right;" text="bind:saleCnt"/>
+                <Cell col="8" style="align:right;" text="bind:onePoint"/>
+                <Cell col="9" style="align:right;" text="bind:twoPoint"/>
+                <Cell col="10" style="align:right;" text="bind:threePoint"/>
+                <Cell col="11" style="align:right;" text="bind:fourPoint"/>
+                <Cell col="12" style="align:right;" text="bind:fivePoint"/>
+                <Cell col="13"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합 계"/>
+                <Cell col="1" displaytype="number" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align: ;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+                <Cell col="11" style="align:right;"/>
+                <Cell col="12" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="23" cssclass="Guide_color" visible="false" left="1122" top="0" bottom="0" width="25"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_registerProcStatList">
+        <ColumnInfo>
+          <Column id="userNm" type="STRING" size="256"/>
+          <Column id="carmasterNu" type="STRING" size="256"/>
+          <Column id="baejungCnt" type="STRING" size="256"/>
+          <Column id="processCnt" type="STRING" size="256"/>
+          <Column id="processYul" type="STRING" size="256"/>
+          <Column id="contactCnt" type="STRING" size="256"/>
+          <Column id="contactYul" type="STRING" size="256"/>
+          <Column id="processDateCnt" type="STRING" size="256"/>
+          <Column id="saleCnt" type="STRING" size="256"/>
+          <Column id="onePoint" type="STRING" size="256"/>
+          <Column id="twoPoint" type="STRING" size="256"/>
+          <Column id="threePoint" type="STRING" size="256"/>
+          <Column id="fourPoint" type="STRING" size="256"/>
+          <Column id="fivePoint" type="STRING" size="256"/>
+          <Column id="stdYm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+ 
+/***********************************************************************************
+* Form Load Common Function
+***********************************************************************************/ 
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.div_search.sdYm.set_value( FN_today());
+	this.fn_init();
+}
+
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+this.fn_initBtn  = function() {
+	/* 
+	  1. S : 조회
+	  2. C : 저장
+	  3. N : 추가
+	  4. DL: 삭제
+	  5. E : 엑셀
+	  기타: workFrame.xfdl참조
+	*/	
+	this.parent.setButton("E|S", this);
+}
+
+/**
+ * 정기점검 처리현황 조회
+ */
+this.fn_registerProcStatList = function() {
+
+	this.ds_registerProcStatList.clearData();
+	
+	var stdYm	=	nvl(this.div_search.sdYm.value);	/* 년도월 */
+	stdYm = stdYm.substring(0, 6);
+	var sSvcID		 = "registerProcStatList";
+	var sController	 = "/ntrms/cs/registerProcStatList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_registerProcStatList=output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("stdYm", stdYm);
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	switch(strSvcId) {
+		/**
+		 * 정기점검 처리현황 조회
+		 */
+		case "registerProcStatList":
+			var ds = this.ds_registerProcStatList;
+			if(ds.getRowCount() == 0) {
+				
+				this.alert("조회된 데이터가 없습니다.");
+				
+				return false;
+			}
+			break;
+	}
+	
+}
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+ 
+/***********************************************************************************
+* Component Event & Function
+***********************************************************************************/
+this.fn_init = function() {
+	this.fn_initBtn();		//Button
+}
+/**
+ * 검색
+ */
+this.fn_search = function() {
+	this.fn_registerProcStatList();
+}
+/**
+ * 엑셀
+ */
+this.fn_excel= function()	{
+	var ds = this.ds_registerProcStatList;
+			
+	if(ds.getRowCount() == 0) {
+			
+		this.alert("조회된 데이터가 없습니다.");
+		
+		return false;
+	}
+	Ex.core.exportExcel(this, this.gd_registerProcStatList);
+}
+
+
+
+
+]]></Script>
+  </Form>
+</FDL>

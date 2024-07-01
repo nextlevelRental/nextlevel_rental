@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREInstallCommMang" classname="RTREInstallCommMang" left="0" top="0" width="1147" height="496" titletext="장착수수료 관리" onload="RTREInstallCommMang_onload">
+    <Layouts>
+      <Layout>
+        <Tab id="RTREInstallCommMangTab" taborder="0" left="0" top="0" right="25" height="496" tabindex="0" scrollbars="autoboth" style="showextrabutton:false;" onchanged="RTREInstallCommMangTab_onchanged">
+          <Tabpages>
+            <Tabpage id="RTREInstallCommMang_tab1" text="장착수수료 등록" url="re::RTREInstallCommMang_tab1.xfdl"/>
+            <Tabpage id="RTREInstallCommMang_tab2" text="엑셀 업로드" url="re::RTREInstallCommMang_tab2.xfdl"/>
+          </Tabpages>
+        </Tab>
+        <Static id="Static01" taborder="1" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg = "RTRESalesCommMang";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTREInstallCommMang_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTREInstallCommMangTab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo){
+	switch(obj.tabindex){
+		case 0	: this.RTREInstallCommMangTab.RTREInstallCommMang_tab1.fn_setButton(); this.RTREInstallCommMangTab.RTREInstallCommMang_tab2.Dataset00.clearData(); 	break;
+		case 1	: this.RTREInstallCommMangTab.RTREInstallCommMang_tab2.fn_setButton(); this.RTREInstallCommMangTab.RTREInstallCommMang_tab1.ds_list.clearData(); 	break;	
+		default	: break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="noticeInfoDAO">
+
+	<resultMap id="noticeResultMap" class="java.util.HashMap">
+		<result property="ntcSeq"  		column="NTC_SEQ" />
+		<result property="ntcType"  	column="NTC_TYPE" />
+		<result property="title"  		column="TITLE" />
+		<result property="contents"  	column="CONTENTS" jdbcType="CLOB"  javaType="java.lang.String" />
+		<result property="startDt"  	column="START_DT" />
+		<result property="endDt"  		column="END_DT" />
+		<result property="readCnt"  	column="READ_CNT" />
+		<result property="attchFlSeq"  	column="ATTCH_FL_SEQ" />
+		<result property="fileCnt"  	column="FILE_CNT" />
+		<result property="delYn"  		column="DEL_YN" />
+		<result property="regId"  		column="REG_ID" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+
+
+	<parameterMap id="noticeParam" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="noticeResultMap" />
+		<parameter property="title"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regFdt"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regTdt"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userNm"  jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="notice.listNoticeInfo" parameterMap="noticeParam">
+		{call Pkg_Rtcm0030.p_sRtcm0030(?, ?, ?, ?, ?)}
+	</procedure>
+
+	
+	<parameterMap id="insert_sRtcm0030" class="java.util.Map">
+		<parameter property="dvsn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="ntcSeq"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="ntcType"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="title"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="contents"  	mode="IN" jdbcType="CLOB"/>
+		<parameter property="startDt"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDt"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="readCnt"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="attchFlSeq"  	mode="IN" jdbcType="VARCHAR" />
+		
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="notice.saveNoticeInfo" parameterMap="insert_sRtcm0030">
+		{call Pkg_Rtcm0030.p_IUDRtcm0030(?, ?, ?, ?, ?, ?, ?, ?, ?, 'N', ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="createSeq" class="java.util.Map">
+		<parameter property="grpSeq" 	jdbcType="INTEGER" mode="OUT" resultMap="commHeaderResultMap" />
+	</parameterMap>
+	
+	<resultMap  id="commHeaderResultMap" class="java.util.Map">
+		<result property="grpSeq"  		column="GRP_SEQ" />
+	</resultMap>
+	
+	<procedure id="notice.selectImageSeq" parameterMap="createSeq">
+		{call ? := Pkg_Rtcm0040.f_sRtcm0040GrpSeq()}
+	</procedure>
+	
+	<!-- 공지사항 조회수증가 -->
+	<parameterMap id="update_hit" class="java.util.Map">
+		<parameter property="ntcSeq"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="notice.updateHitCount" parameterMap="update_hit">
+		{call Pkg_Rtcm0030.p_UpdateRtcm0030ReadCnt(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 공지사항 첨부파일 목록조회 -->
+	<resultMap id="fileResultMap" class="java.util.HashMap">
+		<result property="fileSeq"  	column="FILE_SEQ" />
+		<result property="fileGrpSeq"  	column="FILE_GRP_SEQ" />
+		<result property="fileLnm"  	column="FILE_LNM" />
+		<result property="filePnm"  	column="FILE_PNM" />
+		<result property="filePath"  	column="FILE_PATH" />
+		<result property="fileSize"  	column="FILE_SIZE" />
+		<result property="uplpgCd"  	column="UPLPG_CD" />
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="ordNo"  		column="ORD_NO" />
+	</resultMap>
+
+
+	<parameterMap id="uploadFileParam" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="fileResultMap" />
+		<parameter property="attchFlSeq"  jdbcType="DECIMAL" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="notice.selectFileList" parameterMap="uploadFileParam">
+		{call Pkg_Rtcm0040. p_sRtcm0040FileGrpList(?, ?)}
+	</procedure>
+	
+	<parameterMap id="uploadFileParamOne" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="fileResultMap" />
+		<parameter property="fileSeq"  	jdbcType="DECIMAL" mode="IN" />
+	</parameterMap>
+	
+	<procedure id="notice.selectFileOne" parameterMap="uploadFileParamOne">
+		{call Pkg_Rtcm0040.p_sRtcm0040FileOne(?, ?)}
+	</procedure>
+	
+	
+</sqlMap>

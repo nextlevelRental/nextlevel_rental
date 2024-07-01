@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rentalMaster">
+	
+	<resultMap id="masterResultMap" class="java.util.HashMap">
+		<result property="rtmasterNu" column= "RTMASTER_NU" />
+		<result property="rtmasterNm" column= "RTMASTER_NM" />
+		<result property="mobNo" column= "MOB_NO" />
+		<result property="telNo" column= "TEL_NO" />		  		
+		<result property="useYn" column= "USE_YN" />
+		<result property="regId" column= "REG_ID" />
+		<result property="regDt" column= "REG_DT" />
+		<result property="chgId" column= "CHG_ID" />
+		<result property="chgDt" column= "CHG_DT" />				
+	</resultMap>
+       
+	<parameterMap id="masterParam" class="java.util.Map">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="masterResultMap" />
+		<parameter property="rentalGroupNm" mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMaster.listRentalMaster" parameterMap="masterParam">
+		{call PKG_RTSD0050.p_sRtsd0050(?, ?)}
+	</procedure>
+
+	<resultMap id="mgtAreaResultMap" 	  class="java.util.HashMap">
+		<result property="rtmasterNu" 	  column= "RTMASTER_NU" />
+		<result property="rentalGroup" 	  column = "RENTAL_GROUP" />   
+		<result property="rentalGroupNm"  column = "RENTAL_GROUP_NM" />
+		<result property="rentalOffice"   column = "RENTAL_OFFICE" />  
+		<result property="rentalOfficeNm" column = "RENTAL_OFFICE_NM" />
+		<result property="strDay" 		  column = "STR_DAY" />        
+		<result property="endDay" 		  column = "END_DAY" />
+		<result property="regId" 		  column= "REG_ID" />
+		<result property="regDt" 		  column= "REG_DT" />
+		<result property="chgId" 		  column= "CHG_ID" />
+		<result property="chgDt" 		  column= "CHG_DT" />				
+	</resultMap>
+       
+	<parameterMap id="mgtAreaParam" class="java.util.Map">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mgtAreaResultMap" />
+		<parameter property="rtMasterNu" mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMaster.listMgmtArea" parameterMap="mgtAreaParam">
+		{call PKG_RTSD0050.p_sRtsd0050MgmtArea(?, ?)}
+	</procedure>
+	
+	<resultMap id="salesAgentResultMap" class="java.util.HashMap">
+		<result property="agencyCd" 	  column = "AGENCY_CD"  />  
+		<result property="agencyNm" 	  column = "AGENCY_NM"  />  
+		<result property="salesGroup" 	  column = "SALES_GROUP"  />  
+		<result property="salesOffice" 	  column = "SALES_OFFICE"  />  
+		<result property="telNo" 		  column = "TEL_NO"  />  
+		<result property="chanCd" 		  column = "CHAN_CD"  />  
+		<result property="lifnr" 		  column = "LIFNR"  />  
+		<result property="taxRqcd" 		  column = "TAX_RQCD"  />  
+		<result property="rentalYn" 	  column = "RENTAL_YN"  />
+		<result property="chanLclsCd" 	  column = "CHAN_LCLS_CD"  />		
+		<result property="chanMclsCd" 	  column = "CHAN_MCLS_CD"  />		  
+		<result property="rentalGroup" 	  column = "RENTAL_GROUP"  />  
+		<result property="rentalGroupNm"  column = "RENTAL_GROUP_NM"  />  
+		<result property="rentalOffice"   column = "RENTAL_OFFICE"  />  
+		<result property="rentalOfficeNm" column = "RENTAL_OFFICE_NM"  />
+	</resultMap>
+       
+	<parameterMap id="salesAgentParam" class="java.util.Map">
+		<parameter property="vcursor"     jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="salesAgentResultMap" />
+		<parameter property="rentalGroup" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rtMasterNu"  mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMaster.listSalesAgent" parameterMap="salesAgentParam">
+		{call PKG_RTSD0050.p_sRtsd0050SalesAgent(?, ?, ?)}
+	</procedure>
+
+	<resultMap id="resultNuSeqMap" class="java.util.Map">
+		<result property="nuSeq"  	column="NU_SEQ" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="nuSeqMap"> 
+		<parameter property="result"    jdbcType="VARCHAR" javaType="java.lang.Integer" mode="OUT" resultMap="resultNuSeqMap" />   
+	</parameterMap>
+	
+	<!-- 사번시퀀스 -->
+	<procedure id="rentalMaster.getNuSeq" parameterMap="nuSeqMap">
+		{call ? := PKG_RTSD0050.f_sRtsd0050NuSeq()}		
+	</procedure>
+		
+	<parameterMap id="p_IUDRTSD0050_I" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="rtmasterNu"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rtmasterNm"   	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="mobNo" 		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="telNo" 		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"   		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="rentalMaster.saveRentalMaster" parameterMap="p_IUDRTSD0050_I">
+		{call PKG_RTSD0050.p_IUDRtsd0050(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)} 
+	</procedure>
+
+	<parameterMap id="p_IUDRTSD0051_I" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="rtmasterNu"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalGroup"   mode="IN" jdbcType="VARCHAR" />
+		<parameter property="rentalOffice" 	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="rentalMaster.saveRentalArea" parameterMap="p_IUDRTSD0051_I">
+		{call PKG_RTSD0051.p_IUDRtsd0051(?, ?, ?, ?, ?, ?, ?, ?)} 
+	</procedure>		
+</sqlMap>

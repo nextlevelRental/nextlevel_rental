@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="sample">
+	<parameterMap id="pTodayNiceCnt" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="todayNiceCntMap" />
+		<parameter property="safekey" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creDay" 		jdbcType="VARCHAR" mode="IN" />
+
+	</parameterMap>
+	
+	<resultMap id="todayNiceCntMap" class="java.util.HashMap">
+		<result property="safekey" 		column="SAFEKEY" />
+		<result property="creDay" 		column="CRE_DAY" />
+		<result property="seq" 			column="SEQ" />
+		<result property="crGrade" 		column="CR_GRADE" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<procedure  id="cust.searchTodayNiceData" resultClass="java.util.Map" parameterMap="pTodayNiceCnt">
+		{call Pkg_Rtsd0202.p_sRtsd0202TodayExists ( ?, ?, ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0202">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seq"     		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="crGrade"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.createNiceTrustInfoMap" parameterMap="p_IUDRtsd0202">
+		{call Pkg_Rtsd0202.p_IUDRtsd0202(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0204">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seq"     		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="coGrade"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.createNiceBusinessInfo" parameterMap="p_IUDRtsd0204">
+		{call Pkg_Rtsd0204.p_IUDRtsd0204(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+		<!-- 법인등급조회 -->
+	<parameterMap id="bisParamMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="bisMap" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="bisMap" class="java.util.HashMap"/>
+		
+	<procedure  id="cust.niceBisinessSearch" resultClass="java.util.Map" parameterMap="bisParamMap">
+		{call ? := Pkg_Rtcm0051.f_sRtcm0051CodeName (?, ?)}
+	</procedure>
+	
+	
+	<parameterMap id="pTodayBisCnt" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="todayBisCntMap" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creDay" 		jdbcType="VARCHAR" mode="IN" />
+
+	</parameterMap>
+
+	<resultMap id="todayBisCntMap" class="java.util.HashMap">
+		<result property="buslNo" 		column="BUSL_NO" />
+		<result property="creDay" 		column="CRE_DAY" />
+		<result property="coGrade" 		column="CO_GRADE" />
+		
+	</resultMap>
+	<procedure  id="cust.searchTodayBisData" resultClass="java.util.Map" parameterMap="pTodayBisCnt">
+		{call Pkg_Rtsd0204.p_sRtsd0204TodayCount ( ?, ?, ? )}
+	</procedure>
+	
+	<!-- 금융결제원 계좌번호 유효성체크 이력생성 -->
+	<parameterMap class="java.util.Map" id="p_IUDRtre0012_backup">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertDay"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertSeq"     		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="bankCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acctNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ebirDay"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertId"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertChk"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertErrcd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertDesc"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ownerNm"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chkcnt"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.kftcCmsDocInfo_backup" parameterMap="p_IUDRtre0012_backup">
+		{call Pkg_Rtre0012.p_IUDRtre0012(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

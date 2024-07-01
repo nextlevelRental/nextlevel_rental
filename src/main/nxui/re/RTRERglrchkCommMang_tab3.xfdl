@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRERglrchkCommMang_tab3" classname="RTRERglrchkCommMang_tab3" left="0" top="0" width="1122" height="496" titletext="지급대상 조회" onload="RTRERglrchkCommMang_tab3_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_referYM" taborder="45" text="기준월" cssclass="sta_WF_schTitle" left="20" top="8" width="84" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_referYM" taborder="46" dateformat="yyyy-MM" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="120" height="21" value="null" editformat="yyyy-MM"/>
+              <Static id="Static22" taborder="47" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="48" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="49" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="50" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="4" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="5" text="조회결과" cssclass="sta_WF_subTitle" left="10" top="72" width="86" height="20"/>
+        <Static id="Static02" taborder="6" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="417" width="1110" height="20" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grd_list" taborder="8" binddataset="ds_list" useinputpanel="false" left="10" top="97" width="1102" height="320">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="83"/>
+                <Column size="110"/>
+                <Column size="101"/>
+                <Column size="90"/>
+                <Column size="304"/>
+                <Column size="259"/>
+                <Column size="95"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="마감기준월"/>
+                <Cell col="1" text="처리 로디안"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="배정기준월"/>
+                <Cell col="4" text="주소"/>
+                <Cell col="5" text="상세주소"/>
+                <Cell col="6" text="수수료"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" style="align:center;" text="bind:slcmYm" mask="@@@@-@@" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:procMrNm"/>
+                <Cell col="2" style="align:center;" text="bind:ordNo" calendardisplay="display"/>
+                <Cell col="3" edittype="none" style="align:center;" text="bind:stdYm" mask="@@@@-@@" calendardisplay="display"/>
+                <Cell col="4" displaytype="normal" style="align:left middle;" text="bind:addr1"/>
+                <Cell col="5" style="align:left;" text="bind:addr2"/>
+                <Cell col="6" displaytype="number" style="align:right;" text="bind:amtComm"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" style="align:right middle;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3"/>
+                <Cell col="4" style="align:right middle;"/>
+                <Cell col="5" style="align:right middle;"/>
+                <Cell col="6" displaytype="number" style="align:right;" expr="expr:comp.parent.ds_list.getSum(&quot;amtComm&quot;)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="slcmYm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="servDseq" type="STRING" size="256"/>
+          <Column id="stdYm" type="STRING" size="256"/>
+          <Column id="jobSeq" type="STRING" size="256"/>
+          <Column id="procMrCd" type="STRING" size="256"/>
+          <Column id="procMrNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="jobDseq" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="amtComm" type="STRING" size="256"/>
+          <Column id="chgJobseq" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTRERglrchkCommMang_tab3.xfdl
+ * 설    명 : 정기점검수수료 관리 > 지급대상 조회
+ * 작 성 자 : wjim
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-05-26	wjim		신규 개발
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 전역변수 선언
+ */
+this.toDay  = "";		// 서버기준 오늘날자
+this.prevYm = "";		// 전월
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리 (최초 1회만 수행)
+ */
+this.RTRERglrchkCommMang_tab3_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	// 폼 로드 공통함수
+	Ex.core.init(obj);
+	// 화면 초기화
+	this.fn_init();
+}
+
+/**
+ * Transaction CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert", strErrorMsg);
+	
+	switch (strSvcId) {		
+		// 기준월 세팅
+		case "setReferYm":
+			prevYm = this.toDay.substr(0,4)+(this.toDay.substr(4,2)-1);	// 서버시간 기준 전월(1월의 경우 12월로 정상표현되는지 확인 필요)
+			this.div_search.cal_referYM.set_value(prevYm);
+			break;
+		
+		// 조회
+		case "getList":
+			if (this.ds_list.getRowCount() == 0) {
+				this.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			break;
+		
+		default:
+			break;
+	}
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {		
+	// 메인 공통버튼 초기화 (조회,엑셀)
+	this.parent.parent.parent.setButton("E|S",this);
+	// 기준월 세팅
+	this.fn_setReferYm();
+}
+
+/**
+ * 기준월 세팅
+ */
+this.fn_setReferYm  = function() {
+	var sSvcID      	= "setReferYm";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 조회 버튼 클릭 이벤트 처리
+ */
+this.fn_search = function() {
+	// 필수값 검증 - 기준월
+	if (nvl(this.div_search.cal_referYM.value) == "") {
+		this.alert('기준월을 입력하세요');
+		this.div_search.cal_referYM.setFocus();
+		return;
+	}
+		
+	var sSvcID      	= "getList";  
+	var sController   	= "rtms/re/listRegularchkComm.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list=ds_regularchkComm";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("slcmYm", nvl(this.div_search.cal_referYM.value).substr(0,6));	// 기준월
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+/**
+ * 엑셀 버튼 클릭 이벤트 처리
+ */
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grd_list);
+}]]></Script>
+  </Form>
+</FDL>

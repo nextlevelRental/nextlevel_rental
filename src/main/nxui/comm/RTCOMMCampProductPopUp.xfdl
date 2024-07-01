@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMProduct_pop" classname="RTCMPrice_pop" left="0" top="0" width="885" height="482" titletext="상품 조회(패턴,규격)" onload="RTCMPrice_pop_onload" onkeyup="RTCOMMProduct_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="10" top="8" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="864">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="42" text="조회" cssclass="btn_WF_CRUD" left="760" top="12" height="23" domainId="nexa.add" onclick="div_search_btn_search_onclick" width="80"/>
+              <Static id="st_searchModel" taborder="45" text="검색어" cssclass="sta_WF_schTitle" left="20" top="12" height="21" domainId="nexa.s_condition" width="80"/>
+              <Edit id="Edit00" taborder="46" left="100" top="12" width="160" height="21" tooltiptext="edit" displaynulltext="상품명" onkeyup="div_search_Edit00_onkeyup"/>
+              <Static id="Static04" taborder="47" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="41"/>
+              <Static id="Static00" taborder="48" cssclass="Guide_color" visible="false" left="260" top="0" width="30" height="41"/>
+              <Static id="Static05" taborder="50" cssclass="Guide_color" visible="false" left="840" top="0" width="20" height="41"/>
+              <Static id="Static22" taborder="51" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="860"/>
+              <Static id="Static02" taborder="52" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="860"/>
+              <Static id="Static01" taborder="53" cssclass="Guide_color" visible="false" left="740" top="0" width="20" height="41"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_price" taborder="1" useinputpanel="false" left="10" top="63" height="380" binddataset="ds_product" oncelldblclick="grid_product_oncelldblclick" autosizebandtype="body" autofittype="col" width="865">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="220"/>
+                <Column size="220"/>
+                <Column size="220"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상품코드"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="패턴코드"/>
+                <Cell col="3" text="패턴명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:matCd"/>
+                <Cell col="1" text="bind:matNm"/>
+                <Cell col="2" text="bind:petternCd"/>
+                <Cell col="3" text="bind:pettrenNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" left="787" top="453" width="41" height="21" positionstep="0" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" left="834" top="452" width="41" height="21" domainId="nexa.add"/>
+        <Static id="Static22" taborder="4" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="885"/>
+        <Static id="Static00" taborder="5" cssclass="Guide_color" visible="false" left="0" top="53" height="10" width="885"/>
+        <Static id="Static03" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="480"/>
+        <Static id="Static01" taborder="7" cssclass="Guide_color" visible="false" left="875" top="0" width="10" height="480"/>
+        <Static id="Static02" taborder="8" cssclass="Guide_color" visible="false" left="0" top="443" height="10" width="885"/>
+        <Static id="Static04" taborder="9" cssclass="Guide_color" visible="false" left="0" top="473" height="10" width="885"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_product" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="sectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="demmndQty" type="STRING" size="256"/>
+          <Column id="pgCd" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="sizeNm" type="STRING" size="256"/>
+          <Column id="pettrenNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.args = "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "listBrandCombo" ){
+		var dsBrandRowCt = this.ds_brand.getRowCount();
+		if( dsBrandRowCt != 0 ){
+			
+		}
+	}
+	
+	if( strSvcId == "listModelCombo" ){
+		var dsBrandRowCt = this.ds_brand.getRowCount();
+		if( dsBrandRowCt != 0 ){
+			
+		}
+	}
+	
+	if( strSvcId == "listProductPop" ){
+		var dsProductRowCt = this.ds_product.getRowCount();
+		if( dsProductRowCt == 0 ){
+			this.grid_product.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.cb_searchModel.setFocus();
+		} 
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCMPrice_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "listBrandCombo";  
+	var sController   	= "rtms/comm/listBrandCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_brand=output1";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_searchBrand_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var cbSearchBrandlVal 	= nvl(this.div_search.cb_searchBrand.value);
+	var sSvcID      	= "listModelCombo";  
+	var sController   	= "rtms/comm/listModelCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_model=mapModelCombo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	if( cbSearchBrandlVal != "" ){
+		sArgs += Ex.util.setParam("makerCd", cbSearchBrandlVal);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_cb_searchModel_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo){
+	var nRow1 = this.ds_model.findRow( "rn", this.div_search.cb_searchModel.value );
+	var nRow2 = this.ds_model.findRow( "mcNm", this.div_search.cb_searchModel.text );
+	if( nvl(nRow1) != "" && nvl(nRow2) != "" ){
+		this.grid_model.selectRow( nRow1 );
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var matNm = nvl(this.div_search.Edit00.value);
+	var sSvcID        	= "listProductPop";                    
+	var sController   	= "rtms/sd/listCampProductPop.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_product=mapProduct";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	this.ds_product.deleteAll();
+	sArgs += Ex.util.setParam("matNm", matNm);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_choice = function(){
+	var nCnt= this.ds_product.getRowCount();
+	var idx = this.ds_product.rowposition;
+	var cd 	= this.ds_product.getColumn(idx, "matCd");
+	var nm 	= this.ds_product.getColumn(idx, "matNm");
+	
+	if( nCnt == 0 ){
+		alert("조회된 상품정보가 없습니다.");
+		return false;
+	}
+	
+	if( nvl(cd) == "" && nvl(nm) == "" ){
+		alert("상품정보를 다시 확인하세요.");
+		return false;
+	}
+	
+	if( this.parent.p_formId == "RTSDCampReg" ){
+		var arr = { cd : cd, nm : nm };
+		this.close(this.opener.returnProduct(arr));
+	}else if( (this.parent.p_formId == "RTRESalesCommMang_tab1_Select")
+				|| (this.parent.p_formId == "RTREInstallCommMang_tab1_Select")
+					|| (this.parent.p_formId == "RTREServiceCommMang_tab1_Select")){
+		var arr = { cd : cd, nm : nm };
+		this.close(this.opener.returnProductSelect(arr));
+	}else if( (this.parent.p_formId == "RTRESalesCommMang_tab1_Insert")
+				|| (this.parent.p_formId == "RTREInstallCommMang_tab1_Insert")
+					|| (this.parent.p_formId == "RTREServiceCommMang_tab1_Insert")){
+		var arr = { cd : cd, nm : nm };
+		this.close(this.opener.returnProductInsert(arr));
+	}else{
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_product_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.FN_choice();
+}
+
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_Edit00_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.div_search_btn_search_onclick();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMProduct_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

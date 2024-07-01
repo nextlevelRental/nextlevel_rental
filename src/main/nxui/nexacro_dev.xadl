@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="1.2">
+  <TypeDefinition url="default_typedef.xml"/>
+  <GlobalVariables url="globalvars_dev.xml"/>
+  <Application id="xplatform" codepage="utf-8" language="Korean" loginformurl="" loginformstyle="" windowopeneffect="" windowcloseeffect="" version="" tracemode="" themeid="hgr.xtheme" onload="application_onload" onerror="application_onerror" onbeforeexit="application_onbeforeexit" loadingimage="image::waitimage.gif" networksecurelevel="all" filesecurelevel="all">
+    <Layout>
+      <MainFrame id="mainframe" title="maintitle" resizable="true" showtitlebar="false" showstatusbar="false" position1="absolute 0 0 800 800" width="1280" height="918" visible="true" titletext=":: Play nexacro Platform HTML5 ::" onsize="MainFrame_onsize">
+        <ChildFrame id="index" formurl="frame::index.xfdl" showtitlebar="false"/>
+      </MainFrame>
+    </Layout>
+    <ScreenInfo/>
+    <Script type="xscript5.0"/>
+    <Style url="css::tuning.css"/>
+  </Application>
+  <Script type="xscript5.0"><![CDATA[
+/**********************************************************************************
+ 각 프레임에 해당되는 객체 참조 변수
+ **********************************************************************************/
+
+this.gv_arrClipboard = ""; //클립보드 저장용 글로벌 변수
+this.gv_comAll = undefined;
+this.gv_op = "OP"
+this.gv_frameWidth  = 1280;   //화면 넓이
+gv_index = "";
+gv_home = "";
+gv_left = "";
+gv_work = "";
+gv_login = "";
+gv_main ="";
+gv_workTop = "";
+
+/* 상수 */
+ct_txtPrefixFr = "{";
+ct_txtPrefixTo = "}";
+ct_MsgTitle = "알림";
+/* 열린메뉴정보 칼럼 상수*/
+ct_winIdCol = "WIN_ID"; //윈도우(프레임)아이디(열린 메뉴의 윈도우 아이디)
+ct_titleCol = "TITLE"; //타이틀
+
+/* 사용자정보 칼럼 상수*/
+ct_userIdCol = "USER_NO"; //아이디
+ct_userNameCol = "USER_NAME"; //이름
+
+/* 도메인정보 칼럼 상수*/
+ct_domainIdCol = "ID"; //도메인 아이디
+ct_domainTextCol = "TEXT"; //Text
+ct_domainLocale = "LOCALE";
+//ct_domainGp = "MSG_GP"; //Text
+
+/* 페이징 관련 컬럼 상수 */
+ct_viewPage = "VIEWPAGE";
+ct_rowCount = "ROWCOUNT";
+ct_totalCount = "TOTALCOUNT";
+
+/* 도메인 관련 상수 */
+ct_localeKo = "KO";
+ct_localeEn = "EN";
+
+/* 공통처리에 사용할 컨트롤의 기능 플래그 설정 속성*/
+ct_FlagProp = "userdata";
+
+/* 공통처리에 사용할 기능플래그명 상수*/
+ct_ActionFlag = "A";
+ct_ResizeFlag = "R";
+ct_OriginPFlag = "ORP";
+
+/* 공통처리에 사용할 컨트롤들의 기능 플래그(권한처리 시 사용)*/
+ct_insertAct = "I"; //데이터 추가
+ct_updateAct = "U"; //데이터 수정
+ct_deleteAct = "D"; //데이터 삭제
+ct_commitAct = "T"; //데이터 저장 (서버에 저장처리)
+ct_outputAct = "P"; //데이터 프린트 또는 PC(파일)로 저장
+
+// 그리드 클립보드 카피용 구분자
+ct_separator = "    ";
+
+//아이디 저장 상수
+ct_cookieSaveId = "CP_SAVEID";
+ct_cookieSaveIdCheck = "CP_SAVEID_CHECKED";
+
+ct_sheet = "Sheet";
+// ct_exportTimerId = 293322;
+// ct_importTimerId = 293221;
+//ct_fileStatus = "fileStatusLayer";
+
+ct_first_row_empty = "";
+ct_first_row_all = "= All =";
+ct_first_row_select = "= Select =";
+
+ct_menuIdCol ="MENU_CD"; //아이디
+ct_menuNameCol = "MENU_NM"; //명칭
+ct_menuLvlCol = "MENU_LEVEL"; //레벨
+ct_menuUrlCol = "MENU_LINK"; //페이지경로
+ct_menuNaviCol = "MENU_NAVI"; //페이지경로
+ct_menuAuthCol = "MENU_AUTH"; //메뉴에 대한 권한
+ct_menuGidCol = "MENU_GRP"; 
+
+
+
+// fv_exportObject = undefined;
+// fv_exportFileName = undefined;
+// fv_importDsName = undefined; 
+TOBE = nexacro;
+
+this.application_onload = function(obj:Application, e:TOBE.LoadEventInfo)
+{  
+
+    var appUrl = application.xadl;
+    var appUrlSplit = appUrl.split("/");
+    var protocol = appUrlSplit[0];
+       gv_index = application.mainframe.index;
+
+    //auto host mapping
+    if(protocol == "file:" || appUrlSplit[2].indexOf("localhost")  != -1 )
+    {
+        application.gv_op = "[LOCAL]";
+        application.mainframe.set_titletext(application.gv_op  + application.mainframe.titletext);
+
+    }else
+    {
+        if(appUrlSplit[2].indexOf("kdf") != -1)
+        {
+           application.gv_op = "[DEV]";  //개발서버
+        }
+        else if(appUrlSplit[2].indexOf("ndf") != -1)
+        {
+           application.gv_op = "[QA]";  //QA서버
+        }
+        else
+        {
+           application.gv_op = "";  //운영서버
+        }
+       alert(">>>>");
+        application.services["svcurl"].url = protocol + "//" + appUrlSplit[2] + "/";
+        application.gv_host = application.services["svcurl"].url;  //set host url globalVal 
+        application.mainframe.set_titletext(application.gv_op  + application.mainframe.titletext);
+    }
+    
+      
+     //로딩시간 체크 추후 테스트
+    if(application.gv_debug == "Y")
+    {
+         ExtNx.Logger.debug({message:"Application Onload start!!! '"+new Date()+"'", elapsed:true, stack:true});
+    }
+      
+}
+
+
+
+this.application_onexit = function(obj:Application, e:TOBE.ExitEventInfo)
+{
+//  alert( "application_onexit"  );
+}
+
+this.application_onbeforeexit = function(obj:Application, e:TOBE.ExitEventInfo)
+{
+ 
+}
+this.afn_logout = function() { 
+  this.gv_appTopFrame.form.gfn_logout(); 
+}
+
+  
+this.MainFrame_onsize = function(obj:MainFrame, e:nexacro.SizeEventInfo)
+{
+    //trace("e.cx ==>"+e.cx);
+//     if(e.cx < this.gv_frameWidth)
+//     {
+//        obj.set_width(this.gv_frameWidth);
+//     }
+    
+}
+
+this.application_onerror = function(obj:Application, e:nexacro.ErrorEventInfo)
+{
+    
+    
+    //   if (e.errortype == -2147418085) {
+
+        if (e.statuscode == 10060) {
+           application.gv_errormsg = "HTTP ERROR :10060] sever reqeuest";
+        }else if (e.statuscode == 0) {
+
+            gv_errormsg = e.errormsg;
+
+        }else if (e.statuscode == 404)
+        {
+           application.gv_errormsg = "[HTTP ERROR :404] 404 Not Found";
+            //404 에러시 처리 방안
+        }else if (e.statuscode == 408) {
+            application.gv_errormsg = "[HTTP ERROR :408] Request Timeout";
+        } else if (e.statuscode == 500) {
+            application.gv_errormsg ="[HTTP ERROR :500] Internal Server Error";
+        //500 에러시 처리 방안
+        } else if (e.statuscode == 503) {
+           application.gv_errormsg ="[HTTP ERROR : 503] System is unavailable. Please reconnect after a while.";
+
+        } else if (e.statuscode == 12029) {
+           application.gv_errormsg ="[HTTP ERROR : 12029] Has failed to communicate with the current system. Please use it after a while..";
+
+        } else {
+          application.gv_errormsg =  e.errormsg;
+        }
+        
+        
+        trace(" e.statuscode : "  + e.statuscode);
+        
+    //}
+}
+]]></Script>
+</ADL>

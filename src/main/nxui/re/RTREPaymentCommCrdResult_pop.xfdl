@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREPaymentCommCrdResult_pop" classname="test_form" left="0" top="0" width="578" height="626" titletext="카드즉시출금 결과" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" top="0" width="10" right="0" bottom="0"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="0" height="20" style="background:aqua;color:#333333ff;" right="10"/>
+        <Static id="st_unRlsSelerList" taborder="15" text="처리결과" cssclass="sta_WF_subTitle" left="10" top="16" width="81" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="31" height="10" style="background:aqua;color:#333333ff;" right="10"/>
+        <Static id="Static03" taborder="59" cssclass="Guide_color" visible="false" top="0" width="10" left="0" bottom="0"/>
+        <Button id="btn_close" taborder="61" text="닫기" onclick="btn_close_onclick" right="10" width="41" height="21" domainId="nexa.add" bottom="15"/>
+        <Div id="div_paymentResult" taborder="137" left="10" top="40" height="541" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_resCdTh" taborder="0" text="결과 코드" cssclass="sta_WF_detailLabelP" left="0" top="0" width="140" height="31"/>
+              <Static id="st_resCd" taborder="1" cssclass="sta_WF_detailLabel2" left="139" top="0" right="0" height="31"/>
+              <Static id="st_resMsg" taborder="2" cssclass="sta_WF_detailLabel2" left="139" top="30" right="0" height="31"/>
+              <Static id="st_resMsgTh" taborder="3" text="결과 메세지" cssclass="sta_WF_detailLabelP" left="0" top="30" width="140" height="31"/>
+              <Static id="st_tordNoTh" taborder="4" text="주문번호" cssclass="sta_WF_detailLabelP" left="0" top="60" width="140" height="31"/>
+              <Static id="st_tordNo" taborder="5" cssclass="sta_WF_detailLabel2" left="139" top="60" right="0" height="31"/>
+              <Static id="st_tno" taborder="6" cssclass="sta_WF_detailLabel2" left="139" top="90" right="0" height="31"/>
+              <Static id="st_recpAmtTh" taborder="7" text="결제 금액" cssclass="sta_WF_detailLabelP" left="0" top="120" width="140" height="31"/>
+              <Static id="st_tnoTh" taborder="8" text="KCP 거래번호" cssclass="sta_WF_detailLabelP" left="0" top="90" width="140" height="31"/>
+              <Static id="st_recpAmt" taborder="9" cssclass="sta_WF_detailLabel2" left="139" top="120" right="0" height="31"/>
+              <Static id="st_matNm" taborder="10" cssclass="sta_WF_detailLabel2" left="139" top="150" right="0" height="31"/>
+              <Static id="st_matNmTh" taborder="11" text="상 품 명" cssclass="sta_WF_detailLabelP" left="0" top="150" width="140" height="31"/>
+              <Static id="st_custNmTh" taborder="12" text="주문자명" cssclass="sta_WF_detailLabelP" left="0" top="180" width="140" height="31"/>
+              <Static id="st_custNm" taborder="13" cssclass="sta_WF_detailLabel2" left="139" top="180" right="0" height="31"/>
+              <Static id="st_telNo" taborder="14" cssclass="sta_WF_detailLabel2" left="139" top="210" right="0" height="31"/>
+              <Static id="st_telNoTh" taborder="15" text="주문자 전화번호" cssclass="sta_WF_detailLabelP" left="0" top="210" width="140" height="31"/>
+              <Static id="st_mobNoTh" taborder="16" text="주문자 휴대폰번호" cssclass="sta_WF_detailLabelP" left="0" top="240" width="140" height="31"/>
+              <Static id="st_mobNo" taborder="17" cssclass="sta_WF_detailLabel2" left="139" top="240" right="0" height="31"/>
+              <Static id="st_email" taborder="18" cssclass="sta_WF_detailLabel2" left="139" top="270" right="0" height="31"/>
+              <Static id="st_emailTh" taborder="19" text="주문자 E-mail" cssclass="sta_WF_detailLabelP" left="0" top="270" width="140" height="31"/>
+              <Static id="st_usePayMethodTh" taborder="20" text="결제 수단" cssclass="sta_WF_detailLabelP" left="0" top="300" width="140" height="31"/>
+              <Static id="st_usePayMethod" taborder="21" cssclass="sta_WF_detailLabel2" left="139" top="300" right="0" height="31"/>
+              <Static id="st_crdCdNm" taborder="22" cssclass="sta_WF_detailLabel2" left="139" top="330" right="0" height="31"/>
+              <Static id="st_crdCdNmTh" taborder="23" text="결제 카드" cssclass="sta_WF_detailLabelP" left="0" top="330" width="140" height="31"/>
+              <Static id="st_appTimeTh" taborder="24" text="승인 시간" cssclass="sta_WF_detailLabelP" left="0" top="360" width="140" height="31"/>
+              <Static id="st_appTime" taborder="25" cssclass="sta_WF_detailLabel2" left="139" top="360" right="0" height="31"/>
+              <Static id="st_appNo" taborder="26" cssclass="sta_WF_detailLabel2" left="139" top="390" right="0" height="31"/>
+              <Static id="st_appNoTh" taborder="27" text="승인 번호" cssclass="sta_WF_detailLabelP" left="0" top="390" width="140" height="31"/>
+              <Static id="st_quotaTh" taborder="28" text="할부 개월" cssclass="sta_WF_detailLabelP" left="0" top="420" width="140" height="31"/>
+              <Static id="st_quota" taborder="29" cssclass="sta_WF_detailLabel2" left="139" top="420" right="0" height="31"/>
+              <Static id="st_noinf" taborder="30" cssclass="sta_WF_detailLabel2" left="139" top="450" right="0" height="31"/>
+              <Static id="st_noinfTh" taborder="31" text="무이자 여부" cssclass="sta_WF_detailLabelP" left="0" top="450" width="140" height="31"/>
+              <Static id="st_noinfTypeTh" taborder="32" text="무이자 이벤트 구분" cssclass="sta_WF_detailLabelP" left="0" top="480" width="140" height="31"/>
+              <Static id="st_noinfType" taborder="33" cssclass="sta_WF_detailLabel2" left="139" top="480" right="0" height="31"/>
+              <Static id="st_receiptTh" taborder="35" text="영수증 확인" cssclass="sta_WF_detailLabelP" left="0" top="510" width="140" height="31"/>
+              <Static id="st_noinfType00" taborder="37" cssclass="sta_WF_detailLabel2" left="139" top="510" right="0" height="31"/>
+              <Button id="btn_receipt" taborder="36" text="영수증" onclick="btn_receipt_onclick" cssclass="btn_WF_CRUD" left="143" top="515" width="57" height="22"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_partCancelResult" taborder="135" left="10" top="40" height="151" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_resCdTh" taborder="1" text="결과 코드" cssclass="sta_WF_detailLabelP" left="0" top="0" width="140" height="31"/>
+              <Static id="st_resMsgTh" taborder="3" text="결과 메세지" cssclass="sta_WF_detailLabelP" left="0" top="30" width="140" height="31"/>
+              <Static id="st_modMnyTh" taborder="5" text="취소요청금액" cssclass="sta_WF_detailLabelP" left="0" top="90" width="140" height="31"/>
+              <Static id="st_remMnyTh" taborder="7" text="취소가능잔액" cssclass="sta_WF_detailLabelP" left="0" top="120" width="140" height="31"/>
+              <Static id="st_resCd" taborder="37" cssclass="sta_WF_detailLabel2" left="139" top="0" right="0" height="31"/>
+              <Static id="st_resMsg" taborder="38" cssclass="sta_WF_detailLabel2" left="139" top="30" right="0" height="31"/>
+              <Static id="st_modMny" taborder="39" cssclass="sta_WF_detailLabel2" left="139" top="90" right="0" height="31"/>
+              <Static id="st_remMny" taborder="40" cssclass="sta_WF_detailLabel2" left="139" top="120" right="0" height="31"/>
+              <Static id="st_amount" taborder="41" cssclass="sta_WF_detailLabel2" left="139" top="60" right="0" height="31"/>
+              <Static id="st_amountTh" taborder="42" text="총금액" cssclass="sta_WF_detailLabelP" left="0" top="60" width="140" height="31"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_cnclNErrResult" taborder="136" left="10" top="40" height="61" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_resCdTh" taborder="41" text="결과 코드" cssclass="sta_WF_detailLabelP" left="0" top="0" width="140" height="31"/>
+              <Static id="st_resMsgTh" taborder="42" text="결과 메세지" cssclass="sta_WF_detailLabelP" left="0" top="30" width="140" height="31"/>
+              <Static id="st_resCd" taborder="45" cssclass="sta_WF_detailLabel2" left="139" top="0" right="0" height="31"/>
+              <Static id="st_resMsg" taborder="46" cssclass="sta_WF_detailLabel2" left="139" top="30" right="0" height="31"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_result"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: result.jsp 임시대체팝업
+ * 02. 그룹명		: RTREPaymentCommCrdResult_pop.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2019-02-26
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2019-02-26		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ***********************************************************************/
+this.reqTx		= this.parent.reqTx;
+
+this.resCd		= this.parent.resCd;
+this.resMsg		= this.parent.resMsg;
+this.tordNo		= this.parent.tordNo;
+this.tno		= this.parent.tno;
+this.recpAmt	= this.parent.recpAmt;
+this.recpAmtTxt	= this.parent.recpAmtTxt;
+this.matNm		= this.parent.matNm;
+this.custNm		= this.parent.custNm;
+this.telNo		= this.parent.telNo;
+this.mobNo		= this.parent.mobNo;
+this.email		= this.parent.email;
+
+this.crdCd		= this.parent.crdCd;
+this.crdNm		= this.parent.crdNm;
+this.appTime	= this.parent.appTime;
+this.appNo		= this.parent.appNo;
+this.quota		= this.parent.quota;
+this.noinf		= this.parent.noinf;
+this.noinfType	= this.parent.noinfType;
+
+this.modType	= this.parent.modType;
+this.amount		= this.parent.amount;
+this.modMny		= this.parent.modMny;
+this.remMny		= this.parent.remMny;
+
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	this.fn_init();
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {
+	var divPay	 = this.div_paymentResult;
+	var divPCncl = this.div_partCancelResult;
+	var divECncl = this.div_cnclNErrResult;
+	
+	if(this.resCd == "0000" && this.modType != "STSC") {
+		if(this.reqTx == "pay") {
+			divPCncl.set_visible(false);
+			divECncl.set_visible(false);
+			
+			var crdCdNm	 = this.crdCd + " / " + this.crdNm;
+			
+			divPay.st_resCd.set_text(this.resCd);			/* 결과 코드				*/
+			divPay.st_resMsg.set_text(this.resMsg);			/* 결과 메세지				*/
+			divPay.st_tordNo.set_text(this.tordNo);			/* 주문 번호				*/
+			divPay.st_tno.set_text(this.tno);				/* KCP 거래번호			*/
+			divPay.st_recpAmt.set_text(this.recpAmtTxt);	/* 결제금액				*/
+			divPay.st_matNm.set_text(this.matNm);			/* 상품명					*/
+			divPay.st_custNm.set_text(this.custNm);			/* 주문자명				*/
+			divPay.st_telNo.set_text(this.telNo);			/* 주문자 전화번호		*/
+			divPay.st_mobNo.set_text(this.mobNo);			/* 주문자 휴대폰번호		*/
+			divPay.st_email.set_text(this.email);			/* 주문자 E-mail			*/
+			divPay.st_usePayMethod.set_text("신용카드");	/* 결제수단				*/
+			divPay.st_crdCdNm.set_text(crdCdNm);			/* 결제카드사 코드 / 명	*/
+			divPay.st_appTime.set_text(this.appTime);		/* 승인시간				*/
+			divPay.st_appNo.set_text(this.appNo);			/* 승인번호				*/
+			divPay.st_quota.set_text(this.quota);			/* 할부개월				*/
+			divPay.st_noinf.set_text(this.noinf);			/* 무이자 여부				*/
+			divPay.st_noinfType.set_text(this.noinfType);	/* 무이자 이벤트 구분		*/
+		} else if(this.reqTx == "mod") {
+			divPay.set_visible(false);
+			divECncl.set_visible(false);
+			
+			this.set_height(236);
+			this.parent.set_height(264);
+			
+			divPCncl.st_resCd.set_text(this.resCd);			/* 결과 코드				*/
+			divPCncl.st_resMsg.set_text(this.resMsg);		/* 결과 메세지				*/
+			divPCncl.st_amount.set_text(this.amount);		/* 총금액					*/
+			divPCncl.st_modMny.set_text(this.modMny);		/* 취소요청금액			*/
+			divPCncl.st_remMny.set_text(this.remMny);		/* 취소가능잔액			*/
+		}
+	} else {
+		divPay.set_visible(false);
+		divPCncl.set_visible(false);
+		
+		this.set_height(146);
+		this.parent.set_height(174);
+		
+		divECncl.st_resCd.set_text(this.resCd);				/* 결과 코드				*/
+		divECncl.st_resMsg.set_text(this.resMsg);			/* 결과 메세지				*/
+	}
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 닫기
+ */
+this.btn_close_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	this.close();
+}
+
+/**
+ * 영수증 확인
+ */
+this.btn_receipt_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	//var sUrl		 = "https://admin8.kcp.co.kr";
+	var sUrl		 = "https://testadmin8.kcp.co.kr";
+	var sReceiptWin	 = "";
+		sReceiptWin += sUrl + "/assist/bill.BillActionNew.do?cmd=card_bill";
+		sReceiptWin += "&tno=" + this.tno;
+		sReceiptWin += "&order_no=" + this.tordNo;
+		sReceiptWin += "&trade_mony=" + this.recpAmt;
+	
+	window.open(sReceiptWin, "", "width=455, height=815");
+}]]></Script>
+  </Form>
+</FDL>

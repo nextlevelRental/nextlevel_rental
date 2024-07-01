@@ -1,0 +1,434 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDBillModify" classname="RTSDBillModify" left="0" top="0" width="1130" height="496" titletext="계산서 여부수정" scrollbars="none" dragscrolltype="none" onload="RTSDBillModify_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1105">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="80" cssclass="Guide_color" visible="false" left="100" top="0" width="30" height="44"/>
+              <Static id="Static05" taborder="81" text="계약번호" cssclass="sta_WF_schTitle" left="20" top="10" width="80" height="21"/>
+              <Edit id="ed_ordNo" taborder="82" left="130" top="10" width="120" height="21" onkeyup="div_search_eb_ordNo_onkeyup" displaynulltext="계약번호"/>
+              <Button id="Button00" taborder="83" cssclass="btn_WF_edtSch" left="229" top="10" width="21" height="21" onclick="div_search_Button00_onclick"/>
+              <Static id="st_searchCondition02" taborder="89" text="발행여부" cssclass="sta_WF_schTitle" left="590" top="10" width="70" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_billYn" taborder="90" autoselect="true" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="660" top="10" width="120" height="21" innerdataset="@ds_billYn" index="-1" ondropdown="div_search_cb_billYn_ondropdown"/>
+              <Static id="Static00" taborder="91" cssclass="Guide_color" visible="false" left="250" top="0" width="30" height="44"/>
+              <Static id="Static02" taborder="92" cssclass="Guide_color" visible="false" left="560" top="0" width="30" height="44"/>
+              <Edit id="ed_custNm" taborder="94" enable="false" left="460" top="10" width="100" height="21" onkeyup="div_search_eb_custNo_onkeyup"/>
+              <Edit id="ed_custNo" taborder="96" enable="true" left="360" top="10" width="100" height="21" displaynulltext="고객번호"/>
+              <Static id="st_searchCondition01" taborder="97" text="고객" cssclass="sta_WF_schTitle" left="280" top="10" width="80" height="20" domainId="nexa.s_condition"/>
+              <Button id="Button01" taborder="98" onclick="div_search_Button01_onclick" cssclass="btn_WF_edtSch" left="439" top="9" width="21" height="21"/>
+              <Static id="Static22" taborder="99" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="10"/>
+              <Static id="Static23" taborder="100" cssclass="Guide_color" visible="false" left="1" top="31" width="1117" height="10"/>
+              <Static id="Static06" taborder="101" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="1" cssclass="Guide_color" visible="false" left="0" top="45" height="20" width="1130"/>
+        <Static id="Static21" taborder="2" text="메인 LIST" cssclass="sta_WF_subTitle" left="0" top="60" width="100" height="21"/>
+        <Static id="Static01" taborder="3" cssclass="Guide_color" visible="false" left="0" top="76" height="10" width="1130"/>
+        <Static id="Static00" taborder="5" cssclass="Guide_color" visible="false" left="0" top="252" width="1126" height="15"/>
+        <Static id="Static03" taborder="6" cssclass="Guide_color" visible="false" left="0" top="277" width="1129" height="8"/>
+        <Static id="Static04" taborder="7" text="세부 내역" cssclass="sta_WF_subTitle" left="0" top="263" width="169" height="20"/>
+        <Static id="Static10" taborder="8" cssclass="sta_WF_detailLabel2" left="0" top="285" height="31" onclick="Static10_onclick" width="1105"/>
+        <Static id="st_custNm" taborder="11" text="법 인 명" cssclass="sta_WF_detailLabel" left="272" top="285" width="88" height="31" domainId="nexa.s_condition" onclick="st_ordNo_onclick"/>
+        <Static id="Static05" taborder="15" cssclass="sta_WF_detailLabel2" left="0" top="315" height="31" width="1105"/>
+        <Edit id="ed_busiType" taborder="18" enable="false" left="364" top="321" width="183" height="20"/>
+        <Static id="st_busiType" taborder="19" text="업   종" cssclass="sta_WF_detailLabel" left="272" top="315" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_repNm" taborder="21" text="대표자명" cssclass="sta_WF_detailLabel" visible="true" left="0" top="315" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static06" taborder="24" cssclass="sta_WF_detailLabel2" left="0" top="345" height="31" width="1105"/>
+        <Static id="st_telNo" taborder="25" text="전화번호" cssclass="sta_WF_detailLabel" left="272" top="345" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_telNo" taborder="26" enable="false" left="364" top="351" width="183" height="20"/>
+        <Static id="st_mobNo" taborder="29" text="핸 드 폰" cssclass="sta_WF_detailLabel" left="0" top="345" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_mobNo" taborder="30" enable="false" left="92" top="351" width="176" height="20"/>
+        <Edit id="ed_custNm" taborder="44" enable="false" left="364" top="291" width="183" height="20"/>
+        <Edit id="ed_ordNo" taborder="45" enable="false" left="92" top="291" width="176" height="20"/>
+        <MaskEdit id="ed_buslNo" taborder="51" type="string" mask="###-##-#####" enable="false" visible="true" left="645" top="291" width="182" height="21"/>
+        <Static id="st_buslNo" taborder="52" text="사업자번호" cssclass="sta_WF_detailLabel" visible="true" left="552" top="285" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_repNm" taborder="53" enable="false" left="92" top="321" width="176" height="20"/>
+        <Static id="st_busiCond" taborder="54" text="업     태" cssclass="sta_WF_detailLabel" visible="true" left="552" top="315" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static07" taborder="55" cssclass="sta_WF_detailLabel2" left="0" top="375" height="31" width="1105"/>
+        <Static id="st_cCustNm" taborder="56" text="담당자명" cssclass="sta_WF_detailLabel" left="0" top="375" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_cCustNm" taborder="57" enable="false" left="92" top="381" width="176" height="20"/>
+        <Static id="st_cTelNo" taborder="58" text="담당자전화" cssclass="sta_WF_detailLabel" left="272" top="375" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_cTelNo" taborder="59" enable="false" left="364" top="381" width="183" height="20"/>
+        <Static id="st_custAddr" taborder="60" text="주    소" cssclass="sta_WF_detailLabel" visible="true" left="552" top="345" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_custNo" taborder="61" text="고객번호" cssclass="sta_WF_detailLabel" visible="true" left="832" top="285" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_emailAddr" taborder="62" text="E-mail" cssclass="sta_WF_detailLabel" visible="true" left="832" top="315" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static08" taborder="63" cssclass="sta_WF_detailLabel2" left="0" top="405" height="31" width="1105"/>
+        <Static id="st_procDay" taborder="65" text="장착일자" cssclass="sta_WF_detailLabel" left="272" top="405" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_ordDay" taborder="67" text="계약일자" cssclass="sta_WF_detailLabel" left="0" top="405" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static09" taborder="68" cssclass="sta_WF_detailLabel2" left="0" top="435" height="31" width="1105"/>
+        <Edit id="ed_matNm" taborder="69" enable="false" left="364" top="441" width="183" height="20"/>
+        <Static id="st_matNm" taborder="70" text="상 품 명" cssclass="sta_WF_detailLabel" left="272" top="435" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_matCd" taborder="71" enable="false" left="92" top="441" width="176" height="20"/>
+        <Static id="st_matCd" taborder="72" text="상품코드" cssclass="sta_WF_detailLabel" left="0" top="435" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static11" taborder="73" cssclass="sta_WF_detailLabel2" left="0" top="465" height="31" width="1105"/>
+        <Edit id="ed_monAmt" taborder="74" enable="false" left="364" top="470" width="183" height="20" style=":disabled {align:right;}" value="0"/>
+        <Static id="st_monAmt" taborder="75" text="렌 탈 료" cssclass="sta_WF_detailLabel" left="272" top="465" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_regiAmt" taborder="76" enable="false" left="92" top="470" width="176" height="20" value="0" style=":disabled {align:right;}"/>
+        <Static id="st_regiAmt" taborder="77" text="등록비" cssclass="sta_WF_detailLabel" left="0" top="465" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_classNm" taborder="78" text="차   종" cssclass="sta_WF_detailLabel" left="552" top="405" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_classNm" taborder="79" enable="false" left="645" top="411" width="182" height="20"/>
+        <Edit id="ed_busiCond" taborder="82" enable="false" left="645" top="321" width="182" height="20"/>
+        <Edit id="ed_custAddr" taborder="83" enable="false" left="645" top="351" width="455" height="20"/>
+        <Edit id="ed_custNo" taborder="84" enable="false" left="924" top="291" width="176" height="20"/>
+        <Edit id="ed_emailAddr" taborder="85" enable="false" left="924" top="321" width="176" height="20"/>
+        <Static id="st_periodNm" taborder="87" text="계약기간" cssclass="sta_WF_detailLabel" left="552" top="435" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="st_cntNm" taborder="88" text="본   수" cssclass="sta_WF_detailLabel" left="832" top="435" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_periodNm" taborder="89" enable="false" left="645" top="441" width="86" height="20"/>
+        <Edit id="ed_cntNm" taborder="90" enable="false" left="924" top="441" width="86" height="20"/>
+        <Grid id="grid_BillModifyList" taborder="91" binddataset="ds_BillModifyList" useinputpanel="false" cellsizingtype="col" cellmovingtype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="86" height="166" scrollbars="autoboth" oncellclick="grid_BillModifyList_oncellclick" width="1105" autosizingtype="none" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="100"/>
+                <Column size="0"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="320"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" displaytype="normal" text="계약번호"/>
+                <Cell col="2" text="사업자번호"/>
+                <Cell col="3" text="법인명"/>
+                <Cell col="4" text="계약일자"/>
+                <Cell col="5" text="장착일자"/>
+                <Cell col="6" text="상품코드"/>
+                <Cell col="7" text="상품명"/>
+                <Cell col="8" text="차종"/>
+                <Cell col="9" text="차량번호"/>
+                <Cell col="10" text="발행여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="none" text="bind:check"/>
+                <Cell col="1" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="2" text="bind:buslNo"/>
+                <Cell col="3" text="bind:custNm"/>
+                <Cell col="4" displaytype="date" text="bind:ordDay" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="date" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="6" text="bind:matCd"/>
+                <Cell col="7" text="bind:matNm"/>
+                <Cell col="8" text="bind:classNm"/>
+                <Cell col="9" text="bind:carNo"/>
+                <Cell col="10" displaytype="combo" edittype="combo" text="bind:billYn" suppress="0" combodataset="ds_copy" combocodecol="cd" combodatacol="cdNm" combodisplayrowcount="0" combodisplay="display" combotype="dropdown"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="건수"/>
+                <Cell col="2" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7" combotype="filter"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_carNo" taborder="92" text="차량번호" cssclass="sta_WF_detailLabel" left="832" top="405" width="88" height="31" domainId="nexa.s_condition"/>
+        <Edit id="ed_carNo" taborder="93" enable="false" left="924" top="411" width="176" height="20"/>
+        <Static id="st_ordNo" taborder="94" text="계약번호" onclick="st_ordDay_onclick" cssclass="sta_WF_detailLabel" left="0" top="285" width="88" height="31" domainId="nexa.s_condition"/>
+        <Static id="Static12" taborder="95" cssclass="Guide_color" visible="false" left="1105" top="0" height="496" width="25"/>
+        <Calendar id="dt_ordDay" taborder="96" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="92" top="411" width="176" height="21"/>
+        <Calendar id="dt_prodDay" taborder="97" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="364" top="410" width="183" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_BillModifyList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="custAddr" type="STRING" size="256"/>
+          <Column id="cCustNm" type="STRING" size="256"/>
+          <Column id="cTelNo" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="classNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="billYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_BillModifySave" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="custAddr" type="STRING" size="256"/>
+          <Column id="cCustNm" type="STRING" size="256"/>
+          <Column id="cTelNo" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="classNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="billYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_billYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">발행</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">미발행</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_copy" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">발행</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">미발행</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_ordNo" propid="value" datasetid="ds_BillModifyList" columnid="ordNo"/>
+      <BindItem id="item1" compid="ed_custNm" propid="value" datasetid="ds_BillModifyList" columnid="custNm"/>
+      <BindItem id="item2" compid="ed_buslNo" propid="value" datasetid="ds_BillModifyList" columnid="buslNo"/>
+      <BindItem id="item3" compid="ed_custNo" propid="value" datasetid="ds_BillModifyList" columnid="custNo"/>
+      <BindItem id="item4" compid="ed_repNm" propid="value" datasetid="ds_BillModifyList" columnid="repNm"/>
+      <BindItem id="item5" compid="ed_busiType" propid="value" datasetid="ds_BillModifyList" columnid="busiType"/>
+      <BindItem id="item6" compid="ed_busiCond" propid="value" datasetid="ds_BillModifyList" columnid="busiCond"/>
+      <BindItem id="item7" compid="ed_emailAddr" propid="value" datasetid="ds_BillModifyList" columnid="emailAddr"/>
+      <BindItem id="item8" compid="ed_mobNo" propid="value" datasetid="ds_BillModifyList" columnid="mobNo"/>
+      <BindItem id="item9" compid="ed_telNo" propid="value" datasetid="ds_BillModifyList" columnid="telNo"/>
+      <BindItem id="item10" compid="ed_custAddr" propid="value" datasetid="ds_BillModifyList" columnid="custAddr"/>
+      <BindItem id="item11" compid="ed_cCustNm" propid="value" datasetid="ds_BillModifyList" columnid="cCustNm"/>
+      <BindItem id="item12" compid="ed_cTelNo" propid="value" datasetid="ds_BillModifyList" columnid="cTelNo"/>
+      <BindItem id="item13" compid="dt_ordDay" propid="value" datasetid="ds_BillModifyList" columnid="ordDay"/>
+      <BindItem id="item15" compid="ed_classNm" propid="value" datasetid="ds_BillModifyList" columnid="classNm"/>
+      <BindItem id="item16" compid="ed_carNo" propid="value" datasetid="ds_BillModifyList" columnid="carNo"/>
+      <BindItem id="item17" compid="ed_matCd" propid="value" datasetid="ds_BillModifyList" columnid="matCd"/>
+      <BindItem id="item18" compid="ed_matNm" propid="value" datasetid="ds_BillModifyList" columnid="matNm"/>
+      <BindItem id="item19" compid="ed_periodNm" propid="value" datasetid="ds_BillModifyList" columnid="periodNm"/>
+      <BindItem id="item20" compid="ed_cntNm" propid="value" datasetid="ds_BillModifyList" columnid="cntNm"/>
+      <BindItem id="item21" compid="ed_regiAmt" propid="value" datasetid="ds_BillModifyList" columnid="regiAmt"/>
+      <BindItem id="item22" compid="ed_monAmt" propid="value" datasetid="ds_BillModifyList" columnid="monAmt"/>
+      <BindItem id="item14" compid="dt_prodDay" propid="value" datasetid="ds_BillModifyList" columnid="procDay"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg = "RTSDBillModify";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if(strSvcId == "initBillModifyBillYn") {
+		var nRow = this.ds_billYn.insertRow(0);
+		this.ds_billYn.setColumn(nRow,"cd"," ");
+		this.ds_billYn.setColumn(nRow,"cdNm","전체");
+		this.div_search.cb_billYn.set_value(" ");
+	
+	}else if( strSvcId == "listBill" ){
+		var nCnt = this.ds_BillModifyList.getRowCount();
+		if( nCnt  != 0 ){
+			this.ds_BillModifyList.set_updatecontrol(false);
+			for( var i = 0 ; i < nCnt ; i++){
+				this.ds_BillModifyList.setColumn(i, "check", "0");
+			}
+			this.ds_BillModifyList.set_updatecontrol(true);
+			
+			if( nvl(this.div_search.ed_custNo.value) == "" ){
+				this.div_search.ed_custNm.set_value(" ");
+			}
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_BillModifyList.set_nodatatext( "조회된 데이터가 없습니다." );
+		}
+		
+		if( this.grid_BillModifyList.getCellProperty("head", 0, "text") == 1 ){
+			this.grid_BillModifyList.setCellProperty("head", 0, "text", 0);
+		}
+	}else if (strSvcId == "saveBillInfo") {
+		alert(strErrorMsg);
+		if( nErrorCode < 0 ){
+			return false;
+		}else{
+			this.fn_search();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTSDBillModify_onload  = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.fn_initBtn();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "initBillModifyBillYn";  
+	var sController   	= "rtms/sd/initBillModifyBillYn.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "ds_billYn=mapDsRASMenu";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";	 
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function(){
+	this.parent.setButton("E|C|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var ordNo    = nvl(this.div_search.ed_ordNo.value);
+	var custNo 	 = nvl(this.div_search.ed_custNo.value);
+	var billYn   = nvl(this.div_search.cb_billYn.value);
+
+	var sSvcID        	= "listBill";                    
+	var sController   	= "rtms/sd/listBill.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_BillModifyList=billInfo";
+	var sArgs			= "";
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("ordNo",  ordNo);
+	sArgs += Ex.util.setParam("custNo", custNo);
+	sArgs += Ex.util.setParam("billYn", billYn);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function() {
+	var saveFalg = false;
+	this.ds_BillModifySave.clearData();
+	var checkCnt = -1;
+
+	for( i=0 ; i < this.ds_BillModifyList.getRowCount() ; i++ ) {
+		if(this.ds_BillModifyList.getColumn(i, "check") == 1) {
+			if(this.ds_BillModifyList.getRowType(i) != 4){
+				alert("해당 데이터는 변경된 정보가 없습니다.");
+				this.ds_BillModifyList.set_rowposition(i);
+				saveFalg = false;
+				break;
+			}else{
+				saveFalg = true;
+				var copyBoolean = this.ds_BillModifySave.copyRow(this.ds_BillModifySave.addRow(),this.ds_BillModifyList,i);
+				if( !copyBoolean ){
+					alert("SYSTEM ERROR.");
+					break;
+				}else{
+					checkCnt++;
+				}
+			}
+		}
+	}
+	
+	if( (saveFalg) && (checkCnt != -1) ){
+		var sSvcID        	= "saveBillInfo";                    
+		var sController   	= "rtms/sd/saveBillInfo.do";
+		var sInDatasets   	= "input=ds_BillModifySave:U";
+		var sOutDatasets  	= "";
+		var sArgs			= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grid_BillModifyList);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg:this.p_arg};
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
+}
+this.returnOrderNo = function(val){
+	this.div_search.ed_ordNo.set_value(val);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg:this.p_arg};
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");    
+}
+this.returnCustInfo = function(res) {
+	this.div_search.ed_custNo.set_value(res[0]);
+	this.div_search.ed_custNm.set_value(res[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grid_BillModifyList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	if(e.cell == 10){
+	  this.ds_BillModifyList.setColumn(e.row, "check", 1); 
+	  return false;
+	}
+	
+	this.ds_BillModifyList.set_updatecontrol(false);
+	var checkVal = this.ds_BillModifyList.getColumn( e.row, "check" );
+	if( checkVal == 0 ){
+		this.ds_BillModifyList.setColumn( e.row, "check", 1 );
+	}else{
+		this.ds_BillModifyList.setColumn( e.row, "check", 0 );
+	}
+	this.ds_BillModifyList.set_updatecontrol(true);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_eb_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if ( e.keycode == 13 ) {
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_eb_custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if(e.keycode == 13) {
+		this.fn_search();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

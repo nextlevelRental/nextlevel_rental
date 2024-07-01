@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample011" classname="hgrSample13_gridNavi" left="0" top="0" width="1260" height="641" titletext="그리드 네비게이션 공통" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_list" taborder="0" binddataset="dsOut" useinputpanel="false" left="49" top="176" width="37.99%" height="366">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Col size="80"/>
+                <Col size="80"/>
+                <Col size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row band="body" size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell col="0" disptype="normal" text="Column0"/>
+                <Cell col="1" disptype="normal" text="Column1"/>
+                <Cell col="2" disptype="normal" text="Column2"/>
+              </Band>
+              <Band id="body">
+                <Cell col="0" disptype="normal" text="bind:Column0"/>
+                <Cell col="1" disptype="normal" text="bind:Column1"/>
+                <Cell col="2" disptype="normal" text="bind:Column2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_grid_bottom" taborder="5" left="46" top="149" width="37.99%" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_grid_cnt" taborder="27" top="0" right="0" width="90" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <GroupBox id="GroupBox00" text="Example" taborder="7" left="44" top="50" height="86" right="0"/>
+        <Static id="Static01" taborder="8" text="1.그리드 네비게이션 공통" left="41" top="8" width="332" height="36" cssclass="sample_Title"/>
+        <Static id="Static02" taborder="10" text="1.검색용 버튼 : 버튼에 userproeprty _find 추가 검색할 그리드명 입력(this.grid_list)&#13;&#10;2.Excel 버튼 :버튼에 userproeprty _excel 추가 검색할 그리드명 입력(this.grid_list)&#13;&#10;3.그리드포멧저장  : 버튼에 userproeprty _format 추가 검색할 그리드명 입력(this.grid_list)" left="61" top="70" width="706" height="56" cssclass="sample_example"/>
+        <Div id="div_grid_bottom00" taborder="11" left="54" top="149" width="389" height="20" scrollbars="none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_bg" taborder="31" cssclass="sta_WF_GridDis" left="0" top="0" right="0" height="20"/>
+              <Static id="sta_grid_cnt" taborder="32" text="Rows : 0" top="0" right="0" width="90" height="20"/>
+              <Static id="sta_msg" taborder="33" text="There is no data." left="6" top="0" right="137" height="20" style="color:#444444ff;"/>
+              <Button id="btn_format" taborder="34" cssclass="btn_WF_format" top="1" right="164" width="29" height="16" _format="this.grd_list"/>
+              <Button id="btn_find" taborder="35" cssclass="btn_WF_find" top="1" right="131" width="29" height="16" _find="this.grd_list"/>
+              <Button id="btn_excel" taborder="36" cssclass="btn_WF_xls" top="1" right="98" width="29" height="16" _excel="this.grd_list" onclick="div_grid_bottom00_btn_excel_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsOut" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">3</Col>
+            <Col id="Column1">나</Col>
+            <Col id="Column2">500</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">나</Col>
+            <Col id="Column2">200</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">가</Col>
+            <Col id="Column2">400</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">4</Col>
+            <Col id="Column1">다</Col>
+            <Col id="Column2"/>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">가</Col>
+            <Col id="Column2">300</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">나</Col>
+            <Col id="Column2">100</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">가</Col>
+            <Col id="Column2">200</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">2</Col>
+            <Col id="Column1">가</Col>
+            <Col id="Column2">150</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">마</Col>
+            <Col id="Column2">250</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">3</Col>
+            <Col id="Column1">바</Col>
+            <Col id="Column2">400</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : sample011
+* BUSINESS    : sample011
+* FILE NAME   : sample011.xfdl
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 그리드 네비게이션 공통
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+   //폼로드시 공통함수 
+   Ex.core.init(obj);
+}
+
+this.div_grid_bottom00_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

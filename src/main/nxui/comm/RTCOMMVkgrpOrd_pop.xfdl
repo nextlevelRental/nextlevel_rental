@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMVkgrpOrd_pop" classname="RTCMVkgrp_pop" left="0" top="0" width="400" height="485" titletext="주문지사조회" onload="RTCMVkgrp_pop_onload" onkeyup="RTCOMMVkgrp_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_Group" taborder="0" binddataset="dsVKGrp" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" oncelldblclick="returnvkBur" left="10" top="66" right="10" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" height="380" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="90"/>
+                <Column size="280"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="지사코드"/>
+                <Cell col="1" text="지사명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:cd"/>
+                <Cell col="1" text="bind:cdNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="1" text="Div00" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="10" right="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="27" text="지사" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="62" left="20"/>
+              <Edit id="edt_searchKeyword" taborder="28" onkeyup="div_search_edt_searchKeyword_onkeyup" top="10" height="21" width="246" left="62"/>
+              <Button id="btn_add" taborder="29" text="검색" cssclass="btn_WF_CRUD" top="9" height="22" domainId="nexa.add" right="18" width="45" onclick="div_search_btn_add_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" top="456" right="54" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="456" right="9" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsVKGrp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ParserStr = "^&^";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+	
+	if( strSvcId == "listVkgrpInfo" ){
+		var ct = this.dsVKGrp.getRowCount();
+		if( ct != 0){
+		
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grd_Group.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.edt_searchKeyword.setFocus(true);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCMVkgrp_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.FN_search();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_add_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_search();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.FN_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_search = function(){
+	var sSvcID        	= "listVkgrpInfo";                    
+	var sController   	= "/listCommInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsVKGrp=listVkGrp";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	this.dsVKGrp.deleteAll();
+	sArgs += Ex.util.setParam("nodeNm", 	"listVkGrp");	//리턴받을 DstaSet이름
+	sArgs += Ex.util.setParam("cdGrpCd", 	"S018");		//공통 그룹코드
+	sArgs += Ex.util.setParam("useYn", 		"Y");			//사용여부
+	sArgs += Ex.util.setParam("cdNm",this.div_search.edt_searchKeyword.value);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.returnvkBur = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.FN_choice();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_choice = function(){
+	var parentForm 	= this.parent.parent.form;
+	var result 		= "";
+	var res			= "";
+	var idx 		= this.dsVKGrp.rowposition;
+	var cd 			= this.dsVKGrp.getColumn(idx, "cd");
+	var nm 			= this.dsVKGrp.getColumn(idx, "cdNm");
+	
+	if( idx == -1 ){
+		alert("선택된 데이터가 없습니다.");
+	}else{
+		if( parentForm.name == "RTCOMMAgencyOrd_pop" ){
+			if( nvl(cd) != "" && nvl(nm) != "" ){
+				res = { cd: cd, nm: nm };
+				parentForm.setRetVal(res);
+				this.close();
+			}else{
+				alert("ERROR");
+			}
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMVkgrp_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

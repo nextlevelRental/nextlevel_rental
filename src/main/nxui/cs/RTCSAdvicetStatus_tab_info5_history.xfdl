@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdvicetStatus_tab_info5_history" classname="RTSDContractStatus_tab_info8" left="0" top="0" width="1147" height="150" titletext="[STEP6]상담이력" onload="RTCSAdvicetStatus_tab_info5_history_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Grid id="grid_history" taborder="1" binddataset="ds_advice" useinputpanel="false" left="0" top="5" width="750" height="135" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="97"/>
+                <Column size="101"/>
+                <Column size="100"/>
+                <Column size="99"/>
+                <Column size="108"/>
+                <Column size="81"/>
+                <Column size="96"/>
+                <Column size="0"/>
+                <Column size="168"/>
+                <Column size="0"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="처리상태"/>
+                <Cell col="3" text="계약번호"/>
+                <Cell col="4" text="상담번호"/>
+                <Cell col="5" text="상담사"/>
+                <Cell col="6" text="상담전화번호"/>
+                <Cell col="7"/>
+                <Cell col="8" text="상담내용"/>
+                <Cell col="9" text="구분"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvTpNm"/>
+                <Cell col="1" text="bind:recDday"/>
+                <Cell col="2" text="bind:resuStNm"/>
+                <Cell col="3" text="bind:ordNo"/>
+                <Cell col="4" text="bind:callNo"/>
+                <Cell col="5" text="bind:userIdNm"/>
+                <Cell col="6" text="bind:mobNo"/>
+                <Cell col="7" text="bind:boundGb"/>
+                <Cell col="8" text="bind:callDtl"/>
+                <Cell col="9" text="bind:boundGb"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Edit id="Edit00" taborder="3" left="68.27%" top="7" right="11.42%" height="31" value="상담내용" style="align:middle;font:bold 12 @HY중고딕; :disabled {background:#f2f2efff left middle;color:black;align:center middle;font:bold 14 돋움;}" enable="false"/>
+        <Edit id="Edit01" taborder="4" left="68.35%" top="44" right="11.42%" height="93" style="align:left top;" maxlength="80"/>
+        <Button id="bt_saveCustGrp2" taborder="5" text="저장" cssclass="btn_WF_module" left="1025" top="112" width="45" height="22" onclick="bt_saveCustGrp2_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_advice" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvTp" type="STRING" size="256"/>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="recDday" type="STRING" size="256"/>
+          <Column id="resuSt" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="boundGb" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Edit01" propid="value" datasetid="ds_advice" columnid="callDtl"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+this.RTCSAdviceStatus_tab_info5_history_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	//Ex.core.init(obj);
+}
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "saveAdvice" ){
+		alert(strErrorMsg);
+	}
+}
+
+this.bt_saveCustGrp2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if( confirm( "저장하시겠습니까?") ){
+		var cnt = 0;
+		var Cnt = this.ds_advice.getRowCount();
+		for( var i = 0 ; i < Cnt ; i++ ){
+		var iRowType = this.ds_advice.getRowType(i);		
+		if( iRowType == 2 || iRowType == 4 || iRowType == 8 ){ //2:Insert, 4:Update, 8:Delete
+			cnt++;
+			}
+		}		
+		if(nvl(cnt) != 0) {
+		
+		var sSvcID        	= "saveAdvice";                    
+		var sController   	= "/rtms/sd/saveAdvice.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=ds_advice:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+		console.log(this.ds_advice.saveXML());
+		}else{
+			alert("변경된 데이터가 없습니다!");
+			return false;
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECrdTranResultProc_tab2" classname="re00050_cms" left="0" top="0" width="1122" height="496" titletext="[STEP2] 결과파일반영조회" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="2" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="437" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="7" text="조회결과" cssclass="sta_WF_subTitle" left="10" top="72" width="86" height="20"/>
+        <Static id="Static02" taborder="8" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="10" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="337" width="1110" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static07" taborder="11" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="370" width="1112" height="14" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static17" taborder="12" cssclass="sta_WF_detailLabel2" left="10" top="380" width="1092" height="31"/>
+        <Edit id="edt_procStatus" taborder="13" left="144" top="385" width="953" height="21" enable="false"/>
+        <Static id="Static19" taborder="14" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="380" width="130" height="31"/>
+        <Static id="Static06" taborder="16" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="353" right="1028" height="20"/>
+        <Static id="Static03" taborder="19" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="20" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="21" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" height="437" style="background:aqua;color:#333333ff;"/>
+        <Button id="btn_Confirm" taborder="17" text="확인완료" left="1031" top="70" width="71" height="22" enable="false" onclick="btn_Confirm_onclick" cssclass="btn_WF_module"/>
+        <Div id="div_search" taborder="26" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="0" text="카드이체일" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_accReqDate" taborder="1" dateformat="yyyy-MM-dd" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="120" height="21"/>
+              <Static id="Static22" taborder="2" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="430" height="12"/>
+              <Static id="Static06" taborder="3" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static44" taborder="4" text="5 px" visible="false" left="81" top="40" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="5" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="430" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static45" taborder="27" text="5 px" visible="false" left="137" top="27" width="1" height="30" style="background:red;"/>
+        <Static id="Static46" taborder="28" text="5 px" visible="false" left="142" top="27" width="1" height="30" style="background:red;"/>
+        <Grid id="grd_list" taborder="29" binddataset="ds_list" useinputpanel="false" left="10" top="97" width="1102" height="272">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카드이체일자"/>
+                <Cell col="1" text="카드사코드"/>
+                <Cell col="2" text="카드사명"/>
+                <Cell col="3" text="이체결과"/>
+                <Cell col="4" text="건수"/>
+                <Cell col="5" text="금액"/>
+                <Cell col="6" text="수수료"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:rcrdDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" edittype="none" text="bind:cardcomCd"/>
+                <Cell col="2" text="bind:cardcomNm"/>
+                <Cell col="3" edittype="none" text="bind:rqstStatNm"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="bind:rqcnt" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="bind:rqAmt" mask="###,###,###,##0"/>
+                <Cell col="6" displaytype="number" style="align:right middle;" text="bind:feeAmt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="2" text="총계"/>
+                <Cell col="2" style="align:right middle;"/>
+                <Cell col="3" style="align:right middle;"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;rqcnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;rqAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="6" displaytype="number" style="align:right middle;" text="expr:comp.parent.ds_list.getSum(&quot;feeAmt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rcrdDay" type="STRING" size="256"/>
+          <Column id="cardcomCd" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="rqstStat" type="STRING" size="256"/>
+          <Column id="rqstStatNm" type="STRING" size="256"/>
+          <Column id="rqcnt" type="STRING" size="256"/>
+          <Column id="rqAmt" type="STRING" size="256"/>
+          <Column id="feeAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 카드이체관리 > 카드이체 결과처리 > [STEP2] 결과파일반영조회
+ * 02. 그룹명   : RTRECrdTranResultProc_tab2.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 		= ""; 	//현재날짜
+	this.toHour 	= "";	//현재시간
+	this.bfAfDay 	= "";	//카드이체일
+	this.returnMsg 	= ""; 	//계좌신청대상조회 리턴메세지
+	this.returnCode = "";	//계좌신청대상조회 리턴코드
+	//-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj,e)
+	{
+		Ex.core.init(obj); 			
+		this.fn_init();
+	} 
+	//-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		this.ds_list.clearData();	
+		//전일(영업일) 조회
+		this.fn_getAccReqDate();		
+		//오늘날짜조회
+		this.fn_getToday();		
+		//버튼초기화		
+		this.fn_initBtn();	
+	}		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 전일(영업일) 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getAccReqDate  = function() {
+		var sSvcID      	= "getAccReqDate";  
+		var sController   	= "ntrms/re/getAccReqDate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("serchGb", '-');	
+		sArgs += Ex.util.setParam("days", 1);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}		
+	//-------------------------------------------------------------------------------  	
+	//오늘날짜 조회
+	//-------------------------------------------------------------------------------  	
+	this.fn_getToday = function() 
+	{
+		var sSvcID      	= "getToday";  
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+	//---------------------------------------------------------------------------------
+	// 결과파일 반영조회
+	//---------------------------------------------------------------------------------		
+	this.fn_search = function()
+	{
+		if(nvl(this.div_search.cal_accReqDate.value) == "") {
+			alert('카드이체일을 입력하세요');
+			this.div_search.cal_accReqDate.setFocus();
+			return;
+		}
+	
+		this.edt_procStatus.set_value("");		
+		var sSvcID      	= "getCrdTranTargetList";  
+		var sController   	= "ntrms/re/getCrdTranTargetList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("rcrdDay"	, nvl(this.div_search.cal_accReqDate.value));		
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+				
+	}
+	
+//지정된 날짜에 하루다음날
+this.RE_todayAddDate = function(day) {
+	var sToday = "";
+	var tmp = day.substring(0, 4) + "-" + day.substring(4, 6) + "-" + day.substring(6, 8);
+	var objDate = new Date(tmp);
+	objDate.addDate(1);
+	var sToday  = objDate.getFullYear() + "";
+	var sMonth = objDate.getMonth() + 1;
+	var sDate = objDate.getDate();
+	
+	if(sMonth.toString().length == 1){
+	  sMonth = "0" + sMonth;
+	}
+	if(sDate.toString().length == 1){
+	  sDate = "0" + sDate;
+	}
+	sToday = sToday+sMonth+sDate;   
+	return sToday;
+}
+	
+	//---------------------------------------------------------------------------------
+	// 확인완료(전송처리 업무상태 업데이트)
+	//---------------------------------------------------------------------------------	
+	this.fn_saveConfirm = function() {
+		this.edt_procStatus.set_value("");
+		var tmpDt = nvl(this.div_search.cal_accReqDate.value);
+		var sSvcID      	= "confirmProc";  
+		var sController   	= "ntrms/re/confirmProc.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("fileTp"	, "BC02_OUT");		//송수신파일구분
+		//sArgs += Ex.util.setParam("rqstDay"	, nvl(this.ds_list.getColumn(this.ds_list.rowposition,"rcrdday")));		//카드이체일
+		sArgs += Ex.util.setParam("rqstDay"	, tmpDt);		//카드이체일
+		//sArgs += Ex.util.setParam("fileNm"	, "KCP_BATCH_FILE_BC02_INX_V5407_" + "" + nvl(this.ds_list.getColumn(this.ds_list.rowposition,"rcrdday")));		//파일명	
+		
+		var fileDt = this.RE_todayAddDate(tmpDt);
+		sArgs += Ex.util.setParam("fileNm"	, "KCP_BACH_FILE_BC02_OUT_V5407_" + "" + fileDt);		//파일명	
+		sArgs += Ex.util.setParam("cnfStep"	, "CONF");		//송신처리단계
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+	//-------------------------------------------------------------------------------  	
+	// callBack함수 
+	//-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId = "confirmProc") {
+				this.edt_procStatus.set_value(strErrorMsg);
+				return;
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);		
+			}	
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getAccReqDate":
+				//17시이후에는 카드이체일 세팅 안함
+				if(parseInt(nvl(this.toHour,10)) >= 17) {
+					this.div_search.cal_accReqDate.set_value("");					
+				}
+				else {
+					this.div_search.cal_accReqDate.set_value(this.bfAfDay);
+				}
+				break;		
+			case "getCrdTranTargetList":	
+				this.edt_procStatus.set_value(nexacro._replaceAll(this.returnMsg, "&#32;", " "));
+
+				if(this.ds_list.rowcount > 0) {
+					if(this.returnCode == 0) {
+						this.btn_Confirm.set_enable(true);
+					} 
+					else {
+						this.btn_Confirm.set_enable(false);
+					}
+				}
+				else {
+					this.grd_list.set_nodatatext("조회된 결과가 없습니다.");				
+				}
+				break;			
+			case "confirmProc":
+				this.edt_procStatus.set_value(strErrorMsg);
+				break;
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+	//-------------------------------------------------------------------------------  	
+	// 카드이체일 변경 이벤트
+	//-------------------------------------------------------------------------------  	
+	this.cal_accReqDate_onchanged = function(obj,e)
+	{
+		var accReqDate = nvl(this.div_search.cal_accReqDate.value);
+
+		if(accReqDate != "") {
+			if(parseInt(this.div_search.cal_accReqDate.value,10) >= this.toDay) 
+			{
+				alert('카드이체일은 당일이전 일자만 가능합니다.');
+				this.div_search.cal_accReqDate.set_value("");			
+				this.div_search.cal_accReqDate.setFocus();
+				return;
+			}	
+		}
+		else {
+			alert('카드이체일을 입력하세요.');
+			this.div_search.cal_accReqDate.setFocus();			
+		}
+	}	
+	//-------------------------------------------------------------------------------  	
+	// 확인완료 클릭 이벤트
+	//-------------------------------------------------------------------------------  	
+	this.btn_Confirm_onclick = function(obj,e)
+	{
+		this.fn_saveConfirm();
+	}		
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.parent.parent.setButton("E|S",this);
+	}
+	
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.grd_list);
+	}]]></Script>
+  </Form>
+</FDL>

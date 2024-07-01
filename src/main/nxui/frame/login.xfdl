@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Login" classname="Login" left="0" top="0" width="1260" height="671" titletext="New Form" onload="form_onload" style="background:transparent;" onsize="Login_onsize">
+    <Layouts>
+      <Layout>
+        <Div id="div_login" taborder="6" left="0" top="0" style="background:transparent;" scrollbars="none" width="340" height="352">
+          <Layouts>
+            <Layout width="553" height="321">
+              <Static id="stc_bg" taborder="5" width="340" height="352" left="0" top="0" cssclass="sta_BG_login" style="background:transparent URL('image::sta_BG_login.png');"/>
+              <Edit id="txt_userId" taborder="6" value="ivanezz" onkeyup="fn_loginOnkeyUp" left="19.12%" top="156" height="29" width="210"/>
+              <Edit id="txt_userPwd" taborder="7" value="test123" password="true" onkeyup="fn_loginOnkeyUp" left="19.12%" top="190" right="19.12%" height="29"/>
+              <Button id="btn_login" taborder="8" text="로그인" onclick="btn_login_onclick" cssclass="btn_LG_login" left="19.12%" top="264" right="19.12%" height="33" onkeyup="fn_loginOnkeyUp"/>
+              <CheckBox id="CheckBox00" taborder="9" text="아이디 저장" left="19.12%" top="227" right="36.76%" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsLogin" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="USER_ID">test</Col>
+            <Col id="PASSWORD">test123</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="SVC_ID" type="STRING" size="100"/>
+          <Column id="QUERY_LIST" type="STRING" size="256"/>
+          <Column id="SERVICE" type="STRING" size="100"/>
+          <Column id="IN_DATASET_LIST" type="STRING" size="256"/>
+          <Column id="OUT_DATASET_LIST" type="STRING" size="256"/>
+          <Column id="CONTROLLER" type="STRING" size="512"/>
+          <Column id="CALLBACK" type="STRING" size="100"/>
+          <Column id="SYNC_YN" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="SVC_ID">login</Col>
+            <Col id="IN_DATASET_LIST">inDataset=dsLogin</Col>
+            <Col id="OUT_DATASET_LIST">gdsUser=gdsUser</Col>
+            <Col id="CONTROLLER">xpQueryLogin.do</Col>
+            <Col id="CALLBACK">fn_callBack</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="GROUP_ID" type="STRING" size="256"/>
+          <Column id="USER_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : nexacro Platform HTML5
+* BUSINESS    : Login
+* FILE NAME   : login.xfdl
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : Login
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+
+*------------------------------------------------------------------
+***********************************************************************************/
+
+ 
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+var nFormHorizental = 0;
+var nFormVertical = 0;
+var nFormWidth = 0
+var nFormHeight = 0;
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+	Ex.core.onload(obj);
+	this.form_onsize(e.cx, e.cy);
+	
+	
+}
+
+ 
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+ /**
+ * 로그인 onkey down 화면 공통 event
+ * @example	
+ * @memberOf this
+ */
+this.fn_loginOnkeyUp = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	
+	if(e.keycode == 13)
+	{   
+	    this.fn_loginTr();
+	}
+}
+
+ /**
+ * 로그인 transaction
+ * @example	
+ * @memberOf this
+ */
+this.fn_loginTr = function()
+{
+    var objLoginId = this.div_login.txt_userId;
+    var objLoginPw = this.div_login.txt_userPwd;
+
+    if(Eco.isEmpty(objLoginId.value))    
+    {
+       
+        this.set_alert("login_id","Please enter Login ID");
+        return; 
+    }
+    if(Eco.isEmpty(objLoginPw.value))    
+    {
+         this.set_alert("login_pw","Please enter Login Password");
+        return; 
+    }
+	
+    if(application.gv_prjType == "false")
+	{
+    
+
+      this.fn_menuOpen();	
+	}
+	else
+	{
+     
+       Ex.core.trLogin(this,"login", objLoginId.value, objLoginPw.value);
+	}
+
+}
+
+/**
+* 메인프레임 open
+* @return 
+* @example
+* @memberOf public
+*/ 
+
+this.fn_menuOpen = function()
+{
+    this.parent.setIndexUrl("frame::main.xfdl");
+    
+}
+
+/**
+* 로그인 공통 메세지창 함수
+* @param {string} callbackId
+* @param {string} OK  OR CANCEL
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.set_alert = function(msgId,msgCode,msgArr,strMsgType ,sSizeType)
+{
+   Ex.core.showMsg(this,"alert",msgId,msgCode, msgArr,strMsgType ,sSizeType);
+}
+
+//메세지 콜벡 메세지 처리 화면단에 필수로 있어야함
+/**
+* 공통 팝업 open 함수
+* @param {string} callbackId
+* @param {string} OK  OR CANCEL
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.fn_callBackMsg = function(strCallBackId,strResult)
+{
+    var objLoginId = this.div_login.txt_userId;
+    var objLoginPw = this.div_login.txt_userPwd;
+     	if(strResult == "OK")
+		{
+		   switch(strCallBackId)
+		   {
+			case "login_id":
+			case "login_strErrorMsg":
+				objLoginId.setFocus();
+			 	 break;	
+			case "login_pw":
+			case "login_unknown":
+				objLoginPw.setFocus();
+				break;		
+		   }
+		}
+}
+
+/**
+* form onsize
+* @return 
+* @example
+* @memberOf public
+*/ 
+this.form_onsize = function(nWidth, nHeight)
+{
+
+
+  	var nLeft = (application.mainframe.width / 2) - Math.round((this.div_login.getOffsetWidth()) / 2);
+
+	if(nLeft <= 0)
+	{
+		this.div_login.setOffsetLeft(0);
+	}
+	else
+	{
+		this.div_login.setOffsetLeft(nLeft);
+	}
+// 		nFormHorizental = Math.round((nWidth - nFormWidth)/2);
+//         nFormVertical = Math.round((nHeight - nFormHeight)/2);
+//         
+// 		this.div_login.move(nFormHorizental,nFormVertical);
+}
+
+this.fn_userAuth = function()
+{
+	var sSvcID        	= "user";                    
+    var sController   	= "authController.do";
+    
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_user=output1";
+	
+	var sArgs = "";		
+	sArgs += Ex.util.setParam("method","getList");
+    sArgs += Ex.util.setParam("sqlId","selectGroupUser");// Map형태
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+	
+}
+
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+this.btn_login_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_loginTr();
+}
+
+
+this.Login_onsize = function(obj:Form, e:nexacro.SizeEventInfo)
+{
+   //trace(" e.cx >>>>>>>>>>>>>>>> "  + e.cx);
+   //trace(" e.cy >>>>>>>>>>>>>>>>>> " + e.cy);
+   //this.form_onsize(e.cx, e.cy);
+     this.form_onsize(e.cx, e.cy);
+}
+
+this.fn_close = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	application.exit();
+}
+
+]]></Script>
+  </Form>
+</FDL>

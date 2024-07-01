@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTRECloseInterfaceDAO">
+
+	<!-- 월마감 EAI 인터페이스 결과 조회 -->
+	<resultMap id="r_sRtre5500List" class="java.util.HashMap">
+		<result property="chk"			column="CHK"         />
+		<result property="ifNo"			column="IF_NO"       />
+		<result property="closeYm"		column="CLOSE_YM"    />
+		<result property="ifId"			column="IF_ID"       />
+		<result property="ifNm"			column="IF_NM"       />
+		<result property="ifTimeCd"		column="IF_TIME_CD"  />
+		<result property="callProc"		column="CALL_PROC"   />
+		<result property="exeSec"		column="EXE_SEC"     />
+		<result property="reltCode"		column="RELT_CODE"   />
+		<result property="reltMsg"		column="RELT_MSG"    />
+		<result property="inParam01"	column="IN_PARAM_01" />
+		<result property="inParam02"	column="IN_PARAM_02" />
+		<result property="multiSendYn"	column="MULTI_SEND_YN" />
+		<result property="rawDataProc"	column="RAW_DATA_PROC" />
+		<result property="sendAmount"	column="SEND_AMOUNT" />
+		<result property="regId"		column="REG_ID"      />
+		<result property="regDt"		column="REG_DT"      />
+		<result property="chgId"		column="CHG_ID"      />
+		<result property="chgDt"		column="CHG_DT"      />
+	</resultMap>
+	<parameterMap id="p_sRtre5500List" class="java.util.Map">
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre5500List" />
+		<parameter property="closeYm" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.rTRECloseInterfaceList" parameterMap="p_sRtre5500List">
+		{call Pkg_Rtre5500.p_sRtre5500(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 EAI 인터페이스 결과 업데이트 -->
+	<resultMap id="resultUpdateCloseIf" class="java.util.HashMap"/>	
+	<parameterMap id="paramUpdateCloseIfResult" class="java.util.HashMap">
+		<parameter property="sqlCode"  jdbcType="NUMERIC" mode="OUT" resultMap="resultUpdateCloseIf" />
+		<parameter property="ifNo"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="exeSec"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reltCode" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="reltMsg"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chgId"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="errText"  jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.updateCloseIfResult" resultClass="java.util.HashMap" parameterMap="paramUpdateCloseIfResult">
+		{call ? := Pkg_Rtre5500.f_UpdateRtre5500(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 월매출정보 집계 -->
+	<resultMap id="resultSendSale" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendSale" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultSendSale" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendSale_Data" resultClass="java.util.HashMap" parameterMap="paramSendSale">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendSale_Data(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 월수납내역 집계 -->
+	<resultMap id="resultSendReceipt" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendReceipt" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultReceipt" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendReceipt_Data" resultClass="java.util.HashMap" parameterMap="paramSendReceipt">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendReceipt_Data(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 월미납내역 집계 -->
+	<resultMap id="resultSendDefault" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendDefault" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultDefault" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendDefault_Data" resultClass="java.util.HashMap" parameterMap="paramSendDefault">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendDefault_Data(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 등록비 이연처리내역 집계 -->
+	<resultMap id="resultSendRegipostpone" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendRegipostpone" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultSendRegipostpone" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendRegiPostpone_Data" resultClass="java.util.HashMap" parameterMap="paramSendRegipostpone">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendRegiPostpone_Data(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 감가상각 이연처리내역 집계 -->
+	<resultMap id="resultSendDeprePostpone" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendDeprePostpone" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="inParam02"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultSendDeprePostpone" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendDeprePostpone_Data" resultClass="java.util.HashMap" parameterMap="paramSendDeprePostpone">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendDeprePostpone_Data(?, ?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 카드이체내역 집계 -->
+	<resultMap id="resultSendCardTransfer" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendCardTransfer" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultSendCardTransfer" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendCardTransfer_Data" resultClass="java.util.HashMap" parameterMap="paramSendCardTransfer">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendCardTransfer_Data(?, ?)}
+	</procedure>
+	
+	<!-- 월마감 - 수수료이연처리내역 집계 -->
+	<resultMap id="resultSendCommPostpone" class="java.util.HashMap"/>	
+	<parameterMap id="paramSendCommPostpone" class="java.util.HashMap">
+		<parameter property="inParam01"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vTotCnt"  jdbcType="NUMERIC" mode="OUT" resultMap="resultSendCommPostpone" />
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_ErpSendCommPostpone_Data" resultClass="java.util.HashMap" parameterMap="paramSendCommPostpone">
+		{call NXREAI.Pkg_Exif0002.p_ErpSendCommPostpone_Data(?, ?)}
+	</procedure>	
+	
+	<!-- EAI리스트 생성 -->
+	<parameterMap id="paramRtre5500" class="java.util.HashMap">
+		<parameter property="closeYm"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"  jdbcType="NUMERIC" mode="OUT" /> <!-- error text -->
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+		<parameter property="errorText"  jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+	</parameterMap>
+	<procedure id="rTRECloseInterfaceDAO.p_CreateRtre5500" parameterMap="paramRtre5500">
+		{call NXRADMIN.Pkg_Rtre5500.p_CreateRtre5500(?, ?, ?, ?)}
+	</procedure>	
+</sqlMap>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="bill">
+	
+	<resultMap id="billResultMap" class="java.util.HashMap">
+		<result property="ordNo"      column="ORD_NO" /> <!-- 계약번호 --> 
+		<result property="custNm"     column="CUST_NM" /> <!-- 법인명 -->    
+		<result property="buslNo"     column="BUSL_NO" /> <!-- 사업자번호 --> 
+		<result property="custNo"     column="CUST_NO" /> <!-- 고객번호 -->
+		<result property="repNm"      column="REP_NM" />  <!-- 대표자번호 -->  
+		<result property="busiType"   column="BUSI_TYPE" />  <!-- 업종 -->   
+		<result property="busiCond"   column="BUSI_COND" />  <!-- 업태 -->
+		<result property="emailAddr"  column="EMAIL_ADDR" /> <!-- E-Mail -->
+		<result property="mobNo"      column="MOB_NO" />   <!-- 핸드폰번호 -->
+		<result property="telNo"      column="TEL_NO" />   <!-- 전화번호 -->
+		<result property="custAddr"   column="CUST_ADDR" /> <!-- 주소 -->
+		<result property="cCustNm"    column="C_CUSTNM" /> <!-- 담당자명 -->
+		<result property="cTelNo"     column="C_TELNO" />  <!-- 담당자전화 -->
+		<result property="ordDay"  	  column="ORD_DAY" /> <!-- 계약일자 -->    
+		<result property="procDay"    column="PROC_DAY" /> <!-- 장착일자 --> 
+		<result property="classNm"    column="CLASS_NM" /> <!-- 차종 -->
+		<result property="carNo"      column="CAR_NO" />  <!-- 차량번호 -->
+		<result property="matCd"      column="MAT_CD" /> <!-- 상품코드 -->   
+		<result property="matNm" 	  column="MAT_NM" /> <!-- 상품명 -->     	 
+		<result property="periodNm"   column="PERIOD_NM" /> <!-- 계약기간 -->  
+		<result property="cntNm" 	  column="CNT_NM" />  <!-- 본수 --> 
+		<result property="regiAmt"   column="REGI_AMT" /> <!--등록비 -->  
+		<result property="monAmt" 	  column="MON_AMT" />  <!-- 렌탈료 -->   
+		<result property="billYn"     column="BILL_YN" /> <!-- 발행여부 -->  
+	</resultMap>
+       
+    <parameterMap id="p_sRtsd0108List" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="billResultMap" />
+		<parameter property="ordNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 주문번호 -->
+		<parameter property="custNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호 -->
+		<parameter property="billYn"  	jdbcType="VARCHAR" mode="IN" /> <!-- 세금계산서 발행여부 --> 
+	</parameterMap> 
+	
+	<procedure id="bill.listBill" parameterMap="p_sRtsd0108List">
+		{call pkg_Rtsd0108.p_sRtsd0108BillSelect(?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_sRtsd0108billYn" class="java.util.Map">             
+		<parameter property="ordNo"  	    jdbcType="VARCHAR" mode="IN" /> <!-- 주문번호 -->
+		<parameter property="billYn"  	    jdbcType="VARCHAR" mode="IN" /> <!-- 세금계산서 발행여부 --> 
+		<parameter property="regId"  	    jdbcType="VARCHAR" mode="IN" /> <!--사용자아이디  -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="bill.saveBillData" parameterMap="p_sRtsd0108billYn">
+		{call pkg_Rtsd0108.p_UpdateRtsd0108BillYn(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+</sqlMap>

@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configBasic" classname="config_xaxis" left="0" top="0" width="320" height="917" titletext="Basic 차트 설정" onload="configBasic_onload" style="background:#d4d9dfff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="2" text="Basic" top="11" height="25" width="114" left="20" style="font:antialias 15 Verdana, malgun gothic;"/>
+        <Static id="Static261" taborder="64" left="20" top="40" height="13" width="280" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Combo id="cmb_colors" taborder="69" codecolumn="code" datacolumn="data" top="118" height="24" onsetfocus="common_onsetfocus" width="132" left="173"/>
+        <Static id="Static13" taborder="71" text="plotBackgroundOpacity" left="6.25%" top="368" right="46.88%" height="20"/>
+        <Edit id="edt_plotBackgroundGradation" taborder="72" top="334" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static12" taborder="73" text="plotBackgroundGradation" left="6.25%" top="336" right="46.88%" height="20" style="font:antialias 9 Meiryo UI, malgun gothic;"/>
+        <Edit id="edt_plotBackgroundColor" taborder="74" top="302" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static11" taborder="75" text="plotBackgroundColor" left="6.25%" top="304" right="46.88%" height="20"/>
+        <Static id="Static10" taborder="76" text="showFullPlot" left="6.25%" top="184" right="46.88%" height="20"/>
+        <Static id="Static09" taborder="77" text="margin" left="6.25%" top="152" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="78" text="colors" left="6.25%" top="120" right="46.88%" height="20"/>
+        <Static id="Static04" taborder="84" text="bindCategory" left="6.25%" top="88" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="89" top="54" height="24" onsetfocus="common_onsetfocus" width="131" left="173" readonly="true"/>
+        <Static id="Static00" taborder="90" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Static id="Static14" taborder="91" text="plotLeftBorderWidth" left="6.25%" top="397" right="46.88%" height="20"/>
+        <Static id="Static15" taborder="92" text="plotLeftBorderColor" left="6.25%" top="653" right="46.88%" height="20"/>
+        <Edit id="edt_plotLeftBorderColor" taborder="93" top="653" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static26" taborder="94" text="plotRightBorderWidth" left="6.25%" top="429" right="46.88%" height="20"/>
+        <Static id="Static27" taborder="95" text="plotTopBorderWidth" left="6.25%" top="461" right="46.88%" height="20"/>
+        <Static id="Static28" taborder="96" text="plotBottomBorderWidth" left="6.25%" top="493" right="46.88%" height="20"/>
+        <Static id="Static29" taborder="97" text="plotLeftBorderStyle" left="6.25%" top="525" right="46.88%" height="20"/>
+        <Static id="Static30" taborder="98" text="plotRightBorderStyle" left="6.25%" top="557" right="46.88%" height="20"/>
+        <Static id="Static31" taborder="99" text="plotTopBorderStyle" left="6.25%" top="589" right="46.88%" height="20"/>
+        <Static id="Static32" taborder="100" text="plotBottomBorderStyle" left="6.25%" top="621" right="46.88%" height="20"/>
+        <Static id="Static33" taborder="101" text="plotRightBorderColor" left="6.25%" top="685" right="46.88%" height="20"/>
+        <Edit id="edt_plotRightBorderColor" taborder="102" top="685" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static34" taborder="103" text="plotTopBorderColor" left="6.25%" top="717" right="46.88%" height="20"/>
+        <Edit id="edt_plotTopBorderColor" taborder="104" top="717" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static35" taborder="105" text="plotBottomBorderColor" left="6.25%" top="749" right="46.88%" height="20"/>
+        <Edit id="edt_plotBottomBorderColor" taborder="106" top="749" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Combo id="cmb_plotLeftBorderStyle" taborder="111" innerdataset="ds_style" codecolumn="code" datacolumn="data" top="525" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Combo id="cmb_plotRightBorderStyle" taborder="112" innerdataset="ds_style" codecolumn="code" datacolumn="data" top="557" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Combo id="cmb_plotTopBorderStyle" taborder="113" innerdataset="ds_style" codecolumn="code" datacolumn="data" top="589" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Combo id="cmb_plotBottomBorderStyle" taborder="114" innerdataset="ds_style" codecolumn="code" datacolumn="data" top="621" height="24" onsetfocus="common_onsetfocus" width="131" left="173"/>
+        <Static id="Static16" taborder="115" text="plotLeftBorderOpacity" left="6.25%" top="781" right="46.88%" height="20"/>
+        <Static id="Static19" taborder="119" text="isStack" left="6.25%" top="218" right="46.88%" height="20"/>
+        <Static id="Static20" taborder="120" text="isTimeData" left="6.25%" top="250" right="46.88%" height="20"/>
+        <Static id="Static36" taborder="134" text="plotRightBorderOpacity" left="6.25%" top="813" right="46.88%" height="20"/>
+        <Static id="Static37" taborder="136" text="plotTopBorderOpacity" left="6.25%" top="845" right="46.88%" height="20"/>
+        <Static id="Static38" taborder="138" text="plotBottomBorderOpacity" left="6.25%" top="877" right="46.88%" height="20" style="font:antialias 9 Meiryo UI, malgun gothic;"/>
+        <CheckBox id="chk_showFullPlot" taborder="141" top="182" width="65" height="24" cssclass="WF_chk_Switch" onsetfocus="common_onsetfocus" left="173"/>
+        <CheckBox id="chk_isStack" taborder="143" top="218" width="131" height="24" cssclass="WF_chk_Switch" onsetfocus="common_onsetfocus" left="173"/>
+        <CheckBox id="chk_isTimeData" taborder="144" top="250" width="131" height="24" cssclass="WF_chk_Switch" onsetfocus="common_onsetfocus" left="173"/>
+        <Combo id="cmb_bindCategory" taborder="147" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" top="86" height="24" width="130" left="173" value="null"/>
+        <Static id="Static02" taborder="148" left="6.25%" top="287" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <MaskEdit id="mae_plotBackgroundOpacity" taborder="149" left="173" top="366" height="24" width="131" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_plotLeftBorderOpacity" taborder="150" left="173" top="779" height="24" mask="0.0" width="131" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_plotRightBorderOpacity" taborder="155" mask="0.0" left="173" top="811" height="24" onsetfocus="common_onsetfocus" width="131" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_plotTopBorderOpacity" taborder="156" mask="0.0" left="173" top="843" height="24" onsetfocus="common_onsetfocus" width="131" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_plotBottomBorderOpacity" taborder="157" mask="0.0" left="173" top="875" height="24" onsetfocus="common_onsetfocus" width="131" canchange="common_canchage_decimal"/>
+        <MaskEdit id="mae_margin" taborder="158" left="173" top="150" height="24" onsetfocus="common_onsetfocus" width="131" canchange="common_canchange_integer"/>
+        <MaskEdit id="mae_plotLeftBorderWidth" taborder="159" onsetfocus="common_onsetfocus" left="172" top="395" height="24" limitbymask="decimal" canchange="common_canchange_integer" width="131" mask="0.0"/>
+        <MaskEdit id="mae_plotRightBorderWidth" taborder="160" onsetfocus="common_onsetfocus" left="172" top="427" height="24" limitbymask="decimal" canchange="common_canchange_integer" width="131" mask="0.0"/>
+        <MaskEdit id="mae_plotTopBorderWidth" taborder="161" onsetfocus="common_onsetfocus" canchange="common_canchange_integer" left="172" top="459" height="24" limitbymask="decimal" width="131" mask="0.0"/>
+        <MaskEdit id="mae_plotBottomBorderWidth" taborder="162" onsetfocus="common_onsetfocus" canchange="common_canchange_integer" left="172" top="491" height="24" width="131" mask="0.0"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Bind>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_chart" columnid="id"/>
+      <BindItem id="item10" compid="edt_plotBackgroundColor" propid="value" datasetid="ds_chart" columnid="plotBackgroundColor"/>
+      <BindItem id="item11" compid="edt_plotBackgroundGradation" propid="value" datasetid="ds_chart" columnid="plotBackgroundGradation"/>
+      <BindItem id="item8" compid="cmb_colors" propid="value" datasetid="ds_chart" columnid="colors"/>
+      <BindItem id="item14" compid="edt_plotLeftBorderColor" propid="value" datasetid="ds_chart" columnid="plotLeftBorderColor"/>
+      <BindItem id="item32" compid="edt_plotRightBorderColor" propid="value" datasetid="ds_chart" columnid="plotRightBorderColor"/>
+      <BindItem id="item33" compid="edt_plotTopBorderColor" propid="value" datasetid="ds_chart" columnid="plotTopBorderColor"/>
+      <BindItem id="item34" compid="edt_plotBottomBorderColor" propid="value" datasetid="ds_chart" columnid="plotBottomBorderColor"/>
+      <BindItem id="item22" compid="cmb_plotLeftBorderStyle" propid="value" datasetid="ds_chart" columnid="plotLeftBorderStyle"/>
+      <BindItem id="item26" compid="cmb_plotRightBorderStyle" propid="value" datasetid="ds_chart" columnid="plotRightBorderStyle"/>
+      <BindItem id="item27" compid="cmb_plotTopBorderStyle" propid="value" datasetid="ds_chart" columnid="plotTopBorderStyle"/>
+      <BindItem id="item41" compid="cmb_plotBottomBorderStyle" propid="value" datasetid="ds_chart" columnid="plotBottomBorderStyle"/>
+      <BindItem id="item28" compid="chk_showFullPlot" propid="value" datasetid="ds_chart" columnid="showFullPlot"/>
+      <BindItem id="item30" compid="chk_isStack" propid="value" datasetid="ds_chart" columnid="isStack"/>
+      <BindItem id="item31" compid="chk_isTimeData" propid="value" datasetid="ds_chart" columnid="isTimeData"/>
+      <BindItem id="item2" compid="cmb_bindCategory" propid="value" datasetid="ds_chart" columnid="bindCategory"/>
+      <BindItem id="item1" compid="mae_plotBackgroundOpacity" propid="value" datasetid="ds_chart" columnid="plotBackgroundOpacity"/>
+      <BindItem id="item3" compid="mae_plotLeftBorderOpacity" propid="value" datasetid="ds_chart" columnid="plotLeftBorderOpacity"/>
+      <BindItem id="item12" compid="mae_plotRightBorderOpacity" propid="value" datasetid="ds_chart" columnid="plotRightBorderOpacity"/>
+      <BindItem id="item13" compid="mae_plotTopBorderOpacity" propid="value" datasetid="ds_chart" columnid="plotTopBorderOpacity"/>
+      <BindItem id="item15" compid="mae_plotBottomBorderOpacity" propid="value" datasetid="ds_chart" columnid="plotBottomBorderOpacity"/>
+      <BindItem id="item9" compid="mae_margin" propid="value" datasetid="ds_chart" columnid="margin"/>
+      <BindItem id="item4" compid="mae_plotLeftBorderWidth" propid="value" datasetid="ds_chart" columnid="plotLeftBorderWidth"/>
+      <BindItem id="item5" compid="mae_plotRightBorderWidth" propid="value" datasetid="ds_chart" columnid="plotRightBorderWidth"/>
+      <BindItem id="item6" compid="mae_plotTopBorderWidth" propid="value" datasetid="ds_chart" columnid="plotTopBorderWidth"/>
+      <BindItem id="item7" compid="mae_plotBottomBorderWidth" propid="value" datasetid="ds_chart" columnid="plotBottomBorderWidth"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+var eChart,
+	parent;
+
+this.configBasic_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	parent = this.parent;
+	eChart = parent.eChart;
+	
+	this.setDsCols();
+	this.setDsAxis();
+	this.setDsColor();
+	this.setGrid();
+}
+
+this.setDsCols = function()
+{	
+	var bindDsId,
+		bindDs,
+		dsBasicCols,
+		dsColCnt = -1,
+		nrow = -1,
+		colInfo,
+		colName;
+	
+	dsBasicCols = parent.ds_basicCols;
+	this.cmb_bindCategory.set_innerdataset(dsBasicCols);
+	
+	if (dsBasicCols && dsBasicCols.getRowCount() > 0)
+	{
+		return;
+	}
+	
+	bindDsId = parent.basicBindDs;
+	bindDs = Eco.XComp.lookup(parent, bindDsId);
+	
+	dsColCnt = bindDs.getColCount();
+	for (var i = 0; i < dsColCnt; i++)
+	{
+		colInfo = bindDs.getColumnInfo(i);
+		colName = colInfo.name;
+		nrow = dsBasicCols.addRow();
+		dsBasicCols.setColumn(nrow, "code", colName);
+		dsBasicCols.setColumn(nrow, "data", colName);
+	}
+}
+
+this.setDsAxis = function()
+{
+	var dsInnerAxis,
+		axes,
+		id,
+		nrow = -1;
+	
+	dsInnerAxis = parent.ds_innerAxis;
+	if (dsInnerAxis && dsInnerAxis.getRowCount() > 0)
+	{
+		return;
+	}
+	
+	axes = eChart.getAllAxes();
+	Eco.array.forEach(axes, function(obj, index) {
+		if (obj["id"])
+		{
+			id = obj["id"];
+			nrow = dsInnerAxis.addRow();
+			dsInnerAxis.setColumn(nrow, "code", id);
+			dsInnerAxis.setColumn(nrow, "data", id);
+		}
+	}, this);
+}
+
+this.setDsColor = function()
+{	
+	var colors,
+		dsColors,
+		nrow = -1;
+	
+	dsColors = parent.ds_colors;
+	this.cmb_colors.set_innerdataset(dsColors);
+	
+	if (dsColors && dsColors.getRowCount() > 0)
+	{
+		return;
+	}
+	
+	colors = eChart.getColorsCategory();
+	//trace("colors", colors);
+	
+	Eco.array.forEach(colors, function(obj, index) {
+		Eco.object.Each(obj, function(prop, val, object) {
+			if (prop == "id")
+			{
+				nrow = dsColors.addRow();
+				dsColors.setColumn(nrow, "code", val);
+				dsColors.setColumn(nrow, "data", val);
+				return false;
+			}
+		}, this);
+	}, this);
+}
+
+this.setGrid = function()
+{
+	var grid,
+		gridPie,
+		formats = "",
+		formatCols = "",
+		formatHeads = "",
+		formatBodys = "",
+		dsColCnt = -1,
+		bindDsId,
+		bindDs,
+		colInfo,
+		colName,
+		colCnt = 0;
+		
+	grid = parent.tab_info.tpg_data.grd_basic;
+	gridPie = parent.tab_info.tpg_data.grd_pie;
+	gridPie.set_visible(false);
+	grid.set_visible(true);
+	
+	colCnt = grid.getFormatColCount();
+	if (colCnt < 1)
+	{
+		grid.set_enableevent(false);
+		
+		bindDsId = parent.basicBindDs;
+		bindDs = Eco.XComp.lookup(parent, bindDsId);
+		
+		dsColCnt = bindDs.getColCount();
+		for (var i = 0; i < dsColCnt; i++)
+		{
+			formatCols += "<Column size=\"100\"/>";
+			
+			colInfo = bindDs.getColumnInfo(i);
+			colName = colInfo.name;
+			
+			formatHeads += "<Cell col=\"";
+			formatHeads += i;
+			formatHeads += "\" row=\"0\" displaytype=\"normal\" edittype=\"expand\" text=\"";
+			formatHeads += colName;
+			formatHeads += "\" expandimage=\"";
+			formatHeads += parent.imgDelCol;
+			formatHeads += "\" expandshow=\"show\" expandsize=\"";
+			formatHeads += parent.imgDelColSize;
+			formatHeads += "\"/>";
+			
+			formatBodys += "<Cell col=\"";
+			formatBodys += i;
+			formatBodys += "\" row=\"0\" displaytype=\"normal\" edittype=\"normal\" text=\"bind:";
+			formatBodys += colName;
+			formatBodys += "\"/>";
+		}
+		
+		formats = "<Format id=\"basic\">";
+		formats += "<Columns>";
+		formats += formatCols
+		formats += "</Columns>";
+		formats += "<Rows>";
+		formats += "<Row band=\"head\" size=\"26\"/>";
+		formats += "<Row band=\"body\" size=\"26\"/>";
+		formats += "</Rows>";
+		formats += "<Band id=\"head\">";
+		formats += formatHeads;
+		formats += "</Band>";
+		formats += "<Band id=\"body\">";
+		formats += formatBodys;
+		formats += "</Band>";
+		formats += "</Format>";
+		
+		grid.set_formats(formats);
+		grid.setBindDataset(bindDs);
+		grid.set_enableevent(true);
+		
+		//trace(grid.getFormatString());
+	}
+}
+
+this.common_onsetfocus = function(obj:Combo, e:nexacro.SetFocusEventInfo)
+{
+ 	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchange_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+]]></Script>
+  </Form>
+</FDL>

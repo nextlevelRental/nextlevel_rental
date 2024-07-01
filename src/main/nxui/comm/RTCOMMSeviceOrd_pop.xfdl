@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMSeviceOrd_pop" classname="RTCMVkbur_pop" left="0" top="0" width="817" height="433" titletext="서비스등록" onload="RTCOMMSeviceOrd_pop_onload" onkeyup="RTCOMMSeviceOrd_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_seviceCd" taborder="0" binddataset="ds_rtsd0013" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="8" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="313" height="380" cellsizingtype="col" oncellclick="comboChk" autoupdatetype="comboselect">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="138"/>
+                <Column size="69"/>
+                <Column size="93"/>
+                <Column size="74"/>
+                <Column size="114"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상세서비스"/>
+                <Cell col="1" text="기간"/>
+                <Cell col="2" text="타이어본수"/>
+                <Cell col="3" text="서비스횟수"/>
+                <Cell col="4" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:prsNm"/>
+                <Cell col="1" text="bind:periodNm"/>
+                <Cell col="2" text="bind:cntNm"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:servCnt" combodataset="ds_svrCnt" combocodecol="cd" combodatacol="cdNm" combodisplay="display"/>
+                <Cell col="4" text="bind:servAmtSum"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="2" text="선택" onclick="btn_choice_onclick" top="398" right="365" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="398" right="320" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rtsd0013" oncolumnchanged="aaaa">
+        <ColumnInfo>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+          <Column id="servInfAmt" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="servCnt" type="STRING" size="256"/>
+          <Column id="servAmtSum" type="STRING" size="256"/>
+          <Column id="servAmtSumOrg" type="STRING" size="256"/>
+          <Column id="servCntOrg" type="STRING" size="256"/>
+          <Column id="servInfYN" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_svrCnt">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">1회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">2회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="cdNm">3회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">4</Col>
+            <Col id="cdNm">4회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">5</Col>
+            <Col id="cdNm">5회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">6</Col>
+            <Col id="cdNm">6회</Col>
+          </Row>
+          <Row>
+            <Col id="cd">999</Col>
+            <Col id="cdNm">무제한</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+
+var p_prsNm = "";
+
+// 데이터 호출 후 실행 함수 
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "srvcOrdList" ){
+	
+		var ct = this.ds_rtsd0013.getRowCount();
+		if( ct == 0){
+			alert("1 조회된 데이터가 없습니다.");
+			this.div_search.p_prsNm.setFocus(true);
+			p_prsNm = "";
+		}
+		this.alert(this.ds_rtsd0013.getColumn(0, "servInfYN"));
+		// 무제한 선택여부 
+		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
+		}
+	}else if( strSvcId == "prmmSrvcOrdList" ){
+	
+		var ct = this.ds_rtsd0013.getRowCount();
+		if( ct == 0){
+			alert("2 조회된 데이터가 없습니다.");
+			this.div_search.p_prsNm.setFocus(true);
+			p_prsNm = "";
+		}
+		this.alert(this.ds_rtsd0013.getColumn(0, "servInfYN"));
+		// 무제한 선택여부 
+		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
+		}
+	}
+}
+
+// 초기 로딩시
+this.RTCOMMSeviceOrd_pop_onload = function (obj:Form, e:LoadEventInfo){
+	Ex.core.init(obj);
+	this.searchDo(); 
+}
+
+// 검색 버튼클릭시
+this.searchDo = function(){
+
+	/*var sSvcID        	= "srvcOrdList";                    
+	var sController   	= "rtms/comm/srvcOrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0013=srvcOrdListMap";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.ds_rtsd0013.clearData();  // dataset clear 한다.
+	sArgs += Ex.util.setParam("p_saleCd", 'S000000110');	// 전달변수
+	sArgs += Ex.util.setParam("p_periodCd", '12');	// 전달변수
+	sArgs += Ex.util.setParam("p_cntCd", '02');	// 전달변수
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); */
+	
+	var sSvcID        	= "prmmSrvcOrdList";                    
+	var sController   	= "/rtms/sd/prmmSrvcOrdList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_rtsd0013=prmmSrvcOrdList";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	this.ds_rtsd0013.clearData();  // dataset clear 한다.
+		sArgs += Ex.util.setParam("ordNo",   "D17000109781");
+		sArgs += Ex.util.setParam("periodCd",   "12");
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+// 닫기
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+
+// ESC 닫기
+this.RTCOMMSeviceOrd_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+
+
+this.comboChk = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if(e.col == 3) {
+		this.ds_svrCnt.filter("cd == '999' || cd == " + this.ds_rtsd0013.getColumn(e.row, "servCntOrg"));
+		
+		
+	}
+}
+
+
+this.aaaa = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+{
+	//this.alert(obj.getColumn(e.row, "servCnt"));
+	
+	if(obj.getColumn(e.row, "servCnt") == '999'){
+		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servInfAmt"));
+	}else{
+		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servAmtSumOrg"));
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

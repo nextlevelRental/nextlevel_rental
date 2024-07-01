@@ -1,0 +1,338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREChargeExcept" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1147" height="477" titletext="청구제외등록" onload="RTSDProvisionalContractRegister_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="19" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="486" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="20" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="21" text="고객리스트" cssclass="sta_WF_subTitle" left="10" top="75" width="120" height="21"/>
+        <Static id="Static02" taborder="22" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="95" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_exceptList" taborder="18" useinputpanel="false" autofittype="none" oncellclick="grid_closeList_oncellclick" left="9" top="104" width="1113" height="225" scrollbars="autoboth" binddataset="ds_exceptList">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="105"/>
+                <Column size="65"/>
+                <Column size="93"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="106"/>
+                <Column size="72"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="주문번호"/>
+                <Cell col="1" text="고객명"/>
+                <Cell col="2" text="연락처"/>
+                <Cell col="3" text="구분"/>
+                <Cell col="4" text="결제수단"/>
+                <Cell col="5" text="등록일자"/>
+                <Cell col="6" displaytype="normal" text="등록자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ordNo" combodataset="ds_user" combocodecol="userId" combodatacol="userNm"/>
+                <Cell col="1" displaytype="normal" style="align:center;" text="bind:custNm"/>
+                <Cell col="2" displaytype="normal" style="align:center;" text="bind:mobNo"/>
+                <Cell col="3" displaytype="normal" style="align:center;" text="bind:apprDesc"/>
+                <Cell col="4" displaytype="normal" style="align:center;" text="bind:payMthdNm"/>
+                <Cell col="5" displaytype="date" style="align:center;" text="bind:regDt" combodataset="ds_R051" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="6" displaytype="normal" style="align:center;" text="bind:regId"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5"/>
+                <Cell col="6" displaytype="normal" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="23" cssclass="Guide_color" visible="false" left="0" top="328" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static34" taborder="24" cssclass="sta_WF_detailLabel2" left="10" top="375" width="1113" height="31"/>
+        <Static id="st_custNo" taborder="25" text="고객명" cssclass="sta_WF_detailLabel" left="287" top="375" width="125" height="31"/>
+        <Edit id="ed_custNo" taborder="3" readonly="false" left="417" top="380" width="142" height="21" maxlength="50" enable="false"/>
+        <Static id="st_custNm" taborder="26" text="연락처" cssclass="sta_WF_detailLabel" left="564" top="375" width="125" height="31"/>
+        <Edit id="ed_mobNo" taborder="4" readonly="false" left="694" top="380" width="142" height="21" maxlength="14" enable="false"/>
+        <Static id="Static05" taborder="27" cssclass="sta_WF_detailLabel2" left="10" top="405" width="1113" height="31"/>
+        <Static id="st_regDt" taborder="28" text="등록일자" cssclass="sta_WF_detailLabel" left="841" top="405" width="125" height="31"/>
+        <Edit id="ed_apprScnt" taborder="8" readonly="false" left="694" top="410" width="142" height="21" maxlength="8" enable="false"/>
+        <Static id="st_apprScnt" taborder="29" text="연체회차" cssclass="sta_WF_detailLabel" left="564" top="405" width="125" height="31"/>
+        <Edit id="ed_apprAmt" taborder="7" readonly="false" left="417" top="410" width="142" height="21" maxlength="20" enable="false"/>
+        <Static id="st_apprAmt" taborder="30" text="연체금액" cssclass="sta_WF_detailLabel" left="287" top="405" width="125" height="31"/>
+        <Edit id="ed_payMthdNm" taborder="6" readonly="false" left="140" top="410" width="142" height="21" maxlength="50" enable="false"/>
+        <Static id="st_payMthdNm" taborder="31" text="결제수단" cssclass="sta_WF_detailLabel" left="10" top="405" width="125" height="31"/>
+        <Static id="st_contractInfo" taborder="42" text="고객정보" cssclass="sta_WF_subTitle" left="10" top="349" width="80" height="21"/>
+        <Button id="btn_new" taborder="1" text="신규" cssclass="btn_WF_module" left="1027" top="343" width="45" height="22" domainId="nexa.save" onclick="btn_new_onclick" visible="false"/>
+        <Button id="btn_del" taborder="2" text="삭제" cssclass="btn_WF_module" left="1077" top="343" width="45" height="22" domainId="nexa.save" onclick="btn_del_onclick" visible="false"/>
+        <Static id="Static06" taborder="43" cssclass="Guide_color" visible="false" left="0" top="365" width="1147" height="10"/>
+        <Div id="div_search" taborder="44" left="9" top="10" width="1113" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static26" taborder="95" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="96" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="st_custNm00" taborder="100" text="장착일자" cssclass="sta_WF_schTitle" left="29" top="12" width="69" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="102" text="FIX w20" cssclass="Guide_color" visible="false" left="96" top="0" width="20" height="45"/>
+              <Static id="Static02" taborder="103" text="FIX w20" cssclass="Guide_color" visible="false" left="426" top="0" width="20" height="45"/>
+              <Calendar id="cal_fromDay" taborder="104" dateformat="yyyy-MM-dd" left="116" top="12" width="142" height="21"/>
+              <Calendar id="cal_toDay" taborder="105" dateformat="yyyy-MM-dd" left="284" top="12" width="142" height="21"/>
+              <Static id="st_custNm01" taborder="106" text="주문번호" cssclass="sta_WF_schTitle" left="445" top="12" width="69" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static00" taborder="107" text="FIX w20" cssclass="Guide_color" visible="false" left="514" top="0" width="20" height="45"/>
+              <Edit id="ed_ordNo" taborder="108" maxlength="50" left="532" top="12" width="142" height="21"/>
+              <Static id="Static03" taborder="109" text="~" left="24.08%" top="14" right="74.66%" height="20"/>
+              <Button id="btn_orderNo" taborder="110" text="계약번호찾기" left="683" top="12" width="89" height="21" domainId="nexa.save" onclick="div_search_btn_orderNo_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static07" taborder="45" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="55" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="st_custNo00" taborder="47" text="주문번호" cssclass="sta_WF_detailLabel" left="10" top="375" width="125" height="31"/>
+        <Edit id="ed_ordNo" taborder="48" maxlength="50" left="140" top="380" width="142" height="21" enable="false"/>
+        <Static id="st_exceptNm" taborder="49" text="제외구분" cssclass="sta_WF_detailLabel" left="841" top="375" width="125" height="31"/>
+        <Static id="Static08" taborder="50" cssclass="sta_WF_detailLabel2" left="10" top="435" width="1113" height="31"/>
+        <Static id="st_regId" taborder="51" text="등록자" cssclass="sta_WF_detailLabel" left="10" top="435" width="125" height="31"/>
+        <Edit id="ed_regId" taborder="52" maxlength="100" left="140" top="440" width="142" height="21" enable="false"/>
+        <Calendar id="cal_regDt" taborder="53" dateformat="yyyy-MM-dd" left="973" top="410" width="142" height="21" enable="false"/>
+        <Combo id="cb_except" taborder="54" left="84.83%" top="381" right="2.79%" height="20" innerdataset="@ds_R069" codecolumn="cd" datacolumn="cdNm"/>
+        <Static id="st_exceptNm00" taborder="55" text="사용여부" cssclass="sta_WF_detailLabel" left="287" top="435" width="125" height="31"/>
+        <Combo id="cb_useYn" taborder="56" innerdataset="@ds_C033" codecolumn="cd" datacolumn="cdNm" left="36.36%" top="441" right="51.26%" height="20"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ed_custNo" propid="value" datasetid="ds_exceptList" columnid="custNm"/>
+      <BindItem id="item1" compid="ed_mobNo" propid="value" datasetid="ds_exceptList" columnid="mobNo"/>
+      <BindItem id="item4" compid="ed_apprScnt" propid="value" datasetid="ds_exceptList" columnid="apprScnt"/>
+      <BindItem id="item3" compid="ed_apprAmt" propid="value" datasetid="ds_exceptList" columnid="apprAmt"/>
+      <BindItem id="item2" compid="ed_payMthdNm" propid="value" datasetid="ds_exceptList" columnid="payMthdNm"/>
+      <BindItem id="item9" compid="div_search.cal_fromDay" propid="value" datasetid="ds_provsnList" columnid="planDay"/>
+      <BindItem id="item10" compid="div_search.cal_toDay" propid="value" datasetid="ds_provsnList" columnid="planDay"/>
+      <BindItem id="item14" compid="div_search.ed_ordNo" propid="value" datasetid="ds_provsnList" columnid="custNm"/>
+      <BindItem id="item15" compid="ed_ordNo" propid="value" datasetid="ds_exceptList" columnid="ordNo"/>
+      <BindItem id="item5" compid="ed_regId" propid="value" datasetid="ds_exceptList" columnid="regId"/>
+      <BindItem id="item6" compid="cal_regDt" propid="value" datasetid="ds_exceptList" columnid="regDt"/>
+      <BindItem id="item7" compid="cb_except" propid="value" datasetid="ds_exceptList" columnid="apprFlag"/>
+      <BindItem id="item8" compid="cb_useYn" propid="value" datasetid="ds_exceptList" columnid="useYn"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_exceptList">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="apprFlag" type="STRING" size="256"/>
+          <Column id="apprDesc" type="STRING" size="256"/>
+          <Column id="apprAmt" type="STRING" size="256"/>
+          <Column id="apprScnt" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R069">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_C033">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_exceptListCp">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="apprFlag" type="STRING" size="256"/>
+          <Column id="apprDesc" type="STRING" size="256"/>
+          <Column id="apprAmt" type="STRING" size="256"/>
+          <Column id="apprScnt" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+
+// 전역변수 선언
+this.fUserId  = "";											// 현재 로그인 사용자의 ID
+this.fUserGrp = "";											// 현재 로그인 사용자의 사용자그룹
+this.firstDate  = "";
+this.lastDate  = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.parent.setButton("C|S", this);
+
+	this.FN_listCommInfo();
+	
+	// 사용자그룹 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}	
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+
+	switch (strSvcId) {
+		case "getDate":
+			this.div_search.cal_fromDay.set_value(this.firstDate);
+			this.div_search.cal_toDay.set_value(this.lastDate);
+			break;
+	    case "listCommInfo":
+			this.get_date();
+			break;
+		case "listChargeExceptCp":
+			this.fn_copy();
+			break;
+		case "saveChargeExcept":
+			this.alert("저장이 완료되었습니다.");
+			break;
+		default:
+			break;
+	}
+}
+
+/**
+ * 신규 버튼의 클릭 이벤트 처리
+ */
+this.btn_new_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	this.ds_exceptList.addRow();
+}
+
+/**
+ * 삭제 버튼의 클릭 이벤트 처리
+ */
+this.btn_del_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {	
+	this.ds_exceptList.deleteRow(this.grid_exceptList.currentrow);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_btn_orderNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={ p_arg : this.p_arg };
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.returnOrderNoInfo = function(arr){
+	var ds = arr[0];
+	var ordNo = ds.getColumn(ds.rowposition, "ordNo");
+	
+	if( nvl(ordNo) == "" ){
+		alert("계약번호찾기를 확인 하세요.");
+	}else{
+		this.div_search.ed_ordNo.set_value(ordNo);
+		this.ds_exceptList.clearData();
+		this.ds_exceptList.addRow();
+		
+		this.FN_listChargeExceptCp(ordNo);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_copy = function(){	
+	this.ds_exceptList.copyRow(this.ds_exceptList.rowposition, this.ds_exceptListCp, this.ds_exceptListCp.rowposition);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_listCommInfo = function(ordNo){
+	var sSvcID        	= "listCommInfo";                    
+	var sController   	= "rtms/re/chargeExceptComm.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_R069=R069 ds_C033=C033";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_listChargeExceptCp = function(ordNo){
+
+	var sSvcID        	= "listChargeExceptCp";                    
+	var sController   	= "rtms/re/listChargeExcept.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_exceptListCp=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", 	ordNo);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_listChargeExcept = function(ordNo){
+
+	var procFDay = nvl(this.div_search.cal_fromDay.value);
+	var procTDay = nvl(this.div_search.cal_toDay.value);
+	
+	var sSvcID        	= "listChargeExcept";                    
+	var sController   	= "rtms/re/listChargeExcept.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_exceptList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("ordNo", 	ordNo);
+	sArgs += Ex.util.setParam("procFDay", 	procFDay);
+	sArgs += Ex.util.setParam("procTDay", 	procTDay);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(ordNo){
+
+	var ordNo = nvl(this.div_search.ed_ordNo.value);
+	
+	this.FN_listChargeExcept(ordNo);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(ordNo){
+
+	var sSvcID        	= "saveChargeExcept";                    
+	var sController   	= "ntrms/re/saveChargeExcept.do";
+	var sInDatasets   	= "input=ds_exceptList:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}]]></Script>
+  </Form>
+</FDL>

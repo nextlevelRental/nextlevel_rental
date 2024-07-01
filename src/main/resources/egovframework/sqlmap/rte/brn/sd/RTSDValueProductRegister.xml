@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="vProduct">
+	
+	<resultMap id="vProductResultMap" class="java.util.HashMap">
+		<result property="addGdsCd"       column="ADD_GDS_CD" />
+		<result property="addGdsNm"       column="ADD_GDS_NM" />
+		<result property="amt"            column="AMT"        />
+		<result property="makerNm"        column="MAKER_NM"   />
+		<result property="gdsGb"          column="GDS_GB"     />
+		<result property="gdsDesc"        column="GDS_DESC"   />
+		<result property="gdsDescDt"      column="GDS_DESC_DT"/>
+		<result property="regId"          column="REG_ID"     />
+		<result property="regDt"          column="REG_DT"     />
+		<result property="chgId"          column="CHG_ID"     />
+		<result property="chgDt"          column="CHG_DT"     />
+		<result property="gdsGrp"         column="GDS_GRP"    />
+		<result property="useYn"          column="USE_YN"     />
+		<result property="dcAmt"          column="DC_AMT"     />
+		<result property="actAmt"         column="ACT_AMT"    />
+		<result property="dcYn"           column="DC_YN"      />
+	</resultMap>
+       
+	<parameterMap id="vProductParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="vProductResultMap" />
+		<parameter property="addGdsNm"  	mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="makerNm"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"  		mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="vProduct.listProductInfo" parameterMap="vProductParam">
+		{call PKG_RTSD0023.p_sRTSD0023(?, ?, ?, ?)}
+	</procedure>
+
+	
+	<parameterMap id="p_IUDRTSD0023_I" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="addGdsCd"  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="addGdsNm"  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="amt"       mode="IN" jdbcType="VARCHAR" />
+		<parameter property="makerNm"   mode="IN" jdbcType="VARCHAR" />
+		<parameter property="gdsGb"     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="gdsDesc"   mode="IN" jdbcType="VARCHAR" />
+		<parameter property="gdsDescDt" mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="gdsGrp"    mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcAmt"     mode="IN" jdbcType="VARCHAR" />
+		<parameter property="dcYn"      mode="IN" jdbcType="VARCHAR" />		
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="vProduct.saveProductInfo" parameterMap="p_IUDRTSD0023_I">
+		{call PKG_RTSD0023.p_IUDRTSD0023(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	<resultMap id="vProductPopResultMap" class="java.util.HashMap">
+		<result property="addGdsCd"       column="ADD_GDS_CD" />
+		<result property="addGdsNm"       column="ADD_GDS_NM" />
+		<result property="amt"            column="AMT"        />
+		<result property="dcAmt"          column="DC_AMT"     />
+		<result property="actAmt"         column="ACT_AMT"    />
+		<result property="dcYn"           column="DC_YN"      />
+		<result property="makerNm"        column="MAKER_NM"   />
+		<result property="gdsGrp"         column="GDS_GRP"    />
+		<result property="gdsDesc"        column="GDS_DESC"   />
+	</resultMap>
+       
+	<parameterMap id="vProductPopParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="vProductPopResultMap" />
+		<parameter property="addGdsNm"  mode="IN" jdbcType="VARCHAR" />
+		<parameter property="saleCd"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="vProduct.listProductInfoPop" parameterMap="vProductPopParam">
+		{call PKG_RTSD0023.p_sRTSD0023_popNew(?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="vProductSchResultMap" class="java.util.HashMap">
+		<result property="ordNo"       	  column="ORD_NO" />
+		<result property="addGdsCd"       column="ADD_GDS_CD" />
+		<result property="addGdsNm"       column="ADD_GDS_NM" />
+		<result property="amt"            column="AMT"       	 />
+		<result property="dcAmt"          column="DC_AMT"     />
+		<result property="actAmt"         column="ACT_AMT"    />
+		<result property="dcYn"           column="DC_YN"      />
+		<result property="monAmt"         column="MON_AMT"  />
+		<result property="makerNm"        column="MAKER_NM"   />
+		<result property="gdsGrp"         column="GDS_GRP"    />
+		<result property="gdsGrpNm"       column="GDS_GRP_NM"    />
+		<result property="gdsDesc"        column="GDS_DESC"   />
+	</resultMap>
+       
+	<parameterMap id="vProductSchParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="vProductSchResultMap" />
+		<parameter property="ordNo"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="vProduct.listProductInfoSch" parameterMap="vProductSchParam">
+		{call PKG_RTSD0023.p_sRTSD0023Sel(?, ?)}
+	</procedure>
+	
+</sqlMap>

@@ -1,0 +1,509 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECashReceipt" classname="test_form" left="0" top="0" width="1147" height="496" titletext="현금영수증 발행내역 조회" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="14" cssclass="Guide_color" visible="false" left="0" top="83" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="99" width="81" height="20"/>
+        <Static id="Static02" taborder="16" cssclass="Guide_color" visible="false" left="0" top="114" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="17" text="Div00" left="0" top="0" width="1122" height="82" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="8" text="수납일자" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="9" cssclass="Guide_color" visible="false" left="1" top="0" height="12" width="1117"/>
+              <Static id="Static06" taborder="10" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="78"/>
+              <Static id="Static44" taborder="11" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static23" taborder="12" cssclass="Guide_color" visible="false" left="1" top="33" height="12" width="1117"/>
+              <Static id="Static02" taborder="15" cssclass="Guide_color" visible="false" left="0" top="66" height="12" width="1118"/>
+              <Static id="st_searchCondition00" taborder="17" text="발행일자" cssclass="sta_WF_schTitle" left="19" top="41" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_fromRecvDay" taborder="0" dateformat="yyyy-MM-dd" left="131" top="12" width="100" height="21"/>
+              <Calendar id="cal_toRecvDay" taborder="1" dateformat="yyyy-MM-dd" left="246" top="12" width="100" height="21"/>
+              <Static id="Static03" taborder="19" text="~" left="234" top="12" width="9" height="21"/>
+              <Static id="Static00" taborder="20" cssclass="Guide_color" visible="false" left="346" top="0" width="30" height="78"/>
+              <Static id="st_searchCondition01" taborder="21" text="고객번호" cssclass="sta_WF_schTitle" left="376" top="12" width="64" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition02" taborder="22" text="발행상태" cssclass="sta_WF_schTitle" left="376" top="45" width="64" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edt_custNo" taborder="2" inputfilter="space" lengthunit="ascii" onkeyup="custNo_onkeyup" left="444" top="12" width="140" height="21"/>
+              <Edit id="edt_custNoKeyword" taborder="4" inputfilter="space" lengthunit="ascii" enable="false" left="584" top="12" width="160" height="21"/>
+              <Calendar id="cal_fromCashDay" taborder="5" dateformat="yyyy-MM-dd" left="131" top="45" width="100" height="21"/>
+              <Static id="Static04" taborder="24" text="~" left="234" top="45" width="9" height="21"/>
+              <Calendar id="cal_toCashDay" taborder="6" dateformat="yyyy-MM-dd" left="246" top="45" width="100" height="21"/>
+              <Combo id="cbo_CashStat" taborder="7" text="전체" innerdataset="@ds_R033" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" left="443" top="45" width="140" height="21"/>
+              <Button id="btn_custPopUp" taborder="3" onclick="fn_custPopUp" cssclass="btn_WF_edtSch" left="564" top="11" width="20" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_cashReceiptsCancel" taborder="18" text="취소" cssclass="btn_WF_module" enable="false" left="1077" top="92" width="45" height="22" onclick="btn_cashReceiptsCancel_onclick"/>
+        <Button id="btn_cashReceiptsRegister" taborder="19" text="발행" cssclass="btn_WF_module" enable="false" left="1026" top="92" width="45" height="22" onclick="btn_cashReceiptsRegister_onclick" visible="false"/>
+        <Grid id="grd_list" taborder="20" binddataset="ds_list" useinputpanel="false" oncelldblclick="grd_list_oncelldblclick" left="0" top="124" width="1121" height="372">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="116"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="140"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="140"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수납일자"/>
+                <Cell col="1" text="수납금액"/>
+                <Cell col="2" text="수납방법"/>
+                <Cell col="3" text="고객번호"/>
+                <Cell col="4" text="고객명"/>
+                <Cell col="5" text="현금영수증&#13;&#10;인증번호"/>
+                <Cell col="6" text="현금영수증&#13;&#10;발행일자"/>
+                <Cell col="7" text="현금영수증&#13;&#10;승인번호"/>
+                <Cell col="8" text="발행상태"/>
+                <Cell col="9" text="오류메세지"/>
+                <Cell col="10" text="등록비"/>
+                <Cell col="11" text="렌탈료"/>
+                <Cell col="12" text="렌탈연체료"/>
+                <Cell col="13" text="취소수수료"/>
+                <Cell col="14" text="위약금"/>
+                <Cell col="15" text="선수금"/>
+                <Cell col="16" text="기타"/>
+                <Cell col="17" text="수납거래번호"/>
+                <Cell col="18" text="현금영수증발행순번"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" style="cursor:hand;" text="bind:recvDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" displaytype="number" style="align:right middle;cursor:hand;" text="bind:cashAmt" mask="###,###,###,##0"/>
+                <Cell col="2" style="align: ;" text="bind:recvPayNm"/>
+                <Cell col="3" style="cursor:hand;" text="bind:custNo"/>
+                <Cell col="4" style="cursor:hand;" text="bind:custNm"/>
+                <Cell col="5" style="cursor:hand;" text="bind:chiNo"/>
+                <Cell col="6" displaytype="date" style="cursor:hand;" text="bind:cashDay" calendardisplaynulltype="none"/>
+                <Cell col="7" style="cursor:hand;" text="bind:cashappNo"/>
+                <Cell col="8" style="cursor:hand;" text="bind:cashStatNm"/>
+                <Cell col="9" style="cursor:hand;" text="bind:csermsg"/>
+                <Cell col="10" displaytype="number" style="align:right;" text="bind:regiAmt" mask="###,###,###,##0"/>
+                <Cell col="11" displaytype="number" style="align:right;" text="bind:rentAmt" mask="###,###,###,##0"/>
+                <Cell col="12" displaytype="number" style="align:right;" text="bind:rtarAmt" mask="###,###,###,##0"/>
+                <Cell col="13" displaytype="number" style="align:right;" text="bind:cancAmt" mask="###,###,###,##0"/>
+                <Cell col="14" displaytype="number" style="align:right;" text="bind:pntyAmt" mask="###,###,###,##0"/>
+                <Cell col="15" displaytype="number" style="align:right;" text="bind:ppayAmt" mask="###,###,###,##0"/>
+                <Cell col="16" displaytype="number" style="align:right;" text="bind:etcAmt" mask="###,###,###,##0"/>
+                <Cell col="17" text="bind:recvSeq"/>
+                <Cell col="18" text="bind:cashSeq"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계"/>
+                <Cell col="1" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;cashAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;regiAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="11" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;rentAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="12" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;rtarAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="13" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;cancAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="14" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;pntyAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="15" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;ppayAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="16" displaytype="number" style="align:right;" text="expr:dataset.getSum(&quot;etcAmt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="17"/>
+                <Cell col="18"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_R033" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cash" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="jobGb" type="STRING" size="256"/>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="cashSeq" type="STRING" size="256"/>
+          <Column id="cashIseq" type="STRING" size="256"/>
+          <Column id="resCd" type="STRING" size="256"/>
+          <Column id="resMsg" type="STRING" size="256"/>
+          <Column id="CashTno" type="STRING" size="256"/>
+          <Column id="cashappNo" type="STRING" size="256"/>
+          <Column id="cashappTm" type="STRING" size="256"/>
+          <Column id="cregSt" type="STRING" size="256"/>
+          <Column id="CregDesc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="cashAmt" type="INT" size="256"/>
+          <Column id="cashNamt" type="STRING" size="256"/>
+          <Column id="cashVamt" type="STRING" size="256"/>
+          <Column id="recvPay" type="STRING" size="256"/>
+          <Column id="recvPayNm" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="chiNo" type="STRING" size="256"/>
+          <Column id="cashDay" type="STRING" size="256"/>
+          <Column id="cashappNo" type="STRING" size="256"/>
+          <Column id="cashStat" type="STRING" size="256"/>
+          <Column id="cashStatNm" type="STRING" size="256"/>
+          <Column id="csermsg" type="STRING" size="256"/>
+          <Column id="recvSeq" type="STRING" size="256"/>
+          <Column id="regiAmt" type="INT" size="256"/>
+          <Column id="rentAmt" type="INT" size="256"/>
+          <Column id="rtarAmt" type="INT" size="256"/>
+          <Column id="cancAmt" type="INT" size="256"/>
+          <Column id="pntyAmt" type="INT" size="256"/>
+          <Column id="ppayAmt" type="INT" size="256"/>
+          <Column id="etcAmt" type="INT" size="256"/>
+          <Column id="cashSeq" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.userGrp = application.gds_userInfo.getColumn(0, "userGrp");//사용자 그룹 		--> *01:영업관리자     *02:콜센터     *03:지사     *04:지점     *05:대리점
+this.toDay 	 = ""; 	//현재날짜
+this.toHour  = "";	//현재시간
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if( nErrorCode < 0 ){	
+		alert(strErrorMsg);
+	}
+	
+	switch (strSvcId){
+		case "getDate":
+			var sFirstDay = Eco.date.getFirstDate(this.toDay);
+			this.div_search.cal_fromRecvDay.set_value(sFirstDay);
+			this.div_search.cal_toRecvDay.set_value(this.toDay);
+			this.div_search.cal_fromCashDay.set_value(sFirstDay);
+			this.div_search.cal_toCashDay.set_value(this.toDay);
+			this.fn_search();
+			break;
+		case "getCommCode":
+			break;
+		case "getCashReceiptList":
+			if(this.ds_list.rowcount == 0) {
+				this.grd_list.set_nodatatext("조회된 결과가 없습니다.");
+			}
+			break;	
+		case "listCustInfo":
+			if(this.ds_cust.rowcount > 0 ) {
+				this.div_search.edt_custNoKeyword.set_value(this.ds_cust.getColumn(0, "custNm"));
+			}
+			break;
+		case "cashReceiptsRegister":
+			if( nErrorCode == 0 ){
+				this.cashReceiptsRegisterOut();
+			}
+			break;
+		case "cashReceiptsRegisterOut" :
+			if( nvl(this.ds_cash.getColumn(0,"resCd")) == "0000" ){
+				alert("정상적으로 처리되었습니다.");
+				this.fn_search();
+			}else{
+				alert(nvl(this.ds_cash.getColumn(0,"resMsg")));
+			}
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.fn_init();
+	if( this.userGrp == "01"){
+		this.btn_cashReceiptsRegister.set_enable(true);
+		this.btn_cashReceiptsCancel.set_enable(true);
+	}else{
+		this.btn_cashReceiptsRegister.set_enable(false);
+		this.btn_cashReceiptsCancel.set_enable(false);
+	}
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.get_date();
+	this.fn_getCommCode();
+	this.fn_initBtn();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.get_date = function(){
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getCommCode  = function(){
+	var sSvcID      	= "getCommCode";  
+	var sController   	= "ntrms/re/getCashReceiptCommCode.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_R033=outputR033";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function(){
+	/* 1. N : 신규추가		* 2. S : 조회		* 3. C : 데이타생성		* 4. E : 엑셀데이타생성		* 5. AG: 집계		* 6. DN: 다운 */	
+	this.parent.setButton("E|S",this);		
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/	
+this.fn_search = function(){
+	if( this.fn_getValid() ){
+		var sSvcID      	= "getCashReceiptList";
+		var sController   	= "ntrms/re/getCashReceiptList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_list=output";
+		var sArgs 			= "";
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("recvDayF", nvl(this.div_search.cal_fromRecvDay.value));	//수납일자FROM
+		sArgs += Ex.util.setParam("recvDayT", nvl(this.div_search.cal_toRecvDay.value));	//수납일자TO
+		sArgs += Ex.util.setParam("cashDayF", nvl(this.div_search.cal_fromCashDay.value));	//발행일자FROM		
+		sArgs += Ex.util.setParam("cashDayT", nvl(this.div_search.cal_toCashDay.value));	//발행일자TO
+		sArgs += Ex.util.setParam("custNo"	, nvl(this.div_search.edt_custNo.value));		//고객번호
+		sArgs += Ex.util.setParam("cashStat", nvl(this.div_search.cbo_CashStat.value));		//발행상태
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo){
+	Ex.core.exportExcel(this, this.grd_list);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getValid = function(){
+	if(nvl(this.div_search.cal_fromRecvDay.value) == ""){
+		alert('수납일자를 입력하세요');
+		this.div_search.cal_fromDt.setFocus();
+		return false;
+	}
+	
+	if(nvl(this.div_search.cal_toRecvDay.value) == ""){
+		alert('수납일자를 입력하세요');
+		this.div_search.cal_toDt.setFocus();
+		return false;
+	}
+	
+	if(parseInt(nvl(this.div_search.cal_fromRecvDay.value)) > parseInt(nvl(this.div_search.cal_toRecvDay.value))){
+		alert('수납일자를 확인하세요.');
+		this.div_search.cal_fromRecvDay.setFocus();
+		return false;
+	}
+	
+	//if(nvl(this.div_search.edt_custNo.value) == "") {
+	//	this.alert("고객번호를 입력하세요");
+	//	this.div_search.edt_custNo.setFocus();
+	//	return;
+	//}
+	
+	if(nvl(this.div_search.cal_fromCashDay.value) == ""){
+		alert('발행일자를 입력하세요');
+		this.div_search.cal_fromCashDay.setFocus();
+		return false;
+	}
+	
+	if(nvl(this.div_search.cal_toCashDay.value) == ""){
+		alert('발행일자를 입력하세요');
+		this.div_search.cal_toCashDay.setFocus();
+		return false;
+	}
+	
+	if(parseInt(nvl(this.div_search.cal_fromCashDay.value)) > parseInt(nvl(this.div_search.cal_toCashDay.value))){
+		alert('발행일자를 확인하세요.');
+		this.div_search.cal_fromCashDay.setFocus();
+		return false;
+	}
+	return true;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if ( e.keycode == 13 ){
+		this.fn_search();
+	}
+}		
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	this.div_search.edt_custNoKeyword.set_value("");	
+	if ( e.keycode == 13 ){
+		if(nvl(this.div_search.edt_custNo.value) == "") {
+			this.alert("고객번호를 입력하세요");
+			this.div_search.edt_custNo.setFocus();
+			return;
+		}
+		this.fn_getCustNm();
+	}		
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.grd_list_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var nIndex = this.grd_list.getCellPos();
+	 var sRecvSeq = this.ds_list.getColumn(this.ds_list.rowposition,"recvSeq");
+	 var args ={p_recvSeq:sRecvSeq, p_gubun:"cash"};
+	 Ex.core.popup(this,"수납세부조회","comm::RTCOMMTranReceiptDtl_pop.xfdl",args,"modaless=false");	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getCustNm = function(){
+	var sSvcID        	= "listCustInfo";                    
+	var sController   	= "rtms/comm/listCustInfo.do";
+	var sInDatasets   	= "user_=ds_user";
+	var sOutDatasets  	= "ds_cust=mapCustInfo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += Ex.util.setParam("custNo", this.div_search.edt_custNo.value);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_formId:this.id, p_custNo:nvl(this.div_search.edt_custNo.value), p_custNm:nvl(this.div_search.edt_custNoKeyword.value)};
+	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.returnCustInfo = function(arr){
+	if(arr[0].rowcount > 0){	
+		if(nvl(arr[0].getColumn(0,"userId")) != "") { 
+			this.div_search.edt_custRegNo.set_value(arr[0].getColumn(0,"userId"));
+		}
+		if(nvl(arr[0].getColumn(0,"userNm")) != "") { 			
+			this.div_search.edt_custRegNoKeyword.set_value(arr[0].getColumn(0,"userNm"));
+		}
+		if(nvl(arr[0].getColumn(0,"custNo")) != "") { 
+			this.div_search.edt_custNo.set_value(arr[0].getColumn(0,"custNo"));			
+		}
+		if(nvl(arr[0].getColumn(0,"custNm")) != "") { 	
+			this.div_search.edt_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));								
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_cashReceiptsRegister_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var recvSeq = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "recvSeq"));
+	
+	if( recvSeq != "" ){
+		var sSvcID      	= "cashReceiptsRegister";
+		var sController   	= "ntrms/re/cashReceiptsRegister.do";
+		var sInDatasets   	= "";
+		var sOutDatasets 	= "ds_cash=cash_output";
+		var sArgs 			= "";
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("jobGb"	, "C");
+		sArgs += Ex.util.setParam("recvSeq"	, recvSeq);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("수납거래번호가 없습니다.");
+	}
+}
+this.cashReceiptsRegisterOut = function() {
+	var sSvcID        	= "cashReceiptsRegisterOut";                    
+	var sController   	= "ntrms/re/cashReceiptsRegisterOut.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	sInDatasets   		= "input=ds_cash";
+	sOutDatasets  		= "";
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_cashReceiptsCancel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var recvSeq = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "recvSeq"));
+	
+	if( recvSeq != "" ){
+		var sSvcID      	= "cashReceiptsRegister";
+		var sController   	= "ntrms/re/cashReceiptsRegister.do";
+		var sInDatasets   	= "";
+		var sOutDatasets 	= "ds_cash=cash_output";
+		var sArgs 			= "";
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("jobGb"	, "D");
+		sArgs += Ex.util.setParam("recvSeq"	, recvSeq);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("수납거래번호가 없습니다.");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

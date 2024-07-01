@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="reRental">
+	
+	<!-- 재렌탈대상리스트 -->
+	<resultMap id="r_sReRentalList" class="java.util.HashMap">
+		<result property="provsnNo" 	column="PROVSN_NO" />
+		<result property="custNo" 	column="CUST_NO" />
+		<result property="custNm" 	column="CUST_NM" />
+		<result property="mobNo" 	column="MOB_NO" />
+		<result property="posCd"    column="POS_CD" />
+		<result property="addr1"    column="ADDR1" />
+		<result property="addr2"    column="ADDR2" />
+		<result property="carNo"   column="CAR_NO" />
+		<result property="patternNm" 	column="PATTERN_NM" />
+		<result property="cntCd" 	column="CNT_CD" />
+		<result property="period" column="PERIOD" />
+		<result property="regAmt" column="REGI_AMT" />
+		<result property="rentAmt"		column="RENT_AMT" />
+		<result property="emailAddr"		column="EMAIL_ADDR" />
+		<result property="ordNo"		column="ORD_NO" />
+		<result property="realOrdNo"		column="REAL_ORDNO" />
+		<result property="chanCd"		column="CHAN_CD" />
+		<result property="planDay"		column="PLAN_DAY" />
+		<result property="ordDay"		column="ORD_DAY" />
+		<result property="procDay"		column="PROC_DAY" />
+		<result property="osDay"		column="OS_DAY" />
+		<result property="osDayF"		column="OS_DAY_F" />
+		<result property="osDayT"		column="OS_DAY_T" />
+		<result property="psCd"		column="PS_CD" />
+		<result property="custReq"		column="CUST_REQ" />
+		<result property="contactGet"		column="CONTACT_GET" />
+		<result property="provsnSt"		column="PROVSN_ST" />
+		<result property="provsnStDtl"		column="PROVSN_ST_DTL" />
+		<result property="callSeq"		column="CALL_SEQ" />
+		<result property="recallDay"		column="RECALL_DAY" />
+		<result property="recallTm"		column="RECALL_TM" />
+		<result property="mfpYn"		column="MFP_YN" />
+		<result property="b00007"		column="B00007" />
+		<result property="callDay"		column="CALL_DAY" />
+		<result property="callId"		column="CALL_ID" />
+		<result property="nagYn"			column="NAG_YN" />
+		<result property="cagYn"			column="CAG_YN" />
+		<result property="cagYn1"		column="CAG_YN1" />
+		<result property="cagYn2"		column="CAG_YN2" />
+		<result property="cagYn3"		column="CAG_YN3" />
+		<result property="cagYn4"		column="CAG_YN4" />
+		<result property="cthYn1"			column="CTH_YN1" />
+		<result property="cthYn2"			column="CTH_YN2" />
+		<result property="cthYn3"			column="CTH_YN3" />
+	</resultMap>	
+	<parameterMap id="p_sReRentalList" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sReRentalList" />
+		<parameter property="custNm" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="procDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="procDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="osDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="osDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="chanCd" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnSt" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnStDtl" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="recallDay" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callId" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnNoF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnNoT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="rowStart" 		jdbcType="NUMERIC"	mode="IN" />
+		<parameter property="rowEnd" 		jdbcType="NUMERIC"	mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="reRental.sReRentalList" parameterMap="p_sReRentalList">
+		{call Pkg_Rtsd0123.p_sRTSD0123(?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 재렌탈대상리스트(엑셀) -->
+	<resultMap id="r_sReRentalListForExcel" class="java.util.HashMap">
+		<result property="provsnNo" 	column="PROVSN_NO" />
+		<result property="custNo" 	column="CUST_NO" />
+		<result property="custNm" 	column="CUST_NM" />
+		<result property="mobNo" 	column="MOB_NO" />
+		<result property="posCd"    column="POS_CD" />
+		<result property="addr1"    column="ADDR1" />
+		<result property="addr2"    column="ADDR2" />
+		<result property="carNo"   column="CAR_NO" />
+		<result property="patternNm" 	column="PATTERN_NM" />
+		<result property="cntCd" 	column="CNT_CD" />
+		<result property="period" column="PERIOD" />
+		<result property="regAmt" column="REGI_AMT" />
+		<result property="rentAmt"		column="RENT_AMT" />
+		<result property="emailAddr"		column="EMAIL_ADDR" />
+		<result property="ordNo"		column="ORD_NO" />
+		<result property="realOrdNo"		column="REAL_ORDNO" />
+		<result property="chanCd"		column="CHAN_CD" />
+		<result property="planDay"		column="PLAN_DAY" />
+		<result property="ordDay"		column="ORD_DAY" />
+		<result property="procDay"		column="PROC_DAY" />
+		<result property="osDay"		column="OS_DAY" />
+		<result property="osDayF"		column="OS_DAY_F" />
+		<result property="osDayT"		column="OS_DAY_T" />
+		<result property="psCd"		column="PS_CD" />
+		<result property="custReq"		column="CUST_REQ" />
+		<result property="contactGet"		column="CONTACT_GET" />
+		<result property="provsnSt"		column="PROVSN_ST" />
+		<result property="provsnStDtl"		column="PROVSN_ST_DTL" />
+		<result property="callSeq"		column="CALL_SEQ" />
+		<result property="recallDay"		column="RECALL_DAY" />
+		<result property="recallTm"		column="RECALL_TM" />
+		<result property="mfpYn"		column="MFP_YN" />
+		<result property="b00007"		column="B00007" />
+		<result property="callDay"		column="CALL_DAY" />
+		<result property="callDtl"		column="CALL_DTL" />
+		<result property="callId"		column="CALL_ID" />
+		<result property="nagYn"			column="NAG_YN" />
+		<result property="cagYn"			column="CAG_YN" />
+		<result property="cagYn1"		column="CAG_YN1" />
+		<result property="cagYn2"		column="CAG_YN2" />
+		<result property="cagYn3"		column="CAG_YN3" />
+		<result property="cagYn4"		column="CAG_YN4" />
+		<result property="cthYn1"			column="CTH_YN1" />
+		<result property="cthYn2"			column="CTH_YN2" />
+		<result property="cthYn3"			column="CTH_YN3" />
+	</resultMap>	
+	<parameterMap id="p_sReRentalListForExcel" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sReRentalListForExcel" />
+		<parameter property="custNm" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="carNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="procDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="procDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="osDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="osDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="chanCd" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnSt" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnStDtl" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="recallDay" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callDayF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callDayT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="callId" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnNoF" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="provsnNoT" 		jdbcType="VARCHAR"	mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="reRental.sReRentalListForExcel" parameterMap="p_sReRentalListForExcel">
+		{call Pkg_Rtsd0123.p_sRTSD0123ForExcel(?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?, ?, ?,
+											  ?, ?, ?)}
+	</procedure>
+	
+	<!-- 재렌탈 가계약정보 IUD -->
+	<parameterMap id="pSaveRerentalContract" class="java.util.HashMap">
+		<parameter property="dvsn"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="provsnNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr2"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="patternNm"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cntCd"      			jdbcType="NUMERIC" mode="IN" />
+		<parameter property="period"      		jdbcType="NUMERIC" mode="IN" />
+		<parameter property="regiAmt"      		jdbcType="NUMERIC" mode="IN" />
+		<parameter property="rentAmt"      		jdbcType="NUMERIC" mode="IN" />
+		<parameter property="emailAddr"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="realOrdNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="planDay"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordDay"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDay"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="osDay"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="osDayF"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="osDayT"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="psCd"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custReq"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contactGet"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="provsnSt"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="provsnStDtl"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="callSeq"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recallDay"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recallTm"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="reRental.saveRerentalContract" resultClass="java.util.HashMap" parameterMap="pSaveRerentalContract">
+		{call Pkg_Rtsd0123.p_IUDRtsd0123(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가계약정보 생성 -->
+	<parameterMap id="paramCreateRtsd0123" class="java.util.HashMap">
+		<parameter property="ordNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="reRental.createRtsd0123" resultClass="java.util.HashMap" parameterMap="paramCreateRtsd0123">
+		{call Pkg_Rtsd0123.p_CreateRtsd0123(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<!-- 고객정보 업데이트 -->
+	<parameterMap id="paramUpdateCustInfo" class="java.util.HashMap">
+		<parameter property="custNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr2"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="emailAddr"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"      		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"      	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"		jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"      	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="reRental.updateCustInfo" resultClass="java.util.HashMap" parameterMap="paramUpdateCustInfo">
+		{call Pkg_Rtsd0100.p_UpdateRtsd0100Online(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMProduct_pop" classname="RTCMPrice_pop" left="0" top="0" width="600" height="490" titletext="상품 조회" onload="RTCMPrice_pop_onload" onkeyup="RTCOMMProduct_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="10" right="10">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="2" text="검색" cssclass="btn_WF_CRUD" top="9" height="22" domainId="nexa.add" onclick="div_search_btn_search_onclick" width="45" right="18"/>
+              <Static id="st_searchModel" taborder="3" text="차종" cssclass="sta_WF_schTitle" top="11" height="20" domainId="nexa.s_condition" width="95" left="20"/>
+              <Combo id="cb_searchBrand" taborder="0" displaynulltext="브랜드" index="-1" top="10" height="21" domainId="nexa.name;nexa.code" innerdataset="ds_brand" codecolumn="cd" datacolumn="cdNm" width="140" onitemchanged="div_search_cb_searchBrand_onitemchanged" left="62"/>
+              <Combo id="cb_searchModel" taborder="1" displaynulltext="모델" index="-1" top="10" height="21" domainId="nexa.name;nexa.code" innerdataset="ds_model" codecolumn="rn" datacolumn="mcNm" width="180" onitemchanged="div_search_cb_searchModel_onitemchanged" left="207"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_price" taborder="1" useinputpanel="false" top="65" binddataset="ds_product" oncelldblclick="grid_product_oncelldblclick" left="10" right="10" height="385" cellsizingtype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="190"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="패턴"/>
+                <Cell col="1" text="규격"/>
+                <Cell col="2" text="상품코드"/>
+                <Cell col="3" text="상품명"/>
+                <Cell col="4" text="장착가능수량"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:left;" text="bind:pettrenNm"/>
+                <Cell col="1" style="align:left;" text="bind:sizeNm"/>
+                <Cell col="2" style="align:left;" text="bind:matCd"/>
+                <Cell col="3" style="align:left;" text="bind:matNm"/>
+                <Cell col="4" text="bind:wheelQty"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_model" taborder="2" useinputpanel="false" left="1.67%" top="221" right="1.67%" height="133" binddataset="ds_model" visible="false" enable="true">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="rn"/>
+                <Cell col="1" text="카메이커"/>
+                <Cell col="2" text="차종"/>
+                <Cell col="3" text="차종명"/>
+                <Cell col="4" text="사양"/>
+                <Cell col="5" text="사양명"/>
+                <Cell col="6" text="전후구분"/>
+                <Cell col="7" text="모델명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:rn"/>
+                <Cell col="1" text="bind:makerCd"/>
+                <Cell col="2" text="bind:modelCd"/>
+                <Cell col="3" text="bind:modelNm"/>
+                <Cell col="4" text="bind:contentsCd"/>
+                <Cell col="5" text="bind:conTentsNm"/>
+                <Cell col="6" text="bind:frCd"/>
+                <Cell col="7" text="bind:mcNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="3" text="선택" onclick="btn_choice_onclick" top="460" right="55" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="4" text="닫기" onclick="btn_close_onclick" top="460" right="10" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_product" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="pettrenNm" type="STRING" size="256"/>
+          <Column id="sizeNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="wheelQty" type="STRING" size="256"/>
+          <Column id="weelLimitQty" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="contentsNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="frNm" type="STRING" size="256"/>
+          <Column id="modelFullNm" type="STRING" size="256"/>
+          <Column id="sectionWidth" type="STRING" size="256"/>
+          <Column id="aspectRatio" type="STRING" size="256"/>
+          <Column id="wheelInches" type="STRING" size="256"/>
+          <Column id="plyRating" type="STRING" size="256"/>
+          <Column id="demmndQty" type="STRING" size="256"/>
+          <Column id="pgCd" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="classSd" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_brand" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_model" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rn" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="modelNm" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="conTentsNm" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	this.args = "";
+    
+    
+    this.RTCMPrice_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+	}
+
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "listBrandCombo";  
+		var sController   	= "rtms/comm/listBrandCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_brand=output1";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if( strSvcId == "listBrandCombo" ){
+			var dsBrandRowCt = this.ds_brand.getRowCount();
+			if( dsBrandRowCt != 0 ){
+				
+			}
+		}
+		
+		if( strSvcId == "listModelCombo" ){
+			var dsBrandRowCt = this.ds_brand.getRowCount();
+			if( dsBrandRowCt != 0 ){
+				
+			}
+		}
+		
+		if( strSvcId == "listProductPop" ){
+			var dsProductRowCt = this.ds_product.getRowCount();
+			if( dsProductRowCt == 0 ){
+				this.grid_product.set_nodatatext("조회된 데이터가 없습니다.");
+				this.div_search.cb_searchModel.setFocus();
+			} 
+		}
+	}
+	
+	
+	this.div_search_cb_searchBrand_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		var cbSearchBrandlVal 	= nvl(this.div_search.cb_searchBrand.value);
+		var sSvcID      	= "listModelCombo";  
+		var sController   	= "rtms/comm/listModelCombo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_model=mapModelCombo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		if( cbSearchBrandlVal != "" ){
+			sArgs += Ex.util.setParam("makerCd", cbSearchBrandlVal);
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+
+
+	this.div_search_cb_searchModel_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+	{
+		var nRow1 = this.ds_model.findRow( "rn", this.div_search.cb_searchModel.value );
+		var nRow2 = this.ds_model.findRow( "mcNm", this.div_search.cb_searchModel.text );
+		if( nvl(nRow1) != "" && nvl(nRow2) != "" ){
+			this.grid_model.selectRow( nRow1 );
+		}
+	}
+	
+	
+	
+	this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var searchBrandVal = nvl(this.div_search.cb_searchBrand.value);
+		var searchModelVal = nvl(this.div_search.cb_searchModel.value);
+		
+		if( searchBrandVal == "" ){
+			alert( this.div_search.cb_searchBrand.displaynulltext + " 값이 없습니다.");
+			return this.div_search.cb_searchBrand.setFocus();
+		}else if( searchModelVal == "" ){
+			alert( this.div_search.cb_searchModel.displaynulltext + " 값이 없습니다.");
+			return this.div_search.cb_searchModel.setFocus();
+		}else{
+			var nRow 			= this.grid_model.currentrow;
+			var modelCdVal		= this.ds_model.getColumn( nRow, "modelCd");
+			var contentsCdVal 	= this.ds_model.getColumn( nRow, "contentsCd");
+			var frCdVal 		= this.ds_model.getColumn( nRow, "frCd");
+			
+			if( modelCdVal != "" && contentsCdVal != "" && frCdVal != ""){
+				var sSvcID        	= "listProductPop";                    
+				var sController   	= "rtms/comm/listProductPop.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "ds_product=mapProduct";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				
+				this.ds_product.deleteAll();
+				
+				sArgs += Ex.util.setParam("modelCd", modelCdVal);
+				sArgs += Ex.util.setParam("contentsCd", contentsCdVal);
+				sArgs += Ex.util.setParam("frCd", frCdVal);
+				
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+			}else{
+				alert( "코드값 오류" );
+			}
+		}
+	}
+
+	
+
+	this.grid_product_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+	{
+		this.FN_choice();
+	}
+	
+	
+	
+	this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.FN_choice();
+	}
+
+
+	
+	this.FN_choice = function(){
+		var idx = this.ds_product.rowposition;
+		var cd 	= this.ds_product.getColumn(idx, "matCd");
+		var nm 	= this.ds_product.getColumn(idx, "matNm");
+		
+		if( idx != -1 ){
+			if( this.parent.p_formId == "RTCOMMPrice_pop" ){
+				if( nvl(cd) != "" && nvl(nm) != "" ){
+					var arr = { cd : cd, nm : nm };
+					this.close(this.opener.returnProduct(arr));
+				}
+			} else if(this.parent.p_formId == "RTSDCampReg") {
+				if( nvl(cd) != "" && nvl(nm) != "" ){
+					var arr = { cd : cd, nm : nm };
+					this.close(this.opener.returnProduct(arr));
+				}
+			}
+		}else{
+			alert("선택된 데이터가 없습니다.");
+		}
+		
+	}
+	
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}
+
+	this.RTCOMMProduct_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+	{
+		if(e.keycode == 27){
+			this.close();
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

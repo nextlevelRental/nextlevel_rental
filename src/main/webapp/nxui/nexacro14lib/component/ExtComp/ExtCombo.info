@@ -1,0 +1,283 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<MetaInfo version="1.0">
+	<Object id="nexacro.ExtCombo"> 
+
+		<!-- define extend component based nexacro.Combo -->
+		<ObjectInfo 
+			inheritance="nexacro.Div"
+			typename="nexacro.ExtCombo"
+			csstypename="Div"
+			csscontrolname="DivControl"
+			group="UIComponent"
+			csspseudo="true"
+			container="false"
+			composite="true"
+			tabstop="true"
+			cssstyle="true"
+			contents="true"
+			formats="false"
+			contentseditor="auto"
+			defaultwidth="202"
+			defaultheight="252"
+			requirement="Runtime,HTML5"
+			description=""/> 
+		
+		<PseudoInfo> 
+			<Pseudo 
+				name="pushed" 
+				control="true" 
+				deprecated="false"  
+				unused="false" 
+			/> 
+			<Pseudo 
+				name="focused" 
+				control="true" 
+				deprecated="false" 
+				unused="true" 
+			/>
+		</PseudoInfo> 
+
+		<ControlInfo>
+		</ControlInfo>
+
+
+		<PropertyInfo> 
+			<!-- define new property -->
+                        <Property
+				name="_required"
+				group="Misc"
+				type="String"
+				defaultvalue=""
+				readonly="false"
+				initonly="false"
+				hidden="false"
+				control="false"
+				style="false"
+				expr="false"
+				deprecated="false"
+				unused="false"
+				objectinfo=""
+				enuminfo=""
+				unitinfo=""
+				requirement="Runtime,HTML5"
+				description=""
+			/>
+			<Property
+				name="_select_type"
+				group="Misc"
+				type="Enum"
+				defaultvalue="none"
+				readonly="false"
+				initonly="false"
+				hidden="false"
+				control="false"
+				style="false"
+				expr="false"
+				deprecated="false"
+				unused="false"
+				objectinfo=""
+				enuminfo="enum_ext_combo"
+				unitinfo=""
+				requirement="Runtime,HTML5"
+				description="select,all,none"
+			/>
+			<Property
+				name="_enable"
+				group="Misc"
+				type="Boolean"
+				defaultvalue= "true"
+				readonly="false"
+				initonly="false"
+				hidden="false"
+				control="false"
+				style="false"
+				expr="false"
+				deprecated="false"
+				unused="false"
+				objectinfo=""
+				enuminfo=""
+				unitinfo=""
+				requirement="Runtime,HTML5"
+				description=""
+			/>
+			<Property
+				name="_bindDataset"
+				group="Misc"
+				type="Dataset"
+				defaultvalue= ""
+				readonly="false"
+				initonly="false"
+				hidden="false"
+				control="false"
+				style="false"
+				expr="false"
+				deprecated="false"
+				unused="false"
+				objectinfo=""
+				enuminfo=""
+				unitinfo=""
+				requirement="Runtime,HTML5"
+				description=""
+			/>
+			<Property
+				name="_bindColumn"
+				group="Misc"
+				type="String"
+				defaultvalue= ""
+				readonly="false"
+				initonly="false"
+				hidden="false"
+				control="false"
+				style="false"
+				expr="false"
+				deprecated="false"
+				unused="false"
+				objectinfo=""
+				enuminfo=""
+				unitinfo=""
+				requirement="Runtime,HTML5"
+				description=""
+			/>
+		</PropertyInfo> 
+
+		
+		<MethodInfo>
+			<Method
+				name="setValue"
+				group=""
+				async="false"
+				deprecated="false"
+				unused="false"
+				requirement="Runtime,HTML5"
+				description="this is test method"
+		        >
+				<Syntax
+				    text = "setValue(sValue)"
+				><Return/>
+				<Arguments>
+				    <Argument 
+					name="sValue" 
+					type="String" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any string" 
+				    /> 
+				</Arguments>
+				</Syntax>
+                        </Method>
+
+			<Method
+				name="getValue"
+				group=""
+				async="false"
+				deprecated="false"
+				unused="false"
+				requirement="Runtime,HTML5"
+				description="this is test method"
+		        >
+				<Syntax
+				    text = "getValue()"
+				>
+				<Return/>
+				</Syntax>
+		        </Method>
+
+			<Method
+				name="getText"
+				group=""
+				async="false"
+				deprecated="false"
+				unused="false"
+				requirement="Runtime,HTML5"
+				description="this is test method"
+		        >
+				<Syntax
+				    text = "getText()"
+				>
+				<Return/>
+				</Syntax>
+		        </Method>
+
+		        <Method
+				name="setBind"
+				group=""
+				async="false"
+				deprecated="false"
+				unused="false"
+				requirement="Runtime,HTML5"
+				description="this is test method"
+		        >
+				<Syntax
+				    text = "setBind(objDs,sCol)"
+				><Return/>
+				<Arguments>
+				    <Argument 
+					name="objDs" 
+					type="Dataset" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any Dataset Object" 
+				    /> 
+				    <Argument 
+					name="sCol" 
+					type="String" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any string" 
+				    /> 
+				</Arguments>
+				</Syntax>
+                        </Method>
+
+			<Method
+				name="setInnerDataset"
+				group=""
+				async="false"
+				deprecated="false"
+				unused="false"
+				requirement="Runtime,HTML5"
+				description="this is test method"
+		        >
+				<Syntax
+				    text = "setInnerDataset(objDs,sCodeCol,sDataCol)"
+				><Return/>
+				<Arguments>
+				    <Argument 
+					name="objDs" 
+					type="Dataset" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any Dataset Object" 
+				    /> 
+				    <Argument 
+					name="sCodeCol" 
+					type="String" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any string" 
+				    /> 
+				    <Argument 
+					name="sDataCol" 
+					type="String" 
+					in="true" 
+					out="false" 
+					option="false" 
+					variable="false" 
+					description="any string" 
+				    /> 
+				</Arguments>
+				</Syntax>
+                        </Method>
+        </MethodInfo>
+	</Object> 
+</MetaInfo>

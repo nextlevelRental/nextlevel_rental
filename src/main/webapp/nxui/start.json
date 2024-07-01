@@ -1,0 +1,155 @@
+﻿{
+    "version" : "14.0.0.1",
+    "runtime" :
+    {
+        "target" :
+        {
+            "os" : "windows"
+        },
+        "framework" :
+        [
+         "./nexacro14lib/framework/SystemBase.js",
+         "./nexacro14lib/framework/SystemBase_HTML5.js",
+         "./nexacro14lib/framework/SystemBase_Runtime.js",
+         "./nexacro14lib/framework/BasicObjs.js",
+         "./nexacro14lib/framework/ErrorDefine.js",
+         "./nexacro14lib/framework/Platform_HTML5.js",
+         "./nexacro14lib/framework/Platform_Runtime.js",
+         "./nexacro14lib/framework/Platform.js",
+         "./nexacro14lib/framework/CssObjs.js",
+         "./nexacro14lib/framework/Accessibility.js",
+         "./nexacro14lib/framework/Device.js",
+         "./nexacro14lib/framework/Device_Android.js",
+         "./nexacro14lib/framework/Device_iOS.js"
+        ],
+        "component" :
+        [
+         "./nexacro14lib/component/CompBase/Element_HTML5.js",
+         "./nexacro14lib/component/CompBase/Element_Runtime.js",
+         "./nexacro14lib/component/CompBase/CompBase.js",
+         "./nexacro14lib/component/CompBase/CompEventBase.js",
+         "./nexacro14lib/component/CompBase/Data.js",
+         "./nexacro14lib/component/CompBase/EditBase.js",
+         "./nexacro14lib/component/CompBase/FormBase.js",
+         "./nexacro14lib/component/CompBase/TitleBar.js",
+         "./nexacro14lib/component/CompBase/StatusBar.js",
+         "./nexacro14lib/component/CompBase/FrameBase.js",
+         "./nexacro14lib/component/CompBase/ScrollBar.js",
+         "./nexacro14lib/component/CompBase/Step.js",
+         "./nexacro14lib/component/ComComp/Dataset.js",
+         "./nexacro14lib/component/ComComp/DomObject.js",
+         "./nexacro14lib/component/ComComp/Button.js",
+         "./nexacro14lib/component/ComComp/Static.js",
+         "./nexacro14lib/component/ComComp/Edit.js",
+         "./nexacro14lib/component/ComComp/MaskEdit.js",
+         "./nexacro14lib/component/ComComp/TextArea.js",
+         "./nexacro14lib/component/ComComp/ImageViewer.js",
+         "./nexacro14lib/component/ComComp/CheckBox.js",
+         "./nexacro14lib/component/ComComp/Radio.js",
+         "./nexacro14lib/component/ComComp/ListBox.js",
+         "./nexacro14lib/component/ComComp/Combo.js",
+         "./nexacro14lib/component/ComComp/Div.js",
+         "./nexacro14lib/component/ComComp/ProgressBar.js",
+         "./nexacro14lib/component/ComComp/PopupDiv.js",
+         "./nexacro14lib/component/ComComp/Menu.js",
+         "./nexacro14lib/component/ComComp/PopupMenu.js",
+         "./nexacro14lib/component/ComComp/Spin.js",
+         "./nexacro14lib/component/ComComp/DatePicker.js",
+         "./nexacro14lib/component/ComComp/Calendar.js",
+         "./nexacro14lib/component/ComComp/GroupBox.js",
+         "./nexacro14lib/component/ComComp/Tab.js",
+         "./nexacro14lib/component/ComComp/FileDownload.js",
+         "./nexacro14lib/component/ComComp/FileUpload.js",
+         "./nexacro14lib/component/ComComp/FlashPlayer.js",
+         "./nexacro14lib/component/ComComp/MediaPlayer.js",
+         "./nexacro14lib/component/ComComp/WebBrowser.js",
+         "./nexacro14lib/component/ComComp/Map.js",
+         "./nexacro14lib/component/ComComp/Sketch.js",
+         "./nexacro14lib/component/ComComp/ExportObject.js",
+         "./nexacro14lib/component/ComComp/ImportObject.js",
+         "./nexacro14lib/component/ComComp/Tray.js",
+         "./nexacro14lib/component/Grid/GridInfo.js",
+         "./nexacro14lib/component/Grid/Grid.js",
+         "./nexacro14lib/component/DeviceAPI/SQLite.js",
+         "./nexacro14lib/component/DeviceAPI/SQLite_Runtime.js",
+         "./nexacro14lib/component/DeviceAPI/Plugin.js",
+         "./nexacro14lib/component/DeviceAPI/DeviceObjs.js",
+         "./nexacro14lib/component/DeviceAPI/DeviceObjs_Runtime.js",
+         "./nexacro14lib/component/DeviceAPI/XPush.js",
+         "./nexacro14lib/component/DeviceAPI/Mobile.js",
+         "./nexacro14lib/component/EcoLibrary/Namespace.js",
+         "./nexacro14lib/component/EcoLibrary/Eco.js",
+         "./nexacro14lib/component/EcoLibrary/array.js",
+         "./nexacro14lib/component/EcoLibrary/date.js",
+         "./nexacro14lib/component/EcoLibrary/number.js",
+         "./nexacro14lib/component/EcoLibrary/string.js",
+         "./nexacro14lib/component/EcoLibrary/object.js",
+         "./nexacro14lib/component/EcoLibrary/Style.js",
+         "./nexacro14lib/component/EcoLibrary/Logger.js",
+         "./nexacro14lib/component/EcoLibrary/Color.js",
+         "./nexacro14lib/component/EcoLibrary/XComp.js",
+         "./nexacro14lib/component/EcoLibrary/PositionSize.js",
+         "./nexacro14lib/component/EcoLibrary/Json.js",
+         "./nexacro14lib/component/EcoLibrary/Event.js",
+         "./nexacro14lib/component/EcoLibrary/LocalStorage.js",
+         "./nexacro14lib/component/EcoLibrary/Factory.js",
+         "./nexacro14lib/component/DataUtilClass/DataUtil.js",
+         "./nexacro14lib/component/DataUtilClass/DatasetMap.js",
+         "./nexacro14lib/component/Class/History.js",
+         "./nexacro14lib/component/Class/XpCompEvent.js",
+         "./nexacro14lib/component/Class/XpCompFactory.js",
+         "./nexacro14lib/component/Graphic/Class/ClassUtils.js",
+         "./nexacro14lib/component/Graphic/Class/MathUtil.js",
+         "./nexacro14lib/component/Graphic/Class/Matrix.js",
+         "./nexacro14lib/component/Graphic/Class/Point.js",
+         "./nexacro14lib/component/Graphic/Class/Rectangle.js",
+         "./nexacro14lib/component/Graphic/Class/RectsManager.js",
+         "./nexacro14lib/component/Graphic/Class/Size.js",
+         "./nexacro14lib/component/Graphic/Graphic.js",
+         "./nexacro14lib/component/Graphic/Element.js",
+         "./nexacro14lib/component/Graphic/ContainerGroup.js",
+         "./nexacro14lib/component/Graphic/Css.js",
+         "./nexacro14lib/component/Graphic/Path.js",
+         "./nexacro14lib/component/Graphic/QuadTree.js",
+         "./nexacro14lib/component/Graphic/Shapes.js",
+         "./nexacro14lib/component/Graphic/ViewPort.js",
+         "./nexacro14lib/component/Graphic/excanvas/excanvas.js",
+         "./nexacro14lib/component/EcoChart/EcoChart.js",
+         "./nexacro14lib/component/EcoChart/EcoChartElement.js",
+         "./nexacro14lib/component/ExLib/comm/ani.js",
+         "./nexacro14lib/component/ExLib/comm/core.js",
+         "./nexacro14lib/component/ExLib/comm/file.js",
+         "./nexacro14lib/component/ExLib/comm/util.js",
+         "./nexacro14lib/component/ExLib/comm/vali.js",
+         "./nexacro14lib/component/ExLib/openapi/jquery-1.10.2.js",
+         "./nexacro14lib/component/ExLib/openapi/mc_animate_nexacro.js",
+         "./nexacro14lib/component/ExLib/openapi/mc_gdirections.js",
+         "./nexacro14lib/component/ExtComp/ExtFileUpDownload.js",
+         "./nexacro14lib/component/ExtComp/ExtCombo.js",
+         "./nexacro14lib/component/Excel/ExtExcel.js",
+         "./nexacro14lib/component/Excel/ExtFileUpDownload.js"
+        ],
+        "form" :
+        [
+         "./frame/index.xfdl.js"
+        ],
+        "xadl" :
+        {
+          "launch" : "./nxui.xadl.js",
+					"quickview" : "./nxui.xadl.quickview.js",
+					"filesecurelevel" : 0,
+					"networksecurelevel" : 0
+        },
+        "protocol":
+        {
+            "adaptors":
+            [
+          
+            ]
+        },
+        "resource" :
+        {
+
+        }
+    }
+}

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="inboundAdviceRegister">
+
+	<resultMap id="r_sRtcs0103Region" class="java.util.HashMap">
+		<result property="cd"  	column="CD" />
+		<result property="cdNm" column="CD_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0103Region" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0103Region" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.sRtcs0103Region" parameterMap="p_sRtcs0103Region">
+		{call Pkg_Rtcs0103.p_sRtcs0103Region(?)}
+	</procedure>
+	
+	<resultMap id="r_sRtcs0103City" class="java.util.HashMap">
+		<result property="cd"  	column="CD" />
+		<result property="cdNm" column="CD_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0103City" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0103City" />
+		<parameter property="regionNo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.sRtcs0103City" parameterMap="p_sRtcs0103City">
+		{call Pkg_Rtcs0103.p_sRtcs0103City(?, ?)}
+	</procedure>
+	
+	<resultMap id="r_sRtcs0102Ctf" class="java.util.HashMap">
+		<result property="custNo"  	column="CUST_NO" />
+		<result property="custNm"  	column="CUST_NM" />
+		<result property="ordNo"  	column="ORD_NO" />
+		<result property="statCd"  	column="STAT_CD" />
+		<result property="statCdNm" column="STAT_CD_NM" />
+		<result property="procDay" 	column="PLAN_DAY" />
+		<result property="matCd"  	column="MAT_CD" />
+		<result property="cntCd"  	column="CNT_CD" />
+		<result property="cntNm"  	column="CNT_NM" />
+		<result property="periodCd" column="PERIOD_CD" />
+		<result property="periodNm"	column="PERIOD_NM" />
+		<result property="regiNm"  	column="REGI_NM" />
+		<result property="monAmt"  	column="MON_AMT" />
+		<result property="modelCd"  column="MODEL_CD" />
+		<result property="modelNm"  column="MODEL_Nm" />
+		<result property="carNo"  	column="CAR_NO" />
+		<result property="mobNo"  	column="MOB_NO" />
+		<result property="telNo"  	column="TEL_NO" />
+		<result property="chanCd"  	column="CHAN_CD" />		
+	</resultMap>
+	<parameterMap id="p_sRtcs0102Ctf" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0102Ctf" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="startDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endDay" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.sRtcs0102Ctf" parameterMap="p_sRtcs0102Ctf">
+		{call Pkg_Rtcs0102.p_sRtcs0102Ctf(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="r_sRtcs0102Obf" class="java.util.HashMap">
+		<result property="jobTp"  		column="JOB_TP" />
+		<result property="jobTpNm"  	column="JOB_TP_NM" />
+		<result property="callDay"  	column="CALL_DAY" />
+		<result property="callStatusNm"	column="CALL_STATUS_NM" />
+		<result property="ordNo" 		column="ORD_NO" />
+		<result property="custNo" 		column="CUST_NO" />
+		<result property="custNm"  		column="CUST_NM" />
+		<result property="jobDay"  		column="JOB_DAY" />
+		<result property="callNo"  		column="CALL_NO" />
+		<result property="userId" 		column="USER_ID" />
+		<result property="userIdNm"		column="USER_ID_NM" />
+		<result property="mobNo"  		column="MOB_NO" />
+		<result property="telNo"  		column="TEL_NO" />
+		<result property="callDtl" 		column="CALL_DTL" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0102Obf" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0102Obf" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="startDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endDay" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.sRtcs0102Obf" parameterMap="p_sRtcs0102Obf">
+		{call Pkg_Rtcs0102.p_sRtcs0102Obf(?, ?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<resultMap id="r_sRtcs0102Ibf" class="java.util.HashMap">
+		<result property="recvTp"  		column="RECV_TP" />	
+		<result property="recvTpNm"  	column="RECV_TP_NM" />	
+		<result property="recvDay"  	column="RECV_DAY" />	
+		<result property="recvTm"  		column="RECV_TM" />	
+		<result property="resuSt"  		column="RESU_ST" />	
+		<result property="resuStNm"  	column="RESU_ST_NM" />	
+		<result property="ordNo"  		column="ORD_NO" />	
+		<result property="custNo"  		column="CUST_NO" />	
+		<result property="custNm"  		column="CUST_NM" />	
+		<result property="callNo"  		column="CALL_NO" />	
+		<result property="userId"  		column="USER_ID" />	
+		<result property="userIdNm"  	column="USER_ID_NM" />	
+		<result property="telNo"  		column="TEL_NO" />	
+		<result property="callDtl"  	column="CALL_DTL" />
+		<result property="carNo"  		column="CAR_NO" />	
+		<result property="smsTx"  		column="SMS_TX" />	
+		<result property="regionNo"  	column="REGION_NO" />	
+		<result property="cityNo"  		column="CITY_NO" />
+	</resultMap>
+	<parameterMap id="p_sRtcs0102Ibf" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtcs0102Ibf" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="startDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endDay" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.sRtcs0102Ibf" parameterMap="p_sRtcs0102Ibf">
+		{call Pkg_Rtcs0102.p_sRtcs0102Ibf(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0102">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="callNo" 			jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="recvDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvTm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="recvTp" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resuSt" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="callDtl" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="claimNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endDay" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="endTm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="smsTx" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regionNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cityNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="inboundAdviceRegister.saveRTCSInboundAdviceRegister" parameterMap="p_IUDRtcs0102">
+		{call Pkg_Rtcs0102.p_IUDRtcs0102(  
+											 ?, ?, ?, ?, ?, ?, ?, ?, ?, ? 
+											,?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+											,?, ?, ?
+										)}
+	</procedure>
+	
+	<parameterMap id="p_sRtcs0102SelectSysdate" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_sRtcs0102SelectSysdate" />
+	</parameterMap>
+	<resultMap id="r_sRtcs0102SelectSysdate" class="java.util.HashMap"/>
+	<procedure id="inboundAdviceRegister.selectSysdate" parameterMap="p_sRtcs0102SelectSysdate">
+		{call ? := Pkg_Rtcs0102.f_sRtcs0102SelectSysdate}
+	</procedure>
+</sqlMap>

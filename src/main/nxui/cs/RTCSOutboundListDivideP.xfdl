@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSOutboundListDivideP" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="492" titletext="아웃바운드배정(가계약)" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="46" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="22" text="주문접수일" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21"/>
+              <Calendar id="cal_order_to" taborder="34" dateformat="yyyy-MM-dd" left="219" top="10" width="100" height="21" value="null" onchanged="Div00_Calendar02_onchanged" canchange="Div00_Calendar02_canchange"/>
+              <Static id="Static07" taborder="35" text="~" left="207" top="10" width="9" height="21"/>
+              <Calendar id="cal_order_from" taborder="36" dateformat="yyyy-MM-dd" left="105" top="10" width="100" height="21" value="null"/>
+              <Static id="Static26" taborder="42" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1147" height="12"/>
+              <Static id="Static00" taborder="43" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="32" width="1147" height="12"/>
+              <Static id="Static02" taborder="44" text="상담유형" cssclass="sta_WF_schTitle" left="342" top="10" width="80" height="21"/>
+              <Combo id="cmb_provsnTp" taborder="45" left="36.94%" top="12" right="49.64%" height="20" innerdataset="@dsS317" codecolumn="cd" datacolumn="cdNm"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="86" binddataset="dsList" left="402" autofittype="col" nodatatext="조회된 데이터가 없습니다." width="718" height="402">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="26"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="0"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox"/>
+                <Cell col="1" text="상담사유형"/>
+                <Cell col="2" text="상담사ID"/>
+                <Cell col="3" text="휴대폰"/>
+                <Cell col="4" text="상담사명"/>
+                <Cell col="5" text="배정건수"/>
+                <Cell col="6" text="휴무여부"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" displaytype="combo" text="bind:provsnTp" combodataset="dsS317" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+                <Cell col="2" text="bind:callId"/>
+                <Cell col="3" text="bind:mobNo"/>
+                <Cell col="4" displaytype="text" edittype="none" text="bind:callNm"/>
+                <Cell col="5" displaytype="normal" text="bind:assignCnt" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="combo" text="bind:holiYn" combodataset="dsC033" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+              </Band>
+              <Band id="summary">
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" displaytype="number" expr="dataset.getCountNF(0)"/>
+                <Cell col="3"/>
+                <Cell col="4" text="건"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static08" taborder="6" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="46"/>
+        <Static id="Static10" taborder="8" cssclass="Guide_color" visible="false" left="0" top="46" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="9" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="492"/>
+        <Static id="st_divideInfo" taborder="10" text="배정현황" cssclass="sta_WF_subTitle" left="0" top="62" width="118" height="21"/>
+        <Static id="st_divideSettingInfo" taborder="11" text="개별배정" cssclass="sta_WF_subTitle" left="0" top="179" width="118" height="21"/>
+        <Static id="st_callInfo" taborder="12" text="상담사리스트" cssclass="sta_WF_subTitle" left="402" top="65" width="118" height="21"/>
+        <Grid id="Grid01" taborder="13" binddataset="dsBoardInfo" useinputpanel="false" autofittype="col" left="0" top="86" width="339" height="66">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="0"/>
+                <Column size="70"/>
+                <Column size="60"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="배정"/>
+                <Cell col="1" text="미배정"/>
+                <Cell col="2" text="휴대폰"/>
+                <Cell col="3" text="회수"/>
+                <Cell col="4" text="합계"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:assignCnt" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:noAssignCnt"/>
+                <Cell col="2" text="bind:mobNo"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:revokeCnt"/>
+                <Cell col="4" displaytype="normal" text="bind:totalCnt" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="14" cssclass="sta_WF_detailLabel2" left="0" top="301" width="339" height="31"/>
+        <Static id="st_rntMstId00" taborder="15" text="평균배정건수" cssclass="sta_WF_detailLabel" left="0" top="301" width="125" height="31"/>
+        <Static id="st_rntMstId01" taborder="16" text="사용여부" cssclass="sta_WF_detailLabel" left="0" top="271" width="125" height="31"/>
+        <Static id="Static02" taborder="17" cssclass="sta_WF_detailLabel2" left="0" top="271" width="339" height="31"/>
+        <Static id="st_rntMstId02" taborder="18" text="사용여부" cssclass="sta_WF_detailLabel" left="0" top="241" width="125" height="31"/>
+        <Static id="Static03" taborder="19" cssclass="sta_WF_detailLabel2" left="0" top="241" width="339" height="31"/>
+        <Static id="st_rntMstId03" taborder="20" text="사용여부" cssclass="sta_WF_detailLabel" left="0" top="211" width="125" height="31"/>
+        <Static id="Static04" taborder="21" cssclass="sta_WF_detailLabel2" left="0" top="211" width="339" height="31"/>
+        <Static id="st_rntMstId04" taborder="22" text="인원" cssclass="sta_WF_detailLabel" left="0" top="271" width="125" height="31"/>
+        <Static id="st_rntMstId05" taborder="23" text="배정건수(기입)" cssclass="sta_WF_detailLabel" left="0" top="241" width="125" height="31"/>
+        <Static id="st_rntMstId06" taborder="24" text="배정가능건수" cssclass="sta_WF_detailLabel" left="0" top="211" width="125" height="31"/>
+        <Edit id="ed_assign_future" taborder="25" maxlength="50" left="131" top="216" width="201" height="21" readonly="true" displaynulltext="0"/>
+        <Edit id="ed_assign_future_input" taborder="26" maxlength="50" left="131" top="246" width="201" height="21" onkeyup="ed_assign_future_input_onkeyup" displaynulltext="0"/>
+        <Edit id="ed_userCnt" taborder="27" maxlength="50" left="131" top="276" width="201" height="21" readonly="true" displaynulltext="0"/>
+        <Edit id="ed_assign_average" taborder="28" maxlength="50" left="131" top="306" width="201" height="21" enable="true" readonly="true" displaynulltext="0"/>
+        <Button id="btn_pop" taborder="29" text="상담사 관리" cssclass="btn_WF_CRUD" top="62" right="28" width="92" height="22" domainId="nexa.add" onclick="btn_pop_onclick"/>
+        <Button id="btn_revoke" taborder="30" text="배정회수" onclick="btn_revoke_onclick" cssclass="btn_WF_CRUD" top="62" right="124" width="92" height="22" domainId="nexa.add"/>
+        <Calendar id="cal_dist_day" taborder="31" dateformat="yyyy-MM-dd" left="824" top="63" width="100" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="provsnTp" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+          <Column id="callNm" type="STRING" size="256"/>
+          <Column id="assignCnt" type="STRING" size="256"/>
+          <Column id="holiYn" type="STRING" size="256"/>
+          <Column id="noAssignCnt" type="STRING" size="256"/>
+          <Column id="revokeCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBoardInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="assignCnt" type="STRING" size="256"/>
+          <Column id="noAssignCnt" type="STRING" size="256"/>
+          <Column id="revokeCnt" type="STRING" size="256"/>
+          <Column id="totalCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="noAssignCnt">0</Col>
+            <Col id="revokeCnt">0</Col>
+            <Col id="assignCnt">0</Col>
+            <Col id="totalCnt">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsC033" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS317" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onload="dsList_onload">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="provsnTp" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+          <Column id="callNm" type="STRING" size="256"/>
+          <Column id="assignCnt" type="STRING" size="256"/>
+          <Column id="holiYn" type="STRING" size="256"/>
+          <Column id="noAssignCnt" type="STRING" size="256"/>
+          <Column id="revokeCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsListOrg" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onload="dsListOrg_onload">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="provsnTp" type="STRING" size="256"/>
+          <Column id="callId" type="STRING" size="256"/>
+          <Column id="callNm" type="STRING" size="256"/>
+          <Column id="assignCnt" type="STRING" size="256"/>
+          <Column id="holiYn" type="STRING" size="256"/>
+          <Column id="noAssignCnt" type="STRING" size="256"/>
+          <Column id="revokeCnt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_assign_future" propid="value" datasetid="dsBoardInfo" columnid="assignCnt"/>
+      <BindItem id="item1" compid="ed_assign_future_input" propid="value" datasetid="dsBoardInfo" columnid="rntMstId"/>
+      <BindItem id="item2" compid="ed_userCnt" propid="value" datasetid="dsBoardInfo" columnid="rntMstId"/>
+      <BindItem id="item3" compid="ed_assign_average" propid="value" datasetid="ds_list" columnid="rntMstId"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+this.NOASSIGN = "99";
+
+this.firstDate  = "";
+this.lastDate  = "";
+
+this.p_arg = "";
+
+/* Form onload Event */
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.parent.setButton("E|AG|S", this);
+	this.fn_init();
+	this.get_date();
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/sd/getDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/* 공통코드 조회 */
+this.fn_init = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	var sSvcID        	= "initCounselorMaster";             
+	var sController   	= "/ntrms/cs/initCounselorMaster.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsS317=s317 dsC033=c033";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/* 배정 기준 정보 조회 */
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var provsnDayF = this.Div00.cal_order_from.value;
+	var provsnDayT = this.Div00.cal_order_to.value;
+	
+	var sSvcID        	= "selectOutboundAssignInfo";             
+	var sController   	= "rtms/sd/selectOutboundAssignInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsListOrg=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("provsnDayF", provsnDayF);
+	sArgs += Ex.util.setParam("provsnDayT", provsnDayT);
+	sArgs += Ex.util.setParam("procDayF", "");
+	sArgs += Ex.util.setParam("procDayT", "");
+	sArgs += Ex.util.setParam("osDayF", "");
+	sArgs += Ex.util.setParam("osDayT", "");
+	sArgs += Ex.util.setParam("provsnTp", "P");
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/* 아웃바운드 상담내역 분배 처리 */
+this.fn_aggregate = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var provsnDayF = this.Div00.cal_order_from.value;
+	var provsnDayT = this.Div00.cal_order_to.value;
+	
+	var assignFutureInput = nvl(this.ed_assign_future_input.value);
+	if(assignFutureInput == "") {
+		this.alert("배정 기준 건 수가 입력되지 않았습니다.");
+		return;
+	}
+	
+	var chkCnt = 0;
+	for(var i=0; i<this.dsList.rowcount; i++){
+		if(nvl(this.dsList.getColumn(i, "chk")) == "1"){
+			chkCnt++;
+		}
+	}
+	
+	if(chkCnt == 0){
+		this.alert("상담사 리스트를 선택하지 않았습니다.");
+		return;
+	}
+	
+	var sSvcID        	= "aggregateOutboundListDivide";             
+	var sController   	= "rtms/sd/aggregateOutboundListDivide.do";
+	var sInDatasets   	= "input=dsList:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("provsnDayF", provsnDayF);
+	sArgs += Ex.util.setParam("provsnDayT", provsnDayF);
+	sArgs += Ex.util.setParam("procDayF", "");
+	sArgs += Ex.util.setParam("procnDayT", "");
+	sArgs += Ex.util.setParam("osDayF", "");
+	sArgs += Ex.util.setParam("osDayT", "");
+	sArgs += Ex.util.setParam("distCnt", assignFutureInput);
+	sArgs += Ex.util.setParam("contractType", "P");
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/* 아웃바운드 상담내역 회수 처리 */
+this.fn_revoke = function()
+{	
+	var distDay = this.cal_dist_day.value;
+	if(nvl(distDay) == "") {
+		this.alert("배정일자가 선택되지 않았습니다.");
+		return;
+	}
+	
+	var chkCnt = 0;
+	for(var i=0; i<this.dsList.rowcount; i++){
+		if(nvl(this.dsList.getColumn(i, "chk")) == "1"){
+			chkCnt++;
+		}
+	}
+	
+	if(chkCnt == 0){
+		this.alert("상담사 리스트를 선택하지 않았습니다.");
+		return;
+	}
+	
+	var sSvcID        	= "updateOutboundListRevoke";             
+	var sController   	= "rtms/sd/updateOutboundListRevoke.do";
+	var sInDatasets   	= "input=dsList:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("provsnDayF", "");
+	sArgs += Ex.util.setParam("provsnDayT", "");
+	sArgs += Ex.util.setParam("distCnt", "");
+	sArgs += Ex.util.setParam("distDay", distDay);
+	sArgs += Ex.util.setParam("contractType", "P");
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+/* 조회 데이터 중 배정건수/미배정,회수건수 분리 */
+this.fn_filteringDataset = function(){
+	
+	this.dsListOrg.filter("callId == '" + this.NOASSIGN + "'");
+	this.dsListCp.copyData(this.dsListOrg, true);	
+	
+	this.dsListOrg.filter("");	
+	this.dsListOrg.filter("callId != '" + this.NOASSIGN + "'");
+	this.dsList.copyData(this.dsListOrg, true);
+}
+
+/* 현황데이터 할당/합계 데이터 계산 */
+this.fn_calcBoardData = function(){
+
+	var noAssignCnt = Number(this.dsBoardInfo.getColumn(0, "noAssignCnt"));
+	var revokeCnt = Number(this.dsBoardInfo.getColumn(0, "revokeCnt"));
+	
+	this.dsBoardInfo.setColumn(0, "assignCnt", noAssignCnt + revokeCnt);
+	this.dsBoardInfo.setColumn(0, "totalCnt", Number(this.dsBoardInfo.getColumn(0, "assignCnt")) + noAssignCnt + revokeCnt);
+}
+
+/* 할당데이터 할당/합계 데이터 계산 */
+this.fn_calcAssignData = function(){
+
+	var assignAvailableCnt = Number(this.ed_assign_future_input.value);
+	var counsellorCnt = this.dsList.rowcount;
+	
+	var averageAssignCnt = 0;	
+	if(assignAvailableCnt > 0){
+		averageAssignCnt = assignAvailableCnt / counsellorCnt;
+	}
+	
+	this.ed_userCnt.set_value(counsellorCnt);
+	this.ed_assign_average.set_value(averageAssignCnt);
+}
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+
+/* callBack함수 */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{ 
+	if (nErrorCode < 0) 
+	{
+		alert(strErrorMsg);				
+		return;
+	} 
+	
+	if(strSvcId == "getDate") {
+// 		this.Div00.cal_order_from.set_value(this.firstDate);
+// 		this.Div00.cal_order_to.set_value(this.lastDate);
+	}
+	
+	if (strSvcId == "selectCounselorMasterList") 
+	{
+		var cnt = this.dsList.getRowCount();
+		if( cnt <= 0) {
+			alert("조회된 데이터가 없습니다.");
+			return;
+		}
+	}
+	
+	if (strSvcId == "aggregateOutboundListDivide")
+	{
+		this.alert("배정처리가 완료되었습니다.");
+		return;
+	}
+	
+	if (strSvcId == "updateOutboundListRevoke")
+	{
+		this.alert("회수처리가 완료되었습니다.");
+		return;
+	}
+}
+
+/***********************************************************************************
+* Control Event
+***********************************************************************************/
+/* Excel파일 추출  Event */
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+/* 조회 완료 후 Dataset로딩  Event */
+this.dsListOrg_onload = function(obj:Dataset, e:nexacro.DSLoadEventInfo)
+{
+	if(this.dsListOrg.rowcount > 0){
+	
+		this.fn_filteringDataset();		
+		this.fn_calcAssignData();
+		
+		this.dsBoardInfo.setColumn(0, "noAssignCnt", this.dsListCp.getColumn(0, "noAssignCnt"));
+		this.dsBoardInfo.setColumn(0, "revokeCnt", this.dsListCp.getColumn(0, "revokeCnt"));
+		
+		this.fn_calcBoardData();
+	}
+}
+
+/* 상담사 관리 팝업 화면 오픈  Event */
+this.btn_pop_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args = {p_arg : this.p_arg};
+	Ex.core.popup(this, "상담사관리", "comm::RTCOMMCounselor_pop.xfdl", args, "modaless=false");
+}
+
+/* 배정 건수 기입시 key-up  Event */
+this.ed_assign_future_input_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	this.fn_calcAssignData();
+}
+
+/* 배정 회수 Event */
+this.btn_revoke_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.revoke();
+}
+]]></Script>
+  </Form>
+</FDL>

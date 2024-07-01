@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info11_etcPrdInfo" classname="RTSDContractStatus_tab_info5_preminumService" left="0" top="0" width="1147" height="150" titletext="[STEP11]부가제품정보" onload="RTSDContractStatus_tab_info_info11_etcPrdInfo_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static09" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="1" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Grid id="grid_etcPrdInfo" taborder="2" useinputpanel="false" left="0" top="5" width="1104" binddataset="ds_etcPrdInfo" height="135" autofittype="col" cellsizingtype="col" oncellclick="grid_preminum_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="381"/>
+                <Column size="189"/>
+                <Column size="103"/>
+                <Column size="427"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="부가제품명"/>
+                <Cell col="1" text="제조사"/>
+                <Cell col="2" text="제품군"/>
+                <Cell col="3" text="제품설명"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:addGdsNm"/>
+                <Cell col="1" celltype="none" text="bind:makerNm"/>
+                <Cell col="2" celltype="none" text="bind:gdsGrpNm"/>
+                <Cell col="3" celltype="none" text="bind:gdsDesc"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_etcPrdInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsPrice_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="addGdsCd" type="STRING" size="256"/>
+          <Column id="addGdsNm" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="gdsDesc" type="STRING" size="256"/>
+          <Column id="gdsGrpNm" type="STRING" size="256"/>
+          <Column id="gdsGrp" type="STRING" size="256"/>
+          <Column id="dcAmt" type="STRING" size="256"/>
+          <Column id="actAmt" type="STRING" size="256"/>
+          <Column id="dcYn" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.obj_data;
+this.BUTTON_CELL = 1;			//버튼CELL 위치
+
+
+this.writeYn = "";
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+
+	if(strErrorMsg != "") {
+		alert(strErrorMsg);
+		return;
+	}	
+}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDArrivalAlarmList_tab2" classname="RTSDProvisionalContractRegister" left="0" top="0" width="1125" height="445" titletext="발송내역조회" onload="RTSDArrivalAlarmList_tab2_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static21" taborder="21" text="문자발송목록" cssclass="sta_WF_subTitle" left="9" top="105" width="120" height="20"/>
+        <Static id="Static02" taborder="22" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="125" width="1122" height="9" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="44" left="8" top="10" width="1104" height="74" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_procDay" taborder="94" text="집계일자" cssclass="sta_WF_schTitle" left="25" top="7" width="79" height="21"/>
+              <Static id="Static26" taborder="95" cssclass="Guide_color" visible="false" left="0" top="-3" width="1122" height="12"/>
+              <Static id="Static07" taborder="96" cssclass="Guide_color" visible="false" left="0" top="28" width="1118" height="12"/>
+              <Static id="Static08" taborder="97" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="70"/>
+              <Static id="Static00" taborder="99" text="FIX w20" cssclass="Guide_color" visible="false" left="104" top="0" width="20" height="68"/>
+              <Static id="Static01" taborder="101" text="FIX w20" cssclass="Guide_color" visible="false" left="243" top="8" width="20" height="60"/>
+              <Calendar id="cal_sendDay" taborder="102" dateformat="yyyy-MM-dd" onchanged="cal_cashReceiptDate_onchanged" left="123" top="7" width="120" height="21"/>
+              <Static id="st_procDay00" taborder="103" text="회차" cssclass="sta_WF_schTitle" left="264" top="7" width="79" height="21"/>
+              <Static id="Static02" taborder="104" text="FIX w20" cssclass="Guide_color" visible="false" left="331" top="0" width="20" height="70"/>
+              <Combo id="cb_num" taborder="105" left="31.91%" top="8" right="56.73%" height="20" innerdataset="@ds_S307" codecolumn="cd" datacolumn="cdNm" index="0" value="1" text="1회차"/>
+              <Static id="Static03" taborder="106" text="FIX w20" cssclass="Guide_color" visible="false" left="476" top="0" width="20" height="72"/>
+              <Static id="st_procDay01" taborder="107" text="다음발송일" cssclass="sta_WF_schTitle" left="497" top="7" width="79" height="21"/>
+              <Calendar id="cal_nextSendDay" taborder="108" dateformat="yyyy-MM-dd" onchanged="cal_cashReceiptDate_onchanged" left="595" top="7" width="120" height="21"/>
+              <Static id="Static04" taborder="109" text="FIX w20" cssclass="Guide_color" visible="false" left="575" top="0" width="20" height="70"/>
+              <Static id="Static05" taborder="110" text="FIX w20" cssclass="Guide_color" visible="false" left="715" top="0" width="20" height="72"/>
+              <Combo id="cb_giYn" taborder="111" innerdataset="@ds_C033" codecolumn="cd" datacolumn="cdNm" left="76.55%" top="8" right="12.09%" height="20" index="0" text="전체"/>
+              <Static id="st_procDay02" taborder="112" text="완료여부" cssclass="sta_WF_schTitle" left="736" top="7" width="79" height="21"/>
+              <Static id="Static06" taborder="113" text="FIX w20" cssclass="Guide_color" visible="false" left="823" top="0" width="20" height="70"/>
+              <Static id="Static09" taborder="114" cssclass="Guide_color" visible="false" left="0" top="58" width="1122" height="12"/>
+              <Static id="st_procDay03" taborder="115" text="계약번호" cssclass="sta_WF_schTitle" left="25" top="39" width="79" height="21"/>
+              <Edit id="ed_ordNo" taborder="116" left="11.36%" top="40" right="77.91%" height="20"/>
+              <Static id="st_procDay04" taborder="117" cssclass="sta_WF_schTitle" left="264" top="39" width="79" height="21" text="배송유형"/>
+              <Combo id="cb_deliveryType" taborder="118" innerdataset="@ds_C038" codecolumn="cd" datacolumn="cdNm" left="31.91%" top="40" right="56.73%" height="20" index="0" text="전체"/>
+              <Static id="st_procDay05" taborder="119" text="중지여부" cssclass="sta_WF_schTitle" left="496" top="39" width="79" height="21"/>
+              <Combo id="cb_holdYn" taborder="120" text="전체" innerdataset="@ds_C033" codecolumn="cd" datacolumn="cdNm" index="0" left="54%" top="40" right="34.64%" height="20"/>
+              <Static id="st_procDay06" taborder="121" text="삭제여부" cssclass="sta_WF_schTitle" left="736" top="39" width="79" height="21"/>
+              <Combo id="cb_delYn" taborder="122" text="전체" innerdataset="@ds_C033" codecolumn="cd" datacolumn="cdNm" index="0" left="76.55%" top="40" right="12.09%" height="20"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static07" taborder="45" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="85" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grid_list" taborder="46" binddataset="ds_list" useinputpanel="false" left="9" top="136" width="1103" height="273" cellsizingtype="col" cellmovingtype="col" oncelldblclick="grid_list_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="80"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="주문유형"/>
+                <Cell col="1" text="계약번호"/>
+                <Cell col="2" text="고객번호"/>
+                <Cell col="3" text="고객명"/>
+                <Cell col="4" text="연락처"/>
+                <Cell col="5" text="배송유형"/>
+                <Cell col="6" text="발송횟수"/>
+                <Cell col="7" text="도착확인"/>
+                <Cell col="8" text="문자유형"/>
+                <Cell col="9" text="다음발송일"/>
+                <Cell col="10" text="택배사"/>
+                <Cell col="11" text="택배송장"/>
+                <Cell col="12" text="발송중지"/>
+                <Cell col="13" text="배송상태"/>
+                <Cell col="14" text="지사"/>
+                <Cell col="15" text="지역"/>
+                <Cell col="16" text="대리점"/>
+                <Cell col="17" text="상품코드"/>
+                <Cell col="18" text="상품명"/>
+                <Cell col="19" text="본수"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="combo" edittype="none" text="bind:orderType" combodataset="ds_C037" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="1" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="2" text="bind:custNo"/>
+                <Cell col="3" edittype="readonly" text="bind:custNm"/>
+                <Cell col="4" edittype="readonly" text="bind:mobNo"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:deliveryType" combodataset="ds_C038" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="6" text="bind:sendCnt"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:giYn" combodataset="ds_C033" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="8" text="bind:smsType"/>
+                <Cell col="9" text="bind:nextSendDay"/>
+                <Cell col="10" displaytype="text" edittype="text" text="bind:logistics"/>
+                <Cell col="11" edittype="normal" text="bind:invoiceNo"/>
+                <Cell col="12" displaytype="checkbox" edittype="checkbox" text="bind:holdYn"/>
+                <Cell col="13" text="bind:logisticsStatusNm"/>
+                <Cell col="14" text="bind:rentalOfficeNm"/>
+                <Cell col="15" text="bind:rentalGroupNm"/>
+                <Cell col="16" text="bind:agencyNm"/>
+                <Cell col="17" text="bind:matCd"/>
+                <Cell col="18" text="bind:matNm"/>
+                <Cell col="19" text="bind:cntCd"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choiceAll" taborder="47" text="일괄선택" left="1040" top="101" width="66" height="23" onclick="btn_choiceAll_onclick"/>
+        <Button id="btn_choiceAll00" taborder="48" text="송장번호" onclick="btn_renew_onclick" left="960" top="101" width="66" height="23"/>
+        <Button id="btn_batchLogisticsStatus" taborder="49" text="배송상태" left="878" top="102" width="66" height="23" onclick="btn_batchLogisticsStatus_onclick"/>
+        <Button id="btn_updateLogistics" taborder="50" text="택배사" left="794" top="102" width="66" height="23" onclick="btn_updateLogistics_onclick"/>
+      </Layout>
+    </Layouts>
+    <Bind/>
+    <Objects>
+      <Dataset id="ds_list">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="orderType" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="invoiceNo" type="STRING" size="256"/>
+          <Column id="logistics" type="STRING" size="256"/>
+          <Column id="sendCnt" type="STRING" size="256"/>
+          <Column id="giDay" type="STRING" size="256"/>
+          <Column id="giYn" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="smsType" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="nextSendDay" type="STRING" size="256"/>
+          <Column id="deliveryType" type="STRING" size="256"/>
+          <Column id="delYn" type="STRING" size="256"/>
+          <Column id="holdYn" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="logisticsStatus" type="STRING" size="256"/>
+          <Column id="logisticsStatusNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="tmpPwYn" type="string" size="32"/>
+          <Column id="lastPwDt" type="datetime" size="17"/>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="failCnt" type="bigdecimal" size="16"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="oldPassword" type="string" size="32"/>
+          <Column id="chgId" type="string" size="32"/>
+          <Column id="password" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="lastLogonDt" type="datetime" size="17"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="chgDt" type="datetime" size="17"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="regDt" type="datetime" size="17"/>
+          <Column id="regId" type="string" size="32"/>
+          <Column id="lockYn" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_excelUp">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="chanMclsNm" type="STRING" size="256"/>
+          <Column id="ordAgentNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="orderNo" type="STRING" size="256"/>
+          <Column id="orderDate" type="STRING" size="256"/>
+          <Column id="deliveryNo" type="STRING" size="256"/>
+          <Column id="deliveryDate" type="STRING" size="256"/>
+          <Column id="arrivalDate" type="STRING" size="256"/>
+          <Column id="deliveryGbn" type="STRING" size="256"/>
+          <Column id="rdcNm" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="o2oYn" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="vkburNm" type="STRING" size="256"/>
+          <Column id="vkgrpNm" type="STRING" size="256"/>
+          <Column id="carNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_S307">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">1</Col>
+            <Col id="cdNm">1회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">2</Col>
+            <Col id="cdNm">2회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">3</Col>
+            <Col id="cdNm">3회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">4</Col>
+            <Col id="cdNm">4회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">5</Col>
+            <Col id="cdNm">5회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">6</Col>
+            <Col id="cdNm">6회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">7</Col>
+            <Col id="cdNm">7회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">8</Col>
+            <Col id="cdNm">8회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">9</Col>
+            <Col id="cdNm">9회차</Col>
+          </Row>
+          <Row>
+            <Col id="cd">10</Col>
+            <Col id="cdNm">10회차</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_C033">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_C037">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">A</Col>
+            <Col id="cdNm">일반</Col>
+          </Row>
+          <Row>
+            <Col id="cd">B</Col>
+            <Col id="cdNm">걱정제로</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_C038">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+          <Row>
+            <Col id="cd">01</Col>
+            <Col id="cdNm">일반</Col>
+          </Row>
+          <Row>
+            <Col id="cd">02</Col>
+            <Col id="cdNm">택배</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <InitValue/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"; 
+
+// 전역변수 선언
+this.fUserId  = "";											// 현재 로그인 사용자의 ID
+this.fUserGrp = "";											// 현재 로그인 사용자의 사용자그룹
+this.toDay = "";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDArrivalAlarmList_tab2_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj);
+	
+	this.fn_init();	
+	this.fn_getToday();
+	
+	// 사용자그룹 설정 
+	this.fUserId  = application.gds_userInfo.getColumn(0, "userId" );
+	this.fUserGrp = application.gds_userInfo.getColumn(0, "userGrp");
+}
+
+/**
+ * 초기화
+ */
+this.fn_init = function() {
+	this.parent.parent.parent.setButton("DL|E|RA|C|S",this);
+}
+
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+
+/**
+ * 조회 버튼의 클릭 이벤트 처리
+ */
+this.fn_search = function() {
+	
+	var sendCnt = nvl(this.div_search.cb_num.value);
+	if(sendCnt == ""){
+		this.alert("회차가 선택되지 않았습니다.");
+		return;
+	}
+	
+	var sSvcID        	= "selectAlarmList";                    
+	var sController   	= "rtms/sd/selectArrivalAlarmList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("sendDay"		, this.div_search.cal_sendDay.value);	    //집계일자
+	sArgs += Ex.util.setParam("sendCnt"		, this.div_search.cb_num.value - 1);	    //발송횟수
+	sArgs += Ex.util.setParam("nextSendDay" , this.div_search.cal_nextSendDay.value);	//다음발송일자
+	sArgs += Ex.util.setParam("giYn"        , this.div_search.cb_giYn.value);	        //도착완료여부
+	sArgs += Ex.util.setParam("ordNo"        , this.div_search.ed_ordNo.value);	        //주문번호
+	sArgs += Ex.util.setParam("deliveryType"        , this.div_search.cb_deliveryType.value);	        //배송유형
+	
+	sArgs += Ex.util.setParam("holdYn"        , this.div_search.cb_holdYn.value);	        //발송중지여부
+	sArgs += Ex.util.setParam("delYn"        , "N");	        							//삭제여부
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
+}
+
+/**
+ * 저장 버튼의 클릭 이벤트 처리
+ */
+this.fn_save = function() {
+	
+	var sSvcID        	= "saveArrivalAlarmList";                    
+	var sController   	= "rtms/sd/saveArrivalAlarmList.do";
+	var sInDatasets   	= "ds_list=ds_list:U";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
+}
+
+/**
+ * 결과반영 버튼의 클릭 이벤트 처리
+ */
+this.fn_resultapply = function() {
+	
+	var sSvcID        	= "sendArrivalAlarmList";                    
+	var sController   	= "rtms/sd/sendArrivalAlarmList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("sendDay"		, this.div_search.cal_sendDay.value);	//집계일자
+	sArgs += Ex.util.setParam("sendCnt"		, this.div_search.cb_num.value);	    //발송횟수
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
+}
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grid_list);
+}
+
+this.fn_delete= function() {	
+	this.ds_list.deleteRow(this.ds_list.rowposition);
+}
+
+/**
+ * CallBack 처리
+ */
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);	
+	
+	switch (strSvcId) {
+		
+		case "getToday":
+			var yyyy = this.toDay.substring(0, 4);
+			var mm = this.toDay.substring(4, 6);
+			var dd = this.toDay.substring(6, 8);
+				
+			var _calcDate = new Date(yyyy, mm, dd);
+			_calcDate.setDate(_calcDate.getDate() -1);
+			
+			var _yyyy = _calcDate.getFullYear();
+			var _mm = _calcDate.getMonth();
+			if(_mm.toString().length == 1){
+				_mm = "0" + _calcDate.getMonth();
+			}
+			
+			var _dd = _calcDate.getDate();
+			if(_dd.toString().length == 1){
+				_dd = "0" + _calcDate.getDate();
+			}
+	
+			this.div_search.cal_sendDay.set_value(this.toDay);
+			break;
+			
+		case "selectAlarmList":		     
+			break;
+		
+		case "saveArrivalAlarmList":	
+			break;
+			
+		case "sendAlarmList":	     
+			break;
+		
+		case "renewArrivalAlarmList":
+			alert("갱신이 완료되었습니다.");
+		case "updateLogistics":
+			alert("택배사정보 업데이트가 완료되었습니다.");
+		case "batchLogisticsStatus":
+			alert("택배상태정보 업데이트가 완료되었습니다.");
+		default:
+			break;
+	}
+}
+
+
+this.btn_choiceAll_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	for(var i=0; i<this.ds_list.rowcount; i++){
+	
+		var giYn = this.ds_list.getColumn(i, "giYn");
+		if(giYn == "N") {
+			this.ds_list.setColumn(i, "giYn", "Y");
+		}
+	}
+}
+
+this.btn_renew_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "renewArrivalAlarmList";                    
+	var sController   	= "rtms/sd/renewArrivalAlarmList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("dayF"		, this.div_search.cal_sendDay.value);	//집계일자
+	sArgs += Ex.util.setParam("dayT"		, this.div_search.cal_sendDay.value);	//집계일자
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.btn_updateLogistics_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "updateLogistics";                    
+	var sController   	= "rtms/sd/updateLogistics.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.btn_batchLogisticsStatus_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sSvcID        	= "batchLogisticsStatus";                    
+	var sController   	= "rtms/sd/batchLogisticsStatus.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("dayF"		, this.div_search.cal_sendDay.value);	//집계일자
+	sArgs += Ex.util.setParam("dayT"		, this.div_search.cal_sendDay.value);	//집계일자
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.grid_list_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var args ={p_arg : "RTSDArrivalAlarmList_tab2"};
+	Ex.core.popup(this,"택배배송조회","comm::RTCOMMLogistics_pop.xfdl",args, "modaless=false");
+}
+]]></Script>
+  </Form>
+</FDL>

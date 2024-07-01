@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTRECloseBreakdownMapDAO">
+
+	<resultMap id="r_sRtre0125Close" class="java.util.HashMap">
+		<result property="closeYm"  	column="CLOSE_YM" />
+		<result property="closeTp"  	column="CLOSE_TP" />
+		<result property="closeTpNm"  	column="CLOSE_TP_NM" />
+		<result property="clsDetail"  	column="CLS_DETAIL" />
+		<result property="clsDetailNm"  column="CLS_DETAIL_NM" />
+		<result property="closeCnt"  	column="CLOSE_CNT" />
+		<result property="closeAmt"  	column="CLOSE_AMT" />
+	</resultMap>
+	<parameterMap id="p_sRtre0125Close" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0125Close" />
+		<parameter property="closeYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="closeTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />    
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTRECloseBreakdownMapDAO.rTRECloseBreakdownList" parameterMap="p_sRtre0125Close">
+		{call Pkg_Rtre0125.p_sRtre0125Close(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>
+
+

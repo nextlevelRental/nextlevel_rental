@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="cms">
+		
+	<!-- 금융결제원 계좌번호 유효성체크 이력생성 -->
+	<parameterMap class="java.util.Map" id="p_IUDRtre0012">
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertDay"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertSeq"     		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="bankCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acctNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ebirDay"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertId"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertChk"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertErrcd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="acertDesc"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ownerNm"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chkcnt"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.kftcCmsDocInfo" parameterMap="p_IUDRtre0012">
+		{call Pkg_Rtre0012.p_IUDRtre0012(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

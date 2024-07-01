@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSCarMaster_pop" classname="RTCMPrice_pop" left="0" top="0" width="600" height="490" titletext="Mr. Roadian 조회" onkeyup="RTCSCarMaster_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="10" right="10">
+          <Layouts>
+            <Layout>
+              <Button id="btn_search" taborder="2" text="검색" cssclass="btn_WF_CRUD" top="9" height="22" domainId="nexa.add" onclick="div_search_btn_search_onclick" width="45" right="66"/>
+              <Static id="st_searchModel" taborder="3" text="Mr. Roadian" cssclass="sta_WF_schTitle" top="11" height="20" domainId="nexa.s_condition" width="111" left="20"/>
+              <Edit id="Ed_carmasterNm" taborder="4" lengthunit="ascii" maxlength="80" left="22.22%" top="10" right="53.47%" height="21" tooltiptext="edit" ontextchanged="div_search_Ed_carmasterNm_ontextchanged" onchanged="div_search_Ed_carmasterNm_onchanged"/>
+              <Button id="btn_excel" taborder="5" text="엑셀" cssclass="btn_WF_CRUD" top="9" right="18" width="45" height="22" domainId="nexa.add" onclick="div_search_btn_excel_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_price" taborder="1" useinputpanel="false" top="65" binddataset="dsList" left="10" right="10" height="385" cellsizingtype="col" readonly="false" cellmovingtype="col" cellclickbound="control" autofittype="none" nodatatext="조회된 데이터가 없습니다" oncelldblclick="grid_product_oncelldblclick" autoenter="select" style="padding:0 0 0 0;align:center;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="112"/>
+                <Column size="100"/>
+                <Column size="70"/>
+                <Column size="70"/>
+                <Column size="60"/>
+                <Column size="110"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="300"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Mr. Roadian 사번"/>
+                <Cell col="1" text="Mr. Roadian 명"/>
+                <Cell col="2" text="렌탈지사"/>
+                <Cell col="3" text="렌탈지점"/>
+                <Cell col="4" text="대리점"/>
+                <Cell col="5" text="휴대폰번호"/>
+                <Cell col="6" text="전화번호"/>
+                <Cell col="7" text="입사일"/>
+                <Cell col="8" text="퇴사일"/>
+                <Cell col="9" text="근무여부"/>
+                <Cell col="10" text="주소"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" edittype="none" text="bind:carmasterNu"/>
+                <Cell col="1" displaytype="normal" edittype="none" text="bind:carmasterNm"/>
+                <Cell col="2" displaytype="normal" edittype="none" text="bind:rentalGroupNm"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:rentalOfficeNm"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:agencyCd"/>
+                <Cell col="5" displaytype="text" edittype="readonly" text="bind:mobNo"/>
+                <Cell col="6" displaytype="text" edittype="readonly" text="bind:telNo"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:strDay"/>
+                <Cell col="8" displaytype="normal" edittype="none" text="bind:endDay"/>
+                <Cell col="9" displaytype="normal" edittype="none" text="bind:useYn"/>
+                <Cell col="10" displaytype="normal" edittype="none" text="bind:street"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_choice" taborder="3" text="선택" onclick="btn_choice_onclick" top="460" right="55" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="4" text="닫기" onclick="btn_close_onclick" top="460" right="10" width="41" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <ConstColumn id="carmasterNu" type="STRING" size="30" value=""/>
+          <ConstColumn id="carmasterNm" type="STRING" size="30" value=""/>
+          <ConstColumn id="salesGroup" type="STRING" size="30" value=""/>
+          <ConstColumn id="salesOffice" type="STRING" size="30" value=""/>
+          <ConstColumn id="agencyCd" type="STRING" size="30" value=""/>
+          <ConstColumn id="mobNo" type="STRING" size="30" value=""/>
+          <ConstColumn id="telNo" type="STRING" size="30" value=""/>
+          <ConstColumn id="strDay" type="STRING" size="30" value=""/>
+          <ConstColumn id="endDay" type="STRING" size="30" value=""/>
+          <ConstColumn id="useYn" type="STRING" size="30" value=""/>
+          <ConstColumn id="street" type="STRING" size="30" value=""/>
+          <ConstColumn id="rentalGroup" type="STRING" size="30" value=""/>
+          <ConstColumn id="rentalGroupNm" type="STRING" size="30" value=""/>
+          <ConstColumn id="rentalOffice" type="STRING" size="30" value=""/>
+          <ConstColumn id="rentalOfficeNm" type="STRING" size="30" value=""/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSCarMaster_pop.xfdl
+ * 설    명 : 미스터로디안 조회(팝업)
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * 2017-06-22	wjim		[20170622_02] '근무여부' 조회조건 추가
+ * 2017-12-08	wjim		[20171208_01] '휴대폰번호','전화번호' Copy & Paste 기능 추가
+ * 2017-12-18	wjim		[20171218_01] 엑셀 다운로드 기능 추가
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+this.args = "";
+
+
+this.RTCMPrice_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj);
+	this.fn_init();
+	
+	
+}
+
+this.fn_init = function(){
+	var sSvcID      	= "listBrandCombo";  
+	var sController   	= "rtms/comm/listBrandCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_brand=output1";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+this.div_search_cb_searchBrand_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var cbSearchBrandlVal 	= nvl(this.div_search.cb_searchBrand.value);
+	var sSvcID      	= "listModelCombo";  
+	var sController   	= "rtms/comm/listModelCombo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_model=mapModelCombo";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	if( cbSearchBrandlVal != "" ){
+		sArgs += Ex.util.setParam("makerCd", cbSearchBrandlVal);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+
+
+this.div_search_cb_searchModel_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	var nRow1 = this.ds_model.findRow( "rn", this.div_search.cb_searchModel.value );
+	var nRow2 = this.ds_model.findRow( "mcNm", this.div_search.cb_searchModel.text );
+	if( nvl(nRow1) != "" && nvl(nRow2) != "" ){
+		this.grid_model.selectRow( nRow1 );
+	}
+}
+
+
+//검색버튼
+this.div_search_btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var carmasterNm = nvl(this.div_search.Ed_carmasterNm.value);
+	var	useYn = this.parent.p_useYn;
+	
+	// 근무여부 조회조건 [20170622_02]
+	// - 파라미터가 null 이면 근무여부 'Y'인 건만 조회
+	// - 파라미터가 'A'이면 근무여부 관계없이 조회
+	if (nvl(useYn) == "") {
+		useYn = "Y";
+	} else if (useYn == "A") {
+		useYn = "";
+	}
+
+	/*if( carmasterNm == "" ){
+		alert( "미스터로디안명 값이 없습니다.");
+		return;
+	}*/
+	var sSvcID        	= "carmasterPopUp";                    
+	var sController   	= "ntrms/cs/carmasterPopUp.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.deleteAll();
+	
+	sArgs += Ex.util.setParam("carmasterNm", carmasterNm);	// 로디안명
+	sArgs += Ex.util.setParam("useYn", useYn);				// 근무여부 [20170622_02]
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	
+}
+
+/**
+ * '엑셀' 버튼의 클릭 이벤트 처리
+ */
+this.div_search_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	if (this.dsList.getRowCount() == 0) {
+		this.alert("다운로드할 데이터가 없습니다.");
+		return false;
+	}
+	
+	Ex.core.exportExcel(this, this.grid_price, "로디안목록");
+}
+
+//Grid 더블클릭 event
+this.grid_product_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.FN_choice();
+}
+
+
+//선택버튼
+this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.FN_choice();
+}
+
+//선택 event
+this.FN_choice = function(){
+	var idx = this.dsList.rowposition;
+	var carmasterNu 	= this.dsList.getColumn(idx, "carmasterNu");
+	var carmasterNm 	= this.dsList.getColumn(idx, "carmasterNm");
+	
+	if( idx != -1 ){
+		if( this.parent.p_formId == "RTCSCarMaster" ){
+			if( nvl(carmasterNu) != "" && nvl(carmasterNm) != "" ){
+				var val1 = carmasterNu;
+				var val2 = carmasterNm;
+				this.close(this.opener.returnCarmaster(val1, val2));
+			}
+		}
+	}else{
+		alert("선택된 데이터가 없습니다.");
+	}
+	
+}
+//닫기 버튼
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+//enter 검색키
+this.div_search_Ed_carmasterNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	
+}
+//esc 키
+this.RTCSCarMaster_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+{
+	if( strSvcId == "carmasterPopUp" ){
+		var dsBrandRowCt = this.ds_brand.getRowCount();
+		if( dsBrandRowCt != 0 ){
+			
+		}
+	}
+}
+
+this.div_search_Ed_carmasterNm_onkillfocus = function(obj:Edit, e:nexacro.KillFocusEventInfo)
+{
+	
+}
+
+this.div_search_Ed_carmasterNm_onchanged = function(obj:Edit, e:nexacro.ChangeEventInfo)
+{
+	this.div_search_btn_search_onclick();
+}
+]]></Script>
+  </Form>
+</FDL>

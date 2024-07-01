@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRECloseBreakdown" classname="RTREFinishBreakdown" left="0" top="0" width="1147" height="496" titletext="마감 내역 조회" onload="RTRECloseBreakdown_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="1" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="486" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="2" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="60" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="3" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Div id="div_search" taborder="4" left="10" top="10" width="1112" height="49" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_closeTp" taborder="105" text="마감항목" cssclass="sta_WF_schTitle" left="294" top="12" width="80" height="21" domainId="nexa.s_condition"/>
+              <Combo id="cb_closeTp" taborder="106" displaynulltext="전체" innerdataset="@ds_closeTp" codecolumn="cd" datacolumn="cdNm" left="399" top="12" width="140" height="21" domainId="nexa.name;nexa.code"/>
+              <Static id="st_date" taborder="110" text="기준년월" cssclass="sta_WF_schTitle" left="20" top="12" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static07" taborder="112" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" width="1108" height="12"/>
+              <Static id="Static06" taborder="114" text="FIX w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static00" taborder="115" text="FIX w20" cssclass="Guide_color" visible="false" left="105" top="0" width="20" height="45"/>
+              <Static id="Static01" taborder="116" text="FIX w20" cssclass="Guide_color" visible="false" left="273" top="0" width="20" height="45"/>
+              <Static id="Static02" taborder="117" text="FIX w20" cssclass="Guide_color" visible="false" left="379" top="0" width="20" height="45"/>
+              <Static id="Static05" taborder="118" text="FIX w20" cssclass="Guide_color" visible="false" left="539" top="0" width="20" height="45"/>
+              <Static id="Static10" taborder="119" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" width="1108" height="12"/>
+              <Edit id="edtYear" taborder="120" inputtype="digit" lengthunit="ascii" maxlength="4" autoskip="true" onchanged="cal_accReqDate_onchanged" left="124" top="12" width="60" height="21"/>
+              <Static id="st_searchCondition06" taborder="121" text="년" left="188" top="12" width="20" height="20" domainId="nexa.s_condition"/>
+              <Edit id="edtMonth" taborder="122" inputtype="digit" lengthunit="ascii" maxlength="2" autoskip="true" onchanged="cal_accReqDate_onchanged" left="214" top="12" width="40" height="21"/>
+              <Static id="st_searchCondition07" taborder="123" text="월" left="258" top="12" width="20" height="20" domainId="nexa.s_condition"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="5" text="검색결과" cssclass="sta_WF_subTitle" left="10" top="80" width="120" height="21"/>
+        <Grid id="grid_closeList" taborder="6" useinputpanel="false" left="9" top="110" width="1113" height="386" binddataset="ds_closeList" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="220"/>
+                <Column size="220"/>
+                <Column size="220"/>
+                <Column size="220"/>
+                <Column size="218"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="대상년월"/>
+                <Cell col="1" text="마감항목"/>
+                <Cell col="2" text="마감세부항목"/>
+                <Cell col="3" text="건수"/>
+                <Cell col="4" displaytype="number" text="금액"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:closeYm"/>
+                <Cell col="1" text="bind:closeTpNm"/>
+                <Cell col="2" text="bind:clsDetailNm"/>
+                <Cell col="3" displaytype="number" style="align:right;" text="bind:closeCnt" mask="###,###,###,##0"/>
+                <Cell col="4" displaytype="number" style="align:right;" text="bind:closeAmt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;closeAmt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="7" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="100" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_closeList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="closeYm" type="STRING" size="256"/>
+          <Column id="closeTp" type="STRING" size="256"/>
+          <Column id="closeTpNm" type="STRING" size="256"/>
+          <Column id="clsDetail" type="STRING" size="256"/>
+          <Column id="clsDetailNm" type="STRING" size="256"/>
+          <Column id="closeCnt" type="STRING" size="256"/>
+          <Column id="closeAmt" type="BIGDECIMAL" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_closeTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item16" compid="div_search.edtYear" propid="value" datasetid="ds_chgInfo" columnid="expireY"/>
+      <BindItem id="item17" compid="div_search.edtMonth" propid="value" datasetid="ds_chgInfo" columnid="expireM"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+
+	this.p_arg = "RTREFinishBreakdown";
+	this.toDay		= ""; 	//당일
+	this.yesterDay	= ""; 	//전일
+	this.curMonth 	= "";	//당월	
+	this.prevMonth	= ""; 	//전월
+	this.nextMonth	= ""; 	//익월
+	this.closeYm	= "";
+	
+	
+	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+		if( strSvcId == "initRTRECloseBreakdown" ){
+			var rowCtItem = this.ds_closeTp.rowcount;
+			if( rowCtItem != 0 ){
+				var insert = this.ds_closeTp.insertRow( 0 );
+				this.ds_closeTp.setColumn(insert,"cd"," ");
+				this.ds_closeTp.setColumn(insert,"cdNm","전체");
+				this.div_search.cb_closeTp.set_value( " " );
+			}
+		}
+		
+		if( strSvcId == "getDayMongth" ){
+			this.div_search.edtYear.set_value(this.curMonth.substr(0,4));
+			this.div_search.edtMonth.set_value(this.curMonth.substr(4,2));
+			this.closeYm = this.curMonth;
+		}
+		
+		if( strSvcId == "rTRECloseBreakdownList" ){
+			var rowCt = this.ds_closeList.getRowCount();
+			if( rowCt == 0 ){
+				alert("조회된 데이터가 없습니다.");
+				this.grid_closeList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+		}
+	}
+	
+	
+	
+	this.RTRECloseBreakdown_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init(); 
+		this.parent.setButton("E|S", this);
+	}
+
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "initRTRECloseBreakdown";  
+		var sController   	= "rtms/re/initRTRECloseBreakdown.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sOutDatasets += " ds_closeTp=mapDsCloseTp ";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+		var sSvcID      	= "getDayMongth";  
+		var sController   	= "ntrms/re/getDayMongth.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	
+	
+	this.cal_accReqDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+		if(nvl(this.div_search.edtMonth.value) != "" && obj.getLength() == 1) {
+			if(parseInt(this.div_search.edtMonth.value,10) < 10) {
+				this.div_search.edtMonth.set_value("0" + obj.value);
+			}
+		}	
+		
+		this.closeYm = nvl(this.div_search.edtYear.value) + "" + nvl(this.div_search.edtMonth.value);
+
+		if(this.closeYm != "") {
+			if(this.closeYm.length == 6) {
+				if(!this.fn_chkYm(this.div_search.edtYear.value, this.div_search.edtMonth.value)){
+					return;
+				}else {
+				}
+			}else {
+				var nYear = nvl(this.div_search.edtYear.value);
+				var nMonth = nvl(this.div_search.edtMonth.value);
+				if(nYear.length < 4) {
+					alert('마감월을 입력하세요.');
+					this.div_search.edtYear.setFocus();
+					return false;
+				}
+				if(nMonth.length < 2) {
+					alert('마감월을 입력하세요.');
+					this.div_search.edtMonth.setFocus();
+					return false;
+				}				
+			}
+		}
+	}
+	
+	
+	
+	this.fn_chkYm = function(nYear,nMonth){
+		if(nYear.length < 4) {
+			alert('기준년을 입력하세요.');
+			this.div_search.edtYear.setFocus();
+			return false;
+		}
+		if(nMonth.length < 2) {
+			alert('기준월을 입력하세요.');
+			this.div_search.edtMonth.setFocus();
+			return false;
+		}	
+		    
+		if (nYear < 1900 || nYear > 3000)   
+		{ 
+			this.alert("사용할수 없는 기준월이 입력되었습니다.");
+			this.div_search.edtYear.setFocus();			
+			return false;
+		}   
+	  
+		if (nMonth < 1 || nMonth > 12)   
+		{  
+			this.alert("사용할수 없는 기준월이 입력되었습니다.");
+			this.div_search.edtMonth.setFocus();			
+			return false;		
+		}  
+		
+		var yyyymm = nYear + "" + nMonth;
+		
+		if(parseInt(yyyymm,10) > parseInt(this.curMonth,10)) {
+			alert("현재이후년월로 조회할 수 없습니다.");
+			this.div_search.edtYear.setFocus(true);
+			return false;
+		}
+		return true;
+    }
+    
+    
+    
+	this.fn_search = function(){
+		var closeTp     = nvl(this.div_search.cb_closeTp.value);
+		
+		var sSvcID        	= "rTRECloseBreakdownList";                    
+		var sController   	= "rtms/re/rTRECloseBreakdownList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_closeList=closeListMap";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.ds_closeList.deleteAll();
+		
+		sArgs += Ex.util.setParam("closeYm"	,this.closeYm);
+		sArgs += Ex.util.setParam("closeTp"	,closeTp);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.fn_excel = function(){
+		Ex.core.exportExcel(this, this.grid_closeList);
+	}
+]]></Script>
+  </Form>
+</FDL>

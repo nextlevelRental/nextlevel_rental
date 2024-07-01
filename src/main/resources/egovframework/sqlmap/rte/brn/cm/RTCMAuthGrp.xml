@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="authGrp">
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="authGrpCd" 	column="AUTH_GRP_CD" />
+		<result property="authGrpNm" 	column="AUTH_GRP_NM" />
+		<result property="authGrpDesc" 	column="AUTH_GRP_DESC" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="parameters" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />
+		<parameter property="authGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpDesc" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="authGrp.listAuthGrp" parameterMap="parameters">
+		{call Pkg_Rtcm0021.p_sRtcm0021(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcm0021">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpDesc" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="authGrp.saveAuthGr" parameterMap="p_IUDRtcm0021">
+		{call Pkg_Rtcm0021.p_IUDRtcm0021(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap id="paramCheckAuthGrpCd" class="java.util.Map">
+		<parameter property="result" 		jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultCheckAuthGrpCd" />
+		<parameter property="authGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultCheckAuthGrpCd" class="java.util.HashMap"/>
+	<procedure  id="authGrp.checkAuthGrpCd" resultClass="java.util.Map" parameterMap="paramCheckAuthGrpCd">
+		{call ? := Pkg_Rtcm0021.f_sRtcm0021Count ( ? )}
+	</procedure>
+	
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="mdlCd" 	column="MDL_CD" />
+		<result property="prgmCd" 	column="PRGM_CD" />
+		<result property="controlId" 	column="CONTROL_ID" />
+		<result property="userGrp" 	column="USER_GRP" />
+		<result property="userId" 	column="USER_ID" />
+		<result property="typeCd" 	column="TYPE_CD" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+	</resultMap>
+	<parameterMap id="parameters" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />
+		<parameter property="mdlCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="controlId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="comm.listControlAuth" parameterMap="parameters">
+		{call Pkg_Rtcm0005.p_sRtcm0005(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="carMasterRegister">
+	<resultMap id="r_sRtsd0001ModelSelect" class="java.util.HashMap">
+		<result property="cd"	column="MODEL_CD" />
+		<result property="cdNm" column="MODEL_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0001ModelSelect" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0001ModelSelect" />
+		<parameter property="makerCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carMasterRegister.sRtsd0001ModelSelect" parameterMap="p_sRtsd0001ModelSelect">
+		{call Pkg_Rtsd0001.p_sRtsd0001ModelSelect(?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0001ContentsSelect" class="java.util.HashMap">
+		<result property="cd"  	column="CONTENTS_CD" />
+		<result property="cdNm" column="CONTENTS_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0001ContentsSelect" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0001ContentsSelect" />
+		<parameter property="makerCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carMasterRegister.sRtsd0001ContentsSelect" parameterMap="p_sRtsd0001ContentsSelect">
+		{call Pkg_Rtsd0001.p_sRtsd0001ContentsSelect(?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0001CarMasterSelect" class="java.util.HashMap">
+		<result property="makerCd"  	column="MAKER_CD" />
+		<result property="modelCd" 		column="MODEL_CD" />
+		<result property="contentsCd"  	column="CONTENTS_CD" />
+		<result property="frCd" 		column="FR_CD" />
+		<result property="makerNm"  	column="MAKER_NM" />
+		<result property="modelNm" 		column="MODEL_NM" />
+		<result property="contentsNm"  	column="CONTENTS_NM" />
+		<result property="frNm" 		column="FR_NM" />
+		<result property="mcNm" 		column="MC_NM" />
+		<result property="useYn"  		column="USE_YN" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0001CarMasterSelect" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0001CarMasterSelect" />
+		<parameter property="makerCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contents" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carMasterRegister.carMasterSelect" parameterMap="p_sRtsd0001CarMasterSelect">
+		{call Pkg_Rtsd0001.p_sRtsd0001CarMasterSelect(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="r_sRtsd0001ModelByClassSelect" class="java.util.HashMap">
+		<result property="cd"	column="MODEL_CD" />
+		<result property="cdNm" column="MODEL_NM" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0001ModelByClassSelect" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0001ModelByClassSelect" />
+		<parameter property="makerCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="classCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="carMasterRegister.sRtsd0001ModelByClassSelect" parameterMap="p_sRtsd0001ModelByClassSelect">
+		{call Pkg_Rtsd0001.p_sRtsd0001ModelByClassSelect(?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0001">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="makerCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="carMasterRegister.dsRtre0001" parameterMap="p_IUDRtsd0001">
+		{call Pkg_Rtsd0001.p_IUDRtsd0001( ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0002">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="modelCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mcNm"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="carMasterRegister.dsRtre0002" parameterMap="p_IUDRtsd0002">
+		{call Pkg_Rtsd0002.p_IUDRtsd0002( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_UpdateRtsd0002MasterCheck">
+		<parameter property="modelCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="contentsCd"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="carMasterRegister.dsRtreUpdateMap" parameterMap="p_UpdateRtsd0002MasterCheck">
+		{call Pkg_Rtsd0002.p_UpdateRtsd0002MasterCheck( ?, ?, ?, ?, ?, ? )}
+	</procedure>
+</sqlMap>

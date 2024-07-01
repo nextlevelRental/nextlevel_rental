@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdviceStatus_tab_info4_install" classname="RTSDContractStatus_tab_info1_install" left="0" top="0" width="1147" height="150" titletext="[STEP5]설치정보" onload="RTCSAdviceStatus_tab_info4_install_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static25" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Static id="st_salesOffice" taborder="3" text="지점" cssclass="sta_WF_detailLabel" left="829" top="5" width="100" height="31"/>
+        <Edit id="ed_salesOfficeNm" taborder="4" left="933" top="10" width="168" height="21" readonly="true"/>
+        <Static id="st_procDay" taborder="8" text="장착일자" cssclass="sta_WF_detailLabel" left="275" top="5" width="100" height="31" style="align:center middle;"/>
+        <Edit id="ed_agencyNm" taborder="9" left="105" top="10" height="21" readonly="true" width="166"/>
+        <Static id="st_agencyNm" taborder="12" text="장착대리점" cssclass="sta_WF_detailLabel" left="0" top="5" width="100" height="31"/>
+        <Static id="Static00" taborder="13" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Edit id="ed_instYn" taborder="14" left="656" top="40" width="169" height="21" readonly="true"/>
+        <Static id="st_instYn" taborder="15" text="장착여부" cssclass="sta_WF_detailLabel" left="552" top="35" width="100" height="31"/>
+        <Edit id="ed_equNo" taborder="16" left="379" top="40" width="169" height="21" readonly="true"/>
+        <Static id="st_equNo" taborder="17" text="설비번호" cssclass="sta_WF_detailLabel" left="275" top="35" width="100" height="31"/>
+        <Edit id="ed_engNm" taborder="18" left="106" top="40" width="165" height="21" readonly="true"/>
+        <Static id="st_engNm" taborder="19" text="장착기사" cssclass="sta_WF_detailLabel" left="0" top="35" width="100" height="31"/>
+        <Static id="Static04" taborder="20" cssclass="sta_WF_detailLabel2" left="0" top="94" width="1107" height="31"/>
+        <Edit id="ed_agDesc" taborder="25" left="105" top="99" width="996" height="21" readonly="true"/>
+        <Static id="st_agDesc" taborder="26" text="비고" cssclass="sta_WF_detailLabel" left="0" top="94" width="100" height="31"/>
+        <Static id="Static83" taborder="27" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Static id="st_salesGroup" taborder="28" text="지사" cssclass="sta_WF_detailLabel" left="552" top="5" width="100" height="31"/>
+        <Edit id="ed_salesGroupNm" taborder="29" left="656" top="10" width="169" height="21" readonly="true"/>
+        <Static id="st_planDay" taborder="30" text="장착예정일" cssclass="sta_WF_detailLabel" left="829" top="35" width="100" height="31"/>
+        <Static id="Static09" taborder="34" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Calendar id="cal_planDay" taborder="35" readonly="true" dateformat="yyyy-MM-dd" left="933" top="40" width="168" height="21"/>
+        <Calendar id="cal_procDay" taborder="36" readonly="true" dateformat="yyyy-MM-dd" left="379" top="10" width="169" height="21"/>
+        <Edit id="ed_agencyCd" taborder="38" displaynulltext="장착대리점코드" maxlength="80" enable="false" visible="false" left="0%" top="124" right="89.1%" height="21"/>
+        <Edit id="ed_salesGroupCd" taborder="39" displaynulltext="지사 코드" maxlength="80" enable="false" visible="false" left="11.16%" top="124" right="77.94%" height="21"/>
+        <Edit id="ed_salesOfficeCd" taborder="40" displaynulltext="지점 코드" maxlength="80" enable="false" visible="false" left="22.32%" top="124" right="66.78%" height="21"/>
+        <Edit id="ed_ordNo" taborder="42" displaynulltext="주문 번호" maxlength="80" enable="false" left="33.48%" top="124" right="55.62%" height="21" visible="false"/>
+        <Static id="Static01" taborder="43" cssclass="sta_WF_detailLabel2" left="0" top="65" width="1107" height="31"/>
+        <Edit id="ed_instYn00" taborder="44" readonly="true" left="560" top="70" width="265" height="21"/>
+        <Edit id="ed_equNo00" taborder="46" readonly="true" left="379" top="70" width="169" height="21"/>
+        <Static id="st_equNo00" taborder="47" text="주소" cssclass="sta_WF_detailLabel" left="275" top="65" width="100" height="31"/>
+        <Edit id="ed_engNm00" taborder="48" readonly="true" left="106" top="70" width="165" height="21"/>
+        <Static id="st_engNm00" taborder="49" text="우편번호" cssclass="sta_WF_detailLabel" left="0" top="65" width="100" height="31"/>
+        <Static id="st_planDay00" taborder="50" text="연락처" cssclass="sta_WF_detailLabel" left="829" top="65" width="100" height="31"/>
+        <Edit id="ed_salesOfficeNm00" taborder="51" readonly="true" left="933" top="70" width="168" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_install" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="ds_install_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="salesOfficeCd" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesGroupCd" type="STRING" size="256"/>
+          <Column id="engNm" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="agDesc" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="city" type="STRING" size="256"/>
+          <Column id="street" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_agencyNm" propid="value" datasetid="ds_install" columnid="agencyNm"/>
+      <BindItem id="item2" compid="ed_salesOfficeNm" propid="value" datasetid="ds_install" columnid="salesOffice"/>
+      <BindItem id="item3" compid="ed_salesGroupNm" propid="value" datasetid="ds_install" columnid="salesGroup"/>
+      <BindItem id="item4" compid="ed_engNm" propid="value" datasetid="ds_install" columnid="engNm"/>
+      <BindItem id="item5" compid="ed_equNo" propid="value" datasetid="ds_install" columnid="equNo"/>
+      <BindItem id="item6" compid="ed_instYn" propid="value" datasetid="ds_install" columnid="instYn"/>
+      <BindItem id="item8" compid="ed_agDesc" propid="value" datasetid="ds_install" columnid="agDesc"/>
+      <BindItem id="item7" compid="cal_planDay" propid="value" datasetid="ds_install" columnid="planDay"/>
+      <BindItem id="item1" compid="cal_procDay" propid="value" datasetid="ds_install" columnid="procDay"/>
+      <BindItem id="item10" compid="ed_ordNo" propid="value" datasetid="ds_install" columnid="ordNo"/>
+      <BindItem id="item9" compid="ed_agencyCd" propid="value" datasetid="ds_install" columnid="agencyCd"/>
+      <BindItem id="item11" compid="ed_salesGroupCd" propid="value" datasetid="ds_install" columnid="salesGroupCd"/>
+      <BindItem id="item12" compid="ed_salesOfficeCd" propid="value" datasetid="ds_install" columnid="salesOfficeCd"/>
+      <BindItem id="item13" compid="ed_instYn00" propid="value" datasetid="ds_install" columnid="street"/>
+      <BindItem id="item14" compid="ed_equNo00" propid="value" datasetid="ds_install" columnid="city"/>
+      <BindItem id="item15" compid="ed_engNm00" propid="value" datasetid="ds_install" columnid="posCd"/>
+      <BindItem id="item16" compid="ed_salesOfficeNm00" propid="value" datasetid="ds_install" columnid="salesOffice"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+this.RTCSAdviceStatus_tab_info4_install_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	//Ex.core.init(obj);
+}
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "rtsd0104AgencyUpdate" ){
+		alert(strErrorMsg);
+		//if( nErrorCode == "0" ){
+		//	this.reload();
+		//}else{
+		//	return false;
+		//}
+	}
+}
+
+this.btn_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "RTCSAdviceStatus_tab_info4_install"};
+	Ex.core.popup(this,"대리점조회","comm::RTCOMMAgency_pop.xfdl",args, "modaless=false");
+}
+
+this.return_agency = function(arr){
+	this.ed_salesGroupNm.set_value(arr[0]);
+	this.ed_salesGroupCd.set_value(arr[1]);
+	this.ed_salesOfficeNm.set_value(arr[2]);
+	this.ed_salesOfficeCd.set_value(arr[3]);
+	this.ed_agencyNm.set_value(arr[4]);
+	this.ed_agencyCd.set_value(arr[5]);
+}
+
+this.btn_saveAgency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	if( confirm( "저장하시겠습니까?") ){
+		var sSvcID        	= "rtsd0104AgencyUpdate";                    
+		var sController   	= "/rtms/sd/rtsd0104AgencyUpdate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=ds_install:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+this.ds_install_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo){
+	if( e.columnid == "agencyNm" ){
+		this.btn_saveAgency.set_enable(true);
+	}
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

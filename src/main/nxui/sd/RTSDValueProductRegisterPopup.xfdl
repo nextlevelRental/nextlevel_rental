@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="form" classname="Authority" inheritanceid="" position="absolute" titletext="부가제품등록팝업" left="0" width="1000" top="0" height="480" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" position="absolute" left="20" right="4" top="2" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="10" top="2" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" width="981">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="15" text="부가제품명" cssclass="sta_WF_schTitle" left="25" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition01" taborder="20" text="제조사" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="80" left="270" visible="false"/>
+              <Edit id="edt_company" taborder="1" enable="true" left="342" top="10" width="140" height="21" maxlength="100" visible="false"/>
+              <Static id="Static22" taborder="23" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="885"/>
+              <Static id="Static23" taborder="24" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="885"/>
+              <Edit id="edt_prodNm" taborder="0" enable="true" left="119" top="10" width="124" height="21" maxlength="100" onkeyup="div_search_edt_prodNm_onkeyup"/>
+              <Button id="btn_search" taborder="25" text="조회" onclick="fn_search" cssclass="btn_WF_CRUD" top="9" right="20" width="45" height="22" domainId="nexa.search"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="24" text="검색결과" cssclass="sta_WF_subTitle" top="63" height="20" width="89" left="10"/>
+        <Static id="Static06" taborder="27" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" top="2" height="45" width="33" left="10"/>
+        <Static id="Static24" taborder="28" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="255" top="2" height="44" width="33"/>
+        <Grid id="Grid01" taborder="127" useinputpanel="false" left="10" top="87" height="356" binddataset="dsPrice" width="981" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="240"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="80"/>
+                <Column size="70"/>
+                <Column size="0"/>
+                <Column size="70"/>
+                <Column size="350"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="부가제품명"/>
+                <Cell col="2" text="제조사"/>
+                <Cell col="3" text="금액"/>
+                <Cell col="4" text="할인금액"/>
+                <Cell col="5" text="실판매금액"/>
+                <Cell col="6" text="제품군"/>
+                <Cell col="7" text="사용구분"/>
+                <Cell col="8" text="할부여부"/>
+                <Cell col="9" text="제품설명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" edittype="none" style="align:left;" text="bind:addGdsNm"/>
+                <Cell col="2" edittype="none" style="align:left;" text="bind:makerNm"/>
+                <Cell col="3" displaytype="number" edittype="none" style="align:right;" text="bind:amt" mask="###,###,###,##0"/>
+                <Cell col="4" displaytype="number" edittype="none" style="align:right;" text="bind:dcAmt" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" edittype="none" style="align:right;" text="bind:actAmt" mask="###,###,###,##0"/>
+                <Cell col="6" displaytype="combo" edittype="none" text="bind:gdsGrp" combodataset="comGrp" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="ds_yn" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="combo" text="bind:dcYn" combodataset="ds_dcYn" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="9" edittype="none" style="align:left;" text="bind:gdsDesc"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="128" text="Static02" cssclass="Guide_color" visible="false" left="10" top="47" width="869" height="20"/>
+        <Static id="Static04" taborder="129" text="Static02" cssclass="Guide_color" visible="false" left="10" top="77" width="869" height="10"/>
+        <Button id="btn_choice" taborder="133" text="선택" onclick="btn_choice_onclick" left="895" top="447" width="49" height="21" domainId="nexa.add"/>
+        <Button id="btn_close" taborder="134" text="닫기" onclick="btn_close_onclick" left="942" top="447" width="49" height="21" domainId="nexa.add"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsPrice" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsPrice_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="chk" type="string"/>
+          <Column id="addGdsCd" type="string"/>
+          <Column id="addGdsNm" type="string"/>
+          <Column id="amt" type="string"/>
+          <Column id="makerNm" type="string"/>
+          <Column id="gdsGb" type="string"/>
+          <Column id="gdsDesc" type="string"/>
+          <Column id="gdsDescDt" type="string"/>
+          <Column id="regId" type="string"/>
+          <Column id="regDt" type="string"/>
+          <Column id="chgId" type="string"/>
+          <Column id="chgDt" type="string"/>
+          <Column id="gdsGrp" type="string"/>
+          <Column id="useYn" type="string"/>
+          <Column id="dcAmt" type="string"/>
+          <Column id="actAmt" type="STRING" size="256"/>
+          <Column id="dcYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="comGrp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cdDesc" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+          <Column id="cd" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_yn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">판매중</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">판매중지</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPriceCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" oncolumnchanged="dsPrice_oncolumnchanged">
+        <ColumnInfo>
+          <Column id="chk" type="string"/>
+          <Column id="addGdsCd" type="string"/>
+          <Column id="addGdsNm" type="string"/>
+          <Column id="amt" type="string"/>
+          <Column id="makerNm" type="string"/>
+          <Column id="gdsGb" type="string"/>
+          <Column id="gdsDesc" type="string"/>
+          <Column id="gdsDescDt" type="string"/>
+          <Column id="regId" type="string"/>
+          <Column id="regDt" type="string"/>
+          <Column id="chgId" type="string"/>
+          <Column id="chgDt" type="string"/>
+          <Column id="gdsGrp" type="string"/>
+          <Column id="useYn" type="string"/>
+          <Column id="dcAmt" type="string"/>
+          <Column id="actAmt" type="STRING" size="256"/>
+          <Column id="dcYn" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dcYn">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">할부</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">할부불가</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 부가제품등록 팝업
+ * 02. 그룹명   : 주문관리
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2018.10.16
+ * 05. 작성자   : Sean
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ * ToDo.1. 
+ ***********************************************************************
+ */
+
+/***********************************************************************************
+ * 1. Script Include 
+ ***********************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************************
+ * 2. FORM 변수 선언 영역
+***********************************************************************************/
+	//팝업에서 전달받은 변수 저장
+	this.arr ;
+
+/***********************************************************************************
+ * 3. Common Events and Functions
+***********************************************************************************/
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 
+		this.listCommInfo(); //공통코드 조회(S210, 제품군)
+	} 
+	 
+/***********************************************************************************
+* 4. Transaction Functions
+***********************************************************************************/
+	//----------------------------------------------------------------------------------
+	// Search
+	//----------------------------------------------------------------------------------
+	this.fn_search = function()
+	{
+		this.dsPrice.clearData();
+		var sSvcID        	= "listProductInfo";                    
+		var sController   	= "/rtms/sd/listAddProductInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsPrice=ds_output";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+			sArgs 			+= Ex.util.setParam("addGdsNm",  nvl(this.div_search.edt_prodNm.value));
+			sArgs 			+= Ex.util.setParam("makerNm",   nvl(this.div_search.edt_company.value));
+			sArgs 			+= Ex.util.setParam("useYn",   	 "Y"); //팝업화면에서는 판매중인 부가제품만 조회
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	//----------------------------------------------------------------------------------
+	// Save
+	//----------------------------------------------------------------------------------
+	this.fn_save = function()
+	{
+		if( !Ex.util.isUpdated(this.dsPrice)) {
+			alert('변경된 데이터가 없습니다.');
+			return false;
+		}
+
+		//Save Validation is not needed.
+
+		if( confirm( "저장하시겠습니까?") ){			
+			var sSvcID        	= "saveProductInfo";                    
+			var sController   	= "rtms/sd/saveAddProductInfo.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			sInDatasets   		= "input=dsPrice:U";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+	//공통
+	this.listCommInfo = function()
+	{
+		var sSvcID        	= "listCommInfo";                    
+		var sController   	= "/rtms/sd/listAddProductCommInfo.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "comGrp=com_grp";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}	
+	
+	
+/***********************************************************************************
+* 5. CallBack Functions
+***********************************************************************************/	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) {
+			alert(strErrorMsg);		
+		}
+		
+		if (strSvcId == "listProductInfo") {
+			for(var i=0; i<this.dsPrice.rowcount; i++){
+				this.dsPrice.setColumn(i, "chk", 0);
+			}
+		}
+		
+		if (strSvcId == "saveProductInfo") {
+			alert(strErrorMsg);
+			this.fn_search();
+		}
+	}
+
+/***********************************************************************************
+ * 6. User Functions
+***********************************************************************************/
+/***********************************************************************************
+* Component Event
+***********************************************************************************/
+	//=======================================
+	//검색 시 Enter키 이벤트 처리
+	//=======================================
+	this.div_search_edt_prodNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 ){
+			this.fn_search();
+		}
+	}
+	
+	//----------------------------------------------------------------------------------
+	// Add
+	//----------------------------------------------------------------------------------
+	this.fn_add = function() {
+		var row = this.dsPrice.addRow();
+		
+ 		this.dsPrice.setColumn(row, "dcAmt", 0);
+ 		this.dsPrice.setColumn(row, "gdsGb", "2");
+	}
+
+	//----------------------------------------------------------------------------------
+	// Excel
+	//----------------------------------------------------------------------------------
+	this.fn_excel= function() {
+		Ex.core.exportExcel(this, this.Grid01);
+	}
+
+	//----------------------------------------------------------------------------------
+	// 칼럼변경시
+	//----------------------------------------------------------------------------------
+	this.dsPrice_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		var sColId = e.columnid;
+		var nRow = e.row;
+				
+		if(sColId == "dcAmt"){		//할인금액		
+			obj.setColumn(nRow, "actAmt", nvl(obj.getColumn(nRow, "amt"), 0) - nvl( obj.getColumn(nRow, "dcAmt"), 0));
+		}else if(sColId == "amt"){	//금액
+			obj.setColumn(nRow, "actAmt", nvl(obj.getColumn(nRow, "amt"), 0) - nvl( obj.getColumn(nRow, "dcAmt"), 0));
+		}
+	}
+	
+	//----------------------------------------------------------------------------------
+	// Save Validation
+	//----------------------------------------------------------------------------------
+	this.fn_saveValidation = function() {
+		if(nvl(this.matCd.value) == "") {
+			alert("상품정보조회후 등록 해주십시오.");
+			return false;
+		}
+		
+		if(nvl(this.periodCd.value) == "") {
+			alert("기간코드 선택후 등록 해주십시오.");
+			return false;
+		}
+		
+		return true;
+	}	
+
+	//----------------------------------------------------------------------------------
+	// 선택
+	//----------------------------------------------------------------------------------
+	this.btn_choice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.dsPrice.rowcount;
+		if(nRow < 1) return false;
+		if(this.dsPrice.getCaseCount("chk == 1") == 0) return false;
+
+		this.dsPriceCp.copyData(this.dsPrice);
+		
+		for(var i=nRow-1; i>=0; i--)
+		{
+			if(this.dsPriceCp.getColumn(i, "chk") == 0)
+			{
+				this.dsPriceCp.deleteRow(i);
+			}
+		}
+		
+		var arr = [this.dsPriceCp];		
+		this.close(this.opener._setReturnProduct(arr));
+		//trace(returnDs.saveXML());
+	}
+
+	//----------------------------------------------------------------------------------
+	// 닫기
+	//----------------------------------------------------------------------------------
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.close();
+	}	
+
+]]></Script>
+  </Form>
+</FDL>

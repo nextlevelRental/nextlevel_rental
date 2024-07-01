@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDReRentalContact_tab01" classname="RTSDProvisionalContractContact_tab01" left="0" top="0" width="1123" height="119" titletext="New Form" onload="RTSDProvisionalContractContact_tab01_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="1" width="1119" height="99" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static09" taborder="196" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static22" taborder="198" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="12"/>
+              <Static id="Static13" taborder="199" cssclass="Guide_color" visible="false" left="224" top="0" width="25" height="101"/>
+              <Static id="Static15" taborder="201" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="109"/>
+              <Static id="Static10" taborder="202" cssclass="Guide_color" visible="false" left="0" top="32" width="1118" height="6"/>
+              <Static id="st_custNm04" taborder="221" text="재컨택일자" cssclass="sta_WF_schTitle" left="26" top="12" width="83" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_recallDay" taborder="222" dateformat="yyyy-MM-dd" left="113" top="12" width="111" height="21"/>
+              <Static id="Static11" taborder="224" cssclass="Guide_color" visible="false" left="8" top="83" width="1118" height="12"/>
+              <Static id="Static18" taborder="229" text="상담사" cssclass="sta_WF_schTitle" left="250" top="13" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_callId" taborder="230" onkeyup="div_search_ed_custCd_onkeyup" left="331" top="12" width="120" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDProvisionalContractContact_tab01.xfdl
+ * 설    명 : 가계약상담_조회1
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2019-07-30	wjim		[20190716_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDProvisionalContractContact_tab01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);	
+}
+
+/**
+ * 상태 조회조건 콤보에서 변경된 값이 적용된 후 이벤트 처리
+ */
+this.div_search_cmb_condProvsnSt_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	if (e.postvalue == "") {
+		this.ds_S094_cond.filter("cd == ''");
+	} else {
+		this.ds_S094_cond.filter("cd == '' || cd.substr(0,2) == '" + e.postvalue + "'");
+	}
+	
+	this.div_search.cmb_condProvsnStDtl.set_value("");
+}]]></Script>
+  </Form>
+</FDL>

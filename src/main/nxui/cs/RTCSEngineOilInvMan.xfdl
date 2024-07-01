@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSEngineOilInvMan" classname="RTCSEngineOilInvMan" left="0" top="0" width="1147" height="496" titletext="엔진오일 송장관리" onload="RTCSEngineOilInvMan_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1117" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_procDay" taborder="89" text="송장엑셀파일" cssclass="sta_WF_schTitle" left="25" top="12" width="100" height="21"/>
+              <Static id="Static26" taborder="90" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="91" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="92" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Button id="bt_fileChoice" taborder="93" text="파일선택" onclick="div_search_bt_fileChoice_onclick" left="125" top="12" width="100" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="gr_list" taborder="2" binddataset="Dataset00" useinputpanel="false" autofittype="col" left="0" top="87" width="1117" height="409">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="배송신청일자"/>
+                <Cell col="1" text="순번"/>
+                <Cell col="2" text="계약번호"/>
+                <Cell col="3" text="고객코드"/>
+                <Cell col="4" text="송장적용일시"/>
+                <Cell col="5" text="배송업체"/>
+                <Cell col="6" text="송장번호"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:dlvrDay" calendardisplaynulltype="none" tooltiptext="bind:dlvrDay"/>
+                <Cell col="1" text="bind:dlvrSeq" tooltiptext="bind:dlvrSeq"/>
+                <Cell col="2" displaytype="text" edittype="readonly" text="bind:ordNo" tooltiptext="bind:ordNo"/>
+                <Cell col="3" text="bind:custNo" tooltiptext="bind:custNo"/>
+                <Cell col="4" displaytype="date" text="bind:dlvsDay" calendardisplaynulltype="none" tooltiptext="bind:dlvsDay"/>
+                <Cell col="5" text="bind:dlvEnt" tooltiptext="bind:dlvEnt"/>
+                <Cell col="6" text="bind:trspDoc" tooltiptext="bind:trspDoc"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="3" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static03" taborder="4" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="62" width="140" height="20"/>
+        <Static id="Static02" taborder="5" cssclass="Guide_color" visible="false" left="0" top="77" width="1147" height="10"/>
+        <Static id="Static01" taborder="6" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="496"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00" useclientlayout="false" loadfiltermode="keep" loadkeymode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="dlvrSeq" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="dlvsDay" type="STRING" size="256"/>
+          <Column id="dlvEnt" type="STRING" size="256"/>
+          <Column id="trspDoc" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 		= "RTREServiceCommMang_tab2";
+this.toDay 		= "";
+this.firstDay 	= "";
+this.addMonth	= "";
+this.lastDay	= "";
+this.url 		= application.services["svcurl"].url+"XImport";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "saveRTCSEngineOilInvMan" ){
+		alert(strErrorMsg);
+		if( nErrorCode < 0 ){
+			
+		}else{
+			this.Dataset00.clearData();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCSEngineOilInvMan_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_setButton();
+	this.fn_getToday();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_setButton = function(){
+	this.parent.setButton("C", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var nCnt = this.Dataset00.getRowCount();
+	
+	this.Dataset00.set_updatecontrol(false);
+	for( var i = 0 ; i < nCnt ; i++ ){
+		this.Dataset00.setRowType( i, 2 );
+	}
+	this.Dataset00.set_updatecontrol(true);
+	
+	if(this.FN_saveCheck()){
+		if( confirm( "저장하시겠습니까?" ) ){
+			var sSvcID        	= "saveRTCSEngineOilInvMan";                
+			var sController   	= "rtms/cs/saveRTCSEngineOilInvMan.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			sInDatasets   		= "input=Dataset00:U";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";		
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.FN_saveCheck = function(){
+	var nCnt 	 = this.Dataset00.getRowCount();
+	var saveFlag = false;
+	var msg		 = " 값이 없습니다.";
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var dlvrDay	= nvl(this.Dataset00.getColumn( i, "dlvrDay" ));
+		var dlvrSeq	= nvl(this.Dataset00.getColumn( i, "dlvrSeq" ));
+		var ordNo	= nvl(this.Dataset00.getColumn( i, "ordNo" ));
+		var custNo	= nvl(this.Dataset00.getColumn( i, "custNo" ));
+		var dlvsDay	= nvl(this.Dataset00.getColumn( i, "dlvsDay" ));
+		var dlvEnt	= nvl(this.Dataset00.getColumn( i, "dlvEnt" ));
+		var trspDoc	= nvl(this.Dataset00.getColumn( i, "trspDoc" ));
+		
+		if( dlvrDay == "" ){		alert( "배송신청일자"+msg ); 	this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( dlvrSeq == "" ){	alert( "순번"+msg ); 			this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( ordNo == "" ){	alert( "계약번호"+msg ); 		this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( custNo == "" ){	alert( "고객코드"+msg ); 		this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( dlvsDay == "" ){	alert( "송장적용일시"+msg ); 	this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( dlvEnt == "" ){	alert( "배송업체"+msg ); 		this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else if( trspDoc == "" ){	alert( "송장번호"+msg ); 		this.Dataset00.set_rowposition(i);	saveFlag = false; break;
+		}else{
+			saveFlag = true;
+		}
+	}
+	return saveFlag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_fileChoice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.Dataset00.clear();
+	this.importObj = new nexacro.ExcelImportObject("Import00",this);
+	this.importObj.addEventHandler("onsuccess", this.Import00_onsuccess, this);
+	this.importObj.addEventHandler("onerror", this.Import00_onerror, this);
+	this.importObj.set_importurl(this.url);
+	this.importObj.importData("", "sheet1!A1:G", "Dataset00");
+	this.importObj.parent.addChild("Import00",this.importObj);
+	this.importObj = null;
+}
+this.Import00_onsuccess = function(obj:ExcelImportObject,  e:nexacro.ExcelImportEventInfo){
+}
+this.Import00_onerror = function(obj:ExcelImportObject,  e:nexacro.ExcelImportErrorEventInfo){
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

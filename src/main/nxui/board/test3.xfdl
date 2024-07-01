@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="test" classname="test" left="0" top="0" width="1024" height="768" titletext="New Form">
+    <Layouts>
+      <Layout>
+        <Static id="Static00" taborder="0" text="dasdad" left="24.22%" top="117" right="34.96%" height="150" style="font:bold 14 arial;"/>
+        <Button id="Button00" taborder="1" text="Button00" left="15.23%" top="8" right="29.39%" height="72"/>
+        <ImageViewer id="ImageViewer00" taborder="2" text="ImageViewer00" left="5.76%" top="107" right="81.25%" height="132" image="URL('..\..\..\..\..\..\Users\Public\Pictures\Sample Pictures\Koala.jpg')"/>
+        <Grid id="Grid00" taborder="3" useinputpanel="false" left="15.04%" top="273" right="32.81%" height="113">
+          <Formats/>
+        </Grid>
+        <Calendar id="Calendar00" taborder="4" left="9.47%" top="465" right="37.89%" height="186" type="monthonly" value="null" dateformat="yyyy-MM-dd ddd"/>
+        <Button id="Button01" taborder="5" text="Close" left="40.53%" top="135" right="29.79%" height="78" onclick="Button01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+    //폼로드시 공통함수 
+	Ex.core.init(obj); 	
+}
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

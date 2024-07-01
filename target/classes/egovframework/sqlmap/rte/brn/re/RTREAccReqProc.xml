@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccReqProcDAO">
+	<resultMap id="beforeAfterDayresultMap" class="java.util.Map">
+		<result property="bfAfDay"  	column="BFAF_DAY" />	
+	</resultMap>
+	
+	<resultMap id="payChgDayresultMap" class="java.util.Map">
+		<result property="rpcDay"  	column="RPC_DAY" />	
+	</resultMap>
+	
+	<resultMap id="targetResultMap" class="java.util.HashMap">	
+		<result property="acrqDay"  	column="ACRQ_DAY" />		<!--계좌신청일            -->
+		<result property="acrqTp"   	column="ACRQ_TP" />			<!--신청구분            	-->
+		<result property="acrqTpNm"  	column="ACRQ_TP_NM" />		<!--신청구분명            	-->
+		<result property="bankCd"  		column="BANK_CD" />	      	<!--운행코드            	-->
+		<result property="bankNm"  		column="BANK_NM" />	      	<!--은행명  		-->
+		<result property="rowCnt"  		column="ROW_CNT" />	      	<!--건수		-->
+	</resultMap>	
+	
+	<resultMap id="accReqMakeResultMap" class="java.util.HashMap">
+		<result property="rqstDay"  column="RQST_DAY" />
+		<result property="fileNm"  	column="FILE_NM" />
+		<result property="rowSeq"  	column="ROW_SEQ" />
+		<result property="fileTp"  	column="FILE_TP" />
+		<result property="fileSeq"  column="FILE_SEQ" />
+		<result property="rowData"  column="ROW_DATA" />
+		<result property="delYn"  	column="DEL_YN" />
+		<result property="regId"  	column="REG_ID" />
+		<result property="regDt"  	column="REG_DT" />
+		<result property="chgId"  	column="CHG_ID" />
+		<result property="chgDt"  	column="CHG_DT" />
+	</resultMap>	
+        
+	<parameterMap class="java.util.Map" id="beforeAfterDayParam"> 
+		<parameter property="result"    jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="beforeAfterDayresultMap" />   
+		<parameter property="serchGb"   jdbcType="VARCHAR" mode="IN" /> <!-- 작업구분(-.+) -->
+		<parameter property="days"     	jdbcType="NUMERIC" mode="IN" /> <!-- 검색기간(일자) -->
+		<parameter property="stdDay"    jdbcType="VARCHAR" mode="IN" /> <!-- 기준일자 -->
+	</parameterMap>	
+	
+	<parameterMap class="java.util.Map" id="payChgDayParam"> 
+		<parameter property="result"    jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="payChgDayresultMap" />   
+	</parameterMap>	
+	
+	<parameterMap class="java.util.Map" id="targetListParam"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="targetResultMap" />   
+		<parameter property="acrqDay"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+ 		
+	<!-- 확인완료(전송처리 업무상태 업데이트) 파리미터맵-->
+	<parameterMap class="java.util.Map" id="saveParameters">
+		<parameter property="fileTp" 		jdbcType="VARCHAR" mode="IN" />	     <!--송수신파일구분       -->
+		<parameter property="rqstDay"		jdbcType="VARCHAR" mode="IN" />      <!--계좌신청일자              -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명        -->
+		<parameter property="cnfStep"		jdbcType="VARCHAR" mode="IN" />      <!--송신처리단계        -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디          -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	
+	<!-- 집계 파리미터맵-->
+	<parameterMap class="java.util.Map" id="agParameters">
+		<parameter property="acrqDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--계좌신청일       		-->
+		<parameter property="frRpcDay"		jdbcType="VARCHAR" mode="IN" />      <!--결제정보 변경시작일자    -->
+		<parameter property="toRpcDay"		jdbcType="VARCHAR" mode="IN" />      <!--결제정보 변경종료일자    -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디          	-->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	
+	<!-- 계좌신청 송신대상 내역 생성 파리미터맵-->
+	<parameterMap class="java.util.Map" id="accReqMakeParameters">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="accReqMakeResultMap" />	
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--계좌신청일     -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디   -->
+		<parameter property="crlfYn" 		jdbcType="VARCHAR" mode="OUT" />	 <!-- CRLF여부   -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+
+	<!-- 계좌신청일:전일(영업일) 조회 -->
+	<procedure id="accreqProc.getAccReqDate" parameterMap="beforeAfterDayParam">
+		{call ? := Pkg_Rtcm0060.f_sRtcm0060BeforeAfterDay(?, ?, ?)}		
+	</procedure>	
+			
+	<!-- 결제정보 변경일 조회 -->
+	<procedure id="accreqProc.getPayChgDate" parameterMap="payChgDayParam">
+		{call ? := Pkg_Rtre0099.f_sRtre0099RpcDay()}		
+	</procedure>		
+	
+	<!--계좌정보 대상 리스트  -->
+	<procedure id="accreqProc.listaccReqTarget" parameterMap="targetListParam">
+		{call
+		Pkg_Rtre0060.p_sRtre0060AccReqTargetList(?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 확인완료(전송처리 업무상태 업데이트)-->
+	<procedure id="accreqProc.confirmProc" parameterMap="saveParameters">
+		{call Pkg_Rtre0099.p_UpdateRtre0099Extrcyn(?, ?,	?,	?,	?,	?,	?,	?)}
+	</procedure>		
+	
+	<!-- 집계-->
+	<procedure id="accreqProc.setAggregate" parameterMap="agParameters">
+		{call Pkg_Rtre0060.p_InsertRtre0060Aggregate(?, ?,	?,	?,	?,	?,	?)}
+	</procedure>	
+		
+	<!-- 계좌신청 송신대상 내역 생성-->
+	<procedure id="accreqProc.accReqMakeData" parameterMap="accReqMakeParameters">
+		{call  Pkg_Rtre0098.p_InsertRtre0098EB13Batch(?, ?,	?,	?,	?,	?,	?, ?)}
+	</procedure>
+	
+	<!-- 계좌신청증빙 송신대상 내역 생성-->
+	<procedure id="accreqProc.accReqMakeLData" parameterMap="accReqMakeParameters">
+		{call  Pkg_Rtre0098.p_InsertRtre0098EI13Batch(?, ?,	?,	?,	?,	?,	?, ?)}
+	</procedure>		
+			
+</sqlMap>
+
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="question">
+
+	<resultMap id="questionResultMap" class="java.util.HashMap">
+		<result property="questionNo" 	column="QUESTION_NO" /> 	<!-- 질문번호 --> 
+		<result property="useYn" 		column="USE_YN" /> 			<!-- 사용여부 -->	
+		<result property="questionTp" 	column="QUESTION_TP" /> 	<!-- 질문유형 -->	
+		<result property="questionTpNm" column="QUESTION_TP_NM" />  <!-- 질문유형 -->	
+		<result property="question" 	column="QUESTION" /> 		<!-- 질문 -->	
+		<result property="confYn" 		column="CONF_YN" /> 		<!-- 평가반영여부 -->	
+		<result property="answerNo" 	column="ANSWER_NO" /> 		<!-- 답변번호 -->
+		<result property="answer" 		column="ANSWER" /> 			<!-- 답변번호 -->
+		<result property="regId" 		column="REG_ID" /> 			<!-- 등록자 ID -->	 
+		<result property="regDt" 		column="REG_DT" /> 			<!-- 등록일 -->	 
+		<result property="chgId" 		column="CHG_ID" /> 			<!-- 변경자ID -->	 
+		<result property="chgDt" 		column="CHG_DT" /> 			<!-- 변경일 -->	   
+	</resultMap>
+	
+	<parameterMap id="p_sRtcs0112" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="questionResultMap" />
+		<parameter property="questionNo" 	jdbcType="VARCHAR" mode="IN" /> <!-- 질문번호 -->
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="questionTp" 	jdbcType="VARCHAR" mode="IN" /> <!-- 질문유형 -->
+		<parameter property="question" 		jdbcType="VARCHAR" mode="IN" /> <!-- 질문 -->
+		<parameter property="confYn" 		jdbcType="VARCHAR" mode="IN" /> <!-- 평가반영여부 -->
+		<parameter property="answerNo" 		jdbcType="VARCHAR" mode="IN" /> <!-- 답변번호 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID -->                    
+	</parameterMap> 
+	
+	<procedure id="question.listQuestion" parameterMap="p_sRtcs0112">
+		{call
+		Pkg_Rtcs0112.p_sRtcs0112(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRtcs0112" class="java.util.Map">
+		<parameter property="dvsn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="questionNo"  	jdbcType="VARCHAR" mode="IN" /> <!-- 질문번호 -->
+		<parameter property="useYn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="questionTp"  	jdbcType="VARCHAR" mode="IN" /> <!-- 질문유형 -->
+		<parameter property="question" 		jdbcType="VARCHAR" mode="IN" /> <!-- 질문 -->
+		<parameter property="confYn" 		jdbcType="VARCHAR" mode="IN" /> <!-- 평가반영여부 -->
+		<parameter property="answerNo" 		jdbcType="VARCHAR" mode="IN" /> <!-- 답변번호 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID --> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="question.insertQuestion" parameterMap="p_IUDRtcs0112">
+		{call
+		Pkg_Rtcs0112.p_IUDRtcs0112(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

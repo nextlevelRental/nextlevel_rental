@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMFileView_pop" classname="RTCOMMFileList_pop" left="0" top="0" width="959" height="568" titletext="마모파손이미지뷰어" onload="RTCOMMFileList_pop_onload" onkeyup="RTCOMMFileList_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="8" text="Div00" left="6.15%" top="10" right="0.94%" height="518">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="imgView" taborder="0" left="0.8%" top="4" right="0%" height="514"/>
+              <WebBrowser id="webbrowser" left="0.79%" top="1" right="0%" height="517" taborder="1"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd_Group" taborder="0" binddataset="ds_imgList" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="10" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="909" height="518" oncellclick="grd_Group_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="35"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell style="align:left;" text="bind:num"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="539" right="7" width="41" height="21" domainId="nexa.add"/>
+        <Button id="btn_refresh" taborder="5" text="이미지 가져오기" top="539" right="55" width="103" height="21" domainId="nexa.add" onclick="btn_refresh_onclick"/>
+        <Button id="btn_ins" taborder="6" text="+" left="93.01%" top="417" right="2.5%" height="40" onclick="btn_ins_onclick"/>
+        <Button id="btn_des" taborder="7" text="-" left="93.01%" top="472" right="2.5%" height="40" onclick="btn_des_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_imgList" useclientlayout="true" canrowposchange="ds_list_canrowposchange" onrowposchanged="ds_list_onrowposchanged">
+        <ColumnInfo>
+          <Column id="num" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="dlvrType" type="STRING" size="256"/>
+          <Column id="servCd" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="filePath" type="STRING" size="256"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="confYn" type="STRING" size="256"/>
+          <Column id="picSet" type="STRING" size="256"/>
+          <Column id="picSetNm" type="STRING" size="256"/>
+          <Column id="dlvrDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 지점 조회
+ * 02. 그룹명   : RTCMVkbur_pop.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+this.orgWidth = 0;
+this.orgHeight = 0;
+
+this.RTCOMMFileList_pop_onload = function (obj:Form, e:LoadEventInfo)
+{
+	Ex.core.init(obj);
+	var obj = this.parent.p_arg;
+	
+	this.fn_initData(obj);	
+	this.fn_refreshFiles();
+	
+	//this.Div00.imgView.set_stretch("fit");
+}
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt) {
+	
+	if(nErrorCode < 0){
+		this.alert(strErrorMsg);
+		return;
+	}
+	
+	if(strSvcId == "refreshFiles"){
+		this.fn_drawImage(0);
+	}
+}
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close();
+}
+
+this.grd_Group_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+		
+	this.fn_drawImage(e.row);
+}
+
+this.btn_refresh_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_refreshFiles();
+}
+
+this.btn_ins_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{	
+	//this.Div00.imgView.resize(this.Div00.imgView.imagewidth + 100, this.Div00.imgView.imageheight + 100);
+	//this.Div00.resetScroll();
+	
+	var doc = this.Div00.webbrowser.document;	
+	var tag = doc.getElementById("uploadImg");
+	tag.style.width = tag.width + 100;
+	tag.style.height = tag.height + 100;
+}
+
+this.btn_des_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.Div00.imgView.resize(this.Div00.imgView.imagewidth - 100, this.Div00.imgView.imageheight - 100);
+	//this.Div00.resetScroll();
+	
+	var doc = this.Div00.webbrowser.document;	
+	var tag = doc.getElementById("uploadImg");
+	if(tag.width - 100 < this.orgWidth){
+		tag.style.width = this.orgWidth;
+	}else{
+		tag.style.width = tag.width - 100;
+	}
+	
+	if(tag.height - 100 < this.orgHeight){
+		tag.style.height = this.orgHeight;
+	}else{
+		tag.style.height = tag.height - 100;
+	}
+}
+
+/** DataSet init */
+this.fn_initData = function(data){
+
+	this.ds_imgList.deleteAll();
+	this.ds_imgList.copyData(data);
+}
+
+/** files move to local */
+this.fn_refreshFiles = function(){
+	
+	var ordNo 		= this.ds_imgList.getColumn(0, "ordNo");
+	var dlvrType 	= this.ds_imgList.getColumn(0, "dlvrType");
+	var servCd 		= this.ds_imgList.getColumn(0, "servCd");
+	var servSeq 	= this.ds_imgList.getColumn(0, "servSeq");
+	
+	var sSvcID        	= "refreshFiles";
+	var sController   	= "/ntrms/cs/moveToLocalFile.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+			
+	sArgs += Ex.util.setParam("ordNo", 		ordNo);
+	sArgs += Ex.util.setParam("dlvrType", 	dlvrType);
+	sArgs += Ex.util.setParam("servCd", 	servCd);
+	sArgs += Ex.util.setParam("servSeq", 	servSeq);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/** image file draw */
+this.fn_drawImage = function(row){
+
+	var userId = application.gds_userInfo.getColumn(0, "userId");
+
+	var fileName = this.ds_imgList.getColumn(row, "fileName");	
+	//var filePath = "url(\"http://localhost/temp/" + fileName + "\")"
+	
+	//this.Div00.imgView.set_image(filePath);	
+	
+	//this.Div00.webbrowser.set_url("http://localhost/temp/" + fileName);
+	
+	var html = this.Div00.webbrowser.getProperty("document");
+	html._handle.body.innerHTML = "<img id='uploadImg' src='https://portal.tirerental.co.kr/getWarrantyImage.do?fileName=" + fileName + "&userId=" + userId + "' style='display: block; margin: 0 auto; width:100%; height:100%; object-fit: contain;'/>";
+	
+	var doc = this.Div00.webbrowser.document;	
+	this.orgWidth = doc.getElementById("uploadImg").width;
+	this.orgHeight = doc.getElementById("uploadImg").height;
+}
+
+/** refresh parent form */
+this.fn_refreshData = function(data){
+	
+	this.fn_initData(data);
+	this.refreshFiles();
+}
+]]></Script>
+  </Form>
+</FDL>

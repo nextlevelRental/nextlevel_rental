@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="counselor">
+	
+	<!--  해피콜 상담사 조회 -->
+	<resultMap id="counselorResultMap" class="java.util.HashMap">
+		<result property="jobTp" 		column="JOB_TP" /> 			<!-- 상담유형 -->
+		<result property="jobTpNm" 		column="JOB_TP_NM" /> 		<!-- 상담유형명 -->
+		<result property="callNo" 		column="CALL_NO" /> 		<!-- 상담번호   -->
+		<result property="ordNo" 		column="ORD_NO" /> 			<!-- 계약번호   -->
+		<result property="jobDay" 		column="JOB_DAY" />  		<!-- 처리일자   -->
+		<result property="baejungYn" 	column="BAEJUNG_YN" /> 		<!-- 배정여부   -->
+		<result property="baejungYnNm" 	column="BAEJUNG_YN_NM" /> 	<!-- 배정여부명 -->	
+		<result property="userIdNm" 	column="USER_ID_NM" /> 		<!-- 상담사명   -->
+		<result property="baejungDay" 	column="BAEJUNG_DAY" /> 	<!-- 배정일자   -->   
+	</resultMap>
+	
+	<parameterMap id="p_sRtcs0100" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="counselorResultMap" />
+		<parameter property="jobTp" 		jdbcType="VARCHAR" mode="IN" /> <!-- 상담유형 -->
+		<parameter property="jobDay1" 		jdbcType="VARCHAR" mode="IN" /> <!-- 처리일자FROM -->
+		<parameter property="jobDay2" 		jdbcType="VARCHAR" mode="IN" /> <!-- 처리일자TO -->
+		<parameter property="baejungYn" 	jdbcType="VARCHAR" mode="IN" /> <!-- 배정여부 -->                   
+	</parameterMap> 
+	
+	<procedure id="counselor.listCounselor" parameterMap="p_sRtcs0100">
+		{call
+		Pkg_Rtcs0100.p_sRtcs0100(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!--  해피콜 상담사 업데이트 -->
+	<parameterMap id="p_IUDRtcs0100" class="java.util.Map">
+		<parameter property="dvsn"  		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="callNo" 		jdbcType="NUMERIC" mode="IN" /> 	<!-- 상담번호              	--> 
+		<parameter property="jobTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담유형              	--> 
+		<parameter property="jobDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리일자              	--> 
+		<parameter property="callDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화일자              	--> 
+		<parameter property="callStatus" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화상태              	--> 
+		<parameter property="userId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사용자ID(상담사)   	--> 
+		<parameter property="baejungDay" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 배정일자              	--> 
+		<parameter property="baejungYn" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 배정여부              	--> 
+		<parameter property="retryCnt" 		jdbcType="NUMERIC" mode="IN" /> 	<!-- 시도 건수             	--> 
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 계약번호              	--> 
+		<parameter property="procDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 장착일자              	--> 
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 장착대리점            	--> 
+		<parameter property="matCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상품코드              	--> 
+		<parameter property="matNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상품명                	--> 
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객번호              	--> 
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명/법인명         	--> 
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 휴대폰번호            	--> 
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 전화번호              	--> 
+		<parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 차량번호              	--> 
+		<parameter property="vkbur" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 지점                  	--> 
+		<parameter property="vkgrp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 지사                  	--> 
+		<parameter property="callDtl" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담내용             	--> 
+		<parameter property="servSeq" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 서비스 순번            --> 
+		<parameter property="procInCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 서비스 처리자     	 	-->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자 ID       	 	--> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	
+	<procedure  id="counselor.updateCounselor" resultClass="java.util.Map" parameterMap="p_IUDRtcs0100">
+		{call Pkg_Rtcs0100.p_IUDRtcs0100(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+    <!--  상담사 조회 -->
+	<resultMap id="result_1" class="java.util.HashMap">
+		<result property="callId" 			column="CALL_ID" /> 			<!-- 상담사ID -->
+		<result property="callNm" 		column="CALL_NM" /> 		<!-- 상담사명 -->
+		<result property="provsnTp" 		column="PROVSN_TP" /> 		<!-- 상담사그룹   -->
+		<result property="holiYn" 			column="HOLI_YN" /> 			<!-- 휴무여부   -->
+		<result property="useYn" 			column="USE_YN" />  			<!-- 사용여부   -->
+		<result property="regId" 			column="REG_ID" /> 			<!-- 등록자ID   -->
+	</resultMap>
+	
+	<parameterMap id="p_sRtcs0300" class="java.util.Map">             
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="result_1" />
+		<parameter property="callId" 			jdbcType="VARCHAR" mode="IN" /> <!-- 상담사ID -->
+		<parameter property="provsnTp" 		jdbcType="VARCHAR" mode="IN" /> <!-- 상담사그룹 -->             
+		<parameter property="holiYn" 		    jdbcType="VARCHAR" mode="IN" /> <!-- 휴무여부 -->     
+		<parameter property="useYn" 		    jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->     
+	</parameterMap> 
+	
+	<procedure id="counselor.selectCounselorMasterList" parameterMap="p_sRtcs0300">
+		{call Pkg_Rtcs0300.p_sRtcs0300(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!--  상담사 마스터 정보 업데이트 -->
+	<parameterMap id="p_IUDRtcs0300" class="java.util.Map">
+		<parameter property="dvsn"  		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="callId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담사ID              	--> 
+		<parameter property="callNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담사명         		--> 
+		<parameter property="provsnTp" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담사그룹            	--> 
+		<parameter property="holiYn" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 휴일여부              	--> 
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사용여부              	--> 
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자 ID       	 	--> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure  id="counselor.updateCounselorMaster" resultClass="java.util.Map" parameterMap="p_IUDRtcs0300">
+		{call Pkg_Rtcs0300.p_IUDRtcs0300(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdvicetStatus_tab_info2_prdInfo" classname="RTSDContractStatus_tab_info5_preminumService" left="0" top="0" width="1147" height="150" titletext="[STEP3]제품정보" onload="RTCSAdvice_tab_info3_prdInfo">
+    <Layouts>
+      <Layout>
+        <Static id="Static09" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="1" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Grid id="grid_prdInfo" taborder="2" useinputpanel="false" left="0" top="5" width="1104" binddataset="ds_prdInfo" height="135" autofittype="col" cellsizingtype="col" scrollbars="autohorz">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="123"/>
+                <Column size="251"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="110"/>
+                <Column size="148"/>
+                <Column size="153"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상품코드" expandsize="13"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="렌탈기간"/>
+                <Cell col="3" text="계절구분"/>
+                <Cell col="4" text="본수"/>
+                <Cell col="5" text="장착예정일"/>
+                <Cell col="6" text="장착일"/>
+              </Band>
+              <Band id="body">
+                <Cell celltype="none" text="bind:matCd"/>
+                <Cell col="1" celltype="none" text="bind:matNm"/>
+                <Cell col="2" celltype="none" text="bind:periodNm"/>
+                <Cell col="3" celltype="none" text="bind:seasonNm"/>
+                <Cell col="4" celltype="none" displaytype="normal" edittype="none" text="bind:cntNm"/>
+                <Cell col="5" displaytype="date" text="bind:planDay" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="date" text="bind:instDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_prdInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="saleGdsCd" type="STRING" size="256"/>
+          <Column id="standard" type="STRING" size="256"/>
+          <Column id="amt" type="STRING" size="256"/>
+          <Column id="groupSale" type="STRING" size="256"/>
+          <Column id="chnlSale" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="cntNm" type="STRING" size="256"/>
+          <Column id="seasonCd" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="ordId" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="regiCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="lrCd" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="regiAmt" type="STRING" size="256"/>
+          <Column id="rentAmt" type="STRING" size="256"/>
+          <Column id="rentpAmt" type="STRING" size="256"/>
+          <Column id="fDcrate" type="STRING" size="256"/>
+          <Column id="fDcamt" type="STRING" size="256"/>
+          <Column id="monDcamt" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="planTm" type="STRING" size="256"/>
+          <Column id="instDay" type="STRING" size="256"/>
+          <Column id="instTm" type="STRING" size="256"/>
+          <Column id="instYn" type="STRING" size="256"/>
+          <Column id="valYn" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="osId" type="STRING" size="256"/>
+          <Column id="osDay" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="flYn" type="STRING" size="256"/>
+          <Column id="frYn" type="STRING" size="256"/>
+          <Column id="rlYn" type="STRING" size="256"/>
+          <Column id="rrYn" type="STRING" size="256"/>
+          <Column id="matDesc" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="gdsGb" type="STRING" size="256"/>
+          <Column id="gdsGrp" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.obj_data;
+this.BUTTON_CELL = 2;			//버튼CELL 위치
+
+this.writeYn = "";
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+
+	if(strErrorMsg != "") {
+		alert(strErrorMsg);
+		return;
+	}	
+}
+]]></Script>
+  </Form>
+</FDL>

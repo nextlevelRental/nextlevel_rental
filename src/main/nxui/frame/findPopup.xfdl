@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Find" classname="WorkSapace" inheritanceid="" position="absolute" titletext="Find" onload="fn_onload" onbeforeclose="Find_onbeforeclose" left="0" top="0" width="310" height="160" cssclass="from_POP">
+    <Layouts>
+      <Layout>
+        <Static id="stc_07" text="Find" class="St_popupTitle" position="absolute" style="color:#ffffffff; " left="11" top="8" width="55" height="20" cssclass="sta_POP_Title"/>
+        <Static id="st_Base" class="St_POPCA_stcBtmBg" position="absolute" left="2" top="34" width="300" height="38"/>
+        <Button id="btn_find" taborder="1" text="Find Next" position="absolute" left="60" top="113" width="96" height="25" onclick="btn_find_onclick" cssclass="btn_POP_Button"/>
+        <Edit id="edt_Search" taborder="1" onkeydown="fn_onkeyup" position="absolute" left="60" top="51" height="21" right="20"/>
+        <Static id="st_Find" text="Find" style="font:bold 10 Verdana;" position="absolute" left="20" width="56" top="51" height="20"/>
+        <CheckBox id="chk_match" taborder="2" text="Match Case(C)" top="76" width="110" height="20" right="20"/>
+        <Button id="btn_ok" taborder="3" text="OK" top="113" width="96" height="25" onclick="btn_ok_onclick" cssclass="btn_POP_Button" right="52"/>
+        <Button id="btn_close" taborder="4" onclick="btn_close_onclick" cssclass="btn_POP_Close" top="12" height="11" right="16" width="11"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs"
+
+this._targetGrid;
+this._nSearchStartRow = 0;
+this._nSearchStartCell = 0;
+
+this.fn_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+   this._targetGrid = this.parent.pGrid;
+   this.edt_Search.set_value("");
+   this.edt_Search.setFocus();	
+   
+ //  trace("this._targetGrid ==>"+this._targetGrid);
+}
+
+
+this.btn_ok_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+
+
+/**
+ * Find a string in Grid
+ * @type void
+ * @param sSearch	    The string to find
+ * @return				none
+ */
+this.fn_gridSearch = function(sSearch)
+{
+    var oForm = this.opener;
+    
+	var oDs = oForm.objects[this._targetGrid.binddataset];
+	
+	trace(this.chk_match.value);
+	var nCell = this._targetGrid.getCellCount("body");
+	var nRow = oDs.getRowCount();
+    
+    var sSearchSpare = (this.chk_match.value) ? sSearch : sSearch.toUpperCase();
+    
+    var sTargetSpare;
+    
+	for(var i=this._nSearchStartRow;i<nRow;i++){
+		if(this._nSearchStartRow < i) this._nSearchStartCell = 0;
+		
+		for(var j= this._nSearchStartCell;j<nCell;j++){
+		
+		    sTargetSpare = this._targetGrid.getCellText(i, j);
+		    sTargetSpare = (this.chk_match.value) ? sTargetSpare : sTargetSpare.toUpperCase();
+			if(sTargetSpare.indexOf(sSearchSpare) != -1){
+				oDs.set_rowposition(i);
+				this._targetGrid.setCellPos(j);
+				this._nSearchStartRow = i;
+				this._nSearchStartCell = j + 1;
+				return;
+			}
+
+			if(i==nRow -1 && j==nCell-1){
+				this._nSearchStartRow = 0;
+				this._nSearchStartCell = 0;
+				
+				var retVal = confirm("Found in the '" + sSearch + "' to the end of the grid.\nDo you want to research?", "information");
+				if(retVal) this.fn_gridSearch(sSearch);
+				
+				return;
+			}
+		}
+	}
+}
+this.btn_find_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_gridSearch(this.edt_Search.text);
+}
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.close();
+}
+
+this.fn_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if (e.keycode == 13)
+	{
+		this.fn_gridSearch(this.edt_Search.text);
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

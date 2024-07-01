@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="hgrsample16_Parent" classname="hgrsample16_Parent" left="0" top="0" width="1024" height="768" titletext="New Form" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_getArg" taborder="1" text="getArg" left="120" top="125" width="93" height="23" onclick="btn_getArg_onclick"/>
+        <Button id="btn_setArg" taborder="2" text="setArg" left="115" top="80" width="93" height="23" onclick="btn_setArg_onclick"/>
+        <Button id="btn_parentFunc" taborder="3" text="parentfunc" left="124" top="190" width="100" height="34" onclick="btn_parentFunc_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfn_formOnLoad(this); 
+}
+
+
+//getArg
+this.btn_getArg_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		alert(" getArg : "  +ExtNx.util.getArg().arg1);
+	for(var i in ExtNx.util.getArg())
+	{
+	 var objArg = ExtNx.util.getArg()[i];
+	 trace(" objArg : "  + objArg);
+	}
+}
+
+
+
+//setArg
+this.btn_setArg_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	  ExtNx.util.setArg({arg1:"argtest"});
+}
+
+this.btn_parentFunc_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var res = ExtNx.util.searchParentFunc("fn_getArg").call(this,"arg11","arg2","arg3");
+
+	if(!res)
+	{
+	  alert(" 함수가 존재하지 않습니다.");
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

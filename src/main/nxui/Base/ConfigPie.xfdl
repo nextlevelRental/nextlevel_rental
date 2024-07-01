@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configPie" classname="config_xaxis" left="0" top="0" width="320" height="1594" titletext="Pie 차트 설정" style="background:#d4d9dfff;" onload="configPie_onload" layoutautofittype="default">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="2" text="Pie" top="11" height="25" width="114" left="20" style="background:transparent;font:antialias 15 Verdana, malgun gothic;"/>
+        <Static id="Static261" taborder="95" left="20" top="40" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;" width="280"/>
+        <Static id="Static13" taborder="101" text="plotBackgroundOpacity" left="6.25%" top="1038" right="46.88%" height="20"/>
+        <Edit id="edt_plotBackgroundGradation" taborder="102" left="52.81%" top="1004" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static12" taborder="103" text="plotBackgroundGradation" left="6.25%" top="1006" right="46.88%" height="20" style="font:antialias 8 Meiryo UI, malgun gothic;"/>
+        <Edit id="edt_plotBackgroundColor" taborder="104" left="52.81%" top="972" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static11" taborder="105" text="plotBackgroundColor" left="6.25%" top="974" right="46.88%" height="20"/>
+        <Static id="Static09" taborder="107" text="margin" left="6.25%" top="183" right="46.88%" height="20"/>
+        <Static id="Static14" taborder="119" text="plotLeftBorderWidth" left="6.25%" top="1072" right="46.88%" height="20"/>
+        <Static id="Static15" taborder="120" text="plotLeftBorderColor" left="6.25%" top="1328" right="46.88%" height="20"/>
+        <Edit id="edt_plotLeftBorderColor" taborder="121" left="52.81%" top="1328" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static26" taborder="122" text="plotRightBorderWidth" left="6.25%" top="1104" right="46.88%" height="20"/>
+        <Static id="Static27" taborder="123" text="plotTopBorderWidth" left="6.25%" top="1136" right="46.88%" height="20"/>
+        <Static id="Static28" taborder="124" text="plotBottomBorderWidth" left="6.25%" top="1168" right="46.88%" height="20"/>
+        <Static id="Static29" taborder="125" text="plotLeftBorderStyle" left="6.25%" top="1200" right="46.88%" height="20"/>
+        <Static id="Static30" taborder="126" text="plotRightBorderStyle" left="6.25%" top="1232" right="46.88%" height="20"/>
+        <Static id="Static31" taborder="127" text="plotTopBorderStyle" left="6.25%" top="1264" right="46.88%" height="20"/>
+        <Static id="Static32" taborder="128" text="plotBottomBorderStyle" left="6.25%" top="1296" right="46.88%" height="20"/>
+        <Static id="Static33" taborder="129" text="plotRightBorderColor" left="6.25%" top="1360" right="46.88%" height="20"/>
+        <Edit id="edt_plotRightBorderColor" taborder="130" left="52.81%" top="1360" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static34" taborder="131" text="plotTopBorderColor" left="6.25%" top="1392" right="46.88%" height="20"/>
+        <Edit id="edt_plotTopBorderColor" taborder="132" left="52.81%" top="1392" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static35" taborder="133" text="plotBottomBorderColor" left="6.25%" top="1424" right="46.88%" height="20"/>
+        <Edit id="edt_plotBottomBorderColor" taborder="134" left="52.81%" top="1424" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_plotLeftBorderStyle" taborder="139" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="1200" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_plotRightBorderStyle" taborder="140" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="1232" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_plotTopBorderStyle" taborder="141" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="1264" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_plotBottomBorderStyle" taborder="142" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.81%" top="1296" right="6.25%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static16" taborder="143" text="plotLeftBorderOpacity" left="6.25%" top="1456" right="46.88%" height="20"/>
+        <Static id="Static36" taborder="145" text="plotRightBorderOpacity" left="6.25%" top="1488" right="46.88%" height="20"/>
+        <Static id="Static00" taborder="148" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="149" left="52.5%" top="54" right="6.56%" height="24" onsetfocus="common_onsetfocus" readonly="true"/>
+        <Static id="Static37" taborder="150" text="plotTopBorderOpacity" left="6.25%" top="1520" right="46.88%" height="20"/>
+        <Static id="Static38" taborder="152" text="plotBottomBorderOpacity" left="6.25%" top="1552" right="46.88%" height="20" style="font:antialias 8 Meiryo UI, malgun gothic;"/>
+        <Static id="Static19" taborder="158" left="20" top="222" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;" width="280"/>
+        <Static id="Static23" taborder="162" text="labelShow" left="6.25%" top="492" right="46.88%" height="20"/>
+        <Static id="Static24" taborder="163" left="6.25%" top="563" right="46.88%" height="20" text="labelFontFace"/>
+        <Static id="Static25" taborder="164" text="labelRadius" left="6.25%" top="527" right="46.88%" height="20"/>
+        <Static id="Static39" taborder="165" text="labelFontSize" left="6.25%" top="599" right="46.88%" height="20"/>
+        <Static id="Static40" taborder="166" text="labelFontType" left="6.25%" top="635" right="46.88%" height="20"/>
+        <Static id="Static41" taborder="167" text="labelColor" left="6.25%" top="671" right="46.88%" height="20"/>
+        <Static id="Static20" taborder="168" text="radius" left="6.25%" top="239" right="46.88%" height="20"/>
+        <Static id="Static21" taborder="169" text="innerRadius" left="6.25%" top="275" right="46.88%" height="20"/>
+        <Static id="Static42" taborder="170" text="borderWidth" left="6.25%" top="313" right="47.5%" height="20"/>
+        <Static id="Static43" taborder="171" text="borderColor" left="6.25%" top="349" right="47.5%" height="20"/>
+        <Static id="Static44" taborder="172" text="opacity" left="6.25%" top="382" right="47.5%" height="20"/>
+        <Static id="Static45" taborder="173" text="highLightFillColor" left="6.25%" top="838" right="46.88%" height="20"/>
+        <Static id="Static47" taborder="175" text="showHighLight" left="6.25%" top="802" right="46.88%" height="20"/>
+        <Static id="Static48" taborder="176" text="highLightRadius" left="6.25%" top="910" right="46.88%" height="20"/>
+        <Static id="Static49" taborder="177" text="highLightOpacity" left="6.25%" top="874" right="46.88%" height="20"/>
+        <Edit id="edt_labelFontFace" taborder="183" left="52.19%" top="563" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_labelFontType" taborder="185" innerdataset="@ds_fontType" codecolumn="code" datacolumn="data" left="52.19%" top="635" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_labelColor" taborder="189" left="52.19%" top="671" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_borderColor" taborder="190" left="52.19%" top="349" right="7.5%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_highLightFillColor" taborder="193" left="52.19%" top="835" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static46" taborder="196" text="labelWordwrap" left="6.25%" top="703" right="46.88%" height="20"/>
+        <Static id="Static50" taborder="197" text="labelMaxWidth" left="6.25%" top="739" right="46.88%" height="20"/>
+        <Static id="Static51" taborder="202" left="6.25%" top="776" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static53" taborder="204" left="6.25%" top="464" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static54" taborder="207" text="tilt" left="6.25%" top="423" right="47.5%" height="20"/>
+        <CheckBox id="chk_showFullPlot01" taborder="210" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch" left="52.5%" top="488" right="27.19%" height="24"/>
+        <CheckBox id="chk_showFullPlot03" taborder="213" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch" left="52.81%" top="796" right="26.88%" height="24"/>
+        <CheckBox id="chk_showFullPlot04" taborder="214" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch" left="52.81%" top="704" right="26.88%" height="24"/>
+        <Static id="Static02" taborder="215" text="bindCategory" left="6.25%" top="88" right="46.88%" height="20"/>
+        <Static id="Static03" taborder="216" text="bindValue" left="6.25%" top="119" right="46.88%" height="20"/>
+        <Combo id="cmb_bindCategory" taborder="217" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" left="52.5%" top="86" right="6.56%" height="24"/>
+        <Combo id="cmb_bindValue" taborder="218" innerdataset="ds_pieCols" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" left="52.5%" top="117" right="6.56%" height="24"/>
+        <Static id="Static04" taborder="219" text="colors" left="6.25%" top="151" right="46.88%" height="20"/>
+        <Combo id="cmb_colors" taborder="220" codecolumn="code" datacolumn="data" onsetfocus="common_onsetfocus" left="52.5%" top="149" right="6.25%" height="24"/>
+        <Static id="Static05" taborder="221" left="6.25%" top="951" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <MaskEdit id="mae_margin" taborder="222" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.5%" top="181" right="6.56%" height="24"/>
+        <MaskEdit id="mae_radius" taborder="223" left="52.5%" top="237" right="7.19%" height="24" canchange="common_canchage_decimal" mask="0.0"/>
+        <MaskEdit id="mae_innerRadius" taborder="224" left="52.5%" top="273" right="7.19%" height="24" canchange="common_canchage_decimal" mask="0.0"/>
+        <MaskEdit id="mae_borderWidth" taborder="225" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.5%" top="311" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_opacity" taborder="226" mask="0.0" canchange="common_canchage_decimal" left="52.19%" top="383" right="7.5%" height="24"/>
+        <MaskEdit id="mae_tilt" taborder="227" mask="0.0" canchange="common_canchage_decimal" left="52.19%" top="421" right="7.5%" height="24"/>
+        <MaskEdit id="mae_labelRadius" taborder="228" mask="0.0" canchange="common_canchage_decimal" left="52.5%" top="523" right="7.19%" height="24"/>
+        <MaskEdit id="mae_labelFontSize" taborder="229" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.19%" top="597" right="6.88%" height="24"/>
+        <MaskEdit id="mae_labelMaxWidth" taborder="230" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.81%" top="737" right="6.25%" height="24"/>
+        <MaskEdit id="mae_highLightOpacity" taborder="231" mask="0.0" canchange="common_canchage_decimal" left="52.19%" top="866" right="7.5%" height="24"/>
+        <MaskEdit id="mae_highLightRadius" taborder="232" mask="0.0" canchange="common_canchage_decimal" left="52.19%" top="902" right="7.5%" height="24"/>
+        <MaskEdit id="mae_plotBackgroundOpacity" taborder="233" mask="0.0" canchange="common_canchage_decimal" left="52.81%" top="1036" right="6.88%" height="24"/>
+        <MaskEdit id="mae_plotLeftBorderWidth" taborder="234" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.81%" top="1070" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_plotRightBorderWidth" taborder="235" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.81%" top="1102" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="plotBottomBorderWidth" taborder="236" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.81%" top="1166" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_plotTopBorderWidth" taborder="237" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" ontextchange="mae_margin_ontextchange" ontextchanged="mae_margin_ontextchanged" left="52.81%" top="1134" right="6.25%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_plotLeftBorderOpacity" taborder="238" mask="0.0" canchange="common_canchage_decimal" left="52.81%" top="1454" right="6.88%" height="24"/>
+        <MaskEdit id="mae_plotRightBorderOpacity" taborder="239" mask="0.0" canchange="common_canchage_decimal" left="52.81%" top="1486" right="6.88%" height="24"/>
+        <MaskEdit id="mae_plotTopBorderOpacity" taborder="240" mask="0.0" canchange="common_canchage_decimal" left="52.81%" top="1518" right="6.88%" height="24"/>
+        <MaskEdit id="mae_plotBottomBorderOpacity" taborder="241" mask="0.0" canchange="common_canchage_decimal" left="52.81%" top="1550" right="6.88%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Bind>
+      <BindItem id="item11" compid="edt_plotBackgroundGradation" propid="value" datasetid="ds_pchart" columnid="plotBackgroundGradation"/>
+      <BindItem id="item10" compid="edt_plotBackgroundColor" propid="value" datasetid="ds_pchart" columnid="plotBackgroundColor"/>
+      <BindItem id="item14" compid="edt_plotLeftBorderColor" propid="value" datasetid="ds_pchart" columnid="plotLeftBorderColor"/>
+      <BindItem id="item32" compid="edt_plotRightBorderColor" propid="value" datasetid="ds_pchart" columnid="plotRightBorderColor"/>
+      <BindItem id="item33" compid="edt_plotTopBorderColor" propid="value" datasetid="ds_pchart" columnid="plotTopBorderColor"/>
+      <BindItem id="item34" compid="edt_plotBottomBorderColor" propid="value" datasetid="ds_pchart" columnid="plotBottomBorderColor"/>
+      <BindItem id="item22" compid="cmb_plotLeftBorderStyle" propid="value" datasetid="ds_pchart" columnid="plotLeftBorderStyle"/>
+      <BindItem id="item26" compid="cmb_plotRightBorderStyle" propid="value" datasetid="ds_pchart" columnid="plotRightBorderStyle"/>
+      <BindItem id="item27" compid="cmb_plotTopBorderStyle" propid="value" datasetid="ds_pchart" columnid="plotTopBorderStyle"/>
+      <BindItem id="item41" compid="cmb_plotBottomBorderStyle" propid="value" datasetid="ds_pchart" columnid="plotBottomBorderStyle"/>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="ds_pchart" columnid="id"/>
+      <BindItem id="item19" compid="edt_labelFontFace" propid="value" datasetid="ds_pchart" columnid="labelFontFace"/>
+      <BindItem id="item21" compid="cmb_labelFontType" propid="value" datasetid="ds_pchart" columnid="labelFontType"/>
+      <BindItem id="item23" compid="edt_labelColor" propid="value" datasetid="ds_pchart" columnid="labelColor"/>
+      <BindItem id="item31" compid="edt_borderColor" propid="value" datasetid="ds_pchart" columnid="borderColor"/>
+      <BindItem id="item44" compid="edt_highLightFillColor" propid="value" datasetid="ds_pchart" columnid="highLightFillColor"/>
+      <BindItem id="item29" compid="chk_showFullPlot01" propid="value" datasetid="ds_pchart" columnid="labelShow"/>
+      <BindItem id="item28" compid="chk_showFullPlot03" propid="value" datasetid="ds_pchart" columnid="showHighLight"/>
+      <BindItem id="item48" compid="chk_showFullPlot04" propid="value" datasetid="ds_pchart" columnid="labelWordwrap"/>
+      <BindItem id="item2" compid="cmb_bindCategory" propid="value" datasetid="ds_pchart" columnid="bindCategory"/>
+      <BindItem id="item1" compid="cmb_bindValue" propid="value" datasetid="ds_pchart" columnid="bindValue"/>
+      <BindItem id="item3" compid="cmb_colors" propid="value" datasetid="ds_pchart" columnid="colors"/>
+      <BindItem id="item9" compid="mae_margin" propid="value" datasetid="ds_pchart" columnid="margin"/>
+      <BindItem id="item4" compid="mae_radius" propid="value" datasetid="ds_pchart" columnid="radius"/>
+      <BindItem id="item5" compid="mae_borderWidth" propid="value" datasetid="ds_pchart" columnid="borderWidth"/>
+      <BindItem id="item6" compid="mae_innerRadius" propid="value" datasetid="ds_pchart" columnid="innerRadius"/>
+      <BindItem id="item7" compid="mae_opacity" propid="value" datasetid="ds_pchart" columnid="innerRadius"/>
+      <BindItem id="item8" compid="mae_tilt" propid="value" datasetid="ds_pchart" columnid="tilt"/>
+      <BindItem id="item15" compid="mae_labelRadius" propid="value" datasetid="ds_pchart" columnid="labelRadius"/>
+      <BindItem id="item16" compid="mae_labelFontSize" propid="value" datasetid="ds_pchart" columnid="labelFontSize"/>
+      <BindItem id="item17" compid="mae_labelMaxWidth" propid="value" datasetid="ds_pchart" columnid="labelMaxWidth"/>
+      <BindItem id="item18" compid="mae_highLightOpacity" propid="value" datasetid="ds_pchart" columnid="highLightOpacity"/>
+      <BindItem id="item20" compid="mae_highLightRadius" propid="value" datasetid="ds_pchart" columnid="highLightRadius"/>
+      <BindItem id="item12" compid="mae_plotBackgroundOpacity" propid="value" datasetid="ds_pchart" columnid="plotBackgroundOpacity"/>
+      <BindItem id="item13" compid="mae_plotLeftBorderWidth" propid="value" datasetid="ds_pchart" columnid="plotLeftBorderWidth"/>
+      <BindItem id="item24" compid="mae_plotRightBorderWidth" propid="value" datasetid="ds_pchart" columnid="plotRightBorderWidth"/>
+      <BindItem id="item30" compid="plotBottomBorderWidth" propid="value" datasetid="ds_pchart" columnid="plotBottomBorderWidth"/>
+      <BindItem id="item38" compid="mae_plotTopBorderWidth" propid="value" datasetid="ds_pchart" columnid="plotTopBorderWidth"/>
+      <BindItem id="item25" compid="mae_plotLeftBorderOpacity" propid="value" datasetid="ds_pchart" columnid="plotLeftBorderOpacity"/>
+      <BindItem id="item35" compid="mae_plotRightBorderOpacity" propid="value" datasetid="ds_pchart" columnid="plotRightBorderOpacity"/>
+      <BindItem id="item36" compid="mae_plotTopBorderOpacity" propid="value" datasetid="ds_pchart" columnid="plotTopBorderOpacity"/>
+      <BindItem id="item37" compid="mae_plotBottomBorderOpacity" propid="value" datasetid="ds_pchart" columnid="plotBottomBorderOpacity"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+var eChart,
+	parent;
+
+this.configPie_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	parent = this.parent;
+	eChart = parent.eChart;
+	
+	this.setDsCols();
+	this.setDsColor();
+	this.setGrid();
+}
+
+this.setDsCols = function()
+{	
+	var bindDsId,
+		bindDs,
+		dsPieCols,
+		dsColCnt = -1,
+		nrow = -1,
+		colInfo,
+		colName;
+	
+	dsPieCols = parent.ds_pieCols;
+	this.cmb_bindCategory.set_innerdataset(dsPieCols);
+	
+	if (dsPieCols && dsPieCols.getRowCount() > 0)
+	{
+		return;
+	}
+	
+	bindDsId = parent.pieBindDs;
+	bindDs = Eco.XComp.lookup(parent, bindDsId);
+	
+	dsColCnt = bindDs.getColCount();
+	for (var i = 0; i < dsColCnt; i++)
+	{
+		colInfo = bindDs.getColumnInfo(i);
+		colName = colInfo.name;
+		nrow = dsPieCols.addRow();
+		dsPieCols.setColumn(nrow, "code", colName);
+		dsPieCols.setColumn(nrow, "data", colName);
+	}
+}
+
+this.setDsColor = function()
+{	
+	var colors,
+		dsColors,
+		nrow = -1;
+	
+	dsColors = parent.ds_colors;
+	this.cmb_colors.set_innerdataset(dsColors);
+	
+	if (dsColors && dsColors.getRowCount() > 0)
+	{
+		return;
+	}
+	
+	colors = eChart.getColorsCategory();
+	//trace("colors", colors);
+	
+	Eco.array.forEach(colors, function(obj, index) {
+		Eco.object.Each(obj, function(prop, val, object) {
+			if (prop == "id")
+			{
+				nrow = dsColors.addRow();
+				dsColors.setColumn(nrow, "code", val);
+				dsColors.setColumn(nrow, "data", val);
+				return false;
+			}
+		}, this);
+	}, this);
+}
+
+this.setGrid = function()
+{
+	var grid,
+		gridBasic,
+		formats = "",
+		formatCols = "",
+		formatHeads = "",
+		formatBodys = "",
+		dsColCnt = -1,
+		bindDsId,
+		bindDs,
+		colInfo,
+		colName,
+		colCnt = 0;
+	
+	grid = parent.tab_info.tpg_data.grd_pie;
+	gridBasic = parent.tab_info.tpg_data.grd_basic;
+	gridBasic.set_visible(false);
+	grid.set_visible(true);
+	
+	colCnt = grid.getFormatColCount();
+	if (colCnt < 1)
+	{
+		grid.set_enableevent(false);
+		
+		bindDsId = parent.pieBindDs;
+		bindDs = Eco.XComp.lookup(parent, bindDsId);
+		
+		dsColCnt = bindDs.getColCount();
+		for (var i = 0; i < dsColCnt; i++)
+		{
+			formatCols += "<Column size=\"100\"/>";
+			
+			colInfo = bindDs.getColumnInfo(i);
+			colName = colInfo.name;
+			
+			formatHeads += "<Cell col=\"";
+			formatHeads += i;
+			formatHeads += "\" row=\"0\" displaytype=\"normal\" edittype=\"expand\" text=\"";
+			formatHeads += colName;
+			formatHeads += "\" expandimage=\"";
+			formatHeads += parent.imgDelCol;
+			formatHeads += "\" expandshow=\"show\" expandsize=\"";
+			formatHeads += parent.imgDelColSize;
+			formatHeads += "\"/>";
+			
+			formatBodys += "<Cell col=\"";
+			formatBodys += i;
+			formatBodys += "\" row=\"0\" displaytype=\"normal\" edittype=\"normal\" text=\"bind:";
+			formatBodys += colName;
+			formatBodys += "\"/>";
+		}
+		
+		formats = "<Format id=\"pie\">";
+		formats += "<Columns>";
+		formats += formatCols
+		formats += "</Columns>";
+		formats += "<Rows>";
+		formats += "<Row band=\"head\" size=\"26\"/>";
+		formats += "<Row band=\"body\" size=\"26\"/>";
+		formats += "</Rows>";
+		formats += "<Band id=\"head\">";
+		formats += formatHeads;
+		formats += "</Band>";
+		formats += "<Band id=\"body\">";
+		formats += formatBodys;
+		formats += "</Band>";
+		formats += "</Format>";
+		
+		grid.set_formats(formats);
+		grid.setBindDataset(bindDs);
+		grid.set_enableevent(true);
+		
+		//trace(grid.getFormatString());
+	}
+}
+
+this.common_onsetfocus = function(obj:Edit, e:nexacro.SetFocusEventInfo)
+{
+	this.parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

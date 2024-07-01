@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="popupTestForm" classname="popupTestForm" left="0" top="0" width="1024" height="768" titletext="popup test" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="bt_agency" taborder="0" text="대리점 조회" onclick="bt_agency_onclick" left="0.49%" top="3" right="74.41%" height="59"/>
+        <Button id="bt_vkgrp" taborder="1" text="지사 조회" left="0.59%" top="67" right="74.41%" height="59" onclick="bt_vkgrp_onclick"/>
+        <Button id="bt_vkbur" taborder="2" text="지점 조회" left="0.78%" top="133" right="74.22%" height="59" onclick="bt_vkbur_onclick"/>
+        <Button id="bt_postCode" taborder="3" text="우편번호조회" left="0.78%" top="197" right="74.22%" height="59" onclick="bt_postCode_onclick"/>
+        <Button id="bt_product" taborder="4" text="상품조회" left="0.78%" top="264" right="74.22%" height="59" onclick="bt_product_onclick"/>
+        <Button id="bt_price" taborder="5" text="가격조회" left="0.59%" top="339" right="74.41%" height="59" onclick="bt_price_onclick"/>
+        <Button id="bt_price00" taborder="6" text="사용자조회" onclick="bt_user_onclick" left="26.37%" top="3" right="48.63%" height="59"/>
+        <Button id="bt_cusetSearch" taborder="7" text="고객찾기" left="26.37%" top="67" right="48.63%" height="59" onclick="bt_cusetSearch_onclick"/>
+        <Button id="bt_cusetSearch00" taborder="8" text="고객계좌정보" left="26.37%" top="133" right="48.63%" height="59" onclick="bt_cusetSearch00_onclick"/>
+        <Button id="bt_cusetSearch01" taborder="9" text="고객카드정보" left="26.37%" top="197" right="48.63%" height="59" onclick="bt_cusetSearch01_onclick"/>
+        <Button id="bt_productAndPrice" taborder="10" text="상품&amp;가격조회" left="73.44%" top="5" right="1.56%" height="59" onclick="bt_productAndPrice_onclick"/>
+        <Button id="bt_preminumService" taborder="11" text="프리미엄서비스" left="73.44%" top="69" right="1.56%" height="59" onclick="bt_preminumService_onclick"/>
+        <Button id="bt_ordNoSearch" taborder="12" text="계약번호조회" left="73.44%" top="133" right="1.56%" height="59" onclick="bt_ordNoSearch_onclick"/>
+        <Edit id="safekey" taborder="13" left="753" top="198" width="171" height="23" value="8933704919406"/>
+        <Button id="Button00" taborder="14" text="신용조회" left="928" top="197" width="80" height="25" onclick="Button00_onclick"/>
+        <Edit id="businessNo" taborder="15" value="6218110769" left="753" top="227" width="171" height="23"/>
+        <Button id="Button01" taborder="16" text="법인신용조회" onclick="existsBisinessSearch" left="928" top="226" width="80" height="25"/>
+        <Edit id="bankCd" taborder="17" left="756" top="296" width="60" height="20" value="088"/>
+        <Combo id="userType" taborder="18" left="756" top="270" width="188" height="20" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">01</Col>
+                <Col id="datacolumn">개인</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">02</Col>
+                <Col id="datacolumn">법인</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Edit id="acctCd" taborder="19" left="820" top="296" width="124" height="20" value="379584712536598"/>
+        <Edit id="bizNo" taborder="20" left="756" top="320" width="188" height="20" value="800101"/>
+        <Static id="Static00" taborder="21" text="사용자구분(법인:B/개인:U)" left="590" top="278" width="160" height="12"/>
+        <Static id="Static01" taborder="22" text="은행코드/계좌번호" left="636" top="302" width="112" height="12"/>
+        <Static id="Static02" taborder="23" text="사업자번호 및 생년월일" left="610" top="326" width="128" height="12"/>
+        <Button id="Button02" taborder="24" text="저장" left="947" top="270" width="68" height="71" onclick="Button02_onclick"/>
+        <Edit id="custNo" taborder="25" left="73.83%" top="344" right="17.19%" height="20" value="1000000017"/>
+        <Edit id="custNm" taborder="26" left="83.98%" top="344" right="7.81%" height="20" value="신정수"/>
+        <Static id="Static03" taborder="27" text="고객번호/고객명" left="63.28%" top="348" right="24.22%" height="12"/>
+        <Edit id="ownerNm" taborder="28" left="73.83%" top="368" right="7.81%" height="20" value="신정수"/>
+        <Static id="Static04" taborder="29" text="예금주명" left="67.19%" top="372" right="28.13%" height="12"/>
+        <FileUpload id="FileUpload00" taborder="30" retry="0" innerdataset="ds_File" index="0" onsuccess="FileUpload00_onsuccess" left="1.56%" top="428" right="49.61%" height="25" style="buttontext:파일선택;cursor:auto;"/>
+        <Button id="Button03" taborder="31" text="업로드" left="50.68%" top="428" right="42.87%" height="24" onclick="Button03_onclick"/>
+        <Button id="Button04" taborder="32" text="excel import" left="320" top="314" width="120" height="30" onclick="Button04_onclick"/>
+        <Button id="Button05" taborder="33" text="excel export" left="320" top="274" width="120" height="30" onclick="Button05_onclick"/>
+        <Button id="Button06" taborder="34" text="차트 테스트" left="320" top="360" width="121" height="49" onclick="Button06_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsNice" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsNice2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsBis" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsBis2" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="ds_output" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="fileid" type="string" size="32"/>
+          <Column id="filename" type="string" size="32"/>
+          <Column id="filesize" type="int" size="4"/>
+          <Column id="savepath" type="string" size="32"/>
+          <Column id="excelString" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.ds_output;
+	
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+		Ex.core.init(obj); 	
+		this.userType.set_value("01");
+	}
+	
+	/*
+	Syntax : ChildFrame.init(strID,position[,nLeft,nTop,nWidth,nHeight,[nRight,nBottm[,strUrl]]) 
+	strID  		Support String 	ChildFrame ID 
+	position  	Support String 	ChildFrame의 좌표 형태 
+	nLeft  		Support Integer ChildFrame 생성 위치로 Left 좌표 position의 left 좌표에 적용된다. 
+	nTop  		Support Integer ChildFrame 생성 위치로 Top 좌표 position의 top 좌표에 적용된다. 
+	nWidth  	Support Integer ChildFrame의 너비 
+	nHeight  	Support Integer ChildFrame의 높이 
+	nRight  	Support Integer ChildFrame 생성 위치로 Right 좌표position의 right 좌표에 적용된다. 
+	nBottom  	Support Integer ChildFrame 생성 위치로 Bottom 좌표 position의 bottom좌표에 적용된다. 
+	strURL 		Runtime Support String ChildFrame의 Form영역에 보여줄 화면명 Prefix::화면명으로 입력한다. 
+
+	var varRet;
+	varRet = ChildFrame00.showModal(ParentFrame00);
+	varRet = ChildFrame00.showModal(ParentFrame00, {a:'aaa', b:'bbb'}, this);
+	varRet = ChildFrame00.showModal(ParentFrame00, {a:'aaa', b:'bbb'});
+	varRet = ChildFrame00.showModal("modal", ParentFrame00);
+	varRet = ChildFrame00.showModal("modal",  ParentFrame00, {a:'aaa', b:'bbb'});
+	varRet = ChildFrame00.showModal("modal",  ParentFrame00, {a:'aaa', b:'bbb'}, this);
+	varRet = ChildFrame00.showModal("modal",  ParentFrame00, {a:'aaa', b:'bbb'}, this, callbackFunc);
+	*/
+
+
+	this.bt_agency_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var ownerFrame = this.getOwnerFrame();
+		var popup = new ChildFrame();
+		popup.init("RTCOMMAgency_pop", "absolute", 0, 0, 1024,384, null, null, "comm::RTCOMMAgency_pop.xfdl");
+		popup.set_openalign("center top");		
+		popup.set_showtitlebar(true);
+		popup.set_resizable(false);
+		popup.showModal(ownerFrame, {}, this, this.FN_AgencyPopCallBack);
+	}
+	this.FN_AgencyPopCallBack = function(){
+		//alert("FN_AgencyPopCallBack");
+	}
+	
+	
+	
+	this.bt_vkgrp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		/*
+		var ownerFrame = this.getOwnerFrame();
+		var popup = new ChildFrame();
+		popup.init("RTCOMMVkgrp_pop", "absolute", 0, 0, 400,460, null, null, "comm::RTCOMMVkgrp_pop.xfdl");
+		popup.set_openalign("center middle");		
+		popup.set_showtitlebar(true);
+		popup.set_resizable(false);
+		popup.showModal(ownerFrame, this.FN_RTCMVkgrpPopCallBack);
+		*/
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"대리점 조회","comm::RTCOMMVkgrp_pop.xfdl",args, "modaless=false");		
+	}
+	this.FN_RTCMVkgrpPopCallBack = function(){
+		//alert("FN_RTCMVkgrpPopCallBack");
+	}
+	
+	
+	
+	this.bt_vkbur_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"지점 조회","comm::RTCOMMVkbur_pop.xfdl",args, "modaless=false");		
+	}
+	this.FN_RTCMVkburPopCallBack = function(){
+		//alert("FN_RTCMVkburPopCallBack");
+	}
+	
+	
+	this.bt_postCode_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.popup(this,"우편번호 조회","comm::RTCOMMPostCode_pop.xfdl",args, "modaless=false");		
+	}
+	this.FN_RTCMPostCodePopCallBack = function(){
+		//alert("FN_RTCMPostCodePopCallBack");
+	}
+	
+	
+	this.bt_product_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_formId :"popupTestForm" };
+		Ex.core.popup(this,"상품조회","comm::RTCOMMProduct_pop.xfdl",args, "modaless=false");
+	}
+	
+	
+	this.bt_price_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_formId :"popupTestForm" };
+		Ex.core.popup(this,"가격조회","comm::RTCOMMPrice_pop.xfdl",args, "modaless=false");
+	}
+	
+	
+	//사용자정보조회
+	this.bt_user_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:""};
+		Ex.core.popup(this,"listUser","comm::RTCMUser_pop.xfdl",args, "modaless=false");
+	}
+	
+	this.returnUserInfo = function(arr) {
+		alert(arr[0].saveXML());
+	}
+	
+	
+	//사용자정보조회
+	this.bt_user_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:""};
+		Ex.core.popup(this,"listUser","comm::RTCOMMUser_pop.xfdl",args, "modaless=false");
+	}
+	
+	this.returnUserInfo = function(arr) {
+		alert(arr[0].saveXML());
+	}
+	
+	
+	this.bt_cusetSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:""};
+		Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+	}
+		
+	//고객계좌정보팝업	
+	this.bt_cusetSearch00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"listUser","comm::RTREAccount_pop.xfdl",args, "modaless=false");		
+	}
+
+	//고객카드정보팝업
+	this.bt_cusetSearch01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"listUser","comm::RTRECard_pop.xfdl",args, "modaless=false");		
+	}
+
+	this.bt_productAndPrice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"상품&가격조회","comm::RTCOMMProductAndPrice_pop.xfdl",args, "modaless=false");		
+	}
+
+	this.bt_preminumService_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"프리미엄서비스 조회","comm::RTCOMMPreminumService_pop.xfdl",args, "modaless=false");		
+	}
+
+	this.bt_ordNoSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_custNo:""};
+		Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");		
+	}
+
+	this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var safekey 		= nvl(this.safekey.value);
+		var sSvcID        	= "niceTrustInfoCnt";                    
+		var sController   	= "ntrms/sd/niceTrustInfoCnt.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsNice=dsNiceCheck";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += " safekey=" + nvl(safekey);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+	
+	//법인신용조회(당일기준)
+	this.existsBisinessSearch = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var businessNo 		= nvl(this.businessNo.value);
+		var sSvcID        	= "existsBisinessSearch";                    
+		var sController   	= "ntrms/sd/existsBisinessSearch.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsBis2=ds_bis_out";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += " businessNo=" + businessNo;
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+	
+	//법인신용조회 
+	this.createNiceBusinessInfo = function(obj:Button,  e:nexacro.ClickEventInfo){
+		var businessNo 		= nvl(this.businessNo.value);
+		var sSvcID        	= "niceBisinessSearch";                    
+		var sController   	= "ntrms/sd/niceBisinessSearch.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "dsBis=ds_bis_out";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += " businessNo=" + businessNo;
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+
+
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
+		
+		if(strSvcId == "niceTrustInfoCnt") {
+		
+			alert(this.dsNice.saveXML());
+			//기존에 저장된 자료가 있다면 저장권한만 체크한다.
+			if(this.dsNice.getRowCount() > 0) {
+				var userCrGrade = this.dsNice.getColumn(0, "crGrade");	//사용자권한
+				var commCrGrade = this.dsNice.getColumn(0, "cdLevel");	//체크권한
+				if(userCrGrade < commCrGrade) {
+					alert('권한이 없습니다.');
+					return;
+				}
+			} else {	//저장된 자료가 없는경우 새롭게 인증진행
+				var safekey 		= nvl(this.safekey.value);
+				var sSvcID        	= "niceTrustInfo";                    
+				var sController   	= "rtms/sd/niceTrustInfo.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "dsNice2=dsNiceCheck";
+				var sArgs 			= "";	
+				var fn_callBack		= "fn_callBack";
+				sArgs += " safekey=" + nvl(safekey);
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+			}
+		}
+		
+		if(strSvcId == "niceTrustInfoCnt") {
+			alert(this.dsNice2.saveXML());		
+		}
+		
+		if(strSvcId == "existsBisinessSearch") {
+			alert(this.dsBis2.saveXML());
+			if(this.dsBis2.getRowCount() > 0) {
+				//신용평가정보가 존재하는경우....grade정보 유효성체크
+				var yn = this.dsBis2.getColumn(0, "gradeYn");
+				if(yn == "N") {
+					alert("해당 법인의 사업자번호는 주문을 진행하실수 없습니다.");
+					return
+				} 
+			} else {
+				//당일 법인등록기준이 없는경우 법인신용평가Interface실행
+				this.createNiceBusinessInfo();
+			}
+		}
+		
+		if(strSvcId == "niceBisinessSearch") {
+			alert(this.dsBis.saveXML());	
+			var  gradeYn = this.dsBis.getColumn(0, "gradeYn");
+			if(gradeYn == "N") {
+				alert("해당 법인의 사업자번호는 주문을 진행하실수 없습니다.");
+				return;
+			}
+		}
+	}
+this.FileUpload00_onitemclick = function(obj:FileUpload,  e:nexacro.FileUploadItemEventInfo)
+{
+	
+}
+
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var userType = nvl(this.userType.value);
+	var bankCd	 = nvl(this.bankCd.value);
+	var acctCd 	 = nvl(this.acctCd.value);
+	var bizNo	 = nvl(this.bizNo.value);
+	var custNo	 = nvl(this.custNo.value);
+	var custNm	 = nvl(this.custNm.value);
+	var ownerNm	 = nvl(this.ownerNm.value);
+	
+	var sSvcID        	= "kftcCmsDocInfo";                    
+	var sController   	= "rtms/sms/kftcCmsDocInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sArgs += " userType=" + userType + " bankCd=" + bankCd + " acctCd=" + acctCd + " bizNo=" + bizNo;
+	sArgs += " custNo=" + custNo + " custNm=" + custNm + " ownerNm=" + ownerNm;
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var sController = "/ntrms/comm/excelUploadFileController.do";
+	this.FileUpload00.set_uploadurl(sController);
+	var bSucc = this.FileUpload00.upload(sController);
+}
+
+this.FileUpload00_onsuccess = function(obj:FileUpload,  e:nexacro.FileUploadEventInfo)
+{
+	alert(e.errormsg);
+}
+
+this.Button05_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.go("sample::np_ExcelExport.xfdl");
+}
+
+this.Button04_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.go("sample::np_ExcelImport.xfdl");
+}
+
+this.Button06_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.go("Base::ConfigMain.xfdl");
+}
+]]></Script>
+  </Form>
+</FDL>

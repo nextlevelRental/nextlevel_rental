@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDCustGrp" classname="RTSDCustGrp" left="0" top="0" width="1147" height="496" titletext="고객결합" onload="RTSDCustGrp_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static02" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1121" top="0" right="0" height="496"/>
+        <Static id="Static03" taborder="2" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="55" right="25" height="20" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="3" text="Div00" top="10" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1112" left="10">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition00" taborder="49" text="결합일자" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="71" left="20"/>
+              <Static id="st_searchCondition01" taborder="50" text="고객" cssclass="sta_WF_schTitle" top="13" height="20" domainId="nexa.s_condition" width="72" left="585"/>
+              <Edit id="ed_custNm" taborder="51" top="12" height="21" width="100" left="628" enable="false"/>
+              <Static id="st_searchCondition02" taborder="52" text="결합여부" cssclass="sta_WF_schTitle" top="12" height="20" domainId="nexa.s_condition" width="71" left="369"/>
+              <Button id="Button02" taborder="60" onclick="bt_prog_onclick" cssclass="btn_WF_edtSch" top="11" height="21" width="20" left="710"/>
+              <Edit id="ed_custNo" taborder="61" top="12" height="21" width="137" left="730" enable="false"/>
+              <Static id="Static03" taborder="62" text="~" top="11" height="21" width="10" left="220"/>
+              <Static id="Static24" taborder="63" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="340" top="0" width="30" height="44"/>
+              <Static id="Static00" taborder="64" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="556" top="0" width="30" height="44"/>
+              <Combo id="cb_useYn" taborder="66" innerdataset="@ds_useYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="438" top="10" width="120" height="21"/>
+              <Static id="Static01" taborder="67" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="84" top="0" width="30" height="44"/>
+              <Calendar id="cal_grpDayStart" taborder="68" dateformat="yyyy-MM-dd" left="115" top="10" width="100" height="21" value="null"/>
+              <Calendar id="cal_grpDayEnd" taborder="69" dateformat="yyyy-MM-dd" left="232" top="10" width="100" height="21" value="null" enable="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="bt_addCustGrp1" taborder="6" text="결합번호생성" cssclass="btn_WF_module" top="80" width="97" height="22" left="945" onclick="bt_addCustGrp1_onclick"/>
+        <Button id="bt_saveCustGrp1" taborder="7" text="변경저장" cssclass="btn_WF_module" top="80" height="22" width="71" left="1051" onclick="bt_saveCustGrp1_onclick"/>
+        <Button id="bt_addCustGrp2" taborder="8" text="라인추가" cssclass="btn_WF_module" top="281" width="71" height="22" left="13" onclick="bt_addCustGrp2_onclick"/>
+        <Button id="bt_saveCustGrp2" taborder="9" text="저장" cssclass="btn_WF_module" top="281" width="45" height="22" left="1077" onclick="bt_saveCustGrp2_onclick"/>
+        <Grid id="grid_custGrp1" taborder="10" useinputpanel="false" left="10" top="105" width="1112" height="150" binddataset="ds_custGrp1" onselectchanged="grid_custGrp1_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="300"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="195"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="결합번호"/>
+                <Cell col="1" text="결합일자"/>
+                <Cell col="2" text="분리일자"/>
+                <Cell col="3" text="결합여부"/>
+                <Cell col="4" text="결합고객수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:grpNo"/>
+                <Cell col="1" displaytype="date" text="bind:grpDay" calendardisplaynulltype="none"/>
+                <Cell col="2" displaytype="date" text="bind:sptDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:grpYn" combodataset="ds_grpYn1" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="4" text="bind:custGrpCount"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grid_custGrp2" taborder="11" useinputpanel="false" left="10" top="305" width="1112" height="150" binddataset="ds_custGrp2" onselectchanged="grid_custGrp2_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="300"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="결합번호"/>
+                <Cell col="1">
+                  <Cell text="결합고객"/>
+                </Cell>
+                <Cell col="2" text="결합일자"/>
+                <Cell col="3" text="분리일자"/>
+                <Cell col="4" text="결합여부"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:grpNo"/>
+                <Cell col="1" text="bind:custNo"/>
+                <Cell col="2" displaytype="date" text="bind:grpDay" calendardisplaynulltype="none"/>
+                <Cell col="3" displaytype="date" text="bind:sptDay" calendardisplaynulltype="none"/>
+                <Cell col="4" displaytype="combo" edittype="expr:(dataset.getRowType(currow) == 2) ? 'none' : 'combo'" text="bind:grpYn" combodataset="ds_grpYn2" combocodecol="cd" combodatacol="cdNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_custGrp1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="ds_custGrp1_cancolumnchange">
+        <ColumnInfo>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="grpDay" type="STRING" size="256"/>
+          <Column id="sptDay" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="custGrpCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_custGrp1Cp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="grpDay" type="STRING" size="256"/>
+          <Column id="sptDay" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="custGrpCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_custGrp2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" cancolumnchange="ds_custGrp2_cancolumnchange">
+        <ColumnInfo>
+          <Column id="grpNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="grpDay" type="STRING" size="256"/>
+          <Column id="sptDay" type="STRING" size="256"/>
+          <Column id="grpYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="insertFlag" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grpYn1" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_grpYn2" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	
+	this.resultGrpNo = "";
+	
+	this.selectGrpNo = "0";
+	this.selectCustNo = "0";
+	
+    /***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{
+		if( strSvcId == "initRTCMCustGrp" ){
+			this.div_search.cal_grpDayStart.set_value(FN_beforeMonths());
+			this.div_search.cal_grpDayEnd.set_value(FN_today());
+		}
+		
+		if( strSvcId == "listGrpNo1" ){
+			var rowCt = this.ds_custGrp1.getRowCount();
+			if( rowCt == 0 ){
+				this.grid_custGrp1.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+		}
+		
+		if( strSvcId == "listGrpNo2" ){
+			var rowCt = this.ds_custGrp2.getRowCount();
+			if( rowCt == 0 ){
+				this.grid_custGrp2.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+		}
+		
+		if( strSvcId == "grpNoCrate" ){
+			if( nErrorCode == "0" ){
+				if( confirm( strErrorMsg+"\n저장된 결합번호는 \'"+this.resultGrpNo+"\'입니다."+"\n저장된 결합번호로 조회하시겠습니까?") ){
+					this.FN_custGrpSearch("", "", "", "", this.resultGrpNo);
+				}else{
+					this.reload();
+				}
+			}else{
+				alert(strErrorMsg);
+				this.reload();
+			}
+		}
+		
+		if( strSvcId == "selectCustGrpCustNo" ){
+			if( nvl(this.selectGrpNo) == "0" ){
+				var findRow = this.ds_custGrp2.findRow( "custNo", this.selectCustNo );
+				if( findRow == -1 ){
+					var rowposition = this.ds_custGrp1.rowposition;
+					var nRow = this.ds_custGrp2.addRow();
+					this.ds_custGrp2.setColumn( nRow,"grpNo", nvl(this.ds_custGrp1.getColumn(rowposition,"grpNo")) );
+					this.ds_custGrp2.setColumn( nRow,"grpYn", "Y" );
+					this.ds_custGrp2.setColumn( nRow,"custNo", this.selectCustNo);
+				}else{
+					alert("결합고객 \'"+nvl(this.ds_custGrp2.getColumn(rowposition,"custNo"))+"\'번으로 중복 등록할 수 없습니다.");
+					this.grid_custGrp2.selectRow( findRow );
+				}
+			}else{
+				if(confirm("고객번호 \'"+this.selectCustNo+"\'번 으로 저장된 내역이 있습니다.\n저장된 결합번호는 \'"+this.selectGrpNo+" 입니다."+"\n저장된 결합번호로 조회하시겠습니까?")){
+					this.FN_custGrpSearch("", "", "", "", this.selectGrpNo);
+				}
+			}
+		}
+		
+		if( strSvcId == "saveCustGrp1"){
+			if( nErrorCode == "0" ){
+				alert(strErrorMsg);
+				this.reload();
+			}else{
+				alert(strErrorMsg);
+			}
+			
+		}
+		
+		if( strSvcId == "saveCustGrp2"){
+			if( nErrorCode == "0" ){
+				alert(strErrorMsg);
+				this.reload();
+			}else{
+				alert(strErrorMsg);
+			}
+		}
+	}
+	
+	
+	
+	this.RTSDCustGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+		this.parent.setButton("S", this);
+	}
+
+
+
+	this.fn_init = function(){
+		var sSvcID      	= "initRTCMCustGrp";  
+		var sController   	= "rtms/sd/initRTCMCustGrp.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sOutDatasets+= " ds_grpYn1=mapCustGrpYn1 ";
+		sOutDatasets+= " ds_grpYn2=mapCustGrpYn2 ";
+		sOutDatasets+= " ds_useYn=mapUseYn ";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.bt_prog_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg : "RTSDCustGrp_2"};
+		Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+	}
+	this.FN_custNo_2 = function(res){
+		this.div_search.ed_custNm.set_value(res[0]);
+		this.div_search.ed_custNo.set_value(res[1]);
+	}
+
+
+	this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var grpDayStart 	= nvl(this.div_search.cal_grpDayStart.value);
+		var grpDayEnd 		= nvl(this.div_search.cal_grpDayEnd.value);
+		var useYn 			= nvl(this.div_search.cb_useYn.value);
+		var custNo 			= nvl(this.div_search.ed_custNo.value);
+
+		var date1 = new Date(grpDayStart.substr(0,4),grpDayStart.substr(4,2)-1,grpDayStart.substr(6,2));
+		var date2 = new Date(grpDayEnd.substr(0,4),grpDayEnd.substr(4,2)-1,grpDayEnd.substr(6,2));
+		var interval = date2 - date1;
+		var day = 1000*60*60*24;
+		var month = day*30;
+		var year = month*12;
+		
+		if( parseInt(interval/month) > 2 ){
+			alert("조회기간을 2개월 이내로 설정하세요.");
+			this.div_search.cal_grpDayStart.setFocus(true);
+		}else{
+			this.FN_custGrpSearch(grpDayStart, grpDayEnd, useYn, custNo, "");
+		}
+	}
+	this.FN_custGrpSearch = function(grpDayStart, grpDayEnd, useYn, custNo, grpNo){
+		var sSvcID        	= "listGrpNo1";                    
+		var sController   	= "rtms/sd/listGrpNo1.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_custGrp1=mapGrpNo1";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.ds_custGrp1.deleteAll();
+		this.ds_custGrp2.deleteAll();
+		
+		sArgs += Ex.util.setParam("grpDayStart"	, nvl(grpDayStart));
+		sArgs += Ex.util.setParam("grpDayEnd"	, nvl(grpDayEnd));
+		sArgs += Ex.util.setParam("useYn"		, nvl(useYn));
+		sArgs += Ex.util.setParam("custNo"		, nvl(custNo));
+		sArgs += Ex.util.setParam("grpNo"		, nvl(grpNo));
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+
+
+	this.grid_custGrp1_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+	{
+		var rowposition1 = this.ds_custGrp1.rowposition;
+		
+		var sSvcID        	= "listGrpNo2";                    
+		var sController   	= "rtms/sd/listGrpNo2.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_custGrp2=mapGrpNo2";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		this.ds_custGrp2.deleteAll();
+		
+		sArgs += Ex.util.setParam("grpNo", nvl(this.ds_custGrp1.getColumn(rowposition1,"grpNo")) );
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	
+	this.bt_addCustGrp1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.ds_custGrp1Cp.deleteAll();
+		var nRow = this.ds_custGrp1Cp.addRow();
+		this.ds_custGrp1Cp.setColumn(nRow, "grpYn", "Y");
+		
+		if( confirm( "결합번호를 생성하시겠습니까?") ){
+			var sSvcID        	= "grpNoCrate";                    
+			var sController   	= "rtms/sd/grpNoCrate.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			sInDatasets   		= "input=ds_custGrp1Cp:U";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}else{
+			return false;
+		}
+	}
+
+
+
+	this.bt_saveCustGrp1_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cnt1 = this.ds_custGrp1.getRowCount();
+		var cnt2 = this.ds_custGrp2.getRowCount();
+		var saveFlag1 = false;
+		var saveFlag2 = false;
+		
+		for( var  i = 0 ; i < cnt1 ; i++ ){
+			if( this.ds_custGrp1.getRowType(i) == 1 ){
+				
+			}else{
+				saveFlag1 = true;
+				break;
+			}
+		}
+		
+		for( var  i = 0 ; i < cnt2 ; i++ ){
+			if( this.ds_custGrp2.getRowType(i) == 1 ){
+				
+			}else{
+				saveFlag2 = true;
+				break;
+			}
+		}
+		
+		if( saveFlag1 || saveFlag2 ){
+			if( confirm( "저장하시겠습니까?") ){
+				var sSvcID        	= "saveCustGrp1";                    
+				var sController   	= "rtms/sd/saveCustGrp1.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				sInDatasets   		= "input1=ds_custGrp1:U input2=ds_custGrp2:U";
+				sOutDatasets  		= "";
+				var fn_callBack		= "fn_callBack";
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}
+		}else{
+			alert("변경된 내역이 없습니다.");
+		}
+	}
+
+
+
+	this.bt_addCustGrp2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var rowposition = this.ds_custGrp1.rowposition;
+		if( rowposition >= 0 ){
+			var args ={p_arg : "RTSDCustGrp_1"};
+			Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+		}else{
+			alert("선택된 행이 없습니다.");
+			return false;
+		}
+	}
+	this.FN_custNo_1 = function(res){
+		if( nvl(res[0]) != ""){			
+			var sSvcID        	= "selectCustGrpCustNo";                    
+			var sController   	= "rtms/sd/selectCustGrpCustNo.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			sInDatasets   		= "";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			
+			sArgs += Ex.util.setParam("custNo",res[0]);
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}
+
+
+
+	this.bt_saveCustGrp2_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cnt = this.ds_custGrp2.getRowCount();
+		var saveFlag = false;
+		for( var  i = 0 ; i < cnt ; i++ ){
+			if( this.ds_custGrp2.getRowType(i) == 1 ){
+				
+			}else{
+				saveFlag = true;
+				break;
+			}
+		}
+		if( saveFlag ){
+			if( confirm( "저장하시겠습니까?") ){
+				var sSvcID        	= "saveCustGrp2";                    
+				var sController   	= "rtms/sd/saveCustGrp2.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";	
+				sInDatasets   		= "input=ds_custGrp2:U";
+				sOutDatasets  		= "";
+				var fn_callBack		= "fn_callBack";
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}
+		}else{
+			alert("변경된 내역이 없습니다.");
+		}
+	}	
+	
+	
+	
+	this.ds_custGrp1_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		var rowCt = this.ds_custGrp2.getRowCount();
+		var flag = false;
+			
+		if( e.newvalue == "Y" ){
+			for(var i = 0 ; i < rowCt ; i++){
+				var insertFlag 	= this.ds_custGrp2.getColumn(i, "insertFlag");
+				var custNo 		= this.ds_custGrp2.getColumn(i, "custNo");
+				if( insertFlag == "N" ){
+					flag = false;
+					if(confirm("결합여부를 변경할 수 없습니다."+"\n고객번호 \'" + custNo +"\'번은 다른 결합번호로 결합이 되어있습니다. 조회하시겠습니까?")){
+						this.FN_custGrpSearch("", "", "", custNo, "");
+						return false;
+						break;
+					}else{
+						this.ds_custGrp1.setColumn(i, "grpYn", e.oldvalue);
+						return false;
+						break;
+					}
+				}else{
+					flag = true;
+				}
+			}
+			
+			for(var i = 0 ; i < rowCt ; i++){
+				this.ds_custGrp2.setColumn(i, "grpYn", e.newvalue);
+			}
+		}else if(  e.newvalue == "N" ){
+			for(var i = 0 ; i < rowCt ; i++){
+				this.ds_custGrp2.setColumn(i, "grpYn", e.newvalue);
+			}
+		}else{
+		
+		}
+	}
+
+
+	this.ds_custGrp2_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		var rowposition = this.ds_custGrp2.rowposition;
+		
+		if( e.newvalue == "Y" ){
+			var insertFlag = this.ds_custGrp2.getColumn(rowposition, "insertFlag");
+			var custNo 		= this.ds_custGrp2.getColumn(rowposition, "custNo");
+			
+			if( insertFlag == "N" ){
+				if(confirm("결합여부를 변경할 수 없습니다."+"\n고객번호 \'" + custNo +"\'번은 다른 결합번호로 결합이 되어있습니다. 조회하시겠습니까?")){
+					this.FN_custGrpSearch("", "", "", custNo, "");
+					return false;
+				}else{
+					this.ds_custGrp2.setColumn(rowposition, "grpYn", "N");
+					return false;
+				}
+			}
+		}
+	}
+]]></Script>
+  </Form>
+</FDL>

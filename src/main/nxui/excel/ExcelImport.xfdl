@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="ExcelImport" classname="ExcelImport" left="0" top="0" width="800" height="416" titletext="excel-import">
+    <Layouts>
+      <Layout>
+        <Button id="btn_selectFile" taborder="0" text="Import File" left="639" top="54" width="137" height="30" onclick="btn_selectFile_onclick" style="background:#1abd9cff;border:1 none #7d7f80ff ;color:white;font:bold antialias 11 Verdana;"/>
+        <Grid id="grd_main" taborder="1" useinputpanel="false" left="20" top="91" width="753" height="269" binddataset="ds_grid">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="130"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="가"/>
+                <Cell col="1" colspan="3" text="제목 A"/>
+                <Cell col="4" rowspan="2" text="마"/>
+                <Cell col="5" colspan="2" text="제목 B"/>
+                <Cell row="1" col="1" text="나"/>
+                <Cell row="1" col="2" text="다"/>
+                <Cell row="1" col="3" text="라"/>
+                <Cell row="1" col="5" text="바"/>
+                <Cell row="1" col="6" text="사"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:col0"/>
+                <Cell col="1" displaytype="number" text="bind:col1"/>
+                <Cell col="2" text="bind:col2"/>
+                <Cell col="3" displaytype="date" text="bind:col3"/>
+                <Cell col="4" displaytype="text" text="bind:col4" mask="@@:@@"/>
+                <Cell col="5" text="bind:col5" mask="@@@-@@@@-@@@@"/>
+                <Cell col="6" text="bind:col6" mask="@@@@-@@-@@"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_title00" taborder="2" text="Import Excel or Text File to Grid" left="20" top="56" width="454" height="30" style="font:bold antialias 18 Verdana;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_grid" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="col0" type="STRING" size="256"/>
+          <Column id="col1" type="INT" size="256"/>
+          <Column id="col2" type="FLOAT" size="256"/>
+          <Column id="col3" type="DATE" size="256"/>
+          <Column id="col4" type="STRING" size="256"/>
+          <Column id="col5" type="STRING" size="256"/>
+          <Column id="col6" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="col0">1번가</Col>
+            <Col id="col1">1</Col>
+            <Col id="col2">1.1</Col>
+            <Col id="col3">20130809</Col>
+            <Col id="col4">1010</Col>
+            <Col id="col5">01012345678</Col>
+            <Col id="col6">20120101</Col>
+          </Row>
+          <Row>
+            <Col id="col0">2번가</Col>
+            <Col id="col1">2</Col>
+            <Col id="col2">2.2</Col>
+            <Col id="col3">20130810</Col>
+            <Col id="col4">1011</Col>
+            <Col id="col5">01012345679</Col>
+            <Col id="col6">20120102</Col>
+          </Row>
+          <Row>
+            <Col id="col0">3번가</Col>
+            <Col id="col1">3</Col>
+            <Col id="col2">3.3</Col>
+            <Col id="col3">20130811</Col>
+            <Col id="col4">1012</Col>
+            <Col id="col5">01012345680</Col>
+            <Col id="col6">20120103</Col>
+          </Row>
+          <Row>
+            <Col id="col0">4번가</Col>
+            <Col id="col1">4</Col>
+            <Col id="col2">4.4</Col>
+            <Col id="col3">20130812</Col>
+            <Col id="col4">1013</Col>
+            <Col id="col5">01012345681</Col>
+            <Col id="col6">20120104</Col>
+          </Row>
+          <Row>
+            <Col id="col0">5번가</Col>
+            <Col id="col1">5</Col>
+            <Col id="col2">5.5</Col>
+            <Col id="col3">20130813</Col>
+            <Col id="col4">1014</Col>
+            <Col id="col5">01012345682</Col>
+            <Col id="col6">20120105</Col>
+          </Row>
+          <Row>
+            <Col id="col0">6번가</Col>
+            <Col id="col1">6</Col>
+            <Col id="col2">6.6</Col>
+            <Col id="col3">20130814</Col>
+            <Col id="col4">1015</Col>
+            <Col id="col5">01012345683</Col>
+            <Col id="col6">20120106</Col>
+          </Row>
+          <Row>
+            <Col id="col0">7번가</Col>
+            <Col id="col1">7</Col>
+            <Col id="col2">7.7</Col>
+            <Col id="col3">20130815</Col>
+            <Col id="col4">1016</Col>
+            <Col id="col5">01012345684</Col>
+            <Col id="col6">20120107</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+this.btn_selectFile_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+		var importInfo = {fileType: "excel", targetGrid: this.grd_main, targetDataset: this.ds_grid};
+		var url = "Example::ExcelImportPopup.xfdl";
+		var ownFrame = this.getOwnerFrame();
+		var childFrame = new ChildFrame();
+			
+		var seqId = Eco.getSequenceId(this, "popup_");
+		
+			
+		childFrame.init(seqId, "absolute", 0, 0, 500,600, null, null, url);	
+		childFrame.set_autosize(true);
+		childFrame.set_openalign("center middle");		
+		childFrame.set_showtitlebar(true);
+	
+		childFrame.showModal(ownFrame, importInfo);	
+}
+]]></Script>
+  </Form>
+</FDL>

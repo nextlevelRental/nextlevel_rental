@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheck_tab_info_preminum" classname="RTCSRegularCheck_tab_info_preminum" left="0" top="0" width="1147" height="150" titletext="프리미엄서비스[03]">
+    <Layouts>
+      <Layout>
+        <Static id="Static09" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="1" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Grid id="grid_preminum" taborder="2" useinputpanel="false" left="0" top="5" width="530" binddataset="ds_preminum" height="125" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="160"/>
+                <Column size="160"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="프리미엄서비스"/>
+                <Cell col="1" text="상세서비스"/>
+                <Cell col="2" text="서비스횟수"/>
+                <Cell col="3" text="잔여횟수"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:psNm"/>
+                <Cell col="1" text="bind:prsNm"/>
+                <Cell col="2" text="bind:servCnt0"/>
+                <Cell col="3" text="bind:servCntr"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_preminum" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="psCd" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="prsDcd" type="STRING" size="256"/>
+          <Column id="prsNm" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="servCnt0" type="STRING" size="256"/>
+          <Column id="servCntr" type="STRING" size="256"/>
+          <Column id="servAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -1,0 +1,652 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="ERR_DEBUG" classname="ERR_DEBUG" position="absolute" titletext="debug" onload="form_onload" left="0" top="0" width="964" height="427" cssclass="from_POP" ontimer="ERR_DEBUG_ontimer">
+    <Layouts>
+      <Layout>
+        <Static id="Static31" text="H10" visible="false" position="absolute" style="background:#ff000033;align:center middle;" left="5" top="35" width="118" height="10"/>
+        <Static id="Static32" text="* COMPONENT" class="sta_WF_TitlePopupLev1" position="absolute" left="17" top="48" width="105" height="16" style="color:blue;font:bold 9 Verdana;"/>
+        <Div id="Div01" taborder="3" text="Div01" position="absolute" left="339" top="66" height="326" width="613">
+          <Layouts>
+            <Layout>
+              <TextArea id="txt_Contents" taborder="2" onrbuttondown="txt_Contents_onrbuttondown" visible="false" left="0.82%" top="5" right="0.82%" height="289" autoselect="true" readonly="true"/>
+              <Grid id="grd_DatasetValue" taborder="0" autoenter="select" useinputpanel="false" cellmovingtype="col" position="absolute" tooltiptype="hover" _status="false" _number="false" _check="" _checkHeadEnable="true" _checkDisplayType="true" _sort="true" _tooltip="true" _required="" _combodisplayrowcount="" _checkedallevent="" _more="" _code_group="" _setFormat="" iPostWlCnt="0" autosizingtype="col" cellsizingtype="col" autofittype="none" left="5" top="5" right="5" extendsizetype="col" height="296" cellsizebandtype="allband" autosizebandtype="allband">
+                <Formats/>
+              </Grid>
+              <Div id="div_grid_bottom" taborder="1" left="0.16%" top="300" right="0%" height="20" scrollbars="none" cssclass="div_WF_GridBottom">
+                <Layouts>
+                  <Layout>
+                    <Static id="sta_grid_cnt" taborder="18" text="Rows : 0" top="1" height="20" width="66" right="-2"/>
+                    <Button id="btn_xml" taborder="19" text="Viewer(XML)" top="1" right="116" height="16" style="background:@gradation;border:1 solid #6a9dd3ff ;color:darkblue;bordertype:round 2 2 ;gradation:linear 0,0 #d4e5f8ff 0,100 #a9c9edff;" width="81" onclick="Div01_div_grid_bottom_btn_xml_onclick"/>
+                    <Button id="btn_excel" taborder="20" cssclass="btn_WF_xls" top="1" right="76" height="16" _excel="this.Div01.grd_DatasetValue" width="35"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static44" taborder="30" text="Debug View" cssclass="sta_POP_Title" left="1.47%" top="0" right="88.26%" height="34"/>
+        <Button id="btn_close" taborder="31" onclick="btn_close_onclick" cssclass="btn_POP_Close" left="97.65%" top="12" right="1.27%" height="11"/>
+        <Static id="Static00" taborder="33" text="* Dataset" left="33.66%" top="42" right="56.07%" height="16" style="color:blue;font:bold 9 Verdana;" class="sta_WF_TitlePopupLev1"/>
+        <Div id="Div02" taborder="36" top="66" height="326" width="300" left="37">
+          <Layouts>
+            <Layout>
+              <Grid id="grd_ComponentValue" taborder="0" binddataset="ds_ComponentValue" autoenter="select" useinputpanel="false" cellsizingtype="col" cellmovingtype="col" autofittype="col" left="2.13%" top="5" right="5" tooltiptype="hover" _status="false" _number="true" _check="" _sort="true" _tooltip="true" _required="" _checkedallevent="" _more="" _code_group="" bottom="19">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="120"/>
+                      <Column size="148"/>
+                      <Column size="100"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="TYPE"/>
+                      <Cell col="1" text="NAME"/>
+                      <Cell col="2" text="VALUE"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:TYPE"/>
+                      <Cell col="1" text="bind:NAME"/>
+                      <Cell col="2" text="bind:VALUE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Div id="div_grid_bottom" taborder="1" left="0%" right="1.68%" scrollbars="none" cssclass="div_WF_GridBottom" height="20" top="302">
+                <Layouts>
+                  <Layout>
+                    <Static id="sta_grid_cnt" taborder="16" text="Rows : 0" top="1" height="20" right="5" width="79" style="align:right middle;"/>
+                    <Button id="btn_excel" taborder="17" cssclass="btn_WF_xls" top="5" height="17" _excel="this.Div02.grd_ComponentValue" width="35" right="69"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Combo id="Combo00" taborder="37" left="68.98%" top="41" right="10.17%" height="24" innerdataset="@ds_DatasetList" codecolumn="CODE" datacolumn="NAME" index="0" type="filter" onitemchanged="Combo00_onitemchanged" autoselect="true" text="- select -"/>
+        <Button id="btn_search" taborder="39" text="Search" cssclass="btn_WF_Search2" left="90.56%" top="42" right="1.45%" height="23" onclick="btn_search_onclick"/>
+        <Div id="Div00" taborder="40" left="2" top="66" height="326" width="30">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_ComponentValue" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+          <Column id="TYPE" type="STRING" size="256"/>
+          <Column id="PATH" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_DatasetList" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">- select -</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_data" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_debugCallBackMsg" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="svcid" type="STRING" size="256"/>
+          <Column id="erorcode" type="STRING" size="256"/>
+          <Column id="errormsg" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : nxui debug
+* BUSINESS    : errorDebug
+* FILE NAME   : ERR_DEBUG
+* PROGRAMMER  : w.s.jeong	
+* DATE        : 2014.11.21
+* DESCRIPTION : ERR_DEBUG
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+/*********************
+*  화면 변수 선언부  *
+*********************/
+
+var oXPush;
+var sUSER_ID;
+var sSESSION_KEY;
+
+/**************************************************************************************************
+*                                         공통 Event 처리 부분                                    *
+***************************************************************************************************/
+
+/*--------------------+
+|  01. 화면 로드시   |
++--------------------*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	 //폼로드시 공통함수 
+	Ex.core.onload(obj); 
+	this.scanOpenerComponent( this.opener );
+}
+
+/*--------------------------+
+|  08. 엑셀 버튼 클릭시   |
++--------------------------*/
+this.f_excelDwld = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 		var aSheetName 	= new Array("COMPONENT","DS_LIST","DS_NAME");
+// 	var aGridObj	= new Array(grd_ComponentValue,Div01.grd_DatasetValue,Div00.grd_DatasetList);
+// 	var fileNm = this.name +  "_" + "ALL"+"_" + getToday();
+//    
+//    exportExcelList(aSheetName, aGridObj,"","","","",fileNm);
+   
+  
+   
+ 
+}
+
+
+/*******************************************************************************************
+*                                      업무 처리 부분                                    *
+*******************************************************************************************/
+
+
+
+/*********************************************************************
+* 함 수 명 	: scanOpenerComponent
+* 함수설명 	:  현재 페이지에 존재하는 모든 컴포넌트를 가지고 온다.            
+* 입    력 	:  this 
+* 결    과 	: 
+*********************************************************************/
+this.scanOpenerComponent = function(obj)
+{
+
+  var strType = "typeOf == 'MaskEdit' || typeOf == 'TextArea' || typeOf == 'Combo' || typeOf == 'CheckBox' || typeOf == 'Radio'";
+  var ds = this.ds_ComponentValue;
+  var dsList = this.ds_DatasetList;
+  var oComp = Eco.XComp.query(obj,strType);
+    
+    for(var i=0; i <oComp.length; i++)
+    {
+        
+        var name		=  oComp[i].name;
+ 		var type 		=  oComp[i]+"";
+ 		var value		= String(Ex.util.isReplaceEmpty(oComp[i].value)).trim();
+ 	//	trace(" name : "  + name + " <> type: " + type + "<> value : "  + value);
+		var iRow = ds.addRow();
+		   ds.setColumn( iRow, "NAME"	, name );
+		   ds.setColumn( iRow, "VALUE"	, value );
+		   ds.setColumn( iRow, "TYPE"	, type );
+					 //  ds.setColumn( iRow, "PATH"	, getPath(oComp).replace("this.","") );	
+    }
+    var strType = "typeOf == 'Dataset'";  
+   var oComp2 = Eco.XComp.query(obj,strType); 
+   
+   for(var i=0; i <oComp2.length; i++)
+    {
+        
+        var name		=  oComp2[i].name;
+         var object		=  oComp2[i];
+		var iRow = dsList.addRow();
+		           dsList.setColumn( iRow, "CODE"	, name );
+		 		   dsList.setColumn( iRow, "NAME"	, name );
+			       dsList.setColumn( iRow, "VALUE"	, object.saveXML() );
+					
+    }
+        
+     this.Combo00.set_index(0);
+     this.Div02.div_grid_bottom.sta_grid_cnt.set_text("Rows : " + ds.rowcount);
+     //this.Div01.div_grid_bottom.sta_grid_cnt.set_text(dsList.rowcount);
+     
+}
+
+/*********************************************************************
+* 함 수 명 	: scanOpenerObject
+* 함수설명 	:  현재 페이지에 존재하는 모든 OBJECT(dataset)를 가지고 온다.            
+* 입    력 	:  this 
+* 결    과 	: 
+*********************************************************************/
+this.scanOpenerObject =function( obj ){
+	var objects = obj.objects;	
+	var ds = ds_DatasetList;
+        
+       
+
+	for( var i=0; i<objects.length; i++ ) {
+		var object 		= objects[i];
+		var type 		= object+"";
+		var name		= object.name.replace("ds_div_form_","");
+
+		if( Eco.isEmpty(name) || name.indexOf("filtDs") != -1 ) continue;
+
+		try {
+			//이녀석이 Dataset 이면
+			if( type.indexOf("Dataset") != -1 ) {
+				
+				var iRow = this.ds.addRow();
+						  this.ds.setColumn( iRow, "NAME"	, name );
+				          this.ds.setColumn( iRow, "VALUE"	, object.saveXML() );
+			}
+		} catch(e) {
+			trace( e.message );
+		}
+
+	}
+	
+}
+
+/**
+ * 그리드를 클릭할때 마다 dataset 정보를 보여주게
+ */
+this.grd_DatasetList_oncellclick =function(obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.setDsList(e.row);
+}
+
+this.setDsList = function(nRow)
+{
+	var ds 		= this.ds_DatasetList;
+	var iRow 	= nRow;
+	var value 	= ds.getColumn( iRow, "VALUE" );
+	
+	this.setSearchDs(value);
+	
+}
+
+this.setSearchDs =function(value)
+{
+	var bindDs = Ex.util.isCheckDs("ds_DatasetValue");
+	bindDs.loadXML( value );
+	
+	var formats = ""
+	+"          <Formats>                  	"
+	+"            <Format id=\"default\">   "
+	+"              <Columns>               ";
+	
+	for( var i=0; i<bindDs.getColCount(); i++ ) {
+		formats += ""
+		+"                <Column size=\"80\"/>	";
+	}
+	formats += ""
+	+"              </Columns>                          "
+	+"              <Rows>                              "
+	+"                <Row size=\"24\" band=\"head\"/> 	"
+	+"                <Row size=\"24\"/>                "
+	+"              </Rows>                             "
+	+"              <Band id=\"head\">                  ";
+	
+	for( var i=0; i<bindDs.getColCount(); i++ ) {
+		var colInfo = bindDs.getColumnInfo(i);
+		
+		formats += ""
+		+"                <Cell col=\"" +i+ "\" text=\"" +colInfo.name+ "\"/>	";
+	}
+
+	formats += ""
+	+"              </Band>          		"
+	+"              <Band id=\"body\">      ";
+	
+	for( var i=0; i<bindDs.getColCount(); i++ ) {
+		var colInfo = bindDs.getColumnInfo(i);
+		
+		formats += ""
+		+"                <Cell col=\"" +i+ "\" text=\"bind:" +colInfo.name+ "\"/>	";
+	}
+	
+	formats += ""
+	+"              </Band> 				"
+	+"            </Format>                 "
+	+"          </Formats>                  ";
+ 
+  //  this.Div01.grd_DatasetValue.enableredraw = false;
+	//alert( formats );
+	
+	this.Div01.grd_DatasetValue.set_formats(formats);	
+	this.Div01.grd_DatasetValue.set_binddataset("ds_DatasetValue");
+	//this.Div01.grd_DatasetValue.enableredraw = true;
+	this.ds_data.enableevent = false;
+	this.ds_data.setColumn(0,"value",bindDs.saveXML());
+	this.ds_data.enableevent = true;
+   this.Div01.div_grid_bottom.sta_grid_cnt.set_text("Rows : " +this.ds_DatasetValue.rowcount);
+   //trace(" bindDs.saveXML() : " + bindDs.saveXML());
+    this.Div01.txt_Contents.set_value("");
+   this.Div01.txt_Contents.set_value(bindDs.saveXML());
+   //trace("text : " +   this.Div01.txt_Contents.text);
+   //this.Div01.txt_Contents.value
+   // msk_total.value =bindDs.rowcount;
+}
+
+/**
+ * 변수 실행해서 결과를 반환
+ */
+this.btn_Var_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	checkParentResult();
+}
+
+this.edt_Var_onkeydown =function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if( e.keycode == 13 ) {
+		checkParentResult();
+	}
+}
+
+/**
+ * 부모창에 있는 변수 확인
+ */
+this.checkParentResult  = function() {
+	var sChkVar = edt_Var.value;
+	if( isNull(sChkVar) ) return;
+	
+	try {
+		edt_VarRst.value = eval( "opener." + sChkVar );
+	} catch(e) {
+		edt_VarRst.value = "err";
+	}
+}
+
+
+
+this.btn_excelComp_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 		var aSheetName 	= new Array("COMPONENT");
+// 	var aGridObj	= new Array(grd_ComponentValue);
+// 	var fileNm = this.name +  "_" + "COMPONENT"+"_" + getToday();
+// exportExcelList(aSheetName, aGridObj,"","","","",fileNm);
+}
+
+this.btn_excelDs_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 		var bindDs = Div01.grd_DatasetValue.binddataset;
+// 	
+// 	var aSheetName 	= new Array("DS_LIST");
+// 	var aGridObj	= new Array(Div01.grd_DatasetValue);
+// 	var fileNm = this.name +  "_" + "DS_LIST"+"_" + getToday();
+// 	exportExcelList(aSheetName, aGridObj,"","","","",fileNm);
+	
+}
+
+this.btn_excelDsNm_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 	var bindDs = Div00.grd_DatasetList.binddataset;
+// 	
+// 	var aSheetName 	= new Array("DS_NAME");
+// 	var aGridObj	= new Array(Div00.grd_DatasetList);
+// 	
+// 	exportExcelList(aSheetName, aGridObj);
+}
+
+
+//dataset savxml 처리-----------------------
+this.btn_savexml_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//if(ds_DatasetValue.rowcount == 0) return;
+	fn_CompSaveXML();
+}
+
+
+
+/*********************************************************************
+ * 함 수 명 	: fn_popOpetopMenu
+ * 함수설명 	: 환경 설정 팝업 open
+ *********************************************************************/
+this.fn_CompSaveXML =function(obj)
+{ 
+   
+     switch(obj.text)
+     {
+       case "Viewer(XML)" :
+       
+        if(this.isValidObject("ds_DatasetValue"))
+        { 
+           if(this.ds_DatasetValue.rowcount > 0)
+           {
+			  obj.set_text("Viewer(Grid)");
+			  this.Div01.txt_Contents.set_visible(true);
+			  this.Div01.grd_DatasetValue.set_visible(false);
+			  this.Div01.txt_Contents.bringToFront();
+			 // this.Div01.txt_Contents.set_text('');
+			  
+			//  this.Div01.txt_Contents.set_text(this.ds_DatasetValue.saveXML());
+           }
+        }
+      
+		
+		break;
+		
+		case "Viewer(Grid)" :
+			obj.set_text("Viewer(XML)");
+			 this.Div01.txt_Contents.set_visible(false);
+			this.Div01.grd_DatasetValue.set_visible(true);
+			this.Div01.grd_DatasetValue.bringToFront();
+		break;
+     }
+     
+     
+    
+   
+//      if(!this.isValidObject("PopupDiv0"))
+//      {    
+// 	    
+// 	    var objPopupDiv = new PopupDiv("PopupDiv0", 0, 1,1023,433);
+// 	  //  objPopupDiv.style.border = "1 solid #808080ff"
+// 
+//        // Add Object to Parent Form  
+//        this.addChild("PopupDiv0", objPopupDiv); 
+// 	    // Show Object  
+// 		objPopupDiv.show(); 
+// 
+// 	   var objTextArea = new TextArea("TextArea", 0, 1, 1020, 430);
+//            objTextArea.readonly = true;
+//            objTextArea.wordwrap = "both";
+//            objTextArea.scrollbars = "autoboth";       
+//         
+//         // Add Object to Parent Form   
+//         objPopupDiv.addChild("TextAreaID", objTextArea); 
+// 	    objTextArea.show();	         	
+// 	    
+//           var v_objNewbindItem = new BindItem;
+// 		v_objNewbindItem.init("TextAreaBIND", "PopupDiv0.TextAreaID", "value", "ds_data", "value");
+// 		
+// 		this.addChild("TextAreaBIND", v_objNewbindItem); 
+// 		v_objNewbindItem.bind();
+//      }
+//      
+//      trace(" this dataset >>> "  + this.ds_DatasetValue.rowcount);
+// trace(" binddataset >>>> " + this.Div01.grd_DatasetValue.binddataset);
+//       var bindDs = this.ds_DatasetValue;
+//       trace(" bindDs.rowcount : "  + bindDs.rowcount);
+//      if(!Eco.isEmpty(bindDs) && bindDs.rowcount >0)
+//      {
+// 	 
+// 	    var nX = system.clientToScreenX(this,this.position.right - PopupDiv0.position.right);	
+// 		var nY = system.clientToScreenY(this,  this.Div01.div_grid_bottom.btn_xml.bottom);
+// 		var bSucc  = PopupDiv0.trackPopup(nX,nY);
+// 		
+// 		
+//      }
+//      else
+//      {
+// 		alert(" 데이타가 존재하지 않습니다.","정보","information");
+//      }
+    
+    
+    
+    
+
+}
+
+this.Edit00_onkeydown =function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 13)
+	{
+	    if(this.ds_DatasetList.rowcount >0)
+	    {
+	     if(this.ds_DatasetList.findRow("NAME",obj.text.trim()) !=-1)
+	     {
+			 this.setDsList(ds_DatasetList.findRow("NAME",obj.text.trim()));
+			 this.ds_DatasetList.rowposition = this.ds_DatasetList.findRow("NAME",obj.text.trim());
+	     }
+	     
+	    }
+	}
+}
+
+
+
+//공통코드 조회
+this.btn_search_comm_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+		//this.setSearchDs(gds_com_code.saveXML());
+}
+
+//메뉴 조회
+this.btn_search_menu_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+// 		gds_SearchMenu.filter('');
+// 		setSearchDs(gds_SearchMenu.saveXML());
+}
+
+//메세지 조회
+this.btn_msg_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    	this.setSearchDs(gds_message.saveXML());
+}
+//버젼정보 
+this.btn_ver_search_onclick =function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	// this.setSearchDs(gds_VerList.saveXML());
+}
+
+
+
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//this.gfn_popupClose('');
+	this.close();
+}
+
+this.Combo00_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+// trace(" e.postindex : " + e.postindex);
+//     this.setDsList(e.postindex);
+	//e.posttext
+	
+	this.fn_dsSearch(obj);
+}
+
+
+
+
+// 
+
+this.fn_dsSearch = function(oCombo)
+{
+     if(this.ds_DatasetList.findRow("NAME",oCombo.value) !=-1)
+	 {
+	 
+	// trace(" findRow >>> "  + this.ds_DatasetList.findRow("NAME",oCombo.text));
+		 this.setDsList(this.ds_DatasetList.findRow("NAME",oCombo.text));
+		// this.ds_DatasetList.rowposition = this.ds_DatasetList.findRow("NAME",Edit00.text.trim());
+	 }	
+}
+
+this.btn_search_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.fn_dsSearch(this.Combo00);
+}
+
+this.Div01_div_grid_bottom_btn_xml_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	
+	this.fn_CompSaveXML(obj);
+}
+
+this.aniSize={
+   duration : 200
+};
+
+this.Div00_Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	if(obj.cssclass == "btn_LF_Close")
+	{
+	      obj.set_cssclass("btn_LF_Open");
+	      this.Div02.set_visible(false);
+	      this.Div01.set_visible(true);	
+	      this.setTimer(11,this.aniSize.duration);         
+			
+												  
+				$(Ex.ani.jquery( this.Div01)).animate({"left": "30px"}, {"queue": false, "duration": this.aniSize.duration})
+								.animate({"width": "922px"}, this.aniSize.duration); 
+	   
+	}else if(obj.cssclass == "btn_LF_Open")
+	{
+	       obj.set_cssclass("btn_LF_Close");
+ 	      this.setTimer(12,this.aniSize.duration);  
+// 	            trace(" this.width : "  +this.width);
+// 	            
+	            this.Div02.set_visible(true);
+				this.Div01.set_visible(false);				
+				//$(Ex.ani.jquery( this.Div00)).animate({"right": "30px"}, {"queue": false, "duration": this.aniSize.duration})
+					//			.animate({"width": "30px"}, this.aniSize.duration);  
+												  
+				$(Ex.ani.jquery( this.Div02)).animate({"right": this.width-23 + "px"}, {"queue": false, "duration": this.aniSize.duration})
+								.animate({"width": "916"}, this.aniSize.duration); 
+	
+	}
+}
+
+this.ERR_DEBUG_ontimer = function(obj:Form, e:nexacro.TimerEventInfo)
+{
+	if(e.timerid == 11)
+	{
+
+
+	    this.Div01.set_left(30);
+	    this.Div01.set_width(922);
+	}
+	else if(e.timerid == 12)
+	{
+	  // this.Div02.set_visible(true);
+	  // this.Div00.move(null,null,null,null,39);
+	    
+	  //  this.Div00.set_left(this.width-9);
+	  //  this.Div00.set_width(30);
+ 	   // this.Div02.set_left(892);
+ 	    this.Div02.set_width(916);
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="configLegend" classname="config_xaxis" left="0" top="0" width="320" height="1601" titletext="차트 범례 설정" style="background:#d4d9dfff;" onload="configLegend_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="22" text="Legend" left="20" top="11" height="25" style="font:antialias 15 Verdana, malgun gothic;" width="268"/>
+        <Static id="Static26" taborder="23" left="20" top="40" right="20" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static09" taborder="36" text="borderColor" left="6.25%" top="843" right="46.88%" height="20"/>
+        <Static id="Static08" taborder="37" text="backgroundOpacity" left="6.25%" top="804" right="46.88%" height="20"/>
+        <Static id="Static06" taborder="39" text="width" left="6.25%" top="224" right="46.88%" height="20"/>
+        <Static id="Static04" taborder="43" text="valign" left="6.25%" top="190" right="46.88%" height="20"/>
+        <Static id="Static03" taborder="45" text="align" left="6.25%" top="158" right="46.88%" height="20"/>
+        <Static id="Static02" taborder="47" text="show" left="6.25%" top="88" right="46.88%" height="20"/>
+        <Static id="Static17" taborder="77" text="id" left="6.25%" top="56" right="46.88%" height="20"/>
+        <Edit id="edt_id" taborder="78" left="52.5%" top="54" right="6.56%" height="24" onsetfocus="common_onsetfocus" readonly="true"/>
+        <CheckBox id="chk_show" taborder="94" left="52.81%" top="86" right="6.25%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <Static id="Static25" taborder="97" left="6.25%" top="743" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static40" taborder="101" text="markerType" left="6.25%" top="990" right="46.88%" height="20"/>
+        <Static id="Static49" taborder="126" text="markerLabelGap" left="6.25%" top="954" right="46.88%" height="20"/>
+        <Combo id="cmb_valign" taborder="134" innerdataset="ds_valign" codecolumn="code" datacolumn="data" left="52.81%" top="188" height="24" onsetfocus="common_onsetfocus" width="131" index="-1"/>
+        <Static id="Static07" taborder="157" text="backgroundColor" left="6.25%" top="765" right="46.88%" height="20"/>
+        <Edit id="edt_borderColor" taborder="159" left="52.5%" top="841" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static15" taborder="160" onclick="Static05_onclick" left="6.25%" top="1251" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static00" taborder="165" left="6.25%" top="1045" right="46.88%" height="20"/>
+        <Static id="Static05" taborder="167" text="markerColor" left="6.25%" top="1062" right="46.88%" height="20"/>
+        <Static id="Static11" taborder="171" text="position" left="6.25%" top="121" right="46.88%" height="20"/>
+        <Static id="Static12" taborder="174" text="markerSize" left="6.25%" top="1026" right="46.88%" height="20"/>
+        <Static id="Static13" taborder="177" text="left" left="6.25%" top="261" right="46.88%" height="20"/>
+        <Static id="Static14" taborder="179" text="top" left="6.25%" top="296" right="46.88%" height="20"/>
+        <Combo id="cmb_align" taborder="180" innerdataset="ds_halign" codecolumn="code" datacolumn="data" left="52.81%" top="154" right="5.94%" height="24" onsetfocus="common_onsetfocus"/>
+        <Combo id="cmb_position" taborder="181" innerdataset="ds_lposition" codecolumn="code" datacolumn="data" left="52.81%" top="118" height="24" onsetfocus="common_onsetfocus" position="absolute" index="-1" right="5.94%"/>
+        <Edit id="edt_backgroundColor" taborder="183" left="52.5%" top="763" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static18" taborder="184" text="borderWidth" left="6.25%" top="882" right="46.88%" height="20"/>
+        <Static id="Static10" taborder="186" text="marginLeft" left="6.25%" top="338" right="46.88%" height="20"/>
+        <Static id="Static16" taborder="188" text="marginRight" left="5.94%" top="377" right="47.19%" height="20"/>
+        <Static id="Static19" taborder="190" text="marginTop" left="5.94%" top="415" right="47.19%" height="20"/>
+        <Static id="Static20" taborder="192" text="marginBottom" left="5.94%" top="456" right="47.19%" height="20"/>
+        <Static id="Static21" taborder="194" text="equalItemWidths" left="5.94%" top="495" right="47.19%" height="20"/>
+        <CheckBox id="chk_equalItemWidths" taborder="195" left="52.81%" top="498" right="6.25%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <Static id="Static22" taborder="196" text="spacing" left="5.94%" top="538" right="47.19%" height="20"/>
+        <Static id="Static23" taborder="198" text="horizontalGap" left="5.94%" top="660" right="47.19%" height="20"/>
+        <Static id="Static24" taborder="200" text="verticalGap" left="5.63%" top="702" right="47.5%" height="20"/>
+        <Combo id="cmb_markerType" taborder="202" innerdataset="ds_markerType" codecolumn="code" datacolumn="data" left="52.19%" top="988" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Edit id="edt_markerColor" taborder="203" left="52.19%" top="1060" right="6.88%" height="24" enable="true" onsetfocus="common_onsetfocus"/>
+        <Static id="Static27" taborder="204" text="markerBorderColor" left="6.25%" top="1098" right="46.88%" height="20"/>
+        <Edit id="edt_markerBorderColor" taborder="205" left="52.19%" top="1096" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static28" taborder="206" text="markerBorderWidth" left="6.25%" top="1137" right="46.88%" height="20"/>
+        <Static id="Static29" taborder="208" text="markerBorderStyle" left="6.25%" top="1173" right="46.88%" height="20"/>
+        <Combo id="cmb_markerBorderStyle" taborder="209" innerdataset="ds_style" codecolumn="code" datacolumn="data" left="52.19%" top="1171" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static30" taborder="210" text="markerBorderOpacity" left="6.25%" top="1209" right="46.88%" height="20"/>
+        <Static id="Static31" taborder="212" onclick="Static05_onclick" left="6.25%" top="927" right="6.25%" height="13" style="border:2 solid #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff,0 none #93a6c0ff;"/>
+        <Static id="Static32" taborder="213" text="labelFontFace" left="6.25%" top="1310" right="46.88%" height="20"/>
+        <Edit id="edt_labelFontFace" taborder="214" left="52.19%" top="1308" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static33" taborder="215" text="labelFontSize" left="6.25%" top="1346" right="46.88%" height="20"/>
+        <Static id="Static34" taborder="217" text="labelFontType" left="6.25%" top="1382" right="46.88%" height="20"/>
+        <Combo id="cmb_labelFontType" taborder="218" innerdataset="@ds_fontType" codecolumn="code" datacolumn="data" left="52.19%" top="1380" right="6.56%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static35" taborder="219" text="labelColor" left="6.25%" top="1418" right="46.88%" height="20"/>
+        <Edit id="edt_labelColor" taborder="220" left="52.19%" top="1416" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static36" taborder="221" text="labelWidth" left="6.25%" top="1454" right="46.88%" height="20"/>
+        <Static id="Static37" taborder="223" text="switchable" left="6.25%" top="1490" right="46.88%" height="20"/>
+        <CheckBox id="chk_switchable" taborder="224" left="52.19%" top="1488" right="6.88%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <Static id="Static38" taborder="225" text="disabledColor" left="6.25%" top="1526" right="46.88%" height="20"/>
+        <Edit id="edt_disabledColor" taborder="226" left="52.19%" top="1524" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static39" taborder="227" text="useMarkerColorForLabels" left="6.25%" top="1562" right="46.88%" height="20" style="font:antialias 8 Meiryo UI, malgun gothic;"/>
+        <Static id="Static41" taborder="229" text="labelText" left="6.25%" top="1273" right="46.88%" height="20"/>
+        <Edit id="edt_labelText" taborder="230" left="52.19%" top="1271" right="6.88%" height="24" onsetfocus="common_onsetfocus"/>
+        <Static id="Static42" taborder="231" text="columns" left="5.94%" top="579" right="47.19%" height="20"/>
+        <Static id="Static43" taborder="234" text="autoMargins" left="5.94%" top="618" right="47.19%" height="20"/>
+        <CheckBox id="chk_autoMargins" taborder="236" left="52.81%" top="616" right="6.25%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <CheckBox id="chk_useMarkerColorForLabels" taborder="237" left="52.19%" top="1560" right="6.88%" height="24" onsetfocus="common_onsetfocus" cssclass="WF_chk_Switch"/>
+        <MaskEdit id="mae_width" taborder="238" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="222" height="24" right="6.25%"/>
+        <MaskEdit id="mae_left" taborder="239" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="259" height="24" right="6.25%"/>
+        <MaskEdit id="mae_marginLeft" taborder="240" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="336" height="24" right="6.25%"/>
+        <MaskEdit id="mae_top" taborder="241" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="294" height="24" right="6.25%"/>
+        <MaskEdit id="mae_marginRight" taborder="242" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="375" height="24" right="6.25%"/>
+        <MaskEdit id="mae_marginTop" taborder="243" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="413" height="24" right="6.25%"/>
+        <MaskEdit id="mae_marginBottom" taborder="244" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="454" height="24" right="6.25%"/>
+        <MaskEdit id="mae_spacing" taborder="245" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="536" right="6.25%" height="24"/>
+        <MaskEdit id="mae_columns" taborder="246" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="577" right="6.25%" height="24"/>
+        <MaskEdit id="mae_horizontalGap" taborder="247" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="658" right="6.25%" height="24"/>
+        <MaskEdit id="mae_verticalGap" taborder="248" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.81%" top="700" right="6.25%" height="24"/>
+        <MaskEdit id="mae_backgroundOpacity" taborder="249" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.5%" top="802" right="6.88%" height="24"/>
+        <MaskEdit id="mae_borderWidth" taborder="250" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.5%" top="880" right="6.56%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_markerLabelGap" taborder="251" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.5%" top="952" right="6.56%" height="24"/>
+        <MaskEdit id="mae_markerSize" taborder="252" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="1024" right="6.88%" height="24"/>
+        <MaskEdit id="mae_markerBorderOpacity" taborder="253" mask="0.0" onsetfocus="common_onsetfocus" canchange="common_canchage_decimal" left="52.19%" top="1207" right="7.5%" height="24"/>
+        <MaskEdit id="mae_markerBorderWidth" taborder="254" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="1135" right="6.88%" height="24" mask="0.0"/>
+        <MaskEdit id="mae_labelFontSize" taborder="255" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="1344" right="6.88%" height="24"/>
+        <MaskEdit id="mae_labelWidth" taborder="256" onsetfocus="common_onsetfocus" canchange="common_canchage_integer" left="52.19%" top="1452" right="6.88%" height="24"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="edt_id" propid="value" datasetid="" columnid="id"/>
+      <BindItem id="item1" compid="chk_show" propid="value" datasetid="" columnid="show"/>
+      <BindItem id="item3" compid="cmb_valign" propid="value" datasetid="" columnid="valign"/>
+      <BindItem id="item5" compid="edt_borderColor" propid="value" datasetid="" columnid="borderColor"/>
+      <BindItem id="item2" compid="cmb_align" propid="value" datasetid="" columnid="align"/>
+      <BindItem id="item11" compid="cmb_position" propid="value" datasetid="" columnid="position"/>
+      <BindItem id="item14" compid="edt_backgroundColor" propid="value" datasetid="" columnid="backgroundColor"/>
+      <BindItem id="item18" compid="chk_equalItemWidths" propid="value" datasetid="" columnid="equalItemWidths"/>
+      <BindItem id="item19" compid="cmb_markerType" propid="value" datasetid="" columnid="markerType"/>
+      <BindItem id="item10" compid="edt_markerColor" propid="value" datasetid="" columnid="markerColor"/>
+      <BindItem id="item23" compid="edt_markerBorderColor" propid="value" datasetid="" columnid="markerBorderColor"/>
+      <BindItem id="item25" compid="cmb_markerBorderStyle" propid="value" datasetid="" columnid="markerBorderStyle"/>
+      <BindItem id="item28" compid="edt_labelFontFace" propid="value" datasetid="" columnid="labelFontFace"/>
+      <BindItem id="item30" compid="cmb_labelFontType" propid="value" datasetid="" columnid="labelFontType"/>
+      <BindItem id="item31" compid="edt_labelColor" propid="value" datasetid="" columnid="labelColor"/>
+      <BindItem id="item33" compid="chk_switchable" propid="value" datasetid="" columnid="switchable"/>
+      <BindItem id="item34" compid="edt_disabledColor" propid="value" datasetid="" columnid="disabledColor"/>
+      <BindItem id="item36" compid="edt_labelText" propid="value" datasetid="" columnid="labelText"/>
+      <BindItem id="item38" compid="chk_autoMargins" propid="value" datasetid="" columnid="autoMargins"/>
+      <BindItem id="item35" compid="chk_useMarkerColorForLabels" propid="value" datasetid="" columnid="useMarkerColorForLabels"/>
+      <BindItem id="item6" compid="mae_left" propid="value" datasetid="" columnid="left"/>
+      <BindItem id="item7" compid="mae_width" propid="value" datasetid="" columnid="width"/>
+      <BindItem id="item12" compid="mae_top" propid="value" datasetid="" columnid="top"/>
+      <BindItem id="item8" compid="mae_marginRight" propid="value" datasetid="" columnid="marginRight"/>
+      <BindItem id="item13" compid="mae_marginTop" propid="value" datasetid="" columnid="marginTop"/>
+      <BindItem id="item16" compid="mae_marginBottom" propid="value" datasetid="" columnid="marginBottom"/>
+      <BindItem id="item17" compid="mae_marginLeft" propid="value" datasetid="" columnid="marginLeft"/>
+      <BindItem id="item20" compid="mae_spacing" propid="value" columnid="spacing"/>
+      <BindItem id="item21" compid="mae_columns" propid="value" columnid="columns"/>
+      <BindItem id="item22" compid="mae_horizontalGap" propid="value" columnid="horizontalGap"/>
+      <BindItem id="item37" compid="mae_verticalGap" propid="value" datasetid="" columnid="marginBottom"/>
+      <BindItem id="item15" compid="mae_borderWidth" propid="value" columnid="borderWidth"/>
+      <BindItem id="item4" compid="mae_backgroundOpacity" propid="value" datasetid="" columnid="backgroundOpacity"/>
+      <BindItem id="item9" compid="mae_markerLabelGap" propid="value" columnid="markerLabelGap"/>
+      <BindItem id="item24" compid="mae_markerSize" propid="value" columnid="markerSize"/>
+      <BindItem id="item26" compid="mae_markerBorderOpacity" propid="value" columnid="markerBorderOpacity"/>
+      <BindItem id="item27" compid="mae_markerBorderWidth" propid="value" columnid="markerBorderWidth"/>
+      <BindItem id="item29" compid="mae_labelFontSize" propid="value" columnid="labelFontSize"/>
+      <BindItem id="item32" compid="mae_labelWidth" propid="value" columnid="labelWidth"/>
+    </Bind>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[
+var parent = this.parent;
+	
+this.configLegend_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	var bindDs,
+		dsNm = "ds_legend";
+	
+	bindDs = parent.grd_leftMenu.getBindDataset();
+	if (bindDs)
+	{
+		if (bindDs.name == "ds_pieMenu")
+		{
+			dsNm = "ds_plegend";
+		}
+		
+		var binds = this.binds;
+		for (var i = 0, len = binds.length; i < len ; i++)
+		{
+			binds[i].datasetid = dsNm;
+			binds[i].bind();
+		}
+	}
+}
+
+this.common_onsetfocus = function(obj:Combo, e:nexacro.SetFocusEventInfo)
+{
+	parent.setPropertyDesc(obj,e);
+}
+
+this.common_canchage_integer = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData2(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+
+this.common_canchage_decimal = function(obj:MaskEdit,  e:nexacro.ChangeEventInfo)
+{
+	var input = nexacro.toNumber(obj.value);	
+	var re = parent.validateInputData1(input);
+			
+	if (!re)
+	{
+		return false;		
+	}
+	else
+	{
+		return true;
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

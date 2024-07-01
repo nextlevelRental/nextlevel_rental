@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSInboundReceipt" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="496" titletext="인바운드 접수 현황" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="0" text="Div00" left="0" top="0" right="25" height="73" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="46" text="상담유형" cssclass="sta_WF_schTitle" left="8" top="11" width="80" height="21"/>
+              <Static id="Static01" taborder="47" text="통화일자" cssclass="sta_WF_schTitle" left="258" top="11" width="80" height="21"/>
+              <Edit id="userNm" taborder="48" lengthunit="ascii" maxlength="20" left="338" top="36" width="100" height="21" tooltiptext="edit" enable="false"/>
+              <Static id="Static02" taborder="49" text="상담사" cssclass="sta_WF_schTitle" left="258" top="36" width="80" height="21"/>
+              <Static id="Static03" taborder="50" text="계약번호" cssclass="sta_WF_schTitle" left="587" top="11" width="80" height="21"/>
+              <Edit id="Ed_custNm" taborder="51" lengthunit="ascii" maxlength="120" left="88" top="36" width="140" height="21" tooltiptext="edit"/>
+              <Static id="Static06" taborder="52" text="고객명" cssclass="sta_WF_schTitle" left="8" top="36" width="80" height="21"/>
+              <Calendar id="Calendar02" taborder="53" dateformat="yyyy-MM-dd" left="457" top="11" width="100" height="21"/>
+              <Static id="Static07" taborder="54" text="~" left="443" top="10" width="9" height="21"/>
+              <Calendar id="Calendar01" taborder="55" dateformat="yyyy-MM-dd" left="338" top="11" width="100" height="21"/>
+              <Combo id="Cb_callTp" taborder="56" innerdataset="@dsJobTp" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="88" top="11" width="140" height="21" index="-1"/>
+              <Button id="Button00" taborder="57" onclick="Button00_onclick" cssclass="btn_WF_edtSch" left="437" top="36" width="21" height="21"/>
+              <Edit id="userId" taborder="58" lengthunit="ascii" maxlength="20" visible="true" left="457" top="36" width="100" height="21" tooltiptext="edit" enable="false"/>
+              <Edit id="Ed_ordNo" taborder="59" lengthunit="ascii" maxlength="120" left="667" top="11" width="140" height="21" tooltiptext="edit"/>
+              <Static id="Static04" taborder="60" text="처리상태" cssclass="sta_WF_schTitle" left="587" top="36" width="80" height="21"/>
+              <Combo id="cb_resuSt" taborder="61" innerdataset="@dsResuStatus" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="667" top="36" width="140" height="21"/>
+              <Static id="Static22" taborder="62" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1118"/>
+              <Static id="Static24" taborder="63" cssclass="Guide_color" visible="false" left="228" top="0" width="30" height="68"/>
+              <Static id="Static05" taborder="64" cssclass="Guide_color" visible="false" left="0" top="30" height="6" width="1118"/>
+              <Static id="Static08" taborder="65" cssclass="Guide_color" visible="false" left="0" top="57" width="1118" height="12"/>
+              <Static id="Static09" taborder="66" cssclass="Guide_color" visible="false" left="557" top="0" width="30" height="68"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="1" text="인바운드 접수현황" cssclass="sta_WF_subTitle" left="0" top="89" width="129" height="20"/>
+        <Grid id="Grid00" taborder="2" binddataset="dsList" useinputpanel="false" autofittype="none" nodatatext="조회된 데이터가 없습니다." oncellclick="Grid00_oncellclick" left="0" top="114" height="178" width="1122" tooltiptype="default" onselectchanged="Grid00_onselectchanged">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상담유형"/>
+                <Cell col="1" text="통화일자"/>
+                <Cell col="2" text="통화시간"/>
+                <Cell col="3" text="처리상태"/>
+                <Cell col="4" text="상담내용"/>
+                <Cell col="5" text="주문번호"/>
+                <Cell col="6" text="고객번호"/>
+                <Cell col="7" text="고객명"/>
+                <Cell col="8" text="차량번호"/>
+                <Cell col="9" text="상담전화번호"/>
+                <Cell col="10" text="SMS내용"/>
+                <Cell col="11" text="클레임번호"/>
+                <Cell col="12" text="완료일자"/>
+                <Cell col="13" text="완료시간"/>
+                <Cell col="14" text="상담번호"/>
+                <Cell col="15" text="상담사"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:recvTpNm" tooltiptext="bind:recvTpNm"/>
+                <Cell col="1" displaytype="date" text="bind:recvDay" calendardisplaynulltype="none" tooltiptext="bind:recvDay"/>
+                <Cell col="2" text="bind:recvTm" expr="expr:recvTm==&quot;&quot;?&quot;&quot;:recvTm.substring(0,2) + &quot;:&quot;+recvTm.substring(2,4)+ &quot;:&quot;+recvTm.substring(4,6)" tooltiptext="bind:recvTm"/>
+                <Cell col="3" text="bind:resuStNm" tooltiptext="bind:resuStNm"/>
+                <Cell col="4" text="bind:callDtl" tooltiptext="bind:callDtl"/>
+                <Cell col="5" text="bind:ordNo" tooltiptext="bind:ordNo"/>
+                <Cell col="6" text="bind:custNo" tooltiptext="bind:custNo"/>
+                <Cell col="7" text="bind:custNm" tooltiptext="bind:custNm"/>
+                <Cell col="8" text="bind:carNo" tooltiptext="bind:carNo"/>
+                <Cell col="9" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)" tooltiptext="bind:telNo"/>
+                <Cell col="10" text="bind:smsTx" tooltiptext="bind:smsTx"/>
+                <Cell col="11" text="bind:claimNo" tooltiptext="bind:claimNo"/>
+                <Cell col="12" displaytype="date" text="bind:endDay" calendardisplaynulltype="none" tooltiptext="bind:endDay"/>
+                <Cell col="13" text="bind:endTm" expr="expr:endTm==&quot;&quot;?&quot;&quot;:endTm.substring(0,2) + &quot;:&quot;+endTm.substring(2,4)+ &quot;:&quot;+endTm.substring(4,6)" tooltiptext="bind:endTm"/>
+                <Cell col="14" text="bind:callNo" tooltiptext="bind:callNo"/>
+                <Cell col="15" text="bind:userId" tooltiptext="bind:userId"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static03" taborder="3" text="QMS정보" cssclass="sta_WF_subTitle" left="0" top="307" width="81" height="20" visible="true"/>
+        <Grid id="Grid01" taborder="4" useinputpanel="false" autofittype="col" nodatatext="조회된 데이터가 없습니다." left="0" top="332" height="164" binddataset="dsQms" width="1122" visible="true">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="ClaimNo"/>
+                <Cell col="1" text="접수내용"/>
+                <Cell col="2" text="사고부위"/>
+                <Cell col="3" text="중분류"/>
+                <Cell col="4" text="사고상세"/>
+                <Cell col="5" text="접수수량"/>
+                <Cell col="6" text="보상수량"/>
+                <Cell col="7" text="Claim 처리 상태"/>
+                <Cell col="8" text="처리기사"/>
+                <Cell col="9" text="처리기사 연락처"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:claimNo" tooltiptext="bind:claimNo"/>
+                <Cell col="1" text="bind:recContent" tooltiptext="bind:recContent"/>
+                <Cell col="2" text="bind:claimType" tooltiptext="bind:claimType"/>
+                <Cell col="3" text="bind:claimClass" tooltiptext="bind:claimClass"/>
+                <Cell col="4" text="bind:claimName" tooltiptext="bind:claimName"/>
+                <Cell col="5" text="bind:tireCnt" tooltiptext="bind:tireCnt"/>
+                <Cell col="6" text="bind:rewardCnt" tooltiptext="bind:rewardCnt"/>
+                <Cell col="7" text="bind:claimStas" tooltiptext="bind:claimStas"/>
+                <Cell col="8" text="bind:empName" tooltiptext="bind:empName"/>
+                <Cell col="9" text="bind:empMobileno" tooltiptext="bind:empMobileno"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="6" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="9" cssclass="Guide_color" visible="false" left="0" top="73" width="1147" height="20"/>
+        <Static id="Static04" taborder="10" cssclass="Guide_color" visible="false" left="0" top="104" width="1147" height="10"/>
+        <Static id="Static05" taborder="12" cssclass="Guide_color" visible="false" left="0" top="322" width="1147" height="10"/>
+        <Static id="Static02" taborder="13" cssclass="Guide_color" visible="false" left="0" top="291" width="1147" height="20"/>
+        <Button id="btn_qmsSearch" taborder="14" text="QMS조회" onclick="btn_qmsSearch_onclick" left="992" top="301" width="80" height="21" domainId="nexa.save" visible="true"/>
+        <Button id="Button02" taborder="15" text="엑셀" onclick="Button02_onclick" cssclass="btn_WF_CRUD" left="1077" top="301" width="45" height="22" visible="true"/>
+        <Button id="Button01" taborder="16" text="엑셀" onclick="Button01_onclick" cssclass="btn_WF_CRUD" left="1077" top="82" width="45" height="22"/>
+        <Button id="btn_qmsUpdate" taborder="17" text="QMS전송" left="992" top="82" width="80" height="21" domainId="nexa.save" onclick="btn_qmsUpdate_onclick" enable="false" visible="true"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsJobTp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsResuStatus" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="recvTp" type="STRING" size="256"/>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="resuSt" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="claimNo" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="endTm" type="STRING" size="256"/>
+          <Column id="smsTx" type="STRING" size="256"/>
+          <Column id="regionNo" type="STRING" size="256"/>
+          <Column id="cityNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsQms" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="claimNo" type="STRING" size="256"/>
+          <Column id="recContent" type="STRING" size="256"/>
+          <Column id="claimType" type="STRING" size="256"/>
+          <Column id="claimClass" type="STRING" size="256"/>
+          <Column id="claimName" type="STRING" size="256"/>
+          <Column id="tireCnt" type="STRING" size="256"/>
+          <Column id="rewardCnt" type="STRING" size="256"/>
+          <Column id="claimStas" type="STRING" size="256"/>
+          <Column id="empName" type="STRING" size="256"/>
+          <Column id="empMobileno" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsQmsUpdate" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="recvDay" type="STRING" size="256"/>
+          <Column id="recvTm" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="recvTp" type="STRING" size="256"/>
+          <Column id="recvTpNm" type="STRING" size="256"/>
+          <Column id="resuSt" type="STRING" size="256"/>
+          <Column id="resuStNm" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="callDtl" type="STRING" size="256"/>
+          <Column id="claimNo" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="endTm" type="STRING" size="256"/>
+          <Column id="smsTx" type="STRING" size="256"/>
+          <Column id="regionNo" type="STRING" size="256"/>
+          <Column id="cityNo" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+include "lib::comLib.xjs";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.toDay  = "";
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)	{ 
+		if(nErrorCode < 0){
+			alert(strErrorMsg);				
+			return;
+		}
+		
+		if(strSvcId == "getDate"){
+			this.Div00.Calendar01.set_value(this.toDay);
+			this.Div00.Calendar02.set_value(this.toDay);
+		}
+		
+		if(strSvcId == "initCombo"){
+			this.Div00.Cb_callTp.set_index(0);
+		}
+		
+		if (strSvcId == "searchList"){
+			var cnt = this.dsList.getRowCount();
+			if( cnt <= 0) {
+				alert("조회된 데이터가 없습니다.");
+				return;
+			} else {
+			}
+		}
+		
+		if(strSvcId == "searchInfo") {
+			this.Edit_callNo.set_value(this.dsList.getColumn(this.dsList.rowposition, "callNo"));
+			var cnt = this.dsDetailInfo.getRowCount();
+			if( cnt <= 0) {
+				return;
+			}else{
+			}
+		}
+		
+		if( strSvcId == "qmsList" ){
+			var qmsCt = this.dsQms.getRowCount();
+			if( qmsCt == 0 ){
+				this.Grid01.set_nodatatext("조회된 데이터가 없습니다.");
+				alert("조회된 데이터가 없습니다.");
+			}
+		}
+		
+		if( strSvcId == "qusUpdateRTCS" ){
+			alert(strErrorMsg);
+			if( nErrorCode == "0" ){
+				this.fn_search();
+			}
+		}
+	}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.get_date();
+	this.parent.setButton("S", this);
+	
+	var auth = Ex.core.o_auth;
+	if( auth.exptAuthYn == "N" ){
+		this.Button01.set_enable(false);
+		this.Button02.set_enable(false);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.get_date = function(){
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.fn_init = function(){
+	var sSvcID      	= "initCombo";  
+	var sController   	= "/ntrms/cs/initInbound.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsJobTp=output dsResuStatus=output2";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var recvTp 	  = nvl(this.Div00.Cb_callTp.value); 	//상담유형
+	var recvFday  = nvl(this.Div00.Calendar01.value); 	//통화일자FROM	
+	var recvTday  = nvl(this.Div00.Calendar02.value); 	//통화일자TO
+	var ordNo	  = nvl(this.Div00.Ed_ordNo.value); 	//계약 번호
+	var custNm    = nvl(this.Div00.Ed_custNm.value); 	//고객명
+	var userId    = nvl(this.Div00.userId.value); 		//상담사Id
+	var resuSt    = nvl(this.Div00.cb_resuSt.value); 	//처리상태
+	
+	if(recvFday == "") {
+		alert("처리일자(시작일)을 입력해주세요.");
+		return;
+	}
+	
+	if(recvTday == "") {
+		alert("처리일자(종료일)을 입력해주세요.");
+		return;
+	}
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/ntrms/cs/inboundList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	this.dsList.clearData();
+	sArgs += Ex.util.setParam("recvTp", recvTp);
+	sArgs += Ex.util.setParam("recvFday", recvFday);
+	sArgs += Ex.util.setParam("recvTday", recvTday);
+	sArgs += Ex.util.setParam("ordNo", ordNo);
+	sArgs += Ex.util.setParam("custNm", custNm);
+	sArgs += Ex.util.setParam("userId", userId);
+	sArgs += Ex.util.setParam("resuSt", resuSt);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg:"RTCSRegister"};
+	Ex.core.popup(this,"상담사 조회","comm::RTCOMMUser_pop.xfdl",args, "modaless=false");
+}
+this.returnUserInfo = function(arr) {
+	var	cd 		= arr[0].getColumn(0, "userId");
+	var cdNm 	= arr[0].getColumn(0, "userNm");
+	this.Div00.userId.set_value(cd);
+	this.Div00.userNm.set_value(cdNm);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.Grid00_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo){
+	var rowPo = this.dsList.rowposition;
+	//상담내용
+	if(e.cell == this.Grid00.getBindCellIndex( "body", "callDtl")){
+		var callDtl = nvl(this.dsList.getColumn(rowPo, "callDtl"));
+		this.Grid00.set_tooltiptext(callDtl);
+		if(callDtl != "") {
+			alert(callDtl);
+		}
+	}
+	//sms내용
+	if(e.cell == this.Grid00.getBindCellIndex( "body", "smsTx")){
+		var smsTx = nvl(this.dsList.getColumn(rowPo, "smsTx"));
+		this.Grid00.set_tooltiptext(smsTx);
+		if(smsTx != "") {
+			alert(smsTx);
+		}
+		
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.Grid00_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var recvTp 	= nvl(this.dsList.getColumn(this.dsList.rowposition, "recvTp"));
+	var claimNo = nvl(this.dsList.getColumn(this.dsList.rowposition, "claimNo"));
+	if( recvTp == "I1" && claimNo.trim("") == ""){
+		this.btn_qmsUpdate.set_enable(true);
+	}else{
+		this.btn_qmsUpdate.set_enable(false);
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.btn_qmsUpdate_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	
+	this.dsQmsUpdate.clearData();
+	var nRow = this.dsQmsUpdate.addRow();
+	var copyFlag = this.dsQmsUpdate.copyRow(nRow,this.dsList,this.dsList.rowposition);
+	this.dsQmsUpdate.setColumn(0, "chanCd", nvl(this.dsList.getColumn(nRow, "chanCd")) );
+	if( copyFlag ){
+		if( confirm( "저장하시겠습니까?")){
+			var sSvcID        	= "qusUpdateRTCS";                    
+			var sController   	= "rtms/cs/qusUpdateRTCS.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			sInDatasets			+= " input=dsQmsUpdate:U ";
+			trace(this.dsList.saveXML());
+			var fn_callBack		= "fn_callBack";
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}
+	}else{
+		
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.btn_qmsSearch_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var rowPo 	= this.dsList.rowposition;
+	var claimNo = nvl(this.dsList.getColumn(rowPo, "claimNo"));
+	
+	if( claimNo != "" ){
+		this.dsQms.clearData();
+		var sSvcID        	= "qmsList";                    
+		var sController   	= "/ntrms/cs/qmsList.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sOutDatasets += " dsQms=dsQmsMap ";
+		sArgs += Ex.util.setParam("claimNo",   claimNo);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("클레임번호가 없습니다.");
+	}
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.Button01_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	Ex.core.exportExcel(this, this.Grid00);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+this.Button02_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	Ex.core.exportExcel(this, this.Grid01);
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+]]></Script>
+  </Form>
+</FDL>

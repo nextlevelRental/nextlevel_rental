@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="result">
+	
+	<!--  해피콜 상담사 등록조회 -->
+	<resultMap id="registerResultMap" class="java.util.HashMap">
+		<result property="jobTpNm" 		column="JOB_TP_NM"      /> 	<!-- 상담유형명  -->
+		<result property="callNo" 		column="CALL_NO"        /> 	<!-- 상담번호    -->
+		<result property="userIdNm" 	column="USER_ID_NM"     /> 	<!-- 상담사명    -->
+		<result property="callStatusNm" column="CALL_STATUS_NM" /> 	<!-- 통화상태    -->
+		<result property="ordNo" 		column="ORD_NO"         /> 	<!-- 계약번호    -->
+		<result property="agencyNm" 	column="AGENCY_NM"      /> 	<!-- 대리점      -->
+		<result property="custNm" 		column="CUST_NM"        /> 	<!-- 고객명      -->
+		<result property="mobNo" 		column="MOB_NO"         /> 	<!-- 휴대폰번호  -->
+		<result property="telNo" 		column="TEL_NO"         /> 	<!-- 전화번호    -->
+		<result property="jobCnt" 		column="RETRY_CNT"      />  <!-- 시도건수    -->
+		<result property="jobDay" 		column="JOB_DAY"        /> 	<!-- 처리일자    -->
+		<result property="callDay" 		column="CALL_DAY"       /> 	<!-- 통화일자    -->
+		<result property="callDtl" 		column="CALL_DTL"       /> 	<!-- 상담내용    -->
+		<result property="procInNm" 	column="PROC_IN_NM"     />
+		<result property="servSeq" 		column="SERV_SEQ"       /> 	<!-- 서비스 순번 -->
+		<result property="answer" 		column="ANSWER"         />
+		<result property="chgId" 		column="CHG_ID"         /> 	<!-- 등록자 [20170621_01] -->
+		<result property="serviceNm" 		column="SERVICE_NM"         /> 	<!-- 서비스명 [20180703_01] -->
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>
+	<parameterMap id="p_sRtcs0100Regf" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="registerResultMap" />
+		<parameter property="jobTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담유형        -->
+		<parameter property="jobDay1" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리일자FROM   -->
+		<parameter property="jobDay2" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 처리일자TO     -->
+		<parameter property="userId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 상담사ID       -->             
+		<parameter property="callStatus" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 통화상태        -->             
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명          -->             
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 장착대리점      -->             
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 휴대번호        -->             
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 전화번호        -->        
+		<parameter property="loginId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap> 
+	<procedure id="result.listResult" parameterMap="p_sRtcs0100Regf">
+		{call
+		Pkg_Rtcs0100.p_sRtcs0100Regf(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 질문내용 + 답변 + 질문유형 select -->
+	<resultMap id="questionResultMap" class="java.util.HashMap">
+		<result property="question01" 	    column="QUESTION01" /> 	    <!-- 질문번호1 --> 
+		<result property="question02" 	    column="QUESTION02" /> 	    <!-- 질문번호2 -->  
+		<result property="question03" 	    column="QUESTION03" /> 	    <!-- 질문번호3 -->  
+		<result property="question04" 	    column="QUESTION04" /> 	    <!-- 질문번호4 -->  
+		<result property="question05" 	    column="QUESTION05" /> 	    <!-- 질문번호5 -->  
+		<result property="question06" 	    column="QUESTION06" /> 	    <!-- 질문번호6 -->  
+		<result property="question07" 	    column="QUESTION07" /> 	    <!-- 질문번호7 -->  
+		<result property="question08" 	    column="QUESTION08" /> 	    <!-- 질문번호8 -->  
+		<result property="question09" 	    column="QUESTION09" /> 	    <!-- 질문번호9 -->  
+		<result property="question10" 	    column="QUESTION10" /> 	    <!-- 질문번호10 --> 
+		<result property="answer01" 	    column="ANSWER_01" /> 	    <!-- 답변1 -->
+		<result property="answer02" 	    column="ANSWER_02" /> 	    <!-- 답변2 -->
+		<result property="answer03" 	    column="ANSWER_03" /> 	    <!-- 답변3 -->
+		<result property="answer04" 	    column="ANSWER_04" /> 	    <!-- 답변4 -->
+		<result property="answer05" 	    column="ANSWER_05" /> 	    <!-- 답변5 -->
+		<result property="answer06" 	    column="ANSWER_06" /> 	    <!-- 답변6 -->
+		<result property="answer07" 	    column="ANSWER_07" /> 	    <!-- 답변7 -->
+		<result property="answer08" 	    column="ANSWER_08" /> 	    <!-- 답변8 -->
+		<result property="answer09" 	    column="ANSWER_09" /> 	    <!-- 답변9 -->
+		<result property="answer10" 	    column="ANSWER_10" /> 	    <!-- 답변10 -->
+		<result property="subjectQus1" 		column="SUBJECT_QUS1" /> 	<!-- 주관식 질문1 -->
+		<result property="subjectQus2" 		column="SUBJECT_QUS2" /> 	<!-- 주관식 질문2 -->
+		<result property="subjectQus3" 		column="SUBJECT_QUS3" /> 	<!-- 주관식 질문3 -->
+		<result property="subjectQus4" 		column="SUBJECT_QUS4" /> 	<!-- 주관식 질문4 -->
+		<result property="subjectQus5" 		column="SUBJECT_QUS5" /> 	<!-- 주관식 질문5 -->
+		<result property="subjectAns1" 		column="SUBJECT_ANS1" /> 	<!-- 주관식 답변1 -->
+		<result property="subjectAns2" 		column="SUBJECT_ANS2" /> 	<!-- 주관식 답변2 -->
+		<result property="subjectAns3" 		column="SUBJECT_ANS3" /> 	<!-- 주관식 답변3 -->
+		<result property="subjectAns4" 		column="SUBJECT_ANS4" /> 	<!-- 주관식 답변4 -->
+		<result property="subjectAns5" 		column="SUBJECT_ANS5" /> 	<!-- 주관식 답변5 -->
+	</resultMap>
+	<parameterMap id="p_sRtcs0101ANS" class="java.util.Map">             
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="questionResultMap" />
+		<parameter property="callNo" 		jdbcType="NUMERIC" mode="IN" /> <!-- 상담번호  -->
+	</parameterMap> 
+	<procedure id="result.listQustAns" parameterMap="p_sRtcs0101ANS">
+		{call
+		Pkg_Rtcs0101.p_sRtcs0101qustans(?, ?)}
+	</procedure>
+
+</sqlMap>

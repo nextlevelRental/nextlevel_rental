@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRESalesCommMangOpenMall" classname="RTRESalesCommMangOpenMall" left="0" top="0" width="1147" height="496" titletext="판매수수료관리(오픈몰)" onload="RTRESalesCommMangOpenMall_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="0" cssclass="Guide_color" visible="false" left="1117" top="0" width="30" height="496"/>
+        <Div id="div_search" taborder="1" left="0" top="0" width="1117" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Edit id="ed_agentNm" taborder="14" enable="false" left="440" top="12" width="140" height="21"/>
+              <Static id="st_ordAgent" taborder="15" text="판매처" cssclass="sta_WF_schTitle" left="275" top="12" width="80" height="21"/>
+              <Static id="st_standardDay" taborder="17" text="기준일자" cssclass="sta_WF_schTitle" left="25" top="12" width="80" height="21"/>
+              <Static id="Static26" taborder="18" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="12"/>
+              <Static id="Static07" taborder="19" cssclass="Guide_color" visible="false" left="0" top="33" width="1118" height="12"/>
+              <Static id="Static08" taborder="20" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="41"/>
+              <Static id="Static09" taborder="21" cssclass="Guide_color" visible="false" left="245" top="0" width="25" height="41"/>
+              <Static id="Static10" taborder="22" cssclass="Guide_color" visible="false" left="640" top="0" width="25" height="41"/>
+              <Static id="Static11" taborder="23" cssclass="Guide_color" visible="false" left="1088" top="0" width="25" height="41"/>
+              <Calendar id="dt_standardDay" taborder="26" dateformat="yyyy-MM-dd" left="105" top="12" width="140" height="21" onkeyup="div_search_dt_standardDay_onkeyup"/>
+              <Edit id="ed_ordAgent" taborder="27" enable="true" left="360" top="12" width="80" height="21" tooltiptext="edit" onkeyup="div_search_ed_ordAgent_onkeyup"/>
+              <Button id="bt_ordAgent" taborder="28" cssclass="btn_WF_edtSch" left="419" top="12" width="20" height="21" onclick="div_search_bt_ordAgent_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="2" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="62" width="140" height="20"/>
+        <Static id="Static04" taborder="3" cssclass="Guide_color" visible="false" left="0" top="77" width="1147" height="10"/>
+        <Static id="Static00" taborder="4" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static02" taborder="5" cssclass="Guide_color" visible="false" left="0" top="365" width="1147" height="10"/>
+        <Static id="Static05" taborder="6" text="변경할 내용" cssclass="sta_WF_subTitle" left="0" top="350" width="140" height="20"/>
+        <Static id="Static06" taborder="7" cssclass="Guide_color" visible="false" left="0" top="333" width="1147" height="20"/>
+        <Static id="Static43" taborder="8" cssclass="sta_WF_detailLabel2" left="0" top="375" width="1117" height="31"/>
+        <Static id="st_ordAgent" taborder="9" text="판매처" cssclass="sta_WF_detailLabelP" left="0" top="375" width="130" height="31"/>
+        <Edit id="ed_agentNm" taborder="10" enable="false" left="215" top="380" width="153" height="21"/>
+        <Static id="Static07" taborder="11" cssclass="sta_WF_detailLabel2" left="0" top="405" width="1117" height="31"/>
+        <Static id="Static08" taborder="12" cssclass="sta_WF_detailLabel2" left="0" top="435" width="1117" height="31"/>
+        <Static id="Static09" taborder="13" cssclass="sta_WF_detailLabel2" left="0" top="465" width="1117" height="31"/>
+        <Static id="st_strDay" taborder="14" text="시작일자" cssclass="sta_WF_detailLabel" left="375" top="375" width="130" height="31"/>
+        <Static id="st_regNm" taborder="15" text="등록자" cssclass="sta_WF_detailLabel" left="750" top="375" width="130" height="31"/>
+        <Edit id="ed_regNm" taborder="16" enable="false" left="885" top="380" width="227" height="21"/>
+        <Static id="st_endDay" taborder="18" text="종료일자" cssclass="sta_WF_detailLabel" left="375" top="405" width="130" height="31"/>
+        <Static id="st_regDt" taborder="19" text="등록일자" cssclass="sta_WF_detailLabel" left="750" top="405" width="130" height="31"/>
+        <Static id="st_useYn" taborder="21" text="사용여부" cssclass="sta_WF_detailLabelP" left="375" top="435" width="130" height="31"/>
+        <Static id="st_chgNm" taborder="22" text="수정자" cssclass="sta_WF_detailLabel" left="750" top="435" width="130" height="31"/>
+        <Edit id="ed_chgNm" taborder="23" enable="false" left="885" top="440" width="227" height="21"/>
+        <Static id="st_chgDt" taborder="25" text="수정일자" cssclass="sta_WF_detailLabel" left="750" top="465" width="130" height="31"/>
+        <Combo id="cb_useYn" taborder="26" autoselect="true" innerdataset="ds_useYn" codecolumn="cd" datacolumn="cdNm" index="0" displayrowcount="5" enable="false" left="510" top="440" width="235" height="21"/>
+        <Edit id="ed_ordAgent" taborder="27" enable="false" left="135" top="380" width="80" height="21"/>
+        <Button id="bt_ordAgent" taborder="28" cssclass="btn_WF_edtSch" enable="false" left="195" top="380" width="20" height="21" onclick="bt_ordAgent_onclick"/>
+        <Calendar id="dt_strDay" taborder="31" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="510" top="380" width="235" height="21" onchanged="dt_strDay_onchanged"/>
+        <Calendar id="dt_endDay" taborder="32" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="510" top="410" width="235" height="21"/>
+        <Calendar id="dt_regDt" taborder="33" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="885" top="410" width="227" height="21"/>
+        <Calendar id="dt_chgDt" taborder="34" readonly="true" dateformat="yyyy-MM-dd" cssclass="readonly" enable="false" left="885" top="470" width="227" height="21"/>
+        <Button id="bt_insert" taborder="35" text="추가" onclick="bt_insert_onclick" left="1076" top="349" width="41" height="21"/>
+        <Button id="bt_delete" taborder="36" text="삭제" onclick="bt_delete_onclick" left="1029" top="349" width="41" height="21"/>
+        <Grid id="gr_list" taborder="37" binddataset="ds_list" useinputpanel="false" autofittype="col" onselectchanged="gr_list_onselectchanged" left="0" top="87" width="1117" height="246">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="140"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매처코드"/>
+                <Cell col="1" text="판매처명"/>
+                <Cell col="2" text="시작일자"/>
+                <Cell col="3" text="종료일자"/>
+                <Cell col="4" text="판매수수료"/>
+                <Cell col="5" text="충당금 설정금액"/>
+                <Cell col="6" text="사용여부"/>
+                <Cell col="7" text="등록자"/>
+                <Cell col="8" text="등록일자"/>
+                <Cell col="9" text="수정자"/>
+                <Cell col="10" text="수정일자"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ordAgent" tooltiptext="bind:ordAgent"/>
+                <Cell col="1" text="bind:agentNm" tooltiptext="bind:agentNm"/>
+                <Cell col="2" displaytype="date" text="bind:strDay" calendardisplaynulltype="none" tooltiptext="bind:strDay"/>
+                <Cell col="3" displaytype="date" text="bind:endDay" calendardisplaynulltype="none" tooltiptext="bind:endDay"/>
+                <Cell col="4" displaytype="number" style="align:right;" text="bind:slcmAmt" mask="###,###,###,##0" tooltiptext="bind:slcmAmt"/>
+                <Cell col="5" displaytype="number" style="align:right;" text="bind:apfdAmt" mask="###,###,###,##0" tooltiptext="bind:apfdAmt"/>
+                <Cell col="6" text="bind:useYn" combodataset="ds_useYn" combocodecol="cd" combodatacol="cdNm" tooltiptext="bind:useYn"/>
+                <Cell col="7" text="bind:regNm" tooltiptext="bind:regNm"/>
+                <Cell col="8" displaytype="date" text="bind:regDt" calendardisplaynulltype="none" tooltiptext="bind:regDt"/>
+                <Cell col="9" text="bind:chgNm" tooltiptext="bind:chgNm"/>
+                <Cell col="10" displaytype="date" text="bind:chgDt" calendardisplaynulltype="none" tooltiptext="bind:chgDt"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" text="expr:dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2" style="align:right;"/>
+                <Cell col="3" style="align:right;"/>
+                <Cell col="4" style="align:right;"/>
+                <Cell col="5" style="align:right;"/>
+                <Cell col="6" style="align:right;"/>
+                <Cell col="7" style="align:right;"/>
+                <Cell col="8" style="align:right;"/>
+                <Cell col="9" style="align:right;"/>
+                <Cell col="10" style="align:right;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="st_slcmAmt" taborder="38" text="판매수수료" cssclass="sta_WF_detailLabelP" left="0" top="405" width="130" height="31"/>
+        <Spin id="ed_slcmAmt" taborder="39" value="0" max="100000000" displaycomma="true" enable="false" left="135" top="410" width="235" height="21"/>
+        <Static id="st_apfdAmt" taborder="40" text="충당설정금액" cssclass="sta_WF_detailLabelP" left="0" top="435" width="130" height="31"/>
+        <Spin id="ed_apfdAmt" taborder="41" value="0" max="100000000" displaycomma="true" enable="false" left="135" top="440" width="235" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" useclientlayout="true" updatecontrol="true" canrowposchange="ds_list_canrowposchange">
+        <ColumnInfo>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="agentNm" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="slcmAmt" type="STRING" size="256"/>
+          <Column id="apfdAmt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="oldStrDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_save" useclientlayout="true" updatecontrol="true">
+        <ColumnInfo>
+          <Column id="ordAgent" type="STRING" size="256"/>
+          <Column id="agentNm" type="STRING" size="256"/>
+          <Column id="chrSeq" type="STRING" size="256"/>
+          <Column id="strDay" type="STRING" size="256"/>
+          <Column id="endDay" type="STRING" size="256"/>
+          <Column id="slcmAmt" type="STRING" size="256"/>
+          <Column id="apfdAmt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regNm" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgNm" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+          <Column id="oldStrDay" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_useYn" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_agentNm" propid="value" datasetid="ds_list" columnid="agentNm"/>
+      <BindItem id="item1" compid="ed_ordAgent" propid="value" datasetid="ds_list" columnid="ordAgent"/>
+      <BindItem id="item2" compid="dt_strDay" propid="value" datasetid="ds_list" columnid="strDay"/>
+      <BindItem id="item3" compid="ed_regNm" propid="value" datasetid="ds_list" columnid="regNm"/>
+      <BindItem id="item4" compid="ed_slcmAmt" propid="value" datasetid="ds_list" columnid="slcmAmt"/>
+      <BindItem id="item5" compid="dt_endDay" propid="value" datasetid="ds_list" columnid="endDay"/>
+      <BindItem id="item6" compid="dt_regDt" propid="value" datasetid="ds_list" columnid="regDt"/>
+      <BindItem id="item7" compid="ed_apfdAmt" propid="value" datasetid="ds_list" columnid="apfdAmt"/>
+      <BindItem id="item8" compid="cb_useYn" propid="value" datasetid="ds_list" columnid="useYn"/>
+      <BindItem id="item9" compid="ed_chgNm" propid="value" datasetid="ds_list" columnid="chgNm"/>
+      <BindItem id="item10" compid="dt_chgDt" propid="value" datasetid="ds_list" columnid="chgDt"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.p_arg 		= "RTRESalesCommMangOpenMall";
+this.toDay 		= "";
+this.addMonth 	= "";
+this.firstDay	= "";
+this.lastDay	= "";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+	if( strSvcId == "RTRESalesCommMangOpenMall" ) {
+	}
+	
+	if( strSvcId == "getToday" ) {
+		if( this.toDay != "" ){
+			this.div_search.dt_standardDay.set_value( this.toDay );
+			this.addMonth = Eco.date.addMonth( this.toDay, 1 );
+			this.firstDay  = Eco.date.getFirstDate( this.toDay );
+			this.lastDay   = this.addMonth.substr(0,4)+this.addMonth.substr(4,2)+Eco.date.getLastDayOfMonth(this.addMonth);
+		}
+	}
+	
+	if( strSvcId == "selectRTRESalesCommMangOpenMall" ){
+		var rowCt = this.ds_list.getRowCount();
+		if( rowCt == 0 ){
+			alert("조회된 데이터가 없습니다.");
+			this.gr_list.set_nodatatext("조회된 데이터가 없습니다.");
+		}else{
+			if( nvl(this.div_search.ed_ordAgent.value) != "" ){
+				this.div_search.ed_agentNm.set_value( this.ds_list.getColumn(0, "agentNm") );
+			}else{
+				this.div_search.ed_agentNm.set_value( "" );
+			}
+			this.gr_list_onselectchanged();
+		}
+	}
+	
+	if( strSvcId == "saveRTRESalesCommMangOpenMall" ){
+		alert(strErrorMsg);
+		if( nErrorCode < 0 ){
+		
+		}else{
+			this.fn_search();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTRESalesCommMangOpenMall_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_setButton();
+	this.fn_init();
+	this.fn_getToday();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_setButton = function(){
+	this.parent.setButton("E|C|S", this);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function(){
+	var sSvcID      	= "RTRESalesCommMangOpenMall";  
+	var sController   	= "rtms/re/RTRESalesCommMangOpenMall.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_useYn=mapDsUseYn ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getToday = function(){
+	var sSvcID      	= "getToday";  
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_search = function(){
+	var standardDay = nvl(this.div_search.dt_standardDay.value);
+	var ordAgent 	= nvl(this.div_search.ed_ordAgent.value);
+	
+	var sSvcID        	= "selectRTRESalesCommMangOpenMall";
+	var sController   	= "rtms/re/selectRTRESalesCommMangOpenMall.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list=outList";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	this.ds_list.clearData();
+	sArgs += Ex.util.setParam("standardDay", standardDay);
+	sArgs += Ex.util.setParam("ordAgent", ordAgent);
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_save = function(){
+	var flag 		= -1;
+	var saveFlag 	= -1;
+	var nCnt 		= this.ds_list.getRowCount();
+	var msg 		= " 값이 없습니다.";
+	
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType = this.ds_list.getRowType(i);
+		if( rowType == 2 || rowType == 4 ){
+			flag++;
+		}
+	}
+	
+	if( flag == -1 ){
+		alert("추가 또는 수정된 정보가 없습니다.");
+		return false;
+	}
+	
+	if( flag != 0 ){
+		alert("추가 또는 수정된 정보가 "+flag+"건 이므로 저장할 수가 없습니다.");
+		return false;
+	}
+	
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var rowType = this.ds_list.getRowType(i);
+		if( rowType == 2 || rowType == 4 ){
+			saveFlag = i;
+			break;
+		}
+	}
+	
+	var ordAgent	= nvl(this.ds_list.getColumn( saveFlag, "ordAgent" ));
+	var strDay  	= nvl(this.ds_list.getColumn( saveFlag, "strDay" ));
+	var endDay  	= nvl(this.ds_list.getColumn( saveFlag, "endDay" ));
+	var slcmAmt 	= nvl(this.ds_list.getColumn( saveFlag, "slcmAmt" ));
+	var apfdAmt 	= nvl(this.ds_list.getColumn( saveFlag, "apfdAmt" ));
+	var useYn   	= nvl(this.ds_list.getColumn( saveFlag, "useYn" ));
+	
+	var saveType	= this.ds_list.getRowType( saveFlag );
+	
+	if( ordAgent == "" ){ 		alert( "판매처"+msg );			this.ds_list.set_rowposition(saveFlag); return false;
+	}else if( strDay == "" ){ 	alert( "시작일자"+msg );		this.ds_list.set_rowposition(saveFlag);	return false;
+	}else if( endDay == "" ){ 	alert( "종료일자"+msg );		this.ds_list.set_rowposition(saveFlag);	return false;
+	}else if( slcmAmt == "" ){ 	alert( "판매수수료"+msg );		this.ds_list.set_rowposition(saveFlag);	return false;
+	}else if( apfdAmt == "" ){ 	alert( "충당설정금액"+msg );	this.ds_list.set_rowposition(saveFlag);	return false;
+	}else if( useYn == "" ){ 	alert( "사용유무"+msg );		this.ds_list.set_rowposition(saveFlag);	return false;
+	}else if( (saveType == 2) && ( (strDay < this.firstDay) || (strDay > this.lastDay) ) ){
+		alert("현재일자 기준으로 1일부터 익월말일까지 입력가능합니다.");
+		this.ds_list.set_rowposition(saveFlag);
+		return false;
+	}else if( (saveType == 4) && ( (strDay < this.firstDay) || (strDay > this.lastDay) ) ){//(oldStrDay < this.firstDay) ||
+		alert("기존 내역의 값이 현재월보다 작은경우 변경 불가하며 변경하는 값은 당월 ~ 익월까지 입력가능합니다.");
+		this.ds_list.set_rowposition(saveFlag);
+		return false;
+	}else{
+		this.ds_save.clearData();
+		var saveAddRow  = this.ds_save.addRow();
+		var copy 		= this.ds_save.copyRow( saveAddRow, this.ds_list, saveFlag );
+	
+		if( copy ){
+			this.ds_save.set_updatecontrol(false);
+			this.ds_save.setRowType( saveAddRow, saveType );
+			this.ds_save.set_updatecontrol(true);
+			
+			if( confirm( "저장하시겠습니까?" ) ){
+				var sSvcID        	= "saveRTRESalesCommMangOpenMall";                
+				var sController   	= "rtms/re/saveRTRESalesCommMangOpenMall.do";
+				var sInDatasets   	= "";
+				var sOutDatasets  	= "";
+				var sArgs 			= "";
+				sInDatasets   		= "input=ds_save:U";
+				sOutDatasets  		= "";
+				var fn_callBack		= "fn_callBack";		
+				Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+			}
+		}else{
+			alert("SYSTEM ERROR");
+			return false;
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_excel = function(){
+	Ex.core.exportExcel(this, this.gr_list);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_ordAgent_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "selectRTRESalesCommMangOpenMall"};
+	Ex.core.popup(this,"판매인조회","comm::RTCOMMOrdAgentList_pop.xfdl",args, "modaless=false");
+}
+this.retrunSelect = function(res){
+	this.div_search.ed_ordAgent.set_value(res[0]);
+	this.div_search.ed_agentNm.set_value(res[1]);
+	
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_ordAgent_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : "insertRTRESalesCommMangOpenMall"};
+	Ex.core.popup(this,"판매인조회","comm::RTCOMMOrdAgentList_pop.xfdl",args, "modaless=false");
+}
+this.retrunInsert = function(res){
+	this.ed_ordAgent.set_value(res[0]);
+	this.ed_agentNm.set_value(res[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_delete_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var deleteRowFlag = false;
+	var nCnt = this.ds_list.getRowCount();
+	
+	if( nCnt == 0 ){
+		alert("삭제할 정보가 없습니다.");
+	}else{
+		var nRow = this.ds_list.rowposition;
+		if( this.ds_list.getRowType(nRow) == 2 ){
+			if( confirm( "삭제하시겠습니까?" ) ){
+				this.ds_list.deleteRow(nRow);
+			}
+		}else{
+			alert("해당정보는 삭제할 수가 없습니다.");
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.bt_insert_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var insertRowFlag = false;
+	var nCnt = this.ds_list.getRowCount();
+	
+	if( nCnt == 0 ){
+		insertRowFlag = true;
+	}else{
+		for( var i = 0 ; i < nCnt ;  i++ ){
+			var type = this.ds_list.getRowType(i);
+			if( (type == 2) || (type == 4) ){
+				alert("추가 또는 수정된 정보가 있으므로 추가할 수 없습니다.");
+				insertRowFlag = false;
+				break;
+			}else{
+				insertRowFlag = true;
+			}
+		}
+	}
+	
+	if( insertRowFlag ){
+		var addRow = this.ds_list.addRow();
+		this.ds_list.setColumn( addRow, "useYn", "Y" );
+		this.ds_list.setColumn( addRow, "endDay", "99991231" );
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.gr_list_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo){
+	var strDay = nvl(this.ds_list.getColumn( this.ds_list.rowposition, "strDay" ));
+	var endDay = nvl(this.ds_list.getColumn( this.ds_list.rowposition, "endDay" ));
+	this.oldStrDay = strDay;
+	
+	if( this.ds_list.getRowType( this.ds_list.rowposition ) == 2 ){
+		this.cb_useYn.set_enable(false);
+		this.bt_ordAgent.set_enable(true);
+		
+		this.dt_strDay.set_enable(true);
+		this.ed_slcmAmt.set_enable(true);
+		this.ed_apfdAmt.set_enable(true);
+	}else{
+		this.bt_ordAgent.set_enable(false);
+		
+		if( strDay != "" ){
+			if( (strDay.substr(0,6) < this.toDay.substr(0,6)) || (endDay != "99991231") ){
+				this.cb_useYn.set_enable(false);
+				
+				this.dt_strDay.set_enable(false);
+				this.ed_slcmAmt.set_enable(false);
+				this.ed_apfdAmt.set_enable(false);
+			}else{
+				this.cb_useYn.set_enable(true);
+				
+				this.dt_strDay.set_enable(true);
+				this.ed_slcmAmt.set_enable(true);
+				this.ed_apfdAmt.set_enable(true);
+			}
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_dt_standardDay_onkeyup = function(obj:Calendar, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_ed_ordAgent_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.ds_list_canrowposchange = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo){
+	var nCnt = this.ds_list.getRowCount();
+	var flag = false;
+	for( var i = 0 ; i < nCnt ; i++ ){
+		var stat = this.ds_list.getRowType(i);
+		if( stat == 2 || stat == 4 ){
+			alert("추가 또는 수정된 정보가 있습니다.\n저장 후 진행하세요.");
+			flag = false;
+			break;
+		}else{
+			flag = true;
+		}
+	}
+	return flag;
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.dt_strDay_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo){
+	var nRow 	 	= this.ds_list.rowposition;
+	var saveType 	= this.ds_list.getRowType( nRow );
+	var returnFlag 	= true;
+	if( (saveType == 2) && ( (e.postvalue < this.firstDay) || (e.postvalue > this.lastDay) ) ){
+		alert("현재일자 기준으로 1일부터 익월말일까지 입력가능합니다.");
+		returnFlag = false;
+	}
+	
+	if( (saveType == 4) && ( (e.prevalue < this.firstDay) || (this.firstDay > e.postvalue) || (e.postvalue > this.lastDay) ) ){
+		alert("기존 내역의 값이 현재월보다 작은경우 변경 불가하며 변경하는 값은 당월 ~ 익월까지 입력가능합니다.");
+		returnFlag = false;
+	}
+	
+	if(returnFlag){
+		this.ds_list.setColumn( nRow, "oldStrDay", this.ds_list.getColumn(nRow, "strDay") );
+	}else{
+		this.dt_strDay.set_value(e.prevalue);
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

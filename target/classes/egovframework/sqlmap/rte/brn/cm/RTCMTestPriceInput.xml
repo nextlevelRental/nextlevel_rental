@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="testprice">
+	
+	<resultMap id="priceResultMap" class="java.util.HashMap">
+		<result property="priceCd"  			column="PRICE_CD" />
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="periodCd"  			column="PERIOD_CD" />
+		<result property="cntCd"  				column="CNT_CD" />
+		<result property="regiCd"  				column="REGI_CD" />
+		<result property="strDay"  				column="STR_DAY" />
+		<result property="endDay"  				column="END_DAY" />
+		<result property="seq"  				column="SEQ" />
+		<result property="amt"  				column="AMT" />
+		<result property="useYn"  				column="USE_YN" />
+		<result property="regId"  				column="REG_ID" />
+		<result property="regDt"  				column="REG_DT" />
+		<result property="chgId"  				column="CHG_ID" />
+		<result property="chgDt" 				column="CHG_DT" />
+	</resultMap>
+       
+	<parameterMap id="testPriceParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="priceResultMap" />
+		<parameter property="priceCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="matCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regiCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="strDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seq"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="amt"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="testprice.listPriceInfo" parameterMap="testPriceParam">
+		{call Pkg_Ztsd0008.p_sZtsd0008(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDZtsd0008_I" class="java.util.Map">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="priceCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="matCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="periodCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="cntCd"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regiCd" 		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="strDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="endDay"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="seq"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="amt"  			mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"  		mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="testprice.savePriceInfo" parameterMap="p_IUDZtsd0008_I">
+		{call Pkg_Ztsd0008.p_IUDZtsd0008(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	
+
+	
+</sqlMap>

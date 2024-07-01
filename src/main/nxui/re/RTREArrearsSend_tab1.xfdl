@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREArrearsSend_tab1" classname="test_form" left="0" top="0" width="1147" height="496" titletext="당월연체내역집계" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="21" cssclass="sta_WF_detailLabel2" left="10" top="101" width="1102" height="31"/>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static00" taborder="14" cssclass="Guide_color" visible="false" left="0" top="59" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static02" taborder="16" cssclass="Guide_color" visible="false" left="0" top="90" right="25" height="10" style="background:aqua;color:#333333ff;"/>
+        <Div id="div_search" taborder="17" text="Div00" left="10" top="10" width="1102" height="49" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="8" text="기준일자" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static06" taborder="10" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="78"/>
+              <Static id="Static44" taborder="11" text="5 px" visible="false" left="81" top="77" width="47" height="21" style="color:red;"/>
+              <Static id="Static24" taborder="18" cssclass="Guide_color" visible="false" left="231" top="0" width="30" height="78"/>
+              <Calendar id="cal_delyDay" taborder="0" dateformat="yyyy-MM-dd" left="131" top="12" width="100" height="21"/>
+              <Static id="Static23" taborder="27" cssclass="Guide_color" visible="false" left="1" top="33" height="12" width="1117"/>
+              <Static id="Static22" taborder="28" cssclass="Guide_color" visible="false" left="1" top="0" height="12" width="1117"/>
+              <Static id="Static00" taborder="32" cssclass="Guide_color" visible="false" left="495" top="0" width="30" height="78"/>
+              <Static id="st_searchCondition00" taborder="33" text="CMS집계일자" cssclass="sta_WF_schTitle" left="260" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="st_searchCondition01" taborder="35" text="카드집계일자" cssclass="sta_WF_schTitle" left="526" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="37" cssclass="Guide_color" visible="false" left="759" top="0" width="30" height="78"/>
+              <Static id="st_searchCondition02" taborder="38" text="청구일자" cssclass="sta_WF_schTitle" left="790" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_cmsDay" taborder="39" dateformat="yyyy-MM-dd" left="395" top="12" width="100" height="21"/>
+              <Calendar id="cal_crdDay" taborder="40" dateformat="yyyy-MM-dd" left="659" top="12" width="100" height="21"/>
+              <Combo id="cb_payDd" taborder="41" left="84.7%" top="12" right="8.11%" height="20" innerdataset="@ds_R005" codecolumn="cd" datacolumn="cdNm"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static06" taborder="18" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="76" width="84" height="20"/>
+        <Static id="Static19" taborder="19" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="101" width="130" height="31"/>
+        <Edit id="edt_procStatus" taborder="20" enable="false" left="144" top="106" width="963" height="21"/>
+        <Static id="Static03" taborder="22" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="0" width="10" height="459" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static04" taborder="23" cssclass="Guide_color" visible="false" left="8" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="delyDay" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="cashNamt" type="STRING" size="256"/>
+          <Column id="cashVamt" type="STRING" size="256"/>
+          <Column id="matNo" type="STRING" size="0"/>
+          <Column id="matNm" type="STRING" size="0"/>
+          <Column id="carNo" type="STRING" size="0"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payMthdNm" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="0"/>
+          <Column id="recpTp" type="STRING" size="256"/>
+          <Column id="recpTpNm" type="STRING" size="256"/>
+          <Column id="apprScnt" type="STRING" size="256"/>
+          <Column id="apprAmt" type="STRING" size="256"/>
+          <Column id="agency" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="agencyTel" type="STRING" size="256"/>
+          <Column id="periodCd" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R005" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">5일</Col>
+            <Col id="cd">05</Col>
+          </Row>
+          <Row>
+            <Col id="cd">15</Col>
+            <Col id="cdNm">15일</Col>
+          </Row>
+          <Row>
+            <Col id="cd">25</Col>
+            <Col id="cdNm">25일</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.toDay 	= ""; 	//현재날짜
+this.toHour = "";	//현재시간
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){ 
+	if (nErrorCode < 0)	{
+		this.edt_procStatus.set_value(strErrorMsg);
+		return;
+		//return Ex.core.comMsg("alert",strErrorMsg);		
+	}
+	
+	switch (strSvcId){
+		case "getDate":
+			//var sFirstDay = Eco.date.getFirstDate(this.toDay);	//해당일짜의 1일 가져오기
+			this.div_search.cal_delyDay.set_value(this.toDay);
+			this.div_search.cal_cmsDay.set_value(this.toDay);
+			this.div_search.cal_crdDay.set_value(this.toDay);
+			break;
+		case "arrSendAggregate":
+			if(nErrorCode == 0){
+				this.edt_procStatus.set_value("당월연체대상 집계가 완료되었습니다.");
+			}
+			break;
+		default:
+			break;
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj); 		
+	this.fn_init();
+} 
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_init = function() {
+	this.get_date();
+	this.fn_initBtn();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.get_date = function() {
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.parent.parent.setButton("AG",this);
+	this.edt_procStatus.set_value("");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+/**
+ * 공통코드 조회
+ */
+this.fn_getCommCodeInfo = function() {
+	var sSvcID		 = "getCommCodeInfo";
+	var sController	 = "ntrms/listCommInfo.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_R005=outputR005";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	sArgs += Ex.util.setParam("cdGrpCd"		, "R005");		//공통코드	
+	sArgs += Ex.util.setParam("useYn"		, "Y");			//사용여부		
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_aggregate = function(){
+	if(this.fn_getValid()) {
+		var sSvcID      	= "arrSendAggregate";  
+		var sController   	= "ntrms/re/arrSendAggregate.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("delyDay"		, nvl(this.div_search.cal_delyDay.value));		//기준일자		
+		sArgs += Ex.util.setParam("rcmsDay"		, nvl(this.div_search.cal_cmsDay.value));		//CMS집계일자		
+		sArgs += Ex.util.setParam("rcrdDay"		, nvl(this.div_search.cal_crdDay.value));		//카드집계일자		
+		sArgs += Ex.util.setParam("payDd"		, nvl(this.div_search.cb_payDd.value));		    //청구일자		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+}	
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_getValid = function(){
+	if(nvl(this.div_search.cal_delyDay.value) == "") {
+		alert('기준일자를 입력하세요');
+		this.div_search.cal_delyDay.setFocus();
+		return false;
+	}
+	if(nvl(this.div_search.cal_cmsDay.value) == "") {
+		alert('기준일자를 입력하세요');
+		this.div_search.cal_cmdDay.setFocus();
+		return false;
+	}
+	if(nvl(this.div_search.cal_crdDay.value) == "") {
+		alert('기준일자를 입력하세요');
+		this.div_search.cal_crdDay.setFocus();
+		return false;
+	}
+	if(nvl(this.div_search.cb_payDd.value) == "") {
+		alert('기준일자를 입력하세요');
+		this.div_search.cb_payDd.setFocus();
+		return false;
+	}
+	return true;
+}
+]]></Script>
+  </Form>
+</FDL>

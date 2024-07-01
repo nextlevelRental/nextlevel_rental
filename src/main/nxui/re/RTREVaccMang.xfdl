@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="frm_RTREVaccMang" classname="test_form" left="0" top="0" width="1147" height="496" titletext="가상계좌 관리" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_vaccMangList" taborder="1" binddataset="ds_vaccMangList" useinputpanel="false" left="0" top="86" width="1122" height="410">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="은행명"/>
+                <Cell col="1" text="총건수"/>
+                <Cell col="2" text="발급건수"/>
+                <Cell col="3" text="활성건수"/>
+                <Cell col="4" text="기간만료건수"/>
+                <Cell col="5" text="발급가능건수"/>
+              </Band>
+              <Band id="body">
+                <Cell style="align:center middle;" text="bind:bankNm"/>
+                <Cell col="1" displaytype="number" style="align:right middle;" text="bind:totlCnt" mask="###,###,###,##0"/>
+                <Cell col="2" displaytype="number" style="align:right middle;" text="bind:isncCnt" mask="###,###,###,##0"/>
+                <Cell col="3" displaytype="number" style="align:right middle;" text="bind:actvCnt" mask="###,###,###,##0"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="bind:prdExprCnt" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="bind:isncAvlCnt" mask="###,###,###,##0"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" displaytype="number" style="align:right middle;" text="expr:dataset.getSum(&quot;totlCnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="2" displaytype="number" style="align:right middle;" text="expr:dataset.getSum(&quot;isncCnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="3" displaytype="number" style="align:right middle;" text="expr:dataset.getSum(&quot;actvCnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="4" displaytype="number" style="align:right middle;" text="expr:dataset.getSum(&quot;prdExprCnt&quot;)" mask="###,###,###,##0"/>
+                <Cell col="5" displaytype="number" style="align:right middle;" text="expr:dataset.getSum(&quot;isncAvlCnt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="61" width="81" height="20"/>
+        <Div id="div_search" taborder="0" text="Div00" left="0" top="0" width="1122" height="45" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_bank" taborder="22" text="은행" cssclass="sta_WF_schTitle" left="20" top="10" width="78" height="21"/>
+              <Combo id="cbo_bank" taborder="1" innerdataset="@ds_R054" codecolumn="cd" datacolumn="cdNm" left="98" top="10" width="140" height="21" domainId="nexa.name;nexa.code"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_arrange" taborder="16" text="정리" cssclass="btn_WF_module" left="1077" top="60" width="45" height="22" onclick="btn_arrange_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_vaccMangList" firenextcount="0" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="bankCd" type="STRING" size="256" description="은행코드"/>
+          <Column id="bankNm" type="STRING" size="256" description="은행명"/>
+          <Column id="totlCnt" type="BIGDECIMAL" size="256" description="총건수"/>
+          <Column id="isncCnt" type="BIGDECIMAL" size="256" description="발급건수"/>
+          <Column id="actvCnt" type="BIGDECIMAL" size="256" description="활성건수"/>
+          <Column id="prdExprCnt" type="BIGDECIMAL" size="256" description="기간만료건수"/>
+          <Column id="isncAvlCnt" type="BIGDECIMAL" size="256" description="발급가능건수"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R054" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 수금관리 > 가상계좌 관리 > 가상계좌 관리
+ * 02. 그룹명		: RTREVaccMang.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2018-11-06
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	:
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2018-11-06		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay	= "";
+this.bankCd	= "";
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.fn_getCodeInfo();
+	
+	/* 현재일자 */
+	this.fn_getDate();
+	
+	/* 공통버튼 */
+	this.parent.setButton("S", this);
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+/**
+ * 공통코드 조회
+ */
+this.fn_getCodeInfo = function() {
+	var sSvcID		 = "getVaccMangCode";
+	var sController	 = "ntrms/re/getVaccMangCode.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_R054=outputR054";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 현재일자 조회
+ */
+this.fn_getDate = function() {
+	var sSvcID		 = "getDate";
+	var sController	 = "/rtms/comm/getToday.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 가상계좌 현황 조회
+ */
+this.fn_retrieveVaccMangList = function() {
+	var sBank = this.div_search.cbo_bank.value;
+	
+	this.ds_vaccMangList.clearData();
+	
+	var sSvcID		 = "retrieveVaccMangList";
+	var sController	 = "ntrms/re/retrieveVaccMangList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_vaccMangList=output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("bank", nvl(sBank));
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 기간만료계좌 정리
+ */
+this.fn_prdExprArngm = function() {
+	if(this.ds_vaccMangList.getRowCount() == 0) {
+		this.alert("조회된 데이터가 없습니다.");
+		return;
+	}
+	
+	var sSvcID		 = "prdExprArngm";
+	var sController	 = "ntrms/re/prdExprArngm.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("bank", this.bankCd);
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/***********************************************************************************
+ * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	switch(strSvcId) {
+		case "getDate":
+			break;
+		case "getVaccMangCode":
+			this.div_search.cbo_bank.set_index(0);
+			break;
+		case "retrieveVaccMangList":
+			if(this.ds_vaccMangList.getRowcount() == 0) {
+				this.grd_vaccMangList.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			
+			this.bankCd = this.div_search.cbo_bank.value;
+			break;
+		case "prdExprArngm":
+			this.alert(strErrorMsg);
+			this.fn_retrieveVaccMangList();
+			break;
+		default:
+			break;
+	}
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 조회
+ */
+this.fn_search = function() {
+	this.fn_retrieveVaccMangList();
+}
+
+this.btn_arrange_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	this.fn_prdExprArngm();
+}]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="cdGrp">
+	<resultMap id="procResultMapCdGrp" class="java.util.HashMap">
+		<result property="cdGrpCd" 		column="CD_GRP_CD" />
+		<result property="cdGrpNm" 		column="CD_GRP_NM" />
+		<result property="cdGrpDesc" 	column="CD_GRP_DESC" />
+		<result property="mdlCd"	 	column="MDL_CD" />
+		<result property="useYn" 		column="USE_YN" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="parametersCdGrp" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMapCdGrp" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpNm" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="cdGrp.listCdGrp" parameterMap="parametersCdGrp">
+		{call Pkg_Rtcm0050.p_sRtcm0050(?, ?, ?)}
+	</procedure>
+
+
+
+	<resultMap id="procResultMapCdGrpChild" class="java.util.HashMap">
+		<result property="cdGrpCd" 		column="CD_GRP_CD" />
+		<result property="cdGrpNm" 		column="CD_GRP_NM" />
+		<result property="cd" 			column="CD" />
+		<result property="cdNm" 		column="CD_NM" />
+		<result property="cdDesc" 		column="CD_DESC" />
+		<result property="orderPt"	 	column="ORDER_PT" />
+		<result property="useYn"	 	column="USE_YN" />
+		<result property="useYnNm" 		column="REMARK" />
+		<result property="remark" 		column="REMARK" />
+		<result property="regId" 		column="REG_ID" />
+		<result property="regDt" 		column="REG_DT" />
+		<result property="chgId" 		column="CHG_ID" />
+		<result property="chgDt" 		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="parametersCdGrpChild" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMapCdGrpChild" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdNm" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="cdGrp.listCdGrpChild" parameterMap="parametersCdGrpChild">
+		{call Pkg_Rtcm0051.p_sRtcm0051(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap id="cdGrpCdOverlapConfirmMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultId" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure  id="cdGrp.cdGrpCdOverlapConfirm" resultClass="java.util.Map" parameterMap="cdGrpCdOverlapConfirmMap">
+		{call ? := Pkg_Rtcm0050.f_sRtcm0050Count ( ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcm0050">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpDesc" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mdlCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cdGrp.saveCdGrp" parameterMap="p_IUDRtcm0050">
+		{call Pkg_Rtcm0050.p_IUDRtcm0050(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcm0051">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdGrpCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdNm" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdDesc" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="orderPt" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="remark" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cdGrp.saveCdGrpChild" parameterMap="p_IUDRtcm0051">
+		{call Pkg_Rtcm0051.p_IUDRtcm0051(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<parameterMap id="paramCheckCd" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultCheckCd" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="resultCheckCd" class="java.util.HashMap"/>
+	<procedure  id="cdGrp.checkCd" resultClass="java.util.Map" parameterMap="paramCheckCd">
+		{call ? := Pkg_Rtcm0051.f_sRtcm0051Count ( ?, ? )}
+	</procedure>
+</sqlMap>

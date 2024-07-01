@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="campReg">
+	<resultMap id="productResultMap" class="java.util.HashMap">
+		<result property="petternCd"  			column="PETTERN_CD" />
+		<result property="pettrenNm"  			column="PETTERN_NM" />
+		<result property="sizeNm"  				column="SIZE_NM" />
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="wheelQty"  			column="WHEEL_QTY" />
+		<result property="weelLimitQty"  		column="WHEEL_LIMIT_QTY" />
+		<result property="modelCd"  			column="MODEL_CD" />
+		<result property="modelNm"  			column="MODEL_NM" />
+		<result property="contentsCd"  			column="CONTENTS_CD" />
+		<result property="contentsNm"  			column="CONTENTS_NM" />
+		<result property="frCd"  				column="FR_CD" />
+		<result property="frNm"  				column="FR_NM" />
+		<result property="modelFullNm"  		column="MODEL_FULL_NM" />
+		<result property="sectionWidth"  		column="SECTION_WIDTH" />
+		<result property="aspectRatio"  		column="ASPECT_RATIO" />
+		<result property="wheelInches"  		column="WHEEL_INCHES" />
+		<result property="plyRating"  			column="PLY_RATING" />
+		<result property="demmndQty"  			column="DEMEND_QTY" />
+		<result property="pgCd"  				column="PG_CD" />
+		<result property="seasonCd"  			column="SEASON_CD" />
+		<result property="classSd"  			column="CLASS_CD" />
+		<result property="makerCd"  			column="MAKER_CD" />
+		<result property="makerNm"  			column="MAKER_NM" />  
+	</resultMap>
+    <parameterMap id="listParam" class="java.util.Map">             
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="productResultMap" />
+		<parameter property="matNm"  	jdbcType="VARCHAR" mode="IN" /> <!-- 상품명 -->
+	</parameterMap> 
+	<procedure id="campReg.listProduct" parameterMap="listParam">
+		{call Pkg_Rtsd0005.p_sRtsd0005PopupCamp(?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="campRegResultMap" class="java.util.HashMap">
+		<result property="dcTp"   column="DC_TP" />	   <!-- 할인유형        -->
+		<result property="dcTpNm" column="DC_TP_NM" /> <!-- 할인유형 Nm   -->
+		<result property="matCd"  column="MAT_CD" />   <!-- 상품코드        -->
+		<result property="matNm"  column="MAT_NM" />   <!-- 상품명	   -->
+		<result property="strDay" column="STR_DAY" />  <!-- 가격적용 시작일 -->
+		<result property="endDay" column="END_DAY" />  <!-- 가격적용 완료일 -->
+		<result property="dcRate" column="DC_RATE" />  <!-- 할인율          -->
+		<result property="dcAmt"  column="DC_AMT" />   <!-- 할인금액        -->
+		<result property="useYn"  column="USE_YN" />   <!-- 사용여부        -->
+		<result property="regId"  column="REG_ID" />   <!-- 등록자 ID    -->
+		<result property="regDt"  column="REG_DT" />   <!-- 등록일          -->
+		<result property="chgId"  column="CHG_ID" />   <!-- 변경자 ID    -->
+		<result property="chgDt"  column="CHG_DT" />   <!-- 변경일          -->
+	</resultMap>
+	 <parameterMap id="listParam2" class="java.util.Map">             
+		<parameter property="vcursor"  	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="campRegResultMap" />
+		<parameter property="dcTp"  	jdbcType="VARCHAR" mode="IN" /> <!-- 할인유형 -->
+		<parameter property="matCd"  	jdbcType="VARCHAR" mode="IN" /> <!-- 상품코드 -->
+		<parameter property="strDay"  	jdbcType="VARCHAR" mode="IN" /> <!-- 기준일 -->
+	</parameterMap> 
+	<procedure id="campReg.listCampReg" parameterMap="listParam2">
+		call
+		Pkg_Rtsd0009.p_sRtsd0009(?, ?, ?, ?)
+	</procedure>
+	
+	
+	
+	<!-- 해당상품으로 등록된 계약 건수 count -->
+	<parameterMap id="f_sRtsd0009OrdCount" class="java.util.Map">
+	<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultRegInfoCount" />
+	<parameter property="matCd" 	jdbcType="VARCHAR" mode="IN" /> <!-- 상품코드 -->
+	<parameter property="strDay" 	jdbcType="VARCHAR" mode="IN" /> <!-- 가격적용 시작일 -->
+	<parameter property="endDay" 	jdbcType="VARCHAR" mode="IN" /> <!-- 가격정용 완료일 -->
+	</parameterMap>
+	<resultMap id="resultRegInfoCount" class="java.util.HashMap"/>
+	<procedure  id="campReg.countRegInfo" resultClass="java.util.Map" parameterMap="f_sRtsd0009OrdCount">
+		{call ? := Pkg_Rtsd0009.f_sRtsd0009OrdCount (?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!--  동일상품, 적용일자가 겹치는 할인내역 건수 count -->
+	<parameterMap id="f_sRtsd0009NextCount" class="java.util.Map">
+	<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultNextCount" />
+	<parameter property="dcTp" 		jdbcType="VARCHAR" mode="IN" /> <!-- 할인유형 -->
+	<parameter property="matCd" 	jdbcType="VARCHAR" mode="IN" /> <!-- 상품코드 -->
+	<parameter property="strDay" 	jdbcType="VARCHAR" mode="IN" /> <!-- 가격정용 시작일 -->
+	</parameterMap>
+	<resultMap id="resultNextCount" class="java.util.HashMap"/>
+	<procedure  id="campReg.countNext" resultClass="java.util.Map" parameterMap="f_sRtsd0009NextCount">
+		{call ? := Pkg_Rtsd0009.f_sRtsd0009NextCount (?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!-- 캠페인 등록 -->
+	<parameterMap id="p_IUDRtsd0009" class="java.util.Map">             
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) --> 
+		<parameter property="dcTp"  		jdbcType="VARCHAR" mode="IN" /> <!-- 할인유형        --> 
+		<parameter property="matCd"  		jdbcType="VARCHAR" mode="IN" /> <!-- 상품코드        --> 
+		<parameter property="strDay"  		jdbcType="VARCHAR" mode="IN" /> <!-- 가격적용 시작일 --> 
+		<parameter property="endDay"  		jdbcType="VARCHAR" mode="IN" /> <!-- 가격적용 완료일 --> 
+		<parameter property="dcRate"  		jdbcType="VARCHAR" mode="IN" /> <!-- 할인율          --> 
+		<parameter property="dcAmt"  		jdbcType="VARCHAR" mode="IN" /> <!-- 할인금액        --> 
+		<parameter property="useYn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부        --> 
+		<parameter property="regId"  		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID    -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	<procedure id="campReg.saveCampRegInfo" parameterMap="p_IUDRtsd0009">
+		{call Pkg_Rtsd0009.p_IUDRtsd0009(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!--  동일건 이전 데이터 종료일자를 신규건 시작일 -1로 업데이트 -->
+	<parameterMap id="f_UpdateRtsd0009Before" class="java.util.Map">
+	<parameter property="result" 	jdbcType="NUMERIC" mode="OUT" resultMap="resultBeforeCount" />
+	<parameter property="dcTp" 		jdbcType="VARCHAR" mode="IN" /> <!-- 할인유형 -->
+	<parameter property="matCd" 	jdbcType="VARCHAR" mode="IN" /> <!-- 상품코드 -->
+	<parameter property="strDay" 	jdbcType="VARCHAR" mode="IN" /> <!-- 가격정용 시작일 -->
+	<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID -->
+	<parameter property="eText" 	jdbcType="VARCHAR" mode="OUT" /> <!-- error text -->
+	</parameterMap>
+	<resultMap id="resultBeforeCount" class="java.util.HashMap"/>
+	<procedure  id="campReg.countBeFore" resultClass="java.util.Map" parameterMap="f_UpdateRtsd0009Before">
+		{call ? := Pkg_Rtsd0009.f_UpdateRtsd0009Before (?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0005PopupCamp2" class="java.util.HashMap">
+		<result property="matCd"  				column="MAT_CD" />
+		<result property="matNm"  				column="MAT_NM" />
+		<result property="petternCd"  			column="PETTERN_CD" />
+		<result property="sectionWidth"  		column="SECTION_WIDTH" />
+		<result property="aspectRatio"  		column="ASPECT_RATIO" />
+		<result property="wheelInches"  		column="WHEEL_INCHES" />
+		<result property="plyRating"  			column="PLY_RATING" />
+		<result property="demmndQty"  			column="DEMEND_QTY" />
+		<result property="pgCd"  				column="PG_CD" />
+		<result property="seasonCd"  			column="SEASON_CD" />
+		<result property="pettrenNm"  			column="PETTERN_NM" />
+		<result property="sizeNm"  				column="SIZE_NM" />
+	</resultMap>
+    <parameterMap id="p_sRtsd0005PopupCamp2" class="java.util.Map">             
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0005PopupCamp2" />
+		<parameter property="matNm"  	jdbcType="VARCHAR" mode="IN" /> <!-- 상품명 -->
+	</parameterMap> 
+	<procedure id="campReg.listProduct2" parameterMap="p_sRtsd0005PopupCamp2">
+		{call Pkg_Rtsd0005.p_sRtsd0005PopupCamp2(?, ?)}
+	</procedure>
+</sqlMap>

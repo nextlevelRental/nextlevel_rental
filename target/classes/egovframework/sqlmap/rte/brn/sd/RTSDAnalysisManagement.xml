@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rTSDAnalysisManagement">
+	<!--▼01.연령별▼-->
+	<resultMap id="resultCursor01" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼02.성별▼-->
+	<resultMap id="resultCursor02" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼03.대리점 지역별▼-->
+	<resultMap id="resultCursor03" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼04.계약기간별▼-->
+	<resultMap id="resultCursor04" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼05.on/off별▼-->
+	<resultMap id="resultCursor05" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼06.채널별▼-->
+	<resultMap id="resultCursor06" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼07.패턴별▼-->
+	<resultMap id="resultCursor07" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼08.인치별▼-->
+	<resultMap id="resultCursor08" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<!--▼09. 교체유입 제조사▼-->
+	<resultMap id="resultCursor09" class="java.util.HashMap">
+		<result property="groupCd"  column="GROUP_CD" />
+		<result property="groupNm"  column="GROUP_NM" />
+		<result property="cnt"   	column="CNT" />
+		<result property="ratio"   	column="RATIO" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0104OrderAnalysisNew" class="java.util.Map">             
+		<parameter property="refCursor01" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor01" />
+		<parameter property="refCursor02" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor02" />
+		<parameter property="refCursor03" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor03" />
+		<parameter property="refCursor04" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor04" />
+		<parameter property="refCursor05" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor05" />
+		<parameter property="refCursor06" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor06" />
+		<parameter property="refCursor07" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor07" />
+		<parameter property="refCursor08" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor08" />
+		<parameter property="refCursor09" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor09" />
+		<parameter property="fDay"    	  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eDay"    	  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="disGb"   	  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="valGb"   	  jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDAnalysisManagement.selectRTSDRendalAnalysisStatus" parameterMap="p_sRtsd0104OrderAnalysisNew">
+		{call Pkg_Rtsd0104.p_sRtsd0104OrderAnalysisNew(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<!--▼10. 계정현황▼-->
+	<resultMap id="resultCursor10" class="java.util.HashMap">
+		<result property="ym"	 	 column="YM" />
+		<result property="joinCnt"	 column="JOIN_CNT" />
+		<result property="leaveCnt"  column="LEAVE_CNT" />
+		<result property="accrueCnt" column="ACCRUE_CNT" />
+	</resultMap>
+	<parameterMap id="pSRtsd0108RentalAnalysisAcc" class="java.util.Map">
+		<parameter property="refCursor10"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCursor10" />
+		<parameter property="fDayOuter"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eDay"			jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDAnalysisManagement.selectRTSDRendalAnalysisStatusOuter" parameterMap="pSRtsd0108RentalAnalysisAcc">
+		{call Pkg_Rtsd0108.p_sRtsd0108RentalAnalysisAcc(?, ?, ?)}
+	</procedure>
+	
+	
+	<resultMap id="r_sRtsd0104OrderMonthAnalysis" class="java.util.HashMap">
+		<result property="dt" 	column="DT" />
+		<result property="mon" 	column="MON" />
+		<result property="tue" 	column="TUE" />
+		<result property="wed" 	column="WED" />
+		<result property="thu" 	column="THU" />
+		<result property="fri" 	column="FRI" />
+		<result property="sat" 	column="SAT" />
+		<result property="sun" 	column="SUN" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0104OrderMonthAnalysis" class="java.util.Map">             
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0104OrderMonthAnalysis" />
+		<parameter property="fDay"    	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eDay"    	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="disGb"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="valGb"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="timGb"   	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd"   	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap> 
+	<procedure id="rTSDAnalysisManagement.selectRTSDOrderMonthAnalysis" parameterMap="p_sRtsd0104OrderMonthAnalysis">
+		{call Pkg_Rtsd0104.p_sRtsd0104OrdMonthAnalysisNew(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

@@ -1,0 +1,480 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="collectionMoney">
+    <!-- 수금내역 조회 -->
+    <resultMap id="collectionMoneyresultMap" class="java.util.HashMap">
+	    <result property="ordNo"      column="ORD_NO"   />
+	    <result property="custTp"     column="CUST_TP"  />
+	    <result property="custTp2"    column="CUST_TP2" />
+		<result property="custNo"     column="CUST_NO"  />
+		<result property="custNm"     column="CUST_NM"  />
+		<result property="matCd"      column="MAT_CD"   />
+		<result property="matNm"      column="MAT_NM"   />
+		<result property="carNo"      column="CAR_NO"   />
+		<result property="cntCd"      column="CNT_CD"   />
+		<result property="ordDay"     column="ORD_DAY"  />
+		<result property="procDay"    column="PROC_DAY" />
+		<result property="statCd"     column="STAT_CD"  />
+		<result property="statNm"     column="STAT_NM"  />
+		<result property="birthDay"   column="BIRTH_DAY"/>
+		<result property="buslNo"     column="BUSL_NO"  />
+		<result property="mobNo"  	  column="MOB_NO"   />
+		<result property="telNo"      column="TEL_NO"   />
+		<result property="payMthd"    column="PAY_MTHD" />
+		<result property="payNm"      column="PAY_NM"   />
+		<result property="payDD"      column="PAY_DD"   />
+		<result property="prePaid"    column="PREPAID"  />
+		<result property="arreAmt"    column="ARRE_AMT" />
+		<result property="arreMon"    column="ARRE_MON" />
+		<result property="mfpYn"    column="MFP_YN" />
+		<result property="preAmt"    column="PRE_AMT" />
+		<result property="vacsYn"    column="VACS_YN" />
+    </resultMap>
+    
+    <parameterMap class="java.util.Map" id="collectionMoneyListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="collectionMoneyresultMap" />   
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호   -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호   -->
+		<parameter property="custNm"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객명     -->
+		<parameter property="carNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 차량번호   -->
+		<parameter property="telNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 전화번호   -->
+		<parameter property="mobNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 휴대폰번호 -->
+		<parameter property="statCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 계약상태   -->
+	</parameterMap>	 
+	
+    <procedure id="collectionMoney.getCollectionMoneyList" parameterMap="collectionMoneyListParam">
+		{call Pkg_Rtsd0104.p_sRtsd0104ResultCashApp(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 청구내역 조회 -->
+    <resultMap id="billingRecordResultMap" class="java.util.HashMap">
+	    <result property="ordNo"       column="ORD_NO"    />
+		<result property="schdSeq"     column="SCHD_SEQ"  />
+		<result property="recpTp"      column="RECP_TP"   />
+		<result property="recpNm"      column="RECP_NM"   />
+		<result property="recpNu"      column="RECP_NU"   />
+		<result property="demdDt"      column="DEMD_DT"   />
+		<result property="zfbDay"      column="ZFB_DAY"   />
+		<result property="saleAmt"     column="SALE_AMT"  />
+		<result property="recpAmt"     column="RECP_AMT"  />
+		<result property="arreAmt"     column="ARRE_AMT"  />
+		<result property="rcDay"       column="RC_DAY"    />
+		<result property="payDD"       column="PAY_DD"    />
+    </resultMap>
+	
+	<parameterMap class="java.util.Map" id="billingRecordListParam"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="billingRecordResultMap" />   
+		<parameter property="ordNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호       -->
+		<parameter property="zfbFd"     jdbcType="VARCHAR" mode="IN" /> <!-- 시작청구일자   -->
+		<parameter property="zfbTd"     jdbcType="VARCHAR" mode="IN" /> <!-- 종료청구일자   -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.getBillingRecordList" parameterMap="billingRecordListParam">
+		{call  Pkg_Rtsd0109.p_sRtsd0109ChargeCashApp(?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 청구수납내역 조회 (수납관리 팝업용) -->
+    <resultMap id="resultParamGetCollectForReq" class="java.util.HashMap">
+    	<result property="chk"	       column="CHK"      />
+    	<result property="custNo"      column="CUST_NO"  />
+	    <result property="ordNo"       column="ORD_NO"   />
+		<result property="schdSeq"     column="SCHD_SEQ" />
+		<result property="recpTp"      column="RECP_TP"  />
+		<result property="recpNm"      column="RECP_NM"  />
+		<result property="recpNu"      column="RECP_NU"  />
+		<result property="demdDt"      column="DEMD_DT"  />
+		<result property="zfbDay"      column="ZFB_DAY"  />
+		<result property="saleAmt"     column="SALE_AMT" />
+		<result property="recpAmt"     column="RECP_AMT" />
+		<result property="arreAmt"     column="ARRE_AMT" />
+		<result property="rcDay"       column="RC_DAY"   />
+    </resultMap>
+	
+	<parameterMap class="java.util.Map" id="paramGetCollectForReq"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultParamGetCollectForReq" />   
+		<parameter property="ordNo"		jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호       -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.getCollectForReq" parameterMap="paramGetCollectForReq">
+		{call  Pkg_Rtsd0109.p_sRtsd0109CollectForReq(?, ?)}
+	</procedure>
+	
+	<!-- 수납내역 조회 -->
+	<resultMap id="receiptResultMap" class="java.util.HashMap">
+		<result property="recvSeq"      column="RECV_SEQ" />         
+		<result property="ritmSeq"      column="RITM_SEQ" />         
+		<result property="recvDay"      column="RECV_DAY" />         
+		<result property="ordNo"        column="ORD_NO"   />         
+		<result property="recpTp"       column="RECP_TP"  />         
+		<result property="recpTnm"      column="RECP_TNM" />         
+		<result property="recpPay"      column="RECP_PAY" />         
+		<result property="recpPnm"      column="RECP_PNM" />         
+		<result property="recpFg"       column="RECP_FG"  />         
+		<result property="recpFnm"      column="RECP_FNM" />
+		<result property="recpAmt"      column="RECP_AMT" />
+		<result property="schdSeq"      column="SCHD_SEQ" />         
+		<result property="recpNu"       column="RECP_NU"  />         
+		<result property="cncStat"      column="CNC_STAT" />         
+		<result property="tNo"  	    column="TNO"      />         
+		<result property="bankCd"       column="BANK_CD"  />         
+		<result property="bankNm"       column="BANK_NM"  />         
+		<result property="acctNo"       column="ACCT_NO"  />         
+		<result property="cardcomCd"    column="CARDCOM_CD" />         
+		<result property="cardcomNm"    column="CARDCOM_NM" />         
+		<result property="cardNo"       column="CARD_NO"  />         
+		<result property="bankRecpDay"  column="BANK_RECP_DAY" /> 
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="receiptResultMap"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="receiptResultMap" />   
+		<parameter property="ordNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호     -->
+		<parameter property="schdSeq"     jdbcType="VARCHAR" mode="IN" /> <!-- 청구순번  -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.getReceiptList" parameterMap="receiptResultMap">
+		{call   Pkg_Rtre0030.p_sRtre0030RecvList(?, ?, ?)}
+	</procedure>
+     
+    <!-- 수납취소내역 조회 -->
+	<resultMap id="cancelReceiptResultMap" class="java.util.HashMap">
+		<result property="recvSeq"      column="RECV_SEQ" />         
+		<result property="recvDay"      column="RECV_DAY" />         
+		<result property="ordNo"        column="ORD_NO" />         
+		<result property="custNo"       column="CUST_NO"   />         
+		<result property="recpAmt"      column="RECP_AMT"  />         
+		<result property="recpTp"       column="RECP_TP" />         
+		<result property="recpPay"      column="RECP_PAY" />         
+		<result property="recpFg"       column="RECP_FG" />         
+		<result property="tNo"          column="TNO"  />         
+		<result property="cncRseq"      column="CNC_RSEQ" />
+		<result property="cncStat"      column="CNC_STAT" />
+		<result property="regId"        column="REG_ID" />         
+		<result property="regDt"        column="REG_DT"  />         
+		<result property="chgId"        column="CHG_ID" />         
+		<result property="chgDt"  	    column="CHG_DT"    />         
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="cancelReceiptMap"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="cancelReceiptResultMap" />   
+		<parameter property="recvSeq"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납거래번호     -->
+		<parameter property="recvDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납일자  -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호  -->
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호  -->
+		<parameter property="recpAmt"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납금액  -->
+		<parameter property="recpTp"    jdbcType="VARCHAR" mode="IN" /> <!-- 청구구분  -->
+		<parameter property="recpPay"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납방법  -->
+		<parameter property="recpFg"    jdbcType="VARCHAR" mode="IN" /> <!-- 수납유형  -->
+		<parameter property="tNo"       jdbcType="VARCHAR" mode="IN" /> <!-- PG거래번호  -->
+		<parameter property="cncRseq"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납취소거래번호  -->
+		<parameter property="cncStat"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납취소여부  -->
+		<parameter property="regId"     jdbcType="VARCHAR" mode="IN" /> <!-- 등록자ID  -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.getCancelReceiptList" parameterMap="cancelReceiptMap">
+		{call   Pkg_Rtre0041.p_sRtre0041(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="onlineCancelMap"> 
+		<parameter property="recvDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납일자  -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호  -->
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호  -->
+		<parameter property="recvSeq"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납금액  -->
+		<parameter property="recpPay"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납방법  -->
+		<parameter property="regId"     jdbcType="VARCHAR" mode="IN" /> <!-- 수납유형  -->
+		<parameter property="successCode"       jdbcType="VARCHAR" mode="OUT" /> <!-- PG거래번호  -->
+		<parameter property="returnMessage"     jdbcType="VARCHAR" mode="OUT" /> <!-- 수납취소거래번호  -->
+		<parameter property="errorText"         jdbcType="VARCHAR" mode="OUT" /> <!-- 수납취소여부  -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.cancelReceipt" parameterMap="onlineCancelMap">
+		{call   Pkg_Rtre0041.p_insertRtre0041RecCancel(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="cancelExOContractResultMap" class="java.util.HashMap">
+		<result property="recvSeq"      column="RECV_SEQ" /> 
+		<result property="ritmSeq"      column="RITM_SEQ" />            
+		<result property="recvDay"      column="RECV_DAY" />         
+		<result property="ordNo"        column="ORD_NO" />
+		<result property="schdSeq"      column="SCHD_SEQ"   />               
+		<result property="custNo"       column="CUST_NO"   />  
+		<result property="recpTp"       column="RECP_TP" />       
+		<result property="saleAmt"      column="SALE_AMT"  />         
+		<result property="arreAmt"      column="ARRE_AMT"  />         
+		<result property="zfbdt"        column="ZFBDT" />         
+		<result property="regId"        column="REG_ID" />         
+		<result property="regDt"        column="REG_DT"  />         
+		<result property="chgId"        column="CHG_ID" />
+		<result property="chgDt"        column="CHG_DT" />
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="cancelMapExOContract"> 
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="cancelExOContractResultMap" />   
+		<parameter property="recvSeq"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납거래번호     -->
+		<parameter property="ritmSeq"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납일자  -->
+		<parameter property="recvDay"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납일자  -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호  -->
+		<parameter property="schdSeq"   jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호  -->
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호  -->
+		<parameter property="recpTp"    jdbcType="VARCHAR" mode="IN" /> <!-- 청구구분  -->
+		<parameter property="saleAmt"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납방법  -->
+		<parameter property="arreAmt"   jdbcType="VARCHAR" mode="IN" /> <!-- 수납유형  -->
+		<parameter property="zfbdt"     jdbcType="VARCHAR" mode="IN" /> <!-- PG거래번호  -->
+		<parameter property="regId"     jdbcType="VARCHAR" mode="IN" /> <!-- 수납취소거래번호  -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.getCancelExOContractList" parameterMap="cancelMapExOContract">
+		{call   Pkg_Rtre0031.p_sRtre0031(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+	<resultMap id="resultRecvSeqMap" class="java.util.Map">
+		<result property="recvSeq"  	column="RPC_SEQ" />	
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="recvSeqMap"> 
+		<parameter property="result"    jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultRecvSeqMap" />   
+	</parameterMap>
+	
+	<!-- 취소시퀀스 -->
+	<procedure id="collectionMoney.getRecvSeq" parameterMap="recvSeqMap">
+		{call ? := Pkg_Rtre0041.f_sRtre0041RecvSeq()}		
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="exOContractCancelMap"> 
+		<parameter property="recvDay"		jdbcType="VARCHAR" mode="IN" /> <!-- 수납일자  -->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN" /> <!-- 수납거래번호  -->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호  -->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호  -->
+		<parameter property="cncRseq"		jdbcType="NUMERIC" mode="IN" /> <!-- 취소거래번호  -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" /> <!-- 수납유형  -->
+		<parameter property="successCode"	jdbcType="VARCHAR" mode="OUT" /> <!-- PG거래번호  -->
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" /> <!-- 수납취소거래번호  -->
+		<parameter property="errorText"		jdbcType="VARCHAR" mode="OUT" /> <!-- 수납취소여부  -->
+	</parameterMap>	 
+	
+	<procedure id="collectionMoney.cancelExOContract" parameterMap="exOContractCancelMap">
+		{call   Pkg_Rtre0030.p_InsertRtre0030Cancel(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌 내역 조회 -->
+	<parameterMap class="java.util.Map" id="paramVaList">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mapVaList"/>
+		<parameter property="custNo"   jdbcType="VARCHAR" mode="IN"/> <!-- 고객번호				-->
+		<parameter property="ordNo"	   jdbcType="VARCHAR" mode="IN"/> <!-- 계약번호				-->
+		<parameter property="rvaFday"  jdbcType="VARCHAR" mode="IN"/> <!-- 요청일자(from)			-->
+		<parameter property="rvaTday"  jdbcType="VARCHAR" mode="IN"/> <!-- 요청일자(to)			-->
+		<parameter property="rqstStat" jdbcType="VARCHAR" mode="IN"/> <!-- 상태					-->
+		<parameter property="tno"	   jdbcType="VARCHAR" mode="IN"/> <!-- 거래고유번호				-->
+		<parameter property="vaccount" jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌번호				-->
+		<parameter property="vaFday"   jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌 입금마감일(from)	-->
+		<parameter property="vaTday"   jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌 입금마감일(to)	-->
+		<parameter property="appFday"  jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌 발급일(from)		-->
+		<parameter property="appTday"  jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌 발급일(to)		-->
+		<parameter property="appRegId" jdbcType="VARCHAR" mode="IN"/> <!-- 가상계좌 발급자ID			-->
+		<parameter property="regId"	   jdbcType="VARCHAR" mode="IN"/> <!-- 발급요청 등록자ID			-->
+		<parameter property="ipgmFday" jdbcType="VARCHAR" mode="IN"/> <!-- 입금일(from)			-->
+		<parameter property="ipgmTday" jdbcType="VARCHAR" mode="IN"/> <!-- 입금일(to)				-->
+		<parameter property="notiId"   jdbcType="VARCHAR" mode="IN"/> <!-- 입금통보ID				-->
+		<parameter property="remitter" jdbcType="VARCHAR" mode="IN"/> <!-- 입금자명				-->
+		<parameter property="userGrp"  jdbcType="VARCHAR" mode="IN"/> <!-- 발급자그룹				-->
+	</parameterMap>
+	<resultMap id="mapVaList" class="java.util.HashMap">
+		<result property="chk"		  column="CHK"/>
+		<result property="rvaDay"	  column="RVA_DAY"/>
+		<result property="rvaSeq"	  column="RVA_SEQ"/>
+		<result property="custNo"	  column="CUST_NO"/>
+		<result property="custNm"	  column="CUST_NM"/>
+		<result property="tordNo"	  column="TORD_NO"/>
+		<result property="recpPay"	  column="RECP_PAY"/>
+		<result property="recpPayNm"  column="RECP_PAY_NM"/>
+		<result property="workScope"  column="WORK_SCOPE"/>
+		<result property="rvaAmt"	  column="RVA_AMT"/>
+		<result property="rqstStat"	  column="RQST_STAT"/>
+		<result property="rqstStatNm" column="RQST_STAT_NM"/>
+		<result property="regDt"	  column="REG_DT"/>
+		<result property="regId"	  column="REG_ID"/>
+		<result property="resCd"	  column="RES_CD"/>
+		<result property="resMsg"	  column="RES_MSG"/>
+		<result property="appTime"	  column="APP_TIME"/>
+		<result property="appRegId"	  column="APP_REG_ID"/>
+		<result property="tno"		  column="TNO"/>
+		<result property="bankNm"	  column="BANK_NM"/>
+		<result property="vaccount"	  column="VACCOUNT"/>
+		<result property="amount"	  column="AMOUNT"/>
+		<result property="vaDate"	  column="VA_DATE"/>
+		<result property="txCd"		  column="TX_CD"/>
+		<result property="txTm"		  column="TX_TM"/>
+		<result property="opCd"		  column="OP_CD"/>
+		<result property="ipgmTime"	  column="IPGM_TIME"/>
+		<result property="remitter"	  column="REMITTER"/>
+		<result property="totalMnyx"  column="TOTAL_MNYX"/>
+		<result property="recvSeq"	  column="RECV_SEQ"/>
+		<result property="userGrp"	  column="USER_GRP"/>
+		<result property="userGrpNm"  column="USER_GRP_NM"/>
+		<result property="cmfpYn"  column="CMFP_YN"/>
+	</resultMap>
+	<procedure id="collectionMoney.getVaList" parameterMap="paramVaList">
+		{call PKG_RTRE0140.p_sRtre0140(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌 세부내역 조회(PG결제 - 가상계좌) -->
+	<parameterMap class="java.util.Map" id="paramVaDetail0141List">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mapVaDetail0141List" />
+		<parameter property="rvaDay"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일자	-->
+		<parameter property="rvaSeq"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일련번호	-->
+	</parameterMap>
+	<resultMap id="mapVaDetail0141List" class="java.util.HashMap">
+		<result property="rvaDay"	column="RVA_DAY"/>
+		<result property="rvaSeq"	column="RVA_SEQ"/>
+		<result property="custNo"	column="CUST_NO"/>
+		<result property="tordNo"	column="TORD_NO"/>
+		<result property="ordNo"	column="ORD_NO"/>
+		<result property="schdSeq"	column="SCHD_SEQ"/>
+		<result property="recpTp"	column="RECP_TP"/>
+		<result property="recpTpNm"	column="RECP_TP_NM"/>
+		<result property="demdDt"	column="DEMD_DT"/>
+		<result property="zfbDt"	column="ZFBDT"/>
+		<result property="saleAmt"	column="SALE_AMT"/>
+		<result property="arreAmt"	column="ARRE_AMT"/>
+		<result property="regId"	column="REG_ID"/>
+		<result property="regDt"	column="REG_DT"/>
+		<result property="chgId"	column="CHG_ID"/>
+		<result property="chgDt"	column="CHG_DT"/>
+	</resultMap>
+	<procedure id="collectionMoney.getVaDetail0141List" parameterMap="paramVaDetail0141List">
+		{call PKG_RTRE0141.p_sRtre0141(?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌 세부내역 조회(세틀뱅크 고정형 가상계좌) -->
+	<parameterMap class="java.util.Map" id="paramVaDetail0221List">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mapVaDetail0221List" />
+		<parameter property="rvaDay"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일자	-->
+		<parameter property="rvaSeq"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일련번호	-->
+	</parameterMap>
+	
+	<resultMap id="mapVaDetail0221List" class="java.util.HashMap">
+		<result property="rvaDay"	column="RVA_DAY"/>
+		<result property="rvaSeq"	column="RVA_SEQ"/>
+		<result property="custNo"	column="CUST_NO"/>
+		<result property="tordNo"	column="TORD_NO"/>
+		<result property="ordNo"	column="ORD_NO"/>
+		<result property="schdSeq"	column="SCHD_SEQ"/>
+		<result property="recpTp"	column="RECP_TP"/>
+		<result property="recpTpNm"	column="RECP_TP_NM"/>
+		<result property="demdDt"	column="DEMD_DT"/>
+		<result property="zfbDt"	column="ZFBDT"/>
+		<result property="saleAmt"	column="SALE_AMT"/>
+		<result property="arreAmt"	column="ARRE_AMT"/>
+		<result property="regId"	column="REG_ID"/>
+		<result property="regDt"	column="REG_DT"/>
+		<result property="chgId"	column="CHG_ID"/>
+		<result property="chgDt"	column="CHG_DT"/>
+	</resultMap>
+	
+	<procedure id="collectionMoney.getVaDetail0221List" parameterMap="paramVaDetail0221List">
+		{call PKG_RTRE0221.p_sRtre0221(?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌 내역 관리(IUD) -->
+	<parameterMap id="paramSaveVa" class="java.util.HashMap">
+		<parameter property="dvsn"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rvaDay" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="rvaSeq"      	jdbcType="NUMERIC" mode="INOUT" />
+		<parameter property="custNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tordNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rvaAmt"	    jdbcType="NUMERIC" mode="IN" />
+		<parameter property="rqstStat"      jdbcType="VARCHAR" mode="IN" />
+		<parameter property="expireTerm"    jdbcType="NUMERIC" mode="IN" />
+		<parameter property="expireTime"    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resCd"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resMsg"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tno"    		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="amount"     	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="bankCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bankNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vaccount"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vaDate"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appTime"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="appRegId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="notiSeq"     	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="recvSeq"     	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"  	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="collectionMoney.saveVa" resultClass="java.util.HashMap" parameterMap="paramSaveVa">
+		{call PKG_RTRE0140.p_IUDRtre0140(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 가상계좌 세부내역 관리(IUD) -->
+	<parameterMap id="paramSaveVaDetail" class="java.util.HashMap">
+		<parameter property="dvsn"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rvaDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rvaSeq"      	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="custNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tordNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo"      	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="schdSeq"      	jdbcType="NUMERIC" mode="IN" />
+		<parameter property="recpTp"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="demdDt"        jdbcType="VARCHAR" mode="IN" />
+		<parameter property="zfbDay"     	jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="saleAmt"	    jdbcType="NUMERIC" mode="IN" />
+		<parameter property="arreAmt"	    jdbcType="NUMERIC" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"  	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="collectionMoney.saveVaDetail" resultClass="java.util.HashMap" parameterMap="paramSaveVaDetail">
+		{call PKG_RTRE0141.p_IUDRtre0141(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<!-- 가상계좌 연체조회 -->
+	<parameterMap class="java.util.Map" id="paramVaOrdDelyList">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="mapVaOrdDelyList"/>
+		<parameter property="custNo"   jdbcType="VARCHAR" mode="IN" /> <!-- 고객번호				-->
+		<parameter property="ordNo"	   jdbcType="VARCHAR" mode="IN" /> <!-- 계약번호				-->
+		<parameter property="delyDay"  jdbcType="VARCHAR" mode="IN" /> <!-- 연체기준일자			-->
+		<parameter property="rvaFday"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일자(from)			-->
+		<parameter property="rvaTday"  jdbcType="VARCHAR" mode="IN" /> <!-- 요청일자(to)			-->
+		<parameter property="rqstStat" jdbcType="VARCHAR" mode="IN" /> <!-- 상태					-->
+		<parameter property="appFday"  jdbcType="VARCHAR" mode="IN" /> <!-- 가상계좌 발급일(from)	-->
+		<parameter property="appTday"  jdbcType="VARCHAR" mode="IN" /> <!-- 가상계좌 발급일(to)		-->
+		<parameter property="ipgmFday" jdbcType="VARCHAR" mode="IN" /> <!-- 입금일(from)			-->
+		<parameter property="ipgmTday" jdbcType="VARCHAR" mode="IN" /> <!-- 입금일(to)			-->
+	</parameterMap>
+	<resultMap id="mapVaOrdDelyList" class="java.util.HashMap">
+		<result property="rvaDay"	  column="RVA_DAY"/>
+		<result property="rvaSeq"	  column="RVA_SEQ"/>
+		<result property="custNo"	  column="CUST_NO"/>
+		<result property="custNm"	  column="CUST_NM"/>
+		<result property="tordNo"	  column="TORD_NO"/>
+		<result property="ordNo"	  column="ORD_NO"/>
+		<result property="recpPay"	  column="RECP_PAY"/>
+		<result property="recpPayNm"  column="RECP_PAY_NM"/>
+		<result property="workScope"  column="WORK_SCOPE"/>
+		<result property="apprScnt"	  column="APPR_SCNT"/>
+		<result property="payDdDely"  column="PAY_DD_DELY"/>
+		<result property="payDdCur"	  column="PAY_DD_CUR"/>
+		<result property="rvaAmt"	  column="RVA_AMT"/>
+		<result property="userGrp"	  column="USER_GRP"/>
+		<result property="userGrpNm"  column="USER_GRP_NM"/>
+		<result property="regId"	  column="REG_ID"/>
+		<result property="rqstStat"	  column="RQST_STAT"/>
+		<result property="rqstStatNm" column="RQST_STAT_NM"/>
+		<result property="resMsg"	  column="RES_MSG"/>
+		<result property="appTime"	  column="APP_TIME"/>
+		<result property="appRegId"	  column="APP_REG_ID"/>
+		<result property="opCd"		  column="OP_CD"/>
+		<result property="ipgmTime"	  column="IPGM_TIME"/>
+		<result property="remitter"	  column="REMITTER"/>
+		<result property="totalMnyx"  column="TOTAL_MNYX"/>
+	</resultMap>
+	<procedure id="collectionMoney.getVaOrdDelyList" parameterMap="paramVaOrdDelyList">
+		{call PKG_RTRE0140.p_sRtre0140OrdDelay(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

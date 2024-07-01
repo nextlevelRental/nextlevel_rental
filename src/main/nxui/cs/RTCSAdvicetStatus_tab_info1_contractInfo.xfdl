@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAdvicetStatus_tab_info1_contractInfo" classname="RTCMCustRegister" left="0" top="0" width="1147" height="296" scrollbars="autoboth" titletext="[STEP2]계약정보" name="RTSDCustRegister">
+    <Layouts>
+      <Layout>
+        <Static id="Static34" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="18" width="1122" height="31"/>
+        <Static id="st_custNo" taborder="1" text="고객코드" cssclass="sta_WF_detailLabel" left="0" top="18" width="130" height="31"/>
+        <Edit id="ed_custNo" taborder="2" readonly="true" left="134" top="23" width="142" height="21"/>
+        <Static id="st_custNm" taborder="4" text="고객명" cssclass="sta_WF_detailLabel" left="280" top="18" width="130" height="31"/>
+        <Edit id="ed_custNm" taborder="5" readonly="true" left="414" top="23" width="142" height="21"/>
+        <Static id="Static03" taborder="6" cssclass="sta_WF_detailLabel2" left="0" top="48" width="1122" height="31"/>
+        <Edit id="ed_statNm" taborder="7" readonly="true" left="974" top="53" width="142" height="21"/>
+        <Static id="st_statNm" taborder="8" text="계약상태" cssclass="sta_WF_detailLabel" left="840" top="48" width="130" height="31"/>
+        <Edit id="ed_saleNm" taborder="9" readonly="true" left="694" top="53" width="142" height="21"/>
+        <Static id="st_saleNm" taborder="10" text="계약유형" cssclass="sta_WF_detailLabel" left="560" top="48" width="130" height="31"/>
+        <Edit id="ed_chanNm" taborder="11" readonly="true" left="414" top="53" width="142" height="21"/>
+        <Static id="st_chanNm" taborder="12" text="채널구분" cssclass="sta_WF_detailLabel" left="280" top="48" width="130" height="31"/>
+        <Edit id="ed_ordNm" taborder="13" readonly="true" left="134" top="53" width="142" height="21"/>
+        <Static id="st_ordNm" taborder="14" text="주문구분" cssclass="sta_WF_detailLabel" left="0" top="48" width="130" height="31"/>
+        <Static id="Static08" taborder="15" cssclass="sta_WF_detailLabel2" left="0" top="78" width="1122" height="31"/>
+        <Static id="st_cancDay" taborder="16" text="취소일자" cssclass="sta_WF_detailLabel" left="280" top="78" width="130" height="31"/>
+        <Static id="st_ordDay" taborder="17" text="접수일자" cssclass="sta_WF_detailLabel" left="0" top="78" width="130" height="31"/>
+        <Static id="Static13" taborder="18" cssclass="sta_WF_detailLabel2" left="0" top="108" width="1122" height="31"/>
+        <Edit id="ed_psNm" taborder="20" readonly="true" left="694" top="113" width="142" height="21"/>
+        <Static id="st_psNm" taborder="21" text="프리미엄서비스" cssclass="sta_WF_detailLabel" left="560" top="108" width="130" height="31"/>
+        <Edit id="ed_mepYn" taborder="22" readonly="true" left="414" top="113" width="142" height="21"/>
+        <Static id="st_mepYn" taborder="23" text="중도완납여부" cssclass="sta_WF_detailLabel" left="280" top="108" width="130" height="31"/>
+        <Edit id="ed_osYn" taborder="24" readonly="true" left="134" top="113" width="142" height="21"/>
+        <Static id="st_osYn" taborder="25" text="소유권이전여부" cssclass="sta_WF_detailLabel" left="0" top="108" width="130" height="31"/>
+        <Static id="Static31" taborder="27" cssclass="Guide_color" visible="false" left="0" top="3" right="0" height="7" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static33" taborder="29" cssclass="sta_WF_detailLabel2" left="0" top="208" width="1122" height="31"/>
+        <Static id="st_maMileage" taborder="30" text="월 평균주행거리" cssclass="sta_WF_detailLabel" left="560" top="208" width="130" height="31"/>
+        <Static id="st_cMileage" taborder="31" text="현재주행거리" cssclass="sta_WF_detailLabel" left="280" top="208" width="130" height="31"/>
+        <Edit id="ed_carOwner" taborder="32" readonly="true" left="134" top="213" width="142" height="21" enable="false"/>
+        <Static id="st_carOwner" taborder="33" text="차량소유자" cssclass="sta_WF_detailLabel" left="0" top="208" width="130" height="31"/>
+        <Static id="Static45" taborder="34" cssclass="Guide_color" visible="false" left="0" top="247" right="0" height="7" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static25" taborder="35" cssclass="sta_WF_detailLabel2" enable="false" left="0" top="178" width="1122" height="31"/>
+        <Static id="st_makerNm" taborder="36" text="카메이커" cssclass="sta_WF_detailLabel" left="0" top="178" width="130" height="31"/>
+        <Edit id="ed_makerNm" taborder="37" readonly="true" left="134" top="183" width="142" height="21" enable="false"/>
+        <Static id="st_mcNm" taborder="38" text="차종" cssclass="sta_WF_detailLabel" left="280" top="178" width="130" height="31"/>
+        <Edit id="ed_mcNm" taborder="39" readonly="true" left="414" top="183" width="142" height="21" enable="false"/>
+        <Static id="st_carNo" taborder="40" text="차량번호" cssclass="sta_WF_detailLabel" left="560" top="178" width="130" height="31"/>
+        <Edit id="ed_carNo" taborder="41" readonly="true" left="694" top="183" width="142" height="21" enable="false"/>
+        <Calendar id="cal_cancDay" taborder="42" readonly="true" dateformat="yyyy-MM-dd" left="414" top="83" width="142" height="21"/>
+        <Calendar id="cla_ordDay" taborder="43" readonly="true" dateformat="yyyy-MM-dd" left="134" top="83" width="142" height="21"/>
+        <MaskEdit id="ed_cMileage" taborder="44" readonly="true" mask="###,###,###,##0" left="414" top="213" width="110" height="21" type="number" enable="false"/>
+        <MaskEdit id="ed_maMileage" taborder="45" readonly="true" mask="###,###,###,##0" left="694" top="213" width="110" height="21" enable="false" type="number"/>
+        <Static id="st_cMileage2" taborder="46" text="Km" left="530" top="213" width="25" height="21" domainId="nexa.s_condition"/>
+        <Static id="st_cMileage00" taborder="47" text="Km" left="810" top="213" width="25" height="21" domainId="nexa.s_condition"/>
+        <Static id="cust_birth_title" taborder="48" text="법정생년월일" cssclass="sta_WF_detailLabel" left="560" top="18" width="130" height="31"/>
+        <Static id="cust_tel_title" taborder="49" text="전화번호" cssclass="sta_WF_detailLabel" left="840" top="18" width="130" height="31"/>
+        <Edit id="cust_birthDay" taborder="50" readonly="true" left="694" top="23" width="142" height="21"/>
+        <Edit id="cust_telNo" taborder="51" readonly="true" left="974" top="23" width="142" height="21"/>
+        <Edit id="ed_vbeln" taborder="52" readonly="true" left="974" top="113" width="79" height="21"/>
+        <Static id="st_vbeln" taborder="53" text="배송오더" cssclass="sta_WF_detailLabel" left="840" top="108" width="130" height="31"/>
+        <Button id="btn_carInfoUpdate" taborder="55" text="차량정보변경" onclick="btn_carInfoUpdate_onclick" left="1036" top="214" width="80" height="21" domainId="nexa.save"/>
+        <Static id="Static00" taborder="56" cssclass="sta_WF_detailLabel2" left="0" top="138" width="1122" height="31"/>
+        <Static id="st_rerentDay" taborder="57" text="재렌탈가능일자" cssclass="sta_WF_detailLabel" left="0" top="138" width="130" height="31"/>
+        <Calendar id="cla_rerentDayF" taborder="58" readonly="true" dateformat="yyyy-MM-dd" left="134" top="143" width="142" height="21"/>
+        <Calendar id="cla_rerentDayT" taborder="59" readonly="true" dateformat="yyyy-MM-dd" left="293" top="143" width="142" height="21"/>
+        <Static id="st_provsnNo" taborder="60" text="가계약번호" cssclass="sta_WF_detailLabel" left="560" top="138" width="130" height="31"/>
+        <Edit id="ed_provsnNo" taborder="61" readonly="true" left="694" top="143" width="142" height="21"/>
+        <Static id="Static01" taborder="62" text="~" left="280" top="142" width="9" height="21"/>
+        <Static id="st_psNm00" taborder="63" text="판매상품명" cssclass="sta_WF_detailLabel" left="560" top="78" width="130" height="31"/>
+        <Static id="st_psNm01" taborder="64" text="판매상품 할인율/원" cssclass="sta_WF_detailLabel" left="840" top="78" width="130" height="31"/>
+        <Edit id="ed_saleCdNm" taborder="65" readonly="true" left="694" top="83" width="142" height="21"/>
+        <Edit id="ed_saleCdDc" taborder="66" readonly="true" left="974" top="82" width="142" height="21"/>
+        <Edit id="ed_makerNm00" taborder="67" readonly="true" enable="false" left="134" top="263" width="66" height="21" visible="false"/>
+        <Edit id="ed_makerNm01" taborder="68" readonly="true" enable="false" left="166" top="263" width="70" height="21" visible="false"/>
+        <Edit id="ed_makerNm02" taborder="69" readonly="true" enable="false" left="198" top="263" width="50" height="21" visible="false"/>
+        <Edit id="ed_makerNm03" taborder="70" readonly="true" enable="false" left="222" top="263" width="54" height="21" visible="false"/>
+        <Edit id="ed_makerNm04" taborder="71" readonly="true" enable="false" visible="false" left="238" top="263" width="54" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_contractStatus" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onvaluechanged="ds_contractStatus_onvaluechanged">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="ordNm" type="STRING" size="256"/>
+          <Column id="chanNm" type="STRING" size="256"/>
+          <Column id="saleNm" type="STRING" size="256"/>
+          <Column id="statNm" type="STRING" size="256"/>
+          <Column id="ordDay" type="STRING" size="256"/>
+          <Column id="planDay" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="cancDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="matNm" type="STRING" size="256"/>
+          <Column id="ordQty" type="STRING" size="256"/>
+          <Column id="periodNm" type="STRING" size="256"/>
+          <Column id="osYn" type="STRING" size="256"/>
+          <Column id="mepYn" type="STRING" size="256"/>
+          <Column id="psNm" type="STRING" size="256"/>
+          <Column id="makerNm" type="STRING" size="256"/>
+          <Column id="mcNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="carOwner" type="STRING" size="256"/>
+          <Column id="cMileage" type="STRING" size="256"/>
+          <Column id="maMileage" type="STRING" size="256"/>
+          <Column id="reqText" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="monAmt" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="genderCdNm" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="custTpNm" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="vbeln" type="STRING" size="256"/>
+          <Column id="chanCd" type="STRING" size="256"/>
+          <Column id="statCd" type="STRING" size="256"/>
+          <Column id="seasonNm" type="STRING" size="256"/>
+          <Column id="makerCd" type="STRING" size="256"/>
+          <Column id="modelCd" type="STRING" size="256"/>
+          <Column id="contentsCd" type="STRING" size="256"/>
+          <Column id="frCd" type="STRING" size="256"/>
+          <Column id="provsnNo" type="STRING" size="256"/>
+          <Column id="rerentDayF" type="STRING" size="256"/>
+          <Column id="rerentDayT" type="STRING" size="256"/>
+          <Column id="saleCd" type="STRING" size="256"/>
+          <Column id="saleCdNm" type="STRING" size="256"/>
+          <Column id="saleCdDc" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_custNo" propid="value" datasetid="ds_contractStatus" columnid="custNo"/>
+      <BindItem id="item1" compid="ed_custNm" propid="value" datasetid="ds_contractStatus" columnid="custNm"/>
+      <BindItem id="item5" compid="ed_statNm" propid="value" datasetid="ds_contractStatus" columnid="statNm"/>
+      <BindItem id="item4" compid="ed_saleNm" propid="value" datasetid="ds_contractStatus" columnid="saleNm"/>
+      <BindItem id="item3" compid="ed_chanNm" propid="value" datasetid="ds_contractStatus" columnid="chanNm"/>
+      <BindItem id="item2" compid="ed_ordNm" propid="value" datasetid="ds_contractStatus" columnid="ordNm"/>
+      <BindItem id="item16" compid="ed_psNm" propid="value" datasetid="ds_contractStatus" columnid="psNm"/>
+      <BindItem id="item15" compid="ed_mepYn" propid="value" datasetid="ds_contractStatus" columnid="mepYn"/>
+      <BindItem id="item14" compid="ed_osYn" propid="value" datasetid="ds_contractStatus" columnid="osYn"/>
+      <BindItem id="item20" compid="ed_carOwner" propid="value" datasetid="ds_contractStatus" columnid="carOwner"/>
+      <BindItem id="item17" compid="ed_makerNm" propid="value" datasetid="ds_contractStatus" columnid="makerNm"/>
+      <BindItem id="item18" compid="ed_mcNm" propid="value" datasetid="ds_contractStatus" columnid="mcNm"/>
+      <BindItem id="item19" compid="ed_carNo" propid="value" datasetid="ds_abc" columnid="carNo"/>
+      <BindItem id="item9" compid="cal_cancDay" propid="value" datasetid="ds_contractStatus" columnid="cancDay"/>
+      <BindItem id="item6" compid="cla_ordDay" propid="value" datasetid="ds_contractStatus" columnid="ordDay"/>
+      <BindItem id="item21" compid="ed_cMileage" propid="value" datasetid="ds_contractStatus" columnid="cMileage"/>
+      <BindItem id="item22" compid="ed_maMileage" propid="value" datasetid="ds_contractStatus" columnid="maMileage"/>
+      <BindItem id="item23" compid="cust_birthDay" propid="value" datasetid="ds_contractStatus" columnid="birthDay"/>
+      <BindItem id="item24" compid="cust_telNo" propid="value" datasetid="ds_contractStatus" columnid="mobNo"/>
+      <BindItem id="item25" compid="ed_vbeln" propid="value" datasetid="ds_contractStatus" columnid="vbeln"/>
+      <BindItem id="item27" compid="cla_rerentDayF" propid="value" datasetid="ds_contractStatus" columnid="rerentDayF"/>
+      <BindItem id="item28" compid="cla_rerentDayT" propid="value" datasetid="ds_contractStatus" columnid="rerentDayT"/>
+      <BindItem id="item29" compid="ed_provsnNo" propid="value" datasetid="ds_contractStatus" columnid="provsnNo"/>
+      <BindItem id="item7" compid="ed_saleCdNm" propid="value" datasetid="ds_contractStatus" columnid="saleCdNm"/>
+      <BindItem id="item8" compid="ed_saleCdDc" propid="value" datasetid="ds_contractStatus" columnid="saleCdDc"/>
+      <BindItem id="item10" compid="ed_makerNm00" propid="value" datasetid="ds_contractStatus" columnid="makerCd"/>
+      <BindItem id="item11" compid="ed_makerNm01" propid="value" datasetid="ds_contractStatus" columnid="modelCd"/>
+      <BindItem id="item12" compid="ed_makerNm02" propid="value" datasetid="ds_contractStatus" columnid="contentsCd"/>
+      <BindItem id="item13" compid="ed_makerNm03" propid="value" datasetid="ds_contractStatus" columnid="frCd"/>
+      <BindItem id="item26" compid="ed_makerNm04" propid="value" datasetid="ds_contractStatus" columnid="ordNo"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+ this.btn_carInfoUpdate_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+ 	var args ={p_arg : this.p_arg};
+ 	Ex.core.popup(this,"차량정보변경","comm::RTCOMMCarInfoUpdate.xfdl",args, "modaless=false");
+ }
+
+this.FN_carInfoUpdate = function(ordNo){
+
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSRegularCheck_tab_info_history" classname="RTCSRegularCheck_tab_info_history" left="0" top="0" width="1147" height="150" titletext="서비스이력[04]" onload="RTCSRegularCheck_tab_info_history_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static09" taborder="0" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="1" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Grid id="grid_preminum" taborder="2" useinputpanel="false" left="0" top="5" width="631" binddataset="ds_History" height="135" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="110"/>
+                <Column size="110"/>
+                <Column size="110"/>
+                <Column size="110"/>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="처리일자"/>
+                <Cell col="1" text="처리시간"/>
+                <Cell col="2" text="서비스명"/>
+                <Cell col="3" text="처리자ID"/>
+                <Cell col="4" text="처리자명"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="date" text="bind:procDay" calendardisplay="edit" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:procTm"/>
+                <Cell col="2" text="bind:serviceNm"/>
+                <Cell col="3" text="bind:procInCd"/>
+                <Cell col="4" text="bind:procInNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_rollBack" taborder="4" text="복원" visible="false" left="647" top="37" width="65" height="21" domainId="nexa.save" defaultbutton="false" onclick="btn_rollBack_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_History" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="equNo" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="seq" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="procTm" type="STRING" size="256"/>
+          <Column id="serviceCd" type="STRING" size="256"/>
+          <Column id="serviceNm" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+          <Column id="procInNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsTransInfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+      <Dataset id="dsParamINfo" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false"/>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+this.userGrp = application.gds_userInfo.getColumn(0, "userGrp");
+this.userId = application.gds_userInfo.getColumn(0, "userId");
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{	
+	if (nErrorCode < 0)
+		return Ex.core.comMsg("alert",strErrorMsg);
+	
+	if (strSvcId == "saveRollBack"){
+		return;
+	}	
+}
+
+this.RTCSRegularCheck_tab_info_history_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	if(this.userGrp == "01"){
+		this.btn_rollBack.set_visible(true);
+	}
+}
+
+this.btn_rollBack_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var ordNo = this.ds_History.getColumn(this.ds_History.rowposition, "ordNo");
+	var procDay = this.ds_History.getColumn(this.ds_History.rowposition, "procDay");
+	
+	if(!confirm("계약번호[" + ordNo + "], 처리일자[" + procDay + "] 선택된 내역이 맞습니까? 삭제된 내역은 복구할 수 없습니다.")){
+		return;
+	}
+
+	var sSvcID        	= "saveRollBack";                    
+	var sController   	= "rtms/cs/saveRollBack.do";
+	var sInDatasets   	= "input=ds_History";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs = Ex.util.setParam("ordNo", 	ordNo);
+	sArgs += Ex.util.setParam("stdYm", 	procDay.substring(0, 6));
+	sArgs += Ex.util.setParam("userId", 	this.userId);
+
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

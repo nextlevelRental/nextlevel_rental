@@ -1,0 +1,545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAllowanceSavingContract" classname="RTCMClaim" left="0" top="0" width="1147" height="496" onload="form_onload" titletext="충당금 적립 계약 조회">
+    <Layouts>
+      <Layout>
+        <Button id="btn_search" taborder="7" text="조회" onclick="fn_search" cssclass="btn_WF_schArea" left="945" right="16" bottom="735" height="25" domainId="nexa.search"/>
+        <Static id="Static21" taborder="9" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="86" width="100" height="21"/>
+        <Static id="Static01" taborder="10" cssclass="Guide_color" left="0" top="102" height="10" visible="false" width="1147"/>
+        <Static id="Static00" taborder="12" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Div id="div_search" taborder="16" left="0" top="0" width="1121" height="71" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout width="1121" height="73">
+              <Static id="Static09" taborder="124" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static10" taborder="126" cssclass="Guide_color" visible="false" left="0" top="31" height="5" width="1118" onclick="div_search_Static10_onclick"/>
+              <Static id="Static11" taborder="127" cssclass="Guide_color" visible="false" left="0" top="57" height="10" width="1118"/>
+              <Static id="Static12" taborder="128" cssclass="Guide_color" visible="false" left="0" top="72" height="38" width="1118"/>
+              <Static id="Static15" taborder="131" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="96"/>
+              <Edit id="ed_agencyNm" taborder="132" lengthunit="ascii" maxlength="120" enable="false" left="190" top="36" width="164" height="21"/>
+              <Edit id="ed_agencyCd" taborder="133" lengthunit="ascii" maxlength="10" onkeyup="div_search_ed_agencyCd_onkeyup" left="110" top="36" width="80" height="21" enable="false"/>
+              <Static id="Static02" taborder="134" text="판매처" cssclass="sta_WF_schTitle" left="25" top="36" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static06" taborder="135" text="기간" cssclass="sta_WF_schTitle" left="25" top="10" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static00" taborder="138" text="렌탈지사" cssclass="sta_WF_schTitle" left="379" top="10" width="80" height="21" domainId="nexa.s_condition"/>
+              <Static id="Static01" taborder="139" text="렌탈지점" cssclass="sta_WF_schTitle" left="379" top="36" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_salesOfficeCd" taborder="140" lengthunit="ascii" maxlength="4" onkeyup="div_search_ed_salesOfficeCd_onkeyup" left="459" top="36" width="120" height="21" enable="false"/>
+              <Edit id="ed_salesGroupCd" taborder="141" lengthunit="ascii" maxlength="3" onkeyup="div_search_ed_salesGroupCd_onkeyup" left="459" top="10" width="120" height="21" enable="false"/>
+              <Edit id="ed_salesOfficeNm" taborder="142" lengthunit="ascii" maxlength="150" enable="false" left="578" top="36" width="118" height="21"/>
+              <Edit id="ed_salesGroupNm" taborder="143" lengthunit="ascii" maxlength="150" enable="false" left="578" top="10" width="118" height="21"/>
+              <Static id="Static14" taborder="144" cssclass="Guide_color" visible="false" left="354" top="0" width="25" height="96"/>
+              <Static id="Static07" taborder="145" text="~" left="228" top="10" width="10" height="21"/>
+              <Calendar id="cal_slcmYmTo" taborder="147" dateformat="yyyy-MM" editformat="yyyy-MM" left="244" top="10" width="110" height="21"/>
+              <Button id="bt_agencyCd" taborder="149" onclick="div_search_bt_agencyCd_onclick" cssclass="btn_WF_edtSch" left="169" top="36" width="21" height="21"/>
+              <Button id="bt_salesOfficeCd" taborder="150" onclick="div_search_bt_salesOfficeCd_onclick" cssclass="btn_WF_edtSch" left="558" top="36" width="21" height="21"/>
+              <Button id="bt_salesGroupCd" taborder="151" onclick="div_search_bt_salesGroupNm_onclick" cssclass="btn_WF_edtSch" left="558" top="10" width="21" height="21"/>
+              <Calendar id="cal_slcmYmFr" taborder="152" dateformat="yyyy-MM" editformat="yyyy-MM" oneditclick="div_search_cal_slcmFr_oneditclick" left="110" top="10" width="110" height="21"/>
+              <Static id="Static03" taborder="153" onclick="div_search_Static10_onclick" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="10"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static03" taborder="17" cssclass="Guide_color" visible="false" left="0" top="71" width="1147" height="20"/>
+        <Grid id="grd_list" taborder="20" binddataset="ds_list" useinputpanel="false" nodatatext="조회된 데이터가 없습니다." left="0" top="112" right="25" height="384">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="150"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수수료 마감월"/>
+                <Cell col="1" text="렌탈지사"/>
+                <Cell col="2" text="렌탈지점"/>
+                <Cell col="3" text="판매처코드"/>
+                <Cell col="4" text="판매처명"/>
+                <Cell col="5" text="벤더코드"/>
+                <Cell col="6" text="계약번호"/>
+                <Cell col="7" text="장착일자"/>
+                <Cell col="8" text="장착규격코드"/>
+                <Cell col="9" text="패턴"/>
+                <Cell col="10" text="규격"/>
+                <Cell col="11" text="수량"/>
+                <Cell col="12" text="개당 충당금"/>
+                <Cell col="13" text="총 충당금"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:slcmYm" calendardisplaynulltype="none"/>
+                <Cell col="1" text="bind:rentalGroupNm"/>
+                <Cell col="2" text="bind:rentalOfficeNm"/>
+                <Cell col="3" text="bind:agencyCd"/>
+                <Cell col="4" text="bind:agencyNm"/>
+                <Cell col="5" text="bind:lifnr"/>
+                <Cell col="6" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="7" displaytype="date" text="bind:procDay" calendardisplaynulltype="none"/>
+                <Cell col="8" text="bind:matCd"/>
+                <Cell col="9" text="bind:petternCd"/>
+                <Cell col="10" text="bind:tireSize"/>
+                <Cell col="11" text="bind:cntCd"/>
+                <Cell col="12" style="align:right;" text="bind:apfdAmt"/>
+                <Cell col="13" style="align:right;" text="bind:apfdsAmt"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
+                <Cell col="13" displaytype="number" style="align:right;" expr="dataset.getSum(&quot;apfdsAmt&quot;)" mask="###,###,###,##0"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firenextcount="0">
+        <ColumnInfo>
+          <Column id="slcmYm" type="STRING" size="256"/>
+          <Column id="salesGroup" type="STRING" size="256"/>
+          <Column id="salesGroupNm" type="STRING" size="256"/>
+          <Column id="salesOffice" type="STRING" size="256"/>
+          <Column id="salesOfficeNm" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+          <Column id="lifnr" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="procDay" type="STRING" size="256"/>
+          <Column id="matCd" type="STRING" size="256"/>
+          <Column id="petternCd" type="STRING" size="256"/>
+          <Column id="tireSize" type="STRING" size="256"/>
+          <Column id="cntCd" type="STRING" size="256"/>
+          <Column id="apfdAmt" type="STRING" size="256"/>
+          <Column id="apfdsAmt" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsRentalInfo" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="rentalGroup" type="STRING" size="256"/>
+          <Column id="rentalOffice" type="STRING" size="256"/>
+          <Column id="rentalGroupNm" type="STRING" size="256"/>
+          <Column id="rentalOfficeNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="" propid="" datasetid="dsSdStaus" columnid=""/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 수수료 > 충당금 적립 계약 조회
+ * 02. 그룹명   : RTREAllowanceSavingContract.xfdl
+ * 03. 그룹설명 :
+ * 04. 작성일   : 2015.12.09
+ * 05. 작성자   : 윤용택
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include
+ ************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.codeName	= "";
+this.agencyName	= "";
+this.curMonth	= "";	/* 당월			*/
+this.toDay		= "";	/* 현재날짜	*/
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	this.fn_userRentalGroupInfo();
+}
+
+/**
+ * 버튼생성
+ */
+this.fn_initBtn  = function() {
+	/* 1. N	 : 신규추가
+	 * 2. S	 : 조회
+	 * 3. C	 : 데이타생성
+	 * 4. E	 : 엑셀데이타생성
+	 * 5. AG : 집계
+	 * 6. DN : 다운
+	 */	
+	this.parent.setButton("E|S", this);
+}
+
+/**
+ * 초기화
+ */
+this.fn_init = function() {
+	var div		 = this.div_search;
+	var gdsUser	 = application.gds_userInfo;
+	var dsRental = this.dsRentalInfo;
+	
+	var userId	= gdsUser.getColumn(0,	"userId");			/* ID				*/
+	var userNm	= gdsUser.getColumn(0,	"userNm");			/* 이름				*/
+	var userGrp	= gdsUser.getColumn(0,	"userGrp");			/* 그룹				*/
+	var vkgrp	= dsRental.getColumn(0,	"rentalGroup"); 	/* 렌탈지사코드	*/
+	var vkgrpNm = dsRental.getColumn(0,	"rentalGroupNm");	/* 렌탈지사명		*/
+	var vkbur	= dsRental.getColumn(0,	"rentalOffice");	/* 렌탈지점코드	*/
+	var vkburNm	= dsRental.getColumn(0,	"rentalOfficeNm");	/* 렌탈지점명		*/
+	var vkazc	= gdsUser.getColumn(0,	"vkazc");			/* 대리점			*/
+	var vkazcNm	= gdsUser.getColumn(0,	"vkazcNm");			/* 대리점명		*/
+	
+	if(userGrp != "01" && userGrp != "02" && userGrp != "RM") {
+		div.ed_salesGroupCd.set_enable(false);		/* 렌탈지사	Code Disabled		*/
+		div.ed_salesGroupNm.set_enable(false);		/* 렌탈지사	Name Disabled		*/
+		div.bt_salesGroupCd.set_visible(false);		/* 렌탈지사	Button Invisible	*/
+		div.ed_salesOfficeCd.set_enable(false);		/* 렌탈지점	Code Disabled 		*/
+		div.ed_salesOfficeNm.set_enable(false);		/* 렌탈지점	Name Disabled		*/
+		div.bt_salesOfficeCd.set_visible(false);	/* 렌탈지점	Button visible		*/
+		div.ed_agencyCd.set_enable(false);			/* 장착대리점	Code Disabled		*/
+		div.ed_agencyNm.set_enable(false);			/* 장착대리점	Name Disabled		*/
+		div.bt_agencyCd.set_visible(false);			/* 장착대리점	Button Invisible	*/
+		
+		div.ed_salesGroupCd.set_value(vkgrp);
+		div.ed_salesGroupNm.set_value(vkgrpNm);
+		div.ed_salesOfficeCd.set_value(vkbur);
+		div.ed_salesOfficeNm.set_value(vkburNm);
+		div.ed_agencyCd.set_value(userId);
+		div.ed_agencyNm.set_value(userNm);
+	}
+}
+
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+/**
+ * 당월 조회
+ */
+this.fn_getToday  = function() {
+	var sSvcID		 = "getToday";  
+	var sController	 = "/rtms/comm/getToday.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";	
+	var fn_callBack	 = "fn_callBack";
+			
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 사용자 렌탈그룹 조회
+ */
+this.fn_userRentalGroupInfo = function() {
+	this.dsRentalInfo.clearData();
+	
+	var sSvcID		 = "userRentalGroupInfo";
+	var sController	 = "/rtms/sd/userRentalGroupInfo.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "dsRentalInfo=ds_output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("userId", application.gds_userInfo.getColumn(0, "userId"));
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+	
+/**
+ * 충당금 적립 계약 조회
+ */
+this.fn_allowanceSavingContractList = function() {
+	var div		 = this.div_search;
+	var userInfo = application.gds_userInfo;
+	
+	var slcmFr		 = nvl(div.cal_slcmYmFr.value).substr(0, 6);	/* 당월			*/
+	var slcmTo		 = nvl(div.cal_slcmYmTo.value).substr(0, 6);	/* 당월			*/
+	var salesGroup	 = "";											/* 지사			*/
+	var salesOffice	 = "";											/* 지점			*/
+	var agencyCd	 = nvl(div.ed_agencyCd.value);					/* 판매점		*/
+	var rentalGroup	 = nvl(div.ed_salesGroupCd.value); 				/* 렌탈지사	*/
+	var rentalOffice = nvl(div.ed_salesOfficeCd.value);				/* 렌탈지점	*/
+	var userId		 = userInfo.getColumn(0, "userId");				/* 사용자ID	*/
+	var userGrp		 = userInfo.getColumn(0, "userGrp");			/* 그룹			*/
+	var bfVkgrp		 = userInfo.getColumn(0, "vkgrp");				/* 지사코드	*/
+	var bfVkgrpNm	 = userInfo.getColumn(0, "vkgrpNm");			/* 지사명		*/
+	var bfVkbur		 = userInfo.getColumn(0, "vkbur");				/* 지점코드	*/
+	var bfVkburNm	 = userInfo.getColumn(0, "vkburNm");			/* 지점명		*/
+	var afVkgrpNm	 = div.ed_salesGroupNm.value;					/* 팝업 지사명	*/
+	var afVkburNm	 = div.ed_salesOfficeNm.value;					/* 팝업 지점명	*/
+	
+	/* 렌탈지사지점 Check 해제 */
+// 	if(Eco.isEmpty(rentalGroup)) {
+// 		this.alert("렌탈지사를 선택하세요.");
+// 		
+// 		return false;
+// 	}
+// 	
+// 	if(Eco.isEmpty(rentalOffice)) {
+// 		this.alert("렌탈지점을 선택하세요.");
+// 		
+// 		return false;
+// 	}
+	
+	/* 지점 */
+	if(userGrp == "04") {
+		if(bfVkgrpNm != afVkgrpNm) {
+			this.alert("타 조직내역 조회 불가합니다.");
+			return;
+		}
+		
+		if(bfVkburNm != afVkburNm) {
+			this.alert("타 조직내역 조회 불가합니다.");
+			
+			return;
+		}
+	}
+	
+	/* 렌탈지사 */
+	if(userGrp == "03" || userGrp == "07") {
+		if(bfVkgrpNm != afVkgrpNm) {
+			this.alert("타 조직내역 조회 불가합니다.");
+			
+			return;
+		}
+	}
+	
+	var sSvcID		 = "allowanceSavingContractList";
+	var sController	 = "/rtms/re/allowanceSavingContractList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_list=output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("slcmYmF",		slcmFr);
+		sArgs		+= Ex.util.setParam("slcmYmT",		slcmTo);
+		sArgs		+= Ex.util.setParam("salesGroup",	salesGroup);
+		sArgs		+= Ex.util.setParam("salesOffice",	salesOffice);
+		sArgs		+= Ex.util.setParam("agencyCd",		agencyCd);
+		sArgs		+= Ex.util.setParam("rentalGroup",	rentalGroup);
+		sArgs		+= Ex.util.setParam("rentalOffice",	rentalOffice);
+		sArgs		+= Ex.util.setParam("userId",		userId);
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+* CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	switch(strSvcId) {
+		/* 전월 조회 */
+		case "getToday":
+			this.curMonth = this.toDay.substr(0, 4) + (this.toDay.substr(4, 2) - 1);
+			 
+			this.div_search.cal_slcmYmFr.set_value(this.curMonth);
+			this.div_search.cal_slcmYmTo.set_value(this.curMonth);
+			break;
+		
+		/* 사용자 렌탈그룹 조회 */
+		case "userRentalGroupInfo":
+			/* 당월 조회 */
+			this.fn_getToday();
+			
+			/* 버튼초기화 */
+			this.fn_initBtn();
+			
+			/* 초기화 */
+			this.fn_init();
+			break;
+		
+		/* 충당금 적립 계약 조회 */
+		case "allowanceSavingContractList":
+			if(this.ds_list.getRowCount() == 0) {
+			   this.grd_list.set_nodatatext("조회된 결과가 없습니다.");
+			}
+			break;
+		//지사
+		case "getCodeS018":
+			this.div_search.ed_salesGroupNm.set_value(this.codeName);
+			break;
+		//지점	
+		case "getCodeS019":
+			this.div_search.ed_salesOfficeNm.set_value(this.codeName);
+			break;
+		//판매처
+		case "getAgencyName":
+			this.div_search.ed_agencyNm.set_value(nexacro._replaceAll(this.agencyName, "&#32;", " "));
+			break;																
+		default:
+			break;
+	}
+}
+
+/**
+ * Popup Callback
+ */
+this._setReturn = function(val) {
+	var cd = val[0];
+	var nm = val[1];
+	var gb = val[2];
+	
+	if(gb == "vkgrp") {
+		this.div_search.ed_salesGroupCd.set_value(cd);
+		this.div_search.ed_salesGroupNm.set_value(nm);
+	} else if(gb == "vkbur") {
+		this.div_search.ed_salesOfficeCd.set_value(cd);
+		this.div_search.ed_salesOfficeNm.set_value(nm);
+	} else if(gb == "vkazc") {
+		this.div_search.ed_agencyCd.set_value(cd);
+		this.div_search.ed_agencyNm.set_value(nm);
+	}
+}
+
+this.FN_sellers = function(res) {
+   this.div_search.ed_agencyCd.set_value(res[0]);
+   this.div_search.ed_agencyNm.set_value(res[1]);
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 조회
+ */
+this.fn_search = function() {
+	/* 충당금 적립 계약 조회 */
+	this.fn_allowanceSavingContractList();
+}
+
+/**
+ * 엑셀
+ */
+this.fn_excel = function() {
+	Ex.core.exportExcel(this, this.grd_list);
+}
+
+/**
+ * 렌탈지사 Button Onclick Event
+ */
+this.div_search_bt_salesGroupNm_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	var args = {p_arg : "RTRESaleCommission"};
+	
+	Ex.core.popup(this, "지사정보 조회", "comm::RTCOMMVkgrp_pop.xfdl", args, "modaless=false");
+}
+
+/**
+ * 렌탈지점 Button Onclick Event
+ */
+this.div_search_bt_salesOfficeCd_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	var args = {p_arg : "RTRESaleCommission", p_rentalGroup : this.div_search.ed_salesGroupCd.value};
+	
+	Ex.core.popup(this, "지점정보 조회", "comm::RTCOMMVkbur_pop.xfdl", args, "modaless=false");
+}
+
+/**
+ * 판매처 Button Onclick Event
+ */
+this.div_search_bt_agencyCd_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	var div	 = this.div_search;
+	var args = {  p_vkgrpCd	: div.ed_salesGroupCd.value
+				, p_vkgrpNm	: div.ed_salesGroupNm.value
+				, p_vkburCd	: div.ed_salesOfficeCd.value
+				, p_vkburNm	: div.ed_salesOfficeNm.value
+				, p_arg		: "RTRESaleCommission"
+			   };
+	
+	Ex.core.popup(this, "판매처 조회", "comm::RTCOMMSaleAgentList_pop.xfdl", args, "modaless=false");
+}
+
+/**
+ * 렌탈지사 Onkeyup Event
+ */
+this.div_search_vkgrpCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if ( e.keycode == 13 ) {
+		var sSvcID        	= "getCodeS018";                    
+		var sController   	= "rtms/comm/getCodeName.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("cd", this.div_search.ed_salesGroupCd.value);
+		sArgs += Ex.util.setParam("cdGrpCd", "S018");
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+//지점 enter키 이벤트
+this.div_search_vkburCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 ) {
+		var sSvcID        	= "getCodeS019";                    
+		var sController   	= "rtms/comm/getCodeName.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("cd", this.div_search.ed_salesOfficeCd.value);
+		sArgs += Ex.util.setParam("cdGrpCd", "S019");
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+
+//판매처 enter키 이벤트
+this.div_search_ed_agencyCd_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(e.keycode == 13) {
+		var sSvcID        	= "getAgencyName";
+		var sController   	= "rtms/comm/getAgencyName.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+
+		sArgs += Ex.util.setParam("agencyCd", this.div_search.ed_agencyCd.value);
+				
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}]]></Script>
+  </Form>
+</FDL>

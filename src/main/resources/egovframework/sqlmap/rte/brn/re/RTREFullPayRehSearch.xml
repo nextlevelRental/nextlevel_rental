@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="fullPayRehis">
+	<parameterMap id="fullPayRehisParam" class="java.util.Map">
+		<parameter property="vcursor"  jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="fullPayRehisResult" />
+		<parameter property="cncFDay"  jdbcType="VARCHAR" mode="IN" />	<!-- 취소일자 StartDay	-->
+		<parameter property="cncTDay"  jdbcType="VARCHAR" mode="IN" />	<!-- 취소일자 EndDay	-->
+		<parameter property="ordNo"	   jdbcType="VARCHAR" mode="IN" />	<!-- 계약번호			-->
+		<parameter property="custNo"   jdbcType="VARCHAR" mode="IN" />	<!-- 고객번호			-->
+		<parameter property="mfpCd"    jdbcType="VARCHAR" mode="IN" />	<!-- 구분				-->
+		<parameter property="mfpRsnCd" jdbcType="VARCHAR" mode="IN" />	<!-- 완납해지사유		-->
+	</parameterMap>	
+	
+	<resultMap id="fullPayRehisResult" class="java.util.HashMap">
+		<result property="ordNo" 		column="ORD_NO"			/>			<!-- 계약번호    	 	-->
+		<result property="cncDay" 		column="CNC_DAY"		/>			<!-- 취소일자     		-->
+		<result property="recvDay" 		column="RECV_DAY"		/>			<!-- 수납일자     		-->
+		<result property="mfpCdNm" 		column="MFP_CD_NM"		/>			<!-- 구분         		-->
+		<result property="procDay" 		column="PROC_DAY"		/>			<!-- 장착일자     		-->
+		<result property="custNo"   	column="CUST_NO"    	/>			<!-- 고객번호     		-->
+		<result property="custNm" 		column="CUST_NM"		/>			<!-- 고객명       		-->
+		<result property="totRentAmt" 	column="TOT_RENT_AMT"  	/>			<!-- 총렌탈료     		-->
+		<result property="recvAmt"   	column="RECV_AMT"      	/>			<!-- 수납금액     		-->
+		<result property="pnltAmt" 		column="PNLT_AMT"		/>			<!-- 위약금       		-->
+		<result property="totRecvAmt" 	column="TOT_RECV_AMT"	/>			<!-- 총수납금액   	-->
+		<result property="recvRt" 		column="RECV_RT"		/>			<!-- 회수율       		-->
+		<result property="mfpRsnCdNm" 	column="MFP_RSN_CD_NM"	/>			<!-- 완납/해지사유	-->
+		<result property="mfpDesc" 		column="MFP_DESC"		/>			<!-- 상세사유     		-->
+	</resultMap>
+	
+	<!-- 중도완납/해지 내역조회 -->	
+	<procedure id="Rtre0230fullPayRehisList" parameterMap="fullPayRehisParam">
+		{call Pkg_Rtre0230.p_sRtre0230_fullPayRehisList(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 사용자그룹 목록조회 -->
+	<parameterMap id="userGroupParam" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultUserGroup" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="resultUserGroup" class="java.util.HashMap">
+		<result property="cd" 	column="CD" />
+		<result property="cdNm" column="CD_NM" />
+	</resultMap>
+	
+	<procedure id="Rtcm0051.p_sRtcm0051CodeName" parameterMap="userGroupParam">
+		{call Pkg_Rtcm0051.p_sRtcm0051CodeName(?, ?, ?, ?)}
+	</procedure>
+	<!-- 사용자그룹정보 조회 종료 -->
+</sqlMap>

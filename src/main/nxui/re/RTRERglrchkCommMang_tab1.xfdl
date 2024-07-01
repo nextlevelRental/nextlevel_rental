@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTRERglrchkCommMang_tab1" classname="RTRERglrchkCommMang_tab1" left="0" top="0" width="1122" height="496" titletext="지급대상 집계" onload="RTRERglrchkCommMang_tab1_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="10" top="97" width="1102" height="31"/>
+        <Div id="div_search" taborder="1" text="Div00" left="10" top="10" width="1102" height="45" scrollbars="none" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="st_referYM" taborder="67" text="기준월" cssclass="sta_WF_schTitle" left="20" top="8" width="114" height="30" domainId="nexa.s_condition"/>
+              <Calendar id="cal_referYM" taborder="68" dateformat="yyyy-MM" onchanged="cal_accReqDate_onchanged" left="131" top="12" width="120" height="21" value="null" editformat="yyyy-MM"/>
+              <Static id="Static22" taborder="69" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="0" right="0" height="12"/>
+              <Static id="Static06" taborder="70" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static23" taborder="78" text="FIX h12" cssclass="Guide_color" visible="false" left="1" top="33" right="0" height="12"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static04" taborder="2" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="3" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" style="background:aqua;color:#333333ff;" bottom="0"/>
+        <Static id="Static02" taborder="4" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="1112" top="10" width="10" style="background:aqua;color:#333333ff;" bottom="0"/>
+        <Static id="Static05" taborder="7" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="56" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Edit id="edt_procStatus" taborder="8" enable="false" left="144" top="102" width="963" height="21"/>
+        <Static id="Static06" taborder="9" text="작업상태" cssclass="sta_WF_subTitle" left="10" top="72" width="84" height="20"/>
+        <Static id="Static19" taborder="10" text="작업상태" cssclass="sta_WF_detailLabelP" left="10" top="97" width="130" height="31"/>
+        <Static id="Static03" taborder="12" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="87" right="9" height="10" style="background:aqua;color:#333333ff;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 수금관리 > 수수료 > 정기점검수수료 관리 > [STEP 1] 지급대상 집계
+ * 02. 그룹명		: RTRERglrchkCommMang_tab1.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2017-05-25
+ * 05. 작성자		: wjim
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2017-05-25		wjim		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.toDay  = "";	/* 서버기준 오늘날자	*/
+this.prevYm = "";	/* 전월					*/
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ***********************************************************************/
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.RTRERglrchkCommMang_tab1_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	/* 폼 로드 공통함수 */
+	Ex.core.init(obj);
+	
+	/* 화면 초기화 */
+	this.fn_init();
+}
+
+this.fn_init = function() {
+	/* 메인 공통버튼 초기화(집계) */
+	this.parent.parent.parent.setButton("AG", this);
+	
+	/* 기준월 세팅 */
+	this.fn_setReferYm();
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+/**
+ * 기준월 세팅
+ */
+this.fn_setReferYm  = function() {
+	var sSvcID		 = "setReferYm";
+	var sController	 = "/rtms/comm/getToday.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 집계 버튼 클릭 이벤트 처리
+ */
+/*
+this.fn_aggregate = function() {
+	// 작업상태 초기화
+	this.edt_procStatus.set_value("");
+	
+	// 필수값 검증 - 기준월
+	if(nvl(this.div_search.cal_referYM.value) == "") {
+		this.alert("기준월을 입력하세요");
+		
+		this.div_search.cal_referYM.setFocus();
+		return;
+	}
+	
+	var sSvcID		 = "aggregate";
+	var sController	 = "/ntrms/re/regularchkCommAggregate.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("slcmYm", nvl(this.div_search.cal_referYM.value).substr(0, 6));	//기준월
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+*/
+
+this.fn_aggregate = function() {
+	/* 작업상태 초기화 */
+	this.edt_procStatus.set_value("");
+	
+	/* 필수값 검증 - 기준월 */
+	if(nvl(this.div_search.cal_referYM.value) == "") {
+		this.alert("기준월을 입력하세요");
+		
+		this.div_search.cal_referYM.setFocus();
+		return;
+	}
+	
+	var sSvcID		 = "aggregateVisitFee";
+	var sController	 = "aggregateVisitFee.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("slcmYm", nvl(this.div_search.cal_referYM.value).substr(0, 6));	/* 기준월 */
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		//if(strSvcId == "aggregate") {
+		if(strSvcId == "aggregateVisitFee") {
+			this.edt_procStatus.set_value(strErrorMsg);
+			return;
+		} else {
+			return Ex.core.comMsg("alert", strErrorMsg);
+		}
+	}
+	
+	switch(strSvcId) {
+		/* 기준월 세팅 */
+		case "setReferYm":
+			/* 서버시간 기준 전월(1월의 경우 12월로 정상표현되는지 확인 필요) */
+			prevYm = this.toDay.substr(0, 4) + (this.toDay.substr(4, 2) - 1);
+			
+			this.div_search.cal_referYM.set_value(prevYm);
+			break;
+		
+		/* 집계 */
+		//case "aggregate":
+		case "aggregateVisitFee":
+			this.edt_procStatus.set_value(strErrorMsg);
+			break;
+		
+		default:
+			break;
+	}
+}]]></Script>
+  </Form>
+</FDL>

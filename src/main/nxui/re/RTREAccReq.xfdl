@@ -1,0 +1,615 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="frm_RTREAccReq" classname="test_form" left="0" top="0" width="1147" height="496" titletext="계좌신청조회" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_list" taborder="6" binddataset="ds_list" useinputpanel="false" left="0" top="113" width="1122" height="383">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="99"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="76"/>
+                <Column size="121"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="계약번호"/>
+                <Cell col="1" text="고객코드"/>
+                <Cell col="2" text="고객명"/>
+                <Cell col="3" text="차량번호"/>
+                <Cell col="4" text="변경등록일"/>
+                <Cell col="5" text="은행명"/>
+                <Cell col="6" text="계좌번호"/>
+                <Cell col="7" text="예금주"/>
+                <Cell col="8" text="법정생년월일"/>
+                <Cell col="9" text="사업자번호"/>
+                <Cell col="10" text="신청일"/>
+                <Cell col="11" text="신청상태"/>
+                <Cell col="12" text="오류내용"/>
+                <Cell col="13" text="신청구분"/>
+                <Cell col="14" text="결제일"/>
+                <Cell col="15" text="계좌신청발생구분"/>
+                <Cell col="16" text="결제변경요청자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="1" text="bind:custNo"/>
+                <Cell col="2" text="bind:custNm"/>
+                <Cell col="3" text="bind:carNo"/>
+                <Cell col="4" displaytype="date" text="bind:rpcDay" calendardisplaynulltype="none"/>
+                <Cell col="5" displaytype="combo" text="bind:bankCd" combodataset="ds_R001" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="6" text="bind:acctNo"/>
+                <Cell col="7" text="bind:depositor"/>
+                <Cell col="8" text="bind:ebirDay" mask="##-##-##"/>
+                <Cell col="9" text="bind:buslNo" mask="###-##-#####"/>
+                <Cell col="10" displaytype="date" text="bind:acrqDay" calendardisplaynulltype="none"/>
+                <Cell col="11" displaytype="combo" text="bind:acrqSt" combodataset="ds_R009" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="12" displaytype="combo" text="bind:acerCd" combodataset="ds_R003" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="13" displaytype="combo" text="bind:acrqTp" combodataset="ds_R015" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="14" displaytype="combo" text="bind:payDd" combodataset="ds_R005" combocodecol="cd" combodatacol="cdNm" calendardisplaynulltype="none"/>
+                <Cell col="15" displaytype="combo" text="bind:acrqFg" combodataset="ds_R010" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="16" text="bind:rpcUid"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="12" top="0" height="72" cssclass="div_WF_searchBg" left="0" right="25">
+          <Layouts>
+            <Layout>
+              <Calendar id="cal_fromDt" taborder="29" top="10" height="21" readonly="false" dateformat="yyyy-MM-dd" value="null" onkeyup="div_search_edt_searchKeyword_onkeyup" width="110" left="88"/>
+              <Calendar id="cal_toDt" taborder="30" top="10" height="21" dateformat="yyyy-MM-dd" value="null" onkeyup="div_search_edt_searchKeyword_onkeyup" width="110" left="213"/>
+              <Static id="st_searchCondition00" taborder="31" text="신청일자" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="90" left="20"/>
+              <Static id="st_searchCondition01" taborder="32" text="신청구분" cssclass="sta_WF_schTitle" top="38" height="20" domainId="nexa.s_condition" width="90" left="20"/>
+              <Combo id="cbo_sinChungGubun" taborder="33" codecolumn="cd" datacolumn="cdNm" left="88" top="37" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_R015" index="0" displaynulltext="전체" text="전체" width="235"/>
+              <Static id="st_searchCondition02" taborder="34" text="계약번호" cssclass="sta_WF_schTitle" top="11" height="20" domainId="nexa.s_condition" width="90" left="354"/>
+              <Edit id="edt_ordNo" taborder="35" enable="true" left="422" top="10" width="140" height="21"/>
+              <Button id="btn_popUp" taborder="36" onclick="fn_odrPopUp" left="542" top="9" width="20" height="21" cssclass="btn_WF_edtSch"/>
+              <Static id="st_searchCondition03" taborder="38" text="신청상태" cssclass="sta_WF_schTitle" top="38" height="20" domainId="nexa.s_condition" width="90" left="355"/>
+              <Combo id="cbo_sinChungSangTae" taborder="39" codecolumn="cd" datacolumn="cdNm" index="0" left="422" top="37" height="21" domainId="nexa.name;nexa.code" innerdataset="@ds_R009" displaynulltext="전체" text="전체" width="140"/>
+              <Static id="st_searchCondition04" taborder="40" text="고객번호" cssclass="sta_WF_schTitle" top="11" width="90" height="20" domainId="nexa.s_condition" left="591"/>
+              <Edit id="edt_custNo" taborder="41" onkeyup="custNo_onkeyup" enable="true" left="674" top="10" width="110" height="21"/>
+              <Button id="btn_custPopUp" taborder="42" onclick="fn_custPopUp" left="765" top="9" width="20" height="21" cssclass="btn_WF_edtSch"/>
+              <Edit id="edt_custNoKeyword" taborder="43" onkeyup="div_search_edt_searchKeyword_onkeyup" left="784" top="10" width="140" height="21" enable="false"/>
+              <Static id="st_searchCondition05" taborder="44" text="변경등록자" cssclass="sta_WF_schTitle" top="38" width="90" height="20" domainId="nexa.s_condition" left="592"/>
+              <Edit id="edt_custRegNo" taborder="45" left="674" top="37" width="110" height="21" onkeyup="div_search_edt_custRegNo_onkeyup" lengthunit="ascii" inputfilter="space"/>
+              <Button id="btn_custPopUp00" taborder="46" onclick="fn_regIdPopUp" left="765" top="36" width="20" height="21" cssclass="btn_WF_edtSch"/>
+              <Edit id="edt_custRegNoKeyword" taborder="47" onkeyup="div_search_edt_searchKeyword_onkeyup" left="784" top="37" width="140" height="21" enable="false"/>
+              <Static id="Static03" taborder="48" text="~" left="201" top="10" width="9" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01" taborder="13" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static21" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="0" top="88" width="81" height="20"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="carNo" type="STRING" size="256"/>
+          <Column id="rpcDay" type="STRING" size="256"/>
+          <Column id="bankCd" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="depositor" type="STRING" size="256"/>
+          <Column id="ebirDay" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="acrqDay" type="STRING" size="256"/>
+          <Column id="acrqSt" type="STRING" size="256"/>
+          <Column id="acerCd" type="STRING" size="256"/>
+          <Column id="acrqTp" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="256"/>
+          <Column id="acrqFg" type="STRING" size="256"/>
+          <Column id="rpcUid" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R011" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_R009" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_R003" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R010" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R001" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_user" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="checkSaveMode">
+        <ColumnInfo>
+          <Column id="agentNm" type="string" size="32"/>
+          <Column id="userGrpNm" type="string" size="32"/>
+          <Column id="agentId" type="string" size="32"/>
+          <Column id="userGrp" type="string" size="32"/>
+          <Column id="userNm" type="string" size="32"/>
+          <Column id="vkgrpNm" type="string" size="32"/>
+          <Column id="userId" type="string" size="32"/>
+          <Column id="vkbur" type="string" size="32"/>
+          <Column id="vkburNm" type="string" size="32"/>
+          <Column id="vkgrp" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R005" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="custNo" type="STRING" size="256"/>
+          <Column id="custTp" type="STRING" size="256"/>
+          <Column id="custTp2" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="birthDay" type="STRING" size="256"/>
+          <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="lfCd" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
+          <Column id="mobFirm" type="STRING" size="256"/>
+          <Column id="telNo" type="STRING" size="256"/>
+          <Column id="faxNo" type="STRING" size="256"/>
+          <Column id="bldMngNo" type="STRING" size="256"/>
+          <Column id="posCd" type="STRING" size="256"/>
+          <Column id="addr1" type="STRING" size="256"/>
+          <Column id="addr2" type="STRING" size="256"/>
+          <Column id="telNo2" type="STRING" size="256"/>
+          <Column id="bldMngNo2" type="STRING" size="256"/>
+          <Column id="posCd2" type="STRING" size="256"/>
+          <Column id="addr12" type="STRING" size="256"/>
+          <Column id="addr22" type="STRING" size="256"/>
+          <Column id="safekey" type="STRING" size="256"/>
+          <Column id="buslNo" type="STRING" size="256"/>
+          <Column id="corpNo" type="STRING" size="256"/>
+          <Column id="repNm" type="STRING" size="256"/>
+          <Column id="oCustnm" type="STRING" size="256"/>
+          <Column id="oBirthday" type="STRING" size="256"/>
+          <Column id="oGendercd" type="STRING" size="256"/>
+          <Column id="oLfcd" type="STRING" size="256"/>
+          <Column id="oMobno" type="STRING" size="256"/>
+          <Column id="oSafekey" type="STRING" size="256"/>
+          <Column id="cCustnm" type="STRING" size="256"/>
+          <Column id="cTelno" type="STRING" size="256"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="emailAddr1" type="STRING" size="256"/>
+          <Column id="emailAddr2" type="STRING" size="256"/>
+          <Column id="busiType" type="STRING" size="256"/>
+          <Column id="busiCond" type="STRING" size="256"/>
+          <Column id="taxYn" type="STRING" size="256"/>
+          <Column id="kunnr" type="STRING" size="256"/>
+          <Column id="ciCd" type="STRING" size="256"/>
+          <Column id="diCd" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_R015" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cdNm">전체</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item2" compid="div_search.edt_custNo" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+      <BindItem id="item1" compid="div_search.edt_custNoKeyword" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+      <BindItem id="item0" compid="div_search.edt_custRegNo" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+      <BindItem id="item3" compid="div_search.edt_custRegNoKeyword" propid="value" datasetid="ds_Search" columnid="SEARCH_KEYWORD"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > CMS관리 > 계좌신청조회
+ * 02. 그룹명   : RTREAccReq.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay  = "";
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_getCodeInfo();
+		//오늘날짜
+		this.get_date();
+		this.parent.setButton("E|S",this);
+	} 
+		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//공통코드 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getCodeInfo = function() 
+	{
+		var sSvcID      	= "getCodeInfo";  
+		var sController   	= "ntrms/re/getAccReqCode.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_R015=outputR015 ds_R011=outputR011 ds_R001=outputR001 ds_R003=outputR003 ds_R009=outputR009 ds_R010=outputR010 ds_R005=outputR005";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+    //-------------------------------------------------------------------------------  	
+	//오늘날짜 조회
+    //-------------------------------------------------------------------------------  	
+	this.get_date = function() 
+	{
+		var sSvcID        	= "getDate";                    
+		var sController   	= "/rtms/comm/getToday.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+	}
+		
+    //-------------------------------------------------------------------------------  	
+	//조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_search = function() 
+	{
+		if(parseInt(nvl(this.div_search.cal_fromDt.value)) > parseInt(nvl(this.div_search.cal_toDt.value)))
+		{
+			alert('신청일자를 확인하세요.');
+			this.div_search.cal_fromDt.setFocus();
+			return;
+		}
+		this.ds_list.clearData();
+		/*	
+		if(nvl(this.div_search.edt_ordNoKeyword.value)=="" && nvl(this.div_search.edt_custNoKeyword.value)=="") 
+		{
+			this.alert("조회조건을 입력하세요.");
+			this.div_search.edt_ordNoKeyword.setFocus();
+			return;
+		}
+		else 
+		{
+		*/
+			var sSvcID        	= "listAccReq";                    
+			var sController   	= "ntrms/re/listAccReq.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "ds_list=output";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+	
+			var sFromDt		= this.div_search.cal_fromDt.value;
+			var sToDt		= this.div_search.cal_toDt.value;
+			var sAcrqTp		= this.div_search.cbo_sinChungGubun.value;
+			var sAcrqSt		= this.div_search.cbo_sinChungSangTae.value;
+			var sRpcUid		= this.div_search.edt_custRegNo.value;
+			var srchOrdNo  	= this.div_search.edt_ordNo.value;
+			var srchCustNo  = this.div_search.edt_custNo.value;
+			
+			sArgs += Ex.util.setParam("ordNo"	, nvl(srchOrdNo));
+			sArgs += Ex.util.setParam("custNo"	, nvl(srchCustNo));
+			sArgs += Ex.util.setParam("fromDt"	, nvl(sFromDt));
+			sArgs += Ex.util.setParam("toDt"	, nvl(sToDt));
+			sArgs += Ex.util.setParam("acrqTp"	, nvl(sAcrqTp));
+			sArgs += Ex.util.setParam("acrqSt"	, nvl(sAcrqSt));
+			sArgs += Ex.util.setParam("rpcUid"	, nvl(sRpcUid));
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+		/*
+		}
+		*/
+	}
+ 
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			return Ex.core.comMsg("alert",strErrorMsg);		
+		}
+		
+		switch (strSvcId) 
+		{
+			case "getDate":
+				var sFirstDay = Eco.date.getFirstDate(this.toDay);	//해당일짜의 1일 가져오기
+				this.div_search.cal_fromDt.set_value(sFirstDay);
+				this.div_search.cal_toDt.set_value(this.toDay);						
+				break;				
+			case "getCodeInfo":
+				break;
+			case "listAccReq":
+				if(this.ds_list.rowcount == 0) 
+				{
+					this.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+				}
+				break;
+			case "listUserInfo":
+				if(this.ds_user.rowcount > 0) 
+				{
+					this.div_search.edt_custRegNoKeyword.set_value(this.ds_user.getColumn(0,"userNm"));
+				}
+				break;	
+			case "listCustInfo":
+				if(this.ds_cust.rowcount > 0 ) {
+					this.div_search.edt_custNoKeyword.set_value(this.ds_cust.getColumn(0, "custNm"));
+				}	
+				break;
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	//검색 시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			this.fn_search();
+		}
+	}
+    //-------------------------------------------------------------------------------  	
+	//변경등록자 검색시 Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.div_search_edt_custRegNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if(obj.value == "") {
+			this.div_search.edt_custRegNoKeyword.set_value("");				
+		}
+		if ( e.keycode == 13 )
+		{
+			this.fn_getUserNm();
+		}		
+	}	
+    //-------------------------------------------------------------------------------  	
+	//계약번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.edt_ordNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_ordNo.value) == "") {
+				this.alert("계약번호를 입력하세요");
+				this.div_search.edt_ordNo.setFocus();
+				return;
+			}
+			//계약명 조회
+			this.fn_getOrdNm();
+		}		
+	}
+		
+    //-------------------------------------------------------------------------------  	
+	//고객번호  Enter키 이벤트 처리
+    //-------------------------------------------------------------------------------  	
+	this.custNo_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+	{
+		this.div_search.edt_custNoKeyword.set_value("");	
+		if ( e.keycode == 13 )
+		{
+			if(nvl(this.div_search.edt_custNo.value) == "") {
+				this.alert("고객번호를 입력하세요");
+				this.div_search.edt_custNo.setFocus();
+				return;
+			}
+			//고객명 조회
+			this.fn_getCustNm();
+		}		
+	}	
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  
+	//엑셀저장
+    //-------------------------------------------------------------------------------  	
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.grd_list, "리스트");
+	}
+	
+    //-------------------------------------------------------------------------------  
+	//VALID 체크
+    //-------------------------------------------------------------------------------  	
+	
+    //-------------------------------------------------------------------------------  
+	//계약번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_odrPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+	  var args ={p_arg:""};
+	  Ex.core.popup(this,"계약번호찾기","comm::RTCOMMOrderNo_pop.xfdl",args,"modaless=false");			
+	}
+	
+    //-------------------------------------------------------------------------------  	
+	//고객번호 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_custPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_formId:this.id, p_custNo:nvl(this.div_search.edt_custNo.value), p_custNm:nvl(this.div_search.edt_custNoKeyword.value)};
+		Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
+	}
+	
+    //-------------------------------------------------------------------------------  	
+	//변경등록자 팝업창
+    //-------------------------------------------------------------------------------  	
+	this.fn_regIdPopUp = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var args ={p_arg:""};
+		Ex.core.popup(this,"사용자찾기","comm::RTCOMMUser_pop.xfdl",args, "modaless=false");
+	}
+	
+	
+    //-------------------------------------------------------------------------------  
+	// 계약번호조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnOrderNoInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			this.div_search.edt_ordNo.set_value(arr[0].getColumn(0,"ordNo"));
+		}
+	}	
+    //-------------------------------------------------------------------------------  
+	// 고객조회팝업창 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnCustInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			if(nvl(arr[0].getColumn(0,"userId")) != "") { 
+				this.div_search.edt_custRegNo.set_value(arr[0].getColumn(0,"userId"));
+			}
+			if(nvl(arr[0].getColumn(0,"userNm")) != "") { 			
+				this.div_search.edt_custRegNoKeyword.set_value(arr[0].getColumn(0,"userNm"));
+			}
+			if(nvl(arr[0].getColumn(0,"custNo")) != "") { 
+				this.div_search.edt_custNo.set_value(arr[0].getColumn(0,"custNo"));			
+			}
+			if(nvl(arr[0].getColumn(0,"custNm")) != "") { 	
+				this.div_search.edt_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));								
+			}
+		}
+	}		
+    //-------------------------------------------------------------------------------  
+	// 변경등록자 파라미터 반환
+    //-------------------------------------------------------------------------------  		
+	this.returnUserInfo = function(arr) {
+		if(arr[0].rowcount > 0) 
+		{	
+			if(nvl(arr[0].getColumn(0,"userId")) != "") { 
+				this.div_search.edt_custRegNo.set_value(arr[0].getColumn(0,"userId"));
+			}
+			if(nvl(arr[0].getColumn(0,"userNm")) != "") { 			
+				this.div_search.edt_custRegNoKeyword.set_value(arr[0].getColumn(0,"userNm"));
+			}
+			if(nvl(arr[0].getColumn(0,"custNo")) != "") { 
+				this.div_search.edt_custNo.set_value(arr[0].getColumn(0,"custNo"));			
+			}
+			if(nvl(arr[0].getColumn(0,"custNm")) != "") { 	
+				this.div_search.edt_custNoKeyword.set_value(arr[0].getColumn(0,"custNm"));								
+			}
+		}
+	}		
+    //-------------------------------------------------------------------------------  
+	// 파라미터 반환
+    //-------------------------------------------------------------------------------  	
+	this._setReturn = function(ds) {
+
+
+	}
+    //-------------------------------------------------------------------------------  
+	// 변경등록자 검색
+    //-------------------------------------------------------------------------------  	
+	this.fn_getUserNm = function() 
+	{
+		var sSvcID        	= "listUserInfo";                    
+		var sController   	= "listUserInfo.do";
+		var sInDatasets   	= "user_=ds_user";
+		var sOutDatasets  	= "ds_user=listUser";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		sArgs += Ex.util.setParam("userId", this.div_search.edt_custRegNo.value);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}
+    //-------------------------------------------------------------------------------  	
+	//계약명 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getOrdNm = function() {
+	
+	
+	}			
+    //-------------------------------------------------------------------------------  	
+	//고객명 조회
+    //-------------------------------------------------------------------------------  	
+	this.fn_getCustNm = function() {
+		var sSvcID        	= "listCustInfo";                    
+		var sController   	= "rtms/comm/listCustInfo.do";
+		var sInDatasets   	= "user_=ds_user";
+		var sOutDatasets  	= "ds_cust=mapCustInfo";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("custNo", this.div_search.edt_custNo.value);			
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 	
+	}	]]></Script>
+  </Form>
+</FDL>

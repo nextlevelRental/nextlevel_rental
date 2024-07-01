@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMUserPwdChg_pop" classname="RTCMPostCode_pop" left="0" top="0" width="415" height="225" titletext="사용자 비밀번호변경" onload="RTCMPostCode_pop_onload" onkeyup="RTCOMMUserPwdChg_pop_onkeyup">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="10" top="50" height="166" scrollbars="none" cssclass="div_WF_searchBg" width="393">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchModel" taborder="49" text="아이디" cssclass="sta_WF_schTitle" left="20" top="11" width="86" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchAddr" taborder="52" text="현재 비밀번호" cssclass="sta_WF_schTitle" left="20" top="35" width="110" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchMbNm" taborder="53" text="비밀번호 확인" cssclass="sta_WF_schTitle" left="20" top="87" width="110" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchRdDngNm" taborder="54" text="변경 비밀번호" cssclass="sta_WF_schTitle" left="20" top="62" width="110" height="20" domainId="nexa.s_condition"/>
+              <Edit id="chgPwd" taborder="2" left="136" top="61" height="21" width="228" onkeyup="div_search_ed_searchRdDngNm_onkeyup" password="true"/>
+              <Edit id="chgPwd2" taborder="3" left="136" top="88" width="228" height="21" onkeyup="div_search_ed_searchMbNm_onkeyup" password="true"/>
+              <Edit id="userId" taborder="0" onkeyup="div_search_ed_searchRdDngNm_onkeyup" left="136" top="10" width="228" height="21"/>
+              <Edit id="currentPwd" taborder="1" onkeyup="div_search_ed_searchRdDngNm_onkeyup" left="136" top="35" width="228" height="21" password="true"/>
+              <Button id="btn_choice" taborder="4" text="저장" onclick="btn_chg_pwd" top="125" right="70" width="41" height="21" domainId="nexa.add"/>
+              <Button id="btn_close" taborder="5" text="취소" onclick="btn_close_onclick" top="125" right="25" width="41" height="21" domainId="nexa.add"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static20" taborder="1" text="비밀번호 변경" cssclass="sta_WF_title" left="9" top="12" right="208" height="30"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsPwd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="oldPassword" type="STRING" size="256"/>
+          <Column id="reason" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[	include "lib::comLib.xjs";
+	this.p_arg 	= "";
+
+    this.RTCMPostCode_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj);
+		this.fn_init();
+	}
+	
+	this.fn_init = function(){
+		if(this.parent.p_arg != "") {
+			this.div_search.userId.set_value(this.parent.p_arg);
+			this.div_search.currentPwd.setFocus();
+		} else {
+			this.div_search.userId.setFocus();
+		}
+	}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt)
+	{
+		if(nErrorCode < 0) {
+			alert(strErrorMsg);
+		} else {
+			if(strSvcId == "chgUserPwd") {
+				alert(strErrorMsg);
+				this.close();
+			}
+		}
+	}
+	
+	this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		this.close();
+	}
+	
+	this.check = function() {
+		if(nvl(this.div_search.userId.value) == '') {
+			alert('아이디를 입력해주십시오');
+			return false;
+		}
+
+		if(nvl(this.div_search.currentPwd.value) == '') {
+			alert('현재 비밀번호를 입력해주십시오');
+			return false;
+		}
+		
+		if(nvl(this.div_search.chgPwd.value) == '') {
+			alert('변경 비밀번호를 입력해주십시오');
+			return false;
+		}
+		
+		if(nvl(this.div_search.chgPwd2.value) == '') {
+			alert('변경 비밀번호를 입력해주십시오');
+			return false;
+		}
+		
+		if(nvl(this.div_search.chgPwd.value) != nvl(this.div_search.chgPwd2.value)) {
+			alert('입력하신 변경 비밀번호가 일치하지 않습니다.');
+			return false;
+		}
+		return true;
+	}
+	
+	this.btn_chg_pwd = function(obj:Button,  e:nexacro.ClickEventInfo) {
+		if(!this.check()) return;
+		
+		this.dsPwd.clearData();
+		var row = this.dsPwd.addRow();
+		this.dsPwd.setColumn(row, "userId", 		this.div_search.userId.value);
+		this.dsPwd.setColumn(row, "oldPassword", 		this.div_search.currentPwd.value);
+		this.dsPwd.setColumn(row, "password", 	this.div_search.chgPwd.value);
+		this.dsPwd.setColumn(row, "regId", 			this.div_search.userId.value);
+		
+		var sSvcID      	= "chgUserPwd";  
+		var sController   	= "rtms/comm/chgUserPwd.do";
+		var sInDatasets   	= "chg_pwd=dsPwd";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs); 
+	}
+
+this.RTCOMMUserPwdChg_pop_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="grpRegDAO">
+	
+	<resultMap id="grpRegResultMap" class="java.util.HashMap">
+		<result property="authGrpCd" column="AUTH_GRP_CD" />
+		<result property="authGrpNm" column="AUTH_GRP_NM" />
+		<result property="authGrpDesc" column="AUTH_GRP_DESC" />
+		<result property="useYn" column="USE_YN" />
+		<result property="regId" column="REG_ID" />
+		<result property="regDt" column="REG_DT" />
+		<result property="chgId" column="CHG_ID" />
+		<result property="chgDt" column="CHG_DT" />
+	</resultMap>
+	
+	<resultMap id="authGroupUserResultMap" class="java.util.HashMap">
+		<result property="userId" column="USER_ID" /> <!-- 사용자 아이디 -->
+		<result property="userNm" column="USER_NM" /> <!-- 사용자명 -->
+		<result property="userGrp" column="USER_GRP" /> <!-- 사용자 그룹 -->
+		<result property="userGrpNm" column="USER_GRP_NM" /> <!-- 사용자 그룹명 -->
+		<result property="vkgrp" column="VKGRP" /> <!-- 지사 -->
+		<result property="vkgrpNm" column="VKGRP_NM" /> <!-- 지사명-->
+		<result property="vkbur" column="VKBUR" /> <!-- 지점 -->
+		<result property="vkburNm" column="VKBUR_NM" /> <!-- 지점명 -->
+		<result property="agentId" column="AGENT_ID" /> <!-- 대리점 아이디 -->
+		<result property="agentNm" column="AGENT_NM" /> <!-- 대리점명 -->
+	</resultMap>
+	
+	<parameterMap class="java.util.Map" id="parameters">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="grpRegResultMap" />
+		<parameter property="authGrpCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpNm" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpDesc" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap class="java.util.Map" id="parameters2">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"
+			javaType="java.sql.ResultSet" mode="OUT" resultMap="authGroupUserResultMap" />
+		<parameter property="cd" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<parameterMap class="java.util.Map" id="parameters3">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"
+			javaType="java.sql.ResultSet" mode="OUT" resultMap="authGroupUserResultMap" />
+		<parameter property="cd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userNm" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	
+	<procedure id="grpReg.getGrpRegList" parameterMap="parameters">
+		{call
+		Pkg_Rtcm0021.p_sRtcm0021(?, ?, ?, ?)}
+	</procedure>
+	
+	<procedure id="grpReg.authGroupUserList" parameterMap="parameters2">
+		{call
+		Pkg_Rtcm0023.p_sRtcm0023AuthGroupUser(?, ?)}
+	</procedure>
+	
+	<procedure id="grpReg.authGroupUserNotList" parameterMap="parameters3">
+		{call
+		Pkg_Rtcm0023.p_sRtcm0023AuthGroupUserNot(?, ?, ?, ?)}
+	</procedure>
+
+
+	<parameterMap class="java.util.Map" id="insert_Rtcm0023">
+		<parameter property="dvsn"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="authGrpCd"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="delFg"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"  javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 		jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="grpReg.saveGrpRegInfo" parameterMap="insert_Rtcm0023">
+		{call
+		Pkg_Rtcm0023.p_IUDRtcm0023(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

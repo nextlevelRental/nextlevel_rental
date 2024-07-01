@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample004" classname="grid_imageview" left="0" top="0" width="1020" height="411" titletext="영역숨김기능샘플" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Button id="Button03" taborder="4" text="First Sec ▲" left="18" top="2" width="96" height="26" onclick="Button03_onclick"/>
+        <Div id="Div00" taborder="5" left="-1" top="30" height="54" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static15" taborder="0" cssclass="sta_b" left="0" top="2" right="0" height="26"/>
+              <Static id="stc_custCharger" taborder="1" text="Inspection Date" cssclass="sta_label" left="499" top="2" width="112" height="26"/>
+              <Static id="Static23" taborder="3" cssclass="sta_b" left="0" top="27" right="0" height="26"/>
+              <Static id="stc_custInfo" taborder="5" text="14-18729" left="116" top="5" width="381" height="20" style="align:center middle;"/>
+              <Combo id="cbo_empNo" taborder="6" innerdataset="ds_member" codecolumn="CD_VAL" datacolumn="CD_NM" left="617" top="30" width="222" height="20"/>
+              <Edit id="edt_custCharger" taborder="7" left="617" top="6" width="174" height="20"/>
+              <Static id="Static14" taborder="8" text="Inspection#" cssclass="sta_label" left="0" top="2" width="112" height="26"/>
+              <Static id="Static22" taborder="9" text="Vendor" cssclass="sta_labelT" left="499" top="27" width="112" height="26"/>
+              <Static id="Static20" taborder="10" text="Buyer" cssclass="sta_labelT" left="0" top="27" width="112" height="26"/>
+              <Edit id="edt_contactPoint1" taborder="12" left="117" top="31" width="44" height="20"/>
+              <Edit id="edt_contactPoint2" taborder="13" left="176" top="31" width="44" height="20"/>
+              <Edit id="edt_contactPoint3" taborder="14" left="235" top="31" width="44" height="20"/>
+              <Static id="Static17" taborder="15" text="-" left="161" top="32" width="15" height="20" style="align:center middle;"/>
+              <Static id="Static19" taborder="16" text="-" left="220" top="32" width="15" height="20" style="align:center middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="Button04" taborder="6" text="Two Sec ▲" left="18" top="98" width="96" height="26" onclick="Button04_onclick"/>
+        <Div id="Div01" taborder="7" left="0" top="126" height="54" right="0">
+          <Layouts>
+            <Layout>
+              <Static id="Static15" taborder="17" cssclass="sta_b" left="0" top="2" right="0" height="26"/>
+              <Static id="stc_custCharger" taborder="18" text="Inspection Date" cssclass="sta_label" left="499" top="2" width="112" height="26"/>
+              <Static id="Static23" taborder="19" cssclass="sta_b" left="0" top="27" right="0" height="26"/>
+              <Static id="stc_custInfo" taborder="20" text="14-18729" left="116" top="5" width="381" height="20" style="align:center middle;"/>
+              <Combo id="cbo_empNo" taborder="21" innerdataset="ds_member" codecolumn="CD_VAL" datacolumn="CD_NM" left="617" top="30" width="222" height="20"/>
+              <Edit id="edt_custCharger" taborder="22" left="617" top="6" width="174" height="20"/>
+              <Static id="Static14" taborder="23" text="Inspection#" cssclass="sta_label" left="0" top="2" width="112" height="26"/>
+              <Static id="Static22" taborder="24" text="Vendor" cssclass="sta_labelT" left="499" top="27" width="112" height="26"/>
+              <Static id="Static20" taborder="25" text="Buyer" cssclass="sta_labelT" left="0" top="27" width="112" height="26"/>
+              <Edit id="edt_contactPoint1" taborder="26" left="117" top="31" width="44" height="20"/>
+              <Edit id="edt_contactPoint2" taborder="27" left="176" top="31" width="44" height="20"/>
+              <Edit id="edt_contactPoint3" taborder="28" left="235" top="31" width="44" height="20"/>
+              <Static id="Static17" taborder="29" text="-" left="161" top="32" width="15" height="20" style="align:center middle;"/>
+              <Static id="Static19" taborder="30" text="-" left="220" top="32" width="15" height="20" style="align:center middle;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div02" taborder="8" left="0" top="190" height="110" text="Div02" right="0">
+          <Layouts>
+            <Layout width="" height="219">
+              <Grid id="grd_list" taborder="0" binddataset="ds_list" useinputpanel="false" autofittype="col" left="0" top="40" right="0" height="24">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="98"/>
+                      <Column size="346"/>
+                      <Column size="254"/>
+                      <Column size="227"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="70"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="image_path"/>
+                      <Cell col="1" text="image_path"/>
+                      <Cell col="2" text="inventory_num"/>
+                      <Cell col="3" text="inventory_num_mask"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell displaytype="image" style="align:center middle;selectbackground:stretch;" text="bind:image_path"/>
+                      <Cell col="1" edittype="none" text="bind:image_path"/>
+                      <Cell col="2" text="bind:inventory_num"/>
+                      <Cell col="3" text="bind:inventory_num_mask"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="Button00" taborder="1" text="그리드세로 간격조정" onclick="Button00_onclick" left="18" top="6" width="152" height="26"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="image_path" type="STRING" size="256"/>
+          <Column id="inventory_num" type="STRING" size="256"/>
+          <Column id="inventory_num_mask" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item2" compid="Div00.cbo_empNo" propid="value" datasetid="ds_main" columnid="EMP_NO"/>
+      <BindItem id="item0" compid="Div00.edt_custCharger" propid="value" datasetid="ds_main" columnid="CUST_CHARGER"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : 
+* BUSINESS    : 
+* FILE NAME   : 
+* PROGRAMMER  :
+* DATE        : 
+* DESCRIPTION : 
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	Ex.core.init(obj);
+}
+
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+{
+ 
+	if (nErrorCode < 0) 
+	{
+		return Ex.core.comMsg("alert",strErrorMsg);
+	}
+ 
+	switch (strSvcId) 
+	{
+        case "search":
+            this.fn_grid_height_change();
+            break;			
+	}
+}
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var nRowSize = this.Div02.grd_list.getRealRowSize(0);
+	
+	if(nRowSize ==  24)
+	{
+	    this.Div02.grd_list.setRealRowSize(0,70);
+	}
+	else
+	{
+	    this.Div02.grd_list.setRealRowSize(0,24);
+	}
+	
+	this.fn_grid_height_change();
+}
+
+this.Button03_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    var viewType = this.Div00.viewType;
+
+	if(Eco.isEmpty(viewType) || viewType == "Y")
+	{
+	    this.Div00.setOffsetHeight(1);
+	    this.Div00.viewType = "N";
+
+	    this.Button04.move(null,this.Button04.top-68);
+	    this.Div01.move(null,this.Div01.top-68);
+	    this.Div02.move(null,this.Div02.top-68);
+	}
+	else
+	{
+	    this.Div00.setOffsetHeight(54);
+	    this.Div00.viewType = "Y";
+	    this.Button04.move(null,this.Button04.top+68);
+	    this.Div01.move(null,this.Div01.top+68);
+	    this.Div02.move(null,this.Div02.top+68);
+	}
+	
+	this.resetScroll();
+}
+
+this.Button04_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+    var viewType = this.Div01.viewType;
+
+	if(Eco.isEmpty(viewType) || viewType == "Y")
+	{
+	    this.Div01.setOffsetHeight(1);
+	    this.Div01.viewType = "N";
+	    this.Div02.move(null,this.Div02.top-68);
+	}
+	else
+	{
+	    this.Div01.setOffsetHeight(54);
+	    this.Div01.viewType = "Y";
+	    this.Div02.move(null,this.Div02.top+68);
+	}
+		
+    this.resetScroll();
+}
+
+this.fn_grid_height_change = function()
+{
+    //110
+    var nGridHeadSize = 26;
+    var nDivHeightSize = 84; //그리드 헤더 크기 미포함
+    var nRowSize = this.Div02.grd_list.getRealRowSize(0);
+    var nHeight = (this.ds_list.rowcount*nRowSize)+nGridHeadSize;
+    
+    this.Div02.grd_list.set_height(nHeight);
+    this.Div02.set_height(nHeight+nDivHeightSize);
+    
+    this.resetScroll();
+}
+
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="sample010" classname="jquery_sample" left="0" top="0" width="1260" height="990" titletext="animation sample(3rdParty)" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <GroupBox id="GroupBox02" text="Example" taborder="22" left="6" top="429" right="18" height="138" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;"/>
+        <GroupBox id="GroupBox01" text="Preveiw" taborder="19" left="9" top="855" right="1" height="110" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;"/>
+        <Button id="Button01" taborder="1" text="Run" onclick="Button01_onclick" left="14" top="252" width="97" height="29"/>
+        <Static id="Static00" taborder="5" text="1.jQuery animation" left="14" top="216" width="239" height="34" cssclass="sample_Title"/>
+        <Static id="Static02" taborder="7" text="$(Ex.ani.jquery(this.Div00)).animate({left:0},'slow');&#13;&#10;&#9;$(Ex.ani.jquery(this.Div00)).animate({left:10},'fast');&#13;&#10; &#9;$(Ex.ani.jquery(this.Div00)).fadeOut(function(){&#13;&#10; &#9;&#13;&#10; &#9;   trace(&quot; this.callback&quot;);&#13;&#10; &#9;});" left="35" top="453" width="446" height="97" cssclass="sample_example"/>
+        <Static id="Static03" taborder="8" text="2.Css3 Animation" left="9" top="566" width="173" height="34" cssclass="sample_Title"/>
+        <Div id="Div01" taborder="12" left="26" top="879" width="405" height="70" style="border:1 solid red ;">
+          <Layouts>
+            <Layout>
+              <Button id="Button00" taborder="4" text="Button00" left="198" top="15" width="86" height="38"/>
+              <Edit id="Edit00" taborder="5" left="7" top="18" width="174" height="34"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <GroupBox id="GroupBox00" text="Preveiw" taborder="17" left="10" top="299" height="124" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;" right="15"/>
+        <Div id="Div00" taborder="18" left="480" top="318" width="405" height="55" style="border:1 solid red ;">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="5" left="22" top="11" width="174" height="34"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static06" taborder="20" text="★.index.html element" left="8" top="-1" width="195" height="24" cssclass="sample_Title"/>
+        <ImageViewer id="ImageViewer00" taborder="21" image="URL('image::sample010.png')" stretch="fixaspectratio" left="2" top="27" height="181" right="0" style="align:left middle;" imagealign="left middle"/>
+        <Button id="btn_css3" taborder="23" text="Run1" onclick="btn_css3_onclick" left="14" top="810" width="87" height="29"/>
+        <Button id="btn_goCss" taborder="24" text="옵션 LinkPage" onclick="btn_goCss_onclick" left="216" top="810" width="87" height="29"/>
+        <GroupBox id="GroupBox03" text="Example" taborder="25" left="9" top="607" right="15" height="195" style="border:1 solid darkgray ;color:black;font:9 Verdana bold;"/>
+        <TextArea id="TextArea00" taborder="26" left="37" top="631" height="159" value="함수 설명:&#13;&#10;&#13;&#10;1. system.mc_animation(obj, animname, cbobj, cbname, cbarg)&#13;&#10;&#13;&#10;        설명 : css   animation 프로퍼티 설정을 추상화 합니다. animation은 비동기적으로 동작합니다.&#13;&#10;&#13;&#10;                obj : 대상 오브젝 ( 예: Button00 )&#13;&#10;        aniname : animation  문자열. (예: &quot;shake 1s&quot; )&#13;&#10;                        --&gt; aniname 스팩: [name duration timing_function delay&#13;&#10;iteration_count direction] 의 형식이며 자세한 항목설명은&#13;&#10;                        [link0] http://developer.apple.com/library/safari/#documentation/appleapplications/reference/safaricssref/articles/standardcssproperties.html&#13;&#10;                        의 -webkit-animation 항목 참조&#13;&#10;&#13;&#10;                cbobj : 콜백할 오브젝 (보통 this )&#13;&#10;                cbname : 콜백함수 ( 예: &quot;callback&quot; )&#13;&#10;                cbarg : 콜백함수 아규먼트 ( 예: &quot;value&quot;, {value : 0}, [value0, value2] )&#13;&#10;&#13;&#10;2. system.mc_transition(obj, transopt, cbobj, cbname, cbarg)&#13;&#10;&#13;&#10;        설명 : css   transition 프로퍼티 설정을 추상화 합니다.   transition은 비동기적으로 동작합니다.&#13;&#10;&#13;&#10;                obj : 대상 오브젝 ( 예: Button00 )&#13;&#10;        transopt : transition  문자열. (예: &quot;all 1s&quot; )&#13;&#10;                        --&gt; transopt 스팩 : [property duration timing_function delay] 의 형식이며&#13;&#10;자세한 항목 설명은 [link0]의 -webkit-transition 항목 참조&#13;&#10;&#13;&#10;                cbobj : 콜백할 오브젝 (보통 this )&#13;&#10;                cbname : 콜백함수 ( 예: &quot;callback&quot; )&#13;&#10;                cbarg : 콜백함수 아규먼트 ( 예: &quot;value&quot;, {value : 0}, [value0, value2] )&#13;&#10;&#13;&#10;3. system.mc_transform(obj, transformopt)&#13;&#10;&#13;&#10;        설명 : css   transform 프로퍼티 설정을 추상화 합니다. transform은 비동기적으로 동작합니다.&#13;&#10;&#13;&#10;                obj : 대상 오브젝 ( 예: Button00 )&#13;&#10;        transformopt : transform  문자열. (예: &quot;rotateX(10deg)&quot; )&#13;&#10;                        --&gt; transformopt 스팩 : [function function1] 의 형식이며 자세한 항목 설명은&#13;&#10;[link0]의 -webkit-transform 항목 참조&#13;&#10;&#13;&#10;&#13;&#10;&#13;&#10;호출 예&#13;&#10;0) system.mc_animate(Button00, &quot;shake 1s&quot;);&#13;&#10;1) 콜백사용 예제&#13;&#10;function btnLogin_onclick(obj:Button,  e:ClickEventInfo)&#13;&#10;{&#13;&#10;        if(system.mc_animate){&#13;&#10;                system.mc_animate(obj, &quot;pulse 0.5s&quot;, this, &quot;process&quot;, [obj, e]);&#13;&#10;        } else {&#13;&#10;                process([obj, e]);&#13;&#10;        }&#13;&#10;}&#13;&#10;function process(arg)&#13;&#10;{&#13;&#10;        var obj = arg[0];&#13;&#10;        var e = arg[1];&#13;&#10;&#13;&#10;        proc_login(obj, e);&#13;&#10;}&#13;&#10;&#13;&#10;2) mc_transition, mc_transform&#13;&#10;var deg = 0;&#13;&#10;function Button00_onclick(obj:Button,  e:ClickEventInfo)&#13;&#10;{&#13;&#10;        system.mc_transition(Button00, &quot;all 0.5s&quot;);&#13;&#10;        deg=deg-90;&#13;&#10;        system.mc_transform(obj, &quot;rotateZ(&quot;+deg+&quot;deg)&quot;);&#13;&#10;        obj.position2.width = obj.position2.width - 30;&#13;&#10;        obj.position2.height = obj.position2.height - 30;&#13;&#10;}&#13;&#10;&#13;&#10;" right="20" cssclass="sample_example" style="background:#ffd70055;"/>
+        <Button id="btn_css00" taborder="27" text="Run2" left="113" top="811" width="87" height="29" onclick="btn_css00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="Dataset00" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="reset" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="withdrawn_account" type="STRING" size="256"/>
+          <Column id="bank" type="STRING" size="256"/>
+          <Column id="transaction_time" type="STRING" size="256"/>
+          <Column id="description" type="STRING" size="256"/>
+          <Column id="sender" type="STRING" size="256"/>
+          <Column id="receiver" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="withdrawn_amount" type="STRING" size="256"/>
+          <Column id="deposited_amount" type="BIGDECIMAL" size="256"/>
+          <Column id="balance" type="STRING" size="256"/>
+          <Column id="branch" type="STRING" size="256"/>
+          <Column id="type" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[include "lib::comLib.xjs";
+
+
+this.form_onload= function(obj,e)
+{
+  var h = 990;
+   Ex.core.init(obj,h);
+}
+
+
+this.Button01_onclick = function(obj:Button,  e:TOBE.ClickEventInfo)
+{
+	$(Ex.ani.jquery(this.Div00)).animate({"height": "100px"}, {"queue": false, "duration": 500})
+                                 .animate({"width": "250px"}, 500);
+	$(Ex.ani.jquery(this.Div00)).animate({left:0},'slow');
+	$(Ex.ani.jquery(this.Div00)).animate({left:10},'fast');
+ 	
+}
+
+
+
+
+this.btn_css3_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+
+       this.createElement();  //index page link tag element 생성
+  	   
+  	    if (system.mc_animate) 
+		{
+		
+		  system.mc_animate(this.Div01, "rotateIn 0.5s");	
+		  //system.mc_animate(this.Div01, "zoomIn 1s");	
+		    
+		}	
+}
+this.deg = 0;
+this.btn_css00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	this.createElement();  //index page link tag element 생성
+  	   
+  	    if (system.mc_animate) 
+		{
+
+		  system.mc_transition(this.Div01, "all 0.5s");
+		  
+		  
+         this.deg =this.deg -90;
+         trace(" this.deg : " + this.deg);
+         system.mc_transform(this, "rotateZ("+this.deg+"deg)");
+
+		}	
+		
+}
+
+
+
+/**
+* index page onload element 생성
+* @return 
+* @example
+* @memberOf Ex.core
+*/
+this.createElement = function()
+{
+
+  var anchor = document.all["linkcss"];
+   if(!Eco.isEmpty(anchor)){
+	   anchor.parentNode.removeChild(anchor);   
+   }
+   
+   var csslink  = document.createElement('link');
+   
+	   csslink .setAttribute('id', 'linkcss');
+	   csslink .setAttribute('rel', 'stylesheet');		  
+	   csslink .setAttribute('type', 'text/css');
+	   csslink .setAttribute('href', './nexacro14lib/component/ExLib/openapi/animate.css');
+   document.getElementsByTagName("head")[0].insertBefore(csslink ,document.getElementsByTagName("title")[0]);
+
+}
+
+
+//ling page 
+this.btn_goCss_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var url =  "";
+	
+	system.execBrowser("http://daneden.github.io/animate.css/");
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

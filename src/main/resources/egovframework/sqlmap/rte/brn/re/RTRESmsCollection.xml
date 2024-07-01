@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="rTRESmsCollectionDAO">
+
+	<!-- SMS내역 조회 -->
+	<resultMap id="r_sRtre0207SmsList" class="java.util.HashMap">
+		<result property="sendDay"			column="SEND_DAY"         />
+		<result property="sendTp"			column="SEND_TP"       />
+		<result property="sendCom"			column="SEND_COM"       />
+		<result property="sendCnt"			column="SEND_CNT"    />
+	</resultMap>
+	<parameterMap id="p_sRtsd0207SmsList" class="java.util.Map">
+		<parameter property="vcursor"	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtre0207SmsList" />
+		<parameter property="closeYm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendTp" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTRESmsCollectionDAO.rTRESmsCollectionList" parameterMap="p_sRtsd0207SmsList">
+		{call Pkg_Rtsd0207.p_sSmsCollectionList(?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

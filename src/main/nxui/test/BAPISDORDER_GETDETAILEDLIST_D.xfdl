@@ -1,0 +1,2634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="BAPISDORDER_GETDETAILEDLIST_D" classname="BAPISDORDER_GETDETAILEDLIST_D" left="0" top="0" width="1024" height="768" titletext="Kundenauftrag: Liste aller Auftragsdaten" onload="form_xcro_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" cssclass="div_WFSA_Bg" left="0" top="0" height="63" right="0" style="" comp_fullHeight="" comp_hideHeight="0" scrollbars="autoboth">
+          <Layouts>
+            <Layout>
+              <Static id="stc_I010001_HEADER" cssclass="sta_WFSA_Label" left="10" top="5" width="140" height="25" text="Checkbox" style="align:left middle;" domain="HEADER" wordwrap="none"/>
+              <Edit id="edt_I010001_HEADER" visible="true" readonly="false" cssclass="" left="153" top="5" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="I_BAPI_VIEW#HEADER" comp_multiple=""/>
+              <Button id="btn_I010001_HEADER" cssclass="btn_WFSA_Editsearch" left="257" top="5" width="25" height="25" text="" style="" enable="true" onclick="btn_searchHelp_onclick" SH_FIELD="" SH_FIELD_NM="" SH_MULTI_DS="" SH_NM="" SH_OBJ_CODE="edt_I010001_HEADER" SH_OBJ_NAME="edt_I010001_HEADER_desc" SH_PARENT="" SH_SELOPT="" SH_TF="ORDER_VIEW" SH_TF_FIELD="HEADER" SH_TITLE="Checkbox" SH_GRID="" comp_target="XFELD" domain=""/>
+              <Edit id="edt_I010001_HEADER_desc" visible="true" readonly="false" cssclass="" left="285" top="5" width="138" height="25" style="" enable="false" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Static id="stc_I010002_ITEM" cssclass="sta_WFSA_Label" left="475" top="5" width="140" height="25" text="Checkbox" style="align:left middle;" domain="ITEM" wordwrap="none"/>
+              <Edit id="edt_I010002_ITEM" visible="true" readonly="false" cssclass="" left="618" top="5" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="I_BAPI_VIEW#ITEM" comp_multiple=""/>
+              <Button id="btn_I010002_ITEM" cssclass="btn_WFSA_Editsearch" left="722" top="5" width="25" height="25" text="" style="" enable="true" onclick="btn_searchHelp_onclick" SH_FIELD="" SH_FIELD_NM="" SH_MULTI_DS="" SH_NM="" SH_OBJ_CODE="edt_I010002_ITEM" SH_OBJ_NAME="edt_I010002_ITEM_desc" SH_PARENT="" SH_SELOPT="" SH_TF="ORDER_VIEW" SH_TF_FIELD="ITEM" SH_TITLE="Checkbox" SH_GRID="" comp_target="XFELD" domain=""/>
+              <Edit id="edt_I010002_ITEM_desc" visible="true" readonly="false" cssclass="" left="750" top="5" width="138" height="25" style="" enable="false" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Static id="stc_I010001_VBELN" cssclass="sta_WFSA_Label" left="10" top="33" width="140" height="25" text="Sales Document" style="align:left middle;" domain="VBELN" wordwrap="none"/>
+              <Edit id="edt_I010001_VBELN" visible="true" readonly="false" cssclass="" left="153" top="33" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="" comp_multiple=""/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_ORDER_HEADERS_OUT" cssclass="div_WFDA_Bg" left="0" top="68" height="91" right="0" style="" comp_fullHeight="" comp_hideHeight="0" scrollbars="autoboth">
+          <Layouts>
+            <Layout>
+              <Static id="stc_T020002_DOC_NUMBER" cssclass="sta_MWFDA_Label" left="10" top="5" width="140" height="25" text="Sales Document" style="align:left middle;" domain="DOC_NUMBER" wordwrap="none"/>
+              <Edit id="edt_T020002_DOC_NUMBER" visible="true" readonly="false" cssclass="" left="153" top="5" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Static id="stc_T020003_REC_DATE" cssclass="sta_MWFDA_Label" left="475" top="5" width="140" height="25" text="Date on Which Record Was Created" style="align:left middle;" domain="REC_DATE" wordwrap="none"/>
+              <Calendar id="cal_T020003_REC_DATE" readonly="false" cssclass="" left="618" top="5" width="102" height="25" style="align:right middle;" enable="true" dateformat="yyyy-MM-dd" comp_structure="" comp_multiple=""/>
+              <Static id="stc_T020004_REC_TIME" cssclass="sta_MWFDA_Label" left="10" top="33" width="140" height="25" text="Entry time" style="align:left middle;" domain="REC_TIME" wordwrap="none"/>
+              <Edit id="edt_T020004_REC_TIME" visible="true" readonly="false" cssclass="" left="153" top="33" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Button id="btn_T020004_REC_TIME" cssclass="btn_WFSA_Editsearch" left="257" top="33" width="25" height="25" text="" style="" enable="true" onclick="btn_searchHelp_onclick" SH_FIELD="" SH_FIELD_NM="" SH_MULTI_DS="" SH_NM="" SH_OBJ_CODE="edt_T020004_REC_TIME" SH_OBJ_NAME="edt_T020004_REC_TIME_desc" SH_PARENT="" SH_SELOPT="" SH_TF="BAPISDHD" SH_TF_FIELD="REC_TIME" SH_TITLE="Entry time" SH_GRID="" comp_target="ERZET" domain=""/>
+              <Edit id="edt_T020004_REC_TIME_desc" visible="true" readonly="false" cssclass="" left="285" top="33" width="138" height="25" style="" enable="false" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Static id="stc_T020005_CREATED_BY" cssclass="sta_MWFDA_Label" left="475" top="33" width="140" height="25" text="Name of Person who Created the Object" style="align:left middle;" domain="CREATED_BY" wordwrap="none"/>
+              <Edit id="edt_T020005_CREATED_BY" visible="true" readonly="false" cssclass="" left="618" top="33" width="101" height="25" style="" enable="true" maxlength="0" comp_structure="" comp_multiple=""/>
+              <Static id="stc_T020006_QT_VALID_F" cssclass="sta_MWFDA_Label" left="10" top="61" width="140" height="25" text="Quotation/Inquiry is valid from" style="align:left middle;" domain="QT_VALID_F" wordwrap="none"/>
+              <Calendar id="cal_T020006_QT_VALID_F" readonly="false" cssclass="" left="153" top="61" width="102" height="25" style="align:right middle;" enable="true" dateformat="yyyy-MM-dd" comp_structure="" comp_multiple=""/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_grid_0_del" cssclass="btn_WF_CRUD" top="164" width="40" height="25" right="0" text="삭제" style="" enable="false" onclick="btn_grid_comm_onclick" SH_FIELD="" SH_FIELD_NM="" SH_MULTI_DS="" SH_NM="" SH_OBJ_CODE="" SH_OBJ_NAME="" SH_PARENT="" SH_SELOPT="" SH_TF="" SH_TF_FIELD="" SH_TITLE="" SH_GRID="" comp_target="grd_0" domain="BTN_DEL"/>
+        <Button id="btn_grid_0_add" cssclass="btn_WF_CRUD" top="164" width="40" height="25" right="45" text="추가" style="" enable="false" onclick="btn_grid_comm_onclick" SH_FIELD="" SH_FIELD_NM="" SH_MULTI_DS="" SH_NM="" SH_OBJ_CODE="" SH_OBJ_NAME="" SH_PARENT="" SH_SELOPT="" SH_TF="" SH_TF_FIELD="" SH_TITLE="" SH_GRID="" comp_target="grd_0" domain="BTN_ADD"/>
+        <Grid id="grd_0" readonly="false" binddataset="ORDER_ITEMS_OUT" oncellclick="grd_searchHelpForGrid_onclick" onexpanddown="grd_searchHelpForGrid_onexpanddown" left="0" top="194" bottom="0" right="0" style="" SH_GRID="ORDER_ITEMS_OUT_GRD" autoenter="select">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="200"/>
+                <Column size="144"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="162"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="144"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="180"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="198"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="198"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="90"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="90"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="180"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="180"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="198"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="162"/>
+                <Column size="180"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="144"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="180"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="198"/>
+                <Column size="200"/>
+                <Column size="198"/>
+              </Columns>
+              <Rows>
+                <Row size="29" band="head"/>
+                <Row size="28"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Structure of VBAP with English"/>
+                <Cell col="1" text="Function"/>
+                <Cell col="2" text="Sales Document"/>
+                <Cell col="3" text="Sales Document Item"/>
+                <Cell col="4" text="Material Number"/>
+                <Cell col="5" text="Material entered"/>
+                <Cell col="6" text="Pricing Reference Material"/>
+                <Cell col="7" text="Batch Number"/>
+                <Cell col="8" text="Material Group"/>
+                <Cell col="9" text="Short text for sales order item"/>
+                <Cell col="10" text="Sales document item category"/>
+                <Cell col="11" text="Item type"/>
+                <Cell col="12" text="Item is relevant for delivery"/>
+                <Cell col="13" text="Relevant for Billing"/>
+                <Cell col="14" text="Higher-level item in bill of material structures"/>
+                <Cell col="15" text="Item for which this item is an alternative"/>
+                <Cell col="16" text="Reason for rejection of quotations and sales orders"/>
+                <Cell col="17" text="Product hierarchy"/>
+                <Cell col="18" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="19" text="Target quantity in sales units"/>
+                <Cell col="20" text="Target quantity UoM"/>
+                <Cell col="21" text="Target quantity unit of measure in ISO code"/>
+                <Cell col="22" text="Factor for converting sales units to base units (target qty)"/>
+                <Cell col="23" text="Factor for converting sales units to base units (target qty)"/>
+                <Cell col="24" text="Base Unit of Measure"/>
+                <Cell col="25" text="Target quantity unit of measure in ISO code"/>
+                <Cell col="26" text="Scale quantity in base unit of measure"/>
+                <Cell col="27" text="Rounding quantity for delivery"/>
+                <Cell col="28" text="Reconciliation Date for Agreed Cumulative Quantity"/>
+                <Cell col="29" text="Allowed deviation in quantity (absolute)"/>
+                <Cell col="30" text="Item Number of the Underlying Purchase Order"/>
+                <Cell col="31" text="Material belonging to the customer"/>
+                <Cell col="32" text="Allowed deviation in quantity (in percent)"/>
+                <Cell col="33" text="Days by which the quantity can be shifted"/>
+                <Cell col="34" text="Repair Processing: Classification of Items"/>
+                <Cell col="35" text="Usage Indicator"/>
+                <Cell col="36" text="Delivery group (items are delivered together)"/>
+                <Cell col="37" text="Quantity is Fixed"/>
+                <Cell col="38" text="Unlimited overdelivery allowed"/>
+                <Cell col="39" text="Overdelivery Tolerance Limit"/>
+                <Cell col="40" text="Underdelivery Tolerance Limit"/>
+                <Cell col="41" text="Billing block for item"/>
+                <Cell col="42" text="Replacement part"/>
+                <Cell col="43" text="Method of billing for CO/PPC orders"/>
+                <Cell col="44" text="Division"/>
+                <Cell col="45" text="Business Area"/>
+                <Cell col="46" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="47" text="SD Document Currency"/>
+                <Cell col="48" text="ISO code currency"/>
+                <Cell col="49" text="Maximum Number of Partial Deliveries Allowed Per Item"/>
+                <Cell col="50" text="Partial delivery at item level"/>
+                <Cell col="51" text="Batch split allowed"/>
+                <Cell col="52" text="Cumulative Order Quantity in Sales Units"/>
+                <Cell col="53" text="Cumulative required delivery qty (all dlv-relev.sched.lines)"/>
+                <Cell col="54" text="Cumulative confirmed quantity in sales unit"/>
+                <Cell col="55" text="Cumulative confirmed quantity in base unit"/>
+                <Cell col="56" text="Sales unit"/>
+                <Cell col="57" text="ISO code for unit of measurement"/>
+                <Cell col="58" text="Numerator (factor) for conversion of sales quantity into SKU"/>
+                <Cell col="59" text="Denominator (Divisor) for Conversion of Sales Qty into SKU"/>
+                <Cell col="60" text="Gross Weight of the Item"/>
+                <Cell col="61" text="Net Weight of the Item"/>
+                <Cell col="62" text="Weight Unit"/>
+                <Cell col="63" text="Unit of weight in ISO code"/>
+                <Cell col="64" text="Volume of the item"/>
+                <Cell col="65" text="Volume unit"/>
+                <Cell col="66" text="Volume unit in ISO code"/>
+                <Cell col="67" text="Originating document"/>
+                <Cell col="68" text="Originating item"/>
+                <Cell col="69" text="Document number of the reference document"/>
+                <Cell col="70" text="Item number of the reference item"/>
+                <Cell col="71" text="Complete reference indicator"/>
+                <Cell col="72" text="Update indicator for sales document document flow"/>
+                <Cell col="73" text="Completion rule for quotation / contract"/>
+                <Cell col="74" text="Delivery Priority"/>
+                <Cell col="75" text="Plant"/>
+                <Cell col="76" text="Storage Location"/>
+                <Cell col="77" text="Shipping Point/Receiving Point"/>
+                <Cell col="78" text="Route"/>
+                <Cell col="79" text="Origin of the bill of material"/>
+                <Cell col="80" text="Key date of the bill of material"/>
+                <Cell col="81" text="Bill of material"/>
+                <Cell col="82" text="Bill of material item number VBAP not used"/>
+                <Cell col="83" text="Order probability of the item"/>
+                <Cell col="84" text="Date on Which Record Was Created"/>
+                <Cell col="85" text="Name of Person who Created the Object"/>
+                <Cell col="86" text="Entry time"/>
+                <Cell col="87" text="Tax classification material"/>
+                <Cell col="88" text="Tax classification material"/>
+                <Cell col="89" text="Tax classification material"/>
+                <Cell col="90" text="Tax classification material"/>
+                <Cell col="91" text="Tax classification material"/>
+                <Cell col="92" text="Tax classification material"/>
+                <Cell col="93" text="Tax classification material"/>
+                <Cell col="94" text="Tax classification material"/>
+                <Cell col="95" text="Tax classification material"/>
+                <Cell col="96" text="Fixed shipping processing time in days (= setup time)"/>
+                <Cell col="97" text="Variable shipping processing time in days"/>
+                <Cell col="98" text="Preceding document has resulted from reference"/>
+                <Cell col="99" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="100" text="Condition pricing unit"/>
+                <Cell col="101" text="Condition unit"/>
+                <Cell col="102" text="Target quantity unit of measure in ISO code"/>
+                <Cell col="103" text="Returns Item"/>
+                <Cell col="104" text="Cash discount indicator"/>
+                <Cell col="105" text="Checking Group for Availability Check"/>
+                <Cell col="106" text="Summing up of requirements"/>
+                <Cell col="107" text="Material Pricing Group"/>
+                <Cell col="108" text="Account assignment group for this material"/>
+                <Cell col="109" text="Volume rebate group"/>
+                <Cell col="110" text="Commission group"/>
+                <Cell col="111" text="European Article Number (EAN) - obsolete!!!!!"/>
+                <Cell col="112" text="Pricing is OK"/>
+                <Cell col="113" text="Valuation Type"/>
+                <Cell col="114" text="Indicator: Separate valuation"/>
+                <Cell col="115" text="Batch management requirement indicator"/>
+                <Cell col="116" text="Batch management indicator (internal)"/>
+                <Cell col="117" text="Minimum delivery quantity in delivery note processing"/>
+                <Cell col="118" text="Update group for statistics update"/>
+                <Cell col="119" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="120" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="121" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="122" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="123" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="124" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="125" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="126" text="Directly quoted exchange rate for statistics"/>
+                <Cell col="127" text="Changed On"/>
+                <Cell col="128" text="International Article Number (EAN/UPC)"/>
+                <Cell col="129" text="Delivery date and quantity fixed"/>
+                <Cell col="130" text="Profit Center"/>
+                <Cell col="131" text="Material group 1"/>
+                <Cell col="132" text="Material group 2"/>
+                <Cell col="133" text="Material group 3"/>
+                <Cell col="134" text="Material group 4"/>
+                <Cell col="135" text="Material group 5"/>
+                <Cell col="136" text="Component quantity"/>
+                <Cell col="137" text="Reason for material substitution"/>
+                <Cell col="138" text="Special Stock Indicator"/>
+                <Cell col="139" text="Allocation Indicator"/>
+                <Cell col="140" text="Profitability Segment Number (CO-PA)"/>
+                <Cell col="141" text="Work Breakdown Structure Element (WBS Element)"/>
+                <Cell col="142" text="Order Number"/>
+                <Cell col="143" text="Planning material"/>
+                <Cell col="144" text="Planning plant"/>
+                <Cell col="145" text="Base unit of measure for product group"/>
+                <Cell col="146" text="Target quantity unit of measure in ISO code"/>
+                <Cell col="147" text="Conversion factor: quantities"/>
+                <Cell col="148" text="Account Assignment Category"/>
+                <Cell col="149" text="Consumption Posting"/>
+                <Cell col="150" text="BOM explosion number"/>
+                <Cell col="151" text="Object number at item level"/>
+                <Cell col="152" text="Results Analysis Key"/>
+                <Cell col="153" text="Requirements type"/>
+                <Cell col="154" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="155" text="ID for partial release of order item, credit block"/>
+                <Cell col="156" text="ID: Item with active credit function / relevant for credit"/>
+                <Cell col="157" text="Directly quoted exch. rate for credit data on req. dely date"/>
+                <Cell col="158" text="Configuration"/>
+                <Cell col="159" text="Internal object number of the batch classification"/>
+                <Cell col="160" text="Status expected price"/>
+                <Cell col="161" text="Condition update"/>
+                <Cell col="162" text="Serial Number Profile"/>
+                <Cell col="163" text="Number of serial numbers"/>
+                <Cell col="164" text="Customer has not posted goods receipt"/>
+                <Cell col="165" text="Material Group: Packaging Materials"/>
+                <Cell col="166" text="Status manual price change"/>
+                <Cell col="167" text="Document category of preceding SD document"/>
+                <Cell col="168" text="ID for material determination"/>
+                <Cell col="169" text="ID for higher-level item usage"/>
+                <Cell col="170" text="Cost Estimate Number for Cost Est. w/o Qty Structure"/>
+                <Cell col="171" text="Costing Variant"/>
+                <Cell col="172" text="BOM Item Number"/>
+                <Cell col="173" text="Statistical values"/>
+                <Cell col="174" text="Statistics date"/>
+                <Cell col="175" text="Business Transaction Type for Foreign Trade"/>
+                <Cell col="176" text="Preference indicator in export/import"/>
+                <Cell col="177" text="Number of condition record from batch determination"/>
+                <Cell col="178" text="Internal Class Number"/>
+                <Cell col="179" text="Batches: Exit to quantity proposal"/>
+                <Cell col="180" text="BOM category"/>
+                <Cell col="181" text="BOM item node number"/>
+                <Cell col="182" text="Internal counter"/>
+                <Cell col="183" text="Inconsistent configuration"/>
+                <Cell col="184" text="Overhead key"/>
+                <Cell col="185" text="Costing Sheet"/>
+                <Cell col="186" text="Costing Variant"/>
+                <Cell col="187" text="Product allocation determination procedure"/>
+                <Cell col="188" text="Pricing reference material of main item"/>
+                <Cell col="189" text="Material pricing group of main item"/>
+                <Cell col="190" text="Material freight group"/>
+                <Cell col="191" text="Planning delivery schedule instruction"/>
+                <Cell col="192" text="KANBAN/sequence number"/>
+                <Cell col="193" text="Item credit price"/>
+                <Cell col="194" text="Form of payment guarantee"/>
+                <Cell col="195" text="Guaranteed (factor between 0 and 1)"/>
+                <Cell col="196" text="CFOP code and extension (old 5 char version)"/>
+                <Cell col="197" text="Tax law: ICMS"/>
+                <Cell col="198" text="Tax law: IPI"/>
+                <Cell col="199" text="SD tax code"/>
+                <Cell col="200" text="Value contract no."/>
+                <Cell col="201" text="Value contract item"/>
+                <Cell col="202" text="Assortment module"/>
+                <Cell col="203" text="Valuation of Special Stock"/>
+                <Cell col="204" text="Material group hierarchy 1"/>
+                <Cell col="205" text="Material group hierarchy 2"/>
+                <Cell col="206" text="Promotion"/>
+                <Cell col="207" text="Sales deal"/>
+                <Cell col="208" text="ID: Leading unit of measure for completing a transaction"/>
+                <Cell col="209" text="Free goods delivery control"/>
+                <Cell col="210" text="Parameter Variant/Standard Variant"/>
+                <Cell col="211" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="212" text="MRP Area"/>
+                <Cell col="213" text="Material belonging to the customer"/>
+                <Cell col="214" text="Indirectly quoted exch.rate for credit data on req.dely date"/>
+                <Cell col="215" text="Indirectly quoted exchange rate for statistics"/>
+                <Cell col="216" text="Item usage"/>
+                <Cell col="217" text="CFOP code and extension"/>
+                <Cell col="218" text="Currency amount for BAPIS (with 9 decimal places)"/>
+                <Cell col="219" text="Logical system"/>
+                <Cell col="220" text="ISS Tax Law"/>
+                <Cell col="221" text="COFINS Tax Law"/>
+                <Cell col="222" text="PIS Tax Law"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ORDER_ITEMS_OUT"/>
+                <Cell col="1" text="bind:OPERATION"/>
+                <Cell col="2" text="bind:DOC_NUMBER"/>
+                <Cell col="3" text="bind:ITM_NUMBER"/>
+                <Cell col="4" text="bind:MATERIAL"/>
+                <Cell col="5" text="bind:MAT_ENTRD"/>
+                <Cell col="6" text="bind:PR_REF_MAT"/>
+                <Cell col="7" text="bind:BATCH"/>
+                <Cell col="8" text="bind:MATL_GROUP"/>
+                <Cell col="9" text="bind:SHORT_TEXT"/>
+                <Cell col="10" text="bind:ITEM_CATEG"/>
+                <Cell col="11" text="bind:ITEM_TYPE"/>
+                <Cell col="12" text="bind:REL_FOR_DE"/>
+                <Cell col="13" text="bind:REL_FOR_BI"/>
+                <Cell col="14" text="bind:HG_LV_ITEM"/>
+                <Cell col="15" text="bind:ALTERN_ITM"/>
+                <Cell col="16" text="bind:REA_FOR_RE"/>
+                <Cell col="17" text="bind:PROD_HIER"/>
+                <Cell col="18" text="bind:OUT_AGR_TA"/>
+                <Cell col="19" text="bind:TARGET_QTY"/>
+                <Cell col="20" text="bind:TARGET_QU"/>
+                <Cell col="21" text="bind:T_UNIT_ISO"/>
+                <Cell col="22" text="bind:TARG_QTY_N"/>
+                <Cell col="23" text="bind:TARG_QTY_D"/>
+                <Cell col="24" text="bind:BASE_UOM"/>
+                <Cell col="25" text="bind:T_BAS_UNIT"/>
+                <Cell col="26" text="bind:SCALE_QUAN"/>
+                <Cell col="27" text="bind:ROUND_DLV"/>
+                <Cell col="28" text="bind:RECON_DATE"/>
+                <Cell col="29" text="bind:MAX_DEVIAT"/>
+                <Cell col="30" text="bind:PO_ITM_NO"/>
+                <Cell col="31" text="bind:CUST_MAT22"/>
+                <Cell col="32" text="bind:MAX_DEV_PE"/>
+                <Cell col="33" text="bind:MAX_DEV_DA"/>
+                <Cell col="34" text="bind:REPAIR_PRO"/>
+                <Cell col="35" text="bind:DLVSCHEDUS"/>
+                <Cell col="36" text="bind:DLV_GROUP"/>
+                <Cell col="37" text="bind:FIXED_QUAN"/>
+                <Cell col="38" text="bind:DELI_UNLIM"/>
+                <Cell col="39" text="bind:OVER_DLV_T"/>
+                <Cell col="40" text="bind:UNDER_DLV"/>
+                <Cell col="41" text="bind:BILL_BLOCK"/>
+                <Cell col="42" text="bind:REPLACE_PT"/>
+                <Cell col="43" text="bind:METH_BILL"/>
+                <Cell col="44" text="bind:DIVISION"/>
+                <Cell col="45" text="bind:BUS_AREA"/>
+                <Cell col="46" text="bind:NET_VALUE"/>
+                <Cell col="47" text="bind:CURRENCY"/>
+                <Cell col="48" text="bind:CURREN_ISO"/>
+                <Cell col="49" text="bind:MAX_PL_DLV"/>
+                <Cell col="50" text="bind:PART_DLV"/>
+                <Cell col="51" text="bind:BTCH_SPLIT"/>
+                <Cell col="52" text="bind:REQ_QTY"/>
+                <Cell col="53" text="bind:CUM_REQ_DE"/>
+                <Cell col="54" text="bind:CUM_CF_QTY"/>
+                <Cell col="55" text="bind:CUM_CON_QU"/>
+                <Cell col="56" text="bind:SALES_UNIT"/>
+                <Cell col="57" text="bind:ISOCODUNIT"/>
+                <Cell col="58" text="bind:SALES_QTY1"/>
+                <Cell col="59" text="bind:SALES_QTY2"/>
+                <Cell col="60" text="bind:GROSS_WEIG"/>
+                <Cell col="61" text="bind:NET_WEIGHT"/>
+                <Cell col="62" text="bind:UNIT_OF_WT"/>
+                <Cell col="63" text="bind:UNIT_WTISO"/>
+                <Cell col="64" text="bind:VOLUME"/>
+                <Cell col="65" text="bind:VOLUMEUNIT"/>
+                <Cell col="66" text="bind:VOLUNITISO"/>
+                <Cell col="67" text="bind:CAU_VBELN"/>
+                <Cell col="68" text="bind:CAU_POSNR"/>
+                <Cell col="69" text="bind:REF_DOC"/>
+                <Cell col="70" text="bind:POSNR_VOR"/>
+                <Cell col="71" text="bind:OBJ_COPY"/>
+                <Cell col="72" text="bind:UPDAT_FLAG"/>
+                <Cell col="73" text="bind:END_RULE"/>
+                <Cell col="74" text="bind:DLV_PRIO"/>
+                <Cell col="75" text="bind:PLANT"/>
+                <Cell col="76" text="bind:STGE_LOC"/>
+                <Cell col="77" text="bind:SHIP_POINT"/>
+                <Cell col="78" text="bind:ROUTE"/>
+                <Cell col="79" text="bind:KEY_ST"/>
+                <Cell col="80" text="bind:DATE_ST"/>
+                <Cell col="81" text="bind:NBR_ST"/>
+                <Cell col="82" text="bind:STPOS_VBAP"/>
+                <Cell col="83" text="bind:ORDER_PROB"/>
+                <Cell col="84" text="bind:CREAT_DATE"/>
+                <Cell col="85" text="bind:CREATED_BY"/>
+                <Cell col="86" text="bind:REC_TIME"/>
+                <Cell col="87" text="bind:TAX_CLASS1"/>
+                <Cell col="88" text="bind:TAX_CLASS2"/>
+                <Cell col="89" text="bind:TAX_CLASS3"/>
+                <Cell col="90" text="bind:TAX_CLASS4"/>
+                <Cell col="91" text="bind:TAX_CLASS5"/>
+                <Cell col="92" text="bind:TAX_CLASS6"/>
+                <Cell col="93" text="bind:TAX_CLASS7"/>
+                <Cell col="94" text="bind:TAX_CLASS8"/>
+                <Cell col="95" text="bind:TAX_CLASS9"/>
+                <Cell col="96" text="bind:FIX_SP_DAY"/>
+                <Cell col="97" text="bind:VAR_SP_DAY"/>
+                <Cell col="98" text="bind:PREC_DOC"/>
+                <Cell col="99" text="bind:NET_PRICE"/>
+                <Cell col="100" text="bind:COND_P_UNT"/>
+                <Cell col="101" text="bind:COND_UNIT"/>
+                <Cell col="102" text="bind:CONISOUNIT"/>
+                <Cell col="103" text="bind:RETOURE"/>
+                <Cell col="104" text="bind:CASH_DISC"/>
+                <Cell col="105" text="bind:AVAILCHECK"/>
+                <Cell col="106" text="bind:SUM_REQUIR"/>
+                <Cell col="107" text="bind:MAT_PR_GRP"/>
+                <Cell col="108" text="bind:ACCT_ASSGT"/>
+                <Cell col="109" text="bind:REBATE_GRP"/>
+                <Cell col="110" text="bind:COMM_GROUP"/>
+                <Cell col="111" text="bind:EUR_ART_NR"/>
+                <Cell col="112" text="bind:PRICE_OK"/>
+                <Cell col="113" text="bind:VAL_TYPE"/>
+                <Cell col="114" text="bind:SEP_VALUAT"/>
+                <Cell col="115" text="bind:BATCH_MGMT"/>
+                <Cell col="116" text="bind:IND_BTCH"/>
+                <Cell col="117" text="bind:MIN_DELY"/>
+                <Cell col="118" text="bind:UPDATE_GRP"/>
+                <Cell col="119" text="bind:COST_DOC_C"/>
+                <Cell col="120" text="bind:SUBTOT_PP1"/>
+                <Cell col="121" text="bind:SUBTOT_PP2"/>
+                <Cell col="122" text="bind:SUBTOT_PP3"/>
+                <Cell col="123" text="bind:SUBTOT_PP4"/>
+                <Cell col="124" text="bind:SUBTOT_PP5"/>
+                <Cell col="125" text="bind:SUBTOT_PP6"/>
+                <Cell col="126" text="bind:EXCH_RATE"/>
+                <Cell col="127" text="bind:CH_ON"/>
+                <Cell col="128" text="bind:EAN_UPC"/>
+                <Cell col="129" text="bind:FIX_DATE"/>
+                <Cell col="130" text="bind:PROFIT_CTR"/>
+                <Cell col="131" text="bind:PRC_GROUP1"/>
+                <Cell col="132" text="bind:PRC_GROUP2"/>
+                <Cell col="133" text="bind:PRC_GROUP3"/>
+                <Cell col="134" text="bind:PRC_GROUP4"/>
+                <Cell col="135" text="bind:PRC_GROUP5"/>
+                <Cell col="136" text="bind:COMPON_QTY"/>
+                <Cell col="137" text="bind:SUBSTREASO"/>
+                <Cell col="138" text="bind:SPEC_STOCK"/>
+                <Cell col="139" text="bind:ALLOC_INDI"/>
+                <Cell col="140" text="bind:PROFIT_SEG"/>
+                <Cell col="141" text="bind:WBS_ELEM"/>
+                <Cell col="142" text="bind:ORDERID"/>
+                <Cell col="143" text="bind:PLNG_MATL"/>
+                <Cell col="144" text="bind:PLNG_PLANT"/>
+                <Cell col="145" text="bind:BASE_UNIT"/>
+                <Cell col="146" text="bind:ISOBASUNIT"/>
+                <Cell col="147" text="bind:CONV_FACT"/>
+                <Cell col="148" text="bind:ACCTASSCAT"/>
+                <Cell col="149" text="bind:CONSUMPT"/>
+                <Cell col="150" text="bind:BOMEXPLNO"/>
+                <Cell col="151" text="bind:OBJ_NR_IT"/>
+                <Cell col="152" text="bind:RES_ANAL"/>
+                <Cell col="153" text="bind:REQMTSTYP"/>
+                <Cell col="154" text="bind:CREDPRICIT"/>
+                <Cell col="155" text="bind:PARTRELID"/>
+                <Cell col="156" text="bind:ACTCREDID"/>
+                <Cell col="157" text="bind:CR_EXCHRAT"/>
+                <Cell col="158" text="bind:CONFIG"/>
+                <Cell col="159" text="bind:CHCLASS_IN"/>
+                <Cell col="160" text="bind:STAT_PRICE"/>
+                <Cell col="161" text="bind:COND_UPDAT"/>
+                <Cell col="162" text="bind:SERNO_PROF"/>
+                <Cell col="163" text="bind:NO_OF_SERI"/>
+                <Cell col="164" text="bind:NOGRPOSTED"/>
+                <Cell col="165" text="bind:MAT_GRP_SM"/>
+                <Cell col="166" text="bind:MAN_PR_CH"/>
+                <Cell col="167" text="bind:DOC_CAT_SD"/>
+                <Cell col="168" text="bind:MATDETERID"/>
+                <Cell col="169" text="bind:ITUSAGEID"/>
+                <Cell col="170" text="bind:COSTESTNR"/>
+                <Cell col="171" text="bind:CSTG_VRNT"/>
+                <Cell col="172" text="bind:BOMITEMNR"/>
+                <Cell col="173" text="bind:STAT_VAL"/>
+                <Cell col="174" text="bind:STAT_DATE"/>
+                <Cell col="175" text="bind:BUS_TRANST"/>
+                <Cell col="176" text="bind:PREF_INDIC"/>
+                <Cell col="177" text="bind:NRCONDREC"/>
+                <Cell col="178" text="bind:INTCLASSNR"/>
+                <Cell col="179" text="bind:BATCH_EXIT"/>
+                <Cell col="180" text="bind:BOM_CATEGO"/>
+                <Cell col="181" text="bind:BOM_IT_NR"/>
+                <Cell col="182" text="bind:COUNTER"/>
+                <Cell col="183" text="bind:INCONSCONF"/>
+                <Cell col="184" text="bind:OVERH_KEY"/>
+                <Cell col="185" text="bind:CSTG_SHEET"/>
+                <Cell col="186" text="bind:CSTG_VRNT1"/>
+                <Cell col="187" text="bind:PROD_ALLOC"/>
+                <Cell col="188" text="bind:PRICE_REF"/>
+                <Cell col="189" text="bind:MATPRICGRP"/>
+                <Cell col="190" text="bind:MATFRGTGRP"/>
+                <Cell col="191" text="bind:PLANDLVSCH"/>
+                <Cell col="192" text="bind:SEQUENCENO"/>
+                <Cell col="193" text="bind:CREDPRIC"/>
+                <Cell col="194" text="bind:PAY_GUARAN"/>
+                <Cell col="195" text="bind:GURANTEED"/>
+                <Cell col="196" text="bind:CFOP_CODE"/>
+                <Cell col="197" text="bind:TAXLAWICMS"/>
+                <Cell col="198" text="bind:TAXLAWIPI"/>
+                <Cell col="199" text="bind:SD_TAXCODE"/>
+                <Cell col="200" text="bind:VALCONTRNR"/>
+                <Cell col="201" text="bind:VALCONTRIT"/>
+                <Cell col="202" text="bind:ASSORT_MOD"/>
+                <Cell col="203" text="bind:VALSPECSTO"/>
+                <Cell col="204" text="bind:MATGRHIE1"/>
+                <Cell col="205" text="bind:MATGRHIE2"/>
+                <Cell col="206" text="bind:PROMOTION"/>
+                <Cell col="207" text="bind:SALES_DEAL"/>
+                <Cell col="208" text="bind:FLGLEADUNI"/>
+                <Cell col="209" text="bind:FREE_GOODS"/>
+                <Cell col="210" text="bind:VALID_OBJ"/>
+                <Cell col="211" text="bind:TAX_AMOUNT"/>
+                <Cell col="212" text="bind:MRP_AREA"/>
+                <Cell col="213" text="bind:CUST_MAT35"/>
+                <Cell col="214" text="bind:CR_EXCHRAT_V"/>
+                <Cell col="215" text="bind:EXCHRATEST_V"/>
+                <Cell col="216" text="bind:ITM_TYPE_USAGE"/>
+                <Cell col="217" text="bind:CFOP_LONG"/>
+                <Cell col="218" text="bind:GROSS_VAL"/>
+                <Cell col="219" text="bind:LOG_SYSTEM_OWN"/>
+                <Cell col="220" text="bind:TAXLAWISS"/>
+                <Cell col="221" text="bind:TAXLAWCOFINS"/>
+                <Cell col="222" text="bind:TAXLAWPIS"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ORDER_ITEMS_OUT_GRD">
+        <ColumnInfo>
+          <Column id="COL" type="STRING" size="256"/>
+          <Column id="NAME_COL" type="STRING" size="256"/>
+          <Column id="SH_NM" type="STRING" size="256"/>
+          <Column id="SH_TF" type="STRING" size="256"/>
+          <Column id="SH_TF_FIELD" type="STRING" size="256"/>
+          <Column id="SH_FIELD" type="STRING" size="256"/>
+          <Column id="SH_FIELD_NM" type="STRING" size="256"/>
+          <Column id="SH_TITLE" type="STRING" size="256"/>
+          <Column id="SH_SELOPT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+	</Rows>
+      </Dataset>
+      <Dataset id="I_BAPI_VIEW">
+        <ColumnInfo>
+          <Column id="HEADER" type="STRING" size="1"/>
+          <Column id="ITEM" type="STRING" size="1"/>
+          <Column id="SDSCHEDULE" type="STRING" size="1"/>
+          <Column id="BUSINESS" type="STRING" size="1"/>
+          <Column id="PARTNER" type="STRING" size="1"/>
+          <Column id="ADDRESS" type="STRING" size="1"/>
+          <Column id="STATUS_H" type="STRING" size="1"/>
+          <Column id="STATUS_I" type="STRING" size="1"/>
+          <Column id="SDCOND" type="STRING" size="1"/>
+          <Column id="SDCOND_ADD" type="STRING" size="1"/>
+          <Column id="CONTRACT" type="STRING" size="1"/>
+          <Column id="TEXT" type="STRING" size="1"/>
+          <Column id="FLOW" type="STRING" size="1"/>
+          <Column id="BILLPLAN" type="STRING" size="1"/>
+          <Column id="CONFIGURE" type="STRING" size="1"/>
+          <Column id="CREDCARD" type="STRING" size="1"/>
+          <Column id="INCOMP_LOG" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+			</Row>
+        </Rows>
+        <Rows/>
+      </Dataset>
+      <Dataset id="SALES_DOCUMENTS">
+        <ColumnInfo>
+          <Column id="VBELN" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+			</Row>
+        </Rows>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_HEADERS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="REC_DATE" type="DATE" size="8"/>
+          <Column id="REC_TIME" type="TIME" size="6"/>
+          <Column id="CREATED_BY" type="STRING" size="12"/>
+          <Column id="QT_VALID_F" type="DATE" size="8"/>
+          <Column id="QT_VALID_T" type="DATE" size="8"/>
+          <Column id="DOC_DATE" type="DATE" size="8"/>
+          <Column id="SD_DOC_CAT" type="STRING" size="1"/>
+          <Column id="TRAN_GROUP" type="STRING" size="1"/>
+          <Column id="DOC_TYPE" type="STRING" size="4"/>
+          <Column id="ORD_REASON" type="STRING" size="3"/>
+          <Column id="WAR_DATE" type="DATE" size="8"/>
+          <Column id="SD_COL_NUM" type="STRING" size="10"/>
+          <Column id="DLV_BLOCK" type="STRING" size="2"/>
+          <Column id="BILL_BLOCK" type="STRING" size="2"/>
+          <Column id="NET_VAL_HD" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+          <Column id="SALES_ORG" type="STRING" size="4"/>
+          <Column id="DISTR_CHAN" type="STRING" size="2"/>
+          <Column id="DIVISION" type="STRING" size="2"/>
+          <Column id="SALES_GRP" type="STRING" size="3"/>
+          <Column id="SALES_OFF" type="STRING" size="4"/>
+          <Column id="BUS_AREA" type="STRING" size="4"/>
+          <Column id="CT_AREA" type="STRING" size="4"/>
+          <Column id="CT_VALID_F" type="DATE" size="8"/>
+          <Column id="CT_VALID_T" type="DATE" size="8"/>
+          <Column id="CONDITIONS" type="STRING" size="10"/>
+          <Column id="REQ_DATE_H" type="DATE" size="8"/>
+          <Column id="DATE_TYPE" type="STRING" size="1"/>
+          <Column id="COMPL_DLV" type="STRING" size="1"/>
+          <Column id="DOC_CLASS" type="STRING" size="9"/>
+          <Column id="DOC_INDIC" type="STRING" size="1"/>
+          <Column id="SD_PRIC_PR" type="STRING" size="6"/>
+          <Column id="SHIP_COND" type="STRING" size="2"/>
+          <Column id="ORDBILLTYP" type="STRING" size="4"/>
+          <Column id="ORD_PROBAB" type="STRING" size="3"/>
+          <Column id="SEAR_PRPR" type="STRING" size="40"/>
+          <Column id="PURCH_NO" type="STRING" size="20"/>
+          <Column id="PO_METHOD" type="STRING" size="4"/>
+          <Column id="PURCH_DATE" type="DATE" size="8"/>
+          <Column id="PO_SUPPLEM" type="STRING" size="4"/>
+          <Column id="REF_1" type="STRING" size="12"/>
+          <Column id="ORDERER_NA" type="STRING" size="35"/>
+          <Column id="TELEPHONE" type="STRING" size="16"/>
+          <Column id="DUN_COUNT" type="BIGDECIMAL" size="3"/>
+          <Column id="DUN_DATE" type="DATE" size="8"/>
+          <Column id="SOLD_TO" type="STRING" size="10"/>
+          <Column id="COSTCENTER" type="STRING" size="10"/>
+          <Column id="UPDATE_GRP" type="STRING" size="6"/>
+          <Column id="STAT_CURR" type="STRING" size="5"/>
+          <Column id="ISOSTATCUR" type="STRING" size="3"/>
+          <Column id="CH_ON" type="DATE" size="8"/>
+          <Column id="CUST_GRP1" type="STRING" size="3"/>
+          <Column id="CUST_GRP2" type="STRING" size="3"/>
+          <Column id="CUST_GRP3" type="STRING" size="3"/>
+          <Column id="CUST_GRP4" type="STRING" size="3"/>
+          <Column id="CUST_GRP5" type="STRING" size="3"/>
+          <Column id="AGREE_COND" type="STRING" size="10"/>
+          <Column id="CO_AREA" type="STRING" size="4"/>
+          <Column id="WBS_ELEM" type="STRING" size="8"/>
+          <Column id="EXCHG_RATE" type="STRING" size="4"/>
+          <Column id="C_CTR_AREA" type="STRING" size="4"/>
+          <Column id="CRED_ACCNT" type="STRING" size="10"/>
+          <Column id="CRED_GROUP" type="STRING" size="4"/>
+          <Column id="REPR_GROUP" type="STRING" size="3"/>
+          <Column id="RISK_CATEG" type="STRING" size="3"/>
+          <Column id="CURR_CRED" type="STRING" size="5"/>
+          <Column id="ISOCURRCRE" type="STRING" size="3"/>
+          <Column id="REL_DAT_DD" type="DATE" size="8"/>
+          <Column id="NEXT_CHDAT" type="DATE" size="8"/>
+          <Column id="NEXT_DATE" type="DATE" size="8"/>
+          <Column id="REL_CREDIT" type="BIGDECIMAL" size="28"/>
+          <Column id="HI_TYPE_PR" type="STRING" size="1"/>
+          <Column id="DLVSCHEDUS" type="STRING" size="3"/>
+          <Column id="PLAN_DLV" type="STRING" size="1"/>
+          <Column id="REF_DOC" type="STRING" size="10"/>
+          <Column id="OB_JNR_HD" type="STRING" size="22"/>
+          <Column id="COMP_CODE" type="STRING" size="4"/>
+          <Column id="ALT_TAX_CL" type="STRING" size="1"/>
+          <Column id="TAX_CLASS2" type="STRING" size="1"/>
+          <Column id="TAX_CLASS3" type="STRING" size="1"/>
+          <Column id="TAX_CLASS4" type="STRING" size="1"/>
+          <Column id="TAX_CLASS5" type="STRING" size="1"/>
+          <Column id="TAX_CLASS6" type="STRING" size="1"/>
+          <Column id="TAX_CLASS7" type="STRING" size="1"/>
+          <Column id="TAX_CLASS8" type="STRING" size="1"/>
+          <Column id="TAX_CLASS9" type="STRING" size="1"/>
+          <Column id="REF_DOC_L" type="STRING" size="16"/>
+          <Column id="ASS_NUMBER" type="STRING" size="18"/>
+          <Column id="DOC_CAT_SD" type="STRING" size="1"/>
+          <Column id="KALSM_CH" type="STRING" size="6"/>
+          <Column id="ACC_PERIOD" type="STRING" size="2"/>
+          <Column id="ORDERID" type="STRING" size="12"/>
+          <Column id="NOTIF_NO" type="STRING" size="12"/>
+          <Column id="MASTER_CON" type="STRING" size="10"/>
+          <Column id="REF_PROC" type="STRING" size="4"/>
+          <Column id="CHECK_PART" type="STRING" size="1"/>
+          <Column id="PICK_UP_DA" type="DATE" size="8"/>
+          <Column id="PICK_UP_T1" type="TIME" size="6"/>
+          <Column id="PICK_UP_T2" type="TIME" size="6"/>
+          <Column id="NUM_PAY_CA" type="STRING" size="10"/>
+          <Column id="LINE_TIME" type="TIME" size="6"/>
+          <Column id="TAX_DEST_CT" type="STRING" size="3"/>
+          <Column id="ISOTAXDEST" type="STRING" size="2"/>
+          <Column id="TAX_DEPART" type="STRING" size="3"/>
+          <Column id="ISOTAXDEPA" type="STRING" size="2"/>
+          <Column id="EU_TRIANG" type="STRING" size="1"/>
+          <Column id="MAST_CONTR" type="STRING" size="1"/>
+          <Column id="CML_QTY_DA" type="DATE" size="8"/>
+          <Column id="MS_DATE" type="DATE" size="8"/>
+          <Column id="VERSION" type="STRING" size="12"/>
+          <Column id="REF_DOC_L_LONG" type="STRING" size="35"/>
+          <Column id="CRM_GUID" type="STRING" size="70"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+			</Row>
+        </Rows>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_BUSINESS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="PRICE_GRP" type="STRING" size="2"/>
+          <Column id="CUST_GROUP" type="STRING" size="2"/>
+          <Column id="SALES_DIST" type="STRING" size="6"/>
+          <Column id="PRICE_LIST" type="STRING" size="2"/>
+          <Column id="INCOTERMS1" type="STRING" size="3"/>
+          <Column id="INCOTERMS2" type="STRING" size="28"/>
+          <Column id="ORDCOMBIND" type="STRING" size="1"/>
+          <Column id="BILL_SCHED" type="STRING" size="2"/>
+          <Column id="INVO_SCHED" type="STRING" size="2"/>
+          <Column id="MN_INVOICE" type="STRING" size="1"/>
+          <Column id="EXCHRATEFI" type="BIGDECIMAL" size="9"/>
+          <Column id="ADD_VAL_DY" type="STRING" size="2"/>
+          <Column id="FIX_VAL_DY" type="DATE" size="8"/>
+          <Column id="PMNTTRMS" type="STRING" size="4"/>
+          <Column id="PAYMETHODE" type="STRING" size="1"/>
+          <Column id="ACCNT_ASGN" type="STRING" size="2"/>
+          <Column id="EXCHG_RATE" type="BIGDECIMAL" size="9"/>
+          <Column id="PRICE_DATE" type="DATE" size="8"/>
+          <Column id="BILL_DATE" type="DATE" size="8"/>
+          <Column id="SERV_DATE" type="DATE" size="8"/>
+          <Column id="FISC_YEAR" type="STRING" size="4"/>
+          <Column id="POSTPERIOD" type="STRING" size="3"/>
+          <Column id="EXCHRATEST" type="BIGDECIMAL" size="9"/>
+          <Column id="DUNN_KEY" type="STRING" size="1"/>
+          <Column id="DUNN_BLOCK" type="STRING" size="1"/>
+          <Column id="BILL_PLAN" type="STRING" size="10"/>
+          <Column id="PROMOTION" type="STRING" size="10"/>
+          <Column id="PAY_GUARAN" type="STRING" size="6"/>
+          <Column id="FINDOCPROC" type="STRING" size="10"/>
+          <Column id="J_1AFITP_D" type="STRING" size="2"/>
+          <Column id="REAS_0_VAT" type="STRING" size="1"/>
+          <Column id="REGION" type="STRING" size="3"/>
+          <Column id="ACTIVICODE" type="STRING" size="2"/>
+          <Column id="DISTRIBTYP" type="STRING" size="2"/>
+          <Column id="TAX_CLASS" type="STRING" size="10"/>
+          <Column id="DEPART_NO" type="STRING" size="4"/>
+          <Column id="REC_POINT" type="STRING" size="25"/>
+          <Column id="PURCH_NO_C" type="STRING" size="35"/>
+          <Column id="PURCH_DATE" type="DATE" size="8"/>
+          <Column id="PO_METHOD" type="STRING" size="4"/>
+          <Column id="REF_1" type="STRING" size="12"/>
+          <Column id="PURCH_NO_S" type="STRING" size="35"/>
+          <Column id="PO_DAT_S" type="DATE" size="8"/>
+          <Column id="PO_METH_S" type="STRING" size="4"/>
+          <Column id="REF_1_S" type="STRING" size="12"/>
+          <Column id="POITMNOS" type="STRING" size="6"/>
+          <Column id="TRANS_DATE" type="DATE" size="8"/>
+          <Column id="TRANSDATE" type="DATE" size="8"/>
+          <Column id="CUSTCONGR1" type="STRING" size="2"/>
+          <Column id="CUSTCONGR2" type="STRING" size="2"/>
+          <Column id="CUSTCONGR3" type="STRING" size="2"/>
+          <Column id="CUSTCONGR4" type="STRING" size="2"/>
+          <Column id="CUSTCONGR5" type="STRING" size="2"/>
+          <Column id="VALCONTCUR" type="STRING" size="5"/>
+          <Column id="ISOVALCONT" type="STRING" size="3"/>
+          <Column id="EXCHRATECO" type="BIGDECIMAL" size="9"/>
+          <Column id="CURRENCKEY" type="STRING" size="5"/>
+          <Column id="ISOCURRKEY" type="STRING" size="3"/>
+          <Column id="EXCHRATELC" type="BIGDECIMAL" size="9"/>
+          <Column id="CEPRPERCEN" type="BIGDECIMAL" size="5"/>
+          <Column id="INFLAT_IDX" type="STRING" size="5"/>
+          <Column id="BASDATEIDX" type="DATE" size="8"/>
+          <Column id="CUST_PO_NO" type="STRING" size="35"/>
+          <Column id="DLV_TIME" type="STRING" size="3"/>
+          <Column id="DLI_PROFIL" type="STRING" size="8"/>
+          <Column id="CALC_MOTIVE" type="STRING" size="2"/>
+          <Column id="BILL_FORM" type="STRING" size="2"/>
+          <Column id="REVENUETYP" type="STRING" size="1"/>
+          <Column id="BEGDEMAPER" type="STRING" size="1"/>
+          <Column id="EXCHRATELC_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCH_RATE_FI_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCHG_RATE_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCHRATEST_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCHRATECO_V" type="BIGDECIMAL" size="9"/>
+          <Column id="DELIV_TYPE" type="STRING" size="2"/>
+          <Column id="TRANS_CAT" type="STRING" size="4"/>
+          <Column id="TRANS_MAT" type="STRING" size="18"/>
+          <Column id="SPEC_PROC" type="STRING" size="4"/>
+          <Column id="PRODCAT" type="STRING" size="10"/>
+          <Column id="FUNC_AREA" type="STRING" size="4"/>
+          <Column id="POD_PROC" type="STRING" size="1"/>
+          <Column id="CAMPAIGN" type="BLOB" size="16"/>
+          <Column id="FKK_CONACCT" type="STRING" size="12"/>
+          <Column id="FUNC_AREA_LONG" type="STRING" size="16"/>
+          <Column id="FKK_CONACCT_GUID" type="BLOB" size="16"/>
+          <Column id="TRANS_MAT_EXTERNAL" type="STRING" size="40"/>
+          <Column id="TRANS_MAT_GUID" type="STRING" size="32"/>
+          <Column id="TRANS_MAT_VERSION" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_COND_HEAD">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="COND_NO" type="STRING" size="10"/>
+          <Column id="CREATED_BY" type="STRING" size="12"/>
+          <Column id="CREAT_DATE" type="DATE" size="8"/>
+          <Column id="COND_USAGE" type="STRING" size="1"/>
+          <Column id="TABLE_NO" type="STRING" size="3"/>
+          <Column id="APPLICATIO" type="STRING" size="2"/>
+          <Column id="COND_TYPE" type="STRING" size="4"/>
+          <Column id="VARKEY" type="STRING" size="100"/>
+          <Column id="VALID_FROM" type="DATE" size="8"/>
+          <Column id="VALID_TO" type="DATE" size="8"/>
+          <Column id="SEARCHTERM" type="STRING" size="10"/>
+          <Column id="RESPONS" type="STRING" size="3"/>
+          <Column id="PROMOT_NO" type="STRING" size="10"/>
+          <Column id="SALES_DEAL" type="STRING" size="10"/>
+          <Column id="SALESQUOTE" type="STRING" size="10"/>
+          <Column id="STD_AGRMNT" type="STRING" size="10"/>
+          <Column id="PROMOTION" type="STRING" size="10"/>
+          <Column id="REBAGREEMT" type="STRING" size="10"/>
+          <Column id="LIC_NO" type="STRING" size="20"/>
+          <Column id="LIC_DATE" type="DATE" size="8"/>
+          <Column id="VARDATE" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_COND_ITEM">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="COND_NO" type="STRING" size="10"/>
+          <Column id="COND_COUNT" type="STRING" size="2"/>
+          <Column id="APPLICATIO" type="STRING" size="2"/>
+          <Column id="COND_TYPE" type="STRING" size="4"/>
+          <Column id="TEXT_NO" type="STRING" size="10"/>
+          <Column id="SCALETYPE" type="STRING" size="1"/>
+          <Column id="SCALEBASIN" type="STRING" size="1"/>
+          <Column id="SCALE_QTY" type="BIGDECIMAL" size="15"/>
+          <Column id="UNITMEASUR" type="STRING" size="3"/>
+          <Column id="MEASUR_ISO" type="STRING" size="3"/>
+          <Column id="SCALE_VAL" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCKEY" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+          <Column id="CALCTYPCON" type="STRING" size="1"/>
+          <Column id="COND_VALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDCURR" type="STRING" size="5"/>
+          <Column id="COND_ISO" type="STRING" size="3"/>
+          <Column id="COND_P_UNT" type="BIGDECIMAL" size="5"/>
+          <Column id="COND_UNIT" type="STRING" size="3"/>
+          <Column id="CONUNITISO" type="STRING" size="3"/>
+          <Column id="PRICELEVEL" type="STRING" size="4"/>
+          <Column id="NUMCONVERT" type="BIGDECIMAL" size="5"/>
+          <Column id="DENOMINATO" type="BIGDECIMAL" size="5"/>
+          <Column id="BASE_UOM" type="STRING" size="3"/>
+          <Column id="BASEQTYISO" type="STRING" size="3"/>
+          <Column id="LOWERLIMIT" type="BIGDECIMAL" size="28"/>
+          <Column id="UPPERLIMIT" type="BIGDECIMAL" size="28"/>
+          <Column id="PLCONDVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="CUM_VALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CUMM_ACCR" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURR_ISO" type="STRING" size="3"/>
+          <Column id="CONDCURREN" type="STRING" size="5"/>
+          <Column id="ISOCURRENC" type="STRING" size="3"/>
+          <Column id="PLAN_BASIS" type="BIGDECIMAL" size="28"/>
+          <Column id="RATE_UNIT" type="STRING" size="5"/>
+          <Column id="EXCLUSION" type="STRING" size="1"/>
+          <Column id="CUSTOMER" type="STRING" size="10"/>
+          <Column id="VENDOR_NO" type="STRING" size="10"/>
+          <Column id="TAX_CODE" type="STRING" size="2"/>
+          <Column id="INDIDELETE" type="STRING" size="1"/>
+          <Column id="CONDITIDX" type="STRING" size="2"/>
+          <Column id="MATLSETTL" type="STRING" size="18"/>
+          <Column id="ACCRUALS" type="BIGDECIMAL" size="28"/>
+          <Column id="REB_RETROA" type="STRING" size="1"/>
+          <Column id="STATOFAGRE" type="STRING" size="1"/>
+          <Column id="PROMOT_NO" type="STRING" size="10"/>
+          <Column id="SALES_DEAL" type="STRING" size="10"/>
+          <Column id="SALESQUOTE" type="STRING" size="10"/>
+          <Column id="ADD_VAL_DY" type="STRING" size="2"/>
+          <Column id="FIX_VAL_DY" type="DATE" size="8"/>
+          <Column id="PMNTTRMS" type="STRING" size="4"/>
+          <Column id="NUMBORDERS" type="STRING" size="2"/>
+          <Column id="MINCONBAVA" type="BIGDECIMAL" size="15"/>
+          <Column id="MAXCONBAVA" type="BIGDECIMAL" size="15"/>
+          <Column id="MAXCONVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="INCR_SCALE" type="STRING" size="4"/>
+          <Column id="PRICSCALE" type="STRING" size="4"/>
+          <Column id="RELPRCG" type="STRING" size="1"/>
+          <Column id="PROMOTION" type="STRING" size="10"/>
+          <Column id="REBAGREEMT" type="STRING" size="10"/>
+          <Column id="WITHTAXCOD" type="STRING" size="2"/>
+          <Column id="CONTRACT" type="STRING" size="1"/>
+          <Column id="CONTRACTNO" type="STRING" size="13"/>
+          <Column id="FLOW_TYPE" type="STRING" size="4"/>
+          <Column id="INDIMATMAI" type="STRING" size="1"/>
+          <Column id="STATUS" type="STRING" size="1"/>
+          <Column id="UMSABST" type="STRING" size="1"/>
+          <Column id="MATLSETTL_EXTERNAL" type="STRING" size="40"/>
+          <Column id="MATLSETTL_GUID" type="STRING" size="32"/>
+          <Column id="MATLSETTL_VERSION" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_ITEMS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="MATERIAL" type="STRING" size="18"/>
+          <Column id="MAT_ENTRD" type="STRING" size="18"/>
+          <Column id="PR_REF_MAT" type="STRING" size="18"/>
+          <Column id="BATCH" type="STRING" size="10"/>
+          <Column id="MATL_GROUP" type="STRING" size="9"/>
+          <Column id="SHORT_TEXT" type="STRING" size="40"/>
+          <Column id="ITEM_CATEG" type="STRING" size="4"/>
+          <Column id="ITEM_TYPE" type="STRING" size="1"/>
+          <Column id="REL_FOR_DE" type="STRING" size="1"/>
+          <Column id="REL_FOR_BI" type="STRING" size="1"/>
+          <Column id="HG_LV_ITEM" type="STRING" size="6"/>
+          <Column id="ALTERN_ITM" type="STRING" size="6"/>
+          <Column id="REA_FOR_RE" type="STRING" size="2"/>
+          <Column id="PROD_HIER" type="STRING" size="18"/>
+          <Column id="OUT_AGR_TA" type="BIGDECIMAL" size="28"/>
+          <Column id="TARGET_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="TARGET_QU" type="STRING" size="3"/>
+          <Column id="T_UNIT_ISO" type="STRING" size="3"/>
+          <Column id="TARG_QTY_N" type="BIGDECIMAL" size="5"/>
+          <Column id="TARG_QTY_D" type="BIGDECIMAL" size="5"/>
+          <Column id="BASE_UOM" type="STRING" size="3"/>
+          <Column id="T_BAS_UNIT" type="STRING" size="3"/>
+          <Column id="SCALE_QUAN" type="BIGDECIMAL" size="13"/>
+          <Column id="ROUND_DLV" type="BIGDECIMAL" size="13"/>
+          <Column id="RECON_DATE" type="DATE" size="8"/>
+          <Column id="MAX_DEVIAT" type="BIGDECIMAL" size="13"/>
+          <Column id="PO_ITM_NO" type="STRING" size="6"/>
+          <Column id="CUST_MAT22" type="STRING" size="22"/>
+          <Column id="MAX_DEV_PE" type="BIGDECIMAL" size="3"/>
+          <Column id="MAX_DEV_DA" type="BIGDECIMAL" size="3"/>
+          <Column id="REPAIR_PRO" type="STRING" size="3"/>
+          <Column id="DLVSCHEDUS" type="STRING" size="3"/>
+          <Column id="DLV_GROUP" type="STRING" size="3"/>
+          <Column id="FIXED_QUAN" type="STRING" size="1"/>
+          <Column id="DELI_UNLIM" type="STRING" size="1"/>
+          <Column id="OVER_DLV_T" type="BIGDECIMAL" size="3"/>
+          <Column id="UNDER_DLV" type="BIGDECIMAL" size="3"/>
+          <Column id="BILL_BLOCK" type="STRING" size="2"/>
+          <Column id="REPLACE_PT" type="STRING" size="1"/>
+          <Column id="METH_BILL" type="STRING" size="1"/>
+          <Column id="DIVISION" type="STRING" size="2"/>
+          <Column id="BUS_AREA" type="STRING" size="4"/>
+          <Column id="NET_VALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+          <Column id="MAX_PL_DLV" type="BIGDECIMAL" size="1"/>
+          <Column id="PART_DLV" type="STRING" size="1"/>
+          <Column id="BTCH_SPLIT" type="STRING" size="1"/>
+          <Column id="REQ_QTY" type="BIGDECIMAL" size="15"/>
+          <Column id="CUM_REQ_DE" type="BIGDECIMAL" size="15"/>
+          <Column id="CUM_CF_QTY" type="BIGDECIMAL" size="15"/>
+          <Column id="CUM_CON_QU" type="BIGDECIMAL" size="15"/>
+          <Column id="SALES_UNIT" type="STRING" size="3"/>
+          <Column id="ISOCODUNIT" type="STRING" size="3"/>
+          <Column id="SALES_QTY1" type="BIGDECIMAL" size="5"/>
+          <Column id="SALES_QTY2" type="BIGDECIMAL" size="5"/>
+          <Column id="GROSS_WEIG" type="BIGDECIMAL" size="15"/>
+          <Column id="NET_WEIGHT" type="BIGDECIMAL" size="15"/>
+          <Column id="UNIT_OF_WT" type="STRING" size="3"/>
+          <Column id="UNIT_WTISO" type="STRING" size="3"/>
+          <Column id="VOLUME" type="BIGDECIMAL" size="15"/>
+          <Column id="VOLUMEUNIT" type="STRING" size="3"/>
+          <Column id="VOLUNITISO" type="STRING" size="3"/>
+          <Column id="CAU_VBELN" type="STRING" size="10"/>
+          <Column id="CAU_POSNR" type="STRING" size="6"/>
+          <Column id="REF_DOC" type="STRING" size="10"/>
+          <Column id="POSNR_VOR" type="STRING" size="6"/>
+          <Column id="OBJ_COPY" type="STRING" size="1"/>
+          <Column id="UPDAT_FLAG" type="STRING" size="1"/>
+          <Column id="END_RULE" type="STRING" size="1"/>
+          <Column id="DLV_PRIO" type="STRING" size="2"/>
+          <Column id="PLANT" type="STRING" size="4"/>
+          <Column id="STGE_LOC" type="STRING" size="4"/>
+          <Column id="SHIP_POINT" type="STRING" size="4"/>
+          <Column id="ROUTE" type="STRING" size="6"/>
+          <Column id="KEY_ST" type="STRING" size="1"/>
+          <Column id="DATE_ST" type="DATE" size="8"/>
+          <Column id="NBR_ST" type="STRING" size="8"/>
+          <Column id="STPOS_VBAP" type="BIGDECIMAL" size="5"/>
+          <Column id="ORDER_PROB" type="STRING" size="3"/>
+          <Column id="CREAT_DATE" type="DATE" size="8"/>
+          <Column id="CREATED_BY" type="STRING" size="12"/>
+          <Column id="REC_TIME" type="TIME" size="6"/>
+          <Column id="TAX_CLASS1" type="STRING" size="1"/>
+          <Column id="TAX_CLASS2" type="STRING" size="1"/>
+          <Column id="TAX_CLASS3" type="STRING" size="1"/>
+          <Column id="TAX_CLASS4" type="STRING" size="1"/>
+          <Column id="TAX_CLASS5" type="STRING" size="1"/>
+          <Column id="TAX_CLASS6" type="STRING" size="1"/>
+          <Column id="TAX_CLASS7" type="STRING" size="1"/>
+          <Column id="TAX_CLASS8" type="STRING" size="1"/>
+          <Column id="TAX_CLASS9" type="STRING" size="1"/>
+          <Column id="FIX_SP_DAY" type="BIGDECIMAL" size="5"/>
+          <Column id="VAR_SP_DAY" type="BIGDECIMAL" size="5"/>
+          <Column id="PREC_DOC" type="STRING" size="1"/>
+          <Column id="NET_PRICE" type="BIGDECIMAL" size="28"/>
+          <Column id="COND_P_UNT" type="BIGDECIMAL" size="5"/>
+          <Column id="COND_UNIT" type="STRING" size="3"/>
+          <Column id="CONISOUNIT" type="STRING" size="3"/>
+          <Column id="RETOURE" type="STRING" size="1"/>
+          <Column id="CASH_DISC" type="STRING" size="1"/>
+          <Column id="AVAILCHECK" type="STRING" size="2"/>
+          <Column id="SUM_REQUIR" type="STRING" size="1"/>
+          <Column id="MAT_PR_GRP" type="STRING" size="2"/>
+          <Column id="ACCT_ASSGT" type="STRING" size="2"/>
+          <Column id="REBATE_GRP" type="STRING" size="2"/>
+          <Column id="COMM_GROUP" type="STRING" size="2"/>
+          <Column id="EUR_ART_NR" type="STRING" size="13"/>
+          <Column id="PRICE_OK" type="STRING" size="1"/>
+          <Column id="VAL_TYPE" type="STRING" size="10"/>
+          <Column id="SEP_VALUAT" type="STRING" size="1"/>
+          <Column id="BATCH_MGMT" type="STRING" size="1"/>
+          <Column id="IND_BTCH" type="STRING" size="1"/>
+          <Column id="MIN_DELY" type="BIGDECIMAL" size="13"/>
+          <Column id="UPDATE_GRP" type="STRING" size="6"/>
+          <Column id="COST_DOC_C" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP1" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP2" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP3" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP4" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP5" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP6" type="BIGDECIMAL" size="28"/>
+          <Column id="EXCH_RATE" type="BIGDECIMAL" size="9"/>
+          <Column id="CH_ON" type="DATE" size="8"/>
+          <Column id="EAN_UPC" type="STRING" size="18"/>
+          <Column id="FIX_DATE" type="STRING" size="1"/>
+          <Column id="PROFIT_CTR" type="STRING" size="10"/>
+          <Column id="PRC_GROUP1" type="STRING" size="3"/>
+          <Column id="PRC_GROUP2" type="STRING" size="3"/>
+          <Column id="PRC_GROUP3" type="STRING" size="3"/>
+          <Column id="PRC_GROUP4" type="STRING" size="3"/>
+          <Column id="PRC_GROUP5" type="STRING" size="3"/>
+          <Column id="COMPON_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="SUBSTREASO" type="STRING" size="4"/>
+          <Column id="SPEC_STOCK" type="STRING" size="1"/>
+          <Column id="ALLOC_INDI" type="STRING" size="1"/>
+          <Column id="PROFIT_SEG" type="STRING" size="10"/>
+          <Column id="WBS_ELEM" type="STRING" size="8"/>
+          <Column id="ORDERID" type="STRING" size="12"/>
+          <Column id="PLNG_MATL" type="STRING" size="18"/>
+          <Column id="PLNG_PLANT" type="STRING" size="4"/>
+          <Column id="BASE_UNIT" type="STRING" size="3"/>
+          <Column id="ISOBASUNIT" type="STRING" size="3"/>
+          <Column id="CONV_FACT" type="FLOAT" size="16"/>
+          <Column id="ACCTASSCAT" type="STRING" size="1"/>
+          <Column id="CONSUMPT" type="STRING" size="1"/>
+          <Column id="BOMEXPLNO" type="STRING" size="8"/>
+          <Column id="OBJ_NR_IT" type="STRING" size="22"/>
+          <Column id="RES_ANAL" type="STRING" size="6"/>
+          <Column id="REQMTSTYP" type="STRING" size="4"/>
+          <Column id="CREDPRICIT" type="BIGDECIMAL" size="28"/>
+          <Column id="PARTRELID" type="STRING" size="1"/>
+          <Column id="ACTCREDID" type="STRING" size="1"/>
+          <Column id="CR_EXCHRAT" type="BIGDECIMAL" size="9"/>
+          <Column id="CONFIG" type="STRING" size="18"/>
+          <Column id="CHCLASS_IN" type="STRING" size="18"/>
+          <Column id="STAT_PRICE" type="STRING" size="1"/>
+          <Column id="COND_UPDAT" type="STRING" size="1"/>
+          <Column id="SERNO_PROF" type="STRING" size="4"/>
+          <Column id="NO_OF_SERI" type="BLOB" size="10"/>
+          <Column id="NOGRPOSTED" type="STRING" size="1"/>
+          <Column id="MAT_GRP_SM" type="STRING" size="4"/>
+          <Column id="MAN_PR_CH" type="STRING" size="1"/>
+          <Column id="DOC_CAT_SD" type="STRING" size="1"/>
+          <Column id="MATDETERID" type="STRING" size="1"/>
+          <Column id="ITUSAGEID" type="STRING" size="1"/>
+          <Column id="COSTESTNR" type="STRING" size="12"/>
+          <Column id="CSTG_VRNT" type="STRING" size="4"/>
+          <Column id="BOMITEMNR" type="STRING" size="4"/>
+          <Column id="STAT_VAL" type="STRING" size="1"/>
+          <Column id="STAT_DATE" type="DATE" size="8"/>
+          <Column id="BUS_TRANST" type="STRING" size="2"/>
+          <Column id="PREF_INDIC" type="STRING" size="1"/>
+          <Column id="NRCONDREC" type="STRING" size="10"/>
+          <Column id="INTCLASSNR" type="STRING" size="10"/>
+          <Column id="BATCH_EXIT" type="STRING" size="3"/>
+          <Column id="BOM_CATEGO" type="STRING" size="1"/>
+          <Column id="BOM_IT_NR" type="STRING" size="8"/>
+          <Column id="COUNTER" type="STRING" size="8"/>
+          <Column id="INCONSCONF" type="STRING" size="1"/>
+          <Column id="OVERH_KEY" type="STRING" size="6"/>
+          <Column id="CSTG_SHEET" type="STRING" size="6"/>
+          <Column id="CSTG_VRNT1" type="STRING" size="4"/>
+          <Column id="PROD_ALLOC" type="STRING" size="18"/>
+          <Column id="PRICE_REF" type="STRING" size="18"/>
+          <Column id="MATPRICGRP" type="STRING" size="2"/>
+          <Column id="MATFRGTGRP" type="STRING" size="8"/>
+          <Column id="PLANDLVSCH" type="STRING" size="4"/>
+          <Column id="SEQUENCENO" type="STRING" size="35"/>
+          <Column id="CREDPRIC" type="FLOAT" size="16"/>
+          <Column id="PAY_GUARAN" type="STRING" size="2"/>
+          <Column id="GURANTEED" type="FLOAT" size="16"/>
+          <Column id="CFOP_CODE" type="STRING" size="5"/>
+          <Column id="TAXLAWICMS" type="STRING" size="3"/>
+          <Column id="TAXLAWIPI" type="STRING" size="3"/>
+          <Column id="SD_TAXCODE" type="STRING" size="2"/>
+          <Column id="VALCONTRNR" type="STRING" size="10"/>
+          <Column id="VALCONTRIT" type="STRING" size="6"/>
+          <Column id="ASSORT_MOD" type="STRING" size="18"/>
+          <Column id="VALSPECSTO" type="STRING" size="1"/>
+          <Column id="MATGRHIE1" type="STRING" size="18"/>
+          <Column id="MATGRHIE2" type="STRING" size="18"/>
+          <Column id="PROMOTION" type="STRING" size="10"/>
+          <Column id="SALES_DEAL" type="STRING" size="10"/>
+          <Column id="FLGLEADUNI" type="STRING" size="1"/>
+          <Column id="FREE_GOODS" type="STRING" size="1"/>
+          <Column id="VALID_OBJ" type="STRING" size="12"/>
+          <Column id="TAX_AMOUNT" type="BIGDECIMAL" size="28"/>
+          <Column id="MRP_AREA" type="STRING" size="10"/>
+          <Column id="CUST_MAT35" type="STRING" size="35"/>
+          <Column id="CR_EXCHRAT_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCHRATEST_V" type="BIGDECIMAL" size="9"/>
+          <Column id="ITM_TYPE_USAGE" type="STRING" size="4"/>
+          <Column id="CFOP_LONG" type="STRING" size="10"/>
+          <Column id="GROSS_VAL" type="BIGDECIMAL" size="28"/>
+          <Column id="LOG_SYSTEM_OWN" type="STRING" size="10"/>
+          <Column id="TAXLAWISS" type="STRING" size="3"/>
+          <Column id="TAXLAWCOFINS" type="STRING" size="3"/>
+          <Column id="TAXLAWPIS" type="STRING" size="3"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_PARTNERS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="PARTN_ROLE" type="STRING" size="2"/>
+          <Column id="CUSTOMER" type="STRING" size="10"/>
+          <Column id="VENDOR_NO" type="STRING" size="10"/>
+          <Column id="PERSON_NO" type="STRING" size="8"/>
+          <Column id="CONTACT" type="STRING" size="10"/>
+          <Column id="ADDRESS" type="STRING" size="10"/>
+          <Column id="UNLOAD_PT" type="STRING" size="25"/>
+          <Column id="COUNTRY" type="STRING" size="3"/>
+          <Column id="COUNTRYISO" type="STRING" size="2"/>
+          <Column id="ADDRE_INDI" type="STRING" size="1"/>
+          <Column id="ACC_1_TIME" type="STRING" size="1"/>
+          <Column id="CUSTHITYP" type="STRING" size="1"/>
+          <Column id="PRIC_REL" type="STRING" size="1"/>
+          <Column id="REBATE_REL" type="STRING" size="1"/>
+          <Column id="LEVEL_NR" type="STRING" size="2"/>
+          <Column id="DESC_PARTN" type="STRING" size="30"/>
+          <Column id="TRANSPZONE" type="STRING" size="10"/>
+          <Column id="ASSIGN_HI" type="STRING" size="2"/>
+          <Column id="VAT_REG_NO" type="STRING" size="20"/>
+          <Column id="FURTHERPAR" type="STRING" size="1"/>
+          <Column id="PERS_NO" type="STRING" size="10"/>
+          <Column id="CALEND_UPD" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_COND_QTY_SCALE">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="COND_NO" type="STRING" size="10"/>
+          <Column id="COND_COUNT" type="STRING" size="2"/>
+          <Column id="LINE_NO" type="STRING" size="4"/>
+          <Column id="SCALE_QTY" type="BIGDECIMAL" size="15"/>
+          <Column id="COND_UNIT" type="STRING" size="3"/>
+          <Column id="T_UNIT_ISO" type="STRING" size="3"/>
+          <Column id="CURRENCY" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDCURR" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_ADDRESS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="ADDRESS" type="STRING" size="10"/>
+          <Column id="FORMOFADDR" type="STRING" size="15"/>
+          <Column id="NAME" type="STRING" size="35"/>
+          <Column id="NAME_2" type="STRING" size="35"/>
+          <Column id="NAME_3" type="STRING" size="35"/>
+          <Column id="NAME_4" type="STRING" size="35"/>
+          <Column id="STREET" type="STRING" size="35"/>
+          <Column id="COUNTRY" type="STRING" size="3"/>
+          <Column id="COUNTRYISO" type="STRING" size="2"/>
+          <Column id="POSTL_CODE" type="STRING" size="10"/>
+          <Column id="POBX_PCD" type="STRING" size="10"/>
+          <Column id="POBX_CTY" type="STRING" size="35"/>
+          <Column id="CITY" type="STRING" size="35"/>
+          <Column id="DISTRICT" type="STRING" size="35"/>
+          <Column id="REGION" type="STRING" size="3"/>
+          <Column id="CITY_CODE" type="STRING" size="4"/>
+          <Column id="COUNTY_CDE" type="STRING" size="3"/>
+          <Column id="PO_BOX" type="STRING" size="10"/>
+          <Column id="TELEPHONE" type="STRING" size="16"/>
+          <Column id="TELEPHONE2" type="STRING" size="16"/>
+          <Column id="TELEBOX" type="STRING" size="15"/>
+          <Column id="FAX_NUMBER" type="STRING" size="31"/>
+          <Column id="TELETEX" type="STRING" size="30"/>
+          <Column id="TELEX" type="STRING" size="30"/>
+          <Column id="LANGU" type="STRING" size="1"/>
+          <Column id="LANGU_ISO" type="STRING" size="2"/>
+          <Column id="TRANSPZONE" type="STRING" size="10"/>
+          <Column id="HOUSE_NO" type="STRING" size="6"/>
+          <Column id="GENDER" type="STRING" size="1"/>
+          <Column id="NAME_LIST" type="STRING" size="35"/>
+          <Column id="TAXJURCODE" type="STRING" size="15"/>
+          <Column id="PERS_NO" type="STRING" size="10"/>
+          <Column id="ADDR_TYPE" type="STRING" size="1"/>
+          <Column id="NRELSTAT" type="STRING" size="1"/>
+          <Column id="INDIUPDATE" type="STRING" size="1"/>
+          <Column id="STREETNA" type="STRING" size="35"/>
+          <Column id="HOUSE_NO_LONG" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_COND_VAL_SCALE">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="COND_NO" type="STRING" size="10"/>
+          <Column id="COND_COUNT" type="STRING" size="2"/>
+          <Column id="LINE_NO" type="STRING" size="4"/>
+          <Column id="SCALE_VAL" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCKEY" type="STRING" size="5"/>
+          <Column id="CURRENCISO" type="STRING" size="3"/>
+          <Column id="CURRENCY" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDCURR" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CONTRACTS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="VAL_PER" type="STRING" size="3"/>
+          <Column id="VALPERUNIT" type="STRING" size="1"/>
+          <Column id="VALPERCAT" type="STRING" size="2"/>
+          <Column id="INST_DATE" type="DATE" size="8"/>
+          <Column id="ACCEPTDATE" type="DATE" size="8"/>
+          <Column id="CONTSTADAT" type="DATE" size="8"/>
+          <Column id="CONTSIGDAT" type="DATE" size="8"/>
+          <Column id="CANC_PROC" type="STRING" size="4"/>
+          <Column id="CONTENDACT" type="STRING" size="4"/>
+          <Column id="CONTCANDAT" type="DATE" size="8"/>
+          <Column id="REQCANCDAT" type="DATE" size="8"/>
+          <Column id="CANC_PARTY" type="STRING" size="1"/>
+          <Column id="CANCREASON" type="STRING" size="2"/>
+          <Column id="CONTENDDAT" type="DATE" size="8"/>
+          <Column id="CANC_DOC" type="STRING" size="20"/>
+          <Column id="CANCDOCDAT" type="DATE" size="8"/>
+          <Column id="CONTSTARUL" type="STRING" size="2"/>
+          <Column id="LEADTIMACT" type="STRING" size="3"/>
+          <Column id="LEADTIMUNI" type="STRING" size="1"/>
+          <Column id="DISM_DATE" type="DATE" size="8"/>
+          <Column id="ACTIONDATE" type="DATE" size="8"/>
+          <Column id="WI_ID" type="STRING" size="12"/>
+          <Column id="ACTDATRULE" type="STRING" size="2"/>
+          <Column id="CONTENDRUL" type="STRING" size="2"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_STATUSHEADERS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="REFDOCHDST" type="STRING" size="1"/>
+          <Column id="TOTREFSTAT" type="STRING" size="1"/>
+          <Column id="CONFIRSTAT" type="STRING" size="1"/>
+          <Column id="DELIV_STAT" type="STRING" size="1"/>
+          <Column id="DLV_STAT_H" type="STRING" size="1"/>
+          <Column id="TOTGOODSMV" type="STRING" size="1"/>
+          <Column id="BILLSTATUS" type="STRING" size="1"/>
+          <Column id="BILLINGSTA" type="STRING" size="1"/>
+          <Column id="ACCOUNTSTA" type="STRING" size="1"/>
+          <Column id="OVERALLREJ" type="STRING" size="1"/>
+          <Column id="PRC_STAT_H" type="STRING" size="1"/>
+          <Column id="OVERALLPIC" type="STRING" size="1"/>
+          <Column id="OVERALL_WM" type="STRING" size="1"/>
+          <Column id="TOTINCOMPL" type="STRING" size="1"/>
+          <Column id="TOTINCOMIT" type="STRING" size="1"/>
+          <Column id="TOTINCOMBI" type="STRING" size="1"/>
+          <Column id="GENINCOMHD" type="STRING" size="1"/>
+          <Column id="HDIMCOMDEL" type="STRING" size="1"/>
+          <Column id="HDINCOMBIL" type="STRING" size="1"/>
+          <Column id="DOCIMCOMPR" type="STRING" size="1"/>
+          <Column id="SD_DOC_CAT" type="STRING" size="1"/>
+          <Column id="SDDOCOBJ" type="STRING" size="1"/>
+          <Column id="CH_ON" type="DATE" size="8"/>
+          <Column id="BILTOTSTAT" type="STRING" size="1"/>
+          <Column id="INVOICSTAT" type="STRING" size="1"/>
+          <Column id="CUSTRESHD1" type="STRING" size="1"/>
+          <Column id="CUSTRESHD2" type="STRING" size="1"/>
+          <Column id="CUSTRESHD3" type="STRING" size="1"/>
+          <Column id="CUSTRESHD4" type="STRING" size="1"/>
+          <Column id="CUSTRESHD5" type="STRING" size="1"/>
+          <Column id="CUSTRESIT1" type="STRING" size="1"/>
+          <Column id="CUSTRESIT2" type="STRING" size="1"/>
+          <Column id="CUSTRESIT3" type="STRING" size="1"/>
+          <Column id="CUSTRESIT4" type="STRING" size="1"/>
+          <Column id="CUSTRESIT5" type="STRING" size="1"/>
+          <Column id="TOTSTATIT" type="STRING" size="1"/>
+          <Column id="STATSTACLC" type="STRING" size="1"/>
+          <Column id="STATDYNCLC" type="STRING" size="1"/>
+          <Column id="STATCREDCH" type="STRING" size="1"/>
+          <Column id="STATCRECH1" type="STRING" size="1"/>
+          <Column id="STATCRECH2" type="STRING" size="1"/>
+          <Column id="STATCRECH3" type="STRING" size="1"/>
+          <Column id="STATCRECH4" type="STRING" size="1"/>
+          <Column id="STATCRECH5" type="STRING" size="1"/>
+          <Column id="STATCRECH6" type="STRING" size="1"/>
+          <Column id="STATCRECH7" type="STRING" size="1"/>
+          <Column id="STATCRECH8" type="STRING" size="1"/>
+          <Column id="STATCRECH9" type="STRING" size="1"/>
+          <Column id="STATCRECHA" type="STRING" size="1"/>
+          <Column id="STATCRECHB" type="STRING" size="1"/>
+          <Column id="STATCRECHC" type="STRING" size="1"/>
+          <Column id="TOTSTATCCH" type="STRING" size="1"/>
+          <Column id="TRNSPLANST" type="STRING" size="1"/>
+          <Column id="QUITTSTAT" type="STRING" size="1"/>
+          <Column id="CONFIRMSTA" type="STRING" size="1"/>
+          <Column id="SAPRELEASE" type="STRING" size="4"/>
+          <Column id="TOTINCOMI" type="STRING" size="1"/>
+          <Column id="TOTINCOMI1" type="STRING" size="1"/>
+          <Column id="TOTINCOMI2" type="STRING" size="1"/>
+          <Column id="HDINCOMPL" type="STRING" size="1"/>
+          <Column id="HDINCOMPL1" type="STRING" size="1"/>
+          <Column id="HDINCOMPL2" type="STRING" size="1"/>
+          <Column id="HDINCOMPL3" type="STRING" size="1"/>
+          <Column id="CREDCHECK" type="STRING" size="1"/>
+          <Column id="DELAYSTAT" type="STRING" size="1"/>
+          <Column id="SHIPPUNIT" type="STRING" size="1"/>
+          <Column id="DISTRISTAT" type="STRING" size="1"/>
+          <Column id="REVDETSTAT" type="STRING" size="1"/>
+          <Column id="INDIDOCACH" type="STRING" size="1"/>
+          <Column id="TOBILBLOST" type="STRING" size="1"/>
+          <Column id="TODELBLOST" type="STRING" size="1"/>
+          <Column id="TOBLOCKSTA" type="STRING" size="1"/>
+          <Column id="LEBHEADSTA" type="STRING" size="1"/>
+          <Column id="FMSTATUS" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_TEXTHEADERS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="APPLOBJECT" type="STRING" size="10"/>
+          <Column id="TEXT_NAME" type="STRING" size="70"/>
+          <Column id="TEXT_ID" type="STRING" size="4"/>
+          <Column id="LANGU" type="STRING" size="1"/>
+          <Column id="LANGU_ISO" type="STRING" size="2"/>
+          <Column id="TITLE" type="STRING" size="50"/>
+          <Column id="FORM" type="STRING" size="16"/>
+          <Column id="STYLE" type="STRING" size="8"/>
+          <Column id="VERSION" type="STRING" size="5"/>
+          <Column id="CREATEUSER" type="STRING" size="12"/>
+          <Column id="CREATEREL" type="STRING" size="4"/>
+          <Column id="CREATEDATE" type="DATE" size="8"/>
+          <Column id="CREATETIME" type="TIME" size="6"/>
+          <Column id="CHANGEUSER" type="STRING" size="12"/>
+          <Column id="CHANGEREL" type="STRING" size="4"/>
+          <Column id="CHANGEDATE" type="DATE" size="8"/>
+          <Column id="CHANGETIME" type="TIME" size="6"/>
+          <Column id="LINESIZE" type="STRING" size="3"/>
+          <Column id="LINEAMOUNT" type="STRING" size="5"/>
+          <Column id="HYPHENAT" type="STRING" size="1"/>
+          <Column id="ORGSPRAS" type="STRING" size="1"/>
+          <Column id="ORGSPRAISO" type="STRING" size="2"/>
+          <Column id="TRANSTAT" type="STRING" size="1"/>
+          <Column id="MATCHCOD1" type="STRING" size="16"/>
+          <Column id="MATCHCOD2" type="STRING" size="16"/>
+          <Column id="REFOBJECT" type="STRING" size="10"/>
+          <Column id="REFNAME" type="STRING" size="70"/>
+          <Column id="REFID" type="STRING" size="4"/>
+          <Column id="TEXTTYPE" type="STRING" size="6"/>
+          <Column id="COMPRESSTD" type="STRING" size="1"/>
+          <Column id="OBJ_CLASS" type="STRING" size="4"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_TEXTLINES_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="APPLOBJECT" type="STRING" size="10"/>
+          <Column id="TEXT_NAME" type="STRING" size="70"/>
+          <Column id="TEXT_ID" type="STRING" size="4"/>
+          <Column id="LANGU" type="STRING" size="1"/>
+          <Column id="LANGU_ISO" type="STRING" size="2"/>
+          <Column id="LINE_CNT" type="STRING" size="8"/>
+          <Column id="LINE" type="STRING" size="132"/>
+          <Column id="FORMAT_COL" type="STRING" size="2"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_FLOWS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="PRECSDDOC" type="STRING" size="10"/>
+          <Column id="PREDITDOC" type="STRING" size="6"/>
+          <Column id="SUBSSDDOC" type="STRING" size="10"/>
+          <Column id="SUBSITDOC" type="STRING" size="6"/>
+          <Column id="DOCCATEGOR" type="STRING" size="1"/>
+          <Column id="REF_QTY" type="BIGDECIMAL" size="15"/>
+          <Column id="BASE_UOM" type="STRING" size="3"/>
+          <Column id="T_UNIT_ISO" type="STRING" size="3"/>
+          <Column id="REFERENVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="STATISCURR" type="STRING" size="5"/>
+          <Column id="CURRENCISO" type="STRING" size="3"/>
+          <Column id="DOC_CAT_SD" type="STRING" size="1"/>
+          <Column id="QTYPOSCALC" type="STRING" size="1"/>
+          <Column id="ID_MM_WM" type="STRING" size="1"/>
+          <Column id="CREAT_DATE" type="DATE" size="8"/>
+          <Column id="REC_TIME" type="TIME" size="6"/>
+          <Column id="MATERIAL" type="STRING" size="18"/>
+          <Column id="MOVE_TYP" type="STRING" size="3"/>
+          <Column id="REQ_TYPE" type="STRING" size="2"/>
+          <Column id="PLTYPE" type="STRING" size="1"/>
+          <Column id="LEVELFLOWR" type="STRING" size="2"/>
+          <Column id="WHSE_NO" type="STRING" size="3"/>
+          <Column id="CH_ON" type="DATE" size="8"/>
+          <Column id="BILLINGTYP" type="STRING" size="1"/>
+          <Column id="GROSS_WT" type="BIGDECIMAL" size="15"/>
+          <Column id="UNIT_OF_WT" type="STRING" size="3"/>
+          <Column id="UNITWTISO" type="STRING" size="3"/>
+          <Column id="VOLUME" type="BIGDECIMAL" size="15"/>
+          <Column id="VOLUMEUNIT" type="STRING" size="3"/>
+          <Column id="VOLUNITISO" type="STRING" size="3"/>
+          <Column id="BILL_PLAN" type="STRING" size="10"/>
+          <Column id="BILL_PLANI" type="STRING" size="6"/>
+          <Column id="REFQTYUNIT" type="FLOAT" size="16"/>
+          <Column id="REFQTYFLOA" type="FLOAT" size="16"/>
+          <Column id="SALES_UNIT" type="STRING" size="3"/>
+          <Column id="ISOCODUNIT" type="STRING" size="3"/>
+          <Column id="GURANTEED" type="FLOAT" size="16"/>
+          <Column id="SPEC_STOCK" type="STRING" size="1"/>
+          <Column id="SP_STCK_NO" type="STRING" size="16"/>
+          <Column id="INDINVMANG" type="STRING" size="1"/>
+          <Column id="NET_WEIGHT" type="BIGDECIMAL" size="13"/>
+          <Column id="MATERIAL_EXTERNAL" type="STRING" size="40"/>
+          <Column id="MATERIAL_GUID" type="STRING" size="32"/>
+          <Column id="MATERIAL_VERSION" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_STATUSITEMS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="REFERNSTAT" type="STRING" size="1"/>
+          <Column id="REFTOTSTAT" type="STRING" size="1"/>
+          <Column id="CONFSTATIT" type="STRING" size="1"/>
+          <Column id="DELIV_STAT" type="STRING" size="1"/>
+          <Column id="DLV_STAT_I" type="STRING" size="1"/>
+          <Column id="GOODSMVSTA" type="STRING" size="1"/>
+          <Column id="BILLSTATHD" type="STRING" size="1"/>
+          <Column id="BILLSTATIT" type="STRING" size="1"/>
+          <Column id="REJSTATIT" type="STRING" size="1"/>
+          <Column id="OVRPROCSTA" type="STRING" size="1"/>
+          <Column id="PICKINGSTA" type="STRING" size="1"/>
+          <Column id="WHMANAGSTA" type="STRING" size="1"/>
+          <Column id="GENINCOMST" type="STRING" size="1"/>
+          <Column id="INCOMSTDEL" type="STRING" size="1"/>
+          <Column id="INCOMSTBIL" type="STRING" size="1"/>
+          <Column id="INCOMSTPRI" type="STRING" size="1"/>
+          <Column id="BILLSTAINT" type="STRING" size="1"/>
+          <Column id="CUSTRESIT1" type="STRING" size="1"/>
+          <Column id="CUSTRESIT2" type="STRING" size="1"/>
+          <Column id="CUSTRESIT3" type="STRING" size="1"/>
+          <Column id="CUSTRESIT4" type="STRING" size="1"/>
+          <Column id="CUSTRESIT5" type="STRING" size="1"/>
+          <Column id="PACKSTSTIT" type="STRING" size="1"/>
+          <Column id="STAPICKCON" type="STRING" size="1"/>
+          <Column id="CONFIRMSTA" type="STRING" size="1"/>
+          <Column id="STATCRECH6" type="STRING" size="1"/>
+          <Column id="STATCRECH7" type="STRING" size="1"/>
+          <Column id="INCOMSTAIT" type="STRING" size="1"/>
+          <Column id="INCOMSTAPA" type="STRING" size="1"/>
+          <Column id="INCOSTAGOO" type="STRING" size="1"/>
+          <Column id="DELAYSTAT" type="STRING" size="1"/>
+          <Column id="REVDETSTAT" type="STRING" size="1"/>
+          <Column id="DECTWHOUSE" type="STRING" size="1"/>
+          <Column id="ITBILBLOST" type="STRING" size="1"/>
+          <Column id="ITDELBLOST" type="STRING" size="1"/>
+          <Column id="LEBITEMSTA" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUREFS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="POSEX" type="STRING" size="6"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="INST_ID" type="STRING" size="8"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUCFGS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="POSEX" type="STRING" size="6"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="ROOT_ID" type="STRING" size="8"/>
+          <Column id="SCE" type="STRING" size="1"/>
+          <Column id="KBNAME" type="STRING" size="30"/>
+          <Column id="KBVERSION" type="STRING" size="30"/>
+          <Column id="COMPLETE" type="STRING" size="1"/>
+          <Column id="CONSISTENT" type="STRING" size="1"/>
+          <Column id="CFGINFO" type="STRING" size="250"/>
+          <Column id="KBPROFILE" type="STRING" size="30"/>
+          <Column id="KBLANGUAGE" type="STRING" size="1"/>
+          <Column id="CBASE_ID" type="STRING" size="32"/>
+          <Column id="CBASE_ID_TYPE" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CONDITIONS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONDIT_NO" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="COND_ST_NO" type="STRING" size="3"/>
+          <Column id="COND_COUNT" type="STRING" size="2"/>
+          <Column id="APPLICATIO" type="STRING" size="2"/>
+          <Column id="COND_TYPE" type="STRING" size="4"/>
+          <Column id="CONPRICDAT" type="DATE" size="8"/>
+          <Column id="CALCTYPCON" type="STRING" size="1"/>
+          <Column id="CONBASEVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="SDCURRENCY" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+          <Column id="COND_VALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURRENCISO" type="STRING" size="3"/>
+          <Column id="CONEXCHRAT" type="BIGDECIMAL" size="9"/>
+          <Column id="COND_P_UNT" type="BIGDECIMAL" size="5"/>
+          <Column id="COND_D_UNT" type="STRING" size="3"/>
+          <Column id="T_UNIT_ISO" type="STRING" size="3"/>
+          <Column id="NUMCONVERT" type="BIGDECIMAL" size="5"/>
+          <Column id="DENOMINATO" type="BIGDECIMAL" size="5"/>
+          <Column id="CONDTYPE" type="STRING" size="1"/>
+          <Column id="STAT_CON" type="STRING" size="1"/>
+          <Column id="SCALETYPE" type="STRING" size="1"/>
+          <Column id="ACCRUALS" type="STRING" size="1"/>
+          <Column id="CONINVOLST" type="STRING" size="1"/>
+          <Column id="CONDORIGIN" type="STRING" size="1"/>
+          <Column id="GROUPCOND" type="STRING" size="1"/>
+          <Column id="COND_UPDAT" type="STRING" size="1"/>
+          <Column id="ACCESS_SEQ" type="STRING" size="2"/>
+          <Column id="COND_NO" type="STRING" size="10"/>
+          <Column id="CONDCOUNT" type="STRING" size="2"/>
+          <Column id="ACCOUNTKEY" type="STRING" size="3"/>
+          <Column id="GL_ACCOUNT" type="STRING" size="10"/>
+          <Column id="TAX_CODE" type="STRING" size="2"/>
+          <Column id="ACCOUNT_KE" type="STRING" size="3"/>
+          <Column id="GLACCOUNT" type="STRING" size="10"/>
+          <Column id="WITHTAXCOD" type="STRING" size="2"/>
+          <Column id="VENDOR_NO" type="STRING" size="10"/>
+          <Column id="CUSTNO_RR" type="STRING" size="10"/>
+          <Column id="ROUNDOFFDI" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDVALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDCNTRL" type="STRING" size="1"/>
+          <Column id="CONDISACTI" type="STRING" size="1"/>
+          <Column id="CONDCLASS" type="STRING" size="1"/>
+          <Column id="CONDCOINHD" type="STRING" size="2"/>
+          <Column id="INDIBASVAL" type="STRING" size="1"/>
+          <Column id="INDICONVAL" type="STRING" size="1"/>
+          <Column id="FACTBASVAL" type="FLOAT" size="16"/>
+          <Column id="STRUCTCOND" type="STRING" size="1"/>
+          <Column id="FACTCONBAS" type="FLOAT" size="16"/>
+          <Column id="PRICELEVEL" type="STRING" size="4"/>
+          <Column id="CONDFORMUL" type="STRING" size="3"/>
+          <Column id="SCALETYP" type="STRING" size="1"/>
+          <Column id="INCREMSCAL" type="BIGDECIMAL" size="28"/>
+          <Column id="INCREASCAL" type="BIGDECIMAL" size="28"/>
+          <Column id="INDEX_NO" type="BLOB" size="10"/>
+          <Column id="INDEXNO" type="BLOB" size="10"/>
+          <Column id="CONDITIDX" type="STRING" size="2"/>
+          <Column id="PRINT_ID" type="STRING" size="1"/>
+          <Column id="FROREFSTEP" type="STRING" size="3"/>
+          <Column id="FROMREFSTE" type="STRING" size="3"/>
+          <Column id="CONDSUBTOT" type="STRING" size="1"/>
+          <Column id="COND_FORM" type="STRING" size="3"/>
+          <Column id="COND_FORM1" type="STRING" size="3"/>
+          <Column id="MAKMANENTR" type="STRING" size="1"/>
+          <Column id="ROUNDRULE" type="STRING" size="1"/>
+          <Column id="PMSIGNAMOU" type="STRING" size="1"/>
+          <Column id="CURRCONVER" type="STRING" size="1"/>
+          <Column id="CONDISMAND" type="STRING" size="1"/>
+          <Column id="RATEOFCHA1" type="STRING" size="1"/>
+          <Column id="RATEOFCHA2" type="STRING" size="1"/>
+          <Column id="RATEOFCHA3" type="STRING" size="1"/>
+          <Column id="RATEOFCHA4" type="STRING" size="1"/>
+          <Column id="RATEOFCHA5" type="STRING" size="1"/>
+          <Column id="RATEOFCHA6" type="STRING" size="1"/>
+          <Column id="TERMSOFPAY" type="STRING" size="1"/>
+          <Column id="MESSAGENO" type="STRING" size="3"/>
+          <Column id="INDIUPDATE" type="STRING" size="1"/>
+          <Column id="SELECTION" type="STRING" size="1"/>
+          <Column id="SCALEBASIN" type="STRING" size="1"/>
+          <Column id="SCALBASVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="UNITMEASUR" type="STRING" size="3"/>
+          <Column id="TUNITISO" type="STRING" size="3"/>
+          <Column id="CURRENCKEY" type="STRING" size="5"/>
+          <Column id="CORRENISO" type="STRING" size="3"/>
+          <Column id="CONDCURREN" type="STRING" size="5"/>
+          <Column id="CORR_ISO" type="STRING" size="3"/>
+          <Column id="CONBASVAL" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDIVALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="CONDINCOMP" type="STRING" size="1"/>
+          <Column id="CONDCONFIG" type="STRING" size="1"/>
+          <Column id="CONDCHAMAN" type="STRING" size="1"/>
+          <Column id="PRICESOURC" type="STRING" size="1"/>
+          <Column id="VARIANCOND" type="STRING" size="26"/>
+          <Column id="LEVEL_BOM" type="BIGDECIMAL" size="2"/>
+          <Column id="PATH_BOM" type="BIGDECIMAL" size="4"/>
+          <Column id="STATOFAGRE" type="STRING" size="1"/>
+          <Column id="REB_RETROA" type="STRING" size="1"/>
+          <Column id="INDIDELETE" type="STRING" size="1"/>
+          <Column id="AGREE_COND" type="STRING" size="10"/>
+          <Column id="CALCULBASE" type="STRING" size="1"/>
+          <Column id="SH_MAT_TYP" type="STRING" size="4"/>
+          <Column id="ROUNDDIFCO" type="STRING" size="1"/>
+          <Column id="QTYCONVERS" type="STRING" size="1"/>
+          <Column id="CONCBUFFER" type="STRING" size="1"/>
+          <Column id="RELACCASSI" type="STRING" size="1"/>
+          <Column id="INDIMATMAI" type="STRING" size="1"/>
+          <Column id="TAXJURISDI" type="STRING" size="1"/>
+          <Column id="CONEXCHRAT_V" type="BIGDECIMAL" size="9"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUINS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="INST_ID" type="STRING" size="8"/>
+          <Column id="OBJ_TYPE" type="STRING" size="10"/>
+          <Column id="CLASS_TYPE" type="STRING" size="3"/>
+          <Column id="OBJ_KEY" type="STRING" size="50"/>
+          <Column id="OBJ_TXT" type="STRING" size="70"/>
+          <Column id="QUANTITY" type="STRING" size="15"/>
+          <Column id="AUTHOR" type="STRING" size="1"/>
+          <Column id="QUANTITY_UNIT" type="STRING" size="3"/>
+          <Column id="COMPLETE" type="STRING" size="1"/>
+          <Column id="CONSISTENT" type="STRING" size="1"/>
+          <Column id="OBJECT_GUID" type="STRING" size="32"/>
+          <Column id="PERSIST_ID" type="STRING" size="32"/>
+          <Column id="PERSIST_ID_TYPE" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUPRTS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="PARENT_ID" type="STRING" size="8"/>
+          <Column id="INST_ID" type="STRING" size="8"/>
+          <Column id="PART_OF_NO" type="STRING" size="4"/>
+          <Column id="OBJ_TYPE" type="STRING" size="10"/>
+          <Column id="CLASS_TYPE" type="STRING" size="3"/>
+          <Column id="OBJ_KEY" type="STRING" size="50"/>
+          <Column id="AUTHOR" type="STRING" size="1"/>
+          <Column id="SALES_RELEVANT" type="STRING" size="1"/>
+          <Column id="PART_OF_GUID" type="STRING" size="32"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUVALS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="INST_ID" type="STRING" size="8"/>
+          <Column id="CHARC" type="STRING" size="40"/>
+          <Column id="CHARC_TXT" type="STRING" size="70"/>
+          <Column id="VALUE" type="STRING" size="40"/>
+          <Column id="VALUE_TXT" type="STRING" size="70"/>
+          <Column id="AUTHOR" type="STRING" size="1"/>
+          <Column id="VALUE_TO" type="STRING" size="40"/>
+          <Column id="VALCODE" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_SCHEDULES_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="SCHED_LINE" type="STRING" size="4"/>
+          <Column id="SCHED_TYPE" type="STRING" size="2"/>
+          <Column id="RELFORDEL" type="STRING" size="1"/>
+          <Column id="REQ_DATE" type="DATE" size="8"/>
+          <Column id="REQ_TIME" type="TIME" size="6"/>
+          <Column id="REQ_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="CONFIR_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="SALES_UNIT" type="STRING" size="3"/>
+          <Column id="ISOCODUNIT" type="STRING" size="3"/>
+          <Column id="REQ_QTY1" type="BIGDECIMAL" size="13"/>
+          <Column id="BASE_UOM" type="STRING" size="3"/>
+          <Column id="ISOBASUNIT" type="STRING" size="3"/>
+          <Column id="REQ_DATE1" type="DATE" size="8"/>
+          <Column id="REQ_TYPE" type="STRING" size="2"/>
+          <Column id="PLTYPE" type="STRING" size="1"/>
+          <Column id="BUSIDOCNR" type="STRING" size="10"/>
+          <Column id="BUSIITNR" type="STRING" size="6"/>
+          <Column id="SCHED_LIN1" type="STRING" size="4"/>
+          <Column id="EARL_DATE" type="DATE" size="8"/>
+          <Column id="MAINT_REQ" type="STRING" size="10"/>
+          <Column id="PREQ_NO" type="STRING" size="10"/>
+          <Column id="PO_TYPE" type="STRING" size="4"/>
+          <Column id="DOC_CAT" type="STRING" size="1"/>
+          <Column id="CONF_STAT" type="STRING" size="1"/>
+          <Column id="IR_IND" type="STRING" size="1"/>
+          <Column id="RETURNDATE" type="DATE" size="8"/>
+          <Column id="DATE_TYPE" type="STRING" size="1"/>
+          <Column id="TP_DATE" type="DATE" size="8"/>
+          <Column id="MS_DATE" type="DATE" size="8"/>
+          <Column id="LOAD_DATE" type="DATE" size="8"/>
+          <Column id="GI_DATE" type="DATE" size="8"/>
+          <Column id="CORR_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="REQ_DLV_BL" type="STRING" size="2"/>
+          <Column id="GRP_DEFIN" type="STRING" size="3"/>
+          <Column id="RELEASTYP" type="STRING" size="1"/>
+          <Column id="FORCAST_NR" type="STRING" size="10"/>
+          <Column id="COMMIT_QTY" type="BIGDECIMAL" size="13"/>
+          <Column id="SIZE2" type="BIGDECIMAL" size="13"/>
+          <Column id="SIZE3" type="BIGDECIMAL" size="13"/>
+          <Column id="UNIT_MEAS" type="STRING" size="3"/>
+          <Column id="ISO_ROMEI" type="STRING" size="3"/>
+          <Column id="FORMULAKEY" type="STRING" size="2"/>
+          <Column id="SALESQTYNR" type="BIGDECIMAL" size="5"/>
+          <Column id="SALESQTYDE" type="BIGDECIMAL" size="5"/>
+          <Column id="AVAIL_CON" type="STRING" size="1"/>
+          <Column id="MOVE_TYPE" type="STRING" size="3"/>
+          <Column id="PREQ_ITEM" type="STRING" size="5"/>
+          <Column id="LINTYP_EDI" type="STRING" size="1"/>
+          <Column id="ORDERID" type="STRING" size="12"/>
+          <Column id="PLANORDNR" type="STRING" size="10"/>
+          <Column id="BOMEXPL_NO" type="STRING" size="8"/>
+          <Column id="CUSTCHSTAT" type="STRING" size="17"/>
+          <Column id="GURANTEED" type="FLOAT" size="16"/>
+          <Column id="MS_TIME" type="TIME" size="6"/>
+          <Column id="TP_TIME" type="TIME" size="6"/>
+          <Column id="LOAD_TIME" type="TIME" size="6"/>
+          <Column id="GI_TIME" type="TIME" size="6"/>
+          <Column id="ROUTESCHED" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUBLBS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="CONTEXT" type="STRING" size="250"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CFGS_CUVKS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CONFIG_ID" type="STRING" size="6"/>
+          <Column id="INST_ID" type="STRING" size="8"/>
+          <Column id="VKEY" type="STRING" size="26"/>
+          <Column id="FACTOR" type="STRING" size="15"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_BILLINGPLANS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="BILL_PLAN" type="STRING" size="10"/>
+          <Column id="BILLPLATYP" type="STRING" size="1"/>
+          <Column id="B_INPLATYP" type="STRING" size="2"/>
+          <Column id="SORT_FLD" type="STRING" size="10"/>
+          <Column id="BILLSTADAT" type="DATE" size="8"/>
+          <Column id="BILLENDDAT" type="DATE" size="8"/>
+          <Column id="RULEDETHOR" type="STRING" size="2"/>
+          <Column id="RULEORISTA" type="STRING" size="2"/>
+          <Column id="RULEORIEND" type="STRING" size="2"/>
+          <Column id="RULEORINEX" type="STRING" size="2"/>
+          <Column id="LENSTANPER" type="STRING" size="3"/>
+          <Column id="STANBILLNO" type="STRING" size="10"/>
+          <Column id="DATESFROM" type="DATE" size="8"/>
+          <Column id="BILLCREAIA" type="STRING" size="1"/>
+          <Column id="RULEDATFRO" type="STRING" size="2"/>
+          <Column id="RULEDETBIL" type="STRING" size="2"/>
+          <Column id="CALDEFDAYS" type="STRING" size="2"/>
+          <Column id="DATESTO" type="DATE" size="8"/>
+          <Column id="RULDATESTO" type="STRING" size="2"/>
+          <Column id="ROUTING_NO" type="STRING" size="10"/>
+          <Column id="CO_APLZL" type="STRING" size="8"/>
+          <Column id="RESERV_NO" type="STRING" size="10"/>
+          <Column id="RES_ITEM" type="STRING" size="4"/>
+          <Column id="PO_NUMBER" type="STRING" size="10"/>
+          <Column id="ITUNLIMIT" type="STRING" size="6"/>
+          <Column id="PAYCARDS1" type="STRING" size="1"/>
+          <Column id="PAYCARDS2" type="STRING" size="1"/>
+          <Column id="PAYCARDS3" type="STRING" size="1"/>
+          <Column id="PAYCARDS4" type="STRING" size="1"/>
+          <Column id="PAYCARDS5" type="STRING" size="1"/>
+          <Column id="INTPROJNO" type="STRING" size="8"/>
+          <Column id="AUTOCREATE" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_BILLINGDATES_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="ITM_NUMBER" type="STRING" size="6"/>
+          <Column id="BILL_PLAN" type="STRING" size="10"/>
+          <Column id="BILL_PLANI" type="STRING" size="6"/>
+          <Column id="DATETYPE" type="STRING" size="2"/>
+          <Column id="DATEDESCRI" type="STRING" size="4"/>
+          <Column id="SETTLEDATE" type="DATE" size="8"/>
+          <Column id="IDADOPTBIL" type="STRING" size="1"/>
+          <Column id="RULEBILLPL" type="STRING" size="1"/>
+          <Column id="INVOICEPER" type="BIGDECIMAL" size="5"/>
+          <Column id="CURRENCKEY" type="STRING" size="5"/>
+          <Column id="CURRENCISO" type="STRING" size="3"/>
+          <Column id="EXCHANRATE" type="BIGDECIMAL" size="9"/>
+          <Column id="VALONDATE" type="BIGDECIMAL" size="28"/>
+          <Column id="BILLBLOCK" type="STRING" size="2"/>
+          <Column id="ORDBILLTYP" type="STRING" size="4"/>
+          <Column id="STATBILLPL" type="STRING" size="1"/>
+          <Column id="RULEORINEX" type="STRING" size="2"/>
+          <Column id="LENSTANPER" type="STRING" size="3"/>
+          <Column id="MILESTONNO" type="STRING" size="12"/>
+          <Column id="MILESTONE" type="STRING" size="5"/>
+          <Column id="PMNTTRMS" type="STRING" size="4"/>
+          <Column id="PAYER" type="STRING" size="10"/>
+          <Column id="TAX_CLASS1" type="STRING" size="1"/>
+          <Column id="TAX_CLASS2" type="STRING" size="1"/>
+          <Column id="TAX_CLASS3" type="STRING" size="1"/>
+          <Column id="TAX_CLASS4" type="STRING" size="1"/>
+          <Column id="TAX_CLASS5" type="STRING" size="1"/>
+          <Column id="TAX_CLASS6" type="STRING" size="1"/>
+          <Column id="TAX_CLASS7" type="STRING" size="1"/>
+          <Column id="TAX_CLASS8" type="STRING" size="1"/>
+          <Column id="TAX_CLASS9" type="STRING" size="1"/>
+          <Column id="ADD_VAL_DY" type="STRING" size="2"/>
+          <Column id="FIX_VAL_DY" type="DATE" size="8"/>
+          <Column id="SETTLEDAT" type="DATE" size="8"/>
+          <Column id="PROCASMANU" type="STRING" size="1"/>
+          <Column id="CALDEFDAYS" type="STRING" size="2"/>
+          <Column id="BILL_DATE" type="DATE" size="8"/>
+          <Column id="NET_VALUE" type="BIGDECIMAL" size="28"/>
+          <Column id="NET_PRICE" type="BIGDECIMAL" size="28"/>
+          <Column id="COST_DOC_C" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP1" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP2" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP3" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP4" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP5" type="BIGDECIMAL" size="28"/>
+          <Column id="SUBTOT_PP6" type="BIGDECIMAL" size="28"/>
+          <Column id="CREDPRICIT" type="BIGDECIMAL" size="28"/>
+          <Column id="AMOUNTELIG" type="BIGDECIMAL" size="28"/>
+          <Column id="REBATEBAS" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURREN_ISO" type="STRING" size="3"/>
+          <Column id="PRICE_OK" type="STRING" size="1"/>
+          <Column id="MEANSOFPAY" type="STRING" size="1"/>
+          <Column id="CREDITPRED" type="FLOAT" size="16"/>
+          <Column id="HILEVPAYNO" type="STRING" size="10"/>
+          <Column id="HILEVITBIL" type="STRING" size="6"/>
+          <Column id="EXCHRATEFI" type="BIGDECIMAL" size="9"/>
+          <Column id="ACCOUNTNO" type="STRING" size="10"/>
+          <Column id="INDICORDAT" type="STRING" size="1"/>
+          <Column id="ORIGBILDAT" type="DATE" size="8"/>
+          <Column id="EXCHANRATE_V" type="BIGDECIMAL" size="9"/>
+          <Column id="EXCHRATEFI_V" type="BIGDECIMAL" size="9"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ORDER_CREDITCARDS_OUT">
+        <ColumnInfo>
+          <Column id="OPERATION" type="STRING" size="3"/>
+          <Column id="SD_DOC" type="STRING" size="10"/>
+          <Column id="CC_TYPE" type="STRING" size="4"/>
+          <Column id="CC_NUMBER" type="STRING" size="25"/>
+          <Column id="CC_VALID_F" type="DATE" size="8"/>
+          <Column id="CC_VALID_T" type="DATE" size="8"/>
+          <Column id="CC_NAME" type="STRING" size="40"/>
+          <Column id="DATAORIGIN" type="STRING" size="1"/>
+          <Column id="AUTHAMOUNT" type="BIGDECIMAL" size="28"/>
+          <Column id="CURRENCY" type="STRING" size="5"/>
+          <Column id="CURR_ISO" type="STRING" size="3"/>
+          <Column id="CC_SETTLED" type="STRING" size="1"/>
+          <Column id="AUTH_CC_NO" type="STRING" size="10"/>
+          <Column id="AUTH_REFNO" type="STRING" size="15"/>
+          <Column id="AUTH_DATE" type="DATE" size="8"/>
+          <Column id="AUTH_TIME" type="TIME" size="6"/>
+          <Column id="MERCHIDCL" type="STRING" size="15"/>
+          <Column id="PNTOFRECEI" type="STRING" size="10"/>
+          <Column id="TERMINAL" type="STRING" size="10"/>
+          <Column id="SETTLEMRUN" type="STRING" size="10"/>
+          <Column id="CARDCATEGO" type="STRING" size="2"/>
+          <Column id="AUTHORTYPE" type="STRING" size="1"/>
+          <Column id="STATEXTSYS" type="STRING" size="1"/>
+          <Column id="CC_REACT" type="STRING" size="1"/>
+          <Column id="AMOUNTAUTH" type="BIGDECIMAL" size="28"/>
+          <Column id="CURR_CRED" type="STRING" size="5"/>
+          <Column id="CURCREDISO" type="STRING" size="3"/>
+          <Column id="AUTH_EXPIR" type="STRING" size="1"/>
+          <Column id="AMOUNTCHAN" type="STRING" size="1"/>
+          <Column id="PRE_AUTH" type="STRING" size="1"/>
+          <Column id="HIGHLEAUTH" type="STRING" size="6"/>
+          <Column id="RADRCHECK1" type="STRING" size="4"/>
+          <Column id="RADRCHECK2" type="STRING" size="4"/>
+          <Column id="RADRCHECK3" type="STRING" size="4"/>
+          <Column id="RCARDCHECK" type="STRING" size="4"/>
+          <Column id="REASONTEXT" type="STRING" size="40"/>
+          <Column id="CC_LIMIT" type="BIGDECIMAL" size="28"/>
+          <Column id="AUTH_USED" type="STRING" size="1"/>
+          <Column id="CC_LIMITED" type="STRING" size="1"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="EXTENSIONOUT">
+        <ColumnInfo>
+          <Column id="STRUCTURE" type="STRING" size="30"/>
+          <Column id="VALUEPART1" type="STRING" size="240"/>
+          <Column id="VALUEPART2" type="STRING" size="240"/>
+          <Column id="VALUEPART3" type="STRING" size="240"/>
+          <Column id="VALUEPART4" type="STRING" size="240"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="ds_InParam">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">I_BAPI_VIEW</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">I_BAPI_VIEW</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">SALES_DOCUMENTS</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">SALES_DOCUMENTS</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_OutParam">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NAME">I_BAPI_VIEW</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">SALES_DOCUMENTS</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_HEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_BUSINESS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_COND_HEAD</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_COND_ITEM</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_ITEMS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_PARTNERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_COND_QTY_SCALE</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_ADDRESS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_COND_VAL_SCALE</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CONTRACTS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_STATUSHEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_TEXTHEADERS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_TEXTLINES_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_FLOWS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_STATUSITEMS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUREFS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUCFGS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CONDITIONS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUINS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUPRTS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUVALS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_SCHEDULES_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUBLBS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CFGS_CUVKS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_BILLINGPLANS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_BILLINGDATES_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">ORDER_CREDITCARDS_OUT</Col>
+          </Row>
+          <Row>
+            <Col id="NAME">EXTENSIONOUT</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="SALES_DOCUMENTS" type="" size=""/>
+          <Column id="VBELN" type="STRING" size="10"/>
+          <Column id="DOC_NUMBER" type="STRING" size="10"/>
+          <Column id="REC_DATE" type="DATE" size="8"/>
+          <Column id="REC_TIME" type="TIME" size="6"/>
+          <Column id="CREATED_BY" type="STRING" size="12"/>
+          <Column id="QT_VALID_F" type="DATE" size="8"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+			</Row>
+        </Rows>
+        <Rows/>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="div_search.edt_I010001_HEADER" propid="value" datasetid="I_BAPI_VIEW" columnid="HEADER"/>
+      <BindItem id="item4" compid="div_search.edt_I010002_ITEM" propid="value" datasetid="I_BAPI_VIEW" columnid="ITEM"/>
+      <BindItem id="item7" compid="div_search.edt_I010001_VBELN" propid="value" datasetid="SALES_DOCUMENTS" columnid="VBELN"/>
+      <BindItem id="item10" compid="div_ORDER_HEADERS_OUT.edt_T020002_DOC_NUMBER" propid="value" datasetid="ORDER_HEADERS_OUT" columnid="DOC_NUMBER"/>
+      <BindItem id="item12" compid="div_ORDER_HEADERS_OUT.cal_T020003_REC_DATE" propid="value" datasetid="ORDER_HEADERS_OUT" columnid="REC_DATE"/>
+      <BindItem id="item14" compid="div_ORDER_HEADERS_OUT.edt_T020004_REC_TIME" propid="value" datasetid="ORDER_HEADERS_OUT" columnid="REC_TIME"/>
+      <BindItem id="item17" compid="div_ORDER_HEADERS_OUT.edt_T020005_CREATED_BY" propid="value" datasetid="ORDER_HEADERS_OUT" columnid="CREATED_BY"/>
+      <BindItem id="item19" compid="div_ORDER_HEADERS_OUT.cal_T020006_QT_VALID_F" propid="value" datasetid="ORDER_HEADERS_OUT" columnid="QT_VALID_F"/>
+    </Bind>
+    <Script type="xscript5.0"><![CDATA[
+/**********************************************************************
+ * 01. 업무구분    : 													
+ * 02. 화면(명)    : BAPISDORDER_GETDETAILEDLIST_D.xfdl									
+ * 03. 메뉴(경로)  : 													
+ * 04. 화면 설명   : Kundenauftrag: Liste aller Auftragsdaten									
+ * 05. 작성자      : UI Auto Generator									
+ * 06. 작성일      : 2014-12-17										
+ * 07. 수정이력															
+ **********************************************************************
+ * 수정일       이름         		사유									
+ **********************************************************************
+ * 2014-12-17   UI Auto Generator   최초 작성							
+ *********************************************************************/
+
+
+/**********************************************************************
+*                공통 Script Include                                  *
+**********************************************************************/
+include "xcro_xjs::util.xjs";
+include "xcro_xjs::tran.xjs";
+include "xcro_xjs::xcro_gridfunction.xjs";
+include "xcro_xjs::xcro_validation.xjs";
+include "xcro_generate::xcro_formcomm.xjs";
+include "xcro_pop::xcro_shcomm.xjs";
+
+
+/**********************************************************************
+*                화면 변수 선언부                                       *
+**********************************************************************/
+this.f_tran = new xcro.tran(this);
+this.f_type = "RFC";	// Type : RFC, BDC, XUP																		
+this.f_deviceType = "D";		// 기기종류 : D(Desktop), T(Tablet), S(Smartphone) 			
+this.f_linkmenu = "";	// Menu 이동  																	
+this.f_modal;																										
+																													
+																													
+/*--------------------------------------------------------------------+											
+>>  최초 화면 Load時 처리 할 사항																					
++--------------------------------------------------------------------*/											
+this.form_xcro_onload = function(obj:Form, e:nexacro.LoadEventInfo)												
+{																													
+	// Quick View 처리																								
+	//xcro.util.chkQuickView(this);																				
+																													
+	// 화면 초기화																									
+	this.fn_formInit();																								
+																													
+	// 0 : 그리드 통합 기능 사용을 위한 초기화																    
+	this.initGrid("grd_0", false);											
+
+	// 1 : 그리드 헤드 클릭 정렬 사용																		   	
+	this.initGridFunction("grd_0", "useGridHeadClickSort", false);			
+
+	// 2 : 우클릭 메뉴팝업 정렬 사용																		    
+	this.initGridFunction("grd_0", "useGridRightClickSort", true);		
+
+	// 3 : 칼럼 숨기기/숨기기 취소 사용																			
+	this.initGridFunction("grd_0", "useGridColumnHiding", false);			
+
+	// 4 : 데이터 찾기 사용																						
+	this.initGridFunction("grd_0", "useGridFind", false);					
+
+	// 5 : 데이터 바꾸기 사용																				    
+	this.initGridFunction("grd_0", "useGridReplace", false);				
+
+	// 6 : 틀고정 사용																							
+	this.initGridFunction("grd_0", "useGridFixCell", false);				
+
+	// 7 : 칼럼 너비 자동 맞춤 사용																				
+	this.initGridFunction("grd_0", "useGridAutoSizeColumn", false);		
+}
+
+/*--------------------------------------------------------------------+											
+>>  Possible Entry 팝업 호출																						
++--------------------------------------------------------------------*/											
+this.btn_possibleEntry_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)								
+{																												
+	var btnName = obj.comp_target;																				
+	var edtName = "edt_"+(obj.id).replace(/btn_/g, "");															
+	this.f_pop  = (obj.name).replace(/btn_/g, "");																
+																												
+	var arr_send = [];																							
+	arr_send["sid"]   = (obj.name).replace(/btn_/g, "");														
+	arr_send["arg_0"] = xcro.util.trim(obj.parent.components[edtName].value);		// 검색어					
+	arr_send["arg_1"] = btnName;		// Colunm Key															
+	arr_send["arg_2"] = btnName;		// Dataset																
+	arr_send["arg_3"] = "S";			// M-멀티 S-싱글														
+																												
+	this.f_modal = xcro.util.comModal("pentry", this, arr_send);											
+}																												
+																												
+/*--------------------------------------------------------------------+											
+>>  Possible Entry 팝업 호출 콜백																				
++--------------------------------------------------------------------*/											
+this.fn_popupCallBack = function(sId, objArg)																	
+{																												
+	if ( objArg == null )																						
+	{																											
+		objArg = application.gs_send;																			
+		application.gs_send = "";																				
+	}																											
+																												
+	if ( objArg[0] == "pentry" || objArg[0] == "searchhelp" )													
+	{																											
+		if ( sId == "grid" )																					
+		{																										
+			var objDs   = this.objects[objArg[2]];																
+			var nRow    = objDs.rowposition;																	
+			var sColumn = objArg[1];																			
+			objDs.setColumn(nRow, sColumn,         objArg[4]);          // Code									
+			objDs.setColumn(nRow, sColumn+"_DESC", objArg[5]);			// Name									
+		}																										
+		else 																									
+		{																										
+			if ( objArg[0] == "searchhelp" )																	
+			{																									
+				sId = objArg[3].replace("btn_", "");															
+			}																									
+			var ssFIELDNAME  = "edt_" + sId;																	
+			var objEdit      = xcro.util.lookup(this, ssFIELDNAME);												
+			var objEdit_desc = xcro.util.lookup(this, ssFIELDNAME+"_desc");										
+			if ( !xcro.util.isNull(objEdit) )																	
+			{																									
+				objEdit.set_value(objArg[4]);				// Code												
+				objEdit_desc.set_value(objArg[5]);			// Name												
+			}																									
+		}																										
+	}																											
+}																												
+																												
+/*--------------------------------------------------------------------+										
+>>  Search Help > 공통 영역 : 팝업 호출																		
++--------------------------------------------------------------------*/										
+this.btn_searchHelp_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)								
+{																											
+	this.callSearchHelp(obj, this.f_deviceType);															
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  Search Help > 공통 영역 : Multiple Selection 호출														
++--------------------------------------------------------------------*/										
+this.btn_searchHelpMultiple_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)						
+{																											
+	this.callMultiRange(obj);																				
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  Search Help > 그리드 영역 : 팝업 호출 Click Event														
++--------------------------------------------------------------------*/										
+this.grd_searchHelpForGrid_onclick = function(obj:Grid,  e:nexacro.ClickEventInfo)  						
+{																											
+	// TODO : Click Event																		            
+	//if( obj.getCellProperty( "Body", e.cell, "displaytype" ) == "button" ){								
+	//	this.callSearchHelpForGrid(obj, e, this.f_deviceType);                    							
+	//}									                     												
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  Search Help > 그리드 영역 : 버튼 클릭 호출																
++--------------------------------------------------------------------*/										
+this.grd_searchHelpForGrid_onexpanddown = function(obj:Grid, e:nexacro.GridMouseEventInfo)					
+{																											
+	this.callSearchHelpForGrid(obj, e, this.f_deviceType);                 									
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  추가 버튼 클릭시																							
++--------------------------------------------------------------------*/										
+this.fn_add = function() 																					
+{																											
+	// TODO : 추가 - 처리로직 																				
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  삭제 버튼 클릭시																							
++--------------------------------------------------------------------*/										
+this.fn_del = function() 																					
+{																											
+	// TODO : 삭제 - 처리로직 																				
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  저장 버튼 클릭시																							
++--------------------------------------------------------------------*/										
+this.fn_save = function() 																					
+{																											
+	// TODO : 저장 - 처리로직 																				
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  엑셀 버튼 클릭시																							
++--------------------------------------------------------------------*/										
+this.fn_excel = function() 																					
+{																											
+	// TODO : 엑셀 - 처리로직 																				
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  그리드 oncellclick																						
++--------------------------------------------------------------------*/										
+this.grd_comm_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)								
+{																											
+	if ( e.row >= 0 )																						
+	{																										
+		this.fn_popupGrid(obj, e);																			
+	}																										
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  그리드 onclick																							
++--------------------------------------------------------------------*/										
+this.btn_grid_comm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)								
+{																											
+	this.fn_grid_comm(obj);																					
+}																											
+																											
+/*--------------------------------------------------------------------+										
+>>  validation 체크																								
++--------------------------------------------------------------------*/										
+this.fn_validation = function()																				
+{																												
+	if(xcro.util.isNull(this.div_search.edt_I010001_HEADER.value))
+	{
+		alert("[Checkbox] 은 필수입력 항목입니다.")
+		this.div_search.edt_I010001_HEADER.setFocus();
+		return false;
+	}
+	if(xcro.util.isNull(this.div_search.edt_I010002_ITEM.value))
+	{
+		alert("[Checkbox] 은 필수입력 항목입니다.")
+		this.div_search.edt_I010002_ITEM.setFocus();
+		return false;
+	}
+																											
+	return true;																							
+}																											
+																											
+/*--------------------------------------------------------------------+									
+>>  조회 버튼 클릭시																							
++--------------------------------------------------------------------*/									
+this.btn_function_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)								
+{																											
+	this.fn_find();																							
+}																											
+this.fn_find = function()																					
+{																											
+	var bChk = this.fn_validation();																	
+																										
+	if(bChk)																							
+	{																									
+	var strSvcId  = "RETRIEVE";																				
+																											
+	var svcParam  = "&service=xupservice";																
+		svcParam += "&format=xml";																		
+		svcParam += "&version=xplatform";																
+		svcParam += "&domain=xcro_service";												
+		svcParam += "&model=ZXA_TOBE_DYNAMIC_CALL";										
+		svcParam += "&LANGUAGE=" + application.gv_sLanguage;									
+																										
+	var strSvcUrl = "xcro_service::" + svcParam;														
+
+	var strInDs   = "ds_InParam=ds_InParam ds_OutParam=ds_OutParam";									
+		strInDs  += " I_BAPI_VIEW=I_BAPI_VIEW:A";					
+		strInDs  += " SALES_DOCUMENTS=SALES_DOCUMENTS:A";					
+		strInDs  += " ORDER_HEADERS_OUT=ORDER_HEADERS_OUT:A";					
+	var strOutDs  = " I_BAPI_VIEW=I_BAPI_VIEW SALES_DOCUMENTS=SALES_DOCUMENTS ORDER_HEADERS_OUT=ORDER_HEADERS_OUT ORDER_ITEMS_OUT=ORDER_ITEMS_OUT";																		
+																											
+	var strArgument  = "";																					
+	strArgument += " VBELN="  + xcro.util.wrapQuote(this.div_search.edt_I010001_VBELN.value);
+																											
+	strArgument += " FUNCGRP=2032";						
+	strArgument += " FUNCNAME=BAPISDORDER_GETDETAILEDLIST";						
+																											
+	// 조회조건 LPAD 처리																					
+	this.fn_setLpad();																						
+																												
+ 	this.f_tran.waitmsg = "";																					
+ 	this.f_tran.xuptran(strSvcId, "xcro_service", "ZXA_TOBE_DYNAMIC_CALL", strInDs, strOutDs, strArgument, this.fn_callback);			
+	}																										
+}																												
+																												
+/*--------------------------------------------------------------------+										
+>>  상단 조회조건의 입력항목에 대한 Lpad 적용																	
++--------------------------------------------------------------------*/										
+this.fn_setLpad = function(sSymbol)																			
+{																											
+	if (xcro.util.isNull(sSymbol))	sSymbol = "0";
+
+	if (!xcro.util.isNull(this.div_search.edt_I010001_VBELN.value) && !xcro.util.isNull(this.div_search.edt_I010001_VBELN.maxlength))	
+	{																																			
+		if (xcro.util.isNumber(this.div_search.edt_I010001_VBELN.value))																	
+		{																																		
+			if (this.div_search.edt_I010001_VBELN.value.length < this.div_search.edt_I010001_VBELN.maxlength)							
+			{																																	
+				var sValue = xcro.util.lpad(this.div_search.edt_I010001_VBELN.value, sSymbol, this.div_search.edt_I010001_VBELN.maxlength);		
+				this.div_search.edt_I010001_VBELN.set_value(sValue);																		
+			}																																	
+		}																																		
+	}																																			
+}																																					
+																																					
+/*--------------------------------------------------------------------+										
+>>  X-UP 서비스 모델 호출 콜백																					
++--------------------------------------------------------------------*/										
+this.fn_callback = function(strSvcId, nErrorCode, strErrorMsg)													
+{																												
+	if (nErrorCode != 0)																						
+	{																											
+		alert(strErrorMsg);																						
+		return;																									
+	}																											
+																												
+	switch (strSvcId)																							
+	{																											
+		case "RETRIEVE" :																						
+			break;																								
+	}																											
+}																												
+]]></Script>
+  </Form>
+</FDL>

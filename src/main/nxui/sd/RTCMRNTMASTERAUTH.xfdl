@@ -1,0 +1,706 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCMRtlMsAth" classname="RTCMCdGrp" left="0" top="0" width="1147" height="496" onload="RTCMRtlMsAth_onload" titletext="렌탈 마스터 권한 설정">
+    <Layouts>
+      <Layout>
+        <Grid id="grid_masterUser" taborder="5" binddataset="ds_masterUser" useinputpanel="false" onselectchanged="div_cdGrp_grid_codeGrp_onselectchanged" left="0" top="65" width="362" cellsizingtype="col" height="421">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="134"/>
+                <Column size="224"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="렌탈마스터 ID"/>
+                <Cell col="1" text="렌탈마스터명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:userId"/>
+                <Cell col="1" text="bind:userNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="div_search" taborder="0" text="Div00" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" left="0" right="25">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="0" text="검색" cssclass="sta_WF_schTitle" top="10" height="20" domainId="nexa.s_condition" width="71" left="20"/>
+              <Combo id="cb_rentalMaster" taborder="1" codecolumn="cd" datacolumn="cdNm" top="10" height="21" domainId="nexa.name;nexa.code" visible="true" readonly="false" width="140" left="61" innerdataset="@ds_masterCb" oneditclick="fn_comboBoxClick" index="-1"/>
+              <Edit id="ed_masterKeyword" taborder="2" top="10" height="21" width="260" left="206" onkeyup="div_search_ed_searchKeyword_onkeyup"/>
+              <Combo id="cb_rtnHoBo" taborder="3" left="478" top="10" width="140" height="21" innerdataset="@ds_hoboCb" codecolumn="cdGrpCd" datacolumn="cdGrpNm" oneditclick="fn_comboBoxClick" index="-1"/>
+              <Edit id="ed_hoBoKeyword" taborder="5" left="625" top="10" width="260" height="21"/>
+              <Button id="btn_search" taborder="4" text="조회" left="998" top="10" width="45" height="22" style="background:#5d5d5dff;border:1 solid #3e3e3eff ;color:#ffffffff;font:bold 9 Dotum;" onclick="fn_search"/>
+              <Button id="btn_save" taborder="6" text="저장" left="1052" top="10" width="45" height="22" style="background:#5d5d5dff;border:1 solid #3e3e3eff ;color:#ffffffff;font:bold 9 Dotum;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static02" taborder="1" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+        <Static id="Static03" taborder="2" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="45" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static05" taborder="3" text="FIX&#13;&#10;w20" cssclass="Guide_color" visible="false" left="363" top="65" width="20" height="431"/>
+        <Grid id="grid_hoboInfo" taborder="4" useinputpanel="false" left="383" top="63" width="739" height="423" cellsizingtype="col" binddataset="ds_hoboInfo">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="221"/>
+                <Column size="446"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="렌탈지사"/>
+                <Cell col="2" text="렌탈지점"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="chk"/>
+                <Cell col="1" text="bind:ofcNm"/>
+                <Cell col="2" text="bind:pntNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_masterUser" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onrowposchanged="fn_rtlReLocationSearch">
+        <ColumnInfo>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_hoboInfo" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="rntPntNm" type="STRING" size="256"/>
+          <Column id="ocfGrpCd" type="STRING" size="256"/>
+          <Column id="pntGrpCd" type="STRING" size="256"/>
+          <Column id="ofcCd" type="STRING" size="256"/>
+          <Column id="ofcNm" type="STRING" size="256"/>
+          <Column id="pntCd" type="STRING" size="256"/>
+          <Column id="pntNm" type="STRING" size="256"/>
+          <Column id="rntMstId" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_masterCb">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_hoboCb">
+        <ColumnInfo>
+          <Column id="rntOfcNm" type="STRING" size="256"/>
+          <Column id="rntPntNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 공통관리 > 렌탈관리 > 렌탈마스터 권한 설정
+ * 02. 그룹명		: RTCMRntMasterAuth.xfdl
+ * 03. 그룹설명	: 렌탈관리
+ * 04. 작성일		: 2018-12-14
+ * 05. 작성자		: 심성규
+ * 06. 수정이력	:
+ ***********************************************************************/
+include "lib::comLib.xjs";
+	
+	//this.resultCnt = "";//중복코드카운트
+	//this.checkCd = "";	//중복코드코드
+	//var checkCdRow; 	//중복체크ROW
+	
+/***********************************************************************************
+* Form Load Common Function
+***********************************************************************************/
+this.RTCMRtlMsAth_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	// 콤보 박스 데이터 셋
+	this.fn_initMasterCb();
+	
+	// 콤보 박스 제어
+	this.fn_firstLoadComboBox();
+	
+	/* 공통버튼 */
+	//this.parent.setButton("S|E", this);
+}
+    
+/***********************************************************************************
+ * 콤보박스 데이터셋 cb_rentalMaster, 렌탈 지사 / 지점 조회 cb_rtnHoBo
+ ***********************************************************************************/
+this.fn_initMasterCb = function(){
+	var sSvcID      	= "commonCodeRtlMaster";  
+	var sController   	= "ntrms/cm/commCodeRtlMaster.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	sOutDatasets 		= "ds_masterCb=output1 ds_hoboCb=output2 ds_masterUser=output3 ds_hoboInfo=output4";
+	
+	var sArgs 			= "";
+		sArgs		   += Ex.util.setParam("cdGrpCd",  "R064");
+		sArgs		   += Ex.util.setParam("cdNm", "");
+		sArgs		   += Ex.util.setParam("cdGrpCd1",  "S301");
+		sArgs		   += Ex.util.setParam("cdGrpCd2",  "S302");
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * 콤보 박스 제어
+ ***********************************************************************************/
+this.fn_firstLoadComboBox = function() {
+	this.div_search.cb_rtnHoBo.set_readonly(true);
+	this.div_search.ed_hoBoKeyword.set_readonly(true);
+}
+
+/***********************************************************************************
+ * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt, checkCd) {
+	
+	if (strSvcId == "commonCodeRtlMaster") {
+		this.div_search.cb_rentalMaster.set_value('RID');
+		this.div_search.cb_rtnHoBo.set_value('S301');
+	}
+	
+	if ( strSvcId == "masterUserList" ) {
+		
+		var dsMsUsRowCt = this.ds_masterUser.getRowCount();
+		
+		if ( dsMsUsRowCt == 0 ){
+			this.grid_masterUser.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_masterKeyword.setFocus();
+		} else {
+			this.div_search.cb_rtnHoBo.set_readonly(false);
+			this.div_search.ed_hoBoKeyword.set_readonly(false);
+			this.div_search.cb_rentalMaster.set_readonly(true);
+			this.div_search.ed_masterKeyword.set_readonly(true);
+		}
+		this.ds_hoboInfo.set_enableevent(true);
+	
+	}
+	
+	if (strSvcId == "rtlHOBOList") {
+	
+		var dsHoBoRowCt = this.ds_hoboInfo.getRowCount();
+	
+		if(dsHoBoRowCt == '0') {
+			this.grid_masterUser.set_nodatatext("조회된 데이터가 없습니다.");
+			this.div_search.ed_hoBoKeyword.setFocus();
+		} else {
+			this.div_search.cb_rtnHoBo.set_readonly(true);
+			this.div_search.ed_hoBoKeyword.set_readonly(true);
+			this.div_search.cb_rentalMaster.set_readonly(true);
+			this.div_search.ed_masterKeyword.set_readonly(true);
+		}
+
+	}
+	
+	if (strSvcId == "masterHoBoReList") {
+	}
+	/*
+	if( strSvcId == "cdGrpCdOverlapConfirm" ) {
+		var msg = "";
+		if(this.resultCnt != "0") {
+			msg = "입력하신 공통코드 \'" + this.ed_cdGrpCd.value + "\'는 존재하고 있습니다.";
+			this.ed_cdGrpCd.set_value("");
+			this.ed_cdGrpCd.setFocus();
+		} else {
+			msg = "사용가능한 공통코드 입니다.";
+			this.ed_cdGrpCd.set_enable(false);
+			this.btn_overlapConfirm.set_visible(false)
+			this.ed_overlapConfirmFlag.set_value("true");
+			this.ed_cdGrpNm.setFocus(true);
+		}
+		resultCnt = 0;
+		alert(msg);
+	}
+	
+	if( strSvcId == "saveCdGrp" ){
+		if( nErrorCode == "0" ){
+			alert(strErrorMsg);
+			this.reload();
+		}else{
+			alert(strErrorMsg);
+		}
+	}
+	
+	if( strSvcId == "listCdGrpChild" ){
+		var dsCdGrpChildRowCt = this.ds_cdGrpChild.getRowCount();
+		if( dsCdGrpChildRowCt == 0 ){
+			this.grid_cdGrpChild.set_nodatatext("조회된 데이터가 없습니다.");
+		}
+	}
+	//최초로드시 공통코드선택
+	if(strSvcId == "listcdGrpCombo") {
+		this.div_search.cb_searchCondition.set_value("CD_GRP_CD");
+	}
+	*/
+}
+
+/***********************************************************************************
+ * 조회
+ ***********************************************************************************/
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo) {
+
+	if (this.div_search.cb_rtnHoBo.readonly && this.div_search.ed_hoBoKeyword.readonly) {
+		this.fn_rtlMasterSearch();
+	} else if (this.div_search.cb_rentalMaster.readonly && this.div_search.ed_masterKeyword.readonly) {
+		this.fn_rtlLocationSearch();
+	}
+	
+}
+
+/***********************************************************************************
+ * 렌탈 마스터 사용자 검색
+ ***********************************************************************************/
+this.fn_rtlMasterSearch = function() {
+	var cbRentalMasterVal 	 = nvl(this.div_search.cb_rentalMaster.value);
+	var edMasterKeywordVal 	 = nvl(this.div_search.ed_masterKeyword.text);
+	
+	var sSvcID        	= "masterUserList";                    
+	var sController   	= "ntrms/cm/rtlMasterList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_masterUser=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	if ( cbRentalMasterVal == 'RID' ) {
+		sArgs += Ex.util.setParam("userId", edMasterKeywordVal);
+	}else if ( cbRentalMasterVal == 'RNM' ) {
+		sArgs += Ex.util.setParam("userNm", edMasterKeywordVal);
+	}else {
+		alert("검색조건을 선택하세요.");
+		return this.div_search.cb_rentalMaster.setFocus();
+	}
+	
+	this.ds_masterUser.clearData();
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * 렌탈 마스터 지사 지점 검색
+ ***********************************************************************************/
+this.fn_rtlLocationSearch = function() {
+	var cbRtnHoBoVal 	 = nvl(this.div_search.cb_rtnHoBo.value);
+	var edHoBoKeywordVal = nvl(this.div_search.ed_hoBoKeyword.text);
+	
+	var sSvcID        	= "masterUserList";                    
+	var sController   	= "ntrms/cm/rtlHOBOList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_hoboInfo=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	
+	
+	if ( cbRtnHoBoVal == 'S301' ) {
+		sArgs += Ex.util.setParam("rntOfcNm", edHoBoKeywordVal);
+	}else if ( cbRtnHoBoVal == 'S302' ) {
+		sArgs += Ex.util.setParam("rntPntNm", edHoBoKeywordVal);
+	}else {
+		alert("검색조건을 선택하세요.");
+		return this.div_search.cb_rtnHoBo.setFocus();
+	}
+	
+	this.ds_hoboInfo.clearData();
+	this.ds_hoboInfo.set_enableevent(false);
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * combo box 클릭 이벤트 
+ ***********************************************************************************/
+this.fn_comboBoxClick = function(obj:Combo, e:nexacro.ClickEventInfo) {
+	// 해당 콤보 박스 정보 
+	if (obj.id == 'cb_rentalMaster') {
+		this.div_search.cb_rtnHoBo.set_readonly(true);
+		this.div_search.ed_hoBoKeyword.set_readonly(true);
+		this.div_search.cb_rentalMaster.set_readonly(false);
+		this.div_search.ed_masterKeyword.set_readonly(false);
+	} else if (obj.id == 'cb_rtnHoBo'){
+		this.div_search.cb_rtnHoBo.set_readonly(false);
+		this.div_search.ed_hoBoKeyword.set_readonly(false);
+		this.div_search.cb_rentalMaster.set_readonly(true);
+		this.div_search.ed_masterKeyword.set_readonly(true);
+	}
+}
+
+/***********************************************************************************
+ * HoBo 그리드 선택시 해당 로우 정보 재검색
+ ***********************************************************************************/
+this.fn_rtlReLocationSearch = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo) {
+	var userIdVal = obj.getColumn(e.newrow, 'userId');
+	var chkVal = this.ds_hoboInfo[0];
+	console.log('chkVal', chkVal);
+}
+
+this.fn_ReLocationSearch= function(ofcCdVal, pntCdVal) {
+	this.ds_hoboInfo.clearData();
+
+	var sSvcID        	= "masterHoBoReList";                    
+	var sController   	= "ntrms/cm/rtlHOBOList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_hoboInfo=output";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+		sArgs += Ex.util.setParam("ofcCd", nvl(ofcCdVal));
+		sArgs += Ex.util.setParam("pntCd", nvl(pntCdVal));
+	
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+/*    
+    FN_stringByteLength = function(p_val){
+		var objString = new String(p_val);
+		var stringByteLength = 0;
+		for(var i=0; i<objString.length; i++)
+		{
+			if( escape(objString.charAt(i)).length >= 4)  stringByteLength += 3;
+			else if(escape(objString.charAt(i)) == "%A7") stringByteLength += 3;
+			else if(escape(objString.charAt(i)) != "%0D") stringByteLength++;
+		}
+		return stringByteLength;
+	}
+    
+	
+	this.RTCMCdGrp_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 	
+		this.fn_init();
+		this.parent.setButton("E|C|N|S", this);
+	}
+*/
+
+
+
+/*
+	this.div_cdGrp_grid_codeGrp_onselectchanged = function(obj:Grid, e:nexacro.GridSelectEventInfo)
+	{
+		if(this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) != 2){
+			this.ed_cdGrpCd.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "cdGrpCd"));
+			this.cb_mdlCd.set_value		(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "mdlCd"));
+			this.ed_cdGrpNm.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "cdGrpNm"));
+			this.cd_useYn.set_value		(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "useYn"));
+			this.ed_cdGrpDesc.set_value	(this.ds_cdGrp.getColumn(this.grid_cdGrp.currentrow, "cdGrpDesc"));
+			
+			this.ed_cdGrpCd.set_enable(false);
+			this.btn_overlapConfirm.set_visible(false);
+			
+			this.ed_overlapConfirmFlag.set_value("true");
+			this.fn_listCdGrpChild("parent");
+		}
+		
+		if(this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) == 2){
+			this.ed_cdGrpCd.set_enable(true);
+			this.btn_overlapConfirm.set_visible(true);
+			this.ed_overlapConfirmFlag.set_value("false");
+			this.ds_cdGrpChild.clearData();
+		}
+	}
+	
+	this.fn_add = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var nRow = this.ds_cdGrp.addRow();
+		this.ds_cdGrp.setColumn(nRow,"useYn", "Y");
+		this.ed_cdGrpCd.setFocus(true);
+		this.ds_cdGrpChild.clearData();
+	}
+
+
+
+	
+	
+	
+
+	this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var dsCdGrpChildRowCt = this.ds_cdGrpChild.getRowCount();
+		var exitFlag = false;
+		var overlapConfirmVal 	= nvl(this.ed_overlapConfirmFlag.value);
+		var overlapConfirmTxt 	= nvl(this.btn_overlapConfirm.text);
+		
+		if( overlapConfirmVal == "true" ){
+			var edCdGrpCdVal 	= nvl(this.ed_cdGrpCd.value);
+			var cbMdlCdVal 		= nvl(this.cb_mdlCd.value);
+			var edCdGrpNmVal 	= nvl(this.ed_cdGrpNm.value);
+			var cdUseYnVal 		= nvl(this.cd_useYn.value);
+			var edCdGrpDescVal 	= nvl(this.ed_cdGrpDesc.value);
+			
+			var cdGrpCdTxt 		= nvl(this.st_cdGrpCd.text);
+			var cdGrpNmTxt 		= nvl(this.st_cdGrpNm.text);
+			var cdUseYnTxt 		= nvl(this.st_useYn.text);
+			
+			if( edCdGrpCdVal == "" ){
+				alert(cdGrpCdTxt + " 값이 없습니다.");
+				this.ed_cdGrpCd.setFocus();
+			}else if( FN_stringByteLength(edCdGrpCdVal)  > 4 ){
+				alert(cdGrpCdTxt + " 크기가 4Byte를 초과하였습니다.");
+				this.ed_cdGrpCd.setFocus();
+			}else if( edCdGrpNmVal == "" ){
+				alert("저장되었습니다.");
+				this.ed_cdGrpNm.setFocus();
+			}else if( cdUseYnVal == "" ){
+				alert(cdUseYnTxt + " 값이 없습니다.");
+				this.cd_useYn.setFocus();
+			}else{
+				
+				if( dsCdGrpChildRowCt > 0){
+					for( var row_i = 1 , row_ii = 0 ; row_i <= dsCdGrpChildRowCt ; row_i++, row_ii++){
+						for( var cell_i = 0 ; cell_i <= 3 ; cell_i++){
+						
+							var cellVal = nvl(this.grid_cdGrpChild.getCellValue(row_ii, cell_i));
+							
+							if( (cell_i == 0 || cell_i == 1) && cellVal == "" ){
+								alert(nvl(this.grid_cdGrpChild.getCellText(-1, cell_i)) + " 값이 없습니다.");
+								this.grid_cdGrpChild.selectRow(row_ii);
+								this.grid_cdGrpChild.setCellPos(cell_i);
+								this.grid_cdGrpChild.showEditor(true);
+								exitFlag = true;
+							}else if( cell_i == 0 && FN_stringByteLength(cellVal) > 16 ){
+								alert(nvl(this.grid_cdGrpChild.getCellText(-1, cell_i)) + " 크기가 16Byte를 초과하였습니다.");
+								this.grid_cdGrpChild.selectRow(row_ii);
+								this.grid_cdGrpChild.setCellPos(cell_i);
+								this.grid_cdGrpChild.showEditor(true);
+								exitFlag = true;
+							}
+							
+							if(exitFlag){break;}
+						}
+						for( var find_i = 1 ; find_i <= dsCdGrpChildRowCt ; find_i++ ){
+							if( row_i != find_i && nvl(this.ds_cdGrpChild.getColumn( row_i, "cd" )) ==  nvl(this.ds_cdGrpChild.getColumn( find_i, "cd" )) ){
+								alert( "\'" + nvl(this.ds_cdGrpChild.getColumn(  find_i, "cd" )) + "\'" + " 중복된 코드값입니다." );
+								this.grid_cdGrpChild.selectRow(find_i);
+								this.grid_cdGrpChild.setCellPos(0);
+								this.grid_cdGrpChild.showEditor(true);
+								exitFlag = true;
+							}
+							if(exitFlag){break;}
+						}
+					}
+				}else{
+					exitFlag = false;
+				}
+				
+				if( !exitFlag  ){
+					var saveFlag_1 = true;
+					var saveFlag_2 = true;
+					if( this.ds_cdGrp.getRowType( this.ds_cdGrp.rowposition ) == 1 ){
+						saveFlag_1 = false;
+					}else{
+						saveFlag_1 = true;
+					}
+					
+					for(var i  = 0 ; i < this.ds_cdGrpChild.getRowCount() ; i++){
+						if( this.ds_cdGrpChild.getRowType( i ) == 1){
+							saveFlag_2 = false;
+						}else{
+							saveFlag_2 = true;break;
+						}
+					}
+					
+					if( saveFlag_1 == true || saveFlag_2 == true){
+						var sSvcID        	= "saveCdGrp";                    
+						var sController   	= "rtms/cm/saveCdGrp.do";
+						var sInDatasets   	= "";
+						var sOutDatasets  	= "";
+						var sArgs 			= "";
+						var fn_callBack		= "fn_callBack";
+						sInDatasets += "input1=ds_cdGrp:U input2=ds_cdGrpChild:U";
+						Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+					}else{
+						alert("수정된 사항이 없습니다.");
+					}
+				}				
+			}
+		}else{
+			alert(overlapConfirmTxt + "을 하십시오.");
+			this.btn_overlapConfirm.setFocus();
+		}
+	}
+
+
+
+	this.div_cdGrpDetails_btn_overlapConfirm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var edCdGrpCdVal = nvl(this.ed_cdGrpCd.value);
+		
+		if( nvl(edCdGrpCdVal) != "" ){
+			var sSvcID        	= "cdGrpCdOverlapConfirm";                    
+			var sController   	= "rtms/cm/cdGrpCdOverlapConfirm.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";
+			sInDatasets   		= "";
+			sOutDatasets  		= "";
+			var fn_callBack		= "fn_callBack";
+			
+			sArgs += Ex.util.setParam("cdGrpCd",edCdGrpCdVal);
+			
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		}else{
+			alert("공통코드 값이 없습니다.");
+			this.ed_cdGrpCd.setFocus();
+		}
+	}
+	
+	
+	
+	this.div_cdGrpChild_btn_searchChild_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		this.fn_listCdGrpChild("child");
+	}
+	
+	
+	
+	this.fn_listCdGrpChild = function(division){
+		var grid_cdGrp_selectNb = this.grid_cdGrp.currentrow;
+	
+		var cbSearchConditionChildVal = nvl(this.cb_searchConditionChild.value);
+		var cbSearchConditionTxt 	  = this.cb_searchConditionChild.text;
+		var edSearchKeywordChildVal   = nvl(this.ed_searchKeywordChild.value);
+		
+		var sSvcID        	= "listCdGrpChild";
+		var sController   	= "rtms/cm/listCdGrpChild.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_cdGrpChild=mapCdGrpChild";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam( "cdGrpCd", this.ds_cdGrp.getColumn(grid_cdGrp_selectNb, "cdGrpCd") );
+		
+		if( division == "child"){
+			if( cbSearchConditionChildVal == 'CD_GRP_CD' ){
+				sArgs += Ex.util.setParam("cd", edSearchKeywordChildVal);
+			}else if( cbSearchConditionChildVal == 'CD_GRP_NM' ){
+				
+				if( edSearchKeywordChildVal.length < 2){
+					alert(cbSearchConditionTxt + "은 최소 2글자 이상이여야 합니다.");
+					this.div_cdGrpChild.ed_searchKeywordChild.setFocus();
+				}else{
+					sArgs += Ex.util.setParam( "cdNm", edSearchKeywordChildVal );
+				}
+			}else{
+				alert("검색조건을 선택하세요.");
+				return this.cb_searchConditionChild.setFocus();
+			}
+		}
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+
+	this.btnAddChild_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var cdGrpCdVal 			= nvl(this.ed_cdGrpCd.value);
+		var cdGrpNmVal 			= nvl(this.ed_cdGrpNm.value);
+		var cdUseYnVal 			= nvl(this.cd_useYn.value);
+		var overlapConfirmVal 	= nvl(this.ed_overlapConfirmFlag.value);
+		
+		var cdGrpCdTxt = nvl(this.st_cdGrpCd.text);
+		var cdGrpNmTxt = nvl(this.st_cdGrpNm.text);
+		var cdUseYnTxt = nvl(this.st_useYn.text);
+		var overlapConfirmTxt = nvl(this.btn_overlapConfirm.text);
+		
+		if( cdGrpCdVal == "" ){
+			alert(cdGrpCdTxt + " 값이 없습니다.");
+			this.ed_cdGrpCd.setFocus();
+		}else if( cdGrpNmVal == "" ){
+			alert(cdGrpNmTxt + " 값이 없습니다.");
+			this.ed_cdGrpNm.setFocus();
+		}else if( cdUseYnVal == "" ){
+			alert(cdUseYnTxt + " 값이 없습니다.");
+			this.cd_useYn.setFocus();
+		}else if( overlapConfirmVal == "false"){
+			alert(overlapConfirmTxt + "을 하십시오.");
+			this.btn_overlapConfirm.setFocus();
+		}else{
+			var nRow = this.ds_cdGrpChild.addRow();
+			this.grid_cdGrpChild.selectRow(nRow);
+			this.grid_cdGrpChild.setCellPos(0);
+			this.grid_cdGrpChild.showEditor(true);
+			this.ds_cdGrpChild.setColumn(nRow,"useYn","Y");
+			this.ds_cdGrpChild.setColumn(nRow,"cdGrpCd",cdGrpCdVal);
+		}
+	}
+
+
+
+	this.btnDelChild_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var gridCdGrpChildSlected = this.grid_cdGrpChild.currentrow;
+		
+		if( gridCdGrpChildSlected == -9 ){
+			alert("삭제할 행을 선택하여 주십시오.");
+		}else{
+			this.ds_cdGrpChild.deleteRow(gridCdGrpChildSlected);
+		}
+	}
+
+
+
+	this.ds_cdGrpChild_oncolumnchanged = function(obj:Dataset, e:nexacro.DSColChangeEventInfo)
+	{
+		if(e.columnid == "cd") {
+			checkCdRow = e.row;
+			this.FN_cdGrpCdCheck( nvl(obj.getColumn(e.row, "cdGrpCd")), nvl(obj.getColumn(e.row, "cd")) );
+		}
+	}
+
+
+
+	this.FN_cdGrpCdCheck = function( objVal1, objVal2)
+	{
+		var sSvcID        	= "checkCd";
+		var sController   	= "rtms/cm/checkCd.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+		
+		sArgs += Ex.util.setParam("cdGrpCd",objVal1);
+		sArgs += Ex.util.setParam("cd"	   ,objVal2);
+		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+	
+	
+	this.fn_excel= function() {
+		//Ex.core.exportExcel(this, this.grid_cdGrpChild);
+		var objArray1 = new Array();
+		objArray1.push(this.grid_cdGrp);
+		objArray1.push(this.grid_cdGrpChild);
+		Ex.core.exportExcel(this, objArray1);
+	}
+	
+
+
+// 2016-05-03 이영근, 엔터키 입력시 조회
+this.div_search_ed_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}	
+}
+*/
+
+
+this.ds_hoboInfo_onrowposchanged = function(obj:Dataset, e:nexacro.DSRowPosChangeEventInfo)
+{
+	
+}
+]]></Script>
+  </Form>
+</FDL>

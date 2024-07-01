@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="cust">
+	<parameterMap id="pSafeKeyConfirm" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="rSafeKeyConfirm" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="genderCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="rSafeKeyConfirm" class="java.util.HashMap"/>
+	<procedure  id="cust.safeKeyConfirm" resultClass="java.util.Map" parameterMap="pSafeKeyConfirm">
+		{call ? := Pkg_Rtsd0200.f_sRtsd0200_safeKeyConfirm ( ?, ?, ?, ? )}
+	</procedure>
+
+
+
+	<parameterMap id="pCountSafeKey" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="rCountSafeKey" />
+		<parameter property="safekey" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="rCountSafeKey" class="java.util.HashMap"/>
+	<procedure  id="cust.countSafeKey" resultClass="java.util.Map" parameterMap="pCountSafeKey">
+		{call ? := Pkg_Rtsd0100.f_sRtsd0100Count_Safekey ( ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0200">
+		<parameter property="dvsn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="creTp"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="genderCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveSafeKey" parameterMap="p_IUDRtsd0200">
+		{call Pkg_Rtsd0200.p_IUDRtsd0200(
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?
+						)}
+	</procedure>
+	
+	
+	<parameterMap id="pCheckBuslNo" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.Integer" mode="OUT" resultMap="rCheckBuslNo" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="rCheckBuslNo" class="java.util.HashMap"/>
+	<procedure  id="cust.checkBuslNo" resultClass="java.util.Map" parameterMap="pCheckBuslNo">
+		{call ? := Pkg_Rtsd0100.f_sRtsd0100Count_checkBuslNo ( ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0100">
+		<parameter property="dvsn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     	jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="custTp"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp2"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="genderCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="lfCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobFirm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="faxNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr2"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo2"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo2"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posCd2"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr12"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr22"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="corpNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="repNm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oCustnm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oBirthday"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oGendercd"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oLfcd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oMobno"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="oSafekey"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cCustnm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cTelno"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="emailAddr"    	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiType"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="busiCond"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="taxYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="kunnr"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ciCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="diCd"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"    	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveRtsd0100" parameterMap="p_IUDRtsd0100">
+		{call Pkg_Rtsd0100.p_IUDRtsd0100(
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?, ?, ?, ?
+						)}
+	</procedure>
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtsd0110">
+		<parameter property="dvsn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo"     	jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="seq"     		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="certDay"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="certCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="certYn"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobFirm"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId"    	 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveRtsd0110" parameterMap="p_IUDRtsd0110">
+	{call Pkg_Rtsd0110.p_IUDRtsd0110(
+						?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+						?, ?, ?
+					)}
+	</procedure>
+
+
+	
+	<resultMap id="accResultMap" class="java.util.HashMap">
+		<result property="accSeq"   column="ACC_SEQ" /> 	<!-- 계좌순번 -->	
+		<result property="custNo"   column="CUST_NO" /> 	<!-- 고객번호 -->	
+		<result property="strDay"   column="STR_DAY" /> 	<!-- 시작일자 -->	
+		<result property="endDay"   column="END_DAY" /> 	<!-- 종료일자 -->	 
+		<result property="custNm"   column="CUST_NM" /> 	<!-- 고객명(예금주명) -->	 
+		<result property="custTp"   column="CUST_TP" /> 	<!-- 고객유형 -->	 
+		<result property="custTpNm" column="CUST_TP_NM" /> 	<!-- 고객유형 -->	
+		<result property="ebirDay"  column="EBIR_DAY" /> 	<!-- 법정생년월일(YYMMDD) -->	 
+		<result property="buslNo"   column="BUSL_NO" /> 	<!-- 사업자번호 -->	 
+		<result property="bankCd"   column="BANK_CD" /> 	<!-- 은행코드 -->
+		<result property="bankNm"   column="BANK_Nm" /> 	<!-- 은행명 -->		
+		<result property="acctNo"   column="ACCT_NO" /> 	<!-- 계좌번호 -->	 
+		<result property="accChk"   column="ACC_CHK" /> 	<!-- 계좌확인상태 -->
+		<result property="acncId"   column="ACNC_ID" /> 	<!-- 해지사용자 -->
+		<result property="acncNm"   column="ACNC_NM" /> 	<!-- 해지사용자명 -->  
+		<result property="acncDest" column="ACNC_DESC" /> 	<!-- 해지사유 -->	 
+		<result property="useYn"    column="USE_YN" /> 		<!-- 사용여부 -->	 
+		<result property="regId"    column="REG_ID" /> 		<!-- 등록자 -->	 
+		<result property="regDt"    column="REG_DT" /> 		<!-- 등록일 -->
+		<result property="chgId"    column="CHG_ID" /> 		<!-- 변경자 ID -->
+		<result property="chgDt"    column="CHG_DT" /> 		<!-- 변경일 -->
+	</resultMap>
+    <parameterMap id="accParam" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="accResultMap" />
+		<parameter property="custNo"  	jdbcType="VARCHAR" mode="IN" />    
+	</parameterMap> 
+	<procedure id="cust.listAcc" parameterMap="accParam">
+		{call
+		Pkg_Rtre0010.p_sRtre0010CustNoList(?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtre0010">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />		<!-- 처리구분 -->
+		<parameter property="accSeq" 		jdbcType="VARCHAR" mode="INOUT" /> 	<!-- 계좌순번   -->                     
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객번호 -->  
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명 --> 
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객유형 -->
+		<parameter property="ebirDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 법정생년월일(YYMMDD) -->
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사업자번호 -->
+		<parameter property="bankCd" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 은행코드 -->
+		<parameter property="acctNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 계좌번호 -->
+		<parameter property="accChk" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 계좌확인상태 -->
+		<parameter property="acncId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 해지사용자 -->
+		<parameter property="acncDesc" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 해지사유 -->
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사용여부 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자ID -->
+		                    
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" /> <!-- 처리코드 -->
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" /> <!-- 처리메세지 -->
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" /> <!-- 에러메세지 -->
+	</parameterMap>
+	<procedure id="cust.saveDataSetBank" parameterMap="p_IUDRtre0010">
+		{call 
+		pkg_Rtre0010.p_IUDRtre0010(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="cardResultMap" class="java.util.HashMap">
+		<result property="crdSeq"   	column="CRD_SEQ" />   	<!-- 카드순번 -->           
+		<result property="cardcomCd"   	column="CARDCOM_CD" />	<!-- 카드사코드 -->          
+		<result property="cardcomNm"   	column="CARDCOM_NM" />	<!-- 카드사명  -->          
+		<result property="cardNo"   	column="CARD_NO" /> 	<!-- 카드번호 -->           
+		<result property="expireYm"   	column="EXPIRE_YM" /> 	<!-- 유효기간 -->           
+		<result property="custNm"   	column="CUST_NM" /> 	<!-- 고객명 -->            
+		<result property="custTp" 		column="CUST_TP" /> 		<!-- 고객유형 -->           
+		<result property="custTpNm"  	column="CUST_TP_NM" />	<!-- 고객유형 Nm-->           
+		<result property="ebirDay"   	column="EBIR_DAY" /> 	<!-- 법정생년월일(YYMMDD)-->  
+		<result property="buslNo"   	column="BUSL_NO" /> 	<!-- 사업자번호  -->         
+		<!-- 부가정보 -->                                                         
+		<result property="custNo"   	column="CUST_NO" /> 	<!-- 고객번호  -->          
+		<result property="ccustNm"   	column="CCUST_NM" /> 	<!-- 고객명  -->           
+		<result property="strDay"   	column="STR_DAY" /> 	<!-- 시작일자   -->         
+		<result property="endDay"   	column="END_DAY" /> 	<!-- 종료일자   -->         
+		<result property="bkeyChk"   	column="BKEY_CHK" /> 	<!-- 카드확인상태 -->         
+		<result property="batchKey" 	column="BATCH_KEY" /> 	<!-- BATCH KEY -->      
+		<result property="acncId"    	column="ACNC_ID" /> 	<!-- 해지사용자  -->         
+		<result property="acncDesc"    	column="ACNC_DESC" /> 	<!-- 해지사유 -->           
+		<result property="useYn"   	 	column="USE_YN" />		<!-- 사용여부 -->           
+		<result property="regId"    	column="REG_ID" />		<!-- 등록자 -->	
+		<result property="regDt"    	column="REG_DT" />		<!-- 등록일 -->  
+		<result property="chgId"    	column="CHG_ID" /> 		<!-- 변경자 ID -->
+		<result property="chgDt"    	column="CHG_DT" /> 		<!-- 변경일 --> 
+	</resultMap>
+	<parameterMap id="cardParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="cardResultMap" />
+		<parameter property="custNo"  	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="cust.listCard" parameterMap="cardParam">
+		{call Pkg_Rtre0020.p_sRtre0020CrdList(?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtre0020">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />		<!-- 처리구분(I,U,D) -->
+		<parameter property="crdSeq" 		jdbcType="VARCHAR" mode="INOUT" /> 	<!-- 카드순번 -->         
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객번호 -->
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객명 -->
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 고객유형 -->
+		<parameter property="ebirDay" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 법정생년월일(YYMMDD) -->
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사업자번호 -->
+		<parameter property="cardcomCd" 	jdbcType="VARCHAR" mode="IN" /> 	<!-- 카드사코드 -->
+		<parameter property="cardNo" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 카드번호  -->
+		<parameter property="expireYm" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 유효기간 -->
+		<parameter property="bkeyChk" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 카드확인상태 -->
+		<parameter property="batchKey" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- BATCH KEY -->
+		<parameter property="acncId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 해지사용자  -->
+		<parameter property="acncDesc" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 해지사유 -->
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 사용여부 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> 	<!-- 등록자 ID -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />    
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveDataSetCard" parameterMap="p_IUDRtre0020">
+		{call 
+		pkg_Rtre0020.p_IUDRtre0020(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<resultMap id="r_sRtsd0110_MaxSeq" class="java.util.HashMap">
+		<result property="custNo"  		column="CUST_NO" />
+		<result property="seq"  		column="SEQ" />
+		<result property="certDay"  	column="CERT_DAY" />
+		<result property="safekey"  	column="SAFEKEY" />
+		<result property="certCd"  		column="CERT_CD" />
+		<result property="certYn"  		column="CERT_YN" />
+		<result property="mobNo"  		column="MOB_NO" />
+		<result property="mobFirm"  	column="MOB_FIRM" />
+		<result property="regId"  		column="REG_ID" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0110_MaxSeq" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0110_MaxSeq" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="contract.selectRtsd0110" parameterMap="p_sRtsd0110_MaxSeq">
+		{call Pkg_Rtsd0110.p_sRtsd0110_MaxSeq(?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="params_p_IUDRtsd0201">
+		<parameter property="dvsn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="birthDay" 	 	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="genderCd" 	 	javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="seq"			jdbcType="NUMERIC" mode="INOUT" />
+		<parameter property="yn" 			javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prgmCd" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd01N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd02N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd03N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd04N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd05N"		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd06N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd07N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd08N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd09N" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd10N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd11N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd12N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd13N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd14N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd15N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd16N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd17N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd18N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="iNd19N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd01N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd02N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd03N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd04N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd05N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd06N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd07N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd08N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd09N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd10N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd11N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd12N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd13N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd14N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd15N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd16N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd17N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd18N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd19N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="eNd20N"        javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		javaType="java.lang.String"     jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.createIRSafeKey" parameterMap="params_p_IUDRtsd0201">
+		{call Pkg_Rtsd0201.p_IUDRtsd0201(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<resultMap id="r_sRtsd0111SelectNagYn" class="java.util.HashMap">
+			<result property="custNo"  column="CUST_NO" />
+			<result property="agDay"  	column="AG_DAY" />
+			<result property="seq"  	column="SEQ" />
+			<result property="safekey"  column="SAFEKEY" />
+			<result property="nagYn"  	column="NAG_YN" />
+			<result property="cagYn"  	column="CAG_YN" />
+			<result property="cagYn1"  column="CAG_YN1" />
+			<result property="cagYn2"  column="CAG_YN2" />
+			<result property="cagYn3"  column="CAG_YN3" />
+			<result property="cagYn4"  column="CAG_YN4" />
+			<result property="cthYn1"  column="CTH_YN1" />
+			<result property="cthYn2"  column="CTH_YN2" />
+			<result property="cthYn3"  column="CTH_YN3" />
+			<result property="filePath"  column="FILE_PATH" />
+			<result property="fileName"  column="FILE_NAME" />
+			<result property="inputDt"  column="INPUT_DT" />
+			<result property="regId"  column="REG_ID" />
+			<result property="regDt"  column="REG_DT" />
+			<result property="chgId"  column="CHG_ID" />
+			<result property="chgDt"  column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0111SelectNagYn" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0111SelectNagYn" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="contract.selectRtsd0111" parameterMap="p_sRtsd0111SelectNagYn">
+		{call Pkg_Rtsd0111.p_sRtsd0111SelectNagYn(?, ?)}
+	</procedure>
+	
+	<resultMap id="r_sRtsd0111SelectNagYn2" class="java.util.HashMap">
+			<result property="custNo"  column="CUST_NO" />
+			<result property="agDay"  	column="AG_DAY" />
+			<result property="seq"  	column="SEQ" />
+			<result property="safekey"  column="SAFEKEY" />
+			<result property="nagYn"  	column="NAG_YN" />
+			<result property="cagYn"  	column="CAG_YN" />
+			<result property="cagYn1"  column="CAG_YN1" />
+			<result property="cagYn2"  column="CAG_YN2" />
+			<result property="cagYn3"  column="CAG_YN3" />
+			<result property="cagYn4"  column="CAG_YN4" />
+			<result property="cthYn1"  column="CTH_YN1" />
+			<result property="cthYn2"  column="CTH_YN2" />
+			<result property="cthYn3"  column="CTH_YN3" />
+			<result property="filePath"  column="FILE_PATH" />
+			<result property="fileName"  column="FILE_NAME" />
+			<result property="inputDt"  column="INPUT_DT" />
+			<result property="regId"  column="REG_ID" />
+			<result property="regDt"  column="REG_DT" />
+			<result property="chgId"  column="CHG_ID" />
+			<result property="chgDt"  column="CHG_DT" />
+	</resultMap>
+	<parameterMap id="p_sRtsd0111SelectNagYn2" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsd0111SelectNagYn2" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agSeq" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="contract.selectRtsd0111_2" parameterMap="p_sRtsd0111SelectNagYn2">
+		{call Pkg_Rtsd0111.p_sRtsd0111SelectNagYn2(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!--쇼핑몰 회원가입-->
+	<parameterMap id="p_Mall001_enterdupe" class="java.util.Map">
+		<parameter property="result"	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_Mall001_enterdupe" />
+		<parameter property="di"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_Mall001_enterdupe" class="java.util.HashMap"/>
+	<procedure  id="cust.onlineEnterdupe" resultClass="java.util.Map" parameterMap="p_Mall001_enterdupe">
+		{call ? := NEXENSHOP.Pkg_Mall001.f_Mall001_enterdupe( ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap id="p_Mall001_dupe" class="java.util.Map">
+		<parameter property="result"	jdbcType="VARCHAR" javaType="java.lang.Integer" mode="OUT" resultMap="r_Mall001_dupe" />
+		<parameter property="custId"	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_Mall001_dupe" class="java.util.HashMap"/>
+	<procedure  id="cust.onlineDupe" resultClass="java.util.Map" parameterMap="p_Mall001_dupe">
+		{call ? := NEXENSHOP.Pkg_Mall001.f_Mall001_dupe( ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_Mall001_MemEntry">
+		<parameter property="loginId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custName" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="legrBrthYmd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="gendCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="frgnCd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ciVal" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="diVal" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="vnVal" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safekey" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addrDivCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dtlAddr" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="email" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="emailRecvYn" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carOwnYn" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveOnline" parameterMap="p_Mall001_MemEntry">
+		{call NEXENSHOP.Pkg_Mall001.p_Mall001_MemEntry(
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?
+						)}
+	</procedure>
+	
+
+
+	<parameterMap class="java.util.Map" id="p_Mall001_MemModEntry">
+		<parameter property="diVal" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="posNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dtlAddr" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bldMngNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="email" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="onlineId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.updateOnline" parameterMap="p_Mall001_MemModEntry">
+		{call NEXENSHOP.Pkg_Mall001.p_Mall001_MemModEntry(
+							?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+							?, ?
+						)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_Rtsd0205Interface">
+		<parameter property="reservedFg"    jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="reservedDttm"  jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="rcvPhnId"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="sndPhnId"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="sndMsg"        jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="etcChar1"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="etcChar2"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="etcChar3"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="etcChar4"      jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="regId"     	jdbcType="VARCHAR" mode="IN"  />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.saveSmsMsg" parameterMap="p_Rtsd0205Interface">
+		{ call NXRADMIN.Pkg_Rtsd0205.p_Rtsd0205InterfaceNew(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) }
+	</procedure>
+
+<!-- 재렌탈여부조회 -->
+	<resultMap id="r_getReRentalInfo" class="java.util.HashMap">
+		<result property="ordNo"  column="ORD_NO" />
+		<result property="custNo"  column="CUST_NO" />
+		<result property="custNm"  column="CUST_NM" />
+		<result property="mobNo"  column="MOB_NO" />
+		<result property="ordDay"  column="ORD_DAY" />
+		<result property="osDayF"  column="OS_DAY_F" />
+		<result property="osDayT"  column="OS_DAY_T" />
+		<result property="procDayF"  column="PROC_DAY_F" />
+		<result property="procDayT"  column="PROC_DAY_T" />
+		<result property="cnt"  column="CNT" />
+		<result property="endTp"  column="END_TP" />
+		<result property="cntCd"  column="CNT_CD" />
+		<result property="safeKey"  column="SAFE_KEY" />
+	</resultMap>
+	<parameterMap id="p_sReRentalInfo" class="java.util.Map">
+		<parameter property="vcursor" 	    jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_getReRentalInfo" />
+		<parameter property="custNo" 	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="safeKey" 	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="cust.p_sReRentalInfo" parameterMap="p_sReRentalInfo">
+		{call Pkg_Comm.p_sReRentalInfo(?, ?, ?, ?, ?, ?)}
+	</procedure>		
+</sqlMap>

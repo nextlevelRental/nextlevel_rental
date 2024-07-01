@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTREAgentCommission" classname="test" left="0" top="0" width="1147" height="496" titletext="판매인별 수수료 내역집계" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="Static17" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="81" height="31" width="1122"/>
+        <Edit id="edt_procStatus" taborder="8" enable="false" left="134" top="86" height="21" width="983"/>
+        <Static id="Static06" taborder="9" text="작업상태" cssclass="sta_WF_subTitle" left="0" top="56" width="100" height="20"/>
+        <Static id="Static19" taborder="10" text="작업상태" cssclass="sta_WF_detailLabelP" left="0" top="81" width="130" height="31"/>
+        <Div id="div_search" taborder="13" left="0" top="0" height="45" scrollbars="none" cssclass="div_WF_searchBg" width="1122">
+          <Layouts>
+            <Layout width="1102" height="135">
+              <Static id="st_searchCondition" taborder="81" text="기준일자" cssclass="sta_WF_schTitle" left="20" top="10" width="100" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_referDate" taborder="82" dateformat="yyyy-MM" editformat="yyyy-MM" left="120" top="10" width="120" height="21" onchanged="cal_referDate_onchanged"/>
+              <Static id="Static22" taborder="83" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="1118"/>
+              <Static id="Static06" taborder="84" cssclass="Guide_color" visible="false" left="0" top="0" width="20" height="45"/>
+              <Static id="Static23" taborder="92" cssclass="Guide_color" visible="false" left="0" top="31" height="10" width="1118"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Radio id="Radio00" taborder="14" left="1174" top="170" width="280" height="50"/>
+        <Radio id="Radio01" taborder="15" left="1208" top="337" width="280" height="50"/>
+        <Static id="Static10" taborder="16" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static00" taborder="17" cssclass="Guide_color" visible="false" left="0" top="71" width="1147" height="10" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static01" taborder="18" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분 : 수금관리 > 수수료 > 판매인별 수수료 내역집계
+ * 02. 그룹명   : RTREAgentCommission.xfdl
+ * 03. 그룹설명 : 
+ * 04. 작성일   :
+ * 05. 작성자   :
+ * 06. 수정이력 :
+ ***********************************************************************
+ *     수정일     작성자   내용
+ ***********************************************************************
+ *
+ ***********************************************************************
+ */
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+  include "lib::comLib.xjs";
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+	/***********************************************************************
+	 * 그룹 변수 선언부
+	 ************************************************************************/
+	this.toDay 			= ""; 	//현재날짜
+	this.prevLastDate 	= "";	//전월 말일
+	this.prevFirstDate	= "";	//전월1일
+    //-------------------------------------------------------------------------------   
+	//폼로드시 공통함수      
+	//-------------------------------------------------------------------------------  	 
+	this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+	{
+		Ex.core.init(obj); 
+		this.fn_init();	
+		
+	} 
+    //-------------------------------------------------------------------------------   
+	//초기화  
+	//------------------------------------------------------------------------------- 	
+	this.fn_init = function() {
+		//기준일자 조회
+		this.fn_getInitDate();
+		//버튼초기화
+		this.fn_initBtn();		
+	}
+		 		 
+	/***********************************************************************************
+	* Transaction Function
+	***********************************************************************************/
+ 	//---------------------------------------------------------------------------------
+	// 기준일자 조회
+	//---------------------------------------------------------------------------------
+	this.fn_getInitDate  = function() {
+		var sSvcID      	= "getToday";  
+	    var sController   	= "/rtms/comm/getToday.do";
+	    var sInDatasets   	= "";
+	    var sOutDatasets  	= "";
+	    var sArgs 			= "";	
+	    var fn_callBack		= "fn_callBack";
+				
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+	
+	}
+ 	//---------------------------------------------------------------------------------
+	// 판매인별 수수료 내역집계
+	//---------------------------------------------------------------------------------
+	this.fn_aggregate  = function() {
+	    
+	    this.edt_procStatus.set_value("");
+	    
+		if(nvl(this.div_search.cal_referDate.value) == "") {
+			alert('기준일자를 입력하세요');
+			this.div_search.cal_referDate.setFocus();
+			return;
+		}
+			
+			var sSvcID      	= "agentCommission";  
+			var sController   	= "/ntrms/re/agentCommission.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "";
+			var sArgs 			= "";	
+			var fn_callBack		= "fn_callBack";
+					
+			sArgs += Ex.util.setParam("period"		, nvl(this.div_search.cal_referDate.value).substr(0,6));	//기준일자(마감월)
+					
+			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+		
+	}	
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// callBack함수 
+    //-------------------------------------------------------------------------------  	
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			if(strSvcId == "agentCommission") {
+				this.edt_procStatus.set_value(strErrorMsg);		
+				return;		
+			}
+			else {
+				return Ex.core.comMsg("alert",strErrorMsg);	
+			}	
+
+		}
+		switch (strSvcId) 
+		{  
+		    case "getToday":
+		        prevLastDate = this.toDay.substr(0,4)+(this.toDay.substr(4,2)-1);
+		        this.div_search.cal_referDate.set_value(prevLastDate);			//전월 말일	
+		        break;
+			case "agentCommission":
+				this.edt_procStatus.set_value(strErrorMsg);	
+				break;	
+			default:
+				break;
+		}
+	}
+
+	/***********************************************************************************
+	* Component Event
+	***********************************************************************************/
+    //-------------------------------------------------------------------------------  	
+	// 기준일자 변경 이벤트
+    //-------------------------------------------------------------------------------  		
+	this.cal_referDate_onchanged = function(obj:Calendar, e:nexacro.ChangeEventInfo)
+	{
+		var serviceChargeDay = String(this.div_search.cal_referDate.value);
+		
+		var nDiffDay = Eco.date.getDiffDay(serviceChargeDay, this.toDay);
+		
+		if(parseInt(nDiffDay,10) < 0) {
+		
+			alert("기준일자는 현재일 이후 날짜는 입력하실수 없습니다.");
+			this.div_search.cal_referDate.set_value("");
+			this.div_search.cal_referDate.setFocus();
+			return;
+		}	
+	}	
+
+	/***********************************************************************************
+	* User Function
+	***********************************************************************************/
+	//---------------------------------------------------------------------------------
+	// 버튼생성
+	//---------------------------------------------------------------------------------
+	this.fn_initBtn  = function() {
+		/* 1. N : 신규추가
+		 * 2. S : 조회
+		 * 3. C : 데이타생성
+		 * 4. E : 엑셀데이타생성
+		 * 5. AG: 집계
+		 * 6. DN: 다운
+		 */	
+		this.parent.setButton("AG",this);			
+	}
+
+
+
+]]></Script>
+  </Form>
+</FDL>

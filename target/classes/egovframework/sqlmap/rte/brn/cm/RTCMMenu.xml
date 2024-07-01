@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MenuDAO">
+
+	<resultMap id="procResultMap" class="java.util.HashMap">
+		<result property="menuCd"  		column="MENU_CD" />                                                
+		<result property="menuNm"  		column="MENU_NM" />                                                
+		<result property="menuLvl"  	column="MENU_LVL" />                                              
+		<result property="mdlCd"  		column="MDL_CD" />                                              
+		<result property="uprMenuCd"  	column="UPR_MENU_CD" />                                         
+		<result property="uprMenuNm"  	column="UP_MENU_NM" />                                         
+		<result property="useYn"  		column="USE_YN" />                                                  
+		<result property="menuDesc"  	column="MENU_DESC" />
+		<result property="sortOdr"  	column="SORT_ODR" />                                               
+		<result property="regId"  		column="REG_ID" />                                                  
+		<result property="regDt"  		column="REG_DT" />                                                  
+		<result property="chgId"  		column="CHG_ID" />                                                  
+		<result property="chgDt"  		column="CHG_DT" />     
+	</resultMap>
+	
+	<resultMap id="procTreeResultMap" class="java.util.HashMap">
+		<result property="menuCd"  		column="MENU_CD" />                                                
+		<result property="menuNm"  		column="MENU_NM" />                                                
+		<result property="menuLvl"  	column="MENU_LVL" />
+		<result property="uprMenuCd"  	column="UPR_MENU_CD" />                                         
+		<result property="mdlCd"  		column="MDL_CD" />                                               
+		<result property="sortOdr"  	column="SORT_ODR" />                                               
+		<result property="menuDesc"  	column="MENU_DESC" />     
+		<result property="useYn"  		column="USE_YN" />                                                  
+	</resultMap>
+
+	<parameterMap id="parameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procResultMap" />         
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="menuNm" 	jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="uprMenuCd" jdbcType="UPR_MENU_CD" mode="IN" />                         
+	</parameterMap>    
+
+	<parameterMap id="treeParameters" class="java.util.Map">                                                                            
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="procTreeResultMap" />         
+	</parameterMap>    
+	
+	<procedure id="menu.listMenu" parameterMap="parameters">
+		{call
+		Pkg_Rtcm0012.p_sRtcm0012(?, ?, ?, ?)}
+	</procedure>
+	
+	<procedure id="menu.listMenuTree" parameterMap="treeParameters">
+		{call
+		Pkg_Rtcm0012.p_sRtcm0012Tree(?)}
+	</procedure>	
+	
+	<parameterMap class="java.util.Map" id="insertRtcm0012">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />	
+		<parameter property="menuCd" 		jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="menuNm" 		jdbcType="VARCHAR" mode="IN" />                         
+		<parameter property="menuLvl" 		jdbcType="NUMERIC" mode="IN" />                        
+		<parameter property="uprMenuCd" 	jdbcType="VARCHAR" mode="IN" />                      
+		<parameter property="mdlCd" 		jdbcType="VARCHAR" mode="IN" />                      
+		<parameter property="sortOdr" 		jdbcType="NUMERIC" mode="IN" />
+		<parameter property="menuDesc" 		jdbcType="VARCHAR" mode="IN" />                       
+		<parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" />                          
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />                          
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="menu.saveMenuInfo" parameterMap="insertRtcm0012">
+		{call
+		Pkg_Rtcm0012.p_IUDRtcm0012(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 메뉴코드 중복체크 -->
+	<parameterMap id="exitsMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="NUMERIC" javaType="java.lang.Integer" mode="OUT" resultMap="resultId" />
+		<parameter property="menuCd" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="resultId" class="java.util.HashMap"/>
+		
+	<procedure  id="menu.checkMenuCdExists" resultClass="java.util.Map" parameterMap="exitsMap">
+		{call ? := PKG_RTCM0012.F_SRTCM0012COUNT ( ? )}
+	</procedure>	
+
+</sqlMap>

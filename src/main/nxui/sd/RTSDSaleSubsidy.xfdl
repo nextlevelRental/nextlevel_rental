@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDSaleSubsidy" classname="Authority" inheritanceid="" position="absolute" titletext="판매보조금정책 항목 관리" left="0" width="1147" top="0" height="496" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
+        <Div id="div_search" taborder="19" left="0" top="0" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" width="1122" onkeyup="div_search_onkeyup">
+          <Layouts>
+            <Layout>
+              <Static id="st_searchCondition" taborder="15" text="정책코드/명" cssclass="sta_WF_schTitle" left="25" top="12" width="88" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="23" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="0" height="12" width="1118"/>
+              <Static id="Static23" taborder="24" text="FIX h12" cssclass="Guide_color" visible="false" left="0" top="33" height="12" width="1118"/>
+              <Edit id="edt_plcCdNm" taborder="0" enable="true" left="119" top="10" width="124" height="21" maxlength="100" onkeyup="div_search_edt_plcCdNm_onkeyup"/>
+              <Static id="st_searchCondition00" taborder="25" text="판매처구분" cssclass="sta_WF_schTitle" left="273" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cmb_slsCd" taborder="29" autoselect="true" innerdataset="@dsR060" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="359" top="10" width="96" height="21" displaynulltext="전체" onitemchanged="div_search_cmb_slsCd_onitemchanged"/>
+              <Static id="st_searchCondition01" taborder="30" text="보너스구분" cssclass="sta_WF_schTitle" left="481" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cmb_bnsCd" taborder="31" autoselect="true" innerdataset="@dsR061" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="575" top="10" width="96" height="21" displaynulltext="전체" onitemchanged="div_search_cmb_bnsCd_onitemchanged"/>
+              <Static id="st_searchCondition02" taborder="32" text="지급구분" cssclass="sta_WF_schTitle" left="705" top="12" width="64" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cmb_pymCd" taborder="33" autoselect="true" innerdataset="@dsR062" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="775" top="10" width="96" height="21" displaynulltext="전체" onitemchanged="div_search_cmb_pymCd_onitemchanged"/>
+              <Static id="st_searchCondition03" taborder="34" text="결산구분" cssclass="sta_WF_schTitle" left="897" top="12" width="64" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cmb_acnCd" taborder="35" autoselect="true" innerdataset="@dsR063" codecolumn="cd" datacolumn="cdNm" index="-1" displayrowcount="5" left="975" top="10" width="96" height="21" displaynulltext="전체" onitemchanged="div_search_cmb_acnCd_onitemchanged"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="24" text="판매보조금정책 항목 관리" cssclass="sta_WF_subTitle" top="61" height="20" width="161" left="0"/>
+        <Static id="Static06" taborder="27" text="FIX &#13;&#10;w20" cssclass="Guide_color" visible="false" top="0" height="45" width="25" left="0"/>
+        <Static id="Static24" taborder="28" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="245" top="0" height="44" width="25"/>
+        <Grid id="grd_saleSubsidy" taborder="127" useinputpanel="false" left="0" top="85" height="394" binddataset="ds_saleSubsidy" width="1122" autofittype="col" nodatatext="조회된 데이터가 없습니다." onkeyup="grd_saleSubsidy_onkeyup">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="147"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="정책코드"/>
+                <Cell col="1" text="정책코드명"/>
+                <Cell col="2" text="판매처구분"/>
+                <Cell col="3" text="보너스구분"/>
+                <Cell col="4" text="지급구분"/>
+                <Cell col="5" text="결산구분"/>
+                <Cell col="6" text="최소수량"/>
+                <Cell col="7" text="최대수량"/>
+                <Cell col="8" text="적용금액"/>
+                <Cell col="9" text="우선순위"/>
+                <Cell col="10" text="사용유무"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:plcCd"/>
+                <Cell col="1" edittype="text" style="align:left;" text="bind:plcCdNm"/>
+                <Cell col="2" displaytype="combo" text="bind:slsCd" combodataset="dsR060" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="3" displaytype="combo" text="bind:bnsCd" combodataset="dsR061" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="4" displaytype="combo" text="bind:pymCd" combodataset="dsR062" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="5" displaytype="combo" text="bind:acnCd" combodataset="dsR063" combocodecol="cd" combodatacol="cdNm"/>
+                <Cell col="6" displaytype="number" edittype="masknumber" style="align:right;" text="bind:saleMin" mask="#,###"/>
+                <Cell col="7" displaytype="number" edittype="masknumber" style="align:right;" text="bind:saleMax" mask="#,###"/>
+                <Cell col="8" displaytype="number" edittype="masknumber" style="align:right;" text="bind:aplAmt" mask="#,###"/>
+                <Cell col="9" edittype="masknumber" text="bind:orderPt"/>
+                <Cell col="10" displaytype="combo" edittype="combo" text="bind:useYn" combodataset="dsUseYn" combocodecol="cd" combodatacol="cdNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="128" text="Static02" cssclass="Guide_color" visible="false" left="0" top="45" width="1147" height="20"/>
+        <Static id="Static04" taborder="129" text="Static02" cssclass="Guide_color" visible="false" left="0" top="75" width="1147" height="10"/>
+        <Static id="Static01" taborder="130" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="690"/>
+        <Static id="Static03" taborder="132" text="Static02" cssclass="Guide_color" visible="false" left="0" top="479" width="1147" height="10"/>
+        <Static id="Static02" taborder="133" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="457" top="0" width="25" height="44"/>
+        <Static id="Static05" taborder="134" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="673" top="0" width="25" height="44"/>
+        <Static id="Static07" taborder="135" text="FIX &#13;&#10;w30" cssclass="Guide_color" visible="false" left="873" top="0" width="25" height="44"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_saleSubsidy" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="plcCd" type="STRING" size="0"/>
+          <Column id="plcCdNm" type="STRING" size="256"/>
+          <Column id="slsCd" type="STRING" size="256"/>
+          <Column id="bnsCd" type="STRING" size="256"/>
+          <Column id="pymCd" type="STRING" size="256"/>
+          <Column id="acnCd" type="STRING" size="256"/>
+          <Column id="saleMin" type="STRING" size="256"/>
+          <Column id="saleMax" type="STRING" size="256"/>
+          <Column id="aplAmt" type="STRING" size="256"/>
+          <Column id="prfMin" type="STRING" size="256"/>
+          <Column id="prfMax" type="STRING" size="256"/>
+          <Column id="orderPt" type="STRING" size="256"/>
+          <Column id="useYn" type="STRING" size="256"/>
+          <Column id="regId" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
+          <Column id="chgId" type="STRING" size="256"/>
+          <Column id="chgDt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsR060" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsR061" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsR062" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsR063" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsUseYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">사용</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">미사용</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 주문관리 > 기준정보관리 > 판매보조금정책 항목 관리
+ * 02. 그룹명		: RTSDSaleSubsidy.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2018-12-18
+ * 05. 작성자		: 지영식
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2018-12-18		지영식		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include 
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+/* 팝업에서 전달받은 변수 저장 */
+this.arr;
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 */
+	Ex.core.init(obj);
+	
+	this.parent.setButton("C|S", this);
+	
+	this.init();
+}
+
+this.init = function() {
+	/* 공통코드 조회 */
+	this.fn_listSaleSubsidyComm();
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+/**
+ * 공통코드 조회
+ */
+this.fn_listSaleSubsidyComm = function() {
+	var sSvcID		 = "listSaleSubsidyComm";
+	var sController	 = "/rtms/sd/listSaleSubsidyComm.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "dsR060=dsR060 dsR061=dsR061 dsR062=dsR062 dsR063=dsR063";
+	var sArgs		 = "";
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 판매보조금정책 목록조회
+ */
+this.fn_listSaleSubsidyInfo = function() {
+	this.ds_saleSubsidy.clearData();
+	
+	var sSvcID		 = "listSaleSubsidyInfo";
+	var sController	 = "/rtms/sd/listSaleSubsidyInfo.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_saleSubsidy=ds_output";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("plcCdNm", nvl(this.div_search.edt_plcCdNm.value));
+		sArgs		+= Ex.util.setParam("slsCd",   nvl(this.div_search.cmb_slsCd.value));
+		sArgs		+= Ex.util.setParam("bnsCd",   nvl(this.div_search.cmb_bnsCd.value));
+		sArgs		+= Ex.util.setParam("pymCd",   nvl(this.div_search.cmb_pymCd.value));
+		sArgs		+= Ex.util.setParam("acnCd",   nvl(this.div_search.cmb_acnCd.value));
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/**
+ * 판매보조금정책 저장
+ */
+this.fn_saveSaleSubsidy = function() {
+	if(!Ex.util.isUpdated(this.ds_saleSubsidy)) {
+		this.alert('변경된 데이터가 없습니다.');
+		
+		return false;
+	}
+	
+	if(confirm( "저장하시겠습니까?")) {
+		var sSvcID		 = "saveSaleSubsidy";
+		var sController	 = "/rtms/sd/saveSaleSubsidy.do";
+		var sInDatasets	 = "input1=ds_saleSubsidy:U";
+		var sOutDatasets = "";
+		var sArgs		 = "";
+		var fn_callBack	 = "fn_callBack";
+		
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+}
+
+/***********************************************************************************
+ * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	switch(strSvcId) {
+		/* 공통코드 조회 */
+		case "listSaleSubsidyComm":
+			this.dsR060.insertRow(0);
+			this.dsR060.setColumn(0, "cd", "");
+			this.dsR060.setColumn(0, "cdNm", "전체");
+			
+			this.dsR061.insertRow(0);
+			this.dsR061.setColumn(0, "cd", "");
+			this.dsR061.setColumn(0, "cdNm", "전체");
+			
+			this.dsR062.insertRow(0);
+			this.dsR062.setColumn(0, "cd", "");
+			this.dsR062.setColumn(0, "cdNm", "전체");
+			
+			this.dsR063.insertRow(0);
+			this.dsR063.setColumn(0, "cd", "");
+			this.dsR063.setColumn(0, "cdNm", "전체");
+			
+			this.fn_search();
+			break;
+		
+		/* 조회 */
+		case "listSaleSubsidyInfo":
+			break;
+		
+		/* 저장 */
+		case "saveSaleSubsidy":
+			this.alert(strErrorMsg);
+			
+			this.fn_search();
+			break;
+		default:
+			break;
+	}
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 조회
+ */
+this.fn_search = function() {
+	this.fn_listSaleSubsidyInfo();
+}
+
+/**
+ * 저장
+ */
+this.fn_save = function() {
+	this.fn_saveSaleSubsidy();
+}
+
+/**
+ * 정책코드 / 명 Onkeyup Event
+ */
+this.div_search_edt_plcCdNm_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo) {
+	if(e.keycode == 13) {
+		this.fn_search();
+	}
+}
+
+this.grd_saleSubsidy_onkeyup = function(obj:Grid, e:nexacro.KeyEventInfo) {
+	if (e.keycode == 13) {
+		obj.moveToNextCell();
+	}
+}
+
+/**
+ * 판매처구분 Onitemchanged Event
+ */
+this.div_search_cmb_slsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	this.fn_search();
+}
+
+/**
+ * 보너스구분 Onitemchanged Event
+ */
+this.div_search_cmb_bnsCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	this.fn_search();
+}
+
+/**
+ * 지급구분 Onitemchanged Event
+ */
+this.div_search_cmb_pymCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	this.fn_search();
+}
+
+/**
+ * 결산구분 Onitemchanged Event
+ */
+this.div_search_cmb_acnCd_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	this.fn_search();
+}]]></Script>
+  </Form>
+</FDL>

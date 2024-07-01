@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ClosingMngDAO">
+	<!--선수금관리 선수금내역  -->
+	<resultMap id="prePayResultMap" class="java.util.HashMap">
+		<result property="recvSeq"  	column="RECV_SEQ" />     <!--수납거래번호 -->
+		<result property="ritmSeq"  	column="RITM_SEQ" />     <!--거래일련번호 -->
+		<result property="pndDay"  		column="PND_DAY" />      <!--선수 발생일자-->
+		<result property="ordNo"  		column="ORD_NO" />       <!--계약번호     -->
+		<result property="custNo"  		column="CUST_NO" />      <!--고객번호     -->
+		<result property="custNm"  		column="CUST_NM" />      <!--고객명        -->
+		<result property="pndAmt"  		column="PND_AMT" />      <!--선수 발생금액-->
+		<result property="sbsAmt"  		column="SBS_AMT" />      <!--선수 정리금액-->
+		<result property="balAmt"  		column="BAL_AMT" />      <!--선수 잔액-->
+		<result property="recpTp"  		column="RECP_TP" />      <!--청구구분     -->
+		<result property="recpTpNm"		column="RECP_TP_NM" />   <!--청구구분명     -->
+		<result property="recpPay"  	column="RECP_PAY" />     <!--수납방법     -->
+		<result property="recpPayNm" 	column="RECP_PAY_NM" />  <!--수납방법명     -->
+		<result property="recpFg"  		column="RECP_FG" />      <!--수납유형     -->
+		<result property="recpFgNm"		column="RECP_FG_NM" />   <!--수납유형명     -->
+		<result property="pndStat"  	column="PND_STAT" />     <!--선수금상태   -->
+		<result property="pndStatNm"  	column="PND_STAT_NM" />  <!--선수금상태명   -->
+		<result property="regId"  		column="REG_ID" />       <!--등록자 ID    -->
+		<result property="regDt"  		column="REG_DT" />       <!--등록일       -->
+		<result property="chgId"  		column="CHG_ID" />       <!--변경자 ID    -->
+		<result property="chgDt"  		column="CHG_DT" />       <!--변경일       -->
+	</resultMap> 	
+	<parameterMap class="java.util.Map" id="prePayListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="prePayResultMap" />	
+		<parameter property="ordNo" 	 jdbcType="VARCHAR" mode="IN" />	<!--계약번호      -->
+		<parameter property="custNo" 	 jdbcType="VARCHAR" mode="IN" />	<!--고객번호      -->
+		<parameter property="pndStat" 	 jdbcType="VARCHAR" mode="IN" />	<!--선수금상태    -->
+	</parameterMap>
+	<procedure id="closingMng.getPrePayList" parameterMap="prePayListParam">
+		{call
+		Pkg_Rtre0035.p_sRtre0035OrdCust(?, ?, ?, ?)}
+	</procedure>	
+	
+	<!--선수금관리 선수금 정리내역  -->
+	<resultMap id="prePayArrangeResultMap" class="java.util.HashMap">
+		<result property="sbsSeq" 		column="SBS_SEQ" />      <!--정리거래번호    -->
+		<result property="sbsIseq" 		column="SBS_ISEQ" />     <!--정리거래일련번호-->
+		<result property="sbsDay" 		column="SBS_DAY" />      <!--정리일자        -->
+		<result property="ordNo" 		column="ORD_NO" />	     <!--계약번호        -->
+		<result property="custNo" 		column="CUST_NO" />	     <!--고객번호        -->
+		<result property="custNm" 		column="CUST_NM" />	     <!--고객명          -->
+		<result property="sbsAmt" 		column="SBS_AMT" />	     <!--선수 정리금액   -->
+		<result property="recpTp" 		column="RECP_TP" />	     <!--청구구분        -->
+		<result property="recpTpNm" 	column="RECP_TP_NM" />	 <!--청구구분명      -->
+		<result property="recpPay" 		column="RECP_PAY" />	 <!--수납방법        -->
+		<result property="recpPayNm" 	column="RECP_PAY_NM" />	 <!--수납방법명      -->
+		<result property="recpFg" 		column="RECP_FG" />	     <!--수납유형        -->
+		<result property="recpFgNm" 	column="RECP_FG_NM" />	 <!--수납유형명      -->
+		<result property="sbsTp" 		column="SBS_TP" />	     <!--선수금정리구분  -->
+		<result property="recvSeq" 		column="RECV_SEQ" />	 <!--수납거래번호    -->
+		<result property="ritmSeq" 		column="RITM_SEQ" />	 <!--거래일련번호    -->
+		<result property="regId" 		column="REG_ID" />	     <!--등록자 ID       -->
+		<result property="regDt" 		column="REG_DT" />	     <!--등록일          -->
+		<result property="chgId" 		column="CHG_ID" />	     <!--변경자 ID       -->
+		<result property="chgDt" 		column="CHG_DT" />	     <!--변경일          -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="prePayArrangeListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="prePayArrangeResultMap" />	
+		<parameter property="ordNo" 	 jdbcType="VARCHAR" mode="IN" />	<!--계약번호      -->
+		<parameter property="custNo" 	 jdbcType="VARCHAR" mode="IN" />	<!--고객번호      -->
+		<parameter property="recvSeq" 	 jdbcType="NUMERIC" mode="IN" />	<!--수납거래번호  -->
+		<parameter property="ritmSeq" 	 jdbcType="NUMERIC" mode="IN" />	<!--거래일련번호  -->
+	</parameterMap>
+	<procedure id="closingMng.getPrePayArrangeList" parameterMap="prePayArrangeListParam">
+		{call
+		Pkg_Rtre0036.p_sRtre0036RecvRitm(?, ?, ?, ?, ?)}
+	</procedure>	
+		
+	<!-- 선수금 관리(계약별) 정리 -->
+	<parameterMap class="java.util.Map" id="prePayArrangeParam">
+		<parameter property="sbsDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--선수정리기준일자 -->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" />      <!--계약번호     -->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN" />      <!--고객번호     -->
+		<parameter property="recvSeq"		jdbcType="NUMERIC" mode="IN" />      <!--수납거래번호     -->
+		<parameter property="ritmSeq"		jdbcType="VARCHAR" mode="IN" />      <!--거래일련번호     -->
+		<parameter property="vType"			jdbcType="VARCHAR" mode="IN" />      <!--처리구분 P:part A:All     -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디        -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.prePayArrange" parameterMap="prePayArrangeParam">
+		{call Pkg_Rtre0035.p_UpdateRtre0035PartClear(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+		
+	<!-- 선수금 관리(계약별) 정리취소 -->
+	<parameterMap class="java.util.Map" id="prePayArrangeCancelParam">
+		<parameter property="sbsDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--선수 정리일자-->
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" />      <!--계약번호-->
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN" />      <!--고객번호-->
+		<parameter property="sbsSeq"		jdbcType="NUMERIC" mode="IN" />      <!--정리거래번호-->
+		<parameter property="sbsIseq"		jdbcType="NUMERIC" mode="IN" />      <!--정리거래일련번호-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.prePayArrangeCancel" parameterMap="prePayArrangeCancelParam">
+		{call Pkg_Rtre0036.p_InsertRtre0036CleanAdvance(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+			
+	<!-- 선수금 정리처리 집계-->
+	<parameterMap class="java.util.Map" id="prePaymentAggregateParam">
+		<parameter property="sbsDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--선수정리기준일자  -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디        -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.prePaymentAggregate" parameterMap="prePaymentAggregateParam">
+		{call Pkg_Rtre0035.p_UpdateRtre0035AllClear(?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 자산별 매출원가 취득처리 집계-->
+	<parameterMap class="java.util.Map" id="acquisitionAggregateParam">
+		<parameter property="period" 		jdbcType="VARCHAR" mode="IN" />	    <!--마감월  		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />     <!--등록자아이디  -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.acquisitionAggregate" parameterMap="acquisitionAggregateParam">
+		{call Pkg_Rtre0120.p_CreateRtre0120DeprePostpone(?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<!-- 이연처리 변경대상 적용 집계-->
+	<parameterMap class="java.util.Map" id="deferChgTargetAggregateParam">
+		<parameter property="period" 		jdbcType="VARCHAR" mode="IN" />	     <!--마감월       -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.deferChgTargetAggregate" parameterMap="deferChgTargetAggregateParam">
+		{call Pkg_Rtre0120.p_CreateRtre0120ChangePost(?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 렌탈등록비 이연처리 집계-->
+	<parameterMap class="java.util.Map" id="deferProcAggregateParam">
+		<parameter property="period" 		jdbcType="VARCHAR" mode="IN" />	     <!--마감월       -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.deferProcAggregate" parameterMap="deferProcAggregateParam">
+		{call Pkg_Rtre0120.p_CreateRtre0120RegiPostpone(?, ?, ?, ?, ?)}
+	</procedure>
+		
+	<!-- 선수내역 집계-->
+	<parameterMap class="java.util.Map" id="prePaymentHistAggParam">
+		<parameter property="closeDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--선수집계일자  -->
+		<parameter property="commDvsn"		jdbcType="VARCHAR" mode="IN" />      <!--처리구분      -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디  -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.prePaymentHistAggregate" parameterMap="prePaymentHistAggParam">
+		{call Pkg_Rtre0037.p_Rtre0037PreAccum(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 선수금 환불 처리 -->
+	<parameterMap class="java.util.Map" id="prePayRefund">
+		<parameter property="recvSeq" 			jdbcType="VARCHAR" mode="IN" />	     <!--선수 정리일자-->
+		<parameter property="regId"				jdbcType="VARCHAR" mode="IN" />      	 <!--등록자아이디 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 		jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="closingMng.prePayRefund" parameterMap="prePayRefund">
+		{call Pkg_Rtre0035.p_UpdateRtre0035Refund(?, ?, ?, ?, ?)}
+	</procedure>
+		
+		
+</sqlMap>
+
+

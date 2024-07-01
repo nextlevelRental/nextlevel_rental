@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="saleSubsidy">
+	
+	<resultMap id="saleResultMap"  class="java.util.HashMap">
+		<result property="plcCd"   column= "PLC_CD" />
+		<result property="plcCdNm" column= "PLC_CD_NM" />  		
+		<result property="slsCd"   column= "SLS_CD" />
+		<result property="bnsCd"   column= "BNS_CD" />	
+		<result property="pymCd"   column= "PYM_CD" />	
+		<result property="acnCd"   column= "ACN_CD" />	
+		<result property="saleMin" column= "SALE_MIN" />	
+		<result property="saleMax" column= "SALE_MAX" />	
+		<result property="aplAmt"  column= "APL_AMT" />	
+		<result property="prfMin"  column= "PRF_MIN" />	
+		<result property="prfMax"  column= "PRF_MAX" />	
+		<result property="orderPt" column= "ORDER_PT" />
+		<result property="useYn"   column= "USE_YN" />
+		<result property="regId"   column= "REG_ID" />
+		<result property="regDt"   column= "REG_DT" />
+		<result property="chgId"   column= "CHG_ID" />
+		<result property="chgDt"   column= "CHG_DT" />
+	</resultMap>
+       
+	<parameterMap id="saleParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="saleResultMap" />
+		<parameter property="plcCdNm"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="slsCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="bnsCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="pymCd"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="acnCd"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="saleSubsidy.listSaleSubsidyInfo" parameterMap="saleParam">
+		{call PKG_RTCM0110.p_sSaleSubsidyList(?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+	<parameterMap id="p_IUDSaleSubsidy" class="java.util.Map">
+		<parameter property="dvsn" 			 jdbcType="VARCHAR" mode="IN" />	
+		<parameter property="plcCd" 	     mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="plcCdNm"        mode="IN" jdbcType="VARCHAR" />
+		<parameter property="saleMin"        mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="saleMax"        mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="aplAmt"         mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="orderPt"        mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="useYn"          mode="IN" jdbcType="VARCHAR" />	
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />		
+	</parameterMap>
+	
+	<procedure id="saleSubsidy.saveSaleSubsidy" parameterMap="p_IUDSaleSubsidy">
+		{call PKG_RTCM0110.p_IUDSaleSubsidy(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+</sqlMap>

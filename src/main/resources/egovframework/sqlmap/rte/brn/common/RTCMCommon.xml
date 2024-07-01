@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="commonDAO">
+
+	<!-- 공통코드 조회 -->
+	<parameterMap id="paramCommon" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"
+			javaType="java.sql.ResultSet" mode="OUT" resultMap="resultCommon" />
+		<parameter property="cdGrpCd" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cdNm" jdbcType="VARCHAR" mode="IN" />
+		<parameter property="useYn" jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+	<resultMap id="resultCommon" class="java.util.HashMap">
+		<result property="cd" column="CD" />
+		<result property="cdNm" column="CD_NM" />
+		<result property="cdDesc" column="CD_DESC" />
+	</resultMap>
+	
+	<resultMap id="resultTire" class="java.util.HashMap">
+		<result property="petternCd" column="PETTERN_CD" />
+		<result property="petternNm" column="PETTERN_NM" />
+	</resultMap>
+	
+	<resultMap id="resultTireDetail" class="java.util.HashMap">
+		<result property="petternCd" column="PETTERN_CD" />
+		<result property="standard" column="STANDARD" />
+		<result property="matCd" column="MAT_CD" />
+		<result property="matNm" column="MAT_NM" />
+		<result property="regDt" column="REG_DT" />
+		<result property="seasonNm" column="SEASON_NM" />
+	</resultMap>
+	
+	<resultMap id="resultSellProduct" class="java.util.HashMap">
+		<result property="saleCd" column="SALE_CD" />
+		<result property="saleNm" column="SALE_NM" />
+		<result property="saleStrDay" column="SALE_STR_DAY" />
+		<result property="saleEndDay" column="SALE_END_DAY" />
+		<result property="dcRate" column="DC_RATE" />
+		<result property="dcAmt" column="DC_AMT" />
+		<result property="grpSaleGb" column="GRP_SALE_GB" />
+		<result property="grpSaleGbNm" column="GRP_SALE_GB_NM" />
+		<result property="prdtGrp" column="PRDT_GRP" />
+		<result property="prdtGrpNm" column="PRDT_GRP_NM" />
+		<result property="prdtGrpDtl" column="PRDT_GRP_DTL" />
+		<result property="prdtGrpDtlNm" column="PRDT_GRP_DTL_NM" />
+		<result property="preDcYn" column="PRE_DC_YN" />
+		<result property="pkgDcYn" column="PKG_DC_YN" />
+		<result property="useYn" column="USE_YN" />
+	</resultMap>
+
+	<procedure id="comm.listCommInfo" parameterMap="paramCommon">
+		{call
+		Pkg_Rtcm0051.p_sRtcm0051CodeName(?, ?, ?, ?)}
+	</procedure>
+	<!-- 사용자그룹정보 조회 종료 -->
+
+	<!-- 파일정보 저장처리 -->
+	<parameterMap class="java.util.Map" id="insert_Rtcm0040">	
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileGrpSeq" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="fileid" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="filename" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="savepath" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="filesize" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="progid" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<!-- <parameter property="useYn" 		jdbcType="VARCHAR" mode="IN" /> -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="file.insertFileInfo" parameterMap="insert_Rtcm0040">
+		{call Pkg_Rtcm0040.p_IUDRtcm0040(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Y', ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 코드명 조회 -->
+	<parameterMap id="codeNameParamMap" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="codeNameMap" />
+		<parameter property="cdGrpCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cd" 		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	
+	<resultMap id="codeNameMap" class="java.util.HashMap"/>
+		
+	<procedure  id="comm.codeName" resultClass="java.util.Map" parameterMap="codeNameParamMap">
+		{call ? := Pkg_Rtcm0051.f_sRtcm0051CodeName (?, ?)}
+	</procedure>
+	
+	<!-- 대리점명 조회 -->
+	<parameterMap class="java.util.Map" id="agencyNameParam"> 
+		<parameter property="result"    jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="agencyNameMap" />   
+		<parameter property="agencyCd"    jdbcType="VARCHAR" mode="IN" /> <!-- 기준일자 -->
+	</parameterMap>	
+	
+	<resultMap id="agencyNameMap" class="java.util.HashMap"/>
+	
+	<procedure id="comm.agencyName" parameterMap="agencyNameParam">
+		{call ? := Pkg_Rtsd0007.f_sRtsd0007AgencyNm(?)}		
+	</procedure>
+	
+	<parameterMap id="paramTire" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"	javaType="java.sql.ResultSet" mode="OUT" resultMap="resultTire" />
+		<parameter property="petternCd"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>	
+		
+	<parameterMap id="paramTireDetail" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"	javaType="java.sql.ResultSet" mode="OUT" resultMap="resultTireDetail" />
+		<parameter property="petternCd"		jdbcType="VARCHAR" mode="IN" />	
+		<parameter property="saleCd"     	jdbcType="VARCHAR" mode="IN" />	
+	</parameterMap>
+	
+	<parameterMap id="paramSellProduct" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"	javaType="java.sql.ResultSet" mode="OUT" resultMap="resultSellProduct" />
+		<parameter property="saleNm"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="saleStrDay"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prdtGrp"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prdtGrp2"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sChanCd"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+
+
+	<procedure id="comm.listTireInfo" parameterMap="paramTire">
+		{call Pkg_Rtsd0005.p_sRtsd0005TireCode(?, ?)}
+	</procedure>
+	
+	<procedure id="comm.listTireDetailInfo" parameterMap="paramTireDetail">
+		{call Pkg_Rtsd0005.p_sRtsd0005TireDetailCode(?, ?, ?)} 
+	</procedure>
+	
+	<procedure id="comm.listSellProduct" parameterMap="paramSellProduct">
+		{call Pkg_Rtsd0020.p_sRtsd0020SellProduct(?, ?, ?, ?, ?, ?)}
+	</procedure> 
+
+
+	<parameterMap id="paramTireDetail2" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR"	javaType="java.sql.ResultSet" mode="OUT" resultMap="resultTireDetail2" />
+		<parameter property="saleCd"     	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="petternCd"     jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+		<resultMap id="resultTireDetail2" class="java.util.HashMap">
+		<result property="petternCd" column="PETTERN_CD" />
+		<result property="matCd" column="MAT_CD" />
+		<result property="regDt" column="REG_DT" />
+		<result property="saleCd" column="SALE_CD" />
+	</resultMap>
+	<procedure id="comm.listTireDetailInfo2" parameterMap="paramTireDetail2">
+		{call Pkg_Rtsd0005.p_sRtsd0005TireDetailCode2(?, ?, ?)} 
+	</procedure>
+	
+	<!--  -->
+    <parameterMap id="paramRentalGroup" class="java.util.HashMap">
+       <parameter property="vcursor" jdbcType="ORACLECURSOR"
+            javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRentalGroup" />
+       <parameter property="usrGroup" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="usrId" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="keyword" jdbcType="VARCHAR" mode="IN" />
+    </parameterMap>
+    
+    <resultMap id="resultOldRentalGroup" class="java.util.HashMap">
+       <result property="rentalGroup" column="RENTAL_GROUP" />
+       <result property="rentalGroupNm" column="RENTAL_GROUP_NM" />
+    </resultMap>
+    
+    <resultMap id="resultRentalGroup" class="java.util.HashMap">
+       <result property="cd" column="RENTAL_GROUP" />
+       <result property="cdNm" column="RENTAL_GROUP_NM" />
+    </resultMap>
+     
+    <!--  -->
+    <parameterMap id="paramRentalOffice" class="java.util.HashMap">
+       <parameter property="vcursor" jdbcType="ORACLECURSOR"
+            javaType="java.sql.ResultSet" mode="OUT" resultMap="resultRentalOffice" />
+       <parameter property="usrGroup" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="usrId" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="rentalGroup" jdbcType="VARCHAR" mode="IN" />
+       <parameter property="keyword" jdbcType="VARCHAR" mode="IN" />
+    </parameterMap>
+    <resultMap id="resultOldRentalOffice" class="java.util.HashMap">
+        <result property="rentalGroup" column="RENTAL_GROUP" />
+        <result property="rentalGroupNm" column="RENTAL_GROUP_NM" />
+        <result property="rentalOffice" column="RENTAL_OFFICE" />
+        <result property="rentalOfficeNm" column="RENTAL_OFFICE_NM" />
+    </resultMap>
+    <resultMap id="resultRentalOffice" class="java.util.HashMap">
+        <result property="rentalGroup" column="RENTAL_GROUP" />
+        <result property="rentalGroupNm" column="RENTAL_GROUP_NM" />
+        <result property="cd" column="RENTAL_OFFICE" />
+        <result property="cdNm" column="RENTAL_OFFICE_NM" />
+    </resultMap>
+    
+    <procedure id="comm.rentalGroup" parameterMap="paramRentalGroup">
+       {call PKG_RNT_COM.PRC_LIST_RENTAL_GROUP(?, ?, ?, ?)} 
+    </procedure>
+    <procedure id="comm.rentalOffice" parameterMap="paramRentalOffice"> 
+       {call PKG_RNT_COM.PRC_LIST_RENTAL_OFFICE(?, ?, ?, ?, ?)}
+    </procedure>
+    
+    <!-- OMS연계 이력 저장 -->
+	<parameterMap class="java.util.Map" id="insertOmsIFLogOLD">	
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col01" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col02" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col03" 	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col04" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col05" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col06" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col07" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col08" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col09" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col10" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col11" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col12" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col13" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col14" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col15" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col16" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col17" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col18" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col19" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col20" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col21" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col22" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col23" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col24" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col25" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col26" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col27" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col28" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col29" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col30" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="col31" 		jdbcType="CLOB" mode="IN" />
+		<parameter property="col32" 		jdbcType="CLOB" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 	    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="comm.insertOmsIFLogOLD" parameterMap="insertOmsIFLogOLD">
+		{call Pkg_Rtsd0213.p_IUDRtsd0213(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												 ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="insertOmsIFLog">	
+		<parameter property="dvsn" 				jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendUrl" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="sendFlag" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="inputData" 	    jdbcType="CLOB" mode="IN" />
+		<parameter property="outputData" 		jdbcType="CLOB" mode="IN" />
+		<parameter property="resultCode" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="resultMsg" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 	    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="comm.insertOmsIFLog" parameterMap="insertOmsIFLog">
+		{call Pkg_Rtsd0214.p_IUDRtsd0214(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	 <!-- 쿼리실행 -->
+	<parameterMap class="java.util.Map" id="runQuery">	
+		<parameter property="strQuery" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText" 	    jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="comm.runQuery" parameterMap="runQuery">
+		{call Pkg_Comm.p_RunSql(?, ?, ?, ?)}
+	</procedure>
+</sqlMap>

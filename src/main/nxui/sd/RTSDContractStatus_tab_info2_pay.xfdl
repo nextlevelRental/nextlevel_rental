@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDContractStatus_tab_info2_pay" classname="RTSDContractStatus_tab_info2_pay" left="0" top="0" width="1147" height="150" titletext="[STEP2]결제정보">
+    <Layouts>
+      <Layout>
+        <Static id="Static03" taborder="0" cssclass="sta_WF_detailLabel2" left="0" top="5" width="1107" height="31"/>
+        <Edit id="ed_payDd" taborder="5" left="406" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_payDd" taborder="6" text="이체일" cssclass="sta_WF_detailLabel" left="276" top="5" width="125" height="31"/>
+        <Edit id="ed_payMthd" taborder="7" left="130" top="10" width="142" height="21" readonly="true"/>
+        <Static id="st_payMthd" taborder="8" text="결제구분" cssclass="sta_WF_detailLabel" left="0" top="5" width="125" height="31"/>
+        <Static id="Static00" taborder="9" cssclass="sta_WF_detailLabel2" left="0" top="35" width="1107" height="31"/>
+        <Edit id="ed_accStat" taborder="10" left="960" top="40" width="142" height="21" readonly="true"/>
+        <Static id="st_accStat" taborder="11" text="계좌신청상태" cssclass="sta_WF_detailLabel" left="829" top="35" width="125" height="31"/>
+        <Edit id="ed_accChk" taborder="12" left="683" top="40" width="142" height="21" readonly="true"/>
+        <Static id="st_accChk" taborder="13" text="계좌확인상태" cssclass="sta_WF_detailLabel" left="553" top="35" width="125" height="31"/>
+        <Static id="Static10" taborder="18" cssclass="sta_WF_detailLabel2" left="0" top="65" width="1107" height="31"/>
+        <Edit id="ed_batchKey" taborder="23" left="959" top="70" width="142" height="21" readonly="true"/>
+        <Static id="st_batchKey" taborder="24" text="BATCH KEY" cssclass="sta_WF_detailLabel" left="829" top="65" width="125" height="31"/>
+        <Edit id="ed_bkeyChk" taborder="25" left="683" top="70" width="142" height="21" readonly="true"/>
+        <Static id="st_bkeyChk" taborder="26" text="배치키생성여부" cssclass="sta_WF_detailLabel" left="553" top="65" width="125" height="31"/>
+        <Static id="Static11" taborder="27" text="w5" cssclass="Guide_color" visible="false" left="0" top="0" right="0" height="5"/>
+        <Static id="Static83" taborder="28" text="w40" cssclass="Guide_color" visible="false" left="1107" top="0" bottom="0" width="40"/>
+        <Static id="Static01" taborder="29" cssclass="sta_WF_detailLabel2" left="0" top="95" width="1107" height="31"/>
+        <Static id="st_billYn" taborder="30" text="세금계산서발행여부" cssclass="sta_WF_detailLabel" left="0" top="95" width="125" height="31"/>
+        <Edit id="ed_billYn" taborder="31" readonly="true" left="130" top="100" width="142" height="21"/>
+        <Static id="st_crdSeq" taborder="32" text="카드순번" cssclass="sta_WF_detailLabel" left="0" top="65" width="125" height="31"/>
+        <Edit id="ed_crdSeq" taborder="33" readonly="true" left="130" top="70" width="142" height="21"/>
+        <Static id="st_cardNo" taborder="34" text="카드번호" cssclass="sta_WF_detailLabel" left="276" top="65" width="125" height="31"/>
+        <Edit id="ed_cardNo" taborder="35" readonly="true" left="406" top="70" width="142" height="21"/>
+        <Static id="st_accSeq" taborder="36" text="계좌순번" cssclass="sta_WF_detailLabel" left="0" top="35" width="125" height="31"/>
+        <Edit id="ed_accSeq" taborder="37" readonly="true" left="130" top="40" width="142" height="21"/>
+        <Static id="st_acctNo" taborder="38" text="계좌번호" cssclass="sta_WF_detailLabel" left="276" top="35" width="125" height="31"/>
+        <Edit id="ed_acctNo" taborder="39" readonly="true" left="407" top="40" width="142" height="21"/>
+        <Static id="st_bankNm" taborder="40" text="은행" cssclass="sta_WF_detailLabel" left="553" top="5" width="125" height="31"/>
+        <Edit id="ed_bankNm" taborder="41" readonly="true" left="683" top="10" width="142" height="21"/>
+        <Static id="st_cardcomNm" taborder="42" text="카드사" cssclass="sta_WF_detailLabel" left="829" top="5" width="125" height="31"/>
+        <Edit id="ed_cardcomNm" taborder="43" readonly="true" left="959" top="10" width="142" height="21"/>
+        <Static id="st_SumMonAmt" taborder="44" text="월렌탈료" cssclass="sta_WF_detailLabel" left="276" top="95" width="125" height="31"/>
+        <Edit id="ed_sumMonAmt" taborder="45" readonly="true" left="406" top="100" width="142" height="21"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_pay" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="payMthd" type="STRING" size="256"/>
+          <Column id="payDd" type="STRING" size="256"/>
+          <Column id="accSeq" type="STRING" size="256"/>
+          <Column id="bankNm" type="STRING" size="256"/>
+          <Column id="acctNo" type="STRING" size="256"/>
+          <Column id="crdSeq" type="STRING" size="256"/>
+          <Column id="cardcomNm" type="STRING" size="256"/>
+          <Column id="cardNo" type="STRING" size="256"/>
+          <Column id="accChk" type="STRING" size="256"/>
+          <Column id="accStat" type="STRING" size="256"/>
+          <Column id="bkeyChk" type="STRING" size="256"/>
+          <Column id="batchKey" type="STRING" size="256"/>
+          <Column id="billYn" type="STRING" size="256"/>
+          <Column id="sumMonAmt" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="ed_payMthd" propid="value" datasetid="ds_pay" columnid="payMthd"/>
+      <BindItem id="item1" compid="ed_payDd" propid="value" datasetid="ds_pay" columnid="payDd"/>
+      <BindItem id="item6" compid="ed_accChk" propid="value" datasetid="ds_pay" columnid="accChk"/>
+      <BindItem id="item7" compid="ed_accStat" propid="value" datasetid="ds_pay" columnid="accStat"/>
+      <BindItem id="item8" compid="ed_bkeyChk" propid="value" datasetid="ds_pay" columnid="bkeyChk"/>
+      <BindItem id="item9" compid="ed_batchKey" propid="value" datasetid="ds_pay" columnid="batchKey"/>
+      <BindItem id="item10" compid="ed_billYn" propid="value" datasetid="ds_pay" columnid="billYn"/>
+      <BindItem id="item4" compid="ed_crdSeq" propid="value" datasetid="ds_pay" columnid="crdSeq"/>
+      <BindItem id="item5" compid="ed_cardNo" propid="value" datasetid="ds_pay" columnid="cardNo"/>
+      <BindItem id="item2" compid="ed_accSeq" propid="value" datasetid="ds_pay" columnid="accSeq"/>
+      <BindItem id="item3" compid="ed_acctNo" propid="value" datasetid="ds_pay" columnid="acctNo"/>
+      <BindItem id="item11" compid="ed_bankNm" propid="value" datasetid="ds_pay" columnid="payMthd"/>
+      <BindItem id="item12" compid="ed_cardcomNm" propid="value" datasetid="ds_pay" columnid="payDd"/>
+      <BindItem id="item13" compid="ed_bankNm" propid="value" datasetid="ds_pay" columnid="bankNm"/>
+      <BindItem id="item14" compid="ed_cardcomNm" propid="value" datasetid="ds_pay" columnid="cardcomNm"/>
+      <BindItem id="item15" compid="ed_sumMonAmt" propid="value" datasetid="ds_pay" columnid="sumMonAmt"/>
+    </Bind>
+  </Form>
+</FDL>

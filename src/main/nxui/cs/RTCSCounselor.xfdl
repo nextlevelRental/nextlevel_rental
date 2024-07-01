@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSHappyCallCounselor" classname="RTCSHappyCallRegister" left="0" top="0" width="1147" height="496" titletext="해피콜상담사배정" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <Div id="Div00" taborder="1" text="Div00" left="0" top="0" height="45" cssclass="div_WF_searchBg" right="25">
+          <Layouts>
+            <Layout>
+              <Static id="Static03" taborder="26" text="배정여부" cssclass="sta_WF_schTitle" left="570" top="10" width="79" height="21"/>
+              <Combo id="Combo00" taborder="27" innerdataset="@dsBaeJungYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="637" top="10" width="140" height="21"/>
+              <Static id="Static00" taborder="19" text="상담유형" cssclass="sta_WF_schTitle" left="20" top="10" width="79" height="21"/>
+              <Static id="Static01" taborder="22" text="처리일자" cssclass="sta_WF_schTitle" left="257" top="10" width="79" height="21"/>
+              <Calendar id="Calendar02" taborder="34" dateformat="yyyy-MM-dd" left="440" top="10" width="100" height="21" value="null"/>
+              <Static id="Static07" taborder="35" text="~" left="428" top="10" width="9" height="21"/>
+              <Calendar id="Calendar01" taborder="36" dateformat="yyyy-MM-dd" left="325" top="10" width="100" height="21" value="null"/>
+              <Combo id="Combo01" taborder="41" innerdataset="@dsJobTp" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" onitemchanged="Combo00_onitemchanged" left="87" top="10" width="140" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static21" taborder="3" text="상담사리스트" cssclass="sta_WF_subTitle" left="0" top="61" width="103" height="20"/>
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="85" height="411" right="25" binddataset="dsList" left="0" autofittype="col" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="60"/>
+                <Column size="180"/>
+                <Column size="80"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="140"/>
+                <Column size="120"/>
+                <Column size="160"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox"/>
+                <Cell col="1" text="상담유형"/>
+                <Cell col="2" text="상담번호"/>
+                <Cell col="3" text="계약번호"/>
+                <Cell col="4" text="처리일자"/>
+                <Cell col="5" text="배정여부"/>
+                <Cell col="6" text="상담사"/>
+                <Cell col="7" text="배정일자"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:check" combodisplayrowcount="0"/>
+                <Cell col="1" text="bind:jobTpNm"/>
+                <Cell col="2" text="bind:callNo"/>
+                <Cell col="3" displaytype="text" edittype="readonly" text="bind:ordNo"/>
+                <Cell col="4" text="bind:jobDay"/>
+                <Cell col="5" text="bind:baejungYnNm"/>
+                <Cell col="6" text="bind:userIdNm"/>
+                <Cell col="7" text="bind:baejungDay"/>
+                <Cell col="8" text="bind:baejungDay"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static35" taborder="6" text="상담사" cssclass="sta_WF_schTitle" top="59" right="167" width="130" height="20"/>
+        <Edit id="jobNm" taborder="7" lengthunit="ascii" maxlength="20" top="59" right="101" width="140" height="21" enable="false"/>
+        <Button id="Button31" taborder="8" text="일괄적용" cssclass="btn_WF_module" top="58" right="25" width="71" height="22" onclick="Button31_onclick"/>
+        <Edit id="jobCd" taborder="9" lengthunit="ascii" maxlength="20" top="59" right="333" width="140" height="21" visible="false"/>
+        <Button id="Button00" taborder="10" cssclass="btn_WF_edtSch" left="1025" top="58" width="21" height="21" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="check" type="STRING" size="256"/>
+          <Column id="jobTp" type="STRING" size="256"/>
+          <Column id="jobTpNm" type="STRING" size="256"/>
+          <Column id="callNo" type="STRING" size="256"/>
+          <Column id="ordNo" type="STRING" size="256"/>
+          <Column id="jobDay" type="STRING" size="256"/>
+          <Column id="baejungYn" type="STRING" size="256"/>
+          <Column id="baejungYnNm" type="STRING" size="256"/>
+          <Column id="userId" type="STRING" size="256"/>
+          <Column id="userIdNm" type="STRING" size="256"/>
+          <Column id="baejungDay" type="STRING" size="256"/>
+          <Column id="servSeq" type="STRING" size="256"/>
+          <Column id="procInCd" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows/>
+      </Dataset>
+      <Dataset id="dsJobTp" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsBaeJungYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSCounselor.xfdl
+ * 설    명 : 해피콜 상담사배정
+ * 작 성 자 : 
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		--------
+ * ...			...			..
+ * 2019-04-05	wjim		[20190405_01] 상담사 일괄적용 시 상담유형 변경하지 않도록 수정
+ ***************************************************************************************************/
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.toDay  = "";
+
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	Ex.core.init(obj);
+	this.fn_init();
+	this.get_date();
+    this.parent.setButton("S|E|C", this);
+	//this.dsList.addRow();
+}
+
+//java comm에서 현재 날짜 가져오기
+this.get_date = function() 
+{
+	var sSvcID        	= "getDate";                    
+	var sController   	= "/rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+//콤보박스 세팅, readonly
+this.fn_init = function(){
+	var sSvcID      	= "initCombo";  
+	var sController   	= "/ntrms/cs/initCounselor.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsJobTp=output dsBaeJungYn=output2";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
+//답변
+this.Div00_answerNo_ontextchanged = function(obj:Edit,  e:nexacro.TextChangedEventInfo)
+{
+	var answerNo = nvl(this.Div00.answerNo.value);
+
+	var sSvcID        	= "answerList";            
+	var sController   	= "/ntrms/cs/answerList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsPram=output";
+	var sArgs 			= "answerNo="+answerNo;	
+	var fn_callBack		= "fn_callBack";
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+//조회
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var jobTp = 		nvl(this.Div00.Combo01.value); //상담유형
+	var jobDay1 = 		nvl(this.Div00.Calendar01.value); //처리일자FROM	
+	var jobDay2 = 		nvl(this.Div00.Calendar02.value); //처리일자TO
+	var baejungYn = 	nvl(this.Div00.Combo00.value); //배정여부
+
+	if(jobTp == "" || jobTp == null || jobTp.length == 0) {
+		alert("상담유형을 입력해주세요.");
+		return;
+	}
+	
+	var sSvcID        	= "searchList";             
+	var sController   	= "/ntrms/cs/counselorList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "dsList=output";
+	var sArgs 			= ""
+	var fn_callBack		= "fn_callBack";
+	
+	this.dsList.clearData();
+	
+	sArgs += Ex.util.setParam("jobTp", jobTp);
+	sArgs += Ex.util.setParam("jobDay1", jobDay1);
+	sArgs += Ex.util.setParam("jobDay2", jobDay2);
+	sArgs += Ex.util.setParam("baejungYn", baejungYn);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+
+	/***********************************************************************************
+	* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+	***********************************************************************************/
+
+	/* callBack함수 */
+	this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg)
+	{ 
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);				
+			return;
+		} 
+		if(strSvcId == "getDate") {
+			this.Div00.Calendar01.set_value(this.toDay);
+			this.Div00.Calendar02.set_value(this.toDay);
+		}
+		if (strSvcId == "searchList") 
+		{
+			
+			this.dsList.addColumn("check", "string", 256);
+			//alert(this.dsList.saveXML());
+			var cnt = this.dsList.getRowCount();
+			if( cnt <= 0) {
+				alert("조회된 데이터가 없습니다.");
+				return;
+			} else {
+				
+			}
+		}
+		if (strSvcId == "initCombo") {
+			//alert(this.useYn.getColumn(0, "cd"));
+			//this.Div00.cbo_useYn.set_index(0);
+			//this.Div00.questionTp.set_value("");
+		}		
+		
+		if (strSvcId == "saveData") {
+			alert(strErrorMsg);
+			this.dsList.clearData();
+		}
+	}
+//저장
+this.fn_save = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		var jobNm = this.jobNm.value;
+		if(jobNm == "" || jobNm == null || jobNm.length == 0) {
+			alert("상담사를 지정해주세요");
+			return;
+		}
+		
+		var cnt = this.dsList.rowcount;
+		for(var i = cnt; i >=0; i--) {
+			if(this.dsList.getColumn(i, "check")  == "1") {
+				var userId = this.dsList.getColumn(i, "userId");;
+				if(userId == "" || userId == null || userId.length == 0) {
+					alert("상담사를 지정해주세요");
+					return;
+				}
+			}
+		}
+		
+		
+		var sSvcID        	= "saveData";
+		var sController   	= "/ntrms/cs/counselorSaveDaset.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		= "input=dsList:U";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";
+
+		Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}
+
+
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.Grid00);
+}
+
+//검색 시 Enter키 이벤트 처리
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo)
+{
+	if ( e.keycode == 13 )
+	{
+		this.fn_search();
+	}
+}
+
+//일괄적용버튼
+this.Button31_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var jobNm = this.jobNm.value;
+	var jobCd = this.jobCd.value;
+	var cnt = this.dsList.rowcount;
+	var checkCnt = 0;
+	for(var i = cnt; i >=0; i--) {
+		if(this.dsList.getColumn(i, "check")  == "1") {		
+			this.dsList.setColumn(i, "userIdNm", jobNm);
+			this.dsList.setColumn(i, "userId", jobCd);
+			//this.dsList.setColumn(i, "jobTp", this.Div00.Combo01.value); //[20190405_01]에 의해 주석처리
+			this.dsList.setColumn(i, "baejungYn", "Y");
+			this.dsList.setColumn(i, "baejungDay", this.toDay);
+			checkCnt++;
+		}
+	}
+	
+	if(checkCnt == 0) {
+		alert("선택해주세요.");
+	}
+}
+
+this.Button00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	var args ={p_arg:"RTCSCounselor",
+			   p_userGrp:"02" };
+	Ex.core.popup(this,"listUser","comm::RTCOMMUser_pop.xfdl",args, "modaless=false");
+}
+//사용자 리턴
+this.returnUserInfo = function(arr) {
+	var	cd = arr[0].getColumn(0, "userId");
+	var cdNm = arr[0].getColumn(0, "userNm");
+	
+	this.jobCd.set_value(cd);
+	this.jobNm.set_value(cdNm);
+}
+
+	this.fn_excel = function(obj:Button,  e:nexacro.ClickEventInfo)
+	{
+		Ex.core.exportExcel(this, this.Grid00, "리스트");
+	}]]></Script>
+  </Form>
+</FDL>

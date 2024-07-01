@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CrdTranDAO">
+	<!--카드이체 조회(계약번호별 내역조회)  -->
+	<resultMap id="sRtre0080OrdNoResultMap" class="java.util.HashMap">
+		<result property="rcrdDay"  	column="RCRD_DAY" />	<!-- 카드이체일자 -->
+		<result property="ordNo"  		column="ORD_NO" />		<!-- 계약번호 -->
+		<result property="custNo"  		column="CUST_NO" />		<!-- 고객번호 -->
+		<result property="custNm"  		column="CUST_NM" />		<!-- 고객명 -->
+		<result property="rcrdAmt"  	column="RCRD_AMT" />	<!-- 카드이체요청금액 -->
+		<result property="recpAmt"  	column="RECP_AMT" />	<!-- 수납금액 -->
+		<result property="crercd"  		column="CRERCD" />		<!-- 카드이체 오류코드 -->
+		<result property="crernm"  		column="CRERNM" />		<!-- 카드이체 오류코드명 -->
+		<result property="cardcomCd"  	column="CARDCOM_CD" />	<!-- 카드사코드 -->
+		<result property="cardcomNm"  	column="CARDCOM_NM" />	<!-- 카드사명-->
+		<result property="cardNo"  		column="CARD_NO" />		<!--카드번호-->
+		<result property="rqstStat" 	column="RQST_STAT" />	<!-- 카드이체 상태 -->
+		<result property="rqstStatNm" 	column="RQST_STAT_NM" /><!-- 카드이체 상태명 -->
+		<result property="rcrdSeq"  	column="RCRD_SEQ" />	<!-- 카드이체 일련번호 -->
+		<result property="recvSeq"  	column="RECV_SEQ" />	<!-- 수납거래번호 -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="sRtre0080OrdNoListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0080OrdNoResultMap" />	
+		<parameter property="rcrdDayF"  jdbcType="VARCHAR" mode="IN" />	<!--카드이체일자FROM -->
+		<parameter property="rcrdDayT"  jdbcType="VARCHAR" mode="IN" />	<!--카드이체일자TO   -->
+		<parameter property="ordNo"     jdbcType="VARCHAR" mode="IN" />	<!--계약번호              -->
+		<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" />	<!--고객번호              -->
+		<parameter property="rqstStat"  jdbcType="VARCHAR" mode="IN" />	<!--이체상태              -->
+	</parameterMap>
+	<procedure id="Pkg_Rtre0080.sRtre0080OrdNoList" parameterMap="sRtre0080OrdNoListParam">
+		{call
+		Pkg_Rtre0080.p_sRtre0080CrdTranByOrdNo(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!--카드이체 조회(카드사별 내역조회)  -->	
+	<resultMap id="sRtre0080CardResultMap" class="java.util.HashMap">
+		<result property="rcrdDay"  	column="RCRD_DAY" />	<!-- 카드이체일자 -->
+		<result property="cardcomCd"  	column="CARDCOM_CD" />	<!-- 카드사코드 -->
+		<result property="cardcomNm"  	column="CARDCOM_NM" />	<!-- 카드사명-->
+		<result property="reqstCnt"  	column="REQST_CNT" />	<!-- 청구건수-->
+		<result property="reqstAmt"  	column="REQST_AMT" />	<!-- 청구금액-->
+		<result property="srecpCnt"  	column="SRECP_CNT" />	<!-- 정상출금건수-->
+		<result property="srecpAmt"  	column="SRECP_AMT" />	<!-- 정상출금금액-->
+		<result property="hsrcpCnt"  	column="HSRCP_CNT" />	<!-- 부분출금건수-->
+		<result property="hsrcpAmt"  	column="HSRCP_AMT" />	<!-- 부분출금금액-->
+		<result property="trecpAmt"  	column="TRECP_AMT" />	<!-- 출금금액합계-->
+		<result property="erecpCnt"  	column="ERECP_CNT" />	<!-- 오류건수-->
+		<result property="feeAmt"  		column="FEE_AMT" />		<!-- 수수료-->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="sRtre0080CardListParam">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="sRtre0080CardResultMap" />	
+		<parameter property="rcrdDayF"  jdbcType="VARCHAR" mode="IN" />	<!--카드이체일자FROM -->
+		<parameter property="rcrdDayT"  jdbcType="VARCHAR" mode="IN" />	<!--카드이체일자TO   -->
+	</parameterMap>
+	<procedure id="Pkg_Rtre0080.sRtre0080CardList" parameterMap="sRtre0080CardListParam">
+		{call
+		Pkg_Rtre0080.p_sRtre0080CrdTranByCard(?, ?, ?)}
+	</procedure>		
+	
+	<!-- 카드이체 대상집계-->
+	<parameterMap class="java.util.Map" id="crdTranAggParam">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--요청일자             -->
+		<parameter property="stdexDd"		jdbcType="VARCHAR" mode="IN" />      <!--결제일이체기준    -->
+		<!-- <parameter property="pydmaYn"		jdbcType="VARCHAR" mode="IN" /> -->      <!--제외건존재여부    -->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디        -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="crdTran.crdTranAggregate" parameterMap="crdTranAggParam">
+		{call Pkg_Rtre0099.p_CreateRtre0099CardTrans(?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- 카드이체 대상조회 -->
+	<resultMap id="crdTranTargetResultMap" class="java.util.HashMap">	
+		<result property="rcrdDay"  	column="RCRD_DAY" />		<!--카드이체 일자         -->
+		<result property="cardcomCd"  	column="CARDCOM_CD" />	    <!--카드사코드            	-->
+		<result property="cardcomNm"  	column="CARDCOM_NM" />	    <!--카드사명  		-->
+		<result property="rqstStat"   	column="RQST_STAT" />		<!--이체 상태            	-->
+		<result property="rqstStatNm" 	column="RQST_STAT_NM" />	<!--이체 상태명           	-->
+		<result property="rqcnt"  		column="RQCNT" />	      	<!--신청건수		-->
+		<result property="rqAmt"  		column="RQAMT" />	    	<!--카드이체요청금액   -->
+		<result property="feeAmt"  		column="FEE_AMT" />		<!-- 수수료-->
+	</resultMap>	
+	<parameterMap class="java.util.Map" id="crdTranTargetParam"> 
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="crdTranTargetResultMap" />   
+		<parameter property="rcrdDay"   	jdbcType="VARCHAR" mode="IN" /><!-- 카드이체일자 -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>		
+	<procedure id="crdTran.listCrdTranTarget" parameterMap="crdTranTargetParam">
+		{call
+		Pkg_Rtre0080.p_sRtre0080CrdTranTargetList(?, ?, ?, ?, ?)}
+	</procedure>		
+	
+	<!-- 계좌신청 결과파일반영-->
+	<parameterMap class="java.util.Map" id="crdTranResultFileMakeParam">
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--요청일자     -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="fileTp"		jdbcType="VARCHAR" mode="IN" />   	 <!--송수신 파일구분	-->		
+		<parameter property="fileData"		jdbcType="CLOB"    mode="IN" />      <!--파일데이터      -->
+
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />   <!--등록자아이디   	-->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="crdTran.crdMakeFileData" parameterMap="crdTranResultFileMakeParam">
+		{call  Pkg_Rtre0098.p_InsertRtre0098FileParsingC(?, ?, ?, ?,
+														 ?, ?, ? ,?)}
+	</procedure>	
+	
+	<!-- 카드이체수납처리 -->
+	<parameterMap class="java.util.Map" id="crdTranReceiptParam">
+		<parameter property="rcrdDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--카드이체일       		-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--등록자아이디          	-->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>	
+	<procedure id="crdTran.crdTranReceipt" parameterMap="crdTranReceiptParam">
+		{call Pkg_Rtre0080.p_CreateRtre0080CardReceive(?, ?, ?,	?,	?)}
+	</procedure>		
+	
+	<!-- 카드이체 파일 생성-->
+	<resultMap id="crdTraMakeResultMap" class="java.util.HashMap">
+		<result property="rqstDay"  column="RQST_DAY" />
+		<result property="fileNm"  	column="FILE_NM" />
+		<result property="rowSeq"  	column="ROW_SEQ" />
+		<result property="fileTp"  	column="FILE_TP" />
+		<result property="fileSeq"  column="FILE_SEQ" />
+		<result property="rowData"  column="ROW_DATA" />
+		<result property="delYn"  	column="DEL_YN" />
+		<result property="regId"  	column="REG_ID" />
+		<result property="regDt"  	column="REG_DT" />
+		<result property="chgId"  	column="CHG_ID" />
+		<result property="chgDt"  	column="CHG_DT" />
+	</resultMap>		
+	<parameterMap class="java.util.Map" id="crdTranMakeParam">
+		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="crdTraMakeResultMap" />	
+		<parameter property="rqstDay" 		jdbcType="VARCHAR" mode="IN" />	     <!--요청일자     -->
+		<parameter property="fileNm"		jdbcType="VARCHAR" mode="IN" />      <!--파일명            -->
+		<parameter property="fileTp"		jdbcType="VARCHAR" mode="IN" />      <!--송수신 파일구분-->
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" />      <!--사용자아이디   -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="crlfYn" 		jdbcType="VARCHAR" mode="OUT" />	 <!-- CRLF여부   -->
+	</parameterMap>		
+	<procedure id="crdTran.crdTranMakeData" parameterMap="crdTranMakeParam">
+		{call  Pkg_Rtre0098.p_InsertRtre0098CardTrans(?, ?, ?,	?,	?,	?,	?, ?, ?)}
+	</procedure>	
+	
+	<!-- 카드이체결과반영 여부 확인 -->
+	<resultMap id="resultCrdTranEnd" class="java.util.HashMap"/>
+	
+	<parameterMap id="paramCrdTranEnd" class="java.util.Map">
+		<parameter property="result" 		jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="resultCrdTranEnd" />
+		<parameter property="rcrdDay"     	jdbcType="VARCHAR" mode="IN"  />
+	</parameterMap>
+	
+	<procedure id="crdTran.crdTranEnd" parameterMap="paramCrdTranEnd">
+		{call ? := Pkg_Rtre0080.f_sRtre0080ResultCount(?)}
+	</procedure>
+				
+				
+</sqlMap>
+
+

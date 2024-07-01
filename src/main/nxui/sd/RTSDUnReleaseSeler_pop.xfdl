@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDUnReleaseSeler_pop" classname="test_form" left="0" top="0" width="400" height="400" titletext="미반영판매자" onload="form_onload" style="color:#333333ff;">
+    <Layouts>
+      <Layout>
+        <Static id="Static01" taborder="13" cssclass="Guide_color" visible="false" top="0" width="10" right="0" bottom="0"/>
+        <Static id="Static00" taborder="14" text="FIX h20" cssclass="Guide_color" visible="false" left="10" top="0" height="20" style="background:aqua;color:#333333ff;" right="10"/>
+        <Static id="st_unRlsSelerList" taborder="15" text="검색결과" cssclass="sta_WF_subTitle" left="10" top="16" width="81" height="20"/>
+        <Static id="Static02" taborder="16" text="FIX h10" cssclass="Guide_color" visible="false" left="10" top="31" right="10" height="10" style="background:aqua;color:#333333ff;"/>
+        <Grid id="grd_unRlsSelerList" taborder="1" binddataset="ds_unRlsSelerList" useinputpanel="false" left="10" top="37" nodatatext="조회된 데이터가 없습니다." autofittype="col" right="10" height="322">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="175"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="그룹"/>
+                <Cell col="1" text="판매점코드"/>
+                <Cell col="2" text="판매점명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:groupNm"/>
+                <Cell col="1" text="bind:agencyCd"/>
+                <Cell col="2" style="align:left middle;" text="bind:agencyNm"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_excel" taborder="0" text="엑셀" cssclass="btn_WF_CRUD" top="10" height="22" visible="true" width="45" right="10" onclick="btn_excel_onclick"/>
+        <Static id="Static03" taborder="59" cssclass="Guide_color" visible="false" top="0" width="10" left="0" bottom="0"/>
+        <Static id="Static04" taborder="60" text="FIX h10" cssclass="Guide_color" visible="false" left="10" right="10" height="10" style="background:aqua;color:#333333ff;" top="390"/>
+        <Button id="btn_close" taborder="61" text="닫기" onclick="btn_close_onclick" right="10" width="41" height="21" domainId="nexa.add" top="369"/>
+        <Static id="Static05" taborder="62" text="FIX h10" cssclass="Guide_color" visible="false" left="10" right="10" height="10" style="background:aqua;color:#333333ff;" top="359"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_unRlsSelerList" firenextcount="0" useclientlayout="true">
+        <ColumnInfo>
+          <Column id="groupNm" type="STRING" size="256"/>
+          <Column id="agencyCd" type="STRING" size="256"/>
+          <Column id="agencyNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************
+ * 01. 업무구분	: 미반영판매자 팝업
+ * 02. 그룹명		: RTSDUnReleaseSeler_pop.xfdl
+ * 03. 그룹설명	: 
+ * 04. 작성일		: 2019-02-11
+ * 05. 작성자		: 노창호
+ * 06. 수정이력	: 
+ ***********************************************************************
+ *		수정일			작성자		내용
+ ***********************************************************************
+ *		2019-02-11		노창호		최초작성
+ ***********************************************************************/
+
+/***********************************************************************
+ * Script Include
+ ***********************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.agencyGbn = this.parent.agencyGbn;
+this.groupNm   = this.parent.groupNm;
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ***********************************************************************/
+
+/***********************************************************************************
+ * Form Load Common Function
+ ***********************************************************************************/
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	
+	this.fn_init();
+}
+
+/**
+ * 화면 초기화
+ */
+this.fn_init = function() {
+	/* 미반영판매자 조회 */
+	this.fn_retrieveUnRlsSelerList();
+}
+
+/***********************************************************************************
+ * Transaction Function
+ ***********************************************************************************/
+
+/**
+ * 미반영판매자 조회
+ */
+this.fn_retrieveUnRlsSelerList = function() {
+	this.ds_unRlsSelerList.clearData();
+	
+	var sSvcID		 = "retrieveUnRlsSelerList";
+	var sController	 = "ntrms/sd/retrieveUnRlsSelerList.do";
+	var sInDatasets	 = "";
+	var sOutDatasets = "ds_unRlsSelerList=dsunRlsSelerList";
+	var sArgs		 = "";
+		sArgs		+= Ex.util.setParam("agencyGbn", this.agencyGbn);
+	var fn_callBack	 = "fn_callBack";
+	
+	Ex.core.tran(this, sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+ * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+ ***********************************************************************************/
+this.fn_callBack = function(strSvcId, nErrorCode, strErrorMsg) {
+	if(nErrorCode < 0) {
+		return Ex.core.comMsg("alert", strErrorMsg);
+	}
+	
+	var div = this.div_payment;
+	
+	switch(strSvcId) {
+		/* 미반영판매자 조회 */
+		case "retrieveUnRlsSelerList":
+			var ds = this.ds_unRlsSelerList;
+			
+			if(ds.getRowCount() == 0) {
+				this.alert("조회된 데이터가 없습니다.");
+			}
+			
+			for(var i = 0; i < ds.rowcount; i++) {
+				ds.setColumn(i, "groupNm", this.groupNm);
+			}
+			break;
+		
+		default:
+			break;
+	}
+}
+
+/***********************************************************************************
+ * User Function
+ ***********************************************************************************/
+
+/***********************************************************************************
+ * Component Event & Function
+ ***********************************************************************************/
+/**
+ * 엑셀
+ */
+this.btn_excel_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	Ex.core.exportExcel(this, this.grd_unRlsSelerList, "미반영판매자", "미반영판매자");
+}
+
+/**
+ * 닫기
+ */
+this.btn_close_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
+	this.close();
+}]]></Script>
+  </Form>
+</FDL>

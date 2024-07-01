@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="ExcelImportPopup" classname="ExcelImportPopup" left="0" top="0" width="500" height="600" titletext="excel-import popup" onload="ExcelImportPopup_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_step1" taborder="0" left="0" top="0" width="500" height="600" visible="false"/>
+        <Div id="div_step2" taborder="1" left="0" top="0" width="500" height="600" visible="false"/>
+        <Div id="div_step3" taborder="2" left="0" top="0" width="500" height="600" visible="false"/>
+        <ImageViewer id="img_loading" taborder="3" visible="false" left="159" top="150" width="200" height="60" style="background:transparent URL('Images::fileUpDownload/loading.gif');border:1 solid darkgray ;bordertype:round 5 5 ;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.0"><![CDATA[
+//excel import data를 적용할 대상 component
+this.targetGrid;
+this.targetDataset;
+this.importDatasetList= []; //excel import시 sheet에 해당하는 dataset이 보관용
+this.cellLine = "1 solid #808080ff";
+
+this.ExcelImportPopup_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	//부모form에서 전달받은 arguments를 가져온다.Get arguments that's a given from parent.
+	var args = Eco.XComp.getPopupArguments(this, ["targetGrid", "targetDataset"]);
+	this.targetGrid = args["targetGrid"];
+	this.targetDataset = args["targetDataset"];
+	
+	this.div_step1.set_url("Example::ExcelImportStep1.xfdl");
+	//this.div_step2.set_url("Example::ExcelImportStep2.xfdl");
+	//this.div_step3.set_url("Example::ExcelImportStep3.xfdl");
+
+}
+
+
+//loading-image display or not.
+this.setDisplayLoadingImage = function(value)
+{
+	if (value && !this.img_loading.visible)
+	{
+		var topform = Eco.XComp.getTopLevelForm(this);
+		var l = Math.round((topform.getOffsetWidth() - this.img_loading.getOffsetWidth())/2);
+		var t = Math.round((topform.getOffsetHeight() - this.img_loading.getOffsetHeight())/2);
+		
+		this.img_loading.move(l, t, this.img_loading.getOffsetWidth(), this.img_loading.getOffsetHeight());
+		this.img_loading.set_visible(true);
+		
+	} else {
+	
+		this.img_loading.set_visible(false);
+	}
+}]]></Script>
+  </Form>
+</FDL>

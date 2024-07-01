@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="cardReqDAO">
+
+
+	<parameterMap class="java.util.Map" id="p_IUDRtre0022">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ccertDay" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="ccertSeq" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="cardNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="expireYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ownerNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ebirDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ccertId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="emailAddr" 	jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="bkeyChk" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cardcomCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="batchKey" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="res_cd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="res_msg" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtre0022_U">
+		<parameter property="dvsn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ccertDay" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="ccertSeq" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="cardNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="expireYm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ownerNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custTp" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ebirDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="buslNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ccertId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="emailAddr" 	jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="bkeyChk" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="cardcomCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="batchKey" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="res_cd" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="res_msg" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC"  mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="cardReqDAO.saveCardBatch" parameterMap="p_IUDRtre0022">
+		{call Pkg_Rtre0022.p_IUDRtre0022(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<procedure id="cardReqDAO.saveCardBatchResult" parameterMap="p_IUDRtre0022_U">
+		{call Pkg_Rtre0022.p_IUDRtre0022(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	<parameterMap class="java.util.Map" id="existsCmsInterfaceParams"> 
+		<parameter property="vcursor"   		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="existsCmsInterfaceResult" />   
+		<parameter property="acertDay"     		jdbcType="VARCHAR" mode="IN" /> 
+		<parameter property="bankCd"     	 	jdbcType="VARCHAR" mode="IN" /> 
+		<parameter property="acctCd"     		jdbcType="VARCHAR" mode="IN" /> 
+		<parameter property="userType"      	jdbcType="VARCHAR" mode="IN" /> 
+		<parameter property="bizNo"     		jdbcType="VARCHAR" mode="IN" /> 
+	</parameterMap>
+	
+	<resultMap id="existsCmsInterfaceResult" class="java.util.HashMap">
+		<result property="returnCode"  		column="ACERT_ERRCD" />	
+	</resultMap>
+	
+	<procedure id="cardReqDAO.existsCmsInterface" parameterMap="existsCmsInterfaceParams">
+		{call Pkg_Rtre0012.p_sRtre0012TodayExistsCmsInfo(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>
+
+

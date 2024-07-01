@@ -1,0 +1,292 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="bubble" classname="EcoChartSample" left="0" top="0" width="1024" height="723" titletext="bubble" style="background:#ffffffff;" onload="StackBarSample_onload">
+    <Layouts>
+      <Layout>
+        <Static id="st_male" taborder="18" top="37" height="20" width="111" right="198" style="align:right middle;"/>
+        <Static id="st_female" taborder="19" top="37" height="20" width="94" right="29" style="align:right middle;"/>
+        <Static id="Static01" taborder="22" text="Bubble Chart" cssclass="WF_sta_Title" left="1.95%" top="10" right="4.69%" height="47"/>
+        <Grid id="Grid00" taborder="25" binddataset="ds_bubble" useinputpanel="false" left="1.95%" top="527" right="4.69%" height="168">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="175"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="category"/>
+                <Cell col="1" text="pointX0"/>
+                <Cell col="2" text="pointY0"/>
+                <Cell col="3" text="value0"/>
+                <Cell col="4" text="pointX1"/>
+                <Cell col="5" text="pointY1"/>
+                <Cell col="6" text="value1"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:category"/>
+                <Cell col="1" edittype="normal" text="bind:pointX0"/>
+                <Cell col="2" edittype="normal" text="bind:pointY0"/>
+                <Cell col="3" edittype="normal" text="bind:value0"/>
+                <Cell col="4" edittype="normal" text="bind:pointX1"/>
+                <Cell col="5" edittype="normal" text="bind:pointY1"/>
+                <Cell col="6" edittype="normal" text="bind:value1"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <EcoChart id="ecochart" left="1.95%" top="67" right="14.06%" height="444" style="background:#ffffffff;border:0 solid #808080ff ;bordertype:round 15 15 ;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_bubble" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="category" type="STRING" size="256"/>
+          <Column id="pointX0" type="FLOAT" size="256"/>
+          <Column id="pointY0" type="FLOAT" size="256"/>
+          <Column id="value0" type="FLOAT" size="256"/>
+          <Column id="pointX1" type="FLOAT" size="256"/>
+          <Column id="pointY1" type="FLOAT" size="256"/>
+          <Column id="value1" type="FLOAT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="category">1</Col>
+            <Col id="pointX0">9</Col>
+            <Col id="pointY0">81</Col>
+            <Col id="value0">63</Col>
+            <Col id="pointX1">47</Col>
+            <Col id="pointY1">60</Col>
+            <Col id="value1">20</Col>
+          </Row>
+          <Row>
+            <Col id="category">2</Col>
+            <Col id="pointX0">98</Col>
+            <Col id="pointY0">5</Col>
+            <Col id="value0">10</Col>
+            <Col id="pointX1">6</Col>
+            <Col id="pointY1">18</Col>
+            <Col id="value1">4</Col>
+          </Row>
+          <Row>
+            <Col id="category">3</Col>
+            <Col id="pointX0">51</Col>
+            <Col id="pointY0">50</Col>
+            <Col id="value0">73</Col>
+            <Col id="pointX1">15</Col>
+            <Col id="pointY1">93</Col>
+            <Col id="value1">55</Col>
+          </Row>
+          <Row>
+            <Col id="category">4</Col>
+            <Col id="pointX0">22</Col>
+            <Col id="pointY0">22</Col>
+            <Col id="value0">14</Col>
+            <Col id="pointX1">72</Col>
+            <Col id="pointY1">44</Col>
+            <Col id="value1">90</Col>
+          </Row>
+          <Row>
+            <Col id="category">5</Col>
+            <Col id="pointX0">58</Col>
+            <Col id="pointY0">24</Col>
+            <Col id="value0">20</Col>
+            <Col id="pointX1">80</Col>
+            <Col id="pointY1">76</Col>
+            <Col id="value1">22</Col>
+          </Row>
+          <Row>
+            <Col id="category">6</Col>
+            <Col id="pointX0">78</Col>
+            <Col id="pointY0">37</Col>
+            <Col id="value0">34</Col>
+            <Col id="pointX1">11</Col>
+            <Col id="pointY1">74</Col>
+            <Col id="value1">96</Col>
+          </Row>
+          <Row>
+            <Col id="pointX0">55</Col>
+            <Col id="category">7</Col>
+            <Col id="pointY0">56</Col>
+            <Col id="value0">53</Col>
+            <Col id="pointX1">88</Col>
+            <Col id="pointY1">13</Col>
+            <Col id="value1">60</Col>
+          </Row>
+          <Row>
+            <Col id="category">8</Col>
+            <Col id="pointX0">18</Col>
+            <Col id="pointY0">45</Col>
+            <Col id="value0">70</Col>
+            <Col id="pointX1">30</Col>
+            <Col id="pointY1">47</Col>
+            <Col id="value1">49</Col>
+          </Row>
+          <Row>
+            <Col id="category">9</Col>
+            <Col id="pointX0">42</Col>
+            <Col id="pointY0">80</Col>
+            <Col id="pointX1">57</Col>
+            <Col id="value0">50</Col>
+            <Col id="pointY1">62</Col>
+            <Col id="value1">12</Col>
+          </Row>
+          <Row>
+            <Col id="category">10</Col>
+            <Col id="pointX0">3</Col>
+            <Col id="pointY0">52</Col>
+            <Col id="value0">59</Col>
+            <Col id="pointX1">4</Col>
+            <Col id="pointY1">16</Col>
+            <Col id="value1">16</Col>
+          </Row>
+          <Row>
+            <Col id="category">11</Col>
+            <Col id="pointX0">31</Col>
+            <Col id="pointY0">18</Col>
+            <Col id="value0">97</Col>
+            <Col id="pointX1">52</Col>
+            <Col id="pointY1">10</Col>
+            <Col id="value1">33</Col>
+          </Row>
+          <Row>
+            <Col id="category">12</Col>
+            <Col id="pointX0">79</Col>
+            <Col id="pointY0">91</Col>
+            <Col id="value0">63</Col>
+            <Col id="pointX1">22</Col>
+            <Col id="pointY1">87</Col>
+            <Col id="value1">89</Col>
+          </Row>
+          <Row>
+            <Col id="category">13</Col>
+            <Col id="pointX0">93</Col>
+            <Col id="pointY0">23</Col>
+            <Col id="value0">50</Col>
+            <Col id="pointX1">70</Col>
+            <Col id="pointY1">91</Col>
+            <Col id="value1">82</Col>
+          </Row>
+          <Row>
+            <Col id="category">14</Col>
+            <Col id="pointX0">50</Col>
+            <Col id="pointY0">83</Col>
+            <Col id="value0">77</Col>
+            <Col id="pointX1">45</Col>
+            <Col id="pointY1">15</Col>
+            <Col id="value1">98</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[
+var chart;
+
+this.StackBarSample_onload = function(obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.drawChart();
+}
+
+
+this.drawChart = function()
+{
+	if (!chart)
+	{
+		var config = {
+			"type": "Basic",
+			"chart": {
+				"id": "bubble chart",
+				"bindDataset": "ds_bubble",
+				"bindCategory": "category"
+			},
+			"valueAxis": [
+				{
+					"id": "ValueAxis X1",
+					"position": "bottom",
+					"autoscaleMargin": 0.1
+				},
+				{
+					"id": "ValueAxis Y2",
+					"position": "left",
+					"tickLength": 10,
+					"autoscaleMargin": 0.15
+				}
+			],
+			"series": [
+				{
+					"id": "Series 1",
+					"bindX": "pointX0",
+					"bindY": "pointY0",
+					"bindValue": "value0",
+					"xaxis": "ValueAxis X1",
+					"yaxis": "ValueAxis Y2",
+					"showBubble": true,
+					"bubbleFillGradation": "radial 5,0 white 80,0 #1a7fbe",
+					"bubbleColor": "#1a7fbe",
+					"showHighLight": true
+				},
+				{
+					"id": "Series 2",
+					"bindX": "pointX1",
+					"bindY": "pointY1",
+					"bindValue": "value1",
+					"xaxis": "ValueAxis X1",
+					"yaxis": "ValueAxis Y2",
+					"showBubble": true,
+					"bubbleFillGradation": "radial 5,0 white 80,0 orange",
+					"bubbleColor": "orange",
+					"showHighLight": true
+				}
+			],
+			"legend": {
+				"position": "bottom",
+				"valign": "bottom",
+				"align": "center",
+				"autoMargins": false,
+				"marginBottom": 20,
+				"marginRight": 20,
+				"labelFontSize": 10,
+				"labelFontType": "bold",
+				"spacing": 50,
+				"markerSize": 16,
+				"markerType": "circle",
+				"switchable": false
+			},
+			"tooltip": {
+				"text": "value: [%value]",
+				"fontFace": "Meiryo UI",
+				"fontSize": 10,
+				"fontType": "bold",
+				"fontColor": "#ffffff",
+				"borderWidth": 1,
+				"borderStyle": "solid",
+				"borderColor": "#717a83",
+				"color": "#717a83cc",
+				"opacity": 1,
+				"hookWidth": 10,
+				"hookHeight": 10,
+				"offsetX": 0,
+				"offsetY": 20
+			}
+		};
+	
+		this.ecochart.set_config(config);
+	}
+	
+	chart = this.ecochart.getChart();
+
+	this.ecochart.draw();
+}
+
+]]></Script>
+  </Form>
+</FDL>

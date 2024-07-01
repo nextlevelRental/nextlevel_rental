@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTCSEngineOilRep">
+
+
+	
+	<parameterMap id="p_sRtcm0060firstDay" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_sRtcm0060firstDay" />
+		<parameter property="toDay" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_sRtcm0060firstDay" class="java.util.HashMap"/>
+	<procedure id="rTCSEngineOilRep.selectServrqDay" parameterMap="p_sRtcm0060firstDay">
+		{call ? := Pkg_Rtcm0060.f_sRtcm0060firstDay(?)}
+	</procedure>
+	
+	
+	<parameterMap id="p_sRtcm0060firstDayByTerm" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_sRtcm0060firstDayByTerm" />
+		<parameter property="toDay" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="term"  	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_sRtcm0060firstDayByTerm" class="java.util.HashMap"/>
+	<procedure id="rTCSEngineOilRep.selectServrqDayByTerm" parameterMap="p_sRtcm0060firstDayByTerm">
+		{call ? := Pkg_Rtcm0060.f_sRtcm0060firstDayByTerm(?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_sRtcm0060EngineOilFirstDay" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_sRtcm0060EngineOilFirstDay" />
+		<parameter property="period" 	jdbcType="NUMBER" mode="IN" />
+		<parameter property="toDay" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="p_sRtcm0060EngineOilFirstDay" class="java.util.HashMap"/>
+	<procedure id="rTCSEngineOilRep.selectEngineOilServrqDay" parameterMap="p_sRtcm0060EngineOilFirstDay">
+		{call ? := Pkg_Rtcm0060.f_sRtcm0060AfterDay(?, ?)}
+	</procedure>
+	
+	<resultMap id="rSRtcs0009SelectOrderList" class="java.util.HashMap">
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="custNo" 		column="CUST_NO" 	/>
+		<result property="custNm" 		column="CUST_NM" 	/>
+  	 	<result property="matCd" 		column="MAT_CD" 	/>
+		<result property="matNm" 		column="MAT_NM" 	/>	
+		<result property="cntCd" 		column="CNT_CD" 	/>
+		<result property="periodCd" 	column="PERIOD_CD" 	/>
+		<result property="makerCd" 		column="MAKER_CD" 	/>
+		<result property="makerNm" 		column="MAKER_NM" 	/>
+		<result property="modelCd" 		column="MODEL_CD" 	/>
+		<result property="modelNm" 		column="MODEL_NM" 	/>
+		<result property="carNo" 		column="CAR_NO" 	/>
+		<result property="carOwner" 	column="CAR_OWNER" 	/>
+		<result property="servCnt0" 	column="SERV_CNT0" 	/>
+		<result property="ordDay" 		column="ORD_DAY" 	/>
+		<result property="procDay" 		column="PROC_DAY" 	/>
+		<result property="posCd" 		column="POS_CD" 	/>
+		<result property="addr1" 		column="ADDR1" 		/>
+		<result property="addr2" 		column="ADDR2" 		/>
+		<result property="mobNo" 		column="MOB_NO" 	/>
+		<result property="dlvrYn" 		column="DLVR_YN" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 	/>
+		<result property="dlvrSeq" 		column="DLVR_SEQ" 	/>
+		<result property="fuelCd" 		column="FUEL_CD" 	/>
+		<result property="fuelNm" 		column="FUEL_NM" 	/>
+		<result property="yrmlCd" 		column="YRML_CD" 	/>
+		<result property="yrmlNm" 		column="YRML_NM" 	/>
+		<result property="dsplmtCd" 	column="DSPLMT_CD" 	/>
+		<result property="dsplmtNm" 	column="DSPLMT_NM" 	/>
+		<result property="dlvGb" 		column="DLV_GB" 	/>
+		<result property="dlvgbNm" 		column="DLVGB_NM" 	/>
+		<result property="agencyCd" 	column="AGENCY_CD" 	/>
+		<result property="agencyNm" 	column="AGENCY_NM" 	/>
+		<result property="servrqDay" 	column="SERVRQ_DAY" />
+		<result property="consignee" 	column="CONSIGNEE" 	/>
+		<result property="dlvposCd" 	column="DLVPOS_CD" 	/>
+		<result property="dlvAddr1" 	column="DLV_ADDR1" 	/>
+		<result property="dlvAddr2" 	column="DLV_ADDR2" 	/>
+		<result property="dlvTel" 		column="DLV_TEL" 	/>
+		<result property="dlvDesc" 		column="DLV_DESC" 	/>
+		<result property="dlvStat" 		column="DLV_STAT" 	/>
+		<result property="dlvstatNm" 	column="DLVSTAT_NM" />
+		<result property="apprAmt" 		column="APPR_AMT" />
+		<result property="carId" 		column="CAR_ID" />
+	</resultMap>
+	<parameterMap id="pSRtcs0009SelectOrderList" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0009SelectOrderList" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.selectRTCSEngineOilRepSer" parameterMap="pSRtcs0009SelectOrderList">
+		{call Pkg_Rtcs0009.p_sRtcs0009SelectOrderList(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+	<!-- [2019-00359563] O2O 관련 항목추가 -->
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0009"> 
+		<parameter property="dvsn"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrSeq"		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servSeq"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvStat"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fuelCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="yrmlCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dsplmtCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvGb"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="agencyCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="consignee"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="posCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="addr1"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="addr2"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvTel"		jdbcType="VARCHAR" mode="IN"	/>
+		<parameter property="dlvDesc"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servrqDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="downDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvsDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvEnt"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="trspDoc"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="carId"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" 	/>		
+		<parameter property="instTm"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="inst2Poscd"	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="inst2Addr1"	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="inst2Addr2"	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="carNo"			jdbcType="VARCHAR" mode="IN" 	/>		
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" 	/>
+
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.p_IUDRtcs0009" parameterMap="p_IUDRtcs0009">
+		{call Pkg_Rtcs0009.p_IUDRtcs0009(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="p_UpdateRtcs0009TrspDoc"> 
+		<parameter property="dlvrDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrSeq"		jdbcType="VARCHAR" mode="INOUT" />
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvsDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvEnt"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="trspDoc"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"   jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.p_UpdateRtcs0009TrspDoc" parameterMap="p_UpdateRtcs0009TrspDoc">
+		{call Pkg_Rtcs0009.p_UpdateRtcs0009TrspDoc(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<!-- 엔진오일 교체 서비스 내역 조회 --> 
+	<resultMap id="engineOilChangeServiceListresultMap" class="java.util.HashMap">
+        <result property="dlvrDay"   			    column="DLVR_DAY"       />
+		<result property="dlvrSeq" 			        column="DLVR_SEQ"       />
+		<result property="ordNo"  			        column="ORD_NO"         />
+		<result property="custNo"			        column="CUST_NO"        />
+		<result property="custNm"  				    column="CUST_NM"        />
+		<result property="makerCd"     			    column="MAKER_CD"       />
+		<result property="makerNm"     				column="MAKER_NM"       />
+		<result property="modelCd"      			column="MODEL_CD"       />
+		<result property="modelNm"     				column="MODEL_NM"       />
+		<result property="carNo"     				column="CAR_NO"         />
+		<result property="fuelCd"      				column="FUEL_CD"        />
+		<result property="fuelNm"      				column="FUEL_NM"        />
+		<result property="yrmlCd"  	    			column="YRML_CD"        />
+		<result property="yrmlNm"       			column="YRML_NM"        />
+		<result property="dsplmtCd"      			column="DSPLMT_CD"      />
+		<result property="dsplmtNm"      			column="DSPLMT_NM"      />
+		<result property="dlvGb"        			column="DLV_GB"         />
+		<result property="dlvgbNm"        			column="DLVGB_NM"       />
+		<result property="consignee"        	    column="CONSIGNEE"      />
+		<result property="posCd"   		        	column="POS_CD"         />
+		<result property="addr1" 			        column="ADDR1"          />
+		<result property="addr2"  			        column="ADDR2"          />
+		<result property="dlvTel"			        column="DLV_TEL"        />
+		<result property="dlvDesc"  				column="DLV_DESC"       />
+		<result property="dlvStat"     			    column="DLV_STAT"       />
+		<result property="dlvstatNm"     			column="DLVSTAT_NM"     />
+		<result property="dlvEnt"      				column="DLV_ENT"        />
+		<result property="dlvsDay"					column="DLVS_DAY"		/>
+		<result property="trspDoc"     				column="TRSP_DOC"       />
+		<result property="mobNo"     				column="MOB_NO"       	/>
+		<result property="servrqDay"   				column="SERVRQ_DAY"     />
+		<result property="carId"   					column="CAR_ID"     /> 
+		<result property="agencyCd" 				column="AGENCY_CD" 	/>
+		<result property="agencyNm" 				column="AGENCY_NM" 	/>
+		<result property="userGrpNm" 				column="USER_GRP_NM" 	/>
+		<result property="procDay" 					column="PROC_DAY" 	/>
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="engineOilChangeServiceListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="engineOilChangeServiceListresultMap" />     
+		<parameter property="dlvrDayF"     jdbcType="VARCHAR" mode="IN" />          <!--배송신청일자FROM   -->
+		<parameter property="dlvrDayT"     jdbcType="VARCHAR" mode="IN" />          <!--배송신청일자TO    -->
+		<parameter property="dlvStat"      jdbcType="VARCHAR" mode="IN" />          <!--상태            -->
+		<parameter property="ordNo"        jdbcType="VARCHAR" mode="IN" />          <!--계약번호        -->
+		<parameter property="custNo"       jdbcType="VARCHAR" mode="IN" />          <!-- 고객번호       -->
+		<parameter property="salesOffice"  jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup"   jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 	   jdbcType="VARCHAR" mode="IN" />	
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->      
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.engineOilChangeServiceList" parameterMap="engineOilChangeServiceListParam">
+		{call   Pkg_Rtcs0009.p_sRtcs0009(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	<parameterMap class="java.util.Map" id="pUpdateRtcs0009DownDayAll">
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.engineOilChangeServiceExcelDown" parameterMap="pUpdateRtcs0009DownDayAll">
+		{call Pkg_Rtcs0009.p_UpdateRtcs0009DownDayAll(?, ?, ?, ?)}
+	</procedure>
+	
+	
+	
+	
+	<parameterMap class="java.util.Map" id="engineOilChangeServiceDownListParam">
+		<parameter property="vcursor"      jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="engineOilChangeServiceListresultMap" />     
+		<parameter property="downDay"     jdbcType="VARCHAR" mode="IN" />          <!--집계일자  -->
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.engineOilChangeServiceDownList" parameterMap="engineOilChangeServiceDownListParam">
+		{call   Pkg_Rtcs0009.p_sRtcs0009DownList(?, ?, ? , ?)}
+	</procedure>
+	
+	<!-- 걱정제로 서비스 신청 대상 내역 조회  -->
+	<resultMap id="rSRtcs0010SelectOrderList" class="java.util.HashMap">
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="custNo" 		column="CUST_NO" 	/>
+		<result property="custNm" 		column="CUST_NM" 	/>
+		<result property="matCd" 		column="MAT_CD" 	/>
+		<result property="matNm" 		column="MAT_NM" 	/>
+		<result property="cntCd" 		column="CNT_CD" 	/>
+		<result property="periodCd" 	column="PERIOD_CD" 	/>
+		<result property="makerCd" 		column="MAKER_CD" 	/>
+		<result property="makerNm" 		column="MAKER_NM" 	/>
+		<result property="modelCd" 		column="MODEL_CD" 	/>
+		<result property="modelNm" 		column="MODEL_NM" 	/>
+		<result property="carNo" 		column="CAR_NO" 	/>
+		<result property="carOwner" 	column="CAR_OWNER" 	/>
+		<result property="servCnt0" 	column="SERV_CNT0" 	/>
+		<result property="ordDay" 		column="ORD_DAY" 	/>
+		<result property="procDay" 		column="PROC_DAY" 	/>
+		<result property="mobNo" 		column="MOB_NO" 	/>
+		<result property="dlvrYn" 		column="DLVR_YN" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 	/>
+		<result property="dlvrSeq" 		column="DLVR_SEQ" 	/>
+		<result property="agencyCd" 	column="AGENCY_CD" 	/>
+		<result property="agencyNm" 	column="AGENCY_NM" 	/>
+		<result property="servrqDay" 	column="SERVRQ_DAY" />
+		<result property="dlvAddr1" 	column="DLV_ADDR1" 	/>
+		<result property="dlvTel" 		column="DLV_TEL" 	/>
+		<result property="dlvDesc" 		column="DLV_DESC" 	/>
+		<result property="dlvStat" 		column="DLV_STAT" 	/>
+		<result property="dlvstatNm" 	column="DLVSTAT_NM" />
+		<result property="apprAmt" 		column="APPR_AMT"   />
+		<result property="cntCd1" 	    column="CNT_CD1"    />
+		<result property="cntNm" 		column="CNT_NM"     />		
+		<result property="servCnt00" 	column="SERV_CNT00" /> <!-- 걱정제로 최초부여횟수 [20180426_01] -->
+		<result property="reqNo" 		column="REQ_NO"     /> <!-- 걱정제로 신청회차     [20180426_01] -->
+		<result property="o2oYn" 		column="O2O_YN"     />  <!-- 거점여부 20191220 -->
+		<result property="instCd" 		    column="INST_CD"     />  <!-- 장착유형 20200220 -->
+		<result property="tmsOrderId" 		    column="TMS_ORDERID"     />  <!-- TMS ORDER ID 20200317 -->
+		<result property="omsOrderNo" 		column="OMS_ORDERNO"     />  <!-- OMS ORDER NO -->
+		<result property="dlvGb" 		column="DLV_GB"     />  <!-- DLV_GB [20211123] -->
+	</resultMap>
+	<parameterMap id="pSRtcs0010SelectOrderList" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0010SelectOrderList" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="telNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>	                                                
+	<procedure id="rTCSEngineOilRep.selectRTCSZeroService" parameterMap="pSRtcs0010SelectOrderList">
+		{call NXRADMIN.Pkg_Rtcs0010.p_sRtcs0010SelectOrderList(?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	<!-- [2019-00359563] O2O 관련 항목추가 -->
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0010">
+		<parameter property="dvsn"			jdbcType="VARCHAR" mode="IN" 	/>   
+		<parameter property="dlvrDay" 		jdbcType="VARCHAR" mode="IN" />    
+		<parameter property="dlvrSeq" 		jdbcType="VARCHAR" mode="INOUT" />  
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />  
+		<parameter property="custNo" 		jdbcType="VARCHAR" mode="IN" />     
+		<parameter property="custNm" 		jdbcType="VARCHAR" mode="IN" />  
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />    
+		<parameter property="matCd" 		jdbcType="VARCHAR" mode="IN" />     
+		<parameter property="cntCd1" 		jdbcType="VARCHAR" mode="IN" />     
+		<parameter property="servrqDay" 	jdbcType="VARCHAR" mode="IN" />     
+		<parameter property="servSeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvStat" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="addr1" 		jdbcType="VARCHAR" mode="IN" />   	
+		<parameter property="dlvTel" 		jdbcType="VARCHAR" mode="IN" />    
+		<parameter property="dlvDesc" 		jdbcType="VARCHAR" mode="IN" /> 	
+	    <parameter property="regId" 		jdbcType="VARCHAR" mode="IN" />     <!-- 등록자 ID -->
+	    <parameter property="instCd" 		jdbcType="VARCHAR" mode="IN" />     <!-- 장착유형코드 [2019-00359563] -->
+	    <parameter property="instTm" 		jdbcType="VARCHAR" mode="IN" />     <!-- 장착희망시간 [2019-00359563] -->
+	    <parameter property="inst2Addr1" 	jdbcType="VARCHAR" mode="IN" />     <!-- 장착주소2    [2019-00359563] -->
+	    <parameter property="carNo" 		jdbcType="VARCHAR" mode="IN" />     <!-- 차량번호     [2019-00359563] -->
+	    <parameter property="tmsOrderId" 		jdbcType="VARCHAR" mode="IN" />     <!-- TMS ORDER ID     [20200317] -->
+	    <parameter property="dlvGb" 		jdbcType="VARCHAR" mode="IN" />     <!-- DLV_GB     [20211123] -->
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />  
+	</parameterMap>
+	
+	<procedure id="rTCSZeroRep.p_IUDRtcs0010" parameterMap="p_IUDRtcs0010">
+		{call NXRADMIN.Pkg_Rtcs0010.p_IUDRtcs0010( ?, ?, ?, ?, ?
+		                                         , ?, ?, ?, ?, ?
+		                                         , ?, ?, ?, ?, ?
+		                                         , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+
+	<!-- 걱정제로 교체 서비스 내역 조회 --> 
+	<!-- [2019-00359563] O2O 관련 항목추가 -->
+	<resultMap id="zeroChangeServiceListresultMap" class="java.util.HashMap">
+        <result property="dlvrDay"   			    column="DLVR_DAY"       />
+		<result property="dlvrSeq" 			        column="DLVR_SEQ"       />
+		<result property="ordNo"  			        column="ORD_NO"         />
+		<result property="custNo"			        column="CUST_NO"        />
+		<result property="custNm"  				    column="CUST_NM"        />
+		<result property="makerCd"     			    column="MAKER_CD"       />
+		<result property="makerNm"     				column="MAKER_NM"       />
+		<result property="modelCd"      			column="MODEL_CD"       />
+		<result property="modelNm"     				column="MODEL_NM"       />
+		<result property="carNo"     				column="CAR_NO"         />	
+	    <result property="matCd"  				    column="MAT_CD"         />
+		<result property="matNm"     			    column="MAT_NM"         />
+		<result property="cntCd"     			    column="CNT_CD"         />
+		<result property="cntNm"     				column="CNT_NM"       	/>
+		<result property="agencyCd"   				column="AGENCY_CD"      />			
+		<result property="agencyNm"   				column="AGENCY_NM"      />			
+		<result property="addr1" 			        column="ADDR1"          />
+		<result property="dlvTel"			        column="DLV_TEL"        />
+		<result property="dlvDesc"  				column="DLV_DESC"       />
+		<result property="dlvStat"     			    column="DLV_STAT"       />
+		<result property="dlvstatNm"     			column="DLVSTAT_NM"     />
+		<result property="mobNo"     				column="MOB_NO"       	/>
+		<result property="servrqDay"   				column="SERVRQ_DAY"     />
+		<result property="procDay"   				column="PROC_DAY"       />
+		<result property="inRoute"   				column="IN_ROUTE"       />
+		<result property="reqNum"   				column="REQ_NUM"        />		
+		<result property="instCd"   				column="INST_CD"        /> <!-- 장착유형코드 [2019-00359563] -->
+		<result property="instNm"   				column="INST_NM"        /> <!-- 장착유형명   [2019-00359563] -->
+		<result property="instTm"   				column="INST_TM"        /> <!-- 장착희망시간 [2019-00359563] -->
+		<result property="inst2Addr1"   			column="INST2_ADDR1"    /> <!-- 장착주소2    [2019-00359563] -->
+		<result property="instCarNo"   				column="INST_CAR_NO"    /> <!-- 차량번호     [2019-00359563] -->
+		<result property="rowNum"   				column="ROW_NUM"        />
+		<result property="rentalGroup"		column="RENTAL_GROUP"  />      <!-- 렌탈지사코드 20181226 -->
+		<result property="rentalGroupNm"	column="RENTAL_GROUP_NM"  />   <!-- 렌탈지사명   20181226 -->
+		<result property="rentalOffice"		column="RENTAL_OFFICE"  />     <!-- 렌탈지점코드 20181226 -->
+		<result property="rentalOfficeNm"	column="RENTAL_OFFICE_NM"  />  <!-- 렌탈지점명   20181226 -->
+		<result property="o2oStockYn"	column="O2O_STOCK_YN"  />  <!-- 거점재고사용여부   20200422 -->
+		<result property="dlvGb"	column="DLV_GB"  />  <!-- 수령여부   20211123 -->
+	</resultMap>
+	<parameterMap class="java.util.Map" id="zeroChangeServiceListParam">
+		<parameter property="vcursor"      	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="zeroChangeServiceListresultMap" />     
+		<parameter property="dlvrDayF"     	jdbcType="VARCHAR" mode="IN" />	<!-- 배송신청일자FROM -->
+		<parameter property="dlvrDayT"     	jdbcType="VARCHAR" mode="IN" />	<!-- 배송신청일자TO   -->
+		<parameter property="dlvStat"      	jdbcType="VARCHAR" mode="IN" />	<!-- 상태             -->
+		<parameter property="ordNo"        	jdbcType="VARCHAR" mode="IN" />	<!-- 계약번호         -->
+		<parameter property="custNo"       	jdbcType="VARCHAR" mode="IN" />	<!-- 고객번호         -->
+		<parameter property="salesOffice"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 		jdbcType="VARCHAR" mode="IN" />		
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지사코드 20181226 -->
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />  <!-- 렌탈지점코드 20181226 -->      
+		<parameter property="userId"	    jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자ID -->
+		<parameter property="userGrp"       jdbcType="VARCHAR" mode="IN" />     <!-- 20181226 사용자그룹 -->
+	</parameterMap>
+	<procedure id="rTCSEngineOilRep.zeroChangeServiceList" parameterMap="zeroChangeServiceListParam">
+		{call   Pkg_Rtcs0010.p_sRtcs0010(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>	
+	
+	
+	<!-- 20200330 Tms Order Id 업데이트 -->
+	<parameterMap id="p_UpdateRtcs0010TmsOrderId" class="java.util.Map">
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="tmsOrderId" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="instTm" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDay" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="omsOrderNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSZeroRep.p_UpdateRtcs0010TmsOrderId" parameterMap="p_UpdateRtcs0010TmsOrderId">
+		{call Pkg_Exif0004.p_UpdateRtcs0010TmsOrderId(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

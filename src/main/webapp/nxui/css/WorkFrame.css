@@ -1,0 +1,1015 @@
+﻿/******************************************* Work Frame **************************************************/
+/* Button */
+Button.btn_WF_format, Button.btn_WF_format:selected, Button.btn_WF_format:focused
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #d4e5f8 0,100 #a9c9ed;	
+	border				: 1 solid #6a9dd3;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_format_N.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_format:mouseover, Button.btn_WF_format:pushed
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #a9c9ed 0,100 #d4e5f8;
+	border				: 1 solid #3b77b7;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_format_P.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_format:disabled
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #ebebeb 0,100 #dadada;
+	border				: 1 solid #bfbfbf;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_format_D.png;
+	imagealign			: center middle;
+}
+
+Button.btn_WF_xls, Button.btn_WF_xls:selected, Button.btn_WF_xls:focused
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #d4e5f8 0,100 #a9c9ed;	
+	border				: 1 solid #6a9dd3;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_xls_N.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_xls:mouseover, Button.btn_WF_xls:pushed
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #a9c9ed 0,100 #d4e5f8;
+	border				: 1 solid #3b77b7;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_xls_P.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_xls:disabled
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #ebebeb 0,100 #dadada;
+	border				: 1 solid #bfbfbf;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_xls_D.png;
+	imagealign			: center middle;
+}
+
+Button.btn_WF_find, Button.btn_WF_find:selected, Button.btn_WF_find:focused
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #d4e5f8 0,100 #a9c9ed;
+	border				: 1 solid #6a9dd3;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_find_N.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_find:mouseover, Button.btn_WF_find:pushed
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #a9c9ed 0,100 #d4e5f8;
+	border				: 1 solid #3b77b7;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_find_P.png;
+	imagealign			: center middle;
+}
+Button.btn_WF_find:disabled
+{
+	background 			: @gradation;
+	gradation			: linear 0,0 #ebebeb 0,100 #dadada;
+	border				: 1 solid #bfbfbf;
+	bordertype			: round 2 2;
+	image				: theme://images/btn_WF_find_D.png;
+	imagealign			: center middle;
+}
+
+Button.btn_WF_CRUD, Button.btn_WF_CRUD:selected
+{
+	align				: center middle;
+	background			: #8a4296;
+	border				: 1 solid #6b2377;
+	bordertype			: round 3 3;
+	color				: #ffffff;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+	padding				: 2 0 0 0;
+}
+Button.btn_WF_CRUD:mouseover, Button.btn_WF_CRUD:focused
+{
+	background			: #aa70b4;
+	border				: 1 solid #8b5195;
+	font				: bold 9 Dotum;
+	color				: #ffffff;
+}
+Button.btn_WF_CRUD:pushed
+{
+	background			: #661c72;
+	border				: 1 solid #470053;
+	font				: bold 9 Dotum;
+	padding				: 1 0 -1 0;
+}
+Button.btn_WF_CRUD:disabled
+{
+	background			: #b0b0b0;
+	border				: 1 solid #a0a0a0;
+	color				: #ffffff;
+}
+
+Button.btn_WF_module, Button.btn_WF_module:selected
+{
+	align				: center middle;
+	background			: #5d5d5d;
+	border				: 1 solid #3e3e3e;
+	bordertype			: round 3 3;
+	color				: #ffffff;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+	padding				: 2 0 0 0;
+}
+Button.btn_WF_module:mouseover, Button.btn_WF_module:focused
+{
+	background			: #7a7a7a;
+	border				: 1 solid #5b5b5b;
+	font				: bold 9 Dotum;
+	color				: #ffffff;
+}
+Button.btn_WF_module:pushed
+{
+	background			: #393939;
+	border				: 1 solid #1a1a1a;
+	font				: bold 9 Dotum;
+	padding				: 1 0 -1 0;
+}
+Button.btn_WF_module:disabled
+{
+	background			: #aeaeae;
+	border				: 1 solid #9e9e9e;
+	color				: #ffffff;
+}
+
+Button.btn_WF_suttleL, Button.btn_WF_suttleL:selected
+{
+	align				: center middle;
+	background			: @gradation;
+	border				: 1 double #777777 #f8f8f8;
+	bordertype			: round 3 3;
+	color				: #333333;
+	cursor				: hand;
+	font				: 9 Dotum;
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	image				: URL('image::btn_WF_suttleLN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_suttleL:mouseover, Button.btn_WF_suttleL:focused
+{
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	border				: 1 double #404040 #f8f8f8;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleLM.png');
+}
+Button.btn_WF_suttleL:pushed
+{
+	gradation			: linear 0,0 #d2d2d2 0,100 #ffffff;
+	border				: 1 double #404040 #ffffff;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleLP.png');
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_suttleL:disabled
+{
+	background			: #eeeeee;
+	border				: 1 solid #777777;
+	color				: #909090;
+	image				: URL('image::btn_WF_suttleLD.png');
+}
+
+Button.btn_WF_suttleR, Button.btn_WF_suttleR:selected
+{
+	align				: center middle;
+	background			: @gradation;
+	border				: 1 double #777777 #f8f8f8;
+	bordertype			: round 3 3;
+	color				: #333333;
+	cursor				: hand;
+	font				: 9 Dotum;
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	image				: URL('image::btn_WF_suttleRN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_suttleR:mouseover, Button.btn_WF_suttleR:focused
+{
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	border				: 1 double #404040 #f8f8f8;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleRM.png');
+}
+Button.btn_WF_suttleR:pushed
+{
+	gradation			: linear 0,0 #d2d2d2 0,100 #ffffff;
+	border				: 1 double #404040 #ffffff;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleRP.png');
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_suttleR:disabled
+{
+	background			: #eeeeee;
+	border				: 1 solid #777777;
+	color				: #909090;
+	image				: URL('image::btn_WF_suttleRD.png');
+}
+
+Button.btn_WF_suttleT, Button.btn_WF_suttleT:selected
+{
+	align				: center middle;
+	background			: @gradation;
+	border				: 1 double #777777 #f8f8f8;
+	bordertype			: round 3 3;
+	color				: #333333;
+	cursor				: hand;
+	font				: 9 Dotum;
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	image				: URL('image::btn_WF_suttleTN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_suttleT:mouseover, Button.btn_WF_suttleT:focused
+{
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	border				: 1 double #404040 #f8f8f8;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleTM.png');
+}
+Button.btn_WF_suttleT:pushed
+{
+	gradation			: linear 0,0 #d2d2d2 0,100 #ffffff;
+	border				: 1 double #404040 #ffffff;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleTP.png');
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_suttleT:disabled
+{
+	background			: #eeeeee;
+	border				: 1 solid #777777;
+	color				: #909090;
+	image				: URL('image::btn_WF_suttleTD.png');
+}
+
+Button.btn_WF_suttleB, Button.btn_WF_suttleB:selected
+{
+	align				: center middle;
+	background			: @gradation;
+	border				: 1 double #777777 #f8f8f8;
+	bordertype			: round 3 3;
+	color				: #333333;
+	cursor				: hand;
+	font				: 9 Dotum;
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	image				: URL('image::btn_WF_suttleBN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_suttleB:mouseover, Button.btn_WF_suttleB:focused
+{
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	border				: 1 double #404040 #f8f8f8;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleBM.png');
+}
+Button.btn_WF_suttleB:pushed
+{
+	gradation			: linear 0,0 #d2d2d2 0,100 #ffffff;
+	border				: 1 double #404040 #ffffff;
+	font				: underline 9 Dotum;
+	image				: URL('image::btn_WF_suttleBP.png');
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_suttleB:disabled
+{
+	background			: #eeeeee;
+	border				: 1 solid #777777;
+	color				: #909090;
+	image				: URL('image::btn_WF_suttleBD.png');
+}
+
+Button.btn_WF_sch, Button.btn_WF_sch:selected
+{
+	align				: center middle;
+	background			: @gradation;
+	border				: 1 double #777777 #f8f8f8;
+	bordertype			: round 3 3;
+	color				: #333333;
+	cursor				: hand;
+	font				: 9 Dotum;
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	image				: URL('image::img_WF_schN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_sch:mouseover, Button.btn_WF_sch:focused
+{
+	gradation			: linear 0,0 #ffffff 0,100 #e8e8e8;
+	border				: 1 double #404040 #f8f8f8;
+	font				: underline 9 Dotum;
+	image				: URL('image::img_WF_schM.png');
+}
+Button.btn_WF_sch:pushed
+{
+	gradation			: linear 0,0 #d2d2d2 0,100 #ffffff;
+	border				: 1 double #404040 #ffffff;
+	font				: underline 9 Dotum;
+	image				: URL('image::img_WF_schP.png');
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_sch:disabled
+{
+	background			: #eeeeee;
+	border				: 1 solid #777777;
+	color				: #909090;
+	image				: URL('image::img_WF_schD.png');
+}
+
+Button.btn_WF_edtSch, Button.btn_WF_edtSch:selected
+{
+	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+	image				: URL('image::img_WF_schN.png');
+	imagealign			: center middle;
+}
+Button.btn_WF_edtSch:mouseover, Button.btn_WF_edtSch:focused
+{
+	border				: 0 none;
+	image				: URL('image::img_WF_schM.png');
+}
+Button.btn_WF_edtSch:pushed
+{
+	border				: 0 none;
+	image				: URL('image::img_WF_schP.png');
+}   
+Button.btn_WF_edtSch:disabled
+{
+	background			: transparent;
+	border				: 0 none;
+	image				: URL('image::img_WF_schD.png');
+}
+
+Button.btn_WF_schArea, Button.btn_WF_schArea:selected
+{
+	align				: center middle;
+	background			: #d21018 URL('image::btn_WF_schAreaN.png') left middle;
+	border				: 1 double #900006 #e73548;
+	bordertype			: round 3 3;
+	color				: #ffffff;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+	padding				: 0 0 0 18;
+}
+Button.btn_WF_schArea:mouseover, Button.btn_WF_schArea:focused
+{
+	background			: #d21018 URL('image::btn_WF_schAreaN.png') left middle;
+	border				: 1 double #900006 #e73548;
+	font				: underline bold 9 Dotum;
+}
+Button.btn_WF_schArea:pushed
+{
+	background			: #ae0007 URL('image::btn_WF_schAreaN.png') left middle;
+	border				: 1 double #670004 #c60014;
+	font				: underline bold 9 Dotum;
+	padding				: 1 0 -1 18;
+}   
+Button.btn_WF_schArea:disabled
+{
+	background			: #b0a8a8 URL('image::btn_WF_schAreaD.png') left middle;
+	border				: 1 solid #6e6868;
+	color				: #d8d4d4;
+}
+
+Button.btn_WF_return, Button.btn_WF_return:selected
+{
+	align				: center middle;
+	background			: #edecec URL('image::btn_WF_returnN.png') left middle;
+	border				: 1 double #a8a8a8 #f6f5f5;
+	bordertype			: round 3 3;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+	imagealign			: left middle;
+	padding				: 0 0 0 20;
+}
+Button.btn_WF_return:mouseover, Button.btn_WF_return:focused
+{
+	border				: 1 double #a8a8a8 #f6f5f5;
+	font				: underline bold 9 Dotum;
+}
+Button.btn_WF_return:pushed
+{
+	background			: #dfdfdf URL('image::btn_WF_returnN.png') left middle;
+	border				: 1 double #797979 #f6f5f5;
+	font				: underline bold 9 Dotum;
+	padding				: 1 0 -1 20;
+}   
+Button.btn_WF_return:disabled
+{
+	background			: #edecec URL('image::btn_WF_returnD.png') left middle;
+	border				: 1 double #a8a8a8 #f6f5f5;
+	font				: bold 9 Dotum;
+	color				: #b2b2b2;
+}
+
+Button.btn_WF_help, Button.btn_WF_help:selected
+{
+	align				: center middle;
+	background			: #edecec URL('image::btn_WF_helpN.png') left middle;
+	border				: 1 double #a8a8a8 #f6f5f5;
+	bordertype			: round 3 3;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+	imagealign			: left middle;
+	padding				: 0 0 0 20;
+}
+Button.btn_WF_help:mouseover, Button.btn_WF_help:focused
+{
+	border				: 1 double #a8a8a8 #f6f5f5;
+	font				: underline bold 9 Dotum;
+}
+Button.btn_WF_help:pushed
+{
+	background			: #dfdfdf URL('image::btn_WF_helpN.png') left middle;
+	border				: 1 double #797979 #f6f5f5;
+	font				: underline bold 9 Dotum;
+	padding				: 1 0 -1 20;
+}   
+Button.btn_WF_return:disabled
+{
+	background			: #edecec URL('image::btn_WF_helpD.png') left middle;
+	border				: 1 double #a8a8a8 #f6f5f5;
+	font				: bold 9 Dotum;
+	color				: #b2b2b2;
+}
+
+
+/* Div */
+Div.div_WF_searchBg
+{
+	align				: left middle;
+	background			: #fdf0ff;
+	border				: 2 solid #5a1166;
+	bordertype			: normal 0 0;
+	shadow				: outer 0,1 1 #d2d2d2;
+}
+Div.div_WF_conpop
+{
+	align				: left middle;
+	background			: #ffffff;
+	border				: 2 solid #b154bc;
+	bordertype			: narmal 0 0;
+	shadow				: outer 0,1 1 #d2d2d2;
+}
+Div.div_WF_alrpop
+{
+	align				: left middle;
+	background			: #ffffff;
+	border				: 2 solid #747474;
+	bordertype			: narmal 0 0;
+	shadow				: outer 0,1 1 #d2d2d2;
+}
+
+
+/* Static */
+Static.sta_WF_title
+{
+	align				: left middle;
+	background			: transparent URL('image::sta_WF_titleIcon.png') left middle;
+	border				: 0 none;
+	color				: #333333;
+	font				: bold 13 Gulim;
+	padding				: 0 0 3 27;
+}
+Static.sta_WF_title:disabled
+{
+	color				: #999999;
+	font				: bold 13 Gulim;
+}
+
+Static.sta_WF_subTitle
+{
+	align				: left middle;
+	background			: transparent URL('image::sta_WF_subTitleIcon.png') left middle;
+	border				: 0 none;
+	color				: #000000;
+	font				: 9 Dotum;
+	padding				: 0 0 0 15;
+}
+Static.sta_WF_subTitle:disabled
+{
+	color				: #999999;
+	font				: 9 Dotum;
+}
+
+Static.sta_WF_schTitle
+{
+	align				: left middle;
+	background			: transparent URL('image::sta_WF_schTitle.png') left middle;
+	border				: 0 none;
+	color				: #2a0c38;
+	font				: bold 9 Dotum;
+	padding				: 0 0 0 12;
+}
+Static.sta_WF_schTitle:disabled
+{
+	color				: #999999;
+	font				: bold 9 Dotum;
+}
+
+Static.sta_WF_process
+{
+	align				: left middle;
+	background			: transparent;
+	border				: 0 none;
+	color				: #777777;
+	font				: 8 Dotum;
+}
+Static.sta_WF_process:focused
+{
+	font				: underline 8 Dotum;
+}
+
+Static.sta_WF_detailLabel
+{
+	align				: left middle;
+	background			: #f2f2ef;
+	border				: 1 solid #c6c6c6;
+	color				: #4f4a47;
+	font				: 9 Dotum;
+	padding				: 0 10 0 10;
+}
+Static.sta_WF_detailLabelP
+{
+	align				: left middle;
+	background			: #f2f2ef URL('image::ico_WF_detailLabelP.png') left middle;
+	border				: 1 solid #c6c6c6;
+	color				: #4f4a47;
+	font				: 9 Dotum;
+	padding				: 0 10 0 16;
+}
+Static.sta_WF_detailLabel2
+{
+	background			: #ffffff;
+	border				: 1 solid #c9c6c3;
+}
+Static.sta_WF_conpopTitle
+{
+	align				: left middle;
+	background			: #b154bc;
+	border				: 0 none;
+	color				: #ffffff;
+	font				: bold 9 Dotum;
+	padding				: 0 13 0 13;
+}
+Static.sta_WF_alrpopTitle
+{
+	align				: left middle;
+	background			: #666666;
+	border				: 0 none;
+	color				: #ffffff;
+	font				: bold 9 Dotum;
+	padding				: 0 13 0 13;
+}
+
+Static.sta_WF_line
+{
+	align				: left middle;
+	background			: #acacac;
+	border				: 0 none;
+}
+
+Static.sta_WF_text
+{
+	align				: left middle;
+	border				: 0 none;
+	color				: #f03867;
+	font				: -11 Dotum;
+}
+
+/******************************************* Work Frame End***********************************************/
+
+/**************************************** Main ***********************************************************/
+/* Button */
+Button.btn_WF_mainCount, Button.btn_WF_mainCount:selected
+{
+	align				: center middle;
+	background			: trnasparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	color				: #d2020b;
+	cursor				: hand;
+	font				: bold 9 Dotum;
+}
+Button.btn_WF_mainCount:mouseover, Button.btn_WF_mainCount:focused
+{
+	border				: 0 none;
+	font				: underline bold 9 Dotum;
+}
+Button.btn_WF_mainCount:pushed
+{
+	border				: 0 none;
+	font				: underline bold 9 Dotum;
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_mainCount:disabled
+{
+	background			: transparent;
+	border				: 0 none;
+	color				: #b4abab;
+}
+
+Button.btn_WF_mainMore2, Button.btn_WF_mainMore2:selected
+{
+	align				: center middle;
+	background			: #ffffff;
+	border				: 1 solid #b0b0b0;
+	bordertype			: normal 0 0;
+	color				: #666666;
+	cursor				: hand;
+	font				: 8 Dotum;
+}
+Button.btn_WF_mainMore2:mouseover, Button.btn_WF_mainMore2:focused
+{
+	border				: 1 solid #b0b0b0;
+	font				: underline 8 Dotum;
+}
+Button.btn_WF_mainMore2:pushed
+{
+	border				: 1 solid #b0b0b0;
+	font				: underline 8 Dotum;
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_mainMore2:disabled
+{
+	background			: #fffff;
+	border				: 1 solid #b0b0b0;
+	color				: #d1d1d1;
+}
+
+Button.btn_WF_mainMore3, Button.btn_WF_mainMore3:selected
+{
+	align				: left middle;
+	background			: transparent URL('image::btn_WF_mainMore2N.png') right middle;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	color				: #888888;
+	cursor				: hand;
+	font				: 8 Dotum;
+	linespace			: 3;
+}
+Button.btn_WF_mainMore3:mouseover, Button.btn_WF_mainMore3:focused
+{
+	background			: transparent URL('image::btn_WF_mainMore2N.png') right middle;
+	border				: 0 none;
+	font				: underline 8 Dotum;
+}
+Button.btn_WF_mainMore3:pushed
+{
+	background			: transparent URL('image::btn_WF_mainMore2P.png') right middle;
+	border				: 0 none;
+	font				: underline 8 Dotum;
+	padding				: 1 0 -1 0;
+}   
+Button.btn_WF_mainMore3:disabled
+{
+	background			: #fffff;
+	border				: 1 solid #b0b0b0;
+	color				: #d1d1d1;
+}
+
+Button.btn_WF_popClose
+{
+	align				: center middle;
+	background			: ;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	image				: URL('image::btn_WF_popClose.png');
+	imagealign			: center middle;
+}
+
+/*Popup Button*/
+Button.btn_POP_Button
+{
+	background			: @gradation;
+	gradation			: linear 0,0 #ffffff 0,100 #cde1f9;
+	border				: 1 solid #4e8cd7;
+	bordertype			: round 2 2;
+	font				: bold 9 Dotum;
+	color				: #125eb9;
+}
+Button.btn_POP_Button:mouseover
+{
+	background			: @gradation;
+	gradation			: linear 0,0 #e3edf9 0,100 #aecef5;
+	border				: 1 solid #386aa5;
+	bordertype			: round 2 2;
+	font				: bold 9 Dotum;
+	color				: #194d8b;
+}
+Button.btn_POP_Button:pushed, Button.btn_POP_Button:focused, Button.btn_POP_Button:selected
+{
+	background			: @gradation;
+	gradation			: linear 0,0 #4b81c0 0,100 #90b9ea;
+	border				: 1 solid #386aa5;
+	bordertype			: round 2 2;
+	font				: bold 9 Dotum;
+	color				: #04356f;
+}
+Button.btn_POP_Button:disabled
+{
+	background			: #ebebeb;
+	border				: 1 solid #cfcfcf;
+	bordertype			: round 2 2;
+	font				: bold 9 Dotum;
+	color				: #9b9b9b;
+}
+
+Button.btn_POPCA_Prev
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCAPrev_N.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Prev:mouseover, Button.btn_POPCA_Prev:selected, Button.btn_POPCA_Prev:focused, Button.btn_POPCA_Prev:pushed
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCAPrev_O.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Prev:disabled
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCAPrev_D.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Next	
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCANext_N.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Next:mouseover, Button.btn_POPCA_Next:selected, Button.btn_POPCA_Next:focused, Button.btn_POPCA_Next:pushed
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCANext_O.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Next:disabled
+{	align				: center middle;
+	background			: transparent URL('theme://images/btn_POPCANext_D.png') center middle;
+	border				: 0 none #54769fff;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+}
+Button.btn_POPCA_Today	
+{	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+	color				:#ffffffff;
+}
+Button.btn_POPCA_Today:mouseover, Button.btn_POPCA_Today:selected, Button.btn_POPCA_Today:focused, Button.btn_POPCA_Today:pushed
+{	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+	color				:#98d7ffff;
+}
+Button.btn_POPCA_Today:disabled
+{	align				: center middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	cursor				: hand;
+	color				:#8599b2ff;
+}
+
+
+/* Combo */
+Combo.cmb_POPCA
+{
+	align				:left middle;
+	border				:1 solid #ffffffff;
+	font				:bold 9 Dotum;
+}
+Combo.cmb_POPCA:mouseover, Combo.cmb_POPCA:selected, Combo.cmb_POPCA:focused, Combo.cmb_POPCA:pushed
+{
+	border				:1 solid #ffffffff;
+}
+
+
+/* Div */
+Div.div_WF_mainBg
+{
+	align				: left top;
+	background			: #ffffff;
+	border				: 1 solid #bebebe;
+	bordertype			: normal 0 0;
+}
+
+Div.div_POPCA_divLine
+{
+	border				:2 solid #54769fff;
+}
+
+
+/* Grid */
+Grid.grd_WF_mainFaq
+{
+	align				: left middle;
+	background			: transparnet;
+	border				: 0 none;
+	color				: #555555;
+	padding				: 10 0 0 0;
+}
+Grid.grd_WF_mainFaq>#body, Grid.grd_WF_mainFaq>#body:focused
+{
+	background			: transparnet;
+	border				: 0 none;
+	cellalign			: left middle;
+	cellbackground			: transparnet;
+	cellbackground2			: transparnet;
+	cellcolor			: #555555;
+	cellcolor2			: #555555;
+	cellline			: 0 none;
+	celllinetype			: exhor;
+	cellpadding			: 0 0 0 0;
+	selectbackground		: transparnet;
+	selectcolor			: #555555;
+	selectfont			: underline 9 Dotum;
+}
+Grid.grd_WF_mainFaq>#body:mouseover
+{
+	cellfont			: underline 9 Dotum;
+	cellbackground			: transparnet;
+	cellbackground2			: transparnet;
+	cellcolor			: #555555;
+	selectfont			: underline 9 Dotum;
+}
+Grid>#body:disabled
+{
+	cellcolor			: #777777;
+	selectcolor			: #777777;
+}
+
+
+/* PopupDiv */
+PopupDiv.POPCA_popDiv
+{
+	align				: center middle;
+	background			: #ffffffff;
+	border 				: 1 solid #355a86ff;
+}
+
+
+/* Static */
+Static.sta_WF_mainTitle
+{
+	align				: left middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	font				: bold antialias 12 Arial;
+	padding				: 0 0 0 20;
+}
+Static.sta_WF_mainTitle:focused
+{
+	font				: underline bold antialias 12 Arial;
+}
+Static.sta_WF_mainBg
+{
+	align				: left middle;
+	background			: #f4f4f4;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	color				: #4b4b4b;
+	padding				: 0 5 0 84;
+}
+Static.sta_WF_mainLine
+{
+	align				: left middle;
+	background			: #e3e2e2;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+}
+Static.sta_WF_mainLine2
+{
+	align				: left middle;
+	background			: #cecece;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+}
+
+Static.sta_WF_mainEvent
+{
+	align				: left middle;
+	background			: transparent;
+	border				: 0 none;
+	bordertype			: normal 0 0;
+	color				: #666666;
+	font				: bold 9 Dotum;
+	padding				: 0 none;
+}
+Static.sta_WF_mainEvent:focused
+{
+	font				: underline bold 9 Dotum;
+}
+
+Static.sta_WF_mainImage
+{
+	align				: left middle;
+	background			: URL('image::img_WF_image4.png') center middle;
+	border				: 0 none;
+}
+
+Static.stc_POPMCA_Week
+{
+	align				:center middle;
+	color				:#54769fff;
+	font				:bold 8 Dotum;
+}
+Static.stc_POPMCA_WeekSun
+{
+	align				:center middle;
+	color				:#ed2e2eff;
+	font				:bold 8 Verdana;
+}
+Static.stc_POPMCA_WeekSat
+{
+	align				:center middle;
+	color				:#3c67d0ff;
+	font				:bold 8 Dotum;
+}
+Static.stc_POPCA_Day
+{
+	align				:center middle;
+	background			:transparent;
+	color				:#666666ff;
+	border				:0 none;
+	cursor				:hand;
+}
+Static.stc_POPCA_Day:mouseover, Static.stc_POPCA_Day:selected, Static.stc_POPCA_Day:focused, Static.stc_POPCA_Day:pushed
+{
+	align				:center middle;
+	background			:#5498eaff;
+	color				:#ffffffff;
+	border				:1 solid #5498eaff;
+	cursor				:hand;
+}
+Static.stc_POPCA_selDay
+{
+	align				:center middle;
+	background			:#d3e8f8ff;
+	color				:#000000ff;
+	border				:1 solid #add3f2ff;
+	cursor				:hand;
+}
+Static.stc_POPCA_selDay:mouseover, Static.stc_POPCA_selDay:selected, Static.stc_POPCA_selDay:focused, Static.stc_POPCA_selDay:pushed
+{
+	align				:center middle;
+	background			:#5498eaff;
+	color				:#ffffffff;
+	border				:1 solid #5498eaff;
+	cursor				:hand;
+}
+Static.stc_POPCA_toDay
+{
+	align				:center middle;
+	background			:#fdeeeeff;
+	color				:#000000ff;
+	border				:1 solid #f7c5c5ff;
+	cursor				:hand;
+}
+Static.stc_POPCA_toDay:mouseover, Static.stc_POPCA_toDay:selected, Static.stc_POPCA_toDay:focused, Static.stc_POPCA_toDay:pushed
+{
+	align				:center middle;
+	background			:#5498eaff;
+	color				:#ffffffff;
+	border				:1 solid #5498eaff;
+	cursor				:hand;
+}
+
+Static.sta_POPCA_header
+{
+	background			:#54769fff;
+}
+Static.sta_POPCA_headerWeek
+{
+	background			:#e9f1f7ff;
+	border				:0 none #808080ff,0 none #808080ff,1 solid #dce7efff,0 none #808080ff;
+}
+
+/**************************************** Main Frame End*********************************************/

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCOMMSignHistory" classname="RTCOMMSignHistory" left="0" top="0" width="950" height="351" titletext="전자서명 조회이력" onload="RTCOMMSignHistory_onload" onkeyup="RTCOMMSignHistory_onkeyup">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="1" text="닫기" onclick="btn_close_onclick" left="899" top="320" height="21" domainId="nexa.add" width="43"/>
+        <Grid id="grid_signHistory" taborder="2" useinputpanel="false" left="10" top="10" height="300" autosizingtype="col" cellsizingtype="col" binddataset="ds_signHistory" autofittype="col" width="930">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="200"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="서식명"/>
+                <Cell col="1" text="서식구분"/>
+                <Cell col="2" text="일자"/>
+                <Cell col="3" text="시간"/>
+                <Cell col="4" text="사용자ID"/>
+                <Cell col="5" text="사용자명"/>
+                <Cell col="6" text="이메일"/>
+                <Cell col="7" text="자동발송"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:sheetNm"/>
+                <Cell col="1" text="bind:jobNm"/>
+                <Cell col="2" text="bind:regDay"/>
+                <Cell col="3" text="bind:regTm"/>
+                <Cell col="4" text="bind:dispId"/>
+                <Cell col="5" text="bind:dispNm"/>
+                <Cell col="6" text="bind:emailAddr"/>
+                <Cell col="7" text="bind:autoYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="3" cssclass="Guide_color" visible="false" left="0" top="0" height="10" width="950"/>
+        <Static id="Static00" taborder="4" cssclass="Guide_color" visible="false" left="0" top="0" bottom="0" width="10"/>
+        <Static id="Static02" taborder="5" cssclass="Guide_color" visible="false" left="0%" top="310" height="10" width="950"/>
+        <Static id="Static03" taborder="6" cssclass="Guide_color" visible="false" left="0" top="341" height="10" width="950"/>
+        <Static id="Static04" taborder="7" cssclass="Guide_color" visible="false" left="940" top="0" bottom="0" width="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_signHistory" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="ordNo" type="STRING" size="0"/>
+          <Column id="seq" type="STRING" size="0"/>
+          <Column id="custNo" type="STRING" size="0"/>
+          <Column id="sheetId" type="STRING" size="0"/>
+          <Column id="sheetNm" type="STRING" size="0"/>
+          <Column id="fileName" type="STRING" size="256"/>
+          <Column id="jobCd" type="STRING" size="0"/>
+          <Column id="jobNm" type="STRING" size="0"/>
+          <Column id="autoYn" type="STRING" size="0"/>
+          <Column id="emailAddr" type="STRING" size="256"/>
+          <Column id="dispId" type="STRING" size="0"/>
+          <Column id="dispNm" type="STRING" size="0"/>
+          <Column id="regDay" type="STRING" size="0"/>
+          <Column id="regTm" type="STRING" size="0"/>
+          <Column id="regId" type="STRING" size="0"/>
+          <Column id="regNm" type="STRING" size="0"/>
+          <Column id="regDt" type="STRING" size="0"/>
+          <Column id="chgId" type="STRING" size="0"/>
+          <Column id="chgNm" type="STRING" size="0"/>
+          <Column id="chgDt" type="STRING" size="0"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+include "lib::comLib.xjs";
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
+	if( strSvcId == "signHistory" ){
+		var ct = this.ds_signHistory.rowcount;
+		if( ct != 0 ){
+		}else{
+			alert("조회된 데이터가 없습니다.");
+			this.grid_signHistory.set_nodatatext("조회된 데이터가 없습니다.");
+			this.close();
+		}
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMSignHistory_onload = function(obj:Form, e:nexacro.LoadEventInfo){
+	if( nvl(this.parent.p_ordNo) != "" ){
+		var sSvcID        	= "signHistory";                    
+		var sController   	= "rtms/sd/signHistory.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "ds_signHistory=mapSignHistory";
+		var sArgs 			= "";	
+		var fn_callBack		= "fn_callBack";
+		this.ds_signHistory.deleteAll();
+		sArgs += Ex.util.setParam("ordNo", this.parent.p_ordNo);
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+	}else{
+		alert("계약번호가 없습니다.");
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	this.close();
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.RTCOMMSignHistory_onkeyup = function(obj:Form, e:nexacro.KeyEventInfo){
+	if(e.keycode == 27){
+		this.close();
+	}
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/]]></Script>
+  </Form>
+</FDL>

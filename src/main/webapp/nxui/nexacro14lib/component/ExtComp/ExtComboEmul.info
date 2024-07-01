@@ -1,0 +1,23 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<MetaInfo version="1.0">
+	<!-- define enum information -->
+	<EnumInfo
+	       id="enum_ext_combo"
+	       composite="true"
+	       delimiter=""
+	       description="none, select, all"
+	>
+			<Enum
+			    name="none"
+			    description="none"
+			/>
+			<Enum
+			    name="select"
+			    description="select"
+			/>    
+			<Enum
+			    name="all"
+			    description="all"
+			/>  
+	</EnumInfo>
+</MetaInfo>

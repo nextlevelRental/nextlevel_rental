@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="hrSample20_extCalender" classname="hrSample20_extCalender" left="0" top="0" width="1260" height="641" titletext="userComp달력샘플" onload="form_onload">
+    <Layouts>
+      <Layout>
+        <GroupBox id="GroupBox00" text="Example" taborder="17" left="44" top="42" right="0" height="322" style="font:bold 9 Verdana;"/>
+        <Div id="div_calendar" taborder="0" left="288" top="512" width="111" height="23" text="Div00" url="extComp::ExtCalednar.xfdl" scrollbars="none" _bindds="" _bindcol="" async="false"/>
+        <Button id="btn_bind" taborder="1" text="ds_bind 스크립트로 실행" left="52" top="464" width="164" height="31" onclick="btn_bind_onclick"/>
+        <Button id="btn_getValue" taborder="2" text="getValue()--&gt;" left="405" top="508" width="98" height="27" onclick="btn_getValue_onclick"/>
+        <Button id="btn_setValue" taborder="3" text="setValue()--&gt;" left="164" top="512" width="111" height="25" onclick="btn_setValue_onclick"/>
+        <MaskEdit id="msk_date" taborder="4" left="512" top="512" width="155" height="25" mask="##/##/####" type="string"/>
+        <MaskEdit id="msk_setValue" taborder="5" left="51" top="509" width="95" height="30" mask="##/##/####" type="string" value="04112014"/>
+        <Button id="btnSaveXml" taborder="7" text="ds_bind saveXML" left="164" top="547" width="111" height="28" onclick="btnSaveXml_onclick"/>
+        <Div id="div_calendar00" taborder="8" url="extComp::ExtCalednar.xfdl" left="210" top="377" width="111" height="23" async="false" text="Div00" scrollbars="none" _bindds="ds_bind" _bindcol="col"/>
+        <Static id="Static00" taborder="9" text="* _bindds    : dataset명&#13;&#10;*_bindcol : 컬럼명" left="42" top="366" width="160" height="42" style="font:bold 9 Verdana;"/>
+        <Div id="div_calendar01" taborder="13" url="extComp::ExtCalednar.xfdl" left="213" top="417" width="111" height="23" async="false" text="Div00" scrollbars="none" cssclass="essential"/>
+        <Static id="Static02" taborder="14" text="필수" left="164" top="420" width="41" height="18"/>
+        <Static id="Static01" taborder="15" text="1.년도달력" cssclass="sample_Title" left="41" top="8" width="332" height="36"/>
+        <Static id="Static03" taborder="16" text="userproperty : &#13;&#10;* _bindds    : dataset명&#13;&#10;*_bindcol : 컬럼명&#13;&#10;&#13;&#10;- 해당 div카피해서 id만 바꿔 사용&#13;&#10;이벤트 처리 script탭체서 카피후 사용&#13;&#10;&#13;&#10;//evnet 처리 &#13;&#10;//value 값 변경된값에 대한 처리&#13;&#10;&#13;&#10;this._canChange_callback = function(id,argument)&#13;&#10;{&#13;&#10;   trace(&quot; id : &quot; + id + &quot;&lt;&gt;  arguemnt &gt;&gt;&gt;&gt;  &quot;  + argument);&#13;&#10;}&#13;&#10;&#13;&#10;//바인딩 된 값 변경 처리&#13;&#10;this.ds_bind_onvaluechanged = function(obj:Dataset,  e:nexacro.DSColChangeEventInfo)&#13;&#10;{&#13;&#10;&#9;trace(&quot; e.new value : &quot;  +e.newvalue);&#13;&#10;}" cssclass="sample_example" left="56" top="60" height="297" right="10"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_bind" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false" onvaluechanged="ds_bind_onvaluechanged">
+        <ColumnInfo>
+          <Column id="col" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="col">20141112</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***********************************************************************************
+* SYSTEM      : sample011
+* BUSINESS    : sample011
+* FILE NAME   : sample011.xfdl
+* PROGRAMMER  : 
+* DATE        : 
+* DESCRIPTION : 그리드 네비게이션 공통
+*------------------------------------------------------------------
+* MODIFY DATE   PROGRAMMER			DESCRIPTION
+*------------------------------------------------------------------
+* 
+*------------------------------------------------------------------
+***********************************************************************************/
+
+
+/***********************************************************************************
+* Common Library
+***********************************************************************************/
+include "lib::comLib.xjs";
+
+
+/***********************************************************************************
+* Global/Local Variable
+***********************************************************************************/
+
+/***********************************************************************************
+* Form Event
+***********************************************************************************/
+this.form_onload = function (obj:Form, e:LoadEventInfo)
+{
+   //폼로드시 공통함수 
+   Ex.core.init(obj);
+}
+
+
+this.fn_p = function()
+{
+	trace(">>>>>>>>>fn_p>>>>>>>>>");
+}
+
+
+
+
+
+//달력 스크립트로 바인딩실행 시 방법
+this.btn_bind_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	//onload에서 수행시에는 userproperty 에 _bindds _bindcol 설정
+	
+	//{string) 바인딩할 dataset 
+	//{string} 바인딩할 컬럼명
+	this.div_calendar.setBind("ds_bind","col");
+	
+}
+
+//달력 값 설정하는 함수
+this.btn_setValue_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+	var strReplaceDate = Ex.util.replaceDateKorea(this.msk_setValue.value);
+	this.div_calendar.set_value(strReplaceDate);
+}
+
+//달력 값 가져오는 함수
+this.btn_getValue_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+
+   var dt = Ex.util.replaceDateEng(this.div_calendar.get_value());
+   this.msk_date.set_value(dt);
+
+}
+
+
+
+this.btnSaveXml_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	trace(" savexml : "  + this.ds_bind.saveXML());
+}
+
+//evnet 처리 
+//value 값 변경된값에 대한 처리
+
+this._canChange_callback = function(id,argument)
+{
+   trace(" id : " + id + "<>  arguemnt >>>>  "  + argument);
+}
+
+//바인딩 된 값 변경 처리
+this.ds_bind_onvaluechanged = function(obj:Dataset,  e:nexacro.DSColChangeEventInfo)
+{
+	trace(" e.new value : "  +e.newvalue);
+}
+
+
+]]></Script>
+  </Form>
+</FDL>

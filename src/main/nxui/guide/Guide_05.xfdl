@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="Guide_05" classname="Guide_01" left="0" top="0" width="1020" height="730" titletext="Grid02">
+    <Layouts>
+      <Layout>
+        <Grid id="Grid00" taborder="38" binddataset="da_grd" useinputpanel="false" autofittype="col" left="43" top="79" width="921" height="181">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="60" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox" text="Column0"/>
+                <Cell col="1" text="No"/>
+                <Cell col="2" text="Double&#13;&#10;line" wordwrap="true"/>
+                <Cell col="3" text="Double&#13;&#10;line" wordwrap="true"/>
+                <Cell col="4" text="Double&#13;&#10;line" wordwrap="true"/>
+                <Cell col="5" text="Double&#13;&#10;line" wordwrap="true"/>
+                <Cell col="6" text="Double&#13;&#10;line" wordwrap="true"/>
+                <Cell col="7" text="Date"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:Column0"/>
+                <Cell col="1" displaytype="text" text="bind:Column1"/>
+                <Cell col="2" displaytype="text" text="bind:Column2"/>
+                <Cell col="3" displaytype="text" text="bind:Column3"/>
+                <Cell col="4" displaytype="text" text="bind:Column4"/>
+                <Cell col="5" displaytype="text" text="bind:Column5"/>
+                <Cell col="6" displaytype="text" text="bind:Column6"/>
+                <Cell col="7" displaytype="date" text="bind:Column7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="39" binddataset="da_grd" useinputpanel="false" autofittype="col" left="43" top="308" width="922" height="181">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="30"/>
+                <Column size="30"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" displaytype="checkbox" edittype="checkbox" text="Column0"/>
+                <Cell col="1" rowspan="2" text="No"/>
+                <Cell col="2" colspan="2" text="Column1"/>
+                <Cell col="4" colspan="3" text="Column2"/>
+                <Cell col="7" rowspan="2" text="Date"/>
+                <Cell row="1" col="2" text="Column1-1"/>
+                <Cell row="1" col="3" text="Column1-2"/>
+                <Cell row="1" col="4" text="Column2-1"/>
+                <Cell row="1" col="5" text="Column2-2"/>
+                <Cell row="1" col="6" text="Column2-3"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:Column0"/>
+                <Cell col="1" displaytype="text" text="bind:Column1"/>
+                <Cell col="2" displaytype="text" text="bind:Column2"/>
+                <Cell col="3" displaytype="text" text="bind:Column3"/>
+                <Cell col="4" displaytype="text" text="bind:Column4"/>
+                <Cell col="5" displaytype="text" text="bind:Column5"/>
+                <Cell col="6" displaytype="text" text="bind:Column6"/>
+                <Cell col="7" displaytype="date" text="bind:Column7"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static07" taborder="40" text="Double line Head" cssclass="pseudo" left="43" top="52" width="123" height="22" style="align:left middle;"/>
+        <Static id="Static01" taborder="41" text="Multi Head" cssclass="pseudo" left="43" top="281" width="123" height="22" style="align:left middle;"/>
+        <Static id="Static23" taborder="42" text="FIX h30" cssclass="Guide_color" visible="false" left="125" top="339" width="45" height="31"/>
+        <Static id="Static02" taborder="43" text="FIX h30" cssclass="Guide_color" visible="false" left="125" top="308" width="45" height="31"/>
+        <Static id="Static03" taborder="44" text="FIX h60" cssclass="Guide_color" visible="false" left="13" top="308" width="45" height="60"/>
+        <Static id="Static04" taborder="45" text="FIX h60" cssclass="Guide_color" visible="false" left="13" top="79" width="45" height="60"/>
+        <Static id="Static00" taborder="46" text="Grid" cssclass="Guide_title" left="1.67%" top="16" right="71.57%" height="16"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="da_grd" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="Column0" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+          <Column id="Column2" type="STRING" size="256"/>
+          <Column id="Column3" type="STRING" size="256"/>
+          <Column id="Column4" type="STRING" size="256"/>
+          <Column id="Column5" type="STRING" size="256"/>
+          <Column id="Column6" type="STRING" size="256"/>
+          <Column id="Column7" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">1</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">2</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">3</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">4</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">5</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">6</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">7</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">1</Col>
+            <Col id="Column1">8</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">9</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">10</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+          <Row>
+            <Col id="Column0">0</Col>
+            <Col id="Column1">11</Col>
+            <Col id="Column2">CM Infortek</Col>
+            <Col id="Column3">CM Infortek</Col>
+            <Col id="Column4">CM Infortek</Col>
+            <Col id="Column5">CM Infortek</Col>
+            <Col id="Column6">CM Infortek</Col>
+            <Col id="Column7">20140101</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

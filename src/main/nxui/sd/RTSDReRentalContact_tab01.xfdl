@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTSDReRentalContact_tab01" classname="RTSDProvisionalContractContact_tab01" left="0" top="0" width="1123" height="119" titletext="New Form" onload="RTSDProvisionalContractContact_tab01_onload">
+    <Layouts>
+      <Layout>
+        <Div id="div_search" taborder="0" left="0" top="1" width="1119" height="99" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="194" text="장착일자" cssclass="sta_WF_schTitle" left="25" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static06" taborder="195" text="연락처" cssclass="sta_WF_schTitle" left="626" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static09" taborder="196" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static05" taborder="197" text="고객명" cssclass="sta_WF_schTitle" left="400" top="11" width="80" height="20" domainId="nexa.s_condition"/>
+              <Static id="Static22" taborder="198" cssclass="Guide_color" visible="false" left="0" top="0" width="1118" height="12"/>
+              <Static id="Static13" taborder="199" cssclass="Guide_color" visible="false" left="375" top="0" width="25" height="65"/>
+              <Static id="Static14" taborder="200" cssclass="Guide_color" visible="false" left="600" top="0" width="25" height="65"/>
+              <Static id="Static15" taborder="201" cssclass="Guide_color" visible="false" left="0" top="0" width="25" height="109"/>
+              <Static id="Static10" taborder="202" cssclass="Guide_color" visible="false" left="0" top="32" width="1118" height="6"/>
+              <Static id="Static03" taborder="203" text="만료일자" cssclass="sta_WF_schTitle" left="25" top="38" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_custNm" taborder="204" onkeyup="div_search_ed_custCd_onkeyup" left="480" top="12" width="120" height="21"/>
+              <Calendar id="dt_procFday" taborder="205" dateformat="yyyy-MM-dd" left="117" top="12" width="120" height="21"/>
+              <Static id="Static00" taborder="206" text="~" left="240" top="12" width="10" height="21"/>
+              <Calendar id="dt_procTday" taborder="207" dateformat="yyyy-MM-dd" left="256" top="12" width="120" height="21"/>
+              <Edit id="ed_mobNo" taborder="208" onkeyup="div_search_ed_custCd_onkeyup" left="713" top="12" width="111" height="21"/>
+              <Static id="Static01" taborder="209" text="계약번호" cssclass="sta_WF_schTitle" left="850" top="12" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_ordNo" taborder="210" left="937" top="12" width="139" height="21"/>
+              <Button id="btn_orderNo" taborder="211" onclick="div_search_bt_ordNo_onclick" cssclass="btn_WF_edtSch" visible="false" left="1055" top="12" width="21" height="21"/>
+              <Static id="Static07" taborder="212" cssclass="Guide_color" visible="false" left="824" top="8" width="25" height="57"/>
+              <Calendar id="cal_osDayFrom" taborder="213" dateformat="yyyy-MM-dd" left="117" top="38" width="120" height="21"/>
+              <Static id="Static08" taborder="214" text="~" left="240" top="38" width="10" height="21"/>
+              <Calendar id="cal_osDayTo" taborder="215" dateformat="yyyy-MM-dd" left="256" top="38" width="120" height="21"/>
+              <Static id="Static16" taborder="216" text="상태" cssclass="sta_WF_schTitle" left="849" top="40" width="80" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_stat" taborder="217" innerdataset="dsS103" codecolumn="cd" datacolumn="cdNm" onitemchanged="div_search_cb_stat_onitemchanged" left="84.04%" top="38" right="9.78%" height="20"/>
+              <Combo id="cb_statDetl" taborder="218" innerdataset="dsS104" codecolumn="cd" datacolumn="cdNm" left="90.22%" top="38" right="3.5%" height="20"/>
+              <Static id="st_custNm04" taborder="221" text="재컨택일자" cssclass="sta_WF_schTitle" left="626" top="38" width="83" height="21" domainId="nexa.s_condition"/>
+              <Calendar id="cal_recallDay" taborder="222" dateformat="yyyy-MM-dd" left="713" top="38" width="111" height="21"/>
+              <Static id="Static11" taborder="224" cssclass="Guide_color" visible="false" left="8" top="83" width="1118" height="12"/>
+              <Static id="Static18" taborder="229" text="상담사" cssclass="sta_WF_schTitle" left="399" top="39" width="80" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_callId" taborder="230" onkeyup="div_search_ed_custCd_onkeyup" left="480" top="38" width="120" height="21"/>
+              <Static id="st_date01" taborder="231" text="가계약번호" cssclass="sta_WF_schTitle" left="24" top="61" width="80" height="21" domainId="nexa.s_condition"/>
+              <Edit id="ed_provsnNoF" taborder="232" left="117" top="62" width="119" height="21"/>
+              <Static id="Static19" taborder="233" text="~" left="240" top="63" width="9" height="21"/>
+              <Edit id="ed_provsnNoT" taborder="234" left="256" top="62" width="120" height="21"/>
+              <Static id="Static12" taborder="235" cssclass="Guide_color" visible="false" left="0" top="56" width="1118" height="6"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsS103" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsS104" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTSDReRentalContact_tab01.xfdl
+ * 설    명 : 재렌탈상담_조회1
+ * 작 성 자 : 
+ * 변경이력 :
+ * ---------------------------------
+ * 변경일자		변경자		변경내용
+ * --------------------------------- 
+ * 2023-06-13   	kstka		[20230613_01] 신규생성
+ ***************************************************************************************************/
+
+include "lib::comLib.xjs";
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTSDReRentalContact_tab01_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	//Ex.core.init(obj);	
+}
+
+/**
+ * 상태 조회조건 콤보에서 변경된 값이 적용된 후 이벤트 처리
+ */
+this.div_search_cb_stat_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.dsS104.filter("");
+	if (e.postvalue == "") {
+		this.dsS104.filter("cd == ''");
+	} else {
+		this.dsS104.filter("cd == '' || cd.substr(0,1) == '" + e.postvalue.substring(0,1) + "'");
+	}
+	
+	this.div_search.cb_statDetl.set_value("");
+}
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+
+<sqlMap namespace="answer">
+	<resultMap id="answerResultMap" class="java.util.HashMap">
+		<result property="answerNo" column="ANSWER_NO" /> <!-- 답변번호 --> 
+		<result property="answerSeq" column="ANSWER_SEQ" /> <!-- 답변순번 --> 
+		<result property="useYn" column="USE_YN" /> <!-- 사용여부 -->	
+		<result property="answer" column="ANSWER" /> <!-- 답변내용 --> 
+		<result property="score" column="SCORE" /> <!-- 점수 -->	 
+		<result property="regId" column="REG_ID" /> <!-- 등록자 ID -->	 
+		<result property="regDt" column="REG_DT" /> <!-- 등록일 -->	 
+		<result property="chgId" column="CHG_ID" /> <!-- 변경자ID -->	 
+		<result property="chgDt" column="CHG_DT" /> <!-- 변경일 -->	   
+	</resultMap>
+	
+	<parameterMap id="param" class="java.util.Map">             
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="answerResultMap" />         
+		<parameter property="answerNo" 	jdbcType="VARCHAR" mode="IN" /> <!-- 답변번호 -->
+		<parameter property="answerSeq" jdbcType="VARCHAR" mode="IN" /> <!-- 답변순번 -->
+		<parameter property="useYn" 	jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="answer" 	jdbcType="VARCHAR" mode="IN" /> <!-- 답변내용 -->
+		<parameter property="score" 	jdbcType="NUMERIC" mode="IN" /> <!-- 점수 -->
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID -->                    
+	</parameterMap> 
+	
+	<procedure id="answer.listAnswer" parameterMap="param">
+		{call
+		Pkg_Rtcs0113.p_sRtcs0113(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_IUDRtcs0113" class="java.util.Map">
+		<parameter property="dvsn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 처리구분(I,U,D) -->
+		<parameter property="answerNo"   	jdbcType="VARCHAR" mode="IN" /> <!-- 답변번호 -->
+		<parameter property="answerSeq"  	jdbcType="VARCHAR" mode="IN" /> <!-- 답변순번 -->
+		<parameter property="useYn"  		jdbcType="VARCHAR" mode="IN" /> <!-- 사용여부 -->
+		<parameter property="answer" 		jdbcType="VARCHAR" mode="IN" /> <!-- 답변내용 -->
+		<parameter property="score" 		jdbcType="NUMERIC" mode="IN" /> <!-- 점수 -->
+		<parameter property="regId" 		jdbcType="VARCHAR" mode="IN" /> <!-- 등록자 ID --> 
+		<parameter property="successCode" 	jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap> 
+	
+	<procedure id="answer.insertAnswer" parameterMap="p_IUDRtcs0113">
+		{call
+		Pkg_Rtcs0113.p_IUDRtcs0113(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

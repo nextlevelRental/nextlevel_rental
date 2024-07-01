@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTCSSafeSer">
+
+	<resultMap id="rSRtcs0207SelectList" class="java.util.HashMap">
+		<result property="servCd" 		column="SERV_CD" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 	/>
+		<result property="dlvrType" 		column="DLVR_TYPE" 	/>
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="custNo" 		column="CUST_NO" 	/>
+		<result property="custNm" 		column="CUST_NM" 	/>
+  	 	<result property="matCd" 		column="MAT_CD" 	/>
+		<result property="matNm" 		column="MAT_NM" 	/>	
+		<result property="cntCd" 			column="CNT_CD" 	/>
+		<result property="periodCd" 		column="PERIOD_CD" 	/>
+		<result property="makerCd" 		column="MAKER_CD" 	/>
+		<result property="makerNm" 	column="MAKER_NM" 	/>
+		<result property="modelCd" 		column="MODEL_CD" 	/>
+		<result property="modelNm" 	column="MODEL_NM" 	/>
+		<result property="carNo" 			column="CAR_NO" 	/>
+		<result property="carOwner" 	column="CAR_OWNER" 	/>
+		<result property="b00007UseCnt"	column="B00007_USE_CNT" 	/>
+		<result property="b00011UseCnt" 	column="B00011_USE_CNT" 	/>
+		<result property="b00012UseCnt" 	column="B00012_USE_CNT" 	/>
+		<result property="b00007InitCnt" 	column="B00007_INIT_CNT" 	/>
+		<result property="ordDay" 		column="ORD_DAY" 	/>
+		<result property="procDay" 		column="PROC_DAY" 	/>
+		<result property="agencyCd" 	column="AGENCY_CD" 	/>
+		<result property="mobNo" 		column="MOB_NO" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 		/>
+		<result property="dlvrSeq" 		column="DLVR_SEQ" 		/>
+		<result property="dlvTel" 			column="DLV_TEL" 	/>
+		<result property="dlvStat" 		column="DLV_STAT" 	/>
+		<result property="dlvstatNm" 	column="DLVSTAT_NM" 	/>
+		<result property="dlvDesc" 		column="DLV_DESC" 	/>
+		<result property="cntCd1" 		column="CNT_CD1" 	/>
+		<result property="cntNm" 		column="CNT_NM" 	/>
+		<result property="reqNo" 		column="REQ_NO" 	/>
+		<result property="cMileage" 		column="C_MILEAGE" 	/>
+		<result property="dlvrYn" 			column="DLVR_YN" 	/>
+	</resultMap>
+	<parameterMap id="pSRtcs0207SelectList" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0207SelectList" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSafeSer.selectRTCS0207List" parameterMap="pSRtcs0207SelectList">
+		{call Pkg_Rtcs0207.p_sRtcs0207SelectList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0207"> 
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrType"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrSeq"			jdbcType="VARCHAR" mode="INOUT" 	/>
+		<parameter property="servCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNm"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="agencyCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="matnr"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="kwmeng"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="reqDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvStat"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvDesc"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="carNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvTel"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cMileage"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" 	/>
+
+	</parameterMap>
+	<procedure id="rTCSSafeSer.p_IUDRtcs0207" parameterMap="p_IUDRtcs0207">
+		{call Pkg_Rtcs0207.p_IUDRtcs0207(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 		? )}
+	</procedure>
+	
+	<resultMap id="rSRtcs0209List" class="java.util.HashMap">
+		<result property="num" 			column="NUM" 	/>
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="dlvrType" 		column="DLVR_TYPE" 	/>
+		<result property="servCd" 		column="SERV_CD" 	/>
+  	 	<result property="servSeq" 		column="SERV_SEQ" 	/>
+		<result property="seq" 			column="SEQ" 	/>	
+		<result property="filePath" 		column="FILE_PATH" 	/>
+		<result property="fileName" 		column="FILE_NAME" 	/>
+		<result property="confYn" 		column="CONF_YN" 	/>
+		<result property="picSet" 			column="PIC_SET" 	/>
+		<result property="picSetNm" 		column="PIC_SET_NM" 	/>
+	</resultMap>
+	<parameterMap id="pSRtcs0209List" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0209List" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrType" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="servCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="servSeq" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSafeSer.selectRTCS0209List" parameterMap="pSRtcs0209List">
+		{call Pkg_Rtcs0209.p_sRtcs0209List(?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0209"> 
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrType"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servSeq"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="seq"			    jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="filePath"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="fileName"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="confYn"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="picSet"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" 	/>
+
+	</parameterMap>
+	<procedure id="rTCSSafeSer.p_IUDRtcs0209" parameterMap="p_IUDRtcs0209">
+		{call Pkg_Rtcs0209.p_IUDRtcs0209(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<resultMap id="rSRtcs0208SelectList" class="java.util.HashMap">
+		<result property="servCd" 		column="SERV_CD" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 	/>
+		<result property="dlvrType" 		column="DLVR_TYPE" 	/>
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="custNo" 		column="CUST_NO" 	/>
+		<result property="custNm" 		column="CUST_NM" 	/>
+  	 	<result property="matCd" 		column="MAT_CD" 	/>
+		<result property="matNm" 		column="MAT_NM" 	/>	
+		<result property="cntCd" 			column="CNT_CD" 	/>
+		<result property="periodCd" 		column="PERIOD_CD" 	/>
+		<result property="makerCd" 		column="MAKER_CD" 	/>
+		<result property="makerNm" 	column="MAKER_NM" 	/>
+		<result property="modelCd" 		column="MODEL_CD" 	/>
+		<result property="modelNm" 	column="MODEL_NM" 	/>
+		<result property="carNo" 			column="CAR_NO" 	/>
+		<result property="carOwner" 	column="CAR_OWNER" 	/>
+		<result property="b00011RCnt" 	column="B00011_R_CNT" 	/>
+		<result property="b00012RCnt" 	column="B00012_R_CNT" 	/>
+		<result property="b00007UCnt"	column="B00007_U_CNT" 	/>
+		<result property="b00011UCnt" 	column="B00011_U_CNT" 	/>
+		<result property="b00012UCnt" 	column="B00012_U_CNT" 	/>
+		<result property="b00007ICnt" 	column="B00007_I_CNT" 	/>
+		<result property="ordDay" 		column="ORD_DAY" 	/>
+		<result property="servRqDay" 		column="SERVRQ_DAY" 	/>
+		<result property="procDay" 		column="PROC_DAY" 	/>
+		<result property="servAdSeq" 		column="SERVAD_SEQ" 	/>
+		<result property="agencyCd" 	column="AGENCY_CD" 	/>
+		<result property="agencyNm" 	column="AGENCY_NM" 	/>
+		<result property="mobNo" 		column="MOB_NO" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 		/>
+		<result property="dlvrSeq" 		column="DLVR_SEQ" 		/>
+		<result property="dlvPosCd" 			column="DLV_POS_CD" 	/>
+		<result property="dlvAddr1" 			column="DLV_ADDR1" 	/>
+		<result property="dlvAddr2" 			column="DLV_ADDR2" 	/>
+		<result property="dlvTel" 			column="DLV_TEL" 	/>
+		<result property="dlvStat" 		column="DLV_STAT" 	/>
+		<result property="dlvstatNm" 	column="DLVSTAT_NM" 	/>
+		<result property="apprAmt" 		column="APPR_AMT" 	/>
+		<result property="basicServCntr" 		    column="BASIC_SERV_CNTR" 	/>
+		<result property="cntCd1" 		column="CNT_CD1" 	/>
+		<result property="cntNm" 		column="CNT_NM" 	/>
+		<result property="reqNo" 		column="REQ_NO" 	/>
+		<result property="cMileage" 		column="C_MILEAGE" 	/>
+		<result property="dlvrYn" 			column="DLVR_YN" 	/>
+		<result property="dlvDesc" 		column="DLV_DESC" 	/>
+		<result property="imgUrl" 		column="IMG_URL" 	/>
+		<result property="applyReason" 		column="APPLY_REASON" 	/>
+	</resultMap>
+	<parameterMap id="pSRtcs0208SelectList" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0208SelectList" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNm" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="carNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="procDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="chanCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="regId" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSafeSer.selectRTCS0208List" parameterMap="pSRtcs0208SelectList">
+		{call Pkg_Rtcs0208.p_sRtcs0208SelectList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="p_IUDRtcs0208"> 
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrType"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrSeq"			jdbcType="VARCHAR" mode="INOUT" 	/>
+		<parameter property="servCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNm"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="agencyCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="matnr"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="kwmeng"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servRqDay"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="procDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="servAdSeq"		jdbcType="VARCHAR" mode="INOUT" 	/>
+		<parameter property="dlvStat"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvDesc"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cMileage"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="carNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvTel"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvPosCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvAddr1"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvAddr2"			jdbcType="VARCHAR" mode="IN" 	/>		
+		<parameter property="regId"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="applyReason" 	jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" 	/>
+
+	</parameterMap>
+	<procedure id="rTCSSafeSer.p_IUDRtcs0208" parameterMap="p_IUDRtcs0208">
+		{call Pkg_Rtcs0208.p_IUDRtcs0208(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 		?, ?, ?, ?, ?, ?, ? )}
+	</procedure>
+	
+	<resultMap id="rSRtcs0208" class="java.util.HashMap">
+		<result property="servCd" 		column="SERV_CD" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 	/>
+		<result property="dlvrType" 		column="DLVR_TYPE" 	/>
+		<result property="ordNo" 		column="ORD_NO" 	/>
+		<result property="custNo" 		column="CUST_NO" 	/>
+		<result property="custNm" 		column="CUST_NM" 	/>
+  	 	<result property="matCd" 		column="MAT_CD" 	/>
+		<result property="matNm" 		column="MAT_NM" 	/>	
+		<result property="cntCd" 			column="CNT_CD" 	/>
+		<result property="periodCd" 		column="PERIOD_CD" 	/>
+		<result property="makerCd" 		column="MAKER_CD" 	/>
+		<result property="makerNm" 	column="MAKER_NM" 	/>
+		<result property="modelCd" 		column="MODEL_CD" 	/>
+		<result property="modelNm" 	column="MODEL_NM" 	/>
+		<result property="carNo" 			column="CAR_NO" 	/>
+		<result property="carOwner" 	column="CAR_OWNER" 	/>
+		<result property="b00011RCnt" 	column="B00011_R_CNT" 	/>
+		<result property="b00012RCnt" 	column="B00012_R_CNT" 	/>
+		<result property="b00007UCnt"	column="B00007_U_CNT" 	/>
+		<result property="b00011UCnt" 	column="B00011_U_CNT" 	/>
+		<result property="b00012UCnt" 	column="B00012_U_CNT" 	/>
+		<result property="b00007ICnt" 	column="B00007_I_CNT" 	/>
+		<result property="ordDay" 		column="ORD_DAY" 	/>
+		<result property="servRqDay" 		column="SERVRQ_DAY" 	/>
+		<result property="procDay" 		column="PROC_DAY" 	/>
+		<result property="servAdSeq" 		column="SERVAD_SEQ" 	/>
+		<result property="agencyCd" 	column="AGENCY_CD" 	/>
+		<result property="agencyNm" 	column="AGENCY_NM" 	/>
+		<result property="mobNo" 		column="MOB_NO" 	/>
+		<result property="dlvrDay" 		column="DLVR_DAY" 		/>
+		<result property="dlvrSeq" 		column="DLVR_SEQ" 		/>
+		<result property="dlvAddr" 			column="DLV_ADDR" 	/>
+		<result property="dlvPosCd" 			column="DLV_POS_CD" 	/>
+		<result property="dlvAddr1" 			column="DLV_ADDR1" 	/>
+		<result property="dlvAddr2" 			column="DLV_ADDR2" 	/>
+		<result property="dlvTel" 			column="DLV_TEL" 	/>
+		<result property="dlvStat" 		column="DLV_STAT" 	/>
+		<result property="dlvstatNm" 	column="DLVSTAT_NM" 	/>
+		<result property="apprAmt" 		column="APPR_AMT" 	/>
+		<result property="basicServCntr" 		    column="BASIC_SERV_CNTR" 	/>
+		<result property="cntCd1" 		column="CNT_CD1" 	/>
+		<result property="cntNm" 		column="CNT_NM" 	/>
+		<result property="reqNo" 		column="REQ_NO" 	/>
+		<result property="cMileage" 		column="C_MILEAGE" 	/>
+		<result property="dlvrYn" 			column="DLVR_YN" 	/>
+		<result property="dlvDesc" 		column="DLV_DESC" 	/>
+		<result property="imgUrl" 		column="IMG_URL" 	/>
+		<result property="applyReason" 		column="APPLY_REASON" 	/>
+		<result property="applyReasonNm" 		column="APPLY_REASON_NM" 	/>
+		<result property="reqNum" 		column="REQ_NUM" 	/>
+		<result property="rentalGroupNm" 		column="RENTAL_GROUP_NM" 	/>
+		<result property="rentalOfficeNm" 		column="RENTAL_OFFICE_NM" 	/>
+	</resultMap>
+	<parameterMap id="pSRtcs0208" class="java.util.Map">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0208" />
+		<parameter property="dlvrDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvrDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dlvStat" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="ordNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="custNo" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesOffice" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="salesGroup" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalOffice" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userId" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="userGrp" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSafeSer.selectRTCS0208" parameterMap="pSRtcs0208">
+		{call Pkg_Rtcs0208.p_sRtcs0208(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap id="p_getJoinRate" class="java.util.Map">
+		<parameter property="result" 	jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT" resultMap="r_getJoinRate" />
+		<parameter property="dayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dayT" 	jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<resultMap id="r_getJoinRate" class="java.util.HashMap"/>
+	<procedure id="rTCSSafeSer.getJoinRate" parameterMap="p_getJoinRate">
+		{call ? := Pkg_Rtcs0208.f_GetJoinRate(?, ?)}
+	</procedure>
+	
+</sqlMap>

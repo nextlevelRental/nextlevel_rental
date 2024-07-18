@@ -2034,6 +2034,8 @@
 		<result property="ordNo" 	column="ORD_NO" />
 		<result property="statCd" 		column="STAT_CD" />
 		<result property="statNm" 	column="STAT_NM" /> 
+		<result property="custNm" 	column="CUST_NM" />		<!-- [20240717] 백인천 현업요구 추가컬럼 -->
+		<result property="mobNo" 	column="MOB_NO" />			<!-- [20240717] 백인천 현업요구 추가컬럼 -->
 		<result property="ordDay" 	column="ORD_DAY" />
 		<result property="procDay" 	column="PROC_DAY" />
 		<result property="matCd" 	column="MAT_CD" />

@@ -7,6 +7,7 @@
 	<resultMap id="orderResultMap" class="java.util.HashMap">
 		<result property="ordNo" 		column="ORD_NO" 			/>
 		<result property="statNm" 		column="STAT_NM" 			/>
+		<result property="instNm" 		column="INST_NM" 			/>	<!-- 20240717 백인천 장착유형 추가 -->
 		<result property="ordDay" 		column="ORD_DAY" 			/>
 		<result property="regDt" 		column="REG_DT" 			/>
 		<result property="procDay" 		column="PROC_DAY" 			/>

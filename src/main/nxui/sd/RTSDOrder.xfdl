@@ -4,7 +4,7 @@
   <Form id="RTSDOrder" classname="RTCMClaim" left="0" top="0" width="1147" height="496" titletext="주문현황리스트" onload="form_onload">
     <Layouts>
       <Layout>
-        <Grid id="Grid01" taborder="4" useinputpanel="false" autofittype="none" left="0" top="140" binddataset="dsSdList" nodatatext="조회된 데이터가 없습니다." extendsizetype="none" cellmovingtype="col" cellsizingtype="col" width="1122" height="356">
+        <Grid id="Grid01" taborder="4" useinputpanel="false" autofittype="none" left="0" top="140" binddataset="dsSdList" nodatatext="조회된 데이터가 없습니다." extendsizetype="none" cellmovingtype="col" cellsizingtype="col" width="1203" height="356">
           <Formats>
             <Format id="default">
               <Columns>
@@ -19,6 +19,7 @@
                 <Column size="100"/>
                 <Column size="125"/>
                 <Column size="40"/>
+                <Column size="80"/>
                 <Column size="40"/>
                 <Column size="340"/>
                 <Column size="40"/>
@@ -64,33 +65,34 @@
                 <Cell col="8" text="패턴"/>
                 <Cell col="9" text="상품코드"/>
                 <Cell col="10" text="거점"/>
-                <Cell col="11" text="재고유형"/>
-                <Cell col="12" text="상품명"/>
-                <Cell col="13" text="본수"/>
-                <Cell col="14" text="계약기간"/>
-                <Cell col="15" text="서비스"/>
-                <Cell col="16" text="등록비"/>
-                <Cell col="17" text="월렌탈료"/>
-                <Cell col="18" text="고객명"/>
-                <Cell col="19" text="휴대폰번호"/>
-                <Cell col="20" text="채널대분류"/>
-                <Cell col="21" text="채널중분류"/>
-                <Cell col="22" text="대리점코드"/>
-                <Cell col="23" text="대리점"/>
-                <Cell col="24" text="렌탈지사"/>
-                <Cell col="25" text="렌탈지점"/>
-                <Cell col="26" text="차종"/>
-                <Cell col="27" text="차량번호"/>
-                <Cell col="28" text="판매인명"/>
-                <Cell col="29" text="판매인코드"/>
-                <Cell col="30" text="성별"/>
-                <Cell col="31" text="주행거리"/>
-                <Cell col="32" text="연령"/>
-                <Cell col="33" text="지역"/>
-                <Cell col="34" text="계절구분"/>
-                <Cell col="35" text="구매전 제조사"/>
-                <Cell col="36" text="채널"/>
-                <Cell col="37" text="문자발송"/>
+                <Cell col="11" text="장착유형"/>
+                <Cell col="12" text="재고유형"/>
+                <Cell col="13" text="상품명"/>
+                <Cell col="14" text="본수"/>
+                <Cell col="15" text="계약기간"/>
+                <Cell col="16" text="서비스"/>
+                <Cell col="17" text="등록비"/>
+                <Cell col="18" text="월렌탈료"/>
+                <Cell col="19" text="고객명"/>
+                <Cell col="20" text="휴대폰번호"/>
+                <Cell col="21" text="채널대분류"/>
+                <Cell col="22" text="채널중분류"/>
+                <Cell col="23" text="대리점코드"/>
+                <Cell col="24" text="대리점"/>
+                <Cell col="25" text="렌탈지사"/>
+                <Cell col="26" text="렌탈지점"/>
+                <Cell col="27" text="차종"/>
+                <Cell col="28" text="차량번호"/>
+                <Cell col="29" text="판매인명"/>
+                <Cell col="30" text="판매인코드"/>
+                <Cell col="31" text="성별"/>
+                <Cell col="32" text="주행거리"/>
+                <Cell col="33" text="연령"/>
+                <Cell col="34" text="지역"/>
+                <Cell col="35" text="계절구분"/>
+                <Cell col="36" text="구매전 제조사"/>
+                <Cell col="37" text="채널"/>
+                <Cell col="38" text="문자발송"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
@@ -104,33 +106,34 @@
                 <Cell col="8" text="bind:petternCd"/>
                 <Cell col="9" text="bind:matCd"/>
                 <Cell col="10" text="bind:o2oStockYn"/>
-                <Cell col="11" text="bind:outStockTypeNm"/>
-                <Cell col="12" text="bind:matNm"/>
-                <Cell col="13" text="bind:cntNm"/>
-                <Cell col="14" text="bind:periodNm"/>
-                <Cell col="15" text="bind:psNm"/>
-                <Cell col="16" style="align:right;" text="bind:regiAmt"/>
-                <Cell col="17" style="align:right;" text="bind:monAmt"/>
-                <Cell col="18" text="bind:custNm"/>
-                <Cell col="19" text="bind:mobNo" mask="###-####-####"/>
-                <Cell col="20" text="bind:chanLclsNm"/>
-                <Cell col="21" text="bind:chanMclsNm"/>
-                <Cell col="22" text="bind:agencyCd"/>
-                <Cell col="23" text="bind:agencyNm"/>
-                <Cell col="24" text="bind:rentalGroupNm"/>
-                <Cell col="25" text="bind:rentalOfficeNm"/>
-                <Cell col="26" text="bind:modelNm"/>
-                <Cell col="27" text="bind:carNo"/>
-                <Cell col="28" text="bind:orgAgnm"/>
-                <Cell col="29" text="bind:ordAgent"/>
-                <Cell col="30" text="bind:genderCd"/>
-                <Cell col="31" text="bind:cMileage"/>
-                <Cell col="32" text="bind:age"/>
-                <Cell col="33" text="bind:addrArea"/>
-                <Cell col="34" text="bind:seasonNm"/>
-                <Cell col="35" text="bind:mfNm"/>
-                <Cell col="36" text="bind:chanNm"/>
-                <Cell col="37" text="bind:firstDay"/>
+                <Cell col="11" text="bind:instNm"/>
+                <Cell col="12" text="bind:outStockTypeNm"/>
+                <Cell col="13" text="bind:matNm"/>
+                <Cell col="14" text="bind:cntNm"/>
+                <Cell col="15" text="bind:periodNm"/>
+                <Cell col="16" text="bind:psNm"/>
+                <Cell col="17" style="align:right;" text="bind:regiAmt"/>
+                <Cell col="18" style="align:right;" text="bind:monAmt"/>
+                <Cell col="19" text="bind:custNm"/>
+                <Cell col="20" text="bind:mobNo" mask="###-####-####"/>
+                <Cell col="21" text="bind:chanLclsNm"/>
+                <Cell col="22" text="bind:chanMclsNm"/>
+                <Cell col="23" text="bind:agencyCd"/>
+                <Cell col="24" text="bind:agencyNm"/>
+                <Cell col="25" text="bind:rentalGroupNm"/>
+                <Cell col="26" text="bind:rentalOfficeNm"/>
+                <Cell col="27" text="bind:modelNm"/>
+                <Cell col="28" text="bind:carNo"/>
+                <Cell col="29" text="bind:orgAgnm"/>
+                <Cell col="30" text="bind:ordAgent"/>
+                <Cell col="31" text="bind:genderCd"/>
+                <Cell col="32" text="bind:cMileage"/>
+                <Cell col="33" text="bind:age"/>
+                <Cell col="34" text="bind:addrArea"/>
+                <Cell col="35" text="bind:seasonNm"/>
+                <Cell col="36" text="bind:mfNm"/>
+                <Cell col="37" text="bind:chanNm"/>
+                <Cell col="38" text="bind:firstDay"/>
               </Band>
               <Band id="summary">
                 <Cell text="총합계"/>
@@ -149,9 +152,9 @@
                 <Cell col="13"/>
                 <Cell col="14"/>
                 <Cell col="15"/>
-                <Cell col="16" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;regiAmt&quot;)"/>
-                <Cell col="17" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;monAmt&quot;)"/>
-                <Cell col="18"/>
+                <Cell col="16"/>
+                <Cell col="17" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;regiAmt&quot;)"/>
+                <Cell col="18" displaytype="number" style="align:right;" expr="expr:dataset.getSum(&quot;monAmt&quot;)"/>
                 <Cell col="19"/>
                 <Cell col="20"/>
                 <Cell col="21"/>
@@ -171,11 +174,12 @@
                 <Cell col="35"/>
                 <Cell col="36"/>
                 <Cell col="37"/>
+                <Cell col="38"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Div id="div_search" taborder="6" left="0" top="0" height="100" cssclass="div_WF_searchBg" width="1122">
+        <Div id="div_search" taborder="6" left="0" top="0" height="100" cssclass="div_WF_searchBg" width="1162">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="50" text="렌탈지사" cssclass="sta_WF_schTitle" left="25" top="12" height="20" domainId="nexa.s_condition" width="80"/>
@@ -277,6 +281,7 @@
           <Column id="outStockType" type="STRING" size="256"/>
           <Column id="outStockTypeNm" type="STRING" size="256"/>
           <Column id="firstDay" type="STRING" size="256"/>
+          <Column id="instNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsRentalInfo" useclientlayout="true">

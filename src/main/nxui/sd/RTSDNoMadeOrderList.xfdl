@@ -39,13 +39,14 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="5" useinputpanel="false" top="128" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1122" height="357">
+        <Grid id="Grid00" taborder="5" useinputpanel="false" top="128" binddataset="dsList" left="0" autofittype="none" nodatatext="조회된 데이터가 없습니다." width="1402" height="357">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="90"/>
                 <Column size="90"/>
-                <Column size="0"/>
+                <Column size="90"/>
+                <Column size="90"/>
                 <Column size="90"/>
                 <Column size="90"/>
                 <Column size="90"/>
@@ -67,38 +68,40 @@
               <Band id="head">
                 <Cell text="계약번호"/>
                 <Cell col="1" text="계약상태"/>
-                <Cell col="2" text="휴대폰"/>
-                <Cell col="3" text="계약일자"/>
-                <Cell col="4" text="장착일자"/>
-                <Cell col="5" text="상품코드"/>
-                <Cell col="6" text="상품명"/>
-                <Cell col="7" text="본수"/>
-                <Cell col="8" text="거점"/>
-                <Cell col="9" text="재고유형"/>
-                <Cell col="10" text="채널"/>
-                <Cell col="11" text="채널중분류"/>
-                <Cell col="12" text="대리점코드"/>
-                <Cell col="13" text="대리점"/>
-                <Cell col="14" text="오더번호"/>
-                <Cell col="15" text="딜리번리번호"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="휴대폰"/>
+                <Cell col="4" text="계약일자"/>
+                <Cell col="5" text="장착일자"/>
+                <Cell col="6" text="상품코드"/>
+                <Cell col="7" text="상품명"/>
+                <Cell col="8" text="본수"/>
+                <Cell col="9" text="거점"/>
+                <Cell col="10" text="재고유형"/>
+                <Cell col="11" text="채널"/>
+                <Cell col="12" text="채널중분류"/>
+                <Cell col="13" text="대리점코드"/>
+                <Cell col="14" text="대리점"/>
+                <Cell col="15" text="오더번호"/>
+                <Cell col="16" text="딜리번리번호"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="normal" text="bind:ordNo" calendardisplaynulltype="none"/>
                 <Cell col="1" text="bind:statNm"/>
-                <Cell col="2" text="bind:mobNo"/>
-                <Cell col="3" displaytype="text" edittype="none" text="bind:ordDay" mask="####-##-##"/>
-                <Cell col="4" displaytype="text" text="bind:procDay" mask="####-##-##" calendardisplaynulltype="none"/>
-                <Cell col="5" displaytype="normal" text="bind:matCd" calendardisplaynulltype="none"/>
-                <Cell col="6" displaytype="normal" text="bind:matNm" calendardisplaynulltype="none"/>
-                <Cell col="7" displaytype="normal" text="bind:cntNm" calendardisplaynulltype="none"/>
-                <Cell col="8" displaytype="normal" text="bind:rcYn" calendardisplaynulltype="none"/>
-                <Cell col="9" text="bind:outStockTypeNm"/>
-                <Cell col="10" text="bind:chanNm"/>
-                <Cell col="11" text="bind:chanMclsNm"/>
-                <Cell col="12" text="bind:agencyCd"/>
-                <Cell col="13" text="bind:agencyNm"/>
-                <Cell col="14" text="bind:vbeln"/>
-                <Cell col="15" text="bind:vbelnD"/>
+                <Cell col="2" text="bind:custNm"/>
+                <Cell col="3" text="bind:mobNo"/>
+                <Cell col="4" displaytype="text" edittype="none" text="bind:ordDay" mask="####-##-##"/>
+                <Cell col="5" displaytype="text" text="bind:procDay" mask="####-##-##" calendardisplaynulltype="none"/>
+                <Cell col="6" displaytype="normal" text="bind:matCd" calendardisplaynulltype="none"/>
+                <Cell col="7" displaytype="normal" text="bind:matNm" calendardisplaynulltype="none"/>
+                <Cell col="8" displaytype="normal" text="bind:cntNm" calendardisplaynulltype="none"/>
+                <Cell col="9" displaytype="normal" text="bind:rcYn" calendardisplaynulltype="none"/>
+                <Cell col="10" text="bind:outStockTypeNm"/>
+                <Cell col="11" text="bind:chanNm"/>
+                <Cell col="12" text="bind:chanMclsNm"/>
+                <Cell col="13" text="bind:agencyCd"/>
+                <Cell col="14" text="bind:agencyNm"/>
+                <Cell col="15" text="bind:vbeln"/>
+                <Cell col="16" text="bind:vbelnD"/>
               </Band>
             </Format>
           </Formats>
@@ -114,6 +117,8 @@
           <Column id="chk" type="STRING" size="256"/>
           <Column id="ordNo" type="STRING" size="256"/>
           <Column id="statNm" type="STRING" size="256"/>
+          <Column id="custNm" type="STRING" size="256"/>
+          <Column id="mobNo" type="STRING" size="256"/>
           <Column id="ordDay" type="STRING" size="256"/>
           <Column id="procDay" type="STRING" size="256"/>
           <Column id="matCd" type="STRING" size="256"/>

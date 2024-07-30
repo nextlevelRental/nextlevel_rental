@@ -8623,4 +8623,3 @@ PROCEDURE p_sRtsd0104_ordNoList3PoPup (
   END f_UpdateRtsd0104OrderType;
   
 END Pkg_Rtsd0104;
-/

@@ -1436,6 +1436,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0104 AS
    1.01       2016-07-12  이영근           대리점코드/채널대분류/채널중분류 컬럼 추가
    1.7        2018-03-01  wjim             [20180301_03] 프리미엄 서비스 추가
    1.8        2019-03-01  wjim             [20190301_01] '콜센터' 사용자 그룹에 전체 조회권한 부여
+   1.9        2024-07-17  백인천             [20240717] '장착유형' 컬럼 추가
   *****************************************************************************/
   PROCEDURE p_sRtsd0104Status (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -1469,6 +1470,7 @@ SELECT A.*
       FROM (
     SELECT  A.ORD_NO                                                AS ORD_NO,          /*주문번호       */
             Pkg_Rtcm0051.f_sRtcm0051Codename('S032', A.STAT_CD)     AS STAT_NM,         /*계약상태       */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S304', NVL(C.INST_CD,'1030'))     AS INST_NM,         /*장착유형*/
             A.ORD_DAY                                               AS ORD_DAY,         /*접수일자       */
             A.PROC_DAY                                              AS OPROC_DAY,       /*계약-장착일자  */
             TO_CHAR(A.REG_DT, 'HH24:MI:SS')                         AS REG_DT,          /*계약접수시간   */
@@ -1549,7 +1551,7 @@ SELECT A.*
              A.SALES_OFFICE,A.CONTENTS_CD,A.MODEL_CD,A.CAR_NO,A.ORD_AGENT,E.ORG_AGNM,D.GENDER_CD,A.C_MILEAGE,D.BIRTH_DAY,
              D.ADDR1,A.SEASON_CD,F.MF_CD,A.CHAN_CD,D.MOB_NO,E.CHAN_LCLS_CD,G.CHAN_LCLS_CD,E.CHAN_MCLS_CD,G.CHAN_MCLS_CD,
              D.POS_CD,D.ADDR1,D.ADDR2,A.PS_CD,A.REGI_AMT,A.SUM_MON_AMT,H.PETTERN_CD, A.SALE_CD, A.OMS_ORDERNO, A.OUT_STOCK_YN,
-             A.OUT_STOCK_TYPE
+             A.OUT_STOCK_TYPE, C.INST_CD
             ) A
         LEFT OUTER JOIN (
             SELECT ORD_AGENT USER_ID,
@@ -8469,6 +8471,7 @@ PROCEDURE p_sRtsd0104_ordNoList3PoPup (
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0       2023-09-14   kstka              
+   1.1       2024-07-17   백인천				[이름 and 휴대전화번호] 컬럼 추가              
   *****************************************************************************/
   PROCEDURE p_sNoMadeOrderList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -8493,6 +8496,8 @@ PROCEDURE p_sRtsd0104_ordNoList3PoPup (
     OPEN Ref_Cursor FOR
     SELECT A.ORD_NO
         , A.STAT_CD
+        , M.CUST_NM
+    	, M.MOB_NO
         , F.CD_NM STAT_NM
         , A.ORD_DAY
         , A.PROC_DAY

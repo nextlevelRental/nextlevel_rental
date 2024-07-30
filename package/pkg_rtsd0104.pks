@@ -1383,5 +1383,5 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0104 AS
     v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /*등록자 ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
-    
+   
 END Pkg_Rtsd0104;

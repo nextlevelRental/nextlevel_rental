@@ -39,7 +39,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grid_AgencyList" taborder="2" binddataset="ds_AgencyList" useinputpanel="false" cellsizingtype="col" left="0" top="88" width="1122" height="408" autosizebandtype="allband">
+        <Grid id="grid_AgencyList" taborder="2" oncelldblclick="ds_AgencyList_oncelldblclick" binddataset="ds_AgencyList" useinputpanel="false" cellsizingtype="col" left="0" top="88" width="1122" height="408" autosizebandtype="allband">
           <Formats>
             <Format id="default">
               <Columns>
@@ -389,6 +389,23 @@ this.div_search_cb_Sido_onitemchanged = function(obj:Combo, e:nexacro.ItemChange
 	}
 	
 	this.div_search.cb_Sigun.set_index(0);
+}
+
+
+
+/**
+ * 목록 그리드의 주소 영역 셀 더블 클릭 이벤트 처리
+ * - 상담 팝업 grd_list01_oncellclick
+ */
+this.ds_AgencyList_oncelldblclick = function(obj:Grid, e:nexacro.GridClickEventInfo) {
+
+	// 팝업화면 연동 파라미터 세팅
+	var rowPo1 = this.ds_AgencyList.rowposition;
+	var full_addr = this.ds_AgencyList.getColumn(rowPo1, "addr");
+	var agency_nm = this.ds_AgencyList.getColumn(rowPo1, "agencyNm");
+	
+	var arr = {addr : full_addr, agencyNm : agency_nm};
+	Ex.core.popup(this, "대리점 위치조회", "cs::RTCSAgencyList_pop.xfdl", arr, "modaless=false");
 }]]></Script>
   </Form>
 </FDL>

@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_S016", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -31,6 +32,7 @@
 
             obj = new Dataset("ds_S017", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -41,6 +43,7 @@
 
             obj = new Dataset("ds_S014", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -51,6 +54,7 @@
 
             obj = new Dataset("ds_S091", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -61,6 +65,7 @@
 
             obj = new Dataset("ds_Ch_Yn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -71,6 +76,7 @@
 
             obj = new Dataset("ds_Lm_Yn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -85,6 +91,7 @@
 
             obj = new Dataset("ds_S100", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -95,6 +102,7 @@
 
             obj = new Dataset("ds_S101", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -105,6 +113,7 @@
 
             obj = new Dataset("ds_S102", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -498,6 +507,23 @@
         	
         	this.div_search.cb_Sigun.set_index(0);
         }
+
+        
+
+        /**
+         * 목록 그리드의 주소 영역 셀 더블 클릭 이벤트 처리
+         * - 상담 팝업 grd_list01_oncellclick
+         */
+        this.ds_AgencyList_oncelldblclick = function(obj,e) {
+
+        	// 팝업화면 연동 파라미터 세팅
+        	var rowPo1 = this.ds_AgencyList.rowposition;
+        	var full_addr = this.ds_AgencyList.getColumn(rowPo1, "addr");
+        	var agency_nm = this.ds_AgencyList.getColumn(rowPo1, "agencyNm");
+        	
+        	var arr = {addr : full_addr, agencyNm : agency_nm};
+        	Ex.core.popup(this, "대리점 위치조회", "cs::RTCSAgencyList_pop.xfdl", arr, "modaless=false");
+        }
         });
 
 
@@ -507,6 +533,7 @@
         {
             this.addEventHandler("onload", this.RTCSAgencyList_onload, this);
             this.div_search.cb_Sido.addEventHandler("onitemchanged", this.div_search_cb_Sido_onitemchanged, this);
+            this.grid_AgencyList.addEventHandler("oncelldblclick", this.ds_AgencyList_oncelldblclick, this);
 
         };
 

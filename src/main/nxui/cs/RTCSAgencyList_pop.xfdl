@@ -47,7 +47,7 @@ this.fn_wb_map = function(obj:nexacro.WebBrowser, e:nexacro.WebLoadCompEventInfo
 		mapHtml += '<html>';
 		mapHtml += '<head>';
 		mapHtml += '	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
-		mapHtml += '	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b00b5c54035d38ea35de06c42e1e34ba&libraries=services"></script>';
+		mapHtml += '	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aa9c4a19066357f6507b6422119f8405&libraries=services"></script>';
 		mapHtml += '	<style>';
 		mapHtml += '		#map {width:560px; height:420px;}';
 		mapHtml += '	</style>';

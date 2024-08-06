@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAgencyList_pop" classname="RTCSAgencyList_pop" left="0" top="0" width="600" height="496" titletext="대리점 지도 조회 팝업" onload="RTCSAgencyList_pop_onload">
+    <Layouts>
+      <Layout>
+        <Button id="btn_close" taborder="3" text="닫기" onclick="btn_close_onclick" top="462" right="11" width="41" height="21" domainId="nexa.add"/>
+        <Div id="Div00" taborder="6" text="Div00" left="0.83%" top="9" right="0.83%" height="445">
+          <Layouts>
+            <Layout>
+              <WebBrowser id="wb_map" left="1.5%" top="5" right="1.5%" height="437" taborder="0"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSAgencyList_pop.xfdl
+ * 설    명 : 대리점 조회 지도 팝업
+ * 작 성 자 :
+ * 변경이력 :
+ * 변경일자		변경자		변경내용
+ * ----------	------		-------- 
+ * 2024-07-24	백인천		지도조회
+ ***************************************************************************************************/
+include "lib::comLib.xjs";
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+ ***********************************************************************/
+this.addr		= this.parent.addr;	/* 주소 */
+this.agencyNm	= this.parent.agencyNm;	/* 주소 */
+
+/**
+ * 폼의 모든 컴포넌트가 생성되고, 모든 오브젝트가 로딩되었을 때 이벤트 처리
+ */
+this.RTCSAgencyList_pop_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.fn_wb_map();
+}
+
+this.fn_wb_map = function(obj:nexacro.WebBrowser, e:nexacro.WebLoadCompEventInfo) {
+	var wb = this.Div00.wb_map.getProperty("document");
+	
+	var mapHtml = '';
+		mapHtml += '<html>';
+		mapHtml += '<head>';
+		mapHtml += '	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>';
+		mapHtml += '	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b00b5c54035d38ea35de06c42e1e34ba&libraries=services"></script>';
+		mapHtml += '	<style>';
+		mapHtml += '		#map {width:560px; height:420px;}';
+		mapHtml += '	</style>';
+		mapHtml += '</head>';
+		mapHtml += '<body>';
+		mapHtml += '	<div id="map"></div>';
+		mapHtml += '	<script>';
+		mapHtml += '		var mapContainer = document.getElementById("map");';
+		mapHtml += '		var mapOption = {';
+		mapHtml += '			center: new kakao.maps.LatLng(37.5665, 126.9780),';
+		mapHtml += '			level: 3';
+		mapHtml += '		};';
+		mapHtml += '		var map = new kakao.maps.Map(mapContainer, mapOption);';
+		mapHtml += '		var geocoder = new kakao.maps.services.Geocoder();';
+		mapHtml += '		geocoder.addressSearch("'+this.addr+'", function(result, status) {';
+		mapHtml += '			if (status === kakao.maps.services.Status.OK) {';
+		mapHtml += '				var coords = new kakao.maps.LatLng(result[0].y, result[0].x);';
+		mapHtml += '				var marker = new kakao.maps.Marker({map: map, position: coords});';
+		mapHtml += '				marker.setMap(map);';
+		mapHtml += '				map.setCenter(coords);';
+		mapHtml += '			}';
+		mapHtml += '		});';
+		mapHtml += '	</script>';
+		mapHtml += '</body>';
+		mapHtml += '</html>';
+    
+    // WebBrowser에 HTML 삽입
+	wb.callMethod("open");
+	wb.callMethod("write", mapHtml);
+	wb.callMethod("close");
+}
+
+//닫기 버튼
+this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.close();
+}
+]]></Script>
+  </Form>
+</FDL>

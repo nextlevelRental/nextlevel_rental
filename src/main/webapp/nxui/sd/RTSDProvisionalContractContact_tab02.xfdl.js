@@ -14,7 +14,7 @@
                 this.set_name("RTSDProvisionalContractContact_tab02");
                 this.set_classname("RTSDProvisionalContractContact_tab02");
                 this.set_titletext("New Form");
-                this._setFormPosition(0,0,1091,82);
+                this._setFormPosition(0,0,1091,97);
             }
 
             
@@ -113,7 +113,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1091, 82, this,
+            obj = new Layout("default", "", 1091, 97, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTSDProvisionalContractContact_tab02");

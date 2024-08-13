@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTSDProvisionalContractContact_tab02" classname="RTSDProvisionalContractContact_tab02" left="0" top="0" width="1091" height="82" titletext="New Form" onload="RTSDProvisionalContractContact_tab02_onload">
+  <Form id="RTSDProvisionalContractContact_tab02" classname="RTSDProvisionalContractContact_tab02" left="0" top="0" width="1091" height="97" titletext="New Form" onload="RTSDProvisionalContractContact_tab02_onload">
     <Layouts>
       <Layout>
         <Static id="Static10" taborder="0" text="~" left="217" top="14" width="9" height="53"/>

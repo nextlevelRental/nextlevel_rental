@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTSDProvisionalContractContact" classname="RTSDProvisionalContractContact" left="0" top="0" width="1147" height="496" titletext="New Form" onload="RTSDProvisionalContractContact_onload">
+  <Form id="RTSDProvisionalContractContact" classname="RTSDProvisionalContractContact" left="0" top="0" width="1147" height="545" titletext="New Form" onload="RTSDProvisionalContractContact_onload">
     <Layouts>
       <Layout>
         <Static id="Static04" taborder="0" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="0" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
         <Static id="Static05" taborder="3" text="FIX h20" cssclass="Guide_color" visible="false" left="0" top="92" width="1122" height="20" style="background:aqua;color:#333333ff;"/>
-        <Static id="Static21" taborder="5" text="가계약목록" cssclass="sta_WF_subTitle" left="10" top="116" width="120" height="21"/>
-        <Static id="Static02" taborder="6" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="132" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
-        <Static id="Static00" taborder="7" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="10" height="486" style="background:aqua;color:#333333ff;"/>
-        <Static id="Static01" taborder="8" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
-        <Grid id="grid_provsnList" taborder="9" binddataset="ds_provsnList" useinputpanel="false" left="9" top="142" width="1113" height="157" oncelldblclick="grid_provsnList_oncelldblclick" oncellclick="grid_provsnList_oncellclick">
+        <Static id="Static21" taborder="5" text="가계약목록" cssclass="sta_WF_subTitle" left="10" top="149" width="120" height="21"/>
+        <Static id="Static02" taborder="6" text="FIX h10" cssclass="Guide_color" visible="false" left="0" top="165" width="1122" height="10" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static00" taborder="7" text="FIX &#13;&#10;h10" cssclass="Guide_color" visible="false" left="0" top="10" width="9" height="536" style="background:aqua;color:#333333ff;"/>
+        <Static id="Static01" taborder="8" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="545"/>
+        <Grid id="grid_provsnList" taborder="9" binddataset="ds_provsnList" useinputpanel="false" left="9" top="175" width="1113" height="157" oncelldblclick="grid_provsnList_oncelldblclick" oncellclick="grid_provsnList_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -125,55 +125,55 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static34" taborder="10" cssclass="sta_WF_detailLabel2" left="10" top="375" width="1113" height="31"/>
-        <Static id="st_custNo" taborder="18" text="고객명" cssclass="sta_WF_detailLabel" left="10" top="375" width="125" height="31"/>
-        <Edit id="ed_custNo" taborder="17" maxlength="50" left="140" top="380" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_custNm" taborder="34" text="연락처" cssclass="sta_WF_detailLabel" left="287" top="375" width="125" height="31"/>
-        <Edit id="ed_mobNo" taborder="35" maxlength="14" left="417" top="380" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="Static03" taborder="36" cssclass="sta_WF_detailLabel2" left="10" top="405" width="1113" height="31"/>
-        <Edit id="ed_patternNm" taborder="23" maxlength="100" left="971" top="410" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_statNm" taborder="37" text="패턴" cssclass="sta_WF_detailLabel" left="841" top="405" width="125" height="31"/>
-        <Edit id="ed_carNo" taborder="22" maxlength="8" left="694" top="410" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_saleNm" taborder="38" text="차량번호" cssclass="sta_WF_detailLabel" left="564" top="405" width="125" height="31"/>
-        <Edit id="ed_specNm" taborder="21" maxlength="20" left="417" top="410" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_chanNm" taborder="39" text="타이어규격" cssclass="sta_WF_detailLabel" left="287" top="405" width="125" height="31"/>
-        <Edit id="ed_mcNm" taborder="20" maxlength="50" left="140" top="410" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_ordNm" taborder="40" text="차종" cssclass="sta_WF_detailLabel" left="10" top="405" width="125" height="31"/>
-        <Static id="Static08" taborder="41" cssclass="sta_WF_detailLabel2" left="10" top="435" width="1113" height="31"/>
-        <Static id="st_cancDay" taborder="42" text="월렌탈료" cssclass="sta_WF_detailLabel" left="434" top="435" width="82" height="31"/>
-        <Static id="st_procDay" taborder="43" text="렌탈등록비" cssclass="sta_WF_detailLabel" left="270" top="435" width="82" height="31"/>
-        <Static id="st_planDay" taborder="44" text="계약기간" cssclass="sta_WF_detailLabel" left="140" top="435" width="82" height="31"/>
-        <Static id="st_ordDay" taborder="45" text="타이어개수" cssclass="sta_WF_detailLabel" left="10" top="435" width="82" height="31"/>
-        <Static id="Static13" taborder="46" cssclass="sta_WF_detailLabel2" left="10" top="465" width="1113" height="31"/>
-        <Edit id="ed_period" taborder="25" inputtype="number" left="227" top="440" width="38" height="21" readonly="true" enable="true"/>
-        <Edit id="ed_regiAmt" taborder="26" inputtype="number" left="357" top="440" width="72" height="21" readonly="true" enable="true"/>
-        <Static id="st_ordQty" taborder="47" text="연락처수집방법" cssclass="sta_WF_detailLabel" left="414" top="465" width="125" height="31"/>
-        <Edit id="ed_emailAddr" taborder="30" maxlength="100" left="267" top="470" width="142" height="21" readonly="true" enable="true"/>
-        <Static id="st_matNm" taborder="48" text="e-mail" cssclass="sta_WF_detailLabel" left="180" top="465" width="82" height="31"/>
-        <Static id="st_matCd" taborder="49" text="장착희망일" cssclass="sta_WF_detailLabel" left="10" top="465" width="82" height="31"/>
-        <Edit id="ed_rentAmt" taborder="27" inputtype="number" left="521" top="440" width="72" height="21" readonly="true" enable="true"/>
-        <Static id="cust_birth_title" taborder="50" text="주소" cssclass="sta_WF_detailLabel" left="564" top="375" width="125" height="31"/>
-        <Edit id="ed_addr" taborder="19" maxlength="200" left="694" top="380" width="419" height="21" readonly="true" enable="true"/>
-        <Edit id="ed_contactGet" taborder="31" maxlength="200" left="544" top="470" width="316" height="21" readonly="true" enable="true"/>
-        <Static id="st_contractInfo" taborder="51" text="가계약정보" cssclass="sta_WF_subTitle" left="10" top="318" width="80" height="21"/>
-        <Edit id="ed_cnt" taborder="24" inputtype="number" left="97" top="440" width="38" height="21" readonly="true" enable="true"/>
-        <Static id="Static06" taborder="52" cssclass="Guide_color" visible="false" left="0" top="298" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
-        <Static id="Static07" taborder="53" cssclass="Guide_color" visible="false" left="683" top="486" width="1147" height="10"/>
-        <MaskEdit id="me_planDay" taborder="29" type="string" mask="####-##-##" enable="true" left="97" top="470" width="78" height="21" readonly="true" style="align:left middle;"/>
-        <Button id="btn_contact" taborder="54" text="상담" onclick="btn_del_onclick" cssclass="btn_WF_module" left="1077" top="313" width="45" height="22" domainId="nexa.save"/>
-        <Static id="Static09" taborder="55" cssclass="sta_WF_detailLabel2" left="10" top="345" width="1113" height="31"/>
-        <Edit id="ed_ordNo" taborder="16" readonly="false" maxlength="100" left="1006" top="350" width="107" height="21" enable="false"/>
-        <Static id="st_statNm00" taborder="56" text="진계약번호" cssclass="sta_WF_detailLabel" left="920" top="345" width="82" height="31"/>
-        <Static id="st_saleNm00" taborder="57" text="상태" cssclass="sta_WF_detailLabel" left="545" top="345" width="82" height="31"/>
-        <Edit id="ed_provsnNo" taborder="12" readonly="true" maxlength="20" left="270" top="350" width="107" height="21" enable="true"/>
-        <Static id="st_chanNm00" taborder="58" text="가계약번호" cssclass="sta_WF_detailLabel" left="184" top="345" width="82" height="31"/>
-        <Static id="st_ordNm00" taborder="59" text="주문접수일" cssclass="sta_WF_detailLabel" left="10" top="345" width="82" height="31"/>
-        <MaskEdit id="me_provsnDay" taborder="11" readonly="true" type="string" mask="####-##-##" left="96" top="350" width="84" height="21" style="align:left middle;" enable="true"/>
-        <Static id="st_saleNm01" taborder="60" text="컨택횟수" cssclass="sta_WF_detailLabel" left="381" top="345" width="82" height="31"/>
-        <Edit id="ed_contactCnt" taborder="13" maxlength="8" left="467" top="350" width="74" height="21" readonly="true" enable="true"/>
-        <Combo id="cmb_provsnSt" taborder="14" innerdataset="@ds_S093" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="631" top="350" width="81" height="21" readonly="false" enable="false" onitemchanged="cmb_provsnSt_onitemchanged"/>
-        <Combo id="cmb_provsnStDtl" taborder="15" innerdataset="@ds_S094" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="716" top="350" width="200" height="21" readonly="false" enable="false"/>
-        <Grid id="grid_provsnExcelList" taborder="62" useinputpanel="false" left="28.6%" top="109" right="35.14%" height="147" binddataset="ds_provsnExcelList" visible="false">
+        <Static id="Static34" taborder="10" cssclass="sta_WF_detailLabel2" left="10" top="408" width="1113" height="31"/>
+        <Static id="st_custNo" taborder="18" text="고객명" cssclass="sta_WF_detailLabel" left="10" top="408" width="125" height="31"/>
+        <Edit id="ed_custNo" taborder="17" maxlength="50" left="140" top="413" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_custNm" taborder="34" text="연락처" cssclass="sta_WF_detailLabel" left="287" top="408" width="125" height="31"/>
+        <Edit id="ed_mobNo" taborder="35" maxlength="14" left="417" top="413" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="Static03" taborder="36" cssclass="sta_WF_detailLabel2" left="10" top="438" width="1113" height="31"/>
+        <Edit id="ed_patternNm" taborder="23" maxlength="100" left="971" top="443" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_statNm" taborder="37" text="패턴" cssclass="sta_WF_detailLabel" left="841" top="438" width="125" height="31"/>
+        <Edit id="ed_carNo" taborder="22" maxlength="8" left="694" top="443" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_saleNm" taborder="38" text="차량번호" cssclass="sta_WF_detailLabel" left="564" top="438" width="125" height="31"/>
+        <Edit id="ed_specNm" taborder="21" maxlength="20" left="417" top="443" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_chanNm" taborder="39" text="타이어규격" cssclass="sta_WF_detailLabel" left="287" top="438" width="125" height="31"/>
+        <Edit id="ed_mcNm" taborder="20" maxlength="50" left="140" top="443" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_ordNm" taborder="40" text="차종" cssclass="sta_WF_detailLabel" left="10" top="438" width="125" height="31"/>
+        <Static id="Static08" taborder="41" cssclass="sta_WF_detailLabel2" left="10" top="468" width="1113" height="31"/>
+        <Static id="st_cancDay" taborder="42" text="월렌탈료" cssclass="sta_WF_detailLabel" left="434" top="468" width="82" height="31"/>
+        <Static id="st_procDay" taborder="43" text="렌탈등록비" cssclass="sta_WF_detailLabel" left="270" top="468" width="82" height="31"/>
+        <Static id="st_planDay" taborder="44" text="계약기간" cssclass="sta_WF_detailLabel" left="140" top="468" width="82" height="31"/>
+        <Static id="st_ordDay" taborder="45" text="타이어개수" cssclass="sta_WF_detailLabel" left="10" top="468" width="82" height="31"/>
+        <Static id="Static13" taborder="46" cssclass="sta_WF_detailLabel2" left="10" top="498" width="1113" height="31"/>
+        <Edit id="ed_period" taborder="25" inputtype="number" left="227" top="473" width="38" height="21" readonly="true" enable="true"/>
+        <Edit id="ed_regiAmt" taborder="26" inputtype="number" left="357" top="473" width="72" height="21" readonly="true" enable="true"/>
+        <Static id="st_ordQty" taborder="47" text="연락처수집방법" cssclass="sta_WF_detailLabel" left="414" top="498" width="125" height="31"/>
+        <Edit id="ed_emailAddr" taborder="30" maxlength="100" left="267" top="503" width="142" height="21" readonly="true" enable="true"/>
+        <Static id="st_matNm" taborder="48" text="e-mail" cssclass="sta_WF_detailLabel" left="180" top="498" width="82" height="31"/>
+        <Static id="st_matCd" taborder="49" text="장착희망일" cssclass="sta_WF_detailLabel" left="10" top="498" width="82" height="31"/>
+        <Edit id="ed_rentAmt" taborder="27" inputtype="number" left="521" top="473" width="72" height="21" readonly="true" enable="true"/>
+        <Static id="cust_birth_title" taborder="50" text="주소" cssclass="sta_WF_detailLabel" left="564" top="408" width="125" height="31"/>
+        <Edit id="ed_addr" taborder="19" maxlength="200" left="694" top="413" width="419" height="21" readonly="true" enable="true"/>
+        <Edit id="ed_contactGet" taborder="31" maxlength="200" left="544" top="503" width="316" height="21" readonly="true" enable="true"/>
+        <Static id="st_contractInfo" taborder="51" text="가계약정보" cssclass="sta_WF_subTitle" left="10" top="351" width="80" height="21"/>
+        <Edit id="ed_cnt" taborder="24" inputtype="number" left="97" top="473" width="38" height="21" readonly="true" enable="true"/>
+        <Static id="Static06" taborder="52" cssclass="Guide_color" visible="false" left="0" top="331" right="0" height="15" style="border:0 none #808080,1 solid #d2020bff;"/>
+        <Static id="Static07" taborder="53" cssclass="Guide_color" visible="false" left="-1" top="535" width="1147" height="10"/>
+        <MaskEdit id="me_planDay" taborder="29" type="string" mask="####-##-##" enable="true" left="97" top="503" width="78" height="21" readonly="true" style="align:left middle;"/>
+        <Button id="btn_contact" taborder="54" text="상담" onclick="btn_del_onclick" cssclass="btn_WF_module" left="1077" top="346" width="45" height="22" domainId="nexa.save"/>
+        <Static id="Static09" taborder="55" cssclass="sta_WF_detailLabel2" left="10" top="378" width="1113" height="31"/>
+        <Edit id="ed_ordNo" taborder="16" readonly="false" maxlength="100" left="1006" top="383" width="107" height="21" enable="false"/>
+        <Static id="st_statNm00" taborder="56" text="진계약번호" cssclass="sta_WF_detailLabel" left="920" top="378" width="82" height="31"/>
+        <Static id="st_saleNm00" taborder="57" text="상태" cssclass="sta_WF_detailLabel" left="545" top="378" width="82" height="31"/>
+        <Edit id="ed_provsnNo" taborder="12" readonly="true" maxlength="20" left="270" top="383" width="107" height="21" enable="true"/>
+        <Static id="st_chanNm00" taborder="58" text="가계약번호" cssclass="sta_WF_detailLabel" left="184" top="378" width="82" height="31"/>
+        <Static id="st_ordNm00" taborder="59" text="주문접수일" cssclass="sta_WF_detailLabel" left="10" top="378" width="82" height="31"/>
+        <MaskEdit id="me_provsnDay" taborder="11" readonly="true" type="string" mask="####-##-##" left="96" top="383" width="84" height="21" style="align:left middle;" enable="true"/>
+        <Static id="st_saleNm01" taborder="60" text="컨택횟수" cssclass="sta_WF_detailLabel" left="381" top="378" width="82" height="31"/>
+        <Edit id="ed_contactCnt" taborder="13" maxlength="8" left="467" top="383" width="74" height="21" readonly="true" enable="true"/>
+        <Combo id="cmb_provsnSt" taborder="14" innerdataset="@ds_S093" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="631" top="383" width="81" height="21" readonly="false" enable="false" onitemchanged="cmb_provsnSt_onitemchanged"/>
+        <Combo id="cmb_provsnStDtl" taborder="15" innerdataset="@ds_S094" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="716" top="383" width="200" height="21" readonly="false" enable="false"/>
+        <Grid id="grid_provsnExcelList" taborder="62" useinputpanel="false" left="28.6%" top="169" right="35.14%" height="147" binddataset="ds_provsnExcelList" visible="false">
           <Formats>
             <Format id="default">
               <Columns>
@@ -273,14 +273,14 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="st_ordQty00" taborder="63" text="고객요청사항" cssclass="sta_WF_detailLabel" left="597" top="435" width="92" height="31"/>
-        <Edit id="ed_contactGet00" taborder="28" readonly="true" maxlength="200" left="694" top="440" width="419" height="21"/>
-        <Static id="st_matCd00" taborder="64" text="재컨택일자" cssclass="sta_WF_detailLabel" left="865" top="465" width="82" height="31"/>
-        <MaskEdit id="me_recallDay" taborder="32" readonly="true" type="string" mask="####-##-##" left="952" top="470" width="78" height="21" style="align:left middle;"/>
-        <MaskEdit id="me_recallTm" taborder="33" readonly="true" type="string" mask="##:##" left="1035" top="470" width="78" height="21" style="align:left middle;"/>
-        <FileDownload id="FileDownload" taborder="65" retry="0" text="파일다운로드" visible="false" enableevent="false" left="766" top="314" width="100" height="21"/>
-        <Button id="btn_img" taborder="67" text="이미지" cssclass="btn_WF_module" left="1028" top="313" width="45" height="22" domainId="nexa.save" onclick="btn_img_onclick" visible="false"/>
-        <Tab id="tab_cond" taborder="68" left="0.7%" top="0" right="2.27%" height="115" tabindex="0" scrollbars="autoboth" canchange="tab_cond_canchange">
+        <Static id="st_ordQty00" taborder="63" text="고객요청사항" cssclass="sta_WF_detailLabel" left="597" top="468" width="92" height="31"/>
+        <Edit id="ed_contactGet00" taborder="28" readonly="true" maxlength="200" left="694" top="473" width="419" height="21"/>
+        <Static id="st_matCd00" taborder="64" text="재컨택일자" cssclass="sta_WF_detailLabel" left="865" top="498" width="82" height="31"/>
+        <MaskEdit id="me_recallDay" taborder="32" readonly="true" type="string" mask="####-##-##" left="952" top="503" width="78" height="21" style="align:left middle;"/>
+        <MaskEdit id="me_recallTm" taborder="33" readonly="true" type="string" mask="##:##" left="1035" top="503" width="78" height="21" style="align:left middle;"/>
+        <FileDownload id="FileDownload" taborder="65" retry="0" text="파일다운로드" visible="false" enableevent="false" left="766" top="347" width="100" height="21"/>
+        <Button id="btn_img" taborder="67" text="이미지" cssclass="btn_WF_module" left="1028" top="346" width="45" height="22" domainId="nexa.save" onclick="btn_img_onclick" visible="false"/>
+        <Tab id="tab_cond" taborder="68" left="0.7%" top="0" right="2.27%" height="130" tabindex="0" scrollbars="autoboth" canchange="tab_cond_canchange">
           <Tabpages>
             <Tabpage id="tabpage1" text="조건1" url="sd::RTSDProvisionalContractContact_tab01.xfdl"/>
             <Tabpage id="tabpage2" text="조건2" url="sd::RTSDProvisionalContractContact_tab02.xfdl"/>
@@ -607,6 +607,8 @@ this.fn_search = function() {
 		sArgs += Ex.util.setParam("callDayTo"    , this.tab_cond.tabpage1.div_search.cal_condCallDayTo.value  );
 		sArgs += Ex.util.setParam("hshopTp"      , this.tab_cond.tabpage1.div_search.cmb_condSaleId.value     );
 		sArgs += Ex.util.setParam("recallDay"    , this.tab_cond.tabpage1.div_search.cal_recallDay.value      ); //재컨택일자
+		sArgs += Ex.util.setParam("provsnNoF"    , this.tab_cond.tabpage1.div_search.ed_provsnNoF.text        );
+		sArgs += Ex.util.setParam("provsnNoT"    , this.tab_cond.tabpage1.div_search.ed_provsnNoT.text        );
 	
 	} else if (this.tab_cond.tabindex == 1) {
 		sArgs += Ex.util.setParam("custNm"       , this.tab_cond.tabpage2.div_search.ed_custNm.value          );

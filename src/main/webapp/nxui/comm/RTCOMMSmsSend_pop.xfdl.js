@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_C029", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -31,6 +32,7 @@
 
             obj = new Dataset("ds_C030", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -304,11 +306,11 @@
         // 			sndMsg  = "[제휴카드] 넥센타이어 국민카드연락처 1644-8388";
         // 			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
         			sndMsg = "[제휴카드] 넥센타이어 국민카드연락처 1644-8388";
-        			sndMsg += "발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
-        			sndMsg += "※ 제휴카드 프로모션";
-        			sndMsg += "-. 22년 6월 30일까지 신청 URL 통해서 신청 시 30만원 구간 3천원 추가 할인 (월 14,000원 청구할인, 최대 12개월)";
-        			sndMsg += "-. 프로모션 URL : https://bit.ly/39WQPOq (URL 클릭 후 '카드 신청')";
-        			sndMsg += "-. 가족카드 제외, 동일카드 재발급/ 기 보유 회원 및 해지 후 1년 미경과자 제외";
+        			sndMsg += "타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+        			sndMsg += "결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
+        // 			sndMsg += "-. 22년 6월 30일까지 신청 URL 통해서 신청 시 30만원 구간 3천원 추가 할인 (월 14,000원 청구할인, 최대 12개월)";
+        // 			sndMsg += "-. 프로모션 URL : https://bit.ly/39WQPOq (URL 클릭 후 '카드 신청')";
+        // 			sndMsg += "-. 가족카드 제외, 동일카드 재발급/ 기 보유 회원 및 해지 후 1년 미경과자 제외";
         			this.fMsgId = "S014";
         			this.fEtcChar4 = "RENTAL00000000000055";
         			break;

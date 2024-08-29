@@ -57,6 +57,9 @@
 		<result property="bondSelDay"		column="BOND_SEL_DAY" />	<!-- 채권매각일자 [20211217_01] -->
 		<result property="vbelnR"		column="VBELN_R" />	<!-- 취소오더번호 [20230920_01] -->
 		<result property="matCd"		column="MAT_CD" />	<!-- 제품코드 [20230920_01] -->
+		<result property="paidState"		column="PAID_STATE" />	<!-- 240814 백인천 추가 : 수납상태 -->
+		<result property="ordCount"		column="ORD_COUNT" />	<!-- 240814 백인천 추가 : 현재계약건수 -->
+		<result property="roVan"		column="RO_VAN" />	<!-- 240814 백인천 추가 : 기타제한사유 -->
 	</resultMap>
 	<parameterMap id="p_sRtsdContractStatus" class="java.util.Map">
 		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsdContractStatus" />

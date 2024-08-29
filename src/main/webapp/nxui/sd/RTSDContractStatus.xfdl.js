@@ -21,17 +21,19 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_contractStatus", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"cancDay\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordQty\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"osYn\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/><Column id=\"psNm\" type=\"STRING\" size=\"256\"/><Column id=\"makerNm\" type=\"STRING\" size=\"256\"/><Column id=\"mcNm\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"carOwner\" type=\"STRING\" size=\"256\"/><Column id=\"cMileage\" type=\"STRING\" size=\"256\"/><Column id=\"maMileage\" type=\"STRING\" size=\"256\"/><Column id=\"reqText\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"vbeln\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"provsnNo\" type=\"STRING\" size=\"256\"/><Column id=\"rerentDayF\" type=\"STRING\" size=\"256\"/><Column id=\"rerentDayT\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"saleCdNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleCdDc\" type=\"STRING\" size=\"256\"/><Column id=\"o2oYn\" type=\"STRING\" size=\"256\"/><Column id=\"today\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"tmsOrderId\" type=\"STRING\" size=\"256\"/><Column id=\"omsOrderNo\" type=\"STRING\" size=\"256\"/><Column id=\"cancCd\" type=\"STRING\" size=\"256\"/><Column id=\"firstDay\" type=\"STRING\" size=\"256\"/><Column id=\"bondSelDay\" type=\"STRING\" size=\"256\"/><Column id=\"Column0\" type=\"STRING\" size=\"256\"/><Column id=\"vbelnD\" type=\"STRING\" size=\"256\"/><Column id=\"vbelnR\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"cancDay\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordQty\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"osYn\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/><Column id=\"psNm\" type=\"STRING\" size=\"256\"/><Column id=\"makerNm\" type=\"STRING\" size=\"256\"/><Column id=\"mcNm\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"carOwner\" type=\"STRING\" size=\"256\"/><Column id=\"cMileage\" type=\"STRING\" size=\"256\"/><Column id=\"maMileage\" type=\"STRING\" size=\"256\"/><Column id=\"reqText\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"vbeln\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"provsnNo\" type=\"STRING\" size=\"256\"/><Column id=\"rerentDayF\" type=\"STRING\" size=\"256\"/><Column id=\"rerentDayT\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"saleCdNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleCdDc\" type=\"STRING\" size=\"256\"/><Column id=\"o2oYn\" type=\"STRING\" size=\"256\"/><Column id=\"today\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"tmsOrderId\" type=\"STRING\" size=\"256\"/><Column id=\"omsOrderNo\" type=\"STRING\" size=\"256\"/><Column id=\"cancCd\" type=\"STRING\" size=\"256\"/><Column id=\"firstDay\" type=\"STRING\" size=\"256\"/><Column id=\"bondSelDay\" type=\"STRING\" size=\"256\"/><Column id=\"Column0\" type=\"STRING\" size=\"256\"/><Column id=\"vbelnD\" type=\"STRING\" size=\"256\"/><Column id=\"vbelnR\" type=\"STRING\" size=\"256\"/><Column id=\"paidState\" type=\"STRING\" size=\"256\"/><Column id=\"ordCount\" type=\"STRING\" size=\"256\"/><Column id=\"roVan\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_installCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_payCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("ds_discountCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("ds_agreeCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,6 +81,7 @@
 
             obj = new Dataset("ds_preminumCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -87,6 +93,7 @@
 
             obj = new Dataset("ds_sellerCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -98,6 +105,7 @@
 
             obj = new Dataset("ds_adviceCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -109,6 +117,7 @@
 
             obj = new Dataset("ds_saveOrdCancel", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -120,6 +129,7 @@
 
             obj = new Dataset("ds_historyCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -131,6 +141,7 @@
 
             obj = new Dataset("ds_eleSigCP", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -142,6 +153,7 @@
 
             obj = new Dataset("ds_prdInfoCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -153,6 +165,7 @@
 
             obj = new Dataset("ds_etcPrdInfoCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -725,6 +738,36 @@
             obj.set_readonly("false");
             obj.set_dateformat("yyyy-MM-dd");
 
+            obj = new Static("psTitle", "absolute", "52.31%", "8", null, "17", "42.2%", null, this);
+            obj.set_taborder("158");
+            obj.set_text("수납상태 :");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_paidState", "absolute", "57.45%", "6", "85", "20", null, null, this);
+            obj.set_taborder("159");
+            obj.set_readonly("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("ocTitle", "absolute", "66.87%", "9", null, "17", "26.24%", null, this);
+            obj.set_taborder("160");
+            obj.set_text("현재계약건수 :");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_ordCount", "absolute", "73.93%", "7", "80", "20", null, null, this);
+            obj.set_taborder("161");
+            obj.set_readonly("true");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("rvTitle", "absolute", "82.82%", "9", null, "17", "9.68%", null, this);
+            obj.set_taborder("162");
+            obj.set_text("기타제한사유 :");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("ed_roVan", "absolute", "89.97%", "8", "85", "20", null, null, this);
+            obj.set_taborder("163");
+            obj.set_readonly("true");
+            this.addChild(obj.name, obj);
+
 
             
             // Layout Functions
@@ -763,7 +806,22 @@
             obj = new BindItem("item6","cla_ordDay","value","ds_contractStatus","ordDay");
             this.addChild(obj.name, obj);
             obj.bind();
+            obj = new BindItem("item7","ed_saleCdNm","value","ds_contractStatus","saleCdNm");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item8","ed_saleCdDc","value","ds_contractStatus","saleCdDc");
+            this.addChild(obj.name, obj);
+            obj.bind();
             obj = new BindItem("item9","cal_cancDay","value","ds_contractStatus","cancDay");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item10","cb_cancCd","value","ds_contractStatus","cancCd");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item11","cla_arrivalDay","value","ds_contractStatus","firstDay");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item12","cal_bondSelDay","value","ds_contractStatus","bondSelDay");
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item14","ed_osYn","value","ds_contractStatus","osYn");
@@ -811,19 +869,13 @@
             obj = new BindItem("item29","ed_provsnNo","value","ds_contractStatus","provsnNo");
             this.addChild(obj.name, obj);
             obj.bind();
-            obj = new BindItem("item7","ed_saleCdNm","value","ds_contractStatus","saleCdNm");
+            obj = new BindItem("item30","ed_paidState","value","ds_contractStatus","paidState");
             this.addChild(obj.name, obj);
             obj.bind();
-            obj = new BindItem("item8","ed_saleCdDc","value","ds_contractStatus","saleCdDc");
+            obj = new BindItem("item31","ed_ordCount","value","ds_contractStatus","ordCount");
             this.addChild(obj.name, obj);
             obj.bind();
-            obj = new BindItem("item10","cb_cancCd","value","ds_contractStatus","cancCd");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item11","cla_arrivalDay","value","ds_contractStatus","firstDay");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item12","cal_bondSelDay","value","ds_contractStatus","bondSelDay");
+            obj = new BindItem("item32","ed_roVan","value","ds_contractStatus","roVan");
             this.addChild(obj.name, obj);
             obj.bind();
 
@@ -1139,7 +1191,7 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.btn_orderNo_onclick = function(obj,e){
         	var args ={ p_arg : this.p_arg };
-        	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+        	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.returnOrderNoInfo = function(ordNo,birthDay,telNo){
@@ -1635,6 +1687,7 @@
 
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
+        
         });
 
 

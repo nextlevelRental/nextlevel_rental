@@ -104,6 +104,12 @@
         <Button id="btn_order_02" taborder="142" text="퀵(긴급)" onclick="btn_order_onclick" left="888" top="210" width="60" height="21" domainId="nexa.save"/>
         <Button id="btn_order_03" taborder="143" text="익일도착" onclick="btn_order_onclick" left="952" top="210" width="60" height="21" domainId="nexa.save"/>
         <Calendar id="cal_setGiDay" taborder="144" readonly="false" dateformat="yyyy-MM-dd" left="734" top="210" width="142" height="21"/>
+        <Static id="psTitle" taborder="158" text="수납상태 :" left="52.31%" top="8" right="42.2%" height="17"/>
+        <Edit id="ed_paidState" taborder="159" readonly="true" left="57.45%" top="6" width="85" height="20"/>
+        <Static id="ocTitle" taborder="160" text="현재계약건수 :" left="66.87%" top="9" right="26.24%" height="17"/>
+        <Edit id="ed_ordCount" taborder="161" readonly="true" left="73.93%" top="7" width="80" height="20"/>
+        <Static id="rvTitle" taborder="162" text="기타제한사유 :" left="82.82%" top="9" right="9.68%" height="17"/>
+        <Edit id="ed_roVan" taborder="163" readonly="true" left="89.97%" top="8" width="85" height="20"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -114,7 +120,12 @@
       <BindItem id="item4" compid="ed_saleNm" propid="value" datasetid="ds_contractStatus" columnid="saleNm"/>
       <BindItem id="item5" compid="ed_statNm" propid="value" datasetid="ds_contractStatus" columnid="statNm"/>
       <BindItem id="item6" compid="cla_ordDay" propid="value" datasetid="ds_contractStatus" columnid="ordDay"/>
+      <BindItem id="item7" compid="ed_saleCdNm" propid="value" datasetid="ds_contractStatus" columnid="saleCdNm"/>
+      <BindItem id="item8" compid="ed_saleCdDc" propid="value" datasetid="ds_contractStatus" columnid="saleCdDc"/>
       <BindItem id="item9" compid="cal_cancDay" propid="value" datasetid="ds_contractStatus" columnid="cancDay"/>
+      <BindItem id="item10" compid="cb_cancCd" propid="value" datasetid="ds_contractStatus" columnid="cancCd"/>
+      <BindItem id="item11" compid="cla_arrivalDay" propid="value" datasetid="ds_contractStatus" columnid="firstDay"/>
+      <BindItem id="item12" compid="cal_bondSelDay" propid="value" datasetid="ds_contractStatus" columnid="bondSelDay"/>
       <BindItem id="item14" compid="ed_osYn" propid="value" datasetid="ds_contractStatus" columnid="osYn"/>
       <BindItem id="item15" compid="ed_mepYn" propid="value" datasetid="ds_contractStatus" columnid="mfpYn"/>
       <BindItem id="item16" compid="ed_psNm" propid="value" datasetid="ds_contractStatus" columnid="psNm"/>
@@ -130,11 +141,9 @@
       <BindItem id="item27" compid="cla_rerentDayF" propid="value" datasetid="ds_contractStatus" columnid="rerentDayF"/>
       <BindItem id="item28" compid="cla_rerentDayT" propid="value" datasetid="ds_contractStatus" columnid="rerentDayT"/>
       <BindItem id="item29" compid="ed_provsnNo" propid="value" datasetid="ds_contractStatus" columnid="provsnNo"/>
-      <BindItem id="item7" compid="ed_saleCdNm" propid="value" datasetid="ds_contractStatus" columnid="saleCdNm"/>
-      <BindItem id="item8" compid="ed_saleCdDc" propid="value" datasetid="ds_contractStatus" columnid="saleCdDc"/>
-      <BindItem id="item10" compid="cb_cancCd" propid="value" datasetid="ds_contractStatus" columnid="cancCd"/>
-      <BindItem id="item11" compid="cla_arrivalDay" propid="value" datasetid="ds_contractStatus" columnid="firstDay"/>
-      <BindItem id="item12" compid="cal_bondSelDay" propid="value" datasetid="ds_contractStatus" columnid="bondSelDay"/>
+      <BindItem id="item30" compid="ed_paidState" propid="value" datasetid="ds_contractStatus" columnid="paidState"/>
+      <BindItem id="item31" compid="ed_ordCount" propid="value" datasetid="ds_contractStatus" columnid="ordCount"/>
+      <BindItem id="item32" compid="ed_roVan" propid="value" datasetid="ds_contractStatus" columnid="roVan"/>
     </Bind>
     <Objects>
       <Dataset id="ds_contractStatus" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -195,6 +204,9 @@
           <Column id="Column0" type="STRING" size="256"/>
           <Column id="vbelnD" type="STRING" size="256"/>
           <Column id="vbelnR" type="STRING" size="256"/>
+          <Column id="paidState" type="STRING" size="256"/>
+          <Column id="ordCount" type="STRING" size="256"/>
+          <Column id="roVan" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_installCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -750,7 +762,7 @@ this.fn_getToday  = function() {
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.btn_orderNo_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
 	var args ={ p_arg : this.p_arg };
-	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");	
+	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.returnOrderNoInfo = function(ordNo, birthDay, telNo){
@@ -1245,6 +1257,7 @@ this.fn_sapOrderCancel = function(){
 	var fn_callBack		= "fn_callBack";
 
 	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
-}]]></Script>
+}
+]]></Script>
   </Form>
 </FDL>

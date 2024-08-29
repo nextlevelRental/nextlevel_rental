@@ -1,28 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTCOMMFileView_pop" classname="RTCOMMFileList_pop" left="0" top="0" width="959" height="568" titletext="마모파손이미지뷰어" onload="RTCOMMFileList_pop_onload" onkeyup="RTCOMMFileList_pop_onkeyup">
+  <Form id="RTCOMMFileView_pop" classname="RTCOMMFileList_pop" left="0" top="0" width="1029" height="568" titletext="마모파손이미지뷰어" onload="RTCOMMFileList_pop_onload" onkeyup="RTCOMMFileList_pop_onkeyup">
     <Layouts>
       <Layout>
-        <Div id="Div00" taborder="8" text="Div00" left="6.15%" top="10" right="0.94%" height="518">
+        <Div id="Div00" taborder="8" text="Div00" left="12.41%" top="10" right="0.94%" height="518">
           <Layouts>
             <Layout>
-              <ImageViewer id="imgView" taborder="0" left="0.8%" top="4" right="0%" height="514"/>
-              <WebBrowser id="webbrowser" left="0.79%" top="1" right="0%" height="517" taborder="1"/>
+              <ImageViewer id="imgView" taborder="0" left="7.18%" top="4" right="0%" height="514"/>
+              <WebBrowser id="webbrowser" left="7.18%" top="1" right="0%" height="517" taborder="1"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="grd_Group" taborder="0" binddataset="ds_imgList" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="10" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="909" height="518" oncellclick="grd_Group_oncellclick">
+        <Grid id="grd_Group" taborder="0" binddataset="ds_imgList" useinputpanel="false" autofittype="col" autosizebandtype="head" cellclickbound="cell" top="10" domainId="nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser" left="10" right="853" height="518" oncellclick="grd_Group_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="35"/>
+                <Column size="50"/>
               </Columns>
               <Rows>
                 <Row size="24"/>
               </Rows>
               <Band id="body">
                 <Cell style="align:left;" text="bind:num"/>
+                <Cell col="1" style="align:left;" text="bind:regDt"/>
               </Band>
             </Format>
           </Formats>
@@ -48,6 +50,7 @@
           <Column id="picSet" type="STRING" size="256"/>
           <Column id="picSetNm" type="STRING" size="256"/>
           <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>

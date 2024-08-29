@@ -101,6 +101,7 @@
 		<result property="confYn" 		column="CONF_YN" 	/>
 		<result property="picSet" 			column="PIC_SET" 	/>
 		<result property="picSetNm" 		column="PIC_SET_NM" 	/>
+		<result property="regDt" 			column="REG_DT" 	/>
 	</resultMap>
 	<parameterMap id="pSRtcs0209List" class="java.util.Map">
 		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0209List" />

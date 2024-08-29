@@ -265,7 +265,7 @@
           <Column id="confYn" type="STRING" size="256"/>
           <Column id="picSet" type="STRING" size="256"/>
           <Column id="picSetNm" type="STRING" size="256"/>
-          <Column id="dlvrDay" type="STRING" size="256"/>
+          <Column id="regDt" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_S305" useclientlayout="true" canrowposchange="ds_list_canrowposchange" onrowposchanged="ds_list_onrowposchanged">

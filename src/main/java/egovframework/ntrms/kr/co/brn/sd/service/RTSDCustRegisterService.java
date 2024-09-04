@@ -35,4 +35,6 @@ public interface RTSDCustRegisterService {
 	Map saveSmsMsg(Map<String, Object> inVar) throws Exception;
 	
 	List<Map> getReRentalInfo(Map <String, DataSetMap> inDataset, Map<String, Object> inVar) throws Exception;
+	
+	void beforeCheckEmpInfo(Map <String, Object> inVar) throws Exception;
 }

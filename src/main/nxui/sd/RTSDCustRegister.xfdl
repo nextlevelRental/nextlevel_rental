@@ -88,6 +88,7 @@
               <Edit id="ed_Ccustnm" taborder="78" maxlength="80" left="124" top="155" width="140" height="21" visible="false"/>
               <Static id="st_cTelno" taborder="79" text="담당자 전화번호" cssclass="sta_WF_detailLabelP" left="268" top="150" width="120" height="31" domainId="nexa.s_condition" visible="false"/>
               <Edit id="ed_cTelno" taborder="80" maxlength="80" left="392" top="155" width="140" height="21" visible="false" onkeyup="div_cust_ed_cTelno_onkeyup"/>
+              <Button id="checkPrvHistory" taborder="81" text="이력조회" left="92.07%" top="5" height="21" width="69" onclick="div_cust_checkPrvHistory_onclick"/>
             </Layout>
           </Layouts>
           <InitValue/>
@@ -574,6 +575,23 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
 			this.div_cust.ch_loginCheck2.set_value(false);
 		}
 	}
+	
+	if(strSvcId == "checkPrvHistory") {
+		this.FN_safekeyEnable();
+		this.div_cust.ch_safekeyFlag.set_value(true);
+		this.div_cust.ed_safekey.set_value( nvl(this.resultSafekey) );
+		alert("인증번호 확인완료했습니다.");
+	}
+	
+	
+	if(strSvcId == "beforeCheckEmpInfo") {
+		if(nErrorCode == "-1") {
+			alert(strErrorMsg);
+		} else {
+			alert("등록 가능합니다.");
+		}
+	}
+	
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.RTSDCustRegister_onload = function(obj:Form, e:nexacro.LoadEventInfo){
@@ -1652,6 +1670,52 @@ this.getControlAuthCheck = function(controlId, userGrp, userId){
 	if(nRow < 0) return "N";
 	if(nRow >= 0) return "Y";
 }
-//==================================================================================]]></Script>
+//==================================================================================
+this.div_cust_checkPrvHistory_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var nRow 	  = this.ds_cust.rowposition ;
+	
+	var custNo		= this.resultCustNo;
+	var custNm 		= nvl(this.ds_cust.getColumn(nRow,"custNm"));		//고객명
+	var birthDay 	= nvl(this.ds_cust.getColumn(nRow,"birthDay"));		//법정생년월일
+	var mobNo 		= nvl(this.ds_cust.getColumn(nRow,"mobNo"));		//휴대폰
+	var safeKey 	= nvl(this.div_cust.ed_safekey.value);				//인증번호
+	
+	
+	// 필수값 validation
+	if( custNm == "" ){
+		alert("고객명을 입력하세요.");
+		this.div_cust.ed_custNm.setFocus();
+		return false;
+	}else if( birthDay == "" ){
+		alert("생년월일 입력하세요.");
+		this.div_cust.ed_birthDay.setFocus();
+		return false;
+	}else if( mobNo == "" ){
+		alert("휴대폰번호를 입력하세요.");
+		this.div_cust.ed_mobNo.setFocus();
+		return false;
+	}else if( safeKey == "" ){
+		alert("인증번호확인을 먼저 진행해주세요.");
+		return false;
+	}else{
+	
+	}
+	
+	var sSvcID        	= "beforeCheckEmpInfo";                    
+	var sController   	= "rtms/sd/beforeCheckEmpInfo.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("custNo", custNo);
+	sArgs += Ex.util.setParam("custNm", custNm);
+	sArgs += Ex.util.setParam("birthDay", birthDay);
+	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut(mobNo));
+	sArgs += Ex.util.setParam("safeKey", safeKey);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+}
+]]></Script>
   </Form>
 </FDL>

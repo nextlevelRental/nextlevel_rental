@@ -1,6 +1,8 @@
 package egovframework.ntrms.kr.co.brn.sd.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +13,11 @@ import org.springframework.stereotype.Service;
 
 import com.nexacro.xapi.data.DataSet;
 
+import egovframework.ntrms.kr.co.brn.comm.service.CommonService;
+import egovframework.ntrms.kr.co.brn.comm.service.PopupCommonService;
+import egovframework.ntrms.kr.co.brn.re.service.RTREBondMngService;
+import egovframework.ntrms.kr.co.brn.sample.service.SampleService;
+import egovframework.ntrms.kr.co.brn.sd.dao.RTSDContractRegisterMapDAO;
 import egovframework.ntrms.kr.co.brn.sd.dao.RTSDCustRegisterMapDAO;
 import egovframework.rte.cmmn.ria.nexacro.NexacroConstant;
 import egovframework.rte.cmmn.ria.nexacro.map.DataSetMap;
@@ -21,6 +28,25 @@ import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 public class RTSDCustRegisterServiceImpl extends EgovAbstractServiceImpl implements RTSDCustRegisterService{
 	@Resource(name="rTSDCustRegisterMapDAO")
 	RTSDCustRegisterMapDAO rTSDCustRegisterMapDAO;
+	
+	@Resource(name="rTSDContractRegisterMapDAO")
+	RTSDContractRegisterMapDAO rTSDContractRegisterMapDAO;
+	
+	@Resource(name="rTREBondMngService")
+	RTREBondMngService rTREBondMngService;
+	
+	@Resource(name="sampleService")
+	SampleService sampleService;
+	
+	@Resource(name="rTSDCustRegisterService")
+	RTSDCustRegisterService rTSDCustRegisterService;
+	
+	@Resource(name="popupCommonService")
+	PopupCommonService popupCommonService;
+	
+	@Resource(name="commonService")
+	CommonService commonService;
+	
 	
 	public String safeKeyConfirm(Map<String, Object> inVar) throws Exception {
 		return rTSDCustRegisterMapDAO.safeKeyConfirm(inVar);
@@ -191,6 +217,120 @@ public class RTSDCustRegisterServiceImpl extends EgovAbstractServiceImpl impleme
 		Map result = new HashMap();
 		return rTSDCustRegisterMapDAO.getReRentalInfo(inDataset, inVar);
 	}
+	
+	
+	public void beforeCheckEmpInfo(Map <String, Object> inVar) throws Exception {
+		
+		int monthDelyAmt = 0;
+		try{
+			
+			String custNo = "";
+			
+			// 01. 나이제한확인
+			String birth = String.valueOf(inVar.get("birthDay"));
+			int birthYear = Integer.parseInt(birth.substring(0, 4));
+			int birthMonth = Integer.parseInt(birth.substring(5, 6));
+			int birthDay = Integer.parseInt(birth.substring(7, 8));
+			
+			Calendar current = Calendar.getInstance();
+			int currentYear = current.get(Calendar.YEAR);
+			int currentMonth = current.get(Calendar.MONTH) + 1;
+			int currentDay = current.get(Calendar.DAY_OF_MONTH);
+			
+			int age = currentYear - birthYear;
+			if(birthMonth * 100 + birthDay > currentMonth * 100 + currentDay) age--;
+			
+			if(age < 19 || age >= 75){
+				throw new Exception("일시불 구매만 가능합니다.(연령 제한)");
+			}
+			
+			
+			// 02. 회원정보 체크
+			custNo = inVar.get("custNo").toString();
+			if(custNo.equals("0")) {
+				Map custList = popupCommonService.listCustInfo(inVar);
+				List listCustInfo = (List)custList.get("listCustInfo");
+				if(listCustInfo.size() > 0) {
+					Map custInfo = (Map) listCustInfo.get(0);
+					custNo = custInfo.get("custNo").toString();
+				}
+			}
+			
+
+			// 03. 신용정보조회
+			SimpleDateFormat formatter = new SimpleDateFormat ("yyyyMMdd", java.util.Locale.KOREA);
+			String toDay = formatter.format(new java.util.Date());
+			inVar.put("creDay", toDay);
+			Map map =rTSDCustRegisterService.searchTodayNiceData(inVar);
+			
+			int trustLevel = 0;
+			int cdLevel = 0;
+			if(map != null) {
+				inVar.put("cdGrpCd", "S048");
+				inVar.put("useYn", "Y");
+				Map result = commonService.listCommInfo(inVar);
+				List listComm	= (List)result.get("result");
+				Map commonMap = (Map)listComm.get(0);
+				
+				trustLevel = Integer.parseInt(String.valueOf(map.get("crGrade")));
+				cdLevel = Integer.parseInt(String.valueOf(commonMap.get("cd")));
+				
+				if(trustLevel < cdLevel){
+					throw new Exception("일시불 구매만 가능합니다.(신용조회)");
+				}
+			} else {
+				//신용조회
+				Map niceTrustMap = sampleService.sendNiceTrustInfo(inVar);
+				trustLevel = Integer.parseInt(String.valueOf(niceTrustMap.get("trustLevel")));
+				cdLevel = Integer.parseInt(String.valueOf(niceTrustMap.get("cdLevel")));
+				String returnCode = String.valueOf(niceTrustMap.get("returnCode"));
+				if(returnCode.equals("P000")){
+					if(trustLevel < cdLevel){
+						throw new Exception("일시불 구매만 가능합니다.(신용조회)");
+					}
+				} else {
+					throw new Exception("일시불 구매만 가능합니다.(신용조회)[" + returnCode + "]");
+				}
+			}
+			
+			
+			if(!custNo.equals("0")) {
+				
+				// 04. 채권매각확인
+				inVar.put("cdGrpCd", "R082");
+				inVar.put("cd", "DELY_DAY");
+				String delyDay = commonService.getCodeName(inVar);
+				
+				inVar.put("delyDay", delyDay);
+				
+				Map saleBondMap = rTREBondMngService.selectSaleBondList(inVar);
+				List saleBondList = (List)saleBondMap.get("selectSaleBondList");
+				if(saleBondList.size() > 0){
+					throw new Exception("일시불 구매만 가능합니다.(채권 매각)");
+				}
+				
+				
+				// 05. 연체금액확인
+				monthDelyAmt = rTREBondMngService.getMonthDelyAmt(inVar);
+				if(monthDelyAmt > 0){
+					throw new Exception("연체금액이 존재합니다.(1855-0100 문의)");
+				}
+				
+				
+				// 06. 온라인계약 취소 후 한달이내 재주문인 경우
+				String orderCancYn = rTSDContractRegisterMapDAO.checkCancOrder(inVar);
+				if(orderCancYn.equals("Y")){
+					throw new Exception("최초 온라인 계약 고객은 온라인 렌탈 계약만 가능합니다.");
+				}
+
+			}
+			
+		}catch(Exception e){
+			throw new Exception(e.getMessage());
+		}
+		
+	}
+	
 }
 
 

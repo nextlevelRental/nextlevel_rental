@@ -697,6 +697,7 @@ public class RTSDCustRegisterController {
 		return mav;
 	}
 	
+	
 	//계좌 상세내역 select
 	@RequestMapping("/rtms/sd/accList.do") 
 	public ModelAndView accList(NexacroMapDTO xpDto, Model model) throws Exception {
@@ -1340,4 +1341,34 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
+	
+
+	/**
+	 * 
+	 * 주문관리 - 고객등록 - 이력조회
+	 * <p>고객등록 전 고객의 정보를 통해 과거이력 확인. 채권매각, 연체, 온라인계약고객 등의 정보를 통해 해당 고객의 가입여부를 확인함.</p>
+	 *
+	 * @param xpDto
+	 * @param model
+	 * @param req
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/rtms/sd/beforeCheckEmpInfo.do")  
+	public ModelAndView beforeCheckEmpInfo(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		try{
+			Map <String, Object> inVar = xpDto.getInVariableMap();	
+			rTSDCustRegisterService.beforeCheckEmpInfo(inVar);
+			
+			mav.addObject(NexacroConstant.ERROR_CODE, "0");
+			mav.addObject(NexacroConstant.ERROR_MSG, "");
+		} catch ( Exception e ) {
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+	
 }

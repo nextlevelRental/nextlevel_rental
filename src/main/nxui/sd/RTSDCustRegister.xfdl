@@ -576,14 +576,6 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
 		}
 	}
 	
-	if(strSvcId == "checkPrvHistory") {
-		this.FN_safekeyEnable();
-		this.div_cust.ch_safekeyFlag.set_value(true);
-		this.div_cust.ed_safekey.set_value( nvl(this.resultSafekey) );
-		alert("인증번호 확인완료했습니다.");
-	}
-	
-	
 	if(strSvcId == "beforeCheckEmpInfo") {
 		if(nErrorCode == "-1") {
 			alert(strErrorMsg);

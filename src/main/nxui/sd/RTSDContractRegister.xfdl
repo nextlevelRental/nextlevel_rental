@@ -2059,7 +2059,7 @@ this.mode = this.ADD;
 //공통 fn_callBack START
 /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
 	if (strSvcId == "initRTSDContractRegister"){
 		
 		this.fn_getToday();
@@ -3146,6 +3146,14 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
 			this.FN_divChangeTrue();
 		}
 	}
+
+	if( strSvcId == "checkHDate" ){
+		if(this.resultCnt != '0') {
+			alert("선택하신 날짜는 휴무일 입니다.");
+			this.div_installInfo.cal_procDay.set_value("");
+		}
+	}
+	
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
@@ -3229,6 +3237,7 @@ this.fn_init = function(){
 	sOutDatasets += " ds_sale=maptDsSale ";
 	//sOutDatasets += " ds_orgAgent=maptDsSalesman ";
 	//sOutDatasets += " ds_orgAgent2=maptDsSalesman2 ";
+	sOutDatasets += " ds_holiDays=maptDsHoliDays ";		// 240926 백인천 - 휴일정보를 구성
 	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
 	
 	//부가제품정보 공통추가(2018.10.26)
@@ -3647,6 +3656,24 @@ this.FN_cust02 = function(){
 		this.div_installInfo.rd_alignYn.set_enable(true);
 	}
 }
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+//휴일 체크
+this.FN_hDateCheck = function(hDate) {
+	var sSvcID        	= "checkHDate";
+	var sController   	= "rtms/cm/checkHDate.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+	
+	sArgs += Ex.util.setParam("hDate",hDate);
+	sArgs += Ex.util.setParam("hGubun","HOLI");
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 //BUTTON EVENT
 this.div_custInfo_div_custInfoDetail_btn_creditSelect_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
@@ -4975,11 +5002,18 @@ this.div_installInfo_cal_procDay_onchanged = function(obj:Calendar, e:nexacro.Ch
 	var custTp = this.ds_rtsd0100.getColumn(0,"custTp");
 	var procType = this.div_installInfo.rd_procType.value;
 	
+	// 240926 백인천 - 휴일 체크
+	this.FN_hDateCheck( nvl(this.div_installInfo.cal_procDay.value) );
+	
 	// [20161206_02]
 	if( (this.userGrp == "02") || (this.userGrp == "09") || (this.userGrp == "13") || (this.userGrp == "01" && this.onlineLoginId && custTp == "02" ) ){
 		
 		//TMS정보초기화
 		this.initTmsInfo();
+			
+		//240912 백인천 - 거점 스케쥴 정보 조회
+		this.o2oAgencyTime(this.div_installInfo.ed_agencyCd.value);
+		
 		
 		//방문장착, P&D - 재고 있으면 당일부터 재고 없으면 3일이후부터
 		if(procType == "1010" || procType == "1020"){
@@ -8576,6 +8610,7 @@ this.div_custInfo_div_custInfoDetail_btn_check_onclick = function(obj:Button,  e
 	var custNo = this.ds_rtsd0100.getColumn(0, "custNo");
 	var chanCd = "02";
 	//[20220905_1] kstka 로그인 그룹이 대리점인경우만 체크
+	console.log("로그인 그룹 : " + this.userGrp);
 	if(this.userGrp == "05"){
 		chanCd = "01";
 	}

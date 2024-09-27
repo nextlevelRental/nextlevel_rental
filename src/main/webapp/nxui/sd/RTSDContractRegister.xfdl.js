@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_custTp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -33,6 +34,7 @@
 
             obj = new Dataset("ds_certification", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -44,6 +46,7 @@
 
             obj = new Dataset("ds_genderCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -55,6 +58,7 @@
 
             obj = new Dataset("ds_lfCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -66,6 +70,7 @@
 
             obj = new Dataset("ds_mobFirm", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -77,6 +82,7 @@
 
             obj = new Dataset("ds_payMthd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -88,6 +94,7 @@
 
             obj = new Dataset("ds_payCustTp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -99,6 +106,7 @@
 
             obj = new Dataset("ds_B_bank", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -110,6 +118,7 @@
 
             obj = new Dataset("ds_C_bank", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -121,6 +130,7 @@
 
             obj = new Dataset("ds_B_bankPayDay", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -132,6 +142,7 @@
 
             obj = new Dataset("ds_C_bankPayDay", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -143,6 +154,7 @@
 
             obj = new Dataset("ds_nagYn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -154,6 +166,7 @@
 
             obj = new Dataset("ds_credit", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -165,6 +178,7 @@
 
             obj = new Dataset("ds_conMthd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -176,6 +190,7 @@
 
             obj = new Dataset("ds_maker", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -187,6 +202,7 @@
 
             obj = new Dataset("ds_sale", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -198,6 +214,7 @@
 
             obj = new Dataset("ds_orgAgent", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -209,6 +226,7 @@
 
             obj = new Dataset("ds_orgAgent2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -220,6 +238,7 @@
 
             obj = new Dataset("ds_model", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -231,6 +250,7 @@
 
             obj = new Dataset("ds_rtsd0100", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -242,6 +262,7 @@
 
             obj = new Dataset("ds_rtsd0110", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -253,6 +274,7 @@
 
             obj = new Dataset("ds_rtsd0111", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -264,6 +286,7 @@
 
             obj = new Dataset("ds_rtsd0104", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -275,6 +298,7 @@
 
             obj = new Dataset("ds_rtsd0106", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -286,6 +310,7 @@
 
             obj = new Dataset("ds_price", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -297,6 +322,7 @@
 
             obj = new Dataset("ds_rateAmt", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -308,6 +334,7 @@
 
             obj = new Dataset("ds_rtre0010", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -319,6 +346,7 @@
 
             obj = new Dataset("ds_rtre0020", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -330,6 +358,7 @@
 
             obj = new Dataset("ds_rtsd0013", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -341,6 +370,7 @@
 
             obj = new Dataset("ds_rtsd0014", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -352,6 +382,7 @@
 
             obj = new Dataset("dsNice", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -363,6 +394,7 @@
 
             obj = new Dataset("dsNice2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -374,6 +406,7 @@
 
             obj = new Dataset("dsBis", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -385,6 +418,7 @@
 
             obj = new Dataset("dsBis2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -396,6 +430,7 @@
 
             obj = new Dataset("dsBatch", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -407,6 +442,7 @@
 
             obj = new Dataset("ds_rtsd0113", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -418,6 +454,7 @@
 
             obj = new Dataset("ds_rtsd0113Combo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -445,6 +482,7 @@
 
             obj = new Dataset("ds_productInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -456,6 +494,7 @@
 
             obj = new Dataset("ds_ValuePrdtInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -475,6 +514,7 @@
 
             obj = new Dataset("ds_seviceCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -486,6 +526,7 @@
 
             obj = new Dataset("ds_contactDeliInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -497,6 +538,7 @@
 
             obj = new Dataset("ds_sumPayInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -508,6 +550,7 @@
 
             obj = new Dataset("ds_RegAmtMgnt", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -527,6 +570,7 @@
 
             obj = new Dataset("ds_FreeRegAmtMgnt", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -586,6 +630,7 @@
 
             obj = new Dataset("ds_niceDnr", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -597,6 +642,7 @@
 
             obj = new Dataset("ds_agencyInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -969,8 +1015,8 @@
             this.div_custInfo.div_custInfoDetail.addChild(obj.name, obj);
             obj = new WebBrowser("nice_interface", "absolute", "151", "124", "124", "24", null, null, this.div_custInfo.div_custInfoDetail);
             obj.set_taborder("89");
-            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             obj.set_visible("false");
+            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             this.div_custInfo.div_custInfoDetail.addChild(obj.name, obj);
             obj = new Button("btn_check", "absolute", "464", "125", "65", "21", null, null, this.div_custInfo.div_custInfoDetail);
             obj.set_taborder("90");
@@ -2743,7 +2789,7 @@
         //공통 fn_callBack START
         /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-        this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg){
+        this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt){
         	if (strSvcId == "initRTSDContractRegister"){
         		
         		this.fn_getToday();
@@ -3830,6 +3876,14 @@
         			this.FN_divChangeTrue();
         		}
         	}
+
+        	if( strSvcId == "checkHDate" ){
+        		if(this.resultCnt != '0') {
+        			alert("선택하신 날짜는 휴무일 입니다.");
+        			this.div_installInfo.cal_procDay.set_value("");
+        		}
+        	}
+        	
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
@@ -3913,6 +3967,7 @@
         	sOutDatasets += " ds_sale=maptDsSale ";
         	//sOutDatasets += " ds_orgAgent=maptDsSalesman ";
         	//sOutDatasets += " ds_orgAgent2=maptDsSalesman2 ";
+        	sOutDatasets += " ds_holiDays=maptDsHoliDays ";		// 240926 백인천 - 휴일정보를 구성
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         	
         	//부가제품정보 공통추가(2018.10.26)
@@ -4331,6 +4386,24 @@
         		this.div_installInfo.rd_alignYn.set_enable(true);
         	}
         }
+
+        /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+        //휴일 체크
+        this.FN_hDateCheck = function(hDate) {
+        	var sSvcID        	= "checkHDate";
+        	var sController   	= "rtms/cm/checkHDate.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+        	
+        	sArgs += Ex.util.setParam("hDate",hDate);
+        	sArgs += Ex.util.setParam("hGubun","HOLI");
+        	
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+
+        
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         //BUTTON EVENT
         this.div_custInfo_div_custInfoDetail_btn_creditSelect_onclick = function(obj,e){
@@ -5659,11 +5732,18 @@
         	var custTp = this.ds_rtsd0100.getColumn(0,"custTp");
         	var procType = this.div_installInfo.rd_procType.value;
         	
+        	// 240926 백인천 - 휴일 체크
+        	this.FN_hDateCheck( nvl(this.div_installInfo.cal_procDay.value) );
+        	
         	// [20161206_02]
         	if( (this.userGrp == "02") || (this.userGrp == "09") || (this.userGrp == "13") || (this.userGrp == "01" && this.onlineLoginId && custTp == "02" ) ){
         		
         		//TMS정보초기화
         		this.initTmsInfo();
+        			
+        		//240912 백인천 - 거점 스케쥴 정보 조회
+        		this.o2oAgencyTime(this.div_installInfo.ed_agencyCd.value);
+        		
         		
         		//방문장착, P&D - 재고 있으면 당일부터 재고 없으면 3일이후부터
         		if(procType == "1010" || procType == "1020"){
@@ -9260,6 +9340,7 @@
         	var custNo = this.ds_rtsd0100.getColumn(0, "custNo");
         	var chanCd = "02";
         	//[20220905_1] kstka 로그인 그룹이 대리점인경우만 체크
+        	console.log("로그인 그룹 : " + this.userGrp);
         	if(this.userGrp == "05"){
         		chanCd = "01";
         	}

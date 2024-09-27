@@ -2772,6 +2772,8 @@
 
         this.checkCanOrder = "N"; //[20220616_01] 주문가능여부 확인 플래그
 
+        this.resultCnt = ""; //240927 백인천 - 중복코드카운트
+
         //[20230210_1] kstka 주문등록:01, 주문수정:02
         //====================================================================================
         this.ADD = "01";
@@ -3881,6 +3883,8 @@
         		if(this.resultCnt != '0') {
         			alert("선택하신 날짜는 휴무일 입니다.");
         			this.div_installInfo.cal_procDay.set_value("");
+        		} else {
+        			this.FN_chkTimeSchedule();
         		}
         	}
         	
@@ -5728,12 +5732,14 @@
         
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.div_installInfo_cal_procDay_onchanged = function(obj,e){
+        	// 240926 백인천 - 휴일 체크
+        	this.FN_hDateCheck( nvl(this.div_installInfo.cal_procDay.value) );	
+        }
+
+        this.FN_chkTimeSchedule = function() {
         	var regId = this.ds_rtsd0100.getColumn(0,"regId");
         	var custTp = this.ds_rtsd0100.getColumn(0,"custTp");
         	var procType = this.div_installInfo.rd_procType.value;
-        	
-        	// 240926 백인천 - 휴일 체크
-        	this.FN_hDateCheck( nvl(this.div_installInfo.cal_procDay.value) );
         	
         	// [20161206_02]
         	if( (this.userGrp == "02") || (this.userGrp == "09") || (this.userGrp == "13") || (this.userGrp == "01" && this.onlineLoginId && custTp == "02" ) ){
@@ -5767,7 +5773,6 @@
         				return false;
         			}
         		}
-        		
         		
         	}else{
         		if( this.div_installInfo.cal_procDay.value < this.toDay ){

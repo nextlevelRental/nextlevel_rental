@@ -286,6 +286,33 @@ public class RTCSSafeSerController extends ControllerBase {
 		return mav;
 	}
 	
+	@RequestMapping("/rtms/cs/resetRTCSSafeOne.do") 
+	public ModelAndView resetRTCSSafeOne(NexacroMapDTO xpDto, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		try{
+			Map loginInfo = (Map)req.getSession().getAttribute("User");
+			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
+			Map <String, Object> inVar 			= xpDto.getInVariableMap();
+			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
+			Map <String, Object> outVar 		= xpDto.getOutVariableMap();
+			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
+			
+			inVar.put("regId", loginInfo.get("userId"));
+			Map result = rTCSSafeSerService.resetRTCSSafeOne(inDataset, inVar);
+			
+			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
+			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
+			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode") + "");
+			mav.addObject(NexacroConstant.ERROR_MSG, result.get("returnMessage"));
+			
+		}catch( Exception e ){
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+	
 	@RequestMapping("rtms/cs/selectRTCSSafeServiceRegister.do") 
 	public ModelAndView selectRTCSSafeServiceRegister(NexacroMapDTO xpDto, HttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");

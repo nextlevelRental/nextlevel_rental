@@ -11,6 +11,7 @@ public interface RTCSSafeSerService {
 	Map selectRTCSSafeServiceApply(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
 	Map selectRTCSSafeImgList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
 	Map saveRTCSSafeApply(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception;
+	Map resetRTCSSafeOne(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception;
 	Map selectRTCSSafeServiceRegister(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
 	Map saveRTCSSafeRegister(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception;
 	Map selectRTCSSafeServiceList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;

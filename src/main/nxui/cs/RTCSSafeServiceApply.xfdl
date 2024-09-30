@@ -85,7 +85,6 @@
         <Static id="Static02" taborder="4" cssclass="Guide_color" visible="false" left="0" top="135" width="1147" height="10"/>
         <Static id="Static03" taborder="5" cssclass="Guide_color" visible="false" left="0" top="253" width="1147" height="10"/>
         <Static id="Static04" taborder="6" text="서비스 신청 내용" cssclass="sta_WF_subTitle" left="0" top="284" width="81" height="20"/>
-        <Static id="Static05" taborder="8" cssclass="Guide_color" visible="false" left="0" top="292" width="1147" height="10"/>
         <Grid id="gr_list" taborder="7" binddataset="ds_list" useinputpanel="false" left="0" top="136" height="144" width="1122" oncellclick="gr_list_oncellclick">
           <Formats>
             <Format id="default">
@@ -184,6 +183,7 @@
         <FileDownload id="FileDownload" taborder="15" retry="0" text="파일다운로드" visible="false" enableevent="false" left="880" top="313" width="93" height="21"/>
         <Button id="btn_img" taborder="16" text="다운로드" onclick="div_detail_btn_img_onclick" cssclass="btn_WF_CRUD" left="91.72%" top="311" right="2.62%" height="20"/>
         <Button id="btn_imgPop" taborder="17" text="이미지뷰어" cssclass="btn_WF_CRUD" left="42.55%" top="311" right="51.44%" height="20" onclick="btn_imgPop_onclick"/>
+        <Button id="btn_resetJoin" taborder="18" text="가입초기화" left="85.35%" top="284" right="2.62%" height="20" onclick="btn_resetJoin_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -971,6 +971,65 @@ this.btn_imgPop_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	}else{
 		var args = {p_arg : this.ds_imgList};
 		Ex.core.popup(this,"이미지뷰어","comm::RTCOMMFileView_pop.xfdl", args, "modaless=true");
+	}
+}
+
+this.btn_resetJoin_onclick = function() {
+	var selectRow = this.ds_list.rowposition;
+
+	if( selectRow == -1 ){
+		alert("초기화 할 정보를 선택하세요.");
+		return false;
+	}
+	
+	var dlvrDay		= nvl(this.ds_list.getColumn(selectRow, "dlvrDay"));					//배송신청일자
+	var ordNo 		= nvl(this.ds_list.getColumn(selectRow, "ordNo"));						//계약번호
+	var dlvrType 	= nvl(this.ds_list.getColumn(selectRow, "dlvrType"));					//배송타입
+	var dlvrSeq		= nvl(this.ds_list.getColumn(selectRow, "dlvrSeq"));					//배송순번
+	var servCd 		= nvl(this.ds_list.getColumn(selectRow, "servCd"));						//서비스코드
+	var custNo 		= nvl(this.ds_list.getColumn(selectRow, "custNo"));						//고객코드
+	var custNm		= nvl(this.ds_list.getColumn(selectRow, "custNm"));						//고객명
+	var agencyCd 	= nvl(this.ds_list.getColumn(selectRow, "agencyCd"));					//대리점
+	var matnr		= nvl(this.ds_list.getColumn(selectRow, "matnr"));						//제품코드
+	var kwmeng		= nvl(this.ds_list.getColumn(selectRow, "kwmeng"));						//타이어본수
+	var reqDay		= nvl(this.ds_list.getColumn(selectRow, "reqDay"));						//신청일자
+	var dlvDesc		= nvl(this.ds_list.getColumn(selectRow, "dlvDesc"));					//배송요청사항
+	var carNo		= nvl(this.ds_list.getColumn(selectRow, "carNo"));						//차량번호
+	var cMileage	= nvl(this.ds_list.getColumn(selectRow, "cMileage"));					//신청 타이어 본수
+
+	
+	this.ds_save.clearData();
+	var nRowSave = this.ds_save.insertRow(0);
+	
+	this.ds_save.setColumn(nRowSave, "dlvrDay", 	dlvrDay);
+	this.ds_save.setColumn(nRowSave, "ordNo",		ordNo);
+	this.ds_save.setColumn(nRowSave, "dlvrType", 	dlvrType);
+	this.ds_save.setColumn(nRowSave, "dlvrSeq", 	dlvrSeq);
+	this.ds_save.setColumn(nRowSave, "servCd",		servCd);
+	this.ds_save.setColumn(nRowSave, "custNo", 		custNo);
+	this.ds_save.setColumn(nRowSave, "custNm", 		custNm);
+	this.ds_save.setColumn(nRowSave, "agencyCd", 	agencyCd);
+	this.ds_save.setColumn(nRowSave, "matnr", 		matnr);	
+	this.ds_save.setColumn(nRowSave, "kwmeng", 		kwmeng);	
+	this.ds_save.setColumn(nRowSave, "reqDay", 		reqDay);				
+	this.ds_save.setColumn(nRowSave, "dlvStat", 	"01");		// 상태값을 01로 초기화
+	this.ds_save.setColumn(nRowSave, "dlvDesc", 	dlvDesc);
+	this.ds_save.setColumn(nRowSave, "carNo", 		carNo);
+	this.ds_save.setColumn(nRowSave, "cMileage", 	cMileage);
+	this.ds_save.set_updatecontrol(false);
+	this.ds_save.setRowType(nRowSave, 8);
+	this.ds_save.set_updatecontrol(true);
+	
+	if( confirm( "선택하신 보증서비스를 초기화하시겠습니까?" ) ){
+		var sSvcID        	= "resetRTCSSafeOne"; 
+		var sController   	= "rtms/cs/resetRTCSSafeOne.do";
+		var sInDatasets   	= "";
+		var sOutDatasets  	= "";
+		var sArgs 			= "";
+		sInDatasets   		+= " input=ds_save:U ";
+		sOutDatasets  		= "";
+		var fn_callBack		= "fn_callBack";		
+		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
 	}
 }
 ]]></Script>

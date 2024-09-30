@@ -31,7 +31,7 @@
 
             obj = new Dataset("ds_imgList", this);
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"num\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"servSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/><Column id=\"filePath\" type=\"STRING\" size=\"256\"/><Column id=\"fileName\" type=\"STRING\" size=\"256\"/><Column id=\"confYn\" type=\"STRING\" size=\"256\"/><Column id=\"picSet\" type=\"STRING\" size=\"256\"/><Column id=\"picSetNm\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrDay\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"num\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"servSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/><Column id=\"filePath\" type=\"STRING\" size=\"256\"/><Column id=\"fileName\" type=\"STRING\" size=\"256\"/><Column id=\"confYn\" type=\"STRING\" size=\"256\"/><Column id=\"picSet\" type=\"STRING\" size=\"256\"/><Column id=\"picSetNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_S305", this);
@@ -430,12 +430,6 @@
             obj.set_cssclass("sta_WF_subTitle");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static05", "absolute", "0", "292", "1147", "10", null, null, this);
-            obj.set_taborder("8");
-            obj.set_cssclass("Guide_color");
-            obj.set_visible("false");
-            this.addChild(obj.name, obj);
-
             obj = new Grid("gr_list", "absolute", "0", "136", "1122", "144", null, null, this);
             obj.set_taborder("7");
             obj.set_binddataset("ds_list");
@@ -466,6 +460,11 @@
             obj.set_taborder("17");
             obj.set_text("이미지뷰어");
             obj.set_cssclass("btn_WF_CRUD");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_resetJoin", "absolute", "85.35%", "284", null, "20", "2.62%", null, this);
+            obj.set_taborder("18");
+            obj.set_text("가입초기화");
             this.addChild(obj.name, obj);
 
 
@@ -1206,6 +1205,65 @@
         		Ex.core.popup(this,"이미지뷰어","comm::RTCOMMFileView_pop.xfdl", args, "modaless=true");
         	}
         }
+
+        this.btn_resetJoin_onclick = function() {
+        	var selectRow = this.ds_list.rowposition;
+
+        	if( selectRow == -1 ){
+        		alert("초기화 할 정보를 선택하세요.");
+        		return false;
+        	}
+        	
+        	var dlvrDay		= nvl(this.ds_list.getColumn(selectRow, "dlvrDay"));					//배송신청일자
+        	var ordNo 		= nvl(this.ds_list.getColumn(selectRow, "ordNo"));						//계약번호
+        	var dlvrType 	= nvl(this.ds_list.getColumn(selectRow, "dlvrType"));					//배송타입
+        	var dlvrSeq		= nvl(this.ds_list.getColumn(selectRow, "dlvrSeq"));					//배송순번
+        	var servCd 		= nvl(this.ds_list.getColumn(selectRow, "servCd"));						//서비스코드
+        	var custNo 		= nvl(this.ds_list.getColumn(selectRow, "custNo"));						//고객코드
+        	var custNm		= nvl(this.ds_list.getColumn(selectRow, "custNm"));						//고객명
+        	var agencyCd 	= nvl(this.ds_list.getColumn(selectRow, "agencyCd"));					//대리점
+        	var matnr		= nvl(this.ds_list.getColumn(selectRow, "matnr"));						//제품코드
+        	var kwmeng		= nvl(this.ds_list.getColumn(selectRow, "kwmeng"));						//타이어본수
+        	var reqDay		= nvl(this.ds_list.getColumn(selectRow, "reqDay"));						//신청일자
+        	var dlvDesc		= nvl(this.ds_list.getColumn(selectRow, "dlvDesc"));					//배송요청사항
+        	var carNo		= nvl(this.ds_list.getColumn(selectRow, "carNo"));						//차량번호
+        	var cMileage	= nvl(this.ds_list.getColumn(selectRow, "cMileage"));					//신청 타이어 본수
+
+        	
+        	this.ds_save.clearData();
+        	var nRowSave = this.ds_save.insertRow(0);
+        	
+        	this.ds_save.setColumn(nRowSave, "dlvrDay", 	dlvrDay);
+        	this.ds_save.setColumn(nRowSave, "ordNo",		ordNo);
+        	this.ds_save.setColumn(nRowSave, "dlvrType", 	dlvrType);
+        	this.ds_save.setColumn(nRowSave, "dlvrSeq", 	dlvrSeq);
+        	this.ds_save.setColumn(nRowSave, "servCd",		servCd);
+        	this.ds_save.setColumn(nRowSave, "custNo", 		custNo);
+        	this.ds_save.setColumn(nRowSave, "custNm", 		custNm);
+        	this.ds_save.setColumn(nRowSave, "agencyCd", 	agencyCd);
+        	this.ds_save.setColumn(nRowSave, "matnr", 		matnr);	
+        	this.ds_save.setColumn(nRowSave, "kwmeng", 		kwmeng);	
+        	this.ds_save.setColumn(nRowSave, "reqDay", 		reqDay);				
+        	this.ds_save.setColumn(nRowSave, "dlvStat", 	"01");		// 상태값을 01로 초기화
+        	this.ds_save.setColumn(nRowSave, "dlvDesc", 	dlvDesc);
+        	this.ds_save.setColumn(nRowSave, "carNo", 		carNo);
+        	this.ds_save.setColumn(nRowSave, "cMileage", 	cMileage);
+        	this.ds_save.set_updatecontrol(false);
+        	this.ds_save.setRowType(nRowSave, 8);
+        	this.ds_save.set_updatecontrol(true);
+        	
+        	if( confirm( "선택하신 보증서비스를 초기화하시겠습니까?" ) ){
+        		var sSvcID        	= "resetRTCSSafeOne"; 
+        		var sController   	= "rtms/cs/resetRTCSSafeOne.do";
+        		var sInDatasets   	= "";
+        		var sOutDatasets  	= "";
+        		var sArgs 			= "";
+        		sInDatasets   		+= " input=ds_save:U ";
+        		sOutDatasets  		= "";
+        		var fn_callBack		= "fn_callBack";		
+        		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        	}
+        }
         
         });
 
@@ -1242,6 +1300,7 @@
             this.gr_imgList.addEventHandler("oncellclick", this.gr_imgList_oncellclick, this);
             this.btn_img.addEventHandler("onclick", this.div_detail_btn_img_onclick, this);
             this.btn_imgPop.addEventHandler("onclick", this.btn_imgPop_onclick, this);
+            this.btn_resetJoin.addEventHandler("onclick", this.btn_resetJoin_onclick, this);
 
         };
 

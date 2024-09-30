@@ -40,6 +40,16 @@ public class RTCSSafeSerMapDAO extends RtcmAbstractDAO {
 		return result;
 	}
 	
+	public Map resetRTCSSafeOne(Map inVar, List inDsList) throws NtRmsDaoException {
+		Map result = null;
+		try{
+			result = executeDsMap(inVar, inDsList);
+		}catch(Exception e){
+			e.printStackTrace();
+		} 
+		return result;
+	}
+	
 	public List<Map> selectRTCSSafeServiceRegister(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException {
 		getSqlMapClientTemplate().queryForObject("rTCSSafeSer.selectRTCS0208List", map);
 		List li = (List)map.get("vcursor");

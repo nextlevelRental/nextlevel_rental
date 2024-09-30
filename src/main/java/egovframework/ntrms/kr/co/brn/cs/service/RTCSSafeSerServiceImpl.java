@@ -55,6 +55,19 @@ public class RTCSSafeSerServiceImpl extends EgovAbstractServiceImpl implements R
 		return rTCSSafeSerMapDAO.saveRTCSSafeApply(inVar, inDsList);
 	}
 	
+	public Map resetRTCSSafeOne(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception {
+		
+		List inDsList = new ArrayList();
+		DataSetMap inDsMap = (DataSetMap)inDataset.get("input");
+		
+		Map inMap = new HashMap();
+		inMap.put("inDsMap", inDsMap);
+		inMap.put("sqlnamespace", "rTCSSafeSer.p_RESETRtcs0207");
+		inDsList.add(inMap);
+		
+		return rTCSSafeSerMapDAO.resetRTCSSafeOne(inVar, inDsList);
+	}
+	
 	public Map selectRTCSSafeServiceRegister(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception {
 		Map result = new HashMap();
 		result.put("safeServiceRegisterList", rTCSSafeSerMapDAO.selectRTCSSafeServiceRegister(inVar, outDataset));

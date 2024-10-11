@@ -89,6 +89,35 @@
 										 		? )}
 	</procedure>
 	
+	<parameterMap class="java.util.Map" id="p_RESETRtcs0207"> 
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="ordNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrType"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvrSeq"			jdbcType="VARCHAR" mode="INOUT" 	/>
+		<parameter property="servCd"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="custNm"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="agencyCd"		jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="matnr"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="kwmeng"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="reqDay"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvStat"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvDesc"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="carNo"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dlvTel"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="cMileage"			jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="regId"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" 	/>
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" 	/>
+		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" 	/>
+	</parameterMap>
+	<procedure id="rTCSSafeSer.p_RESETRtcs0207" parameterMap="p_RESETRtcs0207">
+		{call Pkg_Rtcs0207.p_RESETRtcs0207(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+												?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+										 		? )}
+	</procedure>
+	
 	<resultMap id="rSRtcs0209List" class="java.util.HashMap">
 		<result property="num" 			column="NUM" 	/>
 		<result property="ordNo" 		column="ORD_NO" 	/>

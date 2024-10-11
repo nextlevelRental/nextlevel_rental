@@ -82,6 +82,8 @@ this.fn_wb_map = function(obj:nexacro.WebBrowser, e:nexacro.WebLoadCompEventInfo
 
 //닫기 버튼
 this.btn_close_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	this.addr		= "";
+	this.agencyNm	= "";
 	this.close();
 }
 ]]></Script>

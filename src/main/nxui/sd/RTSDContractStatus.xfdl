@@ -110,6 +110,7 @@
         <Edit id="ed_ordCount" taborder="161" readonly="true" left="73.93%" top="7" width="80" height="20"/>
         <Static id="rvTitle" taborder="162" text="기타제한사유 :" left="82.82%" top="9" right="9.68%" height="17"/>
         <Edit id="ed_roVan" taborder="163" readonly="true" left="89.97%" top="8" width="85" height="20"/>
+        <Edit id="ed_addrText" taborder="164" readonly="true" left="48.82%" top="238" width="562" height="20" style="border:0 solid #808080 ;"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -144,6 +145,7 @@
       <BindItem id="item30" compid="ed_paidState" propid="value" datasetid="ds_contractStatus" columnid="paidState"/>
       <BindItem id="item31" compid="ed_ordCount" propid="value" datasetid="ds_contractStatus" columnid="ordCount"/>
       <BindItem id="item32" compid="ed_roVan" propid="value" datasetid="ds_contractStatus" columnid="roVan"/>
+      <BindItem id="item13" compid="ed_addrText" propid="value" datasetid="ds_contractStatus" columnid="addrText"/>
     </Bind>
     <Objects>
       <Dataset id="ds_contractStatus" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -207,6 +209,7 @@
           <Column id="paidState" type="STRING" size="256"/>
           <Column id="ordCount" type="STRING" size="256"/>
           <Column id="roVan" type="STRING" size="256"/>
+          <Column id="addrText" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_installCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

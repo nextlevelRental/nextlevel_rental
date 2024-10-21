@@ -188,9 +188,10 @@
         <parameter property="procFday"      mode="IN" jdbcType="VARCHAR" />
         <parameter property="procTday"      mode="IN" jdbcType="VARCHAR" />
         <parameter property="empNoYn"      mode="IN" jdbcType="VARCHAR" />
+        <parameter property="chanCd"   	jdbcType="VARCHAR" mode="IN" />
     </parameterMap>
     <procedure id="rTSDOrdAgent.selectOrdAgentOrderList" parameterMap="p_sRtsd0104StatusAgent">
-        {call Pkg_Rtsd0104.p_sRtsd0104StatusAgent( ?, ?, ?, ?,?, ?, ?, ?, ? )}
+        {call Pkg_Rtsd0104.p_sRtsd0104StatusAgent( ?, ?, ?, ?, ?, ?, ?, ?, ?, ? )}
     </procedure>
     
     

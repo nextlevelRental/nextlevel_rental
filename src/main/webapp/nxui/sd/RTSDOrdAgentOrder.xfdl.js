@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_ordAgentList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -28,6 +29,10 @@
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
             obj._setContents("<ColumnInfo><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"seqSeq\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"procTm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"petternCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"regiAmt\" type=\"INT\" size=\"256\"/><Column id=\"monAmt\" type=\"INT\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelNm\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"oprocDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordId\" type=\"STRING\" size=\"256\"/><Column id=\"ordNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleId\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"regiCd\" type=\"STRING\" size=\"256\"/><Column id=\"regiNm\" type=\"STRING\" size=\"256\"/><Column id=\"campYn\" type=\"STRING\" size=\"256\"/><Column id=\"cDcrate\" type=\"STRING\" size=\"256\"/><Column id=\"cDcamt\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cusTpNm\" type=\"STRING\" size=\"256\"/><Column id=\"safekey\" type=\"STRING\" size=\"256\"/><Column id=\"grpYn\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"gDcrate\" type=\"STRING\" size=\"256\"/><Column id=\"gDcamt\" type=\"STRING\" size=\"256\"/><Column id=\"lDcrate\" type=\"STRING\" size=\"256\"/><Column id=\"lDcamt\" type=\"STRING\" size=\"256\"/><Column id=\"fDcrate\" type=\"STRING\" size=\"256\"/><Column id=\"fDcamt\" type=\"STRING\" size=\"256\"/><Column id=\"bordNo\" type=\"STRING\" size=\"256\"/><Column id=\"cancDay\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"engNm\" type=\"STRING\" size=\"256\"/><Column id=\"agDesc\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"makerNm\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsNm\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"frNm\" type=\"STRING\" size=\"256\"/><Column id=\"carOwner\" type=\"STRING\" size=\"256\"/><Column id=\"cMileage\" type=\"STRING\" size=\"256\"/><Column id=\"reqText\" type=\"STRING\" size=\"256\"/><Column id=\"payMthd\" type=\"STRING\" size=\"256\"/><Column id=\"payMthdNm\" type=\"STRING\" size=\"256\"/><Column id=\"payDd\" type=\"STRING\" size=\"256\"/><Column id=\"accSeq\" type=\"STRING\" size=\"256\"/><Column id=\"crdSeq\" type=\"STRING\" size=\"256\"/><Column id=\"accChk\" type=\"STRING\" size=\"256\"/><Column id=\"accStat\" type=\"STRING\" size=\"256\"/><Column id=\"accStatNm\" type=\"STRING\" size=\"256\"/><Column id=\"bkeyChk\" type=\"STRING\" size=\"256\"/><Column id=\"batchKey\" type=\"STRING\" size=\"256\"/><Column id=\"billYn\" type=\"STRING\" size=\"256\"/><Column id=\"crdtStat\" type=\"STRING\" size=\"256\"/><Column id=\"crdt_statNm\" type=\"STRING\" size=\"256\"/><Column id=\"certCd\" type=\"STRING\" size=\"256\"/><Column id=\"certNm\" type=\"STRING\" size=\"256\"/><Column id=\"certStat\" type=\"STRING\" size=\"256\"/><Column id=\"cert_statNm\" type=\"STRING\" size=\"256\"/><Column id=\"ordAgent\" type=\"STRING\" size=\"256\"/><Column id=\"orgCd\" type=\"STRING\" size=\"256\"/><Column id=\"orgHq\" type=\"STRING\" size=\"256\"/><Column id=\"orgL1\" type=\"STRING\" size=\"256\"/><Column id=\"orgL2\" type=\"STRING\" size=\"256\"/><Column id=\"orgL3\" type=\"STRING\" size=\"256\"/><Column id=\"orgL4\" type=\"STRING\" size=\"256\"/><Column id=\"insOrg\" type=\"STRING\" size=\"256\"/><Column id=\"psCd\" type=\"STRING\" size=\"256\"/><Column id=\"cmsagYn\" type=\"STRING\" size=\"256\"/><Column id=\"conMthd\" type=\"STRING\" size=\"256\"/><Column id=\"pcertYn\" type=\"STRING\" size=\"256\"/><Column id=\"fcDay\" type=\"STRING\" size=\"256\"/><Column id=\"agDay\" type=\"STRING\" size=\"256\"/><Column id=\"agSeq\" type=\"STRING\" size=\"256\"/><Column id=\"inputDt\" type=\"STRING\" size=\"256\"/><Column id=\"filePath\" type=\"STRING\" size=\"256\"/><Column id=\"fileName\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"Column102\" type=\"STRING\" size=\"256\"/><Column id=\"lrCd\" type=\"STRING\" size=\"256\"/><Column id=\"ordQty\" type=\"STRING\" size=\"256\"/><Column id=\"rentAmt\" type=\"STRING\" size=\"256\"/><Column id=\"fDcrate1\" type=\"STRING\" size=\"256\"/><Column id=\"fDcamt1\" type=\"STRING\" size=\"256\"/><Column id=\"monDcamt\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"planTm\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"instTm\" type=\"STRING\" size=\"256\"/><Column id=\"instYn\" type=\"STRING\" size=\"256\"/><Column id=\"valYn\" type=\"STRING\" size=\"256\"/><Column id=\"equNo\" type=\"STRING\" size=\"256\"/><Column id=\"osId\" type=\"STRING\" size=\"256\"/><Column id=\"osDay\" type=\"STRING\" size=\"256\"/><Column id=\"flYn\" type=\"STRING\" size=\"256\"/><Column id=\"frYn\" type=\"STRING\" size=\"256\"/><Column id=\"rlYn\" type=\"STRING\" size=\"256\"/><Column id=\"rrYn\" type=\"STRING\" size=\"256\"/><Column id=\"orgAgnm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"ageAge\" type=\"STRING\" size=\"256\"/><Column id=\"addrArea\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"provsnNo\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"empNo\" type=\"STRING\" size=\"256\"/><Column id=\"firstDay\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_chanCd", this);
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -170,9 +175,21 @@
             obj.set_taborder("137");
             obj.set_enable("false");
             this.div_search.addChild(obj.name, obj);
-            obj = new CheckBox("chk_empNo", "absolute", "68.6%", "38", null, "20", "17.98%", null, this.div_search);
+            obj = new CheckBox("chk_empNo", "absolute", "89.27%", "38", null, "20", "2.42%", null, this.div_search);
             obj.set_taborder("138");
             obj.set_text("임직원상품");
+            this.div_search.addChild(obj.name, obj);
+            obj = new ExtCombo("cb_chanCd", "absolute", "75.49%", "39", null, "19", "14.67%", null, this.div_search);
+            obj.set_taborder("139");
+            obj.set__select_type("select");
+            obj.set_applystyletype("keep");
+            obj.set_scrollbars("none");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Static("Static00", "absolute", "764", "39", "47", "20", null, null, this.div_search);
+            obj.set_taborder("140");
+            obj.set_text("구분");
+            obj.set_cssclass("sta_WF_schTitle");
+            obj.getSetter("domainId").set("nexa.s_condition");
             this.div_search.addChild(obj.name, obj);
 
             obj = new Button("btn_search", "absolute", "945", null, null, "25", "16", "735", this);
@@ -295,13 +312,25 @@
         			alert("조회된 데이터가 없습니다.");
         			this.grid_ordAgentOrder.set_nodatatext("조회된 데이터가 없습니다.");
         		}
+        		
+        		var chanCdCnt = this.ds_chanCd.getRowCount();
+        		if( chanCdCnt != 0 ){
+        			this.div_search.cb_chanCd.setInnerDataset(this.ds_chanCd,"cd","cdNm")
+        		}
+        	}
+        	
+        	if( strSvcId == "initOrdAgentOrderList" ){
+        		var chanCdCnt = this.ds_chanCd.getRowCount();
+        		if( chanCdCnt != 0 ){
+        			this.div_search.cb_chanCd.setInnerDataset(this.ds_chanCd,"cd","cdNm")
+        		}
         	}
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.RTSDOrdAgentOrder_onload = function(obj,e){
         	Ex.core.init(obj);
         	this.fn_init();
-        	this.parent.setButton("E|S", this);	
+        	this.parent.setButton("E|S", this);
         	
         	// 다음 사용자 그룹인 경우 판매인 조회조건 기본 세팅여부 제외
         	// - 영업관리자, 콜센터([20190301_01]에 의해 추가)
@@ -320,6 +349,15 @@
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.fn_init = function(){
+        	var sSvcID      	= "initOrdAgentOrderList";  
+        	var sController   	= "rtms/sd/initOrdAgentOrderList.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets	= "";
+        	var sArgs 			= "";	
+        	var fn_callBack		= "fn_callBack";
+        	sOutDatasets += " ds_chanCd=mapDsChanCd ";
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
         	var sSvcID      	= "getToday";  
         	var sController   	= "/rtms/comm/getToday.do";
         	var sInDatasets   	= "";
@@ -372,6 +410,8 @@
         	var ordTday 	= nvl(this.div_search.dt_ordTday.value);
         	var procFday 	= nvl(this.div_search.dt_procFday.value);
         	var procTday 	= nvl(this.div_search.dt_procTday.value);
+        	
+        	var chanCd = nvl(this.div_search.cb_chanCd.getValue());
         		
         	var empNoYn     = nvl(this.div_search.chk_empNo.value);
         	if(empNoYn == "true"){
@@ -379,6 +419,13 @@
         	}else{
         		empNoYn = "N";
         	}
+        	
+        	var count = 0;
+        	do{
+        		if( chanCd.indexOf(",") < 0 ) break;
+        		else chanCd = chanCd.replace(",","|");
+        		count++;
+        	}while( count <= count);
         	
         	if( ordFday > ordTday){
         		alert("접수일자를 확인하세요.");
@@ -403,6 +450,7 @@
         		sArgs += Ex.util.setParam("procFday",  	procFday);
         		sArgs += Ex.util.setParam("procTday",  	procTday);
         		sArgs += Ex.util.setParam("empNoYn",  	empNoYn);
+        		sArgs += Ex.util.setParam("chanCd",  	chanCd);
         		
         		this.ds_ordAgentList.clearData();
         		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
@@ -413,8 +461,6 @@
         	Ex.core.exportExcel(this, this.grid_ordAgentOrder);
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-
-        
         this.btn_deliveryPop_onclick = function(obj,e)
         {
         	if(this.ds_ordAgentList.rowcount == 0){

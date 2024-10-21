@@ -176,7 +176,9 @@
               <Edit id="ed_custNo" taborder="135" onkeyup="div_search_ed_custCd_onkeyup" left="480" top="38" width="120" height="21"/>
               <Button id="bt_custNo" taborder="136" onclick="div_search_bt_custNo_onclick" cssclass="btn_WF_edtSch" left="598" top="38" width="21" height="21"/>
               <Edit id="ed_custNm" taborder="137" enable="false" left="619" top="38" width="120" height="21"/>
-              <CheckBox id="chk_empNo" taborder="138" text="임직원상품" left="68.6%" top="38" right="17.98%" height="20"/>
+              <CheckBox id="chk_empNo" taborder="138" text="임직원상품" left="89.27%" top="38" right="2.42%" height="20"/>
+              <ExtCombo id="cb_chanCd" taborder="139" left="75.49%" top="39" right="14.67%" height="19" _select_type="select" applystyletype="keep" scrollbars="none"/>
+              <Static id="Static00" taborder="140" text="구분" cssclass="sta_WF_schTitle" left="764" top="39" width="47" height="20" domainId="nexa.s_condition"/>
             </Layout>
           </Layouts>
         </Div>
@@ -325,6 +327,12 @@
           <Column id="firstDay" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="ds_chanCd">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
  * 파 일 명 : RTSDOrdAgentOrder.xfdl
@@ -370,13 +378,25 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
 			alert("조회된 데이터가 없습니다.");
 			this.grid_ordAgentOrder.set_nodatatext("조회된 데이터가 없습니다.");
 		}
+		
+		var chanCdCnt = this.ds_chanCd.getRowCount();
+		if( chanCdCnt != 0 ){
+			this.div_search.cb_chanCd.setInnerDataset(this.ds_chanCd,"cd","cdNm")
+		}
+	}
+	
+	if( strSvcId == "initOrdAgentOrderList" ){
+		var chanCdCnt = this.ds_chanCd.getRowCount();
+		if( chanCdCnt != 0 ){
+			this.div_search.cb_chanCd.setInnerDataset(this.ds_chanCd,"cd","cdNm")
+		}
 	}
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.RTSDOrdAgentOrder_onload = function(obj:Form, e:nexacro.LoadEventInfo){
 	Ex.core.init(obj);
 	this.fn_init();
-	this.parent.setButton("E|S", this);	
+	this.parent.setButton("E|S", this);
 	
 	// 다음 사용자 그룹인 경우 판매인 조회조건 기본 세팅여부 제외
 	// - 영업관리자, 콜센터([20190301_01]에 의해 추가)
@@ -395,6 +415,15 @@ this.RTSDOrdAgentOrder_onload = function(obj:Form, e:nexacro.LoadEventInfo){
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.fn_init = function(){
+	var sSvcID      	= "initOrdAgentOrderList";  
+	var sController   	= "rtms/sd/initOrdAgentOrderList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+	sOutDatasets += " ds_chanCd=mapDsChanCd ";
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+
 	var sSvcID      	= "getToday";  
 	var sController   	= "/rtms/comm/getToday.do";
 	var sInDatasets   	= "";
@@ -447,6 +476,8 @@ this.fn_search = function(){
 	var ordTday 	= nvl(this.div_search.dt_ordTday.value);
 	var procFday 	= nvl(this.div_search.dt_procFday.value);
 	var procTday 	= nvl(this.div_search.dt_procTday.value);
+	
+	var chanCd = nvl(this.div_search.cb_chanCd.getValue());
 		
 	var empNoYn     = nvl(this.div_search.chk_empNo.value);
 	if(empNoYn == "true"){
@@ -454,6 +485,13 @@ this.fn_search = function(){
 	}else{
 		empNoYn = "N";
 	}
+	
+	var count = 0;
+	do{
+		if( chanCd.indexOf(",") < 0 ) break;
+		else chanCd = chanCd.replace(",","|");
+		count++;
+	}while( count <= count);
 	
 	if( ordFday > ordTday){
 		alert("접수일자를 확인하세요.");
@@ -478,6 +516,7 @@ this.fn_search = function(){
 		sArgs += Ex.util.setParam("procFday",  	procFday);
 		sArgs += Ex.util.setParam("procTday",  	procTday);
 		sArgs += Ex.util.setParam("empNoYn",  	empNoYn);
+		sArgs += Ex.util.setParam("chanCd",  	chanCd);
 		
 		this.ds_ordAgentList.clearData();
 		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
@@ -488,8 +527,6 @@ this.fn_excel= function(){
 	Ex.core.exportExcel(this, this.grid_ordAgentOrder);
 }
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
-
-
 this.btn_deliveryPop_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	if(this.ds_ordAgentList.rowcount == 0){

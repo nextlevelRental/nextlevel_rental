@@ -105,6 +105,40 @@ public class RTSDOrdAgentController extends ControllerBase {
 		return mav;
 	}
 	
+	
+	/**
+	 * <pre>
+	 * 판매인주문리스트 초기 구성
+	 * </pre>
+	 */
+	@RequestMapping("/rtms/sd/initOrdAgentOrderList.do") 
+	public ModelAndView initRTSDOrderMonthAnalysis(NexacroMapDTO xpDto, Model model) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		try{
+			Map <String, Object> inVar 			= xpDto.getInVariableMap();
+			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
+			
+			inVar.put("cdGrpCd", "S030");
+			inVar.put("useYn", "Y");
+			Map dsChanCd = commonService.listCommInfo(inVar);
+			List listDsChanCd = (List)dsChanCd.get("result");	
+			DataSetMap mapDsChanCd = new DataSetMap();
+			mapDsChanCd.setRowMaps(listDsChanCd);
+			outDataset.put("mapDsChanCd", mapDsChanCd);
+			
+			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
+			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
+			mav.addObject(NexacroConstant.ERROR_CODE, "0");
+			mav.addObject(NexacroConstant.ERROR_MSG, "");
+		} catch ( Exception e ) {
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+	
+	
 	/**
 	 * <pre>
 	 * 판매인주문리스트 New Version

@@ -14,38 +14,38 @@
                 this.set_name("RTCOMMFileView_pop");
                 this.set_classname("RTCOMMFileList_pop");
                 this.set_titletext("마모파손이미지뷰어");
-                this._setFormPosition(0,0,959,568);
+                this._setFormPosition(0,0,1029,568);
             }
 
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_imgList", this);
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"num\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"servSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/><Column id=\"filePath\" type=\"STRING\" size=\"256\"/><Column id=\"fileName\" type=\"STRING\" size=\"256\"/><Column id=\"confYn\" type=\"STRING\" size=\"256\"/><Column id=\"picSet\" type=\"STRING\" size=\"256\"/><Column id=\"picSetNm\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrDay\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"num\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"servSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/><Column id=\"filePath\" type=\"STRING\" size=\"256\"/><Column id=\"fileName\" type=\"STRING\" size=\"256\"/><Column id=\"confYn\" type=\"STRING\" size=\"256\"/><Column id=\"picSet\" type=\"STRING\" size=\"256\"/><Column id=\"picSetNm\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrDay\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
             
             // UI Components Initialize
-            obj = new Div("Div00", "absolute", "6.15%", "10", null, "518", "0.94%", null, this);
+            obj = new Div("Div00", "absolute", "12.41%", "10", null, "518", "0.94%", null, this);
             obj.set_taborder("8");
             obj.set_text("Div00");
             this.addChild(obj.name, obj);
-            obj = new ImageViewer("imgView", "absolute", "0.8%", "4", null, "514", "0%", null, this.Div00);
+            obj = new ImageViewer("imgView", "absolute", "7.18%", "4", null, "514", "0%", null, this.Div00);
             obj.set_taborder("0");
             this.Div00.addChild(obj.name, obj);
-            obj = new WebBrowser("webbrowser", "absolute", "0.79%", "1", null, "517", "0%", null, this.Div00);
+            obj = new WebBrowser("webbrowser", "absolute", "7.18%", "1", null, "517", "0%", null, this.Div00);
             obj.set_taborder("1");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Grid("grd_Group", "absolute", "10", "10", null, "518", "909", null, this);
+            obj = new Grid("grd_Group", "absolute", "10", "10", null, "518", "853", null, this);
             obj.set_taborder("0");
             obj.set_binddataset("ds_imgList");
             obj.set_autofittype("col");
             obj.set_autosizebandtype("head");
             obj.set_cellclickbound("cell");
             obj.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"35\"/></Columns><Rows><Row size=\"24\"/></Rows><Band id=\"body\"><Cell style=\"align:left;\" text=\"bind:num\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"35\"/><Column size=\"50\"/></Columns><Rows><Row size=\"24\"/></Rows><Band id=\"body\"><Cell style=\"align:left;\" text=\"bind:num\"/><Cell col=\"1\" style=\"align:left;\" text=\"bind:regDt\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_close", "absolute", null, "539", "41", "21", "7", null, this);
@@ -85,7 +85,7 @@
             this.Div00.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 959, 568, this,
+            obj = new Layout("default", "", 1029, 568, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCOMMFileList_pop");
@@ -253,7 +253,7 @@
         this.fn_refreshData = function(data){
         	
         	this.fn_initData(data);
-        	this.refreshFiles();
+        	this.fn_refreshFiles();
         }
         
         });

@@ -198,7 +198,7 @@ this.fn_drawImage = function(row){
 this.fn_refreshData = function(data){
 	
 	this.fn_initData(data);
-	this.refreshFiles();
+	this.fn_refreshFiles();
 }
 ]]></Script>
   </Form>

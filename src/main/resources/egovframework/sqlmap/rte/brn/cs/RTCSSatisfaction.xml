@@ -45,7 +45,7 @@
 		<parameter property="dpYn"			jdbcType="VARCHAR" mode="IN" />
 	</parameterMap>
 	<procedure id="rTCSSatisfaction.selectRTCS0130" parameterMap="p_SRtcs0130">
-		{call Pkg_Rtcs0209.p_sRtcs0130(?, ?, ?, ?, ?, ?)}
+		{call Pkg_Rtcs0130.p_sRtcs0130(?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 	<!-- 만족도조사 저장 -->
@@ -59,7 +59,7 @@
 		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" />
 	</parameterMap>
 	<procedure id="rTCSSatisfaction.updateRTCS0130" parameterMap="p_IUDRtcs0130">
-		{call Pkg_Rtcs0209.p_IUDRtcs0130(?, ?, ?, ?, ?, ?, ?)}
+		{call Pkg_Rtcs0130.p_IUDRtcs0130(?, ?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 </sqlMap>

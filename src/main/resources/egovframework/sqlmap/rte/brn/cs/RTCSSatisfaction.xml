@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap namespace="rTCSSatisfaction">
+	
+	<!-- 만족도조사 조회 -->
+	<resultMap id="r_SRtcs0130" class="java.util.HashMap">
+		<result property="stfySrvySeq" 			column="STFY_SRVY_SEQ" 	/>
+		<result property="subtDay" 				column="SUBT_DAY" 	/>
+		<result property="ordNo" 				column="ORD_NO" 	/>
+		<result property="agencyCd" 			column="AGENCY_CD" 	/>
+		<result property="agencyNm" 			column="AGENCY_NM" 	/>
+		<result property="rcvrCustNo" 			column="RCVR_CUST_NO" 	/>
+		<result property="rcvrNm" 				column="RCVR_NM" 	/>
+  	 	<result property="rcvrMobNo" 			column="RCVR_MOB_NO" 	/>
+		<result property="rcvrBirthDay" 			column="RCVR_BIRTH_DAY" 	/>	
+		<result property="srvyStsCd" 				column="SRVY_STS_CD" 	/>
+		<result property="rqstDay" 				column="RQST_DAY" 	/>
+		<result property="readDay" 				column="READ_DAY" 	/>
+		<result property="piAgYn" 				column="PI_AG_YN" 	/>
+		<result property="totEvalPoint" 			column="TOT_EVAL_POINT" 	/>
+		<result property="stfyPointCd1" 			column="STFY_POINT_CD1" 	/>
+		<result property="stfyPointCd2" 			column="STFY_POINT_CD2" 	/>
+		<result property="stfyPointCd3" 			column="STFY_POINT_CD3" 	/>
+		<result property="stfyOpinon" 			column="STFY_OPINON" 	/>
+		<result property="dpYn" 					column="DP_YN" 	/>
+		<result property="dpPrNo"				column="DP_PR_NO" 	/>
+		<result property="matCd" 				column="MAT_CD" 	/>
+		<result property="rcvrSeq" 				column="RCVR_SEQ" 	/>
+		<result property="regId" 					column="REG_ID" 	/>
+		<result property="regDt" 					column="REG_DT" 	/>
+		<result property="chgId" 					column="CHG_ID" 	/>
+		<result property="chgDt" 					column="CHG_DT" 	/>
+		<result property="userId" 				column="USER_ID" 	/>
+		<result property="rentalGroup" 			column="RENTAL_GROUP" 	/>
+		<result property="rentalGroupNm" 		column="RENTAL_GROUP_NM" 	/>
+		<result property="rentalOffice" 			column="RENTAL_OFFICE" 	/>
+		<result property="rentalOfficeNm" 		column="RENTAL_OFFICE_NM" 	/>
+	</resultMap>
+	<parameterMap id="p_SRtcs0130" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_SRtcs0130" />
+		<parameter property="ordNo" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="subtDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="subtDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dpYn"			jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSatisfaction.selectRTCS0130" parameterMap="p_SRtcs0130">
+		{call Pkg_Rtcs0209.p_sRtcs0130(?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<!-- 만족도조사 저장 -->
+	<parameterMap id="p_IUDRtcs0130" class="java.util.Map">
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="stfySrvySeq" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="stfyOpinon" 		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="dpYn" 			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	<procedure id="rTCSSatisfaction.updateRTCS0130" parameterMap="p_IUDRtcs0130">
+		{call Pkg_Rtcs0209.p_IUDRtcs0130(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+</sqlMap>

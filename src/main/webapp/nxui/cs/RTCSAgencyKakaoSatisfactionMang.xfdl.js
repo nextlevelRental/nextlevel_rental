@@ -14,7 +14,7 @@
                 this.set_name("RTCSAgencyKakaoSatisfactionMang");
                 this.set_classname("RTCMClaim");
                 this.set_titletext("카카오 만족도 조사 리스트");
-                this._setFormPosition(0,0,1123,583);
+                this._setFormPosition(0,0,1123,703);
             }
 
             
@@ -225,7 +225,7 @@
             this.div_edit.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1123, 583, this,
+            obj = new Layout("default", "", 1123, 703, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMClaim");

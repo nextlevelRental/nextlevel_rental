@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="583" onload="form_onload" titletext="카카오 만족도 조사 리스트">
+  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="703" onload="form_onload" titletext="카카오 만족도 조사 리스트">
     <Layouts>
       <Layout>
         <Grid id="grd_list" taborder="4" useinputpanel="false" autofittype="none" left="0" top="111" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다." width="1122" height="300" oncellclick="grd_list_oncellclick">

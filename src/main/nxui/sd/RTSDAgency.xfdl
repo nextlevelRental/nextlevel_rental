@@ -7,7 +7,7 @@
         <Static id="Static56" taborder="108" cssclass="sta_WF_detailLabel2" left="748" top="116" right="25" height="31"/>
         <Static id="Static57" taborder="109" cssclass="sta_WF_detailLabel2" left="748" top="146" right="25" height="31"/>
         <Static id="Static55" taborder="107" cssclass="sta_WF_detailLabel2" left="748" top="86" height="31" right="25"/>
-        <Static id="Static10" taborder="50" cssclass="sta_WF_detailLabel2" top="86" height="31" width="749" left="0"/>
+        <Static id="Static10" taborder="50" cssclass="sta_WF_detailLabel2" top="86" height="31" width="1122" left="0"/>
         <Static id="st_BG" position="absolute" left="10" right="-10" top="0" height="40" cssclass="sta_WF_SearchBox"/>
         <Div id="div_search" taborder="19" left="0" top="0" height="45" text="Div00" cssclass="div_WF_searchBg" scrollbars="none" right="25">
           <Layouts>
@@ -29,39 +29,39 @@
         <Static id="Static07" taborder="38" text="지사" cssclass="sta_WF_detailLabel" top="86" height="31" width="130" left="374"/>
         <Static id="Static08" taborder="43" text="지점" cssclass="sta_WF_detailLabel" top="86" height="31" width="130" left="748"/>
         <Static id="Static18" taborder="47" text="대리점명" cssclass="sta_WF_detailLabelP" top="86" height="31" width="149" left="0"/>
-        <Static id="Static11" taborder="51" cssclass="sta_WF_detailLabel2" top="116" height="31" width="749" left="0"/>
+        <Static id="Static11" taborder="51" cssclass="sta_WF_detailLabel2" top="116" height="31" width="1122" left="0"/>
         <Edit id="faxNo" taborder="52" top="121" height="21" width="235" left="882" enable="false" visible="false"/>
         <Static id="Static12" taborder="53" text="FAX번호" cssclass="sta_WF_detailLabel" top="116" height="31" width="130" left="748"/>
         <Static id="Static13" taborder="55" text="휴대폰번호" cssclass="sta_WF_detailLabel" top="116" height="31" width="130" left="374"/>
         <Static id="Static14" taborder="57" text="전화번호" cssclass="sta_WF_detailLabelP" top="116" height="31" width="149" left="0"/>
-        <Static id="Static15" taborder="58" cssclass="sta_WF_detailLabel2" top="146" height="31" width="749" left="0"/>
+        <Static id="Static15" taborder="58" cssclass="sta_WF_detailLabel2" top="146" height="31" width="1122" left="0"/>
         <Static id="Static25" taborder="62" text="대표명" cssclass="sta_WF_detailLabel" top="146" height="31" width="130" left="374"/>
         <Static id="Static26" taborder="64" text="사업자번호" cssclass="sta_WF_detailLabelP" top="146" height="31" width="149" left="0"/>
         <Static id="Static50" taborder="99" visible="false" left="51.96%" top="41" right="43.94%" height="21" style="color:red;"/>
         <Static id="Static03" taborder="115" text="렌탈시작일" cssclass="sta_WF_detailLabel" left="748" top="146" width="130" height="31"/>
         <Static id="Static04" taborder="117" cssclass="sta_WF_detailLabel2" left="748" top="176" right="25" height="31"/>
-        <Static id="Static05" taborder="118" cssclass="sta_WF_detailLabel2" left="0" top="176" width="749" height="31"/>
+        <Static id="Static05" taborder="118" cssclass="sta_WF_detailLabel2" left="0" top="176" width="1122" height="31"/>
         <Static id="Static09" taborder="119" text="업태" cssclass="sta_WF_detailLabel" left="374" top="176" width="130" height="31"/>
         <Static id="Static16" taborder="120" text="업종" cssclass="sta_WF_detailLabelP" left="0" top="176" width="149" height="31"/>
         <Static id="Static17" taborder="123" text="렌탈종료일" cssclass="sta_WF_detailLabel" left="748" top="176" width="130" height="31"/>
         <Static id="Static19" taborder="125" cssclass="sta_WF_detailLabel2" left="748" top="206" right="25" height="31"/>
-        <Static id="Static20" taborder="126" cssclass="sta_WF_detailLabel2" left="0" top="206" width="749" height="31"/>
+        <Static id="Static20" taborder="126" cssclass="sta_WF_detailLabel2" left="0" top="206" width="1122" height="31"/>
         <Static id="Static27" taborder="128" text="대리점주소" cssclass="sta_WF_detailLabelP" left="0" top="206" width="149" height="31"/>
         <Static id="Static28" taborder="131" text="렌탈대리점여부" cssclass="sta_WF_detailLabel" left="748" top="206" width="130" height="31"/>
         <Static id="Static29" taborder="133" cssclass="sta_WF_detailLabel2" left="748" top="236" right="25" height="31"/>
-        <Static id="Static30" taborder="134" cssclass="sta_WF_detailLabel2" left="0" top="236" width="749" height="31"/>
+        <Static id="Static30" taborder="134" cssclass="sta_WF_detailLabel2" left="0" top="236" width="1122" height="31"/>
         <Static id="Static36" taborder="135" text="Y좌표" cssclass="sta_WF_detailLabel" left="374" top="236" width="130" height="31"/>
         <Static id="Static37" taborder="136" text="X좌표" cssclass="sta_WF_detailLabelP" left="0" top="236" width="149" height="31"/>
         <Static id="Static38" taborder="139" text="사용여부" cssclass="sta_WF_detailLabel" left="748" top="236" width="130" height="31"/>
         <Static id="Static39" taborder="141" cssclass="sta_WF_detailLabel2" left="748" top="266" right="25" height="31"/>
-        <Static id="Static40" taborder="142" cssclass="sta_WF_detailLabel2" left="0" top="266" width="749" height="31"/>
+        <Static id="Static40" taborder="142" cssclass="sta_WF_detailLabel2" left="0" top="266" width="1122" height="31"/>
         <Static id="Static41" taborder="143" text="경정비" cssclass="sta_WF_detailLabel" left="374" top="266" width="130" height="31"/>
         <Static id="Static42" taborder="144" text="계절구분" cssclass="sta_WF_detailLabelP" left="0" top="266" width="149" height="31"/>
         <Combo id="seasonGbn" taborder="145" displayrowcount="5" enable="false" left="155" top="271" width="214" height="21" innerdataset="@dsSeason" codecolumn="cd" datacolumn="cdNm"/>
         <Combo id="lmYn" taborder="146" displayrowcount="5" onitemchanged="div_search00_userGrp_onitemchanged" enable="true" left="508" top="271" width="236" height="21" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm"/>
         <Static id="Static43" taborder="147" text="수입차정비" cssclass="sta_WF_detailLabel" left="748" top="266" width="130" height="31"/>
         <Static id="Static51" taborder="149" cssclass="sta_WF_detailLabel2" left="748" top="296" right="25" height="31"/>
-        <Static id="Static52" taborder="150" cssclass="sta_WF_detailLabel2" left="0" top="296" width="749" height="31"/>
+        <Static id="Static52" taborder="150" cssclass="sta_WF_detailLabel2" left="0" top="296" width="1122" height="31"/>
         <Static id="Static53" taborder="151" text="추천장착점" cssclass="sta_WF_detailLabel" left="374" top="296" width="130" height="31"/>
         <Static id="Static54" taborder="152" text="세차가능" cssclass="sta_WF_detailLabelP" left="0" top="296" width="149" height="31"/>
         <Combo id="cwYn" taborder="153" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="true" left="155" top="301" width="214" height="21"/>

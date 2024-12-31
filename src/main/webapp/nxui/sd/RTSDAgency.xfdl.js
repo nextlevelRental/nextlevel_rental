@@ -210,7 +210,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static10", "absolute", "0", "86", "749", "31", null, null, this);
+            obj = new Static("Static10", "absolute", "0", "86", "1122", "31", null, null, this);
             obj.set_taborder("50");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -306,7 +306,7 @@
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static11", "absolute", "0", "116", "749", "31", null, null, this);
+            obj = new Static("Static11", "absolute", "0", "116", "1122", "31", null, null, this);
             obj.set_taborder("51");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -335,7 +335,7 @@
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static15", "absolute", "0", "146", "749", "31", null, null, this);
+            obj = new Static("Static15", "absolute", "0", "146", "1122", "31", null, null, this);
             obj.set_taborder("58");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -369,7 +369,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static05", "absolute", "0", "176", "749", "31", null, null, this);
+            obj = new Static("Static05", "absolute", "0", "176", "1122", "31", null, null, this);
             obj.set_taborder("118");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -397,7 +397,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static20", "absolute", "0", "206", "749", "31", null, null, this);
+            obj = new Static("Static20", "absolute", "0", "206", "1122", "31", null, null, this);
             obj.set_taborder("126");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -419,7 +419,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static30", "absolute", "0", "236", "749", "31", null, null, this);
+            obj = new Static("Static30", "absolute", "0", "236", "1122", "31", null, null, this);
             obj.set_taborder("134");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -447,7 +447,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static40", "absolute", "0", "266", "749", "31", null, null, this);
+            obj = new Static("Static40", "absolute", "0", "266", "1122", "31", null, null, this);
             obj.set_taborder("142");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -493,7 +493,7 @@
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static52", "absolute", "0", "296", "749", "31", null, null, this);
+            obj = new Static("Static52", "absolute", "0", "296", "1122", "31", null, null, this);
             obj.set_taborder("150");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);

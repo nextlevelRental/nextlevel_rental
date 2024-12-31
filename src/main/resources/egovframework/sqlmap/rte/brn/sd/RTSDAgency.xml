@@ -54,6 +54,9 @@
 		<result property="alignNm"	  	        column="ALIGN_NM"     /> <!-- [20180312_01] -->
 		<result property="balanceCd"  	        column="BALANCE_CD"   /> <!-- [20180312_01] -->
 		<result property="balanceNm"  	        column="BALANCE_NM"   /> <!-- [20180312_01] -->
+		<result property="egolNchrgChkYn"  	column="EGOL_NCHRG_CHK_YN"   />
+		<result property="bkpdNchrgChkYn"	column="BKPD_NCHRG_CHK_YN"     />
+		<result property="washerNchrgPayYn"  column="WASHER_NCHRG_PAY_YN"   />
 		<result property="rentalGroup"  	    column="RENTAL_GROUP"   /> 
 		<result property="rentalGroupNm"  	    column="RENTAL_GROUP_NM"   /> 
 		<result property="rentalOffice"  	    column="RENTAL_OFFICE"   /> 
@@ -118,6 +121,9 @@
 		<parameter property="desorptCd"	  	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="alignCd"	  	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="balanceCd"	  	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="egolNchrgChkYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="bkpdNchrgChkYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="washerNchrgPayYn"	    jdbcType="VARCHAR" mode="IN" />
 		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="prplYn"	    jdbcType="VARCHAR" mode="IN" />
@@ -129,7 +135,7 @@
 	</parameterMap>
 	
 	<procedure id="agency.saveAgencyInfo" parameterMap="p_IUDRtsd0007_U">
-		{call Pkg_Rtsd0007.p_IUDRtsd0007(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+		{call Pkg_Rtsd0007.p_IUDRtsd0007(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 	<!-- 콜센터용 대리점정보 조회 -->

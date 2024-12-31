@@ -14,7 +14,7 @@
                 this.set_name("RTSDAgency");
                 this.set_classname("Authority");
                 this.set_titletext("대리점정보관리");
-                this._setFormPosition(0,0,1147,496);
+                this._setFormPosition(0,0,1147,521);
             }
             this.getSetter("inheritanceid").set("");
 
@@ -22,17 +22,19 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsAgency", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"serNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"faxNo\" type=\"STRING\" size=\"256\"/><Column id=\"taxNo\" type=\"STRING\" size=\"256\"/><Column id=\"repNm\" type=\"STRING\" size=\"256\"/><Column id=\"busiType\" type=\"STRING\" size=\"256\"/><Column id=\"busiCond\" type=\"STRING\" size=\"256\"/><Column id=\"rentalYn\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"posX\" type=\"STRING\" size=\"256\"/><Column id=\"posY\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgNm\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"fmYn\" type=\"STRING\" size=\"256\"/><Column id=\"cwYn\" type=\"STRING\" size=\"256\"/><Column id=\"olimitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/><Column id=\"chanLclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"opYn\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"apfdEndYn\" type=\"STRING\" size=\"256\"/><Column id=\"chainYn\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstId\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstNm\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstMob\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"serNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"faxNo\" type=\"STRING\" size=\"256\"/><Column id=\"taxNo\" type=\"STRING\" size=\"256\"/><Column id=\"repNm\" type=\"STRING\" size=\"256\"/><Column id=\"busiType\" type=\"STRING\" size=\"256\"/><Column id=\"busiCond\" type=\"STRING\" size=\"256\"/><Column id=\"rentalYn\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"posX\" type=\"STRING\" size=\"256\"/><Column id=\"posY\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgNm\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"fmYn\" type=\"STRING\" size=\"256\"/><Column id=\"cwYn\" type=\"STRING\" size=\"256\"/><Column id=\"olimitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/><Column id=\"chanLclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"opYn\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"apfdEndYn\" type=\"STRING\" size=\"256\"/><Column id=\"chainYn\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstId\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstNm\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstMob\" type=\"STRING\" size=\"256\"/><Column id=\"egolNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"bkpdNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"washerNchrgPayYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("dsUseYn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -44,6 +46,7 @@
 
             obj = new Dataset("dsSeason", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -55,6 +58,7 @@
 
             obj = new Dataset("dsTaxRqCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -66,6 +70,7 @@
 
             obj = new Dataset("dsChanLclsCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -77,6 +82,7 @@
 
             obj = new Dataset("dsChanMclsCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -88,6 +94,7 @@
 
             obj = new Dataset("dsDesorptCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -99,6 +106,7 @@
 
             obj = new Dataset("dsAlignCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -110,6 +118,7 @@
 
             obj = new Dataset("dsBalanceCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -119,8 +128,45 @@
             obj._setContents("<ColumnInfo><Column id=\"cdDesc\" type=\"string\" size=\"32\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/><Column id=\"cd\" type=\"string\" size=\"32\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
+            obj = new Dataset("dsEgolNchrgChkYn", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("false");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"string\" size=\"32\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/></ColumnInfo><Rows><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">Y</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("dsBkpdNchrgChkYn", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("false");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"string\" size=\"32\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/></ColumnInfo><Rows><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">Y</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("dsWasherNchrgPayYn", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("false");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"string\" size=\"32\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/></ColumnInfo><Rows><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">Y</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">N</Col></Row></Rows>");
+            this.addChild(obj.name, obj);
+
             obj = new Dataset("dsPrplYn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -132,6 +178,7 @@
 
             obj = new Dataset("dsYn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -227,7 +274,7 @@
             obj.style.set_color("#333333ff");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static01", "absolute", "1122", "0", "25", "496", null, null, this);
+            obj = new Static("Static01", "absolute", "1122", "0", "25", "522", null, null, this);
             obj.set_taborder("30");
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
@@ -756,54 +803,54 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static46", "absolute", "0", "416", "1122", "31", null, null, this);
+            obj = new Static("Static46", "absolute", "0", "446", "1122", "31", null, null, this);
             obj.set_taborder("203");
             obj.set_cssclass("sta_WF_detailLabel2");
             obj.style.set_background("#ffffffff");
             obj.style.set_color("#999999ff");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static47", "absolute", "0", "416", "149", "31", null, null, this);
+            obj = new Static("Static47", "absolute", "0", "446", "149", "31", null, null, this);
             obj.set_taborder("204");
             obj.set_text("렌탈지역");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroup00", "absolute", "156", "421", "140", "21", null, null, this);
+            obj = new Edit("salesGroup00", "absolute", "156", "451", "140", "21", null, null, this);
             obj.set_taborder("205");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Button("bt_searchSalesGroup01", "absolute", "274", "421", "20", "21", null, null, this);
+            obj = new Button("bt_searchSalesGroup01", "absolute", "274", "451", "20", "21", null, null, this);
             obj.set_taborder("206");
             obj.set_cssclass("btn_WF_edtSch");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroupNm00", "absolute", "310", "421", "193", "21", null, null, this);
+            obj = new Edit("salesGroupNm00", "absolute", "310", "451", "193", "21", null, null, this);
             obj.set_taborder("207");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroup01", "absolute", "148", "421", "36", "21", null, null, this);
+            obj = new Edit("salesGroup01", "absolute", "148", "451", "36", "21", null, null, this);
             obj.set_taborder("208");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroupNm01", "absolute", "310", "421", "26", "21", null, null, this);
+            obj = new Edit("salesGroupNm01", "absolute", "310", "451", "26", "21", null, null, this);
             obj.set_taborder("209");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static48", "absolute", "748", "416", "130", "31", null, null, this);
+            obj = new Static("Static48", "absolute", "748", "446", "130", "31", null, null, this);
             obj.set_taborder("210");
             obj.set_text("퍼플점 여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_plplYn", "absolute", "882", "421", "235", "21", null, null, this);
+            obj = new Combo("cmb_plplYn", "absolute", "882", "451", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("211");
             obj.set_innerdataset("@dsPrplYn");
@@ -811,18 +858,18 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static49", "absolute", "0", "446", "149", "31", null, null, this);
+            obj = new Static("Static49", "absolute", "0", "476", "149", "31", null, null, this);
             obj.set_taborder("212");
             obj.set_text("탈착기");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static61", "absolute", "0", "446", "1122", "31", null, null, this);
+            obj = new Static("Static61", "absolute", "0", "476", "1122", "31", null, null, this);
             obj.set_taborder("213");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_apfdEndYn", "absolute", "155", "451", "214", "21", null, null, this);
+            obj = new Combo("cb_apfdEndYn", "absolute", "155", "481", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("214");
             obj.set_innerdataset("@dsYn");
@@ -830,19 +877,19 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static62", "absolute", "0", "446", "149", "31", null, null, this);
+            obj = new Static("Static62", "absolute", "0", "476", "149", "31", null, null, this);
             obj.set_taborder("215");
             obj.set_text("충당금 반환여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static63", "absolute", "374", "446", "130", "31", null, null, this);
+            obj = new Static("Static63", "absolute", "374", "476", "130", "31", null, null, this);
             obj.set_taborder("216");
             obj.set_text("직영도매거래선");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("chainYn", "absolute", "508", "451", "235", "21", null, null, this);
+            obj = new Combo("chainYn", "absolute", "508", "481", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("217");
             obj.set_innerdataset("@dsUseYn");
@@ -869,6 +916,53 @@
             obj.set_readonly("true");
             this.addChild(obj.name, obj);
 
+            obj = new Static("Static65", "absolute", "0", "416", "1122", "31", null, null, this);
+            obj.set_taborder("222");
+            obj.set_cssclass("sta_WF_detailLabel2");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static66", "absolute", "0", "416", "149", "31", null, null, this);
+            obj.set_taborder("223");
+            obj.set_text("엔진 오일 무료 점검");
+            obj.set_cssclass("sta_WF_detailLabel");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("egolNchrgChkYn", "absolute", "155", "421", "214", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("225");
+            obj.set_innerdataset("@dsEgolNchrgChkYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
+
+            obj = new Static("Static67", "absolute", "374", "416", "130", "31", null, null, this);
+            obj.set_taborder("224");
+            obj.set_text("브레이크 패드 무료 점검");
+            obj.set_cssclass("sta_WF_detailLabel");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("bkpdNchrgChkYn", "absolute", "508", "421", "236", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("227");
+            obj.set_innerdataset("@dsBkpdNchrgChkYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
+
+            obj = new Static("Static68", "absolute", "748", "416", "130", "31", null, null, this);
+            obj.set_taborder("226");
+            obj.set_text("워셔액 무료 지급");
+            obj.set_cssclass("sta_WF_detailLabel");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("washerNchrgPayYn", "absolute", "882", "421", "235", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("228");
+            obj.set_innerdataset("@dsWasherNchrgPayYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
+
 
             
             // Layout Functions
@@ -886,7 +980,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1147, 496, this,
+            obj = new Layout("default", "", 1147, 521, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("Authority");
@@ -1047,6 +1141,15 @@
             obj = new BindItem("item48","rntMstMob","value","dsAgency","rntMstMob");
             this.addChild(obj.name, obj);
             obj.bind();
+            obj = new BindItem("item49","egolNchrgChkYn","value","dsAgency","egolNchrgChkYn");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item50","bkpdNchrgChkYn","value","dsAgency","bkpdNchrgChkYn");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item51","washerNchrgPayYn","value","dsAgency","washerNchrgPayYn");
+            this.addChild(obj.name, obj);
+            obj.bind();
 
             
             // Remove Reference
@@ -1088,7 +1191,7 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt){
         	if (nErrorCode < 0) {
-        		alert(strErrorMsg);		
+        		alert(strErrorMsg);
         		return;
         	}
         	
@@ -1390,6 +1493,7 @@
             this.bt_searchSalesGroup01.addEventHandler("onclick", this.div_search_bt_searchSalesGroup01_onclick, this);
             this.salesGroup01.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.Static48.addEventHandler("onclick", this.Static45_onclick, this);
+            this.Static68.addEventHandler("onclick", this.Static45_onclick, this);
 
         };
 

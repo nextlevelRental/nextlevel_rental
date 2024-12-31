@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTSDAgency" classname="Authority" inheritanceid="" position="absolute" titletext="대리점정보관리" left="0" width="1147" top="0" height="496" ontimer="form_ontimer" onload="RTSDAgency_onload">
+  <Form id="RTSDAgency" classname="Authority" inheritanceid="" position="absolute" titletext="대리점정보관리" left="0" width="1147" top="0" height="521" ontimer="form_ontimer" onload="RTSDAgency_onload">
     <Layouts>
       <Layout>
         <Static id="Static56" taborder="108" cssclass="sta_WF_detailLabel2" left="748" top="116" right="25" height="31"/>
@@ -24,7 +24,7 @@
         <Static id="Static21" taborder="24" text="변경할 내용" cssclass="sta_WF_subTitle" top="61" height="20" width="81" left="0"/>
         <Static id="Static06" taborder="27" cssclass="Guide_color" visible="false" top="0" height="45" left="0" width="20"/>
         <Static id="Static00" taborder="29" cssclass="Guide_color" visible="false" top="45" height="20" left="0" style="background:#ff9197ff;color:#333333ff;" width="1147"/>
-        <Static id="Static01" taborder="30" cssclass="Guide_color" visible="false" top="0" height="496" width="25" left="1122"/>
+        <Static id="Static01" taborder="30" cssclass="Guide_color" visible="false" top="0" height="522" width="25" left="1122"/>
         <Static id="Static02" taborder="31" cssclass="Guide_color" visible="false" left="0" top="76" height="10" style="background:#ff9197ff;color:#333333ff;" width="1147"/>
         <Static id="Static07" taborder="38" text="지사" cssclass="sta_WF_detailLabel" top="86" height="31" width="130" left="374"/>
         <Static id="Static08" taborder="43" text="지점" cssclass="sta_WF_detailLabel" top="86" height="31" width="130" left="748"/>
@@ -112,24 +112,31 @@
         <Static id="Static45" taborder="200" text="밸런스" cssclass="sta_WF_detailLabel" left="748" top="386" width="130" height="31" onclick="Static45_onclick"/>
         <Combo id="cb_alignCd" taborder="201" innerdataset="@dsAlignCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="391" width="236" height="21"/>
         <Combo id="cb_balanceCd" taborder="202" innerdataset="@dsBalanceCd" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="391" width="235" height="21"/>
-        <Static id="Static46" taborder="203" cssclass="sta_WF_detailLabel2" left="0" top="416" width="1122" height="31" style="background:#ffffffff;color:#999999ff;"/>
-        <Static id="Static47" taborder="204" text="렌탈지역" cssclass="sta_WF_detailLabel" left="0" top="416" width="149" height="31"/>
-        <Edit id="salesGroup00" taborder="205" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="156" top="421" width="140" height="21"/>
-        <Button id="bt_searchSalesGroup01" taborder="206" onclick="div_search_bt_searchSalesGroup01_onclick" cssclass="btn_WF_edtSch" left="274" top="421" width="20" height="21" enable="false"/>
-        <Edit id="salesGroupNm00" taborder="207" enable="false" left="310" top="421" width="193" height="21"/>
-        <Edit id="salesGroup01" taborder="208" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="148" top="421" width="36" height="21" visible="false"/>
-        <Edit id="salesGroupNm01" taborder="209" enable="false" left="310" top="421" width="26" height="21" visible="false"/>
-        <Static id="Static48" taborder="210" text="퍼플점 여부" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="748" top="416" width="130" height="31"/>
-        <Combo id="cmb_plplYn" taborder="211" innerdataset="@dsPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="421" width="235" height="21"/>
-        <Static id="Static49" taborder="212" text="탈착기" cssclass="sta_WF_detailLabel" left="0" top="446" width="149" height="31"/>
-        <Static id="Static61" taborder="213" cssclass="sta_WF_detailLabel2" left="0" top="446" width="1122" height="31"/>
-        <Combo id="cb_apfdEndYn" taborder="214" innerdataset="@dsYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="155" top="451" width="214" height="21"/>
-        <Static id="Static62" taborder="215" text="충당금 반환여부" cssclass="sta_WF_detailLabel" left="0" top="446" width="149" height="31"/>
-        <Static id="Static63" taborder="216" text="직영도매거래선" cssclass="sta_WF_detailLabel" left="374" top="446" width="130" height="31"/>
-        <Combo id="chainYn" taborder="217" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="451" width="235" height="21"/>
+        <Static id="Static46" taborder="203" cssclass="sta_WF_detailLabel2" left="0" top="446" width="1122" height="31" style="background:#ffffffff;color:#999999ff;"/>
+        <Static id="Static47" taborder="204" text="렌탈지역" cssclass="sta_WF_detailLabel" left="0" top="446" width="149" height="31"/>
+        <Edit id="salesGroup00" taborder="205" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="156" top="451" width="140" height="21"/>
+        <Button id="bt_searchSalesGroup01" taborder="206" onclick="div_search_bt_searchSalesGroup01_onclick" cssclass="btn_WF_edtSch" left="274" top="451" width="20" height="21" enable="false"/>
+        <Edit id="salesGroupNm00" taborder="207" enable="false" left="310" top="451" width="193" height="21"/>
+        <Edit id="salesGroup01" taborder="208" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="148" top="451" width="36" height="21" visible="false"/>
+        <Edit id="salesGroupNm01" taborder="209" enable="false" left="310" top="451" width="26" height="21" visible="false"/>
+        <Static id="Static48" taborder="210" text="퍼플점 여부" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="748" top="446" width="130" height="31"/>
+        <Combo id="cmb_plplYn" taborder="211" innerdataset="@dsPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="451" width="235" height="21"/>
+        <Static id="Static49" taborder="212" text="탈착기" cssclass="sta_WF_detailLabel" left="0" top="476" width="149" height="31"/>
+        <Static id="Static61" taborder="213" cssclass="sta_WF_detailLabel2" left="0" top="476" width="1122" height="31"/>
+        <Combo id="cb_apfdEndYn" taborder="214" innerdataset="@dsYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="155" top="481" width="214" height="21"/>
+        <Static id="Static62" taborder="215" text="충당금 반환여부" cssclass="sta_WF_detailLabel" left="0" top="476" width="149" height="31"/>
+        <Static id="Static63" taborder="216" text="직영도매거래선" cssclass="sta_WF_detailLabel" left="374" top="476" width="130" height="31"/>
+        <Combo id="chainYn" taborder="217" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="481" width="235" height="21"/>
         <Static id="Static64" taborder="218" text="담당영업사원" cssclass="sta_WF_detailLabel" left="748" top="116" width="130" height="31"/>
         <Edit id="rntMstNm" taborder="219" enable="false" left="882" top="121" width="94" height="21"/>
         <MaskEdit id="rntMstMob" taborder="221" left="85.44%" top="121" height="21" width="137" enable="true" mask="###-####-####" type="string" readonly="true"/>
+        <Static id="Static65" taborder="222" cssclass="sta_WF_detailLabel2" left="0" top="416" width="1122" height="31"/>
+        <Static id="Static66" taborder="223" text="엔진 오일 무료 점검" cssclass="sta_WF_detailLabel" left="0" top="416" width="149" height="31"/>
+        <Combo id="egolNchrgChkYn" taborder="225" innerdataset="@dsEgolNchrgChkYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="155" top="421" width="214" height="21"/>
+        <Static id="Static67" taborder="224" text="브레이크 패드 무료 점검" cssclass="sta_WF_detailLabel" left="374" top="416" width="130" height="31"/>
+        <Combo id="bkpdNchrgChkYn" taborder="227" innerdataset="@dsBkpdNchrgChkYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="421" width="236" height="21"/>
+        <Static id="Static68" taborder="226" text="워셔액 무료 지급" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="748" top="416" width="130" height="31"/>
+        <Combo id="washerNchrgPayYn" taborder="228" innerdataset="@dsWasherNchrgPayYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="421" width="235" height="21"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -193,6 +200,9 @@
           <Column id="rntMstId" type="STRING" size="256"/>
           <Column id="rntMstNm" type="STRING" size="256"/>
           <Column id="rntMstMob" type="STRING" size="256"/>
+          <Column id="egolNchrgChkYn" type="STRING" size="256"/>
+          <Column id="bkpdNchrgChkYn" type="STRING" size="256"/>
+          <Column id="washerNchrgPayYn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="dsUseYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -246,6 +256,54 @@
           <Column id="cdNm" type="string" size="32"/>
           <Column id="cd" type="string" size="32"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsEgolNchrgChkYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBkpdNchrgChkYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsWasherNchrgPayYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="string" size="32"/>
+          <Column id="cdNm" type="string" size="32"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
       </Dataset>
       <Dataset id="dsPrplYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
@@ -341,6 +399,9 @@
       <BindItem id="item46" compid="chainYn" propid="value" datasetid="dsAgency" columnid="chainYn"/>
       <BindItem id="item47" compid="rntMstNm" propid="value" datasetid="dsAgency" columnid="rntMstNm"/>
       <BindItem id="item48" compid="rntMstMob" propid="value" datasetid="dsAgency" columnid="rntMstMob"/>
+      <BindItem id="item49" compid="egolNchrgChkYn" propid="value" datasetid="dsAgency" columnid="egolNchrgChkYn"/>
+      <BindItem id="item50" compid="bkpdNchrgChkYn" propid="value" datasetid="dsAgency" columnid="bkpdNchrgChkYn"/>
+      <BindItem id="item51" compid="washerNchrgPayYn" propid="value" datasetid="dsAgency" columnid="washerNchrgPayYn"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
  * 파 일 명 : RDSDAgency.xfdl
@@ -372,7 +433,7 @@ this.apfdAuthYn = false;	// 충당금 반환여부 수정권한 여부
 /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg, resultCnt){
 	if (nErrorCode < 0) {
-		alert(strErrorMsg);		
+		alert(strErrorMsg);
 		return;
 	}
 	

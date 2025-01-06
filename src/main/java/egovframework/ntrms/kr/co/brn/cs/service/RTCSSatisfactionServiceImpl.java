@@ -32,7 +32,7 @@ public class RTCSSatisfactionServiceImpl extends EgovAbstractServiceImpl impleme
 		return result;
 	}
 	
-	public Map updateKakaoSatisfaction(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception {
+	public Map updateKakaoSatisfaction(Map<String, DataSetMap> inDataset, Map<String, Object> inVar) throws Exception {
 		
 		List inDsList = new ArrayList();
 		DataSetMap inDsMap = (DataSetMap)inDataset.get("input");

@@ -14,7 +14,7 @@
                 this.set_name("RTCSAgencyKakaoSatisfactionMang");
                 this.set_classname("RTCMClaim");
                 this.set_titletext("카카오 만족도 조사 리스트");
-                this._setFormPosition(0,0,1123,703);
+                this._setFormPosition(0,0,1123,470);
             }
 
             
@@ -22,16 +22,16 @@
             obj = new Dataset("ds_list", this);
             obj.set_firefirstcount("0");
             obj.getSetter("firenextcount").set("0");
-            obj.set_useclientlayout("false");
+            obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"stfySrvySeq\" type=\"STRING\" size=\"20\"/><Column id=\"subtDay\" type=\"STRING\" size=\"20\"/><Column id=\"ordNo\" type=\"STRING\" size=\"20\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"20\"/><Column id=\"rcvrCustNo\" type=\"STRING\" size=\"20\"/><Column id=\"rcvrNm\" type=\"STRING\" size=\"30\"/><Column id=\"rcvrMobNo\" type=\"STRING\" size=\"30\"/><Column id=\"rcvrBirthDay\" type=\"STRING\" size=\"20\"/><Column id=\"totEvalPoint\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd1\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd2\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd3\" type=\"STRING\" size=\"10\"/><Column id=\"stfyOpinon\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"30\"/><Column id=\"chgDt\" type=\"STRING\" size=\"20\"/><Column id=\"dpYn\" type=\"STRING\" size=\"10\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"50\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"50\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"50\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"stfySrvySeq\" type=\"STRING\" size=\"20\"/><Column id=\"subtDay\" type=\"STRING\" size=\"20\"/><Column id=\"ordNo\" type=\"STRING\" size=\"20\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"20\"/><Column id=\"rcvrCustNo\" type=\"STRING\" size=\"20\"/><Column id=\"rcvrNm\" type=\"STRING\" size=\"30\"/><Column id=\"rcvrMobNo\" type=\"STRING\" size=\"30\"/><Column id=\"rcvrBirthDay\" type=\"STRING\" size=\"20\"/><Column id=\"totEvalPoint\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd1\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd2\" type=\"STRING\" size=\"10\"/><Column id=\"stfyPointCd3\" type=\"STRING\" size=\"10\"/><Column id=\"stfyOpinon\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"30\"/><Column id=\"chgDt\" type=\"STRING\" size=\"20\"/><Column id=\"dpYn\" type=\"STRING\" size=\"10\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"50\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"50\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"50\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
-            obj = new Dataset("dpYn", this);
+            obj = new Dataset("ds_DpYn", this);
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">Y</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">N</Col></Row></Rows>");
             this.addChild(obj.name, obj);
@@ -48,25 +48,35 @@
             obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"cd\"/><Col id=\"cdNm\">전체</Col></Row><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">전시</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">비전시</Col></Row></Rows>");
             this.addChild(obj.name, obj);
 
-            obj = new Dataset("ds_save", this);
-            obj._setContents("<ColumnInfo><Column id=\"stfySrvySeq\" type=\"STRING\" size=\"20\"/><Column id=\"stfyOpinon\" type=\"STRING\" size=\"256\"/><Column id=\"dpYn\" type=\"STRING\" size=\"10\"/></ColumnInfo>");
-            this.addChild(obj.name, obj);
-
 
             
             // UI Components Initialize
-            obj = new Grid("grd_list", "absolute", "0", "111", "1122", "300", null, null, this);
+            obj = new Grid("grd_list", "absolute", "3", "111", "1119", "350", null, null, this);
             obj.set_taborder("4");
-            obj.set_autofittype("none");
+            obj.set_autofittype("col");
             obj.set_binddataset("ds_list");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"140\"/><Column size=\"60\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"30\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"순번\"/><Cell col=\"1\" text=\"제출일\"/><Cell col=\"2\" text=\"대리점코드\"/><Cell col=\"3\" text=\"렌탈지사\"/><Cell col=\"4\" text=\"렌탈지점\"/><Cell col=\"5\" text=\"대리점명\"/><Cell col=\"6\" text=\"전시여부\"/><Cell col=\"7\" text=\"계약번호\"/><Cell col=\"8\" text=\"고객명\"/><Cell col=\"9\" text=\"총평점\"/><Cell col=\"10\" text=\"장착응대\"/><Cell col=\"11\" text=\"렌탈혜택설명\"/><Cell col=\"12\" text=\"친절\"/><Cell col=\"13\" text=\"고객 의견\"/><Cell col=\"14\" text=\"수정자\"/><Cell col=\"15\" text=\"수정일자\"/></Band><Band id=\"body\"><Cell text=\"bind:stfySrvySeq\" tooltiptext=\"bind:stfySrvySeq\" edittype=\"readonly\"/><Cell col=\"1\" text=\"bind:subtDay\" tooltiptext=\"bind:subtDay\" displaytype=\"date\" edittype=\"readonly\"/><Cell col=\"2\" text=\"bind:agencyCd\" tooltiptext=\"bind:agencyCd\" edittype=\"readonly\"/><Cell col=\"3\" text=\"bind:rentalGroupNm\" tooltiptext=\"bind:rentalGroupNm\" edittype=\"readonly\"/><Cell col=\"4\" text=\"bind:rentalOfficeNm\" tooltiptext=\"bind:rentalOfficeNm\" edittype=\"readonly\"/><Cell col=\"5\" text=\"bind:agencyNm\" tooltiptext=\"bind:agencyNm\" edittype=\"readonly\"/><Cell col=\"6\" text=\"bind:dpYn\" edittype=\"combo\" editlimit=\"1\" editlengthunit=\"ascii\" combodataset=\"dpYn\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" text=\"bind:ordNo\" tooltiptext=\"bind:ordNo\" edittype=\"readonly\"/><Cell col=\"8\" text=\"bind:rcvrNm\" tooltiptext=\"bind:rcvrNm\" edittype=\"readonly\"/><Cell col=\"9\" text=\"bind:totEvalPoint\" tooltiptext=\"bind:totEvalPoint\" edittype=\"readonly\"/><Cell col=\"10\" text=\"bind:stfyPointCd1\" tooltiptext=\"bind:stfyPointCd1\" edittype=\"readonly\"/><Cell col=\"11\" text=\"bind:stfyPointCd2\" tooltiptext=\"bind:stfyPointCd2\" edittype=\"readonly\"/><Cell col=\"12\" text=\"bind:stfyPointCd3\" tooltiptext=\"bind:stfyPointCd3\" edittype=\"readonly\"/><Cell col=\"13\" text=\"bind:stfyOpinon\" tooltiptext=\"bind:stfyOpinon\" edittype=\"readonly\"/><Cell col=\"14\" text=\"bind:chgId\" tooltiptext=\"bind:chgId\" edittype=\"readonly\"/><Cell col=\"15\" text=\"bind:chgDt\" calendardisplaynulltype=\"none\" displaytype=\"date\" edittype=\"readonly\"/></Band><Band id=\"summary\"><Cell text=\"총계\"/><Cell col=\"1\" style=\"align:right;\" expr=\"dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/><Cell col=\"15\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"60\"/><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"140\"/><Column size=\"60\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"30\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"선택\"/><Cell col=\"1\" text=\"순번\"/><Cell col=\"2\" text=\"제출일\"/><Cell col=\"3\" text=\"대리점코드\"/><Cell col=\"4\" text=\"렌탈지사\"/><Cell col=\"5\" text=\"렌탈지점\"/><Cell col=\"6\" text=\"대리점명\"/><Cell col=\"7\" text=\"전시여부\"/><Cell col=\"8\" text=\"계약번호\"/><Cell col=\"9\" text=\"고객명\"/><Cell col=\"10\" text=\"총평점\"/><Cell col=\"11\" text=\"장착응대\"/><Cell col=\"12\" text=\"렌탈혜택설명\"/><Cell col=\"13\" text=\"친절\"/><Cell col=\"14\" text=\"고객 의견\"/><Cell col=\"15\" text=\"수정자\"/><Cell col=\"16\" text=\"수정일자\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" celltype=\"none\" text=\"bind:stfySrvySeq\" tooltiptext=\"bind:stfySrvySeq\" edittype=\"readonly\"/><Cell col=\"2\" celltype=\"none\" text=\"bind:subtDay\" tooltiptext=\"bind:subtDay\" displaytype=\"date\" edittype=\"readonly\"/><Cell col=\"3\" celltype=\"none\" text=\"bind:agencyCd\" tooltiptext=\"bind:agencyCd\" edittype=\"readonly\"/><Cell col=\"4\" celltype=\"none\" text=\"bind:rentalGroupNm\" tooltiptext=\"bind:rentalGroupNm\" edittype=\"readonly\"/><Cell col=\"5\" celltype=\"none\" text=\"bind:rentalOfficeNm\" tooltiptext=\"bind:rentalOfficeNm\" edittype=\"readonly\"/><Cell col=\"6\" celltype=\"none\" text=\"bind:agencyNm\" tooltiptext=\"bind:agencyNm\" edittype=\"readonly\"/><Cell col=\"7\" text=\"bind:dpYn\" tooltiptext=\"bind:dpYn\" edittype=\"readonly\"/><Cell col=\"8\" text=\"bind:ordNo\" tooltiptext=\"bind:ordNo\" edittype=\"readonly\"/><Cell col=\"9\" text=\"bind:rcvrNm\" tooltiptext=\"bind:rcvrNm\" edittype=\"readonly\"/><Cell col=\"10\" text=\"bind:totEvalPoint\" tooltiptext=\"bind:totEvalPoint\" edittype=\"readonly\"/><Cell col=\"11\" text=\"bind:stfyPointCd1\" tooltiptext=\"bind:stfyPointCd1\" edittype=\"readonly\"/><Cell col=\"12\" text=\"bind:stfyPointCd2\" tooltiptext=\"bind:stfyPointCd2\" edittype=\"readonly\"/><Cell col=\"13\" text=\"bind:stfyPointCd3\" tooltiptext=\"bind:stfyPointCd3\" edittype=\"readonly\"/><Cell col=\"14\" text=\"bind:stfyOpinon\" tooltiptext=\"bind:stfyOpinon\" edittype=\"readonly\"/><Cell col=\"15\" text=\"bind:chgId\" tooltiptext=\"bind:chgId\" edittype=\"readonly\"/><Cell col=\"16\" text=\"bind:chgDt\" calendardisplaynulltype=\"none\" displaytype=\"date\" edittype=\"readonly\"/></Band><Band id=\"summary\"><Cell/><Cell col=\"1\" text=\"총계\"/><Cell col=\"2\" style=\"align:right;\" expr=\"dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/><Cell col=\"15\"/><Cell col=\"16\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static21", "absolute", "3", "89", "190", "20", null, null, this);
             obj.set_taborder("9");
             obj.set_text("렌탈대리점 카카오 만족도 현황");
             obj.set_cssclass("sta_WF_subTitle");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("upd_DpYn", "absolute", "1041", "86", "80", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("142");
+            obj.set_innerdataset("@ds_DpYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
+
+            obj = new Static("st_dpYn", "absolute", "938", "87", "97", "21", null, null, this);
+            obj.set_taborder("143");
+            obj.set_text("전시여부 수정");
+            obj.set_cssclass("sta_WF_schTitle");
             this.addChild(obj.name, obj);
 
             obj = new Div("div_search", "absolute", "0", "0", "1123", "71", null, null, this);
@@ -152,52 +162,6 @@
             obj.set_text("~");
             this.div_search.addChild(obj.name, obj);
 
-            obj = new Div("div_edit", "absolute", "0.18%", "460", null, "115", "0%", null, this);
-            obj.set_taborder("32");
-            obj.set_text("Div00");
-            obj.set_cssclass("sta_WF_detailLabel2");
-            this.addChild(obj.name, obj);
-            obj = new Static("st_stfyOpinon", "absolute", "1", "0", "92", "102", null, null, this.div_edit);
-            obj.set_taborder("21");
-            obj.set_text("고객의견");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.style.set_align("center middle");
-            this.div_edit.addChild(obj.name, obj);
-            obj = new TextArea("ed_stfyOpinon", "absolute", "93", "0", "1022", "101", null, null, this.div_edit);
-            obj.set_taborder("35");
-            this.div_edit.addChild(obj.name, obj);
-
-            obj = new Static("Static00", "absolute", "6", "435", "84", "20", null, null, this);
-            obj.set_taborder("33");
-            obj.set_text("만족도 리뷰");
-            obj.set_cssclass("sta_WF_subTitle");
-            this.addChild(obj.name, obj);
-
-            obj = new Static("st_dpYn", "absolute", "889", "435", "70", "21", null, null, this);
-            obj.set_taborder("31");
-            obj.set_text("사용여부");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.style.set_align("center middle");
-            this.addChild(obj.name, obj);
-
-            obj = new Combo("ed_dpYn", "absolute", "84.51%", "435", null, "20", "6.59%", null, this);
-            this.addChild(obj.name, obj);
-            var ed_dpYn_innerdataset = new Dataset("ed_dpYn_innerdataset", this.ed_dpYn);
-            ed_dpYn_innerdataset._setContents("<ColumnInfo><Column id=\"codecolumn\" size=\"256\"/><Column id=\"datacolumn\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"codecolumn\">Y</Col><Col id=\"datacolumn\">Y</Col></Row><Row><Col id=\"codecolumn\">N</Col><Col id=\"datacolumn\">N</Col></Row></Rows>");
-            obj.set_innerdataset(ed_dpYn_innerdataset);
-            obj.set_taborder("29");
-            obj.set_value("Y");
-            obj.set_text("Y");
-            obj.set_codecolumn("codecolumn");
-            obj.set_datacolumn("datacolumn");
-            obj.set_index("0");
-
-            obj = new Button("btn_update", "absolute", "94.66%", "435", "43", "20", null, null, this);
-            obj.set_taborder("34");
-            obj.set_text("저장");
-            obj.set_cssclass("btn_WF_CRUD");
-            this.addChild(obj.name, obj);
-
 
             
             // Layout Functions
@@ -213,19 +177,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 0, 115, this.div_edit,
-            	//-- Layout function
-            	function(p) {
-            		p.set_taborder("32");
-            		p.set_text("Div00");
-            		p.set_cssclass("sta_WF_detailLabel2");
-
-            	}
-            );
-            this.div_edit.addLayout(obj.name, obj);
-
-            //-- Default Layout
-            obj = new Layout("default", "", 1123, 703, this,
+            obj = new Layout("default", "", 1123, 470, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMClaim");
@@ -349,49 +301,41 @@
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
 
+        
         //---------------------------------------------------------------------------------
-        // 만족도조사 상태 및 리뷰 수정
+        // 만족도조사 데이터 수정
         //---------------------------------------------------------------------------------	
-        this.fn_update = function(obj,e) {
-
-        	this.ds_save.clearData();
-
-        	var nRow			= this.ds_save.insertRow(0);
-        	var stfySrvySeq  	= nvl(this.selectedRowSeq);					//만족도조사순번
-        	var stfyOpinon 		= nvl(this.div_edit.ed_stfyOpinon.value);	//만족도의견
-        	var dpYn   			= nvl(this.ed_dpYn.value);					//전시여부
-        	
-        	if(stfySrvySeq == "") {
-        		alert("수정 할 리뷰를 선택해주세요.");
+        this.upd_dpyn_onitemchanged = function(obj,e) {
+        	if(!Ex.util.isUpdated(this.ds_list)) {
+        		alert('데이터를 선택해주세요.');
         		return false;
         	}
         	
-        	this.ds_save.setColumn(nRow, "stfySrvySeq", stfySrvySeq);
-        	this.ds_save.setColumn(nRow, "stfyOpinon", stfyOpinon);
-        	this.ds_save.setColumn(nRow, "dpYn", dpYn);
-        	
+        	var updDpYn = nvl(this.upd_DpYn.value);	//일괄수정 전시여부
+        	if(updDpYn == "") {
+        		alert('전시여부를 선택해주세요.');
+        		return false;
+        	}
+
+        	var cnt = this.ds_list.rowcount;
+        	var checkCnt = 0;
+        	for(var i = 0; i < cnt; i++) {
+        		if(this.ds_list.getColumn(i, "chk")  == "1") {
+        			this.ds_list.setColumn(i, "dpYn", updDpYn);
+        		}
+        	}
+
         	var sSvcID        	= "updateKakaoSatisfaction";
         	var sController   	= "ntrms/cs/updateKakaoSatisfaction.do";
-        	var sInDatasets   	= "";
+        	var sInDatasets   	= "input=ds_list:U";
         	var sOutDatasets  	= "";
         	var sArgs 			= "";
         	var fn_callBack		= "fn_callBack";
         	
-        	sInDatasets   		= "input=ds_save:U";
-        	
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
 
-        //---------------------------------------------------------------------------------
-        // 그리드 클릭
-        //---------------------------------------------------------------------------------	
-        this.grd_list_oncellclick = function(obj,e)
-        {	
-        	this.selectedRowSeq = this.ds_list.getColumn(e.row, "stfySrvySeq");
-        	this.div_edit.ed_stfyOpinon.set_value(this.ds_list.getColumn(e.row, "stfyOpinon"));
-        	this.ed_dpYn.set_value(this.ds_list.getColumn(e.row, "dpYn"));
-        }
-
+        
         /***********************************************************************************
         * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
         ***********************************************************************************/
@@ -422,6 +366,7 @@
         		//전시여부 수정
         		case "updateKakaoSatisfaction":
         			this.fn_search();
+        			this.upd_DpYn.set_value("");
         			break;
         	}	
         }
@@ -481,14 +426,13 @@
         this.on_initEvent = function()
         {
             this.addEventHandler("onload", this.form_onload, this);
-            this.grd_list.addEventHandler("oncellclick", this.grd_list_oncellclick, this);
+            this.upd_DpYn.addEventHandler("onitemchanged", this.upd_dpyn_onitemchanged, this);
             this.div_search.cal_subtDayF.addEventHandler("oneditclick", this.div_search_cal_slcmFr_oneditclick, this);
             this.div_search.cal_subtDayT.addEventHandler("oneditclick", this.div_search_cal_slcmFr_oneditclick, this);
             this.div_search.vkazcCd.addEventHandler("onkeyup", this.div_search_vkazcCd_onkeyup, this);
             this.div_search.btn_save02.addEventHandler("onclick", this.showVkazc, this);
             this.div_search.ed_ordNo.addEventHandler("onkeydown", this.div_search_ed_ordNo_onkeydown, this);
             this.div_search.btn_custPopUp00.addEventHandler("onclick", this.div_search_btn_custPopUp00_onclick, this);
-            this.btn_update.addEventHandler("onclick", this.fn_update, this);
 
         };
 

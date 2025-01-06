@@ -50,16 +50,15 @@
 	
 	<!-- 만족도조사 저장 -->
 	<parameterMap id="p_IUDRtcs0130" class="java.util.Map">
-		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" 	/>
+		<parameter property="dvsn"				jdbcType="VARCHAR" mode="IN" />
 		<parameter property="stfySrvySeq" 		jdbcType="VARCHAR" mode="IN" />
-		<parameter property="stfyOpinon" 		jdbcType="VARCHAR" mode="IN" />
 		<parameter property="dpYn" 			jdbcType="VARCHAR" mode="IN" />
 		<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
 		<parameter property="returnMessage" jdbcType="VARCHAR" mode="OUT" />
 		<parameter property="errorText"     	jdbcType="VARCHAR" mode="OUT" />
 	</parameterMap>
 	<procedure id="rTCSSatisfaction.updateRTCS0130" parameterMap="p_IUDRtcs0130">
-		{call Pkg_Rtcs0130.p_IUDRtcs0130(?, ?, ?, ?, ?, ?, ?)}
+		{call Pkg_Rtcs0130.p_IUDRtcs0130(?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 </sqlMap>

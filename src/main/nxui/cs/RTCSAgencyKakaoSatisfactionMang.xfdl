@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="703" onload="form_onload" titletext="카카오 만족도 조사 리스트">
+  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="470" onload="form_onload" titletext="카카오 만족도 조사 리스트">
     <Layouts>
       <Layout>
-        <Grid id="grd_list" taborder="4" useinputpanel="false" autofittype="none" left="0" top="111" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다." width="1122" height="300" oncellclick="grd_list_oncellclick">
+        <Grid id="grd_list" taborder="4" useinputpanel="false" left="3" top="111" width="1119" height="350" autofittype="col" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다.">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="60"/>
                 <Column size="50"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -31,45 +32,47 @@
                 <Row size="30" band="summ"/>
               </Rows>
               <Band id="head">
-                <Cell text="순번"/>
-                <Cell col="1" text="제출일"/>
-                <Cell col="2" text="대리점코드"/>
-                <Cell col="3" text="렌탈지사"/>
-                <Cell col="4" text="렌탈지점"/>
-                <Cell col="5" text="대리점명"/>
-                <Cell col="6" text="전시여부"/>
-                <Cell col="7" text="계약번호"/>
-                <Cell col="8" text="고객명"/>
-                <Cell col="9" text="총평점"/>
-                <Cell col="10" text="장착응대"/>
-                <Cell col="11" text="렌탈혜택설명"/>
-                <Cell col="12" text="친절"/>
-                <Cell col="13" text="고객 의견"/>
-                <Cell col="14" text="수정자"/>
-                <Cell col="15" text="수정일자"/>
+                <Cell text="선택"/>
+                <Cell col="1" text="순번"/>
+                <Cell col="2" text="제출일"/>
+                <Cell col="3" text="대리점코드"/>
+                <Cell col="4" text="렌탈지사"/>
+                <Cell col="5" text="렌탈지점"/>
+                <Cell col="6" text="대리점명"/>
+                <Cell col="7" text="전시여부"/>
+                <Cell col="8" text="계약번호"/>
+                <Cell col="9" text="고객명"/>
+                <Cell col="10" text="총평점"/>
+                <Cell col="11" text="장착응대"/>
+                <Cell col="12" text="렌탈혜택설명"/>
+                <Cell col="13" text="친절"/>
+                <Cell col="14" text="고객 의견"/>
+                <Cell col="15" text="수정자"/>
+                <Cell col="16" text="수정일자"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:stfySrvySeq" tooltiptext="bind:stfySrvySeq" edittype="readonly"/>
-                <Cell col="1" text="bind:subtDay" tooltiptext="bind:subtDay" displaytype="date" edittype="readonly"/>
-                <Cell col="2" text="bind:agencyCd" tooltiptext="bind:agencyCd" edittype="readonly"/>
-                <Cell col="3" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm" edittype="readonly"/>
-                <Cell col="4" text="bind:rentalOfficeNm" tooltiptext="bind:rentalOfficeNm" edittype="readonly"/>
-                <Cell col="5" text="bind:agencyNm" tooltiptext="bind:agencyNm" edittype="readonly"/>
-                <Cell col="6" text="bind:dpYn" edittype="combo" editlimit="1" editlengthunit="ascii" combodataset="dpYn" combocodecol="cd" combodatacol="cdNm"/>
-                <Cell col="7" text="bind:ordNo" tooltiptext="bind:ordNo" edittype="readonly"/>
-                <Cell col="8" text="bind:rcvrNm" tooltiptext="bind:rcvrNm" edittype="readonly"/>
-                <Cell col="9" text="bind:totEvalPoint" tooltiptext="bind:totEvalPoint" edittype="readonly"/>
-                <Cell col="10" text="bind:stfyPointCd1" tooltiptext="bind:stfyPointCd1" edittype="readonly"/>
-                <Cell col="11" text="bind:stfyPointCd2" tooltiptext="bind:stfyPointCd2" edittype="readonly"/>
-                <Cell col="12" text="bind:stfyPointCd3" tooltiptext="bind:stfyPointCd3" edittype="readonly"/>
-                <Cell col="13" text="bind:stfyOpinon" tooltiptext="bind:stfyOpinon" edittype="readonly"/>
-                <Cell col="14" text="bind:chgId" tooltiptext="bind:chgId" edittype="readonly"/>
-                <Cell col="15" text="bind:chgDt" calendardisplaynulltype="none" displaytype="date" edittype="readonly"/>
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
+                <Cell col="1" celltype="none" text="bind:stfySrvySeq" tooltiptext="bind:stfySrvySeq" edittype="readonly"/>
+                <Cell col="2" celltype="none" text="bind:subtDay" tooltiptext="bind:subtDay" displaytype="date" edittype="readonly"/>
+                <Cell col="3" celltype="none" text="bind:agencyCd" tooltiptext="bind:agencyCd" edittype="readonly"/>
+                <Cell col="4" celltype="none" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm" edittype="readonly"/>
+                <Cell col="5" celltype="none" text="bind:rentalOfficeNm" tooltiptext="bind:rentalOfficeNm" edittype="readonly"/>
+                <Cell col="6" celltype="none" text="bind:agencyNm" tooltiptext="bind:agencyNm" edittype="readonly"/>
+                <Cell col="7" text="bind:dpYn" tooltiptext="bind:dpYn" edittype="readonly"/>
+                <Cell col="8" text="bind:ordNo" tooltiptext="bind:ordNo" edittype="readonly"/>
+                <Cell col="9" text="bind:rcvrNm" tooltiptext="bind:rcvrNm" edittype="readonly"/>
+                <Cell col="10" text="bind:totEvalPoint" tooltiptext="bind:totEvalPoint" edittype="readonly"/>
+                <Cell col="11" text="bind:stfyPointCd1" tooltiptext="bind:stfyPointCd1" edittype="readonly"/>
+                <Cell col="12" text="bind:stfyPointCd2" tooltiptext="bind:stfyPointCd2" edittype="readonly"/>
+                <Cell col="13" text="bind:stfyPointCd3" tooltiptext="bind:stfyPointCd3" edittype="readonly"/>
+                <Cell col="14" text="bind:stfyOpinon" tooltiptext="bind:stfyOpinon" edittype="readonly"/>
+                <Cell col="15" text="bind:chgId" tooltiptext="bind:chgId" edittype="readonly"/>
+                <Cell col="16" text="bind:chgDt" calendardisplaynulltype="none" displaytype="date" edittype="readonly"/>
               </Band>
               <Band id="summary">
-                <Cell text="총계"/>
-                <Cell col="1" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
-                <Cell col="2"/>
+                <Cell/>
+                <Cell col="1" text="총계"/>
+                <Cell col="2" style="align:right;" expr="dataset.getRowCount()+&quot;(건)&quot;"/>
                 <Cell col="3"/>
                 <Cell col="4"/>
                 <Cell col="5"/>
@@ -83,11 +86,14 @@
                 <Cell col="13"/>
                 <Cell col="14"/>
                 <Cell col="15"/>
+                <Cell col="16"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Static id="Static21" taborder="9" text="렌탈대리점 카카오 만족도 현황" cssclass="sta_WF_subTitle" left="3" top="89" width="190" height="20"/>
+        <Combo id="upd_DpYn" taborder="142" innerdataset="@ds_DpYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="1041" top="86" width="80" height="21" onitemchanged="upd_dpyn_onitemchanged"/>
+        <Static id="st_dpYn" taborder="143" text="전시여부 수정" cssclass="sta_WF_schTitle" left="938" top="87" width="97" height="21"/>
         <Div id="div_search" taborder="16" left="0" top="0" width="1123" height="71" cssclass="div_WF_searchBg">
           <Layouts>
             <Layout>
@@ -109,40 +115,12 @@
             </Layout>
           </Layouts>
         </Div>
-        <Div id="div_edit" taborder="32" text="Div00" left="0.18%" top="460" right="0%" height="115" cssclass="sta_WF_detailLabel2">
-          <Layouts>
-            <Layout>
-              <Static id="st_stfyOpinon" taborder="21" text="고객의견" cssclass="sta_WF_detailLabel" left="1" top="0" width="92" height="102" style="align:center middle;"/>
-              <TextArea id="ed_stfyOpinon" taborder="35" left="93" top="0" width="1022" height="101"/>
-            </Layout>
-          </Layouts>
-        </Div>
-        <Static id="Static00" taborder="33" text="만족도 리뷰" cssclass="sta_WF_subTitle" left="6" top="435" width="84" height="20"/>
-        <Static id="st_dpYn" taborder="31" text="사용여부" cssclass="sta_WF_detailLabel" left="889" top="435" width="70" height="21" style="align:center middle;"/>
-        <Combo id="ed_dpYn" taborder="29" value="Y" text="Y" codecolumn="codecolumn" datacolumn="datacolumn" index="0" left="84.51%" top="435" right="6.59%" height="20">
-          <Dataset id="innerdataset">
-            <ColumnInfo>
-              <Column id="codecolumn" size="256"/>
-              <Column id="datacolumn" size="256"/>
-            </ColumnInfo>
-            <Rows>
-              <Row>
-                <Col id="codecolumn">Y</Col>
-                <Col id="datacolumn">Y</Col>
-              </Row>
-              <Row>
-                <Col id="codecolumn">N</Col>
-                <Col id="datacolumn">N</Col>
-              </Row>
-            </Rows>
-          </Dataset>
-        </Combo>
-        <Button id="btn_update" taborder="34" text="저장" onclick="fn_update" cssclass="btn_WF_CRUD" left="94.66%" top="435" height="20" width="43"/>
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
         <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
           <Column id="stfySrvySeq" type="STRING" size="20"/>
           <Column id="subtDay" type="STRING" size="20"/>
           <Column id="ordNo" type="STRING" size="20"/>
@@ -164,7 +142,7 @@
           <Column id="agencyNm" type="STRING" size="50"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="dpYn" useclientlayout="true">
+      <Dataset id="ds_DpYn" useclientlayout="true">
         <ColumnInfo>
           <Column id="cd" type="STRING" size="256"/>
           <Column id="cdNm" type="STRING" size="256"/>
@@ -199,13 +177,6 @@
             <Col id="cdNm">비전시</Col>
           </Row>
         </Rows>
-      </Dataset>
-      <Dataset id="ds_save">
-        <ColumnInfo>
-          <Column id="stfySrvySeq" type="STRING" size="20"/>
-          <Column id="stfyOpinon" type="STRING" size="256"/>
-          <Column id="dpYn" type="STRING" size="10"/>
-        </ColumnInfo>
       </Dataset>
     </Objects>
     <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
@@ -308,48 +279,40 @@ this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo) {
 	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
 }
 
+
 //---------------------------------------------------------------------------------
-// 만족도조사 상태 및 리뷰 수정
+// 만족도조사 데이터 수정
 //---------------------------------------------------------------------------------	
-this.fn_update = function(obj:Button,  e:nexacro.ClickEventInfo) {
-
-	this.ds_save.clearData();
-
-	var nRow			= this.ds_save.insertRow(0);
-	var stfySrvySeq  	= nvl(this.selectedRowSeq);					//만족도조사순번
-	var stfyOpinon 		= nvl(this.div_edit.ed_stfyOpinon.value);	//만족도의견
-	var dpYn   			= nvl(this.ed_dpYn.value);					//전시여부
-	
-	if(stfySrvySeq == "") {
-		alert("수정 할 리뷰를 선택해주세요.");
+this.upd_dpyn_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
+	if(!Ex.util.isUpdated(this.ds_list)) {
+		alert('데이터를 선택해주세요.');
 		return false;
 	}
 	
-	this.ds_save.setColumn(nRow, "stfySrvySeq", stfySrvySeq);
-	this.ds_save.setColumn(nRow, "stfyOpinon", stfyOpinon);
-	this.ds_save.setColumn(nRow, "dpYn", dpYn);
-	
+	var updDpYn = nvl(this.upd_DpYn.value);	//일괄수정 전시여부
+	if(updDpYn == "") {
+		alert('전시여부를 선택해주세요.');
+		return false;
+	}
+
+	var cnt = this.ds_list.rowcount;
+	var checkCnt = 0;
+	for(var i = 0; i < cnt; i++) {
+		if(this.ds_list.getColumn(i, "chk")  == "1") {
+			this.ds_list.setColumn(i, "dpYn", updDpYn);
+		}
+	}
+
 	var sSvcID        	= "updateKakaoSatisfaction";
 	var sController   	= "ntrms/cs/updateKakaoSatisfaction.do";
-	var sInDatasets   	= "";
+	var sInDatasets   	= "input=ds_list:U";
 	var sOutDatasets  	= "";
 	var sArgs 			= "";
 	var fn_callBack		= "fn_callBack";
 	
-	sInDatasets   		= "input=ds_save:U";
-	
 	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
 }
 
-//---------------------------------------------------------------------------------
-// 그리드 클릭
-//---------------------------------------------------------------------------------	
-this.grd_list_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)
-{	
-	this.selectedRowSeq = this.ds_list.getColumn(e.row, "stfySrvySeq");
-	this.div_edit.ed_stfyOpinon.set_value(this.ds_list.getColumn(e.row, "stfyOpinon"));
-	this.ed_dpYn.set_value(this.ds_list.getColumn(e.row, "dpYn"));
-}
 
 /***********************************************************************************
 * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
@@ -381,6 +344,7 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) {
 		//전시여부 수정
 		case "updateKakaoSatisfaction":
 			this.fn_search();
+			this.upd_DpYn.set_value("");
 			break;
 	}	
 }

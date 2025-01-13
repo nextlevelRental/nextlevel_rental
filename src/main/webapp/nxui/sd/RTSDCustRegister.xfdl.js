@@ -23,6 +23,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_cust", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -34,6 +35,7 @@
 
             obj = new Dataset("ds_custTp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -45,6 +47,7 @@
 
             obj = new Dataset("ds_certification", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -56,6 +59,7 @@
 
             obj = new Dataset("ds_certification2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -67,6 +71,7 @@
 
             obj = new Dataset("ds_genderCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -78,6 +83,7 @@
 
             obj = new Dataset("ds_lfCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -89,6 +95,7 @@
 
             obj = new Dataset("ds_mobFirm", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -100,6 +107,7 @@
 
             obj = new Dataset("ds_emailAddr2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -111,6 +119,7 @@
 
             obj = new Dataset("ds_custTp2", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -122,6 +131,7 @@
 
             obj = new Dataset("ds_safekeyResult", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -133,6 +143,7 @@
 
             obj = new Dataset("ds_rtsd0110", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -144,6 +155,7 @@
 
             obj = new Dataset("ds_rtsd0111", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -155,6 +167,7 @@
 
             obj = new Dataset("ds_nagYn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -166,6 +179,7 @@
 
             obj = new Dataset("ds_online", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -177,6 +191,7 @@
 
             obj = new Dataset("ds_onlineUpdate", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -582,8 +597,8 @@
             this.div_cust.addChild(obj.name, obj);
             obj = new WebBrowser("nice_interface", "absolute", "319", "156", "124", "24", null, null, this.div_cust);
             obj.set_taborder("65");
-            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             obj.set_visible("false");
+            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             this.div_cust.addChild(obj.name, obj);
             obj = new Edit("ed_di", "absolute", "0", "180", "100", "21", null, null, this.div_cust);
             obj.set_taborder("66");
@@ -696,6 +711,10 @@
             obj.set_taborder("80");
             obj.set_maxlength("80");
             obj.set_visible("false");
+            this.div_cust.addChild(obj.name, obj);
+            obj = new Button("checkPrvHistory", "absolute", "92.07%", "5", "69", "21", null, null, this.div_cust);
+            obj.set_taborder("81");
+            obj.set_text("이력조회");
             this.div_cust.addChild(obj.name, obj);
 
             obj = new Tab("Tab00", "absolute", "0", "199", "1122", "357", null, null, this);
@@ -1108,6 +1127,15 @@
         			this.div_cust.ch_loginCheck2.set_value(false);
         		}
         	}
+        	
+        	if(strSvcId == "beforeCheckEmpInfo") {
+        		if(nErrorCode == "-1") {
+        			alert(strErrorMsg);
+        		} else {
+        			alert("등록 가능합니다.");
+        		}
+        	}
+        	
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.RTSDCustRegister_onload = function(obj,e){
@@ -2187,6 +2215,52 @@
         	if(nRow >= 0) return "Y";
         }
         //==================================================================================
+        this.div_cust_checkPrvHistory_onclick = function(obj,e){
+        	var nRow 	  = this.ds_cust.rowposition ;
+        	
+        	var custNo		= this.resultCustNo;
+        	var custNm 		= nvl(this.ds_cust.getColumn(nRow,"custNm"));		//고객명
+        	var birthDay 	= nvl(this.ds_cust.getColumn(nRow,"birthDay"));		//법정생년월일
+        	var mobNo 		= nvl(this.ds_cust.getColumn(nRow,"mobNo"));		//휴대폰
+        	var safeKey 	= nvl(this.div_cust.ed_safekey.value);				//인증번호
+        	
+        	
+        	// 필수값 validation
+        	if( custNm == "" ){
+        		alert("고객명을 입력하세요.");
+        		this.div_cust.ed_custNm.setFocus();
+        		return false;
+        	}else if( birthDay == "" ){
+        		alert("생년월일 입력하세요.");
+        		this.div_cust.ed_birthDay.setFocus();
+        		return false;
+        	}else if( mobNo == "" ){
+        		alert("휴대폰번호를 입력하세요.");
+        		this.div_cust.ed_mobNo.setFocus();
+        		return false;
+        	}else if( safeKey == "" ){
+        		alert("인증번호확인을 먼저 진행해주세요.");
+        		return false;
+        	}else{
+        	
+        	}
+        	
+        	var sSvcID        	= "beforeCheckEmpInfo";                    
+        	var sController   	= "rtms/sd/beforeCheckEmpInfo.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+        	
+        	sArgs += Ex.util.setParam("custNo", custNo);
+        	sArgs += Ex.util.setParam("custNm", custNm);
+        	sArgs += Ex.util.setParam("birthDay", birthDay);
+        	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut(mobNo));
+        	sArgs += Ex.util.setParam("safeKey", safeKey);
+        	
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+        }
+        
         });
 
 
@@ -2217,6 +2291,7 @@
             this.div_cust.ra_certification.addEventHandler("canitemchange", this.div_cust_ra_certification_canitemchange, this);
             this.div_cust.ed_mobNo.addEventHandler("onkeyup", this.div_cust_ed_mobNo_onkeyup, this);
             this.div_cust.ed_cTelno.addEventHandler("onkeyup", this.div_cust_ed_cTelno_onkeyup, this);
+            this.div_cust.checkPrvHistory.addEventHandler("onclick", this.div_cust_checkPrvHistory_onclick, this);
             this.Tab00.addEventHandler("onchanged", this.Tab00_onchanged, this);
             this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
 

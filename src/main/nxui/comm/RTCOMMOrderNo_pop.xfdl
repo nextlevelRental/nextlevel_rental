@@ -11,6 +11,8 @@
                 <Column size="80"/>
                 <Column size="120"/>
                 <Column size="120"/>
+                <Column size="85"/>
+                <Column size="102"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -41,53 +43,57 @@
                 <Cell text="계약일자"/>
                 <Cell col="1" text="계약상태"/>
                 <Cell col="2" text="계약번호"/>
-                <Cell col="3" text="중도완납"/>
-                <Cell col="4" text="채권매각"/>
-                <Cell col="5" text="고객코드"/>
-                <Cell col="6" text="법정생년월일"/>
-                <Cell col="7" text="사업자번호"/>
-                <Cell col="8" text="고객명"/>
-                <Cell col="9" text="성별"/>
-                <Cell col="10" text="내외국인"/>
-                <Cell col="11" text="핸드폰"/>
-                <Cell col="12" text="핸드폰"/>
-                <Cell col="13" text="전화번호"/>
-                <Cell col="14" text="전화번호"/>
-                <Cell col="15" text="전화번호2"/>
-                <Cell col="16" text="전화번호2"/>
-                <Cell col="17" text="주소"/>
-                <Cell col="18" text="차량번호"/>
-                <Cell col="19" text="차종"/>
-                <Cell col="20" text="채널"/>
-                <Cell col="21" text="홈쇼핑"/>
-                <Cell col="22" text="월렌탈료"/>
-                <Cell col="23" text="단체번호"/>
+                <Cell col="3" text="계약상태2"/>
+                <Cell col="4" text="연체금액"/>
+                <Cell col="5" text="중도완납"/>
+                <Cell col="6" text="채권매각"/>
+                <Cell col="7" text="고객코드"/>
+                <Cell col="8" text="법정생년월일"/>
+                <Cell col="9" text="사업자번호"/>
+                <Cell col="10" text="고객명"/>
+                <Cell col="11" text="성별"/>
+                <Cell col="12" text="내외국인"/>
+                <Cell col="13" text="핸드폰"/>
+                <Cell col="14" text="핸드폰"/>
+                <Cell col="15" text="전화번호"/>
+                <Cell col="16" text="전화번호"/>
+                <Cell col="17" text="전화번호2"/>
+                <Cell col="18" text="전화번호2"/>
+                <Cell col="19" text="주소"/>
+                <Cell col="20" text="차량번호"/>
+                <Cell col="21" text="차종"/>
+                <Cell col="22" text="채널"/>
+                <Cell col="23" text="홈쇼핑"/>
+                <Cell col="24" text="월렌탈료"/>
+                <Cell col="25" text="단체번호"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="date" text="bind:ordDay" calendardisplaynulltype="none"/>
                 <Cell col="1" text="bind:statNm"/>
                 <Cell col="2" displaytype="text" edittype="readonly" text="bind:ordNo"/>
-                <Cell col="3" text="bind:mfpYn"/>
-                <Cell col="4" text="bind:bondSelDay"/>
-                <Cell col="5" text="bind:custNo"/>
-                <Cell col="6" displaytype="normal" text="bind:birthDay" mask="####-##-##"/>
-                <Cell col="7" displaytype="normal" text="bind:buslNo" mask="###-##-#####"/>
-                <Cell col="8" text="bind:custNm"/>
-                <Cell col="9" text="bind:genderNm"/>
-                <Cell col="10" text="bind:lfNm"/>
-                <Cell col="11" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
-                <Cell col="12" text="bind:mobNo"/>
-                <Cell col="13" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
-                <Cell col="14" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
-                <Cell col="15" text="bind:telNo2" expr="expr:FN_numberMaskReturn(telNo2)"/>
-                <Cell col="16" text="bind:telNo2" expr="expr:FN_numberHyphenInReturn(telNo2)"/>
-                <Cell col="17" text="bind:addr"/>
-                <Cell col="18" text="bind:carNo"/>
-                <Cell col="19" text="bind:carKind"/>
-                <Cell col="20" text="bind:chanNm"/>
-                <Cell col="21" text="bind:hshopGbNm"/>
-                <Cell col="22" displaytype="number" text="bind:monAmt"/>
-                <Cell col="23" text="bind:grpNo"/>
+                <Cell col="3" text="bind:statNmDetail"/>
+                <Cell col="4" displaytype="number" text="bind:overDueAmt"/>
+                <Cell col="5" text="bind:mfpYn"/>
+                <Cell col="6" text="bind:bondSelDay"/>
+                <Cell col="7" text="bind:custNo"/>
+                <Cell col="8" displaytype="normal" text="bind:birthDay" mask="####-##-##"/>
+                <Cell col="9" displaytype="normal" text="bind:buslNo" mask="###-##-#####"/>
+                <Cell col="10" text="bind:custNm"/>
+                <Cell col="11" text="bind:genderNm"/>
+                <Cell col="12" text="bind:lfNm"/>
+                <Cell col="13" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
+                <Cell col="14" text="bind:mobNo"/>
+                <Cell col="15" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
+                <Cell col="16" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="17" text="bind:telNo2" expr="expr:FN_numberMaskReturn(telNo2)"/>
+                <Cell col="18" text="bind:telNo2" expr="expr:FN_numberHyphenInReturn(telNo2)"/>
+                <Cell col="19" text="bind:addr"/>
+                <Cell col="20" text="bind:carNo"/>
+                <Cell col="21" text="bind:carKind"/>
+                <Cell col="22" text="bind:chanNm"/>
+                <Cell col="23" text="bind:hshopGbNm"/>
+                <Cell col="24" displaytype="number" text="bind:monAmt"/>
+                <Cell col="25" text="bind:grpNo"/>
               </Band>
             </Format>
           </Formats>
@@ -291,6 +297,8 @@
           <Column id="bondSelDay" type="STRING" size="256"/>
           <Column id="chanCd" type="STRING" size="256"/>
           <Column id="o2oYn" type="STRING" size="256"/>
+          <Column id="statNmDetail" type="STRING" size="256"/>
+          <Column id="overDueAmt" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_ordNoListCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

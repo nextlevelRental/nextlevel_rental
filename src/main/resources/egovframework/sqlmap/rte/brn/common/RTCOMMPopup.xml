@@ -651,6 +651,8 @@
            <result property="carKind" column="CAR_KIND" />
            <result property="statCd" column="STAT_CD" />
            <result property="statNm" column="STAT_NM" />
+           <result property="statNmDetail" column="STAT_NM_DETAIL" />
+           <result property="overDueAmt" column="OVER_DUE_AMT" />
            <result property="monAmt" column="MON_AMT" />
            <result property="grpNo" column="GRP_NO" />
            <result property="custTp" column="CUST_TP" />     

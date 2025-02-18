@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="1.5">
   <TypeDefinition url="..\default_typedef.xml"/>
-  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="470" onload="form_onload" titletext="카카오 만족도 조사 리스트">
+  <Form id="RTCSAgencyKakaoSatisfactionMang" classname="RTCMClaim" left="0" top="0" width="1123" height="550" onload="form_onload" titletext="카카오 만족도 조사 리스트">
     <Layouts>
       <Layout>
-        <Grid id="grd_list" taborder="4" useinputpanel="false" left="3" top="111" width="1119" height="350" autofittype="col" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다.">
+        <Grid id="grd_list" taborder="4" useinputpanel="false" left="3" top="111" width="1119" height="300" autofittype="col" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다.">
           <Formats>
             <Format id="default">
               <Columns>
@@ -52,22 +52,22 @@
               </Band>
               <Band id="body">
                 <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" celltype="none" text="bind:stfySrvySeq" tooltiptext="bind:stfySrvySeq" edittype="readonly"/>
-                <Cell col="2" celltype="none" text="bind:subtDay" tooltiptext="bind:subtDay" displaytype="date" edittype="readonly"/>
-                <Cell col="3" celltype="none" text="bind:agencyCd" tooltiptext="bind:agencyCd" edittype="readonly"/>
-                <Cell col="4" celltype="none" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm" edittype="readonly"/>
-                <Cell col="5" celltype="none" text="bind:rentalOfficeNm" tooltiptext="bind:rentalOfficeNm" edittype="readonly"/>
-                <Cell col="6" celltype="none" text="bind:agencyNm" tooltiptext="bind:agencyNm" edittype="readonly"/>
-                <Cell col="7" text="bind:dpYn" tooltiptext="bind:dpYn" edittype="readonly"/>
-                <Cell col="8" text="bind:ordNo" tooltiptext="bind:ordNo" edittype="readonly"/>
-                <Cell col="9" text="bind:rcvrNm" tooltiptext="bind:rcvrNm" edittype="readonly"/>
-                <Cell col="10" text="bind:totEvalPoint" tooltiptext="bind:totEvalPoint" edittype="readonly"/>
-                <Cell col="11" text="bind:stfyPointCd1" tooltiptext="bind:stfyPointCd1" edittype="readonly"/>
-                <Cell col="12" text="bind:stfyPointCd2" tooltiptext="bind:stfyPointCd2" edittype="readonly"/>
-                <Cell col="13" text="bind:stfyPointCd3" tooltiptext="bind:stfyPointCd3" edittype="readonly"/>
-                <Cell col="14" text="bind:stfyOpinon" tooltiptext="bind:stfyOpinon" edittype="readonly"/>
-                <Cell col="15" text="bind:chgId" tooltiptext="bind:chgId" edittype="readonly"/>
-                <Cell col="16" text="bind:chgDt" calendardisplaynulltype="none" displaytype="date" edittype="readonly"/>
+                <Cell col="1" celltype="none" edittype="readonly" text="bind:stfySrvySeq" tooltiptext="bind:stfySrvySeq"/>
+                <Cell col="2" celltype="none" displaytype="date" edittype="readonly" text="bind:subtDay" tooltiptext="bind:subtDay"/>
+                <Cell col="3" celltype="none" edittype="readonly" text="bind:agencyCd" tooltiptext="bind:agencyCd"/>
+                <Cell col="4" celltype="none" edittype="readonly" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm"/>
+                <Cell col="5" celltype="none" edittype="readonly" text="bind:rentalOfficeNm" tooltiptext="bind:rentalOfficeNm"/>
+                <Cell col="6" celltype="none" edittype="readonly" text="bind:agencyNm" tooltiptext="bind:agencyNm"/>
+                <Cell col="7" edittype="readonly" text="bind:dpYn" tooltiptext="bind:dpYn"/>
+                <Cell col="8" edittype="readonly" text="bind:ordNo" tooltiptext="bind:ordNo"/>
+                <Cell col="9" edittype="readonly" text="bind:rcvrNm" tooltiptext="bind:rcvrNm"/>
+                <Cell col="10" edittype="readonly" text="bind:totEvalPoint" tooltiptext="bind:totEvalPoint"/>
+                <Cell col="11" edittype="readonly" text="bind:stfyPointCd1" tooltiptext="bind:stfyPointCd1"/>
+                <Cell col="12" edittype="readonly" text="bind:stfyPointCd2" tooltiptext="bind:stfyPointCd2"/>
+                <Cell col="13" edittype="readonly" text="bind:stfyPointCd3" tooltiptext="bind:stfyPointCd3"/>
+                <Cell col="14" edittype="readonly" style="align:left;" text="bind:stfyOpinon" tooltiptext="bind:stfyOpinon"/>
+                <Cell col="15" edittype="readonly" text="bind:chgId" tooltiptext="bind:chgId"/>
+                <Cell col="16" displaytype="date" edittype="readonly" text="bind:chgDt" calendardisplaynulltype="none"/>
               </Band>
               <Band id="summary">
                 <Cell/>
@@ -115,6 +115,8 @@
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Static00" taborder="144" text="고객 의견" cssclass="sta_WF_subTitle" left="3" top="420" width="190" height="20"/>
+        <TextArea id="stfyOpinonText" taborder="145" left="0%" top="445" height="100" width="1123" readonly="true" scrollbars="autoboth"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -179,6 +181,9 @@
         </Rows>
       </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item1" compid="stfyOpinonText" propid="value" datasetid="ds_list" columnid="stfyOpinon"/>
+    </Bind>
     <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
  * 파 일 명 : RTCSAgencyKakaoSatisfactionMang.xfdl
  * 설    명 : 카카오 만족도조사 내역 조회
@@ -389,7 +394,7 @@ this.returnOrderNoInfo = function(ordNo) {
  * 만족도조사 엑셀다운로드
  */
 this.fn_excel= function() {
-	Ex.core.exportExcel(this, this.ds_list);
+	Ex.core.exportExcel(this, this.grd_list);
 }]]></Script>
   </Form>
 </FDL>

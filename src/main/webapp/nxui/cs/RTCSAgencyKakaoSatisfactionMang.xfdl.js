@@ -14,7 +14,7 @@
                 this.set_name("RTCSAgencyKakaoSatisfactionMang");
                 this.set_classname("RTCMClaim");
                 this.set_titletext("카카오 만족도 조사 리스트");
-                this._setFormPosition(0,0,1123,470);
+                this._setFormPosition(0,0,1123,550);
             }
 
             
@@ -51,12 +51,12 @@
 
             
             // UI Components Initialize
-            obj = new Grid("grd_list", "absolute", "3", "111", "1119", "350", null, null, this);
+            obj = new Grid("grd_list", "absolute", "3", "111", "1119", "300", null, null, this);
             obj.set_taborder("4");
             obj.set_autofittype("col");
             obj.set_binddataset("ds_list");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"60\"/><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"140\"/><Column size=\"60\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"30\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"선택\"/><Cell col=\"1\" text=\"순번\"/><Cell col=\"2\" text=\"제출일\"/><Cell col=\"3\" text=\"대리점코드\"/><Cell col=\"4\" text=\"렌탈지사\"/><Cell col=\"5\" text=\"렌탈지점\"/><Cell col=\"6\" text=\"대리점명\"/><Cell col=\"7\" text=\"전시여부\"/><Cell col=\"8\" text=\"계약번호\"/><Cell col=\"9\" text=\"고객명\"/><Cell col=\"10\" text=\"총평점\"/><Cell col=\"11\" text=\"장착응대\"/><Cell col=\"12\" text=\"렌탈혜택설명\"/><Cell col=\"13\" text=\"친절\"/><Cell col=\"14\" text=\"고객 의견\"/><Cell col=\"15\" text=\"수정자\"/><Cell col=\"16\" text=\"수정일자\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" celltype=\"none\" text=\"bind:stfySrvySeq\" tooltiptext=\"bind:stfySrvySeq\" edittype=\"readonly\"/><Cell col=\"2\" celltype=\"none\" text=\"bind:subtDay\" tooltiptext=\"bind:subtDay\" displaytype=\"date\" edittype=\"readonly\"/><Cell col=\"3\" celltype=\"none\" text=\"bind:agencyCd\" tooltiptext=\"bind:agencyCd\" edittype=\"readonly\"/><Cell col=\"4\" celltype=\"none\" text=\"bind:rentalGroupNm\" tooltiptext=\"bind:rentalGroupNm\" edittype=\"readonly\"/><Cell col=\"5\" celltype=\"none\" text=\"bind:rentalOfficeNm\" tooltiptext=\"bind:rentalOfficeNm\" edittype=\"readonly\"/><Cell col=\"6\" celltype=\"none\" text=\"bind:agencyNm\" tooltiptext=\"bind:agencyNm\" edittype=\"readonly\"/><Cell col=\"7\" text=\"bind:dpYn\" tooltiptext=\"bind:dpYn\" edittype=\"readonly\"/><Cell col=\"8\" text=\"bind:ordNo\" tooltiptext=\"bind:ordNo\" edittype=\"readonly\"/><Cell col=\"9\" text=\"bind:rcvrNm\" tooltiptext=\"bind:rcvrNm\" edittype=\"readonly\"/><Cell col=\"10\" text=\"bind:totEvalPoint\" tooltiptext=\"bind:totEvalPoint\" edittype=\"readonly\"/><Cell col=\"11\" text=\"bind:stfyPointCd1\" tooltiptext=\"bind:stfyPointCd1\" edittype=\"readonly\"/><Cell col=\"12\" text=\"bind:stfyPointCd2\" tooltiptext=\"bind:stfyPointCd2\" edittype=\"readonly\"/><Cell col=\"13\" text=\"bind:stfyPointCd3\" tooltiptext=\"bind:stfyPointCd3\" edittype=\"readonly\"/><Cell col=\"14\" text=\"bind:stfyOpinon\" tooltiptext=\"bind:stfyOpinon\" edittype=\"readonly\"/><Cell col=\"15\" text=\"bind:chgId\" tooltiptext=\"bind:chgId\" edittype=\"readonly\"/><Cell col=\"16\" text=\"bind:chgDt\" calendardisplaynulltype=\"none\" displaytype=\"date\" edittype=\"readonly\"/></Band><Band id=\"summary\"><Cell/><Cell col=\"1\" text=\"총계\"/><Cell col=\"2\" style=\"align:right;\" expr=\"dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/><Cell col=\"15\"/><Cell col=\"16\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"60\"/><Column size=\"50\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"50\"/><Column size=\"140\"/><Column size=\"60\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"30\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"선택\"/><Cell col=\"1\" text=\"순번\"/><Cell col=\"2\" text=\"제출일\"/><Cell col=\"3\" text=\"대리점코드\"/><Cell col=\"4\" text=\"렌탈지사\"/><Cell col=\"5\" text=\"렌탈지점\"/><Cell col=\"6\" text=\"대리점명\"/><Cell col=\"7\" text=\"전시여부\"/><Cell col=\"8\" text=\"계약번호\"/><Cell col=\"9\" text=\"고객명\"/><Cell col=\"10\" text=\"총평점\"/><Cell col=\"11\" text=\"장착응대\"/><Cell col=\"12\" text=\"렌탈혜택설명\"/><Cell col=\"13\" text=\"친절\"/><Cell col=\"14\" text=\"고객 의견\"/><Cell col=\"15\" text=\"수정자\"/><Cell col=\"16\" text=\"수정일자\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" celltype=\"none\" edittype=\"readonly\" text=\"bind:stfySrvySeq\" tooltiptext=\"bind:stfySrvySeq\"/><Cell col=\"2\" celltype=\"none\" displaytype=\"date\" edittype=\"readonly\" text=\"bind:subtDay\" tooltiptext=\"bind:subtDay\"/><Cell col=\"3\" celltype=\"none\" edittype=\"readonly\" text=\"bind:agencyCd\" tooltiptext=\"bind:agencyCd\"/><Cell col=\"4\" celltype=\"none\" edittype=\"readonly\" text=\"bind:rentalGroupNm\" tooltiptext=\"bind:rentalGroupNm\"/><Cell col=\"5\" celltype=\"none\" edittype=\"readonly\" text=\"bind:rentalOfficeNm\" tooltiptext=\"bind:rentalOfficeNm\"/><Cell col=\"6\" celltype=\"none\" edittype=\"readonly\" text=\"bind:agencyNm\" tooltiptext=\"bind:agencyNm\"/><Cell col=\"7\" edittype=\"readonly\" text=\"bind:dpYn\" tooltiptext=\"bind:dpYn\"/><Cell col=\"8\" edittype=\"readonly\" text=\"bind:ordNo\" tooltiptext=\"bind:ordNo\"/><Cell col=\"9\" edittype=\"readonly\" text=\"bind:rcvrNm\" tooltiptext=\"bind:rcvrNm\"/><Cell col=\"10\" edittype=\"readonly\" text=\"bind:totEvalPoint\" tooltiptext=\"bind:totEvalPoint\"/><Cell col=\"11\" edittype=\"readonly\" text=\"bind:stfyPointCd1\" tooltiptext=\"bind:stfyPointCd1\"/><Cell col=\"12\" edittype=\"readonly\" text=\"bind:stfyPointCd2\" tooltiptext=\"bind:stfyPointCd2\"/><Cell col=\"13\" edittype=\"readonly\" text=\"bind:stfyPointCd3\" tooltiptext=\"bind:stfyPointCd3\"/><Cell col=\"14\" edittype=\"readonly\" style=\"align:left;\" text=\"bind:stfyOpinon\" tooltiptext=\"bind:stfyOpinon\"/><Cell col=\"15\" edittype=\"readonly\" text=\"bind:chgId\" tooltiptext=\"bind:chgId\"/><Cell col=\"16\" displaytype=\"date\" edittype=\"readonly\" text=\"bind:chgDt\" calendardisplaynulltype=\"none\"/></Band><Band id=\"summary\"><Cell/><Cell col=\"1\" text=\"총계\"/><Cell col=\"2\" style=\"align:right;\" expr=\"dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/><Cell col=\"15\"/><Cell col=\"16\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static21", "absolute", "3", "89", "190", "20", null, null, this);
@@ -162,6 +162,18 @@
             obj.set_text("~");
             this.div_search.addChild(obj.name, obj);
 
+            obj = new Static("Static00", "absolute", "3", "420", "190", "20", null, null, this);
+            obj.set_taborder("144");
+            obj.set_text("고객 의견");
+            obj.set_cssclass("sta_WF_subTitle");
+            this.addChild(obj.name, obj);
+
+            obj = new TextArea("stfyOpinonText", "absolute", "0%", "445", "1123", "100", null, null, this);
+            obj.set_taborder("145");
+            obj.set_readonly("true");
+            obj.set_scrollbars("autoboth");
+            this.addChild(obj.name, obj);
+
 
             
             // Layout Functions
@@ -177,7 +189,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1123, 470, this,
+            obj = new Layout("default", "", 1123, 550, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMClaim");
@@ -190,6 +202,9 @@
 
             
             // BindItem Information
+            obj = new BindItem("item1","stfyOpinonText","value","ds_list","stfyOpinon");
+            this.addChild(obj.name, obj);
+            obj.bind();
 
             
             // Remove Reference
@@ -411,7 +426,7 @@
          * 만족도조사 엑셀다운로드
          */
         this.fn_excel= function() {
-        	Ex.core.exportExcel(this, this.ds_list);
+        	Ex.core.exportExcel(this, this.grd_list);
         }
         });
 

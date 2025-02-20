@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_custTpCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_chanCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_statCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("ds_lfCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("ds_genderCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,17 +81,19 @@
 
             obj = new Dataset("ds_ordNoList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"ordId\" type=\"STRING\" size=\"256\"/><Column id=\"groNoYn\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/><Column id=\"bondSelDay\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"o2oYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"ordId\" type=\"STRING\" size=\"256\"/><Column id=\"groNoYn\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/><Column id=\"bondSelDay\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"o2oYn\" type=\"STRING\" size=\"256\"/><Column id=\"statNmDetail\" type=\"STRING\" size=\"256\"/><Column id=\"overDueAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_ordNoListCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -103,7 +110,7 @@
             obj.set_taborder("1");
             obj.set_binddataset("ds_ordNoList");
             obj.set_cellsizingtype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"120\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약일자\"/><Cell col=\"1\" text=\"계약상태\"/><Cell col=\"2\" text=\"계약번호\"/><Cell col=\"3\" text=\"중도완납\"/><Cell col=\"4\" text=\"채권매각\"/><Cell col=\"5\" text=\"고객코드\"/><Cell col=\"6\" text=\"법정생년월일\"/><Cell col=\"7\" text=\"사업자번호\"/><Cell col=\"8\" text=\"고객명\"/><Cell col=\"9\" text=\"성별\"/><Cell col=\"10\" text=\"내외국인\"/><Cell col=\"11\" text=\"핸드폰\"/><Cell col=\"12\" text=\"핸드폰\"/><Cell col=\"13\" text=\"전화번호\"/><Cell col=\"14\" text=\"전화번호\"/><Cell col=\"15\" text=\"전화번호2\"/><Cell col=\"16\" text=\"전화번호2\"/><Cell col=\"17\" text=\"주소\"/><Cell col=\"18\" text=\"차량번호\"/><Cell col=\"19\" text=\"차종\"/><Cell col=\"20\" text=\"채널\"/><Cell col=\"21\" text=\"홈쇼핑\"/><Cell col=\"22\" text=\"월렌탈료\"/><Cell col=\"23\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"1\" text=\"bind:statNm\"/><Cell col=\"2\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"3\" text=\"bind:mfpYn\"/><Cell col=\"4\" text=\"bind:bondSelDay\"/><Cell col=\"5\" text=\"bind:custNo\"/><Cell col=\"6\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-##-##\"/><Cell col=\"7\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"8\" text=\"bind:custNm\"/><Cell col=\"9\" text=\"bind:genderNm\"/><Cell col=\"10\" text=\"bind:lfNm\"/><Cell col=\"11\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"12\" text=\"bind:mobNo\"/><Cell col=\"13\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"14\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"15\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"16\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"17\" text=\"bind:addr\"/><Cell col=\"18\" text=\"bind:carNo\"/><Cell col=\"19\" text=\"bind:carKind\"/><Cell col=\"20\" text=\"bind:chanNm\"/><Cell col=\"21\" text=\"bind:hshopGbNm\"/><Cell col=\"22\" displaytype=\"number\" text=\"bind:monAmt\"/><Cell col=\"23\" text=\"bind:grpNo\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"120\"/><Column size=\"120\"/><Column size=\"85\"/><Column size=\"102\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약일자\"/><Cell col=\"1\" text=\"계약상태\"/><Cell col=\"2\" text=\"계약번호\"/><Cell col=\"3\" text=\"계약상태2\"/><Cell col=\"4\" text=\"연체금액\"/><Cell col=\"5\" text=\"중도완납\"/><Cell col=\"6\" text=\"채권매각\"/><Cell col=\"7\" text=\"고객코드\"/><Cell col=\"8\" text=\"법정생년월일\"/><Cell col=\"9\" text=\"사업자번호\"/><Cell col=\"10\" text=\"고객명\"/><Cell col=\"11\" text=\"성별\"/><Cell col=\"12\" text=\"내외국인\"/><Cell col=\"13\" text=\"핸드폰\"/><Cell col=\"14\" text=\"핸드폰\"/><Cell col=\"15\" text=\"전화번호\"/><Cell col=\"16\" text=\"전화번호\"/><Cell col=\"17\" text=\"전화번호2\"/><Cell col=\"18\" text=\"전화번호2\"/><Cell col=\"19\" text=\"주소\"/><Cell col=\"20\" text=\"차량번호\"/><Cell col=\"21\" text=\"차종\"/><Cell col=\"22\" text=\"채널\"/><Cell col=\"23\" text=\"홈쇼핑\"/><Cell col=\"24\" text=\"월렌탈료\"/><Cell col=\"25\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"1\" text=\"bind:statNm\"/><Cell col=\"2\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"3\" text=\"bind:statNmDetail\"/><Cell col=\"4\" displaytype=\"number\" text=\"bind:overDueAmt\"/><Cell col=\"5\" text=\"bind:mfpYn\"/><Cell col=\"6\" text=\"bind:bondSelDay\"/><Cell col=\"7\" text=\"bind:custNo\"/><Cell col=\"8\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-##-##\"/><Cell col=\"9\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"10\" text=\"bind:custNm\"/><Cell col=\"11\" text=\"bind:genderNm\"/><Cell col=\"12\" text=\"bind:lfNm\"/><Cell col=\"13\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"14\" text=\"bind:mobNo\"/><Cell col=\"15\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"16\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"17\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"18\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"19\" text=\"bind:addr\"/><Cell col=\"20\" text=\"bind:carNo\"/><Cell col=\"21\" text=\"bind:carKind\"/><Cell col=\"22\" text=\"bind:chanNm\"/><Cell col=\"23\" text=\"bind:hshopGbNm\"/><Cell col=\"24\" displaytype=\"number\" text=\"bind:monAmt\"/><Cell col=\"25\" text=\"bind:grpNo\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Div("div_ordNoSearch", "absolute", "10", "10", "1125", "101", null, null, this);

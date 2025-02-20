@@ -142,6 +142,8 @@
 
         //닫기 버튼
         this.btn_close_onclick = function(obj,e) {
+        	this.addr		= "";
+        	this.agencyNm	= "";
         	this.close();
         }
         

@@ -319,8 +319,8 @@ public class RTSDContractRegisterServiceImpl extends EgovAbstractServiceImpl imp
 			//나이제한확인
 			String birth = String.valueOf(inVar.get("birth"));
 			int birthYear = Integer.parseInt(birth.substring(0, 4));
-			int birthMonth = Integer.parseInt(birth.substring(5, 6));
-			int birthDay = Integer.parseInt(birth.substring(7, 8));
+			int birthMonth = Integer.parseInt(birth.substring(4, 6));
+			int birthDay = Integer.parseInt(birth.substring(6, 8));
 			
 			Calendar current = Calendar.getInstance();
 			int currentYear = current.get(Calendar.YEAR);

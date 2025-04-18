@@ -52,7 +52,7 @@
               </Band>
               <Band id="body">
                 <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
-                <Cell col="1" celltype="none" edittype="readonly" text="bind:stfySrvySeq" tooltiptext="bind:stfySrvySeq"/>
+                <Cell col="1" displaytype="text" expr="expr:currow+1"/>
                 <Cell col="2" celltype="none" displaytype="date" edittype="readonly" text="bind:subtDay" tooltiptext="bind:subtDay"/>
                 <Cell col="3" celltype="none" edittype="readonly" text="bind:agencyCd" tooltiptext="bind:agencyCd"/>
                 <Cell col="4" celltype="none" edittype="readonly" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm"/>

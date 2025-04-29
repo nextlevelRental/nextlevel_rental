@@ -14,7 +14,7 @@
                 this.set_name("RTSDAgency");
                 this.set_classname("Authority");
                 this.set_titletext("대리점정보관리");
-                this._setFormPosition(0,0,1147,521);
+                this._setFormPosition(0,0,1147,585);
             }
             this.getSetter("inheritanceid").set("");
 
@@ -195,12 +195,12 @@
 
             
             // UI Components Initialize
-            obj = new Static("Static56", "absolute", "748", "116", null, "31", "25", null, this);
+            obj = new Static("Static56", "absolute", "748", "146", null, "31", "25", null, this);
             obj.set_taborder("108");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static57", "absolute", "748", "146", null, "31", "25", null, this);
+            obj = new Static("Static57", "absolute", "748", "176", null, "31", "25", null, this);
             obj.set_taborder("109");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
@@ -306,47 +306,47 @@
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static11", "absolute", "0", "116", "1122", "31", null, null, this);
+            obj = new Static("Static11", "absolute", "0", "146", "1122", "31", null, null, this);
             obj.set_taborder("51");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("faxNo", "absolute", "882", "121", "235", "21", null, null, this);
+            obj = new Edit("faxNo", "absolute", "882", "151", "235", "21", null, null, this);
             obj.set_taborder("52");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static12", "absolute", "748", "116", "130", "31", null, null, this);
+            obj = new Static("Static12", "absolute", "748", "146", "130", "31", null, null, this);
             obj.set_taborder("53");
             obj.set_text("FAX번호");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static13", "absolute", "374", "116", "130", "31", null, null, this);
+            obj = new Static("Static13", "absolute", "374", "146", "130", "31", null, null, this);
             obj.set_taborder("55");
             obj.set_text("휴대폰번호");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static14", "absolute", "0", "116", "149", "31", null, null, this);
+            obj = new Static("Static14", "absolute", "0", "146", "149", "31", null, null, this);
             obj.set_taborder("57");
             obj.set_text("전화번호");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static15", "absolute", "0", "146", "1122", "31", null, null, this);
+            obj = new Static("Static15", "absolute", "0", "176", "1122", "31", null, null, this);
             obj.set_taborder("58");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static25", "absolute", "374", "146", "130", "31", null, null, this);
+            obj = new Static("Static25", "absolute", "374", "176", "130", "31", null, null, this);
             obj.set_taborder("62");
             obj.set_text("대표명");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static26", "absolute", "0", "146", "149", "31", null, null, this);
+            obj = new Static("Static26", "absolute", "0", "176", "149", "31", null, null, this);
             obj.set_taborder("64");
             obj.set_text("사업자번호");
             obj.set_cssclass("sta_WF_detailLabelP");
@@ -358,113 +358,113 @@
             obj.style.set_color("red");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static03", "absolute", "748", "146", "130", "31", null, null, this);
+            obj = new Static("Static03", "absolute", "748", "176", "130", "31", null, null, this);
             obj.set_taborder("115");
             obj.set_text("렌탈시작일");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static04", "absolute", "748", "176", null, "31", "25", null, this);
+            obj = new Static("Static04", "absolute", "748", "206", null, "31", "25", null, this);
             obj.set_taborder("117");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static05", "absolute", "0", "176", "1122", "31", null, null, this);
+            obj = new Static("Static05", "absolute", "0", "206", "1122", "31", null, null, this);
             obj.set_taborder("118");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static09", "absolute", "374", "176", "130", "31", null, null, this);
+            obj = new Static("Static09", "absolute", "374", "206", "130", "31", null, null, this);
             obj.set_taborder("119");
             obj.set_text("업태");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static16", "absolute", "0", "176", "149", "31", null, null, this);
+            obj = new Static("Static16", "absolute", "0", "206", "149", "31", null, null, this);
             obj.set_taborder("120");
             obj.set_text("업종");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static17", "absolute", "748", "176", "130", "31", null, null, this);
+            obj = new Static("Static17", "absolute", "748", "206", "130", "31", null, null, this);
             obj.set_taborder("123");
             obj.set_text("렌탈종료일");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static19", "absolute", "748", "206", null, "31", "25", null, this);
+            obj = new Static("Static19", "absolute", "748", "236", null, "31", "25", null, this);
             obj.set_taborder("125");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static20", "absolute", "0", "206", "1122", "31", null, null, this);
+            obj = new Static("Static20", "absolute", "0", "236", "1122", "31", null, null, this);
             obj.set_taborder("126");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static27", "absolute", "0", "206", "149", "31", null, null, this);
+            obj = new Static("Static27", "absolute", "0", "236", "149", "31", null, null, this);
             obj.set_taborder("128");
             obj.set_text("대리점주소");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static28", "absolute", "748", "206", "130", "31", null, null, this);
+            obj = new Static("Static28", "absolute", "748", "236", "130", "31", null, null, this);
             obj.set_taborder("131");
             obj.set_text("렌탈대리점여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static29", "absolute", "748", "236", null, "31", "25", null, this);
+            obj = new Static("Static29", "absolute", "748", "266", null, "31", "25", null, this);
             obj.set_taborder("133");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static30", "absolute", "0", "236", "1122", "31", null, null, this);
+            obj = new Static("Static30", "absolute", "0", "266", "1122", "31", null, null, this);
             obj.set_taborder("134");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static36", "absolute", "374", "236", "130", "31", null, null, this);
+            obj = new Static("Static36", "absolute", "374", "266", "130", "31", null, null, this);
             obj.set_taborder("135");
             obj.set_text("Y좌표");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static37", "absolute", "0", "236", "149", "31", null, null, this);
+            obj = new Static("Static37", "absolute", "0", "266", "149", "31", null, null, this);
             obj.set_taborder("136");
             obj.set_text("X좌표");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static38", "absolute", "748", "236", "130", "31", null, null, this);
+            obj = new Static("Static38", "absolute", "748", "266", "130", "31", null, null, this);
             obj.set_taborder("139");
             obj.set_text("사용여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static39", "absolute", "748", "266", null, "31", "25", null, this);
+            obj = new Static("Static39", "absolute", "748", "296", null, "31", "25", null, this);
             obj.set_taborder("141");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static40", "absolute", "0", "266", "1122", "31", null, null, this);
+            obj = new Static("Static40", "absolute", "0", "296", "1122", "31", null, null, this);
             obj.set_taborder("142");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static41", "absolute", "374", "266", "130", "31", null, null, this);
+            obj = new Static("Static41", "absolute", "374", "296", "130", "31", null, null, this);
             obj.set_taborder("143");
             obj.set_text("경정비");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static42", "absolute", "0", "266", "149", "31", null, null, this);
+            obj = new Static("Static42", "absolute", "0", "296", "149", "31", null, null, this);
             obj.set_taborder("144");
             obj.set_text("계절구분");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("seasonGbn", "absolute", "155", "271", "214", "21", null, null, this);
+            obj = new Combo("seasonGbn", "absolute", "155", "301", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("145");
             obj.set_displayrowcount("5");
@@ -473,7 +473,7 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Combo("lmYn", "absolute", "508", "271", "236", "21", null, null, this);
+            obj = new Combo("lmYn", "absolute", "508", "301", "236", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("146");
             obj.set_displayrowcount("5");
@@ -482,35 +482,35 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Static("Static43", "absolute", "748", "266", "130", "31", null, null, this);
+            obj = new Static("Static43", "absolute", "748", "296", "130", "31", null, null, this);
             obj.set_taborder("147");
             obj.set_text("수입차정비");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static51", "absolute", "748", "296", null, "31", "25", null, this);
+            obj = new Static("Static51", "absolute", "748", "326", null, "31", "25", null, this);
             obj.set_taborder("149");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static52", "absolute", "0", "296", "1122", "31", null, null, this);
+            obj = new Static("Static52", "absolute", "0", "326", "1122", "31", null, null, this);
             obj.set_taborder("150");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static53", "absolute", "374", "296", "130", "31", null, null, this);
+            obj = new Static("Static53", "absolute", "374", "326", "130", "31", null, null, this);
             obj.set_taborder("151");
             obj.set_text("추천장착점");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static54", "absolute", "0", "296", "149", "31", null, null, this);
+            obj = new Static("Static54", "absolute", "0", "326", "149", "31", null, null, this);
             obj.set_taborder("152");
             obj.set_text("세차가능");
             obj.set_cssclass("sta_WF_detailLabelP");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cwYn", "absolute", "155", "301", "214", "21", null, null, this);
+            obj = new Combo("cwYn", "absolute", "155", "331", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("153");
             obj.set_innerdataset("@dsUseYn");
@@ -519,7 +519,7 @@
             obj.set_displayrowcount("5");
             obj.set_enable("true");
 
-            obj = new Combo("chYn", "absolute", "508", "301", "236", "21", null, null, this);
+            obj = new Combo("chYn", "absolute", "508", "331", "236", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("154");
             obj.set_displayrowcount("5");
@@ -528,13 +528,13 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Static("Static58", "absolute", "748", "296", "130", "31", null, null, this);
+            obj = new Static("Static58", "absolute", "748", "326", "130", "31", null, null, this);
             obj.set_taborder("155");
             obj.set_text("일 주문제한");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("olimitCnt", "absolute", "882", "301", "235", "21", null, null, this);
+            obj = new Edit("olimitCnt", "absolute", "882", "331", "235", "21", null, null, this);
             obj.set_taborder("156");
             this.addChild(obj.name, obj);
 
@@ -573,54 +573,54 @@
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("telNo", "absolute", "155", "121", "213", "21", null, null, this);
+            obj = new Edit("telNo", "absolute", "155", "151", "213", "21", null, null, this);
             obj.set_taborder("164");
             obj.set_enable("true");
             obj.set_maxlength("12");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("taxNo", "absolute", "155", "151", "213", "21", null, null, this);
+            obj = new Edit("taxNo", "absolute", "155", "181", "213", "21", null, null, this);
             obj.set_taborder("165");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("busiType", "absolute", "155", "181", "213", "21", null, null, this);
+            obj = new Edit("busiType", "absolute", "155", "211", "213", "21", null, null, this);
             obj.set_taborder("166");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("mobNo", "absolute", "508", "121", "235", "21", null, null, this);
+            obj = new Edit("mobNo", "absolute", "508", "151", "235", "21", null, null, this);
             obj.set_taborder("167");
             obj.set_enable("true");
             obj.set_maxlength("12");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("repNm", "absolute", "508", "151", "235", "21", null, null, this);
+            obj = new Edit("repNm", "absolute", "508", "181", "235", "21", null, null, this);
             obj.set_taborder("168");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("busiCond", "absolute", "508", "181", "235", "21", null, null, this);
+            obj = new Edit("busiCond", "absolute", "508", "211", "235", "21", null, null, this);
             obj.set_taborder("169");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("posCd", "absolute", "155", "211", "108", "21", null, null, this);
+            obj = new Edit("posCd", "absolute", "155", "241", "108", "21", null, null, this);
             obj.set_taborder("170");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("street", "absolute", "508", "211", "235", "21", null, null, this);
+            obj = new Edit("street", "absolute", "508", "241", "235", "21", null, null, this);
             obj.set_taborder("172");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("city", "absolute", "268", "211", "235", "21", null, null, this);
+            obj = new Edit("city", "absolute", "268", "241", "235", "21", null, null, this);
             obj.set_taborder("173");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("rentalYn", "absolute", "882", "211", "235", "21", null, null, this);
+            obj = new Combo("rentalYn", "absolute", "882", "241", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("174");
             obj.set_displayrowcount("5");
@@ -629,17 +629,17 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Edit("posX", "absolute", "155", "241", "213", "21", null, null, this);
+            obj = new Edit("posX", "absolute", "155", "271", "213", "21", null, null, this);
             obj.set_taborder("175");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("posY", "absolute", "508", "241", "235", "21", null, null, this);
+            obj = new Edit("posY", "absolute", "508", "271", "235", "21", null, null, this);
             obj.set_taborder("176");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("useYn", "absolute", "882", "241", "235", "21", null, null, this);
+            obj = new Combo("useYn", "absolute", "882", "271", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("177");
             obj.set_displayrowcount("5");
@@ -648,7 +648,7 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Combo("fmYn", "absolute", "882", "271", "235", "21", null, null, this);
+            obj = new Combo("fmYn", "absolute", "882", "301", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("178");
             obj.set_displayrowcount("5");
@@ -657,28 +657,28 @@
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
 
-            obj = new Calendar("strDay", "absolute", "882", "152", "234", "20", null, null, this);
+            obj = new Calendar("strDay", "absolute", "882", "182", "234", "20", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("179");
             obj.set_dateformat("yyyy-MM-dd ddd");
 
-            obj = new Calendar("endDay", "absolute", "882", "181", "234", "20", null, null, this);
+            obj = new Calendar("endDay", "absolute", "882", "211", "234", "20", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("180");
             obj.set_dateformat("yyyy-MM-dd ddd");
 
-            obj = new Static("Static24", "absolute", "0", "326", "1122", "31", null, null, this);
+            obj = new Static("Static24", "absolute", "0", "356", "1122", "31", null, null, this);
             obj.set_taborder("181");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static59", "absolute", "0", "326", "149", "31", null, null, this);
+            obj = new Static("Static59", "absolute", "0", "356", "149", "31", null, null, this);
             obj.set_taborder("182");
             obj.set_text("세금계산서 발행여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_taxRqcd", "absolute", "155", "331", "214", "21", null, null, this);
+            obj = new Combo("cb_taxRqcd", "absolute", "155", "361", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("183");
             obj.set_innerdataset("@dsTaxRqCd");
@@ -686,36 +686,36 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static60", "absolute", "374", "326", "130", "31", null, null, this);
+            obj = new Static("Static60", "absolute", "374", "356", "130", "31", null, null, this);
             obj.set_taborder("184");
             obj.set_text("벤더코드");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_lifnr", "absolute", "508", "331", "235", "21", null, null, this);
+            obj = new Edit("ed_lifnr", "absolute", "508", "361", "235", "21", null, null, this);
             obj.set_taborder("185");
             obj.set_inputtype("number");
-            obj.set_maxlength("6");
+            obj.set_maxlength("7");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static22", "absolute", "0", "356", "1122", "31", null, null, this);
+            obj = new Static("Static22", "absolute", "0", "386", "1122", "31", null, null, this);
             obj.set_taborder("186");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static23", "absolute", "0", "356", "149", "31", null, null, this);
+            obj = new Static("Static23", "absolute", "0", "386", "149", "31", null, null, this);
             obj.set_taborder("187");
             obj.set_text("채널 대분류");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static31", "absolute", "374", "356", "130", "31", null, null, this);
+            obj = new Static("Static31", "absolute", "374", "386", "130", "31", null, null, this);
             obj.set_taborder("188");
             obj.set_text("채널 중분류");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_chanLclsCd", "absolute", "155", "361", "214", "21", null, null, this);
+            obj = new Combo("cb_chanLclsCd", "absolute", "155", "391", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("189");
             obj.set_innerdataset("@dsChanLclsCd");
@@ -723,7 +723,7 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Combo("cb_chanMclsCd", "absolute", "508", "361", "236", "21", null, null, this);
+            obj = new Combo("cb_chanMclsCd", "absolute", "508", "391", "236", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("190");
             obj.set_innerdataset("@dsChanMclsCd");
@@ -731,13 +731,13 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static32", "absolute", "748", "326", "130", "31", null, null, this);
+            obj = new Static("Static32", "absolute", "748", "356", "130", "31", null, null, this);
             obj.set_taborder("191");
             obj.set_text("온라인장착가능");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_opYn", "absolute", "882", "331", "235", "21", null, null, this);
+            obj = new Combo("cmb_opYn", "absolute", "882", "361", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("192");
             obj.set_innerdataset("@dsUseYn");
@@ -745,35 +745,35 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static33", "absolute", "748", "356", "130", "31", null, null, this);
+            obj = new Static("Static33", "absolute", "748", "386", "130", "31", null, null, this);
             obj.set_taborder("193");
             obj.set_text("비고");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_memo", "absolute", "882", "361", "235", "21", null, null, this);
+            obj = new Edit("ed_memo", "absolute", "882", "391", "235", "21", null, null, this);
             obj.set_taborder("194");
             obj.set_maxlength("49");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static34", "absolute", "0", "386", "1122", "31", null, null, this);
+            obj = new Static("Static34", "absolute", "0", "416", "1122", "31", null, null, this);
             obj.set_taborder("195");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static35", "absolute", "0", "386", "149", "31", null, null, this);
+            obj = new Static("Static35", "absolute", "0", "416", "149", "31", null, null, this);
             obj.set_taborder("196");
             obj.set_text("탈착기");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static44", "absolute", "374", "386", "130", "31", null, null, this);
+            obj = new Static("Static44", "absolute", "374", "416", "130", "31", null, null, this);
             obj.set_taborder("197");
             obj.set_text("얼라인먼트");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_desorptCd", "absolute", "155", "391", "214", "21", null, null, this);
+            obj = new Combo("cb_desorptCd", "absolute", "155", "421", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("198");
             obj.set_innerdataset("@dsDesorptCd");
@@ -781,13 +781,13 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static45", "absolute", "748", "386", "130", "31", null, null, this);
+            obj = new Static("Static45", "absolute", "748", "416", "130", "31", null, null, this);
             obj.set_taborder("200");
             obj.set_text("밸런스");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_alignCd", "absolute", "508", "391", "236", "21", null, null, this);
+            obj = new Combo("cb_alignCd", "absolute", "508", "421", "236", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("201");
             obj.set_innerdataset("@dsAlignCd");
@@ -795,7 +795,7 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Combo("cb_balanceCd", "absolute", "882", "391", "235", "21", null, null, this);
+            obj = new Combo("cb_balanceCd", "absolute", "882", "421", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("202");
             obj.set_innerdataset("@dsBalanceCd");
@@ -803,54 +803,54 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static46", "absolute", "0", "446", "1122", "31", null, null, this);
+            obj = new Static("Static46", "absolute", "0", "476", "1122", "31", null, null, this);
             obj.set_taborder("203");
             obj.set_cssclass("sta_WF_detailLabel2");
             obj.style.set_background("#ffffffff");
             obj.style.set_color("#999999ff");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static47", "absolute", "0", "446", "149", "31", null, null, this);
+            obj = new Static("Static47", "absolute", "0", "476", "149", "31", null, null, this);
             obj.set_taborder("204");
             obj.set_text("렌탈지역");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroup00", "absolute", "156", "451", "140", "21", null, null, this);
+            obj = new Edit("salesGroup00", "absolute", "156", "481", "140", "21", null, null, this);
             obj.set_taborder("205");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Button("bt_searchSalesGroup01", "absolute", "274", "451", "20", "21", null, null, this);
+            obj = new Button("bt_searchSalesGroup01", "absolute", "274", "481", "20", "21", null, null, this);
             obj.set_taborder("206");
             obj.set_cssclass("btn_WF_edtSch");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroupNm00", "absolute", "310", "451", "193", "21", null, null, this);
+            obj = new Edit("salesGroupNm00", "absolute", "310", "481", "193", "21", null, null, this);
             obj.set_taborder("207");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroup01", "absolute", "148", "451", "36", "21", null, null, this);
+            obj = new Edit("salesGroup01", "absolute", "148", "481", "36", "21", null, null, this);
             obj.set_taborder("208");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("salesGroupNm01", "absolute", "310", "451", "26", "21", null, null, this);
+            obj = new Edit("salesGroupNm01", "absolute", "310", "481", "26", "21", null, null, this);
             obj.set_taborder("209");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static48", "absolute", "748", "446", "130", "31", null, null, this);
+            obj = new Static("Static48", "absolute", "748", "476", "130", "31", null, null, this);
             obj.set_taborder("210");
             obj.set_text("퍼플점 여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cmb_plplYn", "absolute", "882", "451", "235", "21", null, null, this);
+            obj = new Combo("cmb_plplYn", "absolute", "882", "481", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("211");
             obj.set_innerdataset("@dsPrplYn");
@@ -858,18 +858,18 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static49", "absolute", "0", "476", "149", "31", null, null, this);
+            obj = new Static("Static49", "absolute", "0", "506", "149", "31", null, null, this);
             obj.set_taborder("212");
             obj.set_text("탈착기");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static61", "absolute", "0", "476", "1122", "31", null, null, this);
+            obj = new Static("Static61", "absolute", "0", "506", "1122", "31", null, null, this);
             obj.set_taborder("213");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_apfdEndYn", "absolute", "155", "481", "214", "21", null, null, this);
+            obj = new Combo("cb_apfdEndYn", "absolute", "155", "511", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("214");
             obj.set_innerdataset("@dsYn");
@@ -877,19 +877,19 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static62", "absolute", "0", "476", "149", "31", null, null, this);
+            obj = new Static("Static62", "absolute", "0", "506", "149", "31", null, null, this);
             obj.set_taborder("215");
             obj.set_text("충당금 반환여부");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static63", "absolute", "374", "476", "130", "31", null, null, this);
+            obj = new Static("Static63", "absolute", "374", "506", "130", "31", null, null, this);
             obj.set_taborder("216");
             obj.set_text("직영도매거래선");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("chainYn", "absolute", "508", "481", "235", "21", null, null, this);
+            obj = new Combo("chainYn", "absolute", "508", "511", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("217");
             obj.set_innerdataset("@dsUseYn");
@@ -897,18 +897,18 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static64", "absolute", "748", "116", "130", "31", null, null, this);
+            obj = new Static("Static64", "absolute", "748", "146", "130", "31", null, null, this);
             obj.set_taborder("218");
             obj.set_text("담당영업사원");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("rntMstNm", "absolute", "882", "121", "94", "21", null, null, this);
+            obj = new Edit("rntMstNm", "absolute", "882", "151", "94", "21", null, null, this);
             obj.set_taborder("219");
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new MaskEdit("rntMstMob", "absolute", "85.44%", "121", "137", "21", null, null, this);
+            obj = new MaskEdit("rntMstMob", "absolute", "85.44%", "151", "137", "21", null, null, this);
             obj.set_taborder("221");
             obj.set_enable("true");
             obj.set_mask("###-####-####");
@@ -916,18 +916,18 @@
             obj.set_readonly("true");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static65", "absolute", "0", "416", "1122", "31", null, null, this);
+            obj = new Static("Static65", "absolute", "0", "446", "1122", "31", null, null, this);
             obj.set_taborder("222");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static66", "absolute", "0", "416", "149", "31", null, null, this);
+            obj = new Static("Static66", "absolute", "0", "446", "149", "31", null, null, this);
             obj.set_taborder("223");
             obj.set_text("엔진 오일 무료 점검");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("egolNchrgChkYn", "absolute", "155", "421", "214", "21", null, null, this);
+            obj = new Combo("egolNchrgChkYn", "absolute", "155", "451", "214", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("225");
             obj.set_innerdataset("@dsEgolNchrgChkYn");
@@ -935,13 +935,13 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static67", "absolute", "374", "416", "130", "31", null, null, this);
+            obj = new Static("Static67", "absolute", "374", "446", "130", "31", null, null, this);
             obj.set_taborder("224");
             obj.set_text("브레이크 패드 무료 점검");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("bkpdNchrgChkYn", "absolute", "508", "421", "236", "21", null, null, this);
+            obj = new Combo("bkpdNchrgChkYn", "absolute", "508", "451", "236", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("227");
             obj.set_innerdataset("@dsBkpdNchrgChkYn");
@@ -949,19 +949,35 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
 
-            obj = new Static("Static68", "absolute", "748", "416", "130", "31", null, null, this);
+            obj = new Static("Static68", "absolute", "748", "446", "130", "31", null, null, this);
             obj.set_taborder("226");
             obj.set_text("워셔액 무료 지급");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("washerNchrgPayYn", "absolute", "882", "421", "235", "21", null, null, this);
+            obj = new Combo("washerNchrgPayYn", "absolute", "882", "451", "235", "21", null, null, this);
             this.addChild(obj.name, obj);
             obj.set_taborder("228");
             obj.set_innerdataset("@dsWasherNchrgPayYn");
             obj.set_codecolumn("cd");
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
+
+            obj = new Static("Static69", "absolute", "0", "116", "1122", "31", null, null, this);
+            obj.set_taborder("229");
+            obj.set_cssclass("sta_WF_detailLabel2");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static70", "absolute", "0", "116", "149", "31", null, null, this);
+            obj.set_taborder("230");
+            obj.set_text("홈페이지 대리점명");
+            obj.set_cssclass("sta_WF_detailLabelP");
+            this.addChild(obj.name, obj);
+
+            obj = new Edit("hpAgencyNm", "absolute", "155", "120", "213", "21", null, null, this);
+            obj.set_taborder("231");
+            obj.set_maxlength("120");
+            this.addChild(obj.name, obj);
 
 
             
@@ -980,7 +996,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1147, 521, this,
+            obj = new Layout("default", "", 1147, 585, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("Authority");
@@ -1148,6 +1164,9 @@
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item51","washerNchrgPayYn","value","dsAgency","washerNchrgPayYn");
+            this.addChild(obj.name, obj);
+            obj.bind();
+            obj = new BindItem("item52","hpAgencyNm","value","dsAgency","hpAgencyNm");
             this.addChild(obj.name, obj);
             obj.bind();
 

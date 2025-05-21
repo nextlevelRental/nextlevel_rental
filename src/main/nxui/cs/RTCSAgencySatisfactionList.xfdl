@@ -1,0 +1,491 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="1.5">
+  <TypeDefinition url="..\default_typedef.xml"/>
+  <Form id="RTCSAgencySatisfactionList" classname="RTCMClaim" left="0" top="0" width="1123" height="550" onload="form_onload" titletext="대리점별 만족도 조회">
+    <Layouts>
+      <Layout>
+        <Grid id="grd_list" taborder="4" useinputpanel="false" left="3" top="103" width="1119" height="390" autofittype="none" binddataset="ds_list" nodatatext="조회된 데이터가 없습니다.">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="50"/>
+                <Column size="60"/>
+                <Column size="60"/>
+                <Column size="79"/>
+                <Column size="120"/>
+                <Column size="83"/>
+                <Column size="122"/>
+                <Column size="125"/>
+                <Column size="71"/>
+                <Column size="107"/>
+                <Column size="47"/>
+                <Column size="50"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="20" band="head"/>
+                <Row size="20" band="head"/>
+                <Row size="30"/>
+                <Row size="30" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="순번"/>
+                <Cell col="1" rowspan="2" text="렌탈지사"/>
+                <Cell col="2" rowspan="2" text="렌탈지점"/>
+                <Cell col="3" rowspan="2" text="대리점코드"/>
+                <Cell col="4" rowspan="2" text="대리점명"/>
+                <Cell col="5" rowspan="2" text="렌탈가능여부"/>
+                <Cell col="6" rowspan="2" text="온라인장착 가능여부"/>
+                <Cell col="7" rowspan="2" text="프리미엄퍼플점 여부"/>
+                <Cell col="8" rowspan="2" text="퍼플점 여부"/>
+                <Cell col="9" rowspan="2" text="추천 장착점 여부"/>
+                <Cell col="10" rowspan="2" text="총건수"/>
+                <Cell col="11" rowspan="2" text="총평점"/>
+                <Cell col="12" colspan="6" text="장착응대"/>
+                <Cell col="18" colspan="6" text="렌탈혜택설명"/>
+                <Cell col="24" colspan="6" text="친절"/>
+                <Cell row="1" col="12" text="1"/>
+                <Cell row="1" col="13" text="2"/>
+                <Cell row="1" col="14" text="3"/>
+                <Cell row="1" col="15" text="4"/>
+                <Cell row="1" col="16" text="5"/>
+                <Cell row="1" col="17" text="통계"/>
+                <Cell row="1" col="18" text="1"/>
+                <Cell row="1" col="19" text="2"/>
+                <Cell row="1" col="20" text="3"/>
+                <Cell row="1" col="21" text="4"/>
+                <Cell row="1" col="22" text="5"/>
+                <Cell row="1" col="23" text="통계"/>
+                <Cell row="1" col="24" text="1"/>
+                <Cell row="1" col="25" text="2"/>
+                <Cell row="1" col="26" text="3"/>
+                <Cell row="1" col="27" text="4"/>
+                <Cell row="1" col="28" text="5"/>
+                <Cell row="1" col="29" text="통계"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" expr="expr:currow+1"/>
+                <Cell col="1" celltype="none" text="bind:rentalGroupNm" tooltiptext="bind:rentalGroupNm"/>
+                <Cell col="2" celltype="none" text="bind:rentalOfficeNm" tooltiptext="bind:rentalOfficeNm"/>
+                <Cell col="3" text="bind:agencyCd" tooltiptext="bind:agencyCd"/>
+                <Cell col="4" celltype="none" text="bind:agencyNm" tooltiptext="bind:agencyNm"/>
+                <Cell col="5" text="bind:rentalYn" tooltiptext="bind:rentalYn"/>
+                <Cell col="6" text="bind:opYn" tooltiptext="bind:opYn"/>
+                <Cell col="7" text="bind:premPrplYn" tooltiptext="bind:premPrplYn"/>
+                <Cell col="8" text="bind:prplYn" tooltiptext="bind:prplYn"/>
+                <Cell col="9" text="bind:chYn" tooltiptext="bind:chYn"/>
+                <Cell col="10" text="bind:totCnt" tooltiptext="bind:totCnt"/>
+                <Cell col="11" text="bind:totEvalPoint" tooltiptext="bind:totEvalPoint"/>
+                <Cell col="12" text="bind:stfyPointCd1_1" tooltiptext="bind:stfyPointCd1_1"/>
+                <Cell col="13" text="bind:stfyPointCd1_2" tooltiptext="bind:stfyPointCd1_2"/>
+                <Cell col="14" text="bind:stfyPointCd1_3" tooltiptext="bind:stfyPointCd1_3"/>
+                <Cell col="15" text="bind:stfyPointCd1_4" tooltiptext="bind:stfyPointCd1_4"/>
+                <Cell col="16" text="bind:stfyPointCd1_5" tooltiptext="bind:stfyPointCd1_5"/>
+                <Cell col="17" text="bind:stfyPointCd1" tooltiptext="bind:stfyPointCd1"/>
+                <Cell col="18" text="bind:stfyPointCd2_1" tooltiptext="bind:stfyPointCd2_1"/>
+                <Cell col="19" text="bind:stfyPointCd2_2" tooltiptext="bind:stfyPointCd2_2"/>
+                <Cell col="20" text="bind:stfyPointCd2_3" tooltiptext="bind:stfyPointCd2_3"/>
+                <Cell col="21" text="bind:stfyPointCd2_4" tooltiptext="bind:stfyPointCd2_4"/>
+                <Cell col="22" text="bind:stfyPointCd2_5" tooltiptext="bind:stfyPointCd2_5"/>
+                <Cell col="23" text="bind:stfyPointCd2" tooltiptext="bind:stfyPointCd2"/>
+                <Cell col="24" text="bind:stfyPointCd3_1" tooltiptext="bind:stfyPointCd3_1"/>
+                <Cell col="25" text="bind:stfyPointCd3_2" tooltiptext="bind:stfyPointCd3_2"/>
+                <Cell col="26" text="bind:stfyPointCd3_3" tooltiptext="bind:stfyPointCd3_3"/>
+                <Cell col="27" text="bind:stfyPointCd3_4" tooltiptext="bind:stfyPointCd3_4"/>
+                <Cell col="28" text="bind:stfyPointCd3_5" tooltiptext="bind:stfyPointCd3_5"/>
+                <Cell col="29" text="bind:stfyPointCd3" tooltiptext="bind:stfyPointCd3"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="총계"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10" expr="dataset.getSum(&quot;totCnt&quot;)"/>
+                <Cell col="11" expr="expr:nexacro.toNumber(nexacro.round(dataset.getAvg(&quot;totEvalPoint&quot;), 1),0,0)"/>
+                <Cell col="12" expr="dataset.getSum(&quot;stfyPointCd1_1&quot;)"/>
+                <Cell col="13" expr="dataset.getSum(&quot;stfyPointCd1_2&quot;)"/>
+                <Cell col="14" expr="dataset.getSum(&quot;stfyPointCd1_3&quot;)"/>
+                <Cell col="15" expr="dataset.getSum(&quot;stfyPointCd1_4&quot;)"/>
+                <Cell col="16" expr="dataset.getSum(&quot;stfyPointCd1_5&quot;)"/>
+                <Cell col="17" expr="expr:nexacro.toNumber(nexacro.round(dataset.getAvg(&quot;stfyPointCd1&quot;), 1),0,0)"/>
+                <Cell col="18" expr="dataset.getSum(&quot;stfyPointCd2_1&quot;)"/>
+                <Cell col="19" expr="dataset.getSum(&quot;stfyPointCd2_2&quot;)"/>
+                <Cell col="20" expr="dataset.getSum(&quot;stfyPointCd2_3&quot;)"/>
+                <Cell col="21" expr="dataset.getSum(&quot;stfyPointCd2_4&quot;)"/>
+                <Cell col="22" expr="dataset.getSum(&quot;stfyPointCd2_5&quot;)"/>
+                <Cell col="23" expr="expr:nexacro.toNumber(nexacro.round(dataset.getAvg(&quot;stfyPointCd2&quot;), 1),0,0)"/>
+                <Cell col="24" expr="dataset.getSum(&quot;stfyPointCd3_1&quot;)"/>
+                <Cell col="25" expr="dataset.getSum(&quot;stfyPointCd3_2&quot;)"/>
+                <Cell col="26" expr="dataset.getSum(&quot;stfyPointCd3_3&quot;)"/>
+                <Cell col="27" expr="dataset.getSum(&quot;stfyPointCd3_4&quot;)"/>
+                <Cell col="28" expr="dataset.getSum(&quot;stfyPointCd3_5&quot;)"/>
+                <Cell col="29" expr="expr:nexacro.toNumber(nexacro.round(dataset.getAvg(&quot;stfyPointCd3&quot;), 1),0,0)"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static21" taborder="9" text="렌탈대리점 카카오톡 만족도 현황" cssclass="sta_WF_subTitle" left="3" top="81" width="213" height="20"/>
+        <Div id="div_search" taborder="16" left="0" top="0" width="1123" height="71" cssclass="div_WF_searchBg">
+          <Layouts>
+            <Layout>
+              <Static id="Static09" taborder="124" text="FIX&#13;&#10;w25" cssclass="Guide_color" visible="false" left="1122" top="0" width="25" height="496"/>
+              <Static id="Static12" taborder="128" cssclass="Guide_color" visible="false" left="0" top="72" height="38" width="1118"/>
+              <Static id="st_rentalYn" taborder="23" text="렌탈 가능여부" cssclass="sta_WF_schTitle" left="15" top="40" width="103" height="21"/>
+              <Static id="st_dlvrDay" taborder="24" text="제출일자" cssclass="sta_WF_schTitle" left="15" top="7" width="80" height="20" domainId="nexa.s_condition"/>
+              <Calendar id="cal_subtDayF" taborder="25" dateformat="yyyy-MM-dd" oneditclick="div_search_cal_slcmFr_oneditclick" left="88" top="7" width="100" height="21"/>
+              <Calendar id="cal_subtDayT" taborder="140" dateformat="yyyy-MM-dd" oneditclick="div_search_cal_slcmFr_oneditclick" left="208" top="7" width="100" height="21"/>
+              <Static id="Static03" taborder="28" text="대리점" cssclass="sta_WF_schTitle" left="832" top="7" width="80" height="20" domainId="nexa.s_condition"/>
+              <Combo id="cb_rentalYn" taborder="26" innerdataset="@ds_rentalYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="122" top="40" width="60" height="21" displaynulltext="ALL"/>
+              <Edit id="agencyCd" taborder="27" lengthunit="ascii" maxlength="10" onkeyup="div_search_agencyCd_onkeyup" enable="false" left="904" top="7" width="90" height="21"/>
+              <Button id="btn_save02" taborder="29" onclick="showAgency" cssclass="btn_WF_edtSch" left="972" top="7" width="21" height="21"/>
+              <Edit id="agencyNm" taborder="30" lengthunit="ascii" maxlength="150" enable="false" left="993" top="7" width="100" height="21"/>
+              <Static id="Static08" taborder="141" text="~" left="193" top="7" width="10" height="21"/>
+              <Static id="st_opYn" taborder="142" text="온라인장착 가능여부" cssclass="sta_WF_schTitle" left="332" top="40" width="140" height="21"/>
+              <Combo id="cb_opYn" taborder="143" innerdataset="@ds_opYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="473" top="40" width="60" height="21" displaynulltext="ALL"/>
+              <Static id="st_premPrplYn" taborder="144" text="프리미엄 퍼플점 여부" cssclass="sta_WF_schTitle" left="583" top="40" width="139" height="21"/>
+              <Combo id="cb_premPrplYn" taborder="145" innerdataset="@ds_premPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="724" top="40" width="60" height="21" displaynulltext="ALL"/>
+              <Static id="st_prplYn" taborder="146" text="퍼플점 여부" cssclass="sta_WF_schTitle" left="832" top="40" width="80" height="21"/>
+              <Combo id="cb_prplYn" taborder="147" innerdataset="@ds_prplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="919" top="40" width="60" height="21" displaynulltext="ALL"/>
+              <Edit id="ed_salesGroupNm" taborder="17" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="475" top="9" width="90" height="21"/>
+              <Static id="st_searchSalesGroup" taborder="18" text="렌탈지사" cssclass="sta_WF_schTitle" left="332" top="9" width="68" height="20" domainId="nexa.s_condition"/>
+              <Static id="st_searchSalesOffice" taborder="19" text="렌탈지점" cssclass="sta_WF_schTitle" enableevent="false" left="583" top="9" width="68" height="20" domainId="nexa.s_condition"/>
+              <Edit id="ed_salesOfficeNm" taborder="20" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="726" top="9" width="90" height="21"/>
+              <Edit id="ed_salesGroup" taborder="21" onkeyup="div_search_edt_searchKeyword_onkeyup" oneditclick="div_search_ed_salesGroup_oneditclick" enable="false" left="405" top="9" width="70" height="21"/>
+              <Edit id="ed_salesOffice" taborder="22" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="656" top="9" width="70" height="21"/>
+              <Button id="bt_searchSalesGroup" taborder="23" onclick="div_search_bt_salesGroupNm_onclick" cssclass="btn_WF_edtSch" left="454" top="8" width="21" height="21"/>
+              <Button id="bt_searchSalesOffice" taborder="24" onclick="div_search_bt_salesOffice_onclick" cssclass="btn_WF_edtSch" left="705" top="9" width="21" height="21"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_list" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="rentalGroupNm" type="STRING" size="50"/>
+          <Column id="rentalOfficeNm" type="STRING" size="50"/>
+          <Column id="agencyCd" type="STRING" size="20"/>
+          <Column id="agencyNm" type="STRING" size="50"/>
+          <Column id="rentalYn" type="STRING" size="10"/>
+          <Column id="opYn" type="STRING" size="256"/>
+          <Column id="premPrplYn" type="STRING" size="256"/>
+          <Column id="prplYn" type="STRING" size="256"/>
+          <Column id="chYn" type="STRING" size="256"/>
+          <Column id="totCnt" type="INT" size="10"/>
+          <Column id="totEvalPoint" type="FLOAT" size="10"/>
+          <Column id="stfyPointCd1_1" type="INT" size="256"/>
+          <Column id="stfyPointCd1_2" type="INT" size="256"/>
+          <Column id="stfyPointCd1_3" type="INT" size="256"/>
+          <Column id="stfyPointCd1_4" type="INT" size="256"/>
+          <Column id="stfyPointCd1_5" type="INT" size="256"/>
+          <Column id="stfyPointCd1" type="FLOAT" size="256"/>
+          <Column id="stfyPointCd2_1" type="INT" size="256"/>
+          <Column id="stfyPointCd2_2" type="INT" size="256"/>
+          <Column id="stfyPointCd2_3" type="INT" size="256"/>
+          <Column id="stfyPointCd2_4" type="INT" size="256"/>
+          <Column id="stfyPointCd2_5" type="INT" size="256"/>
+          <Column id="stfyPointCd2" type="FLOAT" size="256"/>
+          <Column id="stfyPointCd3_1" type="INT" size="256"/>
+          <Column id="stfyPointCd3_2" type="INT" size="256"/>
+          <Column id="stfyPointCd3_3" type="INT" size="256"/>
+          <Column id="stfyPointCd3_4" type="INT" size="256"/>
+          <Column id="stfyPointCd3_5" type="INT" size="256"/>
+          <Column id="stfyPointCd3" type="FLOAT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_rentalYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd"/>
+            <Col id="cdNm">ALL</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_opYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd"/>
+            <Col id="cdNm">ALL</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_premPrplYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd"/>
+            <Col id="cdNm">ALL</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_prplYn" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd"/>
+            <Col id="cdNm">ALL</Col>
+          </Row>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind/>
+    <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
+ * 파 일 명 : RTCSAgencySatisfactionList.xfdl
+ * 설    명 : 대리점별 만족도 조회
+ * 변경이력 :
+ ***************************************************************************************************/ 
+
+/***********************************************************************
+ * Script Include 
+ ************************************************************************/
+include "lib::comLib.xjs";
+this.p_arg = "RTSDAgencyStatus";	//렌탈지사, 렌탈지점 팝업에서 return 받기위한 값.
+
+/***********************************************************************
+ * FORM 변수 선언 영역
+************************************************************************/
+
+
+/***********************************************************************
+ * 그룹 변수 선언부
+ ************************************************************************/
+this.toDay 	    = ""; 	   //현재날짜
+//-------------------------------------------------------------------------------   
+//폼로드시 공통함수      
+//-------------------------------------------------------------------------------  	 
+this.form_onload = function(obj:Form, e:nexacro.LoadEventInfo) {
+	Ex.core.init(obj);
+	this.fn_init();
+}
+
+//-------------------------------------------------------------------------------   
+//초기화  
+//------------------------------------------------------------------------------- 	
+this.fn_init = function() {
+	//당월 조회
+	this.fn_getToday();	
+
+	//버튼초기화		
+	this.fn_initBtn();
+	
+	//만족도 리스트 조회
+	//this.fn_search();
+}
+
+/***********************************************************************************
+* Transaction Function
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+//당월 조회
+//-------------------------------------------------------------------------------  	
+this.fn_getToday  = function() {
+	var sSvcID      	= "getToday";  
+	var sController   	= "rtms/comm/getToday.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "";
+	var sArgs 			= "";	
+	var fn_callBack		= "fn_callBack";
+			
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 		
+}
+
+//---------------------------------------------------------------------------------
+// 만족도조사 내역 조회
+//---------------------------------------------------------------------------------	
+this.fn_search = function(obj:Button,  e:nexacro.ClickEventInfo) {
+
+	var subtDayF  		= nvl(this.div_search.cal_subtDayF.value);		//당월1일
+	var subtDayT 		= nvl(this.div_search.cal_subtDayT.value);		//현재일
+	var rentalGroup 	= nvl(this.div_search.ed_salesGroup.value); 	//렌탈지사
+	var rentalOffice 	= nvl(this.div_search.ed_salesOffice.value); 	//렌탈지점
+	var agencyCd 		= nvl(this.div_search.agencyCd.value);			//대리점코드
+	var rentalYn   		= nvl(this.div_search.cb_rentalYn.value);		//렌탈가능 여부
+	var opYn   			= nvl(this.div_search.cb_opYn.value);			//온라인장착 가능 여부
+	var premPrplYn   	= nvl(this.div_search.cb_premPrplYn.value);		//프리미엄 퍼플점 여부
+	var prplYn   		= nvl(this.div_search.cb_prplYn.value);			//퍼플점 여부
+	
+	var sSvcID        	= "agencySatisfactionList";
+	var sController   	= "ntrms/cs/selectAgencySatisfactionList.do";
+	var sInDatasets   	= "";
+	var sOutDatasets  	= "ds_list=output";
+	var sArgs 			= "";
+	var fn_callBack		= "fn_callBack";
+
+	sArgs += Ex.util.setParam("subtDayF"	, subtDayF);
+	sArgs += Ex.util.setParam("subtDayT"	, subtDayT);
+	sArgs += Ex.util.setParam("rentalGroup"	, rentalGroup);
+	sArgs += Ex.util.setParam("rentalOffice", rentalOffice);
+	sArgs += Ex.util.setParam("agencyCd"	, agencyCd);
+	sArgs += Ex.util.setParam("rentalYn"	, rentalYn);
+	sArgs += Ex.util.setParam("opYn"		, opYn);
+	sArgs += Ex.util.setParam("premPrplYn"	, premPrplYn);
+	sArgs += Ex.util.setParam("prplYn"		, prplYn);
+	
+	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+}
+
+/***********************************************************************************
+* CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+***********************************************************************************/
+//-------------------------------------------------------------------------------  	
+// callBack함수 
+//------------------------------------------------------------------------------- 
+this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg) { 
+	if (nErrorCode < 0) {
+		alert(strErrorMsg);		
+		return;
+	}
+
+	switch (strSvcId) 
+	{
+	
+		 //신청일자 
+		 case "getToday":
+			var sFirstDay = Eco.date.getFirstDate(this.toDay);
+			this.div_search.cal_subtDayF.set_value(sFirstDay);
+			this.div_search.cal_subtDayT.set_value(this.toDay);
+			break;
+		//대리점별 만족도 조회 검색결과
+		case "agencySatisfactionList":
+			if(this.ds_list.rowcount == 0) {
+			   this.div_search.grd_list.set_nodatatext("조회된 데이터가 없습니다.");
+			}
+			break;
+	}	
+}
+
+
+/***********************************************************************************
+* User Function
+***********************************************************************************/
+//---------------------------------------------------------------------------------
+// 버튼생성
+//---------------------------------------------------------------------------------
+this.fn_initBtn  = function() {
+	/* 1. N : 신규추가
+	 * 2. S : 조회
+	 * 3. C : 데이타생성
+	 * 4. E : 엑셀데이타생성
+	 * 5. AG: 집계
+	 * 6. DN: 다운
+	 */	
+	this.parent.setButton("S|E",this);
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.showAgency = function(obj:Button,  e:nexacro.ClickEventInfo) {
+	var args = {p_formId : "RTSDAgency"};
+	Ex.core.popup(this,"대리점 조회","comm::RTCOMMAgency_pop.xfdl",args,"modaless=false");
+}
+this._setReturn = function(val) {
+	var cd = val[0];
+	var nm = val[1];
+	this.div_search.agencyCd.set_value(cd);
+	this.div_search.agencyNm.set_value(nm);
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_salesGroupNm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg};
+	Ex.core.popup(this,"지사","comm::RTCOMMVkgrp_pop.xfdl",args, "modaless=false");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.return_salesGroup = function(arr){
+	this.div_search.ed_salesGroupNm.set_value(arr[0]);
+	this.div_search.ed_salesGroup.set_value(arr[1]);
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
+	if( e.keycode == "13" ){
+		this.fn_search();
+	}
+}
+
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.div_search_bt_salesOffice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
+	var args ={p_arg : this.p_arg, p_rentalGroup:this.div_search.ed_salesGroup.value};
+	Ex.core.popup(this,"지점조회","comm::RTCOMMVkbur_pop.xfdl",args, "modaless=false");
+}
+/*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+this.return_salesOffice = function(arr){
+	this.div_search.ed_salesOfficeNm.set_value(arr[0]);
+	this.div_search.ed_salesOffice.set_value(arr[1]);
+}
+
+/**
+ * 대리점별 만족도 조회 엑셀다운로드
+ */
+this.fn_excel= function() {
+	Ex.core.exportExcel(this, this.grd_list);
+}]]></Script>
+  </Form>
+</FDL>

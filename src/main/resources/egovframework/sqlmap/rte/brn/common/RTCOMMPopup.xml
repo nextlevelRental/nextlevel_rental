@@ -64,6 +64,11 @@
 		<result property="rntMstId"			column="RNT_MST_ID"          />	<!-- 렌탈마스터 ID -->	
 		<result property="rntMstNm"			column="RNT_MST_NM"          />	<!-- 렌탈마스터 이름 -->	
 		<result property="rntMstMob"		column="RNT_MST_MOB"          />	<!-- 렌탈마스터 휴대폰번호 -->	
+		<result property="premPrplYn"		column="PREM_PRPL_YN"          /> <!-- 프리미엄 퍼플점여부 -->
+		<result property="totEvalPoint"		column="TOT_EVAL_POINT"          /> <!-- 만족도조사 총평점 -->
+		<result property="stfyPointCd1"		column="STFY_POINT_CD1"          /> <!-- 만족도조사 장착응대 평점 -->
+		<result property="stfyPointCd2"		column="STFY_POINT_CD2"          /> <!-- 만족도조사 렌탈혜택 평점 -->
+		<result property="stfyPointCd3"		column="STFY_POINT_CD3"          /> <!-- 만족도조사 친절 평점 -->
 	</resultMap>
 	<parameterMap id="paramAgenypop" class="java.util.Map">
 		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultAgencypop" />

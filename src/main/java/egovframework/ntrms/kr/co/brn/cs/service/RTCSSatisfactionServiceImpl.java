@@ -44,5 +44,13 @@ public class RTCSSatisfactionServiceImpl extends EgovAbstractServiceImpl impleme
 		
 		return rTCSSatisfactionMapDAO.updateKakaoSatisfaction(inVar, inDsList);
 	}
+
+	@Override
+	public Map selectAgencySatisfactionList(Map<String, Object> inVar, Map<String, DataSetMap> outDataset)
+			throws Exception {
+		Map result = new HashMap();
+		result.put("agencySatisfactionList", rTCSSatisfactionMapDAO.selectAgencySatisfactionList(inVar, outDataset));
+		return result;
+	}
 	
 }

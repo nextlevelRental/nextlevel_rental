@@ -10,4 +10,6 @@ import egovframework.rte.cmmn.ria.nexacro.map.DataSetMap;
 public interface RTCSSatisfactionService {
 	Map selectKakaoSatisfactionList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
 	Map updateKakaoSatisfaction(Map<String, DataSetMap> inDataset,Map<String, Object> inVar) throws Exception;
+	Map selectAgencySatisfactionList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
+
 }

@@ -61,4 +61,54 @@
 		{call Pkg_Rtcs0130.p_IUDRtcs0130(?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
+	<!-- 대리점별 만족도 조회 -->
+	<resultMap id="r_SRtcs0130AgencyList" class="java.util.HashMap">
+		<result property="rentalGroup" 			column="RENTAL_GROUP" 	/>
+		<result property="rentalGroupNm" 		column="RENTAL_GROUP_NM" 	/>
+		<result property="rentalOffice" 			column="RENTAL_OFFICE" 	/>
+		<result property="rentalOfficeNm" 		column="RENTAL_OFFICE_NM" 	/>
+		<result property="agencyCd" 			column="AGENCY_CD" 	/>
+		<result property="agencyNm" 			column="AGENCY_NM" 	/>
+		<result property="rentalYn" 				column="RENTAL_YN" 	/>
+		<result property="opYn" 					column="OP_YN" 	/>
+		<result property="premPrplYn" 			column="PREM_PRPL_YN" 	/>
+		<result property="prplYn" 				column="PRPL_YN" 	/>
+		<result property="chYn" 					column="CH_YN" 	/>
+		<result property="totCnt" 					column="TOT_CNT" 	/>
+		<result property="totEvalPoint" 			column="TOT_EVAL_POINT" 	/>
+		<result property="stfyPointCd1_1" 		column="STFY_POINT_CD1_1" 	/>
+		<result property="stfyPointCd1_2" 		column="STFY_POINT_CD1_2" 	/>
+		<result property="stfyPointCd1_3" 		column="STFY_POINT_CD1_3" 	/>
+		<result property="stfyPointCd1_4" 		column="STFY_POINT_CD1_4" 	/>
+		<result property="stfyPointCd1_5" 		column="STFY_POINT_CD1_5" 	/>
+		<result property="stfyPointCd1" 			column="STFY_POINT_CD1" 	/>
+		<result property="stfyPointCd2_1" 		column="STFY_POINT_CD2_1" 	/>
+		<result property="stfyPointCd2_2" 		column="STFY_POINT_CD2_2" 	/>
+		<result property="stfyPointCd2_3" 		column="STFY_POINT_CD2_3" 	/>
+		<result property="stfyPointCd2_4" 		column="STFY_POINT_CD2_4" 	/>
+		<result property="stfyPointCd2_5" 		column="STFY_POINT_CD2_5" 	/>
+		<result property="stfyPointCd2" 			column="STFY_POINT_CD2" 	/>
+		<result property="stfyPointCd3_1" 		column="STFY_POINT_CD3_1" 	/>
+		<result property="stfyPointCd3_2" 		column="STFY_POINT_CD3_2" 	/>
+		<result property="stfyPointCd3_3" 		column="STFY_POINT_CD3_3" 	/>
+		<result property="stfyPointCd3_4" 		column="STFY_POINT_CD3_4" 	/>
+		<result property="stfyPointCd3_5" 		column="STFY_POINT_CD3_5" 	/>
+		<result property="stfyPointCd3" 			column="STFY_POINT_CD3" 	/>
+	</resultMap>
+	<parameterMap id="p_SRtcs0130AgencyList" class="java.util.Map">
+		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_SRtcs0130AgencyList" />
+		<parameter property="subtDayF" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="subtDayT" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="agencyCd"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rentalYn"		jdbcType="VARCHAR" mode="IN" />
+		<parameter property="opYn"			jdbcType="VARCHAR" mode="IN" />
+		<parameter property="premPrplYn"	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="prplYn"		jdbcType="VARCHAR" mode="IN" />
+	</parameterMap>
+	<procedure id="rTCSSatisfaction.selectRTCS0130AgencyList" parameterMap="p_SRtcs0130AgencyList">
+		{call Pkg_Rtcs0130.p_sRtcs0130AgencyList(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
 </sqlMap>

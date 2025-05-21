@@ -120,5 +120,36 @@ public class RTCSSatisfactionController extends ControllerBase {
 		}
 		return mav;
 	}
+	
+	/**
+	 * 대리점별 만족도 조회
+	 **/
+	@RequestMapping("/ntrms/cs/selectAgencySatisfactionList.do") 
+	public ModelAndView selectAgencySatisfactionList(NexacroMapDTO xpDto, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		try{
+			Map loginInfo = (Map)req.getSession().getAttribute("User");
+			Map <String, Object> inVar 			= xpDto.getInVariableMap();
+			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
+			
+			inVar.put("regId", loginInfo.get("userId"));
+			Map result = rTCSSatisfactionService.selectAgencySatisfactionList(inVar, outDataset);
+			List serviceList = (List)result.get("agencySatisfactionList");
+			DataSetMap mapDsList = new DataSetMap();
+			mapDsList.setRowMaps(serviceList);
+			outDataset.put("output", mapDsList);
+			
+			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
+			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
+			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode") + "");
+			mav.addObject(NexacroConstant.ERROR_MSG, result.get("returnMessage"));
+		}catch( Exception e ){
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+
 }
 

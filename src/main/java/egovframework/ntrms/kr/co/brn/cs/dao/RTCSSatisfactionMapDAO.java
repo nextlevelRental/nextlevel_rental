@@ -46,4 +46,13 @@ public class RTCSSatisfactionMapDAO extends RtcmAbstractDAO {
 		return result;
 	}
 	
+	/**
+	 * 대리점별 만족도 조회 DAO
+	 */
+	public List<Map> selectAgencySatisfactionList(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException {
+		getSqlMapClientTemplate().queryForObject("rTCSSatisfaction.selectRTCS0130AgencyList", map);
+		List li = (List)map.get("vcursor");
+		return li;
+	}
+	
 }

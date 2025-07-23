@@ -13,6 +13,7 @@
  *************************************************************************************/
 package egovframework.ntrms.kr.co.brn.login.service;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -23,7 +24,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import egovframework.rte.cmmn.ria.nexacro.map.NexacroMapDTO;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import egovframework.ntrms.kr.co.brn.exception.NtRmsServiceException;
@@ -48,6 +51,18 @@ public class LogInOutServiceImpl extends EgovAbstractServiceImpl implements LogI
 	public void login() throws NtRmsServiceException {}
 	
 	public void getUserinfo(ModelAndView mav, Map userMap, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException {
+
+		//2차 인증여부 확인
+		HttpSession session = request.getSession(false);
+		Boolean authVerified = (session != null) ? (Boolean) session.getAttribute("authVerified") : null;
+		String authUserId = (session != null) ? (String) session.getAttribute("authUserId") : null;
+		String userId = (String)userMap.get("userId");
+
+		if (session == null || authVerified == null || !authVerified || !userId.equals(authUserId)) {
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, "Two-factor authentication incomplete.");
+			throw new NtRmsServiceException();
+		}
 		
 		Map user = null;
 		String userIp = (String)userMap.get("userIp");
@@ -146,5 +161,59 @@ public class LogInOutServiceImpl extends EgovAbstractServiceImpl implements LogI
 		DataSetMap inDsMap = (DataSetMap)inDataset.get("chg_pwd");
 		Map pwd_map = inDsMap.get(0);
 		return logInOutDAO.getPassWordVerification(pwd_map);
+	}
+
+	/**
+	 * 사용자 로그인 확인
+	 */
+	public void isUserExists(ModelAndView mav, Map userMap, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException {
+
+		Map user = null;
+		String userIp = (String)userMap.get("userIp");
+		user = logInOutDAO.getUserinfo(userMap);
+
+		if (user == null) {
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, "User ID is Not Correct.");
+			throw new NtRmsServiceException();
+		} else if (user != null && !userMap.get("password").equals(user.get("password"))) {
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, "User Password is Not Correct.");
+			throw new NtRmsServiceException();
+		} else {
+			user.put("userIp", userIp);
+
+			List list = new ArrayList();
+			list.add(user);
+
+			//[DataSet] ����� ����
+			DataSetMap outUserDsMap = new DataSetMap();
+			outUserDsMap.setRowMaps(list);
+			outDataset.put("gds_userInfo", outUserDsMap);
+		}
+	}
+
+	/**
+	 * 사용자 인증전송 휴대폰번호 조회
+	 */
+	public Map getMobNoList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception {
+		Map result = new HashMap();
+		result.put("mobNoList", 	logInOutDAO.getMobNoList(inVar, outDataset));
+		return result;
+	}
+
+	/**
+	 * 사용자 인증 휴대폰번호 여부 확인
+	 */
+	public boolean getUserAuthinfo(ModelAndView mav, Map userMap, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException {
+
+		boolean result = false;
+		Map user = null;
+		user = logInOutDAO.getUserAuthinfo(userMap);
+
+		if (user != null) {
+			result = true;
+		}
+		return result;
 	}
 }

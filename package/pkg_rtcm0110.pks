@@ -330,5 +330,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
   PROCEDURE p_sUnRlsSelerList(  Ref_Cursor   IN OUT SYS_REFCURSOR
                               , v_Agency_Gbn IN VARCHAR2
                              );
+
+  /*****************************************************************************
+  -- 렌탈지점 사용자 인증 휴대폰 list 조회
+  *****************************************************************************/
+  PROCEDURE p_sRentalAuthCttpcList (
+    Ref_Cursor        IN OUT SYS_REFCURSOR,
+    v_RNT_MST_ID      IN RTCM0113.RNT_MST_ID%TYPE   /* 사용자ID */
+    );
+
 END PKG_RTCM0110;
 /

@@ -66,7 +66,8 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 //		System.out.println("서버포트 = " + request.getServerPort());
 
 		String exUrl = request.getRequestURI();
-		boolean b = (exUrl.indexOf("loginCheck.do") > 0 || exUrl.indexOf("chgUserPwd.do") > 0);
+		boolean b = (exUrl.indexOf("loginCheck.do") > 0 || exUrl.indexOf("chgUserPwd.do") > 0 || exUrl.indexOf("isUserExists.do") > 0 || exUrl.indexOf("searchMobNoList.do") > 0
+				     || exUrl.indexOf("sendUserAuthCode.do") > 0 || exUrl.indexOf("checkCertNum.do") > 0 );
 		
 //		System.out.println(b + "##############################################");
 //		System.out.println(session.getAttribute("User") + "##############################################");

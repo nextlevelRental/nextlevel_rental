@@ -58,4 +58,24 @@
 	<procedure id="rentalMasterAuth.deleteRentalMstAuth" parameterMap="p_DRentalCust">
         {call PKG_RTCM0110.p_DRentalMstAuth(?, ?, ?)}
     </procedure>
+
+	<resultMap id="rentalAuthCttpcListResultMap" class="java.util.HashMap">
+		<result property="rntMstId" column="RNT_MST_ID"/>
+		<result property="mobNo" column="MOB_NO"/>
+		<result property="useYn" column="USE_YN"/>
+		<result property="memo" column="MEMO"/>
+		<result property="regId" column="REG_ID"/>
+		<result property="regDt" column="REG_DT"/>
+		<result property="chgId" column="CHG_ID"/>
+		<result property="chgDt" column="CHG_DT"/>
+	</resultMap>
+
+	<parameterMap id="cttpcListParamMap" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalAuthCttpcListResultMap"/>
+		<parameter property="userId" jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+
+	<procedure id="rentalMasterAuth.getMobNoList" parameterMap="cttpcListParamMap">
+		{ call PKG_RTCM0110.p_sRentalAuthCttpcList(?, ?) }
+	</procedure>
 </sqlMap>

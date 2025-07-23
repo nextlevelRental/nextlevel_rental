@@ -136,5 +136,45 @@
 	<procedure id="user.getPassWordVerification" parameterMap="passWordVerification_p">
 		{call Pkg_Rtcm0001.p_sPassWordVerification(?, ?, ?, ?)}
 	</procedure>
+
+	<!-- 영업시스템 로그인 사용자인증(파라미터 맵선언) -->
+	<parameterMap class="java.util.Map" id="userAuthParams">
+		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="userAutnResultMap" />
+		<parameter property="userId" 	jdbcType="VARCHAR" mode="IN" />
+		<parameter property="mobNo" 	jdbcType="VARCHAR" mode="IN" />
+
+	</parameterMap>
+
+	<!-- 영업시스템 로그인 사용자인증(결과 맵선언) -->
+	<resultMap id="userAutnResultMap" class="java.util.HashMap">
+		<result property="userId"  		column="USER_ID"  />
+		<result property="userNm"  		column="USER_NM"  />
+		<result property="password"  	column="PASSWORD" />
+		<result property="oldPassword"  column="OLD_PASSWORD" />
+		<result property="agentId"  	column="AGENT_ID" />
+		<result property="agentNm"  	column="AGENT_NM" />
+		<result property="vkbur"  		column="VKBUR" />
+		<result property="vkburNm"  	column="VKBUR_NM" />
+		<result property="vkgrp"  		column="VKGRP" />
+		<result property="vkgrpNm"  	column="VKGRP_NM" />
+		<result property="userGrp"  	column="USER_GRP" />
+		<result property="userGrpNm"  	column="USER_GRP_NM" />
+		<result property="lastPwDt"  	column="LAST_PW_DT" />
+		<result property="lastpwdtChk"  column="LASTPWDT_CHK" />
+		<result property="lastLogonDt"  column="LAST_LOGON_DT" />
+		<result property="failCnt"  	column="FAIL_CNT" />
+		<result property="tmpPwYn"  	column="TMP_PW_YN" />
+		<result property="lockYn"  		column="LOCK_YN" />
+		<result property="regId"  		column="REG_ID" />
+		<result property="regNm"  		column="REG_NM" />
+		<result property="regDt"  		column="REG_DT" />
+		<result property="chgId"  		column="CHG_ID" />
+		<result property="chgNm"  		column="CHG_NM" />
+		<result property="chgDt"  		column="CHG_DT" />
+	</resultMap>
+
+	<procedure id="login.getUserAuthinfo" parameterMap="userAuthParams">
+		{call Pkg_Rtcm0001.p_sRtcm0001LoginAuthInfo(?, ?, ?)}
+	</procedure>
 	
 </sqlMap>

@@ -898,5 +898,55 @@ SELECT A.*
 
   END f_sRtcm0001UserGrp;
 
+  /*****************************************************************************
+  -- 사용자 Master 조회- 로그인시 사용자 인증 휴대폰 정보 조회
+  *****************************************************************************/
+  PROCEDURE p_sRtcm0001LoginAuthInfo (
+    Ref_Cursor       IN OUT SYS_REFCURSOR,
+    v_User_Id        IN     RTCM0001.USER_ID%TYPE,       /*사용자 아이디      */
+	v_Mob_No         IN     VARCHAR2                     /*인증휴대폰번호      */
+    ) IS
+
+    v_ErrorText      VARCHAR2(2000);
+    BEGIN
+
+    OPEN Ref_Cursor FOR
+    SELECT  A.USER_ID,                   /*사용자 아이디       */
+            A.USER_NM,                   /*사용자명            */
+            A.PASSWORD,                  /*비밀번호            */
+            A.OLD_PASSWORD,              /*이전비밀번호        */
+            A.AGENT_ID,                  /*대리점아이디        */
+            Pkg_Rtsd0007.f_sRtsd0007AgencyNm(A.AGENT_ID) AGENT_NM,            /*대리점명       */
+            A.VKBUR,                     /*지점                */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S019', A.VKBUR) VKBUR_NM,       /*지점명         */
+            A.VKGRP,                     /*지사                */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S018', A.VKGRP) VKGRP_NM,       /*지사명         */
+            A.USER_GRP,                  /*사용자 그룹         */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C001', A.USER_GRP) USER_GRP_NM, /**사용자 그룹명 */
+            A.LAST_PW_DT,                /*최종 비밀번호 수정일*/
+            DECODE(SIGN(TO_CHAR(A.LAST_PW_DT, 'YYYYMMDD') - TO_CHAR(ADD_MONTHS(SYSDATE, -3), 'YYYYMMDD')),-1,'E','S') LASTPWDT_CHK, /*최종 비밀번호 수정일 체크 */
+            A.LAST_LOGON_DT,             /*최종 접속 일자      */
+            A.FAIL_CNT,                  /*접속 실패 건수      */
+            A.TMP_PW_YN,                 /*임시비밀번호 사용여 */
+            A.LOCK_YN,                   /*사용불가 계정여부   */
+            A.REG_ID,                    /*등록자 ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM,                  /*등록자명       */
+            TO_CHAR(A.REG_DT,'YYYY-MM-DD') REG_DT, /*등록일    */
+            A.CHG_ID,                    /*변경자 ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.CHG_ID) CHG_NM,                  /*변경자명       */
+            TO_CHAR(A.CHG_DT,'YYYY-MM-DD') CHG_DT  /*변경일    */
+    FROM    RTCM0001 A
+    WHERE   A.USER_ID  = v_User_Id
+      AND   A.LOCK_YN  = 'N'
+      AND   EXISTS(
+                  SELECT 1
+                    FROM RTCM0113
+                   WHERE RNT_MST_ID = A.USR_ID
+                     AND MOB_NO  	 = v_Mob_No
+                     AND USE_YN = 'Y'
+                 )
+    ;
+  END p_sRtcm0001LoginAuthInfo;
+
 END Pkg_Rtcm0001;
 /

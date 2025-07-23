@@ -172,6 +172,15 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0001 AS
   FUNCTION f_sRtcm0001UserGrp(
     v_User_Id        IN RTCM0001.USER_ID%TYPE         /*사용자 아이디         */
     ) RETURN VARCHAR;
-            
+
+  /*****************************************************************************
+  -- 사용자 Master 조회- 로그인시 사용자 인증 휴대폰 정보 조회
+  *****************************************************************************/
+  PROCEDURE p_sRtcm0001LoginAuthInfo (
+    Ref_Cursor       IN OUT SYS_REFCURSOR,
+    v_User_Id        IN     RTCM0001.USER_ID%TYPE,       /*사용자 아이디      */
+	v_Mob_No         IN     VARCHAR2                     /*인증휴대폰번호      */
+    );
+
 END Pkg_Rtcm0001;
 /

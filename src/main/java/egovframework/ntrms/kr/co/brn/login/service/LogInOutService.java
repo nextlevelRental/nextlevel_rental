@@ -36,4 +36,19 @@ public interface LogInOutService {
 			Map<String, Object> inVar, Map<String, DataSetMap> inDataset,
 			Map<String, Object> outVar, Map<String, DataSetMap> outDataset)
 		throws Exception;
+
+	/**
+	 * 사용자 로그인 확인
+	 */
+	public void isUserExists(ModelAndView mav, Map user, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException;
+
+	/**
+	 * 사용자 인증전송 휴대폰번호 조회
+	 */
+	Map getMobNoList(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
+
+	/**
+	 * 사용자 인증 휴대폰번호 여부 확인
+	 */
+	public boolean getUserAuthinfo(ModelAndView mav, Map user, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException;
 }

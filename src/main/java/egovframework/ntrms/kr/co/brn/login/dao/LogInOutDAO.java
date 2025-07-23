@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import egovframework.rte.cmmn.ria.nexacro.map.DataSetMap;
 import org.springframework.stereotype.Repository;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -96,5 +97,23 @@ public class LogInOutDAO extends EgovAbstractDAO {
 		getSqlMapClientTemplate().queryForObject("user.getPassWordVerification", param);
 		return param;
 	}
-	
+
+	/**
+	 * 사용자 인증전송 휴대폰번호 조회
+	 */
+	public List<Map> getMobNoList(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException{
+		getSqlMapClientTemplate().queryForObject("rentalMasterAuth.getMobNoList", map);
+		List li = (List)map.get("vcursor");
+		return li;
+	}
+
+	/**
+	 * 사용자 인증 휴대폰번호 여부 확인
+	 */
+	public Map getUserAuthinfo(Map user) throws NtRmsDaoException{
+		getSqlMapClientTemplate().queryForObject("login.getUserAuthinfo", user);
+		List li = (List)user.get("vcursor");
+		return (Map)li.get(0);
+	}
+
 }

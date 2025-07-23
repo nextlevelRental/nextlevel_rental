@@ -1216,5 +1216,31 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
               ORDER BY A.CARMASTER_NU;
       END IF;
   END p_sUnRlsSelerList;
+
+  /*****************************************************************************
+  -- 렌탈지점 사용자 인증 휴대폰 list 조회
+  *****************************************************************************/
+  PROCEDURE p_sRentalAuthCttpcList (
+      Ref_Cursor        IN OUT SYS_REFCURSOR,
+      v_RNT_MST_ID      IN RTCM0113.RNT_MST_ID%TYPE	/* 사용자ID */
+  )
+  IS
+    BEGIN
+    OPEN Ref_Cursor FOR
+    SELECT
+        RNT_MST_ID,
+        MOB_NO,
+        USE_YN,
+        MEMO,
+        REG_ID,
+        REG_DT,
+        CHG_ID,
+        CHG_DT
+    FROM RTCM0113
+    WHERE RNT_MST_ID = v_RNT_MST_ID
+      AND USE_YN = 'Y'
+    ORDER BY MOB_NO;
+
+  END p_sRentalAuthCttpcList;
 END PKG_RTCM0110;
 /

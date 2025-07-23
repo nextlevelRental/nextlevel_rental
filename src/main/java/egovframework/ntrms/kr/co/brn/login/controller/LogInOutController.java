@@ -455,6 +455,8 @@ public class LogInOutController {
 				mav.addObject(NexacroConstant.ERROR_CODE, "0");
 				mav.addObject(NexacroConstant.ERROR_MSG, "");
 			}else{
+				//인증번호 세션에서 삭제
+				request.getSession().removeAttribute("_auth_no");
 				mav.addObject(NexacroConstant.ERROR_CODE, "-1");
 				mav.addObject(NexacroConstant.ERROR_MSG, "Verification Failed.");
 				throw new NtRmsServiceException();

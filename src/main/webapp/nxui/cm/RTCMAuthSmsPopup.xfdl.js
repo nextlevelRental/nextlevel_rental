@@ -30,11 +30,34 @@
             obj.set_text("사용자 인증");
             obj.set_cssclass("sta_WF_FrmTitle");
             obj.style.set_font("bold 18 Malgun Gothic,Dotum");
+            obj.set_taborder("4");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static13", "absolute", "0", "50", null, "1", "0", null, this);
             obj.style.set_background("#bcc4cfff");
+            obj.set_taborder("3");
             this.addChild(obj.name, obj);
+
+            obj = new Div("divPhone", "absolute", "20", "91", null, "125", "20", null, this);
+            this.addChild(obj.name, obj);
+            obj = new Static("staBg", "absolute", "0", "0", null, "35", "0", null, this.divPhone);
+            obj.set_cssclass("sta_WF_detailLabel2");
+            this.divPhone.addChild(obj.name, obj);
+            obj = new Static("staLabelPhone", "absolute", "0", "0", "130", "35", null, null, this.divPhone);
+            obj.set_text("휴대폰번호");
+            obj.set_cssclass("sta_WF_detailLabelP");
+            this.divPhone.addChild(obj.name, obj);
+            obj = new Combo("comMobNo", "absolute", "130", "4", null, "26", "150", null, this.divPhone);
+            this.divPhone.addChild(obj.name, obj);
+            obj.set_taborder("1");
+            obj.set_innerdataset("dsMobNoList");
+            obj.set_codecolumn("mobNo");
+            obj.set_datacolumn("mobNo");
+            obj = new Button("btnSend", "absolute", null, "4", "143", "26", "0", null, this.divPhone);
+            obj.set_taborder("2");
+            obj.set_text("인증번호발송");
+            obj.set_cssclass("btn_WF_module");
+            this.divPhone.addChild(obj.name, obj);
 
             obj = new Div("divInput", "absolute", "20", "167", null, "35", "20", null, this);
             obj.set_visible("false");
@@ -47,50 +70,38 @@
             obj.set_cssclass("sta_WF_detailLabelP");
             this.divInput.addChild(obj.name, obj);
             obj = new Edit("edtInputNum", "absolute", "130", "4", null, "26", "90", null, this.divInput);
+            obj.set_taborder("3");
             this.divInput.addChild(obj.name, obj);
             obj = new Button("btnSendCert", "absolute", null, "4", "84", "26", "0", null, this.divInput);
+            obj.set_taborder("4");
             obj.set_text("인증");
             obj.set_cssclass("btn_WF_module");
             this.divInput.addChild(obj.name, obj);
+            obj = new Static("staTime", "absolute", "277", "3", null, "27", "96", null, this.divInput);
+            obj.set_text("3:00");
+            obj.set_visible("false");
+            obj.style.set_background("transparent");
+            obj.style.set_color("#ff0000ff");
+            obj.style.set_font("bold 9 Malgun Gothic");
+            this.divInput.addChild(obj.name, obj);
 
             obj = new Button("btnClose", "absolute", null, "18", "60", "28", "20", null, this);
+            obj.set_taborder("5");
             obj.set_text("닫기");
             obj.set_cssclass("btn_WF_CRUD");
             this.addChild(obj.name, obj);
 
-            obj = new Div("divPhone", "absolute", "20", "91", null, "93", "20", null, this);
-            obj.set_taborder("1");
-            this.addChild(obj.name, obj);
-            obj = new Static("staBg", "absolute", "0", "0", null, "35", "0", null, this.divPhone);
-            obj.set_taborder("1");
-            obj.set_cssclass("sta_WF_detailLabel2");
-            this.divPhone.addChild(obj.name, obj);
-            obj = new Static("staLabelPhone", "absolute", "0", "0", "130", "35", null, null, this.divPhone);
-            obj.set_taborder("2");
-            obj.set_text("휴대폰번호");
-            obj.set_cssclass("sta_WF_detailLabelP");
-            this.divPhone.addChild(obj.name, obj);
-            obj = new Combo("comMobNo", "absolute", "130", "4", null, "26", "150", null, this.divPhone);
-            this.divPhone.addChild(obj.name, obj);
-            obj.set_taborder("3");
-            obj.set_innerdataset("dsMobNoList");
-            obj.set_codecolumn("mobNo");
-            obj.set_datacolumn("mobNo");
-            obj = new Button("btnSend", "absolute", null, "4", "143", "26", "0", null, this.divPhone);
-            obj.set_taborder("4");
-            obj.set_text("인증번호발송");
-            obj.set_cssclass("btn_WF_module");
-            this.divPhone.addChild(obj.name, obj);
-            obj = new Static("staTime", "absolute", "1", "49", "83", "28", null, null, this.divPhone);
-            obj.set_taborder("5");
-            obj.set_text("0:00");
-            obj.set_cssclass("sta_MF_Date");
-            obj.style.set_font("bold 8 Malgun Gothic");
-            this.divPhone.addChild(obj.name, obj);
-
 
             
             // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 125, this.divPhone,
+            	//-- Layout function
+            	function(p) {
+            	}
+            );
+            this.divPhone.addLayout(obj.name, obj);
+
             //-- Default Layout
             obj = new Layout("default", "", 0, 35, this.divInput,
             	//-- Layout function
@@ -100,16 +111,6 @@
             	}
             );
             this.divInput.addLayout(obj.name, obj);
-
-            //-- Default Layout
-            obj = new Layout("default", "", 0, 93, this.divPhone,
-            	//-- Layout function
-            	function(p) {
-            		p.set_taborder("1");
-
-            	}
-            );
-            this.divPhone.addLayout(obj.name, obj);
 
             //-- Default Layout
             obj = new Layout("default", "", 450, 222, this,
@@ -168,8 +169,8 @@
         {
             Ex.core.init(this);
             this.divInput.set_visible(false);
-            this.divPhone.staTime.set_text("0:00");
-            this.divPhone.staTime.set_visible(false);
+            this.divInput.staTime.set_text("0:00");
+            this.divInput.staTime.set_visible(false);
 
             if (!Eco.isNull(this.p_userId)) {
                 this.fn_searchPhoneList(this.p_userId);
@@ -251,10 +252,10 @@
             var nSec = this.fvTime % 60;
             var sTime = nMin + ":" + (nSec < 10 ? "0" + nSec : nSec);
 
-            this.divPhone.staTime.set_text(sTime);
+            this.divInput.staTime.set_text(sTime);
             if (this.fvTime <= 0) {
                 this.divInput.set_visible(false);
-                this.divPhone.staTime.set_visible(false);
+                this.divInput.staTime.set_visible(false);
                 this.killTimer(9999);
                 this.set_alert("timer","인증시간이 만료 되었습니다.");
             }
@@ -269,8 +270,8 @@
         			this.fvTime = 0;
         			this.divInput.edtInputNum.set_value('');
         			this.divInput.set_visible(false);			
-        			this.divPhone.staTime.set_text('0:00');
-        			this.divPhone.staTime.set_visible(false);
+        			this.divInput.staTime.set_text('0:00');
+        			this.divInput.staTime.set_visible(false);
         		}
         		this.set_alert("errorMsg","인증이 실패 되었습니다.");
         		return;		
@@ -281,8 +282,8 @@
                     this.set_alert("sendMsg","인증메세지가 발송 되었습니다.");
                     this.divPhone.btnSend.set_text("재인증");
         			this.divInput.set_visible(true);
-        			this.divPhone.staTime.set_text('3:00');
-        			this.divPhone.staTime.set_visible(true);
+        			this.divInput.staTime.set_text('3:00');
+        			this.divInput.staTime.set_visible(true);
         			this.fvTime = 180;
         			this.setTimer(9999, 1000);  // 타이머 시작 (ID: 9999, 1초 간격)  
                     break;
@@ -342,10 +343,10 @@
         {
             this.addEventHandler("onload", this.form_onload, this);
             this.addEventHandler("ontimer", this.form_timer, this);
+            this.divPhone.btnSend.addEventHandler("onclick", this.btnSend_onclick, this);
             this.divInput.edtInputNum.addEventHandler("onkeyup", this.divInput_edtInputNum_onkeyup, this);
             this.divInput.btnSendCert.addEventHandler("onclick", this.btnSendCert_onclick, this);
             this.btnClose.addEventHandler("onclick", this.btnClose_onclick, this);
-            this.divPhone.btnSend.addEventHandler("onclick", this.btnSend_onclick, this);
 
         };
 

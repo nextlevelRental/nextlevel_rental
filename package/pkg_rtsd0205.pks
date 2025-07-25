@@ -350,7 +350,15 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0205 AS
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
-    );    
-                     
+    );
+
+  /*****************************************************************************
+  -- SMS 템플릿 조회
+  *****************************************************************************/
+   PROCEDURE p_Rtsd0205smsTmplCn (
+    Ref_Cursor        IN OUT SYS_REFCURSOR,
+    v_Tmpl_Cd 		 IN VARCHAR2            			/* 템플릿코드 */
+    );
+
 END Pkg_Rtsd0205;
 /

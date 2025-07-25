@@ -366,8 +366,9 @@ public class LogInOutController {
 			Map mapSms = new HashMap();
 			String sUserId 	 = (String) inVar.get("userId");
 			String rcvPhnNo  = (String) inVar.get("mobNo");
-			String sndPhnNo  = "18550100";		//넥센타이어 고객센터
+			String sndPhnNo  = "18550100";					//넥센타이어 고객센터
 			String sendMsg  = "";
+			String tmplCd = "NXO2O000000000000046"; 		//본인인증 알림톡 템플릿코드
 
 			Random generator = new Random();
 			StringBuffer sb = new StringBuffer();
@@ -381,13 +382,12 @@ public class LogInOutController {
 			request.getSession().setAttribute("_auth_no", sb.toString());
 			logger.debug("_auth_no : " + sb.toString());
 			String reqUrl = request.getRequestURL().toString();
-			
-			//local 개발환경 한글깨짐 이슈로 서버체크
-			if(reqUrl.indexOf("localhost") != -1 || reqUrl.indexOf("127.0.0.1") != -1) {
-				sendMsg = "SMS Verification Code  [" + sb.toString() + "] ";
-			}else{
-				sendMsg = "[넥센타이어] 본인확인 인증번호는 [" + sb.toString() + "] 입니다.";
-			}
+
+			//SMS 템플릿 조회
+			inVar.put("tmplCd", tmplCd);
+			Map result = logInOutService.getSmsTmpl(inVar, outDataset);
+			sendMsg = (String) result.get("tmplCn");
+			sendMsg = sendMsg.replace("$1$", sb.toString());
 
 			mapSms.put(NexacroConstant.DATASET_ROW_TYPE,  1);
 			mapSms.put("reservedFg"  , "I");													// 예약전송여부 (I:즉시발송, R:예약발송)
@@ -397,8 +397,8 @@ public class LogInOutController {
 			mapSms.put("sndMsg"      , sendMsg);												// 메시지내용
 			mapSms.put("etcChar1"    , "S035");													// 사용자지정1(=메시지ID)
 			mapSms.put("etcChar2"    , "");														// 사용자지정2
-			mapSms.put("etcChar3"    , "");														// 사용자지정3
-			mapSms.put("etcChar4"    , "");														// 사용자지정4
+			mapSms.put("etcChar3"    , "2");													// 2:알림톡 발송 후 실패건 SMS 발송 / 7 : SMS발송
+			mapSms.put("etcChar4"    , tmplCd);													// 카카오 알림톡 템플릿ID. 알림톡 발송 경우에만 사용
 
 			DataSetMap dsmSms = new DataSetMap();
 			dsmSms.add(mapSms);

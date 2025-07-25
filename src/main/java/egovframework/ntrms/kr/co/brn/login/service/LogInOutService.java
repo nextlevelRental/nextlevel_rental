@@ -51,4 +51,9 @@ public interface LogInOutService {
 	 * 사용자 인증 휴대폰번호 여부 확인
 	 */
 	public boolean getUserAuthinfo(ModelAndView mav, Map user, HttpServletRequest request, Map<String, DataSetMap> outDataset) throws NtRmsServiceException;
+
+	/**
+	 * SMS 템플릿 조회
+	 */
+	Map getSmsTmpl(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
 }

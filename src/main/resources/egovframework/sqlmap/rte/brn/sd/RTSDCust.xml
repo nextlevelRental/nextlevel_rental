@@ -538,5 +538,18 @@
 	</parameterMap>
 	<procedure id="cust.p_sReRentalInfo" parameterMap="p_sReRentalInfo">
 		{call Pkg_Comm.p_sReRentalInfo(?, ?, ?, ?, ?, ?)}
-	</procedure>		
+	</procedure>
+
+	<!-- sms 템플릿 조회 -->
+	<resultMap id="smsTmplResultMap" class="java.util.HashMap">
+		<result property="tmplCn" column="TMPL_CN"/>
+	</resultMap>
+	<parameterMap id="smsTmplParamMap" class="java.util.Map">
+		<parameter property="vcursor" jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="smsTmplResultMap"/>
+		<parameter property="tmplCd"  jdbcType="VARCHAR" mode="IN"/>
+	</parameterMap>
+
+	<procedure  id="cust.getSmsTmpl" resultClass="java.util.Map" parameterMap="smsTmplParamMap">
+		{ call NXRADMIN.Pkg_Rtsd0205.p_Rtsd0205smsTmplCn(?, ?) }
+	</procedure>
 </sqlMap>

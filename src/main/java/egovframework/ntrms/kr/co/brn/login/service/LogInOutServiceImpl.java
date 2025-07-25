@@ -216,4 +216,11 @@ public class LogInOutServiceImpl extends EgovAbstractServiceImpl implements LogI
 		}
 		return result;
 	}
+
+	/**
+	 * SMS 템플릿 조회
+	 */
+	public Map getSmsTmpl(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception {
+		return logInOutDAO.getSmsTmpl(inVar, outDataset);
+	}
 }

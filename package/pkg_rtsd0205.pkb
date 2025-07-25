@@ -3319,6 +3319,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0205 AS
     END IF;
 
     
-  END p_Rtsd0205tirearrivalIngJob;     
+  END p_Rtsd0205tirearrivalIngJob;
+
+  /*****************************************************************************
+  -- SMS 템플릿 조회
+  *****************************************************************************/
+  PROCEDURE p_Rtsd0205smsTmplCn(
+    Ref_Cursor        IN OUT SYS_REFCURSOR,
+    v_Tmpl_Cd 		 IN VARCHAR2           			/* 템플릿코드 */
+    ) IS
+
+  BEGIN
+    OPEN Ref_Cursor FOR
+        SELECT    TMPL.TMPL_CN        --템플릿 내용
+        INTO v_Tmpl_Cn
+        FROM O2OUSER.TB_CM_ALTK_TMPL TMPL
+        WHERE  TMPL.TMPL_CD = v_Tmpl_Cd
+        ;
+
+  END p_Rtsd0205smsTmplCn;
 END Pkg_Rtsd0205;
 /

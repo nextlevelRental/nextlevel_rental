@@ -116,4 +116,13 @@ public class LogInOutDAO extends EgovAbstractDAO {
 		return (Map)li.get(0);
 	}
 
+	/**
+	 * SMS 템플릿 조회
+	 */
+	public Map getSmsTmpl(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException{
+		getSqlMapClientTemplate().queryForObject("cust.getSmsTmpl", map);
+		List li = (List)map.get("vcursor");
+		return (Map)li.get(0);
+	}
+
 }

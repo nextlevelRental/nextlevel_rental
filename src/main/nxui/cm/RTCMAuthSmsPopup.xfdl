@@ -4,33 +4,37 @@
   <Form id="RTCMAuthSmsPopup" classname="RTCMAuthSmsPopup" left="0" top="0" width="450" height="222" titletext="로그인 사용자 인증" onload="form_onload" ontimer="form_timer">
     <Layouts>
       <Layout>
-        <Static id="Static00" text="사용자 인증" cssclass="sta_WF_FrmTitle" left="20" top="17" width="266" height="30" style="font:bold 18 Malgun Gothic,Dotum;"/>
-        <Static id="Static13" left="0" top="50" right="0" height="1" style="background:#bcc4cfff;"/>
-        <!-- 전화번호 선택 영역 -->
+        <Static id="Static00" text="사용자 인증" cssclass="sta_WF_FrmTitle" left="20" top="17" width="266" height="30" style="font:bold 18 Malgun Gothic,Dotum;" taborder="4"/>
+        <Static id="Static13" left="0" top="50" right="0" height="1" style="background:#bcc4cfff;" taborder="3"/>
+        <!-- 전화번호 입력 영역 -->
+        <Div id="divPhone" left="20" top="91" right="20" height="125">
+          <Layouts>
+            <Layout>
+              <Static id="staBg" cssclass="sta_WF_detailLabel2" left="0" top="0" right="0" height="35"/>
+              <Static id="staLabelPhone" text="휴대폰번호" cssclass="sta_WF_detailLabelP" left="0" top="0" width="130" height="35"/>
+              <!-- ComboBox: taborder=1 -->
+              <Combo id="comMobNo" taborder="1" innerdataset="dsMobNoList" codecolumn="mobNo" datacolumn="mobNo" left="130" top="4" right="150" height="26"/>
+              <!-- 인증번호 발송 버튼: taborder=2 -->
+              <Button id="btnSend" taborder="2" text="인증번호발송" onclick="btnSend_onclick" cssclass="btn_WF_module" top="4" right="0" width="143" height="26"/>
+            </Layout>
+          </Layouts>
+        </Div>
         <!-- 인증번호 입력 영역 -->
         <Div id="divInput" left="20" top="167" right="20" height="35" visible="false">
           <Layouts>
             <Layout>
               <Static id="staBgInput" cssclass="sta_WF_detailLabel2" left="0" top="0" right="0" height="35"/>
               <Static id="staLabelCert" text="인증번호" cssclass="sta_WF_detailLabelP" left="0" top="0" width="130" height="35"/>
-              <Edit id="edtInputNum" left="130" top="4" right="90" height="26" onkeyup="divInput_edtInputNum_onkeyup"/>
-              <Button id="btnSendCert" text="인증" cssclass="btn_WF_module" right="0" top="4" width="84" height="26" onclick="btnSendCert_onclick"/>
+              <!-- 인증번호 입력 필드: taborder=3 -->
+              <Edit id="edtInputNum" taborder="3" left="130" top="4" right="90" height="26" onkeyup="divInput_edtInputNum_onkeyup"/>
+              <!-- 인증 버튼: taborder=4 -->
+              <Button id="btnSendCert" taborder="4" text="인증" cssclass="btn_WF_module" right="0" top="4" width="84" height="26" onclick="btnSendCert_onclick"/>
+              <Static id="staTime" text="3:00" visible="false" left="277" top="3" right="96" height="27" style="background:transparent;color:#ff0000ff;font:bold 9 Malgun Gothic;"/>
             </Layout>
           </Layouts>
         </Div>
-        <!-- 닫기 버튼 -->
-        <Button id="btnClose" text="닫기" cssclass="btn_WF_CRUD" top="18" right="20" width="60" height="28" onclick="btnClose_onclick"/>
-        <Div id="divPhone" taborder="1" left="20" top="91" right="20" height="93">
-          <Layouts>
-            <Layout>
-              <Static id="staBg" taborder="1" cssclass="sta_WF_detailLabel2" left="0" top="0" right="0" height="35"/>
-              <Static id="staLabelPhone" taborder="2" text="휴대폰번호" cssclass="sta_WF_detailLabelP" left="0" top="0" width="130" height="35"/>
-              <Combo id="comMobNo" taborder="3" innerdataset="dsMobNoList" codecolumn="mobNo" datacolumn="mobNo" left="130" top="4" right="150" height="26"/>
-              <Button id="btnSend" taborder="4" text="인증번호발송" onclick="btnSend_onclick" cssclass="btn_WF_module" top="4" right="0" width="143" height="26"/>
-              <Static id="staTime" taborder="5" text="0:00" cssclass="sta_MF_Date" left="1" top="49" width="83" height="28" style="font:bold 8 Malgun Gothic;"/>
-            </Layout>
-          </Layouts>
-        </Div>
+        <!-- 닫기 버튼: taborder=5 -->
+        <Button id="btnClose" taborder="5" text="닫기" cssclass="btn_WF_CRUD" top="18" right="20" width="60" height="28" onclick="btnClose_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -73,8 +77,8 @@ this.form_onload = function(obj, e)
 {
     Ex.core.init(this);
     this.divInput.set_visible(false);
-    this.divPhone.staTime.set_text("0:00");
-    this.divPhone.staTime.set_visible(false);
+    this.divInput.staTime.set_text("0:00");
+    this.divInput.staTime.set_visible(false);
 
     if (!Eco.isNull(this.p_userId)) {
         this.fn_searchPhoneList(this.p_userId);
@@ -156,10 +160,10 @@ this.form_timer = function(obj, e)
     var nSec = this.fvTime % 60;
     var sTime = nMin + ":" + (nSec < 10 ? "0" + nSec : nSec);
 
-    this.divPhone.staTime.set_text(sTime);
+    this.divInput.staTime.set_text(sTime);
     if (this.fvTime <= 0) {
         this.divInput.set_visible(false);
-        this.divPhone.staTime.set_visible(false);
+        this.divInput.staTime.set_visible(false);
         this.killTimer(9999);
         this.set_alert("timer","인증시간이 만료 되었습니다.");
     }
@@ -174,8 +178,8 @@ this.fn_callBack = function(svcID, errorCode, errorMsg)
 			this.fvTime = 0;
 			this.divInput.edtInputNum.set_value('');
 			this.divInput.set_visible(false);			
-			this.divPhone.staTime.set_text('0:00');
-			this.divPhone.staTime.set_visible(false);
+			this.divInput.staTime.set_text('0:00');
+			this.divInput.staTime.set_visible(false);
 		}
 		this.set_alert("errorMsg","인증이 실패 되었습니다.");
 		return;		
@@ -186,8 +190,8 @@ this.fn_callBack = function(svcID, errorCode, errorMsg)
             this.set_alert("sendMsg","인증메세지가 발송 되었습니다.");
             this.divPhone.btnSend.set_text("재인증");
 			this.divInput.set_visible(true);
-			this.divPhone.staTime.set_text('3:00');
-			this.divPhone.staTime.set_visible(true);
+			this.divInput.staTime.set_text('3:00');
+			this.divInput.staTime.set_visible(true);
 			this.fvTime = 180;
 			this.setTimer(9999, 1000);  // 타이머 시작 (ID: 9999, 1초 간격)  
             break;

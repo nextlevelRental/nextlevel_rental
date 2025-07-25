@@ -1700,7 +1700,47 @@ if ( !JsNamespace.exist("Ex.core")  )
             
 			Ex.core.tran(this.ffobj,sSvcID, sController, sInDatasets, sOutDatasets, sArgs,sCallBack,bProgress); 
 		},
-		
+
+		/**
+		 * 사용자인증 service
+		 * @param {string} id
+		 * @param {string} pw
+		 * @return {string] 변형문자열
+		 * @example
+		 * @memberOf Ex.core
+		 */
+		trIsUserExists : function(obj,sSvcId,id,pw,bprogress)
+		{
+
+			Ex.core.onload(obj);
+			if(Eco.isEmpty(bprogress)) bprogress =true;
+			if(Eco.isEmpty(id))
+			{
+				//  this.gfn_alert("Please enter Login ID","error");
+				Ex.core.showMsg(obj,"alert","root_unknown","Please enter Login ID","","error","","");
+				return;
+			}
+
+			if(Eco.isEmpty(pw))
+			{
+				//this.gfn_alert("Please enter Login Password","error");
+				Ex.core.showMsg(obj,"alert","root_unknown","Please enter Login Password","","error","","");
+				return;
+			}
+
+			var sSvcID        	= sSvcId;
+			var sController   	= "isUserExists.do";
+			var sInDatasets   	= "";
+			var sOutDatasets  	= "gds_userInfo=gds_userInfo";
+			var sArgs = "";
+
+			sArgs += Ex.util.setParam("V_USER_ID",id);
+			sArgs += Ex.util.setParam("V_USER_PWD",pw);
+
+			Ex.core.tran(obj,sSvcID, sController, sInDatasets, sOutDatasets, sArgs,"gfn_isUserExistsCallBack",bprogress);
+
+		},
+
 		
 		/**
 		* Login service
@@ -1712,7 +1752,7 @@ if ( !JsNamespace.exist("Ex.core")  )
 		*/
 		trLogin : function(obj,sSvcId,id,pw,bprogress)		
 		{
-		alert("");
+		
 			Ex.core.onload(obj);
 			if(Eco.isEmpty(bprogress)) bprogress =true;
 			 if(Eco.isEmpty(id))
@@ -1809,7 +1849,7 @@ if ( !JsNamespace.exist("Ex.core")  )
 		*/
 		tran : function()
 		{
-
+			
 			if(application.gv_prjType == "false") return;
 			
 			var svcID, sController, inDatasets, outDatasets, argument, callbackFunc, showProgress, bAsync, bBinary;

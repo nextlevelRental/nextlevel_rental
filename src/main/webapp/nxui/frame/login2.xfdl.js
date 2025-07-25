@@ -14,15 +14,16 @@
                 this.set_name("Login");
                 this.set_classname("Login");
                 this.set_titletext("New Form");
-                this.set_layoutautofittype("width");
                 this._setFormPosition(0,0,1260,871);
             }
             this.style.set_background("transparent");
+            this.getSetter("layoutautofittype").set("width");
 
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsLogin", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -34,6 +35,7 @@
 
             obj = new Dataset("dsService", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -45,6 +47,7 @@
 
             obj = new Dataset("ds_user", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -125,7 +128,7 @@
             		p.set_classname("Login");
             		p.set_titletext("New Form");
             		p.style.set_background("transparent");
-            		p.set_layoutautofittype("width");
+            		p.getSetter("layoutautofittype").set("width");
 
             	}
             );
@@ -156,6 +159,7 @@
         * MODIFY DATE   PROGRAMMER			DESCRIPTION
         * 2017-01-17	wjim				업무용앱 런칭 공지팝업 ON
         * 2017-05-22	wjim				[20170522_02] 업무용앱 런칭 공지팝업 OFF
+        * 2025.07.21 	길형철				2Fact인증 추가
         *------------------------------------------------------------------
 
         *------------------------------------------------------------------
@@ -205,7 +209,7 @@
         	
         	if(e.keycode == 13)
         	{   
-        	    this.fn_loginTr();
+        	    this.fn_isUserExistsTr();
         	}
         }
 
@@ -245,6 +249,42 @@
 
         }
 
+         /**
+         * 사용자인증 transaction
+         * @example	
+         * @memberOf this
+         */
+        this.fn_isUserExistsTr = function()
+        {
+            var objLoginId = this.div_login.txt_userId;
+            var objLoginPw = this.div_login.txt_userPwd;
+            if(Eco.isEmpty(objLoginId.value))    
+            {
+               
+                this.set_alert("login_id","Please enter Login ID");
+                return; 
+            }
+            if(Eco.isEmpty(objLoginPw.value))    
+            {
+                 this.set_alert("login_pw","Please enter Login Password");
+                return; 
+            }
+        	
+            if(application.gv_prjType == "false")
+        	{
+            
+
+              this.fn_menuOpen();	
+        	}
+        	else
+        	{
+        		//로그인전 입력받은 아이디를 쿠키에 저장처리한다.
+        		this.setCookie(objLoginId.value);
+        		Ex.core.trIsUserExists(this,"isUserExists", objLoginId.value, objLoginPw.value);
+        	}
+
+        }
+
         /**
         * 메인프레임 open
         * @return 
@@ -258,7 +298,20 @@
             
         }
 
-        /**
+         /**
+         * 사용자 인증팝업
+         * @example	
+         * @memberOf this
+         */
+        this.fnOpenSmsPopup = function() {
+
+        	var userId = this.div_login.txt_userId.value;
+        	var args ={p_userId:userId};
+        	Ex.core.popup(this, "RTCMAuthSmsPopup", "cm::RTCMAuthSmsPopup.xfdl", args, "modaless=false, titletext=사용자인증팝업", "fn_popup_callBack");
+        }
+
+        
+        /** 
         * 로그인 공통 메세지창 함수
         * @param {string} callbackId
         * @param {string} OK  OR CANCEL
@@ -298,6 +351,21 @@
         				break;		
         		   }
         		}
+        }
+
+        /*---------------------------------
+        * 팝업 콜백 함수
+        * @param {var} sPopupId 팝업 ID
+        * @param {var} sRtn 반환 값
+        *----------------------------------*/
+        this.fn_popup_callBack = function(sPopupId,sRtn){
+        	if(!Eco.isNull(sRtn)){	
+        		if(sPopupId == "RTCMAuthSmsPopup"){ //추가인증 팝업			
+        			if(sRtn =='1'){
+        				this.fn_loginTr();
+        			}
+        		}	
+        	}
         }
 
         /**
@@ -346,7 +414,7 @@
         ***********************************************************************************/
         this.btn_login_onclick = function(obj,e)
         {
-        	this.fn_loginTr();
+        	this.fn_isUserExistsTr();
         }
 
         

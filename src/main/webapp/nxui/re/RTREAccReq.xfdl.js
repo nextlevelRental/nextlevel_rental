@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_list", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_R011", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_R009", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("ds_R003", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("ds_R010", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,6 +81,7 @@
 
             obj = new Dataset("ds_R001", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -87,6 +93,7 @@
 
             obj = new Dataset("ds_user", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -98,6 +105,7 @@
 
             obj = new Dataset("ds_R005", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -109,6 +117,7 @@
 
             obj = new Dataset("ds_cust", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -120,6 +129,7 @@
 
             obj = new Dataset("ds_R015", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");

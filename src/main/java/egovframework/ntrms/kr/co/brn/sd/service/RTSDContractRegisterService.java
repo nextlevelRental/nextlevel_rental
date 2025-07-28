@@ -41,4 +41,6 @@ public interface RTSDContractRegisterService {
 	Map listSendContract(Map<String, Object> inVar) throws Exception;
 	String getIsDupOrder(Map<String, Object> inVar) throws Exception;
 	void beforeOrderConfirm(Map <String, Object> inVar) throws Exception;
+	Map<String, Object> contractTermsSend(Map<String, Object> inVar) throws Exception;
+	Map<String, Object> contractTermsSendCheck(Map<String, Object> inVar) throws Exception;
 }

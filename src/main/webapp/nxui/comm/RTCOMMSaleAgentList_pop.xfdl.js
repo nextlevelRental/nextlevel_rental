@@ -21,17 +21,19 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_saleAgent", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"chanCd\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_chanCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -62,13 +64,13 @@
             obj.set_cssclass("sta_WF_schTitle");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_search.addChild(obj.name, obj);
-            obj = new Edit("ed_saleAgent", "absolute", "100", "10", "100", "21", null, null, this.div_search);
+            obj = new Edit("ed_saleAgent", "absolute", "104", "10", "100", "21", null, null, this.div_search);
             obj.set_taborder("83");
             this.div_search.addChild(obj.name, obj);
-            obj = new Edit("ed_saleAgnm", "absolute", "304", "11", "120", "21", null, null, this.div_search);
+            obj = new Edit("ed_saleAgnm", "absolute", "328", "11", "120", "21", null, null, this.div_search);
             obj.set_taborder("84");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("st_warehNm", "absolute", "234", "10", "80", "20", null, null, this.div_search);
+            obj = new Static("st_warehNm", "absolute", "258", "10", "80", "20", null, null, this.div_search);
             obj.set_taborder("87");
             obj.set_text("판매인명");
             obj.set_cssclass("sta_WF_schTitle");
@@ -100,7 +102,7 @@
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.div_search.addChild(obj.name, obj);
-            obj = new Combo("cb_chanCd", "absolute", "305", "43", "100", "21", null, null, this.div_search);
+            obj = new Combo("cb_chanCd", "absolute", "537", "11", "100", "21", null, null, this.div_search);
             this.div_search.addChild(obj.name, obj);
             obj.set_taborder("95");
             obj.set_autoselect("true");
@@ -109,17 +111,17 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
             obj.set_index("0");
-            obj = new Static("Static06", "absolute", "233", "43", "80", "21", null, null, this.div_search);
+            obj = new Static("Static06", "absolute", "465", "11", "80", "21", null, null, this.div_search);
             obj.set_taborder("96");
             obj.set_text("채널구분");
             obj.set_cssclass("sta_WF_schTitle");
             this.div_search.addChild(obj.name, obj);
-            obj = new Edit("ed_saleOffice", "absolute", "99", "43", "100", "21", null, null, this.div_search);
+            obj = new Edit("ed_saleOffice", "absolute", "403", "43", "68", "21", null, null, this.div_search);
             obj.set_taborder("97");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("st_warehCd00", "absolute", "20", "45", "80", "20", null, null, this.div_search);
+            obj = new Static("st_warehCd00", "absolute", "332", "45", "64", "20", null, null, this.div_search);
             obj.set_taborder("98");
-            obj.set_text("지점코드");
+            obj.set_text("렌탈지점");
             obj.set_cssclass("sta_WF_schTitle");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_search.addChild(obj.name, obj);
@@ -138,22 +140,22 @@
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("st_warehCd01", "absolute", "459", "11", "80", "20", null, null, this.div_search);
+            obj = new Static("st_warehCd01", "absolute", "20", "43", "80", "20", null, null, this.div_search);
             obj.set_taborder("102");
-            obj.set_text("지사코드");
+            obj.set_text("렌탈지사");
             obj.set_cssclass("sta_WF_schTitle");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_search.addChild(obj.name, obj);
-            obj = new Edit("ed_saleGroup", "absolute", "528", "11", "100", "21", null, null, this.div_search);
+            obj = new Edit("ed_saleGroup", "absolute", "104", "43", "68", "21", null, null, this.div_search);
             obj.set_taborder("103");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("st_warehCd02", "absolute", "456", "43", "80", "20", null, null, this.div_search);
+            obj = new Static("st_warehCd02", "absolute", "624", "43", "64", "20", null, null, this.div_search);
             obj.set_taborder("104");
             obj.set_text("벤터코드");
             obj.set_cssclass("sta_WF_schTitle");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_search.addChild(obj.name, obj);
-            obj = new Edit("ed_lifnr", "absolute", "530", "42", "100", "21", null, null, this.div_search);
+            obj = new Edit("ed_lifnr", "absolute", "698", "42", "68", "21", null, null, this.div_search);
             obj.set_taborder("105");
             this.div_search.addChild(obj.name, obj);
             obj = new Static("Static05", "absolute", "426", "40", "30", "41", null, null, this.div_search);
@@ -171,6 +173,26 @@
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.div_search.addChild(obj.name, obj);
+            obj = new Edit("ed_salesGroupNm", "absolute", "195", "43", "118", "21", null, null, this.div_search);
+            obj.set_taborder("109");
+            obj.set_lengthunit("ascii");
+            obj.set_maxlength("150");
+            obj.set_enable("false");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Button("bt_salesGroupCd", "absolute", "172", "42", "21", "21", null, null, this.div_search);
+            obj.set_taborder("110");
+            obj.set_cssclass("btn_WF_edtSch");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Button("bt_salesOfficeCd", "absolute", "471", "42", "21", "21", null, null, this.div_search);
+            obj.set_taborder("111");
+            obj.set_cssclass("btn_WF_edtSch");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Edit("ed_salesOfficeNm", "absolute", "493", "43", "118", "21", null, null, this.div_search);
+            obj.set_taborder("112");
+            obj.set_lengthunit("ascii");
+            obj.set_maxlength("150");
+            obj.set_enable("false");
+            this.div_search.addChild(obj.name, obj);
 
             obj = new Grid("grid_saleAgent", "absolute", "11", "131", "782", "317", null, null, this);
             obj.set_taborder("1");
@@ -178,7 +200,7 @@
             obj.set_cellsizingtype("col");
             obj.set_autofittype("col");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"150\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"140\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"판매처코드\"/><Cell col=\"1\" text=\"판매처명\"/><Cell col=\"2\" text=\"지사\"/><Cell col=\"3\" text=\"지점\"/><Cell col=\"4\" text=\"전화번호\"/><Cell col=\"5\" text=\"채널구분\"/><Cell col=\"6\" text=\"벤더코드\"/><Cell col=\"7\" text=\"세금계산서 발행방법\"/></Band><Band id=\"body\"><Cell text=\"bind:agencyCd\"/><Cell col=\"1\" text=\"bind:agencyNm\"/><Cell col=\"2\" text=\"bind:salesGroup\"/><Cell col=\"3\" text=\"bind:salesOffice\"/><Cell col=\"4\" text=\"bind:telNo\"/><Cell col=\"5\" text=\"bind:chanCd\"/><Cell col=\"6\" text=\"bind:lifnr\"/><Cell col=\"7\" text=\"bind:taxRqcd\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"150\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"140\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"판매처코드\"/><Cell col=\"1\" text=\"판매처명\"/><Cell col=\"2\" text=\"렌탈지사\"/><Cell col=\"3\" text=\"렌탈지점\"/><Cell col=\"4\" text=\"전화번호\"/><Cell col=\"5\" text=\"채널구분\"/><Cell col=\"6\" text=\"벤더코드\"/><Cell col=\"7\" text=\"세금계산서 발행방법\"/></Band><Band id=\"body\"><Cell text=\"bind:agencyCd\"/><Cell col=\"1\" text=\"bind:agencyNm\"/><Cell col=\"2\" text=\"bind:rentalGroupNm\"/><Cell col=\"3\" text=\"bind:rentalOfficeNm\"/><Cell col=\"4\" text=\"bind:telNo\"/><Cell col=\"5\" text=\"bind:chanCd\"/><Cell col=\"6\" text=\"bind:lifnr\"/><Cell col=\"7\" text=\"bind:taxRqcd\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_choice", "absolute", "706", "462", "41", "21", null, null, this);
@@ -300,6 +322,18 @@
         this.RTCOMMSellersList_pop_onload = function(obj,e){
         	Ex.core.init(obj);
         	this.fn_init();
+        	
+        	//렌탈지사 셋팅
+        	if(nvl(this.parent.p_vkgrpNm) != "")		{
+        		this.div_search.ed_salesGroupNm.set_value(this.parent.p_vkgrpNm);
+        		this.div_search.ed_saleGroup.set_value(this.parent.p_vkgrpCd);		
+        	}
+        	
+        	//렌탈지점 셋팅
+        	if(nvl(this.parent.p_vkburNm) != ""){
+        		this.div_search.ed_salesOfficeNm.set_value(this.parent.p_vkburNm);
+        		this.div_search.ed_saleOffice.set_value(this.parent.p_vkburCd);		
+        	}
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.fn_init = function(){
@@ -316,10 +350,14 @@
         this.div_search_btn_search_onclick = function(obj,e){
         	var saleAgent = nvl(this.div_search.ed_saleAgent.value);
         	var saleAgnm  = nvl(this.div_search.ed_saleAgnm.value);
-        	var saleOffice = nvl(this.div_search.ed_saleOffice.value);
-        	var saleGroup = nvl(this.div_search.ed_saleGroup.value);
+        	var saleOffice = "";  
+        	var saleGroup = "";
         	var chanCd = nvl(this.div_search.cb_chanCd.value);
         	var lifnr = nvl(this.div_search.ed_lifnr.value);
+        	
+        	var rentalGroup  = nvl(this.div_search.ed_saleGroup.value);    //렌탈지사  
+        	var rentalOffice = nvl(this.div_search.ed_saleOffice.value);   //렌탈지점
+        	var userId       = application.gds_userInfo.getColumn(0, "userId"); //사용자ID
         	
         	var sSvcID        	= "selectRTCOMMSaleAgentList";                    
         	var sController   	= "rtms/comm/selectRTCOMMSaleAgentList.do";
@@ -334,6 +372,9 @@
         	sArgs += Ex.util.setParam("saleGroup", saleGroup);
         	sArgs += Ex.util.setParam("chanCd", chanCd);
         	sArgs += Ex.util.setParam("lifnr", lifnr);
+        	sArgs += Ex.util.setParam("rentalGroup", rentalGroup);
+        	sArgs += Ex.util.setParam("rentalOffice", rentalOffice);
+        	sArgs += Ex.util.setParam("userId", userId);
         	
         	this.ds_saleAgent.clearData();
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
@@ -367,6 +408,34 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
         
+        //지사
+        this.div_search_bt_salesGroupNm_onclick = function(obj,e)
+        {
+        	 var args ={p_arg:"RTRESaleCommission"};
+        	 Ex.core.popup(this,"지사정보 조회","comm::RTCOMMVkgrp_pop.xfdl",args,"modaless=false");
+        }
+
+        //지점
+        this.div_search_bt_salesOfficeCd_onclick = function(obj,e)
+        {
+        	 var args ={p_arg:"RTRESaleCommission", p_rentalGroup:this.div_search.ed_saleGroup.value};
+        		Ex.core.popup(this,"지점정보 조회","comm::RTCOMMVkbur_pop.xfdl",args,"modaless=false");
+        }
+        	
+        this._setReturn = function(val) {
+        		var cd = val[0];
+        		var nm = val[1];
+        		var gb = val[2];
+        		
+        		if(gb == "vkgrp") {
+        			this.div_search.ed_saleGroup.set_value(cd);
+        			this.div_search.ed_salesGroupNm.set_value(nm);
+        		} else if(gb == "vkbur" ) {
+        			this.div_search.ed_saleOffice.set_value(cd);
+        			this.div_search.ed_salesOfficeNm.set_value(nm);
+        		} 
+        	}
+        
         });
 
 
@@ -381,6 +450,8 @@
             this.div_search.ed_saleOffice.addEventHandler("onkeyup", this.div_search_ed_warehCd_onkeyup, this);
             this.div_search.ed_saleGroup.addEventHandler("onkeyup", this.div_search_ed_warehNm_onkeyup, this);
             this.div_search.ed_lifnr.addEventHandler("onkeyup", this.div_search_ed_warehCd_onkeyup, this);
+            this.div_search.bt_salesGroupCd.addEventHandler("onclick", this.div_search_bt_salesGroupNm_onclick, this);
+            this.div_search.bt_salesOfficeCd.addEventHandler("onclick", this.div_search_bt_salesOfficeCd_onclick, this);
             this.grid_saleAgent.addEventHandler("oncelldblclick", this.grid_sellers_oncelldblclick, this);
             this.btn_choice.addEventHandler("onclick", this.btn_choice_onclick, this);
             this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);

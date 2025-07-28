@@ -1,162 +1,162 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0004 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0004
-   PURPOSE   °ü¸®°èÁ¤ Á¤º¸ °ü¸®
+   PURPOSE   ê´€ë¦¬ê³„ì • ì •ë³´ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-09-18  jemcarry         1. Created this package body.
-   1.1        2017-04-17  wjim             [20170417_01] ÀÏ°ý¹èÁ¤ ÇÁ·Î¼¼½º °³¼±
-   1.2        2017-04-24  wjim             [20170424_01] ÀÏ°ý¹èÁ¤ ¼öÇà±¸ºÐ Ãß°¡
+   1.1        2017-04-17  wjim             [20170417_01] ì¼ê´„ë°°ì • í”„ë¡œì„¸ìŠ¤ ê°œì„ 
+   1.2        2017-04-24  wjim             [20170424_01] ì¼ê´„ë°°ì • ìˆ˜í–‰êµ¬ë¶„ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Count
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0004Count(
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE            /*¼³ºñ¹øÈ£            */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE            /*ì„¤ë¹„ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Select
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0004 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(ÀåÂø)        */
-    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(¿ù Æò±Õ)     */
-    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*Á¶Á¤°ü·Ã °è¾à¹øÈ£     */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ìž¥ì°©)        */
+    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ì›” í‰ê· )     */
+    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*ì¡°ì •ê´€ë ¨ ê³„ì•½ë²ˆí˜¸     */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Insert
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0004 (
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(ÀåÂø)        */
-    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(¿ù Æò±Õ)     */
-    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*Á¶Á¤°ü·Ã °è¾à¹øÈ£     */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ìž¥ì°©)        */
+    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ì›” í‰ê· )     */
+    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*ì¡°ì •ê´€ë ¨ ê³„ì•½ë²ˆí˜¸     */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Update
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0004 (
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(ÀåÂø)        */
-    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(¿ù Æò±Õ)     */
-    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*Á¶Á¤°ü·Ã °è¾à¹øÈ£     */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ìž¥ì°©)        */
+    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ì›” í‰ê· )     */
+    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*ì¡°ì •ê´€ë ¨ ê³„ì•½ë²ˆí˜¸     */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Delete
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0004 (
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ °ü¸®(IUD)
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0004 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(ÀåÂø)        */
-    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(¿ù Æò±Õ)     */
-    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*Á¶Á¤°ü·Ã °è¾à¹øÈ£     */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Target_Cd      IN RTCS0004.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0004.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_C_Mileage      IN RTCS0004.C_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ìž¥ì°©)        */
+    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ì›” í‰ê· )     */
+    v_Plan_Day       IN RTCS0004.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Ad_Ordno       IN RTCS0004.AD_ORDNO%TYPE,       /*ì¡°ì •ê´€ë ¨ ê³„ì•½ë²ˆí˜¸     */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ Update -  ¼­ºñ½º È®ÀÎ¼­ ¼­¸í¿Ï·á µî·Ï
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ Update -  ì„œë¹„ìŠ¤ í™•ì¸ì„œ ì„œëª…ì™„ë£Œ ë“±ë¡
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0004AMileage (
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ÁÖÇà°Å¸®(¿ù Æò±Õ)     */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0004.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_A_Mileage      IN RTCS0004.A_MILEAGE%TYPE,      /*ì£¼í–‰ê±°ë¦¬(ì›” í‰ê· )     */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateJob;
   
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregate (
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- °ü¸®°èÁ¤ Á¤º¸ - °è¾à¹øÈ£·Î ±âÁØ³â¿ù ±âÁØ °Ë°Ë¿¹Á¤ÀÏ È¹µæ
+  -- ê´€ë¦¬ê³„ì • ì •ë³´ - ê³„ì•½ë²ˆí˜¸ë¡œ ê¸°ì¤€ë…„ì›” ê¸°ì¤€ ê²€ê²€ì˜ˆì •ì¼ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcs0004PlanDay(
-    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0004.ORD_NO%TYPE            /*°è¾à¹øÈ£            */
+    v_Std_Ym         IN RTCS0004.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0004.ORD_NO%TYPE            /*ê³„ì•½ë²ˆí˜¸            */
     ) RETURN VARCHAR;
 
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó ÀçÁý°è¸¦ À§ÇÑ ±âÁ¸ Áý°è³»¿ª ÀÏ°ý »èÁ¦Ã³¸®
+  -- ì ê²€ëŒ€ìƒ ìž¬ì§‘ê³„ë¥¼ ìœ„í•œ ê¸°ì¡´ ì§‘ê³„ë‚´ì—­ ì¼ê´„ ì‚­ì œì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAllDelete (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è (M-1¿ù 20ÀÏ)
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„ (M-1ì›” 20ì¼)
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-04-17  wjim             [20170417_01] ½Å±Ô°³¹ß
+   1.1        2017-04-17  wjim             [20170417_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateJob1(
       v_Success_Code   OUT NUMBER
@@ -165,12 +165,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0004 AS
   );  
   
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è (M¿ù 1ÀÏ)
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„ (Mì›” 1ì¼)
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-04-17  wjim             [20170417_01] ½Å±Ô°³¹ß
+   1.1        2017-04-17  wjim             [20170417_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateJob2(
       v_Success_Code   OUT NUMBER
@@ -179,12 +179,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0004 AS
   );
     
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è2+2 (M-1¿ù 20ÀÏ)
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„2+2 (M-1ì›” 20ì¼)
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-04-17  wjim             [20170417_01] ½Å±Ô°³¹ß
+   1.1        2017-04-17  wjim             [20170417_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateJob3(
       v_Success_Code   OUT NUMBER
@@ -193,12 +193,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0004 AS
   );  
   
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è2+2 (M¿ù 1ÀÏ)
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„2+2 (Mì›” 1ì¼)
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-04-17  wjim             [20170417_01] ½Å±Ô°³¹ß
+   1.1        2017-04-17  wjim             [20170417_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateJob4(
       v_Success_Code   OUT NUMBER
@@ -206,39 +206,38 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0004 AS
     , v_ErrorText      OUT VARCHAR2
   );
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è Ver.2
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„ Ver.2
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-04-17  wjim             [20170417_01] Ãß°¡
-   1.2        2017-04-24  wjim             [20170424_01] ¼öÇà±¸ºÐ Ãß°¡
+   1.1        2017-04-17  wjim             [20170417_01] ì¶”ê°€
+   1.2        2017-04-24  wjim             [20170424_01] ìˆ˜í–‰êµ¬ë¶„ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregateNew (
-      v_Std_Ym         IN RTCS0004.STD_YM%TYPE         /*±âÁØ³â¿ù              */
-    , v_Mode           IN CHAR                         /*¼öÇà±¸ºÐ (A : M-1¿ù 20ÀÏ ¼öÇà, B : M¿ù 1ÀÏ ¼öÇà)*/
-    , v_Reg_Id         IN RTCS0004.REG_ID%TYPE         /*µî·ÏÀÚ ID             */
+      v_Std_Ym         IN RTCS0004.STD_YM%TYPE         /*ê¸°ì¤€ë…„ì›”              */
+    , v_Mode           IN CHAR                         /*ìˆ˜í–‰êµ¬ë¶„ (A : M-1ì›” 20ì¼ ìˆ˜í–‰, B : Mì›” 1ì¼ ìˆ˜í–‰)*/
+    , v_Reg_Id         IN RTCS0004.REG_ID%TYPE         /*ë“±ë¡ìž ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
 
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó Áý°è Ver.2 2By2
+  -- ì ê²€ëŒ€ìƒ ì§‘ê³„ Ver.2 2By2
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2019-03-22  kstka             [20190322_01] Ãß°¡
+   1.1        2019-03-22  kstka             [20190322_01] ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_Rtcs0004TargetAggregate2By2 (
-      v_Std_Ym         IN RTCS0004.STD_YM%TYPE         /*±âÁØ³â¿ù              */
-    , v_Mode           IN CHAR                         /*¼öÇà±¸ºÐ (A : M-1¿ù 20ÀÏ ¼öÇà, B : M¿ù 1ÀÏ ¼öÇà)*/
-    , v_Reg_Id         IN RTCS0004.REG_ID%TYPE         /*µî·ÏÀÚ ID             */
+      v_Std_Ym         IN RTCS0004.STD_YM%TYPE         /*ê¸°ì¤€ë…„ì›”              */
+    , v_Mode           IN CHAR                         /*ìˆ˜í–‰êµ¬ë¶„ (A : M-1ì›” 20ì¼ ìˆ˜í–‰, B : Mì›” 1ì¼ ìˆ˜í–‰)*/
+    , v_Reg_Id         IN RTCS0004.REG_ID%TYPE         /*ë“±ë¡ìž ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
   
 END Pkg_Rtcs0004;
-/

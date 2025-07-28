@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0101 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0101
-   PURPOSE   ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ ∞¸∏Æ
+   PURPOSE   Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,124 +10,123 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0101 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Count
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Count
   *****************************************************************************/
   FUNCTION f_sRtre0101Count(
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,         /*ø¨√º±‚¡ÿ¿œ¿⁄        */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,           /*∞Ëæ‡π¯»£            */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,          /*∞Ì∞¥π¯»£            */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE          /*√ª±∏º¯π¯            */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,         /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê        */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,           /*Í≥ÑÏïΩÎ≤àÌò∏            */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,          /*Í≥†Í∞ùÎ≤àÌò∏            */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE          /*Ï≤≠Íµ¨ÏàúÎ≤à            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Select
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0101 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
     
   /*****************************************************************************
-  -- ø¨√º √ª±∏ºº∫Œ ≥ªø™ ¡∂»∏ Select
+  -- Ïó∞Ï≤¥ Ï≤≠Íµ¨ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRtre0101Detail (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,        /*ø¨√º±‚¡ÿ¿œ¿⁄         */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,          /*∞Ëæ‡π¯»£             */ 
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE          /*∞Ì∞¥π¯»£             */    
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,        /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê         */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,          /*Í≥ÑÏïΩÎ≤àÌò∏             */ 
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE          /*Í≥†Í∞ùÎ≤àÌò∏             */    
     );     
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Insert
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0101 (
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Update
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0101 (
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Delete
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0101 (
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ ∞¸∏Æ(IUD)
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0101 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Ord_No         IN RTRE0101.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0101.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0101.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0101.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0101.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0101.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0101.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0101.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0101.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ø¨√º¥ÎªÛ ºº∫Œ ≥ªø™ Delete
+  -- Ïó∞Ï≤¥ÎåÄÏÉÅ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0101DelyDayAll (
-    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*ø¨√º±‚¡ÿ¿œ¿⁄          */
-    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Dely_Day       IN RTRE0101.DELY_DAY%TYPE,       /*Ïó∞Ï≤¥Í∏∞Ï§ÄÏùºÏûê          */
+    v_Reg_Id         IN RTRE0101.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtre0101;
-/

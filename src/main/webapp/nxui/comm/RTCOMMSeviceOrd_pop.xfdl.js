@@ -14,58 +14,41 @@
                 this.set_name("RTCOMMSeviceOrd_pop");
                 this.set_classname("RTCMVkbur_pop");
                 this.set_titletext("서비스등록");
-                this._setFormPosition(0,0,817,485);
+                this._setFormPosition(0,0,817,433);
             }
 
             
             // Object(Dataset, ExcelExportObject) Initialize
-            obj = new Dataset("ds_seviceCd", this);
-            obj._setContents("<ColumnInfo><Column id=\"check\" type=\"STRING\" size=\"256\"/><Column id=\"prsPk\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj = new Dataset("ds_rtsd0013", this);
+            obj._setContents("<ColumnInfo><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/><Column id=\"servInfAmt\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmtSum\" type=\"STRING\" size=\"256\"/><Column id=\"servAmtSumOrg\" type=\"STRING\" size=\"256\"/><Column id=\"servCntOrg\" type=\"STRING\" size=\"256\"/><Column id=\"servInfYN\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_svrCnt", this);
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"cd\">1</Col><Col id=\"cdNm\">1회</Col></Row><Row><Col id=\"cd\">2</Col><Col id=\"cdNm\">2회</Col></Row><Row><Col id=\"cd\">3</Col><Col id=\"cdNm\">3회</Col></Row><Row><Col id=\"cd\">4</Col><Col id=\"cdNm\">4회</Col></Row><Row><Col id=\"cd\">5</Col><Col id=\"cdNm\">5회</Col></Row><Row><Col id=\"cd\">6</Col><Col id=\"cdNm\">6회</Col></Row><Row><Col id=\"cd\">999</Col><Col id=\"cdNm\">무제한</Col></Row></Rows>");
             this.addChild(obj.name, obj);
 
 
             
             // UI Components Initialize
-            obj = new Grid("grid_seviceCd", "absolute", "10", "66", null, "380", "10", null, this);
+            obj = new Grid("grid_seviceCd", "absolute", "10", "8", null, "380", "313", null, this);
             obj.set_taborder("0");
-            obj.set_binddataset("ds_seviceCd");
+            obj.set_binddataset("ds_rtsd0013");
             obj.set_autofittype("col");
             obj.set_autosizebandtype("head");
             obj.set_cellclickbound("cell");
             obj.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
             obj.set_cellsizingtype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"31\"/><Column size=\"274\"/><Column size=\"82\"/><Column size=\"93\"/><Column size=\"94\"/><Column size=\"91\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell col=\"1\" text=\"상세서비스\"/><Cell col=\"2\" text=\"기간\"/><Cell col=\"3\" text=\"타이어본수\"/><Cell col=\"4\" text=\"서비스횟수\"/><Cell col=\"5\" text=\"금액\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:check\"/><Cell col=\"1\" text=\"bind:prsNm\"/><Cell col=\"2\" text=\"bind:periodNm\"/><Cell col=\"3\" text=\"bind:cntNm\"/><Cell col=\"4\" text=\"bind:servCnt\"/><Cell col=\"5\" text=\"bind:servAmt\"/></Band></Format></Formats>");
+            obj.set_autoupdatetype("comboselect");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"138\"/><Column size=\"69\"/><Column size=\"93\"/><Column size=\"74\"/><Column size=\"114\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"상세서비스\"/><Cell col=\"1\" text=\"기간\"/><Cell col=\"2\" text=\"타이어본수\"/><Cell col=\"3\" text=\"서비스횟수\"/><Cell col=\"4\" text=\"금액\"/></Band><Band id=\"body\"><Cell text=\"bind:prsNm\"/><Cell col=\"1\" text=\"bind:periodNm\"/><Cell col=\"2\" text=\"bind:cntNm\"/><Cell col=\"3\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:servCnt\" combodataset=\"ds_svrCnt\" combocodecol=\"cd\" combodatacol=\"cdNm\" combodisplay=\"display\"/><Cell col=\"4\" text=\"bind:servAmtSum\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Div("div_search", "absolute", "10", "10", null, "45", "10", null, this);
-            obj.set_taborder("1");
-            obj.set_text("Div00");
-            obj.set_scrollbars("none");
-            obj.set_cssclass("div_WF_searchBg");
-            this.addChild(obj.name, obj);
-            obj = new Static("st_srvcNm", "absolute", "20", "10", "81", "20", null, null, this.div_search);
-            obj.set_taborder("24");
-            obj.set_text("서비스 명");
-            obj.set_cssclass("sta_WF_schTitle");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_search.addChild(obj.name, obj);
-            obj = new Edit("p_prsNm", "absolute", "106", "10", "246", "21", null, null, this.div_search);
-            obj.set_taborder("25");
-            this.div_search.addChild(obj.name, obj);
-            obj = new Button("btn_search", "absolute", null, "9", "45", "22", "18", null, this.div_search);
-            obj.set_taborder("26");
-            obj.set_text("검색");
-            obj.set_cssclass("btn_WF_CRUD");
-            obj.getSetter("domainId").set("nexa.add");
-            this.div_search.addChild(obj.name, obj);
-
-            obj = new Button("btn_choice", "absolute", null, "456", "41", "21", "54", null, this);
+            obj = new Button("btn_choice", "absolute", null, "398", "41", "21", "365", null, this);
             obj.set_taborder("2");
             obj.set_text("선택");
             obj.getSetter("domainId").set("nexa.add");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_close", "absolute", null, "456", "41", "21", "9", null, this);
+            obj = new Button("btn_close", "absolute", null, "398", "41", "21", "320", null, this);
             obj.set_taborder("3");
             obj.set_text("닫기");
             obj.getSetter("domainId").set("nexa.add");
@@ -75,20 +58,7 @@
             
             // Layout Functions
             //-- Default Layout
-            obj = new Layout("default", "", 0, 45, this.div_search,
-            	//-- Layout function
-            	function(p) {
-            		p.set_taborder("1");
-            		p.set_text("Div00");
-            		p.set_scrollbars("none");
-            		p.set_cssclass("div_WF_searchBg");
-
-            	}
-            );
-            this.div_search.addLayout(obj.name, obj);
-
-            //-- Default Layout
-            obj = new Layout("default", "", 817, 485, this,
+            obj = new Layout("default", "", 817, 433, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMVkbur_pop");
@@ -122,12 +92,32 @@
         // 데이터 호출 후 실행 함수 
         this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt){
         	if( strSvcId == "srvcOrdList" ){
-        		var ct = this.ds_seviceCd.getRowCount();
-        		this.ds_seviceCd.addColumn("check", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
+        	
+        		var ct = this.ds_rtsd0013.getRowCount();
         		if( ct == 0){
-        			alert("조회된 데이터가 없습니다.");
+        			alert("1 조회된 데이터가 없습니다.");
         			this.div_search.p_prsNm.setFocus(true);
         			p_prsNm = "";
+        		}
+        		this.alert(this.ds_rtsd0013.getColumn(0, "servInfYN"));
+        		// 무제한 선택여부 
+        		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+        			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+        			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
+        		}
+        	}else if( strSvcId == "prmmSrvcOrdList" ){
+        	
+        		var ct = this.ds_rtsd0013.getRowCount();
+        		if( ct == 0){
+        			alert("2 조회된 데이터가 없습니다.");
+        			this.div_search.p_prsNm.setFocus(true);
+        			p_prsNm = "";
+        		}
+        		this.alert(this.ds_rtsd0013.getColumn(0, "servInfYN"));
+        		// 무제한 선택여부 
+        		if(nvl(this.ds_rtsd0013.getColumn(0, "servInfYN")) != 'Y'){
+        			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "displaytype", "normal");
+        			this.grid_seviceCd.setCellProperty("body", this.grid_seviceCd.getBindCellIndex("body", "servCnt"), "edittype", "none");
         		}
         	}
         }
@@ -135,95 +125,36 @@
         // 초기 로딩시
         this.RTCOMMSeviceOrd_pop_onload = function (obj,e){
         	Ex.core.init(obj);
-        	//trace(this.parent.p_formId);// 부모창에서 보낸 paramtere 값 받기
+        	this.searchDo(); 
         }
 
         // 검색 버튼클릭시
-        this.div_search_btn_search_onclick = function(obj,e){
-        	p_prsNm = p_prsNm == ""?nvl(this.div_search.p_prsNm.value):p_prsNm;  // 버튼 클릭시 input 값 가져오기
-            //trace("1 p_prsNm : " + p_prsNm);
-        	var sSvcID        	= "srvcOrdList";                    
+        this.searchDo = function(){
+
+        	/*var sSvcID        	= "srvcOrdList";                    
         	var sController   	= "rtms/comm/srvcOrdList.do";
         	var sInDatasets   	= "";
-        	var sOutDatasets  	= "ds_seviceCd=srvcOrdListMap";
+        	var sOutDatasets  	= "ds_rtsd0013=srvcOrdListMap";
         	var sArgs 			= "";	
         	var fn_callBack		= "fn_callBack";
         	
-        	this.ds_seviceCd.clearData();  // dataset clear 한다.
-        	sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 전달변수
+        	this.ds_rtsd0013.clearData();  // dataset clear 한다.
+        	sArgs += Ex.util.setParam("p_saleCd", 'S000000110');	// 전달변수
+        	sArgs += Ex.util.setParam("p_periodCd", '12');	// 전달변수
+        	sArgs += Ex.util.setParam("p_cntCd", '02');	// 전달변수
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); */
+        	
+        	var sSvcID        	= "prmmSrvcOrdList";                    
+        	var sController   	= "/rtms/sd/prmmSrvcOrdList.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "ds_rtsd0013=prmmSrvcOrdList";
+        	var sArgs 			= "";	
+        	var fn_callBack		= "fn_callBack";
+        	this.ds_rtsd0013.clearData();  // dataset clear 한다.
+        		sArgs += Ex.util.setParam("ordNo",   "D17000109781");
+        		sArgs += Ex.util.setParam("periodCd",   "12");
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
         }
-
-        // 서비스명 키워드 엔터 후 검색
-        this.div_search_edt_searchKeyword_onkeyup = function(obj,e){
-        	if( e.keycode == 13 ){
-        		p_prsNm = p_prsNm == ""?obj.text:p_prsNm;  // 키업할 경우 input 값 가져오기
-        		
-        		//trace("2 p_prsNm : " + p_prsNm);				
-        		var sSvcID        	= "srvcOrdList";                    
-        		var sController   	= "rtms/comm/srvcOrdList.do";
-        		var sInDatasets   	= "";
-        		var sOutDatasets  	= "ds_seviceCd=srvcOrdListMap";
-        		var sArgs 			= "";	
-        		var fn_callBack		= "fn_callBack";
-        		
-        		this.ds_seviceCd.clearData();  // dataset clear 한다.
-        		sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 전달변수
-        		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
-        	}
-        }
-
-        
-        // 선택할 서비스코드를 부모창에 지정한다.
-        this.btn_choice_onclick = function(obj,e){
-        	var dsPObj = this.opener.ds_seviceCd;  // opener dataset
-        	var dsObj = this.ds_seviceCd;		   // popup dataset	
-        	var idx = true;
-        	
-        	// 부모창에 dataset 의 pk 값을 가져와 array 에 담는다.
-        	var arr = new Array();
-        	var pCnt = dsPObj.getRowCount();
-        	if(pCnt > 0){
-        		for( var j=0; j<pCnt; j++) {
-        			arr[j] = dsPObj.getColumn(j, "prsPk");
-        			//trace("j :" + arr[j]);  // 부모창 pk값
-        		}			
-        	}
-        	
-        	// popup dataset 에서 선택한 row 를 가져온다.				
-        	for (var i=0; i<dsObj.getRowCount(); i++) {
-        		if(dsObj.getColumn(i, "check") == 1){	
-        			idx = false;
-        			
-        			// opener dataset 에 존재하자 않는 row 만 입력
-        			if(arr.length > 0){
-        				var chk = true;
-        				for(var k=0; k<arr.length; k++) {
-        					//trace("arr [ " + k + "] :" + arr[k] + "  === " + dsObj.getColumn(i, "prsPk") );
-        					if(arr[k] == dsObj.getColumn(i, "prsPk")){
-        						chk = false;
-        						break;
-        					}				
-        				}
-        				
-        				if(chk){
-        					var nRow = dsPObj.addRow();			
-        					dsPObj.copyRow(nRow, dsObj, i);
-        				}
-        			}else{
-        				var nRow = dsPObj.addRow();			
-        				dsPObj.copyRow(nRow, dsObj, i);
-        			}
-        			
-        		}
-        	}	
-        	
-        	if(idx){
-        		this.alert("선택된 데이터가 없습니다.");
-        	}else{
-        		this.close();
-        	}
-        }	
 
         // 닫기
         this.btn_close_onclick = function(obj,e){
@@ -238,6 +169,27 @@
         }
 
         
+        this.comboChk = function(obj,e)
+        {
+        	if(e.col == 3) {
+        		this.ds_svrCnt.filter("cd == '999' || cd == " + this.ds_rtsd0013.getColumn(e.row, "servCntOrg"));
+        		
+        		
+        	}
+        }
+
+        
+        this.aaaa = function(obj,e)
+        {
+        	//this.alert(obj.getColumn(e.row, "servCnt"));
+        	
+        	if(obj.getColumn(e.row, "servCnt") == '999'){
+        		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servInfAmt"));
+        	}else{
+        		obj.setColumn(e.row, "servAmtSum", obj.getColumn(e.row, "servAmtSumOrg"));
+        	}
+        }
+        
         });
 
 
@@ -245,10 +197,10 @@
         // Regist UI Components Event
         this.on_initEvent = function()
         {
+            this.ds_rtsd0013.addEventHandler("oncolumnchanged", this.aaaa, this);
             this.addEventHandler("onload", this.RTCOMMSeviceOrd_pop_onload, this);
             this.addEventHandler("onkeyup", this.RTCOMMSeviceOrd_pop_onkeyup, this);
-            this.div_search.p_prsNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_search.btn_search.addEventHandler("onclick", this.div_search_btn_search_onclick, this);
+            this.grid_seviceCd.addEventHandler("oncellclick", this.comboChk, this);
             this.btn_choice.addEventHandler("onclick", this.btn_choice_onclick, this);
             this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
 

@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_list", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_stateCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_dateCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -835,11 +838,6 @@
 
         this.btn_deliveryPop_onclick = function(obj,e)
         {
-        	if(this.ds_list.rowcount == 0){
-        		alert("선택된 계약건이 없습니다.");
-        		return;
-        	}
-        	
         	var reqNum = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "reqNo"));
         	if(reqNum == "0"){
         		alert("취소된 계약입니다.");
@@ -847,7 +845,7 @@
         	}
         	
         	var ordNo = nvl(this.ds_list.getColumn(this.ds_list.rowposition, "ordNo")) + "_" + reqNum;
-        	var args = {  ordNo :   ordNo , reqNum : reqNum };
+        	var args = {  ordNo :   ordNo };
         	Ex.core.popup(this,"배송조회팝업","comm::RTCOMMDeliveryBoard_pop.xfdl",args, "modaless=false");
         }
         

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0060 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0060
-   PURPOSE   ╟Хаб╫ец╩ Ё╩©╙ ╟Э╦╝
+   PURPOSE   ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Й╢─К╕╛
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,176 +10,176 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0060 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Count
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Count
   *****************************************************************************/
   FUNCTION f_sRtre0060Count(
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п   */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,         /*╟Хаб╫ец╩юо          */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE          /*╟Хаб╫ец╩╪Ь╧Ь        */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└   */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪          */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE          /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Select
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0060 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE        /*╟Хаб╫ец╩юо            */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE        /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
     );
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Insert
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0060 (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*аж╧╝╧Ьхё              */
-    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*╟М╟╢дз╣Е              */
-    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*ю╨гЮдз╣Е              */
-    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*╟Хаб╪Ь╧Ь              */
-    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*╟Хаб╫ец╩╠╦╨п          */
-    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь      */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*╟Хаб╟Ё╪Ё а║дз╣Е       */
-    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*цК╠ч а║дз╣Е           */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*Лё╪К╛╦К╡┬М≤╦              */
+    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*ЙЁ═Й╟²Л╫■К⌠°              */
+    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*Л²─М√┴Л╫■К⌠°              */
+    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*ЙЁ└Л╒▄Л┬°К╡┬              */
+    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Й╣╛К╤└          */
+    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬      */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*ЙЁ└Л╒▄Й╟°Л└╓ Л═░Л╫■К⌠°       */
+    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*Л╥╗Й╦┴ Л═░Л╫■К⌠°           */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Insert(ARSюнаУЁЛцКфВгт)
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Insert(ARSЛ²╦Л╕²К┘╧Л╥╗М▐╛М∙╗)
   *****************************************************************************/
   FUNCTION f_InsertRtre0060RecData (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*╟Х╬Ю╧Ьхё              */
-    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*╟М╟╢дз╣Е              */
-    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*ю╨гЮдз╣Е              */
-    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*╟Хаб╪Ь╧Ь              */
-    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*╟Хаб╫ец╩╠╦╨п          */
-    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь      */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*╟Хаб╟Ё╪Ё а║дз╣Е       */
-    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*цК╠ч а║дз╣Е           */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
-    v_Txt_No         IN RTRE0060.TXT_NO%TYPE,         /*ARSюнаУ юЭ╧╝╟Мю╞╧Ьхё  */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*ЙЁ└Л∙╫К╡┬М≤╦              */
+    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*ЙЁ═Й╟²Л╫■К⌠°              */
+    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*Л²─М√┴Л╫■К⌠°              */
+    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*ЙЁ└Л╒▄Л┬°К╡┬              */
+    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Й╣╛К╤└          */
+    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬      */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*ЙЁ└Л╒▄Й╟°Л└╓ Л═░Л╫■К⌠°       */
+    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*Л╥╗Й╦┴ Л═░Л╫■К⌠°           */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
+    v_Txt_No         IN RTRE0060.TXT_NO%TYPE,         /*ARSЛ²╦Л╕² Л═└К╛╦ЙЁ═Л°═К╡┬М≤╦  */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Update
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0060 (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*аж╧╝╧Ьхё              */
-    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*╟М╟╢дз╣Е              */
-    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*ю╨гЮдз╣Е              */
-    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*╟Хаб╪Ь╧Ь              */
-    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*╟Хаб╫ец╩╠╦╨п          */
-    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь      */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*╟Хаб╟Ё╪Ё а║дз╣Е       */
-    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*цК╠ч а║дз╣Е           */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*Лё╪К╛╦К╡┬М≤╦              */
+    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*ЙЁ═Й╟²Л╫■К⌠°              */
+    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*Л²─М√┴Л╫■К⌠°              */
+    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*ЙЁ└Л╒▄Л┬°К╡┬              */
+    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Й╣╛К╤└          */
+    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬      */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*ЙЁ└Л╒▄Й╟°Л└╓ Л═░Л╫■К⌠°       */
+    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*Л╥╗Й╦┴ Л═░Л╫■К⌠°           */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Delete
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0060 (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ ╟Э╦╝(IUD)
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0060 (
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN OUT RTRE0060.ACRQ_SEQ%TYPE,   /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*аж╧╝╧Ьхё              */
-    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*╟М╟╢дз╣Е              */
-    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*ю╨гЮдз╣Е              */
-    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*╟Хаб╪Ь╧Ь              */
-    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*╟Хаб╫ец╩╠╦╨п          */
-    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь      */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*╟Хаб╟Ё╪Ё а║дз╣Е       */
-    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*цК╠ч а║дз╣Е           */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN OUT RTRE0060.ACRQ_SEQ%TYPE,   /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*Лё╪К╛╦К╡┬М≤╦              */
+    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*ЙЁ═Й╟²Л╫■К⌠°              */
+    v_Bank_Cd        IN RTRE0060.BANK_CD%TYPE,        /*Л²─М√┴Л╫■К⌠°              */
+    v_Acc_Seq        IN RTRE0060.ACC_SEQ%TYPE,        /*ЙЁ└Л╒▄Л┬°К╡┬              */
+    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Й╣╛К╤└          */
+    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬      */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Acbrcd         IN RTRE0060.ACBRCD%TYPE,         /*ЙЁ└Л╒▄Й╟°Л└╓ Л═░Л╫■К⌠°       */
+    v_Rqbrcd         IN RTRE0060.RQBRCD%TYPE,         /*Л╥╗Й╦┴ Л═░Л╫■К⌠°           */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ - ╟Хаб╫ец╩╪Ь╧ЬцИ╧Ь
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ - ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬Л╥▄К╡┬
   *****************************************************************************/
   FUNCTION f_sRtre0060AcrqSeq(
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п   */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE          /*╟Хаб╫ец╩юо          */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└   */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE          /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╪Ж╠щ╟Э╦╝ > CMS╟Э╦╝ > ╟Хаб╫ец╩ а╤х╦ Select
+  -- Л┬≤Й╦┬Й╢─К╕╛ > CMSЙ╢─К╕╛ > ЙЁ└Л╒▄Л▀═Л╡╜ Л║╟М ▄ Select
   *****************************************************************************/
   PROCEDURE p_sRtreAccReq0060List (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_From_Dt        IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо             */
-    v_To_Dt          IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо             */
-    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*╟Хаб╫ец╩╠╦╨п           */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*аж╧╝╧Ьхё               */
-    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*╟М╟╢дз╣Е               */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ      */
-    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE         /*╟Аа╕╨╞╟Ф©Дц╩юз         */
+    v_From_Dt        IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪             */
+    v_To_Dt          IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪             */
+    v_Acrq_Tp        IN RTRE0060.ACRQ_TP%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Й╣╛К╤└           */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE,         /*Лё╪К╛╦К╡┬М≤╦               */
+    v_Cust_No        IN RTRE0060.CUST_NO%TYPE,        /*ЙЁ═Й╟²Л╫■К⌠°               */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°      */
+    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE         /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л·░         */
     );
 
   /*****************************************************************************
-  -- ╪Ж╠щ╟Э╦╝ > CMS╟Э╦╝ > ╟Хаб╫ец╩ ╢К╩С а╤х╦ Select
+  -- Л┬≤Й╦┬Й╢─К╕╛ > CMSЙ╢─К╕╛ > ЙЁ└Л╒▄Л▀═Л╡╜ К▄─Л┐│ Л║╟М ▄ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0060AccReqTargetList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*╟Хаб╫ец╩юоюз          */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪Л·░          */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ╪Ж╠щ╟Э╦╝ > CMS╟Э╦╝ > ╟Хаб╫ец╩ ╟А╟З ╧щ©╣ а╤х╦ Select
+  -- Л┬≤Й╦┬Й╢─К╕╛ > CMSЙ╢─К╕╛ > ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪ К╟≤Л≤│ Л║╟М ▄ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0060AccResultList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*╟Хаб╫ец╩юоюз          */
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*юш╬В╠╦╨п(╫ец╩╠╦╨п)     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪Л·░          */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*Л·▒Л≈┘Й╣╛К╤└(Л▀═Л╡╜Й╣╛К╤└)     */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ ╟Э╦╝ - RE-020201_╟Хаб╫ец╩ ╢К╩СаЩ╟Х
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Й╢─К╕╛ - RE-020201_ЙЁ└Л╒▄Л▀═Л╡╜ К▄─Л┐│Л╖▒ЙЁ└
   *****************************************************************************/
   PROCEDURE p_InsertRtre0060Aggregate (
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Fr_Rpc_Day     IN VARCHAR,                      /*╟Аа╕а╓╨╦ ╨╞╟Ф╫цюшюоюз */
-    v_To_Rpc_Day     IN VARCHAR,                      /*╟Аа╕а╓╨╦ ╨╞╟Фа╬╥Аюоюз */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Fr_Rpc_Day     IN VARCHAR,                      /*Й╡╟Л═°Л═∙КЁ╢ КЁ─Й╡╫Л▀°Л·▒Л²╪Л·░ */
+    v_To_Rpc_Day     IN VARCHAR,                      /*Й╡╟Л═°Л═∙КЁ╢ КЁ─Й╡╫Л╒┘Кё▄Л²╪Л·░ */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -187,92 +187,91 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0060 AS
 
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ ╟Э╦╝ - ╟Хаб╫ец╩ ╢К╩СаЩ╟Х юо╟Щ ╩Щ╪╨
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Й╢─К╕╛ - ЙЁ└Л╒▄Л▀═Л╡╜ К▄─Л┐│Л╖▒ЙЁ└ Л²╪Й╢└ Л┐²Л└╠
   *****************************************************************************/
   PROCEDURE p_InsertRtre0060Batch (
-    v_Acrq_Day       IN  RTRE0060.ACRQ_DAY%TYPE,      /*╟Хаб╫ец╩юо            */
-    v_Fr_Rpc_Day     IN  VARCHAR,                     /*╟Аа╕а╓╨╦ ╨╞╟Ф╫цюшюоюз */
-    v_To_Rpc_Day     IN  VARCHAR,                     /*╟Аа╕а╓╨╦ ╨╞╟Фа╬╥Аюоюз */
-    v_Reg_Id         IN  RTRE0060.REG_ID%TYPE,        /*╣Н╥оюз ID             */
-    v_Acrq_Cnt       OUT RTRE0099.ACRQ_CNT%TYPE,      /*╟Хаб╫ец╩╟г╪Ж          */
-    v_Accnrq_Cnt     OUT RTRE0099.ACCNRQ_CNT%TYPE,    /*╟ХабгьаЖ╟г╪Ж          */
+    v_Acrq_Day       IN  RTRE0060.ACRQ_DAY%TYPE,      /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Fr_Rpc_Day     IN  VARCHAR,                     /*Й╡╟Л═°Л═∙КЁ╢ КЁ─Й╡╫Л▀°Л·▒Л²╪Л·░ */
+    v_To_Rpc_Day     IN  VARCHAR,                     /*Й╡╟Л═°Л═∙КЁ╢ КЁ─Й╡╫Л╒┘Кё▄Л²╪Л·░ */
+    v_Reg_Id         IN  RTRE0060.REG_ID%TYPE,        /*К⌠╠К║²Л·░ ID             */
+    v_Acrq_Cnt       OUT RTRE0099.ACRQ_CNT%TYPE,      /*ЙЁ└Л╒▄Л▀═Л╡╜Й╠╢Л┬≤          */
+    v_Accnrq_Cnt     OUT RTRE0099.ACCNRQ_CNT%TYPE,    /*ЙЁ└Л╒▄М∙╢Л╖─Й╠╢Л┬≤          */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙(RTRE0060) Update - ╟Хаб╫ец╩цЁ╦╝ ╩Себ╦╕ ╨╞╟Ф
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜(RTRE0060) Update - ЙЁ└Л╒▄Л▀═Л╡╜Л╡≤К╕╛ Л┐│М┐°К╔╪ КЁ─Й╡╫
   *****************************************************************************/
   FUNCTION f_UpdateRtre0060AcrqSt (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Count - ╟Х╬Ю╧Ьхё фВгт а╦юГ©╘╨н х╝юн
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Count - ЙЁ└Л∙╫К╡┬М≤╦ М▐╛М∙╗ Л║╢Л·╛Л≈╛К╤─ М≥∙Л²╦
   *****************************************************************************/
   FUNCTION f_sRtre0060OrdCount(
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п   */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,         /*╟Хаб╫ец╩юо          */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,         /*╟Хаб╫ец╩╪Ь╧Ь        */
-    v_Ord_No         IN RTRE0060.ORD_NO%TYPE            /*╟Х╬Ю╧Ьхё            */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,          /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└   */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪          */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬        */
+    v_Ord_No         IN RTRE0060.ORD_NO%TYPE            /*ЙЁ└Л∙╫К╡┬М≤╦            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙(RTRE0060) Update - ╟Хаб╫ец╩цЁ╦╝╠╦╨п ╠Баь ╟Хаб╫ец╩цЁ╦╝ ╩Себ╦╕ ╨╞╟Ф
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜(RTRE0060) Update - ЙЁ└Л╒▄Л▀═Л╡╜Л╡≤К╕╛Й╣╛К╤└ Й╦╟Л╓─ ЙЁ└Л╒▄Л▀═Л╡╜Л╡≤К╕╛ Л┐│М┐°К╔╪ КЁ─Й╡╫
   *****************************************************************************/
   FUNCTION f_UpdateRtre0060AcrqTpSt (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙(RTRE0060) Update - ╟Хаб╫ец╩ цЁ╦╝╩Себ©м ╟А╟Здз╣Е ╬В╣╔юлф╝
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜(RTRE0060) Update - ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°Л≥─ Й╡╟ЙЁ╪Л╫■К⌠° Л≈┘К█╟Л²╢М┼╦
   *****************************************************************************/
   FUNCTION f_UpdateRtre0060AcrqcdSt (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙(RTRE0060) Update - ╟Хаб╫ец╩ цЁ╦╝╩Себ©м ╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь ╬В╣╔юлф╝
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜(RTRE0060) Update - ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°Л≥─ Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬ Л≈┘К█╟Л²╢М┼╦
   *****************************************************************************/
   FUNCTION f_UpdateRtre0060AcrqStRpcSeq (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*╟Хаб╫ец╩╪Ь╧Ь          */
-    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*╟Хаб╫ец╩ цЁ╦╝╩Себ     */
-    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*╟Хаб╫ец╩ ╟А╟Здз╣Е     */
-    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*╟Аа╕╨╞╟Ф©Дц╩╪Ь╧Ь      */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л┬°К╡┬          */
+    v_Acrq_St        IN RTRE0060.ACRQ_ST%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ Л╡≤К╕╛Л┐│М┐°     */
+    v_Acercd         IN RTRE0060.ACERCD%TYPE,         /*ЙЁ└Л╒▄Л▀═Л╡╜ Й╡╟ЙЁ╪Л╫■К⌠°     */
+    v_Rpc_Seq        IN RTRE0060.RPC_SEQ%TYPE,        /*Й╡╟Л═°КЁ─Й╡╫Л ■Л╡╜Л┬°К╡┬      */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╟Хаб╫ец╩ Ё╩©╙ Delete - ╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п, ╟Хаб╫ец╩юо ╠Баь ╦П╣н ╩Ха╕
+  -- ЙЁ└Л╒▄Л▀═Л╡╜ К┌╢Л≈╜ Delete - ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└, ЙЁ└Л╒▄Л▀═Л╡╜Л²╪ Й╦╟Л╓─ К╙╗К▒░ Л┌╜Л═°
   *****************************************************************************/
   FUNCTION f_DeleteRtre0060All (
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*╟Хаб╫ец╩ ╧ъ╩Щ╠╦╨п     */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*╟Хаб╫ец╩юо            */
-    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ЙЁ└Л╒▄Л▀═Л╡╜ К╟°Л┐²Й╣╛К╤└     */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ЙЁ└Л╒▄Л▀═Л╡╜Л²╪            */
+    v_Reg_Id         IN RTRE0060.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
 END Pkg_Rtre0060;
-/

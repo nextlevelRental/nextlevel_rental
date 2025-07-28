@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0423
-    PURPOSE     ≈√πËªÁ¡§∫∏ æ˜µ•¿Ã∆Æ
+    PURPOSE     ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ ÏóÖÎç∞Ïù¥Ìä∏
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
@@ -9,10 +9,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
 *******************************************************************************/
    
   /*****************************************************************************
-  -- ≈√πËªÁƒ⁄µÂ Count
+  -- ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú Count
   *****************************************************************************/
   FUNCTION f_sRtsd0423Count(
-    v_Logistics_Cd IN  RTSD0423.LOGISTICS_CD%TYPE            /*≈√πËªÁƒ⁄µÂ        */
+    v_Logistics_Cd IN  RTSD0423.LOGISTICS_CD%TYPE            /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -31,10 +31,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   END f_sRtsd0423Count;
   
   /*****************************************************************************
-  --≈√πËªÁƒ⁄µÂ∏Ì
+  --ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìúÎ™Ö
   *****************************************************************************/
   FUNCTION f_sRtsd0423Code(
-      v_Logistics_Nm             IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì              */
+      v_Logistics_Nm             IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö              */
     ) RETURN VARCHAR IS
     
     v_Cd   RTSD0423.LOGISTICS_CD%TYPE DEFAULT NULL;
@@ -54,10 +54,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   END f_sRtsd0423Code;
   
   /*****************************************************************************
-  --≈√πËªÁƒ⁄µÂ∏Ì
+  --ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìúÎ™Ö
   *****************************************************************************/
   FUNCTION f_sRtsd0423CodeName(
-      v_Logistics_Cd             IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁ∏Ì              */
+      v_Logistics_Cd             IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö              */
     ) RETURN VARCHAR IS
     
     v_CdNm   RTSD0423.LOGISTICS_NM%TYPE DEFAULT NULL;
@@ -77,7 +77,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   END f_sRtsd0423CodeName;
          
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏(IUD)
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥(IUD)
   
     REVISIONS
     Ver     Date        Author          Description
@@ -85,11 +85,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-04  kstka            [20220704_01] Created this package spec.
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0423 (
-      v_Comm_Dvsn                    IN CHAR                                        /*√≥∏Æ±∏∫–(I,U,D)      */
-    , v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*µÓ∑œ¿⁄ ID             */
+      v_Comm_Dvsn                    IN CHAR                                        /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)      */
+    , v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*Îì±Î°ùÏûê ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -98,7 +98,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   BEGIN
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µÓ∑œ¿⁄ ID('||v_Reg_Id||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù ∂«¥¬ ¿ﬂ∏¯µ» ∞™ ¿‘∑¬¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Îì±Î°ùÏûê ID('||v_Reg_Id||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩ ÎòêÎäî ÏûòÎ™ªÎêú Í∞í ÏûÖÎ†•ÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
@@ -111,7 +111,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
             , v_Reg_Id         
             , v_ErrorText
         ) THEN
-            v_Return_Message := '≈√πËªÁ ¡§∫∏ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText || '[' || v_Logistics_Cd || '::' || v_Logistics_Nm || '::' || v_Logistics_International || ']';
+            v_Return_Message := 'ÌÉùÎ∞∞ÏÇ¨ Ï†ïÎ≥¥ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText || '[' || v_Logistics_Cd || '::' || v_Logistics_Nm || '::' || v_Logistics_International || ']';
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -125,19 +125,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
             , v_Reg_Id
             , v_ErrorText
         ) THEN
-            v_Return_Message := '≈√πËªÁ ¡§∫∏ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ÌÉùÎ∞∞ÏÇ¨ Ï†ïÎ≥¥ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
         
     ELSE
-        v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;
 
     v_Success_code   := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -150,13 +150,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
 
   END p_IUDRtsd0423;
    
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏ Insert
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -164,10 +164,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-04  kstka            [20220704_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_InsertRtsd0423 (
-      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*µÓ∑œ¿⁄ ID             */
+      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -200,7 +200,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   END f_InsertRtsd0423;
   
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏ Update
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ Update
   
     REVISIONS
     Ver     Date        Author          Description
@@ -208,10 +208,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-04  kstka            [20220704_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0423 (
-      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                 /*µÓ∑œ¿⁄ ID             */
+      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                 /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS 
   BEGIN
@@ -235,4 +235,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0423 AS
   END f_UpdateRtsd0423;
   
 END Pkg_Rtsd0423;
-/

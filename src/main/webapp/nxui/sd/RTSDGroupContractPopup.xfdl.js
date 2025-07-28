@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("comGrp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -41,6 +42,7 @@
 
             obj = new Dataset("dsList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -52,6 +54,7 @@
 
             obj = new Dataset("comType", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -63,6 +66,7 @@
 
             obj = new Dataset("ds_ordNoList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -74,6 +78,7 @@
 
             obj = new Dataset("ds_ordNoListCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -188,7 +193,7 @@
             obj.set_taborder("136");
             obj.set_binddataset("ds_ordNoList");
             obj.set_cellsizingtype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"75\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"160\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"86\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약일자\"/><Cell col=\"1\" text=\"계약번호\"/><Cell col=\"2\" text=\"고객코드\"/><Cell col=\"3\" text=\"법정생년월일\"/><Cell col=\"4\" text=\"사업자번호\"/><Cell col=\"5\" text=\"고객명\"/><Cell col=\"6\" text=\"성별\"/><Cell col=\"7\" text=\"내외국인\"/><Cell col=\"8\" text=\"핸드폰\"/><Cell col=\"9\" text=\"핸드폰\"/><Cell col=\"10\" text=\"전화번호\"/><Cell col=\"11\" text=\"전화번호\"/><Cell col=\"12\" text=\"회사전화\"/><Cell col=\"13\" text=\"전화번호2\"/><Cell col=\"14\" text=\"주소\"/><Cell col=\"15\" text=\"차량번호\"/><Cell col=\"16\" text=\"차종\"/><Cell col=\"17\" text=\"계약상태\"/><Cell col=\"18\" text=\"상품\"/><Cell col=\"19\" text=\"장착예정일\"/><Cell col=\"20\" text=\"장착일\"/><Cell col=\"21\" text=\"판매상품명\"/><Cell col=\"22\" text=\"채널\"/><Cell col=\"23\" text=\"홈쇼핑\"/><Cell col=\"24\" text=\"월렌탈료\"/><Cell col=\"25\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"1\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"2\" text=\"bind:custNo\"/><Cell col=\"3\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-'**'-'**'\"/><Cell col=\"4\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"5\" text=\"bind:custNm\"/><Cell col=\"6\" text=\"bind:genderNm\"/><Cell col=\"7\" text=\"bind:lfNm\"/><Cell col=\"8\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"9\" text=\"bind:mobNo\"/><Cell col=\"10\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"11\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"12\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"13\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"14\" text=\"bind:addr\"/><Cell col=\"15\" text=\"bind:carNo\"/><Cell col=\"16\" text=\"bind:carKind\"/><Cell col=\"17\" text=\"bind:statNm\"/><Cell col=\"18\" style=\"align:left;\" text=\"bind:matNm\"/><Cell col=\"19\" displaytype=\"date\" text=\"bind:planDay\" calendardisplaynulltype=\"none\"/><Cell col=\"20\" displaytype=\"date\" text=\"bind:instDay\" calendardisplaynulltype=\"none\"/><Cell col=\"21\" text=\"bind:saleNm\"/><Cell col=\"22\" text=\"bind:chanNm\"/><Cell col=\"23\" text=\"bind:hshopGbNm\"/><Cell col=\"24\" displaytype=\"number\" style=\"align:right;\" text=\"bind:monAmt\"/><Cell col=\"25\" text=\"bind:grpNo\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"80\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"75\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"86\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약일자\"/><Cell col=\"1\" text=\"계약번호\"/><Cell col=\"2\" text=\"고객코드\"/><Cell col=\"3\" text=\"법정생년월일\"/><Cell col=\"4\" text=\"사업자번호\"/><Cell col=\"5\" text=\"고객명\"/><Cell col=\"6\" text=\"성별\"/><Cell col=\"7\" text=\"내외국인\"/><Cell col=\"8\" text=\"핸드폰\"/><Cell col=\"9\" text=\"핸드폰\"/><Cell col=\"10\" text=\"전화번호\"/><Cell col=\"11\" text=\"전화번호\"/><Cell col=\"12\" text=\"회사전화\"/><Cell col=\"13\" text=\"전화번호2\"/><Cell col=\"14\" text=\"주소\"/><Cell col=\"15\" text=\"차량번호\"/><Cell col=\"16\" text=\"차종\"/><Cell col=\"17\" text=\"계약상태\"/><Cell col=\"18\" text=\"판매상품명\"/><Cell col=\"19\" text=\"채널\"/><Cell col=\"20\" text=\"홈쇼핑\"/><Cell col=\"21\" text=\"월렌탈료\"/><Cell col=\"22\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"1\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"2\" text=\"bind:custNo\"/><Cell col=\"3\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-'**'-'**'\"/><Cell col=\"4\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"5\" text=\"bind:custNm\"/><Cell col=\"6\" text=\"bind:genderNm\"/><Cell col=\"7\" text=\"bind:lfNm\"/><Cell col=\"8\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"9\" text=\"bind:mobNo\"/><Cell col=\"10\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"11\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"12\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"13\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"14\" text=\"bind:addr\"/><Cell col=\"15\" text=\"bind:carNo\"/><Cell col=\"16\" text=\"bind:carKind\"/><Cell col=\"17\" text=\"bind:statNm\"/><Cell col=\"18\" text=\"bind:saleNm\"/><Cell col=\"19\" text=\"bind:chanNm\"/><Cell col=\"20\" text=\"bind:hshopGbNm\"/><Cell col=\"21\" displaytype=\"number\" style=\"align:right;\" text=\"bind:monAmt\"/><Cell col=\"22\" text=\"bind:grpNo\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static01", "absolute", "10", "152", "89", "20", null, null, this);
@@ -361,10 +366,6 @@
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_matNm", "absolute", "155", "155", "200", "21", null, null, this.div_ordNoDetail);
-            obj.set_taborder("133");
-            obj.set_enable("false");
-            this.div_ordNoDetail.addChild(obj.name, obj);
             obj = new Edit("ed_statNm", "absolute", "155", "125", "200", "21", null, null, this.div_ordNoDetail);
             obj.set_taborder("134");
             obj.set_enable("false");
@@ -392,12 +393,6 @@
             obj = new Static("st_statNm", "absolute", "0", "120", "150", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("139");
             obj.set_text("계약상태");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm", "absolute", "0", "150", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("140");
-            obj.set_text("상품명");
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
@@ -434,33 +429,23 @@
             obj.set_taborder("145");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm00", "absolute", "0", "180", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("146");
-            obj.set_text("계절구분");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_seasonCd", "absolute", "155", "185", "200", "21", null, null, this.div_ordNoDetail);
-            obj.set_taborder("147");
-            obj.set_enable("false");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm01", "absolute", "360", "180", "150", "31", null, null, this.div_ordNoDetail);
+            obj = new Static("st_matNm01", "absolute", "0", "150", "150", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("148");
             obj.set_text("판매상품명");
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_seasonCd00", "absolute", "516", "185", "200", "20", null, null, this.div_ordNoDetail);
+            obj = new Edit("ed_seasonCd00", "absolute", "155", "155", "200", "20", null, null, this.div_ordNoDetail);
             obj.set_taborder("149");
             obj.set_enable("false");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm02", "absolute", "721", "180", "150", "31", null, null, this.div_ordNoDetail);
+            obj = new Static("st_matNm02", "absolute", "0", "180", "150", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("150");
             obj.set_text("월렌탈료");
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new MaskEdit("mae_seasonCd01", "absolute", "77.52%", "184", "241", "20", null, null, this.div_ordNoDetail);
+            obj = new MaskEdit("mae_seasonCd01", "absolute", "155", "185", "200", "20", null, null, this.div_ordNoDetail);
             obj.set_taborder("152");
             obj.set_mask("###,###,###,##0");
             obj.set_enable("false");
@@ -548,16 +533,10 @@
             obj = new BindItem("item13","div_ordNoDetail.ed_addr","value","ds_ordNoList","addr");
             this.addChild(obj.name, obj);
             obj.bind();
-            obj = new BindItem("item14","div_ordNoDetail.ed_matNm","value","ds_ordNoList","matNm");
-            this.addChild(obj.name, obj);
-            obj.bind();
             obj = new BindItem("item15","div_ordNoDetail.cal_planDay","value","ds_ordNoList","planDay");
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item16","div_ordNoDetail.cal_instDay","value","ds_ordNoList","instDay");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item17","div_ordNoDetail.ed_seasonCd","value","ds_ordNoList","seasonNm");
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item18","div_ordNoDetail.ed_seasonCd00","value","ds_ordNoList","saleNm");
@@ -896,11 +875,9 @@
             this.div_ordNoDetail.ed_ordNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_custNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_carKind.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_ordNoDetail.ed_matNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_statNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_mobNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_carNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_ordNoDetail.ed_seasonCd.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.st_matNm01.addEventHandler("onclick", this.div_ordNoDetail_st_matNm01_onclick, this);
             this.div_ordNoDetail.ed_seasonCd00.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
 

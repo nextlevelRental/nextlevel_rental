@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0040 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0040
-   PURPOSE   ¹«ÅëÀå ¼ö³³³»¿ª °ü¸®
+   PURPOSE   ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,126 +10,125 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0040 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª Count
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0040Count(
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE          /*¼ö³³°Å·¡¹øÈ£        */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE          /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª Select
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0040 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*¼ö³³±Ý¾×              */
-    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*¼ö³³¹æ¹ý              */
-    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*¼ö³³À¯Çü              */
-    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ÀºÇàÀÔ±ÝÀÏ            */
-    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*¼ö³³Ãë¼Ò°Å·¡¹øÈ£      */
-    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*¼ö³³Ãë¼Ò¿©ºÎ          */
-    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*¼ö³³ÀÚ ID             */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ê¸ˆì•¡              */
+    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*ìˆ˜ë‚©ë°©ë²•              */
+    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*ìˆ˜ë‚©ìœ í˜•              */
+    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ì€í–‰ìž…ê¸ˆì¼            */
+    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸      */
+    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€          */
+    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*ìˆ˜ë‚©ìž ID             */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª Insert
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0040 (
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*¼ö³³±Ý¾×              */
-    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*¼ö³³¹æ¹ý              */
-    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*¼ö³³À¯Çü              */
-    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ÀºÇàÀÔ±ÝÀÏ            */
-    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*¼ö³³Ãë¼Ò°Å·¡¹øÈ£      */
-    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*¼ö³³Ãë¼Ò¿©ºÎ          */
-    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*¼ö³³ÀÚ ID             */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ê¸ˆì•¡              */
+    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*ìˆ˜ë‚©ë°©ë²•              */
+    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*ìˆ˜ë‚©ìœ í˜•              */
+    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ì€í–‰ìž…ê¸ˆì¼            */
+    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸      */
+    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€          */
+    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*ìˆ˜ë‚©ìž ID             */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª Update
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0040 (
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*¼ö³³±Ý¾×              */
-    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*¼ö³³¹æ¹ý              */
-    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*¼ö³³À¯Çü              */
-    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ÀºÇàÀÔ±ÝÀÏ            */
-    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*¼ö³³Ãë¼Ò°Å·¡¹øÈ£      */
-    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*¼ö³³Ãë¼Ò¿©ºÎ          */
-    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*¼ö³³ÀÚ ID             */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ê¸ˆì•¡              */
+    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*ìˆ˜ë‚©ë°©ë²•              */
+    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*ìˆ˜ë‚©ìœ í˜•              */
+    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ì€í–‰ìž…ê¸ˆì¼            */
+    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸      */
+    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€          */
+    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*ìˆ˜ë‚©ìž ID             */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª Delete
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0040 (
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª °ü¸®(IUD)
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0040 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Recv_Seq       IN OUT RTRE0040.RECV_SEQ%TYPE,   /*¼ö³³°Å·¡¹øÈ£          */
-    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*¼ö³³±Ý¾×              */
-    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*¼ö³³¹æ¹ý              */
-    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*¼ö³³À¯Çü              */
-    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ÀºÇàÀÔ±ÝÀÏ            */
-    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*¼ö³³Ãë¼Ò°Å·¡¹øÈ£      */
-    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*¼ö³³Ãë¼Ò¿©ºÎ          */
-    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*¼ö³³ÀÚ ID             */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Recv_Seq       IN OUT RTRE0040.RECV_SEQ%TYPE,   /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Amt       IN RTRE0040.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ê¸ˆì•¡              */
+    v_Recp_Pay       IN RTRE0040.RECP_PAY%TYPE,       /*ìˆ˜ë‚©ë°©ë²•              */
+    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*ìˆ˜ë‚©ìœ í˜•              */
+    v_Bank_Recp_Day  IN RTRE0040.BANK_RECP_DAY%TYPE,  /*ì€í–‰ìž…ê¸ˆì¼            */
+    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸      */
+    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€          */
+    v_Recp_Id        IN RTRE0040.RECP_ID%TYPE,        /*ìˆ˜ë‚©ìž ID             */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª - ¼ö³³°Å·¡¹øÈ£ Ã¼¹ø È¹µæ
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ - ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ ì²´ë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0040RecvSeq RETURN NUMBER;
   
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª - Ãë¼Ò°¡´É¿©ºÎ ÆÇ´Ü - Ãë¼Ò°¡´É»óÅÂ °Ç¼ö È¹µæ
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ - ì·¨ì†Œê°€ëŠ¥ì—¬ë¶€ íŒë‹¨ - ì·¨ì†Œê°€ëŠ¥ìƒíƒœ ê±´ìˆ˜ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0040CncCount(
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE          /*¼ö³³°Å·¡¹øÈ£        */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE          /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸        */
     ) RETURN NUMBER;
       
   /*****************************************************************************
-  -- ¹«ÅëÀå ¼ö³³³»¿ª - ¼ö³³Ãë¼Ò - ¿ø°Å·¡¼ö³³¼öÁ¤
+  -- ë¬´í†µìž¥ ìˆ˜ë‚©ë‚´ì—­ - ìˆ˜ë‚©ì·¨ì†Œ - ì›ê±°ëž˜ìˆ˜ë‚©ìˆ˜ì •
   *****************************************************************************/
   FUNCTION f_UpdateRtre0040Cancel (
-    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*¼ö³³À¯Çü              */
-    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*¼ö³³Ãë¼Ò°Å·¡¹øÈ£      */
-    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*¼ö³³Ãë¼Ò¿©ºÎ          */
-    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0040.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Recv_Day       IN RTRE0040.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Ord_No         IN RTRE0040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Fg        IN RTRE0040.RECP_FG%TYPE,        /*ìˆ˜ë‚©ìœ í˜•              */
+    v_Cnc_Rseq       IN RTRE0040.CNC_RSEQ%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸      */
+    v_Cnc_Stat       IN RTRE0040.CNC_STAT%TYPE,       /*ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€          */
+    v_Reg_Id         IN RTRE0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtre0040;
-/

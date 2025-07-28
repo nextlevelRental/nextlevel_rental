@@ -1192,26 +1192,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0041 AS
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT ORD_NO           -- 계약번호
-         , ZFB_DAY          -- 연체일/ 청구일자
-         , RECP_NU          -- 청구회차
-         , SALE_AMT         -- 청구금액
-         , ARRE_AMT         -- 미납금액
-         , RECP_AMT         -- 수납금액
-         , RC_DAY           -- 최종수납일
-         , PAY_DD           -- 결제일
-         , PAY_MTHD         -- 결제수단
-         , Pkg_Rtcm0051.f_sRtcm0051Codename('R004', PAY_MTHD)     PAY_MTHD_NM --결제수단명
-      FROM RTSD0109
+    SELECT A.ORD_NO           -- 계약번호
+         , A.ZFB_DAY          -- 연체일/ 청구일자
+         , A.RECP_NU          -- 청구회차
+         , A.SALE_AMT         -- 청구금액
+         , A.ARRE_AMT         -- 미납금액
+         , A.RECP_AMT         -- 수납금액
+         , A.RC_DAY           -- 최종수납일
+         , A.PAY_DD           -- 결제일
+         , A.PAY_MTHD         -- 결제수단
+         , Pkg_Rtcm0051.f_sRtcm0051Codename('R004', A.PAY_MTHD)     PAY_MTHD_NM --결제수단명
+      FROM RTSD0109 A, RTSD0108 B
      WHERE 1=1
-       AND ORD_NO = DECODE(v_Ord_No , NULL, ORD_NO , v_Ord_No)
-       AND ARRE_AMT > 0
-       AND SCD_STAT = 'S'
-       AND ZLSPR    = 'N'             
-       AND RC_YN    <> 'Y'            
-       AND USE_YN   = 'Y'       
-       AND (v_Str_Day IS NULL OR ZFB_DAY BETWEEN v_Str_Day AND v_End_Day)
-     ORDER BY  ZFB_DAY ASC ;
+       AND A.ORD_NO = B.ORD_NO
+       AND A.ORD_NO = DECODE(v_Ord_No , NULL, A.ORD_NO , v_Ord_No)
+--       AND A.ARRE_AMT > 0
+       AND A.SCD_STAT = 'S'
+       AND A.ZLSPR    = 'N'             
+--       AND A.RC_YN    <> 'Y'            
+       AND A.USE_YN   = 'Y'       
+       AND (v_Str_Day IS NULL OR A.ZFB_DAY BETWEEN DECODE(v_Str_Day, NULL, B.PROC_DAY, v_Str_Day) AND DECODE(v_End_Day, NULL, TO_CHAR(SYSDATE, 'YYYYMMDD'), v_End_Day))
+     ORDER BY  A.ZFB_DAY ASC ;
 
   END p_sRtre0041ArreDtlListNew;  
 
@@ -2382,4 +2383,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0041 AS
   END p_InsertRtre0041PgPrptReceipt;
 
 END Pkg_Rtre0041;
-/

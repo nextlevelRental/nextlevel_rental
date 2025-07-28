@@ -1712,7 +1712,7 @@ if ( !JsNamespace.exist("Ex.core")  )
 		*/
 		trLogin : function(obj,sSvcId,id,pw,bprogress)		
 		{
-		alert("");
+		
 			Ex.core.onload(obj);
 			if(Eco.isEmpty(bprogress)) bprogress =true;
 			 if(Eco.isEmpty(id))
@@ -1809,7 +1809,7 @@ if ( !JsNamespace.exist("Ex.core")  )
 		*/
 		tran : function()
 		{
-
+			
 			if(application.gv_prjType == "false") return;
 			
 			var svcID, sController, inDatasets, outDatasets, argument, callbackFunc, showProgress, bAsync, bBinary;

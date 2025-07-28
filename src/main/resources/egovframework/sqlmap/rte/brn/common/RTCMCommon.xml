@@ -279,4 +279,72 @@
 	<procedure id="comm.runQuery" parameterMap="runQuery">
 		{call Pkg_Comm.p_RunSql(?, ?, ?, ?)}
 	</procedure>
+	
+	<parameterMap class="java.util.Map" id="insertRtsd0218">
+    	<parameter property="templateSeq"    jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="receiverSeq"    jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="docSeq"         jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="sendCode"       jdbcType="NUMERIC" mode="IN" />
+    	<parameter property="sendMessage"    jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="ordNo"    jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="custNo"    jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="custNm"         jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="mobNo"          jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="birthDay"       jdbcType="VARCHAR"    mode="IN" />
+    	<parameter property="state"       jdbcType="VARCHAR"    mode="IN" />
+    	<parameter property="regId"          jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="chgId"          jdbcType="VARCHAR" mode="IN" />
+    	<parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+    	<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+    	<parameter property="errorText"      jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="comm.insertRtsd0218" parameterMap="insertRtsd0218">
+    	{call Pkg_Rtsd0218.p_InsertRtsd0218(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="updateRtsd0218">
+	    <parameter property="receiverSeq"    jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="docSeq"         jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="sendCode"       jdbcType="NUMERIC" mode="IN" />
+	    <parameter property="sendMessage"    jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="state"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="chgId"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+	    <parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+	    <parameter property="errorText"      jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="comm.updateRtsd0218" parameterMap="updateRtsd0218">
+    	{call Pkg_Rtsd0218.p_UpdateRtsd0218(?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="updateCustNoRtsd0218">
+	    <parameter property="receiverSeq"    jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="docSeq"         jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="custNo"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="chgId"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+	    <parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+	    <parameter property="errorText"      jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="comm.updateCustNoRtsd0218" parameterMap="updateCustNoRtsd0218">
+    	{call Pkg_Rtsd0218.p_UpdateCustNoRtsd0218(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
+	<parameterMap class="java.util.Map" id="updateOrdNoRtsd0218">
+	    <parameter property="receiverSeq"    jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="docSeq"         jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="ordNo"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="chgId"          jdbcType="VARCHAR" mode="IN" />
+	    <parameter property="successCode"    jdbcType="NUMERIC" mode="OUT" />
+	    <parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+	    <parameter property="errorText"      jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+	
+	<procedure id="comm.updateOrdNoRtsd0218" parameterMap="updateOrdNoRtsd0218">
+    	{call Pkg_Rtsd0218.p_UpdateOrdNoRtsd0218(?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+	
 </sqlMap>

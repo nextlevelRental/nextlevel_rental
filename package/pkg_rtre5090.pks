@@ -1,76 +1,75 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5090 AS
 /*******************************************************************************
     NAME        PKG_RTRE5090
-    PURPOSE     ¹æ¹®Á¡°Ë¼ö¼ö·á ±âÃÊÁý°è °ü¸®
+    PURPOSE     ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆì§‘ê³„ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-24  wjim            ½Å±ÔÀÛ¼º
+    1.0     2017-05-24  wjim            ì‹ ê·œìž‘ì„±
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë¼ö¼ö·á ±âÃÊÁý°è Select
+  -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆì§‘ê³„ Select
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-24  wjim            ½Å±ÔÀÛ¼º
+    1.0     2017-05-24  wjim            ì‹ ê·œìž‘ì„±
   *****************************************************************************/
   PROCEDURE p_sRtre5090 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*¸¶°¨³â¿ù            */    
+    , v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*ë§ˆê°ë…„ì›”            */    
   );
 
   /*****************************************************************************
-   -- ¹æ¹®Á¡°Ë¼ö¼ö·á ±âÃÊ Áý°è
+   -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-24  wjim            ½Å±ÔÀÛ¼º
+    1.0     2017-05-24  wjim            ì‹ ê·œìž‘ì„±
    *****************************************************************************/
-  PROCEDURE p_CreateRtre5090RegularchkComm(  v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE  /* ¸¶°¨³â¿ù */
-                                           , v_Amt_Comm       IN RTRE5090.AMT_COMM%TYPE /*±âº»¼ö¼ö·á */
-                                           , v_Reg_Id         IN RTRE5090.REG_ID%TYPE   /* ÀÛ¾÷ÀÚ ID */
+  PROCEDURE p_CreateRtre5090RegularchkComm(  v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE  /* ë§ˆê°ë…„ì›” */
+                                           , v_Amt_Comm       IN RTRE5090.AMT_COMM%TYPE /*ê¸°ë³¸ìˆ˜ìˆ˜ë£Œ */
+                                           , v_Reg_Id         IN RTRE5090.REG_ID%TYPE   /* ìž‘ì—…ìž ID */
                                            , v_Success_Code   OUT NUMBER
                                            , v_Return_Message OUT VARCHAR2
                                            , v_ErrorText      OUT VARCHAR2
                                           );
   
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ
+  -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-24  wjim            ½Å±ÔÀÛ¼º
+    1.0     2017-05-24  wjim            ì‹ ê·œìž‘ì„±
   *****************************************************************************/
   FUNCTION f_UpdateRtre5090Commamt (
-      v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*¸¶°¨³â¿ù            */
-    , v_Std_Ym         IN RTRE5090.STD_YM%TYPE          /*¹èÁ¤±âÁØ³â¿ù        */
-    , v_Ord_No         IN RTRE5090.ORD_NO%TYPE          /*°è¾à¹øÈ£            */
-    , v_Amt_Comm       IN RTRE5090.AMT_COMM%TYPE        /*º¯°æ¼ö¼ö·á          */
-    , v_Chg_Job_Seq    IN RTRE5090.CHG_JOB_SEQ%TYPE     /*º¯°æÀÛ¾÷È¸Â÷        */        
-    , v_Reg_Id         IN RTRE5090.REG_ID%TYPE          /*ÀÛ¾÷ÀÚ ID           */
+      v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*ë§ˆê°ë…„ì›”            */
+    , v_Std_Ym         IN RTRE5090.STD_YM%TYPE          /*ë°°ì •ê¸°ì¤€ë…„ì›”        */
+    , v_Ord_No         IN RTRE5090.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸            */
+    , v_Amt_Comm       IN RTRE5090.AMT_COMM%TYPE        /*ë³€ê²½ìˆ˜ìˆ˜ë£Œ          */
+    , v_Chg_Job_Seq    IN RTRE5090.CHG_JOB_SEQ%TYPE     /*ë³€ê²½ìž‘ì—…íšŒì°¨        */        
+    , v_Reg_Id         IN RTRE5090.REG_ID%TYPE          /*ìž‘ì—…ìž ID           */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
 /*****************************************************************************
-  -- NEW ¹æ¹®Á¡°Ë¼ö¼ö·á ±âÃÊ Áý°è
+  -- NEW ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-24  wjim            ½Å±ÔÀÛ¼º
+    1.0     2017-05-24  wjim            ì‹ ê·œìž‘ì„±
   *****************************************************************************/
   PROCEDURE p_CreateRtre5090RegularchkNew (
-      v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*¸¶°¨³â¿ù          */
-    , v_Reg_Id         IN RTRE5090.REG_ID%TYPE       /*ÀÛ¾÷ÀÚ ID           */
+      v_Slcm_Ym        IN RTRE5090.SLCM_YM%TYPE         /*ë§ˆê°ë…„ì›”          */
+    , v_Reg_Id         IN RTRE5090.REG_ID%TYPE       /*ìž‘ì—…ìž ID           */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
 
 END PKG_RTRE5090;
-/

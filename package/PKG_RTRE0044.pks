@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0044 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0044
-   PURPOSE   KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª °ü¸®
+   PURPOSE   KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,166 +10,165 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0044 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Count
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0044Count(
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,        /*Ã¼Å©ÀÏÀÚ            */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,        /*È¸Â÷                */
-    v_Cseq           IN RTRE0044.CSEQ%TYPE              /*¼ø¹ø                */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,        /*ì²´í¬ì¼ìž            */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,        /*íšŒì°¨                */
+    v_Cseq           IN RTRE0044.CSEQ%TYPE              /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Select
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0044 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE         /*Â÷ÀÌ¿©ºÎ              */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE         /*ì°¨ì´ì—¬ë¶€              */
     );
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Insert
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0044 (
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*¼ø¹ø                  */
-    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ÀºÇà¸í                */
-    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*Ä«µå»ç¸í              */
-    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*°Å·¡±Ý¾×              */
-    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*°Å·¡»óÅÂ              */
-    v_App_Day        IN RTRE0044.APP_DAY%TYPE,        /*½ÂÀÎÀÏÀÚ              */
-    v_Cnc_Day        IN RTRE0044.CNC_DAY%TYPE,        /*Ãë¼ÒÀÏÀÚ              */
-    v_Pcnc_Day       IN RTRE0044.PCNC_DAY%TYPE,       /*ºÎºÐÃë¼ÒÀÏÀÚ          */
-    v_Tno            IN RTRE0044.TNO%TYPE,            /*°Å·¡¹øÈ£              */
-    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cnc_Amt        IN RTRE0044.CNC_AMT%TYPE,        /*Ãë¼Ò±Ý¾×              */
-    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*Ãë¼Ò°¡´É±Ý¾×          */
-    v_Recp_Amt       IN RTRE0044.RECP_AMT%TYPE,       /*¼ö³³Ã³¸®±Ý¾×          */
-    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE,        /*Â÷ÀÌ¿©ºÎ              */
-    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*ìˆœë²ˆ                  */
+    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ì€í–‰ëª…                */
+    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*ì¹´ë“œì‚¬ëª…              */
+    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*ê±°ëž˜ê¸ˆì•¡              */
+    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*ê±°ëž˜ìƒíƒœ              */
+    v_App_Day        IN RTRE0044.APP_DAY%TYPE,        /*ìŠ¹ì¸ì¼ìž              */
+    v_Cnc_Day        IN RTRE0044.CNC_DAY%TYPE,        /*ì·¨ì†Œì¼ìž              */
+    v_Pcnc_Day       IN RTRE0044.PCNC_DAY%TYPE,       /*ë¶€ë¶„ì·¨ì†Œì¼ìž          */
+    v_Tno            IN RTRE0044.TNO%TYPE,            /*ê±°ëž˜ë²ˆí˜¸              */
+    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cnc_Amt        IN RTRE0044.CNC_AMT%TYPE,        /*ì·¨ì†Œê¸ˆì•¡              */
+    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡          */
+    v_Recp_Amt       IN RTRE0044.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡          */
+    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE,        /*ì°¨ì´ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Update
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0044 (
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*¼ø¹ø                  */
-    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ÀºÇà¸í                */
-    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*Ä«µå»ç¸í              */
-    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*°Å·¡±Ý¾×              */
-    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*°Å·¡»óÅÂ              */
-    v_App_Day        IN RTRE0044.APP_DAY%TYPE,        /*½ÂÀÎÀÏÀÚ              */
-    v_Cnc_Day        IN RTRE0044.CNC_DAY%TYPE,        /*Ãë¼ÒÀÏÀÚ              */
-    v_Pcnc_Day       IN RTRE0044.PCNC_DAY%TYPE,       /*ºÎºÐÃë¼ÒÀÏÀÚ          */
-    v_Tno            IN RTRE0044.TNO%TYPE,            /*°Å·¡¹øÈ£              */
-    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cnc_Amt        IN RTRE0044.CNC_AMT%TYPE,        /*Ãë¼Ò±Ý¾×              */
-    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*Ãë¼Ò°¡´É±Ý¾×          */
-    v_Recp_Amt       IN RTRE0044.RECP_AMT%TYPE,       /*¼ö³³Ã³¸®±Ý¾×          */
-    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE,        /*Â÷ÀÌ¿©ºÎ              */
-    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*ìˆœë²ˆ                  */
+    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ì€í–‰ëª…                */
+    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*ì¹´ë“œì‚¬ëª…              */
+    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*ê±°ëž˜ê¸ˆì•¡              */
+    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*ê±°ëž˜ìƒíƒœ              */
+    v_App_Day        IN RTRE0044.APP_DAY%TYPE,        /*ìŠ¹ì¸ì¼ìž              */
+    v_Cnc_Day        IN RTRE0044.CNC_DAY%TYPE,        /*ì·¨ì†Œì¼ìž              */
+    v_Pcnc_Day       IN RTRE0044.PCNC_DAY%TYPE,       /*ë¶€ë¶„ì·¨ì†Œì¼ìž          */
+    v_Tno            IN RTRE0044.TNO%TYPE,            /*ê±°ëž˜ë²ˆí˜¸              */
+    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cnc_Amt        IN RTRE0044.CNC_AMT%TYPE,        /*ì·¨ì†Œê¸ˆì•¡              */
+    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡          */
+    v_Recp_Amt       IN RTRE0044.RECP_AMT%TYPE,       /*ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡          */
+    v_Diff_Yn        IN RTRE0044.DIFF_YN%TYPE,        /*ì°¨ì´ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Delete
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0044 (
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*¼ø¹ø                  */
-    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Cseq           IN RTRE0044.CSEQ%TYPE,           /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª °ü¸®(IUD)
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0044 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Dup_Gb         IN CHAR,                         /*Áßº¹±¸ºÐ(I,M)         */
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Cseq           IN OUT RTRE0044.CSEQ%TYPE,       /*¼ø¹ø                  */
-    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ÀºÇà¸í                */
-    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*Ä«µå»ç¸í              */
-    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*°Å·¡±Ý¾×              */
-    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*°Å·¡»óÅÂ              */
-    v_App_Day        IN VARCHAR2,                     /*½ÂÀÎÀÏÀÚ              */
-    v_Cnc_Day        IN VARCHAR2,                     /*Ãë¼ÒÀÏÀÚ              */
-    v_Pcnc_Day       IN VARCHAR2,                     /*ºÎºÐÃë¼ÒÀÏÀÚ          */
-    v_Tno            IN RTRE0044.TNO%TYPE,            /*°Å·¡¹øÈ£              */
-    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*Ãë¼Ò°¡´É±Ý¾×          */
-    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Dup_Gb         IN CHAR,                         /*ì¤‘ë³µêµ¬ë¶„(I,M)         */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Cseq           IN OUT RTRE0044.CSEQ%TYPE,       /*ìˆœë²ˆ                  */
+    v_Ord_No         IN RTRE0044.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0044.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Recp_Pay       IN RTRE0044.RECP_PAY%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Bank_Nm        IN RTRE0044.BANK_NM%TYPE,        /*ì€í–‰ëª…                */
+    v_Cardcom_Nm     IN RTRE0044.CARDCOM_NM%TYPE,     /*ì¹´ë“œì‚¬ëª…              */
+    v_App_Amt        IN RTRE0044.APP_AMT%TYPE,        /*ê±°ëž˜ê¸ˆì•¡              */
+    v_St_Desc        IN RTRE0044.ST_DESC%TYPE,        /*ê±°ëž˜ìƒíƒœ              */
+    v_App_Day        IN VARCHAR2,                     /*ìŠ¹ì¸ì¼ìž              */
+    v_Cnc_Day        IN VARCHAR2,                     /*ì·¨ì†Œì¼ìž              */
+    v_Pcnc_Day       IN VARCHAR2,                     /*ë¶€ë¶„ì·¨ì†Œì¼ìž          */
+    v_Tno            IN RTRE0044.TNO%TYPE,            /*ê±°ëž˜ë²ˆí˜¸              */
+    v_App_Desc       IN RTRE0044.APP_DESC%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cncp_Amt       IN RTRE0044.CNCP_AMT%TYPE,       /*ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡          */
+    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª - ¼ø¹ø È¹µæ
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ - ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0044Cseq(
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,        /*Ã¼Å©ÀÏÀÚ            */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE         /*È¸Â÷                */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,        /*ì²´í¬ì¼ìž            */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE         /*íšŒì°¨                */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Select - È¸Â÷ È¹µæ
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Select - íšŒì°¨ íšë“
   *****************************************************************************/
   PROCEDURE p_sRtre0044CheckSet (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE       /*Ã¼Å©ÀÏÀÚ              */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE       /*ì²´í¬ì¼ìž              */
     );
       
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Count - TNO ±âÁØ Áßº¹Ã¼Å©
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Count - TNO ê¸°ì¤€ ì¤‘ë³µì²´í¬
   *****************************************************************************/
   FUNCTION f_sRtre0044TnoDupCheck(
-    v_Check_Day      IN  RTRE0044.CHECK_DAY%TYPE,     /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN  RTRE0044.CHECK_SET%TYPE,     /*È¸Â÷                  */
-    v_Tno            IN  RTRE0044.TNO%TYPE            /*°Å·¡¹øÈ£              */  
+    v_Check_Day      IN  RTRE0044.CHECK_DAY%TYPE,     /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN  RTRE0044.CHECK_SET%TYPE,     /*íšŒì°¨                  */
+    v_Tno            IN  RTRE0044.TNO%TYPE            /*ê±°ëž˜ë²ˆí˜¸              */  
     ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª Count - TNO ±âÁØ °Å·¡±Ý¾×°ú Ãë¼Ò°¡´É±Ý¾× Ã¼Å©
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ Count - TNO ê¸°ì¤€ ê±°ëž˜ê¸ˆì•¡ê³¼ ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡ ì²´í¬
   *****************************************************************************/
   FUNCTION f_sRtre0044TnoValueCheck(
-    v_Check_Day      IN  RTRE0044.CHECK_DAY%TYPE,     /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN  RTRE0044.CHECK_SET%TYPE,     /*È¸Â÷                  */
-    v_Tno            IN  RTRE0044.TNO%TYPE,           /*°Å·¡¹øÈ£              */        
-    v_App_Amt        IN  RTRE0044.APP_AMT%TYPE,       /*°Å·¡±Ý¾×              */
-    v_Cncp_Amt       IN  RTRE0044.CNCP_AMT%TYPE       /*Ãë¼Ò°¡´É±Ý¾×          */
+    v_Check_Day      IN  RTRE0044.CHECK_DAY%TYPE,     /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN  RTRE0044.CHECK_SET%TYPE,     /*íšŒì°¨                  */
+    v_Tno            IN  RTRE0044.TNO%TYPE,           /*ê±°ëž˜ë²ˆí˜¸              */        
+    v_App_Amt        IN  RTRE0044.APP_AMT%TYPE,       /*ê±°ëž˜ê¸ˆì•¡              */
+    v_Cncp_Amt       IN  RTRE0044.CNCP_AMT%TYPE       /*ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡          */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- KCP °áÁ¦ ´ë»ç ±âÃÊ³»¿ª °ü¸® - KCP °áÁ¦³»¿ª Ã¼Å©
+  -- KCP ê²°ì œ ëŒ€ì‚¬ ê¸°ì´ˆë‚´ì—­ ê´€ë¦¬ - KCP ê²°ì œë‚´ì—­ ì²´í¬
   *****************************************************************************/
   PROCEDURE p_UpdateRtre0044Check (
-    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*Ã¼Å©ÀÏÀÚ              */
-    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*È¸Â÷                  */
-    v_Job_Gb         IN CHAR,                         /*Ã³¸®±¸ºÐ(N:½Å±ÔO:±âÁ¸)*/
-    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Check_Day      IN RTRE0044.CHECK_DAY%TYPE,      /*ì²´í¬ì¼ìž              */
+    v_Check_Set      IN RTRE0044.CHECK_SET%TYPE,      /*íšŒì°¨                  */
+    v_Job_Gb         IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(N:ì‹ ê·œO:ê¸°ì¡´)*/
+    v_Reg_Id         IN RTRE0044.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
 END Pkg_Rtre0044;
-/

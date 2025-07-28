@@ -22,4 +22,8 @@ public interface CommonService {
 	Map listTireDetailInfo2(Map<String, Object> inVar) throws Exception;
 	Map<String, Object> listControlAuth(Map<String, Object> inVar) throws Exception;
 	Map runQuery(Map<String, Object> inVar) throws Exception;
+	Map insertRtsd0218(Map<String, Object> inVar) throws Exception;
+	Map updateRtsd0218(Map<String, Object> inVar) throws Exception;
+	Map updateCustNoRtsd0218(Map<String, Object> inVar) throws Exception;
+	Map updateOrdNoRtsd0218(Map<String, Object> inVar) throws Exception;
 }

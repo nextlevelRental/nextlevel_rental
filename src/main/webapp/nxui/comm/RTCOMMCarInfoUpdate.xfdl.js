@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_maker", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_model", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -231,6 +233,19 @@
         // User Script
         this.addIncludeScript("RTCOMMCarInfoUpdate.xfdl", "lib::comLib.xjs");
         this.registerScript("RTCOMMCarInfoUpdate.xfdl", function() {
+        /***************************************************************************************************
+         * 파 일 명 : RTCOMMCarInfoUpdate.xfdl
+         * 설    명 : 차량정보변경(팝업)
+         * 작 성 자 :
+         * 변경이력 :
+         * 변경일자		변경자		변경내용
+         * ----------	------		--------
+         * ...			...			...
+         * 2019-09-06	wjim		[20190903_01] 차량번호 체계 변경 대응
+         *							- 2019.09 부터 8자리(ex.111거1234) 차량번호 배정
+         *							- 차량번호 검증로직 보완
+         ***************************************************************************************************/
+
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         //include "lib::comLib.xjs";
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -374,9 +389,12 @@
         	}
         }
 
-        this.carNoCheck = function(){
+        this.carNoCheck = function(){	
         	var pattern1       	= /\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 				 				// 12저3456
         	var pattern2 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{2}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울12치1234
+        	var pattern3 	   	= /[가-힣ㄱ-ㅎㅏ-ㅣ\x20]{2}\d{1}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g; 		// 서울1치1234 // 2016-06-02 이영근, 패턴 추가 < 원래 추가됐어야 하는데 누락되어 [20190903_01] 작업 시 추가
+        	var pattern4 	   	= /\d{3}[가-힣ㄱ-ㅎㅏ-ㅣ\x20]\d{4}/g;                          		// 123저4567    // [20190903_01] 패턴 추가
+        	
         	var carNoVal 		= nvl(this.ed_carNo.value);
         	var carNoValLen 	= carNoVal.length;
         	
@@ -388,7 +406,16 @@
         		}else{
         			return true;
         		}
-        	}else if( carNoValLen == 8 || carNoValLen == 9){
+        	// [20190903_01] 에 의해 패턴 추가
+        	}else if( carNoValLen == 8){
+        		if( !pattern3.test(carNoVal) && !pattern4.test(carNoVal)){
+        			alert("차량번호를 확인하세요.");
+        			this.ed_carNo.setFocus(true);
+        			return false;
+        		}else{
+        			return true;
+        		}
+        	}else if( carNoValLen == 9){
         		if( !pattern2.test(carNoVal) ){
         			alert("차량번호를 확인하세요.");
         			this.ed_carNo.setFocus(true);
@@ -412,7 +439,6 @@
         		this.close();
         	}
         }
-        
         });
 
 

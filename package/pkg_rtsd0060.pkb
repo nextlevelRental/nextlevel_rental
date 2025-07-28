@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
 /******************************************************************************* 
    NAME      PKG_RTSD0060 
-   PURPOSE   ��Ż���� ���� 
+   PURPOSE   렌탈지역 관리 
  
    REVISIONS 
    Ver        Date        Author           Description 
@@ -9,14 +9,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
    1.0        2018-11-01  Sean         1. Created this package body. 
 *******************************************************************************/ 
   /***************************************************************************** 
-  -- ��Ż���� ��ȸ Select 
+  -- 렌탈지역 조회 Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService ( 
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* �������  */
-    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,          /* ä�δ�з�  */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,           /* ä���ߺз�  */  
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*������              */       
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* 수수료명  */
+    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,          /* 채널대분류  */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,           /* 채널중분류  */  
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*시퀀스              */       
     ) IS 
   BEGIN 
     OPEN Ref_Cursor FOR 
@@ -35,7 +35,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
 
     FROM RTSD0060
 
-     WHERE COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*����                  */
+     WHERE COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*지점                  */
        AND CHAN_LCLS_CD  = DECODE(v_Chan_Lcis_Cd, NULL, CHAN_LCLS_CD, v_Chan_Lcis_Cd)
        AND CHAN_MCLS_CD  = DECODE(v_Chan_Mcls_Cd, NULL, CHAN_MCLS_CD, v_Chan_Mcls_Cd)
        AND CHR_SEQ  = DECODE(v_Chr_Seq, NULL, CHR_SEQ, v_Chr_Seq)
@@ -46,13 +46,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
 
 
   /***************************************************************************** 
-  -- ��Ż���� ��ȸ Select 
+  -- 렌탈지역 조회 Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService2 ( 
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,               /* �������  */
-    v_Chan_Lcis_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,          /* ä�δ�з�  */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE           /* ä���ߺз�  */     
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,               /* 수수료명  */
+    v_Chan_Lcis_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,          /* 채널대분류  */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE           /* 채널중분류  */     
     ) IS 
   BEGIN 
     OPEN Ref_Cursor FOR 
@@ -68,7 +68,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
         USE_YN
     FROM RTSD0061
 
-     WHERE COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*����                  */
+     WHERE COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*지점                  */
        AND CHAN_LCLS_CD  = DECODE(v_Chan_Lcis_Cd, NULL, CHAN_LCLS_CD, v_Chan_Lcis_Cd)
        AND CHAN_MCLS_CD  = DECODE(v_Chan_Mcls_Cd, NULL, CHAN_MCLS_CD, v_Chan_Mcls_Cd)
        AND USE_YN='Y'
@@ -76,20 +76,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
        ;  
   END p_sRtsd0060visitorService2;  
    /***************************************************************************** 
-  -- ��Ż���� ��ȸ Select 
+  -- 렌탈지역 조회 Select 
   *****************************************************************************/  
   PROCEDURE p_IUDRtsd0060 (
-    v_Comm_Dvsn         IN CHAR,                         /*ó������(I,U,D)       */
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*��ǰ�ڵ�              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*��Ϻ��ڵ�            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*�������� �Ϸ���       */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*����                  */ 
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*����� ID             */  
+    v_Comm_Dvsn         IN CHAR,                         /*처리구분(I,U,D)       */
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*상품코드              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*등록비코드            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*가격적용 완료일       */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*순번                  */ 
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*등록자 ID             */  
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -98,9 +98,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0060 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- �ʼ���: ����_�ݾ����� , ��ǰ�ڵ�,�Ⱓ�ڵ�,Ÿ�̾��, ��Ϻ��ڵ�,�������� ������,�������� �Ϸ���,  ��뿩�� ,����� ID
+    -- 필수값: 가격_금액유형 , 상품코드,기간코드,타이어본수, 등록비코드,가격적용 시작일,가격적용 완료일,  사용여부 ,등록자 ID
     IF TRIM(v_Comm_Tp) IS NULL THEN
-        v_Return_Message := '����_�ݾ����� ('||v_Comm_Tp||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '가격_금액유형 ('||v_Comm_Tp||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
@@ -111,7 +111,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
         IF 0 != f_InsertRtsd0060(v_Comm_Tp, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
                                  v_Sale_Min_Cnt, v_Comm_Amt, v_Sale_Max_Cnt,
                                  v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '�湮 ���� ���� ��� ����!!!'||'-'||v_ErrorText;
+            v_Return_Message := '방문 점검 서비스 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF
@@ -123,7 +123,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
             IF 0 != f_UpdateRtsd0060(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
                                  v_Sale_Min_Cnt, v_Comm_Amt, v_Sale_Max_Cnt, v_Seq,
                                  v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '�湮 ���� ���� ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '방문 점검 서비스 수정 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -132,13 +132,13 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
 
             IF 0 != f_DeleteRtsd0060(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
                                  v_Seq, v_ErrorText) THEN
-                v_Return_Message := '�湮 ���� ���� ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '방문 점검 서비스 삭제 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'ó������(I,U,D)�� ����!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := '처리구분(I,U,D)값 오류!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
@@ -146,7 +146,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
     END IF;
     
     v_Success_code := 0;
-    v_Return_Message := '���������� ��ϵǾ����ϴ�';
+    v_Return_Message := '정상적으로 등록되었습니다';
     v_ErrorText := '';
     --COMMIT;
 
@@ -162,7 +162,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '�ý��۰����ڿ��� ���ǹٶ��ϴ�!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0060.p_IUDRtsd0060(2)', v_ErrorText, v_Return_Message);
 
@@ -170,14 +170,14 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
   /*****************************************************************************
-  -- �湮 ���� Count
+  -- 방문 점검 Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060Count(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*��ǰ�ڵ�              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Seq               IN RTSD0061.SEQ%TYPE            /*����                  */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*상품코드              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Seq               IN RTSD0061.SEQ%TYPE            /*순번                  */ 
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -200,17 +200,17 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
 
 
   /*****************************************************************************
-  -- �湮 ���� Insert
+  -- 방문 점검 Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*����,�ݾ�����         */    
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*��Ϻ��ڵ�            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*�������� �Ϸ���       */   
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*����� ID             */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*가격,금액유형         */    
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*등록비코드            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*가격적용 완료일       */   
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*등록자 ID             */ 
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
    
@@ -254,19 +254,19 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
 
 
   /*****************************************************************************
-  -- �湮 ���� Update
+  -- 방문 점검 Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*��ǰ�ڵ�              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*��Ϻ��ڵ�            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*�������� �Ϸ���       */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*����                  */ 
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*����� ID             */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*상품코드              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*등록비코드            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*가격적용 완료일       */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*순번                  */ 
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*등록자 ID             */ 
     v_ErrorText         OUT VARCHAR2 
     ) RETURN NUMBER IS
   
@@ -296,14 +296,14 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
 
 
   /*****************************************************************************
-  -- �湮 ���� Delete
+  -- 방문 점검 Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*��ǰ�ڵ�              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*����                  */
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*상품코드              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*순번                  */
     v_ErrorText         OUT VARCHAR2  
     ) RETURN NUMBER IS
    
@@ -326,25 +326,25 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
     /*****************************************************************************
-  -- �����ڵ� Detail ��ȸ- ��з��ڵ� ���� �Һз��ڵ�/�� ��ȸ
+  -- 공통코드 Detail 조회- 대분류코드 기준 소분류코드/명 조회
   *****************************************************************************/
   PROCEDURE p_sRtsd0060CodeName (
     Ref_Cursor  IN OUT SYS_REFCURSOR,
-    v_Cd        IN  RTCM0051.CD%TYPE,            /*�ڵ��                  */
-    v_Cd2    IN  RTCM0051.CD%TYPE,        /*�ڵ�׷��ڵ�            */ 
-    v_Cd3    IN  RTCM0051.CD%TYPE,        /*�ڵ�׷��ڵ�            */
-    v_Cd4    IN  RTCM0051.CD%TYPE,        /*�ڵ�׷��ڵ�            */
-    v_Cd5    IN  RTCM0051.CD%TYPE,        /*�ڵ�׷��ڵ�            */
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,        /*�ڵ�׷��ڵ�            */   
-    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE            /*��뿩��                */
+    v_Cd        IN  RTCM0051.CD%TYPE,            /*코드명                  */
+    v_Cd2    IN  RTCM0051.CD%TYPE,        /*코드그룹코드            */ 
+    v_Cd3    IN  RTCM0051.CD%TYPE,        /*코드그룹코드            */
+    v_Cd4    IN  RTCM0051.CD%TYPE,        /*코드그룹코드            */
+    v_Cd5    IN  RTCM0051.CD%TYPE,        /*코드그룹코드            */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,        /*코드그룹코드            */   
+    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE            /*사용여부                */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.CD,           /*�ڵ�        */
-            A.CD_NM,        /*�ڵ��      */
-            A.CD_DESC       /*�ڵ弳��    */
+    SELECT  A.CD,           /*코드        */
+            A.CD_NM,        /*코드명      */
+            A.CD_DESC       /*코드설명    */
     FROM    RTCM0051 A
     WHERE   A.CD_GRP_CD = v_Cd_Grp_Cd
     AND     A.USE_YN    = NVL(v_Use_Yn,'Y')
@@ -360,12 +360,12 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
 /***************************************************************************** 
-  -- ��Ż���� ��ȸ Select 
+  -- 렌탈지역 조회 Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService3 ( 
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* �������  */
-    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE         /* ä�δ�з�  */   
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* 수수료명  */
+    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE         /* 채널대분류  */   
     ) IS 
   BEGIN 
     OPEN Ref_Cursor FOR 
@@ -385,7 +385,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
     USE_YN
     FROM RTSD0060
     
-    WHERE   COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*����                  */
+    WHERE   COMM_TP  = DECODE(v_COMM_TP, NULL, COMM_TP, v_COMM_TP)  /*지점                  */
     AND     CHAN_LCLS_CD  = DECODE(v_Chan_Lcis_Cd, NULL, CHAN_LCLS_CD, v_Chan_Lcis_Cd)
     
     ORDER BY COMM_TP,CHAN_LCLS_CD,CHAN_MCLS_CD,MIN_CNT,MAX_CNT;
@@ -394,21 +394,21 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
    
    
    /***************************************************************************** 
-  --�μ�Ƽ�� ����
+  --인센티브 저장
   *****************************************************************************/  
   PROCEDURE p_IUDRtsd0060Insentive (
-    v_Comm_Dvsn         IN CHAR,                         /*ó������(I,U,D)       */
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*ä���ߺз�              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*ä�δ�з�            */
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*������              */   
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*��Ϻ��ڵ�   .         */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*�������� �Ϸ���       */    
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*����� ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*����� ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*����� ID             */    
+    v_Comm_Dvsn         IN CHAR,                         /*처리구분(I,U,D)       */
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*채널중분류              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*채널대분류            */
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*시퀀스              */   
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*등록비코드   .         */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*가격적용 완료일       */    
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*등록자 ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*등록자 ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*등록자 ID             */    
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -420,27 +420,27 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
   IF (TRIM(v_Comm_Tp) IS NULL) THEN
-        v_Return_Message := '�������('||v_Comm_Tp||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '수수료명('||v_Comm_Tp||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
   
     IF (TRIM(v_Chan_Mcls_Cd) IS NULL) THEN
-        v_Return_Message := 'ä�δ�з�('||v_Chan_Mcls_Cd||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '채널대분류('||v_Chan_Mcls_Cd||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Chan_Lcls_Cd) IS NULL) THEN
-        v_Return_Message := 'ä���ߺз�('||v_Chan_Lcls_Cd||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '채널중분류('||v_Chan_Lcls_Cd||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
   
     IF (TRIM(v_Min_Cnt) IS NULL) THEN
-        v_Return_Message := '�ּҰǼ�('||v_Min_Cnt||') : �ּҰǼ��� �Է����ּ���';
+        v_Return_Message := '최소건수('||v_Min_Cnt||') : 최소건수를 입력해주세요';
         RAISE e_Error;
     END IF;
   
     IF (TRIM(v_Max_Cnt) IS NULL) THEN
-        v_Return_Message := '�ִ�Ǽ�('||v_Max_Cnt||') : �ִ�Ǽ��� �Է����ּ���!';
+        v_Return_Message := '최대건수('||v_Max_Cnt||') : 최대건수를 입력해주세요!';
         RAISE e_Error;
     END IF;  
   
@@ -453,7 +453,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
                                  v_Min_Cnt, v_Comm_Amt, v_Max_Cnt,
                                  v_Use_Yn, v_Reg_Id, v_Str_Day,v_End_Day,v_ErrorText)
                                  THEN
-            v_Return_Message := '�μ�Ƽ�� ��� ����!!!'||'-'||v_ErrorText;
+            v_Return_Message := '인센티브 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF
@@ -465,7 +465,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
             IF 0 != f_UpdateRtsd0060Insentive(v_Comm_Tp, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd, v_Chr_Seq,
                                  v_Min_Cnt, v_Comm_Amt, v_Max_Cnt, 
                                  v_Use_Yn, v_Reg_Id, v_Str_Day,v_End_Day, v_ErrorText) THEN
-                v_Return_Message := '�湮 ���� ���� ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '방문 점검 서비스 수정 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -473,7 +473,7 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   END IF;
   
      v_Success_code := 0;
-    v_Return_Message := '���������� ��ϵǾ����ϴ�';
+    v_Return_Message := '정상적으로 등록되었습니다';
     v_ErrorText := '';
    
   EXCEPTION
@@ -496,13 +496,13 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
   /*****************************************************************************
-  -- �湮 ���� Count
+  -- 방문 점검 Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*����,�ݾ�����         */   
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-     v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*��ǰ�ڵ�              */
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*가격,금액유형         */   
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+     v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*상품코드              */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -524,19 +524,19 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
 
 
   /*****************************************************************************
-  -- �湮 ���� Insert
+  -- 방문 점검 Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0060Insentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*����,�ݾ�����         */    
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��            */
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*��Ϻ��ڵ�            */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*�������� �Ϸ���       */   
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*����� ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*����� ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*����� ID             */    
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*가격,금액유형         */    
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*타이어본수            */
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*등록비코드            */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*가격적용 완료일       */   
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*등록자 ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*등록자 ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*등록자 ID             */    
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
    
@@ -581,20 +581,20 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   END f_InsertRtsd0060Insentive; 
 
   /*****************************************************************************
-  -- �湮 ���� Update
+  -- 방문 점검 Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0060Insentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*����,�ݾ�����         */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*�Ⱓ�ڵ�              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Ÿ�̾��          */
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*��ǰ�ڵ�              */
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*��Ϻ��ڵ�            */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*�������� ������       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*�������� �Ϸ���       */ 
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*��뿩��              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*����� ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*����� ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*����� ID             */        
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*가격,금액유형         */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*기간코드              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*타이어본수          */
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*상품코드              */
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*등록비코드            */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*가격적용 시작일       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*가격적용 완료일       */ 
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*사용여부              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*등록자 ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*등록자 ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*등록자 ID             */        
     v_ErrorText         OUT VARCHAR2 
     ) RETURN NUMBER IS
   
@@ -627,11 +627,11 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
   /***************************************************************************** 
-  --�μ�Ƽ�� ����
+  --인센티브 저장
   *****************************************************************************/  
   PROCEDURE p_IUDRtsd0060Insentive2 (  
-    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE,       /*����,�ݾ�����         */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE         /*����� ID             */      
+    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE,       /*가격,금액유형         */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE         /*등록자 ID             */      
     ) IS
    
   
@@ -730,10 +730,10 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   END p_IUDRtsd0060Insentive2;
   
   /*****************************************************************************
-  -- �湮 ���� Count
+  -- 방문 점검 Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive3(
-   v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE       /*����,�ݾ�����         */    
+   v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE       /*가격,금액유형         */    
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -761,10 +761,10 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
   
     /*****************************************************************************
-  -- �湮 ���� Count
+  -- 방문 점검 Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive4(
-   v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE       /*����,�ݾ�����         */    
+   v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE       /*가격,금액유형         */    
     ) RETURN VARCHAR2 IS
     v_curr_cunt   VARCHAR(2);
   
@@ -788,4 +788,3 @@ IF 0 = f_sRtsd0060Count(v_Comm_Tp, v_Chr_Seq, v_Chan_Mcls_Cd, v_Chan_Lcls_Cd,
   
    
 END PKG_RTSD0060;
-/

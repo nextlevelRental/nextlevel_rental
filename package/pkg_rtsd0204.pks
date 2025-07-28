@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0204 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0204
-   PURPOSE   ±â¾÷½Å¿ëÁ¶È¸°á°ú °ü¸®
+   PURPOSE   ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,81 +10,81 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0204 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Count
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0204Count(
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*»ç¾÷ÀÚ¹øÈ£          */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,          /*»ý¼ºÀÏ              */
-    v_Seq            IN RTSD0204.SEQ%TYPE               /*»ý¼º¼ø¹ø            */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*ì‚¬ì—…ìžë²ˆí˜¸          */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,          /*ìƒì„±ì¼              */
+    v_Seq            IN RTSD0204.SEQ%TYPE               /*ìƒì„±ìˆœë²ˆ            */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Count(»ç¾÷ÀÚ¹øÈ£ + ´çÀÏ)
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Count(ì‚¬ì—…ìžë²ˆí˜¸ + ë‹¹ì¼)
   *****************************************************************************/
   PROCEDURE p_sRtsd0204TodayCount(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*»ç¾÷ÀÚ¹øÈ£          */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE          /*»ý¼ºÀÏ              */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*ì‚¬ì—…ìžë²ˆí˜¸          */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE          /*ìƒì„±ì¼              */
     ) ;
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Select
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0204 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0204.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*±â¾÷½Å¿ëµî±Þ          */
-    v_Reg_Id         IN RTSD0204.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0204.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*ê¸°ì—…ì‹ ìš©ë“±ê¸‰          */
+    v_Reg_Id         IN RTSD0204.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Insert
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0204 (
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0204.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*±â¾÷½Å¿ëµî±Þ          */
-    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0204.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*ê¸°ì—…ì‹ ìš©ë“±ê¸‰          */
+    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Update
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0204 (
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0204.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*±â¾÷½Å¿ëµî±Þ          */
-    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0204.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*ê¸°ì—…ì‹ ìš©ë“±ê¸‰          */
+    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú Delete
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0204 (
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0204.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0204.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú °ü¸®(IUD)
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0204 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN OUT RTSD0204.SEQ%TYPE,        /*»ý¼º¼ø¹ø              */
-    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*±â¾÷½Å¿ëµî±Þ          */
-    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN OUT RTSD0204.SEQ%TYPE,        /*ìƒì„±ìˆœë²ˆ              */
+    v_Co_Grade       IN RTSD0204.CO_GRADE%TYPE,       /*ê¸°ì—…ì‹ ìš©ë“±ê¸‰          */
+    v_Reg_Id         IN RTSD0204.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -92,12 +92,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0204 AS
 
 
   /*****************************************************************************
-  -- ±â¾÷½Å¿ëÁ¶È¸°á°ú - ¼ø¹ø Ãé¹ø È¹µæ
+  -- ê¸°ì—…ì‹ ìš©ì¡°íšŒê²°ê³¼ - ìˆœë²ˆ ì·Œë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0204Seq(
-    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*»ç¾÷ÀÚ¹øÈ£          */
-    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE           /*»ý¼ºÀÏ              */
+    v_Busl_No        IN RTSD0204.BUSL_NO%TYPE,          /*ì‚¬ì—…ìžë²ˆí˜¸          */
+    v_Cre_Day        IN RTSD0204.CRE_DAY%TYPE           /*ìƒì„±ì¼              */
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0204;
-/

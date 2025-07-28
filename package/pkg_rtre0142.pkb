@@ -1,36 +1,36 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
 /*******************************************************************************
     NAME        PKG_RTRE0142
-    PURPOSE     °¡»ó°èÁÂ Åëº¸³»¿ª °ü¸®
+    PURPOSE     ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-10-02  wjim            [20170224_01] ½Å±Ô »ı¼º
-    1.1     2017-11-21  wjim            [20171121_01] ÀÔ±İÅëº¸ ÀúÀå¿À·ù catch Ãß°¡
+    1.0     2017-10-02  wjim            [20170224_01] ì‹ ê·œ ìƒì„±
+    1.1     2017-11-21  wjim            [20171121_01] ì…ê¸ˆí†µë³´ ì €ì¥ì˜¤ë¥˜ catch ì¶”ê°€
 *******************************************************************************/
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ Åëº¸³»¿ª Insert
+  -- ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0142 (
-      v_Tno             IN RTRE0142.TNO%TYPE        /* °Å·¡°íÀ¯¹øÈ£        */
-    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* °¡¸ÍÁ¡ÄÚµå          */
-    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ÁÖ¹®¹øÈ£            */
-    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */
-    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ÁÖ¹®ÀÚ¸í            */
-    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ÀÔ±İ±İ¾×ÇÕ°è        */
-    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ÀÔ±İÀÏ½Ã            */
-    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ÀÔ±İÅëº¸ID          */
-    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ÀÔ±İ°á°úÄÚµå        */
-    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ÀÔ±İÀÚ¸í            */
-    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */       
-    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* µî·ÏÀÚID            */    
+      v_Tno             IN RTRE0142.TNO%TYPE        /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* ê°€ë§¹ì ì½”ë“œ          */
+    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ì£¼ë¬¸ë²ˆí˜¸            */
+    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */
+    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ì£¼ë¬¸ìëª…            */
+    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ì…ê¸ˆì¼ì‹œ            */
+    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ì…ê¸ˆí†µë³´ID          */
+    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ì…ê¸ˆìëª…            */
+    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */       
+    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* ë“±ë¡ìID            */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -59,28 +59,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
         , CHG_ID
         , CHG_DT
     ) VALUES (
-          v_Tno             /* °Å·¡°íÀ¯¹øÈ£        */
+          v_Tno             /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
         , (
             SELECT  NVL2(MAX(NOTI_SEQ), TO_NUMBER(MAX(NOTI_SEQ))+1, 1) 
               FROM  RTRE0142
              WHERE  TNO = v_Tno         
-          )                 /* Åëº¸¼ø¹ø            */
-        , v_Site_Cd         /* °¡¸ÍÁ¡ÄÚµå          */
-        , v_Order_No        /* ÁÖ¹®¹øÈ£            */
-        , v_Tx_Cd           /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-        , v_Tx_Tm           /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */
-        , v_Ipgm_Name       /* ÁÖ¹®ÀÚ¸í            */
-        , v_Mnyx            /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-        , v_Total_Mnyx      /* ÀÔ±İ±İ¾×ÇÕ°è        */
-        , v_Ipgm_Time       /* ÀÔ±İÀÏ½Ã            */
-        , v_Vaccount        /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-        , v_Noti_Id         /* ÀÔ±İÅëº¸ID          */
-        , v_Op_Cd           /* ÀÔ±İ°á°úÄÚµå        */
-        , v_Remitter        /* ÀÔ±İÀÚ¸í            */
-        , v_Cash_No         /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-        , v_Cash_A_No       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-        , v_Cash_A_Dt       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */
-        , v_Reg_Id          /* µî·ÏÀÚID            */   
+          )                 /* í†µë³´ìˆœë²ˆ            */
+        , v_Site_Cd         /* ê°€ë§¹ì ì½”ë“œ          */
+        , v_Order_No        /* ì£¼ë¬¸ë²ˆí˜¸            */
+        , v_Tx_Cd           /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+        , v_Tx_Tm           /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */
+        , v_Ipgm_Name       /* ì£¼ë¬¸ìëª…            */
+        , v_Mnyx            /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+        , v_Total_Mnyx      /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+        , v_Ipgm_Time       /* ì…ê¸ˆì¼ì‹œ            */
+        , v_Vaccount        /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+        , v_Noti_Id         /* ì…ê¸ˆí†µë³´ID          */
+        , v_Op_Cd           /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+        , v_Remitter        /* ì…ê¸ˆìëª…            */
+        , v_Cash_No         /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+        , v_Cash_A_No       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+        , v_Cash_A_Dt       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */
+        , v_Reg_Id          /* ë“±ë¡ìID            */   
         , SYSDATE
         , v_Reg_Id
         , SYSDATE
@@ -96,50 +96,50 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
   END f_InsertRtre0142;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ Åëº¸³»¿ª Update
+  -- ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0142 (
-      v_Tno             IN RTRE0142.TNO%TYPE        /* °Å·¡°íÀ¯¹øÈ£        */
-    , v_Noti_Seq        IN RTRE0142.NOTI_SEQ%TYPE   /* Åëº¸¼ø¹ø            */
-    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* °¡¸ÍÁ¡ÄÚµå          */
-    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ÁÖ¹®¹øÈ£            */
-    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */
-    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ÁÖ¹®ÀÚ¸í            */
-    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ÀÔ±İ±İ¾×ÇÕ°è        */
-    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ÀÔ±İÀÏ½Ã            */
-    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ÀÔ±İÅëº¸ID          */
-    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ÀÔ±İ°á°úÄÚµå        */
-    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ÀÔ±İÀÚ¸í            */
-    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */       
-    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* µî·ÏÀÚID            */    
+      v_Tno             IN RTRE0142.TNO%TYPE        /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+    , v_Noti_Seq        IN RTRE0142.NOTI_SEQ%TYPE   /* í†µë³´ìˆœë²ˆ            */
+    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* ê°€ë§¹ì ì½”ë“œ          */
+    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ì£¼ë¬¸ë²ˆí˜¸            */
+    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */
+    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ì£¼ë¬¸ìëª…            */
+    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ì…ê¸ˆì¼ì‹œ            */
+    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ì…ê¸ˆí†µë³´ID          */
+    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ì…ê¸ˆìëª…            */
+    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */       
+    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* ë“±ë¡ìID            */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
   BEGIN
 
     UPDATE  RTRE0142
-       SET  NOTI_SEQ   = v_Noti_Seq         /* Åëº¸¼ø¹ø            */
-         ,  SITE_CD    = v_Site_Cd          /* °¡¸ÍÁ¡ÄÚµå          */
-         ,  ORDER_NO   = v_Order_No         /* ÁÖ¹®¹øÈ£            */
-         ,  TX_CD      = v_Tx_Cd            /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-         ,  TX_TM      = v_Tx_Tm            /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */
-         ,  IPGM_NAME  = v_Ipgm_Name        /* ÁÖ¹®ÀÚ¸í            */
-         ,  IPGM_MNYX  = v_Mnyx             /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-         ,  TOTAL_MNYX = v_Total_Mnyx       /* ÀÔ±İ±İ¾×ÇÕ°è        */
-         ,  IPGM_TIME  = v_Ipgm_Time        /* ÀÔ±İÀÏ½Ã            */
-         ,  VACCOUNT   = v_Vaccount         /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-         ,  NOTI_ID    = v_Noti_Id          /* ÀÔ±İÅëº¸ID          */
-         ,  OP_CD      = v_Op_Cd            /* ÀÔ±İ°á°úÄÚµå        */
-         ,  REMITTER   = v_Remitter         /* ÀÔ±İÀÚ¸í            */
-         ,  CASH_NO    = v_Cash_No          /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-         ,  CASH_A_NO  = v_Cash_A_No        /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-         ,  CASH_A_DT  = v_Cash_A_Dt        /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */
-         ,  REG_ID     = v_Reg_Id           /* µî·ÏÀÚID            */
+       SET  NOTI_SEQ   = v_Noti_Seq         /* í†µë³´ìˆœë²ˆ            */
+         ,  SITE_CD    = v_Site_Cd          /* ê°€ë§¹ì ì½”ë“œ          */
+         ,  ORDER_NO   = v_Order_No         /* ì£¼ë¬¸ë²ˆí˜¸            */
+         ,  TX_CD      = v_Tx_Cd            /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+         ,  TX_TM      = v_Tx_Tm            /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */
+         ,  IPGM_NAME  = v_Ipgm_Name        /* ì£¼ë¬¸ìëª…            */
+         ,  IPGM_MNYX  = v_Mnyx             /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+         ,  TOTAL_MNYX = v_Total_Mnyx       /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+         ,  IPGM_TIME  = v_Ipgm_Time        /* ì…ê¸ˆì¼ì‹œ            */
+         ,  VACCOUNT   = v_Vaccount         /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+         ,  NOTI_ID    = v_Noti_Id          /* ì…ê¸ˆí†µë³´ID          */
+         ,  OP_CD      = v_Op_Cd            /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+         ,  REMITTER   = v_Remitter         /* ì…ê¸ˆìëª…            */
+         ,  CASH_NO    = v_Cash_No          /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+         ,  CASH_A_NO  = v_Cash_A_No        /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+         ,  CASH_A_DT  = v_Cash_A_Dt        /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */
+         ,  REG_ID     = v_Reg_Id           /* ë“±ë¡ìID            */
          ,  CHG_ID     = v_Reg_Id
          ,  CHG_DT     = SYSDATE
      WHERE  TNO        = v_Tno
@@ -155,28 +155,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
   END f_UpdateRtre0142;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ Åëº¸³»¿ª °ü¸®(IUD)
+  -- ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0142 (
-      v_Comm_Dvsn       IN CHAR                     /* Ã³¸®±¸ºĞ(I,U,D)       */
-    , v_Tno             IN RTRE0142.TNO%TYPE        /* °Å·¡°íÀ¯¹øÈ£        */
-    , v_Noti_Seq        IN RTRE0142.NOTI_SEQ%TYPE   /* Åëº¸¼ø¹ø            */
-    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* °¡¸ÍÁ¡ÄÚµå          */
-    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ÁÖ¹®¹øÈ£            */
-    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */ 
-    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ÁÖ¹®ÀÚ¸í            */
-    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ÀÔ±İ±İ¾×ÇÕ°è        */
-    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ÀÔ±İÀÏ½Ã            */
-    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ÀÔ±İÅëº¸ID          */
-    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ÀÔ±İ°á°úÄÚµå        */
-    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ÀÔ±İÀÚ¸í            */
-    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */       
-    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* µî·ÏÀÚID            */     
+      v_Comm_Dvsn       IN CHAR                     /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    , v_Tno             IN RTRE0142.TNO%TYPE        /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+    , v_Noti_Seq        IN RTRE0142.NOTI_SEQ%TYPE   /* í†µë³´ìˆœë²ˆ            */
+    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* ê°€ë§¹ì ì½”ë“œ          */
+    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ì£¼ë¬¸ë²ˆí˜¸            */
+    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */ 
+    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ì£¼ë¬¸ìëª…            */
+    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ì…ê¸ˆì¼ì‹œ            */
+    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ì…ê¸ˆí†µë³´ID          */
+    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ì…ê¸ˆìëª…            */
+    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */       
+    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* ë“±ë¡ìID            */     
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -185,35 +185,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª È®ÀÎ
+    -- í•„ìˆ˜ê°’ í™•ì¸
     IF TRIM(v_Tno) IS NULL THEN
-        v_Return_Message := '°Å·¡°íÀ¯¹øÈ£ : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê±°ë˜ê³ ìœ ë²ˆí˜¸ : í•„ìˆ˜ ì…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtre0142 (
-              v_Tno             /* °Å·¡°íÀ¯¹øÈ£        */
-            , v_Site_Cd         /* °¡¸ÍÁ¡ÄÚµå          */
-            , v_Order_No        /* ÁÖ¹®¹øÈ£            */
-            , v_Tx_Cd           /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-            , v_Tx_Tm           /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */ 
-            , v_Ipgm_Name       /* ÁÖ¹®ÀÚ¸í            */
-            , v_Mnyx            /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-            , v_Total_Mnyx      /* ÀÔ±İ±İ¾×ÇÕ°è        */
-            , v_Ipgm_Time       /* ÀÔ±İÀÏ½Ã            */
-            , v_Vaccount        /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-            , v_Noti_Id         /* ÀÔ±İÅëº¸ID          */
-            , v_Op_Cd           /* ÀÔ±İ°á°úÄÚµå        */
-            , v_Remitter        /* ÀÔ±İÀÚ¸í            */
-            , v_Cash_No         /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-            , v_Cash_A_No       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-            , v_Cash_A_Dt       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */
-            , v_Reg_Id          /* µî·ÏÀÚID            */    
+              v_Tno             /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+            , v_Site_Cd         /* ê°€ë§¹ì ì½”ë“œ          */
+            , v_Order_No        /* ì£¼ë¬¸ë²ˆí˜¸            */
+            , v_Tx_Cd           /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+            , v_Tx_Tm           /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */ 
+            , v_Ipgm_Name       /* ì£¼ë¬¸ìëª…            */
+            , v_Mnyx            /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+            , v_Total_Mnyx      /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+            , v_Ipgm_Time       /* ì…ê¸ˆì¼ì‹œ            */
+            , v_Vaccount        /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+            , v_Noti_Id         /* ì…ê¸ˆí†µë³´ID          */
+            , v_Op_Cd           /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+            , v_Remitter        /* ì…ê¸ˆìëª…            */
+            , v_Cash_No         /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+            , v_Cash_A_No       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+            , v_Cash_A_Dt       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */
+            , v_Reg_Id          /* ë“±ë¡ìID            */    
             , v_ErrorText
         ) THEN
-            v_Return_Message := '°¡»ó°èÁÂ Åëº¸³»¿ª µî·Ï ½ÇÆĞ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -221,39 +221,39 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
 
         IF 0 != f_UpdateRtre0142 (
-              v_Tno             /* °Å·¡°íÀ¯¹øÈ£        */
-            , v_Noti_Seq        /* Åëº¸¼ø¹ø            */
-            , v_Site_Cd         /* °¡¸ÍÁ¡ÄÚµå          */
-            , v_Order_No        /* ÁÖ¹®¹øÈ£            */
-            , v_Tx_Cd           /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-            , v_Tx_Tm           /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */ 
-            , v_Ipgm_Name       /* ÁÖ¹®ÀÚ¸í            */
-            , v_Mnyx            /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-            , v_Total_Mnyx      /* ÀÔ±İ±İ¾×ÇÕ°è        */
-            , v_Ipgm_Time       /* ÀÔ±İÀÏ½Ã            */
-            , v_Vaccount        /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-            , v_Noti_Id         /* ÀÔ±İÅëº¸ID          */
-            , v_Op_Cd           /* ÀÔ±İ°á°úÄÚµå        */
-            , v_Remitter        /* ÀÔ±İÀÚ¸í            */
-            , v_Cash_No         /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-            , v_Cash_A_No       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-            , v_Cash_A_Dt       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */
-            , v_Reg_Id          /* µî·ÏÀÚID            */    
+              v_Tno             /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+            , v_Noti_Seq        /* í†µë³´ìˆœë²ˆ            */
+            , v_Site_Cd         /* ê°€ë§¹ì ì½”ë“œ          */
+            , v_Order_No        /* ì£¼ë¬¸ë²ˆí˜¸            */
+            , v_Tx_Cd           /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+            , v_Tx_Tm           /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */ 
+            , v_Ipgm_Name       /* ì£¼ë¬¸ìëª…            */
+            , v_Mnyx            /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+            , v_Total_Mnyx      /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+            , v_Ipgm_Time       /* ì…ê¸ˆì¼ì‹œ            */
+            , v_Vaccount        /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+            , v_Noti_Id         /* ì…ê¸ˆí†µë³´ID          */
+            , v_Op_Cd           /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+            , v_Remitter        /* ì…ê¸ˆìëª…            */
+            , v_Cash_No         /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+            , v_Cash_A_No       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+            , v_Cash_A_Dt       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */
+            , v_Reg_Id          /* ë“±ë¡ìID            */    
             , v_ErrorText
         ) THEN
-            v_Return_Message := '°¡»ó°èÁÂ Åëº¸³»¿ª ¼öÁ¤ ½ÇÆĞ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºĞ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;    
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -267,37 +267,37 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0142.p_IUDRtre0142(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre0142;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ KCP °øÅëÅëº¸ Ã³¸®
+  -- ê°€ìƒê³„ì¢Œ KCP ê³µí†µí†µë³´ ì²˜ë¦¬
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.1     2017-11-21  wjim            [20171121_01] ÀÔ±İÅëº¸ ÀúÀå¿À·ù catch Ãß°¡
+    1.1     2017-11-21  wjim            [20171121_01] ì…ê¸ˆí†µë³´ ì €ì¥ì˜¤ë¥˜ catch ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_CreateRtre0142KcpNoti (
-      v_Tno             IN RTRE0142.TNO%TYPE        /* °Å·¡°íÀ¯¹øÈ£        */
-    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* °¡¸ÍÁ¡ÄÚµå          */
-    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ÁÖ¹®¹øÈ£            */
-    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */ 
-    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ÁÖ¹®ÀÚ¸í            */
-    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ÀÔ±İ±İ¾×ÇÕ°è        */
-    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ÀÔ±İÀÏ½Ã            */
-    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ÀÔ±İÅëº¸ID          */
-    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ÀÔ±İ°á°úÄÚµå        */
-    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ÀÔ±İÀÚ¸í            */
-    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */            
+      v_Tno             IN RTRE0142.TNO%TYPE        /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+    , v_Site_Cd         IN RTRE0142.SITE_CD%TYPE    /* ê°€ë§¹ì ì½”ë“œ          */
+    , v_Order_No        IN RTRE0142.ORDER_NO%TYPE   /* ì£¼ë¬¸ë²ˆí˜¸            */
+    , v_Tx_Cd           IN RTRE0142.TX_CD%TYPE      /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+    , v_Tx_Tm           IN RTRE0142.TX_TM%TYPE      /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */ 
+    , v_Ipgm_Name       IN RTRE0142.IPGM_NAME%TYPE  /* ì£¼ë¬¸ìëª…            */
+    , v_Mnyx            IN RTRE0142.IPGM_MNYX%TYPE  /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+    , v_Total_Mnyx      IN RTRE0142.TOTAL_MNYX%TYPE /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+    , v_Ipgm_Time       IN RTRE0142.IPGM_TIME%TYPE  /* ì…ê¸ˆì¼ì‹œ            */
+    , v_Vaccount        IN RTRE0142.VACCOUNT%TYPE   /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ì…ê¸ˆí†µë³´ID          */
+    , v_Op_Cd           IN RTRE0142.OP_CD%TYPE      /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+    , v_Remitter        IN RTRE0142.REMITTER%TYPE   /* ì…ê¸ˆìëª…            */
+    , v_Cash_No         IN RTRE0142.CASH_NO%TYPE    /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+    , v_Cash_A_No       IN RTRE0142.CASH_A_NO%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+    , v_Cash_A_Dt       IN RTRE0142.CASH_A_DT%TYPE  /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */            
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -308,28 +308,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
   BEGIN
 
     -------------------
-    -- Åëº¸°á°ú ÀúÀå --
+    -- í†µë³´ê²°ê³¼ ì €ì¥ --
     -------------------
     p_IUDRtre0142 (
-          'I'               /* Ã³¸®±¸ºĞ(I,U,D)     */
-        , v_Tno             /* °Å·¡°íÀ¯¹øÈ£        */
-        , NULL              /* Åëº¸¼ø¹ø            */
-        , v_Site_Cd         /* °¡¸ÍÁ¡ÄÚµå          */
-        , v_Order_No        /* ÁÖ¹®¹øÈ£            */
-        , v_Tx_Cd           /* ¾÷¹«Ã³¸®±¸ºĞÄÚµå    */
-        , v_Tx_Tm           /* ¾÷¹«Ã³¸®¿Ï·áÀÏ½Ã    */ 
-        , v_Ipgm_Name       /* ÁÖ¹®ÀÚ¸í            */
-        , v_Mnyx            /* ½ÇÁ¦ÀÔ±İ±İ¾×        */
-        , v_Total_Mnyx      /* ÀÔ±İ±İ¾×ÇÕ°è        */
-        , v_Ipgm_Time       /* ÀÔ±İÀÏ½Ã            */
-        , v_Vaccount        /* ÀÔ±İ°¡»ó°èÁÂ¹øÈ£    */
-        , v_Noti_Id         /* ÀÔ±İÅëº¸ID          */
-        , v_Op_Cd           /* ÀÔ±İ°á°úÄÚµå        */
-        , v_Remitter        /* ÀÔ±İÀÚ¸í            */
-        , v_Cash_No         /* Çö±İ¿µ¼öÁõ °Å·¡¹øÈ£ */
-        , v_Cash_A_No       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ¹øÈ£ */
-        , v_Cash_A_Dt       /* Çö±İ¿µ¼öÁõ ½ÂÀÎ½Ã°£ */
-        , 'KCP_NOTI'        /* µî·ÏÀÚID            */     
+          'I'               /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)     */
+        , v_Tno             /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+        , NULL              /* í†µë³´ìˆœë²ˆ            */
+        , v_Site_Cd         /* ê°€ë§¹ì ì½”ë“œ          */
+        , v_Order_No        /* ì£¼ë¬¸ë²ˆí˜¸            */
+        , v_Tx_Cd           /* ì—…ë¬´ì²˜ë¦¬êµ¬ë¶„ì½”ë“œ    */
+        , v_Tx_Tm           /* ì—…ë¬´ì²˜ë¦¬ì™„ë£Œì¼ì‹œ    */ 
+        , v_Ipgm_Name       /* ì£¼ë¬¸ìëª…            */
+        , v_Mnyx            /* ì‹¤ì œì…ê¸ˆê¸ˆì•¡        */
+        , v_Total_Mnyx      /* ì…ê¸ˆê¸ˆì•¡í•©ê³„        */
+        , v_Ipgm_Time       /* ì…ê¸ˆì¼ì‹œ            */
+        , v_Vaccount        /* ì…ê¸ˆê°€ìƒê³„ì¢Œë²ˆí˜¸    */
+        , v_Noti_Id         /* ì…ê¸ˆí†µë³´ID          */
+        , v_Op_Cd           /* ì…ê¸ˆê²°ê³¼ì½”ë“œ        */
+        , v_Remitter        /* ì…ê¸ˆìëª…            */
+        , v_Cash_No         /* í˜„ê¸ˆì˜ìˆ˜ì¦ ê±°ë˜ë²ˆí˜¸ */
+        , v_Cash_A_No       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸ */
+        , v_Cash_A_Dt       /* í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ì‹œê°„ */
+        , 'KCP_NOTI'        /* ë“±ë¡ìID            */     
         , v_Success_Code
         , v_Return_Message
         , v_ErrorText
@@ -337,13 +337,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
     
     -- [20171121_01]
     IF 0 != v_Success_Code THEN
-        v_Return_Message := 'Åëº¸°á°ú ÀúÀå ½ÇÆĞ!!('||v_Order_No||')-'||v_Return_Message;
+        v_Return_Message := 'í†µë³´ê²°ê³¼ ì €ì¥ ì‹¤íŒ¨!!('||v_Order_No||')-'||v_Return_Message;
         v_ErrorText := v_ErrorText;
         RAISE e_Error;
     END IF;
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
         
 
@@ -358,20 +358,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0142.p_exeRtre0142KcpNoti(2)', v_ErrorText, v_Return_Message);
 
   END p_CreateRtre0142KcpNoti;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ ¼ö³³Ã³¸® 
-  -- - Pkg_Rtre0080.p_CreateRtre0080CardReceive ¸¦ ÂüÁ¶ÇÏ¿© °³¹ß
+  -- ê°€ìƒê³„ì¢Œ ìˆ˜ë‚©ì²˜ë¦¬ 
+  -- - Pkg_Rtre0080.p_CreateRtre0080CardReceive ë¥¼ ì°¸ì¡°í•˜ì—¬ ê°œë°œ
   *****************************************************************************/
   PROCEDURE p_CreateRtre0142VaReceive (
-      v_Tno             IN RTRE0142.TNO%TYPE        /* °Å·¡°íÀ¯¹øÈ£        */
-    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ÀÔ±İÅëº¸ID          */
-    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* µî·ÏÀÚID            */       
+      v_Tno             IN RTRE0142.TNO%TYPE        /* ê±°ë˜ê³ ìœ ë²ˆí˜¸        */
+    , v_Noti_Id         IN RTRE0142.NOTI_ID%TYPE    /* ì…ê¸ˆí†µë³´ID          */
+    , v_Reg_Id          IN RTRE0142.REG_ID%TYPE     /* ë“±ë¡ìID            */       
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -399,33 +399,33 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
   BEGIN
 
     /*
-     * ÇÊ¼ö°ª ÀÔ·Â È®ÀÎ
+     * í•„ìˆ˜ê°’ ì…ë ¥ í™•ì¸
      */
     IF (TRIM(v_Tno) IS NULL) OR (TRIM(v_Tno) = '') THEN
-        v_Return_Message := '°Å·¡°íÀ¯¹øÈ£ : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê±°ë˜ê³ ìœ ë²ˆí˜¸ : í•„ìˆ˜ ì…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (TRIM(v_Reg_Id) = '') THEN
-        v_Return_Message := 'µî·ÏÀÚID : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìID : í•„ìˆ˜ ì…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     /*
-     * ÇØ´ç °Å·¡°íÀ¯¹øÈ£·Î ¼ö³³Ã³¸®´ë»ó °ËÁõ
+     * í•´ë‹¹ ê±°ë˜ê³ ìœ ë²ˆí˜¸ë¡œ ìˆ˜ë‚©ì²˜ë¦¬ëŒ€ìƒ ê²€ì¦
      */
-   -- °¡»ó°èÁÂÅëº¸³»¿ª Á¸Àç ¿©ºÎ
+   -- ê°€ìƒê³„ì¢Œí†µë³´ë‚´ì—­ ì¡´ì¬ ì—¬ë¶€
     SELECT  NVL(COUNT(1), 0)
       INTO  ln_Chk_Cnt
       FROM  RTRE0142
      WHERE  TNO = v_Tno;
      
     IF ln_Chk_Cnt = 0 THEN
-        v_Return_Message := 'ÇØ´ç °Å·¡°íÀ¯¹øÈ£('||v_Tno||')·Î ÀúÀåµÈ °¡»ó°èÁÂÅëº¸³»¿ª(RTRE0142)ÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ ê±°ë˜ê³ ìœ ë²ˆí˜¸('||v_Tno||')ë¡œ ì €ì¥ëœ ê°€ìƒê³„ì¢Œí†µë³´ë‚´ì—­(RTRE0142)ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
-    -- °¡»ó°èÁÂ³»¿ª Á¸Àç ¿©ºÎ
+    -- ê°€ìƒê³„ì¢Œë‚´ì—­ ì¡´ì¬ ì—¬ë¶€
     SELECT  NVL(COUNT(1), 0)
       INTO  ln_Chk_Cnt
       FROM  RTRE0140
@@ -433,13 +433,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
        AND  RQST_STAT IN ('3');
      
     IF ln_Chk_Cnt = 0 THEN
-        v_Return_Message := 'ÇØ´ç °Å·¡°íÀ¯¹øÈ£('||v_Tno||')´Â À¯È¿ÇÑ °¡»ó°èÁÂ³»¿ª(RTRE0140)ÀÌ Á¸ÀçÇÏÁö ¾Ê¾Æ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ ê±°ë˜ê³ ìœ ë²ˆí˜¸('||v_Tno||')ëŠ” ìœ íš¨í•œ ê°€ìƒê³„ì¢Œë‚´ì—­(RTRE0140)ì´ ì¡´ì¬í•˜ì§€ ì•Šì•„ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     /*
-     * ¼ö³³´ë»ó¸®½ºÆ® ÀÓ½ÃÅ×ÀÌºí Á¸Àç¿©ºÎ È®ÀÎ
-     * - ¹ÌÁ¸Àç½Ã ÀÓ½ÃÅ×ÀÌºí »ı¼º
+     * ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì„ì‹œí…Œì´ë¸” ì¡´ì¬ì—¬ë¶€ í™•ì¸
+     * - ë¯¸ì¡´ì¬ì‹œ ì„ì‹œí…Œì´ë¸” ìƒì„±
      */
     SELECT  COUNT(*)
       INTO  ln_Chk_Cnt
@@ -456,18 +456,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
               ARRE_AMT      NUMBER(10),
               RECP_AMT      NUMBER(10)
          ) ON COMMIT DELETE ROWS;
-        COMMENT ON TABLE NXRADMIN.RTTEMP01 IS ''Ãâ±İÀÌÃ¼ ¼ö³³µî·ÏÃ³¸®(Pkg_Rtre0070)½Ã »ç¿ë TEMPORARY TABLE'';
-        COMMENT ON COLUMN NXRADMIN.RTTEMP01.ORD_NO IS ''°è¾à¹øÈ£'';
-        COMMENT ON COLUMN NXRADMIN.RTTEMP01.CUST_NO IS ''°í°´¹øÈ£'';
-        COMMENT ON COLUMN NXRADMIN.RTTEMP01.SCHD_SEQ IS ''Ã»±¸¼ø¹ø'';
-        COMMENT ON COLUMN NXRADMIN.RTTEMP01.ARRE_AMT IS ''¹Ì³³±İ¾× '';
-        COMMENT ON COLUMN NXRADMIN.RTTEMP01.RECP_AMT IS ''¼ö³³Ã³¸®±İ¾×'';';
+        COMMENT ON TABLE NXRADMIN.RTTEMP01 IS ''ì¶œê¸ˆì´ì²´ ìˆ˜ë‚©ë“±ë¡ì²˜ë¦¬(Pkg_Rtre0070)ì‹œ ì‚¬ìš© TEMPORARY TABLE'';
+        COMMENT ON COLUMN NXRADMIN.RTTEMP01.ORD_NO IS ''ê³„ì•½ë²ˆí˜¸'';
+        COMMENT ON COLUMN NXRADMIN.RTTEMP01.CUST_NO IS ''ê³ ê°ë²ˆí˜¸'';
+        COMMENT ON COLUMN NXRADMIN.RTTEMP01.SCHD_SEQ IS ''ì²­êµ¬ìˆœë²ˆ'';
+        COMMENT ON COLUMN NXRADMIN.RTTEMP01.ARRE_AMT IS ''ë¯¸ë‚©ê¸ˆì•¡ '';
+        COMMENT ON COLUMN NXRADMIN.RTTEMP01.RECP_AMT IS ''ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡'';';
     
     END IF;
     
-    -- °¡»ó°èÁÂ Åëº¸³»¿ª Á¶È¸
-    -- - NOTI_ID ¸¦ KCP°¡ º¸³»ÁÖ´Â °æ¿ì »ç¿ë
-    -- - NOTI_ID °¡ ¾ø´Â °æ¿ì ¸¶Áö¸· Åëº¸³»¿ªÀ» »ç¿ë
+    -- ê°€ìƒê³„ì¢Œ í†µë³´ë‚´ì—­ ì¡°íšŒ
+    -- - NOTI_ID ë¥¼ KCPê°€ ë³´ë‚´ì£¼ëŠ” ê²½ìš° ì‚¬ìš©
+    -- - NOTI_ID ê°€ ì—†ëŠ” ê²½ìš° ë§ˆì§€ë§‰ í†µë³´ë‚´ì—­ì„ ì‚¬ìš©
     IF TRIM(v_Noti_Id) IS NOT NULL THEN
         SELECT  *
           INTO  lr_Re0142
@@ -483,7 +483,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
            AND  NOTI_SEQ = (SELECT MAX(NOTI_SEQ) FROM RTRE0142 WHERE TNO = v_Tno);
     END IF;
     
-    -- °¡»ó°èÁÂ ³»¿ª Á¶È¸
+    -- ê°€ìƒê³„ì¢Œ ë‚´ì—­ ì¡°íšŒ
     SELECT  *
       INTO  lr_Re0140
       FROM  RTRE0140
@@ -493,13 +493,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
     ln_Remain_Amt := 0;
     ln_Exe_Cnt    := 1;
     
-    -- ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
-    -- - CMS, Ä«µåÁ¤±âÃâ±İ : °è¾à¹øÈ£º° ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
-    -- - °¡»ó°èÁÂ : ÀÔ±İÅëº¸º° ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
+    -- ìˆ˜ë‚©ê±°ë˜ë²ˆí˜¸ ì±„ë²ˆ
+    -- - CMS, ì¹´ë“œì •ê¸°ì¶œê¸ˆ : ê³„ì•½ë²ˆí˜¸ë³„ ìˆ˜ë‚©ê±°ë˜ë²ˆí˜¸ ì±„ë²ˆ
+    -- - ê°€ìƒê³„ì¢Œ : ì…ê¸ˆí†µë³´ë³„ ìˆ˜ë‚©ê±°ë˜ë²ˆí˜¸ ì±„ë²ˆ
     ln_Recv_Seq := Pkg_Rtre0030.f_sRtre0030RecvSeq();
     
     /*
-     * °¡»ó°èÁÂ ¼¼ºÎ³»¿ª °è¾àº°·Î LOOP µ¹¸é¼­ ¼öÇà
+     * ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ê³„ì•½ë³„ë¡œ LOOP ëŒë©´ì„œ ìˆ˜í–‰
      */
     FOR cur_Re0141 IN (
         SELECT  RVA_DAY
@@ -517,17 +517,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
              ,  CUST_NO
              ,  ORD_NO                
     ) LOOP
-        -- ¼ö³³Ã³¸® ´ë»ó °¡»ó°èÁÂ ±İ¾×(?)
+        -- ìˆ˜ë‚©ì²˜ë¦¬ ëŒ€ìƒ ê°€ìƒê³„ì¢Œ ê¸ˆì•¡(?)
         ln_Tarre_Amt := ROUND(cur_Re0141.ARRE_AMT * (lr_Re0142.TOTAL_MNYX / lr_Re0140.AMOUNT), 0);
         
         IF ln_Exe_Cnt = 1 THEN
             ln_Tarre_Amt := ln_Tarre_Amt + ln_Remain_Amt;
         END IF;
         
-        ln_Trecp_Amt := ln_Tarre_Amt;     -- ¼ö³³Ã³¸® ´ë»ó ÀüÃ¼±İ¾×
+        ln_Trecp_Amt := ln_Tarre_Amt;     -- ìˆ˜ë‚©ì²˜ë¦¬ ëŒ€ìƒ ì „ì²´ê¸ˆì•¡
         
         /*
-         * °è¾àº° Ã»±¸½ºÄÉÁì °¨¾ÈÇÏ¿© Ã³¸®
+         * ê³„ì•½ë³„ ì²­êµ¬ìŠ¤ì¼€ì¥´ ê°ì•ˆí•˜ì—¬ ì²˜ë¦¬
          */
         FOR cur_SD0109 IN (
             SELECT  SCHD_SEQ, ARRE_AMT
@@ -552,15 +552,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
                 ln_Tarre_Amt := 0;
             END IF;
             
-            -- ¼ö³³´ë»ó¸®½ºÆ® ÀÓ½ÃÅ×ÀÌºí¿¡ »ı¼º 
+            -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì„ì‹œí…Œì´ë¸”ì— ìƒì„± 
             IF ln_Recp_Amt > 0 THEN
                 
                 INSERT INTO RTTEMP01 ( 
-                      ORD_NO                    /*°è¾à¹øÈ£            */
-                    , CUST_NO                   /*°í°´¹øÈ£            */
-                    , SCHD_SEQ                  /*Ã»±¸¼ø¹ø            */
-                    , ARRE_AMT                  /*¿¬Ã¼±İ¾×(VATÆ÷ÇÔ)   */
-                    , RECP_AMT                  /*¼ö³³±İ¾×(VATÆ÷ÇÔ)   */
+                      ORD_NO                    /*ê³„ì•½ë²ˆí˜¸            */
+                    , CUST_NO                   /*ê³ ê°ë²ˆí˜¸            */
+                    , SCHD_SEQ                  /*ì²­êµ¬ìˆœë²ˆ            */
+                    , ARRE_AMT                  /*ì—°ì²´ê¸ˆì•¡(VATí¬í•¨)   */
+                    , RECP_AMT                  /*ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨)   */
                 ) VALUES ( 
                       cur_Re0141.ORD_NO
                     , cur_Re0141.CUST_NO
@@ -573,17 +573,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
                 
         END LOOP;
         
-        -- ¼±¼ö±İ¾×ÀÌ  ³²¾Æ ÀÖ´Â °æ¿ì Ã»±¸¼ø¹ø¾øÀÌ TEMP Table »ı¼º
+        -- ì„ ìˆ˜ê¸ˆì•¡ì´  ë‚¨ì•„ ìˆëŠ” ê²½ìš° ì²­êµ¬ìˆœë²ˆì—†ì´ TEMP Table ìƒì„±
         ln_Pend_Amt := ln_Tarre_Amt;
             
         IF  ln_Tarre_Amt > 0 THEN
             
             INSERT INTO RTTEMP01 ( 
-                  ORD_NO                    /*°è¾à¹øÈ£            */
-                , CUST_NO                   /*°í°´¹øÈ£            */
-                , SCHD_SEQ                  /*Ã»±¸¼ø¹ø            */
-                , ARRE_AMT                  /*¿¬Ã¼±İ¾×(VATÆ÷ÇÔ)   */
-                , RECP_AMT                  /*¼ö³³±İ¾×(VATÆ÷ÇÔ)   */
+                  ORD_NO                    /*ê³„ì•½ë²ˆí˜¸            */
+                , CUST_NO                   /*ê³ ê°ë²ˆí˜¸            */
+                , SCHD_SEQ                  /*ì²­êµ¬ìˆœë²ˆ            */
+                , ARRE_AMT                  /*ì—°ì²´ê¸ˆì•¡(VATí¬í•¨)   */
+                , RECP_AMT                  /*ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨)   */
             ) VALUES ( 
                   cur_Re0141.ORD_NO
                 , cur_Re0141.CUST_NO
@@ -594,25 +594,25 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
                  
         END IF;
             
-        -- Ã³¸®±İ¾× ¼³Á¤
+        -- ì²˜ë¦¬ê¸ˆì•¡ ì„¤ì •
         ln_Recp_Amt := ln_Trecp_Amt;
         ln_Rear_Amt := ln_Trecp_Amt - ln_Pend_Amt;
         
-        -- ¼ö³³³»¿ª »ı¼ºÃ³¸®    
-        -- ¼ö³³´ë»ó¸®½ºÆ® Á¶È¸(¹Ì³³¸®½ºÆ®¿Í ¼±¼ö±İ ³»¿ª)
+        -- ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬    
+        -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì¡°íšŒ(ë¯¸ë‚©ë¦¬ìŠ¤íŠ¸ì™€ ì„ ìˆ˜ê¸ˆ ë‚´ì—­)
         OPEN  Ref_Cursor FOR    
-        SELECT  ORD_NO               /*°è¾à¹øÈ£ */
-             ,  CUST_NO              /*°í°´¹øÈ£ */
-             ,  SCHD_SEQ             /*Ã»±¸¼ø¹ø */
-             ,  ARRE_AMT             /*¹Ì³³±İ¾× */
-             ,  RECP_AMT             /*¼ö³³Ã³¸®±İ¾× */
+        SELECT  ORD_NO               /*ê³„ì•½ë²ˆí˜¸ */
+             ,  CUST_NO              /*ê³ ê°ë²ˆí˜¸ */
+             ,  SCHD_SEQ             /*ì²­êµ¬ìˆœë²ˆ */
+             ,  ARRE_AMT             /*ë¯¸ë‚©ê¸ˆì•¡ */
+             ,  RECP_AMT             /*ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡ */
           FROM  RTTEMP01
-         WHERE  RECP_AMT > 0          /*¼ö³³±İ¾×ÀÌ Á¸ÀçÇÏ´Â °Í¸¸ */
+         WHERE  RECP_AMT > 0          /*ìˆ˜ë‚©ê¸ˆì•¡ì´ ì¡´ì¬í•˜ëŠ” ê²ƒë§Œ */
            AND  ORD_NO   = cur_Re0141.ORD_NO
            AND  CUST_NO  = cur_Re0141.CUST_NO
-         ORDER  BY NVL(SCHD_SEQ,999); -- ¼±¼ö±İÀ» ¸¶Áö¸·¿¡ À§Ä¡½ÃÅ´
+         ORDER  BY NVL(SCHD_SEQ,999); -- ì„ ìˆ˜ê¸ˆì„ ë§ˆì§€ë§‰ì— ìœ„ì¹˜ì‹œí‚´
                 
-        -- ¼ö³³ Ã³¸®
+        -- ìˆ˜ë‚© ì²˜ë¦¬
         Pkg_Rtre0030.p_InsertRtre0030(
               Ref_Cursor
             , SUBSTR(lr_Re0142.IPGM_TIME, 1, 8) 
@@ -632,7 +632,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
         );
         
         IF 0 != v_Success_Code THEN
-            v_Return_Message := '¼ö³³³»¿ª »ı¼ºÃ³¸® ½ÇÆĞ!!('||cur_Re0141.ORD_NO||')-'||v_Return_Message;
+            v_Return_Message := 'ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬ ì‹¤íŒ¨!!('||cur_Re0141.ORD_NO||')-'||v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;  
@@ -641,7 +641,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
             
     END LOOP;
     
-    -- ¼ö³³Ã³¸® ¿Ï·áÈÄ ¼ö³³°Å·¡¹øÈ£ Update
+    -- ìˆ˜ë‚©ì²˜ë¦¬ ì™„ë£Œí›„ ìˆ˜ë‚©ê±°ë˜ë²ˆí˜¸ Update
     IF 0 <> PKG_RTRE0140.f_UpdateRtre0140RecvResult(
           lr_Re0140.RVA_DAY
         , lr_Re0140.RVA_SEQ
@@ -650,12 +650,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
         , v_Reg_Id
         , v_ErrorText
     ) THEN
-        v_Return_Message := '¼ö³³°á°ú ¼öÁ¤ ½ÇÆĞ!!!';
+        v_Return_Message := 'ìˆ˜ë‚©ê²°ê³¼ ìˆ˜ì • ì‹¤íŒ¨!!!';
         RAISE e_Error;
     END IF;
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î °¡»ó°èÁÂ ¼ö³³Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ê°€ìƒê³„ì¢Œ ìˆ˜ë‚©ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -669,11 +669,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0142 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0142.p_CreateRtre0142VaReceive(2)', v_ErrorText, v_Return_Message);
 
   END p_CreateRtre0142VaReceive;
         
 END PKG_RTRE0142;
-/

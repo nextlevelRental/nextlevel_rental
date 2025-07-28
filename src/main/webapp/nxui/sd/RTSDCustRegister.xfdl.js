@@ -205,6 +205,10 @@
             obj._setContents("<ColumnInfo><Column id=\"mdlCd\" type=\"STRING\" size=\"256\"/><Column id=\"prgmCd\" type=\"STRING\" size=\"256\"/><Column id=\"controlId\" type=\"STRING\" size=\"256\"/><Column id=\"userGrp\" type=\"STRING\" size=\"256\"/><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"typeCd\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
+            obj = new Dataset("ds_widerlabSeq", this);
+            obj._setContents("<ColumnInfo><Column id=\"docSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
 
             
             // UI Components Initialize
@@ -712,13 +716,9 @@
             obj.set_maxlength("80");
             obj.set_visible("false");
             this.div_cust.addChild(obj.name, obj);
-            obj = new Button("checkPrvHistory", "absolute", "92.07%", "5", "69", "21", null, null, this.div_cust);
-            obj.set_taborder("81");
-            obj.set_text("이력조회");
-            this.div_cust.addChild(obj.name, obj);
 
             obj = new Tab("Tab00", "absolute", "0", "199", "1122", "357", null, null, this);
-            obj.set_taborder("3");
+            obj.set_taborder("1");
             obj.set_tabindex("0");
             obj.set_scrollbars("autoboth");
             obj.set_visible("true");
@@ -737,16 +737,32 @@
             this.Tab00.addChild(obj.name, obj);
 
             obj = new Static("Static01", "absolute", "1122", "0", "25", "729", null, null, this);
-            obj.set_taborder("6");
+            obj.set_taborder("2");
             obj.set_text("FIX\r\nw25");
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00", "absolute", "12.73%", "206", null, "19", "81.78%", null, this);
-            obj.set_taborder("7");
+            obj.set_taborder("3");
             obj.set_text("Button00");
             obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_infoPrvAgree", "absolute", "78.12%", "184", "80", "42", null, null, this);
+            obj.set_taborder("4");
+            obj.set_text("정보제공동의\r\n발송");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_infoPrvAgreeCheck", "absolute", "85.44%", "184", "69", "42", null, null, this);
+            obj.set_taborder("5");
+            obj.set_text("동의여부\r\n확인");
+            obj.set_enable("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_checkPrvHistory", "absolute", "91.8%", "184", "69", "42", null, null, this);
+            obj.set_taborder("6");
+            obj.set_text("사전 신용\r\n정보 조회");
             this.addChild(obj.name, obj);
 
 
@@ -897,8 +913,13 @@
         this.resultNagYn 		= "N";
         this.selectSafekey 		= "";
         this.oldMobNo			= "";
+        this.docSeq				= "";	// 문서번호
+        this.seq				= "";	// 수신인번호
         this.certificationFlag	= false;
         this.cerChangeFlag		= false;//본인인증 신분증->휴대폰으로 변경하면 인증을 받아야함.
+        this.infoPrvAgreeFlag		= false;	// 페이싸인 정보제공 발송 완료 여부
+        this.infoPrvAgreeCheckFlag	= false;	// 페이싸인 정보제공 동의 체크 여부
+        this.checkPrvHistoryFlag	= false;	// 주문가능 여부
         this.toDay 				= "";   //현재날짜
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         /*온라인 회원가입*/
@@ -990,9 +1011,7 @@
         				return false;
         			}
         		}
-
-        		
-        						
+        	
         	}
         	
         	if( strSvcId == "checkBuslNo" ){
@@ -1128,14 +1147,39 @@
         		}
         	}
         	
-        	if(strSvcId == "beforeCheckEmpInfo") {
-        		if(nErrorCode == "-1") {
-        			alert(strErrorMsg);
+        	if (strSvcId == "infoPrvAgreeSend") {
+        		if (nErrorCode == "-1") {
+        			this.infoPrvAgreeFlag = false;
+        			alert("발송 실패 하였습니다.\n잠시 후 다시 발송해주세요.\n[" + strErrorMsg + "]");
         		} else {
-        			alert("등록 가능합니다.");
+        			this.btn_infoPrvAgreeCheck.set_enable(true);
+        			this.infoPrvAgreeFlag = true;
+        			alert("발송 완료 하였습니다.\n동의여부 확인 버튼을 눌러주세요.");
         		}
         	}
         	
+        	if (strSvcId == "infoPrvAgreeSendCheck") {
+        		if (nErrorCode == "-1") {
+        			this.infoPrvAgreeCheckFlag = false;
+        			alert("고객동의 확인 실패 하였습니다.\n잠시 후 다시 확인해주세요.\n[" + strErrorMsg + "]");
+        		} else if (nErrorCode == "1") {
+        			this.infoPrvAgreeCheckFlag = false;
+        			alert("고객동의 확인 중입니다.\n잠시 후 다시 확인해주세요.\n[" + strErrorMsg + "]");
+        		} else {
+        			this.infoPrvAgreeCheckFlag = true;
+        			alert("고객동의 확인 완료 하였습니다.");
+        		}
+        	}
+        	
+        	if (strSvcId == "beforeCheckEmpInfo") {
+        		if (nErrorCode == "-1") {
+        			this.checkPrvHistoryFlag = false;
+        			alert("등록 불가능합니다.\n[" + strErrorMsg + "]");
+        		} else {
+        			this.checkPrvHistoryFlag = true;
+        			alert("등록 가능합니다.");
+        		}
+        	}
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.RTSDCustRegister_onload = function(obj,e){
@@ -1248,7 +1292,7 @@
         		return false;
         	}
         	
-        	//01 : 영업관리자		//02 : 콜센터		//03 : 지사		//04 : 지점			//05 : 대리점
+        	//01 : 영업관리자		//02 : 콜센터		//03 : 지사		//04 : 지점			//05 : 대리점		//09 : 방문판매
         	
         	if( custTpVal == "02" && regId != "ONL_SYS" && userGrp != "01"){
         		alert("고객유형이 사업자인 경우 영업관리자만 수정가능합니다.");
@@ -1261,6 +1305,20 @@
         		return false;
         	}
         	*/
+        	
+        	if (userGrp != "05") {	// 대리점은 이전 로직대로 [20250408][10243054]
+        		if (userGrp == "09" && this.infoPrvAgreeCheckFlag == false) {
+        			alert("방문판매 업체인 경우 정보제공동의가 필수입니다.");
+        			return false;
+        		}
+        		
+        		if (custTpVal == "01" && this.checkPrvHistoryFlag == false) {
+        			if (!((userGrp == "01" || userGrp == "02") && nvl(this.div_cust.ed_custNo.value) != "")) {	// 관리자, 콜센터가 수정하는 경우 패스 [20250408][10243054]
+        				alert("고객유형이 개인인 경우 사전 신용 정보 조회가 필수입니다.");
+        				return false;
+        			}
+        		}
+        	}
         	
         	var emailAddr = ""
         	
@@ -1404,7 +1462,7 @@
         			this.div_cust.btn_safeKeyConfirm.setFocus(true);
         			return false;
         		}else if( certification == "01" ){
-        			if(this.userId != "10164030" && this.userId != "10083012" && this.userId != "kstka"){
+        			if(this.userId != "10243054" && this.userId != "10244015" && this.userId != "10135008"){
         				if( diCd == "" || ciCd == "" ){
         					alert("본인인증 값이 없습니다.");
         					this.div_cust.btn_certification.setFocus(true);
@@ -1541,7 +1599,10 @@
         		this.ds_cust.setColumn(nRow, "telNo",FN_numberHyphenOut(this.ds_cust.getColumn(nRow,"telNo")));
         		this.ds_cust.setColumn(nRow, "telNo2",FN_numberHyphenOut(this.ds_cust.getColumn(nRow,"telNo2")));
         		this.ds_cust.setColumn(nRow, "cTelno",FN_numberHyphenOut(this.ds_cust.getColumn(nRow,"cTelno")));
-        		
+
+        		sArgs += Ex.util.setParam("docSeq", nvl(this.docSeq));
+        		sArgs += Ex.util.setParam("seq", nvl(this.seq));
+
         		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         	}
         }
@@ -1721,6 +1782,9 @@
         		this.div_cust.st_lfCd.set_visible(true);		//내/외국인
         		this.div_cust.cb_lfCd.set_visible(true);		//내/외국인
         		this.div_cust.btn_safeKeyConfirm.set_visible(true);
+        		this.btn_checkPrvHistory.set_enable(true);
+        		this.btn_infoPrvAgree.set_enable(true);
+        		this.btn_infoPrvAgreeCheck.set_enable(false);
         		
         		//사업자
         		this.div_cust.st_busiCond.set_visible(false);	//업태
@@ -1763,6 +1827,9 @@
         		this.div_cust.st_lfCd.set_visible(false);		//내/외국인
         		this.div_cust.cb_lfCd.set_visible(false);		//내/외국인
         		this.div_cust.btn_safeKeyConfirm.set_visible(false);
+        		this.btn_checkPrvHistory.set_enable(false);
+        		this.btn_infoPrvAgree.set_enable(false);
+        		this.btn_infoPrvAgreeCheck.set_enable(false);
         		
         		//사업자
         		this.div_cust.st_busiCond.set_visible(true);	//업태
@@ -1862,6 +1929,15 @@
         		return false;
         	}else{
         		this.div_cust.ch_birthDayAndBuslNoCh.set_value("true");
+
+        		var birthDay = this.div_cust.ed_birthDay.value;
+        		var currentDate = new Date(this.toDay.slice(0, 4), this.toDay.slice(4, 6) - 1, this.toDay.slice(6, 8));
+        		var birthDate = new Date(birthDay.slice(0, 4), birthDay.slice(4, 6) - 1, birthDay.slice(6, 8));
+        		var age = currentDate.getFullYear() - birthDate.getFullYear();
+
+        		if (currentDate < new Date(currentDate.getFullYear(), birthDate.getMonth(), birthDate.getDate())) age--;
+
+        		if (age < 19 || age >= 75) alert("일시불 구매만 가능합니다.(연령 제한)");
         	}		
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -2214,51 +2290,136 @@
         	if(nRow < 0) return "N";
         	if(nRow >= 0) return "Y";
         }
-        //==================================================================================
-        this.div_cust_checkPrvHistory_onclick = function(obj,e){
-        	var nRow 	  = this.ds_cust.rowposition ;
-        	
+
+        this.btn_infoPrvAgree_onclick = function(obj,e)
+        {
+        	if (this.infoPrvAgreeFlag == true) {
+        		alert("이미 발송이 완료 되었습니다.");
+        		return false;
+        	}
+
+        	var nRow		= this.ds_cust.rowposition;
+
         	var custNo		= this.resultCustNo;
         	var custNm 		= nvl(this.ds_cust.getColumn(nRow,"custNm"));		//고객명
         	var birthDay 	= nvl(this.ds_cust.getColumn(nRow,"birthDay"));		//법정생년월일
         	var mobNo 		= nvl(this.ds_cust.getColumn(nRow,"mobNo"));		//휴대폰
-        	var safeKey 	= nvl(this.div_cust.ed_safekey.value);				//인증번호
-        	
-        	
+
         	// 필수값 validation
-        	if( custNm == "" ){
-        		alert("고객명을 입력하세요.");
+        	if (custNm == "") {
+        		alert("고객명을 확인해주세요.");
         		this.div_cust.ed_custNm.setFocus();
         		return false;
-        	}else if( birthDay == "" ){
-        		alert("생년월일 입력하세요.");
+        	} else if (birthDay == "") {
+        		alert("생년월일을 확인해주세요.");
         		this.div_cust.ed_birthDay.setFocus();
         		return false;
-        	}else if( mobNo == "" ){
-        		alert("휴대폰번호를 입력하세요.");
+        	} else if (mobNo == "") {
+        		alert("휴대폰번호를 확인해주세요.");
         		this.div_cust.ed_mobNo.setFocus();
         		return false;
-        	}else if( safeKey == "" ){
-        		alert("인증번호확인을 먼저 진행해주세요.");
-        		return false;
-        	}else{
-        	
         	}
-        	
-        	var sSvcID        	= "beforeCheckEmpInfo";                    
+
+        	var sSvcID        	= "infoPrvAgreeSend";
+        	var sController   	= "rtms/sd/infoPrvAgreeSend.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "ds_widerlabSeq=mapDsWiderlabSeq";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+
+        	sArgs += Ex.util.setParam("custNo", custNo);
+        	sArgs += Ex.util.setParam("custNm", custNm);
+        	sArgs += Ex.util.setParam("birthDay", birthDay);
+        	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut(mobNo));
+
+        	/*sArgs += Ex.util.setParam("custNo", "999999999999");
+        	sArgs += Ex.util.setParam("custNm", "차은우");
+        	sArgs += Ex.util.setParam("birthDay", "99999999");
+        	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut("010-9999-9999"));*/
+
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+
+        this.btn_infoPrvAgreeCheck_onclick = function(obj,e)
+        {
+        	if (this.infoPrvAgreeCheckFlag == true) {
+        		alert("이미 동의가 완료 되었습니다.");
+        		return false;
+        	}
+
+        	this.docSeq	= nvl(this.ds_widerlabSeq.getColumn(0,"docSeq"));	// 문서번호
+        	this.seq	= nvl(this.ds_widerlabSeq.getColumn(0,"seq"));		// 수신인번호
+
+        	// 필수값 validation
+        	if (this.docSeq == "") {
+        		alert("페이싸인 문서번호가 없습니다.");
+        		return false;
+        	} else if (this.seq == "") {
+        		alert("페이싸인 수신인번호가 없습니다.");
+        		return false;
+        	}
+
+        	var sSvcID        	= "infoPrvAgreeSendCheck";
+        	var sController   	= "rtms/sd/infoPrvAgreeSendCheck.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+
+        	sArgs += Ex.util.setParam("docSeq", this.docSeq);
+        	sArgs += Ex.util.setParam("seq", this.seq);
+
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+
+        this.btn_checkPrvHistory_onclick = function(obj,e)
+        {
+        	if (this.checkPrvHistoryFlag == true) {
+        		alert("이미 신용조회가 완료 되었습니다.");
+        		return false;
+        	}
+
+        	var nRow		= this.ds_cust.rowposition;
+
+        	var custNo		= this.resultCustNo;
+        	var custNm 		= nvl(this.ds_cust.getColumn(nRow,"custNm"));		//고객명
+        	var birthDay 	= nvl(this.ds_cust.getColumn(nRow,"birthDay"));		//법정생년월일
+        	var genderCd 	= nvl(this.ds_cust.getColumn(nRow,"genderCd"));		//성별
+        	var mobNo 		= nvl(this.ds_cust.getColumn(nRow,"mobNo"));		//휴대폰
+
+        	// 필수값 validation
+        	if (custNm == "") {
+        		alert("고객명을 확인해주세요.");
+        		this.div_cust.ed_custNm.setFocus();
+        		return false;
+        	} else if (birthDay == "") {
+        		alert("생년월일을 확인해주세요.");
+        		this.div_cust.ed_birthDay.setFocus();
+        		return false;
+        	} else if (genderCd == "") {
+        		alert("성별을 확인해주세요.");
+        		this.div_cust.cb_genderCd.setFocus();
+        		return false;
+        	} else if (mobNo == "") {
+        		alert("휴대폰번호를 확인해주세요.");
+        		this.div_cust.ed_mobNo.setFocus();
+        		return false;
+        	}
+
+        	var sSvcID        	= "beforeCheckEmpInfo";
         	var sController   	= "rtms/sd/beforeCheckEmpInfo.do";
         	var sInDatasets   	= "";
         	var sOutDatasets  	= "";
         	var sArgs 			= "";
         	var fn_callBack		= "fn_callBack";
-        	
+
         	sArgs += Ex.util.setParam("custNo", custNo);
         	sArgs += Ex.util.setParam("custNm", custNm);
         	sArgs += Ex.util.setParam("birthDay", birthDay);
+        	sArgs += Ex.util.setParam("genderCd", genderCd);
         	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut(mobNo));
-        	sArgs += Ex.util.setParam("safeKey", safeKey);
-        	
-        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
+
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
         
         });
@@ -2291,9 +2452,11 @@
             this.div_cust.ra_certification.addEventHandler("canitemchange", this.div_cust_ra_certification_canitemchange, this);
             this.div_cust.ed_mobNo.addEventHandler("onkeyup", this.div_cust_ed_mobNo_onkeyup, this);
             this.div_cust.ed_cTelno.addEventHandler("onkeyup", this.div_cust_ed_cTelno_onkeyup, this);
-            this.div_cust.checkPrvHistory.addEventHandler("onclick", this.div_cust_checkPrvHistory_onclick, this);
             this.Tab00.addEventHandler("onchanged", this.Tab00_onchanged, this);
             this.Button00.addEventHandler("onclick", this.Button00_onclick, this);
+            this.btn_infoPrvAgree.addEventHandler("onclick", this.btn_infoPrvAgree_onclick, this);
+            this.btn_infoPrvAgreeCheck.addEventHandler("onclick", this.btn_infoPrvAgreeCheck_onclick, this);
+            this.btn_checkPrvHistory.addEventHandler("onclick", this.btn_checkPrvHistory_onclick, this);
 
         };
 

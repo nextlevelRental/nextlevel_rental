@@ -29,9 +29,9 @@
 
             obj = new WebBrowser("web_Test_01", "absolute", "25.68%", "53", null, "212", "44.92%", null, this);
             obj.set_taborder("1");
-            obj.set_url("http://localhost/interface/kcp/kcp_main.jsp");
             obj.set_visible("true");
             obj.style.set_border("1 solid #808080ff");
+            obj.set_url("http://localhost/interface/kcp/kcp_main.jsp");
             this.addChild(obj.name, obj);
 
             obj = new Edit("ed_payMthdNm", "absolute", "101", "27", "151", "21", null, null, this);

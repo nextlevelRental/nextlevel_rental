@@ -1279,4 +1279,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Migration AS
   END p_DeleteOrdNoSelect; 
    
 END Pkg_Migration;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0040 AS
 /*******************************************************************************
    NAME:      PKG_RTSD0040
-   PURPOSE    ∞Ëæ‡∫∞«“¿Œ¡§∫∏
+   PURPOSE    Í≥ÑÏïΩÎ≥ÑÌï†Ïù∏Ï†ïÎ≥¥
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,23 +10,22 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0040 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞Ëæ‡∫∞ «“¿Œ¡§∫∏ Insert
+  -- Í≥ÑÏïΩÎ≥Ñ Ìï†Ïù∏Ï†ïÎ≥¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0040 (
-    v_Ord_No         IN RTSD0040.ORD_NO%TYPE,         /* ∞Ëæ‡π¯»£             */
-    v_Seq            IN RTSD0040.SEQ%TYPE,            /* º¯π¯                 */
-    v_Rent_Amt       IN RTSD0106.RENT_AMT%TYPE,       /*ø˘∑ª≈ª∑·(¡∂∞ﬂ«•)      */
-    v_Mon_Dcamt      IN RTSD0106.MON_DCAMT%TYPE,      /*ø˘∑ª≈ª∑· «“¿Œæ◊       */
-    v_Mon_Amt        IN RTSD0106.MON_AMT%TYPE,        /*ø˘∑ª≈ª∑·              */
+    v_Ord_No         IN RTSD0040.ORD_NO%TYPE,         /* Í≥ÑÏïΩÎ≤àÌò∏             */
+    v_Seq            IN RTSD0040.SEQ%TYPE,            /* ÏàúÎ≤à                 */
+    v_Rent_Amt       IN RTSD0106.RENT_AMT%TYPE,       /*ÏõîÎ†åÌÉàÎ£å(Ï°∞Í≤¨Ìëú)      */
+    v_Mon_Dcamt      IN RTSD0106.MON_DCAMT%TYPE,      /*ÏõîÎ†åÌÉàÎ£å Ìï†Ïù∏Ïï°       */
+    v_Mon_Amt        IN RTSD0106.MON_AMT%TYPE,        /*ÏõîÎ†åÌÉàÎ£å              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
     /*****************************************************************************
-  --∞Ëæ‡∫∞ «“¿Œ¡§∫∏ Delete
+  --Í≥ÑÏïΩÎ≥Ñ Ìï†Ïù∏Ï†ïÎ≥¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0040 (
-    v_Ord_No         IN RTSD0040.ORD_NO%TYPE          /*∞Ëæ‡π¯»£              */
+    v_Ord_No         IN RTSD0040.ORD_NO%TYPE          /*Í≥ÑÏïΩÎ≤àÌò∏              */
     ) RETURN NUMBER;
   
 END PKG_RTSD0040;
-/

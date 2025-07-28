@@ -1,17 +1,17 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RNT_COM AS
 /******************************************************************************
    NAME:       PKG_RNT_COM
-   PURPOSE:    Á¶Á÷°ü¸® COMMON PACKAGE
+   PURPOSE:    ì¡°ì§ê´€ë¦¬ COMMON PACKAGE
 
    REVISIONS:
    Ver        Date        Author           Description
    ---------  ----------  ---------------  ------------------------------------
-   1.0        2018-12-20      °­½Å±Ô       1. Created this package.
+   1.0        2018-12-20      ê°•ì‹ ê·œ       1. Created this package.
 ******************************************************************************/
 
     TYPE TYP_ARR_VARCHAR IS TABLE OF VARCHAR2(4000) INDEX BY BINARY_INTEGER;
     
-    /** ±âº» ¿¡·¯ ¸Þ½ÃÁö */
+    /** ê¸°ë³¸ ì—ëŸ¬ ë©”ì‹œì§€ */
     GV_ARR_ERR_MESG     TYP_ARR_VARCHAR;
     GV_ERR_OK           NUMBER(3);  -- OK!
     GV_ERR_OPN          NUMBER(3);  -- OPERATION ERROR
@@ -21,50 +21,49 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RNT_COM AS
 
 
 /******************************************************************************
-    ·»Å»Áö»ç ¸®½ºÆ® ÃßÃâ
+    ë Œíƒˆì§€ì‚¬ ë¦¬ìŠ¤íŠ¸ ì¶”ì¶œ
 ******************************************************************************/
   PROCEDURE PRC_LIST_RENTAL_GROUP (
     PO_REF_CURSOR   IN OUT SYS_REFCURSOR,
-    PI_USR_GROUP    IN VARCHAR2,    -- »ç¿ëÀÚ ±×·ì
-    PI_USR_ID       IN VARCHAR2,    -- »ç¿ëÀÚ ID
+    PI_USR_GROUP    IN VARCHAR2,    -- ì‚¬ìš©ìž ê·¸ë£¹
+    PI_USR_ID       IN VARCHAR2,    -- ì‚¬ìš©ìž ID
     PI_KEYWORD      IN VARCHAR2
   );
 
 
 /******************************************************************************
-    ·»Å»ÁöÁ¡ ¸®½ºÆ® ÃßÃâ
+    ë Œíƒˆì§€ì  ë¦¬ìŠ¤íŠ¸ ì¶”ì¶œ
 ******************************************************************************/
   PROCEDURE PRC_LIST_RENTAL_OFFICE (
     PO_REF_CURSOR   IN OUT SYS_REFCURSOR,
-    PI_USR_GROUP    IN VARCHAR2,    -- »ç¿ëÀÚ ±×·ì
-    PI_USR_ID       IN VARCHAR2,    -- »ç¿ëÀÚ ID
-    PI_RNT_GROUP    IN VARCHAR2,    -- ·»Å»±×·ì
+    PI_USR_GROUP    IN VARCHAR2,    -- ì‚¬ìš©ìž ê·¸ë£¹
+    PI_USR_ID       IN VARCHAR2,    -- ì‚¬ìš©ìž ID
+    PI_RNT_GROUP    IN VARCHAR2,    -- ë Œíƒˆê·¸ë£¹
     PI_KEYWORD      IN VARCHAR2
   );
 
 /******************************************************************************
-    ÀÎ¼¾Æ¼ºê ±âÃÊÁý°è ÃÖÁ¾¼öÇà ³»¿ª Á¶È¸
+    ì¸ì„¼í‹°ë¸Œ ê¸°ì´ˆì§‘ê³„ ìµœì¢…ìˆ˜í–‰ ë‚´ì—­ ì¡°íšŒ
 ******************************************************************************/
   PROCEDURE PRC_LIST_INC_BAS_AGGR(
     REF_CURSOR IN OUT SYS_REFCURSOR,
-    V_SLCM_YM  IN RTRE7040.SLCM_YM%TYPE /* Áý°è³â¿ù */
+    V_SLCM_YM  IN RTRE7040.SLCM_YM%TYPE /* ì§‘ê³„ë…„ì›” */
   );
 
 /******************************************************************************
-    ÀÎ¼¾Æ¼ºê / Àå·Á±Ý ÆÇ¸ÅÁý°è ÃÖÁ¾¼öÇà ³»¿ª Á¶È¸
+    ì¸ì„¼í‹°ë¸Œ / ìž¥ë ¤ê¸ˆ íŒë§¤ì§‘ê³„ ìµœì¢…ìˆ˜í–‰ ë‚´ì—­ ì¡°íšŒ
 ******************************************************************************/
   PROCEDURE PRC_LIST_INC_SBS_SLS_AGGR(
     REF_CURSOR IN OUT SYS_REFCURSOR,
-    V_SLCM_YM  IN VARCHAR2, /* Áý°è³â¿ù */
-    V_AGG_GRP  IN VARCHAR2  /* Áý°è±×·ì */
+    V_SLCM_YM  IN VARCHAR2, /* ì§‘ê³„ë…„ì›” */
+    V_AGG_GRP  IN VARCHAR2  /* ì§‘ê³„ê·¸ë£¹ */
   );
 
 /******************************************************************************
-    Áý°è¼öÇàÀÌ·Â Á¶È¸
+    ì§‘ê³„ìˆ˜í–‰ì´ë ¥ ì¡°íšŒ
 ******************************************************************************/
   PROCEDURE PRC_LIST_AGGR_EXEC_HST(
     REF_CURSOR IN OUT SYS_REFCURSOR,
-    V_SLCM_YM  IN RTHS7000.SLCM_YM%TYPE /* Áý°è³â¿ù */
+    V_SLCM_YM  IN RTHS7000.SLCM_YM%TYPE /* ì§‘ê³„ë…„ì›” */
   );
 END PKG_RNT_COM;
-/

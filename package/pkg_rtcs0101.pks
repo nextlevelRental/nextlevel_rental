@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0101 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0101
-   PURPOSE   ÇØÇÇÄÝ ÁúÀÇ ´äº¯ °ü¸®
+   PURPOSE   í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,233 +10,232 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0101 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Count
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0101Count(
-    v_Call_No        IN RTCS0101.CALL_NO%TYPE           /*»ó´ã¹øÈ£            */
+    v_Call_No        IN RTCS0101.CALL_NO%TYPE           /*ìƒë‹´ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Select
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0101 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE          /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE          /*ë“±ë¡ìž ID            */
     );
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Insert
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0101 (
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Update
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0101 (
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ °ü¸®(IUD)
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0101 (
-    v_Comm_Dvsn       IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)      */
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Comm_Dvsn       IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)      */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_Success_Code    OUT NUMBER,
     v_Return_Message  OUT VARCHAR2,
     v_ErrorText       OUT VARCHAR2
     );
 
 /*****************************************************************************
--- Áú¹® ¸®½ºÆ®
+-- ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸
 *****************************************************************************/
   PROCEDURE p_sRtcs0101ANS (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_No   IN RTCS0100.CALL_NO%TYPE  /*»ó´ã¹øÈ£           */
+    v_Call_No   IN RTCS0100.CALL_NO%TYPE  /*ìƒë‹´ë²ˆí˜¸           */
     );
 /*****************************************************************************
--- ´äº¯ ¸®½ºÆ®
+-- ë‹µë³€ ë¦¬ìŠ¤íŠ¸
 *****************************************************************************/
   PROCEDURE p_sRtcs0101Answer (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Question       IN RTCS0101.OBJECT_ANS_01%TYPE  /*Áú¹®³»¿ë           */
+    v_Question       IN RTCS0101.OBJECT_ANS_01%TYPE  /*ì§ˆë¬¸ë‚´ìš©           */
     );
   /*****************************************************************************
-  -- Áú¹®,´äº¯ Á¶È¸
+  -- ì§ˆë¬¸,ë‹µë³€ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0101qustans (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*»ó´ã¹øÈ£           */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*ìƒë‹´ë²ˆí˜¸           */
     );
             
 END Pkg_Rtcs0101;
-/

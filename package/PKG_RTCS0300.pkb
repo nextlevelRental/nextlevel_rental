@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS 
 /*******************************************************************************
    NAME      Pkg_Rtcs0300
-   PURPOSE   ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ ∞¸∏Æ
+   PURPOSE   ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ ¡∂»∏
+  -- ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Ï°∞Ìöå
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
@@ -18,10 +18,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
   *****************************************************************************/
   PROCEDURE p_sRtcs0300 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_Id        IN RTCS0300.CALL_ID%TYPE,          /*ªÛ¥„ªÁ ID                        */
-    v_Provsn_Tp      IN RTCS0300.PROVSN_TP%TYPE,        /*º“º”±◊∑Ï P:∞°∞Ëæ‡, H:»®ºÓ«Œ, R:¿Á∑ª≈ª*/
-    v_Holi_Yn        IN RTCS0300.HOLI_YN%TYPE,          /*»ﬁπ´ø©∫Œ                        */
-    v_Use_Yn         IN RTCS0300.USE_YN%TYPE            /*ªÁøÎø©∫Œ                        */
+    v_Call_Id        IN RTCS0300.CALL_ID%TYPE,          /*ÏÉÅÎã¥ÏÇ¨ ID                        */
+    v_Provsn_Tp      IN RTCS0300.PROVSN_TP%TYPE,        /*ÏÜåÏÜçÍ∑∏Î£π P:Í∞ÄÍ≥ÑÏïΩ, H:ÌôàÏáºÌïë, R:Ïû¨Î†åÌÉà*/
+    v_Holi_Yn        IN RTCS0300.HOLI_YN%TYPE,          /*Ìú¥Î¨¥Ïó¨Î∂Ä                        */
+    v_Use_Yn         IN RTCS0300.USE_YN%TYPE            /*ÏÇ¨Ïö©Ïó¨Î∂Ä                        */
     ) IS
 
   BEGIN
@@ -46,14 +46,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
   END p_sRtcs0300;  
   
   /*****************************************************************************
-  -- ªÛ¥„ªÁ µÓ∑œ ø©∫Œ »Æ¿Œ
+  -- ÏÉÅÎã¥ÏÇ¨ Îì±Î°ù Ïó¨Î∂Ä ÌôïÏù∏
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
   1.0        2023-07-18  kstka           Created. [20230718_01]                             
   *****************************************************************************/
   FUNCTION f_sRtcs0300Count (
-    v_Call_Id        IN RTCS0300.CALL_ID%TYPE           /*ªÛ¥„ªÁ ID                        */
+    v_Call_Id        IN RTCS0300.CALL_ID%TYPE           /*ÏÉÅÎã¥ÏÇ¨ ID                        */
     ) RETURN NUMBER IS
 
     v_Cnt NUMBER;
@@ -71,19 +71,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
   END f_sRtcs0300Count;
   
   /*****************************************************************************
-  -- ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ INSERT
+  -- ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ INSERT
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
   1.0        2023-07-18  kstka           Created. [20230718_01]                          
   *****************************************************************************/
   FUNCTION f_InsertRtcs0300 (
-    v_Call_Id         IN RTCS0300.CALL_ID%TYPE,        /*ªÛ¥„ªÁ ID         */
-    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ªÛ¥„ªÁ∏Ì          */
-    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ªÛ¥„ªÁ±◊∑Ï        */
-    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*»ﬁπ´ø©∫Œ          */
-    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ªÁøÎø©∫Œ          */
-    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*µÓ∑œ¿⁄            */
+    v_Call_Id         IN RTCS0300.CALL_ID%TYPE,        /*ÏÉÅÎã¥ÏÇ¨ ID         */
+    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ÏÉÅÎã¥ÏÇ¨Î™Ö          */
+    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ÏÉÅÎã¥ÏÇ¨Í∑∏Î£π        */
+    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*Ìú¥Î¨¥Ïó¨Î∂Ä          */
+    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*Îì±Î°ùÏûê            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -120,19 +120,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
   END f_InsertRtcs0300;
 
   /*****************************************************************************
-  -- ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ UPDATE
+  -- ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ UPDATE
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
   1.0        2023-07-18  kstka           Created. [20230718_01]                  
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0300 (
-     v_Call_Id         IN RTCS0300.CALL_ID%TYPE,        /*ªÛ¥„ªÁ ID         */
-    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ªÛ¥„ªÁ∏Ì          */
-    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ªÛ¥„ªÁ±◊∑Ï        */
-    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*»ﬁπ´ø©∫Œ          */
-    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ªÁøÎø©∫Œ          */
-    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*µÓ∑œ¿⁄            */
+     v_Call_Id         IN RTCS0300.CALL_ID%TYPE,        /*ÏÉÅÎã¥ÏÇ¨ ID         */
+    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ÏÉÅÎã¥ÏÇ¨Î™Ö          */
+    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ÏÉÅÎã¥ÏÇ¨Í∑∏Î£π        */
+    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*Ìú¥Î¨¥Ïó¨Î∂Ä          */
+    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*Îì±Î°ùÏûê            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -157,20 +157,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
   END f_UpdateRtcs0300;
   
   /*****************************************************************************
-  -- ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ (IUD)
+  -- ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ (IUD)
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
   1.0        2023-07-18  kstka           Created. [20230718_01]                                                                                         
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0300 (
-    v_Comm_Dvsn       IN CHAR,                         /*1 √≥∏Æ±∏∫–(I,U,D)       */
-    v_Call_Id         IN RTCS0300.CALL_ID%TYPE,       /*ªÛ¥„ªÁ ID         */
-    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ªÛ¥„ªÁ∏Ì          */
-    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ªÛ¥„ªÁ±◊∑Ï        */
-    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*»ﬁπ´ø©∫Œ          */
-    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ªÁøÎø©∫Œ          */
-    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*µÓ∑œ¿⁄            */
+    v_Comm_Dvsn       IN CHAR,                         /*1 Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Call_Id         IN RTCS0300.CALL_ID%TYPE,       /*ÏÉÅÎã¥ÏÇ¨ ID         */
+    v_Call_Nm         IN RTCS0300.CALL_NM%TYPE,        /*ÏÉÅÎã¥ÏÇ¨Î™Ö          */
+    v_Provsn_Tp       IN RTCS0300.PROVSN_TP%TYPE,      /*ÏÉÅÎã¥ÏÇ¨Í∑∏Î£π        */
+    v_Holi_Yn         IN RTCS0300.HOLI_YN%TYPE,        /*Ìú¥Î¨¥Ïó¨Î∂Ä          */
+    v_Use_Yn          IN RTCS0300.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    v_Reg_Id          IN RTCS0300.REG_ID%TYPE,         /*Îì±Î°ùÏûê            */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -186,7 +186,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
         
             IF 0 != f_InsertRtcs0300(v_Call_Id, v_Call_Nm ,v_Provsn_Tp, v_Holi_Yn , v_Use_Yn,
                                      v_Reg_Id,v_ErrorText) THEN
-                v_Return_Message := 'ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ µÓ∑œ Ω«∆–!!!'||'-'||v_Errortext;
+                v_Return_Message := 'ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_Errortext;
                 v_Errortext := v_Errortext;
                 RAISE e_Error;
             END IF;      
@@ -196,18 +196,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
 
         IF 0 != f_UpdateRtcs0300(v_Call_Id, v_Call_Nm ,v_Provsn_Tp, v_Holi_Yn , v_Use_Yn,
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ªÛ¥„ªÁ ∏∂Ω∫≈Õ ¡§∫∏ ºˆ¡§ Ω«∆–!!!'||'-'||v_Errortext;
+            v_Return_Message := 'ÏÉÅÎã¥ÏÇ¨ ÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_Errortext;
             v_Errortext := v_Errortext;
             RAISE e_Error;
         END IF;     
 
     ELSE
-        v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
     END IF;    
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ √≥∏Æµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Ï≤òÎ¶¨ÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -221,10 +221,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0300 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
 
     END p_IUDRtcs0300;
     
 END Pkg_Rtcs0300;
-/

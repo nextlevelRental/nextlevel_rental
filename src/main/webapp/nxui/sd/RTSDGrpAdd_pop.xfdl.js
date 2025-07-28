@@ -14,6 +14,7 @@
                 this.set_name("RTSDGrpAdd_pop");
                 this.set_classname("RTSDGrpAdd_pop");
                 this.set_titletext("제품추가");
+                this.set_scrollbars("none");
                 this._setFormPosition(0,0,800,430);
             }
 
@@ -21,24 +22,26 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_agencyPop", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"grpNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpSt\" type=\"STRING\" size=\"256\"/><Column id=\"minAgrCnt\" type=\"STRING\" size=\"256\"/><Column id=\"restCnt\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcRate\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"grpNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpSt\" type=\"STRING\" size=\"256\"/><Column id=\"minAgrCnt\" type=\"STRING\" size=\"256\"/><Column id=\"restCnt\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcRate\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_agencyPop_Cp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"grpNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpSt\" type=\"STRING\" size=\"256\"/><Column id=\"minAgrCnt\" type=\"STRING\" size=\"256\"/><Column id=\"restCnt\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcRate\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"grpNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"grpSt\" type=\"STRING\" size=\"256\"/><Column id=\"minAgrCnt\" type=\"STRING\" size=\"256\"/><Column id=\"restCnt\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcRate\" type=\"STRING\" size=\"256\"/><Column id=\"grpDcAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -97,7 +100,7 @@
             obj.set_autosizebandtype("head");
             obj.set_cellclickbound("cell");
             obj.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"106\"/><Column size=\"83\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"129\"/><Column size=\"68\"/><Column size=\"79\"/><Column size=\"0\"/><Column size=\"97\"/><Column size=\"61\"/><Column size=\"68\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"단체명\"/><Cell col=\"1\" text=\"단체번호\"/><Cell col=\"2\" text=\"비밀번호\"/><Cell col=\"3\" displaytype=\"normal\" text=\"대리점아이디\"/><Cell col=\"4\" text=\"판매상품명\"/><Cell col=\"5\" text=\"단체상태\"/><Cell col=\"6\" text=\"최소약정건수\"/><Cell col=\"7\" text=\"사용자 그룹\"/><Cell col=\"8\" text=\"잔여계약건수\"/><Cell col=\"9\" text=\"할인율\"/><Cell col=\"10\" text=\"할인금액\"/></Band><Band id=\"body\"><Cell text=\"bind:grpNm\"/><Cell col=\"1\" text=\"bind:grpNo\"/><Cell col=\"2\" displaytype=\"none\" text=\"bind:password\"/><Cell col=\"3\" text=\"bind:agentId\"/><Cell col=\"4\" text=\"bind:saleNm\"/><Cell col=\"5\" text=\"bind:grpSt\"/><Cell col=\"6\" text=\"bind:minAgrCnt\"/><Cell col=\"7\" text=\"bind:userGrp\"/><Cell col=\"8\" text=\"bind:restCnt\"/><Cell col=\"9\" text=\"bind:grpDcRate\"/><Cell col=\"10\" text=\"bind:grpDcAmt\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"106\"/><Column size=\"83\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"129\"/><Column size=\"68\"/><Column size=\"79\"/><Column size=\"0\"/><Column size=\"97\"/><Column size=\"61\"/><Column size=\"68\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"단체명\"/><Cell col=\"1\" text=\"단체번호\"/><Cell col=\"2\" text=\"비밀번호\"/><Cell col=\"3\" displaytype=\"normal\" text=\"대리점아이디\"/><Cell col=\"4\" text=\"판매상품명\"/><Cell col=\"5\" text=\"단체상태\"/><Cell col=\"6\" text=\"최소약정본수\"/><Cell col=\"7\" text=\"사용자 그룹\"/><Cell col=\"8\" text=\"현재계약본수\"/><Cell col=\"9\" text=\"할인율\"/><Cell col=\"10\" text=\"할인금액\"/></Band><Band id=\"body\"><Cell text=\"bind:grpNm\"/><Cell col=\"1\" text=\"bind:grpNo\"/><Cell col=\"2\" displaytype=\"none\" text=\"bind:password\"/><Cell col=\"3\" text=\"bind:agentId\"/><Cell col=\"4\" text=\"bind:saleNm\"/><Cell col=\"5\" text=\"bind:grpSt\"/><Cell col=\"6\" text=\"bind:minAgrCnt\"/><Cell col=\"7\" text=\"bind:userGrp\"/><Cell col=\"8\" text=\"bind:restCnt\"/><Cell col=\"9\" text=\"bind:grpDcRate\"/><Cell col=\"10\" text=\"bind:grpDcAmt\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_close", "absolute", null, "397", "41", "21", "10", null, this);
@@ -134,6 +137,7 @@
             	function(p) {
             		p.set_classname("RTSDGrpAdd_pop");
             		p.set_titletext("제품추가");
+            		p.set_scrollbars("none");
 
             	}
             );
@@ -210,6 +214,8 @@
         			this.grid_agency.set_nodatatext("조회된 데이터가 없습니다.");
         			this.div_search.ed_searchAgency.setFocus();
         		}
+        		
+        		console.log(this.ds_agencyPop.saveXML());
         	}	
         }
 
@@ -227,7 +233,7 @@
         	
         	/*var modelCd 		= nvl(this.ds_model.getColumn(idx, "modelCd"));*/
         	var sSvcID        	= "listGrpAdd";                    
-        	var sController   	= "/listGrpAdd.do";
+        	var sController   	= "/rtms/sd/listGrpAdd.do";
         	var sInDatasets   	= "";
         	var sOutDatasets  	= "ds_agencyPop=listGrpAdd";
         	var sArgs 			= "";	
@@ -254,9 +260,21 @@
         	var nRow = this.ds_agencyPop_Cp.addRow();
         	
         	this.ds_agencyPop_Cp.copyRow(nRow,this.ds_agencyPop,idx);
+        	
         	var arr = [this.ds_agencyPop_Cp];
         	this.close(this.opener.set_grp(arr));
         	 
+        }
+
+        this.grd_Group_oncelldblclick = function(obj,e)
+        {
+        	var idx = this.ds_agencyPop.rowposition;
+        	var nRow = this.ds_agencyPop_Cp.addRow();
+        	
+        	this.ds_agencyPop_Cp.copyRow(nRow,this.ds_agencyPop,idx);
+        	
+        	var arr = [this.ds_agencyPop_Cp];
+        	this.close(this.opener.set_grp(arr));
         }
         
         });
@@ -271,6 +289,7 @@
             this.div_search.btn_search.addEventHandler("onclick", this.div_search.btn_search_onclick, this);
             this.div_search.edt_searchKeyword.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_search.edt_searchKeyword00.addEventHandler("onkeyup", this.div_search_edt_searchKeyword00_onkeyup, this);
+            this.grd_Group.addEventHandler("oncelldblclick", this.grd_Group_oncelldblclick, this);
             this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
             this.btn_choice.addEventHandler("onclick", this.btn_choice_onclick, this);
 

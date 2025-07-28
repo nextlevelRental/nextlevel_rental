@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0029 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0029
-   PURPOSE :  µÓ∑œ∫Ò∞¸∏Æ
+   PURPOSE :  Îì±Î°ùÎπÑÍ¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -11,77 +11,76 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0029 AS
 
 
   /*****************************************************************************
-  -- µÓ∑œ∫Ò∞¸∏Æ Select
+  -- Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0029 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ∆«∏≈ƒ⁄µÂ         */
+    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ÌåêÎß§ÏΩîÎìú         */
   );
   
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Insert
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER;
     
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Update
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER;    
 
 
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Delete
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ DB Copy
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ DB Copy
   *****************************************************************************/
   FUNCTION f_InsertRtsd0030DbCopy (
-    v_Cnt_Cd            IN RTSD0030.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0030.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0030.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Cnt_Cd            IN RTSD0030.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0030.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0030.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER;  
         
   /*****************************************************************************
-  --µÓ∑œ∫Ò∞¸∏Æ (IUD)
+  --Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ (IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0029 (
-    v_Comm_Dvsn         IN CHAR,                            /* √≥∏Æ±∏∫–(I,U,D)  */
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Comm_Dvsn         IN CHAR,                            /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)  */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
   );
   
   /*****************************************************************************
-  -- ¡÷πÆµÓ∑œ ∆«∏≈ƒ⁄µÂø° µ˚∏• µÓ∑œ∫Ò Select
+  -- Ï£ºÎ¨∏Îì±Î°ù ÌåêÎß§ÏΩîÎìúÏóê Îî∞Î•∏ Îì±Î°ùÎπÑ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0029RegAmtInfo (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ∆«∏≈ƒ⁄µÂ         */
+    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ÌåêÎß§ÏΩîÎìú         */
   );  
 END Pkg_Rtsd0029;
-/

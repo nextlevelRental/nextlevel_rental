@@ -1,11 +1,11 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
 
   /*****************************************************************************
-  -- �����ڵ� Detail Count
+  -- 공통코드 Detail Count
   *****************************************************************************/
   FUNCTION f_sRtcm0051Count(
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*�ڵ�׷��ڵ�        */
-    v_Cd        IN  RTCM0051.CD%TYPE                    /*�ڵ�                */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*코드그룹코드        */
+    v_Cd        IN  RTCM0051.CD%TYPE                    /*코드                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -25,17 +25,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
   END f_sRtcm0051Count;
   
   /*****************************************************************************
-  -- �����ڵ� Detail Insert
+  -- 공통코드 Detail Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0051(
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*�ڵ�׷��ڵ�        */
-    v_Cd        IN  RTCM0051.CD%TYPE,                   /*�ڵ�                */
-    v_Cd_Nm     IN  RTCM0051.CD_NM%TYPE,                /*�ڵ��              */
-    v_Cd_Desc   IN  RTCM0051.CD_DESC%TYPE,              /*�ڵ弳��            */
-    v_Order_Pt  IN  RTCM0051.ORDER_PT%TYPE,             /*�켱����            */
-    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE,               /*��뿩��            */
-    v_Remark    IN  RTCM0051.REMARK%TYPE,               /*����                */
-    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*����� ID           */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*코드그룹코드        */
+    v_Cd        IN  RTCM0051.CD%TYPE,                   /*코드                */
+    v_Cd_Nm     IN  RTCM0051.CD_NM%TYPE,                /*코드명              */
+    v_Cd_Desc   IN  RTCM0051.CD_DESC%TYPE,              /*코드설명            */
+    v_Order_Pt  IN  RTCM0051.ORDER_PT%TYPE,             /*우선순위            */
+    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE,               /*사용여부            */
+    v_Remark    IN  RTCM0051.REMARK%TYPE,               /*적요                */
+    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*등록자 ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -62,17 +62,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
   END f_InsertRtcm0051;
 
   /*****************************************************************************
-  -- �����ڵ� Detail Update
+  -- 공통코드 Detail Update
   *****************************************************************************/
   FUNCTION f_UpdateRTCM0051(
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*�ڵ�׷��ڵ�        */
-    v_Cd        IN  RTCM0051.CD%TYPE,                   /*�ڵ�                */
-    v_Cd_Nm     IN  RTCM0051.CD_NM%TYPE,                /*�ڵ��              */
-    v_Cd_Desc   IN  RTCM0051.CD_DESC%TYPE,              /*�ڵ弳��            */
-    v_Order_Pt  IN  RTCM0051.ORDER_PT%TYPE,             /*�켱����            */
-    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE,               /*��뿩��            */
-    v_Remark    IN  RTCM0051.REMARK%TYPE,               /*����                */
-    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*����� ID           */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*코드그룹코드        */
+    v_Cd        IN  RTCM0051.CD%TYPE,                   /*코드                */
+    v_Cd_Nm     IN  RTCM0051.CD_NM%TYPE,                /*코드명              */
+    v_Cd_Desc   IN  RTCM0051.CD_DESC%TYPE,              /*코드설명            */
+    v_Order_Pt  IN  RTCM0051.ORDER_PT%TYPE,             /*우선순위            */
+    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE,               /*사용여부            */
+    v_Remark    IN  RTCM0051.REMARK%TYPE,               /*적요                */
+    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*등록자 ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -100,12 +100,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
 
 
   /*****************************************************************************
-  -- �����ڵ� Detail Delete
+  -- 공통코드 Detail Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0051(
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*�ڵ�׷��ڵ�        */
-    v_Cd        IN  RTCM0051.CD%TYPE,                   /*�ڵ�                */
-    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*����� ID           */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,            /*코드그룹코드        */
+    v_Cd        IN  RTCM0051.CD%TYPE,                   /*코드                */
+    v_Reg_Id    IN  RTCM0051.REG_ID%TYPE,               /*등록자 ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -129,18 +129,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
 
 
   /*****************************************************************************
-  -- �����ڵ� ����
+  -- 공통코드 관리
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0051(
-    v_Comm_Dvsn  IN  CHAR,                          /*ó������(I,U,D)         */
-    v_Cd_Grp_Cd  IN  RTCM0051.CD_GRP_CD%TYPE,       /*�ڵ�׷��ڵ�            */
-    v_Cd         IN  RTCM0051.CD%TYPE,              /*�ڵ�                    */
-    v_Cd_Nm      IN  RTCM0051.CD_NM%TYPE,           /*�ڵ��                  */
-    v_Cd_Desc    IN  RTCM0051.CD_DESC%TYPE,         /*�ڵ弳��                */
-    v_Order_Pt   IN  RTCM0051.ORDER_PT%TYPE,        /*�켱����                */
-    v_Use_Yn     IN  RTCM0051.USE_YN%TYPE,          /*��뿩��                */
-    v_Remark     IN  RTCM0051.REMARK%TYPE,          /*����                    */
-    v_Reg_Id     IN  RTCM0051.REG_ID%TYPE,          /*����� ID               */
+    v_Comm_Dvsn  IN  CHAR,                          /*처리구분(I,U,D)         */
+    v_Cd_Grp_Cd  IN  RTCM0051.CD_GRP_CD%TYPE,       /*코드그룹코드            */
+    v_Cd         IN  RTCM0051.CD%TYPE,              /*코드                    */
+    v_Cd_Nm      IN  RTCM0051.CD_NM%TYPE,           /*코드명                  */
+    v_Cd_Desc    IN  RTCM0051.CD_DESC%TYPE,         /*코드설명                */
+    v_Order_Pt   IN  RTCM0051.ORDER_PT%TYPE,        /*우선순위                */
+    v_Use_Yn     IN  RTCM0051.USE_YN%TYPE,          /*사용여부                */
+    v_Remark     IN  RTCM0051.REMARK%TYPE,          /*적요                    */
+    v_Reg_Id     IN  RTCM0051.REG_ID%TYPE,          /*등록자 ID               */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -150,24 +150,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
 
   BEGIN
 
-    -- �ʼ���: �ڵ�׷��ڵ�, �ڵ�, ��뿩�� ,����� ID
+    -- 필수값: 코드그룹코드, 코드, 사용여부 ,등록자 ID
     IF TRIM(v_Cd_Grp_Cd) IS NULL THEN
-        v_Return_Message := '�ڵ�׷��ڵ�('||v_Cd_Grp_Cd||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '코드그룹코드('||v_Cd_Grp_Cd||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Cd) IS NULL THEN
-        v_Return_Message := '�ڵ�('||v_Cd||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '코드('||v_Cd||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := '��뿩��('||v_Use_Yn||') : �ʼ� �Է°� �������� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '사용여부('||v_Use_Yn||') : 필수 입력값 누락으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := '����� ID('||v_Reg_Id||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '등록자 ID('||v_Reg_Id||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
@@ -175,7 +175,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
 
         IF 0 != f_InsertRtcm0051(v_Cd_Grp_Cd, v_Cd,v_Cd_Nm, v_Cd_Desc, v_Order_Pt, v_Use_Yn,
                                  v_Remark, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '�����ڵ� ��� ����!!!'||'-'||v_ErrorText;
+            v_Return_Message := '공통코드 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -186,7 +186,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
         
             IF 0 != f_UpdateRtcm0051(v_Cd_Grp_Cd, v_Cd,v_Cd_Nm, v_Cd_Desc, v_Order_Pt, v_Use_Yn,
                                      v_Remark, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '�����ڵ� ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '공통코드 수정 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -194,20 +194,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcm0051(v_Cd_Grp_Cd, v_Cd, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '�����ڵ� ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '공통코드 삭제 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := ' ó������(I,U,D)�� ����!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := ' 처리구분(I,U,D)값 오류!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '���������� ��ϵǾ����ϴ�';
+    v_Return_Message := '정상적으로 등록되었습니다';
     v_ErrorText := '';
     --COMMIT;
 
@@ -222,11 +222,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_TEST01 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '�ý��۰����ڿ��� ���ǹٶ��ϴ�!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_RTCM0051.p_IUDRTCM0051(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0051;
  
 END PKG_TEST01;
-/

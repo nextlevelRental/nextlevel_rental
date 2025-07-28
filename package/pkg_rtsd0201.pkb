@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0201
-   PURPOSE   SAFE KEY IR Àü¹® °ü¸®
+   PURPOSE   SAFE KEY IR ì „ë¬¸ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,14 +10,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Count
+  -- SAFE KEY IR ì „ë¬¸ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0201Count(
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,        /*¹ýÁ¤»ý³â¿ùÀÏ        */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,          /*°í°´¸í_¹ýÀÎ¸í       */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,           /*ÈÞ´ëÆù¹øÈ£          */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,        /*¼ºº°                */
-    v_Seq            IN RTSD0201.SEQ%TYPE               /*¼ø¹ø                */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,        /*ë²•ì •ìƒë…„ì›”ì¼        */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,          /*ê³ ê°ëª…_ë²•ì¸ëª…       */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,           /*íœ´ëŒ€í°ë²ˆí˜¸          */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,        /*ì„±ë³„                */
+    v_Seq            IN RTSD0201.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -40,112 +40,112 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END f_sRtsd0201Count;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Select
+  -- SAFE KEY IR ì „ë¬¸ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0201 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*°í°´¸í_¹ýÀÎ¸í         */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Seq            IN RTSD0201.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*ÇÁ·Î±×·¥ ÄÚµå         */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*ê³ ê°ëª…_ë²•ì¸ëª…         */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Seq            IN RTSD0201.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*í”„ë¡œê·¸ëž¨ ì½”ë“œ         */
     v_I_Nd01_N       IN RTSD0201.I_ND01_N%TYPE,       /*Transaction Code      */
-    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_I_Nd08_N       IN RTSD0201.I_ND08_N%TYPE,       /*User_ID               */
-    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ »çÀ¯         */
-    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*¼º¸í                  */
-    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
-    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*¼ºº°                  */
-    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*°ø¶õ                  */
+    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ ì‚¬ìœ          */
+    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*ì„±ë³„                  */
+    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*ê³µëž€                  */
     v_E_Nd01_N       IN RTSD0201.E_ND01_N%TYPE,       /*Transaction Code      */
-    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_E_Nd08_N       IN RTSD0201.E_ND08_N%TYPE,       /*User_ID               */
-    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ»çÀ¯          */
-    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*¼º¸í                  */
-    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
+    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ì‚¬ìœ           */
+    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
     v_E_Nd18_N       IN RTSD0201.E_ND18_N%TYPE,       /*SAFE_KEY              */
-    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*¼ºº°                  */
-    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0201.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*ì„±ë³„                  */
+    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0201.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.BIRTH_DAY,                 /*¹ýÁ¤»ý³â¿ùÀÏ        */
-            A.CUST_NM,                   /*°í°´¸í_¹ýÀÎ¸í       */
-            A.MOB_NO,                    /*ÈÞ´ëÆù¹øÈ£          */
-            A.GENDER_CD,                 /*¼ºº°                */
-            A.SEQ,                       /*¼ø¹ø                */
-            A.YN,                        /*IF ¼º°ø¿©ºÎ         */
-            A.PRGM_CD,                   /*ÇÁ·Î±×·¥ ÄÚµå       */
+    SELECT  A.BIRTH_DAY,                 /*ë²•ì •ìƒë…„ì›”ì¼        */
+            A.CUST_NM,                   /*ê³ ê°ëª…_ë²•ì¸ëª…       */
+            A.MOB_NO,                    /*íœ´ëŒ€í°ë²ˆí˜¸          */
+            A.GENDER_CD,                 /*ì„±ë³„                */
+            A.SEQ,                       /*ìˆœë²ˆ                */
+            A.YN,                        /*IF ì„±ê³µì—¬ë¶€         */
+            A.PRGM_CD,                   /*í”„ë¡œê·¸ëž¨ ì½”ë“œ       */
             A.I_ND01_N,                  /*Transaction Code    */
-            A.I_ND02_N,                  /*Àü¹®±×·ìÄÚµå        */
-            A.I_ND03_N,                  /*°Å·¡Á¾º°ÄÚµå        */
-            A.I_ND04_N,                  /*°Å·¡±¸ºÐÄÚµå        */
-            A.I_ND05_N,                  /*¼Û¼ö½Å Flag         */
-            A.I_ND06_N,                  /*´Ü¸»±â±¸ºÐ          */
-            A.I_ND07_N,                  /*ÀÀ´äÄÚµå            */
+            A.I_ND02_N,                  /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ        */
+            A.I_ND03_N,                  /*ê±°ëž˜ì¢…ë³„ì½”ë“œ        */
+            A.I_ND04_N,                  /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ        */
+            A.I_ND05_N,                  /*ì†¡ìˆ˜ì‹  Flag         */
+            A.I_ND06_N,                  /*ë‹¨ë§ê¸°êµ¬ë¶„          */
+            A.I_ND07_N,                  /*ì‘ë‹µì½”ë“œ            */
             A.I_ND08_N,                  /*User_ID             */
-            A.I_ND09_N,                  /*±â°üÀü¹® °ü¸®¹øÈ£   */
-            A.I_ND10_N,                  /*±â°üÀü¹® Àü¼Û½Ã°£   */
-            A.I_ND11_N,                  /*Nice Àü¹® °ü¸®¹øÈ£  */
-            A.I_ND12_N,                  /*Nice Àü¹®Àü¼Û½Ã°£   */
-            A.I_ND13_N,                  /*°ø¶õ                */
-            A.I_ND14_N,                  /*Á¶È¸µ¿ÀÇ »çÀ¯       */
-            A.I_ND15_N,                  /*»ý³â¿ùÀÏ            */
-            A.I_ND16_N,                  /*¼º¸í                */
-            A.I_ND17_N,                  /*ÈÞ´ëÆù¹øÈ£          */
-            A.I_ND18_N,                  /*¼ºº°                */
-            A.I_ND19_N,                  /*°ø¶õ                */
+            A.I_ND09_N,                  /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸   */
+            A.I_ND10_N,                  /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„   */
+            A.I_ND11_N,                  /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸  */
+            A.I_ND12_N,                  /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„   */
+            A.I_ND13_N,                  /*ê³µëž€                */
+            A.I_ND14_N,                  /*ì¡°íšŒë™ì˜ ì‚¬ìœ        */
+            A.I_ND15_N,                  /*ìƒë…„ì›”ì¼            */
+            A.I_ND16_N,                  /*ì„±ëª…                */
+            A.I_ND17_N,                  /*íœ´ëŒ€í°ë²ˆí˜¸          */
+            A.I_ND18_N,                  /*ì„±ë³„                */
+            A.I_ND19_N,                  /*ê³µëž€                */
             A.E_ND01_N,                  /*Transaction Code    */
-            A.E_ND02_N,                  /*Àü¹®±×·ìÄÚµå        */
-            A.E_ND03_N,                  /*°Å·¡Á¾º°ÄÚµå        */
-            A.E_ND04_N,                  /*°Å·¡±¸ºÐÄÚµå        */
-            A.E_ND05_N,                  /*¼Û¼ö½Å Flag         */
-            A.E_ND06_N,                  /*´Ü¸»±â±¸ºÐ          */
-            A.E_ND07_N,                  /*ÀÀ´äÄÚµå            */
+            A.E_ND02_N,                  /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ        */
+            A.E_ND03_N,                  /*ê±°ëž˜ì¢…ë³„ì½”ë“œ        */
+            A.E_ND04_N,                  /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ        */
+            A.E_ND05_N,                  /*ì†¡ìˆ˜ì‹  Flag         */
+            A.E_ND06_N,                  /*ë‹¨ë§ê¸°êµ¬ë¶„          */
+            A.E_ND07_N,                  /*ì‘ë‹µì½”ë“œ            */
             A.E_ND08_N,                  /*User_ID             */
-            A.E_ND09_N,                  /*±â°üÀü¹® °ü¸®¹øÈ£   */
-            A.E_ND10_N,                  /*±â°üÀü¹® Àü¼Û½Ã°£   */
-            A.E_ND11_N,                  /*Nice Àü¹® °ü¸®¹øÈ£  */
-            A.E_ND12_N,                  /*Nice Àü¹®Àü¼Û½Ã°£   */
-            A.E_ND13_N,                  /*°ø¶õ                */
-            A.E_ND14_N,                  /*Á¶È¸µ¿ÀÇ»çÀ¯        */
-            A.E_ND15_N,                  /*»ý³â¿ùÀÏ            */
-            A.E_ND16_N,                  /*¼º¸í                */
-            A.E_ND17_N,                  /*ÈÞ´ëÆù¹øÈ£          */
+            A.E_ND09_N,                  /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸   */
+            A.E_ND10_N,                  /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„   */
+            A.E_ND11_N,                  /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸  */
+            A.E_ND12_N,                  /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„   */
+            A.E_ND13_N,                  /*ê³µëž€                */
+            A.E_ND14_N,                  /*ì¡°íšŒë™ì˜ì‚¬ìœ         */
+            A.E_ND15_N,                  /*ìƒë…„ì›”ì¼            */
+            A.E_ND16_N,                  /*ì„±ëª…                */
+            A.E_ND17_N,                  /*íœ´ëŒ€í°ë²ˆí˜¸          */
             A.E_ND18_N,                  /*SAFE_KEY            */
-            A.E_ND19_N,                  /*¼ºº°                */
-            A.E_ND20_N,                  /*°ø¶õ                */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+            A.E_ND19_N,                  /*ì„±ë³„                */
+            A.E_ND20_N,                  /*ê³µëž€                */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0201 A
     WHERE   A.BIRTH_DAY = DECODE(v_Birth_Day , NULL, A.BIRTH_DAY , v_Birth_Day)
     AND     A.CUST_NM   = DECODE(v_Cust_Nm   , NULL, A.CUST_NM   , v_Cust_Nm)
@@ -198,56 +198,56 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END p_sRtsd0201;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Insert
+  -- SAFE KEY IR ì „ë¬¸ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0201 (
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*°í°´¸í_¹ýÀÎ¸í         */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Seq            IN VARCHAR2,                     /*¼ø¹ø                  */
-    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*ÇÁ·Î±×·¥ ÄÚµå         */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*ê³ ê°ëª…_ë²•ì¸ëª…         */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Seq            IN VARCHAR2,                     /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*í”„ë¡œê·¸ëž¨ ì½”ë“œ         */
     v_I_Nd01_N       IN RTSD0201.I_ND01_N%TYPE,       /*Transaction Code      */
-    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_I_Nd08_N       IN RTSD0201.I_ND08_N%TYPE,       /*User_ID               */
-    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ »çÀ¯         */
-    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*¼º¸í                  */
-    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
-    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*¼ºº°                  */
-    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*°ø¶õ                  */
+    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ ì‚¬ìœ          */
+    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*ì„±ë³„                  */
+    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*ê³µëž€                  */
     v_E_Nd01_N       IN RTSD0201.E_ND01_N%TYPE,       /*Transaction Code      */
-    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_E_Nd08_N       IN RTSD0201.E_ND08_N%TYPE,       /*User_ID               */
-    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ»çÀ¯          */
-    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*¼º¸í                  */
-    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
+    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ì‚¬ìœ           */
+    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
     v_E_Nd18_N       IN RTSD0201.E_ND18_N%TYPE,       /*SAFE_KEY              */
-    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*¼ºº°                  */
-    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*ì„±ë³„                  */
+    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -366,56 +366,56 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END f_InsertRtsd0201;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Update
+  -- SAFE KEY IR ì „ë¬¸ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0201 (
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*°í°´¸í_¹ýÀÎ¸í         */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Seq            IN RTSD0201.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*ÇÁ·Î±×·¥ ÄÚµå         */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*ê³ ê°ëª…_ë²•ì¸ëª…         */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Seq            IN RTSD0201.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*í”„ë¡œê·¸ëž¨ ì½”ë“œ         */
     v_I_Nd01_N       IN RTSD0201.I_ND01_N%TYPE,       /*Transaction Code      */
-    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_I_Nd08_N       IN RTSD0201.I_ND08_N%TYPE,       /*User_ID               */
-    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ »çÀ¯         */
-    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*¼º¸í                  */
-    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
-    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*¼ºº°                  */
-    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*°ø¶õ                  */
+    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ ì‚¬ìœ          */
+    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*ì„±ë³„                  */
+    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*ê³µëž€                  */
     v_E_Nd01_N       IN RTSD0201.E_ND01_N%TYPE,       /*Transaction Code      */
-    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_E_Nd08_N       IN RTSD0201.E_ND08_N%TYPE,       /*User_ID               */
-    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ»çÀ¯          */
-    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*¼º¸í                  */
-    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
+    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ì‚¬ìœ           */
+    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
     v_E_Nd18_N       IN RTSD0201.E_ND18_N%TYPE,       /*SAFE_KEY              */
-    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*¼ºº°                  */
-    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*ì„±ë³„                  */
+    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -480,15 +480,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END f_UpdateRtsd0201;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Delete
+  -- SAFE KEY IR ì „ë¬¸ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0201 (
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*°í°´¸í_¹ýÀÎ¸í         */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Seq            IN RTSD0201.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*ê³ ê°ëª…_ë²•ì¸ëª…         */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Seq            IN RTSD0201.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -500,12 +500,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
     AND    GENDER_CD = v_Gender_Cd
     AND    SEQ       = v_Seq;
 
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', '¹ýÁ¤»ý³â¿ùÀÏ', v_Birth_Day);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', '°í°´¸í_¹ýÀÎ¸í', v_Cust_Nm);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ÈÞ´ëÆù¹øÈ£', v_Mob_No);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', '¼ºº°', v_Gender_Cd);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', '¼ø¹ø', v_Seq);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'µî·ÏÀÚ ID', v_Reg_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ë²•ì •ìƒë…„ì›”ì¼', v_Birth_Day);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ê³ ê°ëª…_ë²•ì¸ëª…', v_Cust_Nm);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'íœ´ëŒ€í°ë²ˆí˜¸', v_Mob_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ì„±ë³„', v_Gender_Cd);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ìˆœë²ˆ', v_Seq);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.f_DeleteRtsd0201(2)', 'ë“±ë¡ìž ID', v_Reg_Id);
 
     RETURN SQLCODE;
 
@@ -517,57 +517,57 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END f_DeleteRtsd0201;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® °ü¸®(IUD)
+  -- SAFE KEY IR ì „ë¬¸ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0201 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*°í°´¸í_¹ýÀÎ¸í         */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Seq            IN OUT varchar2,        /*¼ø¹ø                  */
-    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*ÇÁ·Î±×·¥ ÄÚµå         */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,        /*ê³ ê°ëª…_ë²•ì¸ëª…         */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Seq            IN OUT varchar2,        /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0201.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_Prgm_Cd        IN RTSD0201.PRGM_CD%TYPE,        /*í”„ë¡œê·¸ëž¨ ì½”ë“œ         */
     v_I_Nd01_N       IN RTSD0201.I_ND01_N%TYPE,       /*Transaction Code      */
-    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_I_Nd02_N       IN RTSD0201.I_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_I_Nd03_N       IN RTSD0201.I_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_I_Nd04_N       IN RTSD0201.I_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_I_Nd05_N       IN RTSD0201.I_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_I_Nd06_N       IN RTSD0201.I_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_I_Nd07_N       IN RTSD0201.I_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_I_Nd08_N       IN RTSD0201.I_ND08_N%TYPE,       /*User_ID               */
-    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ »çÀ¯         */
-    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*¼º¸í                  */
-    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
-    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*¼ºº°                  */
-    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*°ø¶õ                  */
+    v_I_Nd09_N       IN RTSD0201.I_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_I_Nd10_N       IN RTSD0201.I_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_I_Nd11_N       IN RTSD0201.I_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_I_Nd12_N       IN RTSD0201.I_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_I_Nd13_N       IN RTSD0201.I_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_I_Nd14_N       IN RTSD0201.I_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ ì‚¬ìœ          */
+    v_I_Nd15_N       IN RTSD0201.I_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_I_Nd16_N       IN RTSD0201.I_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_I_Nd17_N       IN RTSD0201.I_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_I_Nd18_N       IN RTSD0201.I_ND18_N%TYPE,       /*ì„±ë³„                  */
+    v_I_Nd19_N       IN RTSD0201.I_ND19_N%TYPE,       /*ê³µëž€                  */
     v_E_Nd01_N       IN RTSD0201.E_ND01_N%TYPE,       /*Transaction Code      */
-    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*Àü¹®±×·ìÄÚµå          */
-    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*°Å·¡Á¾º°ÄÚµå          */
-    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*°Å·¡±¸ºÐÄÚµå          */
-    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*¼Û¼ö½Å Flag           */
-    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*´Ü¸»±â±¸ºÐ            */
-    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ÀÀ´äÄÚµå              */
+    v_E_Nd02_N       IN RTSD0201.E_ND02_N%TYPE,       /*ì „ë¬¸ê·¸ë£¹ì½”ë“œ          */
+    v_E_Nd03_N       IN RTSD0201.E_ND03_N%TYPE,       /*ê±°ëž˜ì¢…ë³„ì½”ë“œ          */
+    v_E_Nd04_N       IN RTSD0201.E_ND04_N%TYPE,       /*ê±°ëž˜êµ¬ë¶„ì½”ë“œ          */
+    v_E_Nd05_N       IN RTSD0201.E_ND05_N%TYPE,       /*ì†¡ìˆ˜ì‹  Flag           */
+    v_E_Nd06_N       IN RTSD0201.E_ND06_N%TYPE,       /*ë‹¨ë§ê¸°êµ¬ë¶„            */
+    v_E_Nd07_N       IN RTSD0201.E_ND07_N%TYPE,       /*ì‘ë‹µì½”ë“œ              */
     v_E_Nd08_N       IN RTSD0201.E_ND08_N%TYPE,       /*User_ID               */
-    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*±â°üÀü¹® °ü¸®¹øÈ£     */
-    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*±â°üÀü¹® Àü¼Û½Ã°£     */
-    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice Àü¹® °ü¸®¹øÈ£    */
-    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice Àü¹®Àü¼Û½Ã°£     */
-    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*°ø¶õ                  */
-    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*Á¶È¸µ¿ÀÇ»çÀ¯          */
-    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*»ý³â¿ùÀÏ              */
-    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*¼º¸í                  */
-    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*ÈÞ´ëÆù¹øÈ£            */
+    v_E_Nd09_N       IN RTSD0201.E_ND09_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸     */
+    v_E_Nd10_N       IN RTSD0201.E_ND10_N%TYPE,       /*ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œê°„     */
+    v_E_Nd11_N       IN RTSD0201.E_ND11_N%TYPE,       /*Nice ì „ë¬¸ ê´€ë¦¬ë²ˆí˜¸    */
+    v_E_Nd12_N       IN RTSD0201.E_ND12_N%TYPE,       /*Nice ì „ë¬¸ì „ì†¡ì‹œê°„     */
+    v_E_Nd13_N       IN RTSD0201.E_ND13_N%TYPE,       /*ê³µëž€                  */
+    v_E_Nd14_N       IN RTSD0201.E_ND14_N%TYPE,       /*ì¡°íšŒë™ì˜ì‚¬ìœ           */
+    v_E_Nd15_N       IN RTSD0201.E_ND15_N%TYPE,       /*ìƒë…„ì›”ì¼              */
+    v_E_Nd16_N       IN RTSD0201.E_ND16_N%TYPE,       /*ì„±ëª…                  */
+    v_E_Nd17_N       IN RTSD0201.E_ND17_N%TYPE,       /*íœ´ëŒ€í°ë²ˆí˜¸            */
     v_E_Nd18_N       IN RTSD0201.E_ND18_N%TYPE,       /*SAFE_KEY              */
-    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*¼ºº°                  */
-    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd19_N       IN RTSD0201.E_ND19_N%TYPE,       /*ì„±ë³„                  */
+    v_E_Nd20_N       IN RTSD0201.E_ND20_N%TYPE,       /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -576,29 +576,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª:¹ýÁ¤»ý³â¿ùÀÏ, °í°´¸í_¹ýÀÎ¸í, ÈÞ´ëÆù¹øÈ£, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ë²•ì •ìƒë…„ì›”ì¼, ê³ ê°ëª…_ë²•ì¸ëª…, íœ´ëŒ€í°ë²ˆí˜¸, ë“±ë¡ìž ID
     IF TRIM(v_Birth_Day) IS NULL THEN
-        v_Return_Message := '¹ýÁ¤»ý³â¿ùÀÏ('||v_Birth_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë²•ì •ìƒë…„ì›”ì¼('||v_Birth_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Cust_Nm) IS NULL THEN
-        v_Return_Message := '°í°´¸í_¹ýÀÎ¸í('||v_Cust_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ëª…_ë²•ì¸ëª…('||v_Cust_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Mob_No) IS NULL THEN
-        v_Return_Message := 'ÈÞ´ëÆù¹øÈ£('||v_Mob_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'íœ´ëŒ€í°ë²ˆí˜¸('||v_Mob_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Gender_Cd) IS NULL THEN
-        v_Return_Message := '¼ºº°('||v_Gender_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì„±ë³„('||v_Gender_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -618,7 +618,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
                                  v_E_Nd12_N, v_E_Nd13_N, v_E_Nd14_N, v_E_Nd15_N,
                                  v_E_Nd16_N, v_E_Nd17_N, v_E_Nd18_N, v_E_Nd19_N,
                                  v_E_Nd20_N, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'SAFE KEY IR Àü¹® µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'SAFE KEY IR ì „ë¬¸ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -626,7 +626,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
     ELSE
     
         IF 0 = f_sRtsd0201Count(v_Birth_Day, v_Cust_Nm, v_Mob_No, v_Gender_Cd,v_Seq) THEN
-            v_Return_Message := 'µî·ÏµÈ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÏÁö ¾ÊÀ½À¸·Î ¼öÁ¤/»èÁ¦ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë“±ë¡ëœ ë°ì´í„°ê°€ ì¡´ìž¬í•˜ì§€ ì•ŠìŒìœ¼ë¡œ ìˆ˜ì •/ì‚­ì œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
@@ -644,7 +644,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
                                      v_E_Nd12_N, v_E_Nd13_N, v_E_Nd14_N, v_E_Nd15_N,
                                      v_E_Nd16_N, v_E_Nd17_N, v_E_Nd18_N, v_E_Nd19_N,
                                      v_E_Nd20_N, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'SAFE KEY IR Àü¹® ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'SAFE KEY IR ì „ë¬¸ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -653,13 +653,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
         
             IF 0 != f_DeleteRtsd0201(v_Birth_Day, v_Cust_Nm, v_Mob_No, v_Gender_Cd,
                                      v_Seq, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'SAFE KEY IR Àü¹® »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'SAFE KEY IR ì „ë¬¸ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
@@ -667,7 +667,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -682,22 +682,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0201.p_IUDRtsd0201(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0201;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® - ¼ø¹ø Ãé¹ø È¹µæ
+  -- SAFE KEY IR ì „ë¬¸ - ìˆœë²ˆ ì·Œë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0201Seq(
-    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,        /*¹ýÁ¤»ý³â¿ùÀÏ        */
-    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,          /*°í°´¸í_¹ýÀÎ¸í       */
-    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,           /*ÈÞ´ëÆù¹øÈ£          */
-    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE         /*¼ºº°                */
+    v_Birth_Day      IN RTSD0201.BIRTH_DAY%TYPE,        /*ë²•ì •ìƒë…„ì›”ì¼        */
+    v_Cust_Nm        IN RTSD0201.CUST_NM%TYPE,          /*ê³ ê°ëª…_ë²•ì¸ëª…       */
+    v_Mob_No         IN RTSD0201.MOB_NO%TYPE,           /*íœ´ëŒ€í°ë²ˆí˜¸          */
+    v_Gender_Cd      IN RTSD0201.GENDER_CD%TYPE         /*ì„±ë³„                */
     ) RETURN NUMBER IS
-    v_Seq   RTSD0201.SEQ%TYPE DEFAULT NULL;             /*¼ø¹ø                */
+    v_Seq   RTSD0201.SEQ%TYPE DEFAULT NULL;             /*ìˆœë²ˆ                */
   BEGIN
 
     SELECT  NVL((SELECT  MAX(SEQ)
@@ -718,4 +718,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0201 AS
   END f_sRtsd0201Seq;
   
 END Pkg_Rtsd0201;
-/

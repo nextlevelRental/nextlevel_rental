@@ -1,15 +1,16 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 /*******************************************************************************
    NAME      PKG_RTCM0110
-   PURPOSE   ·»Å»Áö»ç °ü¸®
+   PURPOSE   ë Œíƒˆì§€ì‚¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.0        2018-10-31  Sean         1. Created this package body.
+   1.0        2018-10-31  Sean         	   1. Created this package body.
+   1.1        2025-06-10  10244015         [20250610_01] í”„ë¦¬ë¯¸ì—„í¼í”Œì ì—¬ë¶€ ì¶”ê°€
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»Áö»çÁ¶È¸ Select
+  -- ë Œíƒˆì§€ì‚¬ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRentalMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -17,11 +18,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR
-    SELECT A.CD_GRP_CD   /* ±×·ìÄÚµå  */
-         , A.CD          /* ÄÚµå*/
-         , A.CD_NM       /* ÄÚµå¸í  */
-         , A.ORDER_PT    /* Á¤·Ä */
-         , A.USE_YN      /* »ç¿ë¿©ºÎ   */
+    SELECT A.CD_GRP_CD   /* ê·¸ë£¹ì½”ë“œ  */
+         , A.CD          /* ì½”ë“œ*/
+         , A.CD_NM       /* ì½”ë“œëª…  */
+         , A.ORDER_PT    /* ì •ë ¬ */
+         , A.USE_YN      /* ì‚¬ìš©ì—¬ë¶€   */
       FROM RTCM0051 A         
      WHERE 1=1
        AND A.CD_GRP_CD = 'S301'
@@ -32,7 +33,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   END p_sRentalMst;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡Á¶È¸ Select
+  -- ë Œíƒˆì§€ì ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRentalDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -42,20 +43,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         
   BEGIN
     OPEN Ref_Cursor FOR
-    SELECT A.CD_GRP_CD   /* ±×·ìÄÚµå  */
-          ,A.CD          /* ÄÚµå*/
-          ,A.CD_NM       /* ÄÚµå¸í  */
-          ,A.ORDER_PT    /* Á¤·Ä */
-          ,A.USE_YN      /* »ç¿ë¿©ºÎ   */
-          ,A.RFR_1       /* Áö»ç±×·ìÄÚµå */
-          ,A.RFR_2       /* Áö»çÄÚµå */
-          ,NVL(B.CHK,0) AS CHK  /*¸ÅÇÎÃ¼Å©*/
-          ,(SELECT COUNT(*)  FROM RTCM0110 WHERE RNT_OFC = A.RFR_2 AND RNT_PNT = A.CD) AS DATA_YN /*·»Å»¸¶½ºÅÍ°ü¸®Ã¼Å©*/
+    SELECT A.CD_GRP_CD   /* ê·¸ë£¹ì½”ë“œ  */
+          ,A.CD          /* ì½”ë“œ*/
+          ,A.CD_NM       /* ì½”ë“œëª…  */
+          ,A.ORDER_PT    /* ì •ë ¬ */
+          ,A.USE_YN      /* ì‚¬ìš©ì—¬ë¶€   */
+          ,A.RFR_1       /* ì§€ì‚¬ê·¸ë£¹ì½”ë“œ */
+          ,A.RFR_2       /* ì§€ì‚¬ì½”ë“œ */
+          ,NVL(B.CHK,0) AS CHK  /*ë§¤í•‘ì²´í¬*/
+          ,(SELECT COUNT(*)  FROM RTCM0110 WHERE RNT_OFC = A.RFR_2 AND RNT_PNT = A.CD) AS DATA_YN /*ë Œíƒˆë§ˆìŠ¤í„°ê´€ë¦¬ì²´í¬*/
      FROM RTCM0051 A
           ,(
-            SELECT  CD_GRP_CD   /* ±×·ìÄÚµå  */
-                   ,CD          /* ÄÚµå*/
-                   ,1 AS CHK    /*¸ÅÇÎÃ¼Å©*/
+            SELECT  CD_GRP_CD   /* ê·¸ë£¹ì½”ë“œ  */
+                   ,CD          /* ì½”ë“œ*/
+                   ,1 AS CHK    /*ë§¤í•‘ì²´í¬*/
               FROM RTCM0051            
              WHERE CD_GRP_CD = 'S302'
                AND RFR_1     = 'S301'
@@ -72,10 +73,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
    /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalMst (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
     v_CD             IN RTCM0051.CD%TYPE,               
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,          
@@ -97,12 +98,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     IF v_Comm_Dvsn = 'I' THEN    
     
         IF (TRIM(v_CD) IS NULL) THEN
-            v_Return_Message := '·»Å»Áö»çÄÚµå('||v_CD||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ì½”ë“œ('||v_CD||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
       
         IF (TRIM(v_CD_NM) IS NULL) THEN
-            v_Return_Message := '·»Å»Áö»ç¸í('||v_CD_NM||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ëª…('||v_CD_NM||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
         
@@ -119,27 +120,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         END;
         
         IF v_CNT > 0 THEN
-            v_Return_Message := 'ÀÌ¹Ì µî·ÏµÈ ·»Å»Áö»çÄÚµåÀÔ´Ï´Ù.';
+            v_Return_Message := 'ì´ë¯¸ ë“±ë¡ëœ ë Œíƒˆì§€ì‚¬ì½”ë“œìž…ë‹ˆë‹¤.';
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     
       IF 0 != f_InsertRentalMst(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;        
     ELSIF v_Comm_Dvsn = 'U' THEN
         IF 0 != f_UpdateRentalMst(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                  v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSIF v_Comm_Dvsn = 'D' THEN   
             
-        --ÇöÀç »èÁ¦ ¹öÆ° »ç¿ë ¾ÈÇÔ
+        --í˜„ìž¬ ì‚­ì œ ë²„íŠ¼ ì‚¬ìš© ì•ˆí•¨
     
         BEGIN
             SELECT COUNT(*) CNT
@@ -154,7 +155,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         END;
         
         IF v_CNT > 0 THEN
-            v_Return_Message := '¿¬°áµÈ ·»Å»ÁöÁ¡ »èÁ¦ ÈÄ »èÁ¦ÇÏ½Ê½Ã¿ä.';
+            v_Return_Message := 'ì—°ê²°ëœ ë Œíƒˆì§€ì  ì‚­ì œ í›„ ì‚­ì œí•˜ì‹­ì‹œìš”.';
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -162,17 +163,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
      
         IF 0 != f_DeleteRentalMst(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                  v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     
 
@@ -188,14 +189,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_IUDRentalMst(2)', v_ErrorText, v_Return_Message);
   END p_IUDRentalMst;     
 
 
   /*****************************************************************************
-  -- ·»Å»Áö¿ª Insert
+  -- ë Œíƒˆì§€ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -241,7 +242,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç Update
+  -- ë Œíƒˆì§€ì‚¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalMst ( 
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -272,7 +273,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç Delete
+  -- ë Œíƒˆì§€ì‚¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalMst ( 
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -302,10 +303,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
    /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì  ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalDtl (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
     v_CD             IN RTCM0051.CD%TYPE,               
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,          
@@ -328,12 +329,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     IF v_Comm_Dvsn = 'I' THEN    
     
         IF (TRIM(v_CD) IS NULL) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡ÄÚµå('||v_CD||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë Œíƒˆì§€ì ì½”ë“œ('||v_CD||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
       
         IF (TRIM(v_CD_NM) IS NULL) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡¸í('||v_CD_NM||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë Œíƒˆì§€ì ëª…('||v_CD_NM||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
         
@@ -350,41 +351,41 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         END;
         
         IF v_CNT > 0 THEN
-            v_Return_Message := 'ÀÌ¹Ì µî·ÏµÈ ·»Å»ÁöÁ¡ÄÚµåÀÔ´Ï´Ù.';
+            v_Return_Message := 'ì´ë¯¸ ë“±ë¡ëœ ë Œíƒˆì§€ì ì½”ë“œìž…ë‹ˆë‹¤.';
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     
       IF 0 != f_InsertRentalDtl(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                v_USE_YN, v_RFR_1, v_RFR_2, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì  ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;        
     ELSIF v_Comm_Dvsn = 'U' THEN
         IF 0 != f_UpdateRentalDtl(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                v_USE_YN, v_RFR_1, v_RFR_2, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì  ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSIF v_Comm_Dvsn = 'D' THEN    
     
-        --»èÁ¦½Ã ·»Å»¸¶½ºÅÍ »ç¿ë¿©ºÎ Ã¼Å© ·ÎÁ÷ Ãß°¡ ÈÄ »èÁ¦ÇØ¾ßµÊ.. ÇöÀç »èÁ¦¹öÆ°  »ç¿ë¾ÈÇÔ.
+        --ì‚­ì œì‹œ ë Œíƒˆë§ˆìŠ¤í„° ì‚¬ìš©ì—¬ë¶€ ì²´í¬ ë¡œì§ ì¶”ê°€ í›„ ì‚­ì œí•´ì•¼ë¨.. í˜„ìž¬ ì‚­ì œë²„íŠ¼  ì‚¬ìš©ì•ˆí•¨.
     
         IF 0 != f_DeleteRentalDtl(v_CD_GRP_CD, v_CD, v_CD_NM, v_ORDER_PT, 
                                v_USE_YN, v_RFR_1, v_RFR_2, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡ »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì  ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     
 
@@ -400,14 +401,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_IUDRentalDtl(2)', v_ErrorText, v_Return_Message);
   END p_IUDRentalDtl;     
 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Insert
+  -- ë Œíƒˆì§€ì  Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -459,7 +460,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Update
+  -- ë Œíƒˆì§€ì  Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalDtl ( 
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -493,7 +494,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Delete
+  -- ë Œíƒˆì§€ì  Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalDtl ( 
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,          
@@ -522,7 +523,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
   
   /*****************************************************************************
-  -- ·»Å»Áö»ç/ÁöÁ¡Á¶È¸ MASTER Select
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì ì¡°íšŒ MASTER Select
   *****************************************************************************/
   PROCEDURE p_sRentalCustMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -549,26 +550,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç/ÁöÁ¡Á¶È¸ DETAIL Select
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì ì¡°íšŒ DETAIL Select
+    
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1      2025-06-10  10244015    [20250610_01] í”„ë¦¬ë¯¸ì—„í¼í”Œì ì—¬ë¶€ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_sRentalCustDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*Áö»çÄÚµå */
-    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*ÁöÁ¡ÄÚµå */
-    v_AGENCY_GBN      IN VARCHAR2, /* ÆÇ¸ÅÀÚ±¸ºÐ */
-    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* ÆÇ¸ÅÀÚ¸í */
+    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*ì§€ì‚¬ì½”ë“œ */
+    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*ì§€ì ì½”ë“œ */
+    v_AGENCY_GBN      IN VARCHAR2, /* íŒë§¤ìžêµ¬ë¶„ */
+    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* íŒë§¤ìžëª… */
     ) IS
         
   BEGIN
     IF v_AGENCY_GBN = '1' THEN
         OPEN Ref_Cursor FOR    
         
-            SELECT A.AGENCY_CD            /* ÆÇ¸ÅÀÎÄÚµå  */
-                  ,A.AGENCY_NM            /* ÆÇ¸ÅÀÎ¸í*/
-                  ,NVL(B.CHK,0) AS CHK    /*¸ÅÇÎÃ¼Å©*/
+            SELECT A.AGENCY_CD            /* íŒë§¤ì¸ì½”ë“œ  */
+                  ,A.AGENCY_NM            /* íŒë§¤ì¸ëª…*/
+                  ,NVL(B.CHK,0) AS CHK    /*ë§¤í•‘ì²´í¬*/
                   ,A.RENTAL_GROUP
                   ,A.RENTAL_OFFICE
                   ,DECODE(A.PRPL_YN, 'N', '0', '1') AS PRPL_YN
+                  ,DECODE(A.PREM_PRPL_YN, 'N', '0', '1') AS PREM_PRPL_YN
                   ,'1' AS GROUP_NM
              FROM RTSD0007 A
                   ,(
@@ -592,12 +599,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     ELSIF v_AGENCY_GBN = '2' THEN
         OPEN Ref_Cursor FOR    
         
-            SELECT A.ORD_AGENT AGENCY_CD            /* ÆÇ¸ÅÀÎÄÚµå  */
-                  ,A.ORG_AGNM AGENCY_NM            /* ÆÇ¸ÅÀÎ¸í*/
-                  ,NVL(B.CHK,0) AS CHK    /*¸ÅÇÎÃ¼Å©*/
+            SELECT A.ORD_AGENT AGENCY_CD            /* íŒë§¤ì¸ì½”ë“œ  */
+                  ,A.ORG_AGNM AGENCY_NM            /* íŒë§¤ì¸ëª…*/
+                  ,NVL(B.CHK,0) AS CHK    /*ë§¤í•‘ì²´í¬*/
                   ,A.RENTAL_GROUP
                   ,A.RENTAL_OFFICE
                   ,'' AS PRPL_YN
+                  ,'' AS PREM_PRPL_YN
                   ,'2' AS GROUP_NM
              FROM RTSD0113 A
                   ,(
@@ -621,12 +629,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     ELSE
         OPEN Ref_Cursor FOR
     
-            SELECT A.CARMASTER_NU AGENCY_CD            /* ÆÇ¸ÅÀÎÄÚµå  */
-                  ,A.CARMASTER_NM AGENCY_NM            /* ÆÇ¸ÅÀÎ¸í*/
-                  ,NVL(B.CHK,0) AS CHK    /*¸ÅÇÎÃ¼Å©*/
+            SELECT A.CARMASTER_NU AGENCY_CD            /* íŒë§¤ì¸ì½”ë“œ  */
+                  ,A.CARMASTER_NM AGENCY_NM            /* íŒë§¤ì¸ëª…*/
+                  ,NVL(B.CHK,0) AS CHK    /*ë§¤í•‘ì²´í¬*/
                   ,A.RENTAL_GROUP
                   ,A.RENTAL_OFFICE
                   ,'' AS PRPL_YN
+                  ,'' AS PREM_PRPL_YN
                   ,'3' AS GROUP_NM
              FROM RTCS0002 A
                   ,(
@@ -653,15 +662,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
    /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á ÀúÀå(IUD)
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° ì €ìž¥(IUD)
+    
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1      2025-06-10  10244015    [20250610_01] í”„ë¦¬ë¯¸ì—„í¼í”Œì ì—¬ë¶€ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_IUDRentalCust (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
-    v_AGENCY_GBN     IN CHAR, /* ÆÇ¸ÅÀÚ±¸ºÐ */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
+    v_AGENCY_GBN     IN CHAR, /* íŒë§¤ìžêµ¬ë¶„ */
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
     v_RENTAL_OFFICE  IN RTSD0007.RENTAL_OFFICE%TYPE,
     v_AGENCY_CD      IN RTSD0007.AGENCY_CD%TYPE,
     v_PRPL_YN        IN RTSD0007.PRPL_YN%TYPE,
+    v_PREM_PRPL_YN   IN RTSD0007.PREM_PRPL_YN%TYPE,
     v_REG_ID         IN RTSD0007.REG_ID%TYPE,           
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
@@ -677,20 +692,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     IF v_Comm_Dvsn = 'U' THEN    
         IF v_AGENCY_GBN = '1' THEN
             
-            IF 0 != f_UpdateRentalCust1(v_RENTAL_GROUP, v_RENTAL_OFFICE, v_AGENCY_CD, v_PRPL_YN, v_REG_ID, v_ErrorText) THEN
-                v_Return_Message := '·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0007 ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            IF 0 != f_UpdateRentalCust1(v_RENTAL_GROUP, v_RENTAL_OFFICE, v_AGENCY_CD, v_PRPL_YN, v_PREM_PRPL_YN, v_REG_ID, v_ErrorText) THEN
+                v_Return_Message := 'ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0007 ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
         ELSIF v_AGENCY_GBN = '2' THEN
             IF 0 != f_UpdateRentalCust2(v_RENTAL_GROUP, v_RENTAL_OFFICE, v_AGENCY_CD, v_REG_ID, v_ErrorText) THEN
-                v_Return_Message := '·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0113 ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0113 ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
         ELSE
             IF 0 != f_UpdateRentalCust3(v_RENTAL_GROUP, v_RENTAL_OFFICE, v_AGENCY_CD, v_REG_ID, v_ErrorText) THEN
-                v_Return_Message := '·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTCS0002 ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTCS0002 ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -698,12 +713,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         END IF;
             
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     
 
@@ -719,20 +734,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_IUDRentalCust(2)', v_ErrorText, v_Return_Message);
   END p_IUDRentalCust;     
 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0007 update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0007 update
+      
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1      2025-06-10  10244015    [20250610_01] í”„ë¦¬ë¯¸ì—„í¼í”Œì ì—¬ë¶€ ì¶”ê°€
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust1 ( 
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
     v_RENTAL_OFFICE  IN RTSD0007.RENTAL_OFFICE%TYPE,
     v_AGENCY_CD      IN RTSD0007.AGENCY_CD%TYPE,
     v_PRPL_YN        IN RTSD0007.PRPL_YN%TYPE,
+    v_PREM_PRPL_YN   IN RTSD0007.PREM_PRPL_YN%TYPE,
     v_REG_ID         IN RTSD0007.REG_ID%TYPE,   
     v_ErrorText      OUT VARCHAR2 
     ) RETURN NUMBER IS
@@ -743,6 +764,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
        SET RENTAL_GROUP  = v_RENTAL_GROUP,
            RENTAL_OFFICE = v_RENTAL_OFFICE,
            PRPL_YN       = DECODE(v_PRPL_YN, '1', 'Y', 'N'),
+           PREM_PRPL_YN  = DECODE(v_PREM_PRPL_YN, '1', 'Y', 'N'),
            CHG_ID        = v_REG_ID,
            CHG_DT        = SYSDATE
      WHERE AGENCY_CD = v_AGENCY_CD
@@ -756,7 +778,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   END f_UpdateRentalCust1; 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0113 update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0113 update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust2 ( 
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -783,7 +805,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   END f_UpdateRentalCust2; 
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTCS0002 update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTCS0002 update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust3 ( 
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -811,7 +833,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
   
   /*****************************************************************************
-  -- ÆÇ¸Åº¸Á¶±ÝÁ¤Ã¥ Ç×¸ñ °ü¸® list
+  -- íŒë§¤ë³´ì¡°ê¸ˆì •ì±… í•­ëª© ê´€ë¦¬ list
   *****************************************************************************/
   PROCEDURE p_sSaleSubsidyList (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -855,10 +877,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
    /*****************************************************************************
-  -- ÆÇ¸Åº¸Á¶±ÝÁ¤Ã¥ Ç×¸ñ °ü¸® ÀúÀå(IUD)
+  -- íŒë§¤ë³´ì¡°ê¸ˆì •ì±… í•­ëª© ê´€ë¦¬ ì €ìž¥(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDSaleSubsidy (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_PLC_CD         IN RTRE5000.PLC_CD%TYPE,
     v_PLC_CD_NM      IN RTRE5000.PLC_CD_NM%TYPE,   
     v_SALE_MIN       IN RTRE5000.SALE_MIN%TYPE,   
@@ -881,18 +903,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
         
         IF 0 != f_UpdateSaleSubsidy(v_PLC_CD, v_PLC_CD_NM, v_SALE_MIN, v_SALE_MAX, v_APL_AMT, 
                                     v_ORDER_PT, v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0007 ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0007 ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
             
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     
 
@@ -908,14 +930,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_IUDSaleSubsidy(2)', v_ErrorText, v_Return_Message);
   END p_IUDSaleSubsidy;     
 
 
   /*****************************************************************************
-  -- ÆÇ¸Åº¸Á¶±ÝÁ¤Ã¥ Ç×¸ñ °ü¸® UPDATE
+  -- íŒë§¤ë³´ì¡°ê¸ˆì •ì±… í•­ëª© ê´€ë¦¬ UPDATE
   *****************************************************************************/
   FUNCTION f_UpdateSaleSubsidy ( 
     v_PLC_CD         IN RTRE5000.PLC_CD%TYPE,
@@ -951,11 +973,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ±ÇÇÑ ¸¶½ºÅÍ Á¶È¸
+  -- ë Œíƒˆë§ˆìŠ¤í„°ê¶Œí•œ ë§ˆìŠ¤í„° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRentalAuthMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_USER_NM         IN RTCM0001.USER_NM%TYPE /* ÄÚµå¸í */
+    v_USER_NM         IN RTCM0001.USER_NM%TYPE /* ì½”ë“œëª… */
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR
@@ -973,12 +995,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ±ÇÇÑ ¸¶½ºÅÍ Á¶È¸
+  -- ë Œíƒˆë§ˆìŠ¤í„°ê¶Œí•œ ë§ˆìŠ¤í„° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRentalAuthDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_USER_ID         IN RTCM0001.USER_ID%TYPE, /* »ç¿ëÀÚID */
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ÄÚµå¸í */
+    v_USER_ID         IN RTCM0001.USER_ID%TYPE, /* ì‚¬ìš©ìžID */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ì½”ë“œëª… */
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR
@@ -991,15 +1013,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
       FROM RTCM0051 A,   
            (
             SELECT  A.RNT_MST_ID
-                   ,A.RNT_OFC     /* ·»Å»Áö»ç  */
-                   ,A.RNT_PNT     /* ·»Å»ÁöÁ¡*/
+                   ,A.RNT_OFC     /* ë Œíƒˆì§€ì‚¬  */
+                   ,A.RNT_PNT     /* ë Œíƒˆì§€ì */
                    ,B.CHK
               FROM RTCM0110  A  ,
                    (
                     SELECT  B.RNT_MST_ID
-                           ,B.RNT_OFC     /* ·»Å»Áö»ç  */
-                           ,B.RNT_PNT     /* ·»Å»ÁöÁ¡*/
-                           ,1 AS CHK    /* ¸ÅÇÎÃ¼Å©*/
+                           ,B.RNT_OFC     /* ë Œíƒˆì§€ì‚¬  */
+                           ,B.RNT_PNT     /* ë Œíƒˆì§€ì */
+                           ,1 AS CHK    /* ë§¤í•‘ì²´í¬*/
                       FROM RTCM0110  B          
                      WHERE RNT_MST_ID = v_USER_ID
                      ) B
@@ -1020,7 +1042,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
    /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(DELETE)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(DELETE)
   *****************************************************************************/
     PROCEDURE p_DRentalMstAuth (
         v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -1040,12 +1062,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
         EXCEPTION
           WHEN OTHERS THEN
-            v_Return_Message := '·»Å»¸¶½ºÅÍ±ÇÇÑ »èÁ¦ ½ÇÆÐ!!! [' || v_RNT_MST_ID || ']';
+            v_Return_Message := 'ë Œíƒˆë§ˆìŠ¤í„°ê¶Œí•œ ì‚­ì œ ì‹¤íŒ¨!!! [' || v_RNT_MST_ID || ']';
             RAISE e_Error;
         END;
         
         v_Success_code := 0;
-        v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+        v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
         
 
         EXCEPTION
@@ -1056,13 +1078,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
           WHEN OTHERS THEN
             v_Success_code := -1;
-            v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+            v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
             Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_DRentalMstAuth(2)', SUBSTR(SQLERRM, 1, 200), v_Return_Message);
     END p_DRentalMstAuth;
 
 
    /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalMstAuth (
     v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -1080,12 +1102,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   BEGIN
     
     IF 0 != f_InsertRentalMstAuth(v_RNT_MST_ID, v_RNT_OFC, v_RNT_PNT, v_REG_ID, v_ErrorText) THEN
-        v_Return_Message := '·»Å»¸¶½ºÅÍ±ÇÇÑ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+        v_Return_Message := 'ë Œíƒˆë§ˆìŠ¤í„°ê¶Œí•œ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
         RAISE e_Error;
     END IF;        
   
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     
 
     EXCEPTION
@@ -1096,14 +1118,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
       WHEN OTHERS THEN
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         
         Pkg_Utility.p_ErrorFileWrite('PKG_RTCM0110.p_IUDRentalMstAuth(2)', v_Return_Message, SUBSTR(SQLERRM, 1, 200));
   END p_IUDRentalMstAuth;     
 
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ±ÇÇÑ Insert
+  -- ë Œíƒˆë§ˆìŠ¤í„°ê¶Œí•œ Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalMstAuth (
     v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -1143,7 +1165,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ·»Å»Áö»çÁ¶È¸ Select
+  -- ë Œíƒˆì§€ì‚¬ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_userRentalGroup (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -1163,26 +1185,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
             SELECT ORD_AGENT USER_ID,
                    RENTAL_GROUP,
                    RENTAL_OFFICE
-              FROM RTSD0113 -- ¹æ¹®ÆÇ¸ÅÀÎ
+              FROM RTSD0113 -- ë°©ë¬¸íŒë§¤ì¸
              WHERE ORD_AGENT = v_USER_ID
             UNION ALL         
             SELECT AGENCY_CD USER_ID,
                    RENTAL_GROUP,
                    RENTAL_OFFICE
-              FROM RTSD0007 -- ´ë¸®Á¡
+              FROM RTSD0007 -- ëŒ€ë¦¬ì 
              WHERE AGENCY_CD = v_USER_ID
             UNION ALL         
             SELECT CARMASTER_NU USER_ID,
                    RENTAL_GROUP,
                    RENTAL_OFFICE
-              FROM RTCS0002 -- MR.ROADIAN (Ä«¸¶½ºÅÍ)
+              FROM RTCS0002 -- MR.ROADIAN (ì¹´ë§ˆìŠ¤í„°)
              WHERE CARMASTER_NU = v_USER_ID
            )
        ;
   END p_userRentalGroup;
   
   /*****************************************************************************
-   -- ¹Ì¹Ý¿µÆÇ¸ÅÀÚ Á¶È¸ Select
+   -- ë¯¸ë°˜ì˜íŒë§¤ìž ì¡°íšŒ Select
    *****************************************************************************/
   PROCEDURE p_sUnRlsSelerList(  Ref_Cursor   IN OUT SYS_REFCURSOR
                               , v_Agency_Gbn IN VARCHAR2
@@ -1192,15 +1214,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   BEGIN
       IF v_Agency_Gbn = '1' THEN
           OPEN Ref_Cursor FOR
-              /* ´ë¸®Á¡ */
-              SELECT  A.AGENCY_CD /* ÆÇ¸ÅÀÎÄÚµå  */
-                    , A.AGENCY_NM /* ÆÇ¸ÅÀÎ¸í */
+              /* ëŒ€ë¦¬ì  */
+              SELECT  A.AGENCY_CD /* íŒë§¤ì¸ì½”ë“œ  */
+                    , A.AGENCY_NM /* íŒë§¤ì¸ëª… */
               FROM    RTSD0007 A
               WHERE   (A.RENTAL_GROUP IS NULL OR A.RENTAL_OFFICE IS NULL)
               ORDER BY A.AGENCY_CD;
       ELSIF v_Agency_Gbn = '2' THEN
           OPEN Ref_Cursor FOR
-              /* ¹æ¹®ÆÇ¸Å */
+              /* ë°©ë¬¸íŒë§¤ */
               SELECT  A.ORD_AGENT AS AGENCY_CD
                     , A.ORG_AGNM  AS AGENCY_NM
               FROM    RTSD0113 A
@@ -1208,7 +1230,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
               ORDER BY A.ORD_AGENT;
       ELSE
           OPEN Ref_Cursor FOR
-              /* ·Îµð¾È */
+              /* ë¡œë””ì•ˆ */
               SELECT  A.CARMASTER_NU AS AGENCY_CD
                     , A.CARMASTER_NM AS AGENCY_NM
               FROM    RTCS0002 A
@@ -1216,5 +1238,5 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
               ORDER BY A.CARMASTER_NU;
       END IF;
   END p_sUnRlsSelerList;
+  
 END PKG_RTCM0110;
-/

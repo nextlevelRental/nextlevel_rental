@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0200 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0200
-   PURPOSE   [CS] √¢∞Ì ∏∂Ω∫≈Õ ∞¸∏Æ
+   PURPOSE   [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,124 +10,123 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0200 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ Count
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0200Count(
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE          /*√¢∞Ìƒ⁄µÂ            */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE          /*Ï∞ΩÍ≥†ÏΩîÎìú            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ Select
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0200 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*√¢∞Ì∏Ì                */
-    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*æ˜π´∞≥Ω√¿œ            */
-    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*æ˜π´¡æ∑·¿œ            */
-    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*øÏ∆Ìπ¯»£ PK           */
-    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*¡÷º“                  */
-    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ªÛºº¡÷º“              */
-    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*¿¸»£π¯»£              */
-    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*∆—Ω∫π¯»£              */
-    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTCS0200.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*Ï∞ΩÍ≥†Î™Ö                */
+    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*ÏóÖÎ¨¥Í∞úÏãúÏùº            */
+    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*ÏóÖÎ¨¥Ï¢ÖÎ£åÏùº            */
+    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*Ïö∞Ìé∏Î≤àÌò∏ PK           */
+    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*Ï£ºÏÜå                  */
+    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ÏÉÅÏÑ∏Ï£ºÏÜå              */
+    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*Ï†ÑÌò∏Î≤àÌò∏              */
+    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*Ìå©Ïä§Î≤àÌò∏              */
+    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTCS0200.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ Insert
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0200 (
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*√¢∞Ì∏Ì                */
-    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*æ˜π´∞≥Ω√¿œ            */
-    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*æ˜π´¡æ∑·¿œ            */
-    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*øÏ∆Ìπ¯»£ PK           */
-    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*¡÷º“                  */
-    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ªÛºº¡÷º“              */
-    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*¿¸»£π¯»£              */
-    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*∆—Ω∫π¯»£              */
-    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*Ï∞ΩÍ≥†Î™Ö                */
+    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*ÏóÖÎ¨¥Í∞úÏãúÏùº            */
+    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*ÏóÖÎ¨¥Ï¢ÖÎ£åÏùº            */
+    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*Ïö∞Ìé∏Î≤àÌò∏ PK           */
+    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*Ï£ºÏÜå                  */
+    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ÏÉÅÏÑ∏Ï£ºÏÜå              */
+    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*Ï†ÑÌò∏Î≤àÌò∏              */
+    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*Ìå©Ïä§Î≤àÌò∏              */
+    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ Update
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0200 (
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*√¢∞Ì∏Ì                */
-    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*æ˜π´∞≥Ω√¿œ            */
-    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*æ˜π´¡æ∑·¿œ            */
-    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*øÏ∆Ìπ¯»£ PK           */
-    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*¡÷º“                  */
-    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ªÛºº¡÷º“              */
-    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*¿¸»£π¯»£              */
-    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*∆—Ω∫π¯»£              */
-    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*Ï∞ΩÍ≥†Î™Ö                */
+    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*ÏóÖÎ¨¥Í∞úÏãúÏùº            */
+    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*ÏóÖÎ¨¥Ï¢ÖÎ£åÏùº            */
+    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*Ïö∞Ìé∏Î≤àÌò∏ PK           */
+    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*Ï£ºÏÜå                  */
+    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ÏÉÅÏÑ∏Ï£ºÏÜå              */
+    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*Ï†ÑÌò∏Î≤àÌò∏              */
+    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*Ìå©Ïä§Î≤àÌò∏              */
+    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ Delete
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0200 (
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ ∞¸∏Æ(IUD)
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0200 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*√¢∞Ì∏Ì                */
-    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*æ˜π´∞≥Ω√¿œ            */
-    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*æ˜π´¡æ∑·¿œ            */
-    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*øÏ∆Ìπ¯»£ PK           */
-    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*¡÷º“                  */
-    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ªÛºº¡÷º“              */
-    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*¿¸»£π¯»£              */
-    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*∆—Ω∫π¯»£              */
-    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*Ï∞ΩÍ≥†Î™Ö                */
+    v_Begday         IN RTCS0200.BEGDAY%TYPE,         /*ÏóÖÎ¨¥Í∞úÏãúÏùº            */
+    v_Endday         IN RTCS0200.ENDDAY%TYPE,         /*ÏóÖÎ¨¥Ï¢ÖÎ£åÏùº            */
+    v_Bld_Mng_No     IN RTCS0200.BLD_MNG_NO%TYPE,     /*Ïö∞Ìé∏Î≤àÌò∏ PK           */
+    v_Pos_Cd         IN RTCS0200.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addr1          IN RTCS0200.ADDR1%TYPE,          /*Ï£ºÏÜå                  */
+    v_Addr2          IN RTCS0200.ADDR2%TYPE,          /*ÏÉÅÏÑ∏Ï£ºÏÜå              */
+    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*Ï†ÑÌò∏Î≤àÌò∏              */
+    v_Fax_No         IN RTCS0200.FAX_NO%TYPE,         /*Ìå©Ïä§Î≤àÌò∏              */
+    v_Mob_No         IN RTCS0200.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTCS0200.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- √¢∞Ì ≥ªø™ ¡∂»∏
+  -- Ï∞ΩÍ≥† ÎÇ¥Ïó≠ Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtcs0200WareHouse (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*√¢∞Ìƒ⁄µÂ              */
-    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*√¢∞Ì∏Ì                */
-    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*¿¸»£π¯»£              */
-    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE,       /*Ï∞ΩÍ≥†ÏΩîÎìú              */
+    v_Wareh_Nm       IN RTCS0200.WAREH_NM%TYPE,       /*Ï∞ΩÍ≥†Î™Ö                */
+    v_Tel_No         IN RTCS0200.TEL_NO%TYPE,         /*Ï†ÑÌò∏Î≤àÌò∏              */
+    v_Use_Yn         IN RTCS0200.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- [CS] √¢∞Ì ∏∂Ω∫≈Õ ∏Ìƒ™ ¡∂»∏
+  -- [CS] Ï∞ΩÍ≥† ÎßàÏä§ÌÑ∞ Î™ÖÏπ≠ Ï°∞Ìöå
   *****************************************************************************/
   FUNCTION f_sRtcs0200WarehNm(
-    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE          /*√¢∞Ìƒ⁄µÂ            */
+    v_Wareh_Cd       IN RTCS0200.WAREH_CD%TYPE          /*Ï∞ΩÍ≥†ÏΩîÎìú            */
     ) RETURN VARCHAR;
 
 END Pkg_Rtcs0200;
-/

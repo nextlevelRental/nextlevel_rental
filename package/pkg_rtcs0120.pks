@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0120 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0120
-   PURPOSE   ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ ∞¸∏Æ
+   PURPOSE   ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,84 +10,83 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0120 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ Count
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0120Count(
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE            /*¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE            /*Ï£ºÎ¨∏Î≤àÌò∏            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ Select
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0120 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*¡÷πÆπ¯»£              */
-    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*¡¶¡∂ªÁƒ⁄µÂ            */
-    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*∏µ®∏Ì                */
-    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*¥‹∏È∆¯                */
-    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*∆Ì∆Ú∫Ò                */
-    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*¿Œƒ°                  */
-    v_Reg_Id         IN RTCS0120.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*Ï†úÏ°∞ÏÇ¨ÏΩîÎìú            */
+    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*Î™®Îç∏Î™Ö                */
+    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*Îã®Î©¥Ìè≠                */
+    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*Ìé∏ÌèâÎπÑ                */
+    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*Ïù∏Ïπò                  */
+    v_Reg_Id         IN RTCS0120.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ Insert
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0120 (
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*¡÷πÆπ¯»£              */
-    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*¡¶¡∂ªÁƒ⁄µÂ            */
-    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*∏µ®∏Ì                */
-    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*¥‹∏È∆¯                */
-    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*∆Ì∆Ú∫Ò                */
-    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*¿Œƒ°                  */
-    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*Ï†úÏ°∞ÏÇ¨ÏΩîÎìú            */
+    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*Î™®Îç∏Î™Ö                */
+    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*Îã®Î©¥Ìè≠                */
+    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*Ìé∏ÌèâÎπÑ                */
+    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*Ïù∏Ïπò                  */
+    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ Update
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0120 (
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*¡÷πÆπ¯»£              */
-    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*¡¶¡∂ªÁƒ⁄µÂ            */
-    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*∏µ®∏Ì                */
-    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*¥‹∏È∆¯                */
-    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*∆Ì∆Ú∫Ò                */
-    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*¿Œƒ°                  */
-    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*Ï†úÏ°∞ÏÇ¨ÏΩîÎìú            */
+    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*Î™®Îç∏Î™Ö                */
+    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*Îã®Î©¥Ìè≠                */
+    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*Ìé∏ÌèâÎπÑ                */
+    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*Ïù∏Ïπò                  */
+    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ Delete
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0120 (
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*¡÷πÆπ¯»£              */
-    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*¡¶¡∂ªÁƒ⁄µÂ            */
-    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*∏µ®∏Ì                */
-    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*¥‹∏È∆¯                */
-    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*∆Ì∆Ú∫Ò                */
-    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*¿Œƒ°                  */
-    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*Ï†úÏ°∞ÏÇ¨ÏΩîÎìú            */
+    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*Î™®Îç∏Î™Ö                */
+    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*Îã®Î©¥Ìè≠                */
+    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*Ìé∏ÌèâÎπÑ                */
+    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*Ïù∏Ïπò                  */
+    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ªÁøÎ¿⁄±∏∏≈¿¸¡¶¡∂ªÁ¡§∫∏ ∞¸∏Æ(IUD)
+  -- ÏÇ¨Ïö©ÏûêÍµ¨Îß§Ï†ÑÏ†úÏ°∞ÏÇ¨Ï†ïÎ≥¥ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0120 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*¡÷πÆπ¯»£              */
-    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*¡¶¡∂ªÁƒ⁄µÂ            */
-    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*∏µ®∏Ì                */
-    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*¥‹∏È∆¯                */
-    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*∆Ì∆Ú∫Ò                */
-    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*¿Œƒ°                  */
-    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTCS0120.ORD_NO%TYPE,         /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Mf_Cd          IN RTCS0120.MF_CD%TYPE,          /*Ï†úÏ°∞ÏÇ¨ÏΩîÎìú            */
+    v_Model_Nm       IN RTCS0120.MODEL_NM%TYPE,       /*Î™®Îç∏Î™Ö                */
+    v_Width_Cd       IN RTCS0120.WIDTH_CD%TYPE,       /*Îã®Î©¥Ìè≠                */
+    v_Ratio_Cd       IN RTCS0120.RATIO_CD%TYPE,       /*Ìé∏ÌèâÎπÑ                */
+    v_Inch_Cd        IN RTCS0120.INCH_CD%TYPE,        /*Ïù∏Ïπò                  */
+    v_Reg_Id         IN RTCS0120.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
 END Pkg_Rtcs0120;
-/

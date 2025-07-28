@@ -130,4 +130,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0024 AS
     v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE         /*프로그램명            */
     );    
 END Pkg_Rtcm0024;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0094 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0094
-   PURPOSE   ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× °ü¸®
+   PURPOSE   í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,64 +10,63 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0094 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× Count
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0094Count(
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,           /*·Î±×¼ø¹ø            */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE              /*¸Å°³º¯¼ö ¼ø¼­       */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,           /*ë¡œê·¸ìˆœë²ˆ            */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE              /*ë§¤ê°œë³€ìˆ˜ ìˆœì„œ       */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× Select
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0094 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE          /*·Î±×¼ø¹ø              */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE          /*ë¡œê·¸ìˆœë²ˆ              */
     );
     
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× Insert
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*¸Å°³º¯¼ö ¸í           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*¸Å°³º¯¼ö °ª           */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*ë§¤ê°œë³€ìˆ˜ ëª…           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*ë§¤ê°œë³€ìˆ˜ ê°’           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× Update
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*¸Å°³º¯¼ö ¼ø¼­         */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*¸Å°³º¯¼ö ¸í           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*¸Å°³º¯¼ö °ª           */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*ë§¤ê°œë³€ìˆ˜ ìˆœì„œ         */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*ë§¤ê°œë³€ìˆ˜ ëª…           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*ë§¤ê°œë³€ìˆ˜ ê°’           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× Delete
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*¸Å°³º¯¼ö ¼ø¼­         */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*ë§¤ê°œë³€ìˆ˜ ìˆœì„œ         */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® º¯¼ö ·Î±× °ü¸®(IUD)
+  -- í”„ë¡œì‹œì ¸ ë³€ìˆ˜ ë¡œê·¸ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0094 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*¸Å°³º¯¼ö ¼ø¼­         */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*¸Å°³º¯¼ö ¸í           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*¸Å°³º¯¼ö °ª           */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*ë§¤ê°œë³€ìˆ˜ ìˆœì„œ         */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*ë§¤ê°œë³€ìˆ˜ ëª…           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*ë§¤ê°œë³€ìˆ˜ ê°’           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
 END Pkg_Rtcm0094;
-/

@@ -1,250 +1,249 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0006 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0006
-   PURPOSE   ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ °ü¸®
+   PURPOSE   ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-09-18  jemcarry         1. Created this package body.
-   1.1        2017-03-28  wjim             [20170324_02] ¹æ¹®Á¡°Ë ÄÁÅÃ °ü·Ã±â´É Ãß°¡
-   1.3        2017-04-04  wjim             [20170404_02] ½Ã±º±¸º° ´ã´ç ·Îµð¾È Á¶È¸±â´É Ãß°¡
-   1.10       2017-12-20  wjim             [20171220_01] Á¤±âÁ¡°Ë ÄÁÅÃ°ü¸® ¿¬¶ôÃ³ ¼öÁ¤±â´É Ãß°¡
+   1.1        2017-03-28  wjim             [20170324_02] ë°©ë¬¸ì ê²€ ì»¨íƒ ê´€ë ¨ê¸°ëŠ¥ ì¶”ê°€
+   1.3        2017-04-04  wjim             [20170404_02] ì‹œêµ°êµ¬ë³„ ë‹´ë‹¹ ë¡œë””ì•ˆ ì¡°íšŒê¸°ëŠ¥ ì¶”ê°€
+   1.10       2017-12-20  wjim             [20171220_01] ì •ê¸°ì ê²€ ì»¨íƒê´€ë¦¬ ì—°ë½ì²˜ ìˆ˜ì •ê¸°ëŠ¥ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Count
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0006Count(
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,           /*¼³ºñ¹øÈ£            */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,          /*ÀÛ¾÷¼ø¹ø            */
-    v_Seq            IN RTCS0006.SEQ%TYPE               /*¼ø¹ø                */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,           /*ì„¤ë¹„ë²ˆí˜¸            */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,          /*ìž‘ì—…ìˆœë²ˆ            */
+    v_Seq            IN RTCS0006.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Select
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0006 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE             /*¼ø¹ø                  */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE             /*ìˆœë²ˆ                  */
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Insert
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0006 (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*Áöµµ XÁÂÇ¥            */
-    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*Áöµµ YÁÂÇ¥            */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*ì§€ë„ Xì¢Œí‘œ            */
+    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*ì§€ë„ Yì¢Œí‘œ            */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
  /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Insert 20181217°íµµÈ­ v_Real_Mob_No Ãß°¡
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Insert 20181217ê³ ë„í™” v_Real_Mob_No ì¶”ê°€
   *****************************************************************************/
   FUNCTION f_InsertRtcs0006_New (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*½ÇÇÚµåÆù                */
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*Áöµµ XÁÂÇ¥            */
-    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*Áöµµ YÁÂÇ¥            */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*ì‹¤í•¸ë“œí°                */
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*ì§€ë„ Xì¢Œí‘œ            */
+    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*ì§€ë„ Yì¢Œí‘œ            */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Update
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0006 (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*Áöµµ XÁÂÇ¥            */
-    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*Áöµµ YÁÂÇ¥            */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*ì§€ë„ Xì¢Œí‘œ            */
+    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*ì§€ë„ Yì¢Œí‘œ            */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Update 20181217°íµµÈ­ v_Real_Mob_No Ãß°¡
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Update 20181217ê³ ë„í™” v_Real_Mob_No ì¶”ê°€
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0006_New (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*½Ç ÇÚµåÆù                */
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*Áöµµ XÁÂÇ¥            */
-    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*Áöµµ YÁÂÇ¥            */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*ì‹¤ í•¸ë“œí°                */
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Pos_X          IN RTCS0006.POS_X%TYPE,          /*ì§€ë„ Xì¢Œí‘œ            */
+    v_Pos_Y          IN RTCS0006.POS_Y%TYPE,          /*ì§€ë„ Yì¢Œí‘œ            */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ Delete
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0006 (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ °ü¸®
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_InsertRtcs0006 (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN OUT RTCS0006.SEQ%TYPE,        /*¼ø¹ø                  */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN OUT RTCS0006.SEQ%TYPE,        /*ìˆœë²ˆ                  */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ º¯°æ - ¼ø¹ø Ãé¹ø Á¶È¸
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ë³€ê²½ - ìˆœë²ˆ ì·Œë²ˆ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcs0006Seq(
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,           /*¼³ºñ¹øÈ£            */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE           /*ÀÛ¾÷¼ø¹ø            */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,           /*ì„¤ë¹„ë²ˆí˜¸            */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE           /*ìž‘ì—…ìˆœë²ˆ            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ - ¿ìÆí¹øÈ£(ºôµù¹øÈ£) ±âÁØ Mr. Roadian ÄÚµå È¹µæ
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ - ìš°íŽ¸ë²ˆí˜¸(ë¹Œë”©ë²ˆí˜¸) ê¸°ì¤€ Mr. Roadian ì½”ë“œ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcs0006MrCd(
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE      /*ºôµù¹øÈ£              */
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE      /*ë¹Œë”©ë²ˆí˜¸              */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£(ºôµù¹øÈ£) ±âÁØ Mr. Roadian Á¤º¸ Á¶È¸
+  -- ìš°íŽ¸ë²ˆí˜¸(ë¹Œë”©ë²ˆí˜¸) ê¸°ì¤€ Mr. Roadian ì •ë³´ ì¡°íšŒ
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-03-28  wjim             [20170324_02] ½Å±Ô°³¹ß
+   1.1        2017-03-28  wjim             [20170324_02] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_sRtcs0006Mr(
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE      /*ºôµù¹øÈ£            */
+    , v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE      /*ë¹Œë”©ë²ˆí˜¸            */
   );
   
   /*****************************************************************************
-  -- ½Ã±º±¸º° ´ã´ç ·Îµð¾È Á¤º¸ Á¶È¸
-  -- - ÁÖ¼Ò1 ÇüÅÂ·Î ÀÔ·ÂÇÏ¸é ÆÄ½ÌÇÏ¿© Á¶È¸
+  -- ì‹œêµ°êµ¬ë³„ ë‹´ë‹¹ ë¡œë””ì•ˆ ì •ë³´ ì¡°íšŒ
+  -- - ì£¼ì†Œ1 í˜•íƒœë¡œ ìž…ë ¥í•˜ë©´ íŒŒì‹±í•˜ì—¬ ì¡°íšŒ
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.3        2017-04-04  wjim             [20170404_02] ½Ã±º±¸º° ´ã´ç ·Îµð¾È Á¶È¸±â´É Ãß°¡
+   1.3        2017-04-04  wjim             [20170404_02] ì‹œêµ°êµ¬ë³„ ë‹´ë‹¹ ë¡œë””ì•ˆ ì¡°íšŒê¸°ëŠ¥ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_sRtcs0006MrAddr1(
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Addr1          IN RTCS0006.ADDR1%TYPE          /*ÁÖ¼Ò1                */
+    , v_Addr1          IN RTCS0006.ADDR1%TYPE          /*ì£¼ì†Œ1                */
   );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷Á¤º¸ ÄÁÅÃº¯°æ °ü¸®
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ì •ë³´ ì»¨íƒë³€ê²½ ê´€ë¦¬
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-03-27  wjim             [20170324_02] ½Å±Ô°³¹ß
-   1.10       2017-12-20  wjim             [20171220_01] ÇÚµåÆù, ÀüÈ­¹øÈ£ ¼öÁ¤±â´É Ãß°¡
+   1.1        2017-03-27  wjim             [20170324_02] ì‹ ê·œê°œë°œ
+   1.10       2017-12-20  wjim             [20171220_01] í•¸ë“œí°, ì „í™”ë²ˆí˜¸ ìˆ˜ì •ê¸°ëŠ¥ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_InsertRtcs0006Contact (
-    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Seq            IN RTCS0006.SEQ%TYPE,            /*¼ø¹ø                  */    
-    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ÄÚµå      */
-    v_Ob_St          IN RTCS0005.OB_ST%TYPE,          /*»ó´ã»óÅÂ              */    
-    v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE,      /*»ó´ã¼¼ºÎ»óÅÂ          */
-    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*ÇÚµåÆù                */--[20171220_01]
-    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*ÇÚµåÆù                */--[20181217_01]
-    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */--[20171220_01]
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*Á¤±âÁ¡°Ë»óÅÂ          */--[20180419]
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*Æ¯ÀÌ»çÇ×              */--[20180419]
-    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0006.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0006.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0006.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0006.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Seq            IN RTCS0006.SEQ%TYPE,            /*ìˆœë²ˆ                  */    
+    v_Bld_Mng_No     IN RTCS0006.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Poscd          IN RTCS0006.POSCD%TYPE,          /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0006.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0006.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Plan_Day       IN RTCS0006.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0006.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Mr_Cd          IN RTCS0006.MR_CD%TYPE,          /*Mr. Roadian ì½”ë“œ      */
+    v_Ob_St          IN RTCS0005.OB_ST%TYPE,          /*ìƒë‹´ìƒíƒœ              */    
+    v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE,      /*ìƒë‹´ì„¸ë¶€ìƒíƒœ          */
+    v_Mob_No         IN RTCS0006.MOB_NO%TYPE,         /*í•¸ë“œí°                */--[20171220_01]
+    v_Real_Mob_No    IN RTCS0006.REAL_MOB_NO%TYPE,    /*í•¸ë“œí°                */--[20181217_01]
+    v_Tel_No         IN RTCS0006.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */--[20171220_01]
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ì •ê¸°ì ê²€ìƒíƒœ          */--[20180419]
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*íŠ¹ì´ì‚¬í•­              */--[20180419]
+    v_Reg_Id         IN RTCS0006.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );    
 
 END Pkg_Rtcs0006;
-/

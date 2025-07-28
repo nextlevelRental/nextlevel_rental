@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsRGroup", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("dsSelectInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -113,7 +115,7 @@
             		p.set_titletext("렌탈지사 조회");
 
             		p.div_search.set_taborder("0");
-            		p.div_search.set_text("Div00", false);
+            		p.div_search.set_text("Div00");
             		p.div_search.set_scrollbars("none");
             		p.div_search.set_cssclass("div_WF_searchBg");
             		p.div_search.move("10", "10", null, "45", "10", null);
@@ -127,11 +129,11 @@
             		p.grd_Group.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
             		p.grd_Group.move("10", "66", null, "380", "10", null);
             		p.btn_choice.set_taborder("2");
-            		p.btn_choice.set_text("선택", false);
+            		p.btn_choice.set_text("선택");
             		p.btn_choice.getSetter("domainId").set("nexa.add");
             		p.btn_choice.move(null, "456", "41", "21", "54", null);
             		p.btn_close.set_taborder("3");
-            		p.btn_close.set_text("닫기", false);
+            		p.btn_close.set_text("닫기");
             		p.btn_close.getSetter("domainId").set("nexa.add");
             		p.btn_close.move(null, "456", "41", "21", "9", null);
 

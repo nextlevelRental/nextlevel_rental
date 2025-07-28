@@ -642,6 +642,4 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0108 AS
     v_Ord_No         IN RTSD0108.ORD_NO%TYPE            /*주문번호            */
     )  RETURN VARCHAR;  
   
-  
 END Pkg_Rtsd0108;
-/

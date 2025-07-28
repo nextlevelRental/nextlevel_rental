@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0040
-   PURPOSE:   ÀÌ¹ÌÁö °ü¸® °ü¸®
+   PURPOSE:   ì´ë¯¸ì§€ ê´€ë¦¬ ê´€ë¦¬
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0040Count(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE        /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE        /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -33,38 +33,38 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 
                  
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Select
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0040 (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_Reg_Fdt        IN VARCHAR,                      /*¾÷·ÎµåÀÏÀÚFROM        */
-    v_Reg_Tdt        IN VARCHAR,                      /*¾÷·ÎµåÀÏÀÚTO          */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE        /*¾÷·Îµå ÇÁ·Î±×·¥       */
+    v_Reg_Fdt        IN VARCHAR,                      /*ì—…ë¡œë“œì¼ìžFROM        */
+    v_Reg_Tdt        IN VARCHAR,                      /*ì—…ë¡œë“œì¼ìžTO          */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE        /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
     ) IS
   BEGIN
     
 
     OPEN Ref_Cursor FOR
-    SELECT  C40.FILE_SEQ,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-            C40.FILE_GRP_SEQ,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-            C40.FILE_LNM,       /*³í¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PNM,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PATH,      /*ÆÄÀÏ°æ·Î              */
-            C40.FILE_SIZE,      /*ÆÄÀÏ»çÀÌÁî            */
-            C40.UPLPG_CD,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-            C11.PRGM_NM,        /*¾÷·Îµå ÇÁ·Î±×·¥¸í     */
-            C40.CUST_NO,        /*°í°´¹øÈ£              */
-            S10.CUST_NM,        /*°í°´¸í                */
-            C40.ORD_NO,         /*ÁÖ¹®¹øÈ£              */
-            C40.REG_ID,         /*µî·ÏÀÚ ID             */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(C40.REG_ID) REG_NM, /*µî·ÏÀÚ¸í       */
-            C40.REG_DT,         /*µî·ÏÀÏ                */
-            C40.CHG_ID,         /*º¯°æÀÚ ID             */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(C40.CHG_ID) CHG_NM, /*º¯°æÀÚ¸í       */
-            C40.CHG_DT          /*º¯°æÀÏ                */
+    SELECT  C40.FILE_SEQ,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+            C40.FILE_GRP_SEQ,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+            C40.FILE_LNM,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PNM,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PATH,      /*íŒŒì¼ê²½ë¡œ              */
+            C40.FILE_SIZE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+            C40.UPLPG_CD,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+            C11.PRGM_NM,        /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨ëª…     */
+            C40.CUST_NO,        /*ê³ ê°ë²ˆí˜¸              */
+            S10.CUST_NM,        /*ê³ ê°ëª…                */
+            C40.ORD_NO,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+            C40.REG_ID,         /*ë“±ë¡ìž ID             */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(C40.REG_ID) REG_NM, /*ë“±ë¡ìžëª…       */
+            C40.REG_DT,         /*ë“±ë¡ì¼                */
+            C40.CHG_ID,         /*ë³€ê²½ìž ID             */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(C40.CHG_ID) CHG_NM, /*ë³€ê²½ìžëª…       */
+            C40.CHG_DT          /*ë³€ê²½ì¼                */
     FROM    RTCM0040 C40,
             RTCM0011 C11,
             RTSD0100 S10
@@ -81,20 +81,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   END p_sRtcm0040;
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Insert
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -142,20 +142,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Update
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -185,11 +185,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   END f_UpdateRtcm0040;
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Delete
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -212,21 +212,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   
   
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® °ü¸®
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0040(
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -237,39 +237,39 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   BEGIN
 
 
-    -- ÇÊ¼ö°ª: ³í¸®Àû ÆÄÀÏ¸í ,¹°¸®Àû ÆÄÀÏ¸í ,ÆÄÀÏ°æ·Î ,ÆÄÀÏ»çÀÌÁî ,¾÷·Îµå ÇÁ·Î±×·¥ ,µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ë…¼ë¦¬ì  íŒŒì¼ëª… ,ë¬¼ë¦¬ì  íŒŒì¼ëª… ,íŒŒì¼ê²½ë¡œ ,íŒŒì¼ì‚¬ì´ì¦ˆ ,ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨ ,ë“±ë¡ìž ID
     IF TRIM(v_File_Lnm) IS NULL THEN
-        v_Return_Message := ' ³í¸®Àû ÆÄÀÏ('||v_File_Lnm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := ' ë…¼ë¦¬ì  íŒŒì¼('||v_File_Lnm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_File_Pnm) IS NULL THEN
-        v_Return_Message := '¹°¸®Àû ÆÄÀÏ¸í('||v_File_Pnm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë¬¼ë¦¬ì  íŒŒì¼ëª…('||v_File_Pnm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_File_Path) IS NULL THEN
-        v_Return_Message := 'ÆÄÀÏ°æ·Î('||v_File_Path||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'íŒŒì¼ê²½ë¡œ('||v_File_Path||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_File_Size) IS NULL THEN
-        v_Return_Message := 'ÆÄÀÏ»çÀÌÁî('||v_File_Size||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'íŒŒì¼ì‚¬ì´ì¦ˆ('||v_File_Size||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Uplpg_Cd) IS NULL THEN
-        v_Return_Message := '¾÷·Îµå ÇÁ·Î±×·¥('||v_Uplpg_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨('||v_Uplpg_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
         
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -278,7 +278,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
         IF 0 != f_InsertRtcm0040(v_File_Seq, v_File_Grp_Seq, v_File_Lnm, v_File_Pnm,
                                  v_File_Path, v_File_Size, v_Uplpg_Cd, v_Cust_No, 
                                  v_Ord_No, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÀÌ¹ÌÁö µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì´ë¯¸ì§€ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
             
@@ -287,14 +287,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
     
         IF 0 = f_sRtcm0040Count(v_File_Seq) THEN        
-            v_Return_Message := 'ÇØ´ç ÆÄÀÏ('||v_File_Seq||')Àº µî·ÏµÈ ÆÄÀÏÀÌ ¾Æ´Ï¹Ç·Î ¼öÁ¤ÀÌ ºÒ°¡ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ íŒŒì¼('||v_File_Seq||')ì€ ë“±ë¡ëœ íŒŒì¼ì´ ì•„ë‹ˆë¯€ë¡œ ìˆ˜ì •ì´ ë¶ˆê°€í•©ë‹ˆë‹¤!';
             RAISE e_Error;  
         END IF;
         
         IF 0 != f_UpdateRtcm0040(v_File_Seq, v_File_Grp_Seq, v_File_Lnm, v_File_Pnm,
                                  v_File_Path, v_File_Size, v_Uplpg_Cd, v_Cust_No, 
                                  v_Ord_No, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÀÌ¹ÌÁö ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì´ë¯¸ì§€ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -303,23 +303,23 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
     ELSIF v_Comm_Dvsn = 'D' THEN
     
         IF 0 = f_sRtcm0040Count(v_File_Seq) THEN        
-            v_Return_Message := 'ÇØ´ç ÆÄÀÏ('||v_File_Seq||')Àº µî·ÏµÈ ÆÄÀÏÀÌ ¾Æ´Ï¹Ç·Î »èÁ¦°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ íŒŒì¼('||v_File_Seq||')ì€ ë“±ë¡ëœ íŒŒì¼ì´ ì•„ë‹ˆë¯€ë¡œ ì‚­ì œê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
             RAISE e_Error;  
         END IF;
         
         IF 0 != f_DeleteRtcm0040(v_File_Seq, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÀÌ¹ÌÁö »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì´ë¯¸ì§€ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
        END IF;
             
     ELSE
-        v_Return_Message := ' Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := ' ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -334,7 +334,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_RTCM0040.p_IUDRTCM0040(2)', v_ErrorText, v_Return_Message);
 
@@ -342,7 +342,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count - ¾÷·ÎµåÆÄÀÏ¹øÈ£ È¹µæ
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count - ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcm0040Seq RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
@@ -364,7 +364,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   END f_sRtcm0040Seq;
   
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count - ¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£ È¹µæ
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count - ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcm0040GrpSeq RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
@@ -384,24 +384,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
 
       
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Select - ¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£ ±âÁØ ÆÄÀÏÁ¤º¸ Á¶È¸
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Select - ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸ ê¸°ì¤€ íŒŒì¼ì •ë³´ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0040FileGrpList (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE    /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE    /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
     ) IS
   BEGIN
     
     OPEN Ref_Cursor FOR
-    SELECT  C40.FILE_SEQ,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-            C40.FILE_GRP_SEQ,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-            C40.FILE_LNM,       /*³í¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PNM,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PATH,      /*ÆÄÀÏ°æ·Î              */
-            C40.FILE_SIZE,      /*ÆÄÀÏ»çÀÌÁî            */
-            C40.UPLPG_CD,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-            C40.CUST_NO,        /*°í°´¹øÈ£              */
-            C40.ORD_NO          /*ÁÖ¹®¹øÈ£              */
+    SELECT  C40.FILE_SEQ,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+            C40.FILE_GRP_SEQ,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+            C40.FILE_LNM,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PNM,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PATH,      /*íŒŒì¼ê²½ë¡œ              */
+            C40.FILE_SIZE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+            C40.UPLPG_CD,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+            C40.CUST_NO,        /*ê³ ê°ë²ˆí˜¸              */
+            C40.ORD_NO          /*ì£¼ë¬¸ë²ˆí˜¸              */
     FROM    RTCM0040 C40
     WHERE   C40.FILE_GRP_SEQ = v_File_Grp_Seq
     AND     C40.USE_YN = 'Y';
@@ -409,24 +409,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   END p_sRtcm0040FileGrpList;
   
     /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Select - ¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£ ±âÁØ ÆÄÀÏÁ¤º¸ Á¶È¸
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Select - ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸ ê¸°ì¤€ íŒŒì¼ì •ë³´ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0040FileOne (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_File_Seq   IN RTCM0040.FILE_SEQ%TYPE    /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
+    v_File_Seq   IN RTCM0040.FILE_SEQ%TYPE    /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
     ) IS
   BEGIN
     
     OPEN Ref_Cursor FOR
-    SELECT  C40.FILE_SEQ,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-            C40.FILE_GRP_SEQ,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-            C40.FILE_LNM,       /*³í¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PNM,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-            C40.FILE_PATH,      /*ÆÄÀÏ°æ·Î              */
-            C40.FILE_SIZE,      /*ÆÄÀÏ»çÀÌÁî            */
-            C40.UPLPG_CD,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-            C40.CUST_NO,        /*°í°´¹øÈ£              */
-            C40.ORD_NO          /*ÁÖ¹®¹øÈ£              */
+    SELECT  C40.FILE_SEQ,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+            C40.FILE_GRP_SEQ,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+            C40.FILE_LNM,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PNM,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+            C40.FILE_PATH,      /*íŒŒì¼ê²½ë¡œ              */
+            C40.FILE_SIZE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+            C40.UPLPG_CD,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+            C40.CUST_NO,        /*ê³ ê°ë²ˆí˜¸              */
+            C40.ORD_NO          /*ì£¼ë¬¸ë²ˆí˜¸              */
     FROM    RTCM0040 C40
     WHERE   C40.FILE_SEQ = v_File_Seq
     AND     C40.USE_YN = 'Y';
@@ -434,4 +434,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0040 AS
   END p_sRtcm0040FileOne;
       
 END Pkg_Rtcm0040;
-/

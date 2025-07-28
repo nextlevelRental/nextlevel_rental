@@ -1495,6 +1495,7 @@ if (!nexacro.EditBase) {
 		};
 	}
 
+	//[20220518_01] kstka 인터넷익스플로어 종료 대응
 	if (nexacro.Browser == "Edge" || (nexacro.Browser == "IE" && nexacro.BrowserVersion == 11)) {
 		_pEditBase._on_default_input_compositionend = function (data) {
 			this._compositionstart_value = "";

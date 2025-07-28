@@ -61,7 +61,7 @@ SELECT A.*
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S019', A.VKBUR) VKBUR_NM,       /*지점명         */
             A.VKGRP,                     /*지사                */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S018', A.VKGRP) VKGRP_NM,       /*지사명         */
-            trim(A.USER_GRP) USER_GRP,                  /*사용자 그룹         */
+            TRIM(A.USER_GRP) USER_GRP,                  /*사용자 그룹         */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('C001', A.USER_GRP) USER_GRP_NM, /*사용자 그룹명  */
             TO_CHAR(A.LAST_PW_DT,'YYYY/MM/DD HH24:MI') AS LAST_PW_DT,                /*최종 비밀번호 수정일*/
             TO_CHAR(A.LAST_LOGON_DT,'YYYY/MM/DD HH24:MI') AS LAST_LOGON_DT,             /*최종 접속 일자      */
@@ -655,7 +655,8 @@ SELECT A.*
     ) IS
 
     e_Error     EXCEPTION;
-    v_TempPass      RTCM0001.PASSWORD%TYPE;     /*비밀번호               */
+    v_TempPass  RTCM0001.PASSWORD%TYPE;     /*비밀번호               */
+    v_User_Nm   RTCM0001.USER_NM%TYPE;      /*사용자명               */
     
     v_val_chk1  NUMBER;
     v_val_chk2  NUMBER;
@@ -688,6 +689,28 @@ SELECT A.*
 --        v_Return_Message := '패스워드는 숫자 하나 이상은 포함되어야 합니다.!';
 --        RAISE e_Error;
 --    END IF;
+
+    IF v_User_Id = v_Password THEN
+        v_Return_Message := 'ID와 동일한 패스워드는 사용할 수 없습니다!';
+        RAISE e_Error;
+    END IF;
+    
+    IF REGEXP_INSTR(v_Password,'(.)\1\1') > 0 THEN
+        v_Return_Message := '패스워드에 동일한 문자가 숫자가 3회 이상 반복될 수 없습니다!';
+        RAISE e_Error;
+    END IF;
+    
+    SELECT  USER_NM
+      INTO  v_User_Nm
+      FROM  RTCM0001
+     WHERE  USER_ID = v_User_Id
+    ;
+    
+    IF NVL(INSTR(v_Password, v_User_Nm),0) > 0 THEN
+        v_Return_Message := '패스워드에 사용자명이 포함될 수 없습니다!';
+        RAISE e_Error;
+    END IF;
+ 
 
     v_TempPass := REGEXP_REPLACE(REGEXP_REPLACE(REGEXP_REPLACE(TRIM(v_Password), '[a-z, A-Z, ㄱ-ㅎ, 가-힐]', 'a'),'[0-9]','0'),'[[:punct:]]','!');
     
@@ -899,4 +922,3 @@ SELECT A.*
   END f_sRtcm0001UserGrp;
 
 END Pkg_Rtcm0001;
-/

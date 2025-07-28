@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
 /*******************************************************************************
     NAME        Pkg_Rtcm0111
-    PURPOSE     ∑ª≈ª∏∂Ω∫≈Õ ¡§∫∏ ∏∂Ω∫≈Õ
+    PURPOSE     Î†åÌÉàÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ ÎßàÏä§ÌÑ∞
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
@@ -9,7 +9,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
 *******************************************************************************/
     
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ¡§∫∏ ¡∂»∏ Select
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0111 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -19,7 +19,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
     );
     
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ¡§∫∏¿‘∑¬(IUD)
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞Ï†ïÎ≥¥ÏûÖÎ†•(IUD)
   
     REVISIONS
     Ver     Date        Author          Description
@@ -27,23 +27,23 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0111 (
-      v_Comm_Dvsn                    IN CHAR                                        /*√≥∏Æ±∏∫–(I,U,D)      */
-    , v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ¿Ã∏ß             */
-    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*∑ª≈ª∏∂Ω∫≈Õ »ﬁ¥Î∆˘π¯»£          */
-    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ EMAIL          */
-    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ªÁøÎø©∫Œ          */
-    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚ø©∫Œ          */
-    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿⁄ID          */
-    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿œ¿⁄          */
-    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Comm_Dvsn                    IN CHAR                                        /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)      */
+    , v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ïù¥Î¶Ñ             */
+    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ìú¥ÎåÄÌè∞Î≤àÌò∏          */
+    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ EMAIL          */
+    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏûêID          */
+    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏùºÏûê          */
+    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
    
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ¡§∫∏ Insert
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞Ï†ïÎ≥¥ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -51,20 +51,20 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_InsertRtcm0111 (
-      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ¿Ã∏ß             */
-    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*∑ª≈ª∏∂Ω∫≈Õ »ﬁ¥Î∆˘π¯»£          */
-    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ EMAIL          */
-    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ªÁøÎø©∫Œ          */
-    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚ø©∫Œ          */
-    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿⁄ID          */
-    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿œ¿⁄          */
-    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ïù¥Î¶Ñ             */
+    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ìú¥ÎåÄÌè∞Î≤àÌò∏          */
+    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ EMAIL          */
+    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏûêID          */
+    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏùºÏûê          */
+    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ¡§∫∏ Update
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Update
   
     REVISIONS
     Ver     Date        Author          Description
@@ -72,20 +72,20 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0111 (
-      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ¿Ã∏ß             */
-    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*∑ª≈ª∏∂Ω∫≈Õ »ﬁ¥Î∆˘π¯»£          */
-    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ EMAIL          */
-    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ªÁøÎø©∫Œ          */
-    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚ø©∫Œ          */
-    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿⁄ID          */
-    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*∞≥¿Œ¡§∫∏∆ƒ±‚¿œ¿⁄          */
-    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Rnt_Mst_Nm                   IN RTCM0111.RNT_MST_NM%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ïù¥Î¶Ñ             */
+    , v_Mob_No                       IN RTCM0111.MOB_NO%TYPE                        /*Î†åÌÉàÎßàÏä§ÌÑ∞ Ìú¥ÎåÄÌè∞Î≤àÌò∏          */
+    , v_Email_Addr                   IN RTCM0111.EMAIL_ADDR%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ EMAIL          */
+    , v_Use_Yn                       IN RTCM0111.USE_YN%TYPE                        /*ÏÇ¨Ïö©Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Yn                  IN RTCM0111.PI_DSTRY_YN%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞Ïó¨Î∂Ä          */
+    , v_Pi_Dstry_Id                  IN RTCM0111.PI_DSTRY_ID%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏûêID          */
+    , v_Pi_Dstry_Dt                  IN RTCM0111.PI_DSTRY_DT%TYPE                   /*Í∞úÏù∏Ï†ïÎ≥¥ÌååÍ∏∞ÏùºÏûê          */
+    , v_Reg_Id                       IN RTCM0111.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ »ﬁ¥Î∆˘ π¯»£
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Ìú¥ÎåÄÌè∞ Î≤àÌò∏
   
     REVISIONS
     Ver     Date        Author          Description
@@ -93,8 +93,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0111 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_GetRMMobNo (
-      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
+      v_Rnt_Mst_Id                   IN RTCM0111.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
   ) RETURN VARCHAR;
   
 END Pkg_Rtcm0111;
-/

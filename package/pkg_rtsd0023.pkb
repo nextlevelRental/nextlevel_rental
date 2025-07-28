@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
 /*******************************************************************************
    NAME:      PKG_RTSD0023
-   PURPOSE:   ∫Œ∞°¡¶«∞ µÓ∑œ Body
+   PURPOSE:   Î∂ÄÍ∞ÄÏ†úÌíà Îì±Î°ù Body
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,7 +9,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
    1.0        2018-10-11  Sean             1. Created this package body.
 *******************************************************************************/
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ¡∂»∏ Select
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0023 (
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -19,22 +19,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   ) AS
   BEGIN
     OPEN Ref_Cursor for  
-  SELECT ADD_GDS_CD       /* Ω√ƒˆ */ 
-       , ADD_GDS_NM       /* ∫Œ∞°¡¶«∞∏Ì */
-       , NVL(AMT, 0) AMT  /* ±›æ◊ */     
-       , MAKER_NM         /* ¡¶¡∂ªÁ */
-       , GDS_GB           /* ¡¶«∞±∏∫– */
-       , GDS_DESC         /* ¡¶«∞º≥∏Ì */
-       , GDS_DESC_DT      /* ¡¶«∞ªÛººº≥∏Ì */
-       , REG_ID           /* µÓ∑œ¿⁄ ID */
-       , REG_DT           /* µÓ∑œ¿œ */
-       , CHG_ID           /* ∫Ø∞Ê¿⁄ ID */
-       , CHG_DT           /* ∫Ø∞Ê¿œ */
-       , GDS_GRP          /* ¡¶«∞±∫ */
-       , USE_YN           /* ªÁøÎø©∫Œ */
-       , NVL(DC_AMT, 0) DC_AMT  /* «“¿Œ±›æ◊ */
-       , NVL(AMT, 0) - NVL(DC_AMT, 0) ACT_AMT  /* Ω«∆«∏≈±›æ◊ */
-       , DC_YN            /* «“∫Œø©∫Œ */
+  SELECT ADD_GDS_CD       /* ÏãúÌÄÄ */ 
+       , ADD_GDS_NM       /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */
+       , NVL(AMT, 0) AMT  /* Í∏àÏï° */     
+       , MAKER_NM         /* Ï†úÏ°∞ÏÇ¨ */
+       , GDS_GB           /* Ï†úÌíàÍµ¨Î∂Ñ */
+       , GDS_DESC         /* Ï†úÌíàÏÑ§Î™Ö */
+       , GDS_DESC_DT      /* Ï†úÌíàÏÉÅÏÑ∏ÏÑ§Î™Ö */
+       , REG_ID           /* Îì±Î°ùÏûê ID */
+       , REG_DT           /* Îì±Î°ùÏùº */
+       , CHG_ID           /* Î≥ÄÍ≤ΩÏûê ID */
+       , CHG_DT           /* Î≥ÄÍ≤ΩÏùº */
+       , GDS_GRP          /* Ï†úÌíàÍµ∞ */
+       , USE_YN           /* ÏÇ¨Ïö©Ïó¨Î∂Ä */
+       , NVL(DC_AMT, 0) DC_AMT  /* Ìï†Ïù∏Í∏àÏï° */
+       , NVL(AMT, 0) - NVL(DC_AMT, 0) ACT_AMT  /* Ïã§ÌåêÎß§Í∏àÏï° */
+       , DC_YN            /* Ìï†Î∂ÄÏó¨Î∂Ä */
    FROM RTSD0023
   WHERE 1=1
     AND ADD_GDS_NM  LIKE v_ADD_GDS_NM || '%'
@@ -45,7 +45,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   END p_sRTSD0023;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ Insert
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0023 (
     v_ADD_GDS_CD  IN OUT RTSD0023.ADD_GDS_CD%TYPE, 
@@ -111,7 +111,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   END f_InsertRTSD0023; 
   
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ Update
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0023 (
     v_ADD_GDS_CD  IN RTSD0023.ADD_GDS_CD%TYPE, 
@@ -154,7 +154,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   END f_UpdateRTSD0023;    
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ º¯π¯√§π¯
+  -- Î∂ÄÍ∞ÄÏ†úÌíà ÏàúÎ≤àÏ±ÑÎ≤à
   *****************************************************************************/
   FUNCTION f_sRTSD0023MaxSeq(
     v_ADD_GDS_NM  IN RTSD0023.ADD_GDS_NM%TYPE
@@ -184,10 +184,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   END f_sRTSD0023MaxSeq;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ∞¸∏Æ(IUD)
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0023 (
-    v_Comm_Dvsn   IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
+    v_Comm_Dvsn   IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
     v_ADD_GDS_CD  IN OUT RTSD0023.ADD_GDS_CD%TYPE, 
     v_ADD_GDS_NM  IN RTSD0023.ADD_GDS_NM%TYPE, 
     v_AMT         IN RTSD0023.AMT%TYPE,        
@@ -209,17 +209,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
     
   BEGIN
 
-    -- SEQ¡ﬂ∫π »Æ¿Œ
+    -- SEQÏ§ëÎ≥µ ÌôïÏù∏
     IF v_Comm_Dvsn = 'I' THEN
       IF (0 < f_sRTSD0023Count(v_ADD_GDS_CD)) THEN
-          v_Return_Message := '∫Œ∞°¡¶«∞ƒ⁄µÂ('||v_ADD_GDS_CD||') : ¿ÃπÃ ¡∏¿Á«œ¥¬ ∞™¿∫ √ﬂ∞°∞° æ∆¥— ¡∂»∏ »ƒ ºˆ¡§¿∏∑Œ ¿˙¿Â«ÿ¡÷ººø‰!';
+          v_Return_Message := 'Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú('||v_ADD_GDS_CD||') : Ïù¥ÎØ∏ Ï°¥Ïû¨ÌïòÎäî Í∞íÏùÄ Ï∂îÍ∞ÄÍ∞Ä ÏïÑÎãå Ï°∞Ìöå ÌõÑ ÏàòÏ†ïÏúºÎ°ú Ï†ÄÏû•Ìï¥Ï£ºÏÑ∏Ïöî!';
           RAISE e_Error;
       END IF;    
     
       IF 0 != f_InsertRTSD0023(v_ADD_GDS_CD, v_ADD_GDS_NM,v_AMT, v_MAKER_NM,
                                v_GDS_GB, v_GDS_DESC, v_GDS_DESC_DT, v_REG_ID,
                                v_GDS_GRP, v_USE_YN, v_DC_AMT, v_DC_YN, v_ErrorText) THEN
-            v_Return_Message := '∫Œ∞°¡¶«∞ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Î∂ÄÍ∞ÄÏ†úÌíà Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF
@@ -228,17 +228,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
         IF 0 != f_UpdateRTSD0023(v_ADD_GDS_CD, v_ADD_GDS_NM,v_AMT, v_MAKER_NM,
                                v_GDS_GB, v_GDS_DESC, v_GDS_DESC_DT, v_REG_ID,
                                v_GDS_GRP, v_USE_YN, v_DC_AMT, v_DC_YN, v_ErrorText) THEN
-            v_Return_Message := '∫Œ∞°¡¶«∞ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Î∂ÄÍ∞ÄÏ†úÌíà ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSE
-            v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ ¿˙¿Âµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Ï†ÄÏû•ÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -254,13 +254,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTSD0023.p_IUDRTSD0023(2)', v_ErrorText, v_Return_Message);
   END p_IUDRTSD0023;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ∞¸∏Æ Count
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRTSD0023Count(
     v_ADD_GDS_CD  IN RTSD0023.ADD_GDS_CD%TYPE
@@ -279,7 +279,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   END f_sRTSD0023Count;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞√ﬂ∞°∆Àæ˜ ¡∂»∏ Select(Deprecated)
+  -- Î∂ÄÍ∞ÄÏ†úÌíàÏ∂îÍ∞ÄÌåùÏóÖ Ï°∞Ìöå Select(Deprecated)
   *****************************************************************************/
   PROCEDURE p_sRTSD0023_pop(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -287,28 +287,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0023 AS
   ) AS
   BEGIN
     OPEN Ref_Cursor for  
-SELECT A.ADD_GDS_CD             /* ∫Œ∞°¡¶«∞ƒ⁄µÂ */
-     , A.ADD_GDS_NM             /* ∫Œ∞°¡¶«∞∏Ì */
-     , NVL(B.AMT, 0) AMT        /* ±›æ◊ */     
-     , NVL(B.DC_AMT, 0) DC_AMT  /* «“¿Œ±›æ◊ */
-     , NVL(B.AMT, 0) - NVL(B.DC_AMT, 0) ACT_AMT /* Ω«∆«∏≈±›æ◊ */
-     , A.DC_YN      /* «“∫Œø©∫Œ */
-     , NVL(B.MON_AMT, 0) MON_AMT    /* ø˘∑ª≈ª∑· */
-     , A.MAKER_NM   /* ¡¶¡∂ªÁ */
-     , A.GDS_GRP    /* ¡¶«∞±∫ */
-     , A.GDS_DESC   /* ∆Ø¬° */
-  FROM RTSD0023 A   /* ∫Œ∞°¡¶«∞ ¡§∫∏ */
-     , RTSD0041 B   /* ∞Ëæ‡∫Œ∞°¡¶«∞ */
+SELECT A.ADD_GDS_CD             /* Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú */
+     , A.ADD_GDS_NM             /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */
+     , NVL(B.AMT, 0) AMT        /* Í∏àÏï° */     
+     , NVL(B.DC_AMT, 0) DC_AMT  /* Ìï†Ïù∏Í∏àÏï° */
+     , NVL(B.AMT, 0) - NVL(B.DC_AMT, 0) ACT_AMT /* Ïã§ÌåêÎß§Í∏àÏï° */
+     , A.DC_YN      /* Ìï†Î∂ÄÏó¨Î∂Ä */
+     , NVL(B.MON_AMT, 0) MON_AMT    /* ÏõîÎ†åÌÉàÎ£å */
+     , A.MAKER_NM   /* Ï†úÏ°∞ÏÇ¨ */
+     , A.GDS_GRP    /* Ï†úÌíàÍµ∞ */
+     , A.GDS_DESC   /* ÌäπÏßï */
+  FROM RTSD0023 A   /* Î∂ÄÍ∞ÄÏ†úÌíà Ï†ïÎ≥¥ */
+     , RTSD0041 B   /* Í≥ÑÏïΩÎ∂ÄÍ∞ÄÏ†úÌíà */
  WHERE 1=1
    AND A.ADD_GDS_CD = B.ADD_GDS_CD(+)    
-   AND A.ADD_GDS_NM  LIKE v_ADD_GDS_NM || '%'  /* ∫Œ∞°¡¶«∞∏Ì */
+   AND A.ADD_GDS_NM  LIKE v_ADD_GDS_NM || '%'  /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */
    AND A.USE_YN = 'Y'
 ORDER BY A.ADD_GDS_CD   
   ;
   END p_sRTSD0023_pop;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞√ﬂ∞°∆Àæ˜ ¡∂»∏ Select(2018.11.14)
+  -- Î∂ÄÍ∞ÄÏ†úÌíàÏ∂îÍ∞ÄÌåùÏóÖ Ï°∞Ìöå Select(2018.11.14)
   *****************************************************************************/
   PROCEDURE p_sRTSD0023_popNew(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -318,19 +318,19 @@ ORDER BY A.ADD_GDS_CD
 AS
   BEGIN
     OPEN Ref_Cursor for  
-  SELECT A.ADD_GDS_CD             /* ∫Œ∞°¡¶«∞ƒ⁄µÂ */
-       , A.ADD_GDS_NM             /* ∫Œ∞°¡¶«∞∏Ì */
-       , NVL(A.AMT, 0) AMT        /* ±›æ◊ */     
-       , NVL(A.DC_AMT, 0) DC_AMT  /* «“¿Œ±›æ◊ */
-       , NVL(A.AMT, 0) - NVL(A.DC_AMT, 0) ACT_AMT /* Ω«∆«∏≈±›æ◊ */
-       , A.DC_YN                  /* «“∫Œø©∫Œ */
-       , A.MAKER_NM               /* ¡¶¡∂ªÁ */
-       , A.GDS_GRP                /* ¡¶«∞±∫ */
-       , A.GDS_DESC               /* ∆Ø¬° */
+  SELECT A.ADD_GDS_CD             /* Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú */
+       , A.ADD_GDS_NM             /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */
+       , NVL(A.AMT, 0) AMT        /* Í∏àÏï° */     
+       , NVL(A.DC_AMT, 0) DC_AMT  /* Ìï†Ïù∏Í∏àÏï° */
+       , NVL(A.AMT, 0) - NVL(A.DC_AMT, 0) ACT_AMT /* Ïã§ÌåêÎß§Í∏àÏï° */
+       , A.DC_YN                  /* Ìï†Î∂ÄÏó¨Î∂Ä */
+       , A.MAKER_NM               /* Ï†úÏ°∞ÏÇ¨ */
+       , A.GDS_GRP                /* Ï†úÌíàÍµ∞ */
+       , A.GDS_DESC               /* ÌäπÏßï */
        , S.SALE_CD
        , S.GDS_GB
-    FROM RTSD0021 S   /* ∆«∏≈ ¡¶«∞ ¡§∫∏ */
-       , RTSD0023 A   /* ∫Œ∞°¡¶«∞ ¡§∫∏ */
+    FROM RTSD0021 S   /* ÌåêÎß§ Ï†úÌíà Ï†ïÎ≥¥ */
+       , RTSD0023 A   /* Î∂ÄÍ∞ÄÏ†úÌíà Ï†ïÎ≥¥ */
    WHERE 1=1
      AND S.SALE_GDS_CD = A.ADD_GDS_CD
      AND S.GDS_GB = A.GDS_GB
@@ -338,38 +338,37 @@ AS
      AND S.SALE_CD = DECODE(v_SALE_CD, NULL, S.SALE_CD, v_SALE_CD)
      AND S.GDS_GB = 2
      AND A.USE_YN = 'Y'
-     AND A.ADD_GDS_NM  LIKE v_ADD_GDS_NM || '%'  /* ∫Œ∞°¡¶«∞∏Ì */   
+     AND A.ADD_GDS_NM  LIKE v_ADD_GDS_NM || '%'  /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */   
   ORDER BY A.ADD_GDS_CD
 ;
   END p_sRTSD0023_popNew;  
   
   /*****************************************************************************
-  -- ¡÷πÆπ¯»£∫∞ ∫Œ∞°¡¶«∞ ¡∂»∏ Select
+  -- Ï£ºÎ¨∏Î≤àÌò∏Î≥Ñ Î∂ÄÍ∞ÄÏ†úÌíà Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0023Sel(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
-    v_Ord_No       IN RTSD0041.ORD_NO%TYPE              /*∞Ëæ‡π¯»£            */ 
+    v_Ord_No       IN RTSD0041.ORD_NO%TYPE              /*Í≥ÑÏïΩÎ≤àÌò∏            */ 
   ) AS
   BEGIN
     OPEN Ref_Cursor for  
     SELECT B.ORD_NO
-         , A.ADD_GDS_CD             /* ∫Œ∞°¡¶«∞ƒ⁄µÂ */
-         , A.ADD_GDS_NM             /* ∫Œ∞°¡¶«∞∏Ì */
-         , NVL(B.AMT, 0) AMT        /* ±›æ◊ */     
-         , NVL(B.DC_AMT, 0) DC_AMT  /* «“¿Œ±›æ◊ */
-         , NVL(B.AMT, 0) - NVL(B.DC_AMT, 0) ACT_AMT /* Ω«∆«∏≈±›æ◊ */
-         , A.DC_YN      /* «“∫Œø©∫Œ */
-         , NVL(B.MON_AMT, 0) MON_AMT    /* ø˘∑ª≈ª∑· */
-         , A.MAKER_NM   /* ¡¶¡∂ªÁ */
-         , A.GDS_GRP    /* ¡¶«∞±∫ */
+         , A.ADD_GDS_CD             /* Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú */
+         , A.ADD_GDS_NM             /* Î∂ÄÍ∞ÄÏ†úÌíàÎ™Ö */
+         , NVL(B.AMT, 0) AMT        /* Í∏àÏï° */     
+         , NVL(B.DC_AMT, 0) DC_AMT  /* Ìï†Ïù∏Í∏àÏï° */
+         , NVL(B.AMT, 0) - NVL(B.DC_AMT, 0) ACT_AMT /* Ïã§ÌåêÎß§Í∏àÏï° */
+         , A.DC_YN      /* Ìï†Î∂ÄÏó¨Î∂Ä */
+         , NVL(B.MON_AMT, 0) MON_AMT    /* ÏõîÎ†åÌÉàÎ£å */
+         , A.MAKER_NM   /* Ï†úÏ°∞ÏÇ¨ */
+         , A.GDS_GRP    /* Ï†úÌíàÍµ∞ */
          , Pkg_Rtcm0051.f_sRtcm0051CodeName('S210', A.GDS_GRP) AS GDS_GRP_NM
-         , A.GDS_DESC   /* ∆Ø¬° */
-      FROM RTSD0023 A   /* ∫Œ∞°¡¶«∞ ¡§∫∏ */
-         , RTSD0041 B   /* ∞Ëæ‡∫Œ∞°¡¶«∞ */
+         , A.GDS_DESC   /* ÌäπÏßï */
+      FROM RTSD0023 A   /* Î∂ÄÍ∞ÄÏ†úÌíà Ï†ïÎ≥¥ */
+         , RTSD0041 B   /* Í≥ÑÏïΩÎ∂ÄÍ∞ÄÏ†úÌíà */
      WHERE A.ADD_GDS_CD = B.ADD_GDS_CD(+)    
        AND ORD_NO = v_Ord_No
     ORDER BY A.ADD_GDS_CD;
   END p_sRTSD0023Sel;
   
 END PKG_RTSD0023;
-/

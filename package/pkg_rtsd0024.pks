@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0024 AS
 /******************************************************************************
    NAME:       Pkg_Rtsd0024
-   PURPOSE:   «“¿ŒµÓ∑œ
+   PURPOSE:   Ìï†Ïù∏Îì±Î°ù
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,81 +10,80 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0024 AS
 ******************************************************************************/
 
   /*****************************************************************************
-  -- «“¿ŒµÓ∑œ Select
+  -- Ìï†Ïù∏Îì±Î°ù Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0024 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Dc_Gb         IN     RTSD0024.DC_GB%TYPE     /* «“¿Œ±∏∫–ƒ⁄µÂ            */
+    v_Dc_Gb         IN     RTSD0024.DC_GB%TYPE     /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú            */
   );
         
   /*****************************************************************************
-  -«“¿ŒµÓ∑œ Insert
+  -Ìï†Ïù∏Îì±Î°ù Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0024 (
-    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* ¡ﬂ∫π«“¿Œø©∫Œ   */
-    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* «“¿ŒªÛººø©∫Œ   */
-    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* Ï§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä   */
+    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* Ìï†Ïù∏ÏÉÅÏÑ∏Ïó¨Î∂Ä   */
+    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER; 
     
   /*****************************************************************************
-  -«“¿ŒµÓ∑œ Update
+  -Ìï†Ïù∏Îì±Î°ù Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0024 (
-    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* ¡ﬂ∫π«“¿Œø©∫Œ   */
-    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* «“¿ŒªÛººø©∫Œ   */
-    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* Ï§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä   */
+    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* Ìï†Ïù∏ÏÉÅÏÑ∏Ïó¨Î∂Ä   */
+    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;    
 
   /*****************************************************************************
-  -«“¿ŒµÓ∑œDB Copy
+  -Ìï†Ïù∏Îì±Î°ùDB Copy
   *****************************************************************************/
   FUNCTION f_InsertRtsd0026 (
-    v_Dc_Gb             IN RTSD0026.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0026.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Rate           IN RTSD0026.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0026.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Mlt_Dc_Yn         IN RTSD0026.MLT_DC_YN%TYPE,         /* ¡ﬂ∫π«“¿Œø©∫Œ   */
-    v_Std_End_Day       IN RTSD0026.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* «“¿ŒªÛººø©∫Œ   */
-    v_Reg_Id            IN RTSD0026.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0026.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0026.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Rate           IN RTSD0026.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0026.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Mlt_Dc_Yn         IN RTSD0026.MLT_DC_YN%TYPE,         /* Ï§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä   */
+    v_Std_End_Day       IN RTSD0026.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* Ìï†Ïù∏ÏÉÅÏÑ∏Ïó¨Î∂Ä   */
+    v_Reg_Id            IN RTSD0026.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  --«“¿ŒµÓ∑œ(IUD)
+  --Ìï†Ïù∏Îì±Î°ù(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0024 (
-    v_Comm_Dvsn         IN CHAR,                            /* √≥∏Æ±∏∫–(I,U,D)*/
-    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* ¡ﬂ∫π«“¿Œø©∫Œ   */
-    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* «“¿ŒªÛººø©∫Œ   */
-    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Comm_Dvsn         IN CHAR,                            /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)*/
+    v_Dc_Gb             IN RTSD0024.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0024.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Rate           IN RTSD0024.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0024.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Mlt_Dc_Yn         IN RTSD0024.MLT_DC_YN%TYPE,         /* Ï§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä   */
+    v_Std_End_Day       IN RTSD0024.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Dtl_Yn         IN RTSD0024.DC_DTL_YN%TYPE,         /* Ìï†Ïù∏ÏÉÅÏÑ∏Ïó¨Î∂Ä   */
+    v_Reg_Id            IN RTSD0024.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ¿Á∑£≈ª µÓ∑œ∫Ò «“¿Œ¿≤
+  -- Ïû¨ÎûúÌÉà Îì±Î°ùÎπÑ Ìï†Ïù∏Ïú®
   *****************************************************************************/
   FUNCTION f_regiAmtRt
   RETURN VARCHAR;    
     
 END Pkg_Rtsd0024;
-/

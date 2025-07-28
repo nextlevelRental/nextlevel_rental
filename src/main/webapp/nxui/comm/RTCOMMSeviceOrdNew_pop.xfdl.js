@@ -20,11 +20,11 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_seviceCd", this);
-            obj._setContents("<ColumnInfo><Column id=\"check\" type=\"STRING\" size=\"256\"/><Column id=\"prsPk\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"check\" type=\"STRING\" size=\"256\"/><Column id=\"prsPk\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/><Column id=\"psCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_seviceCdTmp", this);
-            obj._setContents("<ColumnInfo><Column id=\"check\" type=\"STRING\" size=\"256\"/><Column id=\"prsPk\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"check\" type=\"STRING\" size=\"256\"/><Column id=\"prsPk\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/><Column id=\"prsDcd\" type=\"STRING\" size=\"256\"/><Column id=\"prsNm\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"servCnt\" type=\"STRING\" size=\"256\"/><Column id=\"servAmt\" type=\"STRING\" size=\"256\"/><Column id=\"psCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -122,10 +122,13 @@
         //include "lib::comLib.xjs";
 
         var p_prsNm = "";
+        this.p_periodCd = "";
+        this.p_saleCd = "";
 
         // 데이터 호출 후 실행 함수 
         this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt){
         	if( strSvcId == "srvcOrdList" ){
+        	console.log(this.ds_seviceCd.saveXML());
         		var ct = this.ds_seviceCd.getRowCount();
         		this.ds_seviceCd.addColumn("check", "STRING", "256"); // 체크박스 설정.. 안하면 체크가 안됨
         		if( ct == 0){
@@ -139,7 +142,8 @@
         // 초기 로딩시
         this.RTCOMMSeviceOrd_pop_onload = function (obj,e){
         	Ex.core.init(obj);
-        	//trace(this.parent.p_formId);// 부모창에서 보낸 paramtere 값 받기
+        	this.p_periodCd = this.parent.p_periodCd;	// 부모창에서 보낸 paramtere 값 받기
+        	this.p_saleCd = this.parent.p_saleCd;	// 부모창에서 보낸 paramtere 값 받기
         }
 
         // 검색 버튼클릭시
@@ -154,7 +158,9 @@
         	var fn_callBack		= "fn_callBack";
         	
         	this.ds_seviceCd.clearData();  // dataset clear 한다.
-        	sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 전달변수
+        	sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 키워드명
+        	sArgs += Ex.util.setParam("p_periodCd", this.p_periodCd);	// 기간코드
+        	sArgs += Ex.util.setParam("p_saleCd", this.p_saleCd);	// 판매코드
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
         }
 
@@ -172,7 +178,9 @@
         		var fn_callBack		= "fn_callBack";
         		
         		this.ds_seviceCd.clearData();  // dataset clear 한다.
-        		sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 전달변수
+        		sArgs += Ex.util.setParam("p_prsNm", p_prsNm);	// 키워드명
+        		sArgs += Ex.util.setParam("p_periodCd", this.p_periodCd);	// 기간코드
+        		sArgs += Ex.util.setParam("p_saleCd", this.p_saleCd);	// 판매코드
         		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
         	}
         }

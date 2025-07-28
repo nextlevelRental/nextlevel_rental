@@ -1,82 +1,81 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE0141 AS
 /*******************************************************************************
     NAME        PKG_RTRE0141
-    PURPOSE     ∞°ªÛ∞Ë¡¬ ºº∫Œ≥ªø™ ∞¸∏Æ
+    PURPOSE     Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ∏Î∂ÄÎÇ¥Ïó≠ Í¥ÄÎ¶¨
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-10-02  wjim            [20170224_01] Ω≈±‘ ª˝º∫
+    1.0     2017-10-02  wjim            [20170224_01] Ïã†Í∑ú ÏÉùÏÑ±
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞°ªÛ∞Ë¡¬ ºº∫Œ≥ªø™ Select
+  -- Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ∏Î∂ÄÎÇ¥Ïó≠ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0141 (
       Ref_Cursor      IN OUT SYS_REFCURSOR
-    , v_Rva_Day       IN RTRE0141.RVA_DAY%TYPE     /*ø‰√ª¿œ¿⁄                 */
-    , v_Rva_Seq       IN RTRE0141.RVA_SEQ%TYPE     /*ø‰√ª¿œ∑√π¯»£             */
+    , v_Rva_Day       IN RTRE0141.RVA_DAY%TYPE     /*ÏöîÏ≤≠ÏùºÏûê                 */
+    , v_Rva_Seq       IN RTRE0141.RVA_SEQ%TYPE     /*ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏             */
   );
     
   /*****************************************************************************
-  -- ∞°ªÛ∞Ë¡¬ ºº∫Œ≥ªø™ Insert
+  -- Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ∏Î∂ÄÎÇ¥Ïó≠ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0141 (
-      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ø‰√ª¿œ¿⁄         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ø‰√ª¿œ∑√π¯»£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ∞Ì∞¥π¯»£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ≈Î«’√ª±∏∞Ëæ‡π¯»£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ∞Ëæ‡π¯»£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* √ª±∏º¯π¯         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* √ª±∏±∏∫–         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* √ª±∏¿œ¿⁄         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ∏∏±‚∞ËªÍ±‚¡ÿ¿œ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ∏≈√‚±›æ◊         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ø¨√º±›æ◊         */        
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µÓ∑œ¿⁄ID         */    
+      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ÏöîÏ≤≠ÏùºÏûê         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* Í≥†Í∞ùÎ≤àÌò∏         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÌÜµÌï©Ï≤≠Íµ¨Í≥ÑÏïΩÎ≤àÌò∏ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* Í≥ÑÏïΩÎ≤àÌò∏         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ï≤≠Íµ¨ÏàúÎ≤à         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ï≤≠Íµ¨Íµ¨Î∂Ñ         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ï≤≠Íµ¨ÏùºÏûê         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* Îß§Ï∂úÍ∏àÏï°         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* Ïó∞Ï≤¥Í∏àÏï°         */        
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* Îì±Î°ùÏûêID         */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞°ªÛ∞Ë¡¬ ºº∫Œ≥ªø™ Update
+  -- Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ∏Î∂ÄÎÇ¥Ïó≠ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0141 (
-      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ø‰√ª¿œ¿⁄         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ø‰√ª¿œ∑√π¯»£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ∞Ì∞¥π¯»£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ≈Î«’√ª±∏∞Ëæ‡π¯»£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ∞Ëæ‡π¯»£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* √ª±∏º¯π¯         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* √ª±∏±∏∫–         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* √ª±∏¿œ¿⁄         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ∏∏±‚∞ËªÍ±‚¡ÿ¿œ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ∏≈√‚±›æ◊         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ø¨√º±›æ◊         */        
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µÓ∑œ¿⁄ID         */    
+      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ÏöîÏ≤≠ÏùºÏûê         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* Í≥†Í∞ùÎ≤àÌò∏         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÌÜµÌï©Ï≤≠Íµ¨Í≥ÑÏïΩÎ≤àÌò∏ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* Í≥ÑÏïΩÎ≤àÌò∏         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ï≤≠Íµ¨ÏàúÎ≤à         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ï≤≠Íµ¨Íµ¨Î∂Ñ         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ï≤≠Íµ¨ÏùºÏûê         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* Îß§Ï∂úÍ∏àÏï°         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* Ïó∞Ï≤¥Í∏àÏï°         */        
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* Îì±Î°ùÏûêID         */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ∞°ªÛ∞Ë¡¬ ºº∫Œ≥ªø™ ∞¸∏Æ(IUD)
+  -- Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ∏Î∂ÄÎÇ¥Ïó≠ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0141 (
-      v_Comm_Dvsn       IN CHAR                     /* √≥∏Æ±∏∫–(I,U,D) */
-    , v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ø‰√ª¿œ¿⁄         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ø‰√ª¿œ∑√π¯»£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ∞Ì∞¥π¯»£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ≈Î«’√ª±∏∞Ëæ‡π¯»£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ∞Ëæ‡π¯»£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* √ª±∏º¯π¯         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* √ª±∏±∏∫–         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* √ª±∏¿œ¿⁄         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ∏∏±‚∞ËªÍ±‚¡ÿ¿œ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ∏≈√‚±›æ◊         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ø¨√º±›æ◊         */        
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µÓ∑œ¿⁄ID         */ 
+      v_Comm_Dvsn       IN CHAR                     /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
+    , v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ÏöîÏ≤≠ÏùºÏûê         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* Í≥†Í∞ùÎ≤àÌò∏         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÌÜµÌï©Ï≤≠Íµ¨Í≥ÑÏïΩÎ≤àÌò∏ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* Í≥ÑÏïΩÎ≤àÌò∏         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ï≤≠Íµ¨ÏàúÎ≤à         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ï≤≠Íµ¨Íµ¨Î∂Ñ         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ï≤≠Íµ¨ÏùºÏûê         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* Îß§Ï∂úÍ∏àÏï°         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* Ïó∞Ï≤¥Í∏àÏï°         */        
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* Îì±Î°ùÏûêID         */ 
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
     );  
         
 END PKG_RtRE0141;
-/

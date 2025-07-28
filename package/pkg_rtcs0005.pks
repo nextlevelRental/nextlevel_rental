@@ -1,359 +1,358 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0005 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0005
-   PURPOSE   ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï °ü¸®
+   PURPOSE   ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-09-18  jemcarry         1. Created this package body.
-   1.1        2017-03-24  wjim             [20170324_02] ¹æ¹®Á¡°Ë ÄÁÅÃ °ü·Ã±â´É Ãß°¡
-   1.2        2017-04-06  wjim             [20170406_01] ·Îµð¾Èº° ¹æ¹®Á¡°Ë ÄÁÅÃ È®Á¤°Ç¼ö Á¶È¸±â´É Ãß°¡
-   1.9        2017-06-08  wjim             [20170608_01] ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸Á¶°Ç(Ã³¸®»óÅÂ) Ãß°¡
-   1.11       2017-08-22  wjim             [20170822_01] ¹æ¹®Á¡°Ë ¹ÙÀÌ·² ÇÁ·Î¸ð¼Ç ½ÅÃ»´ë»ó µî·Ï Ãß°¡
-   1.13       2017-12-12  wjim             [20171212_01] ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸Á¶°Ç Ãß°¡
+   1.1        2017-03-24  wjim             [20170324_02] ë°©ë¬¸ì ê²€ ì»¨íƒ ê´€ë ¨ê¸°ëŠ¥ ì¶”ê°€
+   1.2        2017-04-06  wjim             [20170406_01] ë¡œë””ì•ˆë³„ ë°©ë¬¸ì ê²€ ì»¨íƒ í™•ì •ê±´ìˆ˜ ì¡°íšŒê¸°ëŠ¥ ì¶”ê°€
+   1.9        2017-06-08  wjim             [20170608_01] ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒì¡°ê±´(ì²˜ë¦¬ìƒíƒœ) ì¶”ê°€
+   1.11       2017-08-22  wjim             [20170822_01] ë°©ë¬¸ì ê²€ ë°”ì´ëŸ´ í”„ë¡œëª¨ì…˜ ì‹ ì²­ëŒ€ìƒ ë“±ë¡ ì¶”ê°€
+   1.13       2017-12-12  wjim             [20171212_01] ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒì¡°ê±´ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Count
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0005Count(
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,           /*¼³ºñ¹øÈ£            */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE           /*ÀÛ¾÷¼ø¹ø            */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,           /*ì„¤ë¹„ë²ˆí˜¸            */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE           /*ìž‘ì—…ìˆœë²ˆ            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Select
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0005 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*½ÇÁ¦Ã³¸®ÀÚ(Mr. Roadian*/
-    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*Ã³¸®¿©ºÎ              */
-    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*¹ÌÃ³¸®»çÀ¯            */
-    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*Á¡°Ë¿¹Á¤ÀÏÀÚ(ÃÖÃÊ)    */
-    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*Á¡°Ë¿¹Á¤½Ã°£(ÃÖÃÊ)    */
-    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*Á¡°ËÃ³¸®ÀÏÀÚ          */
-    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*Á¡°ËÃ³¸®½Ã°£          */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*ì‹¤ì œì²˜ë¦¬ìž(Mr. Roadian*/
+    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*ì²˜ë¦¬ì—¬ë¶€              */
+    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*ë¯¸ì²˜ë¦¬ì‚¬ìœ             */
+    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*ì ê²€ì˜ˆì •ì¼ìž(ìµœì´ˆ)    */
+    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*ì ê²€ì˜ˆì •ì‹œê°„(ìµœì´ˆ)    */
+    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*ì ê²€ì²˜ë¦¬ì¼ìž          */
+    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*ì ê²€ì²˜ë¦¬ì‹œê°„          */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Insert
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0005 (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*½ÇÁ¦Ã³¸®ÀÚ(Mr. Roadian*/
-    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*Ã³¸®¿©ºÎ              */
-    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*¹ÌÃ³¸®»çÀ¯            */
-    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*Á¡°Ë¿¹Á¤ÀÏÀÚ(ÃÖÃÊ)    */
-    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*Á¡°Ë¿¹Á¤½Ã°£(ÃÖÃÊ)    */
-    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*Á¡°ËÃ³¸®ÀÏÀÚ          */
-    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*Á¡°ËÃ³¸®½Ã°£          */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*ì‹¤ì œì²˜ë¦¬ìž(Mr. Roadian*/
+    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*ì²˜ë¦¬ì—¬ë¶€              */
+    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*ë¯¸ì²˜ë¦¬ì‚¬ìœ             */
+    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*ì ê²€ì˜ˆì •ì¼ìž(ìµœì´ˆ)    */
+    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*ì ê²€ì˜ˆì •ì‹œê°„(ìµœì´ˆ)    */
+    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*ì ê²€ì²˜ë¦¬ì¼ìž          */
+    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*ì ê²€ì²˜ë¦¬ì‹œê°„          */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Update
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0005 (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*½ÇÁ¦Ã³¸®ÀÚ(Mr. Roadian*/
-    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*Ã³¸®¿©ºÎ              */
-    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*¹ÌÃ³¸®»çÀ¯            */
-    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*Á¡°Ë¿¹Á¤ÀÏÀÚ(ÃÖÃÊ)    */
-    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*Á¡°Ë¿¹Á¤½Ã°£(ÃÖÃÊ)    */
-    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*Á¡°ËÃ³¸®ÀÏÀÚ          */
-    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*Á¡°ËÃ³¸®½Ã°£          */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*ì‹¤ì œì²˜ë¦¬ìž(Mr. Roadian*/
+    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*ì²˜ë¦¬ì—¬ë¶€              */
+    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*ë¯¸ì²˜ë¦¬ì‚¬ìœ             */
+    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*ì ê²€ì˜ˆì •ì¼ìž(ìµœì´ˆ)    */
+    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*ì ê²€ì˜ˆì •ì‹œê°„(ìµœì´ˆ)    */
+    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*ì ê²€ì²˜ë¦¬ì¼ìž          */
+    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*ì ê²€ì²˜ë¦¬ì‹œê°„          */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Delete
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0005 (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï °ü¸®(IUD)
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0005 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN OUT RTCS0005.JOB_SEQ%TYPE,    /*ÀÛ¾÷¼ø¹ø              */
-    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*´ë»ó±¸ºÐ              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*½ÇÁ¦Ã³¸®ÀÚ(Mr. Roadian*/
-    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*Ã³¸®¿©ºÎ              */
-    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*¹ÌÃ³¸®»çÀ¯            */
-    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*Á¡°Ë¿¹Á¤ÀÏÀÚ(ÃÖÃÊ)    */
-    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*Á¡°Ë¿¹Á¤½Ã°£(ÃÖÃÊ)    */
-    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*Á¡°ËÃ³¸®ÀÏÀÚ          */
-    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*Á¡°ËÃ³¸®½Ã°£          */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN OUT RTCS0005.JOB_SEQ%TYPE,    /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Target_Cd      IN RTCS0005.TARGET_CD%TYPE,      /*ëŒ€ìƒêµ¬ë¶„              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*ì‹¤ì œì²˜ë¦¬ìž(Mr. Roadian*/
+    v_Proc_Yn        IN RTCS0005.PROC_YN%TYPE,        /*ì²˜ë¦¬ì—¬ë¶€              */
+    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*ë¯¸ì²˜ë¦¬ì‚¬ìœ             */
+    v_Plan_Day0      IN RTCS0005.PLAN_DAY0%TYPE,      /*ì ê²€ì˜ˆì •ì¼ìž(ìµœì´ˆ)    */
+    v_Plan_Tm0       IN RTCS0005.PLAN_TM0%TYPE,       /*ì ê²€ì˜ˆì •ì‹œê°„(ìµœì´ˆ)    */
+    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*ì ê²€ì²˜ë¦¬ì¼ìž          */
+    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*ì ê²€ì²˜ë¦¬ì‹œê°„          */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï - ÀÛ¾÷¼ø¹ø Ãé¹ø
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ - ìž‘ì—…ìˆœë²ˆ ì·Œë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtcs0005JobSeq(
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE            /*¼³ºñ¹øÈ£            */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE            /*ì„¤ë¹„ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Select  - °Ë°Ë ÀÛ¾÷¸ñ·Ï Á¶È¸
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Select  - ê²€ê²€ ìž‘ì—…ëª©ë¡ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0005JobList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE           /*Mr. RoadianÄÚµå       */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE           /*Mr. Roadianì½”ë“œ       */
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Update - °Ë°Ë ÀÛ¾÷¸ñ·Ï Á¶È¸-Á¤º¸º¯°æ-ÀúÀå½Ã Á¤º¸º¯°æ
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Update - ê²€ê²€ ìž‘ì—…ëª©ë¡ ì¡°íšŒ-ì •ë³´ë³€ê²½-ì €ìž¥ì‹œ ì •ë³´ë³€ê²½
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0005Info (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. RoadianÄÚµå       */
-    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*Á¡°Ë¿¹Á¤ÀÏÀÚ          */
-    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*Á¡°Ë¿¹Á¤½Ã°£          */
-    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*°í°´ Æ¯ÀÌ»çÇ×         */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Mr_Cd          IN RTCS0005.MR_CD%TYPE,          /*Mr. Roadianì½”ë“œ       */
+    v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE,       /*ì ê²€ì˜ˆì •ì¼ìž          */
+    v_Plan_Tm        IN RTCS0005.PLAN_TM%TYPE,        /*ì ê²€ì˜ˆì •ì‹œê°„          */
+    v_Req_Desc       IN RTCS0005.REQ_DESC%TYPE,       /*ê³ ê° íŠ¹ì´ì‚¬í•­         */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Select - Á¡°Ë ÀÛ¾÷¸ñ·ÏÁ¶È¸ - Ã³¸®°á°ú Á¶È¸
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Select - ì ê²€ ìž‘ì—…ëª©ë¡ì¡°íšŒ - ì²˜ë¦¬ê²°ê³¼ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0005Result (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï - ¹ÌÃ³¸®»çÀ¯ ¾÷µ¥ÀÌÆ®
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ - ë¯¸ì²˜ë¦¬ì‚¬ìœ  ì—…ë°ì´íŠ¸
   *****************************************************************************/
   PROCEDURE p_UpdateRtcs0005NpDesc (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_Np_Cd          IN RTCS0005.NP_CD%TYPE,          /*¹ÌÃ³¸®ÄÚµå            */
-    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*¹ÌÃ³¸®»çÀ¯            */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_Np_Cd          IN RTCS0005.NP_CD%TYPE,          /*ë¯¸ì²˜ë¦¬ì½”ë“œ            */
+    v_Np_Desc        IN RTCS0005.NP_DESC%TYPE,        /*ë¯¸ì²˜ë¦¬ì‚¬ìœ             */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï Update -  ¼­ºñ½º È®ÀÎ¼­ ¼­¸í¿Ï·á µî·Ï
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ Update -  ì„œë¹„ìŠ¤ í™•ì¸ì„œ ì„œëª…ì™„ë£Œ ë“±ë¡
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0005ServiceSign (
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ÀÛ¾÷¼ø¹ø              */
-    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*½ÇÁ¦Ã³¸®ÀÚ(Mr. Roadian*/
-    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*Á¡°ËÃ³¸®ÀÏÀÚ          */
-    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*Á¡°ËÃ³¸®½Ã°£          */
-    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ÀÛ¾÷»óÅÂ              */
-    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,         /*ì„¤ë¹„ë²ˆí˜¸              */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE,        /*ìž‘ì—…ìˆœë²ˆ              */
+    v_R_Mrcd         IN RTCS0005.R_MRCD%TYPE,         /*ì‹¤ì œì²˜ë¦¬ìž(Mr. Roadian*/
+    v_Proc_Day       IN RTCS0005.PROC_DAY%TYPE,       /*ì ê²€ì²˜ë¦¬ì¼ìž          */
+    v_Proc_Tm        IN RTCS0005.PROC_TM%TYPE,        /*ì ê²€ì²˜ë¦¬ì‹œê°„          */
+    v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE,       /*ìž‘ì—…ìƒíƒœ              */
+    v_Serv_Seq       IN RTCS0005.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Reg_Id         IN RTCS0005.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÀÛ¾÷¸ñ·Ï - ÀÛ¾÷»óÅÂ È¹µæ
+  -- ë°©ë¬¸ì ê²€ ìž‘ì—…ëª©ë¡ - ìž‘ì—…ìƒíƒœ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcs0005ChkStat(
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*±âÁØ³â¿ù            */
-    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,           /*¼³ºñ¹øÈ£            */
-    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE           /*ÀÛ¾÷¼ø¹ø            */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,           /*ê¸°ì¤€ë…„ì›”            */
+    v_Ord_No         IN RTCS0005.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Equ_No         IN RTCS0005.EQU_NO%TYPE,           /*ì„¤ë¹„ë²ˆí˜¸            */
+    v_Job_Seq        IN RTCS0005.JOB_SEQ%TYPE           /*ìž‘ì—…ìˆœë²ˆ            */
     ) RETURN VARCHAR;
     
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸
+  -- ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒ
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-03-24  wjim             [20170324_02] ½Å±Ô°³¹ß
-   1.9        2017-06-08  wjim             [20170608_01] ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸Á¶°Ç(Ã³¸®»óÅÂ) Ãß°¡
-   1.13       2017-12-12  wjim             [20171212_01] °è¾à¹øÈ£ Á¶È¸Á¶°Ç Ãß°¡
+   1.1        2017-03-24  wjim             [20170324_02] ì‹ ê·œê°œë°œ
+   1.9        2017-06-08  wjim             [20170608_01] ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒì¡°ê±´(ì²˜ë¦¬ìƒíƒœ) ì¶”ê°€
+   1.13       2017-12-12  wjim             [20171212_01] ê³„ì•½ë²ˆí˜¸ ì¡°íšŒì¡°ê±´ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_sRtcs0005CallList (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. RoadianÄÚµå       */ 
-    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*±âÁØ³â¿ù              */
-    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*±¤¿ª½Ãµµ              */
-    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*½Ã±º±¸                */
-    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*°í°´¸í                */
-    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ÄÁÅÃ»óÅÂ              */
-    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ÄÁÅÃ¼¼ºÎ»óÅÂ          */
-    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*¿¹Á¤ÀÏÀÚ              */
-    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*µî·ÏÀÚ ID             */ 
-    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*Ã³¸®»óÅÂ              */
-    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*°è¾à¹øÈ£              */ --[20171212_01]
+    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. Roadianì½”ë“œ       */ 
+    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*ê¸°ì¤€ë…„ì›”              */
+    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*ê´‘ì—­ì‹œë„              */
+    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*ì‹œêµ°êµ¬                */
+    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*ê³ ê°ëª…                */
+    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ì»¨íƒìƒíƒœ              */
+    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ì»¨íƒì„¸ë¶€ìƒíƒœ          */
+    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*ì˜ˆì •ì¼ìž              */
+    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*ë“±ë¡ìž ID             */ 
+    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*ì²˜ë¦¬ìƒíƒœ              */
+    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */ --[20171212_01]
   );
   
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸(¿¢¼¿´Ù¿î·Îµå¿ë)
+  -- ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒ(ì—‘ì…€ë‹¤ìš´ë¡œë“œìš©)
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-03-29  wjim             [20170324_02] ½Å±Ô°³¹ß
-   1.9        2017-06-08  wjim             [20170608_01] ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸Á¶°Ç(Ã³¸®»óÅÂ) Ãß°¡
-   1.13       2017-12-12  wjim             [20171212_01] °è¾à¹øÈ£ Á¶È¸Á¶°Ç Ãß°¡
+   1.1        2017-03-29  wjim             [20170324_02] ì‹ ê·œê°œë°œ
+   1.9        2017-06-08  wjim             [20170608_01] ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒì¡°ê±´(ì²˜ë¦¬ìƒíƒœ) ì¶”ê°€
+   1.13       2017-12-12  wjim             [20171212_01] ê³„ì•½ë²ˆí˜¸ ì¡°íšŒì¡°ê±´ ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_sRtcs0005CallExcelList (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. RoadianÄÚµå       */ 
-    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*±âÁØ³â¿ù              */
-    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*±¤¿ª½Ãµµ              */
-    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*½Ã±º±¸                */
-    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*°í°´¸í                */
-    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ÄÁÅÃ»óÅÂ              */
-    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ÄÁÅÃ¼¼ºÎ»óÅÂ          */
-    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*¿¹Á¤ÀÏÀÚ              */
-    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*µî·ÏÀÚ ID             */
-    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*Ã³¸®»óÅÂ              */
-    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*°è¾à¹øÈ£              */ --[20171212_01]
+    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. Roadianì½”ë“œ       */ 
+    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*ê¸°ì¤€ë…„ì›”              */
+    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*ê´‘ì—­ì‹œë„              */
+    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*ì‹œêµ°êµ¬                */
+    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*ê³ ê°ëª…                */
+    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ì»¨íƒìƒíƒœ              */
+    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ì»¨íƒì„¸ë¶€ìƒíƒœ          */
+    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*ì˜ˆì •ì¼ìž              */
+    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*ë“±ë¡ìž ID             */
+    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*ì²˜ë¦¬ìƒíƒœ              */
+    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */ --[20171212_01]
   );
   
   /*****************************************************************************
-  -- ¿ùº° ·Îµð¾Èº° ¹æ¹®Á¡°Ë ÄÁÅÃ ¿Ï·á°Ç¼ö Á¶È¸
+  -- ì›”ë³„ ë¡œë””ì•ˆë³„ ë°©ë¬¸ì ê²€ ì»¨íƒ ì™„ë£Œê±´ìˆ˜ ì¡°íšŒ
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.2        2017-04-06  wjim             [20170406_01] ½Å±Ô°³¹ß
+   1.2        2017-04-06  wjim             [20170406_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_sRtcs0005MrMonDecideCnt (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. RoadianÄÚµå       */ 
-    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*Á¶È¸³â¿ù              */
+    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. Roadianì½”ë“œ       */ 
+    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*ì¡°íšŒë…„ì›”              */
   );
   
   /*****************************************************************************
-  -- ÀÏÀÚº° ·Îµð¾Èº° ¹æ¹®Á¡°Ë ÄÁÅÃ ¿Ï·á°Ç Á¶È¸
+  -- ì¼ìžë³„ ë¡œë””ì•ˆë³„ ë°©ë¬¸ì ê²€ ì»¨íƒ ì™„ë£Œê±´ ì¡°íšŒ
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.2        2017-04-06  wjim             [20170406_01] ½Å±Ô°³¹ß
+   1.2        2017-04-06  wjim             [20170406_01] ì‹ ê·œê°œë°œ
   *****************************************************************************/
   PROCEDURE p_sRtcs0005MrDayDecide (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. RoadianÄÚµå       */ 
-    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*Á¶È¸ÀÏ                */
+    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. Roadianì½”ë“œ       */ 
+    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*ì¡°íšŒì¼                */
   );
   
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ¹ÙÀÌ·² ÇÁ·Î¸ð¼Ç ½ÅÃ»´ë»ó µî·Ï
-     - ¼îÇÎ¸ô¿¡¼­ °í°´ÀÌ Á÷Á¢ µî·ÏÇÑ °æ¿ì ÇØ´ç ¹æ¹®Á¡°ËÀÇ ÄÁÅÃ»óÅÂ¸¦ '¿Ï·á-ÀÌº¥Æ®´ë»ó'À¸·Î º¯°æ
+  -- ë°©ë¬¸ì ê²€ ë°”ì´ëŸ´ í”„ë¡œëª¨ì…˜ ì‹ ì²­ëŒ€ìƒ ë“±ë¡
+     - ì‡¼í•‘ëª°ì—ì„œ ê³ ê°ì´ ì§ì ‘ ë“±ë¡í•œ ê²½ìš° í•´ë‹¹ ë°©ë¬¸ì ê²€ì˜ ì»¨íƒìƒíƒœë¥¼ 'ì™„ë£Œ-ì´ë²¤íŠ¸ëŒ€ìƒ'ìœ¼ë¡œ ë³€ê²½
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.11    2017-08-22  wjim            [20170822_01]
   *****************************************************************************/
   PROCEDURE p_UpdatePromoApply (
-      v_Cust_Nm         IN RTSD0100.CUST_NM%TYPE     /* °í°´¸í        */
-    , v_Birth_Day       IN RTSD0100.BIRTH_DAY%TYPE   /* ¹ýÁ¤»ý³â¿ùÀÏ  */
-    , v_std_ym_f        IN RTCS0005.STD_YM%TYPE      /* ÇÁ·Î¸ð¼Ç ´ë»ó ¹æ¹®Á¡°Ë ±âÁØ³â¿ù(from) */
-    , v_std_ym_t        IN RTCS0005.STD_YM%TYPE      /* ÇÁ·Î¸ð¼Ç ´ë»ó ¹æ¹®Á¡°Ë ±âÁØ³â¿ù(to)   */
+      v_Cust_Nm         IN RTSD0100.CUST_NM%TYPE     /* ê³ ê°ëª…        */
+    , v_Birth_Day       IN RTSD0100.BIRTH_DAY%TYPE   /* ë²•ì •ìƒë…„ì›”ì¼  */
+    , v_std_ym_f        IN RTCS0005.STD_YM%TYPE      /* í”„ë¡œëª¨ì…˜ ëŒ€ìƒ ë°©ë¬¸ì ê²€ ê¸°ì¤€ë…„ì›”(from) */
+    , v_std_ym_t        IN RTCS0005.STD_YM%TYPE      /* í”„ë¡œëª¨ì…˜ ëŒ€ìƒ ë°©ë¬¸ì ê²€ ê¸°ì¤€ë…„ì›”(to)   */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
   
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë ÄÁÅÃ¸ñ·Ï Á¶È¸(¹Ì·¡È¸Â÷Á¤º¸ Æ÷ÇÔ)
+  -- ë°©ë¬¸ì ê²€ ì»¨íƒëª©ë¡ ì¡°íšŒ(ë¯¸ëž˜íšŒì°¨ì •ë³´ í¬í•¨)
   *****************************************************************************/
   PROCEDURE p_sRtcs0005CallRglrList (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. RoadianÄÚµå       */ 
-    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*±âÁØ³â¿ù              */
-    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*±¤¿ª½Ãµµ              */
-    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*½Ã±º±¸                */
-    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*°í°´¸í                */
-    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ÄÁÅÃ»óÅÂ              */
-    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ÄÁÅÃ¼¼ºÎ»óÅÂ          */
-    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*¿¹Á¤ÀÏÀÚ              */
-    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*µî·ÏÀÚ ID             */
-    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*Ã³¸®»óÅÂ              */
-    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*°è¾à¹øÈ£              */ --[20171212_01]
+    , v_Mr_Cd          IN RTCS0005.MR_CD%TYPE         /*Mr. Roadianì½”ë“œ       */ 
+    , v_Std_Ym         IN RTCS0005.STD_YM%TYPE        /*ê¸°ì¤€ë…„ì›”              */
+    , v_Do_Nm          IN RTSD0010.DO_NM%TYPE         /*ê´‘ì—­ì‹œë„              */
+    , v_Ct_Nm          IN RTSD0010.CT_NM%TYPE         /*ì‹œêµ°êµ¬                */
+    , v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE       /*ê³ ê°ëª…                */
+    , v_Mob_No         IN RTCS0006.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Ob_St          IN RTCS0005.OB_ST%TYPE         /*ì»¨íƒìƒíƒœ              */
+    , v_Ob_St_Dtl      IN RTCS0005.OB_ST_DTL%TYPE     /*ì»¨íƒì„¸ë¶€ìƒíƒœ          */
+    , v_Plan_Day       IN RTCS0005.PLAN_DAY%TYPE      /*ì˜ˆì •ì¼ìž              */
+    , v_Reg_Id         IN RTCS0005.REG_ID%TYPE        /*ë“±ë¡ìž ID             */
+    , v_Chk_Stat       IN RTCS0005.CHK_STAT%TYPE      /*ì²˜ë¦¬ìƒíƒœ              */
+    , v_Ord_No         IN RTCS0005.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */ --[20171212_01]
   );
 
   /*******************************************************************************
- -- Á¤±âÁ¡°Ë Ã³¸®ÇöÈ² Select
+ -- ì •ê¸°ì ê²€ ì²˜ë¦¬í˜„í™© Select
  *******************************************************************************/
   PROCEDURE p_sRtcs0005RegisterProcStat (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_std_Ym         IN RTCS0005.STD_YM%TYPE              /*³âµµ¿ù           */
+    , v_std_Ym         IN RTCS0005.STD_YM%TYPE              /*ë…„ë„ì›”           */
   );
 
 END Pkg_Rtcs0005;
-/

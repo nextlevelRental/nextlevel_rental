@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_SaleDetailList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -250,7 +251,7 @@
         	var sDcGb 		= nvl(this.div_search.ed_dcGb.value);
         	var sGrpStdNm 	= nvl(this.div_search.ed_dcNm.value);
         	var sStdStrDay 	= nvl(this.div_search.ed_stdStrDay.value);
-        	var sMaxCnt 	= "99999";
+        	var sMaxCnt 	= "";
 
         	if(nRow == 0) {
 
@@ -261,31 +262,47 @@
         		this.ds_SaleDetailList.setColumn(0,"dcCd", 		sDcGb+"01");
 
         		this.ds_SaleDetailList.setColumn(0,"minCnt", 	"1");	
-        		this.ds_SaleDetailList.setColumn(0,"maxCnt", 	"99999");		
+        		this.ds_SaleDetailList.setColumn(0,"maxCnt", 	"");		
         		this.ds_SaleDetailList.setColumn(0,"stdEndDay", "");
         		this.ds_SaleDetailList.setColumn(0,"dcDesc", 	"");
         		
         	} else {
-        		var sDcCd   	= nvl(this.ds_SaleDetailList.getColumn(row, "dcCd"));
-        		var sMinCnt     = nvl(this.ds_SaleDetailList.getColumn(row, "maxCnt"));
-        		var sStdEndDay	= nvl(this.ds_SaleDetailList.getColumn(row, "stdEndDay"));
-        		var dcDesc		= nvl(this.ds_SaleDetailList.getColumn(row, "dcDesc"));
-
-        		
-        		this.ds_SaleDetailList.setColumn(nRow,"dcGb", 		sDcGb);
-        		this.ds_SaleDetailList.setColumn(nRow,"grpStdNm", 	sGrpStdNm);
-        		this.ds_SaleDetailList.setColumn(nRow,"stdStrDay", 	sStdStrDay);
-        		
-        		if(parseInt(sDcCd.substring(1,sDcCd.length)) < 9) {
-        			this.ds_SaleDetailList.setColumn(nRow,"dcCd", 		sDcCd.substring(0,1)+"0"+(parseInt(sDcCd.substring(1,sDcCd.length))+1));
+        		if(nvl(this.ds_SaleDetailList.getColumn(row, "minCnt")) == "") {
+        			alert("최소건을 입력하여 주십시오.");
+        			this.ds_SaleDetailList.deleteRow(nRow);
+        			return false;
+        		} else if(nvl(this.ds_SaleDetailList.getColumn(row, "maxCnt")) == "") {
+        			alert("최대건을 입력하여 주십시오.");
+        			this.ds_SaleDetailList.deleteRow(nRow);
+        			return false;
+        		} else if(nvl(this.ds_SaleDetailList.getColumn(row, "stdEndDay")) == "") {
+        			alert("할인종료일을 입력하여 주십시오.");
+        			this.ds_SaleDetailList.deleteRow(nRow);
+        			return false;
         		} else {
-        			this.ds_SaleDetailList.setColumn(nRow,"dcCd", 		sDcCd.substring(0,1)+(parseInt(sDcCd.substring(1,sDcCd.length))+1));
+        			var sDcCd   	= nvl(this.ds_SaleDetailList.getColumn(row, "dcCd"));
+        			var sMinCnt     = nvl(this.ds_SaleDetailList.getColumn(row, "maxCnt"));
+        			var sStdEndDay	= nvl(this.ds_SaleDetailList.getColumn(row, "stdEndDay"));
+        			var dcDesc		= nvl(this.ds_SaleDetailList.getColumn(row, "dcDesc"));
+
+        			
+        			this.ds_SaleDetailList.setColumn(nRow,"dcGb", 		sDcGb);
+        			this.ds_SaleDetailList.setColumn(nRow,"grpStdNm", 	sGrpStdNm);
+        			this.ds_SaleDetailList.setColumn(nRow,"stdStrDay", 	sStdStrDay);
+        			
+        			if(parseInt(sDcCd.substring(1,sDcCd.length)) < 9) {
+        				this.ds_SaleDetailList.setColumn(nRow,"dcCd", 		sDcCd.substring(0,1)+"0"+(parseInt(sDcCd.substring(1,sDcCd.length))+1));
+        			} else {
+        				this.ds_SaleDetailList.setColumn(nRow,"dcCd", 		sDcCd.substring(0,1)+(parseInt(sDcCd.substring(1,sDcCd.length))+1));
+        			}
+        			this.ds_SaleDetailList.setColumn(nRow,"minCnt", 	parseInt(sMinCnt)+1);
+        			this.ds_SaleDetailList.setColumn(nRow,"maxCnt", 	sMaxCnt);
+        			this.ds_SaleDetailList.setColumn(nRow,"stdEndDay", 	sStdEndDay);
+        			this.ds_SaleDetailList.setColumn(nRow,"dcDesc", 	dcDesc);
         		}
-        		this.ds_SaleDetailList.setColumn(nRow,"minCnt", 	parseInt(sMinCnt)+1);	
-        		this.ds_SaleDetailList.setColumn(nRow,"maxCnt", 	sMaxCnt);		
-        		this.ds_SaleDetailList.setColumn(nRow,"stdEndDay", 	sStdEndDay);	
-        		this.ds_SaleDetailList.setColumn(nRow,"dcDesc", 	dcDesc);
-        	}
+        		
+        		
+        	}	
         	
         }
 
@@ -327,13 +344,24 @@
         		var month 			= (currDate.getMonth()+1).toString().padLeft(2, "0");
         		var day 			= currDate.getDate().toString().padLeft(2, "0");
         		var curStdEndDay 	= nvl(obj.getColumn(nRow,"stdEndDay"), 0);
+        		var curStdStrDay 	= nexacro._replaceAll(nvl(obj.getColumn(nRow,"stdStrDay"), 0), "-", "")
+        		
         		
         		var currentDate = year+month+day;
         		
-        		calEndDate 		= curStdEndDay - currentDate;
+        		//calEndDate 		= curStdEndDay - currentDate;
+        		calEndDate 		= curStdEndDay - curStdStrDay;
         		
+        		/*
         		if(curStdEndDay != '' && parseInt(calEndDate) < 0) {
         			alert("할인종료일은 현재일보다 작을 수 없습니다.");
+        			obj.setColumn(nRow, "stdEndDay", "");
+        			return;
+        		}
+        		*/
+        		
+        		if(curStdEndDay != '' && parseInt(calEndDate) < 0) {
+        			alert("할인종료일은 할인시작일 보다 작을 수 없습니다.");
         			obj.setColumn(nRow, "stdEndDay", "");
         			return;
         		}
@@ -363,7 +391,30 @@
         				sDcRate 		= nvl(this.ds_SaleDetailList.getColumn(i, "dcRate").replace("%",""));
         				this.ds_SaleDetailList.setColumn(i,"dcRate", 		sDcRate);
         			}
-        				
+        			
+        			if(nvl(this.ds_SaleDetailList.getColumn(i, "minCnt")) == "") {
+        				alert("최소건을 입력하여 주십시오.");
+        				return;
+        			}
+        			
+        			if(nvl(this.ds_SaleDetailList.getColumn(i, "maxCnt")) == "") {
+        				alert("최대건을 입력하여 주십시오.");
+        				return;
+        			}
+        			//선남일경우 최소건과 최대건은 동일하게 (20190213)
+        			if(this.parent.dcGb == "A"){
+        				if(nvl(this.ds_SaleDetailList.getColumn(i, "maxCnt")) > nvl(this.ds_SaleDetailList.getColumn(i, "minCnt"))){
+        					alert("최소건과 최대건을 동일하게 입력하여 주십시오.");
+        					return;
+        				}
+        			}
+        			
+        			if(nvl(this.ds_SaleDetailList.getColumn(i, "stdEndDay")) == "") {
+        				alert("할인종료일을 입력하여 주십시오.");
+        				return;
+        			}
+        			
+        			/*
         			sStdStrDay 		= nvl(nexacro.replaceAll(this.ds_SaleDetailList.getColumn(i, "stdStrDay"),"-",""));
         			this.ds_SaleDetailList.setColumn(i,"stdStrDay", 	sStdStrDay);
         			
@@ -371,6 +422,7 @@
         				sStdEndDay 		= nvl(nexacro.replaceAll(this.ds_SaleDetailList.getColumn(i, "stdEndDay"),"-",""));
         				this.ds_SaleDetailList.setColumn(i,"stdEndDay", 	sStdEndDay);
         			}
+        			*/
         		}
         	}
         	
@@ -420,14 +472,6 @@
         			break;
         	}
         }
-
-        
-
-        
-
-        
-
-        
         });
 
 

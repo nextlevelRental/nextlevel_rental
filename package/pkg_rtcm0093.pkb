@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
 /*******************************************************************************
    NAME      Pkg_Rtcm0093
-   PURPOSE   ÇÁ·Î½ÃÁ® ·Î±× °ü¸®
+   PURPOSE   í”„ë¡œì‹œì ¸ ë¡œê·¸ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× Count
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0093Count(
-    v_Logseq         IN RTCM0093.LOGSEQ%TYPE            /*·Î±×¼ø¹ø            */
+    v_Logseq         IN RTCM0093.LOGSEQ%TYPE            /*ë¡œê·¸ìˆœë²ˆ            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,30 +32,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END f_sRtcm0093Count;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× Select
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0093 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*ÇÁ·Î½ÃÁ®¸í            */
-    v_Start_Fdt      IN RTCM0093.START_DT%TYPE,       /*½ÃÀÛÀÏ½ÃFROM          */
-    v_Start_Tdt      IN RTCM0093.START_DT%TYPE,       /*½ÃÀÛÀÏ½ÃTO            */
-    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*Ã³¸®½Ã°£              */
-    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*Ã³¸®°á°ú              */
-    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE        /*°á°ú¸Þ½ÃÁö            */
+    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*í”„ë¡œì‹œì ¸ëª…            */
+    v_Start_Fdt      IN RTCM0093.START_DT%TYPE,       /*ì‹œìž‘ì¼ì‹œFROM          */
+    v_Start_Tdt      IN RTCM0093.START_DT%TYPE,       /*ì‹œìž‘ì¼ì‹œTO            */
+    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*ì²˜ë¦¬ì‹œê°„              */
+    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*ì²˜ë¦¬ê²°ê³¼              */
+    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE        /*ê²°ê³¼ë©”ì‹œì§€            */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.LOGSEQ,                    /*·Î±×¼ø¹ø            */
-            A.USER_ID,                   /*»ç¿ëÀÚ ¾ÆÀÌµð       */
-            A.PROC_NM,                   /*ÇÁ·Î½ÃÁ®¸í          */
-            A.START_DT,                  /*½ÃÀÛÀÏ½Ã            */
-            A.CLOSE_DT,                  /*Á¾·áÀÏ½Ã            */
-            A.EXEC_TIME,                 /*Ã³¸®½Ã°£            */
-            A.RELT_CODE,                 /*Ã³¸®°á°ú            */
-            A.RELT_MSG                   /*°á°ú¸Þ½ÃÁö          */
+    SELECT  A.LOGSEQ,                    /*ë¡œê·¸ìˆœë²ˆ            */
+            A.USER_ID,                   /*ì‚¬ìš©ìž ì•„ì´ë””       */
+            A.PROC_NM,                   /*í”„ë¡œì‹œì ¸ëª…          */
+            A.START_DT,                  /*ì‹œìž‘ì¼ì‹œ            */
+            A.CLOSE_DT,                  /*ì¢…ë£Œì¼ì‹œ            */
+            A.EXEC_TIME,                 /*ì²˜ë¦¬ì‹œê°„            */
+            A.RELT_CODE,                 /*ì²˜ë¦¬ê²°ê³¼            */
+            A.RELT_MSG                   /*ê²°ê³¼ë©”ì‹œì§€          */
     FROM    RTCM0093 A
     WHERE   A.USER_ID   = DECODE(v_User_Id        , NULL, A.USER_ID         , v_User_Id)
     AND     A.PROC_NM   = DECODE(v_Proc_Nm        , NULL, A.PROC_NM         , v_Proc_Nm)
@@ -67,17 +67,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END p_sRtcm0093;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× Insert
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0093 (
-    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*ÇÁ·Î½ÃÁ®¸í            */
-    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*½ÃÀÛÀÏ½Ã              */
-    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*Á¾·áÀÏ½Ã              */
-    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*Ã³¸®½Ã°£              */
-    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*Ã³¸®°á°ú              */
-    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*°á°ú¸Þ½ÃÁö            */
+    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*í”„ë¡œì‹œì ¸ëª…            */
+    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*ì‹œìž‘ì¼ì‹œ              */
+    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*ì¢…ë£Œì¼ì‹œ              */
+    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*ì²˜ë¦¬ì‹œê°„              */
+    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*ì²˜ë¦¬ê²°ê³¼              */
+    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*ê²°ê³¼ë©”ì‹œì§€            */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -112,17 +112,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END f_InsertRtcm0093;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× Update
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0093 (
-    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
-    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*ÇÁ·Î½ÃÁ®¸í            */
-    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*½ÃÀÛÀÏ½Ã              */
-    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*Á¾·áÀÏ½Ã              */
-    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*Ã³¸®½Ã°£              */
-    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*Ã³¸®°á°ú              */
-    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*°á°ú¸Þ½ÃÁö            */
+    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
+    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*í”„ë¡œì‹œì ¸ëª…            */
+    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*ì‹œìž‘ì¼ì‹œ              */
+    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*ì¢…ë£Œì¼ì‹œ              */
+    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*ì²˜ë¦¬ì‹œê°„              */
+    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*ì²˜ë¦¬ê²°ê³¼              */
+    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*ê²°ê³¼ë©”ì‹œì§€            */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -147,10 +147,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END f_UpdateRtcm0093;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× Delete
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0093 (
-    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*·Î±×¼ø¹ø              */
+    v_Logseq         IN RTCM0093.LOGSEQ%TYPE,         /*ë¡œê·¸ìˆœë²ˆ              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -170,18 +170,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END f_DeleteRtcm0093;
 
   /*****************************************************************************
-  -- ÇÁ·Î½ÃÁ® ·Î±× °ü¸®(IUD)
+  -- í”„ë¡œì‹œì ¸ ë¡œê·¸ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0093 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Logseq         IN OUT RTCM0093.LOGSEQ%TYPE,     /*·Î±×¼ø¹ø              */
-    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*ÇÁ·Î½ÃÁ®¸í            */
-    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*½ÃÀÛÀÏ½Ã              */
-    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*Á¾·áÀÏ½Ã              */
-    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*Ã³¸®½Ã°£              */
-    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*Ã³¸®°á°ú              */
-    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*°á°ú¸Þ½ÃÁö            */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Logseq         IN OUT RTCM0093.LOGSEQ%TYPE,     /*ë¡œê·¸ìˆœë²ˆ              */
+    v_User_Id        IN RTCM0093.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Proc_Nm        IN RTCM0093.PROC_NM%TYPE,        /*í”„ë¡œì‹œì ¸ëª…            */
+    v_Start_Dt       IN RTCM0093.START_DT%TYPE,       /*ì‹œìž‘ì¼ì‹œ              */
+    v_Close_Dt       IN RTCM0093.CLOSE_DT%TYPE,       /*ì¢…ë£Œì¼ì‹œ              */
+    v_Exec_Time      IN RTCM0093.EXEC_TIME%TYPE,      /*ì²˜ë¦¬ì‹œê°„              */
+    v_Relt_Code      IN RTCM0093.RELT_CODE%TYPE,      /*ì²˜ë¦¬ê²°ê³¼              */
+    v_Relt_Msg       IN RTCM0093.RELT_MSG%TYPE,       /*ê²°ê³¼ë©”ì‹œì§€            */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -190,14 +190,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
     e_Error EXCEPTION;
   BEGIN
     
-    -- ÇÊ¼ö°ª: »ç¿ëÀÚ ¾ÆÀÌµð,ÇÁ·Î½ÃÁ®¸í 
+    -- í•„ìˆ˜ê°’: ì‚¬ìš©ìž ì•„ì´ë””,í”„ë¡œì‹œì ¸ëª… 
     IF (TRIM(v_User_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_User_Id)) THEN
-        v_Return_Message := '»ç¿ëÀÚ ¾ÆÀÌµð('||v_User_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ìž ì•„ì´ë””('||v_User_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF; 
     
     IF (TRIM(v_Proc_Nm) IS NULL) OR (0 = Pkg_Rtcm0092.f_sRtcm0092ProcCount(UPPER(TRIM(v_Proc_Nm)))) THEN
-        v_Return_Message := 'ÇÁ·Î½ÃÁ®¸í('||v_Proc_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í”„ë¡œì‹œì ¸ëª…('||v_Proc_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
      
@@ -208,7 +208,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
         IF 0 != f_InsertRtcm0093(v_Logseq, v_User_Id, v_Proc_Nm, v_Start_Dt, 
                                  v_Close_Dt, v_Exec_Time, v_Relt_Code, v_Relt_Msg, 
                                  v_ErrorText) THEN
-            v_Return_Message := 'ÇÁ·Î½ÃÁ® ·Î±× µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'í”„ë¡œì‹œì ¸ ë¡œê·¸ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -216,7 +216,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
     ELSE
     
         IF 0 = f_sRtcm0093Count(v_Logseq) THEN
-                v_Return_Message := 'ÇØ´ç ·Î±×¼ø¹ø('||v_Logseq||')Àº ¹Ìµî·Ï »óÅÂÀÌ¹Ç·Î Ã³¸®ºÒ°¡!!';
+                v_Return_Message := 'í•´ë‹¹ ë¡œê·¸ìˆœë²ˆ('||v_Logseq||')ì€ ë¯¸ë“±ë¡ ìƒíƒœì´ë¯€ë¡œ ì²˜ë¦¬ë¶ˆê°€!!';
                 RAISE e_Error;
         END IF;
         
@@ -225,7 +225,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
             IF 0 != f_UpdateRtcm0093(v_Logseq, v_User_Id, v_Proc_Nm, v_Start_Dt, 
                                      v_Close_Dt, v_Exec_Time, v_Relt_Code, v_Relt_Msg, 
                                      v_ErrorText) THEN
-                v_Return_Message := 'ÇÁ·Î½ÃÁ® ·Î±× ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'í”„ë¡œì‹œì ¸ ë¡œê·¸ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -233,20 +233,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcm0093(v_Logseq, v_ErrorText) THEN
-                v_Return_Message := 'ÇÁ·Î½ÃÁ® ·Î±× »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'í”„ë¡œì‹œì ¸ ë¡œê·¸ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -261,14 +261,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcm0093.p_IUDRtcm0093(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0093;
 
   /*****************************************************************************
-  --  ÇÁ·Î½ÃÁ® ·Î±× °ü¸® - ·Î±×¼ø¹ø È¹µæ
+  --  í”„ë¡œì‹œì ¸ ë¡œê·¸ ê´€ë¦¬ - ë¡œê·¸ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcm0093Seq RETURN NUMBER IS
     v_Sequ_Nmbr   NUMBER DEFAULT 0;
@@ -290,4 +290,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0093 AS
   END f_sRtcm0093Seq;
   
 END Pkg_Rtcm0093;
-/

@@ -7,15 +7,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
    Ver      Date        Author      Description
    ----     ----------  ---------   -------------------------------------
    1.0      2015-06-29  jemcarry    1. Created this package body.
-   1.1      2016-04-21  이영근     채널 대/중분류 항목 추가    
-   1.2      2016-09-05  wjim       온라인장착 가능여부 항목 추가
-   1.2.1    2016-11-28  wjim       [20161125_01] 콜센터용 대리점조회 기능 추가          
-   1.3      2017-09-21  wjim       [20170921_02] 콜센터용 대리점 조회 정렬기준 추가
-   1.4      2017-12-26  wjim       [20171226_01] 비고 추가
-   1.5      2018-03-12  wjim       [20180312_01] 탈착기, 얼라인먼트, 밸런스 추가
-   1.6      2018-11-22  wjim       [20181122_01] 방문점검구분 추가
-   1.7      2019-02-21  wjim       [20190221_01] 대리점 정보 조회 팝업 항목 추가
-   1.8      2019-07-31  wjim       [20190731_01] 충당금반환여부 추가
+   1.1      2016-04-21  이영근        채널 대/중분류 항목 추가    
+   1.2      2016-09-05  wjim        온라인장착 가능여부 항목 추가
+   1.2.1    2016-11-28  wjim        [20161125_01] 콜센터용 대리점조회 기능 추가          
+   1.3      2017-09-21  wjim        [20170921_02] 콜센터용 대리점 조회 정렬기준 추가
+   1.4      2017-12-26  wjim        [20171226_01] 비고 추가
+   1.5      2018-03-12  wjim        [20180312_01] 탈착기, 얼라인먼트, 밸런스 추가
+   1.6      2018-11-22  wjim        [20181122_01] 방문점검구분 추가
+   1.7      2019-02-21  wjim        [20190221_01] 대리점 정보 조회 팝업 항목 추가
+   1.8      2019-07-31  wjim        [20190731_01] 충당금반환여부 추가
+   1.9      2025-05-27  yhchoi      [레드마인 1955] 만족도 조사 정보 추가
+   2.0		2025-06-10  10244015    [20250610_01] 프리미엄퍼플점여부 추가 
 *******************************************************************************/
 
   /*****************************************************************************
@@ -215,9 +217,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S101', A.ALIGN_CD) ALIGN_NM,      /*얼라인먼트명        */ --[20180312_01]
             A.BALANCE_CD,                                                       /*밸런스 코드         */ --[20180312_01]
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S102', A.BALANCE_CD) BALANCE_NM,  /*밸런스명            */ --[20180312_01]
-            A.PRPL_YN,
+            A.PRPL_YN,															 /*퍼플점 여부*/ 
+            A.PREM_PRPL_YN,														 /*프리미엄 퍼플점 여부*/ 
             NVL(TRIM(A.APFD_END_YN),'N') AS APFD_END_YN,                         /*충당금반환여부      */ --[20190731_01]
-            CHAIN_YN                                                             /*직영도매 거래선 여부*/ --[20210806_01]
+            CHAIN_YN,                                                            /*직영도매 거래선 여부*/ --[20210806_01]
+            NVL(TRIM(A.EGOL_NCHRG_CHK_YN),'N') AS EGOL_NCHRG_CHK_YN,			 /*엔진 오일 무료 점검*/ --[20241231]
+            NVL(TRIM(A.BKPD_NCHRG_CHK_YN),'N') AS BKPD_NCHRG_CHK_YN,			 /*브레이크 패드 무료 점검*/ --[20241231]
+            NVL(TRIM(A.WASHER_NCHRG_PAY_YN),'N') AS WASHER_NCHRG_PAY_YN,		 /*워셔액 무료 지급*/ --[20241231]
+            NVL(A.HP_AGENCY_NM, REPLACE(A.AGENCY_NM,'(RC)','')) AS HP_AGENCY_NM						 /* 홈페이지 대리점명 */
     FROM    RTSD0007 A
     WHERE   A.AGENCY_CD =  v_Agency_Cd
            ) A
@@ -304,6 +311,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
     v_Desorpt_Cd     IN RTSD0007.DESORPT_CD%TYPE,     /*탈착기 코드           */ --[20180312_01]
     v_Align_Cd       IN RTSD0007.ALIGN_CD%TYPE,       /*얼라인먼트 코드       */ --[20180312_01]
     v_Balance_Cd     IN RTSD0007.BALANCE_CD%TYPE,     /*밸런스 코드           */ --[20180312_01]
+    v_Egol_Nchrg_Chk_Yn    IN RTSD0007.EGOL_NCHRG_CHK_YN%TYPE,    /*엔진오일 무료 점검 */
+    v_Bkpd_Nchrg_Chk_Yn    IN RTSD0007.BKPD_NCHRG_CHK_YN%TYPE,    /*브레이크 패드 무료 점검 */
+    v_Washer_Nchrg_Pay_Yn  IN RTSD0007.WASHER_NCHRG_PAY_YN%TYPE,    /*워셔액 무료 지급 */
     v_Rental_Group   IN RTSD0007.RENTAL_GROUP%TYPE,    /*렌탈지역 코드 */
     v_Rental_Office  IN RTSD0007.RENTAL_OFFICE%TYPE,    /*렌탈지역 코드 */
     v_Prpl_Yn        IN RTSD0007.PRPL_YN%TYPE,    /*퍼플 코드 */
@@ -356,6 +366,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
             DESORPT_CD,
             ALIGN_CD,
             BALANCE_CD,
+            EGOL_NCHRG_CHK_YN,
+		    BKPD_NCHRG_CHK_YN,
+		    WASHER_NCHRG_PAY_YN,
             RENTAL_GROUP,
             RENTAL_OFFICE,
             PRPL_YN,
@@ -405,6 +418,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
             v_Desorpt_Cd,
             v_Align_Cd,
             v_Balance_Cd,
+            v_Egol_Nchrg_Chk_Yn,
+            v_Bkpd_Nchrg_Chk_Yn,
+            v_Washer_Nchrg_Pay_Yn,
             v_Rental_Group,
             v_Rental_Office,
             v_Prpl_Yn,
@@ -431,6 +447,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
    1.5      2018-03-12  wjim        [20180312_01] 탈착기, 얼라인먼트, 밸런스 추가
    1.8      2019-07-31  wjim        [20190731_01] 충당금반환여부 추가
                                     - 충당금반환여부가 '예'인 경우 렌탈가능여부, 사용여부 미사용 처리
+   2.0		2025-06-10  10244015	[20250610_01] 프리미엄퍼플점여부 추가
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0007 (
     v_Agency_Cd      IN RTSD0007.AGENCY_CD%TYPE,      /*대리점코드            */
@@ -472,11 +489,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
     v_Desorpt_Cd     IN RTSD0007.DESORPT_CD%TYPE,     /*탈착기 코드           */ --[20180312_01]
     v_Align_Cd       IN RTSD0007.ALIGN_CD%TYPE,       /*얼라인먼트 코드       */ --[20180312_01]
     v_Balance_Cd     IN RTSD0007.BALANCE_CD%TYPE,     /*밸런스 코드           */ --[20180312_01]
+    v_Egol_Nchrg_Chk_Yn    IN RTSD0007.EGOL_NCHRG_CHK_YN%TYPE,    /*엔진오일 무료 점검 */
+    v_Bkpd_Nchrg_Chk_Yn    IN RTSD0007.BKPD_NCHRG_CHK_YN%TYPE,    /*브레이크 패드 무료 점검 */
+    v_Washer_Nchrg_Pay_Yn  IN RTSD0007.WASHER_NCHRG_PAY_YN%TYPE,    /*워셔액 무료 지급 */
     v_Rental_Group   IN RTSD0007.RENTAL_GROUP%TYPE,    /*렌탈지역 코드 */
     v_Rental_Office  IN RTSD0007.RENTAL_OFFICE%TYPE,    /*렌탈지역 코드 */
-    v_Prpl_Yn        IN RTSD0007.PRPL_YN%TYPE,    /*퍼플 코드 */
+    v_Prpl_Yn        IN RTSD0007.PRPL_YN%TYPE,    	  /*퍼플 코드 */
+    v_Prem_Prpl_Yn   IN RTSD0007.PREM_PRPL_YN%TYPE,   /*프리미엄퍼플점 여부 */	--[20250610_01]
     v_Apfd_End_Yn    IN RTSD0007.APFD_END_YN%TYPE,    /*충당금반환여부        */ --[20190731_01]
     v_Chain_Yn       IN RTSD0007.CHAIN_YN%TYPE,       /*직영도매거래선여부        */ --[20210809_01]
+    v_Hp_Agency_Nm   IN RTSD0007.HP_AGENCY_NM%TYPE,   /*홈페이지 대리점명              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -521,11 +543,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
            DESORPT_CD    = v_Desorpt_Cd,
            ALIGN_CD      = v_Align_Cd,
            BALANCE_CD    = v_Balance_Cd,
+           EGOL_NCHRG_CHK_YN = v_Egol_Nchrg_Chk_Yn,
+		   BKPD_NCHRG_CHK_YN = v_Bkpd_Nchrg_Chk_Yn,
+		   WASHER_NCHRG_PAY_YN = v_Washer_Nchrg_Pay_Yn,
            RENTAL_GROUP  = v_Rental_Group,
            RENTAL_OFFICE = v_Rental_Office,
            PRPL_YN       = v_Prpl_Yn,
+           PREM_PRPL_YN  = v_Prem_Prpl_Yn,
            APFD_END_YN   = NVL(TRIM(v_Apfd_End_Yn),'N'),
-           CHAIN_YN      = v_Chain_Yn
+           CHAIN_YN      = v_Chain_Yn,
+           HP_AGENCY_NM  = v_Hp_Agency_Nm
     WHERE  AGENCY_CD     = v_Agency_Cd;
 
     RETURN SQLCODE;
@@ -571,6 +598,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
    1.4      2017-12-26  wjim        [20171226_01] 비고 추가
    1.5      2018-03-12  wjim        [20180312_01] 탈착기, 얼라인먼트, 밸런스 추가
    1.8      2019-07-31  wjim        [20190731_01] 충당금반환여부 추가
+   2.0		2025-06-10  10244015	[20250610_01] 프리미엄퍼플점여부 추가
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0007 (
     v_Comm_Dvsn      IN CHAR,                         /*처리구분(I,U,D)       */
@@ -613,11 +641,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
     v_Desorpt_Cd     IN RTSD0007.DESORPT_CD%TYPE,     /*탈착기 코드           */ --[20180312_01]
     v_Align_Cd       IN RTSD0007.ALIGN_CD%TYPE,       /*얼라인먼트 코드       */ --[20180312_01]
     v_Balance_Cd     IN RTSD0007.BALANCE_CD%TYPE,     /*밸런스 코드           */ --[20180312_01]
+    v_Egol_Nchrg_Chk_Yn    IN RTSD0007.EGOL_NCHRG_CHK_YN%TYPE,    /*엔진오일 무료 점검 */
+    v_Bkpd_Nchrg_Chk_Yn    IN RTSD0007.BKPD_NCHRG_CHK_YN%TYPE,    /*브레이크 패드 무료 점검 */
+    v_Washer_Nchrg_Pay_Yn  IN RTSD0007.WASHER_NCHRG_PAY_YN%TYPE,    /*워셔액 무료 지급 */
     v_Rental_Group   IN RTSD0007.RENTAL_GROUP%TYPE,    /*렌탈지역 코드 */
     v_Rental_Office  IN RTSD0007.RENTAL_OFFICE%TYPE,    /*렌탈지역 코드 */
-    v_Prpl_Yn        IN RTSD0007.PRPL_YN%TYPE,    /*퍼플 코드 */
+    v_Prpl_Yn        IN RTSD0007.PRPL_YN%TYPE,    	  /*퍼플 코드 */
+    v_Prem_Prpl_Yn   IN RTSD0007.PREM_PRPL_YN%TYPE,   /*프리미엄퍼플점 여부 */	--[20250610_01]
     v_Apfd_End_Yn    IN RTSD0007.APFD_END_YN%TYPE,    /*충당금반환여부        */ --[20190731_01]
     v_Chain_Yn       IN RTSD0007.CHAIN_YN%TYPE,        /*직영도매거래선여부        */ --[20210809_01]
+    v_Hp_Agency_Nm   IN RTSD0007.HP_AGENCY_NM%TYPE,    /*홈페이지 대리점명              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -658,7 +691,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
                                  v_Fm_Yn, v_Cw_Yn, v_Ch_Yn, v_Olimit_Cnt,
                                  v_Lifnr, v_Tax_Rqcd, v_Use_Yn , v_Reg_Id,
                                  v_chan_Lcls_Cd,  v_chan_Mcls_Cd, v_Op_Yn, v_Memo,
-                                 v_Desorpt_Cd,  v_Align_Cd, v_Balance_Cd, v_Rental_Group, v_Rental_Office, v_Prpl_Yn, v_Apfd_End_Yn,
+                                 v_Desorpt_Cd,  v_Align_Cd, v_Balance_Cd,
+                                 v_Egol_Nchrg_Chk_Yn, v_Bkpd_Nchrg_Chk_Yn, v_Washer_Nchrg_Pay_Yn,
+                                 v_Rental_Group, v_Rental_Office, v_Prpl_Yn, v_Apfd_End_Yn,
                                  v_Chain_Yn, v_ErrorText) THEN
             v_Return_Message := '대리점 정보 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
@@ -678,8 +713,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
                                      v_Fm_Yn, v_Cw_Yn, v_Ch_Yn, v_Olimit_Cnt,
                                      v_Lifnr, v_Tax_Rqcd, v_Use_Yn , v_Reg_Id, 
                                      v_chan_Lcls_Cd,  v_chan_Mcls_Cd, v_Op_Yn, v_Memo,
-                                     v_Desorpt_Cd,  v_Align_Cd, v_Balance_Cd, v_Rental_Group, v_Rental_Office, v_Prpl_Yn, v_Apfd_End_Yn,
-                                     v_Chain_Yn, v_ErrorText) THEN
+                                     v_Desorpt_Cd,  v_Align_Cd, v_Balance_Cd,
+                                     v_Egol_Nchrg_Chk_Yn, v_Bkpd_Nchrg_Chk_Yn, v_Washer_Nchrg_Pay_Yn,
+                                     v_Rental_Group, v_Rental_Office, v_Prpl_Yn, v_Prem_Prpl_Yn, v_Apfd_End_Yn,
+                                     v_Chain_Yn, v_Hp_Agency_Nm, v_ErrorText) THEN
                 v_Return_Message := '대리점 정보 수정 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
@@ -768,6 +805,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0007 AS
    1.6      2018-11-22  wjim        [20181122_01] 방문점검구분 추가
    1.7      2019-02-21  wjim        [20190221_01] 조회항목 (퍼플점 여부) 추가
    1.8      2019-07-31  wjim        [20190731_01] 충당금반환여부 추가
+   1.9      2025-05-27  yhchoi      [레드마인 1955] 만족도 조사 정보 추가 
   *****************************************************************************/
   PROCEDURE p_sRtsd0007Popup (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -802,7 +840,11 @@ SELECT *
            Pkg_Rtcm0051.f_sRtcm0051Codename('S302',B.RENTAL_OFFICE) AS RENTAL_OFFICE_NM ,/*렌탈지점           */
            C.RNT_MST_ID,                                                                 /*렌탈마스터 ID           */
            C.RNT_MST_NM,                                                                 /*렌탈마스터 이름           */
-           C.RNT_MST_MOB                                                                 /*렌탈마스터 휴대폰번호           */
+           C.RNT_MST_MOB,                                                                 /*렌탈마스터 휴대폰번호           */
+           D.TOT_EVAL_POINT,	/*만족도조사 총평점*/
+		   D.STFY_POINT_CD1,	/*만족도조사 장착응대 평점*/
+		   D.STFY_POINT_CD2,	/*만족도조사 렌탈혜택 평점*/
+		   D.STFY_POINT_CD3		/*만족도조사 친절 평점*/
       FROM (
     SELECT  A.AGENCY_CD,                 /*대리점코드          */
             A.AGENCY_NM,                 /*대리점명            */
@@ -861,7 +903,8 @@ SELECT *
             A.VISIT_YN,
             A.PRPL_YN,
             NVL(TRIM(A.APFD_END_YN),'N'),                                        /*충당금반환여부      */ --[20190731_01]
-            PKG_EXIF0003.f_sExif0003O2OAgency(A.AGENCY_CD) AS O2O_YN                        /*O2O거점대리점구분*/ --[20191205_01] 
+            PKG_EXIF0003.f_sExif0003O2OAgency(A.AGENCY_CD) AS O2O_YN,                        /*O2O거점대리점구분*/ --[20191205_01]
+            A.PREM_PRPL_YN	/*프리미엄 퍼플점 여부*/ 
     FROM    RTSD0007 A
     WHERE   A.AGENCY_NM LIKE '%'||v_Agency_Nm||'%'
     AND     (v_Sales_Group  IS NULL OR A.SALES_GROUP  = v_Sales_Group)
@@ -904,6 +947,20 @@ SELECT *
           WHERE A.RNT_MST_ID = B.RNT_MST_ID
         ) C ON
            A.AGENCY_CD = C.AGENCY_CD
+		LEFT OUTER JOIN (
+			SELECT
+				AGENCY_CD
+				, ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+				, ROUND(AVG(STFY_POINT_CD1),1) AS STFY_POINT_CD1
+				, ROUND(AVG(STFY_POINT_CD2),1) AS STFY_POINT_CD2
+				, ROUND(AVG(STFY_POINT_CD3),1) AS STFY_POINT_CD3
+			FROM RTCS0130
+			WHERE 1=1
+				AND DP_YN = 'Y'
+				AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+			GROUP BY AGENCY_CD
+		) D ON 
+			A.AGENCY_CD = D.AGENCY_CD
   ) A
     WHERE 1=1
       AND ((v_RENTAL_GROUP IS NULL) OR (v_RENTAL_GROUP IS NOT NULL AND A.RENTAL_GROUP = v_RENTAL_GROUP ))
@@ -1123,6 +1180,7 @@ SELECT A.*
    1.3      2017-09-21  wjim        [20170921_02] 콜센터용 대리점 조회 정렬기준 추가
    1.4      2017-12-26  wjim        [20171226_01] 비고 추가
    1.5      2018-03-12  wjim        [20180312_01] 탈착기, 얼라인먼트, 밸런스 추가
+   2.0		2025-06-12  10244015    [20250610_01] 프리미엄퍼플점여부, 만족도조사 총평점 추가
   *****************************************************************************/
   PROCEDURE p_sRtsd0007Call (
       Ref_Cursor       IN OUT SYS_REFCURSOR    
@@ -1162,6 +1220,8 @@ SELECT A.*
          ,  H2.CD_NM                AS ALIGN_NM       /* 얼라인먼트명       */  --[20180312_01]
          ,  B2.BALANCE_CD                             /* 밸런스 코드        */  --[20180312_01]
          ,  I2.CD_NM                AS BALANCE_NM     /* 밸런스명           */  --[20180312_01]
+         ,  B2.PREM_PRPL_YN							  /* 프리미엄퍼플점 여부   */  --[20250610_01]
+         ,  J2.TOT_EVAL_POINT						  /* 만족도조사 총평점    */  --[20250610_01]
       FROM  (
                 SELECT  A1.AGENCY_CD
                      ,  COUNT(B1.ORD_NO) AS CNT_PROC
@@ -1193,6 +1253,17 @@ SELECT A.*
          ,  RTCM0051 G2
          ,  RTCM0051 H2
          ,  RTCM0051 I2
+         ,  (SELECT AGENCY_CD
+				  , ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+				  , ROUND(AVG(STFY_POINT_CD1),1) AS STFY_POINT_CD1
+				  , ROUND(AVG(STFY_POINT_CD2),1) AS STFY_POINT_CD2
+				  , ROUND(AVG(STFY_POINT_CD3),1) AS STFY_POINT_CD3
+			   FROM RTCS0130														/* 만족도조사	    */  --[20250610_01]
+			  WHERE 1=1
+				AND DP_YN = 'Y'
+				AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+			  GROUP BY AGENCY_CD
+		    ) J2
      WHERE  1=1
        AND  A2.AGENCY_CD    = B2.AGENCY_CD
        AND  B2.SIDO_CD      = C2.CD(+)
@@ -1209,6 +1280,7 @@ SELECT A.*
        AND  H2.CD_GRP_CD(+) = 'S101'
        AND  B2.BALANCE_CD   = I2.CD(+)
        AND  I2.CD_GRP_CD(+) = 'S102'
+       AND  B2.AGENCY_CD    = J2.AGENCY_CD(+)
      ORDER  BY TRIM(B2.AGENCY_NM)  --[20170921_02]     
     ;
 
@@ -1311,4 +1383,3 @@ SELECT A.*
 
 
 END Pkg_Rtsd0007;
-/

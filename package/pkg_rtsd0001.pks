@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0001 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0001
-   PURPOSE   ¬˜¡æ ∏∂Ω∫≈Õ ∞¸∏Æ
+   PURPOSE   Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,69 +10,69 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0001 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Count
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0001Count(
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,         /*¬˜¡æ                */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE       /*ªÁæÁ                */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,         /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE       /*ÏÇ¨Ïñë                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0001 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*ƒ´∏ﬁ¿Ãƒø              */
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*Ïπ¥Î©îÏù¥Ïª§              */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Insert
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0001 (
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*ƒ´∏ﬁ¿Ãƒø              */
-    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*Ïπ¥Î©îÏù¥Ïª§              */
+    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Update
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0001 (
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*ƒ´∏ﬁ¿Ãƒø              */
-    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*Ïπ¥Î©îÏù¥Ïª§              */
+    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Delete
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0001 (
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ ∞¸∏Æ(IUD)
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0001 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*ƒ´∏ﬁ¿Ãƒø              */
-    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,       /*Ïπ¥Î©îÏù¥Ïª§              */
+    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -80,60 +80,59 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0001 AS
 
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select - ƒ´∏ﬁ¿Ãƒø∑Œ ∏µ®∏Ì ¡∂»∏(¬˜¡æ∞˙ ªÁæÁ)- ªÛ«∞ ∏∂Ω∫≈Õ ¡∂»∏ ∆Àæ˜
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select - Ïπ¥Î©îÏù¥Ïª§Î°ú Î™®Îç∏Î™Ö Ï°∞Ìöå(Ï∞®Ï¢ÖÍ≥º ÏÇ¨Ïñë)- ÏÉÅÌíà ÎßàÏä§ÌÑ∞ Ï°∞Ìöå ÌåùÏóÖ
   *****************************************************************************/
   PROCEDURE p_sRtsd0001ModelName(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE        /*ƒ´∏ﬁ¿Ãƒø              */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE        /*Ïπ¥Î©îÏù¥Ïª§              */
     );
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select - ¬˜¡æ ¡∂»∏
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select - Ï∞®Ï¢Ö Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0001ModelSelect(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*ƒ´∏ﬁ¿Ãƒø              */
-	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE         /*¬˜¡æ              	 */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*Ïπ¥Î©îÏù¥Ïª§              */
+	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE         /*Ï∞®Ï¢Ö              	 */
     );
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select - ¬˜¡æ ¡∂»∏
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select - Ï∞®Ï¢Ö Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0001ModelByClassSelect(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*ƒ´∏ﬁ¿Ãƒø              */
-    v_Class_Cd       IN RTSD0004.CLASS_CD%TYPE         /*¬˜∑Æ∫–∑˘              */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*Ïπ¥Î©îÏù¥Ïª§              */
+    v_Class_Cd       IN RTSD0004.CLASS_CD%TYPE         /*Ï∞®ÎüâÎ∂ÑÎ•ò              */
   );
     
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select - ªÁæÁ ¡∂»∏
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select - ÏÇ¨Ïñë Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0001ContentsSelect(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*ƒ´∏ﬁ¿Ãƒø              */
-	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE         /*¬˜¡æ              	 */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*Ïπ¥Î©îÏù¥Ïª§              */
+	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE         /*Ï∞®Ï¢Ö              	 */
     );
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Select - ¬˜¡æ¡§∫∏∞¸∏Æ  ¡∂»∏
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Select - Ï∞®Ï¢ÖÏ†ïÎ≥¥Í¥ÄÎ¶¨  Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0001CarMasterSelect(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*ƒ´∏ﬁ¿Ãƒø              */
-	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,        /*¬˜¡æ              	  */
-	v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,        /*¬˜¡æ              	  */
-	v_Use_Yn		 IN RTSD0002.USE_YN%TYPE          /*ªÁøÎø©∫Œ              */
+    v_Maker_Cd       IN RTSD0001.MAKER_CD%TYPE,        /*Ïπ¥Î©îÏù¥Ïª§              */
+	v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö              	  */
+	v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,        /*Ï∞®Ï¢Ö              	  */
+	v_Use_Yn		 IN RTSD0002.USE_YN%TYPE          /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
     );
 
   /*****************************************************************************
-  -- ¬˜¡æ ∏∂Ω∫≈Õ Update
+  -- Ï∞®Ï¢Ö ÎßàÏä§ÌÑ∞ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0001UseYn (
-    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Model_Cd       IN RTSD0001.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0001.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Use_Yn         IN RTSD0001.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0001.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 END Pkg_Rtsd0001;
-/

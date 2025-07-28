@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_CreatePKG AS
 /*******************************************************************************
    NAME:      Pkg_CreatePKG
-   PURPOSE:   ±‚∫ª  ∆–≈∞¡ˆª˝º∫
+   PURPOSE:   Í∏∞Î≥∏  Ìå®ÌÇ§ÏßÄÏÉùÏÑ±
  
    REVISIONS:
    Ver        Date        Author           Description
@@ -13,10 +13,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_CreatePKG AS
   -- Package Spec Create
   *****************************************************************************/
   PROCEDURE p_CreateSpec(
-    v_CreateType     IN  VARCHAR,                /*ª˝º∫πÊπ˝(S:Script, T:Table)*/
-    v_Owner          IN  VARCHAR,                /*∞Ë¡§                       */
-    v_TableName      IN  VARCHAR,                /*≈◊¿Ã∫Ì∏Ì                   */
-    v_DevId          IN  VARCHAR,                /*∞≥πﬂ¿⁄ID                   */
+    v_CreateType     IN  VARCHAR,                /*ÏÉùÏÑ±Î∞©Î≤ï(S:Script, T:Table)*/
+    v_Owner          IN  VARCHAR,                /*Í≥ÑÏ†ï                       */
+    v_TableName      IN  VARCHAR,                /*ÌÖåÏù¥Î∏îÎ™Ö                   */
+    v_DevId          IN  VARCHAR,                /*Í∞úÎ∞úÏûêID                   */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2     
@@ -26,14 +26,13 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_CreatePKG AS
   --Package Bady Create
   *****************************************************************************/
   PROCEDURE p_CreateBady(
-    v_CreateType     IN  VARCHAR,                /*ª˝º∫πÊπ˝(S:Script, T:Table)*/
-    v_Owner          IN  VARCHAR,                /*∞Ë¡§                       */
-    v_TableName      IN  VARCHAR,                /*≈◊¿Ã∫Ì∏Ì                   */
-    v_DevId          IN  VARCHAR,                /*∞≥πﬂ¿⁄ID                   */
+    v_CreateType     IN  VARCHAR,                /*ÏÉùÏÑ±Î∞©Î≤ï(S:Script, T:Table)*/
+    v_Owner          IN  VARCHAR,                /*Í≥ÑÏ†ï                       */
+    v_TableName      IN  VARCHAR,                /*ÌÖåÏù¥Î∏îÎ™Ö                   */
+    v_DevId          IN  VARCHAR,                /*Í∞úÎ∞úÏûêID                   */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2     
     );
     
 END Pkg_CreatePKG;
-/

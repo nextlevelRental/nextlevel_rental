@@ -17,6 +17,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5070 AS
    1.6        2018-03-26  wjim             [20180326_01] 얼라인먼트 수수료, 걱정제로 장착 수수료 추가
    1.7        2019-02-28  wjim             [20180228_01] 서비스 판매수수료 추가
    1.8        2019-06-11  wjim             [20190611_01] 서비스 판매수수료, 판매장려수수료(=인센티브) 분리
+   1.9        2025-04-29  10244015         [20250429_01] 판매인 직접주문 추가 판매수수료 부여
+   2.0        2025-06-19  10244015         [20250619_01] 프리미엄퍼플점 추가 장착수수료 부여
+   2.1        2025-06-20  10244015         [20250620_01] 프리미엄퍼플점 추가 서비스수수료 부여
 *******************************************************************************/
 
   /*****************************************************************************
@@ -1336,6 +1339,9 @@ SELECT A.*
                                            - 당월 중도완납 및 해지 지급대상에 포함
    1.6        2018-03-29  wjim             [20180326_01] 얼라인먼트 수수료, 걱정제로 장착 수수료 추가
    1.7        2019-02-28  wjim             [20180228_01] 서비스 판매수수료 추가
+   1.9        2025-04-29  10244015         [20250429_01] 판매인 직접주문 추가 판매수수료 부여
+   2.0        2025-06-19  10244015         [20250619_01] 프리미엄퍼플점 추가 장착수수료 부여
+   2.1        2025-06-20  10244015         [20250620_01] 프리미엄퍼플점 추가 서비스수수료 부여
   *****************************************************************************/
   PROCEDURE p_sRtre5070ChargeRealList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -1456,15 +1462,19 @@ SELECT A.*
                     WHEN A.CHAN_CD = '04' THEN 'A3'
                     WHEN A.CHAN_CD = '05' THEN 'A4'
                     END COMM_TP,
-                    C.SLCM_AMT * TO_NUMBER( A.CNT_CD ) COMM_AMT,
+                    CASE WHEN A.ORD_AGENT = G.REG_ID AND A.ORD_AGENT = H.CD THEN (C.SLCM_AMT * TO_NUMBER( A.CNT_CD )) + (TO_NUMBER(H.CD_DESC) * TO_NUMBER( A.CNT_CD ))
+					ELSE  C.SLCM_AMT * TO_NUMBER( A.CNT_CD )
+					END COMM_AMT, 				  --[20250429_01] 판매인 직접주문 추가 판매수수료 부여
                     A.PROC_DAY COMM_DAY,
                     B.MAT_CD,
                     A.CNT_CD
             FROM    RTSD0108 A, -- 장착 정보
                     RTCS0001 B, -- 설비 정보
-                    RTRE5010 C,  -- 판매수수료 조견표
+                    RTRE5010 C, -- 판매수수료 조견표
                     RTSD0007 E, 
-                    RTSD0113 F
+                    RTSD0113 F,
+                    RTSD0104 G,
+                   	RTCM0051 H
             WHERE   v_Serch_Flag = 0
             AND     A.PROC_DAY   BETWEEN v_Proc_DayF AND v_Proc_DayT
             AND     A.CHAN_CD    = DECODE( v_Chan_Cd, NULL, A.CHAN_CD, v_Chan_Cd )
@@ -1480,7 +1490,10 @@ SELECT A.*
             AND     A.AGENCY_CD  = E.AGENCY_CD(+)
             AND     A.ORD_AGENT  = F.ORD_AGENT(+)            
             AND     DECODE(A.CHAN_CD,'03',F.CHAN_LCLS_CD,E.CHAN_LCLS_CD) = C.CHAN_LCLS_CD     
-            AND     DECODE(A.CHAN_CD,'03',F.CHAN_MCLS_CD,E.CHAN_MCLS_CD) = C.CHAN_MCLS_CD       
+            AND     DECODE(A.CHAN_CD,'03',F.CHAN_MCLS_CD,E.CHAN_MCLS_CD) = C.CHAN_MCLS_CD
+            AND		A.ORD_NO = G.ORD_NO
+            AND 	H.CD_GRP_CD(+) = 'R083'
+		    AND 	DECODE(A.CHAN_CD,'03',A.ORD_AGENT, NULL) = H.CD(+)
             UNION   ALL
             SELECT  A.ORD_AGENT AGENCY_CD,
                     A.CHAN_CD,
@@ -1553,14 +1566,28 @@ SELECT A.*
                     A.ORD_NO,
                     A.CUST_NO,
                     'B1' COMM_TP,
-                    C.PRCM_AMT * TO_NUMBER( A.CNT_CD ) COMM_AMT,
+                    --C.PRCM_AMT * TO_NUMBER( A.CNT_CD ) COMM_AMT,	--[20250619_01]에 의해 주석처리
+                    CASE WHEN D.PREM_PRPL_YN = 'Y' THEN C.PRCM_AMT * TO_NUMBER( A.CNT_CD ) + TO_NUMBER((SELECT DECODE(MAX(G.CD_DESC), NULL, '0', MAX(G.CD_DESC))
+																										  FROM RTCM0051 G
+																										 WHERE G.CD_GRP_CD = 'R084'
+																								           AND E.TOT_EVAL_POINT >= G.CD)) * TO_NUMBER( A.CNT_CD )
+					     ELSE C.PRCM_AMT * TO_NUMBER( A.CNT_CD )
+                    END COMM_AMT,		--[20250619_01] 프리미엄퍼플점 추가 장착수수료 부여
                     A.PROC_DAY COMM_DAY,
                     B.MAT_CD,
                     A.CNT_CD
             FROM    RTSD0108 A, -- 장착 정보
                     RTCS0001 B, -- 설비 정보
                     RTRE5020 C, -- 장착수수료 조견표
-                    RTSD0007 D
+                    RTSD0007 D,
+                    (SELECT AGENCY_CD
+						  , ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+					   FROM RTCS0130														--[20250619_01] 프리미엄퍼플점을 위한 만족도조사 평점
+					  WHERE 1=1
+						AND DP_YN = 'Y'
+						AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+					  GROUP BY AGENCY_CD
+				    ) E
             WHERE   v_Serch_Flag   = 0
             AND     A.PROC_DAY     BETWEEN v_Proc_DayF AND v_Proc_DayT
             AND     A.CHAN_CD      = DECODE( v_Chan_Cd, NULL, CHAN_CD, v_Chan_Cd )
@@ -1574,7 +1601,8 @@ SELECT A.*
             AND     C.USE_YN       = 'Y'  
             AND     A.AGENCY_CD    = D.AGENCY_CD    
             AND     C.CHAN_LCLS_CD = D.CHAN_LCLS_CD
-            AND     C.CHAN_MCLS_CD = D.CHAN_MCLS_CD      
+            AND     C.CHAN_MCLS_CD = D.CHAN_MCLS_CD
+            AND		A.AGENCY_CD    = E.AGENCY_CD(+)
             UNION   ALL
             SELECT  H.AGENCY_CD,
                     C.CHAN_CD,
@@ -1582,7 +1610,11 @@ SELECT A.*
                     C.CUST_NO,
 --                    DECODE(B.SERVICE_CD,'B00001','C1','B00002','C2','B00006','C6') COMM_TP, --[20180326_01]
                     DECODE(B.SERVICE_CD,'B00001','C1','B00002','C2','B00006','C6','B00008','C4','B00007','C5','B00009','C8', 'B00011', 'C9', 'B00012', 'C10') COMM_TP,
-                    (SELECT CASE 
+                    (SELECT CASE
+	                    	  WHEN SERVICE_CD = 'B00002' AND H.PREM_PRPL_YN = 'Y' THEN G.SVCM_AMT + TO_NUMBER((SELECT DECODE(MAX(G.CD_DESC), NULL, '0', MAX(G.CD_DESC)) 
+																											     FROM RTCM0051 G
+																											    WHERE G.CD_GRP_CD = 'R085'
+																											      AND K.TOT_EVAL_POINT >= G.CD))  --[20250620_01] 프리미엄퍼플점 추가 서비스수수료 부여
                               WHEN SERVICE_CD = 'B00006' THEN G.SVCM_AMT * C.CNT_CD 
                               WHEN SERVICE_CD = 'B00007' THEN G.SVCM_AMT * I.KWMENG
                               WHEN SERVICE_CD = 'B00011' THEN G.SVCM_AMT * J.KWMENG
@@ -1598,7 +1630,7 @@ SELECT A.*
                         AND NVL(G.CLASS_CD,' ') = DECODE(B.SERVICE_CD, 'B00001', E.CLASS_CD    , ' ')
                         AND NVL(G.MAT_CD  ,' ') = DECODE(B.SERVICE_CD, 'B00006', F.MAT_CD, 'B00007', F.MAT_CD      , 'B00011', F.MAT_CD, 'B00012', F.MAT_CD, ' ')  
                         AND NVL(G.PS_CD   ,' ') = DECODE(B.SERVICE_CD, 'B00001', C.PS_CD       , ' ') --[20180326_01]
-                        AND NVL(G.CAR_TYPE   ,' ') = DECODE(B.SERVICE_CD, 'B00009', SUBSTR(C.MAKER_CD, 0, 1)       , ' ') --[20200811_01]
+                        AND NVL(G.CAR_TYPE   ,' ') = DECODE(B.SERVICE_CD, 'B00008', SUBSTR(C.MAKER_CD, 0, 1)       , 'B00009', SUBSTR(C.MAKER_CD, 0, 1)       , ' ') --[20200811_01]
                     ) AS COMM_AMT,                   
                     A.PROC_DAY COMM_DAY,
                     D.MAT_CD,
@@ -1611,7 +1643,15 @@ SELECT A.*
                     RTSD0005 F, -- 상품 마스터
                     RTSD0007 H,
                     RTCS0010 I,
-                    RTCS0208 J
+                    RTCS0208 J,
+                    (SELECT AGENCY_CD
+						  , ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+					   FROM RTCS0130														--[20250620_01] 프리미엄퍼플점을 위한 만족도조사 평점
+					  WHERE 1=1
+						AND DP_YN = 'Y'
+						AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+					  GROUP BY AGENCY_CD
+				    ) K
             WHERE   v_Serch_Flag = 0
 --            AND     B.SERVICE_CD  IN ('B00001','B00002','B00006') --[20180326_01]
             AND     B.SERVICE_CD  IN ('B00001','B00002','B00006','B00007','B00008','B00009', 'B00011', 'B00012')
@@ -1636,7 +1676,8 @@ SELECT A.*
             AND     B.DLVR_DAY      = I.DLVR_DAY(+)
             AND     B.DLVR_SEQ      = I.DLVR_SEQ(+)  
             AND     B.DLVR_DAY      = J.DLVR_DAY(+)
-            AND     B.DLVR_SEQ      = J.DLVR_SEQ(+)  
+            AND     B.DLVR_SEQ      = J.DLVR_SEQ(+)
+            AND		H.AGENCY_CD     = K.AGENCY_CD(+)
             ) A, 
             RTVIEW03 B     -- 2016-06-03 이영근, VIEW테이블 변경 
     WHERE   A.AGENCY_CD    = B.AGENCY_CD
@@ -2016,4 +2057,3 @@ SELECT A.*
   END p_CreateRtre5070AgentComm_Org;
    
 END Pkg_Rtre5070;
-/

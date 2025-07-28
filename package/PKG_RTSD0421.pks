@@ -85,6 +85,4 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0421 AS
       v_Send_Cnt          IN RTSD0421.SEND_CNT%TYPE               /*발송횟수             */
   ) RETURN VARCHAR;
      
-     
 END Pkg_Rtsd0421;
-/

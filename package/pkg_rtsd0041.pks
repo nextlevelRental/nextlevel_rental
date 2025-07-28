@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0041 AS
 /*******************************************************************************
    NAME:      PKG_RTSD0041
-   PURPOSE    ∞Ëæ‡∫∞ ∫Œ∞°º≠∫ÒΩ∫ ∞¸∏Æ
+   PURPOSE    Í≥ÑÏïΩÎ≥Ñ Î∂ÄÍ∞ÄÏÑúÎπÑÏä§ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -11,68 +11,67 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0041 AS
 
 
   /*****************************************************************************
-  -- ∞Ëæ‡∫∞ ∫Œ∞°¡¶«∞ º≠∫ÒΩ∫ Delete
+  -- Í≥ÑÏïΩÎ≥Ñ Î∂ÄÍ∞ÄÏ†úÌíà ÏÑúÎπÑÏä§ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0041 (
-    v_Ord_No         IN RTSD0041.ORD_NO%TYPE          /*∞Ëæ‡π¯»£              */
+    v_Ord_No         IN RTSD0041.ORD_NO%TYPE          /*Í≥ÑÏïΩÎ≤àÌò∏              */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞Ëæ‡∫∞ ∫Œ∞°¡¶«∞ Insert
+  -- Í≥ÑÏïΩÎ≥Ñ Î∂ÄÍ∞ÄÏ†úÌíà Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0041 (
-    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Seq            IN RTSD0041.SEQ%TYPE,			  /*º¯π¯				  */
-    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*∫Œ∞°¡¶«∞ƒ⁄µÂ          */
-    v_Amt			 IN RTSD0041.AMT%TYPE,            /*±›æ◊	              */
-    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*«“¿Œ±›æ◊              */
-    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*√÷¡æ±›æ◊              */
-    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*¡¶«∞±∫                */
-    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*«“∫Œø©∫Œ              */
-	v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ø˘∑ª≈ª∑·              */
-	v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Seq            IN RTSD0041.SEQ%TYPE,			  /*ÏàúÎ≤à				  */
+    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú          */
+    v_Amt			 IN RTSD0041.AMT%TYPE,            /*Í∏àÏï°	              */
+    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*Ìï†Ïù∏Í∏àÏï°              */
+    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*ÏµúÏ¢ÖÍ∏àÏï°              */
+    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*Ï†úÌíàÍµ∞                */
+    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*Ìï†Î∂ÄÏó¨Î∂Ä              */
+	v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ÏõîÎ†åÌÉàÎ£å              */
+	v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞Ëæ‡∫∞ ∫Œ∞°¡¶«∞ ∞¸∏Æ(IUD)
+  -- Í≥ÑÏïΩÎ≥Ñ Î∂ÄÍ∞ÄÏ†úÌíà Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0041 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Seq            IN RTSD0041.SEQ%TYPE,			  /*º¯π¯				  */
-    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*∫Œ∞°¡¶«∞ƒ⁄µÂ          */
-    v_Amt			 IN RTSD0041.AMT%TYPE,            /*±›æ◊	              */
-    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*«“¿Œ±›æ◊              */
-    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*√÷¡æ±›æ◊              */
-    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*¡¶«∞±∫                */
-    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*«“∫Œø©∫Œ              */
-	v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ø˘∑ª≈ª∑·              */
-	v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Seq            IN RTSD0041.SEQ%TYPE,			  /*ÏàúÎ≤à				  */
+    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú          */
+    v_Amt			 IN RTSD0041.AMT%TYPE,            /*Í∏àÏï°	              */
+    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*Ìï†Ïù∏Í∏àÏï°              */
+    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*ÏµúÏ¢ÖÍ∏àÏï°              */
+    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*Ï†úÌíàÍµ∞                */
+    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*Ìï†Î∂ÄÏó¨Î∂Ä              */
+	v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ÏõîÎ†åÌÉàÎ£å              */
+	v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ∞Ëæ‡∫∞ ∫Œ∞°º≠∫ÒΩ∫ ∞¸∏Æ(IUD) ¿œΩ√∫“
+  -- Í≥ÑÏïΩÎ≥Ñ Î∂ÄÍ∞ÄÏÑúÎπÑÏä§ Í¥ÄÎ¶¨(IUD) ÏùºÏãúÎ∂à
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0041Direct (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Seq            IN RTSD0041.SEQ%TYPE,              /*º¯π¯                  */
-    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*∫Œ∞°¡¶«∞ƒ⁄µÂ          */
-    v_Amt             IN RTSD0041.AMT%TYPE,            /*±›æ◊                  */
-    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*«“¿Œ±›æ◊              */
-    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*√÷¡æ±›æ◊              */
-    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*¡¶«∞±∫                */
-    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*«“∫Œø©∫Œ              */
-    v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ø˘∑ª≈ª∑·              */
-    v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0041.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Seq            IN RTSD0041.SEQ%TYPE,              /*ÏàúÎ≤à                  */
+    v_Add_Gds_Cd     IN RTSD0041.ADD_GDS_CD%TYPE,     /*Î∂ÄÍ∞ÄÏ†úÌíàÏΩîÎìú          */
+    v_Amt             IN RTSD0041.AMT%TYPE,            /*Í∏àÏï°                  */
+    v_DC_Amt         IN RTSD0041.DC_AMT%TYPE,         /*Ìï†Ïù∏Í∏àÏï°              */
+    v_L_Amt          IN RTSD0041.L_AMT%TYPE,          /*ÏµúÏ¢ÖÍ∏àÏï°              */
+    v_Gds_Grp        IN RTSD0041.GDS_GRP%TYPE,        /*Ï†úÌíàÍµ∞                */
+    v_Dc_Yn          IN RTSD0041.DC_YN%TYPE,          /*Ìï†Î∂ÄÏó¨Î∂Ä              */
+    v_Mon_Amt        IN RTSD0041.MON_AMT%TYPE,        /*ÏõîÎ†åÌÉàÎ£å              */
+    v_Reg_Id         IN RTSD0041.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
         
 END PKG_RTSD0041;
-/

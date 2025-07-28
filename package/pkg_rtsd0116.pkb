@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0116
-   PURPOSE   πËº€øœ∑· ¥ÎªÛ ∞¸∏Æ
+   PURPOSE   Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Count
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0116Count(
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,           /*∞Ëæ‡π¯»£            */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE             /*SAP ¡÷πÆπ¯»£        */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,           /*Í≥ÑÏïΩÎ≤àÌò∏            */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE             /*SAP Ï£ºÎ¨∏Î≤àÌò∏        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,32 +34,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END f_sRtsd0116Count;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Select
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0116 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ORD_NO,                    /*∞Ëæ‡π¯»£            */
-            A.VBELN,                     /*SAP ¡÷πÆπ¯»£        */
-            A.VBELN_D,                   /*SAP πËº€π¯»£        */
-            A.GI_DAY,                    /*πËº€¿œ¿⁄            */
-            A.SMS_DAY,                   /*SMS πﬂº€¿œ¿⁄        */
-            A.SMS_YN,                    /*SMS πﬂº€ø©∫Œ        */
-            A.REG_ID,                    /*µÓ∑œ¿⁄ ID           */
-            A.REG_DT,                    /*µÓ∑œ¿œ              */
-            A.CHG_ID,                    /*∫Ø∞Ê¿⁄ ID           */
-            A.CHG_DT                     /*∫Ø∞Ê¿œ              */
+    SELECT  A.ORD_NO,                    /*Í≥ÑÏïΩÎ≤àÌò∏            */
+            A.VBELN,                     /*SAP Ï£ºÎ¨∏Î≤àÌò∏        */
+            A.VBELN_D,                   /*SAP Î∞∞ÏÜ°Î≤àÌò∏        */
+            A.GI_DAY,                    /*Î∞∞ÏÜ°ÏùºÏûê            */
+            A.SMS_DAY,                   /*SMS Î∞úÏÜ°ÏùºÏûê        */
+            A.SMS_YN,                    /*SMS Î∞úÏÜ°Ïó¨Î∂Ä        */
+            A.REG_ID,                    /*Îì±Î°ùÏûê ID           */
+            A.REG_DT,                    /*Îì±Î°ùÏùº              */
+            A.CHG_ID,                    /*Î≥ÄÍ≤ΩÏûê ID           */
+            A.CHG_DT                     /*Î≥ÄÍ≤ΩÏùº              */
     FROM    RTSD0116 A
     WHERE   A.ORD_NO   = DECODE(v_Ord_No  , NULL, A.ORD_NO  , v_Ord_No)
     AND     A.VBELN    = DECODE(v_Vbeln   , NULL, A.VBELN   , v_Vbeln)
@@ -72,16 +72,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END p_sRtsd0116;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Insert
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -122,16 +122,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END f_InsertRtsd0116;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Update
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -156,12 +156,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END f_UpdateRtsd0116;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Delete
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -183,17 +183,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END f_DeleteRtsd0116;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ ∞¸∏Æ(IUD)
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0116 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -202,9 +202,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- « ºˆ∞™: µÓ∑œ¿⁄ ID
+    -- ÌïÑÏàòÍ∞í: Îì±Î°ùÏûê ID
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µÓ∑œ¿⁄ ID('||v_Reg_Id||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù ∂«¥¬ ¿ﬂ∏¯µ» ∞™ ¿‘∑¬¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Îì±Î°ùÏûê ID('||v_Reg_Id||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩ ÎòêÎäî ÏûòÎ™ªÎêú Í∞í ÏûÖÎ†•ÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
@@ -212,7 +212,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
 
         IF 0 != f_InsertRtsd0116(v_Ord_No, v_Vbeln, v_Vbeln_D, v_Gi_Day, 
                                  v_Sms_Day, v_Sms_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'πËº€øœ∑· ¥ÎªÛ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
 
@@ -221,7 +221,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
         IF v_Comm_Dvsn = 'U' THEN
             IF 0 != f_UpdateRtsd0116(v_Ord_No, v_Vbeln, v_Vbeln_D, v_Gi_Day, 
                                      v_Sms_Day, v_Sms_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'πËº€øœ∑· ¥ÎªÛ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -229,20 +229,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
 
         ELSIF v_Comm_Dvsn = 'D' THEN
             IF 0 != f_DeleteRtsd0116(v_Ord_No, v_Vbeln, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'πËº€øœ∑· ¥ÎªÛ ªË¡¶ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ ÏÇ≠Ï†ú Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -257,7 +257,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0116.p_IUDRtsd0116(2)', v_ErrorText, v_Return_Message);
 
@@ -265,14 +265,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
 
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Update - Erprecvdelivery
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Update - Erprecvdelivery
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0116Recv (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -296,4 +296,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0116 AS
   END f_UpdateRtsd0116Recv;
   
 END Pkg_Rtsd0116;
-/

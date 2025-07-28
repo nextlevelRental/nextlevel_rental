@@ -61,6 +61,8 @@
 		<result property="ordCount"		column="ORD_COUNT" />	<!-- 240814 백인천 추가 : 현재계약건수 -->
 		<result property="roVan"		column="RO_VAN" />	<!-- 240814 백인천 추가 : 기타제한사유 -->
 		<result property="addrText"		column="ADDR_TEXT" />	<!-- 241014 백인천 추가 : 주소 -->
+		<result property="instCd"			column="INST_CD" />	<!-- 250409 10243054 추가 : 장착유형코드 -->
+		<result property="instNm"		column="INST_NM" />	<!-- 250409 10243054 추가 : 장착유형이름 -->
 	</resultMap>
 	<parameterMap id="p_sRtsdContractStatus" class="java.util.Map">
 		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="r_sRtsdContractStatus" />
@@ -509,6 +511,8 @@
 		<result property="payDd"  column="PAY_DD"/>
 		<result property="mfpYn"  column="MFP_YN"/>
 		<result property="bondSelDay"  column="BOND_SEL_DAY"/>
+		<result property="overDueAmt"  column="OVER_DUE_AMT"/>
+		<result property="statNmDetail"  column="STAT_NM_DETAIL"/>
 	</resultMap>
 	<procedure id="contractStatus.AdviceStatus" parameterMap="p_sRtsdAdviceStatus">
 		{call Pkg_Rtsd0104.p_sRtsdAdviceStatusNew(?, ?, ?)}

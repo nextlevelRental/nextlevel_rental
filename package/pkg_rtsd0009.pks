@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0009 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0009
-   PURPOSE   ±â°£º° ÇÒÀÎ °ü¸® °ü¸®
+   PURPOSE   ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,78 +10,78 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0009 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Count
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0009Count(
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,            /*ÇÒÀÎÀ¯Çü            */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE           /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ     */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,            /*í• ì¸ìœ í˜•            */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE           /*ê°€ê²©ì ìš© ì‹œìž‘ì¼     */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Select
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0009 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Stand_Day      IN RTSD0009.STR_DAY%TYPE         /*±âÁØÀÏ                */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Stand_Day      IN RTSD0009.STR_DAY%TYPE         /*ê¸°ì¤€ì¼                */
     );
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Insert
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0009 (
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*ÇÒÀÎÀ²                */
-    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*ÇÒÀÎ±Ý¾×              */
-    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*í• ì¸ìœ¨                */
+    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*í• ì¸ê¸ˆì•¡              */
+    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Update
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0009 (
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*ÇÒÀÎÀ²                */
-    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*ÇÒÀÎ±Ý¾×              */
-    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*í• ì¸ìœ¨                */
+    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*í• ì¸ê¸ˆì•¡              */
+    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Delete
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0009 (
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® °ü¸®(IUD)
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0009 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*ÇÒÀÎÀ²                */
-    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*ÇÒÀÎ±Ý¾×              */
-    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0009.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Dc_Rate        IN RTSD0009.DC_RATE%TYPE,        /*í• ì¸ìœ¨                */
+    v_Dc_Amt         IN RTSD0009.DC_AMT%TYPE,         /*í• ì¸ê¸ˆì•¡              */
+    v_Use_Yn         IN RTSD0009.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -89,60 +89,59 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0009 AS
 
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Count - ÇØ´ç ÇÒÀÎÀ²·Î µî·ÏµÈ ¿À´õ °Ç¼ö È¹µæ
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Count - í•´ë‹¹ í• ì¸ìœ¨ë¡œ ë“±ë¡ëœ ì˜¤ë” ê±´ìˆ˜ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0009OrdCount(
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0009.END_DAY%TYPE         /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0009.END_DAY%TYPE         /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Count -  ½ÃÀÛÀÏ ±âÁØ ÀÌÈÄ µ¥ÀÌÅÍ °Ç¼ö È¹µæ
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Count -  ì‹œìž‘ì¼ ê¸°ì¤€ ì´í›„ ë°ì´í„° ê±´ìˆ˜ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0009NextCount(
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE         /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE         /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ±â°£º° ÇÒÀÎ °ü¸® Update - ÀÌÀü ÇÒÀÎÀ² ¿Ï·áÀÏ ¾÷µ¥ÀÌÆ®
+  -- ê¸°ê°„ë³„ í• ì¸ ê´€ë¦¬ Update - ì´ì „ í• ì¸ìœ¨ ì™„ë£Œì¼ ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0009Before (
-    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Dc_Tp          IN RTSD0009.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0009.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Str_Day        IN RTSD0009.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Reg_Id         IN RTSD0009.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- °è¾àµî·Ï - ÇÒÀÎ±Ý¾×°è»ê Á¶È¸
+  -- ê³„ì•½ë“±ë¡ - í• ì¸ê¸ˆì•¡ê³„ì‚° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_SELECTrateAmt0009(
     Ref_Cursor			    IN OUT SYS_REFCURSOR,
-    v_Mat_Cd                IN RTSD0008.MAT_CD%TYPE,        /*»óÇ°ÄÚµå        */
-    v_Cust_No			    IN RTSD0100.CUST_NO%TYPE,       /*°í°´¹øÈ£		  */
-    v_Cnt_Cd			    IN RTSD0008.CNT_CD%TYPE,        /*Å¸ÀÌ¾îº»¼ö		 */
-    v_Period_Cd			    IN RTSD0008.PERIOD_CD%TYPE,     /*±â°£ÄÚµå        */
-    v_Rent_Amt			    IN RTSD0008.AMT%TYPE,           /*±Ý¾×            */
-    v_Ord_Day               IN RtSD0104.ORD_DAY%TYPE        /*Á¢¼öÀÏÀÚ        */
+    v_Mat_Cd                IN RTSD0008.MAT_CD%TYPE,        /*ìƒí’ˆì½”ë“œ        */
+    v_Cust_No			    IN RTSD0100.CUST_NO%TYPE,       /*ê³ ê°ë²ˆí˜¸		  */
+    v_Cnt_Cd			    IN RTSD0008.CNT_CD%TYPE,        /*íƒ€ì´ì–´ë³¸ìˆ˜		 */
+    v_Period_Cd			    IN RTSD0008.PERIOD_CD%TYPE,     /*ê¸°ê°„ì½”ë“œ        */
+    v_Rent_Amt			    IN RTSD0008.AMT%TYPE,           /*ê¸ˆì•¡            */
+    v_Ord_Day               IN RtSD0104.ORD_DAY%TYPE        /*ì ‘ìˆ˜ì¼ìž        */
   );
 
   /*****************************************************************************
-  -- °è¾àµî·Ï - ÇÒÀÎ±Ý¾×°è»ê »ó¼¼Á¶È¸
+  -- ê³„ì•½ë“±ë¡ - í• ì¸ê¸ˆì•¡ê³„ì‚° ìƒì„¸ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_SELECTrateAmt0009Detail(
     Ref_Cursor			    IN OUT SYS_REFCURSOR,
-    v_Mat_Cd                IN RTSD0008.MAT_CD%TYPE,        /*»óÇ°ÄÚµå        */
-    v_Cust_No			    IN RTSD0100.CUST_NO%TYPE,       /*°í°´¹øÈ£		  */
-    v_Cnt_Cd			    IN RTSD0008.CNT_CD%TYPE,        /*Å¸ÀÌ¾îº»¼ö		 */
-    v_Period_Cd			    IN RTSD0008.PERIOD_CD%TYPE,     /*±â°£ÄÚµå        */
-    v_Ord_Day               IN RtSD0104.ORD_DAY%TYPE        /*Á¢¼öÀÏÀÚ        */
+    v_Mat_Cd                IN RTSD0008.MAT_CD%TYPE,        /*ìƒí’ˆì½”ë“œ        */
+    v_Cust_No			    IN RTSD0100.CUST_NO%TYPE,       /*ê³ ê°ë²ˆí˜¸		  */
+    v_Cnt_Cd			    IN RTSD0008.CNT_CD%TYPE,        /*íƒ€ì´ì–´ë³¸ìˆ˜		 */
+    v_Period_Cd			    IN RTSD0008.PERIOD_CD%TYPE,     /*ê¸°ê°„ì½”ë“œ        */
+    v_Ord_Day               IN RtSD0104.ORD_DAY%TYPE        /*ì ‘ìˆ˜ì¼ìž        */
   );
   
 END Pkg_Rtsd0009;
-/

@@ -20,15 +20,18 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_install", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeCd\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupCd\" type=\"STRING\" size=\"256\"/><Column id=\"engNm\" type=\"STRING\" size=\"256\"/><Column id=\"equNo\" type=\"STRING\" size=\"256\"/><Column id=\"instYn\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"agDesc\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"instCd\" type=\"STRING\" size=\"256\"/><Column id=\"instNm\" type=\"STRING\" size=\"256\"/><Column id=\"instTm\" type=\"STRING\" size=\"256\"/><Column id=\"inst1PosCd\" type=\"STRING\" size=\"256\"/><Column id=\"inst1Addr1\" type=\"STRING\" size=\"256\"/><Column id=\"inst1Addr2\" type=\"STRING\" size=\"256\"/><Column id=\"inst2PosCd\" type=\"STRING\" size=\"256\"/><Column id=\"inst2Addr1\" type=\"STRING\" size=\"256\"/><Column id=\"inst2Addr2\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("dsTransInfo", this);
+            obj.getSetter("firenextcount").set("0");
             obj._setContents("");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("dsParamINfo", this);
+            obj.getSetter("firenextcount").set("0");
             obj._setContents("");
             this.addChild(obj.name, obj);
 

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
 /*******************************************************************************
    NAME      Pkg_Rtre0110
-   PURPOSE   Ã¤±Ç °ü¸® ³»¿ª °ü¸®
+   PURPOSE   ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Count
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0110Count(
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,          /*Ã¤±Ç°ü¸®³â¿ù        */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,          /*ì±„ê¶Œê´€ë¦¬ë…„ì›”        */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,41 +34,41 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   END f_sRtre0110Count;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Select
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0110 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE       /*Ã¤±Ç°èÁ¤µî±Þ          */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE       /*ì±„ê¶Œê³„ì •ë“±ê¸‰          */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.RAMG_YM,                   /*Ã¤±Ç°ü¸®³â¿ù        */
-            A.CUST_NO,                   /*°í°´¹øÈ£            */
-            Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO) CUST_NM,                /*°í°´¸í              */ 
-            A.RAMG_STAT,                 /*Ã¤±Ç°èÁ¤µî±Þ        */             
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('R035', A.RAMG_STAT) RAMG_STAT_NM, /*Ã¤±Ç°èÁ¤µî±Þ        */ 
-            A.RAMG_AMT,                  /*Ã¤±Ç°ü¸®±Ý¾×        */
-            A.ARRE_AMT,                  /*¿¬Ã¼±Ý¾×            */
-            A.RMON_AMT,                  /*´ç¿ùÃ»±¸±Ý¾×        */
-            A.RAMGRE_AMT,                /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×    */
-            A.ARRERE_AMT,                /*¿¬Ã¼¼ö³³±Ý¾×        */
-            A.RMONRE_AMT,                /*´ç¿ùÃ»±¸¼ö³³±Ý¾×    */
-            A.OVIN_AMT,                  /*¿¬Ã¼ÀÌÀÚ±Ý¾×        */
-            A.OVINRE_AMT,                /*¿¬Ã¼ÀÌÀÚ¼ö³³±Ý¾×    */
-            A.RAMG_ID,                   /*Ã¤±Ç°ü¸®ÀÚ          */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.RAMG_ID) RAMG_NM,                 /*Ã¤±Ç°ü¸®ÀÚ          */
-            A.ORD_CNT,                   /*°è¾à°Ç¼ö            */
-            A.FST_DEL_YM,                /*¿¬Ã¼½ÃÀÛ³â¿ù        */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM,                   /*µî·ÏÀÚ              */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.CHG_ID) CHG_NM,                   /*º¯°æÀÚ              */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.RAMG_YM,                   /*ì±„ê¶Œê´€ë¦¬ë…„ì›”        */
+            A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO) CUST_NM,                /*ê³ ê°ëª…              */ 
+            A.RAMG_STAT,                 /*ì±„ê¶Œê³„ì •ë“±ê¸‰        */             
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('R035', A.RAMG_STAT) RAMG_STAT_NM, /*ì±„ê¶Œê³„ì •ë“±ê¸‰        */ 
+            A.RAMG_AMT,                  /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡        */
+            A.ARRE_AMT,                  /*ì—°ì²´ê¸ˆì•¡            */
+            A.RMON_AMT,                  /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡        */
+            A.RAMGRE_AMT,                /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡    */
+            A.ARRERE_AMT,                /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡        */
+            A.RMONRE_AMT,                /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡    */
+            A.OVIN_AMT,                  /*ì—°ì²´ì´ìžê¸ˆì•¡        */
+            A.OVINRE_AMT,                /*ì—°ì²´ì´ìžìˆ˜ë‚©ê¸ˆì•¡    */
+            A.RAMG_ID,                   /*ì±„ê¶Œê´€ë¦¬ìž          */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.RAMG_ID) RAMG_NM,                 /*ì±„ê¶Œê´€ë¦¬ìž          */
+            A.ORD_CNT,                   /*ê³„ì•½ê±´ìˆ˜            */
+            A.FST_DEL_YM,                /*ì—°ì²´ì‹œìž‘ë…„ì›”        */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM,                   /*ë“±ë¡ìž              */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.CHG_ID) CHG_NM,                   /*ë³€ê²½ìž              */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTRE0110 A    
     WHERE   A.RAMG_YM = v_Ramg_Ym
     AND     A.CUST_NO LIKE v_Cust_No||'%'
@@ -77,24 +77,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   END p_sRtre0110;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Insert
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0110 (
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*Ã¤±Ç°èÁ¤µî±Þ          */
-    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ¼ö³³±Ý¾×      */
-    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*Ã¤±Ç°ü¸®ÀÚ            */
-    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*°è¾à°Ç¼ö              */
-    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*ì±„ê¶Œê³„ì •ë“±ê¸‰          */
+    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìžìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*ì±„ê¶Œê´€ë¦¬ìž            */
+    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*ê³„ì•½ê±´ìˆ˜              */
+    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -149,24 +149,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   END f_InsertRtre0110;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Update
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0110 (
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*Ã¤±Ç°èÁ¤µî±Þ          */
-    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ¼ö³³±Ý¾×      */
-    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*Ã¤±Ç°ü¸®ÀÚ            */
-    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*°è¾à°Ç¼ö              */
-    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*ì±„ê¶Œê³„ì •ë“±ê¸‰          */
+    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìžìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*ì±„ê¶Œê´€ë¦¬ìž            */
+    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*ê³„ì•½ê±´ìˆ˜              */
+    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -199,12 +199,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   END f_UpdateRtre0110;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Delete
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0110 (
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -213,9 +213,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     WHERE  RAMG_YM = v_Ramg_Ym
     AND    CUST_NO = v_Cust_No;
     
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', 'Ã¤±Ç°ü¸®³â¿ù', v_Ramg_Ym);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', '°í°´¹øÈ£', v_Cust_No);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', 'µî·ÏÀÚ ID', v_Reg_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', 'ì±„ê¶Œê´€ë¦¬ë…„ì›”', v_Ramg_Ym);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', 'ê³ ê°ë²ˆí˜¸', v_Cust_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110(2)', 'ë“±ë¡ìž ID', v_Reg_Id);
 
     RETURN SQLCODE;
 
@@ -227,25 +227,25 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   END f_DeleteRtre0110;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª °ü¸®(IUD)
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0110 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*Ã¤±Ç°èÁ¤µî±Þ          */
-    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ¼ö³³±Ý¾×      */
-    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*Ã¤±Ç°ü¸®ÀÚ            */
-    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*°è¾à°Ç¼ö              */
-    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ramg_Stat      IN RTRE0110.RAMG_STAT%TYPE,      /*ì±„ê¶Œê³„ì •ë“±ê¸‰          */
+    v_Ramg_Amt       IN RTRE0110.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0110.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0110.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0110.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0110.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0110.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0110.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0110.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìžìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ramg_Id        IN RTRE0110.RAMG_ID%TYPE,        /*ì±„ê¶Œê´€ë¦¬ìž            */
+    v_Ord_Cnt        IN RTRE0110.ORD_CNT%TYPE,        /*ê³„ì•½ê±´ìˆ˜              */
+    v_Fst_Del_Ym     IN RTRE0110.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -254,24 +254,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: Ã¤±Ç°èÁ¤µî±Þ,  µî·ÏÀÚ ID   
+    -- í•„ìˆ˜ê°’: ì±„ê¶Œê³„ì •ë“±ê¸‰,  ë“±ë¡ìž ID   
     IF (TRIM(v_Ramg_Ym) IS NULL) OR (0 != ISDATE(v_Ramg_Ym)) THEN
-        v_Return_Message := 'Ã¤±Ç°ü¸®³â¿ù('||v_Ramg_Ym||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì±„ê¶Œê´€ë¦¬ë…„ì›”('||v_Ramg_Ym||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;  
     
     IF (TRIM(v_Cust_No) IS NULL) OR (0 = Pkg_Rtsd0100.f_sRtsd0100Count(v_Cust_No)) THEN
-        v_Return_Message := '°í°´¹øÈ£('||v_Cust_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ë²ˆí˜¸('||v_Cust_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Ramg_Stat) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('R035', v_Ramg_Stat)) THEN
-        v_Return_Message := 'Ã¤±Ç°èÁ¤µî±Þ('||v_Ramg_Stat||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì±„ê¶Œê³„ì •ë“±ê¸‰('||v_Ramg_Stat||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;        
         
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -281,7 +281,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
                                  v_Arre_Amt, v_Rmon_Amt, v_Ramgre_Amt, v_Arrere_Amt, 
                                  v_Rmonre_Amt, v_Ovin_Amt, v_Ovinre_Amt, v_Ramg_Id, 
                                  v_Ord_Cnt, v_Fst_Del_Ym, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'Ã¤±Ç °ü¸® ³»¿ª µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -294,7 +294,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
                                      v_Arre_Amt, v_Rmon_Amt, v_Ramgre_Amt, v_Arrere_Amt, 
                                      v_Rmonre_Amt, v_Ovin_Amt, v_Ovinre_Amt, v_Ramg_Id, 
                                      v_Ord_Cnt, v_Fst_Del_Ym, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Ã¤±Ç °ü¸® ³»¿ª ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -303,20 +303,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtre0110(v_Ramg_Ym, v_Cust_No, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Ã¤±Ç °ü¸® ³»¿ª »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -331,28 +331,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.p_IUDRtre0110(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre0110;
 
   /*****************************************************************************
-  -- RE-040111 Ã¤±Ç°ü¸®´ë»ó Áý°è : ÇØ´ç ³â¿ùÀ» ±âÁØÀ¸·Î Ã¤±Ç °ü¸® °èÁ¤³»¿ªÀ» »ý¼º 
+  -- RE-040111 ì±„ê¶Œê´€ë¦¬ëŒ€ìƒ ì§‘ê³„ : í•´ë‹¹ ë…„ì›”ì„ ê¸°ì¤€ìœ¼ë¡œ ì±„ê¶Œ ê´€ë¦¬ ê³„ì •ë‚´ì—­ì„ ìƒì„± 
   *****************************************************************************/
   PROCEDURE p_InsertRtre0110Aggregate (
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Proc_Yn        IN VARCHAR,                      /*Ã³¸®°¡´É ¿©ºÎ         */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Proc_Yn        IN VARCHAR,                      /*ì²˜ë¦¬ê°€ëŠ¥ ì—¬ë¶€         */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     ) IS
 
-    -- Ã¤±Ç´ë»ó Áý°è: Ã¤±Ç´ë»ó Áý°è´Â °í°´º° µ¥ÀÌÅÍ·Î ´ç¿ùÃ»±¸±Ý¾× + Àü¿ù¿¬Ã¼³»¿ªÀ» ±âÁØÀ¸·Î »ý¼ºÇÔ.
+    -- ì±„ê¶ŒëŒ€ìƒ ì§‘ê³„: ì±„ê¶ŒëŒ€ìƒ ì§‘ê³„ëŠ” ê³ ê°ë³„ ë°ì´í„°ë¡œ ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡ + ì „ì›”ì—°ì²´ë‚´ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ìƒì„±í•¨.
     CURSOR  Cur_Rtre0110 IS 
     SELECT  v_Ramg_Ym   AS RAMG_YM,
-            'D'         AS ARRE_FG,     -- ¿¬Ã¼±¸ºÐ
+            'D'         AS ARRE_FG,     -- ì—°ì²´êµ¬ë¶„
             B.ORD_NO    AS ORD_NO,
             B.CUST_NO   AS CUST_NO,
             A.RECP_TP   AS RECP_TP,
@@ -365,7 +365,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
             0           AS RAMGRE_AMT,
             0           AS ARRERE_AMT,
             0           AS RMONRE_AMT,
-            0           AS OVIN_AMT,    -- ¿¬Ã¼ÀÌÀÚ±Ý¾× ±¸ÇÏ±â ; FUNCTION ½Å±Ô»ý¼º ÇÊ¿ä
+            0           AS OVIN_AMT,    -- ì—°ì²´ì´ìžê¸ˆì•¡ êµ¬í•˜ê¸° ; FUNCTION ì‹ ê·œìƒì„± í•„ìš”
             0           AS OVINRE_AMT,
             B.MFP_YN    AS MFP_YN,
             B.TCAN_YN   AS TCAN_YN,
@@ -387,10 +387,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
             A.PAY_MTHD  AS MPAY_MTHD,
             A.PAY_DD    AS MPAY_DD,
             E.ZFB_DAY        AS MZFB_DAY
-    FROM    RTRE0101 A, -- Àü¿ù¿¬Ã¼³»¿ª -> RTRE0100   
+    FROM    RTRE0101 A, -- ì „ì›”ì—°ì²´ë‚´ì—­ -> RTRE0100   
             RTSD0108 B,
             RTSD0109 E
-    WHERE   A.DELY_DAY = TO_CHAR(TO_DATE(v_Ramg_Ym, 'YYYYMM')-1,'YYYYMMDD') -- Ã¤±Ç°ü¸®³â¿ù ±âÁØ Àü¿ù¸»ÀÏ
+    WHERE   A.DELY_DAY = TO_CHAR(TO_DATE(v_Ramg_Ym, 'YYYYMM')-1,'YYYYMMDD') -- ì±„ê¶Œê´€ë¦¬ë…„ì›” ê¸°ì¤€ ì „ì›”ë§ì¼
     AND     B.ORD_NO   = A.ORD_NO
     AND     E.ORD_NO   = A.ORD_NO
     AND     E.SCHD_SEQ = A.SCHD_SEQ
@@ -426,7 +426,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
             C.PAY_MTHD  AS MPAY_MTHD,
             C.PAY_DD    AS MPAY_DD,
             C.ZFB_DAY   AS MZFB_DAY
-    FROM    RTSD0109 C, -- ´ç¿ùÃ»±¸±Ý¾× -> RTSD0109  
+    FROM    RTSD0109 C, -- ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡ -> RTSD0109  
             RTSD0108 D
     WHERE   C.ZFB_DAY BETWEEN v_Ramg_Ym||'01' AND TO_CHAR(LAST_DAY(TO_DATE(v_Ramg_Ym, 'YYYYMM')),'YYYYMMDD')
     AND     C.SCD_STAT = 'S'
@@ -437,7 +437,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     CURSOR  Cur_Rtre0111 IS 
     SELECT  RAMG_YM,
             CUST_NO, 
-            --¿¬Ã¼È¸Â÷ 0 ~ 2°³¿ù ¼ö±Ý°èÁ¤('A'),  3 ~ 6°³¿ù Áý±Ý°èÁ¤('B'), 7°³¿ùÀÌ»ó Ã¤±Ç°èÁ¤('C') ·Î ±¸ºÐ
+            --ì—°ì²´íšŒì°¨ 0 ~ 2ê°œì›” ìˆ˜ê¸ˆê³„ì •('A'),  3 ~ 6ê°œì›” ì§‘ê¸ˆê³„ì •('B'), 7ê°œì›”ì´ìƒ ì±„ê¶Œê³„ì •('C') ë¡œ êµ¬ë¶„
             CASE 
             WHEN MAX(APPR_SCNT) >= 0 AND MAX(APPR_SCNT) <= 2 THEN 'A'
             WHEN MAX(APPR_SCNT) >= 3 AND MAX(APPR_SCNT) <= 6 THEN 'B'
@@ -456,61 +456,61 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
         
     e_Error EXCEPTION;
     
-    v_Tdata_Cnt RTRE0099.TDATA_CNT%TYPE DEFAULT NULL;/*µ¥ÀÌÅÍ ÃÑ°Ç¼ö         */
-    v_Ramg_Id   RTRE0110.RAMG_ID%TYPE DEFAULT NULL;  /*Ã¤±Ç°ü¸®ÀÚ            */
+    v_Tdata_Cnt RTRE0099.TDATA_CNT%TYPE DEFAULT NULL;/*ë°ì´í„° ì´ê±´ìˆ˜         */
+    v_Ramg_Id   RTRE0110.RAMG_ID%TYPE DEFAULT NULL;  /*ì±„ê¶Œê´€ë¦¬ìž            */
 
   BEGIN
 
-    -- ÇÊ¼ö°ª: Ã¤±Ç°ü¸®³â¿ù, Ã³¸®°¡´É ¿©ºÎ, µî·ÏÀÚ ID    
+    -- í•„ìˆ˜ê°’: ì±„ê¶Œê´€ë¦¬ë…„ì›”, ì²˜ë¦¬ê°€ëŠ¥ ì—¬ë¶€, ë“±ë¡ìž ID    
     IF (TRIM(v_Ramg_Ym) IS NULL) OR (0 != ISDATE(v_Ramg_Ym)) THEN
-        v_Return_Message := 'Ã¤±Ç°ü¸®³â¿ù('||v_Ramg_Ym||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì±„ê¶Œê´€ë¦¬ë…„ì›”('||v_Ramg_Ym||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Proc_Yn) IS NULL) OR (TRIM(v_Proc_Yn) NOT IN ('Y','N')) THEN
-        v_Return_Message := 'Ã³¸®°¡´É ¿©ºÎ('||v_Proc_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì²˜ë¦¬ê°€ëŠ¥ ì—¬ë¶€('||v_Proc_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
-    -- ÇØ´ç¿ù ÀÌÈÄ ³»¿ªÀÌ Á¸Àç ¿©ºÎ È®ÀÎ
+    -- í•´ë‹¹ì›” ì´í›„ ë‚´ì—­ì´ ì¡´ìž¬ ì—¬ë¶€ í™•ì¸
     IF 0 < f_sRtre0110AfterCount(v_Ramg_Ym) THEN
-        v_Return_Message := 'ÇØ´ç¿ù('||v_Ramg_Ym||') ÀÌÈÄ ³»¿ªÀÌ Á¸ÀçÇÏ±â ¶§¹®¿¡ ÀçÃ³¸® ºÒ°¡ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ì›”('||v_Ramg_Ym||') ì´í›„ ë‚´ì—­ì´ ì¡´ìž¬í•˜ê¸° ë•Œë¬¸ì— ìž¬ì²˜ë¦¬ ë¶ˆê°€í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;    
     
-    -- ÇØ´ç¿ù ³»¿ªÀÌ Á¸Àç ¿©ºÎ È®ÀÎ
+    -- í•´ë‹¹ì›” ë‚´ì—­ì´ ì¡´ìž¬ ì—¬ë¶€ í™•ì¸
     IF 0 < f_sRtre0110EqualCount(v_Ramg_Ym) THEN
 
         IF v_Proc_Yn = 'Y' THEN           
                 
-            -- ÇØ´ç¿ù Ã¤±Ç °ü¸® ³»¿ª Delete
+            -- í•´ë‹¹ì›” ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Delete
             IF 0 != f_DeleteRtre0110Equal (v_Ramg_Ym, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Ã¤±Ç °ü¸® ³»¿ª Delete ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Delete ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
-            -- ÇØ´ç¿ù Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Delete
+            -- í•´ë‹¹ì›” ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Delete
             IF 0 != Pkg_Rtre0111.f_DeleteRtre0111Equal (v_Ramg_Ym, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Delete ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Delete ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
-            -- ÇØ´ç¿ù ´ç¿ùÃ»±¸ ¼¼ºÎ ³»¿ª Delete
+            -- í•´ë‹¹ì›” ë‹¹ì›”ì²­êµ¬ ì„¸ë¶€ ë‚´ì—­ Delete
             IF 0 != Pkg_Rtre0112.f_DeleteRtre0112Equal (v_Ramg_Ym, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '´ç¿ùÃ»±¸ ¼¼ºÎ ³»¿ª Delete ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë‹¹ì›”ì²­êµ¬ ì„¸ë¶€ ë‚´ì—­ Delete ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
             
         ELSE
-            v_Return_Message := 'Ã¤±Ç´ë»óÀÌ Á¸ÀçÇÏ±â ¶§¹®¿¡ »èÁ¦°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì±„ê¶ŒëŒ€ìƒì´ ì¡´ìž¬í•˜ê¸° ë•Œë¬¸ì— ì‚­ì œê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF; 
 
@@ -518,62 +518,62 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     
     v_Tdata_Cnt:= 0;
     
-    -- Ã¤±Ç´ë»ó Áý°è
+    -- ì±„ê¶ŒëŒ€ìƒ ì§‘ê³„
     FOR CUR IN Cur_Rtre0110 LOOP
         EXIT WHEN Cur_Rtre0110%NOTFOUND;
         v_Tdata_Cnt := v_Tdata_Cnt+1;
         
-        -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª(RTRE0111) Insert / Update
+        -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­(RTRE0111) Insert / Update
         Pkg_Rtre0111.p_IUDRtre0111Aggregate (
-                    CUR.RAMG_YM,        /*(v_Ramg_Ym   ) Ã¤±Ç°ü¸®³â¿ù          */
-                    CUR.ORD_NO,         /*(v_Ord_No    ) °è¾à¹øÈ£              */
-                    CUR.CUST_NO,        /*(v_Cust_No   ) °í°´¹øÈ£              */
-                    CUR.RECP_TP,        /*(v_Recp_Tp   ) Ã»±¸±¸ºÐ              */
-                    CUR.PAY_MTHD,       /*(v_Pay_Mthd  ) °áÁ¦¹æ¹ý              */
-                    CUR.PAY_DD,         /*(v_Pay_Dd    ) °áÁ¦ÀÏ                */
-                    CUR.APPR_SCNT,      /*(v_Appr_Scnt ) ¿¬Ã¼È¸Â÷              */
-                    CUR.RAMG_AMT,       /*(v_Ramg_Amt  ) Ã¤±Ç°ü¸®±Ý¾×          */
-                    CUR.ARRE_AMT,       /*(v_Arre_Amt  ) ¿¬Ã¼±Ý¾×              */
-                    CUR.RMON_AMT,       /*(v_Rmon_Amt  ) ´ç¿ùÃ»±¸±Ý¾×          */
-                    CUR.RAMGRE_AMT,     /*(v_Ramgre_Amt) Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-                    CUR.ARRERE_AMT,     /*(v_Arrere_Amt) ¿¬Ã¼¼ö³³±Ý¾×          */
-                    CUR.RMONRE_AMT,     /*(v_Rmonre_Amt) ´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-                    CUR.OVIN_AMT,       /*(v_Ovin_Amt  ) ¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-                    CUR.OVINRE_AMT,     /*(v_Ovinre_Amt) ¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-                    CUR.MFP_YN,         /*(v_Mfp_Yn    ) Áßµµ¿Ï³³¿©ºÎ          */
-                    CUR.TCAN_YN,        /*(v_Tcan_Yn   ) ÀÓ½ÃÇØ¾à¿©ºÎ          */
-                    CUR.OS_YN,          /*(v_Os_Yn     ) ¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-                    CUR.FST_DEL_YM,     /*(v_Fst_Del_Ym) ¿¬Ã¼½ÃÀÛ³â¿ù          */
-                    v_Reg_Id,           /*(v_Reg_Id    ) µî·ÏÀÚ ID             */
+                    CUR.RAMG_YM,        /*(v_Ramg_Ym   ) ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+                    CUR.ORD_NO,         /*(v_Ord_No    ) ê³„ì•½ë²ˆí˜¸              */
+                    CUR.CUST_NO,        /*(v_Cust_No   ) ê³ ê°ë²ˆí˜¸              */
+                    CUR.RECP_TP,        /*(v_Recp_Tp   ) ì²­êµ¬êµ¬ë¶„              */
+                    CUR.PAY_MTHD,       /*(v_Pay_Mthd  ) ê²°ì œë°©ë²•              */
+                    CUR.PAY_DD,         /*(v_Pay_Dd    ) ê²°ì œì¼                */
+                    CUR.APPR_SCNT,      /*(v_Appr_Scnt ) ì—°ì²´íšŒì°¨              */
+                    CUR.RAMG_AMT,       /*(v_Ramg_Amt  ) ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+                    CUR.ARRE_AMT,       /*(v_Arre_Amt  ) ì—°ì²´ê¸ˆì•¡              */
+                    CUR.RMON_AMT,       /*(v_Rmon_Amt  ) ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+                    CUR.RAMGRE_AMT,     /*(v_Ramgre_Amt) ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+                    CUR.ARRERE_AMT,     /*(v_Arrere_Amt) ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+                    CUR.RMONRE_AMT,     /*(v_Rmonre_Amt) ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+                    CUR.OVIN_AMT,       /*(v_Ovin_Amt  ) ì—°ì²´ì´ìžê¸ˆì•¡          */
+                    CUR.OVINRE_AMT,     /*(v_Ovinre_Amt) ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+                    CUR.MFP_YN,         /*(v_Mfp_Yn    ) ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+                    CUR.TCAN_YN,        /*(v_Tcan_Yn   ) ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+                    CUR.OS_YN,          /*(v_Os_Yn     ) ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+                    CUR.FST_DEL_YM,     /*(v_Fst_Del_Ym) ì—°ì²´ì‹œìž‘ë…„ì›”          */
+                    v_Reg_Id,           /*(v_Reg_Id    ) ë“±ë¡ìž ID             */
                     v_Success_Code,
                     v_Return_Message,
                     v_ErrorText
                     );
             
         IF 0 != v_Success_Code THEN
-            v_Return_Message := 'Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª(RTRE0111) »ý¼º ½ÇÆÐ!!!'||'-'||v_Return_Message;
+            v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­(RTRE0111) ìƒì„± ì‹¤íŒ¨!!!'||'-'||v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;        
         END IF;
         
-        -- ´ç¿ùÃ»±¸ ¼¼ºÎ ³»¿ª(RTRE0112) Insert    
+        -- ë‹¹ì›”ì²­êµ¬ ì„¸ë¶€ ë‚´ì—­(RTRE0112) Insert    
         IF 0 !=Pkg_Rtre0112.f_InsertRtre0112 (                                                   
-                    CUR.RAMG_YM,        /*(v_Ramg_Ym ) Ã¤±Ç°ü¸®³â¿ù          */
-                    CUR.ORD_NO,         /*(v_Ord_No  ) °è¾à¹øÈ£              */
-                    CUR.CUST_NO,        /*(v_Cust_No ) °í°´¹øÈ£              */
-                    CUR.SCHD_SEQ,       /*(v_Schd_Seq) Ã»±¸¼ø¹ø              */
-                    CUR.RECP_TP,        /*(v_Recp_Tp ) Ã»±¸±¸ºÐ              */
-                    CUR.RECP_NU,        /*(v_Recp_Nu ) Ã»±¸È¸Â÷              */
-                    CUR.MSALE_AMT,      /*(v_Sale_Amt) ¸ÅÃâ±Ý¾×              */
-                    CUR.MRECP_AMT,      /*(v_Recp_Amt) ¼ö³³±Ý¾×              */
-                    CUR.MARRE_AMT,      /*(v_Arre_Amt) ¿¬Ã¼±Ý¾×              */
-                    CUR.MPAY_MTHD,      /*(v_Pay_Mthd) °áÁ¦±¸ºÐ              */
-                    CUR.MPAY_DD,        /*(v_Pay_Dd  ) ÀÌÃ¼ÀÏ                */
-                    CUR.MZFB_DAY,       /*(v_Zfb_Day ) ¸¸±â°è»ê±âÁØÀÏ        */
-                    v_Reg_Id,           /*(v_Reg_Id  ) µî·ÏÀÚ ID             */
+                    CUR.RAMG_YM,        /*(v_Ramg_Ym ) ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+                    CUR.ORD_NO,         /*(v_Ord_No  ) ê³„ì•½ë²ˆí˜¸              */
+                    CUR.CUST_NO,        /*(v_Cust_No ) ê³ ê°ë²ˆí˜¸              */
+                    CUR.SCHD_SEQ,       /*(v_Schd_Seq) ì²­êµ¬ìˆœë²ˆ              */
+                    CUR.RECP_TP,        /*(v_Recp_Tp ) ì²­êµ¬êµ¬ë¶„              */
+                    CUR.RECP_NU,        /*(v_Recp_Nu ) ì²­êµ¬íšŒì°¨              */
+                    CUR.MSALE_AMT,      /*(v_Sale_Amt) ë§¤ì¶œê¸ˆì•¡              */
+                    CUR.MRECP_AMT,      /*(v_Recp_Amt) ìˆ˜ë‚©ê¸ˆì•¡              */
+                    CUR.MARRE_AMT,      /*(v_Arre_Amt) ì—°ì²´ê¸ˆì•¡              */
+                    CUR.MPAY_MTHD,      /*(v_Pay_Mthd) ê²°ì œêµ¬ë¶„              */
+                    CUR.MPAY_DD,        /*(v_Pay_Dd  ) ì´ì²´ì¼                */
+                    CUR.MZFB_DAY,       /*(v_Zfb_Day ) ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼        */
+                    v_Reg_Id,           /*(v_Reg_Id  ) ë“±ë¡ìž ID             */
                     v_ErrorText                                               
                     ) THEN
-            v_Return_Message := 'Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª(RTRE0112) »ý¼º ½ÇÆÐ!!!'||'-'||v_Return_Message;
+            v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­(RTRE0112) ìƒì„± ì‹¤íŒ¨!!!'||'-'||v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;                
         END IF;
@@ -585,42 +585,42 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
         CLOSE Cur_Rtre0110;
     END IF;
     
-    -- Ã¤±Ç°ü¸®ÀÚ : ÇöÀç Ã¤±Ç°ü¸®ÀÚ¿¡ ´ëÇÑ °ü¸® ¹æ¾È ºÎÀç¿¡ µû¶ó °øÅëÄÚµå·Î ¼ÂÆÃ, ÃßÈÄ º¯°æ´ë»ó
+    -- ì±„ê¶Œê´€ë¦¬ìž : í˜„ìž¬ ì±„ê¶Œê´€ë¦¬ìžì— ëŒ€í•œ ê´€ë¦¬ ë°©ì•ˆ ë¶€ìž¬ì— ë”°ë¼ ê³µí†µì½”ë“œë¡œ ì…‹íŒ…, ì¶”í›„ ë³€ê²½ëŒ€ìƒ
     v_Ramg_Id := Pkg_Rtcm0051.f_sRtcm0051Cd('R034');
 
     v_Tdata_Cnt:= 0;
     
-    -- Ã¤±Ç°ü¸® ³»¿ª
+    -- ì±„ê¶Œê´€ë¦¬ ë‚´ì—­
     FOR CUR IN Cur_Rtre0111 LOOP
         EXIT WHEN Cur_Rtre0111%NOTFOUND;
         v_Tdata_Cnt := v_Tdata_Cnt+1;
         
                         
-        -- Ã¤±Ç °ü¸® ³»¿ª(RTRE0110) Insert
+        -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­(RTRE0110) Insert
         p_IUDRtre0110 (
-                    'I',                /*(v_Comm_Dvsn ) Ã³¸®±¸ºÐ(I,U,D)       */
-                    CUR.RAMG_YM,        /*(v_Ramg_Ym   ) Ã¤±Ç°ü¸®³â¿ù          */
-                    CUR.CUST_NO,        /*(v_Cust_No   ) °í°´¹øÈ£              */
-                    CUR.RAMG_STAT,      /*(v_Ramg_Stat ) Ã¤±Ç°èÁ¤µî±Þ          */
-                    CUR.RAMG_AMT,       /*(v_Ramg_Amt  ) Ã¤±Ç°ü¸®±Ý¾×          */
-                    CUR.ARRE_AMT,       /*(v_Arre_Amt  ) ¿¬Ã¼±Ý¾×              */
-                    CUR.RMON_AMT,       /*(v_Rmon_Amt  ) ´ç¿ùÃ»±¸±Ý¾×          */
-                    0,                  /*(v_Ramgre_Amt) Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-                    0,                  /*(v_Arrere_Amt) ¿¬Ã¼¼ö³³±Ý¾×          */
-                    0,                  /*(v_Rmonre_Amt) ´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-                    CUR.OVIN_AMT,       /*(v_Ovin_Amt  ) ¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-                    0,                  /*(v_Ovinre_Amt) ¿¬Ã¼ÀÌÀÚ¼ö³³±Ý¾×      */
-                    v_Ramg_Id,          /*(v_Ramg_Id   ) Ã¤±Ç°ü¸®ÀÚ            */
-                    CUR.ORD_CNT,        /*(v_Ord_Cnt   ) °è¾à°Ç¼ö              */
-                    CUR.FST_DEL_YM,     /*(v_Fst_Del_Ym) ¿¬Ã¼½ÃÀÛ³â¿ù          */
-                    v_Reg_Id,           /*(v_Reg_Id    ) µî·ÏÀÚ ID             */
+                    'I',                /*(v_Comm_Dvsn ) ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+                    CUR.RAMG_YM,        /*(v_Ramg_Ym   ) ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+                    CUR.CUST_NO,        /*(v_Cust_No   ) ê³ ê°ë²ˆí˜¸              */
+                    CUR.RAMG_STAT,      /*(v_Ramg_Stat ) ì±„ê¶Œê³„ì •ë“±ê¸‰          */
+                    CUR.RAMG_AMT,       /*(v_Ramg_Amt  ) ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+                    CUR.ARRE_AMT,       /*(v_Arre_Amt  ) ì—°ì²´ê¸ˆì•¡              */
+                    CUR.RMON_AMT,       /*(v_Rmon_Amt  ) ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+                    0,                  /*(v_Ramgre_Amt) ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+                    0,                  /*(v_Arrere_Amt) ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+                    0,                  /*(v_Rmonre_Amt) ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+                    CUR.OVIN_AMT,       /*(v_Ovin_Amt  ) ì—°ì²´ì´ìžê¸ˆì•¡          */
+                    0,                  /*(v_Ovinre_Amt) ì—°ì²´ì´ìžìˆ˜ë‚©ê¸ˆì•¡      */
+                    v_Ramg_Id,          /*(v_Ramg_Id   ) ì±„ê¶Œê´€ë¦¬ìž            */
+                    CUR.ORD_CNT,        /*(v_Ord_Cnt   ) ê³„ì•½ê±´ìˆ˜              */
+                    CUR.FST_DEL_YM,     /*(v_Fst_Del_Ym) ì—°ì²´ì‹œìž‘ë…„ì›”          */
+                    v_Reg_Id,           /*(v_Reg_Id    ) ë“±ë¡ìž ID             */
                     v_Success_Code,
                     v_Return_Message,
                     v_ErrorText
                     );
                     
         IF 0 != v_Success_Code THEN
-            v_Return_Message := 'Ã¤±Ç °ü¸® ³»¿ª(RTRE0110) »ý¼º ½ÇÆÐ!!!'||'-'||v_Return_Message;
+            v_Return_Message := 'ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­(RTRE0110) ìƒì„± ì‹¤íŒ¨!!!'||'-'||v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;        
         END IF;
@@ -633,7 +633,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     
     
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -648,17 +648,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.p_InsertRtre0110Aggregate(2)', v_ErrorText, v_Return_Message);
 
   END p_InsertRtre0110Aggregate;
   
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Count
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0110AfterCount(
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE           /*Ã¤±Ç°ü¸®³â¿ù        */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE           /*ì±„ê¶Œê´€ë¦¬ë…„ì›”        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -678,10 +678,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Count
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0110EqualCount(
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE           /*Ã¤±Ç°ü¸®³â¿ù        */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE           /*ì±„ê¶Œê´€ë¦¬ë…„ì›”        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -701,11 +701,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ³»¿ª Delete
+  -- ì±„ê¶Œ ê´€ë¦¬ ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0110Equal (
-    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0110.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Reg_Id         IN RTRE0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -713,8 +713,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
     DELETE RTRE0110
     WHERE  RAMG_YM = v_Ramg_Ym;
     
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110Equal', 'Ã¤±Ç°ü¸®³â¿ù', v_Ramg_Ym);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110Equal', 'µî·ÏÀÚ ID', v_Reg_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110Equal', 'ì±„ê¶Œê´€ë¦¬ë…„ì›”', v_Ramg_Ym);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0110.f_DeleteRtre0110Equal', 'ë“±ë¡ìž ID', v_Reg_Id);
 
     RETURN SQLCODE;
 
@@ -727,4 +727,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0110 AS
   
   
 END Pkg_Rtre0110;
-/

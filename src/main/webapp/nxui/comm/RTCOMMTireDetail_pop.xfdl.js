@@ -13,7 +13,8 @@
             if (Form == this.constructor) {
                 this.set_name("RTCOMMTireDetail_pop");
                 this.set_classname("RTCMAgency_pop");
-                this.set_titletext("대리점조회");
+                this.set_titletext("타이어제외상품");
+                this.set_scrollbars("none");
                 this._setFormPosition(0,0,800,430);
             }
 
@@ -21,13 +22,26 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_agencyPop", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"petternCd\" type=\"STRING\" size=\"256\"/><Column id=\"standard\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"periodNm\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"rentAmt\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"petternCd\" type=\"STRING\" size=\"256\"/><Column id=\"standard\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_agencyPop00", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("true");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"petternCd\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"saleCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -65,6 +79,21 @@
             obj.set_taborder("24");
             obj.set_enable("false");
             this.div_search.addChild(obj.name, obj);
+            obj = new Edit("edt_searchKeyword00", "absolute", "301", "10", "67", "20", null, null, this.div_search);
+            obj.set_taborder("25");
+            obj.set_enable("false");
+            obj.set_visible("false");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Edit("edt_searchKeyword01", "absolute", "341", "10", "55", "20", null, null, this.div_search);
+            obj.set_taborder("26");
+            obj.set_enable("false");
+            obj.set_visible("false");
+            this.div_search.addChild(obj.name, obj);
+            obj = new Edit("edt_searchKeyword02", "absolute", "373", "10", "43", "20", null, null, this.div_search);
+            obj.set_taborder("27");
+            obj.set_enable("false");
+            obj.set_visible("false");
+            this.div_search.addChild(obj.name, obj);
 
             obj = new Div("div_grid_bottom", "absolute", "0.78%", null, null, "20", "-10", "21", this);
             obj.set_taborder("3");
@@ -79,25 +108,76 @@
             obj.style.set_color("#444444ff");
             this.div_grid_bottom.addChild(obj.name, obj);
 
-            obj = new Grid("grd_Group", "absolute", "10", "65", null, "326", "10", null, this);
+            obj = new Grid("grd_Group", "absolute", "15", "75", null, "326", "440", null, this);
             obj.set_taborder("4");
             obj.set_binddataset("ds_agencyPop");
             obj.set_autofittype("col");
             obj.set_autosizebandtype("head");
             obj.set_cellclickbound("cell");
             obj.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"48\"/><Column size=\"56\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"76\"/><Column size=\"68\"/><Column size=\"58\"/><Column size=\"65\"/><Column size=\"66\"/><Column size=\"0\"/><Column size=\"97\"/><Column size=\"40\"/><Column size=\"40\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"패턴코드\"/><Cell col=\"1\" text=\"규격\"/><Cell col=\"2\" text=\"비밀번호\"/><Cell col=\"3\" displaytype=\"normal\" text=\"대리점아이디\"/><Cell col=\"4\" text=\"상품코드\"/><Cell col=\"5\" text=\"상품명\"/><Cell col=\"6\" text=\"가격적용 시작일\" autosizerow=\"default\" autosizecol=\"default\"/><Cell col=\"7\" text=\"가격적용 완료일\"/><Cell col=\"8\" text=\"랜탈 기간\"/><Cell col=\"9\" text=\"사용자 그룹\"/><Cell col=\"10\" text=\"계절구분\"/><Cell col=\"11\" text=\"본수\"/><Cell col=\"12\" text=\"월렌탈료\"/></Band><Band id=\"body\"><Cell text=\"bind:petternCd\"/><Cell col=\"1\" text=\"bind:standard\"/><Cell col=\"2\" displaytype=\"none\" text=\"bind:password\"/><Cell col=\"3\" text=\"bind:agentId\"/><Cell col=\"4\" text=\"bind:matCd\"/><Cell col=\"5\" text=\"bind:matNm\"/><Cell col=\"6\" expr=\"bind:strDay\"/><Cell col=\"7\" text=\"bind:endDay\"/><Cell col=\"8\" text=\"bind:periodNm\"/><Cell col=\"9\" text=\"bind:userGrp\"/><Cell col=\"10\" text=\"bind:seasonNm\"/><Cell col=\"11\" text=\"bind:cntCd\"/><Cell col=\"12\" text=\"bind:rentAmt\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"160\"/><Column size=\"0\"/><Column size=\"160\"/><Column size=\"0\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"패턴코드\"/><Cell col=\"1\" text=\"규격\"/><Cell col=\"2\" text=\"상품코드\"/><Cell col=\"3\" text=\"상품명\"/></Band><Band id=\"body\"><Cell text=\"bind:petternCd\"/><Cell col=\"1\" text=\"bind:standard\"/><Cell col=\"2\" text=\"bind:matCd\"/><Cell col=\"3\" text=\"bind:matNm\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_close", "absolute", null, "397", "41", "21", "10", null, this);
+            obj = new Button("btn_close", "absolute", null, "405", "41", "21", "10", null, this);
             obj.set_taborder("6");
             obj.set_text("닫기");
             obj.getSetter("domainId").set("nexa.add");
             this.addChild(obj.name, obj);
 
+            obj = new Static("Static11", "absolute", "15", "57", "126", "20", null, null, this);
+            obj.set_taborder("7");
+            obj.set_cssclass("sta_WF_subTitle");
+            obj.set_text("상품(제품)정보");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button02", "absolute", null, "192", "24", "22", "403", null, this);
+            obj.set_taborder("8");
+            obj.set_cssclass("btn_WF_suttleR");
+            obj.style.set_font("11 Verdana");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button03", "absolute", null, "222", "22", "22", "404", null, this);
+            obj.set_taborder("9");
+            obj.set_cssclass("btn_WF_suttleL");
+            obj.style.set_font("11 Verdana");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grd_Group00", "absolute", "416", "74", null, "326", "47", null, this);
+            obj.set_taborder("10");
+            obj.set_binddataset("ds_agencyPop00");
+            obj.set_autofittype("col");
+            obj.set_autosizebandtype("head");
+            obj.set_cellclickbound("cell");
+            obj.getSetter("domainId").set("nexa.id;nexa.name;nexa.dspt;nexa.password;nexa.phone;nexa.createdate;nexa.createuser;nexa.updatedate;nexa.updateuser");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"160\"/><Column size=\"160\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"패턴코드\"/><Cell col=\"1\" text=\"상품코드\"/></Band><Band id=\"body\"><Cell text=\"bind:petternCd\"/><Cell col=\"1\" text=\"bind:matCd\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_choice", "absolute", null, "405", "41", "21", "54", null, this);
+            obj.set_taborder("11");
+            obj.set_text("확인");
+            obj.getSetter("domainId").set("nexa.add");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00", "absolute", "415", "57", "126", "20", null, null, this);
+            obj.set_taborder("12");
+            obj.set_text("제외 상품");
+            obj.set_cssclass("sta_WF_subTitle");
+            this.addChild(obj.name, obj);
+
 
             
             // Layout Functions
+            //-- Default Layout
+            obj = new Layout("default", "", 0, 23, this.div_grid_top,
+            	//-- Layout function
+            	function(p) {
+            		p.set_taborder("1");
+            		p.set_scrollbars("none");
+
+            	}
+            );
+            this.div_grid_top.addLayout(obj.name, obj);
+
             //-- Default Layout
             obj = new Layout("default", "", 0, 45, this.div_search,
             	//-- Layout function
@@ -127,7 +207,8 @@
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMAgency_pop");
-            		p.set_titletext("대리점조회");
+            		p.set_titletext("타이어제외상품");
+            		p.set_scrollbars("none");
 
             	}
             );
@@ -166,9 +247,17 @@
         	if(this.parent.p_formId == "RTSDSaleItemRegister"){
         	
         		if(nvl(this.parent.p_Cd) != ""){
+        	
         			this.div_search.edt_searchKeyword.set_value(this.parent.p_Cd);
+        			this.div_search.edt_searchKeyword00.set_value(this.parent.p_saleCd);
+        			this.div_search.edt_searchKeyword01.set_value(this.parent.p_strDay);
+        			this.div_search.edt_searchKeyword02.set_value(this.parent.p_endDay);
         			this.FN_search();
-        		}
+        			this.FN_search2();
+        		}		
+        	}
+        	else{
+        	this.div_search.edt_searchKeyword.set_value(this.parent.p_Cd);
         	}
         		
         	// 모화면에서 온라인장착 가능여부 파라미터를 받았는지 확인하여 전역변수로 세팅
@@ -202,65 +291,16 @@
         			this.div_search.ed_searchAgency.setFocus();
         		}
         	}
-        }
+        	
+         	if (strSvcId =="saveTireDetail"){
 
-        /**
-         * 조회조건>지사(돋보기) 버튼의 클릭 이벤트 처리
-         */
-        // this.div_search_bt_searchSalesGroup_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
-        // 	var ownerFrame = this.getOwnerFrame();
-        // 	var popup = new ChildFrame();
-        // 	popup.init("RTCOMMVkgrp_pop", "absolute", 0, 0, 400,460, null, null, "comm::RTCOMMVkgrp_pop.xfdl");
-        // 	popup.set_openalign("center middle");		
-        // 	popup.set_showtitlebar(true);
-        // 	popup.set_resizable(false);
-        // 	popup.showModal(ownerFrame, {}, this, this.FN_CallBack_RTCMVkgrp_pop);
-        // }
-        // 
-        // /**
-        //  * 조회조건>지점(돋보기) 버튼의 클릭 이벤트 처리
-        //  */
-        // this.div_search_bt_searchSalesOffice_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
-        // 	var ownerFrame = this.getOwnerFrame();
-        // 	var popup = new ChildFrame();
-        // 	popup.init("RTCOMMVkbur_pop", "absolute", 0, 0, 400,460, null, null, "comm::RTCOMMVkbur_pop.xfdl");
-        // 	popup.set_openalign("center middle");		
-        // 	popup.set_showtitlebar(true);
-        // 	popup.set_resizable(false);
-        // 	popup.showModal(ownerFrame, {}, this, this.FN_CallBack_RTCMVkgrp_pop);
-        // }
-        // 
-        // /**
-        //  * 지사, 지점선택 팝업
-        //  */
-        // this.FN_CallBack_RTCMVkgrp_pop = function(strId, res){
-        // 	res = showmodalRetVal;
-        // 	if( strId == "RTCOMMVkgrp_pop" ){
-        // 		this.div_search.ed_searchSalesGroupNm.set_value(res.nm);
-        // 		this.div_search.ed_searchSalesGroup.set_value(res.cd);
-        // 	}
-        // 	if( strId == "RTCOMMVkbur_pop" ){
-        // 		this.div_search.ed_searchSalesOfficeNm.set_value(res.nm);
-        // 		this.div_search.ed_searchSalesOffice.set_value(res.cd);
-        // 	}
-        // }
-        // 
-        // /**
-        //  * 대리점 조회조건의 키입력 이벤트 처리
-        //  * - 엔터키 입력 시 조회
-        //  */
-        // this.div_search_edt_searchKeyword_onkeyup = function(obj:Edit, e:nexacro.KeyEventInfo){
-        // 	if( e.keycode == "13" ){
-        // 		this.FN_search();
-        // 	}
-        // }
-        // 
-        // /**
-        //  * 엑셀 버튼의 클릭 이벤트 처리
-        //  */
-        // this.div_search_btn_excel_onclick = function(obj:Button,  e:nexacro.ClickEventInfo){
-        // 	Ex.core.exportExcel(this, this.grid_agency, "대리점정보");
-        // }
+          	}
+        	if( strSvcId == "listTireDetailInfo2" ){
+        	}
+        	if (strSvcId =="saveTireDetail2"){
+        	}
+
+        }
 
         /**
          * 조회 버튼의 클릭 이벤트 처리
@@ -275,7 +315,7 @@
         this.FN_search = function(){
         	var petternCd		= this.div_search.edt_searchKeyword.value;
         	var sSvcID        	= "listTireDetailInfo";                    
-        	var sController   	= "/listTireDetailInfo.do";
+        	var sController   	= "/rtms/sd/listTireDetailInfo.do";
         	var sInDatasets   	= "";
         	var sOutDatasets  	= "ds_agencyPop=listTireDetailGrp";
         	var sArgs 			= "";	
@@ -284,6 +324,8 @@
         	this.ds_agencyPop.deleteAll();
         	sArgs += Ex.util.setParam("nodeNm", 	"listTireDetailGrp");	//리턴받을 DstaSet이름
         	sArgs += Ex.util.setParam("petternCd", 	this.div_search.edt_searchKeyword.value);			//코드
+        	sArgs += Ex.util.setParam("saleCd", 	this.div_search.edt_searchKeyword00.value);			//Sale코드
+
         	
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
@@ -307,6 +349,118 @@
         this.setRetVal = function(res ){
         	showmodalRetVal = res;
         }
+        this.Button00_onclick = function(obj,e)		//>버튼
+        {
+        	var cnt = this.ds_agencyPop.rowcount;	
+        	var rNow = this.grd_Group.currentrow;
+        	var checkCnt = 0;
+        	for(var i=cnt;i>0;i--){	
+        	checkCnt++
+        	}
+        	    if(checkCnt == 0) {
+        		alert("조회하실 제품을 선택해주세요.");
+        		return;
+           }  
+        	var petternCd = this.ds_agencyPop.getColumn(rNow,"petternCd");
+        	/*var standard = this.ds_agencyPop.getColumn(rNow,"standard");*/
+        	var matCd = this.ds_agencyPop.getColumn(rNow,"matCd");
+        	/*var matNm = this.ds_agencyPop.getColumn(rNow,"matNm");*/
+        	var regDt = this.ds_agencyPop.getColumn(rNow,"regDt");
+
+        	var idx = this.ds_agencyPop00.addRow();
+        	this.ds_agencyPop00.setColumn(idx,"petternCd",petternCd);
+        	/*this.ds_agencyPop00.setColumn(idx,"standard",standard);*/
+        	this.ds_agencyPop00.setColumn(idx,"matCd",matCd);
+         	/*this.ds_agencyPop00.setColumn(idx,"matNm",matNm);*/
+         	this.ds_agencyPop00.setColumn(idx,"regDt",regDt);
+         		
+        	this.ds_agencyPop.deleteRow(rNow);
+        	
+          	
+        	
+        }
+
+        this.Button01_onclick = function(obj,e)		//<버튼
+        {
+        	var cnt = this.ds_agencyPop00.rowcount;	
+        	var rNow = this.grd_Group00.currentrow;
+        	
+        	var checkCnt = 0;
+        	for(var i=cnt;i>0;i--){	
+        	checkCnt++
+        	}
+        	if(checkCnt == 0) {
+        		alert("제외하실 제품을 선택해주세요.");
+        		return;
+           }
+                	
+        	var petternCd = this.ds_agencyPop00.getColumn(rNow,"petternCd");
+        	/*var standard = this.ds_agencyPop00.getColumn(rNow,"standard");	*/
+        	var matCd = this.ds_agencyPop00.getColumn(rNow,"matCd");
+        	/*var matNm = this.ds_agencyPop00.getColumn(rNow,"matNm");*/
+        	var regDt = this.ds_agencyPop00.getColumn(rNow,"regDt");
+        	
+        	var idx = this.ds_agencyPop.addRow();
+        		
+        	this.ds_agencyPop.setColumn(idx,"petternCd",petternCd);
+        	/*this.ds_agencyPop.setColumn(idx,"standard",standard);*/
+        	this.ds_agencyPop.setColumn(idx,"matCd",matCd);
+        	/*this.ds_agencyPop.setColumn(idx,"matNm",matNm);*/
+        	this.ds_agencyPop.setColumn(idx,"regDt",regDt);
+        	
+        	this.ds_agencyPop00.deleteRow(rNow);
+        	
+        	
+        }
+
+        this.btn_choice_onclick = function(obj,e)
+        {
+        	
+        	this.ds_agencyPop00.set_updatecontrol(false);
+        	for( var i = 0 ; i < this.ds_agencyPop00.getRowCount() ; i++){
+        		this.ds_agencyPop00.setRowType(i, Dataset.ROWTYPE_INSERT);
+        	}
+        	this.ds_agencyPop00.set_updatecontrol(true);
+        	
+        	
+        	
+        	if( confirm( "저장하시겠습니까?") ){
+
+        	for(var i=0;i<this.ds_agencyPop00.getRowCount();i++){
+        	this.ds_agencyPop00.setColumn(i,"saleCd",nvl(this.div_search.edt_searchKeyword00.value));
+        	}
+        	console.log(this.ds_agencyPop00.saveXML());
+        	var sSvcID        	= "saveTireDetail";
+         	var sController   	= "/ntrms/sd/saveTireDetail.do";
+         	var sInDatasets   	= "dssaveTireDetail=ds_agencyPop00:A";
+         	var sOutDatasets  	= "";
+         	var sArgs 			= "";
+         	var fn_callBack		= "fn_callBack";
+
+         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+         	
+        	}
+        }
+
+        
+        this.FN_search2 = function(){
+        	var petternCd		= this.div_search.edt_searchKeyword.value;
+        	var sSvcID        	= "listTireDetailInfo2";                    
+        	var sController   	= "/rtms/sd/listTireDetailInfo2.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "ds_agencyPop00=listTireDetailGrp2";
+        	var sArgs 			= "";	
+        	var fn_callBack		= "fn_callBack";
+        	
+        	this.ds_agencyPop.deleteAll();
+        	sArgs += Ex.util.setParam("nodeNm", 	"listTireDetailGrp2");	//리턴받을 DstaSet이름
+        	sArgs += Ex.util.setParam("saleCd", 	this.div_search.edt_searchKeyword00.value);			//Sale코드
+        	sArgs += Ex.util.setParam("petternCd", 	this.div_search.edt_searchKeyword.value);			//코드
+        	
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+
+        
         });
 
 
@@ -319,8 +473,16 @@
             this.div_search.btn_search.addEventHandler("onclick", this.div_search.btn_search_onclick, this);
             this.div_search.edt_searchKeyword.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_search.edt_searchKeyword.addEventHandler("oneditclick", this.div_search_edt_searchKeyword_oneditclick, this);
-            this.grd_Group.addEventHandler("oncelldblclick", this.selectUserInfo, this);
+            this.div_search.edt_searchKeyword00.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
+            this.div_search.edt_searchKeyword00.addEventHandler("oneditclick", this.div_search_edt_searchKeyword_oneditclick, this);
+            this.div_search.edt_searchKeyword01.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
+            this.div_search.edt_searchKeyword01.addEventHandler("oneditclick", this.div_search_edt_searchKeyword_oneditclick, this);
+            this.div_search.edt_searchKeyword02.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
+            this.div_search.edt_searchKeyword02.addEventHandler("oneditclick", this.div_search_edt_searchKeyword_oneditclick, this);
             this.btn_close.addEventHandler("onclick", this.btn_close_onclick, this);
+            this.Button02.addEventHandler("onclick", this.Button00_onclick, this);
+            this.Button03.addEventHandler("onclick", this.Button01_onclick, this);
+            this.btn_choice.addEventHandler("onclick", this.btn_choice_onclick, this);
 
         };
 

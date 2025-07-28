@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0202 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0202
-   PURPOSE   °³ÀÎ½Å¿ëÁ¶È¸°á°ú °ü¸®
+   PURPOSE   ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,89 +10,89 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0202 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Count
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0202Count(
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ÀÎÁõ¹øÈ£            */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,          /*»ý¼ºÀÏ              */
-    v_Seq            IN RTSD0202.SEQ%TYPE               /*»ý¼º¼ø¹ø            */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ì¸ì¦ë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,          /*ìƒì„±ì¼              */
+    v_Seq            IN RTSD0202.SEQ%TYPE               /*ìƒì„±ìˆœë²ˆ            */
     ) RETURN NUMBER;
     
  /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸´çÀÏ±âÁØ(SafeKey + »ý¼ºÀÏ)
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒë‹¹ì¼ê¸°ì¤€(SafeKey + ìƒì„±ì¼)
   *****************************************************************************/
   FUNCTION f_sRtsd0202TodayCount(
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ÀÎÁõ¹øÈ£            */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE          /*»ý¼ºÀÏ              */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ì¸ì¦ë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE          /*ìƒì„±ì¼              */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Select
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0202 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0202.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*½Å¿ëµî±Þ              */
-    v_Reg_Id         IN RTSD0202.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0202.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*ì‹ ìš©ë“±ê¸‰              */
+    v_Reg_Id         IN RTSD0202.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
     
     /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Select
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0202TodayExists (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE        /*»ý¼ºÀÏ                */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE        /*ìƒì„±ì¼                */
     );
 
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Insert
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0202 (
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0202.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*½Å¿ëµî±Þ              */
-    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0202.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*ì‹ ìš©ë“±ê¸‰              */
+    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Update
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0202 (
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0202.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*½Å¿ëµî±Þ              */
-    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0202.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*ì‹ ìš©ë“±ê¸‰              */
+    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú Delete
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0202 (
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN RTSD0202.SEQ%TYPE,            /*»ý¼º¼ø¹ø              */
-    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN RTSD0202.SEQ%TYPE,            /*ìƒì„±ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú °ü¸®(IUD)
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0202 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*»ý¼ºÀÏ                */
-    v_Seq            IN OUT RTSD0202.SEQ%TYPE,        /*»ý¼º¼ø¹ø              */
-    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*½Å¿ëµî±Þ              */
-    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE,        /*ìƒì„±ì¼                */
+    v_Seq            IN OUT RTSD0202.SEQ%TYPE,        /*ìƒì„±ìˆœë²ˆ              */
+    v_Cr_Grade       IN RTSD0202.CR_GRADE%TYPE,       /*ì‹ ìš©ë“±ê¸‰              */
+    v_Reg_Id         IN RTSD0202.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -100,13 +100,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0202 AS
 
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸°á°ú - ¼ø¹ø Ãé¹ø È¹µæ
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒê²°ê³¼ - ìˆœë²ˆ ì·Œë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0202Seq(
-    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ÀÎÁõ¹øÈ£            */
-    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE           /*»ý¼ºÀÏ              */
+    v_Safekey        IN RTSD0202.SAFEKEY%TYPE,          /*ì¸ì¦ë²ˆí˜¸            */
+    v_Cre_Day        IN RTSD0202.CRE_DAY%TYPE           /*ìƒì„±ì¼              */
     ) RETURN NUMBER;
     
     
 END Pkg_Rtsd0202;
-/

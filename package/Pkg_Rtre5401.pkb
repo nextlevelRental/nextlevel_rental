@@ -2412,6 +2412,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-28  ITSM            [] 신규작성
+    2.0		2025-04-01  10244015		SAP Company Code 변경
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Statement (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -2437,7 +2438,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     cur_item        p_CUR_Type;
     
     -- 상수 선언
-    CS_BUKRS        RTRE5401.BUKRS%TYPE := 'NT10';  --SAP Company Code
+    CS_BUKRS        RTRE5401.BUKRS%TYPE := 'KR10';  --SAP Company Code
     CS_WAERS        RTRE5401.WAERS%TYPE := 'KRW';   --SAP Currency Key
     
     -- 변수 선언  
@@ -2770,6 +2771,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-28  ITSM            [] 신규작성
+    2.0		2025-04-01  10244015		SAP Tax Code(RECP_TYPE) 변경
+    2.0		2025-04-01  10244015		SAP GL Account(HKONT) Code 변경
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc01 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -2813,32 +2816,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                          ,  B2.RECP_PAY     
                          ,  CASE WHEN  A2.CUST_TP = '01' THEN
                                 CASE WHEN C2.CASH_AMT IS NOT NULL THEN
-                                    'A7' --현금영수증
+                                    'B2' --현금영수증
                                 WHEN B2.RECP_AMT IS NULL OR B2.RECP_AMT = 0 THEN
-                                    'A8' --기타미발행
+                                    'B3' --기타미발행
                                 ELSE
                                     CASE WHEN B2.RECP_PAY IN ('P1','C2','P7') THEN
-                                        'A6' --신용카드
+                                        'B1' --신용카드
                                     WHEN B2.RECP_PAY IN ('P6','P4','P5','C1','P2') THEN
-                                        'A7' --현금영수증
+                                        'B2' --현금영수증
                                     ELSE
-                                        'A8' --기타미발행
+                                        'B3' --기타미발행
                                     END
                                 END
                             ELSE
                                 CASE WHEN B2.RECP_AMT IS NULL OR B2.RECP_AMT = 0 THEN
                                     CASE WHEN A2.PAY_MTHD = 'C' THEN
-                                        'A8' --기타미발행
+                                        'B3' --기타미발행
                                     WHEN A2.PAY_MTHD = 'A' THEN
-                                        'A4' --세금계산서
+                                        'A6' --세금계산서
                                     ELSE
                                         'ETC' --미정의
                                     END
                                 ELSE
                                     CASE WHEN B2.RECP_PAY IN ('P1','C2','P7') THEN
-                                        'A6' --신용카드
+                                        'B1' --신용카드
                                     WHEN B2.RECP_PAY IN ('P6','P4','P5','C1','P2') THEN
-                                        'A4' --세금계산서
+                                        'A6' --세금계산서
                                     ELSE
                                         'ETC' --미정의
                                     END
@@ -2869,7 +2872,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
          */
          
         -- Tax Code 에 의거 전표코드 결정
-        SELECT  DECODE(cur01.RECP_TYPE, 'A4', '0101', 'A6', '0103', 'A7', '0105', 'A8', '0107', 'ETC')
+        SELECT  DECODE(cur01.RECP_TYPE, 'A6', '0101', 'B1', '0103', 'B2', '0105', 'B3', '0107', 'ETC')
           INTO  ls_Stmt_Cd
           FROM  dual;
           
@@ -2885,7 +2888,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
              ,  HKONT
              ,  MWSKZ
              ,  KOSTL
-             ,  CASE WHEN HKONT = '21070010' THEN 
+             ,  CASE WHEN HKONT = '21506010' THEN 
                     cur01.SALE_VAMT --부가세액
                 WHEN HKONT      = '93010070' THEN
                     cur01.SALE_NAMT --공급가액
@@ -2921,7 +2924,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
          */   
          
         -- Tax Code 에 의거 전표코드 결정
-        SELECT  DECODE(cur01.RECP_TYPE, 'A4', '0102', 'A6', '0104', 'A7', '0106', 'A8', '0108', 'ETC')
+        SELECT  DECODE(cur01.RECP_TYPE, 'A6', '0102', 'B1', '0104', 'B2', '0106', 'B3', '0108', 'ETC')
           INTO  ls_Stmt_Cd
           FROM  dual;
         
@@ -2988,6 +2991,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-29  ITSM            [] 신규작성
+    1.1		2024-12-03  10244015		등록비 NULL값인 경우 0원으로 마감전표 생성처리
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc02 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -3023,12 +3027,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     END IF;
     
     -- 전표금액 계산
-    SELECT  SUM(CM_AMT) 
+    SELECT  NVL(SUM(CM_AMT), 0) --SUM(CM_AMT)
       INTO  ln_Cm_Amt
       FROM  RTRE5205
      WHERE  ZMONTH = v_Zmonth
     ;
-    
+   
     -- 전표상세정보  
     OPEN  Ref_Cursor FOR
     SELECT  ITM_SEQ
@@ -3090,6 +3094,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-29  ITSM            [] 신규작성
+    2.0		2025-04-01  10244015		SAP Tax Code(RECP_TYPE) 변경
+    2.0		2025-04-01  10244015		SAP GL Account(HKONT) Code 변경
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc03 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -3133,35 +3139,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                          ,  A2.RECP_TP
                          ,  CASE WHEN  A2.CUST_TP = '01' THEN
                                  CASE WHEN A2.CASH_AMT IS NOT NULL THEN
-                                    'A7' --현금영수증
+                                    'B2' --현금영수증
                                 WHEN A2.RECP_AMT IS NULL OR A2.RECP_AMT = 0 THEN
-                                    'A8' --기타미발행
+                                    'B3' --기타미발행
                                 ELSE
                                     CASE WHEN A2.RECP_PAY IN ('P1','C2','P7') THEN
-                                        'A6' --신용카드
+                                        'B1' --신용카드
                                     WHEN A2.RECP_PAY IN ('P6','P4','P5','C1','P2') THEN
-                                        'A7' --현금영수증
+                                        'B2' --현금영수증
                                     ELSE
-                                        'A8' --기타미발행
+                                        'B3' --기타미발행
                                     END
                                 END
                             ELSE
                                 CASE WHEN A2.SHUTDN_YN = 'Y' THEN
-                                    'A8' --기타미발행
+                                    'B3' --기타미발행
                                 ELSE
                                     CASE WHEN A2.RECP_AMT IS NULL OR A2.RECP_AMT = 0 THEN
                                         CASE WHEN A2.PAY_MTHD = 'C' THEN
-                                            'A8' --기타미발행
+                                            'B3' --기타미발행
                                         WHEN A2.PAY_MTHD = 'A' THEN
-                                            'A4' --세금계산서
+                                            'A6' --세금계산서
                                         ELSE
                                             'ETC' --미정의
                                         END
                                     ELSE
                                         CASE WHEN A2.RECP_PAY IN ('P1','C2','P7') THEN
-                                            'A6' --신용카드
+                                            'B1' --신용카드
                                         WHEN A2.RECP_PAY IN ('P6','P4','P5','C1','P2') THEN
-                                            'A4' --세금계산서
+                                            'A6' --세금계산서
                                         ELSE
                                             'ETC' --미정의
                                         END
@@ -3225,7 +3231,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     ) LOOP 
          
         -- Tax Code 에 의거 전표코드 결정
-        SELECT  DECODE(cur01.RECP_TYPE, 'A4', '0301', 'A6', '0302', 'A7', '0303', 'A8', '0304', 'ETC')
+        SELECT  DECODE(cur01.RECP_TYPE, 'A6', '0301', 'B1', '0302', 'B2', '0303', 'B3', '0304', 'ETC')
           INTO  ls_Stmt_Cd
           FROM  dual;
           
@@ -3242,9 +3248,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
              ,  MWSKZ
              ,  KOSTL
 --             ,  cur01.SALE_AMT --총매출액
-             ,  CASE WHEN HKONT = '21070010' THEN 
+             ,  CASE WHEN HKONT = '21506010' THEN 
                     cur01.SALE_VAMT --부가세액
-                WHEN HKONT      = '41040050' THEN
+                WHEN HKONT      = '41601020' THEN
                     cur01.SALE_NAMT --공급가액
                 ELSE    
                     cur01.SALE_AMT --총매출액
@@ -3464,6 +3470,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-29  ITSM            [] 신규작성
+    2.0		2025-04-01  10244015		SAP Cost Center(KOSTL) 변경
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc05 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -3521,7 +3528,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                   FROM  RTRE5211
                  WHERE  ZMONTH = v_Zmonth
                  UNION
-                SELECT  DECODE(CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
+                SELECT  DECODE(CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
                      ,  SUM(ROUND(SLCM_AMT/1.1)) AS AMT
                   FROM  RTRE5211
                  WHERE  ZMONTH = v_Zmonth
@@ -3573,7 +3580,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                    AND  POSTP_TP IN ('04','05','06','07')
                  UNION
                 SELECT  CHAN_CD
-                     ,  DECODE(CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
+                     ,  DECODE(CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
                      ,  SUM(CM_AMT) AS AMT
                   FROM  RTRE5210
                  WHERE  1=1
@@ -3610,7 +3617,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     --채널별 당월충당금 집계 
     INSERT  INTO RTRE5301
     SELECT  A1.ZMONTH
-         ,  DECODE(A1.CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
+         ,  DECODE(A1.CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
          ,  A1.CHAN_CD
          ,  SUM(ROUND(A1.APFDS_AMT / B1.PERIOD_CD)) AS SUM_AMT
          ,  'wjim'
@@ -3623,7 +3630,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
        AND  A1.ORD_NO = B1.ORD_NO
      GROUP  BY A1.ZMONTH, A1.CHAN_CD
     HAVING  SUM(ROUND(A1.APFDS_AMT / B1.PERIOD_CD)) <> 0
-     ORDER  BY DECODE(A1.CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC')
+     ORDER  BY DECODE(A1.CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC')
     ;
     -- 전표상세정보  
     OPEN  Ref_Cursor FOR
@@ -3703,7 +3710,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                   FROM  RTRE5212 A1
                  WHERE  A1.ZMONTH = v_Zmonth
                  UNION
-                SELECT  DECODE(A1.CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
+                SELECT  DECODE(A1.CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
                      ,  SUM(ROUND(A1.PROCC_AMT/1.1)) AS AMT
                   FROM  RTRE5212 A1
                  WHERE  A1.ZMONTH = v_Zmonth
@@ -3755,7 +3762,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
                    AND  POSTP_TP IN ('08')
                  UNION
                 SELECT  CHAN_CD
-                     ,  DECODE(CHAN_CD, '01', 'K550102', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
+                     ,  DECODE(CHAN_CD, '01', 'K550101', '02', 'K550104', '03', 'K550107', '04', 'K550105', '05', 'K550103', 'ETC') AS CC
                      ,  SUM(CM_AMT) AS AMT
                   FROM  RTRE5210
                  WHERE  1=1
@@ -4058,6 +4065,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2020-07-30  ITSM            [] 신규작성
+    2.0		2025-04-01  10244015		SAP GL Account(HKONT) Code 변경
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc10 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
@@ -4113,9 +4121,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
          ,  MWSKZ
          ,  KOSTL
 --             ,  cur01.SALE_AMT --총매출액
-         ,  CASE WHEN HKONT = '11110010' THEN 
+         ,  CASE WHEN HKONT = '11602010' THEN 
                 ln_Vamt --부가세액
-            WHEN HKONT      = '55161002' THEN
+            WHEN HKONT      = '43601040' THEN
                 ln_Namt --공급가액
             ELSE    
                 ln_Tamt --총매출액
@@ -4464,4 +4472,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5401 AS
   END f_UpdateRtre5401;
   
 END PKG_RTRE5401;
-/

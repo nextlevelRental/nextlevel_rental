@@ -7,6 +7,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0302 AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2020-09-09  kstka            1. Created this package body.
+   1.1		  2024-11-22  10244015		   [20241122_01] 체크서비스 알림 문구 변경 SR2410-00808
+   1.2		  2024-11-22  10244015		   [20241122_02] 체크서비스 알림 문구 변경 SR2411-00744
 *******************************************************************************/
      
   /*****************************************************************************
@@ -39,6 +41,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0302 AS
   /*****************************************************************************
   -- 2개월마다 발송처리
   -- 2020.09.09 K.S.T. - 최초작성
+  
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.1		  2024-11-22  10244015		   [20241122_01] 체크서비스 알림 문구 변경
+   1.2		  2024-11-22  10244015		   [20241122_02] 체크서비스 알림 문구 변경
   *****************************************************************************/
   PROCEDURE p_Rtsd0302Aggregate (
     v_Success_Code   OUT NUMBER,
@@ -62,7 +70,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0302 AS
 --        AND ROWNUM = 1
 --        ; 
     
-        FOR CUR_TMP IN (SELECT * FROM RTSD0108 A, RTSD0013 B WHERE PROC_DAY = TO_CHAR(SYSDATE - 1, 'YYYYMMDD') AND A.ORD_NO = B.ORD_NO AND B.PRS_DCD = 'B00010') LOOP
+        FOR CUR_TMP IN (SELECT A.ORD_NO FROM RTSD0108 A, RTSD0013 B WHERE PROC_DAY = TO_CHAR(SYSDATE - 1, 'YYYYMMDD') AND A.ORD_NO = B.ORD_NO AND B.PRS_DCD = 'B00010') LOOP
         
             INSERT INTO RTSD0302
             SELECT  A.ORD_NO
@@ -126,11 +134,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0302 AS
             v_Sms_Msg := v_Sms_Msg || CUR.CUST_NM || ' 고객님의 NEXT LEVEL CHECK 서비스에 대한 안내드립니다.' || CHR(13) || CHR(10);
             v_Sms_Msg := v_Sms_Msg || CHR(13)||CHR(10);
             v_Sms_Msg := v_Sms_Msg || 'NEXT LEVEL CHECK 서비스란?' || CHR(13) || CHR(10);
-            v_Sms_Msg := v_Sms_Msg || '▶ 렌탈전문점에 방문하여 무상으로 타이어 또는 기타경정비를 점검 받을 수 있는 서비스 입니다.' || CHR(13) || CHR(10);
+            v_Sms_Msg := v_Sms_Msg || '▶ 렌탈전문점에 방문하여 무상으로 타이어를 점검 받을 수 있는 서비스입니다.' || CHR(13) || CHR(10);
+            v_Sms_Msg := v_Sms_Msg || '보증서비스에 가입하신 안심케어 고객은 해당 서비스를 받으셔야만 조기마모보증서비스를 받으실 수 있습니다.' || CHR(13) || CHR(10);
+            v_Sms_Msg := v_Sms_Msg || CHR(13)||CHR(10);
+            v_Sms_Msg := v_Sms_Msg || '서비스 받으신 후 매장에서 태블릿PC로 꼭 서명하시기 바랍니다.' || CHR(13) || CHR(10);
             v_Sms_Msg := v_Sms_Msg || CHR(13)||CHR(10);
             v_Sms_Msg := v_Sms_Msg || '※ NEXT LEVEL CHECK 서비스 방법 안내' || CHR(13) || CHR(10);
             v_Sms_Msg := v_Sms_Msg || '1) 아래 링크를 클릭하여 NEXT LEVEL CHECK 서비스 가능 렌탈전문점 찾기' || CHR(13) || CHR(10);
-            v_Sms_Msg := v_Sms_Msg || 'https://m.nexen-nextlevel.com/bbs/specialDealerList' || CHR(13) || CHR(10);
+            v_Sms_Msg := v_Sms_Msg || 'https://m.nexen-nextlevel.com/bbs/specialDealerSearchList' || CHR(13) || CHR(10);
             v_Sms_Msg := v_Sms_Msg || '2) 목록 → 시/도 선택 → 시/군/구 선택 → 전문점 찾기 클릭' || CHR(13) || CHR(10);
             v_Sms_Msg := v_Sms_Msg || '3) 가까운 매장 위치 확인 후, 방문하여 무상점검 받으면 끝!(상황에 따라 매장이 혼잡할 수 있으니 사전 연락 후 방문 부탁드립니다.)' || CHR(13) || CHR(10);
             
@@ -193,4 +204,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0302 AS
   END f_sRtsd0302PlanDay;  
   
 END Pkg_Rtsd0302;
-/

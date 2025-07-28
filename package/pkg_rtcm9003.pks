@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm9003 AS 
 /******************************************************************************* 
    NAME      Pkg_Rtcm9003 
-   PURPOSE   °Å·¡Å×½ºÆ® 
+   PURPOSE   ê±°ëž˜í…ŒìŠ¤íŠ¸ 
  
    REVISIONS 
    Ver        Date        Author           Description 
@@ -10,87 +10,86 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm9003 AS
 *******************************************************************************/ 
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) Count 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) Count 
   *****************************************************************************/ 
   FUNCTION f_sRtcm9003Count( 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,        /*´äº¯¹øÈ£            */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE        /*´äº¯¼ø¹ø            */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,        /*ë‹µë³€ë²ˆí˜¸            */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE        /*ë‹µë³€ìˆœë²ˆ            */ 
     ) RETURN NUMBER; 
  
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) Select 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtcm9003 ( 
     Ref_Cursor       IN OUT SYS_REFCURSOR, 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*´äº¯¼ø¹ø              */ 
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */ 
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*´äº¯³»¿ë              */ 
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*Á¡¼ö                  */ 
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE          /*µî·ÏÀÚ ID             */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*ë‹µë³€ìˆœë²ˆ              */ 
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */ 
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*ë‹µë³€ë‚´ìš©              */ 
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*ì ìˆ˜                  */ 
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE          /*ë“±ë¡ìž ID             */ 
     );  
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) Insert 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) Insert 
   *****************************************************************************/ 
   FUNCTION f_InsertRtcm9003 ( 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*´äº¯¼ø¹ø              */ 
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */ 
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*´äº¯³»¿ë              */ 
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*Á¡¼ö                  */ 
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*ë‹µë³€ìˆœë²ˆ              */ 
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */ 
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*ë‹µë³€ë‚´ìš©              */ 
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*ì ìˆ˜                  */ 
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText      OUT VARCHAR2 
     ) RETURN NUMBER; 
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) Update 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) Update 
   *****************************************************************************/ 
   FUNCTION f_UpdateRtcm9003 ( 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*´äº¯¼ø¹ø              */ 
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */ 
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*´äº¯³»¿ë              */ 
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*Á¡¼ö                  */ 
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*ë‹µë³€ìˆœë²ˆ              */ 
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */ 
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*ë‹µë³€ë‚´ìš©              */ 
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*ì ìˆ˜                  */ 
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText      OUT VARCHAR2 
     ) RETURN NUMBER; 
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) Delete 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) Delete 
   *****************************************************************************/ 
   FUNCTION f_DeleteRtcm9003 ( 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*´äº¯¼ø¹ø              */ 
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*ë‹µë³€ìˆœë²ˆ              */ 
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText      OUT VARCHAR2 
     ) RETURN NUMBER; 
  
  
   /***************************************************************************** 
-  -- Áú¹®°ü¸®(´äº¯¹øÈ£) °ü¸®(IUD) 
+  -- ì§ˆë¬¸ê´€ë¦¬(ë‹µë³€ë²ˆí˜¸) ê´€ë¦¬(IUD) 
   *****************************************************************************/ 
   PROCEDURE p_IUDRtcm9003 ( 
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */ 
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */ 
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*´äº¯¼ø¹ø              */ 
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */ 
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*´äº¯³»¿ë              */ 
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*Á¡¼ö                  */ 
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */ 
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */ 
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*ë‹µë³€ìˆœë²ˆ              */ 
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */ 
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*ë‹µë³€ë‚´ìš©              */ 
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*ì ìˆ˜                  */ 
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_Success_Code   OUT NUMBER, 
     v_Return_Message OUT VARCHAR2, 
     v_ErrorText      OUT VARCHAR2 
     ); 
  
   /***************************************************************************** 
-  -- Æò°¡¹Ý¿µÁ¡¼öÁ¶È¸ 
+  -- í‰ê°€ë°˜ì˜ì ìˆ˜ì¡°íšŒ 
   *****************************************************************************/ 
   FUNCTION f_sRtcm9003_JS( 
-    v_Answer_No        IN RTCS0113.ANSWER_NO%TYPE,      /*Áú¹®¹øÈ£            */ 
-    v_Answer_Seq       IN RTCS0113.ANSWER_SEQ%TYPE      /*Áú¹®¹øÈ£            */ 
+    v_Answer_No        IN RTCS0113.ANSWER_NO%TYPE,      /*ì§ˆë¬¸ë²ˆí˜¸            */ 
+    v_Answer_Seq       IN RTCS0113.ANSWER_SEQ%TYPE      /*ì§ˆë¬¸ë²ˆí˜¸            */ 
     ) RETURN NUMBER; 
  
 END Pkg_Rtcm9003;
-/

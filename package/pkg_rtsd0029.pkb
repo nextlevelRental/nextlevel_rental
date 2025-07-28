@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0029
-   PURPOSE:  µÓ∑œ∫Ò∞¸∏Æ
+   PURPOSE:  Îì±Î°ùÎπÑÍ¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,23 +10,23 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 *******************************************************************************/
  
   /*****************************************************************************
-  -- µÓ∑œ∫Ò∞¸∏Æ Select
+  -- Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0029 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ∆«∏≈ƒ⁄µÂ         */
+    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ÌåêÎß§ÏΩîÎìú         */
   ) IS
 
   BEGIN
   
     OPEN Ref_Cursor FOR
-    SELECT  A.SALE_CD,                          /* ∆«∏≈ƒ⁄µÂ   */
-            A.CNT_CD,                           /* ≈∏¿ÃæÓ∫ªºˆ */
-            NVL(A.AMT,0) AS AMT,                /* ±›æ◊       */
-            A.REG_DT,                           /* µÓ∑œ¿œ     */
-            A.REG_ID,                           /* µÓ∑œ¿⁄ ID  */
-            A.CHG_ID,                           /* ∫Ø∞Ê¿⁄ ID  */
-            A.CHG_DT                            /* ∫Ø∞Ê¿œ     */
+    SELECT  A.SALE_CD,                          /* ÌåêÎß§ÏΩîÎìú   */
+            A.CNT_CD,                           /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò */
+            NVL(A.AMT,0) AS AMT,                /* Í∏àÏï°       */
+            A.REG_DT,                           /* Îì±Î°ùÏùº     */
+            A.REG_ID,                           /* Îì±Î°ùÏûê ID  */
+            A.CHG_ID,                           /* Î≥ÄÍ≤ΩÏûê ID  */
+            A.CHG_DT                            /* Î≥ÄÍ≤ΩÏùº     */
     FROM    RTSD0029    A
     WHERE   A.SALE_CD   = DECODE(v_Sale_Cd, NULL, A.SALE_CD, v_Sale_Cd)
     ORDER BY A.SALE_CD, A.CNT_CD;
@@ -35,13 +35,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 
 
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Insert
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -75,13 +75,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 
 
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Update
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -104,13 +104,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 
 
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ Delete
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0029 (
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -129,12 +129,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
   END f_DeleteRtsd0029;
 
   /*****************************************************************************
-  -µÓ∑œ∫Ò∞¸∏Æ DB Copy
+  -Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ DB Copy
   *****************************************************************************/
   FUNCTION f_InsertRtsd0030DbCopy (
-    v_Cnt_Cd            IN RTSD0030.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0030.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0030.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Cnt_Cd            IN RTSD0030.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0030.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0030.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -168,14 +168,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
 
 
   /*****************************************************************************
-  --µÓ∑œ∫Ò∞¸∏Æ (IUD)
+  --Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ (IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0029 (
-    v_Comm_Dvsn         IN CHAR,                            /* √≥∏Æ±∏∫–(I,U,D)  */
-    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ≈∏¿ÃæÓ∫ªºˆ       */
-    v_Amt               IN RTSD0029.AMT%TYPE,               /* ±›æ◊             */
-    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Comm_Dvsn         IN CHAR,                            /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)  */
+    v_Sale_Cd           IN RTSD0029.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Cnt_Cd            IN RTSD0029.CNT_CD%TYPE,            /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò       */
+    v_Amt               IN RTSD0029.AMT%TYPE,               /* Í∏àÏï°             */
+    v_Reg_Id            IN RTSD0029.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -188,13 +188,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtsd0029(v_Sale_Cd, v_Cnt_Cd, v_Amt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µÓ∑œ∫Ò∞¸∏Æ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;    
        
         IF 0 != f_InsertRtsd0030DbCopy(v_Cnt_Cd, v_Amt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µÓ∑œ∫Ò∞¸∏Æ Db Copy µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Db Copy Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;    
@@ -202,13 +202,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
         
         IF 0 != f_UpdateRtsd0029(v_Sale_Cd, v_Cnt_Cd, v_Amt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µÓ∑œ∫Ò∞¸∏Æ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;    
+            v_Return_Message := 'Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;    
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
         
         IF 0 != f_InsertRtsd0030DbCopy(v_Cnt_Cd, v_Amt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µÓ∑œ∫Ò∞¸∏Æ Db Copy µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ Db Copy Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;    
@@ -216,19 +216,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
     ELSIF v_Comm_Dvsn = 'D' THEN
         
         IF 0 != f_DeleteRtsd0029(v_Sale_Cd, v_Cnt_Cd, v_Amt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µÓ∑œ∫Ò∞¸∏Æ ªË¡¶ Ω«∆–!!!'||'-'||v_ErrorText;    
+            v_Return_Message := 'Îì±Î°ùÎπÑÍ¥ÄÎ¶¨ ÏÇ≠Ï†ú Ïã§Ìå®!!!'||'-'||v_ErrorText;    
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;     
   
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -243,7 +243,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0029.p_IUDRtsd0029(2)', v_ErrorText, v_Return_Message);
 
@@ -251,18 +251,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
   
 
   /*****************************************************************************
-  -- ¡÷πÆµÓ∑œ ∆«∏≈ƒ⁄µÂø° µ˚∏• µÓ∑œ∫Ò Select
+  -- Ï£ºÎ¨∏Îì±Î°ù ÌåêÎß§ÏΩîÎìúÏóê Îî∞Î•∏ Îì±Î°ùÎπÑ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0029RegAmtInfo (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ∆«∏≈ƒ⁄µÂ         */
+    v_Sale_Cd       IN RTSD0029.SALE_CD%TYPE           /* ÌåêÎß§ÏΩîÎìú         */
   ) IS
 
   BEGIN
   
     OPEN Ref_Cursor FOR
-    SELECT  NVL(A.AMT,0) AS CD,                       /* ±›æ◊       */
-            NVL(A.AMT,0) AS CD_NM                     /* ±›æ◊       */
+    SELECT  NVL(A.AMT,0) AS CD,                       /* Í∏àÏï°       */
+            NVL(A.AMT,0) AS CD_NM                     /* Í∏àÏï°       */
     FROM    RTSD0029    A
     WHERE   A.SALE_CD   = DECODE(v_Sale_Cd, NULL, A.SALE_CD, v_Sale_Cd)
     ORDER BY A.SALE_CD, A.CNT_CD;
@@ -271,4 +271,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0029 AS
   
 
 END Pkg_Rtsd0029;
-/

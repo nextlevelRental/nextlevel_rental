@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0208
-    PURPOSE     ∞°∞Ëæ‡¡§∫∏ ∞¸∏Æ
+    PURPOSE     Í∞ÄÍ≥ÑÏïΩÏ†ïÎ≥¥ Í¥ÄÎ¶¨
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞°∞Ëæ‡¡§∫∏ Select
+  -- Í∞ÄÍ≥ÑÏïΩÏ†ïÎ≥¥ Select
   
      REVISIONS
     Ver     Date        Author          Description
@@ -19,8 +19,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0208 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Std_Ym          IN RTSD0208.STD_YM%TYPE        /* ∞Ì∞¥∏Ì             */
-    , v_Res_Yn          IN RTSD0208.RES_YN%TYPE        /* ∞Ì∞¥∏Ì             */
+    , v_Std_Ym          IN RTSD0208.STD_YM%TYPE        /* Í≥†Í∞ùÎ™Ö             */
+    , v_Res_Yn          IN RTSD0208.RES_YN%TYPE        /* Í≥†Í∞ùÎ™Ö             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -45,7 +45,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
         ORDER BY ORD_NO;
 
     v_Success_code   := 0;
-    v_Return_Message := '¡§ªÛ¡∂»∏µ«æ˙Ω¿¥œ¥Ÿ.';
+    v_Return_Message := 'Ï†ïÏÉÅÏ°∞ÌöåÎêòÏóàÏäµÎãàÎã§.';
     
   EXCEPTION
       WHEN e_Error THEN
@@ -58,7 +58,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
     WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0208.p_sRTSD0208(2)', v_ErrorText, v_Return_Message);        
 
@@ -66,4 +66,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0208 AS
 
       
 END Pkg_Rtsd0208;
-/

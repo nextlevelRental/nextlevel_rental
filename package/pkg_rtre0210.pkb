@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
 /*******************************************************************************
     NAME    : Pkg_Rtre0210
-    PURPOSE : °èÁÂÁï½ÃÃâ±Ý ³»¿ªÁ¶È¸
+    PURPOSE : ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ë‚´ì—­ì¡°íšŒ
     REVISIONS
     Ver        Date        Author           Description
     ---------  ----------  ---------------  -------------------------------------
@@ -9,37 +9,37 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
  *******************************************************************************/
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý ³»¿ªÁ¶È¸ Select
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ë‚´ì—­ì¡°íšŒ Select
  *******************************************************************************/
     PROCEDURE p_sRtre0210_accImmWthdrList(  Ref_Cursor   IN OUT SYS_REFCURSOR
-                                          , v_Ract_F_Day IN RTRE0210.RACT_DAY%TYPE /* ¼ö³³ÀÏÀÚ StartDay */
-                                          , v_Ract_T_Day IN RTRE0210.RACT_DAY%TYPE /* ¼ö³³ÀÏÀÚ EndDay */
-                                          , v_Ord_No     IN RTRE0210.TORD_NO%TYPE  /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-                                          , v_Cust_No    IN RTRE0210.CUST_NO%TYPE  /* °í°´¹øÈ£ */
+                                          , v_Ract_F_Day IN RTRE0210.RACT_DAY%TYPE /* ìˆ˜ë‚©ì¼ìž StartDay */
+                                          , v_Ract_T_Day IN RTRE0210.RACT_DAY%TYPE /* ìˆ˜ë‚©ì¼ìž EndDay */
+                                          , v_Ord_No     IN RTRE0210.TORD_NO%TYPE  /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+                                          , v_Cust_No    IN RTRE0210.CUST_NO%TYPE  /* ê³ ê°ë²ˆí˜¸ */
                                          )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT  A.RACT_DAY                                                        /* °èÁÂ¼ö³³ÀÏÀÚ */
-                  , A.RACT_SEQ                                                        /* °èÁÂ¼ö³³ ¼ø¹ø */
-                  , A.TORD_NO                                                         /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-                  , A.CUST_NO                                                         /* °í°´¹øÈ£ */
-                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)         AS CUST_NM    /* °í°´¸í */
-                  , A.RECP_TP                                                         /* Ã»±¸±¸ºÐÄÚµå */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R007', A.RECP_TP) AS RECP_TP_NM /* Ã»±¸±¸ºÐ¸í */
-                  , A.TNO                                                             /* °Å·¡¹øÈ£ */
-                  , B.BNK_CD                                                          /* ÀºÇàÄÚµå */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R001', B.BNK_CD)  AS BNK_NM     /* ÀºÇà¸í */
-                  , A.RECP_AMT                                                        /* ¼ö³³±Ý¾× */
-                  , A.CNC_STAT                                                        /* ¼ö³³Ãë¼Ò¿©ºÎ */
-                  , A.PRT_CNC_RMNN_AMT                                                /* ¼ö³³Ãë¼Ò ÈÄ ³²Àº±Ý¾× */
-                  , A.RECV_SEQ                                                        /* ¼ö³³°Å·¡¹øÈ£ */
-                  , A.CNC_RSEQ                                                        /* ¼ö³³Ãë¼Ò°Å·¡¹øÈ£ */
-                  , A.REFUND_YN                                                       /* È¯ºÒ¿©ºÎ  */
-                  , A.P_OID_SEQ                                                       /* ÁÖ¹®ÀÏ·Ã¹øÈ£ */
-            FROM    RTRE0210 A /* °èÁÂÁï½ÃÃâ±Ý ¼ö³³³»¿ª */
-                  , RTRE0212 B /* °èÁÂÁï½ÃÃâ±Ý °èÁÂÁ¤º¸ */
+            SELECT  A.RACT_DAY                                                        /* ê³„ì¢Œìˆ˜ë‚©ì¼ìž */
+                  , A.RACT_SEQ                                                        /* ê³„ì¢Œìˆ˜ë‚© ìˆœë²ˆ */
+                  , A.TORD_NO                                                         /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+                  , A.CUST_NO                                                         /* ê³ ê°ë²ˆí˜¸ */
+                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)         AS CUST_NM    /* ê³ ê°ëª… */
+                  , A.RECP_TP                                                         /* ì²­êµ¬êµ¬ë¶„ì½”ë“œ */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R007', A.RECP_TP) AS RECP_TP_NM /* ì²­êµ¬êµ¬ë¶„ëª… */
+                  , A.TNO                                                             /* ê±°ëž˜ë²ˆí˜¸ */
+                  , B.BNK_CD                                                          /* ì€í–‰ì½”ë“œ */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R001', B.BNK_CD)  AS BNK_NM     /* ì€í–‰ëª… */
+                  , A.RECP_AMT                                                        /* ìˆ˜ë‚©ê¸ˆì•¡ */
+                  , A.CNC_STAT                                                        /* ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€ */
+                  , A.PRT_CNC_RMNN_AMT                                                /* ìˆ˜ë‚©ì·¨ì†Œ í›„ ë‚¨ì€ê¸ˆì•¡ */
+                  , A.RECV_SEQ                                                        /* ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
+                  , A.CNC_RSEQ                                                        /* ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸ */
+                  , A.REFUND_YN                                                       /* í™˜ë¶ˆì—¬ë¶€  */
+                  , A.P_OID_SEQ                                                       /* ì£¼ë¬¸ì¼ë ¨ë²ˆí˜¸ */
+            FROM    RTRE0210 A /* ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ìˆ˜ë‚©ë‚´ì—­ */
+                  , RTRE0212 B /* ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ê³„ì¢Œì •ë³´ */
             WHERE   A.TNO            = B.TNO
             AND     A.RACT_DAY BETWEEN v_Ract_F_Day
                                AND     v_Ract_T_Day
@@ -48,29 +48,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
     END p_sRtre0210_accImmWthdrList;
 
 /*******************************************************************************
- -- ¼ö³³³»¿ª »ó¼¼Á¶È¸ Select
+ -- ìˆ˜ë‚©ë‚´ì—­ ìƒì„¸ì¡°íšŒ Select
  *******************************************************************************/
     PROCEDURE p_sRtre0210_accImmWthdrDtlList(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                             , v_Recv_Seq IN RTRE0030.RECV_SEQ%TYPE /* ¼ö³³°Å·¡¹øÈ£ */
+                                             , v_Recv_Seq IN RTRE0030.RECV_SEQ%TYPE /* ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
                                             )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT  A.ORD_NO                                                          /* °è¾à¹øÈ£ */
-                  , A.SCHD_SEQ                                                        /* Ã»±¸È¸Â÷ */
-                  , A.RECP_FG                                                         /* ¼ö³³À¯ÇüÄÚµå */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R020', A.RECP_FG) AS RECP_FG_NM /* ¼ö³³À¯Çü¸í */
-                  , A.RECP_AMT                                                        /* ¼ö³³±Ý¾× */
-                  , A.CNC_STAT                                                        /* ¼ö³³Ãë¼Ò¿©ºÎ */
-            FROM    RTRE0030 A /* °èÁÂÁï½ÃÃâ±Ý »ó¼¼¼ö³³³»¿ª */
+            SELECT  A.ORD_NO                                                          /* ê³„ì•½ë²ˆí˜¸ */
+                  , A.SCHD_SEQ                                                        /* ì²­êµ¬íšŒì°¨ */
+                  , A.RECP_FG                                                         /* ìˆ˜ë‚©ìœ í˜•ì½”ë“œ */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R020', A.RECP_FG) AS RECP_FG_NM /* ìˆ˜ë‚©ìœ í˜•ëª… */
+                  , A.RECP_AMT                                                        /* ìˆ˜ë‚©ê¸ˆì•¡ */
+                  , A.CNC_STAT                                                        /* ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€ */
+            FROM    RTRE0030 A /* ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ìƒì„¸ìˆ˜ë‚©ë‚´ì—­ */
             WHERE   A.RECV_SEQ = v_Recv_Seq
             ORDER BY  A.ORD_NO
                     , A.SCHD_SEQ;
     END p_sRtre0210_accImmWthdrDtlList;
 
 /*******************************************************************************
- -- °èÁÂ¼ö³³ÀÏ·Ã¹øÈ£ Ã¤¹ø
+ -- ê³„ì¢Œìˆ˜ë‚©ì¼ë ¨ë²ˆí˜¸ ì±„ë²ˆ
  *******************************************************************************/
     FUNCTION f_sRtre0210RactSeq
     
@@ -78,7 +78,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
 
     IS
 
-    v_Ract_Seq RTRE0210.RACT_SEQ%TYPE DEFAULT 0; /* °èÁÂ¼ö³³ÀÏ·Ã¹øÈ£ */
+    v_Ract_Seq RTRE0210.RACT_SEQ%TYPE DEFAULT 0; /* ê³„ì¢Œìˆ˜ë‚©ì¼ë ¨ë²ˆí˜¸ */
 
     BEGIN
 
@@ -94,15 +94,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
     END f_sRtre0210RactSeq;
 
 /*******************************************************************************
- -- °èÁÂÁÖ¹®ÀÏ·Ã¹øÈ£ Ã¤¹ø
+ -- ê³„ì¢Œì£¼ë¬¸ì¼ë ¨ë²ˆí˜¸ ì±„ë²ˆ
  *******************************************************************************/
-    FUNCTION f_sRtre0210POidSeq(v_Tord_No IN RTRE0210.TORD_NO%TYPE) /* °è¾à¹øÈ£ */
+    FUNCTION f_sRtre0210POidSeq(v_Tord_No IN RTRE0210.TORD_NO%TYPE) /* ê³„ì•½ë²ˆí˜¸ */
     
     RETURN NUMBER
     
     IS
     
-    v_P_Oid_Seq RTRE0210.P_OID_SEQ%TYPE DEFAULT 0; /* °èÁÂÁÖ¹®ÀÏ·Ã¹øÈ£ */
+    v_P_Oid_Seq RTRE0210.P_OID_SEQ%TYPE DEFAULT 0; /* ê³„ì¢Œì£¼ë¬¸ì¼ë ¨ë²ˆí˜¸ */
     
     BEGIN
         SELECT NVL2(MAX(P_OID_SEQ), TO_NUMBER(MAX(P_OID_SEQ)) + 1, 1)
@@ -117,20 +117,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
     END f_sRtre0210POidSeq;
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý°áÁ¦ Insert
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆê²°ì œ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0210AccImmWthdrMst(  v_Ract_Seq       IN  RTRE0210.RACT_SEQ%TYPE  /* °èÁÂ¼ö³³ÀÏ·Ã¹øÈ£ */
-                                             , v_Tord_No        IN  RTRE0210.TORD_NO%TYPE   /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-                                             , v_Cust_No        IN  RTRE0210.CUST_NO%TYPE   /* °í°´¹øÈ£ */
-                                             , v_Recp_Amt       IN  RTRE0210.RECP_AMT%TYPE  /* ¼ö³³±Ý¾× */
-                                             , v_Recp_Tp        IN  RTRE0210.RECP_TP%TYPE   /* Ã»±¸±¸ºÐ */
-                                             , v_Recp_Pay       IN  RTRE0210.RECP_PAY%TYPE  /* ¼ö³³¹æ¹ý */
-                                             , v_Recp_Fg        IN  RTRE0210.RECP_FG%TYPE   /* ¼ö³³À¯Çü */
-                                             , v_Tno            IN  RTRE0210.TNO%TYPE       /* °Å·¡¹øÈ£ */
-                                             , v_Recv_Seq       IN  RTRE0210.RECV_SEQ%TYPE  /* °èÁÂ¼ö³³°Å·¡¹øÈ£ */
-                                             , v_Cnc_Stat       IN  RTRE0210.CNC_STAT%TYPE  /* ¼ö³³Ãë¼Ò¿©ºÎ */
-                                             , v_P_Oid_Seq      IN  RTRE0210.P_OID_SEQ%TYPE /* ÁÖ¹®ÀÏ·Ã¹øÈ£ */
-                                             , v_Reg_Id         IN  RTRE0210.REG_ID%TYPE    /* µî·ÏÀÚ ID */
+    PROCEDURE p_InsertRtre0210AccImmWthdrMst(  v_Ract_Seq       IN  RTRE0210.RACT_SEQ%TYPE  /* ê³„ì¢Œìˆ˜ë‚©ì¼ë ¨ë²ˆí˜¸ */
+                                             , v_Tord_No        IN  RTRE0210.TORD_NO%TYPE   /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+                                             , v_Cust_No        IN  RTRE0210.CUST_NO%TYPE   /* ê³ ê°ë²ˆí˜¸ */
+                                             , v_Recp_Amt       IN  RTRE0210.RECP_AMT%TYPE  /* ìˆ˜ë‚©ê¸ˆì•¡ */
+                                             , v_Recp_Tp        IN  RTRE0210.RECP_TP%TYPE   /* ì²­êµ¬êµ¬ë¶„ */
+                                             , v_Recp_Pay       IN  RTRE0210.RECP_PAY%TYPE  /* ìˆ˜ë‚©ë°©ë²• */
+                                             , v_Recp_Fg        IN  RTRE0210.RECP_FG%TYPE   /* ìˆ˜ë‚©ìœ í˜• */
+                                             , v_Tno            IN  RTRE0210.TNO%TYPE       /* ê±°ëž˜ë²ˆí˜¸ */
+                                             , v_Recv_Seq       IN  RTRE0210.RECV_SEQ%TYPE  /* ê³„ì¢Œìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
+                                             , v_Cnc_Stat       IN  RTRE0210.CNC_STAT%TYPE  /* ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€ */
+                                             , v_P_Oid_Seq      IN  RTRE0210.P_OID_SEQ%TYPE /* ì£¼ë¬¸ì¼ë ¨ë²ˆí˜¸ */
+                                             , v_Reg_Id         IN  RTRE0210.REG_ID%TYPE    /* ë“±ë¡ìž ID */
                                              , v_Success_Code   OUT NUMBER
                                              , v_Return_Message OUT VARCHAR2
                                              , v_Error_Text     OUT VARCHAR2
@@ -182,7 +182,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0210 AS
                             );
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_01', v_Tord_No, v_Tno);                             
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -196,25 +196,25 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_01', v_Tord_No, v_Tno);
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), '¿¡·¯!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ì—ëŸ¬!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_InsertRtre0210AccImmWthdrMst(2)', v_Error_Text, v_Return_Message);
 
     END p_InsertRtre0210AccImmWthdrMst;
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý°áÁ¦ »ó¼¼ Insert
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆê²°ì œ ìƒì„¸ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0211AccImmWthdrDtl(  v_Ract_Seq       IN  RTRE0211.RACT_SEQ%TYPE /* °èÁÂ¼ö³³ÀÏ·Ã¹øÈ£ */
-                                             , v_Cust_No        IN  RTRE0211.CUST_NO%TYPE  /* °í°´¹øÈ£ */
-                                             , v_Tord_No        IN  RTRE0211.TORD_NO%TYPE  /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-                                             , v_Ord_No         IN  RTRE0211.ORD_NO%TYPE   /* °è¾à¹øÈ£ */
-                                             , v_Schd_Seq       IN  RTRE0211.SCHD_SEQ%TYPE /* Ã»±¸¼ø¹ø */
-                                             , v_Recp_Tp        IN  RTRE0211.RECP_TP%TYPE  /* Ã»±¸±¸ºÐ */
-                                             , v_Zfbdt          IN  RTRE0211.ZFBDT%TYPE    /* Ã»±¸ÀÏÀÚ */
-                                             , v_Sale_Amt       IN  RTRE0211.SALE_AMT%TYPE /* Ã»±¸±Ý¾× */
-                                             , v_Arre_Amt       IN  RTRE0211.ARRE_AMT%TYPE /* ¹Ì³³±Ý¾× */
-                                             , v_Reg_Id         IN  RTRE0211.REG_ID%TYPE   /* µî·ÏÀÚ ID */
+    PROCEDURE p_InsertRtre0211AccImmWthdrDtl(  v_Ract_Seq       IN  RTRE0211.RACT_SEQ%TYPE /* ê³„ì¢Œìˆ˜ë‚©ì¼ë ¨ë²ˆí˜¸ */
+                                             , v_Cust_No        IN  RTRE0211.CUST_NO%TYPE  /* ê³ ê°ë²ˆí˜¸ */
+                                             , v_Tord_No        IN  RTRE0211.TORD_NO%TYPE  /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+                                             , v_Ord_No         IN  RTRE0211.ORD_NO%TYPE   /* ê³„ì•½ë²ˆí˜¸ */
+                                             , v_Schd_Seq       IN  RTRE0211.SCHD_SEQ%TYPE /* ì²­êµ¬ìˆœë²ˆ */
+                                             , v_Recp_Tp        IN  RTRE0211.RECP_TP%TYPE  /* ì²­êµ¬êµ¬ë¶„ */
+                                             , v_Zfbdt          IN  RTRE0211.ZFBDT%TYPE    /* ì²­êµ¬ì¼ìž */
+                                             , v_Sale_Amt       IN  RTRE0211.SALE_AMT%TYPE /* ì²­êµ¬ê¸ˆì•¡ */
+                                             , v_Arre_Amt       IN  RTRE0211.ARRE_AMT%TYPE /* ë¯¸ë‚©ê¸ˆì•¡ */
+                                             , v_Reg_Id         IN  RTRE0211.REG_ID%TYPE   /* ë“±ë¡ìž ID */
                                              , v_Success_Code   OUT NUMBER
                                              , v_Return_Message OUT VARCHAR2
                                              , v_Error_Text     OUT VARCHAR2
@@ -255,7 +255,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_01', v_Tord_No, v_Tno);
                              , SYSDATE
                             );
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_02', v_Tord_No, v_Ract_Seq); 
     EXCEPTION
@@ -269,20 +269,20 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_02', v_Tord_No, v_Ract_S
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), '¿¡·¯!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ì—ëŸ¬!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_InsertRtre0211AccImmWthdrDtl(2)', v_Error_Text, v_Return_Message);
 
     END p_InsertRtre0211AccImmWthdrDtl;
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý°áÁ¦ °èÁÂÁ¤º¸ Insert
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆê²°ì œ ê³„ì¢Œì •ë³´ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0212AccImmWthdrAcc(  v_Tno            IN  RTRE0212.TNO%TYPE        /* °Å·¡¹øÈ£ */
-                                             , v_Sec_Bnk_No     IN  RTRE0212.BNK_NO%TYPE /* °èÁÂ¹øÈ£ */
-                                             , v_Bnk_Cd         IN  RTRE0212.BNK_CD%TYPE     /* ÀºÇàÄÚµå */
-                                             , v_Cust_Nm        IN  RTRE0212.CUST_NM%TYPE    /* ¿¹±ÝÁÖ¸í */
-                                             , v_Reg_Id         IN  RTRE0212.REG_ID%TYPE     /* µî·ÏÀÚ ID */
+    PROCEDURE p_InsertRtre0212AccImmWthdrAcc(  v_Tno            IN  RTRE0212.TNO%TYPE        /* ê±°ëž˜ë²ˆí˜¸ */
+                                             , v_Sec_Bnk_No     IN  RTRE0212.BNK_NO%TYPE /* ê³„ì¢Œë²ˆí˜¸ */
+                                             , v_Bnk_Cd         IN  RTRE0212.BNK_CD%TYPE     /* ì€í–‰ì½”ë“œ */
+                                             , v_Cust_Nm        IN  RTRE0212.CUST_NM%TYPE    /* ì˜ˆê¸ˆì£¼ëª… */
+                                             , v_Reg_Id         IN  RTRE0212.REG_ID%TYPE     /* ë“±ë¡ìž ID */
                                              , v_Success_Code   OUT NUMBER
                                              , v_Return_Message OUT VARCHAR2
                                              , v_Error_Text     OUT VARCHAR2
@@ -312,7 +312,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_02', v_Tord_No, v_Ract_S
                             );
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_03', v_Tno, v_Sec_Bnk_No);                             
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -326,19 +326,19 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_03', v_Tno, v_Sec_Bnk_No
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), '¿¡·¯!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ì—ëŸ¬!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_InsertRtre0212AccImmWthdrAcc(2)', v_Error_Text, v_Return_Message);
 
     END p_InsertRtre0212AccImmWthdrAcc;
 
 /*****************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý ¼ö³³Ã³¸® °á°ú ÀúÀå
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ìˆ˜ë‚©ì²˜ë¦¬ ê²°ê³¼ ì €ìž¥
  *****************************************************************************/
-    FUNCTION f_UpdateRTRE0210RecvResult(  v_RACT_Day  IN  RTRE0210.RACT_DAY%TYPE /* ¿äÃ»ÀÏÀÚ */
-                                        , v_RACT_Seq  IN  RTRE0210.RACT_SEQ%TYPE /* ¿äÃ»ÀÏ·Ã¹øÈ£ */
-                                        , v_Recv_Seq  IN  RTRE0210.RECV_SEQ%TYPE /* ¼ö³³°Å·¡¹øÈ£ */
-                                        , v_Reg_Id    IN  RTRE0210.REG_ID%TYPE   /* µî·ÏÀÚ ID */
+    FUNCTION f_UpdateRTRE0210RecvResult(  v_RACT_Day  IN  RTRE0210.RACT_DAY%TYPE /* ìš”ì²­ì¼ìž */
+                                        , v_RACT_Seq  IN  RTRE0210.RACT_SEQ%TYPE /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸ */
+                                        , v_Recv_Seq  IN  RTRE0210.RECV_SEQ%TYPE /* ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
+                                        , v_Reg_Id    IN  RTRE0210.REG_ID%TYPE   /* ë“±ë¡ìž ID */
                                         , v_ErrorText OUT VARCHAR2
                                        )
     RETURN NUMBER
@@ -364,11 +364,11 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_03', v_Tno, v_Sec_Bnk_No
     END f_UpdateRTRE0210RecvResult;
 
 /*****************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý ¼ö³³Ã³¸®
- -- - Pkg_Rtre0080.p_CreateRtre0080CardReceive ¸¦ ÂüÁ¶ÇÏ¿© °³¹ß
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ìˆ˜ë‚©ì²˜ë¦¬
+ -- - Pkg_Rtre0080.p_CreateRtre0080CardReceive ë¥¼ ì°¸ì¡°í•˜ì—¬ ê°œë°œ
  *****************************************************************************/
-    PROCEDURE p_CreateRTRE0210RactReceive(  v_Tno             IN RTRE0210.TNO%TYPE    /* °Å·¡°íÀ¯¹øÈ£ */
-                                          , v_Reg_Id          IN RTRE0210.REG_ID%TYPE /* µî·ÏÀÚID */
+    PROCEDURE p_CreateRTRE0210RactReceive(  v_Tno             IN RTRE0210.TNO%TYPE    /* ê±°ëž˜ê³ ìœ ë²ˆí˜¸ */
+                                          , v_Reg_Id          IN RTRE0210.REG_ID%TYPE /* ë“±ë¡ìžID */
                                           , v_Success_Code   OUT NUMBER
                                           , v_Return_Message OUT VARCHAR2
                                           , v_ErrorText      OUT VARCHAR2
@@ -398,14 +398,14 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_03', v_Tno, v_Sec_Bnk_No
     BEGIN
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_04', v_Tno, v_Reg_Id);  
     /*
-     * ÇÊ¼ö°ª ÀÔ·Â È®ÀÎ
+     * í•„ìˆ˜ê°’ ìž…ë ¥ í™•ì¸
      */
     IF(TRIM(v_Tno) IS NULL) OR (TRIM(v_Tno) = '') THEN
-        v_Return_Message := '°Å·¡°íÀ¯¹øÈ£ : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê±°ëž˜ê³ ìœ ë²ˆí˜¸ : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
-    -- °èÁÂÁï½ÃÃâ±Ý³»¿ª Á¸Àç ¿©ºÎ
+    -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆë‚´ì—­ ì¡´ìž¬ ì—¬ë¶€
     SELECT NVL(COUNT(1), 0)
     INTO   ln_Chk_Cnt
     FROM   RTRE0210
@@ -414,13 +414,13 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_04', v_Tno, v_Reg_Id);
     AND    REFUND_YN <> 'Y';
 
     IF ln_Chk_Cnt = 0 THEN
-        v_Return_Message := 'ÇØ´ç °Å·¡°íÀ¯¹øÈ£(' || v_Tno || ')´Â À¯È¿ÇÑ °èÁÂÁï½ÃÃâ±Ý³»¿ª(RTRE0210)ÀÌ Á¸ÀçÇÏÁö ¾Ê¾Æ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ ê±°ëž˜ê³ ìœ ë²ˆí˜¸(' || v_Tno || ')ëŠ” ìœ íš¨í•œ ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆë‚´ì—­(RTRE0210)ì´ ì¡´ìž¬í•˜ì§€ ì•Šì•„ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_05', v_Tno, ln_Chk_Cnt);  
     /*
-     * ¼ö³³´ë»ó¸®½ºÆ® ÀÓ½ÃÅ×ÀÌºí Á¸Àç¿©ºÎ È®ÀÎ
-     * - ¹ÌÁ¸Àç½Ã ÀÓ½ÃÅ×ÀÌºí »ý¼º
+     * ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ìž„ì‹œí…Œì´ë¸” ì¡´ìž¬ì—¬ë¶€ í™•ì¸
+     * - ë¯¸ì¡´ìž¬ì‹œ ìž„ì‹œí…Œì´ë¸” ìƒì„±
      */
     SELECT COUNT(*)
     INTO   ln_Chk_Cnt
@@ -435,15 +435,15 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_05', v_Tno, ln_Chk_Cnt);
                                                     , ARRE_AMT NUMBER(10)
                                                     , RECP_AMT NUMBER(10)
                                                    ) ON COMMIT DELETE ROWS;
-            COMMENT ON TABLE NXRADMIN.RTTEMP01 IS ''Ãâ±ÝÀÌÃ¼ ¼ö³³µî·ÏÃ³¸®(Pkg_Rtre0070)½Ã »ç¿ë TEMPORARY TABLE'';
-            COMMENT ON COLUMN NXRADMIN.RTTEMP01.ORD_NO   IS ''°è¾à¹øÈ£'';
-            COMMENT ON COLUMN NXRADMIN.RTTEMP01.CUST_NO  IS ''°í°´¹øÈ£'';
-            COMMENT ON COLUMN NXRADMIN.RTTEMP01.SCHD_SEQ IS ''Ã»±¸¼ø¹ø'';
-            COMMENT ON COLUMN NXRADMIN.RTTEMP01.ARRE_AMT IS ''¹Ì³³±Ý¾× '';
-            COMMENT ON COLUMN NXRADMIN.RTTEMP01.RECP_AMT IS ''¼ö³³Ã³¸®±Ý¾×'';';
+            COMMENT ON TABLE NXRADMIN.RTTEMP01 IS ''ì¶œê¸ˆì´ì²´ ìˆ˜ë‚©ë“±ë¡ì²˜ë¦¬(Pkg_Rtre0070)ì‹œ ì‚¬ìš© TEMPORARY TABLE'';
+            COMMENT ON COLUMN NXRADMIN.RTTEMP01.ORD_NO   IS ''ê³„ì•½ë²ˆí˜¸'';
+            COMMENT ON COLUMN NXRADMIN.RTTEMP01.CUST_NO  IS ''ê³ ê°ë²ˆí˜¸'';
+            COMMENT ON COLUMN NXRADMIN.RTTEMP01.SCHD_SEQ IS ''ì²­êµ¬ìˆœë²ˆ'';
+            COMMENT ON COLUMN NXRADMIN.RTTEMP01.ARRE_AMT IS ''ë¯¸ë‚©ê¸ˆì•¡ '';
+            COMMENT ON COLUMN NXRADMIN.RTTEMP01.RECP_AMT IS ''ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡'';';
     END IF;
 
-    -- °èÁÂÁï½ÃÃâ±Ý ³»¿ª Á¶È¸
+    -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ë‚´ì—­ ì¡°íšŒ
     SELECT *
     INTO   lr_Re0210
     FROM   RTRE0210
@@ -454,7 +454,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_05', v_Tno, ln_Chk_Cnt);
     ln_Remain_Amt := 0;
     ln_Exe_Cnt    := 1;
 
-    -- Áßµµ¿Ï³³¿©ºÎ Ã¼Å©
+    -- ì¤‘ë„ì™„ë‚©ì—¬ë¶€ ì²´í¬
     IF lr_Re0210.RECP_TP = '90' THEN
         ln_End_Tp := '';
     ELSE 
@@ -466,42 +466,42 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_05', v_Tno, ln_Chk_Cnt);
        --AND MFP_YN = 'Y';
     END IF;    
 
-    -- ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
-    -- - CMS, Ä«µåÁ¤±âÃâ±Ý : °è¾à¹øÈ£º° ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
-    -- - °¡»ó°èÁÂ : ÀÔ±ÝÅëº¸º° ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
+    -- ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ ì±„ë²ˆ
+    -- - CMS, ì¹´ë“œì •ê¸°ì¶œê¸ˆ : ê³„ì•½ë²ˆí˜¸ë³„ ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ ì±„ë²ˆ
+    -- - ê°€ìƒê³„ì¢Œ : ìž…ê¸ˆí†µë³´ë³„ ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ ì±„ë²ˆ
     ln_Recv_Seq := lr_Re0210.RECV_SEQ;
     --ln_Recv_Seq := Pkg_Rtre0030.f_sRtre0030RecvSeq();
 
     /*
-     * °èÁÂÁï½ÃÃâ±Ý ¼¼ºÎ³»¿ª °è¾àº°·Î LOOP µ¹¸é¼­ ¼öÇà
+     * ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ì„¸ë¶€ë‚´ì—­ ê³„ì•½ë³„ë¡œ LOOP ëŒë©´ì„œ ìˆ˜í–‰
      */
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_06', v_Tno, lr_Re0210.TORD_NO);     
     IF lr_Re0210.RECP_TP = '90'  OR (lr_Re0210.RECP_TP = '42' AND ln_End_Tp = '') THEN
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_07', v_Tno, ln_End_Tp);           
-                -- ¼ö³³´ë»ó¸®½ºÆ®¿¡  ¼±¼ö±Ý µ¥ÀÌÅÍ Ãß°¡(¼ö³³±Ý¾×À» ¼ö³³Ã³¸®±Ý¾× °ª¿¡ ¼³Á¤ÇÏ°í ³ª¸ÓÁö´Â NULL Ã³¸®ÇÔ)
+                -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ì—  ì„ ìˆ˜ê¸ˆ ë°ì´í„° ì¶”ê°€(ìˆ˜ë‚©ê¸ˆì•¡ì„ ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡ ê°’ì— ì„¤ì •í•˜ê³  ë‚˜ë¨¸ì§€ëŠ” NULL ì²˜ë¦¬í•¨)
         INSERT INTO RTTEMP01
         SELECT lr_Re0210.TORD_NO ORD_NO, NULL SCHD_SEQ, NULL RECP_TP, lr_Re0210.CUST_NO CUST_NO, NULL DEMD_DT, NULL ZFB_DAY, NULL SCD_STAT,
                NULL ZLSPR, NULL RC_YN, NULL USE_YN, NULL SALE_AMT, NULL RECP_AMT, NULL ARRE_AMT, NULL RECP_NU, lr_Re0210.PRT_CNC_RMNN_AMT 
         FROM   DUAL;
 
         IF SQL%NOTFOUND THEN
-            v_Return_Message := '¼ö³³´ë»ó¸®½ºÆ®¿¡ ¼±¼ö±Ý µ¥ÀÌÅÍ Ãß°¡ ½ÇÆÐ!!';
+            v_Return_Message := 'ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ì— ì„ ìˆ˜ê¸ˆ ë°ì´í„° ì¶”ê°€ ì‹¤íŒ¨!!';
             v_ErrorText := SUBSTR(SQLERRM, 1, 200);
             RAISE e_Error;
         END IF;
         
-            -- ¼ö³³´ë»ó¸®½ºÆ® Á¶È¸(¹Ì³³¸®½ºÆ®¿Í ¼±¼ö±Ý ³»¿ª)
+            -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì¡°íšŒ(ë¯¸ë‚©ë¦¬ìŠ¤íŠ¸ì™€ ì„ ìˆ˜ê¸ˆ ë‚´ì—­)
         OPEN  Ref_Cursor FOR
-        SELECT  A.ORD_NO,               /*°è¾à¹øÈ£ */
-                A.CUST_NO,              /*°í°´¹øÈ£ */
-                A.SCHD_SEQ,             /*Ã»±¸¼ø¹ø */
-                A.ARRE_AMT,             /*¹Ì³³±Ý¾× */
-                A.RECA_AMT RECP_AMT     /*¼ö³³±Ý¾× */
+        SELECT  A.ORD_NO,               /*ê³„ì•½ë²ˆí˜¸ */
+                A.CUST_NO,              /*ê³ ê°ë²ˆí˜¸ */
+                A.SCHD_SEQ,             /*ì²­êµ¬ìˆœë²ˆ */
+                A.ARRE_AMT,             /*ë¯¸ë‚©ê¸ˆì•¡ */
+                A.RECA_AMT RECP_AMT     /*ìˆ˜ë‚©ê¸ˆì•¡ */
         FROM    RTTEMP01 A
-        WHERE   A.RECA_AMT > 0          /*¼ö³³±Ý¾×ÀÌ Á¸ÀçÇÏ´Â °Í¸¸ */
-        ORDER   BY A.ZFB_DAY, A.RECP_TP, NVL(A.SCHD_SEQ,999); -- ¼±¼ö±ÝÀ» ¹«Á¶°Ç ¸¶Áö¸·¿¡ À§Ä¡ÇÔ.
+        WHERE   A.RECA_AMT > 0          /*ìˆ˜ë‚©ê¸ˆì•¡ì´ ì¡´ìž¬í•˜ëŠ” ê²ƒë§Œ */
+        ORDER   BY A.ZFB_DAY, A.RECP_TP, NVL(A.SCHD_SEQ,999); -- ì„ ìˆ˜ê¸ˆì„ ë¬´ì¡°ê±´ ë§ˆì§€ë§‰ì— ìœ„ì¹˜í•¨.
 
-        -- ¼ö³³°Å·¡¹øÈ£ Ã¤¹ø
+        -- ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ ì±„ë²ˆ
         --ln_Recv_Seq := f_sRtre0041RecvSeq();
 
         Pkg_Rtre0030.p_InsertRtre0030 (Ref_Cursor, lr_Re0210.RACT_DAY, lr_Re0210.TORD_NO, lr_Re0210.CUST_NO,
@@ -509,7 +509,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_07', v_Tno, ln_End_Tp);
                                        0, lr_Re0210.PRT_CNC_RMNN_AMT, v_Reg_Id, v_Success_Code,
                                        v_Return_Message, v_ErrorText);
         IF 0 != v_Success_Code THEN
-            v_Return_Message := '¼ö³³³»¿ª »ý¼ºÃ³¸® ½ÇÆÐ!!'||'-'||v_Return_Message;
+            v_Return_Message := 'ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬ ì‹¤íŒ¨!!'||'-'||v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -522,10 +522,10 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_08', v_Tno, ln_End_Tp);
             ln_Tarre_Amt := ln_Tarre_Amt + ln_Remain_Amt;
         END IF;
 
-        ln_Trecp_Amt := ln_Tarre_Amt; -- ¼ö³³Ã³¸® ´ë»ó ÀüÃ¼±Ý¾×
+        ln_Trecp_Amt := ln_Tarre_Amt; -- ìˆ˜ë‚©ì²˜ë¦¬ ëŒ€ìƒ ì „ì²´ê¸ˆì•¡
 
         /*
-         * °è¾àº° Ã»±¸½ºÄÉÁì °¨¾ÈÇÏ¿© Ã³¸®
+         * ê³„ì•½ë³„ ì²­êµ¬ìŠ¤ì¼€ì¥´ ê°ì•ˆí•˜ì—¬ ì²˜ë¦¬
          */
         FOR cur_SD0109 IN(SELECT  SCHD_SEQ
                                 , ARRE_AMT
@@ -552,13 +552,13 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_08', v_Tno, ln_End_Tp);
                 ln_Tarre_Amt := 0;
             END IF;
 
-            -- ¼ö³³´ë»ó¸®½ºÆ® ÀÓ½ÃÅ×ÀÌºí¿¡ »ý¼º
+            -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ìž„ì‹œí…Œì´ë¸”ì— ìƒì„±
             IF ln_Recp_Amt > 0 THEN
-                INSERT INTO RTTEMP01(  ORD_NO   /* °è¾à¹øÈ£ */
-                                     , CUST_NO  /* °í°´¹øÈ£ */
-                                     , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                                     , ARRE_AMT /* ¿¬Ã¼±Ý¾×(VATÆ÷ÇÔ) */
-                                     , RECP_AMT /* ¼ö³³±Ý¾×(VATÆ÷ÇÔ) */
+                INSERT INTO RTTEMP01(  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                                     , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                                     , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                                     , ARRE_AMT /* ì—°ì²´ê¸ˆì•¡(VATí¬í•¨) */
+                                     , RECP_AMT /* ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨) */
                                     )
                 VALUES              (  lr_Re0210.TORD_NO
                                      , lr_Re0210.CUST_NO
@@ -569,15 +569,15 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_08', v_Tno, ln_End_Tp);
             END IF;
         END LOOP;
 
-        -- ¼±¼ö±Ý¾×ÀÌ  ³²¾Æ ÀÖ´Â °æ¿ì Ã»±¸¼ø¹ø¾øÀÌ TEMP Table »ý¼º
+        -- ì„ ìˆ˜ê¸ˆì•¡ì´  ë‚¨ì•„ ìžˆëŠ” ê²½ìš° ì²­êµ¬ìˆœë²ˆì—†ì´ TEMP Table ìƒì„±
         ln_Pend_Amt := ln_Tarre_Amt;
 
         IF ln_Tarre_Amt > 0 THEN
-            INSERT INTO RTTEMP01(  ORD_NO   /* °è¾à¹øÈ£ */
-                                 , CUST_NO  /* °í°´¹øÈ£ */
-                                 , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                                 , ARRE_AMT /* ¿¬Ã¼±Ý¾×(VATÆ÷ÇÔ) */
-                                 , RECP_AMT /* ¼ö³³±Ý¾×(VATÆ÷ÇÔ) */
+            INSERT INTO RTTEMP01(  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                                 , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                                 , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                                 , ARRE_AMT /* ì—°ì²´ê¸ˆì•¡(VATí¬í•¨) */
+                                 , RECP_AMT /* ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨) */
                                 )
             VALUES              (  lr_Re0210.TORD_NO
                                  , lr_Re0210.CUST_NO
@@ -587,25 +587,25 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_08', v_Tno, ln_End_Tp);
                                 );
         END IF;
 
-        -- Ã³¸®±Ý¾× ¼³Á¤
+        -- ì²˜ë¦¬ê¸ˆì•¡ ì„¤ì •
         ln_Recp_Amt := ln_Trecp_Amt;
         ln_Rear_Amt := ln_Trecp_Amt - ln_Pend_Amt;
 
-        -- ¼ö³³³»¿ª »ý¼ºÃ³¸®
-        -- ¼ö³³´ë»ó¸®½ºÆ® Á¶È¸(¹Ì³³¸®½ºÆ®¿Í ¼±¼ö±Ý ³»¿ª)
+        -- ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬
+        -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì¡°íšŒ(ë¯¸ë‚©ë¦¬ìŠ¤íŠ¸ì™€ ì„ ìˆ˜ê¸ˆ ë‚´ì—­)
         OPEN Ref_Cursor FOR
-            SELECT  ORD_NO   /* °è¾à¹øÈ£ */
-                  , CUST_NO  /* °í°´¹øÈ£ */
-                  , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                  , ARRE_AMT /* ¹Ì³³±Ý¾× */
-                  , RECP_AMT /* ¼ö³³Ã³¸®±Ý¾× */
+            SELECT  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                  , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                  , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                  , ARRE_AMT /* ë¯¸ë‚©ê¸ˆì•¡ */
+                  , RECP_AMT /* ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡ */
             FROM    RTTEMP01
-            WHERE   RECP_AMT > 0 /* ¼ö³³±Ý¾×ÀÌ Á¸ÀçÇÏ´Â °Í¸¸ */
+            WHERE   RECP_AMT > 0 /* ìˆ˜ë‚©ê¸ˆì•¡ì´ ì¡´ìž¬í•˜ëŠ” ê²ƒë§Œ */
             AND     ORD_NO   = lr_Re0210.TORD_NO
             AND     CUST_NO  = lr_Re0210.CUST_NO
-            ORDER BY NVL(SCHD_SEQ, 999); -- ¼±¼ö±ÝÀ» ¸¶Áö¸·¿¡ À§Ä¡½ÃÅ´
+            ORDER BY NVL(SCHD_SEQ, 999); -- ì„ ìˆ˜ê¸ˆì„ ë§ˆì§€ë§‰ì— ìœ„ì¹˜ì‹œí‚´
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt);   
-        -- ¼ö³³ Ã³¸®
+        -- ìˆ˜ë‚© ì²˜ë¦¬
         Pkg_Rtre0030.p_InsertRtre0030(  Ref_Cursor
                                       , lr_Re0210.RACT_DAY
                                       , lr_Re0210.TORD_NO
@@ -624,7 +624,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                                      );
 
         IF 0 != v_Success_Code THEN
-            v_Return_Message := '¼ö³³³»¿ª »ý¼ºÃ³¸® ½ÇÆÐ!!(' || lr_Re0210.TORD_NO || ')-' || v_Return_Message;
+            v_Return_Message := 'ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬ ì‹¤íŒ¨!!(' || lr_Re0210.TORD_NO || ')-' || v_Return_Message;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -649,7 +649,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                          )
         LOOP
 
-            -- ºÎºÐÈ¯ºÒÀÎ °æ¿ì¿¡´Â È¯ºÒ ÈÄ ³²Àº±Ý¾×À¸·Î ¼ÂÆÃ
+            -- ë¶€ë¶„í™˜ë¶ˆì¸ ê²½ìš°ì—ëŠ” í™˜ë¶ˆ í›„ ë‚¨ì€ê¸ˆì•¡ìœ¼ë¡œ ì…‹íŒ…
             IF lr_Re0210.REFUND_YN = 'P' THEN
                 ln_Tarre_Amt := lr_Re0210.PRT_CNC_RMNN_AMT;    
                 ln_Trecp_Amt := ln_Tarre_Amt;
@@ -661,11 +661,11 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                 IF ln_Exe_Cnt = 1 THEN
                     ln_Tarre_Amt := ln_Tarre_Amt + ln_Remain_Amt;
                 END IF;
-                ln_Trecp_Amt := ln_Tarre_Amt; -- ¼ö³³Ã³¸® ´ë»ó ÀüÃ¼±Ý¾×                
+                ln_Trecp_Amt := ln_Tarre_Amt; -- ìˆ˜ë‚©ì²˜ë¦¬ ëŒ€ìƒ ì „ì²´ê¸ˆì•¡                
             END IF;
 
             /*
-             * °è¾àº° Ã»±¸½ºÄÉÁì °¨¾ÈÇÏ¿© Ã³¸®
+             * ê³„ì•½ë³„ ì²­êµ¬ìŠ¤ì¼€ì¥´ ê°ì•ˆí•˜ì—¬ ì²˜ë¦¬
              */
             FOR cur_SD0109 IN(SELECT  SCHD_SEQ
                                     , ARRE_AMT
@@ -691,13 +691,13 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                     ln_Tarre_Amt := 0;
                 END IF;
 
-                -- ¼ö³³´ë»ó¸®½ºÆ® ÀÓ½ÃÅ×ÀÌºí¿¡ »ý¼º
+                -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ìž„ì‹œí…Œì´ë¸”ì— ìƒì„±
                 IF ln_Recp_Amt > 0 THEN
-                    INSERT INTO RTTEMP01(  ORD_NO   /* °è¾à¹øÈ£ */
-                                         , CUST_NO  /* °í°´¹øÈ£ */
-                                         , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                                         , ARRE_AMT /* ¿¬Ã¼±Ý¾×(VATÆ÷ÇÔ) */
-                                         , RECP_AMT /* ¼ö³³±Ý¾×(VATÆ÷ÇÔ) */
+                    INSERT INTO RTTEMP01(  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                                         , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                                         , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                                         , ARRE_AMT /* ì—°ì²´ê¸ˆì•¡(VATí¬í•¨) */
+                                         , RECP_AMT /* ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨) */
                                         )
                     VALUES              (  cur_Re0211.ORD_NO
                                          , cur_Re0211.CUST_NO
@@ -708,15 +708,15 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                 END IF;
             END LOOP;
 
-            -- ¼±¼ö±Ý¾×ÀÌ  ³²¾Æ ÀÖ´Â °æ¿ì Ã»±¸¼ø¹ø¾øÀÌ TEMP Table »ý¼º
+            -- ì„ ìˆ˜ê¸ˆì•¡ì´  ë‚¨ì•„ ìžˆëŠ” ê²½ìš° ì²­êµ¬ìˆœë²ˆì—†ì´ TEMP Table ìƒì„±
             ln_Pend_Amt := ln_Tarre_Amt;
 
             IF ln_Tarre_Amt > 0 THEN
-                INSERT INTO RTTEMP01(  ORD_NO   /* °è¾à¹øÈ£ */
-                                     , CUST_NO  /* °í°´¹øÈ£ */
-                                     , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                                     , ARRE_AMT /* ¿¬Ã¼±Ý¾×(VATÆ÷ÇÔ) */
-                                     , RECP_AMT /* ¼ö³³±Ý¾×(VATÆ÷ÇÔ) */
+                INSERT INTO RTTEMP01(  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                                     , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                                     , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                                     , ARRE_AMT /* ì—°ì²´ê¸ˆì•¡(VATí¬í•¨) */
+                                     , RECP_AMT /* ìˆ˜ë‚©ê¸ˆì•¡(VATí¬í•¨) */
                                     )
                 VALUES              (  cur_Re0211.ORD_NO
                                      , cur_Re0211.CUST_NO
@@ -726,25 +726,25 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_09', v_Tno, ln_Recp_Amt)
                                     );
             END IF;
 
-            -- Ã³¸®±Ý¾× ¼³Á¤
+            -- ì²˜ë¦¬ê¸ˆì•¡ ì„¤ì •
             ln_Recp_Amt := ln_Trecp_Amt;
             ln_Rear_Amt := ln_Trecp_Amt - ln_Pend_Amt;
 
-            -- ¼ö³³³»¿ª »ý¼ºÃ³¸®
-            -- ¼ö³³´ë»ó¸®½ºÆ® Á¶È¸(¹Ì³³¸®½ºÆ®¿Í ¼±¼ö±Ý ³»¿ª)
+            -- ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬
+            -- ìˆ˜ë‚©ëŒ€ìƒë¦¬ìŠ¤íŠ¸ ì¡°íšŒ(ë¯¸ë‚©ë¦¬ìŠ¤íŠ¸ì™€ ì„ ìˆ˜ê¸ˆ ë‚´ì—­)
             OPEN Ref_Cursor FOR
-                SELECT  ORD_NO   /* °è¾à¹øÈ£ */
-                      , CUST_NO  /* °í°´¹øÈ£ */
-                      , SCHD_SEQ /* Ã»±¸¼ø¹ø */
-                      , ARRE_AMT /* ¹Ì³³±Ý¾× */
-                      , RECP_AMT /* ¼ö³³Ã³¸®±Ý¾× */
+                SELECT  ORD_NO   /* ê³„ì•½ë²ˆí˜¸ */
+                      , CUST_NO  /* ê³ ê°ë²ˆí˜¸ */
+                      , SCHD_SEQ /* ì²­êµ¬ìˆœë²ˆ */
+                      , ARRE_AMT /* ë¯¸ë‚©ê¸ˆì•¡ */
+                      , RECP_AMT /* ìˆ˜ë‚©ì²˜ë¦¬ê¸ˆì•¡ */
                 FROM    RTTEMP01
-                WHERE   RECP_AMT > 0 /* ¼ö³³±Ý¾×ÀÌ Á¸ÀçÇÏ´Â °Í¸¸ */
+                WHERE   RECP_AMT > 0 /* ìˆ˜ë‚©ê¸ˆì•¡ì´ ì¡´ìž¬í•˜ëŠ” ê²ƒë§Œ */
                 AND     ORD_NO   = cur_Re0211.ORD_NO
                 AND     CUST_NO  = cur_Re0211.CUST_NO
-                ORDER BY NVL(SCHD_SEQ, 999); -- ¼±¼ö±ÝÀ» ¸¶Áö¸·¿¡ À§Ä¡½ÃÅ´
+                ORDER BY NVL(SCHD_SEQ, 999); -- ì„ ìˆ˜ê¸ˆì„ ë§ˆì§€ë§‰ì— ìœ„ì¹˜ì‹œí‚´
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_10', v_Tno, ln_Recp_Amt);   
-            -- ¼ö³³ Ã³¸®
+            -- ìˆ˜ë‚© ì²˜ë¦¬
             Pkg_Rtre0030.p_InsertRtre0030(  Ref_Cursor
                                           , lr_Re0210.RACT_DAY
                                           , cur_Re0211.ORD_NO
@@ -762,7 +762,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_10', v_Tno, ln_Recp_Amt)
                                           , v_ErrorText
                                          );
             IF 0 != v_Success_Code THEN
-                v_Return_Message := '¼ö³³³»¿ª »ý¼ºÃ³¸® ½ÇÆÐ!!(' || cur_Re0211.ORD_NO || ')-' || v_Return_Message;
+                v_Return_Message := 'ìˆ˜ë‚©ë‚´ì—­ ìƒì„±ì²˜ë¦¬ ì‹¤íŒ¨!!(' || cur_Re0211.ORD_NO || ')-' || v_Return_Message;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -771,19 +771,19 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_10', v_Tno, ln_Recp_Amt)
         END LOOP;
     END IF;
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_11', v_Tno, lr_Re0210.TORD_NO);     
-    -- ¼ö³³Ã³¸® ¿Ï·áÈÄ ¼ö³³°Å·¡¹øÈ£ Update
+    -- ìˆ˜ë‚©ì²˜ë¦¬ ì™„ë£Œí›„ ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ Update
     IF 0 <> PKG_RTRE0210.f_UpdateRTRE0210RecvResult(  lr_Re0210.RACT_DAY
                                                     , lr_Re0210.RACT_SEQ
                                                     , ln_Recv_Seq
                                                     , v_Reg_Id
                                                     , v_ErrorText
                                                    ) THEN
-        v_Return_Message := '¼ö³³°á°ú ¼öÁ¤ ½ÇÆÐ!!!';
+        v_Return_Message := 'ìˆ˜ë‚©ê²°ê³¼ ìˆ˜ì • ì‹¤íŒ¨!!!';
         RAISE e_Error;
     END IF;
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_12', v_Tno, lr_Re0210.TORD_NO); 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î °èÁÂÁï½ÃÃâ±Ý ¼ö³³Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ìˆ˜ë‚©ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -797,23 +797,23 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_12', v_Tno, lr_Re0210.TO
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+            v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
             v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_CreateRTRE0210RactReceive(2)', v_ErrorText, v_Return_Message);
     END p_CreateRTRE0210RactReceive;
 
 /*******************************************************************************
-  -- °èÁÂÁï½ÃÃâ±Ý°áÁ¦ÀÌ·Â ¼ö³³ÀÏ·Ã¹øÈ£ Ã¤¹ø
+  -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆê²°ì œì´ë ¥ ìˆ˜ë‚©ì¼ë ¨ë²ˆí˜¸ ì±„ë²ˆ
  *******************************************************************************/
-    FUNCTION f_sRtre0210HstReqSeq(  v_Ord_Cd  IN RTRE0215.ORD_CD%TYPE  /* °è¾à¹øÈ£ */
-                                  , v_Cust_No IN RTRE0215.CUST_NO%TYPE /* °Å·¡¹øÈ£ */
+    FUNCTION f_sRtre0210HstReqSeq(  v_Ord_Cd  IN RTRE0215.ORD_CD%TYPE  /* ê³„ì•½ë²ˆí˜¸ */
+                                  , v_Cust_No IN RTRE0215.CUST_NO%TYPE /* ê±°ëž˜ë²ˆí˜¸ */
                                  )
     
     RETURN NUMBER
 
     IS
 
-    v_Req_Seq RTRE0215.REQ_SEQ%TYPE DEFAULT 0; /* ¿äÃ»¼ø¹ø */
+    v_Req_Seq RTRE0215.REQ_SEQ%TYPE DEFAULT 0; /* ìš”ì²­ìˆœë²ˆ */
 
     BEGIN
         SELECT NVL2(MAX(REQ_SEQ), TO_NUMBER(MAX(REQ_SEQ)) + 1, 1)
@@ -829,12 +829,12 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_12', v_Tno, lr_Re0210.TO
     END f_sRtre0210HstReqSeq;
 
 /*****************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý °áÁ¦Ãë¼Ò ³»¿ª Update(È¯ºÒÀÌ ¾Æ´Ñ ¼ö³³Ãë¼Ò¸¸)
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆ ê²°ì œì·¨ì†Œ ë‚´ì—­ Update(í™˜ë¶ˆì´ ì•„ë‹Œ ìˆ˜ë‚©ì·¨ì†Œë§Œ)
  *****************************************************************************/
-    FUNCTION f_UpdateRtre0210Cancle(  v_Recv_Seq  IN  RTRE0210.RECV_SEQ%TYPE /* ¼ö³³°Å·¡¹øÈ£ */
-                                    , v_Cnc_Rseq  IN  RTRE0210.CNC_RSEQ%TYPE /* ¼ö³³Ãë¼Ò°Å·¡¹øÈ£ */
-                                    , v_Cnc_Stat  IN  RTRE0210.CNC_STAT%TYPE /* ¼ö³³Ãë¼Ò¿©ºÎ */
-                                    , v_Reg_Id    IN  RTRE0210.REG_ID%TYPE   /* µî·ÏÀÚ ID */
+    FUNCTION f_UpdateRtre0210Cancle(  v_Recv_Seq  IN  RTRE0210.RECV_SEQ%TYPE /* ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
+                                    , v_Cnc_Rseq  IN  RTRE0210.CNC_RSEQ%TYPE /* ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸ */
+                                    , v_Cnc_Stat  IN  RTRE0210.CNC_STAT%TYPE /* ìˆ˜ë‚©ì·¨ì†Œì—¬ë¶€ */
+                                    , v_Reg_Id    IN  RTRE0210.REG_ID%TYPE   /* ë“±ë¡ìž ID */
                                     , v_ErrorText OUT VARCHAR2
                                    )
     RETURN NUMBER
@@ -858,15 +858,15 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_12', v_Tno, lr_Re0210.TO
   END f_UpdateRtre0210Cancle;
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±ÝÃë¼Ò ÀúÀå Update
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆì·¨ì†Œ ì €ìž¥ Update
  *******************************************************************************/
-    PROCEDURE p_UpdateRtre0210AccCancel(  v_Ract_Day         IN  RTRE0210.RACT_DAY%TYPE         /* Ä«µå¼ö³³ÀÏÀÚ */
-                                        , v_Recv_Seq         IN  RTRE0210.RECV_SEQ%TYPE         /* ¼ö³³°Å·¡¹øÈ£ */
-                                        , v_Cnc_Rseq         IN  RTRE0210.CNC_RSEQ%TYPE         /* ¼ö³³Ãë¼Ò°Å·¡¹øÈ£ */
-                                        , v_Cnc_Tno          IN  RTRE0210.CNC_TNO%TYPE          /* ¼¼Æ²¹ðÅ©Ãë¼Ò°Å·¡¹øÈ£ */
-                                        , v_Prt_Cnc_Rmnn_Amt IN  RTRE0210.PRT_CNC_RMNN_AMT%TYPE /* ¼ö³³Ãë¼ÒÈÄ³²Àº±Ý¾× */
-                                        , v_Refund_Yn        IN  RTRE0210.REFUND_YN%TYPE        /* È¯ºÒ¿©ºÎ */
-                                        , v_Chg_Id           IN  RTRE0210.CHG_ID%TYPE           /* º¯°æÀÚ ID */
+    PROCEDURE p_UpdateRtre0210AccCancel(  v_Ract_Day         IN  RTRE0210.RACT_DAY%TYPE         /* ì¹´ë“œìˆ˜ë‚©ì¼ìž */
+                                        , v_Recv_Seq         IN  RTRE0210.RECV_SEQ%TYPE         /* ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸ */
+                                        , v_Cnc_Rseq         IN  RTRE0210.CNC_RSEQ%TYPE         /* ìˆ˜ë‚©ì·¨ì†Œê±°ëž˜ë²ˆí˜¸ */
+                                        , v_Cnc_Tno          IN  RTRE0210.CNC_TNO%TYPE          /* ì„¸í‹€ë±…í¬ì·¨ì†Œê±°ëž˜ë²ˆí˜¸ */
+                                        , v_Prt_Cnc_Rmnn_Amt IN  RTRE0210.PRT_CNC_RMNN_AMT%TYPE /* ìˆ˜ë‚©ì·¨ì†Œí›„ë‚¨ì€ê¸ˆì•¡ */
+                                        , v_Refund_Yn        IN  RTRE0210.REFUND_YN%TYPE        /* í™˜ë¶ˆì—¬ë¶€ */
+                                        , v_Chg_Id           IN  RTRE0210.CHG_ID%TYPE           /* ë³€ê²½ìž ID */
                                         , v_Success_Code     OUT NUMBER
                                         , v_Return_Message   OUT VARCHAR2
                                         , v_Error_Text       OUT VARCHAR2
@@ -887,7 +887,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_12', v_Tno, lr_Re0210.TO
         AND     RECV_SEQ = v_Recv_Seq;
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_13', v_Cnc_Tno, v_Prt_Cnc_Rmnn_Amt); 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ¼öÁ¤µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ìˆ˜ì •ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -901,40 +901,40 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_13', v_Cnc_Tno, v_Prt_Cn
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), '¿¡·¯!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ì—ëŸ¬!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_UpdateRtre0210AccCancel(2)', v_Error_Text, v_Return_Message);
 
     END p_UpdateRtre0210AccCancel;
 
 /*******************************************************************************
- -- °èÁÂÁï½ÃÃâ±Ý°áÁ¦ÀÌ·Â Insert
+ -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆê²°ì œì´ë ¥ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0210AccImmWthdrHst(  v_Req_Seq	 	    IN  RTRE0215.REQ_SEQ%TYPE   /* ¿äÃ»¼ø¹ø */
-                                             , v_Cust_No        IN  RTRE0215.CUST_NO%TYPE   /* °í°´¹øÈ£ */
-                                             , v_Ord_Cd         IN  RTRE0215.ORD_CD%TYPE    /* °è¾à¹øÈ£ */
-                                             , v_Work_Gb        IN  RTRE0215.WORK_GB%TYPE   /* ¿äÃ»¾÷¹« */
-                                             , v_Method         IN  RTRE0215.METHOD%TYPE    /* ¸Þ¼Òµå¸í */
-                                             , v_Pay_Gb         IN  RTRE0215.PAY_GB%TYPE    /* ¾÷¹«±¸ºÐ */
-                                             , v_P_Mid          IN  RTRE0215.P_MID%TYPE     /* »óÁ¡¾ÆÀÌµð */
-                                             , v_P_Oid          IN  RTRE0215.P_OID%TYPE     /* ÁÖ¹®¹øÈ£ */
-                                             , v_P_Tr_Dt        IN  RTRE0215.P_TR_DT%TYPE   /* °Å·¡ÀÏÀÚ */
-                                             , v_P_Tr_Time      IN  RTRE0215.P_TR_TIME%TYPE /* °Å·¡½Ã°£ */
-                                             , v_P_Acc_No       IN  RTRE0215.P_ACC_NO%TYPE  /* °èÁÂ¹øÈ£ */
-                                             , v_P_Bank_Cd      IN  RTRE0215.P_BANK_CD%TYPE /* ÀºÇàÄÚµå */
-                                             , v_P_Cust_Id      IN  RTRE0215.P_CUST_ID%TYPE /* °í°´ID */
-                                             , v_P_Cust_Nm      IN  RTRE0215.P_CUST_NM%TYPE /* ¿¹±ÝÁÖ¸í */
-                                             , v_P_Uname        IN  RTRE0215.P_UNAME%TYPE   /* °áÁ¦°í°´¼º¸í */
-                                             , v_P_Goods        IN  RTRE0215.P_GOODS%TYPE   /* °áÁ¦»óÇ°¸í */
-                                             , v_P_Amt          IN  RTRE0215.P_AMT%TYPE     /* °Å·¡±Ý¾× */
-                                             , v_P_Rm           IN  RTRE0215.P_RM%TYPE      /* »ý³â¿ùÀÏ */
-                                             , v_P_Bname        IN  RTRE0215.P_BNAME%TYPE   /* ÅëÀåÀÎÀÚ¸í */
-                                             , v_P_Hash         IN  RTRE0215.P_HASH%TYPE    /* Hashµ¥ÀÌÅÍ */
-                                             , v_P_Tr_No        IN  RTRE0215.P_TR_NO%TYPE   /* °Å·¡¹øÈ£ */
-                                             , v_P_Satus        IN  RTRE0215.P_SATUS%TYPE   /* °Å·¡»óÅÂ */
-                                             , v_P_Err_Cd       IN  RTRE0215.P_ERR_CD%TYPE  /* °ÅÀýÄÚµå */
-                                             , v_PRmesg         IN  RTRE0215.P_RMESG%TYPE   /* ¸Þ½ÃÁö */
-                                             , v_Reg_Id         IN  RTRE0215.REG_ID%TYPE     /* µî·ÏÀÚ ID */
+    PROCEDURE p_InsertRtre0210AccImmWthdrHst(  v_Req_Seq	 	    IN  RTRE0215.REQ_SEQ%TYPE   /* ìš”ì²­ìˆœë²ˆ */
+                                             , v_Cust_No        IN  RTRE0215.CUST_NO%TYPE   /* ê³ ê°ë²ˆí˜¸ */
+                                             , v_Ord_Cd         IN  RTRE0215.ORD_CD%TYPE    /* ê³„ì•½ë²ˆí˜¸ */
+                                             , v_Work_Gb        IN  RTRE0215.WORK_GB%TYPE   /* ìš”ì²­ì—…ë¬´ */
+                                             , v_Method         IN  RTRE0215.METHOD%TYPE    /* ë©”ì†Œë“œëª… */
+                                             , v_Pay_Gb         IN  RTRE0215.PAY_GB%TYPE    /* ì—…ë¬´êµ¬ë¶„ */
+                                             , v_P_Mid          IN  RTRE0215.P_MID%TYPE     /* ìƒì ì•„ì´ë”” */
+                                             , v_P_Oid          IN  RTRE0215.P_OID%TYPE     /* ì£¼ë¬¸ë²ˆí˜¸ */
+                                             , v_P_Tr_Dt        IN  RTRE0215.P_TR_DT%TYPE   /* ê±°ëž˜ì¼ìž */
+                                             , v_P_Tr_Time      IN  RTRE0215.P_TR_TIME%TYPE /* ê±°ëž˜ì‹œê°„ */
+                                             , v_P_Acc_No       IN  RTRE0215.P_ACC_NO%TYPE  /* ê³„ì¢Œë²ˆí˜¸ */
+                                             , v_P_Bank_Cd      IN  RTRE0215.P_BANK_CD%TYPE /* ì€í–‰ì½”ë“œ */
+                                             , v_P_Cust_Id      IN  RTRE0215.P_CUST_ID%TYPE /* ê³ ê°ID */
+                                             , v_P_Cust_Nm      IN  RTRE0215.P_CUST_NM%TYPE /* ì˜ˆê¸ˆì£¼ëª… */
+                                             , v_P_Uname        IN  RTRE0215.P_UNAME%TYPE   /* ê²°ì œê³ ê°ì„±ëª… */
+                                             , v_P_Goods        IN  RTRE0215.P_GOODS%TYPE   /* ê²°ì œìƒí’ˆëª… */
+                                             , v_P_Amt          IN  RTRE0215.P_AMT%TYPE     /* ê±°ëž˜ê¸ˆì•¡ */
+                                             , v_P_Rm           IN  RTRE0215.P_RM%TYPE      /* ìƒë…„ì›”ì¼ */
+                                             , v_P_Bname        IN  RTRE0215.P_BNAME%TYPE   /* í†µìž¥ì¸ìžëª… */
+                                             , v_P_Hash         IN  RTRE0215.P_HASH%TYPE    /* Hashë°ì´í„° */
+                                             , v_P_Tr_No        IN  RTRE0215.P_TR_NO%TYPE   /* ê±°ëž˜ë²ˆí˜¸ */
+                                             , v_P_Satus        IN  RTRE0215.P_SATUS%TYPE   /* ê±°ëž˜ìƒíƒœ */
+                                             , v_P_Err_Cd       IN  RTRE0215.P_ERR_CD%TYPE  /* ê±°ì ˆì½”ë“œ */
+                                             , v_PRmesg         IN  RTRE0215.P_RMESG%TYPE   /* ë©”ì‹œì§€ */
+                                             , v_Reg_Id         IN  RTRE0215.REG_ID%TYPE     /* ë“±ë¡ìž ID */
                                              , v_Success_Code   OUT NUMBER
                                              , v_Return_Message OUT VARCHAR2
                                              , v_Error_Text     OUT VARCHAR2
@@ -1007,7 +1007,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_13', v_Cnc_Tno, v_Prt_Cn
                             
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_14', v_Ord_Cd, v_P_Acc_No);                             
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -1021,22 +1021,22 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_14', v_Ord_Cd, v_P_Acc_N
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), '¿¡·¯!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ì—ëŸ¬!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_InsertRtre0210AccImmWthdrHst(2)', v_Error_Text, v_Return_Message);
     
     END p_InsertRtre0210AccImmWthdrHst;
 
 /*******************************************************************************
-  -- °Å·¡Ãë¼Ò¹øÈ£ Ã¤¹ø
+  -- ê±°ëž˜ì·¨ì†Œë²ˆí˜¸ ì±„ë²ˆ
  *******************************************************************************/
-    FUNCTION f_sRtre0210HstCncSeq(v_Tno IN RTRE0216.TNO%TYPE) /* °Å·¡¹øÈ£ */
+    FUNCTION f_sRtre0210HstCncSeq(v_Tno IN RTRE0216.TNO%TYPE) /* ê±°ëž˜ë²ˆí˜¸ */
 
     RETURN NUMBER
 
     IS
 
-    v_Cnc_Seq RTRE0216.CNC_SEQ%TYPE DEFAULT 0; /* °Å·¡Ãë¼Ò¹øÈ£ */
+    v_Cnc_Seq RTRE0216.CNC_SEQ%TYPE DEFAULT 0; /* ê±°ëž˜ì·¨ì†Œë²ˆí˜¸ */
 
     BEGIN
         SELECT NVL((SELECT MAX(CNC_SEQ)
@@ -1051,17 +1051,17 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_14', v_Ord_Cd, v_P_Acc_N
     END f_sRtre0210HstCncSeq;
 
 /*******************************************************************************
-  -- °èÁÂÁï½ÃÃâ±ÝÃë¼ÒÀÌ·Â Insert
+  -- ê³„ì¢Œì¦‰ì‹œì¶œê¸ˆì·¨ì†Œì´ë ¥ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0210AccCancelHst(  v_Tno            IN  RTRE0216.TNO%TYPE      /* °Å·¡¹øÈ£ */
-                                           , v_Cnc_Seq        IN  RTRE0216.CNC_SEQ%TYPE  /* °Å·¡Ãë¼Ò¹øÈ£ */
-                                           , v_Mod_Type       IN  RTRE0216.MOD_TYPE%TYPE /* ¿äÃ»Á¾·ù */
-                                           , v_Mod_Mny        IN  RTRE0216.MOD_MNY%TYPE  /* Ãë¼Ò¿äÃ»±Ý¾× */
-                                           , v_Rem_Mny        IN  RTRE0216.REM_MNY%TYPE  /* Ãë¼Ò°¡´É±Ý¾× */
-                                           , v_Mod_Desc       IN  RTRE0216.MOD_DESC%TYPE /* Ãë¼Ò»çÀ¯ */
-                                           , v_Res_Cd         IN  RTRE0216.RES_CD%TYPE   /* °á°úÄÚµå */
-                                           , v_Res_Msg        IN  RTRE0216.RES_MSG%TYPE  /* °á°ú³»¿ë */
-                                           , v_Reg_Id         IN  RTRE0216.REG_ID%TYPE   /* µî·ÏÀÚ ID */
+    PROCEDURE p_InsertRtre0210AccCancelHst(  v_Tno            IN  RTRE0216.TNO%TYPE      /* ê±°ëž˜ë²ˆí˜¸ */
+                                           , v_Cnc_Seq        IN  RTRE0216.CNC_SEQ%TYPE  /* ê±°ëž˜ì·¨ì†Œë²ˆí˜¸ */
+                                           , v_Mod_Type       IN  RTRE0216.MOD_TYPE%TYPE /* ìš”ì²­ì¢…ë¥˜ */
+                                           , v_Mod_Mny        IN  RTRE0216.MOD_MNY%TYPE  /* ì·¨ì†Œìš”ì²­ê¸ˆì•¡ */
+                                           , v_Rem_Mny        IN  RTRE0216.REM_MNY%TYPE  /* ì·¨ì†Œê°€ëŠ¥ê¸ˆì•¡ */
+                                           , v_Mod_Desc       IN  RTRE0216.MOD_DESC%TYPE /* ì·¨ì†Œì‚¬ìœ  */
+                                           , v_Res_Cd         IN  RTRE0216.RES_CD%TYPE   /* ê²°ê³¼ì½”ë“œ */
+                                           , v_Res_Msg        IN  RTRE0216.RES_MSG%TYPE  /* ê²°ê³¼ë‚´ìš© */
+                                           , v_Reg_Id         IN  RTRE0216.REG_ID%TYPE   /* ë“±ë¡ìž ID */
                                            , v_Success_Code   OUT NUMBER
                                            , v_Return_Message OUT VARCHAR2
                                            , v_Error_Text     OUT VARCHAR2
@@ -1099,7 +1099,7 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_14', v_Ord_Cd, v_P_Acc_N
                             );
 Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_15', v_Tno, v_Cnc_Seq);                               
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -1113,10 +1113,9 @@ Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.acctRecvRest_15', v_Tno, v_Cnc_Seq);
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '¿¡·¯!::'||SUBSTR(SQLERRM, 1, 200));
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì—ëŸ¬!::'||SUBSTR(SQLERRM, 1, 200));
         v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0210.p_InsertRtre0210AccCancelHst(2)', v_Error_Text, v_Return_Message);
 
     END p_InsertRtre0210AccCancelHst;
 END Pkg_Rtre0210;
-/

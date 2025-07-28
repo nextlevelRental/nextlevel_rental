@@ -292,8 +292,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0200 AS
     v_custNm          IN RTSD0200.CUST_NM%TYPE,         /*고객명/법인명       */
     v_birthDay        IN RTSD0200.BIRTH_DAY%TYPE,       /*법정생년월일        */
     v_genderCd        IN RTSD0200.GENDER_CD%TYPE,       /*성별                */
-    v_mobNo           IN RTSD0200.MOB_NO%TYPE,           /*휴대폰번호          */
-    v_custNo           IN RTSD0100.CUST_NO%TYPE           /*고객번호          */
+    v_mobNo           IN RTSD0200.MOB_NO%TYPE           /*휴대폰번호          */
     ) RETURN VARCHAR2 IS
 
     v_safe_key   RTSD0200.SAFE_KEY%TYPE DEFAULT '';
@@ -312,15 +311,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0200 AS
       */
       
       /* 당일 조회한 safekey 만 사용하는 것을 최근 safekey 로 변경-2019.02.12-K.J.U */ 
-      SELECT  SAFEKEY
+--      SELECT  NVL(SAFE_KEY, '0') SAFEKEY
+--      INTO    v_safe_key
+--      FROM    ((SELECT 'A' GUBUN,  SAFE_KEY, CRE_DAY  
+--               FROM    RTSD0200
+--               WHERE   CUST_NM   = v_custNm
+--               AND     BIRTH_DAY = v_birthDay
+--               AND     GENDER_CD = v_genderCd
+--               AND     MOB_NO    = v_mobNo
+--               UNION ALL
+--               SELECT 'B' GUBUN, SAFEKEY, TO_CHAR(SYSDATE, 'YYYYMMDD') CRE_DAY 
+--               FROM RTSD0100 
+--               WHERE CUST_NO = v_CustNo)
+--               ORDER BY GUBUN, CRE_DAY DESC)
+--      WHERE ROWNUM = 1;
+
+      SELECT  SAFE_KEY
       INTO    v_safe_key
       FROM    (SELECT SAFE_KEY  
                FROM    RTSD0200
                WHERE   CUST_NM   = v_custNm
                AND     BIRTH_DAY = v_birthDay
                AND     GENDER_CD = v_genderCd
-               AND     MOB_NO    = v_mobNo
-				)
+               AND     MOB_NO    = v_mobNo)
       WHERE ROWNUM = 1;
 
       RETURN v_safe_key;
@@ -332,8 +345,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0200 AS
         RETURN 'ERROR';
 
   END f_sRtsd0200_safeKeyConfirm;  
-   
-   /*****************************************************************************
+  
+  /*****************************************************************************
   --SAFE KEY 확인 : return -> SAFE_KEY
   *****************************************************************************/
   FUNCTION f_sRtsd0200_safeKeyConfirmNew(
@@ -386,4 +399,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0200 AS
   END f_sRtsd0200_safeKeyConfirmNew;  
   
 END Pkg_Rtsd0200;
-/

@@ -12,6 +12,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5060 AS
    1.4        2017-05-30  wjim             [20170519_01] 방문점검수수료 신설
    1.5        2017-08-03  wjim             [20170713_01] 방문점검수수료 집계중복 보완
    1.6        2018-03-27  wjim             [20180326_01] 얼라인먼트 수수료, 걱정제로 장착 수수료 추가 및 서비스별 엔진오일 수수료 분리
+   1.7		  2025-06-24  10244015		   [20250624_01] 프리미엄퍼플점 추가 위치교환수수료 부여    	
 *******************************************************************************/
 
   /*****************************************************************************
@@ -473,6 +474,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5060 AS
    1.4        2017-05-30  wjim             [20170519_01] 방문점검수수료 신설
    1.5        2017-08-03  wjim             [20170713_01] 방문점검수수료 집계중복 보완
    1.6        2018-03-27  wjim             [20180326_01] 얼라인먼트 수수료, 걱정제로 장착 수수료 추가 및 서비스별 엔진오일 수수료 분리
+   1.7		  2025-06-24  10244015		   [20250624_01] 프리미엄퍼플점 추가 위치교환수수료 부여
   *****************************************************************************/
 --  PROCEDURE p_CreateRtre5060ServiceComm (
 --    v_Period         IN CHAR,                           /*마감월              */
@@ -996,6 +998,11 @@ PROCEDURE p_CreateRtre5060ServiceComm (
             CASE WHEN B.SERVICE_CD IN ('B00007') THEN NVL(H.KWMENG, 0) 
                  WHEN B.SERVICE_CD IN ('B00011', 'B00012') THEN NVL(I.KWMENG, 0) 
                  ELSE '0' END  AS KWMENG,
+            CASE WHEN B.SERVICE_CD IN ('B00002') AND G.PREM_PRPL_YN = 'Y' THEN (SELECT DECODE(MAX(Z.CD_DESC), NULL, '0', MAX(Z.CD_DESC)) --[20250624_01] 프리미엄퍼플점 추가 위치교환수수료 부여
+																		          FROM RTCM0051 Z
+																		         WHERE Z.CD_GRP_CD = 'R085'
+																		           AND J.TOT_EVAL_POINT >= Z.CD)
+           		 ELSE '0' END  AS ADD_SVCM_AMT,     
             SUBSTR(C.MAKER_CD, 0, 1) AS CAR_TYPE                                          --[20200810_01] 무상얼라이먼트 수수료 계산을 위한 국산차/수입차 구분
     FROM    RTCS0007 A,
             RTCS0008 B,
@@ -1005,7 +1012,15 @@ PROCEDURE p_CreateRtre5060ServiceComm (
             RTSD0005 F,
             RTSD0007 G,
             RTCS0010 H,
-            RTCS0208 I
+            RTCS0208 I,
+            (SELECT AGENCY_CD
+				  , ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+			   FROM RTCS0130										--[20250624_01]프리미엄퍼플점을 위한 만족도조사 평점
+			  WHERE 1=1
+				AND DP_YN = 'Y'
+				AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+			  GROUP BY AGENCY_CD
+			) J
     WHERE   A.PROC_DAY BETWEEN v_Period||'01'
                            AND TO_CHAR(LAST_DAY(TO_DATE(v_Period||'01', 'YYYYMMDD')), 'YYYYMMDD')
     AND     A.ORD_NO    = B.ORD_NO
@@ -1029,6 +1044,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
     AND     B.DLVR_SEQ = H.DLVR_SEQ(+)
     AND     B.DLVR_DAY = I.DLVR_DAY(+)
     AND     B.DLVR_SEQ = I.DLVR_SEQ(+)
+    AND		G.AGENCY_CD = J.AGENCY_CD(+)
     ;
     
     /*
@@ -1258,7 +1274,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
             BEGIN
 
-                SELECT  SVCM_AMT
+                SELECT  SVCM_AMT + TO_NUMBER( CUR_5060.ADD_SVCM_AMT )		--[20250624_01] 프리미엄퍼플점 추가 위치교환수수료 부여
                 INTO    v_Svcm_Amt
                 FROM    RTRE5030
                 WHERE   SERVICE_CD   = CUR_5060.SERVICE_CD
@@ -1268,7 +1284,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
 
@@ -1290,7 +1306,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드4-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드4-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
             
@@ -1312,7 +1328,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
 
@@ -1334,7 +1350,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
         
@@ -1356,7 +1372,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
         
@@ -1378,7 +1394,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!' || CUR_5060.PROC_DAY || ' ' || CUR_5060.ORD_NO;
                     RAISE e_Error;
             END;
            
@@ -1400,7 +1416,7 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
                 EXCEPTION
                 WHEN OTHERS THEN
-                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||') : 자료가 존재하지 않습니다!';
+                    v_Return_Message := '서비스수수료 조견표(서비스코드2-'||CUR_5060.SERVICE_CD||',상품코드-'||CUR_5060.MAT_CD||') : 자료가 존재하지 않습니다!';
                     RAISE e_Error;
             END;
             
@@ -1524,4 +1540,3 @@ PROCEDURE p_CreateRtre5060ServiceComm (
 
 
 END Pkg_Rtre5060;
-/

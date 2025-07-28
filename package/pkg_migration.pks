@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Migration AS
 /*******************************************************************************
    NAME      Pkg_Migration
-   PURPOSE    ; ¸¶ÀÌ±×·¹ÀÌ¼Ç
+   PURPOSE    ; ë§ˆì´ê·¸ë ˆì´ì…˜
    
    REVISIONS
    Ver        Date        Author           Description
@@ -10,33 +10,32 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Migration AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Á¡°Ë´ë»ó ÀçÁý°è¸¦ À§ÇÑ ±âÁ¸ Áý°è³»¿ª Migration
+  -- ì ê²€ëŒ€ìƒ ìž¬ì§‘ê³„ë¥¼ ìœ„í•œ ê¸°ì¡´ ì§‘ê³„ë‚´ì—­ Migration
   *****************************************************************************/
   PROCEDURE p_TargetAggMigration(
-    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*±âÁØ³â¿ù              */
-    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Std_Ym         IN RTCS0005.STD_YM%TYPE,         /*ê¸°ì¤€ë…„ì›”              */
+    v_Reg_Id         IN RTCS0004.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- °è¾à¹øÈ£ ±âÁØ °ü·Ã µ¥ÀÌÅÍ »èÁ¦Ã³¸®
+  -- ê³„ì•½ë²ˆí˜¸ ê¸°ì¤€ ê´€ë ¨ ë°ì´í„° ì‚­ì œì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_OrdNoDelete (
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- »èÁ¦ µÈ °è¾àÁ¤º¸(RTSD0104) ±âÁØ  °ü·Ã Å×ÀÌºí ¹× »èÁ¦ ´ë»ó °è¾à¹øÈ£ Á¶È¸
+  -- ì‚­ì œ ëœ ê³„ì•½ì •ë³´(RTSD0104) ê¸°ì¤€  ê´€ë ¨ í…Œì´ë¸” ë° ì‚­ì œ ëŒ€ìƒ ê³„ì•½ë²ˆí˜¸ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_DeleteOrdNoSelect (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸              */
     );
       
 END Pkg_Migration;
-/

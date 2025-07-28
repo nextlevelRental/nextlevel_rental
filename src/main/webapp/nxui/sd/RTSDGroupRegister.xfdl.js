@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -33,6 +34,7 @@
 
             obj = new Dataset("comGrp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -48,6 +50,7 @@
 
             obj = new Dataset("comType", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -135,7 +138,7 @@
             obj.set_binddataset("dsList");
             obj.set_autofittype("col");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"140\"/><Column size=\"80\"/><Column size=\"200\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"단체명\"/><Cell col=\"1\" text=\"단체번호\"/><Cell col=\"2\" text=\"판매상품명\"/><Cell col=\"3\" text=\"판매상품\"/><Cell col=\"4\" text=\"최소타이어본수\"/><Cell col=\"5\" text=\"잔여계약건수\"/><Cell col=\"6\" text=\"할인율\"/><Cell col=\"7\" text=\"할인금액\"/></Band><Band id=\"body\"><Cell edittype=\"normal\" style=\"align:left;\" text=\"bind:grpNm\"/><Cell col=\"1\" edittype=\"none\" style=\"align:center;\" text=\"bind:grpNo\"/><Cell col=\"2\" style=\"align:left;\" text=\"bind:saleNm\"/><Cell col=\"3\" displaytype=\"button\" text=\"조회\"/><Cell col=\"4\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:minAgrCnt\" mask=\"###,###,###,##0\"/><Cell col=\"5\" displaytype=\"number\" edittype=\"none\" style=\"align:right;\" text=\"bind:restCnt\" mask=\"###,###,###,##0\"/><Cell col=\"6\" displaytype=\"number\" style=\"align:right;\" text=\"bind:grpDcRate\" mask=\"##0.0\"/><Cell col=\"7\" displaytype=\"number\" style=\"align:right;\" text=\"bind:grpDcAmt\" mask=\"###,###,###,##0\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"140\"/><Column size=\"80\"/><Column size=\"200\"/><Column size=\"60\"/><Column size=\"90\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"단체명\"/><Cell col=\"1\" text=\"단체번호\"/><Cell col=\"2\" text=\"판매상품명\"/><Cell col=\"3\" text=\"판매상품\"/><Cell col=\"4\" text=\"최소타이어본수\"/><Cell col=\"5\" text=\"현재계약본수\"/><Cell col=\"6\" text=\"할인율\"/><Cell col=\"7\" text=\"할인금액\"/></Band><Band id=\"body\"><Cell edittype=\"normal\" style=\"align:left;\" text=\"bind:grpNm\"/><Cell col=\"1\" edittype=\"none\" style=\"align:center;\" text=\"bind:grpNo\"/><Cell col=\"2\" style=\"align:left;\" text=\"bind:saleNm\"/><Cell col=\"3\" displaytype=\"button\" text=\"조회\"/><Cell col=\"4\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:minAgrCnt\" mask=\"###,###,###,##0\"/><Cell col=\"5\" displaytype=\"number\" edittype=\"none\" style=\"align:right;\" text=\"bind:restCnt\" mask=\"###,###,###,##0\"/><Cell col=\"6\" displaytype=\"number\" style=\"align:right;\" text=\"bind:grpDcRate\" mask=\"##0.0\"/><Cell col=\"7\" displaytype=\"number\" style=\"align:right;\" text=\"bind:grpDcAmt\" mask=\"###,###,###,##0\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00", "absolute", "0", "45", "1147", "20", null, null, this);
@@ -233,6 +236,7 @@
         ***********************************************************************************/
         	//팝업에서 전달받은 변수 저장
         	this.arr ;
+        	this.p_arg 			= "RTSDGroupRegister";
 
         /***********************************************************************************
          * 3. Common Events and Functions
@@ -413,7 +417,7 @@
         {
         	//trace(e.row + ", " + e.col);
         	if( e.col == 3){ //판매상품(버튼) 클릭시
-        		var args ={p_arg:""};
+        		var args ={p_formId:this.p_arg, p_prdtGrp:"01"};
         		//args = {dayTp : "TODAY", applyDate : "", ordId : "01", chanCd : "01", seasonCd : seasonCd, cntCd : cntCd, periodCd : periodCd};
         		Ex.core.popup(this,"판매상품 조회","comm::RTCOMMSellProduct_pop.xfdl",args, "modaless=false");
         	}

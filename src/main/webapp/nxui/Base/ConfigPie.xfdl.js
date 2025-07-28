@@ -14,10 +14,10 @@
                 this.set_name("configPie");
                 this.set_classname("config_xaxis");
                 this.set_titletext("Pie 차트 설정");
-                this.set_layoutautofittype("default");
                 this._setFormPosition(0,0,320,1594);
             }
             this.style.set_background("#d4d9dfff");
+            this.getSetter("layoutautofittype").set("default");
 
             
             // Object(Dataset, ExcelExportObject) Initialize
@@ -489,7 +489,7 @@
             		p.set_classname("config_xaxis");
             		p.set_titletext("Pie 차트 설정");
             		p.style.set_background("#d4d9dfff");
-            		p.set_layoutautofittype("default");
+            		p.getSetter("layoutautofittype").set("default");
 
             	}
             );

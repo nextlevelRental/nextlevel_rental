@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0216 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0216
-   PURPOSE   Paysignπﬂº€¿Ã∑¬
+   PURPOSE   PaysignÎ∞úÏÜ°Ïù¥Î†•
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,28 +10,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0216 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ Insert
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0216 (
-    v_Ord_No         IN RTSD0216.ORD_NO%TYPE,        /*¡÷πÆπ¯»£              */
-    v_Seq            IN RTSD0216.SEQ%TYPE,           /*º¯π¯                 */
-    v_Work_Gb        IN RTSD0216.WORK_GB%TYPE,       /*¿€æ˜±∏∫–              */
-    v_Params         IN RTSD0216.PARAMS%TYPE,        /*∆ƒ∂ÛπÃ≈Õ¡§∫∏           */
-    v_Result         IN RTSD0216.RESULT%TYPE,        /*∞·∞˙                 */
-    v_Reg_Id         IN RTSD0216.REG_ID%TYPE,        /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0216.ORD_NO%TYPE,        /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Seq            IN RTSD0216.SEQ%TYPE,           /*ÏàúÎ≤à                 */
+    v_Work_Gb        IN RTSD0216.WORK_GB%TYPE,       /*ÏûëÏóÖÍµ¨Î∂Ñ              */
+    v_Params         IN RTSD0216.PARAMS%TYPE,        /*ÌååÎùºÎØ∏ÌÑ∞Ï†ïÎ≥¥           */
+    v_Result         IN RTSD0216.RESULT%TYPE,        /*Í≤∞Í≥º                 */
+    v_Reg_Id         IN RTSD0216.REG_ID%TYPE,        /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ ∞¸∏Æ(IUD)
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0216 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0216.ORD_NO%TYPE,        /*¡÷πÆπ¯»£              */
-    v_Work_Gb        IN RTSD0216.WORK_GB%TYPE,       /*¿€æ˜±∏∫–              */
-    v_Params         IN RTSD0216.PARAMS%TYPE,        /*∆ƒ∂ÛπÃ≈Õ¡§∫∏           */
-    v_Result         IN RTSD0216.RESULT%TYPE,        /*∞·∞˙                 */
-    v_Reg_Id         IN RTSD0216.REG_ID%TYPE,        /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0216.ORD_NO%TYPE,        /*Ï£ºÎ¨∏Î≤àÌò∏              */
+    v_Work_Gb        IN RTSD0216.WORK_GB%TYPE,       /*ÏûëÏóÖÍµ¨Î∂Ñ              */
+    v_Params         IN RTSD0216.PARAMS%TYPE,        /*ÌååÎùºÎØ∏ÌÑ∞Ï†ïÎ≥¥           */
+    v_Result         IN RTSD0216.RESULT%TYPE,        /*Í≤∞Í≥º                 */
+    v_Reg_Id         IN RTSD0216.REG_ID%TYPE,        /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -39,11 +39,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0216 AS
 
 
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ - º¯π¯ √Èπ¯ »πµÊ
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• - ÏàúÎ≤à Ï∑åÎ≤à ÌöçÎìù
   *****************************************************************************/
   FUNCTION f_sRtsd0216Seq(
-    v_Ord_No         IN RTSD0216.ORD_NO%TYPE           /*¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTSD0216.ORD_NO%TYPE           /*Ï£ºÎ¨∏Î≤àÌò∏            */
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0216;
-/

@@ -7,6 +7,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2016-12-15  kstka            1. Created this package body.
+   1.1		  2025-05-30  10244015         [20250530_01] 계약만료고객 마지막 청구일자 SMS 메시지 내용 추가
 *******************************************************************************/
 
   /*****************************************************************************
@@ -48,7 +49,6 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
 --            v_Return_Message := '장착계약삭제 권한이 없습니다. 관리자에게 문의해주세요.';
 --            RAISE e_Error;
 --        END IF;
-
         
         SELECT A.STAT_CD, A.ORD_DAY, B.PROC_DAY, A.GRP_YN, A.GRP_NO, A.CHAN_CD  
         INTO v_Stat_Cd, v_Ord_Day, v_Proc_Day, v_Grp_Yn, v_Grp_No, v_Chan_Cd 
@@ -2015,6 +2015,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
   /*****************************************************************************
   -- 계약만료고객 SMS발송
   -- 2018.07.10 K.S.T. - 최초작성
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------   
+   1.1        2025-05-30  10244015         [20250530_01] 계약만료고객 마지막 청구일자 SMS 메시지 내용 추가
   *****************************************************************************/
   PROCEDURE p_SmsAgregate (
     V_SEND_YM           IN VARCHAR2,
@@ -2025,6 +2029,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
 
     V_SMS_MSG RTSD0205.SND_MSG%TYPE := '';
     V_PRS_DCD VARCHAR2(1000);
+    V_ZFB_DAY VARCHAR2(10);
     
     v_Cnt NUMBER;
     
@@ -2036,8 +2041,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
     --연체여부 및 중도완납 여부와 관계없이 대상 포함
     --매월 1일 10시에 발송
     --350건씩 30분 간격으로 발송
+	--240924 개선 > 500건 15분 간격 메시지발송으로 수정
     INSERT INTO RTSD0301 (SEND_YM, SEND_DT, CUST_NM, MOB_NO, ORD_NO, MAT_NM, PROC_DAY, CNT_CD, PERIOD_CD, OS_DAY_F, OS_DAY_T, SERV_01, SERV_02, SERV_03, SERV_04, SERV_05, SERV_06, SERV_07, SERV_08, REG_ID, REG_DT)
-    SELECT V_SEND_YM SEND_YM, TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD') || '10:00:00', 'yyyy/mm/dd hh24:mi:ss') + (30 * (FLOOR(ROWNUM / 350)) / (24 * 60)) AS SEND_DT, CUST_NM, MOB_NO, ORD_NO, MAT_NM, PROC_DAY, CNT_CD, PERIOD_CD, OS_DAY_F, OS_DAY_T, SERV_01, SERV_02, SERV_03, SERV_04, SERV_05, SERV_06, SERV_07, SERV_08, 'kstka', SYSDATE FROM (
+    SELECT V_SEND_YM SEND_YM, TO_DATE(TO_CHAR(SYSDATE, 'YYYYMMDD') || '10:00:00', 'yyyy/mm/dd hh24:mi:ss') + (15 * (FLOOR(ROWNUM / 500)) / (24 * 60)) AS SEND_DT, CUST_NM, MOB_NO, ORD_NO, MAT_NM, PROC_DAY, CNT_CD, PERIOD_CD, OS_DAY_F, OS_DAY_T, SERV_01, SERV_02, SERV_03, SERV_04, SERV_05, SERV_06, SERV_07, SERV_08, 'kstka', SYSDATE FROM (
         SELECT MAX(CUST_NM) CUST_NM, MAX(MOB_NO) MOB_NO, MAX(ORD_NO) ORD_NO, MAX(MAT_NM) MAT_NM, MAX(PROC_DAY) PROC_DAY, MAX(CNT_CD) CNT_CD, MAX(PERIOD_CD) PERIOD_CD, MAX(MONF) OS_DAY_F, MAX(MONT) OS_DAY_T, MAX(COL1) SERV_01, MAX(COL2) SERV_02, MAX(COL3) SERV_03, MAX(COL4) SERV_04, MAX(COL5) SERV_05, MAX(COL6) SERV_06, MAX(COL7) SERV_07, MAX(COL8) SERV_08 FROM (
             SELECT A.CUST_NM, A.MOB_NO, B.ORD_NO, E.MAT_NM, B.PROC_DAY, TO_CHAR(TO_NUMBER(B.CNT_CD)) CNT_CD, B.PERIOD_CD, TO_CHAR(ADD_MONTHS(TO_DATE(ADD_MONTHS(TO_DATE(TO_DATE(SUBSTR(B.PROC_DAY, 0, 4) || '/' || SUBSTR(B.PROC_DAY, 5, 2) || '/' || SUBSTR(B.PROC_DAY, 7, 2) || '00:00:00', 'yyyy/mm/dd hh24:mi:ss')), B.PERIOD_CD)), -3), 'yyyy-mm-dd') MONF, TO_CHAR(TO_DATE(ADD_MONTHS(TO_DATE(TO_DATE(SUBSTR(B.PROC_DAY, 0, 4) || '/' || SUBSTR(B.PROC_DAY, 5, 2) || '/' || SUBSTR(B.PROC_DAY, 7, 2) || '00:00:00', 'yyyy/mm/dd hh24:mi:ss')), B.PERIOD_CD)) - 1, 'YYYY-MM-DD') MONT,
                    NVL(DECODE(D.PRS_DCD, 'B00001', SERV_CNTR, NULL), 0) - Pkg_Rtcs0009.f_sRtcs0009DlvrCnt(B.ORD_NO) COL1, NVL(DECODE(D.PRS_DCD, 'B00002', SERV_CNTR, NULL), 0) COL2, NVL(DECODE(D.PRS_DCD, 'B00003', SERV_CNTR, NULL), 0) COL3, NVL(DECODE(D.PRS_DCD, 'B00004', SERV_CNTR, NULL), 0) COL4, NVL(DECODE(D.PRS_DCD, 'B00005', SERV_CNTR, NULL), 0) COL5, NVL(DECODE(D.PRS_DCD, 'B00006', SERV_CNTR, NULL), 0) COL6, NVL(DECODE(D.PRS_DCD, 'B00007', SERV_CNTR, NULL), 0) - Pkg_Rtcs0010.f_sRtcs0010DlvrCnt(B.ORD_NO) COL7, NVL(DECODE(D.PRS_DCD, 'B00008', SERV_CNTR, NULL), 0) COL8 
@@ -2062,9 +2068,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
                 WHERE SEND_YM = V_SEND_YM) LOOP
     
         V_PRS_DCD := '';
+        V_ZFB_DAY := '';
+       
+        SELECT TO_CHAR(TO_DATE(MAX(ZFB_DAY)), 'YYYY-MM-DD') INTO V_ZFB_DAY	--[20250530_01]마지막 청구일자 SMS 메시지 내용 추가
+          FROM RTSD0109
+         WHERE ORD_NO = CUR.ORD_NO;
         
         V_SMS_MSG := '[넥센타이어] 안녕하세요. ' || CUR.CUST_NM || ' 고객님 (계약번호: ' || CUR.ORD_NO || ', ' || CUR.MAT_NM || ', ' || CUR.CNT_CD || '본)' || CHR(13) || CHR(10);
-        V_SMS_MSG := V_SMS_MSG || '고객님께서 이용하고 계시는 넥센타이어 렌탈계약의 종료일은 ' || CUR.OS_DAY_T || '입니다.' || CHR(13) || CHR(10);
+        V_SMS_MSG := V_SMS_MSG || '고객님께서 이용하고 계시는 넥센타이어 렌탈계약의 종료일은 ' || CUR.OS_DAY_T || '입니다.(렌탈료 마지막 출금일 : ' || V_ZFB_DAY || ')' || CHR(13) || CHR(10);	--[20250530_01]마지막 청구일자 SMS 메시지 내용 추가	
         
         --20190306 서비스 없는 내역 확인
         IF CUR.SERV_01 > 0 OR CUR.SERV_02 > 0 OR CUR.SERV_04 > 0 OR CUR.SERV_05 > 0 OR CUR.SERV_06 > 0 OR CUR.SERV_07 > 0 OR CUR.SERV_08 > 0 THEN
@@ -2211,4 +2222,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Comm AS
   END p_RunSql;
   
 END Pkg_COMM;
-/

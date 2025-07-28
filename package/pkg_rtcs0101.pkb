@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0101
-   PURPOSE   ÇØÇÇÄÝ ÁúÀÇ ´äº¯ °ü¸®
+   PURPOSE   í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Count
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0101Count(
-    v_Call_No        IN RTCS0101.CALL_NO%TYPE           /*»ó´ã¹øÈ£            */
+    v_Call_No        IN RTCS0101.CALL_NO%TYPE           /*ìƒë‹´ë²ˆí˜¸            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,102 +32,102 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END f_sRtcs0101Count;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Select
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0101 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE          /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE          /*ë“±ë¡ìž ID            */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.CALL_NO,                   /*»ó´ã¹øÈ£            */
-            A.OBJECT_QUS_01,             /*Áú¹®1 ÄÚµå          */
-            A.OBJECT_QUS_02,             /*Áú¹®2 ÄÚµå          */
-            A.OBJECT_QUS_03,             /*Áú¹®3 ÄÚµå          */
-            A.OBJECT_QUS_04,             /*Áú¹®4 ÄÚµå          */
-            A.OBJECT_QUS_05,             /*Áú¹®5 ÄÚµå          */
-            A.OBJECT_QUS_06,             /*Áú¹®6 ÄÚµå          */
-            A.OBJECT_QUS_07,             /*Áú¹®7 ÄÚµå          */
-            A.OBJECT_QUS_08,             /*Áú¹®8 ÄÚµå          */
-            A.OBJECT_QUS_09,             /*Áú¹®9 ÄÚµå          */
-            A.OBJECT_QUS_10,             /*Áú¹®10 ÄÚµå         */
-            A.OBJECT_ANS_01,             /*´ä¹ø1ÄÚµå           */
-            A.OBJECT_ANS_02,             /*´ä¹ø2ÄÚµå           */
-            A.OBJECT_ANS_03,             /*´ä¹ø3ÄÚµå           */
-            A.OBJECT_ANS_04,             /*´ä¹ø4ÄÚµå           */
-            A.OBJECT_ANS_05,             /*´ä¹ø5ÄÚµå           */
-            A.OBJECT_ANS_06,             /*´ä¹ø6ÄÚµå           */
-            A.OBJECT_ANS_07,             /*´ä¹ø7ÄÚµå           */
-            A.OBJECT_ANS_08,             /*´ä¹ø8ÄÚµå           */
-            A.OBJECT_ANS_09,             /*´ä¹ø9ÄÚµå           */
-            A.OBJECT_ANS_10,             /*´ä¹ø10ÄÚµå          */
-            A.OBJECT_JUMSU_01,           /*Á¡¼ö1               */
-            A.OBJECT_JUMSU_02,           /*Á¡¼ö2               */
-            A.OBJECT_JUMSU_03,           /*Á¡¼ö3               */
-            A.OBJECT_JUMSU_04,           /*Á¡¼ö4               */
-            A.OBJECT_JUMSU_05,           /*Á¡¼ö5               */
-            A.OBJECT_JUMSU_06,           /*Á¡¼ö6               */
-            A.OBJECT_JUMSU_07,           /*Á¡¼ö7               */
-            A.OBJECT_JUMSU_08,           /*Á¡¼ö8               */
-            A.OBJECT_JUMSU_09,           /*Á¡¼ö9               */
-            A.OBJECT_JUMSU_10,           /*Á¡¼ö10              */
-            A.SUBJECT_QUS1,              /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1  */
-            A.SUBJECT_QUS2,              /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2  */
-            A.SUBJECT_QUS3,              /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3  */
-            A.SUBJECT_QUS4,              /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4  */
-            A.SUBJECT_QUS5,              /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5  */
-            A.SUBJECT_ANS1,              /*ÁÖ°ü½Ä ´äº¯ 1       */
-            A.SUBJECT_ANS2,              /*ÁÖ°ü½Ä ´äº¯ 2       */
-            A.SUBJECT_ANS3,              /*ÁÖ°ü½Ä ´äº¯ 3       */
-            A.SUBJECT_ANS4,              /*ÁÖ°ü½Ä ´äº¯ 4       */
-            A.SUBJECT_ANS5,              /*ÁÖ°ü½Ä ´äº¯ 5       */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.CALL_NO,                   /*ìƒë‹´ë²ˆí˜¸            */
+            A.OBJECT_QUS_01,             /*ì§ˆë¬¸1 ì½”ë“œ          */
+            A.OBJECT_QUS_02,             /*ì§ˆë¬¸2 ì½”ë“œ          */
+            A.OBJECT_QUS_03,             /*ì§ˆë¬¸3 ì½”ë“œ          */
+            A.OBJECT_QUS_04,             /*ì§ˆë¬¸4 ì½”ë“œ          */
+            A.OBJECT_QUS_05,             /*ì§ˆë¬¸5 ì½”ë“œ          */
+            A.OBJECT_QUS_06,             /*ì§ˆë¬¸6 ì½”ë“œ          */
+            A.OBJECT_QUS_07,             /*ì§ˆë¬¸7 ì½”ë“œ          */
+            A.OBJECT_QUS_08,             /*ì§ˆë¬¸8 ì½”ë“œ          */
+            A.OBJECT_QUS_09,             /*ì§ˆë¬¸9 ì½”ë“œ          */
+            A.OBJECT_QUS_10,             /*ì§ˆë¬¸10 ì½”ë“œ         */
+            A.OBJECT_ANS_01,             /*ë‹µë²ˆ1ì½”ë“œ           */
+            A.OBJECT_ANS_02,             /*ë‹µë²ˆ2ì½”ë“œ           */
+            A.OBJECT_ANS_03,             /*ë‹µë²ˆ3ì½”ë“œ           */
+            A.OBJECT_ANS_04,             /*ë‹µë²ˆ4ì½”ë“œ           */
+            A.OBJECT_ANS_05,             /*ë‹µë²ˆ5ì½”ë“œ           */
+            A.OBJECT_ANS_06,             /*ë‹µë²ˆ6ì½”ë“œ           */
+            A.OBJECT_ANS_07,             /*ë‹µë²ˆ7ì½”ë“œ           */
+            A.OBJECT_ANS_08,             /*ë‹µë²ˆ8ì½”ë“œ           */
+            A.OBJECT_ANS_09,             /*ë‹µë²ˆ9ì½”ë“œ           */
+            A.OBJECT_ANS_10,             /*ë‹µë²ˆ10ì½”ë“œ          */
+            A.OBJECT_JUMSU_01,           /*ì ìˆ˜1               */
+            A.OBJECT_JUMSU_02,           /*ì ìˆ˜2               */
+            A.OBJECT_JUMSU_03,           /*ì ìˆ˜3               */
+            A.OBJECT_JUMSU_04,           /*ì ìˆ˜4               */
+            A.OBJECT_JUMSU_05,           /*ì ìˆ˜5               */
+            A.OBJECT_JUMSU_06,           /*ì ìˆ˜6               */
+            A.OBJECT_JUMSU_07,           /*ì ìˆ˜7               */
+            A.OBJECT_JUMSU_08,           /*ì ìˆ˜8               */
+            A.OBJECT_JUMSU_09,           /*ì ìˆ˜9               */
+            A.OBJECT_JUMSU_10,           /*ì ìˆ˜10              */
+            A.SUBJECT_QUS1,              /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1  */
+            A.SUBJECT_QUS2,              /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2  */
+            A.SUBJECT_QUS3,              /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3  */
+            A.SUBJECT_QUS4,              /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4  */
+            A.SUBJECT_QUS5,              /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5  */
+            A.SUBJECT_ANS1,              /*ì£¼ê´€ì‹ ë‹µë³€ 1       */
+            A.SUBJECT_ANS2,              /*ì£¼ê´€ì‹ ë‹µë³€ 2       */
+            A.SUBJECT_ANS3,              /*ì£¼ê´€ì‹ ë‹µë³€ 3       */
+            A.SUBJECT_ANS4,              /*ì£¼ê´€ì‹ ë‹µë³€ 4       */
+            A.SUBJECT_ANS5,              /*ì£¼ê´€ì‹ ë‹µë³€ 5       */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTCS0101 A
     WHERE   A.CALL_NO          = DECODE(v_Call_No        , NULL, A.CALL_NO         , v_Call_No)
     AND     A.OBJECT_QUS_01    = DECODE(v_Object_Qus_01  , NULL, A.OBJECT_QUS_01   , v_Object_Qus_01)
@@ -175,51 +175,51 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END p_sRtcs0101;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Insert
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0101 (
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -328,51 +328,51 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END f_InsertRtcs0101;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ Update
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0101 (
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_ErrorText       OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -432,52 +432,52 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END f_UpdateRtcs0101;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ ÁúÀÇ ´äº¯ °ü¸®(IUD)
+  -- í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0101 (
-    v_Comm_Dvsn       IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)      */
-    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*»ó´ã¹øÈ£             */
-    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*Áú¹®1 ÄÚµå           */
-    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*Áú¹®2 ÄÚµå           */
-    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*Áú¹®3 ÄÚµå           */
-    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*Áú¹®4 ÄÚµå           */
-    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*Áú¹®5 ÄÚµå           */
-    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*Áú¹®6 ÄÚµå           */
-    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*Áú¹®7 ÄÚµå           */
-    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*Áú¹®8 ÄÚµå           */
-    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*Áú¹®9 ÄÚµå           */
-    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*Áú¹®10 ÄÚµå          */
-    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*´ä¹ø1ÄÚµå            */
-    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*´ä¹ø2ÄÚµå            */
-    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*´ä¹ø3ÄÚµå            */
-    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*´ä¹ø4ÄÚµå            */
-    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*´ä¹ø5ÄÚµå            */
-    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*´ä¹ø6ÄÚµå            */
-    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*´ä¹ø7ÄÚµå            */
-    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*´ä¹ø8ÄÚµå            */
-    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*´ä¹ø9ÄÚµå            */
-    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*´ä¹ø10ÄÚµå           */
-    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*Á¡¼ö1                */
-    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*Á¡¼ö2                */
-    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*Á¡¼ö3                */
-    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*Á¡¼ö4                */
-    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*Á¡¼ö5                */
-    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*Á¡¼ö6                */
-    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*Á¡¼ö7                */
-    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*Á¡¼ö8                */
-    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*Á¡¼ö9                */
-    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*Á¡¼ö10               */
-    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 1   */
-    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 2   */
-    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 3   */
-    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 4   */
-    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ÁÖ°ü½Ä Áú¹® ÄÚµå 5   */
-    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 1        */
-    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 2        */
-    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 3        */
-    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 4        */
-    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ÁÖ°ü½Ä ´äº¯ 5        */
-    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*µî·ÏÀÚ ID            */
+    v_Comm_Dvsn       IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)      */
+    v_Call_No         IN RTCS0101.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸             */
+    v_Object_Qus_01   IN RTCS0101.OBJECT_QUS_01%TYPE,  /*ì§ˆë¬¸1 ì½”ë“œ           */
+    v_Object_Qus_02   IN RTCS0101.OBJECT_QUS_02%TYPE,  /*ì§ˆë¬¸2 ì½”ë“œ           */
+    v_Object_Qus_03   IN RTCS0101.OBJECT_QUS_03%TYPE,  /*ì§ˆë¬¸3 ì½”ë“œ           */
+    v_Object_Qus_04   IN RTCS0101.OBJECT_QUS_04%TYPE,  /*ì§ˆë¬¸4 ì½”ë“œ           */
+    v_Object_Qus_05   IN RTCS0101.OBJECT_QUS_05%TYPE,  /*ì§ˆë¬¸5 ì½”ë“œ           */
+    v_Object_Qus_06   IN RTCS0101.OBJECT_QUS_06%TYPE,  /*ì§ˆë¬¸6 ì½”ë“œ           */
+    v_Object_Qus_07   IN RTCS0101.OBJECT_QUS_07%TYPE,  /*ì§ˆë¬¸7 ì½”ë“œ           */
+    v_Object_Qus_08   IN RTCS0101.OBJECT_QUS_08%TYPE,  /*ì§ˆë¬¸8 ì½”ë“œ           */
+    v_Object_Qus_09   IN RTCS0101.OBJECT_QUS_09%TYPE,  /*ì§ˆë¬¸9 ì½”ë“œ           */
+    v_Object_Qus_10   IN RTCS0101.OBJECT_QUS_10%TYPE,  /*ì§ˆë¬¸10 ì½”ë“œ          */
+    v_Object_Ans_01   IN RTCS0101.OBJECT_ANS_01%TYPE,  /*ë‹µë²ˆ1ì½”ë“œ            */
+    v_Object_Ans_02   IN RTCS0101.OBJECT_ANS_02%TYPE,  /*ë‹µë²ˆ2ì½”ë“œ            */
+    v_Object_Ans_03   IN RTCS0101.OBJECT_ANS_03%TYPE,  /*ë‹µë²ˆ3ì½”ë“œ            */
+    v_Object_Ans_04   IN RTCS0101.OBJECT_ANS_04%TYPE,  /*ë‹µë²ˆ4ì½”ë“œ            */
+    v_Object_Ans_05   IN RTCS0101.OBJECT_ANS_05%TYPE,  /*ë‹µë²ˆ5ì½”ë“œ            */
+    v_Object_Ans_06   IN RTCS0101.OBJECT_ANS_06%TYPE,  /*ë‹µë²ˆ6ì½”ë“œ            */
+    v_Object_Ans_07   IN RTCS0101.OBJECT_ANS_07%TYPE,  /*ë‹µë²ˆ7ì½”ë“œ            */
+    v_Object_Ans_08   IN RTCS0101.OBJECT_ANS_08%TYPE,  /*ë‹µë²ˆ8ì½”ë“œ            */
+    v_Object_Ans_09   IN RTCS0101.OBJECT_ANS_09%TYPE,  /*ë‹µë²ˆ9ì½”ë“œ            */
+    v_Object_Ans_10   IN RTCS0101.OBJECT_ANS_10%TYPE,  /*ë‹µë²ˆ10ì½”ë“œ           */
+    v_Object_Jumsu_01 IN RTCS0101.OBJECT_JUMSU_01%TYPE,/*ì ìˆ˜1                */
+    v_Object_Jumsu_02 IN RTCS0101.OBJECT_JUMSU_02%TYPE,/*ì ìˆ˜2                */
+    v_Object_Jumsu_03 IN RTCS0101.OBJECT_JUMSU_03%TYPE,/*ì ìˆ˜3                */
+    v_Object_Jumsu_04 IN RTCS0101.OBJECT_JUMSU_04%TYPE,/*ì ìˆ˜4                */
+    v_Object_Jumsu_05 IN RTCS0101.OBJECT_JUMSU_05%TYPE,/*ì ìˆ˜5                */
+    v_Object_Jumsu_06 IN RTCS0101.OBJECT_JUMSU_06%TYPE,/*ì ìˆ˜6                */
+    v_Object_Jumsu_07 IN RTCS0101.OBJECT_JUMSU_07%TYPE,/*ì ìˆ˜7                */
+    v_Object_Jumsu_08 IN RTCS0101.OBJECT_JUMSU_08%TYPE,/*ì ìˆ˜8                */
+    v_Object_Jumsu_09 IN RTCS0101.OBJECT_JUMSU_09%TYPE,/*ì ìˆ˜9                */
+    v_Object_Jumsu_10 IN RTCS0101.OBJECT_JUMSU_10%TYPE,/*ì ìˆ˜10               */
+    v_Subject_Qus1    IN RTCS0101.SUBJECT_QUS1%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 1   */
+    v_Subject_Qus2    IN RTCS0101.SUBJECT_QUS2%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 2   */
+    v_Subject_Qus3    IN RTCS0101.SUBJECT_QUS3%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 3   */
+    v_Subject_Qus4    IN RTCS0101.SUBJECT_QUS4%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 4   */
+    v_Subject_Qus5    IN RTCS0101.SUBJECT_QUS5%TYPE,   /*ì£¼ê´€ì‹ ì§ˆë¬¸ ì½”ë“œ 5   */
+    v_Subject_Ans1    IN RTCS0101.SUBJECT_ANS1%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 1        */
+    v_Subject_Ans2    IN RTCS0101.SUBJECT_ANS2%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 2        */
+    v_Subject_Ans3    IN RTCS0101.SUBJECT_ANS3%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 3        */
+    v_Subject_Ans4    IN RTCS0101.SUBJECT_ANS4%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 4        */
+    v_Subject_Ans5    IN RTCS0101.SUBJECT_ANS5%TYPE,   /*ì£¼ê´€ì‹ ë‹µë³€ 5        */
+    v_Reg_Id          IN RTCS0101.REG_ID%TYPE,         /*ë“±ë¡ìž ID            */
     v_Success_Code    OUT NUMBER,
     v_Return_Message  OUT VARCHAR2,
     v_ErrorText       OUT VARCHAR2
@@ -486,21 +486,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª:»ó´ã¹øÈ£, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ìƒë‹´ë²ˆí˜¸, ë“±ë¡ìž ID
     IF (TRIM(v_Call_No) IS NULL) OR (0 = Pkg_Rtcs0100.f_sRtcs0100Count(v_Call_No)) THEN
-        v_Return_Message := '»ó´ã¹øÈ£('||v_Call_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ìƒë‹´ë²ˆí˜¸('||v_Call_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_sRtcs0101Count(v_Call_No) THEN
-            v_Return_Message := 'ÇØ´ç »ó´ã¹øÈ£('||v_Call_No||')·Î µî·ÏµÈ Á¤º¸°¡ ÀÌ¹Ì Á¸ÀçÇÏ¹Ç·Î ½Å±Ôµî·Ï Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ ìƒë‹´ë²ˆí˜¸('||v_Call_No||')ë¡œ ë“±ë¡ëœ ì •ë³´ê°€ ì´ë¯¸ ì¡´ìž¬í•˜ë¯€ë¡œ ì‹ ê·œë“±ë¡ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
@@ -515,7 +515,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
                                  v_Subject_Qus2, v_Subject_Qus3, v_Subject_Qus4, v_Subject_Qus5,
                                  v_Subject_Ans1, v_Subject_Ans2, v_Subject_Ans3, v_Subject_Ans4,
                                  v_Subject_Ans5, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÇØÇÇÄÝ ÁúÀÇ ´äº¯ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -523,7 +523,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
     ELSE
 
         IF 0 = f_sRtcs0101Count(v_Call_No) THEN
-            v_Return_Message := 'ÇØ´ç »ó´ã¹øÈ£('||v_Call_No||')·Î µî·ÏµÈ Á¤º¸°¡ ¾ø¾î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ ìƒë‹´ë²ˆí˜¸('||v_Call_No||')ë¡œ ë“±ë¡ëœ ì •ë³´ê°€ ì—†ì–´ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
@@ -541,20 +541,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
                                      v_Subject_Qus2, v_Subject_Qus3, v_Subject_Qus4, v_Subject_Qus5,
                                      v_Subject_Ans1, v_Subject_Ans2, v_Subject_Ans3, v_Subject_Ans4,
                                      v_Subject_Ans5, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'ÇØÇÇÄÝ ÁúÀÇ ´äº¯ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'í•´í”¼ì½œ ì§ˆì˜ ë‹µë³€ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -569,18 +569,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0101.p_IUDRtcs0101(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcs0101;
 
   /*****************************************************************************
-  -- Áú¹® ¸®½ºÆ®
+  -- ì§ˆë¬¸ ë¦¬ìŠ¤íŠ¸
   *****************************************************************************/
   PROCEDURE p_sRtcs0101ANS (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*»ó´ã¹øÈ£           */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*ìƒë‹´ë²ˆí˜¸           */
     ) IS
 
   BEGIN
@@ -615,18 +615,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END p_sRtcs0101ANS;
 
   /*****************************************************************************
-  -- ´äº¯ ¸®½ºÆ®
+  -- ë‹µë³€ ë¦¬ìŠ¤íŠ¸
   *****************************************************************************/
   PROCEDURE p_sRtcs0101Answer(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Question       IN RTCS0101.OBJECT_ANS_01%TYPE        /*´ä¹ø1ÄÚµå         */
+    v_Question       IN RTCS0101.OBJECT_ANS_01%TYPE        /*ë‹µë²ˆ1ì½”ë“œ         */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  B.ANSWER_NO||B.ANSWER_SEQ as ANSWER_CD,  /*´äº¯ÄÚµå           */
-            B.ANSWER                                 /*´äº¯³»¿ë           */
+    SELECT  B.ANSWER_NO||B.ANSWER_SEQ as ANSWER_CD,  /*ë‹µë³€ì½”ë“œ           */
+            B.ANSWER                                 /*ë‹µë³€ë‚´ìš©           */
     FROM    RTCS0112 A,
             RTCS0113 B
     WHERE   A.ANSWER_NO = B.ANSWER_NO
@@ -638,11 +638,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END p_sRtcs0101Answer;
 
   /*****************************************************************************
-  -- Áú¹®,´äº¯ Á¶È¸
+  -- ì§ˆë¬¸,ë‹µë³€ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0101qustans (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*»ó´ã¹øÈ£           */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE  /*ìƒë‹´ë²ˆí˜¸           */
     ) IS
 
   BEGIN
@@ -734,4 +734,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0101 AS
   END p_sRtcs0101qustans;
 
 END Pkg_Rtcs0101;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0208 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0208
-    PURPOSE     ¿Á∑π≈ª ∞°∞Ëæ‡¡§∫∏ ∞¸∏Æ
+    PURPOSE     Ïû¨Î†àÌÉà Í∞ÄÍ≥ÑÏïΩÏ†ïÎ≥¥ Í¥ÄÎ¶¨
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0208 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  --¿Á∑ª≈ª ∞°∞Ëæ‡¡§∫∏ Select
+  --Ïû¨Î†åÌÉà Í∞ÄÍ≥ÑÏïΩÏ†ïÎ≥¥ Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -19,12 +19,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0208 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0208 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Std_Ym          IN RTSD0208.STD_YM%TYPE        /* ∞Ì∞¥∏Ì             */
-    , v_Res_Yn          IN RTSD0208.RES_YN%TYPE        /* ∞Ì∞¥∏Ì             */
+    , v_Std_Ym          IN RTSD0208.STD_YM%TYPE        /* Í≥†Í∞ùÎ™Ö             */
+    , v_Res_Yn          IN RTSD0208.RES_YN%TYPE        /* Í≥†Í∞ùÎ™Ö             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
   
 END Pkg_Rtsd0208;
-/

@@ -24,4 +24,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0400 AS
   );
         
 END Pkg_Rtre0400;
-/

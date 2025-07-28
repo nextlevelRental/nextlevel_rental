@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
 /*******************************************************************************
    NAME      Pkg_Rtcm0094
-   PURPOSE   га╥н╫ца╝ ╨╞╪Ж ╥н╠в ╟Э╦╝
+   PURPOSE   М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Й╢─К╕╛
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в Count
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0094Count(
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,           /*╥н╠в╪Ь╧Ь            */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE              /*╦е╟Ё╨╞╪Ж ╪Ь╪╜       */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,           /*К║°Й╥╦Л┬°К╡┬            */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE              /*К╖╓Й╟°КЁ─Л┬≤ Л┬°Л└°       */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,20 +34,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
   END f_sRtcm0094Count;
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в Select
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0094 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE          /*╥н╠в╪Ь╧Ь              */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE          /*К║°Й╥╦Л┬°К╡┬              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.LOGSEQ,                    /*╥н╠в╪Ь╧Ь            */
-            A.PSEQ,                      /*╦е╟Ё╨╞╪Ж ╪Ь╪╜       */
-            A.PAR_NM,                    /*╦е╟Ё╨╞╪Ж ╦М         */
-            A.PAR_VALUE                  /*╦е╟Ё╨╞╪Ж ╟╙         */
+    SELECT  A.LOGSEQ,                    /*К║°Й╥╦Л┬°К╡┬            */
+            A.PSEQ,                      /*К╖╓Й╟°КЁ─Л┬≤ Л┬°Л└°       */
+            A.PAR_NM,                    /*К╖╓Й╟°КЁ─Л┬≤ К╙┘         */
+            A.PAR_VALUE                  /*К╖╓Й╟°КЁ─Л┬≤ Й╟▓         */
     FROM    RTCM0094 A
     WHERE   A.LOGSEQ = v_Logseq
     ORDER   BY A.PSEQ;
@@ -55,12 +55,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
   END p_sRtcm0094;
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в Insert
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*╥н╠в╪Ь╧Ь              */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*╦е╟Ё╨╞╪Ж ╦М           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*╦е╟Ё╨╞╪Ж ╟╙           */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*К║°Й╥╦Л┬°К╡┬              */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*К╖╓Й╟°КЁ─Л┬≤ К╙┘           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*К╖╓Й╟°КЁ─Л┬≤ Й╟▓           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -89,13 +89,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
   END f_InsertRtcm0094;
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в Update
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*╥н╠в╪Ь╧Ь              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*╦е╟Ё╨╞╪Ж ╪Ь╪╜         */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*╦е╟Ё╨╞╪Ж ╦М           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*╦е╟Ё╨╞╪Ж ╟╙           */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*К║°Й╥╦Л┬°К╡┬              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*К╖╓Й╟°КЁ─Л┬≤ Л┬°Л└°         */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*К╖╓Й╟°КЁ─Л┬≤ К╙┘           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*К╖╓Й╟°КЁ─Л┬≤ Й╟▓           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -116,11 +116,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
   END f_UpdateRtcm0094;
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в Delete
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0094 (
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*╥н╠в╪Ь╧Ь              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*╦е╟Ё╨╞╪Ж ╪Ь╪╜         */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*К║°Й╥╦Л┬°К╡┬              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*К╖╓Й╟°КЁ─Л┬≤ Л┬°Л└°         */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -142,14 +142,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
   END f_DeleteRtcm0094;
 
   /*****************************************************************************
-  -- га╥н╫ца╝ ╨╞╪Ж ╥н╠в ╟Э╦╝(IUD)
+  -- М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0094 (
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*╥н╠в╪Ь╧Ь              */
-    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*╦е╟Ё╨╞╪Ж ╪Ь╪╜         */
-    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*╦е╟Ё╨╞╪Ж ╦М           */
-    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*╦е╟Ё╨╞╪Ж ╟╙           */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Logseq         IN RTCM0094.LOGSEQ%TYPE,         /*К║°Й╥╦Л┬°К╡┬              */
+    v_Pseq           IN RTCM0094.PSEQ%TYPE,           /*К╖╓Й╟°КЁ─Л┬≤ Л┬°Л└°         */
+    v_Par_Nm         IN RTCM0094.PAR_NM%TYPE,         /*К╖╓Й╟°КЁ─Л┬≤ К╙┘           */
+    v_Par_Value      IN RTCM0094.PAR_VALUE%TYPE,      /*К╖╓Й╟°КЁ─Л┬≤ Й╟▓           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -158,21 +158,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- гй╪Ж╟╙:╥н╠в╪Ь╧Ь, ╦е╟Ё╨╞╪Ж ╦М    
+    -- М∙└Л┬≤Й╟▓:К║°Й╥╦Л┬°К╡┬, К╖╓Й╟°КЁ─Л┬≤ К╙┘    
     IF TRIM(v_Logseq) IS NULL THEN
-        v_Return_Message := '╥н╠в╪Ь╧Ь('||v_Logseq||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К║°Й╥╦Л┬°К╡┬('||v_Logseq||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Par_Nm) IS NULL  THEN
-        v_Return_Message := '╦е╟Ё╨╞╪Ж ╦М('||v_Par_Nm||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К╖╓Й╟°КЁ─Л┬≤ К╙┘('||v_Par_Nm||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtcm0094(v_Logseq, v_Par_Nm, v_Par_Value, v_ErrorText) THEN
-            v_Return_Message := 'га╥н╫ца╝ ╨╞╪Ж ╥н╠в ╣Н╥о ╫гфп!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ К⌠╠К║² Л▀╓М▄╗!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -180,14 +180,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
     ELSE
     
         IF 0 = f_sRtcm0094Count(v_Logseq, v_Pseq) THEN
-            v_Return_Message := 'гь╢Г ╥н╠в╪Ь╧Ь('||v_Logseq||'),╦е╟Ё╪Ь╧Ь('||v_Pseq||')ю╨ ╧л╣Н╥о ╩Себюл╧г╥н цЁ╦╝╨р╟║!!';
+            v_Return_Message := 'М∙╢К▀╧ К║°Й╥╦Л┬°К╡┬('||v_Logseq||'),К╖╓Й╟°Л┬°К╡┬('||v_Pseq||')Л²─ К╞╦К⌠╠К║² Л┐│М┐°Л²╢К╞─К║° Л╡≤К╕╛К╤┬Й╟─!!';
             RAISE e_Error;        
         END IF;
         
         IF v_Comm_Dvsn = 'U' THEN
         
             IF 0 != f_UpdateRtcm0094(v_Logseq, v_Pseq, v_Par_Nm, v_Par_Value, v_ErrorText) THEN
-                v_Return_Message := 'га╥н╫ца╝ ╨╞╪Ж ╥н╠в ╪Жа╓ ╫гфп!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Л┬≤Л═∙ Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -195,20 +195,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcm0094(v_Logseq, v_Pseq, v_ErrorText) THEN
-                v_Return_Message := 'га╥н╫ца╝ ╨╞╪Ж ╥н╠в ╩Ха╕ ╫гфп!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'М■└К║°Л▀°Л═╦ КЁ─Л┬≤ К║°Й╥╦ Л┌╜Л═° Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'цЁ╦╝╠╦╨п(I,U,D)╟╙ ©ю╥Ы!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Л╡≤К╕╛Й╣╛К╤└(I,U,D)Й╟▓ Л≤╓К╔≤!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'а╓╩СюШю╦╥н ╣Н╥о╣г╬З╫ю╢о╢ы';
+    v_Return_Message := 'Л═∙Л┐│Л═│Л°╪К║° К⌠╠К║²К░≤Л≈┬Л┼╣К▀┬К▀╓';
     v_ErrorText := '';
     --COMMIT;
 
@@ -223,11 +223,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0094 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '╫ц╫╨еш╟Э╦╝юз©║╟т ╧╝юг╧ы╤Ь╢о╢ы!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'Л▀°Л┼╓М┘°Й╢─К╕╛Л·░Л≈░Й╡▄ К╛╦Л²≤К╟■К·█К▀┬К▀╓!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcm0094.p_IUDRtcm0094(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0094;
 
 END Pkg_Rtcm0094;
-/

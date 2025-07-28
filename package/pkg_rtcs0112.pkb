@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0112
-   PURPOSE   Áú¹®°ü¸®(Áú¹®¹øÈ£) °ü¸®
+   PURPOSE   ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Count
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Count
   *****************************************************************************/
   FUNCTION f_sRtcs0112Count(
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE       /*Áú¹®¹øÈ£            */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE       /*ì§ˆë¬¸ë²ˆí˜¸            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,34 +32,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END f_sRtcs0112Count;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Select
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0112 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.QUESTION_NO,                                                           /*Áú¹®¹øÈ£            */
-            A.USE_YN,                                                                /*»ç¿ë¿©ºÎ            */
-            A.QUESTION_TP,                                                           /*Áú¹®À¯Çü            */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('H004', A.QUESTION_TP) QUESTION_TP_NM,  /*Áú¹®À¯Çü            */
-            A.QUESTION,                                                              /*Áú¹®                */
-            A.CONF_YN,                                                               /*Æò°¡¹Ý¿µ¿©ºÎ        */
-            A.ANSWER_NO,                                                             /*´äº¯¹øÈ£            */
-            B.ANSWER,                                                                /*´äº¯³»¿ë            */
-            A.REG_ID,                                                                /*µî·ÏÀÚ ID           */
-            A.REG_DT,                                                                /*µî·ÏÀÏ              */
-            A.CHG_ID,                                                                /*º¯°æÀÚ ID           */
-            A.CHG_DT                                                                 /*º¯°æÀÏ              */
+    SELECT  A.QUESTION_NO,                                                           /*ì§ˆë¬¸ë²ˆí˜¸            */
+            A.USE_YN,                                                                /*ì‚¬ìš©ì—¬ë¶€            */
+            A.QUESTION_TP,                                                           /*ì§ˆë¬¸ìœ í˜•            */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('H004', A.QUESTION_TP) QUESTION_TP_NM,  /*ì§ˆë¬¸ìœ í˜•            */
+            A.QUESTION,                                                              /*ì§ˆë¬¸                */
+            A.CONF_YN,                                                               /*í‰ê°€ë°˜ì˜ì—¬ë¶€        */
+            A.ANSWER_NO,                                                             /*ë‹µë³€ë²ˆí˜¸            */
+            B.ANSWER,                                                                /*ë‹µë³€ë‚´ìš©            */
+            A.REG_ID,                                                                /*ë“±ë¡ìž ID           */
+            A.REG_DT,                                                                /*ë“±ë¡ì¼              */
+            A.CHG_ID,                                                                /*ë³€ê²½ìž ID           */
+            A.CHG_DT                                                                 /*ë³€ê²½ì¼              */
     FROM    RTCS0112 A
             ,RTCS0113 B 
     WHERE   A.ANSWER_NO   = B.ANSWER_NO
@@ -74,16 +74,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END p_sRtcs0112;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Insert
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -122,16 +122,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END f_InsertRtcs0112;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Update
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -156,11 +156,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END f_UpdateRtcs0112;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Delete
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -181,17 +181,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END f_DeleteRtcs0112;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) °ü¸®(IUD)
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0112 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -200,42 +200,42 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: Áú¹®¹øÈ£,»ç¿ë¿©ºÎ,Áú¹®À¯Çü,Æò°¡¹Ý¿µ¿©ºÎ,  µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ì§ˆë¬¸ë²ˆí˜¸,ì‚¬ìš©ì—¬ë¶€,ì§ˆë¬¸ìœ í˜•,í‰ê°€ë°˜ì˜ì—¬ë¶€,  ë“±ë¡ìž ID
     IF (TRIM(v_Question_No) IS NULL) OR (LENGTH(TRIM(v_Question_No)) != 3) THEN
-        v_Return_Message := 'Áú¹®¹øÈ£('||v_Question_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì§ˆë¬¸ë²ˆí˜¸('||v_Question_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;    
     
     IF (TRIM(v_Question_Tp) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('H004', v_Question_Tp)) THEN
-        v_Return_Message := 'Áú¹®À¯Çü('||v_Question_Tp||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì§ˆë¬¸ìœ í˜•('||v_Question_Tp||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Conf_Yn) IS NULL) OR (TRIM(v_Conf_Yn) NOT IN ('Y','N')) THEN
-        v_Return_Message := 'Æò°¡¹Ý¿µ¿©ºÎ('||v_Conf_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í‰ê°€ë°˜ì˜ì—¬ë¶€('||v_Conf_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;    
         
     IF (TRIM(v_Use_Yn) IS NULL) OR (TRIM(v_Use_Yn) NOT IN ('Y','N')) THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;    
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn = 'I' THEN
     
         IF 0 != f_sRtcs0112Count(v_Question_No) THEN
-            v_Return_Message := 'ÇØ´ç Áú¹®¹øÈ£('||v_Question_No||')´Â ÀÌ¹Ì µî·ÏµÈ Á¤º¸ÀÌ¹Ç·Î ½Å±Ôµî·Ï Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ ì§ˆë¬¸ë²ˆí˜¸('||v_Question_No||')ëŠ” ì´ë¯¸ ë“±ë¡ëœ ì •ë³´ì´ë¯€ë¡œ ì‹ ê·œë“±ë¡ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF 0 != f_InsertRtcs0112(v_Question_No, v_Use_Yn, v_Question_Tp, v_Question, 
                                  v_Conf_Yn, v_Answer_No, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'Áú¹®°ü¸®(Áú¹®¹øÈ£) µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -243,7 +243,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
     ELSE
     
         IF 0 = f_sRtcs0112Count(v_Question_No) THEN
-            v_Return_Message := 'ÇØ´ç Áú¹®¹øÈ£('||v_Question_No||')´Â µî·ÏµÈ Á¤º¸°¡ ¾Æ´Ï¹Ç·Î ¼öÁ¤ ¶Ç´Â »èÁ¦ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ ì§ˆë¬¸ë²ˆí˜¸('||v_Question_No||')ëŠ” ë“±ë¡ëœ ì •ë³´ê°€ ì•„ë‹ˆë¯€ë¡œ ìˆ˜ì • ë˜ëŠ” ì‚­ì œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
         
@@ -251,7 +251,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
         
             IF 0 != f_UpdateRtcs0112(v_Question_No, v_Use_Yn, v_Question_Tp, v_Question, 
                                      v_Conf_Yn, v_Answer_No, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Áú¹®°ü¸®(Áú¹®¹øÈ£) ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -260,20 +260,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcs0112(v_Question_No, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Áú¹®°ü¸®(Áú¹®¹øÈ£) »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -288,19 +288,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0112.p_IUDRtcs0112(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcs0112;
 
   /*****************************************************************************
-  -- Æò°¡¹Ý¿µ¿©ºÎÁ¶È¸
+  -- í‰ê°€ë°˜ì˜ì—¬ë¶€ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcs0112_JSYN(
-    v_Question_No        IN RTCS0112.QUESTION_NO%TYPE   /*Áú¹®¹øÈ£            */
+    v_Question_No        IN RTCS0112.QUESTION_NO%TYPE   /*ì§ˆë¬¸ë²ˆí˜¸            */
     ) RETURN VARCHAR IS
-    v_Conf_Nm        RTCS0112.QUESTION%TYPE;            /*¹Ý¿µ¿©ºÎY           */
+    v_Conf_Nm        RTCS0112.QUESTION%TYPE;            /*ë°˜ì˜ì—¬ë¶€Y           */
   BEGIN
 
     SELECT  CONF_YN
@@ -317,4 +317,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0112 AS
   END f_sRtcs0112_JSYN;
 
 END Pkg_Rtcs0112;
-/

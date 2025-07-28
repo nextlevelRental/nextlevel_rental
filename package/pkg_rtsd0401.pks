@@ -1,17 +1,17 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0401
-    PURPOSE     ¹æ¹®ÀåÂø Á¤º¸ °ü¸®
+    PURPOSE     ë°©ë¬¸ìž¥ì°© ì •ë³´ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2018-11-24  wjim            [20181122_01] Created this package spec.
-    1.2     2019-01-24  wjim            [20190124_01] ¹æ¹®ÀåÂø Á¤º¸ ¸ñ·ÏÁ¶È¸ Á¶È¸Á¶°Ç Ãß°¡
+    1.2     2019-01-24  wjim            [20190124_01] ë°©ë¬¸ìž¥ì°© ì •ë³´ ëª©ë¡ì¡°íšŒ ì¡°íšŒì¡°ê±´ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ Count
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ Count
   
     REVISIONS
     Ver     Date        Author          Description
@@ -19,35 +19,35 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
     1.0     2018-11-26  wjim            [20181122_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_sRtsd0401Count(
-    v_Ord_No         IN RTSD0401.ORD_NO%TYPE            /*°è¾à¹øÈ£            */
+    v_Ord_No         IN RTSD0401.ORD_NO%TYPE            /*ê³„ì•½ë²ˆí˜¸            */
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ ¸ñ·Ï Select
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ ëª©ë¡ Select
   
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2018-12-01  wjim            [20181122_01] Created this package spec.
-    1.2     2019-01-24  wjim            [20190124_01] Á¶È¸Á¶°Ç Ãß°¡
-                                        - °è¾àÁ¢¼öÀÏÀÚ(from~to)
+    1.2     2019-01-24  wjim            [20190124_01] ì¡°íšŒì¡°ê±´ ì¶”ê°€
+                                        - ê³„ì•½ì ‘ìˆ˜ì¼ìž(from~to)
   *****************************************************************************/
   PROCEDURE p_sRTSD0401 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Agency_Cd       IN RTSD0401.AGENCY_CD%TYPE     /*´ë¸®Á¡¹øÈ£           */
-    , v_Proc_Day_F      IN RTSD0401.PROC_DAY%TYPE      /*ÀåÂøÇùÀÇÀÏÀÚ(from)   */   
-    , v_Proc_Day_T      IN RTSD0401.PROC_DAY%TYPE      /*ÀåÂøÇùÀÇÀÏÀÚ(to)     */
-    , v_Stat_Cd         IN RTSD0401.STAT_CD%TYPE       /*»óÅÂÄÚµå(S105)       */
-    , v_Stat_Dtl_Cd     IN RTSD0401.STAT_DTL_CD%TYPE   /*»óÅÂ¼¼ºÎÄÚµå(S106)   */    
-    , v_Cust_Nm         IN RTSD0100.CUST_NM%TYPE       /*°í°´¸í               */
-    , v_Mob_No          IN RTSD0401.MOB_NO%TYPE        /*ÈÞ´ëÆù¹øÈ£           */
-    , v_Ord_No          IN RTSD0401.ORD_NO%TYPE        /*°è¾à¹øÈ£             */
-    , v_Ord_Day_F       IN RTSD0104.ORD_Day%TYPE       /*°è¾àÁ¢¼öÀÏÀÚ(from)   */
-    , v_Ord_Day_T       IN RTSD0104.ORD_Day%TYPE       /*°è¾àÁ¢¼öÀÏÀÚ(from)   */
+    , v_Agency_Cd       IN RTSD0401.AGENCY_CD%TYPE     /*ëŒ€ë¦¬ì ë²ˆí˜¸           */
+    , v_Proc_Day_F      IN RTSD0401.PROC_DAY%TYPE      /*ìž¥ì°©í˜‘ì˜ì¼ìž(from)   */   
+    , v_Proc_Day_T      IN RTSD0401.PROC_DAY%TYPE      /*ìž¥ì°©í˜‘ì˜ì¼ìž(to)     */
+    , v_Stat_Cd         IN RTSD0401.STAT_CD%TYPE       /*ìƒíƒœì½”ë“œ(S105)       */
+    , v_Stat_Dtl_Cd     IN RTSD0401.STAT_DTL_CD%TYPE   /*ìƒíƒœì„¸ë¶€ì½”ë“œ(S106)   */    
+    , v_Cust_Nm         IN RTSD0100.CUST_NM%TYPE       /*ê³ ê°ëª…               */
+    , v_Mob_No          IN RTSD0401.MOB_NO%TYPE        /*íœ´ëŒ€í°ë²ˆí˜¸           */
+    , v_Ord_No          IN RTSD0401.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸             */
+    , v_Ord_Day_F       IN RTSD0104.ORD_Day%TYPE       /*ê³„ì•½ì ‘ìˆ˜ì¼ìž(from)   */
+    , v_Ord_Day_T       IN RTSD0104.ORD_Day%TYPE       /*ê³„ì•½ì ‘ìˆ˜ì¼ìž(from)   */
   );
 
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ Insert
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -55,25 +55,25 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
     1.0     2018-11-26  wjim            [20181122_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_InsertRtsd0401 (
-      v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*°è¾à¹øÈ£              */
-    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*´ë¸®Á¡¹øÈ£            */
-    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ÀåÂø¿äÃ»ÀÏÀÚ          */
-    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ÀåÂøÇùÀÇÀÏÀÚ          */
-    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ÀåÂøÇùÀÇ½Ã°£          */
-    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*°Ç¹°¹øÈ£              */
-    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*¿ìÆí¹øÈ£              */
-    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ÁÖ¼Ò                  */
-    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*»ó¼¼ÁÖ¼Ò              */
-    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*»óÅÂÄÚµå(S105)        */
-    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*»óÅÂ¼¼ºÎÄÚµå(S106)    */
-    , v_Memo           IN RTSD0401.MEMO%TYPE          /*¸Þ¸ð                  */
-    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*µî·ÏÀÚ ID             */
+      v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */
+    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*ëŒ€ë¦¬ì ë²ˆí˜¸            */
+    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ìž¥ì°©ìš”ì²­ì¼ìž          */
+    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ìž¥ì°©í˜‘ì˜ì¼ìž          */
+    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ìž¥ì°©í˜‘ì˜ì‹œê°„          */
+    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*ê±´ë¬¼ë²ˆí˜¸              */
+    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*ìš°íŽ¸ë²ˆí˜¸              */
+    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ì£¼ì†Œ                  */
+    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*ìƒì„¸ì£¼ì†Œ              */
+    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*ìƒíƒœì½”ë“œ(S105)        */
+    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*ìƒíƒœì„¸ë¶€ì½”ë“œ(S106)    */
+    , v_Memo           IN RTSD0401.MEMO%TYPE          /*ë©”ëª¨                  */
+    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*ë“±ë¡ìž ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ Update
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ Update
   
     REVISIONS
     Ver     Date        Author          Description
@@ -81,25 +81,25 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
     1.0     2018-11-26  wjim            [20181122_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0401 (
-      v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*°è¾à¹øÈ£              */
-    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*´ë¸®Á¡¹øÈ£            */
-    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ÀåÂø¿äÃ»ÀÏÀÚ          */
-    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ÀåÂøÇùÀÇÀÏÀÚ          */
-    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ÀåÂøÇùÀÇ½Ã°£          */
-    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*°Ç¹°¹øÈ£              */
-    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*¿ìÆí¹øÈ£              */
-    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ÁÖ¼Ò                  */
-    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*»ó¼¼ÁÖ¼Ò              */
-    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*»óÅÂÄÚµå(S105)        */
-    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*»óÅÂ¼¼ºÎÄÚµå(S106)    */
-    , v_Memo           IN RTSD0401.MEMO%TYPE          /*¸Þ¸ð                  */
-    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*µî·ÏÀÚ ID             */
+      v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */
+    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*ëŒ€ë¦¬ì ë²ˆí˜¸            */
+    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ìž¥ì°©ìš”ì²­ì¼ìž          */
+    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ìž¥ì°©í˜‘ì˜ì¼ìž          */
+    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ìž¥ì°©í˜‘ì˜ì‹œê°„          */
+    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*ê±´ë¬¼ë²ˆí˜¸              */
+    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*ìš°íŽ¸ë²ˆí˜¸              */
+    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ì£¼ì†Œ                  */
+    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*ìƒì„¸ì£¼ì†Œ              */
+    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*ìƒíƒœì½”ë“œ(S105)        */
+    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*ìƒíƒœì„¸ë¶€ì½”ë“œ(S106)    */
+    , v_Memo           IN RTSD0401.MEMO%TYPE          /*ë©”ëª¨                  */
+    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*ë“±ë¡ìž ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ °ü¸®(IUD)
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ ê´€ë¦¬(IUD)
   
     REVISIONS
     Ver     Date        Author          Description
@@ -107,28 +107,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
     1.0     2018-11-26  wjim            [20181122_01] Created this package spec.
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0401 (
-      v_Comm_Dvsn      IN CHAR                        /*Ã³¸®±¸ºÐ(I,U,D)       */
-    , v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*°è¾à¹øÈ£              */
-    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*´ë¸®Á¡¹øÈ£            */
-    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ÀåÂø¿äÃ»ÀÏÀÚ          */
-    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ÀåÂøÇùÀÇÀÏÀÚ          */
-    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ÀåÂøÇùÀÇ½Ã°£          */
-    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*¿¬¶ôÃ³                */
-    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*°Ç¹°¹øÈ£              */
-    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*¿ìÆí¹øÈ£              */
-    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ÁÖ¼Ò                  */
-    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*»ó¼¼ÁÖ¼Ò              */
-    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*»óÅÂÄÚµå(S105)        */
-    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*»óÅÂ¼¼ºÎÄÚµå(S106)    */
-    , v_Memo           IN RTSD0401.MEMO%TYPE          /*¸Þ¸ð                  */
-    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*µî·ÏÀÚ ID             */
+      v_Comm_Dvsn      IN CHAR                        /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    , v_Ord_No         IN RTSD0401.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸              */
+    , v_Agency_Cd      IN RTSD0401.AGENCY_CD%TYPE     /*ëŒ€ë¦¬ì ë²ˆí˜¸            */
+    , v_Req_Day        IN RTSD0401.REQ_DAY%TYPE       /*ìž¥ì°©ìš”ì²­ì¼ìž          */
+    , v_Proc_Day       IN RTSD0401.PROC_DAY%TYPE      /*ìž¥ì°©í˜‘ì˜ì¼ìž          */
+    , v_Proc_Tm        IN RTSD0401.PROC_TM%TYPE       /*ìž¥ì°©í˜‘ì˜ì‹œê°„          */
+    , v_Mob_No         IN RTSD0401.MOB_NO%TYPE        /*ì—°ë½ì²˜                */
+    , v_Bld_Mng_No     IN RTSD0401.BLD_MNG_NO%TYPE    /*ê±´ë¬¼ë²ˆí˜¸              */
+    , v_Poscd          IN RTSD0401.POSCD%TYPE         /*ìš°íŽ¸ë²ˆí˜¸              */
+    , v_Addr1          IN RTSD0401.ADDR1%TYPE         /*ì£¼ì†Œ                  */
+    , v_Addr2          IN RTSD0401.ADDR2%TYPE         /*ìƒì„¸ì£¼ì†Œ              */
+    , v_Stat_Cd        IN RTSD0401.STAT_CD%TYPE       /*ìƒíƒœì½”ë“œ(S105)        */
+    , v_Stat_Dtl_Cd    IN RTSD0401.STAT_DTL_CD%TYPE   /*ìƒíƒœì„¸ë¶€ì½”ë“œ(S106)    */
+    , v_Memo           IN RTSD0401.MEMO%TYPE          /*ë©”ëª¨                  */
+    , v_Reg_Id         IN RTSD0401.REG_ID%TYPE        /*ë“±ë¡ìž ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
     
   /*****************************************************************************
-  -- ¹æ¹®ÀåÂø Á¤º¸ Select
+  -- ë°©ë¬¸ìž¥ì°© ì •ë³´ Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -137,11 +137,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0401 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0401CountPerStat (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Agency_Cd       IN RTSD0401.AGENCY_CD%TYPE      /* ´ë¸®Á¡¹øÈ£         */  
-    , v_Proc_Day_F      IN RTSD0401.PROC_DAY%TYPE       /* ÀåÂøÇùÀÇÀÏÀÚ(from) */   
-    , v_Proc_Day_T      IN RTSD0401.PROC_DAY%TYPE       /* ÀåÂøÇùÀÇÀÏÀÚ(to)   */   
+    , v_Agency_Cd       IN RTSD0401.AGENCY_CD%TYPE      /* ëŒ€ë¦¬ì ë²ˆí˜¸         */  
+    , v_Proc_Day_F      IN RTSD0401.PROC_DAY%TYPE       /* ìž¥ì°©í˜‘ì˜ì¼ìž(from) */   
+    , v_Proc_Day_T      IN RTSD0401.PROC_DAY%TYPE       /* ìž¥ì°©í˜‘ì˜ì¼ìž(to)   */   
   );
 
         
 END Pkg_Rtsd0401;
-/

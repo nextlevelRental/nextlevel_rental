@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0060 AS 
 /******************************************************************************* 
    NAME:     PKG_RTSD0060 
-   PURPOSE   ·»Å» Áö¿ª °ü¸® 
+   PURPOSE   ë Œíƒˆ ì§€ì—­ ê´€ë¦¬ 
  
    REVISIONS 
    Ver        Date        Author           Description 
@@ -9,41 +9,41 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0060 AS
    1.0        2018-11-01  Sean         1. Created this package spec. 
 *******************************************************************************/ 
   /***************************************************************************** 
-  -- ·»Å»Áö¿ª Á¶È¸ Select 
+  -- ë Œíƒˆì§€ì—­ ì¡°íšŒ Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService (  
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* ¼ö¼ö·á¸í  */
-    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,          /* Ã¤³Î´ëºÐ·ù  */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,           /* Ã¤³ÎÁßºÐ·ù  */
-     v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*½ÃÄö½º              */      
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* ìˆ˜ìˆ˜ë£Œëª…  */
+    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,          /* ì±„ë„ëŒ€ë¶„ë¥˜  */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,           /* ì±„ë„ì¤‘ë¶„ë¥˜  */
+     v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*ì‹œí€€ìŠ¤              */      
     ); 
     
   /***************************************************************************** 
-  -- ·»Å»Áö¿ª Á¶È¸ Select 
+  -- ë Œíƒˆì§€ì—­ ì¡°íšŒ Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService2 (  
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,               /* ¼ö¼ö·á¸í  */
-    v_Chan_Lcis_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,          /* Ã¤³Î´ëºÐ·ù  */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE           /* Ã¤³ÎÁßºÐ·ù  */    
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,               /* ìˆ˜ìˆ˜ë£Œëª…  */
+    v_Chan_Lcis_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,          /* ì±„ë„ëŒ€ë¶„ë¥˜  */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE           /* ì±„ë„ì¤‘ë¶„ë¥˜  */    
     );  
     
   /***************************************************************************** 
-  -- ·»Å»Áö¿ª Á¶È¸ Select 
+  -- ë Œíƒˆì§€ì—­ ì¡°íšŒ Select 
   *****************************************************************************/     
       PROCEDURE p_IUDRtsd0060 (
-    v_Comm_Dvsn         IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn         IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -51,181 +51,180 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0060 AS
     
     
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Count
+  -- ê°€ê²© ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060Count(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Seq               IN RTSD0061.SEQ%TYPE            /*¼ø¹ø                  */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Seq               IN RTSD0061.SEQ%TYPE            /*ìˆœë²ˆ                  */ 
     )RETURN NUMBER;
     
     
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Insert
+  -- ë°©ë¬¸ ì ê²€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */    
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */    
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */    
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */    
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText         OUT VARCHAR2
     )RETURN NUMBER;
     
 
 
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Update
+  -- ë°©ë¬¸ ì ê²€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*¼ø¹ø                  */ 
-    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sale_Min_Cnt      IN RTSD0061.SALE_MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Comm_Amt          IN RTSD0061.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Sale_Max_Cnt      IN RTSD0061.SALE_MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*ìˆœë²ˆ                  */ 
+    v_Use_Yn            IN RTSD0061.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0061.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText         OUT VARCHAR2 
     ) RETURN NUMBER;
     
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Delete
+  -- ë°©ë¬¸ ì ê²€ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0060(
-    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Seq               IN RTSD0061.SEQ%TYPE,            /*¼ø¹ø                  */
+    v_Comm_Tp           IN RTSD0061.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chr_Seq           IN RTSD0061.CHR_SEQ%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Chan_Mcls_Cd      IN RTSD0061.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0061.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Seq               IN RTSD0061.SEQ%TYPE,            /*ìˆœë²ˆ                  */
     v_ErrorText         OUT VARCHAR2  
     ) RETURN NUMBER;
     
     
     
     /*****************************************************************************
-  -- °øÅëÄÚµå Detail Á¶È¸- ´ëºÐ·ùÄÚµå ±âÁØ ¼ÒºÐ·ùÄÚµå/¸í Á¶È¸
+  -- ê³µí†µì½”ë“œ Detail ì¡°íšŒ- ëŒ€ë¶„ë¥˜ì½”ë“œ ê¸°ì¤€ ì†Œë¶„ë¥˜ì½”ë“œ/ëª… ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0060CodeName (
     Ref_Cursor  IN OUT SYS_REFCURSOR,
-    v_Cd        IN  RTCM0051.CD%TYPE,            /*ÄÚµå¸í                  */
-    v_Cd2    IN  RTCM0051.CD%TYPE,        /*ÄÚµå±×·ìÄÚµå            */ 
-    v_Cd3    IN  RTCM0051.CD%TYPE,        /*ÄÚµå±×·ìÄÚµå            */
-    v_Cd4    IN  RTCM0051.CD%TYPE,        /*ÄÚµå±×·ìÄÚµå            */
-    v_Cd5    IN  RTCM0051.CD%TYPE,        /*ÄÚµå±×·ìÄÚµå            */
-    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,        /*ÄÚµå±×·ìÄÚµå            */   
-    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE            /*»ç¿ë¿©ºÎ                */
+    v_Cd        IN  RTCM0051.CD%TYPE,            /*ì½”ë“œëª…                  */
+    v_Cd2    IN  RTCM0051.CD%TYPE,        /*ì½”ë“œê·¸ë£¹ì½”ë“œ            */ 
+    v_Cd3    IN  RTCM0051.CD%TYPE,        /*ì½”ë“œê·¸ë£¹ì½”ë“œ            */
+    v_Cd4    IN  RTCM0051.CD%TYPE,        /*ì½”ë“œê·¸ë£¹ì½”ë“œ            */
+    v_Cd5    IN  RTCM0051.CD%TYPE,        /*ì½”ë“œê·¸ë£¹ì½”ë“œ            */
+    v_Cd_Grp_Cd IN  RTCM0051.CD_GRP_CD%TYPE,        /*ì½”ë“œê·¸ë£¹ì½”ë“œ            */   
+    v_Use_Yn    IN  RTCM0051.USE_YN%TYPE            /*ì‚¬ìš©ì—¬ë¶€                */
     );
     
     
 /***************************************************************************** 
-  -- ·»Å»Áö¿ª Á¶È¸ Select 
+  -- ë Œíƒˆì§€ì—­ ì¡°íšŒ Select 
   *****************************************************************************/ 
   PROCEDURE p_sRtsd0060visitorService3 ( 
     Ref_Cursor        IN OUT SYS_REFCURSOR, 
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* ¼ö¼ö·á¸í  */
-    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE         /* Ã¤³Î´ëºÐ·ù  */   
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,               /* ìˆ˜ìˆ˜ë£Œëª…  */
+    v_Chan_Lcis_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE         /* ì±„ë„ëŒ€ë¶„ë¥˜  */   
     );
     
     
    /***************************************************************************** 
-  --ÀÎ¼¾Æ¼ºê ÀúÀå
+  --ì¸ì„¼í‹°ë¸Œ ì €ìž¥
   *****************************************************************************/  
   PROCEDURE p_IUDRtsd0060Insentive (
-    v_Comm_Dvsn         IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*Ã¤³ÎÁßºÐ·ù              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Ã¤³Î´ëºÐ·ù            */    
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*½ÃÄö½º              */   
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå   .         */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */    
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*µî·ÏÀÚ ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Comm_Dvsn         IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*ì±„ë„ì¤‘ë¶„ë¥˜              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*ì±„ë„ëŒ€ë¶„ë¥˜            */    
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*ì‹œí€€ìŠ¤              */   
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ   .         */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */    
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*ë“±ë¡ìž ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Count
+  -- ë°©ë¬¸ ì ê²€ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö           */
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*»óÇ°ÄÚµå              */
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜           */
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE         /*ìƒí’ˆì½”ë“œ              */
     ) RETURN NUMBER;
     
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Insert
+  -- ë°©ë¬¸ ì ê²€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0060Insentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */    
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */   
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*µî·ÏÀÚ ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*µî·ÏÀÚ ID             */   
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */    
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */   
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*ë“±ë¡ìž ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*ë“±ë¡ìž ID             */   
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Update
+  -- ë°©ë¬¸ ì ê²€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0060Insentive(
-    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö          */
-    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */ 
-    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*µî·ÏÀÚ ID             */
-    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*µî·ÏÀÚ ID             */  
+    v_Comm_Tp           IN RTSD0060.COMM_TP%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Chan_Mcls_Cd      IN RTSD0060.CHAN_MCLS_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Chan_Lcls_Cd      IN RTSD0060.CHAN_LCLS_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Chr_Seq           IN RTSD0060.CHR_SEQ%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Min_Cnt           IN RTSD0060.MIN_CNT%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Comm_Amt          IN RTSD0060.COMM_AMT%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_Max_Cnt           IN RTSD0060.MAX_CNT%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */ 
+    v_Use_Yn            IN RTSD0060.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Str_Day           IN RTSD0060.STR_DAY%TYPE,         /*ë“±ë¡ìž ID             */
+    v_End_Day           IN RTSD0060.END_DAY%TYPE,         /*ë“±ë¡ìž ID             */  
     v_ErrorText         OUT VARCHAR2 
     ) RETURN NUMBER;
     
   /***************************************************************************** 
-  --ÀÎ¼¾Æ¼ºê ÀúÀå
+  --ì¸ì„¼í‹°ë¸Œ ì €ìž¥
   *****************************************************************************/  
   PROCEDURE p_IUDRtsd0060Insentive2 (
-    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Reg_Id            IN RTSD0060.REG_ID%TYPE         /*µî·ÏÀÚ ID             */  
+    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Reg_Id            IN RTSD0060.REG_ID%TYPE         /*ë“±ë¡ìž ID             */  
     );
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Count
+  -- ë°©ë¬¸ ì ê²€ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive3(
-    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE      /*°¡°Ý,±Ý¾×À¯Çü         */    
+    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE      /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */    
    
     ) RETURN NUMBER; 
                  
     
   /*****************************************************************************
-  -- ¹æ¹® Á¡°Ë Count
+  -- ë°©ë¬¸ ì ê²€ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0060CountInsentive4(
-    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE      /*°¡°Ý,±Ý¾×À¯Çü         */    
+    v_Slcm_Ym           IN RTRE5040.SLCM_YM%TYPE      /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */    
     ) RETURN VARCHAR2;     
 END PKG_RTSD0060;
-/

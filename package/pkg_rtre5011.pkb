@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 /*******************************************************************************
    NAME      Pkg_Rtre5011
-   PURPOSE   ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ °ü¸®
+   PURPOSE   ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Count
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Count
   *****************************************************************************/
   FUNCTION f_sRtre5011Count(
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,        /*ÆÇ¸Å¿øÄÚµå          */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE           /*Á¶°ßÇ¥¼ø¹ø          */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,        /*íŒë§¤ì›ì½”ë“œ          */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE           /*ì¡°ê²¬í‘œìˆœë²ˆ          */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,31 +34,31 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END f_sRtre5011Count;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Select
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Select
   *****************************************************************************/
   PROCEDURE p_sRtre5011 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Standard_Day   IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE       /*ÆÇ¸Å¿øÄÚµå            */
+    v_Standard_Day   IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE       /*íŒë§¤ì›ì½”ë“œ            */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ORD_AGENT,                 /*ÆÇ¸Å¿øÄÚµå          */
-            Pkg_Rtsd0113.f_sRtsd0113FieldValue(A.ORD_AGENT, 'ORG_AGNM', NULL) AS AGENT_NM, /*ÆÇ¸Å¿ø¸í  */
-            A.CHR_SEQ,                   /*Á¶°ßÇ¥¼ø¹ø          */
-            A.STR_DAY,                   /*½ÃÀÛÀÏÀÚ            */
-            A.END_DAY,                   /*Á¾·áÀÏÀÚ            */
-            A.SLCM_AMT,                  /*ÆÇ¸Å¼ö¼ö·á          */
-            A.APFD_AMT,                  /*Ãæ´ç¼³Á¤±Ý¾×        */
-            A.USE_YN,                    /*»ç¿ëÀ¯¹«            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm( A.REG_ID )          AS REG_NM, /*µî·ÏÀÚ¸í */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm( A.CHG_ID )          AS CHG_NM, /*º¯°æÀÚ¸í */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.ORD_AGENT,                 /*íŒë§¤ì›ì½”ë“œ          */
+            Pkg_Rtsd0113.f_sRtsd0113FieldValue(A.ORD_AGENT, 'ORG_AGNM', NULL) AS AGENT_NM, /*íŒë§¤ì›ëª…  */
+            A.CHR_SEQ,                   /*ì¡°ê²¬í‘œìˆœë²ˆ          */
+            A.STR_DAY,                   /*ì‹œìž‘ì¼ìž            */
+            A.END_DAY,                   /*ì¢…ë£Œì¼ìž            */
+            A.SLCM_AMT,                  /*íŒë§¤ìˆ˜ìˆ˜ë£Œ          */
+            A.APFD_AMT,                  /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡        */
+            A.USE_YN,                    /*ì‚¬ìš©ìœ ë¬´            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm( A.REG_ID )          AS REG_NM, /*ë“±ë¡ìžëª… */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm( A.CHG_ID )          AS CHG_NM, /*ë³€ê²½ìžëª… */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTRE5011 A
     WHERE   A.STR_DAY  <= v_Standard_Day
     AND     A.END_DAY  >= v_Standard_Day
@@ -68,17 +68,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END p_sRtre5011;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Insert
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -119,17 +119,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END f_InsertRtre5011;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Update
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -155,12 +155,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END f_UpdateRtre5011;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Delete
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -183,18 +183,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 
   
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ °ü¸®(IUD)
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre5011 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN OUT RTRE5011.CHR_SEQ%TYPE,    /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN OUT RTRE5011.CHR_SEQ%TYPE,    /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -202,79 +202,79 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 
     e_Error EXCEPTION;
     v_Count      NUMBER DEFAULT 0;
-    v_Chan_Cd    RTSD0113.CHAN_CD%TYPE;        /*Ã¤³Î                  */
-    v_Chr_SeqB   RTRE5011.CHR_SEQ%TYPE;        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_DayB   RTRE5011.STR_DAY%TYPE;        /*½ÃÀÛÀÏÀÚ              */
-    v_Str_DayC   RTRE5011.STR_DAY%TYPE;        /*½ÃÀÛÀÏÀÚ              */
-    v_End_DayB   RTRE5011.END_DAY%TYPE;        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_AmtB  RTRE5011.SLCM_AMT%TYPE;       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_AmtB  RTRE5011.APFD_AMT%TYPE;       /*Ãæ´ç¼³Á¤±Ý¾×          */
+    v_Chan_Cd    RTSD0113.CHAN_CD%TYPE;        /*ì±„ë„                  */
+    v_Chr_SeqB   RTRE5011.CHR_SEQ%TYPE;        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_DayB   RTRE5011.STR_DAY%TYPE;        /*ì‹œìž‘ì¼ìž              */
+    v_Str_DayC   RTRE5011.STR_DAY%TYPE;        /*ì‹œìž‘ì¼ìž              */
+    v_End_DayB   RTRE5011.END_DAY%TYPE;        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_AmtB  RTRE5011.SLCM_AMT%TYPE;       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_AmtB  RTRE5011.APFD_AMT%TYPE;       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
   BEGIN
 
-    -- ÇÊ¼ö°ª: ÆÇ¸Å¿øÄÚµå, Á¶°ßÇ¥¼ø¹ø, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: íŒë§¤ì›ì½”ë“œ, ì¡°ê²¬í‘œìˆœë²ˆ, ë“±ë¡ìž ID
     IF (TRIM(v_Ord_Agent) IS NULL) OR ('04' <> Pkg_Rtsd0113.f_sRtsd0113FieldValue(TRIM(v_Ord_Agent), 'CHAN_CD', 'Y'))THEN
-        v_Return_Message := 'ÆÇ¸Å¿øÄÚµå('||v_Ord_Agent||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'íŒë§¤ì›ì½”ë“œ('||v_Ord_Agent||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Use_Yn) IS NULL)  THEN
-        v_Return_Message := '»ç¿ëÀ¯¹«('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ìœ ë¬´('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn IN ('I', 'U' ) THEN
 
         IF (TRIM(v_Str_Day) IS NULL)  THEN
-            v_Return_Message := '½ÃÀÛÀÏÀÚ('||v_Str_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì‹œìž‘ì¼ìž('||v_Str_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_End_Day) IS NULL)  THEN
-            v_Return_Message := 'Á¾·áÀÏÀÚ('||v_End_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì¢…ë£Œì¼ìž('||v_End_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
-        -- ÆÇ¸Å¼ö¼ö·á, Ãæ´ç±Ý±Ý¾×: 0°ú °°°Å³ª 0º¸´Ù Å« ¼ýÀÚ ex) x >= 0
+        -- íŒë§¤ìˆ˜ìˆ˜ë£Œ, ì¶©ë‹¹ê¸ˆê¸ˆì•¡: 0ê³¼ ê°™ê±°ë‚˜ 0ë³´ë‹¤ í° ìˆ«ìž ex) x >= 0
         IF (TRIM(v_Slcm_Amt) IS NULL) OR (TRIM(v_Slcm_Amt) < 0) THEN
-            v_Return_Message := 'ÆÇ¸Å¼ö¼ö·á('||v_Slcm_Amt||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'íŒë§¤ìˆ˜ìˆ˜ë£Œ('||v_Slcm_Amt||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Apfd_Amt) IS NULL) OR (TRIM(v_Apfd_Amt) < 0)  THEN
-            v_Return_Message := 'Ãæ´ç¼³Á¤±Ý¾×('||v_Apfd_Amt||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡('||v_Apfd_Amt||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
         
 
         IF v_Comm_Dvsn = 'I' THEN
         
-            -- ½ÃÀÛÀÏÀÚ: ´ç¿ù1ÀÏºÎÅÍ ÀÍ¿ù¸»ÀÏ±îÁö ÀÔ·Â °¡´É ex) ÇöÀçÀÏÀÚ : 2015³â 12¿ù 7ÀÏ  -> 2015³â 12¿ù 1ÀÏ ~ 2016³â 1¿ù31ÀÏ 
+            -- ì‹œìž‘ì¼ìž: ë‹¹ì›”1ì¼ë¶€í„° ìµì›”ë§ì¼ê¹Œì§€ ìž…ë ¥ ê°€ëŠ¥ ex) í˜„ìž¬ì¼ìž : 2015ë…„ 12ì›” 7ì¼  -> 2015ë…„ 12ì›” 1ì¼ ~ 2016ë…„ 1ì›”31ì¼ 
             IF NOT (((TO_CHAR(SYSDATE,'YYYYMM')||'01' <= TRIM(v_Str_Day)) AND (TRIM(v_Str_Day) <= TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,+1)),'YYYYMMDD')))) THEN
-                v_Return_Message := '½ÃÀÛÀÏÀÚ('||v_Str_Day||')´Â ´ç¿ù1ÀÏºÎÅÍ ÀÍ¿ù¸»ÀÏ±îÁö¸¸ ÀÔ·ÂÀÌ °¡´ÉÇÏ¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ì‹œìž‘ì¼ìž('||v_Str_Day||')ëŠ” ë‹¹ì›”1ì¼ë¶€í„° ìµì›”ë§ì¼ê¹Œì§€ë§Œ ìž…ë ¥ì´ ê°€ëŠ¥í•˜ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
             
-            -- Á¾·áÀÏÀÚ : '99991231' ¸¸ °¡´É ( ÇâÈÄ º¯°æÇÒ °¡´É¼º ¶§¹®¿¡ import°ªÀ» ÀÌ¿ëÇÔ, ÇöÀç ±âÁØÀ¸·Î´Â '99991231'¸¸ °¡´É)
+            -- ì¢…ë£Œì¼ìž : '99991231' ë§Œ ê°€ëŠ¥ ( í–¥í›„ ë³€ê²½í•  ê°€ëŠ¥ì„± ë•Œë¬¸ì— importê°’ì„ ì´ìš©í•¨, í˜„ìž¬ ê¸°ì¤€ìœ¼ë¡œëŠ” '99991231'ë§Œ ê°€ëŠ¥)
             IF TRIM(v_End_Day) <> '99991231' THEN
-                v_Return_Message := 'Á¾·áÀÏÀÚ('||v_End_Day||') : 99991231 ¸¸ °¡´ÉÇÏ¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ì¢…ë£Œì¼ìž('||v_End_Day||') : 99991231 ë§Œ ê°€ëŠ¥í•˜ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
             
-            -- »ç¿ë¿©ºÎ: ½Å±Ô ÀÎ °æ¿ì : 'Y'
+            -- ì‚¬ìš©ì—¬ë¶€: ì‹ ê·œ ì¸ ê²½ìš° : 'Y'
             IF (TRIM(v_Use_Yn) <> 'Y')  THEN
-                v_Return_Message := '½Å±Ô ÀÎ °æ¿ì »ç¿ëÀ¯¹«('||v_Use_Yn||')´Â Y·Î¸¸ Ã³¸®°¡´ÉÇÏ¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ì‹ ê·œ ì¸ ê²½ìš° ì‚¬ìš©ìœ ë¬´('||v_Use_Yn||')ëŠ” Yë¡œë§Œ ì²˜ë¦¬ê°€ëŠ¥í•˜ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;             
 
             v_Count := 1;
                             
             BEGIN
-                -- µ¿ÀÏ »óÇ°, Ã¤³Î°Ç¿¡ ´ëÇÏ¿© ÃÖÁ¾ÀÌ·Â Ã¼Å©
+                -- ë™ì¼ ìƒí’ˆ, ì±„ë„ê±´ì— ëŒ€í•˜ì—¬ ìµœì¢…ì´ë ¥ ì²´í¬
                 SELECT  CHR_SEQ, STR_DAY, END_DAY
                 INTO    v_Chr_SeqB, v_Str_DayB, v_End_DayB
                 FROM    RTRE5011
@@ -286,56 +286,56 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
               WHEN NO_DATA_FOUND THEN
                 v_Count := 0;
               WHEN OTHERS THEN
-                v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ ÃÖÁ¾ÀÌ·Â Ã¼Å©½Ã ¿À·ù ¹ß»ý.½Ã½ºÅÛ°ü¸®ÀÚ ¹®ÀÇ¿ä¸Á.! - '||SUBSTR(SQLERRM, 1, 200);
+                v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ìµœì¢…ì´ë ¥ ì²´í¬ì‹œ ì˜¤ë¥˜ ë°œìƒ.ì‹œìŠ¤í…œê´€ë¦¬ìž ë¬¸ì˜ìš”ë§.! - '||SUBSTR(SQLERRM, 1, 200);
                 RAISE e_Error;
             END;
             
-            -- ±âÁ¸ ÀÌ·ÂÀÌ Á¸ÀçÇÏ¸é    
+            -- ê¸°ì¡´ ì´ë ¥ì´ ì¡´ìž¬í•˜ë©´    
             IF 0 < v_Count THEN
                 
-                -- ÀÌÀü³»¿ªÀÇ STR_DAY °ªÀÌ ÀÔ·ÂµÇ´Â ½ÃÀÛ³¯Â¥º¸´Ù ÀÛ°Å³ª °°¾Æ¾ß ÇÑ´Ù. 
+                -- ì´ì „ë‚´ì—­ì˜ STR_DAY ê°’ì´ ìž…ë ¥ë˜ëŠ” ì‹œìž‘ë‚ ì§œë³´ë‹¤ ìž‘ê±°ë‚˜ ê°™ì•„ì•¼ í•œë‹¤. 
                 IF TRIM(v_Str_DayB) > TRIM(v_Str_Day) THEN
-                    v_Return_Message := 'ÀÔ·ÂÇÏ½Å ³¯Â¥('||v_Str_Day||')°¡ ±âÁ¸ ½ÃÀÛÀÏÀÚ('||v_Str_DayB||')º¸´Ù ÀÛÀ¸¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù.!';
+                    v_Return_Message := 'ìž…ë ¥í•˜ì‹  ë‚ ì§œ('||v_Str_Day||')ê°€ ê¸°ì¡´ ì‹œìž‘ì¼ìž('||v_Str_DayB||')ë³´ë‹¤ ìž‘ìœ¼ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤.!';
                     RAISE e_Error;
                 END IF;
                 
-                -- ÀÌÀü³»¿ªÀÇ Á¾·áÀÏÀÚ = ½Å±Ôµî·Ï ½ÃÀÛÀÏÀÚ -1ÀÏ
+                -- ì´ì „ë‚´ì—­ì˜ ì¢…ë£Œì¼ìž = ì‹ ê·œë“±ë¡ ì‹œìž‘ì¼ìž -1ì¼
                 v_End_DayB := TO_CHAR(TO_DATE(TRIM(v_Str_Day),'YYYYMMDD')-1,'YYYYMMDD');
                     
-                -- ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ®
+                -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸
                 IF 0 != f_UpdateRtre5011EndDay(v_Ord_Agent, v_Chr_SeqB,
                                                v_End_DayB,  v_Reg_Id,  v_ErrorText
                                                ) THEN
-                    v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ® ½ÇÆÐ!!!'||'-'||v_Errortext;
+                    v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
                     v_Errortext := v_Errortext;
                     RAISE e_Error;
                 END IF;
                             
             END IF;
             
-            -- ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Á¶°ßÇ¥¼ø¹ø Ãé¹ø
+            -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ì¡°ê²¬í‘œìˆœë²ˆ ì·Œë²ˆ
             v_Chr_Seq := f_sRtre5011ChrSeq(v_Ord_Agent);
             
-            -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Insert
+            -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Insert
             IF 0 != f_InsertRtre5011( v_Ord_Agent, v_Chr_Seq,
                                       v_Str_Day, v_End_Day, v_Slcm_Amt, v_Apfd_Amt,
                                       v_Use_Yn,  v_Reg_Id,  v_ErrorText
                                      ) THEN
-                v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ µî·Ï ½ÇÆÐ!!!'||'-'||v_Errortext;
+                v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
                 v_Errortext := v_Errortext;
                 RAISE e_Error;
             END IF;
             
         ELSE
         
-            -- Á¶°ßÇ¥¼ø¹ø ÇÊ¼ö
+            -- ì¡°ê²¬í‘œìˆœë²ˆ í•„ìˆ˜
             IF (TRIM(v_Chr_Seq) IS NULL) OR (0 = f_sRtre5011Count(v_Ord_Agent, v_Chr_Seq)) THEN
-                v_Return_Message := 'Á¶°ßÇ¥¼ø¹ø('||v_Chr_Seq||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ì¡°ê²¬í‘œìˆœë²ˆ('||v_Chr_Seq||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
 
             BEGIN
-                -- ¼öÁ¤ÇÏ°íÀÚ ÇÏ´Â ÀÌ·Â µ¥ÀÌÅÍ È¹µæ
+                -- ìˆ˜ì •í•˜ê³ ìž í•˜ëŠ” ì´ë ¥ ë°ì´í„° íšë“
                 SELECT  STR_DAY, END_DAY, SLCM_AMT, APFD_AMT
                 INTO    v_Str_DayB, v_End_DayB, v_Slcm_AmtB, v_Apfd_AmtB
                 FROM    RTRE5011
@@ -344,34 +344,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 
             EXCEPTION
               WHEN OTHERS THEN
-                v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ ÀÌ·Â Ã¼Å©½Ã ¿À·ù ¹ß»ý.½Ã½ºÅÛ°ü¸®ÀÚ ¹®ÀÇ¿ä¸Á.! - '||SUBSTR(SQLERRM, 1, 200);
+                v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ì´ë ¥ ì²´í¬ì‹œ ì˜¤ë¥˜ ë°œìƒ.ì‹œìŠ¤í…œê´€ë¦¬ìž ë¬¸ì˜ìš”ë§.! - '||SUBSTR(SQLERRM, 1, 200);
                 RAISE e_Error;
             END;
             
-            -- ÃÖÁ¾ ÀÌ·Â¸¸ ¼öÁ¤°¡´ÉÇÔ.
+            -- ìµœì¢… ì´ë ¥ë§Œ ìˆ˜ì •ê°€ëŠ¥í•¨.
             IF TRIM(v_End_DayB) <> '99991231' THEN
-                v_Return_Message := 'ÃÖÁ¾ÀÌ·Â Á¾·áÀÏÀÚ('||v_End_DayB||') : ÃÖÁ¾ ÀÌ·Â¸¸ ¼öÁ¤°¡´ÉÇÔÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ìµœì¢…ì´ë ¥ ì¢…ë£Œì¼ìž('||v_End_DayB||') : ìµœì¢… ì´ë ¥ë§Œ ìˆ˜ì •ê°€ëŠ¥í•¨ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
             
-            -- ÆÇ¸Å¼ö¼ö·á, Ãæ´ç±Ý ¼³Á¤±Ý¾× : ½ÃÀÛÀÏÀÚ°¡ ´ç¿ùÀÌÈÄ(´ç¿ùÆ÷ÇÔ)ÀÎ °æ¿ì¿¡¸¸ º¯°æ °¡´É
+            -- íŒë§¤ìˆ˜ìˆ˜ë£Œ, ì¶©ë‹¹ê¸ˆ ì„¤ì •ê¸ˆì•¡ : ì‹œìž‘ì¼ìžê°€ ë‹¹ì›”ì´í›„(ë‹¹ì›”í¬í•¨)ì¸ ê²½ìš°ì—ë§Œ ë³€ê²½ ê°€ëŠ¥
             IF (SUBSTR(TRIM(v_Str_Day), 1, 6) < TO_CHAR(SYSDATE,'YYYYMM')) AND 
                 ((TRIM(v_Slcm_AmtB) <> TRIM(v_Slcm_Amt)) OR (TRIM(v_Apfd_AmtB) <> TRIM(v_Apfd_Amt))) THEN
-                v_Return_Message := '½ÃÀÛÀÏÀÚ°¡ Áö³­ ³»¿ªÀº ¼ö¼ö·á ±Ý¾×À» ¼öÁ¤ÇÒ ¼ö ¾ø½À´Ï´Ù.!';
+                v_Return_Message := 'ì‹œìž‘ì¼ìžê°€ ì§€ë‚œ ë‚´ì—­ì€ ìˆ˜ìˆ˜ë£Œ ê¸ˆì•¡ì„ ìˆ˜ì •í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.!';
                 RAISE e_Error;
             END IF;
 
-            -- ½ÃÀÛÀÏÀÚ: ´ç¿ù1ÀÏºÎÅÍ ÀÍ¿ù¸»ÀÏ±îÁö ÀÔ·Â °¡´É ex) ÇöÀçÀÏÀÚ : 2015³â 12¿ù 7ÀÏ  -> 2015³â 12¿ù 1ÀÏ ~ 2016³â 1¿ù31ÀÏ 
+            -- ì‹œìž‘ì¼ìž: ë‹¹ì›”1ì¼ë¶€í„° ìµì›”ë§ì¼ê¹Œì§€ ìž…ë ¥ ê°€ëŠ¥ ex) í˜„ìž¬ì¼ìž : 2015ë…„ 12ì›” 7ì¼  -> 2015ë…„ 12ì›” 1ì¼ ~ 2016ë…„ 1ì›”31ì¼ 
             IF NOT ((TO_CHAR(SYSDATE,'YYYYMM')||'01' <= TRIM(v_Str_DayB)) AND (TRIM(v_Str_DayB) <= TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,+1)),'YYYYMMDD'))) AND
                NOT ((TO_CHAR(SYSDATE,'YYYYMM')||'01' <= TRIM(v_Str_Day )) AND (TRIM(v_Str_Day ) <= TO_CHAR(LAST_DAY(ADD_MONTHS(SYSDATE,+1)),'YYYYMMDD'))) THEN
-                v_Return_Message := '½ÃÀÛÀÏÀÚ('||v_Str_Day||')´Â ´ç¿ù1ÀÏºÎÅÍ ÀÍ¿ù¸»ÀÏ±îÁö¸¸ ÀÔ·ÂÀÌ °¡´ÉÇÏ¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+                v_Return_Message := 'ì‹œìž‘ì¼ìž('||v_Str_Day||')ëŠ” ë‹¹ì›”1ì¼ë¶€í„° ìµì›”ë§ì¼ê¹Œì§€ë§Œ ìž…ë ¥ì´ ê°€ëŠ¥í•˜ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
 
             v_Count := 1;
                 
             BEGIN
-                -- µ¿ÀÏ »óÇ°, Ã¤³Î°Ç¿¡ ´ëÇÏ¿© Á÷ÀüÀÌ·Â Ã¼Å©
+                -- ë™ì¼ ìƒí’ˆ, ì±„ë„ê±´ì— ëŒ€í•˜ì—¬ ì§ì „ì´ë ¥ ì²´í¬
                 SELECT  CHR_SEQ, STR_DAY
                 INTO    v_Chr_SeqB, v_Str_DayC
                 FROM    (
@@ -391,44 +391,44 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
               WHEN NO_DATA_FOUND THEN
                 v_Count := 0;
               WHEN OTHERS THEN
-                v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ ÀÌ·Â Ã¼Å©½Ã ¿À·ù ¹ß»ý.½Ã½ºÅÛ°ü¸®ÀÚ ¹®ÀÇ¿ä¸Á.! - '||SUBSTR(SQLERRM, 1, 200);
+                v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ì´ë ¥ ì²´í¬ì‹œ ì˜¤ë¥˜ ë°œìƒ.ì‹œìŠ¤í…œê´€ë¦¬ìž ë¬¸ì˜ìš”ë§.! - '||SUBSTR(SQLERRM, 1, 200);
                 RAISE e_Error;
             END;
 
-            -- Á÷ÀüÀÌ·ÂÀÌ Á¸ÀçÇÒ °æ¿ì     
+            -- ì§ì „ì´ë ¥ì´ ì¡´ìž¬í•  ê²½ìš°     
             IF v_Count >= 1 THEN
             
-                -- Á÷ÀüÀÌ·ÂÀÇ ½ÃÀÛÀÏÀÚº¸´Ù ÀÛÀº ½ÃÀÛÀÏÀÚ·Î ¼öÁ¤ ºÒ°¡
+                -- ì§ì „ì´ë ¥ì˜ ì‹œìž‘ì¼ìžë³´ë‹¤ ìž‘ì€ ì‹œìž‘ì¼ìžë¡œ ìˆ˜ì • ë¶ˆê°€
                 IF TRIM(v_Str_Day) < TRIM(v_Str_DayC) THEN
-                    v_Return_Message := 'ÀÔ·ÂÇÏ½Å ³¯Â¥('||v_Str_Day||')°¡ ±âÁ¸ ½ÃÀÛÀÏÀÚ('||v_Str_DayC||')º¸´Ù ÀÛÀ¸¹Ç·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù.!';
+                    v_Return_Message := 'ìž…ë ¥í•˜ì‹  ë‚ ì§œ('||v_Str_Day||')ê°€ ê¸°ì¡´ ì‹œìž‘ì¼ìž('||v_Str_DayC||')ë³´ë‹¤ ìž‘ìœ¼ë¯€ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤.!';
                     RAISE e_Error;
                 END IF;
                         
                             
-                -- ÀÌÀü³»¿ªÀÇ Á¾·áÀÏÀÚ = ½Å±Ôµî·Ï ½ÃÀÛÀÏÀÚ -1ÀÏ
+                -- ì´ì „ë‚´ì—­ì˜ ì¢…ë£Œì¼ìž = ì‹ ê·œë“±ë¡ ì‹œìž‘ì¼ìž -1ì¼
                 IF v_Use_yn = 'Y' THEN
                     v_End_DayB := TO_CHAR(TO_DATE(TRIM(v_Str_Day),'YYYYMMDD')-1,'YYYYMMDD');
                 ELSE
                     v_End_DayB := '99991231';
                 END IF;
                                 
-                -- ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ®
+                -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸
                 IF 0 != f_UpdateRtre5011EndDay(v_Ord_Agent, v_Chr_SeqB,
                                                v_End_DayB,  v_Reg_Id,  v_ErrorText
                                                ) THEN
-                    v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ® ½ÇÆÐ!!!'||'-'||v_Errortext;
+                    v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
                     v_Errortext := v_Errortext;
                     RAISE e_Error;
                 END IF;   
                 
             END IF;
 
-            -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Update
+            -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Update
             IF 0 != f_UpdateRtre5011( v_Ord_Agent, v_Chr_Seq,
                                       v_Str_Day, v_End_Day, v_Slcm_Amt, v_Apfd_Amt,
                                       v_Use_Yn,  v_Reg_Id,  v_ErrorText
                                      ) THEN
-                v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_Errortext;
+                v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_Errortext;
                 v_Errortext := v_Errortext;
                 RAISE e_Error;
             END IF;
@@ -438,32 +438,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
     ELSIF v_Comm_Dvsn = 'D' THEN
 
         IF (TRIM(v_Chr_Seq) IS NULL)  THEN
-            v_Return_Message := 'Á¶°ßÇ¥¼ø¹ø('||v_Chr_Seq||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì¡°ê²¬í‘œìˆœë²ˆ('||v_Chr_Seq||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
         
-        -- »ç¿ë¿©ºÎ: »èÁ¦ ÀÎ °æ¿ì : 'N'
+        -- ì‚¬ìš©ì—¬ë¶€: ì‚­ì œ ì¸ ê²½ìš° : 'N'
         IF (TRIM(v_Use_Yn) <> 'N')  THEN
-            v_Return_Message := '»èÁ¦ ÀÎ °æ¿ì »ç¿ëÀ¯¹«('||v_Use_Yn||')´Â N·Î¸¸ Ã³¸®°¡´ÉÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì‚­ì œ ì¸ ê²½ìš° ì‚¬ìš©ìœ ë¬´('||v_Use_Yn||')ëŠ” Në¡œë§Œ ì²˜ë¦¬ê°€ëŠ¥í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;             
 
         IF 0 != f_DeleteRtre5011( v_Ord_Agent, v_Chr_Seq,
                                   v_Reg_Id,    v_ErrorText
                                      ) THEN
-            v_Return_Message := '¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ »èÁ¦ ½ÇÆÐ!!!'||'-'||v_Errortext;
+            v_Return_Message := 'ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
             v_Errortext := v_Errortext;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
     END IF;
 
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -478,7 +478,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre5011.p_IUDRtre5011(2)', v_ErrorText, v_Return_Message);
 
@@ -486,13 +486,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
 
   
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ®
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_UpdateRtre5011EndDay (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -514,12 +514,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END f_UpdateRtre5011EndDay;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - Á¶°ßÇ¥¼ø¹ø Ãé¹ø
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì¡°ê²¬í‘œìˆœë²ˆ ì·Œë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtre5011ChrSeq(
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE         /*ÆÇ¸Å¿øÄÚµå          */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE         /*íŒë§¤ì›ì½”ë“œ          */
     ) RETURN NUMBER IS
-    v_Chr_Seq RTRE5011.CHR_SEQ%TYPE;                    /*Á¶°ßÇ¥¼ø¹ø          */
+    v_Chr_Seq RTRE5011.CHR_SEQ%TYPE;                    /*ì¡°ê²¬í‘œìˆœë²ˆ          */
   BEGIN
 
     SELECT  NVL((SELECT  MAX(CHR_SEQ)
@@ -537,4 +537,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5011 AS
   END f_sRtre5011ChrSeq;
   
 END Pkg_Rtre5011;
-/

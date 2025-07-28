@@ -18,6 +18,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
    1.9        2017-10-26  wjim             [20171026_02] (오픈몰)판매수수료 집계기준 변경
    1.12       2019-02-28  wjim             [20190228_01] 인센티브, 서비스 판매수수료 추가
    1.13       2019-06-11  wjim             [20190611_01] 서비스 판매수수료, 판매장려수수료(=인센티브) 분리
+   1.14       2025-04-29  10244015         [20250429_01] 판매인 직접주문 추가수수료 부여 추가
 *******************************************************************************/
 
   /*****************************************************************************
@@ -455,6 +456,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
    1.11       2018-06-01  kstka            [20180601_01] 홈쇼핑 하드코딩 제거 (쿼리변경)
    1.12       2019-02-28  wjim             [20190228_01] 인센티브, 서비스 판매수수료 추가
    1.13       2019-06-11  wjim             [20190611_01] 서비스 판매수수료, 판매장려수수료 분리
+   1.14       2025-04-29  10244015         [20250429_01] 판매인 직접주문 추가수수료 부여 추가
   *****************************************************************************/
   PROCEDURE p_CreateRtre5040AgencyComm (
     v_Period         IN CHAR,                           /*마감월              */
@@ -466,7 +468,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
 
     CURSOR  Cur_Rtsd0108 IS
     SELECT ORD_NO, CUST_NO, ORD_AGENT, CHAN_CD, COMM_TP, MAT_CD, CNT_CD, PROC_DAY,
-           MFP_YN, END_TP, CANC_DAY, ORD_DAY, CHAN_LCLS_CD, CHAN_MCLS_CD FROM ( 
+           MFP_YN, END_TP, CANC_DAY, ORD_DAY, CHAN_LCLS_CD, CHAN_MCLS_CD, (ADD_CNT_CD * ADD_CHAN_CD) AS ADD_SLCM_AMT FROM ( 
            SELECT A.ORD_NO,                                          /*계약번호            */
                    A.CUST_NO,                                         /*고객번호            */
                    DECODE (A.CHAN_CD,
@@ -490,8 +492,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
                    A.CANC_DAY,                                        /*해지일자            */
                    A.ORD_DAY,                                         /*접수일자            */
                    DECODE(A.CHAN_CD,'03',F.CHAN_LCLS_CD,E.CHAN_LCLS_CD) AS CHAN_LCLS_CD,
-                   DECODE(A.CHAN_CD,'03',F.CHAN_MCLS_CD,E.CHAN_MCLS_CD) AS CHAN_MCLS_CD
-              FROM RTSD0108 A, RTCS0001 B, RTSD0007 E, RTSD0113 F
+                   DECODE(A.CHAN_CD,'03',F.CHAN_MCLS_CD,E.CHAN_MCLS_CD) AS CHAN_MCLS_CD,
+                   DECODE(G.REG_ID, H.CD, A.CNT_CD, '0') AS ADD_CNT_CD, /*판매인 직접주문 추가판매수수료_본수*/	
+                   TO_NUMBER(NVL(H.CD_DESC, '0')) AS ADD_CHAN_CD		/*판매인 직접주문 추가판매수수료 대상채널_금액(R083)*/
+              FROM RTSD0108 A, RTCS0001 B, RTSD0007 E, RTSD0113 F, RTSD0104 G, RTCM0051 H
              WHERE     A.PROC_DAY BETWEEN v_Period|| '01'
                                       AND TO_CHAR (
                                              LAST_DAY (
@@ -503,6 +507,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
                    AND A.ORD_AGENT = F.ORD_AGENT(+)
                    --AND F.CHAN_MCLS_CD(+) <> '0305' -- 홈쇼핑 계약은 제외
                    --AND nvl(A.ORD_AGENT,'0') NOT IN ('400564','412633','412893','402818','100687','100688','413099','413100','777777','413636','401309', '412634') --[20170301_02] 외
+                   AND A.ORD_NO = G.ORD_NO									--[20250429_01]
+				   AND H.CD_GRP_CD(+) = 'R083'								--[20250429_01]
+				   AND DECODE(A.CHAN_CD,'03',A.ORD_AGENT, NULL) = H.CD(+)	--[20250429_01] 판매인직접주문 추가수수료
                    AND A.ORD_NO NOT IN
                           (SELECT A.ORD_NO
                              FROM RTSD0108 A,
@@ -520,6 +527,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
     )
     WHERE 1=1 
     AND ORD_NO NOT IN ('D17000091191') --[20170406_01]
+    AND ORD_AGENT NOT IN ('402819') --[20201201_01] 라이브커머스 채널은 집계 미포함
     AND CHAN_MCLS_CD(+) <> '0305' -- 홈쇼핑 계약은 제외       
     ;        
         
@@ -669,7 +677,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5040 AS
             END;
 
             v_curr_cunt  := v_curr_cunt + 1;
-            v_Slcm_Amt1  := CUR_0108.CNT_CD * v_Slcm_Amt;
+            v_Slcm_Amt1  := (CUR_0108.CNT_CD * v_Slcm_Amt) + CUR_0108.ADD_SLCM_AMT;	--[20250429_01] 판매인직접주문 추가수수료
             v_Apfds_Amt1 := CUR_0108.CNT_CD * v_Apfd_Amt;
             
             -- 서비스 판매수수료 추가 [20190228_01]
@@ -1480,4 +1488,3 @@ SELECT A.*
   END p_CreateRtre5040AgencyComm_1;
   
 END Pkg_Rtre5040;
-/

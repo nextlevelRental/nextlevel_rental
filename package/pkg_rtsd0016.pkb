@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0016 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0016
-   PURPOSE   ¥‹¡æ¥Î√º±‘∞›∏∂Ω∫≈Õ
+   PURPOSE   Îã®Ï¢ÖÎåÄÏ≤¥Í∑úÍ≤©ÎßàÏä§ÌÑ∞
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0016 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¥‹¡æ ¥Î√º±‘∞› ¡∂»∏
+  -- Îã®Ï¢Ö ÎåÄÏ≤¥Í∑úÍ≤© Ï°∞Ìöå
   *****************************************************************************/
   FUNCTION f_sRtsd0016RepMatCd(
-    v_Mat_Cd       IN VARCHAR2,            /*Ω≈√ª±‘∞›        */
-    v_Req_Day      IN VARCHAR2             /*Ω≈√ª¿œ¿⁄        */
+    v_Mat_Cd       IN VARCHAR2,            /*Ïã†Ï≤≠Í∑úÍ≤©        */
+    v_Req_Day      IN VARCHAR2             /*Ïã†Ï≤≠ÏùºÏûê        */
     ) RETURN VARCHAR2 IS
     
     v_rep_mat_cd VARCHAR2(18);
@@ -36,4 +36,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0016 AS
   END f_sRtsd0016RepMatCd;
 
 END Pkg_Rtsd0016;
-/

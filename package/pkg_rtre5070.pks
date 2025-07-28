@@ -11,6 +11,9 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5070 AS
    1.3        2017-05-31  wjim             [20170519_01] 방문점검수수료 추가   
    1.6        2018-03-26  wjim             [20180326_01] 얼라인먼트 수수료, 걱정제로 장착 수수료 추가
    1.8        2019-06-11  wjim             [20190611_01] 서비스 판매수수료, 판매장려수수료(=인센티브) 분리
+   1.9        2025-04-29  10244015         [20250429_01] 판매인 직접주문 추가수수료 부여 추가
+   2.0        2025-06-19  10244015         [20250619_01] 프리미엄퍼플점 추가 장착수수료 부여
+   2.1        2025-06-20  10244015         [20250620_01] 프리미엄퍼플점 추가 서비스수수료 부여
 *******************************************************************************/
 
   /*****************************************************************************
@@ -84,6 +87,8 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5070 AS
     v_Pick_Amt       IN RTRE5070.PICK_AMT%TYPE,      /*PickUp And Delivery수수료           */
     v_vProcc_Amt      IN RTRE5070.VPROCC_AMT%TYPE,      /*방문장착수수료           */
     v_Fr_Align_Amt       IN RTRE5070.FR_ALIGN_AMT%TYPE,       /*무상얼라인먼트수수료    */
+    v_Func_Amt       IN RTRE5070.FUNC_AMT%TYPE,         /*파손보증수수료           */
+    v_Erase_Amt      IN RTRE5070.ERASE_AMT%TYPE,        /*조기마모파손보증수수료           */
     v_Apfds_Amt      IN RTRE5070.APFDS_AMT%TYPE,      /*충당설정가능금액      */
     v_Btapfd_Amt     IN RTRE5070.BTAPFD_AMT%TYPE,     /*이전충당금액          */
     v_Mfapfd_Amt     IN RTRE5070.MFAPFD_AMT%TYPE,     /*당월충당금설정금액    */
@@ -124,6 +129,8 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5070 AS
     v_Pick_Amt       IN RTRE5070.PICK_AMT%TYPE,      /*PickUp And Delivery수수료           */
     v_vProcc_Amt      IN RTRE5070.VPROCC_AMT%TYPE,      /*방문장착수수료           */
     v_Fr_Align_Amt       IN RTRE5070.FR_ALIGN_AMT%TYPE,       /*무상얼라인먼트수수료    */
+    v_Func_Amt       IN RTRE5070.FUNC_AMT%TYPE,         /*파손보증수수료           */
+    v_Erase_Amt      IN RTRE5070.ERASE_AMT%TYPE,        /*조기마모파손보증수수료           */
     v_Apfds_Amt      IN RTRE5070.APFDS_AMT%TYPE,      /*충당설정가능금액      */
     v_Btapfd_Amt     IN RTRE5070.BTAPFD_AMT%TYPE,     /*이전충당금액          */
     v_Mfapfd_Amt     IN RTRE5070.MFAPFD_AMT%TYPE,     /*당월충당금설정금액    */
@@ -175,6 +182,8 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5070 AS
     v_Pick_Amt       IN RTRE5070.PICK_AMT%TYPE,      /*PickUp And Delivery수수료           */
     v_vProcc_Amt      IN RTRE5070.VPROCC_AMT%TYPE,      /*방문장착수수료           */
     v_Fr_Align_Amt       IN RTRE5070.FR_ALIGN_AMT%TYPE,       /*무상얼라인먼트수수료    */
+    v_Func_Amt       IN RTRE5070.FUNC_AMT%TYPE,         /*파손보증수수료           */
+    v_Erase_Amt      IN RTRE5070.ERASE_AMT%TYPE,        /*조기마모파손보증수수료           */
     v_Apfds_Amt      IN RTRE5070.APFDS_AMT%TYPE,      /*충당설정가능금액      */
     v_Btapfd_Amt     IN RTRE5070.BTAPFD_AMT%TYPE,     /*이전충당금액          */
     v_Mfapfd_Amt     IN RTRE5070.MFAPFD_AMT%TYPE,     /*당월충당금설정금액    */
@@ -270,4 +279,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5070 AS
     );
     
 END Pkg_Rtre5070;
-/

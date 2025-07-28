@@ -599,8 +599,7 @@ public class RTCSSafeSerController extends ControllerBase {
 			Map <String, DataSetMap> 	outDataset  = xpDto.getOutDataSetMap();
 			
 			ServletContext servletContext = request.getSession().getServletContext();
-			//String targetPath = servletContext.getRealPath("/") +File.separator + "temp" + File.separator + loginInfo.get("userId");
-			String targetPath = "D:\\rental\\warranty\\down" + File.separator + loginInfo.get("userId");
+			String targetPath = "D:\\NTRMS\\ATTATCH\\TEMP" + File.separator + loginInfo.get("userId");	// 변경주의
 			
 			Map result = rTCSSafeSerService.selectRTCSSafeImgList(inVar, outDataset);
 			List imgList = (List)result.get("safeServiceImgList");
@@ -620,11 +619,16 @@ public class RTCSSafeSerController extends ControllerBase {
 	}
 	
 	@RequestMapping("/getWarrantyImage.do")
-	public void getWarrantyImage(HttpServletRequest request, HttpServletResponse response) 
-			throws IOException {
-		
+	public void getWarrantyImage(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String fileName = StringUtil.nvl(request.getParameter("fileName"));
 		String userId = StringUtil.nvl(request.getParameter("userId"));
+		
+		// 20241211 정보보호조치
+		if (fileName.contains("..")) {
+			// throw new IOException("##########경로 역추적 방지##########");
+			logger.debug("##########경로 역추적 방지##########");
+			return;
+		}
 		
         StringBuilder sb = new StringBuilder("file:///D:/NTRMS/ATTATCH/TEMP/" + userId + "/");
         sb.append(fileName);

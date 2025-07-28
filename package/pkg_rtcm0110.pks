@@ -1,35 +1,36 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
 /*******************************************************************************
    NAME:     p_sRentalMst
-   PURPOSE   ��Ż ���� ����
+   PURPOSE   렌탈 지사 관리
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2018-12-13  JYS         1. Created this package spec.
+   1.1        2025-06-10  10244015    [20250610_01] 프리미엄퍼플점여부 추가
 *******************************************************************************/
   /*****************************************************************************
-  -- ��Ż������ȸ Select
+  -- 렌탈지사조회 Select
   *****************************************************************************/
   PROCEDURE p_sRentalMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* �ڵ�� */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* 코드명 */
     );
     
   /*****************************************************************************
-  -- ��Ż������ȸ Select
+  -- 렌탈지점조회 Select
   *****************************************************************************/
   PROCEDURE p_sRentalDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD              IN RTCM0051.CD%TYPE, /*�����ڵ� */
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* �ڵ�� */
+    v_CD              IN RTCM0051.CD%TYPE, /*매핑코드 */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* 코드명 */
     );
     
   /*****************************************************************************
-  -- ��Ż���� ����(IUD)
+  -- 렌탈지사 관리(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalMst (
-    v_Comm_Dvsn      IN CHAR,                         /* ó������(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* 처리구분(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
     v_CD             IN RTCM0051.CD%TYPE,
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,
@@ -42,7 +43,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     );   
 
   /*****************************************************************************
-  -- ��Ż���� Insert
+  -- 렌탈지사 Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -55,7 +56,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż���� Update
+  -- 렌탈지사 Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -68,7 +69,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż���� Delete
+  -- 렌탈지사 Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -81,10 +82,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż���� ����(IUD)
+  -- 렌탈지점 관리(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalDtl (
-    v_Comm_Dvsn      IN CHAR,                         /* ó������(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* 처리구분(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
     v_CD             IN RTCM0051.CD%TYPE,
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,
@@ -99,7 +100,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     );   
 
   /*****************************************************************************
-  -- ��Ż���� Insert
+  -- 렌탈지점 Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -114,7 +115,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż���� Update
+  -- 렌탈지점 Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -129,7 +130,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż���� Delete
+  -- 렌탈지점 Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -146,36 +147,47 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
 
     
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ�����ȸ MASTER Select
+  -- 렌탈지점/판매자연결조회 MASTER Select
   *****************************************************************************/
   PROCEDURE p_sRentalCustMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* �ڵ�� */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* 코드명 */
     );
     
     
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ�����ȸ DETAIL Select
+  -- 렌탈지점/판매자연결조회 DETAIL Select
+    
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1		2025-06-10  10244015	[20250610_01] 프리미엄퍼플점여부 추가
   *****************************************************************************/
   PROCEDURE p_sRentalCustDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*�����ڵ� */
-    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*�����ڵ� */
-    v_AGENCY_GBN      IN VARCHAR2, /* �Ǹ��ڱ��� */
-    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* �Ǹ��ڸ� */
+    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*지사코드 */
+    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*지점코드 */
+    v_AGENCY_GBN      IN VARCHAR2, /* 판매자구분 */
+    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* 판매자명 */
     );
     
     
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ��� ����(IUD)
+  -- 렌탈지점/판매자연결 저장(IUD)
+      
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1      2025-06-10  10244015    [20250610_01] 프리미엄퍼플점여부 추가
   *****************************************************************************/
   PROCEDURE p_IUDRentalCust (
-    v_Comm_Dvsn      IN CHAR,                         /* ó������(I,U,D) */
-    v_AGENCY_GBN     IN CHAR, /* �Ǹ��ڱ��� */
+    v_Comm_Dvsn      IN CHAR,                         /* 처리구분(I,U,D) */
+    v_AGENCY_GBN     IN CHAR, /* 판매자구분 */
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
     v_RENTAL_OFFICE  IN RTSD0007.RENTAL_OFFICE%TYPE,
     v_AGENCY_CD      IN RTSD0007.AGENCY_CD%TYPE,
     v_PRPL_YN        IN RTSD0007.PRPL_YN%TYPE,
+    v_PREM_PRPL_YN   IN RTSD0007.PREM_PRPL_YN%TYPE,
     v_REG_ID         IN RTSD0007.REG_ID%TYPE,          
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
@@ -183,19 +195,25 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     );   
 
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ��� RTSD0007  update
+  -- 렌탈지점/판매자연결 RTSD0007  update
+        
+   REVISIONS
+   Ver      Date        Author      Description
+   ----     ----------  ---------   -------------------------------------   
+   1.1      2025-06-10  10244015    [20250610_01] 프리미엄퍼플점여부 추가
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust1 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
     v_RENTAL_OFFICE  IN RTSD0007.RENTAL_OFFICE%TYPE,
     v_AGENCY_CD      IN RTSD0007.AGENCY_CD%TYPE,
     v_PRPL_YN        IN RTSD0007.PRPL_YN%TYPE,
+    v_PREM_PRPL_YN   IN RTSD0007.PREM_PRPL_YN%TYPE,
     v_REG_ID         IN RTSD0007.REG_ID%TYPE,       
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ��� RTSD0113  update
+  -- 렌탈지점/판매자연결 RTSD0113  update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust2 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -206,7 +224,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ��Ż����/�Ǹ��ڿ��� RTCS0002  update
+  -- 렌탈지점/판매자연결 RTCS0002  update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust3 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -217,7 +235,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- �Ǹź�������å �׸� ���� list
+  -- 판매보조금정책 항목 관리 list
   *****************************************************************************/
   PROCEDURE p_sSaleSubsidyList (
     Ref_Cursor     IN OUT SYS_REFCURSOR,
@@ -230,10 +248,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     
     
   /*****************************************************************************
-  -- �Ǹź�������å �׸� ���� ����(IUD)
+  -- 판매보조금정책 항목 관리 저장(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDSaleSubsidy (
-    v_Comm_Dvsn      IN CHAR,                         /* ó������(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* 처리구분(I,U,D) */
     v_PLC_CD         IN RTRE5000.PLC_CD%TYPE,
     v_PLC_CD_NM      IN RTRE5000.PLC_CD_NM%TYPE,   
     v_SALE_MIN       IN RTRE5000.SALE_MIN%TYPE,   
@@ -249,7 +267,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- �Ǹź�������å �׸� ���� UPDATE
+  -- 판매보조금정책 항목 관리 UPDATE
   *****************************************************************************/
   FUNCTION f_UpdateSaleSubsidy (
     v_PLC_CD         IN RTRE5000.PLC_CD%TYPE,
@@ -265,26 +283,26 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     
     
   /*****************************************************************************
-  -- ��Ż�����ͱ��� ������ ��ȸ
+  -- 렌탈마스터권한 마스터 조회
   *****************************************************************************/
   PROCEDURE p_sRentalAuthMst (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_USER_NM           IN RTCM0001.USER_NM%TYPE /* �ڵ�� */
+    v_USER_NM           IN RTCM0001.USER_NM%TYPE /* 코드명 */
     );
     
         
   /*****************************************************************************
-  -- ��Ż�����ͱ��� ������ ��ȸ
+  -- 렌탈마스터권한 디테일 조회
   *****************************************************************************/
   PROCEDURE p_sRentalAuthDtl (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_USER_ID           IN RTCM0001.USER_ID%TYPE, /* �����ID */
-    v_CD_NM             IN RTCM0051.CD_NM%TYPE /* �ڵ�� */
+    v_USER_ID           IN RTCM0001.USER_ID%TYPE, /* 사용자ID */
+    v_CD_NM             IN RTCM0051.CD_NM%TYPE /* 코드명 */
     );
   
   
   /*****************************************************************************
-  -- ��Ż���� ����(DELETE)
+  -- 렌탈지사 관리(DELETE)
   *****************************************************************************/  
   PROCEDURE p_DRentalMstAuth (
     v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -293,7 +311,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     );
         
   /*****************************************************************************
-  -- ��Ż�����ͱ��� ����(IUD)
+  -- 렌탈마스터권한 저장(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalMstAuth (
     v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -306,7 +324,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
 
 
   /*****************************************************************************
-  -- ��Ż�����ͱ��� Insert
+  -- 렌탈마스터권한 Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalMstAuth (
     v_RNT_MST_ID     IN RTCM0110.RNT_MST_ID%TYPE,
@@ -317,7 +335,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ����� ��Ż�׷� ��ȸ
+  -- 사용자 렌탈그룹 조회
   *****************************************************************************/
   PROCEDURE p_userRentalGroup (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -325,10 +343,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     );
   
   /*****************************************************************************
-   -- �̹ݿ��Ǹ��� ��ȸ Select
+   -- 미반영판매자 조회 Select
    *****************************************************************************/
   PROCEDURE p_sUnRlsSelerList(  Ref_Cursor   IN OUT SYS_REFCURSOR
                               , v_Agency_Gbn IN VARCHAR2
-                             );
+                             );                            
+    
 END PKG_RTCM0110;
-/

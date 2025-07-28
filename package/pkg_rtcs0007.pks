@@ -130,4 +130,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0007 AS
     );
          
 END Pkg_Rtcs0007;
-/

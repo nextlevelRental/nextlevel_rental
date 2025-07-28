@@ -89,4 +89,20 @@ public class CommonServiceImpl extends EgovAbstractServiceImpl implements Common
 	public Map runQuery(Map<String, Object> inVar) throws Exception {
 		return commonMapDAO.runQuery(inVar);
 	}
+
+	public Map insertRtsd0218(Map<String, Object> inVar) throws Exception {
+		return commonMapDAO.insertRtsd0218(inVar);
+	}
+
+	public Map updateRtsd0218(Map<String, Object> inVar) throws Exception {
+		return commonMapDAO.updateRtsd0218(inVar);
+	}
+
+	public Map updateCustNoRtsd0218(Map<String, Object> inVar) throws Exception {
+		return commonMapDAO.updateCustNoRtsd0218(inVar);
+	}
+
+	public Map updateOrdNoRtsd0218(Map<String, Object> inVar) throws Exception {
+		return commonMapDAO.updateOrdNoRtsd0218(inVar);
+	}
 }

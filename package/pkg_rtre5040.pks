@@ -1,119 +1,120 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5040 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre5040
-   PURPOSE   ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è °ü¸®
+   PURPOSE   íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-09-23  choidh           1. Created this package body.
-   1.1        2016-04-21  ÀÌ¿µ±Ù           Ã¤³Î ´ë/ÁßºÐ·ù Ç×¸ñ Ãß°¡   
+   1.1        2016-04-21  ì´ì˜ê·¼             ì±„ë„ ëŒ€/ì¤‘ë¶„ë¥˜ í•­ëª© ì¶”ê°€
+   1.14       2025-04-29  10244015         [20250429_01] íŒë§¤ì¸ ì§ì ‘ì£¼ë¬¸ ì¶”ê°€ìˆ˜ìˆ˜ë£Œ ë¶€ì—¬ ì¶”ê°€   
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Count
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ Count
   *****************************************************************************/
   FUNCTION f_sRtre5040Count(
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,          /*¸¶°¨³â¿ù            */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE            /*°è¾à¹øÈ£            */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,          /*ë§ˆê°ë…„ì›”            */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE            /*ê³„ì•½ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Select
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ Select
   *****************************************************************************/
   PROCEDURE p_sRtre5040 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*¸¶°¨³â¿ù              */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿ø¹øÈ£            */
-    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*Ã¤³Î±¸ºÐ              */
-    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*¼ö¼ö·áÇ×¸ñ            */
-    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*¿¹Á¤ ÆÇ¸Å¼ö¼ö·á       */
-    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*¿¹Á¤ Ãæ´ç¼³Á¤±Ý¾×     */
-    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*Ãæ´ç¼³Á¤°¡´É±Ý¾×      */
-    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ÀÌ¿¬´ë»ó              */
-    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*ë§ˆê°ë…„ì›”              */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*íŒë§¤ì›ë²ˆí˜¸            */
+    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*ì±„ë„êµ¬ë¶„              */
+    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*ìˆ˜ìˆ˜ë£Œí•­ëª©            */
+    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*ì˜ˆì • íŒë§¤ìˆ˜ìˆ˜ë£Œ       */
+    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*ì˜ˆì • ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡     */
+    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*ì¶©ë‹¹ì„¤ì •ê°€ëŠ¥ê¸ˆì•¡      */
+    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ì´ì—°ëŒ€ìƒ              */
+    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Insert
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre5040 (
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*¸¶°¨³â¿ù              */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿ø¹øÈ£            */
-    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*Ã¤³Î±¸ºÐ              */
-    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*¼ö¼ö·áÇ×¸ñ            */
-    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*¿¹Á¤ ÆÇ¸Å¼ö¼ö·á       */
-    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*¿¹Á¤ Ãæ´ç¼³Á¤±Ý¾×     */
-    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*Ãæ´ç¼³Á¤°¡´É±Ý¾×      */
-    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ÀÌ¿¬´ë»ó              */
-    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*ë§ˆê°ë…„ì›”              */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*íŒë§¤ì›ë²ˆí˜¸            */
+    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*ì±„ë„êµ¬ë¶„              */
+    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*ìˆ˜ìˆ˜ë£Œí•­ëª©            */
+    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*ì˜ˆì • íŒë§¤ìˆ˜ìˆ˜ë£Œ       */
+    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*ì˜ˆì • ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡     */
+    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*ì¶©ë‹¹ì„¤ì •ê°€ëŠ¥ê¸ˆì•¡      */
+    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ì´ì—°ëŒ€ìƒ              */
+    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Update
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre5040 (
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*¸¶°¨³â¿ù              */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿ø¹øÈ£            */
-    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*Ã¤³Î±¸ºÐ              */
-    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*¼ö¼ö·áÇ×¸ñ            */
-    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*¿¹Á¤ ÆÇ¸Å¼ö¼ö·á       */
-    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*¿¹Á¤ Ãæ´ç¼³Á¤±Ý¾×     */
-    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*Ãæ´ç¼³Á¤°¡´É±Ý¾×      */
-    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ÀÌ¿¬´ë»ó              */
-    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*ë§ˆê°ë…„ì›”              */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*íŒë§¤ì›ë²ˆí˜¸            */
+    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*ì±„ë„êµ¬ë¶„              */
+    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*ìˆ˜ìˆ˜ë£Œí•­ëª©            */
+    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*ì˜ˆì • íŒë§¤ìˆ˜ìˆ˜ë£Œ       */
+    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*ì˜ˆì • ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡     */
+    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*ì¶©ë‹¹ì„¤ì •ê°€ëŠ¥ê¸ˆì•¡      */
+    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ì´ì—°ëŒ€ìƒ              */
+    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Delete
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre5040 (
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*¸¶°¨³â¿ù              */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*ë§ˆê°ë…„ì›”              */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è °ü¸®(IUD)
+  -- íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre5040 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*¸¶°¨³â¿ù              */
-    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿ø¹øÈ£            */
-    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*Ã¤³Î±¸ºÐ              */
-    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*¼ö¼ö·áÇ×¸ñ            */
-    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*¿¹Á¤ ÆÇ¸Å¼ö¼ö·á       */
-    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*¿¹Á¤ Ãæ´ç¼³Á¤±Ý¾×     */
-    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*Ãæ´ç¼³Á¤°¡´É±Ý¾×      */
-    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ÀÌ¿¬´ë»ó              */
-    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Slcm_Ym        IN RTRE5040.SLCM_YM%TYPE,        /*ë§ˆê°ë…„ì›”              */
+    v_Ord_No         IN RTRE5040.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE5040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_Agent      IN RTRE5040.ORD_AGENT%TYPE,      /*íŒë§¤ì›ë²ˆí˜¸            */
+    v_Chan_Cd        IN RTRE5040.CHAN_CD%TYPE,        /*ì±„ë„êµ¬ë¶„              */
+    v_Comm_Tp        IN RTRE5040.COMM_TP%TYPE,        /*ìˆ˜ìˆ˜ë£Œí•­ëª©            */
+    v_Mat_Cd         IN RTRE5040.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Cnt_Cd         IN RTRE5040.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Sslcm_Amt      IN RTRE5040.SSLCM_AMT%TYPE,      /*ì˜ˆì • íŒë§¤ìˆ˜ìˆ˜ë£Œ       */
+    v_Sapfds_Amt     IN RTRE5040.SAPFDS_AMT%TYPE,     /*ì˜ˆì • ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡     */
+    v_Slcm_Amt       IN RTRE5040.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfds_Amt      IN RTRE5040.APFDS_AMT%TYPE,      /*ì¶©ë‹¹ì„¤ì •ê°€ëŠ¥ê¸ˆì•¡      */
+    v_Ppob_Yn        IN RTRE5040.PPOB_YN%TYPE,        /*ì´ì—°ëŒ€ìƒ              */
+    v_Proc_Day       IN RTRE5040.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -121,11 +122,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5040 AS
 
 
   /*****************************************************************************
-  -- ´ë¸®Á¡ ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Ã³¸®
+  -- ëŒ€ë¦¬ì  íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_CreateRtre5040AgencyComm (
-    v_Period         IN CHAR,                           /*¸¶°¨¿ù              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Period         IN CHAR,                           /*ë§ˆê°ì›”              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -133,58 +134,57 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5040 AS
 
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á ±âÃÊ Áý°è Ã³¸®
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆ ì§‘ê³„ ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_CreateRtre5040MallComm (
-    v_Period         IN CHAR,                           /*¸¶°¨¿ù              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Period         IN CHAR,                           /*ë§ˆê°ì›”              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÆÇ¸ÅÀÎº° ¼ö¼ö·á ³»¿ª Áý°è - ÆÇ¸ÅÀÎº° ¼ö¼ö·á Áý°è½Ã °è¾à¹øÈ£º° Ãæ´ç±Ý ±Ý¾×À» È®Á¤ÇÏ¿© Á¶Á¤ÇÏ´Â ÇÁ·Î½ÃÁ®ÀÓ
+  -- íŒë§¤ì¸ë³„ ìˆ˜ìˆ˜ë£Œ ë‚´ì—­ ì§‘ê³„ - íŒë§¤ì¸ë³„ ìˆ˜ìˆ˜ë£Œ ì§‘ê³„ì‹œ ê³„ì•½ë²ˆí˜¸ë³„ ì¶©ë‹¹ê¸ˆ ê¸ˆì•¡ì„ í™•ì •í•˜ì—¬ ì¡°ì •í•˜ëŠ” í”„ë¡œì‹œì ¸ìž„
   *****************************************************************************/
   PROCEDURE p_UpdateRtre5040AgentAppFix (
-    v_Period         IN  CHAR,                         /*¸¶°¨¿ù              */
-    v_Agency_Cd      IN  RTRE5070.AGENCY_CD%TYPE,      /*ÆÇ¸Å¿ø¹øÈ£          */
-    v_Btapfd_Amt     IN  RTRE5070.BTAPFD_AMT%TYPE,     /*Ãþ´ç±Ý¼³Á¤±Ý¾×      */
-    v_Reg_Id         IN  RTRE5070.REG_ID%TYPE,         /*µî·ÏÀÚ ID           */
-    v_Rtslc_Amt      OUT RTRE5070.RTSLC_AMT%TYPE,      /*´ë¸®Á¡ÆÇ¸Å¼ö¼ö·á    */
-    v_Ntslc_Amt      OUT RTRE5070.NTSLC_AMT%TYPE,      /*¹æ¹®ÆÇ¸Å¼ö¼ö·á      */
-    v_Opslc_Amt      OUT RTRE5070.OPSLC_AMT%TYPE,      /*¿ÀÇÂ¸ôÆÇ¸Å¼ö¼ö·á    */
-    v_Tbslc_Amt      OUT RTRE5070.TBSLC_AMT%TYPE,      /*Å¸ÀÌ¾î¹ðÅ©ÆÇ¸Å¼ö¼ö·á*/
-    v_Mfapfd_Amt     OUT RTRE5070.MFAPFD_AMT%TYPE,     /*´ç¿ùÃæ´ç±Ý¼³Á¤±Ý¾×  */
+    v_Period         IN  CHAR,                         /*ë§ˆê°ì›”              */
+    v_Agency_Cd      IN  RTRE5070.AGENCY_CD%TYPE,      /*íŒë§¤ì›ë²ˆí˜¸          */
+    v_Btapfd_Amt     IN  RTRE5070.BTAPFD_AMT%TYPE,     /*ì¸µë‹¹ê¸ˆì„¤ì •ê¸ˆì•¡      */
+    v_Reg_Id         IN  RTRE5070.REG_ID%TYPE,         /*ë“±ë¡ìž ID           */
+    v_Rtslc_Amt      OUT RTRE5070.RTSLC_AMT%TYPE,      /*ëŒ€ë¦¬ì íŒë§¤ìˆ˜ìˆ˜ë£Œ    */
+    v_Ntslc_Amt      OUT RTRE5070.NTSLC_AMT%TYPE,      /*ë°©ë¬¸íŒë§¤ìˆ˜ìˆ˜ë£Œ      */
+    v_Opslc_Amt      OUT RTRE5070.OPSLC_AMT%TYPE,      /*ì˜¤í”ˆëª°íŒë§¤ìˆ˜ìˆ˜ë£Œ    */
+    v_Tbslc_Amt      OUT RTRE5070.TBSLC_AMT%TYPE,      /*íƒ€ì´ì–´ë±…í¬íŒë§¤ìˆ˜ìˆ˜ë£Œ*/
+    v_Mfapfd_Amt     OUT RTRE5070.MFAPFD_AMT%TYPE,     /*ë‹¹ì›”ì¶©ë‹¹ê¸ˆì„¤ì •ê¸ˆì•¡  */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý Àû¸³ °è¾à ³»¿ª Á¶È¸ - Ãæ´ç±Ý Àû¸³µÈ ÆÇ¸Å¼ö¼ö·á¿¡ ´ëÇÑ »ó¼¼ ³»¿ª Á¶È¸
+  -- ì¶©ë‹¹ê¸ˆ ì ë¦½ ê³„ì•½ ë‚´ì—­ ì¡°íšŒ - ì¶©ë‹¹ê¸ˆ ì ë¦½ëœ íŒë§¤ìˆ˜ìˆ˜ë£Œì— ëŒ€í•œ ìƒì„¸ ë‚´ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre5040AppSaveOrdList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Slcm_YmF       IN RTRE5040.SLCM_YM%TYPE,        /*Á¶È¸ÀÏÀÚFrom          */
-    v_Slcm_YmT       IN RTRE5040.SLCM_YM%TYPE,        /*Á¶È¸ÀÏÀÚTo            */
-    v_Agency_Cd      IN RTRE5040.ORD_AGENT%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Sales_Group    IN RTSD0007.SALES_GROUP%TYPE,    /*Áö»çÄÚµå              */
-    v_Sales_Office   IN RTSD0007.SALES_OFFICE%TYPE,   /*ÁöÁ¡ÄÚµå              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*»ç¿ëÀÚ ID             */
+    v_Slcm_YmF       IN RTRE5040.SLCM_YM%TYPE,        /*ì¡°íšŒì¼ìžFrom          */
+    v_Slcm_YmT       IN RTRE5040.SLCM_YM%TYPE,        /*ì¡°íšŒì¼ìžTo            */
+    v_Agency_Cd      IN RTRE5040.ORD_AGENT%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Sales_Group    IN RTSD0007.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTSD0007.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,         /*ì‚¬ìš©ìž ID             */
     v_RENTAL_GROUP   IN VARCHAR2,
     v_RENTAL_OFFICE  IN VARCHAR2,
-    v_LOGIN_ID       IN VARCHAR2,                     /* ·Î±×ÀÎID: °ü·ÃÇ×¸ñ ¹üÀ§ ÁöÁ¤ */
-    v_LOGIN_GRP      IN VARCHAR2                      /* ·Î±×ÀÎ »ç¿ëÀÚ ±×·ì */
+    v_LOGIN_ID       IN VARCHAR2,                     /* ë¡œê·¸ì¸ID: ê´€ë ¨í•­ëª© ë²”ìœ„ ì§€ì • */
+    v_LOGIN_GRP      IN VARCHAR2                      /* ë¡œê·¸ì¸ ì‚¬ìš©ìž ê·¸ë£¹ */
     );
     
     PROCEDURE p_CreateRtre5040AgencyComm_1 (
-    v_Period         IN CHAR,                           /*¸¶°¨¿ù              */
-    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Period         IN CHAR,                           /*ë§ˆê°ì›”              */
+    v_Reg_Id         IN RTRE5040.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
 END Pkg_Rtre5040;
-/

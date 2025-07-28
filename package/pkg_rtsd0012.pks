@@ -1,121 +1,120 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0012 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0012
-   PURPOSE   га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) ╟Э╦╝
+   PURPOSE   М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Й╢─К╕╛
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-07-22  jemcarry         1. Created this package body.
-   1.1        2018-02-19  wjim             [20180212_01] ╪╠ецгЭ га╦╝╧л╬Ж ╪╜╨Я╫╨ ╣╣ют
+   1.1        2018-02-19  wjim             [20180212_01] Л└═М┐²М≤∙ М■└К╕╛К╞╦Л≈└ Л└°К╧└Л┼╓ К▐└Л·┘
 *******************************************************************************/
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) Count
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Count
   *****************************************************************************/
   FUNCTION f_sRtsd0012Count(
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,            /*га╦╝╧л╬Ж╪╜╨Я╫╨      */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,          /*╩С╪╪╪╜╨Я╫╨          */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE            /*е╦юл╬Н╨╩╪Ж          */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,            /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓      */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,          /*Л┐│Л└╦Л└°К╧└Л┼╓          */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE            /*М┐─Л²╢Л√╢КЁ╦Л┬≤          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) Select
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0012 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*га╦╝╧л╬Ж╪╜╨Я╫╨        */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*╩С╪╪╪╜╨Я╫╨            */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*е╦юл╬Н╨╩╪Ж            */
-    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*╪╜╨Я╫╨х╫╪Ж            */
-    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*цъ╟║╥╩е╩╥А            */
-    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTSD0012.REG_ID%TYPE          /*╣Н╥оюз ID             */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓        */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*Л┐│Л└╦Л└°К╧└Л┼╓            */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*М┐─Л²╢Л√╢КЁ╦Л┬≤            */
+    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*Л└°К╧└Л┼╓М ÷Л┬≤            */
+    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*Л╤■Й╟─К═▄М┐┬Кё▄            */
+    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTSD0012.REG_ID%TYPE          /*К⌠╠К║²Л·░ ID             */
     );
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) Insert
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0012 (
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*га╦╝╧л╬Ж╪╜╨Я╫╨        */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*╩С╪╪╪╜╨Я╫╨            */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*е╦юл╬Н╨╩╪Ж            */
-    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*╪╜╨Я╫╨х╫╪Ж            */
-    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*цъ╟║╥╩е╩╥А            */
-    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓        */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*Л┐│Л└╦Л└°К╧└Л┼╓            */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*М┐─Л²╢Л√╢КЁ╦Л┬≤            */
+    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*Л└°К╧└Л┼╓М ÷Л┬≤            */
+    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*Л╤■Й╟─К═▄М┐┬Кё▄            */
+    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) Update
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0012 (
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*га╦╝╧л╬Ж╪╜╨Я╫╨        */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*╩С╪╪╪╜╨Я╫╨            */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*е╦юл╬Н╨╩╪Ж            */
-    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*╪╜╨Я╫╨х╫╪Ж            */
-    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*цъ╟║╥╩е╩╥А            */
-    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓        */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*Л┐│Л└╦Л└°К╧└Л┼╓            */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*М┐─Л²╢Л√╢КЁ╦Л┬≤            */
+    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*Л└°К╧└Л┼╓М ÷Л┬≤            */
+    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*Л╤■Й╟─К═▄М┐┬Кё▄            */
+    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) Delete
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0012 (
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*га╦╝╧л╬Ж╪╜╨Я╫╨        */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*╩С╪╪╪╜╨Я╫╨            */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*е╦юл╬Н╨╩╪Ж            */
-    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓        */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*Л┐│Л└╦Л└°К╧└Л┼╓            */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*М┐─Л²╢Л√╢КЁ╦Л┬≤            */
+    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╦╝╧л╬Ж╪╜╨Я╫╨ ╟Э╦╝(╪╪╨н╪╜╨Я╫╨) ╟Э╦╝(IUD)
+  -- М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓ Й╢─К╕╛(Л└╦К╤─Л└°К╧└Л┼╓) Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0012 (
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*га╦╝╧л╬Ж╪╜╨Я╫╨        */
-    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*╩С╪╪╪╜╨Я╫╨            */
-    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*╠Б╟ёдз╣Е              */
-    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*е╦юл╬Н╨╩╪Ж            */
-    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*╪╜╨Я╫╨х╫╪Ж            */
-    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*цъ╟║╥╩е╩╥А            */
-    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Ps_Cd          IN RTSD0012.PS_CD%TYPE,          /*М■└К╕╛К╞╦Л≈└Л└°К╧└Л┼╓        */
+    v_Prs_Dcd        IN RTSD0012.PRS_DCD%TYPE,        /*Л┐│Л└╦Л└°К╧└Л┼╓            */
+    v_Period_Cd      IN RTSD0012.PERIOD_CD%TYPE,      /*Й╦╟Й╟└Л╫■К⌠°              */
+    v_Cnt_Cd         IN RTSD0012.CNT_CD%TYPE,         /*М┐─Л²╢Л√╢КЁ╦Л┬≤            */
+    v_Serv_Cnt       IN RTSD0012.SERV_CNT%TYPE,       /*Л└°К╧└Л┼╓М ÷Л┬≤            */
+    v_Serv_Amt       IN RTSD0012.SERV_AMT%TYPE,       /*Л╤■Й╟─К═▄М┐┬Кё▄            */
+    v_Use_Yn         IN RTSD0012.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTSD0012.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ф╞а╓ га╦╝╧л╬Ж ╪╜╨Я╫╨©К ╩С╪╪ ╪╜╨Я╫╨ а╤х╦
+  -- М┼╧Л═∙ М■└К╕╛К╞╦Л≈└ Л└°К╧└Л┼╓Л ╘ Л┐│Л└╦ Л└°К╧└Л┼╓ Л║╟М ▄
       
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2018-02-21  wjim             [20180212_01] ╫е╠т ╟Ё╧ъ 
+   1.1        2018-02-21  wjim             [20180212_01] Л▀═Й╥° Й╟°К╟° 
   *****************************************************************************/
   PROCEDURE p_sRtsd0012_ByPrmSvc (
       Ref_Cursor     IN OUT SYS_REFCURSOR
-    , v_Ps_Cd        IN RTSD0012.PS_CD%TYPE           /*╪╜╨Я╫╨дз╣Е            */
-    , v_Period_Cd    IN RTSD0012.PERIOD_CD%TYPE       /*╠Б╟ёдз╣Е(S021)        */
-    , v_Cnt_Cd       IN RTSD0012.CNT_CD%TYPE          /*╨╩╪Ж(S022)            */
+    , v_Ps_Cd        IN RTSD0012.PS_CD%TYPE           /*Л└°К╧└Л┼╓Л╫■К⌠°            */
+    , v_Period_Cd    IN RTSD0012.PERIOD_CD%TYPE       /*Й╦╟Й╟└Л╫■К⌠°(S021)        */
+    , v_Cnt_Cd       IN RTSD0012.CNT_CD%TYPE          /*КЁ╦Л┬≤(S022)            */
   );    
       
   /*****************************************************************************
-  -- ╪╜╨Я╫╨ ╣Н╥офк╬В
+  -- Л└°К╧└Л┼╓ К⌠╠К║²М▄²Л≈┘
   *****************************************************************************/
   PROCEDURE p_sRtsd0012_srvcPopup (
       Ref_Cursor           IN OUT SYS_REFCURSOR
   );
 
 END Pkg_Rtsd0012;
-/

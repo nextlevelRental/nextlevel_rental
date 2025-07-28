@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5011 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre5011
-   PURPOSE   ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ °ü¸®
+   PURPOSE   ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,97 +10,96 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5011 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Count
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Count
   *****************************************************************************/
   FUNCTION f_sRtre5011Count(
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,        /*ÆÇ¸Å¿øÄÚµå          */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE           /*Á¶°ßÇ¥¼ø¹ø          */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,        /*íŒë§¤ì›ì½”ë“œ          */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE           /*ì¡°ê²¬í‘œìˆœë²ˆ          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Select
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Select
   *****************************************************************************/
   PROCEDURE p_sRtre5011 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Standard_Day   IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE       /*ÆÇ¸Å¿øÄÚµå            */
+    v_Standard_Day   IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE       /*íŒë§¤ì›ì½”ë“œ            */
     );
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Insert
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Update
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ Delete
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre5011 (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ °ü¸®(IUD)
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre5011 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN OUT RTRE5011.CHR_SEQ%TYPE,    /*Á¶°ßÇ¥¼ø¹ø            */
-    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*ÆÇ¸Å¼ö¼ö·á            */
-    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*Ãæ´ç¼³Á¤±Ý¾×          */
-    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN OUT RTRE5011.CHR_SEQ%TYPE,    /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_Str_Day        IN RTRE5011.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Slcm_Amt       IN RTRE5011.SLCM_AMT%TYPE,       /*íŒë§¤ìˆ˜ìˆ˜ë£Œ            */
+    v_Apfd_Amt       IN RTRE5011.APFD_AMT%TYPE,       /*ì¶©ë‹¹ì„¤ì •ê¸ˆì•¡          */
+    v_Use_Yn         IN RTRE5011.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - ÀÌÀüÀÌ·Â Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ®
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì´ì „ì´ë ¥ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_UpdateRtre5011EndDay (
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*ÆÇ¸Å¿øÄÚµå            */
-    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*Á¶°ßÇ¥¼ø¹ø            */
-    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE,      /*íŒë§¤ì›ì½”ë“œ            */
+    v_Chr_Seq        IN RTRE5011.CHR_SEQ%TYPE,        /*ì¡°ê²¬í‘œìˆœë²ˆ            */
+    v_End_Day        IN RTRE5011.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Reg_Id         IN RTRE5011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ¿ÀÇÂ¸ô ÆÇ¸Å¼ö¼ö·á Á¶°ßÇ¥ - Á¶°ßÇ¥¼ø¹ø Ãé¹ø
+  -- ì˜¤í”ˆëª° íŒë§¤ìˆ˜ìˆ˜ë£Œ ì¡°ê²¬í‘œ - ì¡°ê²¬í‘œìˆœë²ˆ ì·Œë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtre5011ChrSeq(
-    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE         /*ÆÇ¸Å¿øÄÚµå          */
+    v_Ord_Agent      IN RTRE5011.ORD_AGENT%TYPE         /*íŒë§¤ì›ì½”ë“œ          */
     ) RETURN NUMBER;
     
 END Pkg_Rtre5011;
-/

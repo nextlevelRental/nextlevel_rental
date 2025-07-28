@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0410 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0410
-    PURPOSE     ∆«∏≈¿ŒøÎ ∑ª≈ª∑·
+    PURPOSE     ÌåêÎß§Ïù∏Ïö© Î†åÌÉàÎ£å
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0410 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ ∑ª≈ª∑· Select
+  -- ÌåêÎß§Ïù∏Ïö© Î†åÌÉàÎ£å Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -19,15 +19,15 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
-    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE          /*ºˆ∑Æ             */
-    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE       /*±‚∞£             */
-    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE        /*µÓ±ﬁ             */
-    , v_Inch            IN RTSD0410.INCH%TYPE            /*¿Œƒ°             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*Ï∞®Ï¢Ö             */
+    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE          /*ÏàòÎüâ             */
+    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE       /*Í∏∞Í∞Ñ             */
+    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE        /*Îì±Í∏â             */
+    , v_Inch            IN RTSD0410.INCH%TYPE            /*Ïù∏Ïπò             */
   );
    
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ µÓ±ﬁ Select
+  -- ÌåêÎß§Ïù∏Ïö© Îì±Í∏â Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -36,11 +36,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410GradeCd (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*Ï∞®Ï¢Ö             */
   );
   
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ ¿Œƒ° Select
+  -- ÌåêÎß§Ïù∏Ïö© Ïù∏Ïπò Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -49,8 +49,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410Inch (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE         /*Ï∞®Ï¢Ö             */
+    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE        /*Í∏∞Í∞Ñ             */
+    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE           /*Î≥∏Ïàò             */
+    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE         /*Îì±Í∏â             */
   );
        
 END Pkg_Rtsd0410;
-/

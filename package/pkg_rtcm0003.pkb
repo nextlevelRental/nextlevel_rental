@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0003 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0003
-   PURPOSE:   ∫Òπ–π¯»£∫Ø∞Ê¿Ã∑¬ ∞¸∏Æ
+   PURPOSE:   ÎπÑÎ∞ÄÎ≤àÌò∏Î≥ÄÍ≤ΩÏù¥Î†• Í¥ÄÎ¶¨
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0003 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∫Òπ–π¯»£∫Ø∞Ê¿Ã∑¬ Select
+  -- ÎπÑÎ∞ÄÎ≤àÌò∏Î≥ÄÍ≤ΩÏù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0003 (
     Ref_Cursor  IN OUT SYS_REFCURSOR,
-    v_User_Id   IN     RTCM0003.USER_ID%TYPE        /*ªÁøÎ¿⁄ æ∆¿Ãµ           */
+    v_User_Id   IN     RTCM0003.USER_ID%TYPE        /*ÏÇ¨Ïö©Ïûê ÏïÑÏù¥Îîî           */
     ) IS
   BEGIN
 
@@ -32,13 +32,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0003 AS
   END p_sRtcm0003;
 
   /*****************************************************************************
-  -- ∫Òπ–π¯»£∫Ø∞Ê¿Ã∑¬ Insert
+  -- ÎπÑÎ∞ÄÎ≤àÌò∏Î≥ÄÍ≤ΩÏù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0003(
-    v_User_Id        IN  RTCM0003.USER_ID%TYPE,        /*ªÁøÎ¿⁄ æ∆¿Ãµ        */
-    v_Password       IN  RTCM0003.PASSWORD%TYPE,       /*∫Òπ–π¯»£             */
-    v_Reason         IN  RTCM0003.REASON%TYPE,         /*∫Ø∞ÊªÁ¿Ø             */
-    v_Chg_Id         IN  RTCM0003.CHG_ID%TYPE,         /*∫Ø∞Ê¿⁄ ID            */
+    v_User_Id        IN  RTCM0003.USER_ID%TYPE,        /*ÏÇ¨Ïö©Ïûê ÏïÑÏù¥Îîî        */
+    v_Password       IN  RTCM0003.PASSWORD%TYPE,       /*ÎπÑÎ∞ÄÎ≤àÌò∏             */
+    v_Reason         IN  RTCM0003.REASON%TYPE,         /*Î≥ÄÍ≤ΩÏÇ¨Ïú†             */
+    v_Chg_Id         IN  RTCM0003.CHG_ID%TYPE,         /*Î≥ÄÍ≤ΩÏûê ID            */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
     
@@ -70,4 +70,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0003 AS
   END f_InsertRtcm0003;
 
 END Pkg_Rtcm0003;
-/

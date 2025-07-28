@@ -48,6 +48,9 @@
                 <Column size="80"/>
                 <Column size="0"/>
                 <Column size="0"/>
+                <Column size="100"/>
+                <Column size="80"/>
+                <Column size="100"/>
               </Columns>
               <Rows>
                 <Row size="30" band="head"/>
@@ -72,6 +75,9 @@
                 <Cell col="15" text="미납금액"/>
                 <Cell col="16" text="삭제가능여부"/>
                 <Cell col="17"/>
+                <Cell col="18" text="상태상세"/>
+                <Cell col="19" text="연체금액"/>
+                <Cell col="20" text="완납/해지/채권"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="text" edittype="readonly" text="bind:ordNo"/>
@@ -92,6 +98,9 @@
                 <Cell col="15" displaytype="number" style="align:right middle;" text="bind:arrearsAmt" mask="###,###,###,##0"/>
                 <Cell col="16" text="bind:deleteTp"/>
                 <Cell col="17" text="bind:tcgrpNo"/>
+                <Cell col="18" text="expr:(overDueAmt == '-') || (overDueAmt == '0') ? statNmDetail : statNmDetail + '/연체'"/>
+                <Cell col="19" displaytype="number" text="bind:overDueAmt"/>
+                <Cell col="20" text="bind:mfpYn"/>
               </Band>
             </Format>
           </Formats>
@@ -409,6 +418,9 @@
           <Column id="mobFirm" type="STRING" size="256"/>
           <Column id="lfCd" type="STRING" size="256"/>
           <Column id="genderCd" type="STRING" size="256"/>
+          <Column id="statNmDetail" type="STRING" size="256"/>
+          <Column id="overDueAmt" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_cust" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

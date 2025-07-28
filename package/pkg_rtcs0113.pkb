@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0113
-   PURPOSE   ��������(�亯��ȣ) ����
+   PURPOSE   질문관리(답변번호) 관리
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) Count
+  -- 질문관리(답변번호) Count
   *****************************************************************************/
   FUNCTION f_sRtcs0113Count(
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,        /*�亯��ȣ            */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE        /*�亯����            */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,        /*답변번호            */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE        /*답변순번            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,30 +34,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   END f_sRtcs0113Count;
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) Select
+  -- 질문관리(답변번호) Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0113 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*�亯��ȣ              */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*�亯����              */
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*��뿩��              */
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*�亯����              */
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*����                  */
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE          /*����� ID             */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*답변번호              */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*답변순번              */
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*사용여부              */
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*답변내용              */
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*점수                  */
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE          /*등록자 ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ANSWER_NO,                 /*�亯��ȣ            */
-            A.ANSWER_SEQ,                /*�亯����            */
-            A.USE_YN,                    /*��뿩��            */
-            A.ANSWER,                    /*�亯����            */
-            A.SCORE,                     /*����                */
-            A.REG_ID,                    /*����� ID           */
-            A.REG_DT,                    /*�����              */
-            A.CHG_ID,                    /*������ ID           */
-            A.CHG_DT                     /*������              */
+    SELECT  A.ANSWER_NO,                 /*답변번호            */
+            A.ANSWER_SEQ,                /*답변순번            */
+            A.USE_YN,                    /*사용여부            */
+            A.ANSWER,                    /*답변내용            */
+            A.SCORE,                     /*점수                */
+            A.REG_ID,                    /*등록자 ID           */
+            A.REG_DT,                    /*등록일              */
+            A.CHG_ID,                    /*변경자 ID           */
+            A.CHG_DT                     /*변경일              */
     FROM    RTCS0113 A
     WHERE   A.ANSWER_NO  = DECODE(v_Answer_No  , NULL, A.ANSWER_NO  , v_Answer_No)
     AND     A.ANSWER_SEQ = DECODE(v_Answer_Seq , NULL, A.ANSWER_SEQ , v_Answer_Seq)
@@ -71,15 +71,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   END p_sRtcs0113;
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) Insert
+  -- 질문관리(답변번호) Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0113 (
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*�亯��ȣ              */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*�亯����              */
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*��뿩��              */
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*�亯����              */
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*����                  */
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*����� ID             */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*답변번호              */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*답변순번              */
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*사용여부              */
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*답변내용              */
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*점수                  */
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*등록자 ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -116,15 +116,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   END f_InsertRtcs0113;
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) Update
+  -- 질문관리(답변번호) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0113 (
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*�亯��ȣ              */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*�亯����              */
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*��뿩��              */
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*�亯����              */
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*����                  */
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*����� ID             */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*답변번호              */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*답변순번              */
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*사용여부              */
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*답변내용              */
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*점수                  */
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*등록자 ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -148,12 +148,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   END f_UpdateRtcs0113;
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) Delete
+  -- 질문관리(답변번호) Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0113 (
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*�亯��ȣ              */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*�亯����              */
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*����� ID             */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*답변번호              */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*답변순번              */
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*등록자 ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -175,16 +175,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   END f_DeleteRtcs0113;
 
   /*****************************************************************************
-  -- ��������(�亯��ȣ) ����(IUD)
+  -- 질문관리(답변번호) 관리(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0113 (
-    v_Comm_Dvsn      IN CHAR,                         /*ó������(I,U,D)       */
-    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*�亯��ȣ              */
-    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*�亯����              */
-    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*��뿩��              */
-    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*�亯����              */
-    v_Score          IN RTCS0113.SCORE%TYPE,          /*����                  */
-    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*����� ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*처리구분(I,U,D)       */
+    v_Answer_No      IN RTCS0113.ANSWER_NO%TYPE,      /*답변번호              */
+    v_Answer_Seq     IN RTCS0113.ANSWER_SEQ%TYPE,     /*답변순번              */
+    v_Use_Yn         IN RTCS0113.USE_YN%TYPE,         /*사용여부              */
+    v_Answer         IN RTCS0113.ANSWER%TYPE,         /*답변내용              */
+    v_Score          IN RTCS0113.SCORE%TYPE,          /*점수                  */
+    v_Reg_Id         IN RTCS0113.REG_ID%TYPE,         /*등록자 ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -193,37 +193,37 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- �ʼ���: �亯��ȣ,�亯����, ��뿩��, ����� ID
+    -- 필수값: 답변번호,답변순번, 사용여부, 등록자 ID
     IF (TRIM(v_Answer_No) IS NULL) OR (LENGTH(TRIM(v_Answer_No)) != 3) THEN
-        v_Return_Message := '�亯��ȣ('||v_Answer_No||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '답변번호('||v_Answer_No||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;    
     
     IF (TRIM(v_Answer_Seq) IS NULL) OR (LENGTH(TRIM(v_Answer_Seq)) != 3) THEN
-        v_Return_Message := '�亯����('||v_Answer_Seq||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '답변순번('||v_Answer_Seq||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Use_Yn) IS NULL) OR (TRIM(v_Use_Yn) NOT IN ('Y','N')) THEN
-        v_Return_Message := '��뿩��('||v_Use_Yn||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '사용여부('||v_Use_Yn||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;    
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := '����� ID('||v_Reg_Id||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+        v_Return_Message := '등록자 ID('||v_Reg_Id||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn = 'I' THEN
     
         IF 0 != f_sRtcs0113Count(v_Answer_No, v_Answer_Seq) THEN
-            v_Return_Message := '�ش� �亯����('||v_Reg_Id||')�� �̹� ��ϵ� �����̹Ƿ� �űԵ�� ó���� �Ұ� �մϴ�!';
+            v_Return_Message := '해당 답변순번('||v_Reg_Id||')은 이미 등록된 정보이므로 신규등록 처리가 불가 합니다!';
             RAISE e_Error;
         END IF;
 
         IF 0 != f_InsertRtcs0113(v_Answer_No, v_Answer_Seq, v_Use_Yn, v_Answer, 
                                  v_Score, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '��������(�亯��ȣ) ��� ����!!!'||'-'||v_ErrorText;
+            v_Return_Message := '질문관리(답변번호) 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -231,7 +231,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
     ELSE
     
         IF 0 = f_sRtcs0113Count(v_Answer_No, v_Answer_Seq) THEN
-            v_Return_Message := '�ش� �亯����('||v_Answer_Seq||')�� ��ϵ� ������ �ƴϹǷ� ���� �Ǵ� ���� ó���� �Ұ� �մϴ�!';
+            v_Return_Message := '해당 답변순번('||v_Answer_Seq||')은 등록된 정보가 아니므로 수정 또는 삭제 처리가 불가 합니다!';
             RAISE e_Error;
         END IF;
         
@@ -240,7 +240,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
         
             IF 0 != f_UpdateRtcs0113(v_Answer_No, v_Answer_Seq, v_Use_Yn, v_Answer, 
                                      v_Score, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '��������(�亯��ȣ) ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '질문관리(답변번호) 수정 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -248,20 +248,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcs0113(v_Answer_No, v_Answer_Seq, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '��������(�亯��ȣ) ���� ����!!!'||'-'||v_ErrorText;
+                v_Return_Message := '질문관리(답변번호) 삭제 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'ó������(I,U,D)�� ����!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := '처리구분(I,U,D)값 오류!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '���������� ��ϵǾ����ϴ�';
+    v_Return_Message := '정상적으로 등록되었습니다';
     v_ErrorText := '';
     --COMMIT;
 
@@ -276,20 +276,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '�ý��۰����ڿ��� ���ǹٶ��ϴ�!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0113.p_IUDRtcs0113(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcs0113;
   
   /*****************************************************************************
-  -- �򰡹ݿ�������ȸ
+  -- 평가반영점수조회
   *****************************************************************************/
   FUNCTION f_sRtcs0113_JS(
-    v_Answer_No        IN RTCS0113.ANSWER_NO%TYPE,      /*������ȣ            */
-    v_Answer_Seq       IN RTCS0113.ANSWER_SEQ%TYPE      /*������ȣ            */
+    v_Answer_No        IN RTCS0113.ANSWER_NO%TYPE,      /*질문번호            */
+    v_Answer_Seq       IN RTCS0113.ANSWER_SEQ%TYPE      /*질문번호            */
     ) RETURN NUMBER IS
-    v_Score               RTCS0113.SCORE%TYPE;          /*����                */
+    v_Score               RTCS0113.SCORE%TYPE;          /*점수                */
   BEGIN
 
     SELECT  SCORE
@@ -308,4 +308,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0113 AS
   
 
 END Pkg_Rtcs0113;
-/

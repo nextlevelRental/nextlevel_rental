@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0120 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0120
-   PURPOSE   ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ ∞¸∏Æ
+   PURPOSE   ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,29 +10,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0120 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Count
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Count
   *****************************************************************************/
   FUNCTION f_sRtsd0120Count(
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,        /*∆«∏≈¿Œπ¯»£          */
-    v_Seq            IN RTSD0120.SEQ%TYPE               /*º¯π¯                */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,        /*ÌåêÎß§Ïù∏Î≤àÌò∏          */
+    v_Seq            IN RTSD0120.SEQ%TYPE               /*ÏàúÎ≤à                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Select
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0120 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*∆«∏≈¿Œπ¯»£            */
-    v_Seq            IN RTSD0120.SEQ%TYPE             /*º¯π¯                  */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*ÌåêÎß§Ïù∏Î≤àÌò∏            */
+    v_Seq            IN RTSD0120.SEQ%TYPE             /*ÏàúÎ≤à                  */
     );
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Insert
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0120 (
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*∆«∏≈¿Œπ¯»£            */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*ÌåêÎß§Ïù∏Î≤àÌò∏            */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0120;
-/

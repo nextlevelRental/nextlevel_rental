@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0011 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0011
-   PURPOSE   ∞Ì∞¥ ∞Ë¡¬ ¡§∫∏ ¿Ã∑¬ ∞¸∏Æ
+   PURPOSE   Í≥†Í∞ù Í≥ÑÏ¢å Ï†ïÎ≥¥ Ïù¥Î†• Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,28 +10,27 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0011 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∞Ë¡¬ ¡§∫∏ ¿Ã∑¬ Count
+  -- Í≥†Í∞ù Í≥ÑÏ¢å Ï†ïÎ≥¥ Ïù¥Î†• Count
   *****************************************************************************/
   FUNCTION f_sRtre0011Count(
-    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE,          /*∞Ë¡¬º¯π¯            */
-    v_Useq           IN RTRE0011.USEQ%TYPE              /*º¯π¯                */
+    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE,          /*Í≥ÑÏ¢åÏàúÎ≤à            */
+    v_Useq           IN RTRE0011.USEQ%TYPE              /*ÏàúÎ≤à                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∞Ë¡¬ ¡§∫∏ ¿Ã∑¬ Select
+  -- Í≥†Í∞ù Í≥ÑÏ¢å Ï†ïÎ≥¥ Ïù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtre0011 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE         /*∞Ë¡¬º¯π¯              */
+    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE         /*Í≥ÑÏ¢åÏàúÎ≤à              */
     );
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∞Ë¡¬ ¡§∫∏ ¿Ã∑¬ Insert
+  -- Í≥†Í∞ù Í≥ÑÏ¢å Ï†ïÎ≥¥ Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0011 (
-    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE,        /*∞Ë¡¬º¯π¯              */
+    v_Acc_Seq        IN RTRE0011.ACC_SEQ%TYPE,        /*Í≥ÑÏ¢åÏàúÎ≤à              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 END Pkg_Rtre0011;
-/

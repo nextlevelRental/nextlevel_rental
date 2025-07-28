@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0116 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0116
-   PURPOSE   πËº€øœ∑· ¥ÎªÛ ∞¸∏Æ
+   PURPOSE   Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,77 +10,77 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0116 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Count
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0116Count(
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,           /*∞Ëæ‡π¯»£            */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE             /*SAP ¡÷πÆπ¯»£        */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,           /*Í≥ÑÏïΩÎ≤àÌò∏            */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE             /*SAP Ï£ºÎ¨∏Î≤àÌò∏        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Select
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0116 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Insert
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Update
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Delete
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0116 (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ ∞¸∏Æ(IUD)
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0116 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS πﬂº€¿œ¿⁄          */
-    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS πﬂº€ø©∫Œ          */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Sms_Day        IN RTSD0116.SMS_DAY%TYPE,        /*SMS Î∞úÏÜ°ÏùºÏûê          */
+    v_Sms_Yn         IN RTSD0116.SMS_YN%TYPE,         /*SMS Î∞úÏÜ°Ïó¨Î∂Ä          */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -88,16 +88,15 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0116 AS
 
 
   /*****************************************************************************
-  -- πËº€øœ∑· ¥ÎªÛ Update - Erprecvdelivery
+  -- Î∞∞ÏÜ°ÏôÑÎ£å ÎåÄÏÉÅ Update - Erprecvdelivery
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0116Recv (
-    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP ¡÷πÆπ¯»£          */
-    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP πËº€π¯»£          */
-    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*πËº€¿œ¿⁄              */
-    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ord_No         IN RTSD0116.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Vbeln          IN RTSD0116.VBELN%TYPE,          /*SAP Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_Vbeln_D        IN RTSD0116.VBELN_D%TYPE,        /*SAP Î∞∞ÏÜ°Î≤àÌò∏          */
+    v_Gi_Day         IN RTSD0116.GI_DAY%TYPE,         /*Î∞∞ÏÜ°ÏùºÏûê              */
+    v_Reg_Id         IN RTSD0116.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0116;
-/

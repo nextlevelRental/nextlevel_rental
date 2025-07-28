@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0101 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0101
-   PURPOSE   ∞Ì∞¥ ∏∂Ω∫≈Õ ∫Ø∞Ê¿Ã∑¬ ∞¸∏Æ
+   PURPOSE   Í≥†Í∞ù ÎßàÏä§ÌÑ∞ Î≥ÄÍ≤ΩÏù¥Î†• Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,29 +10,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0101 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∏∂Ω∫≈Õ ∫Ø∞Ê¿Ã∑¬ Count
+  -- Í≥†Í∞ù ÎßàÏä§ÌÑ∞ Î≥ÄÍ≤ΩÏù¥Î†• Count
   *****************************************************************************/
   FUNCTION f_sRtsd0101Count(
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,          /*∞Ì∞¥π¯»£            */
-    v_Seq            IN RTSD0101.SEQ%TYPE               /*º¯π¯                */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,          /*Í≥†Í∞ùÎ≤àÌò∏            */
+    v_Seq            IN RTSD0101.SEQ%TYPE               /*ÏàúÎ≤à                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∏∂Ω∫≈Õ ∫Ø∞Ê¿Ã∑¬ Select
+  -- Í≥†Í∞ù ÎßàÏä§ÌÑ∞ Î≥ÄÍ≤ΩÏù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0101 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE         /*∞Ì∞¥π¯»£              */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE         /*Í≥†Í∞ùÎ≤àÌò∏              */
     );
 
   /*****************************************************************************
-  -- ∞Ì∞¥ ∏∂Ω∫≈Õ ∫Ø∞Ê¿Ã∑¬ Insert
+  -- Í≥†Í∞ù ÎßàÏä§ÌÑ∞ Î≥ÄÍ≤ΩÏù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0101 (
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
 END Pkg_Rtsd0101;
-/

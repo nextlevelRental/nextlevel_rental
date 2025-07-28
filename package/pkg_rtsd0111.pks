@@ -156,4 +156,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0111 AS
     v_Seq            IN RTSD0111.SEQ%TYPE             /*순번                  */
     );
 END Pkg_Rtsd0111;
-/

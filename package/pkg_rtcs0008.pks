@@ -117,6 +117,4 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0008 AS
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
      
-     
 END Pkg_Rtcs0008;
-/

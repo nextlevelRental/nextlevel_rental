@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsPrice", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -33,6 +34,7 @@
 
             obj = new Dataset("comGrp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -128,7 +130,7 @@
             obj.set_binddataset("dsPrice");
             obj.set_autofittype("col");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"240\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"70\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"60\"/><Column size=\"350\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"부가제품명\"/><Cell col=\"1\" text=\"제조사\"/><Cell col=\"2\" text=\"금액\"/><Cell col=\"3\" text=\"할인금액\"/><Cell col=\"4\" text=\"실판매금액\"/><Cell col=\"5\" text=\"제품군\"/><Cell col=\"6\" text=\"할부여부\"/><Cell col=\"7\" text=\"사용구분\"/><Cell col=\"8\" text=\"제품설명\"/></Band><Band id=\"body\"><Cell edittype=\"normal\" style=\"align:left;\" text=\"bind:addGdsNm\"/><Cell col=\"1\" edittype=\"normal\" style=\"align:left;\" text=\"bind:makerNm\"/><Cell col=\"2\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:amt\" mask=\"###,###,###,##0\"/><Cell col=\"3\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:dcAmt\" mask=\"###,###,###,##0\"/><Cell col=\"4\" displaytype=\"number\" style=\"align:right;\" text=\"bind:actAmt\" mask=\"###,###,###,##0\"/><Cell col=\"5\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:gdsGrp\" combodataset=\"comGrp\" combocodecol=\"cd\" combodatacol=\"cdNm\" calendardisplaynulltype=\"none\"/><Cell col=\"6\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:dcYn\" combodataset=\"ds_dcYn\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:useYn\" combodataset=\"ds_yn\" combocodecol=\"cd\" combodatacol=\"cdNm\" calendardisplaynulltype=\"none\"/><Cell col=\"8\" edittype=\"normal\" style=\"align:left;\" text=\"bind:gdsDesc\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"240\"/><Column size=\"60\"/><Column size=\"80\"/><Column size=\"70\"/><Column size=\"80\"/><Column size=\"60\"/><Column size=\"0\"/><Column size=\"60\"/><Column size=\"350\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"부가제품명\"/><Cell col=\"1\" text=\"제조사\"/><Cell col=\"2\" text=\"금액\"/><Cell col=\"3\" text=\"할인금액\"/><Cell col=\"4\" text=\"실판매금액\"/><Cell col=\"5\" text=\"제품군\"/><Cell col=\"6\" text=\"할부여부\"/><Cell col=\"7\" text=\"사용구분\"/><Cell col=\"8\" text=\"제품설명\"/></Band><Band id=\"body\"><Cell edittype=\"normal\" style=\"align:left;\" text=\"bind:addGdsNm\"/><Cell col=\"1\" edittype=\"normal\" style=\"align:left;\" text=\"bind:makerNm\"/><Cell col=\"2\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:amt\" mask=\"###,###,###,##0\"/><Cell col=\"3\" displaytype=\"number\" edittype=\"masknumber\" style=\"align:right;\" text=\"bind:dcAmt\" mask=\"###,###,###,##0\"/><Cell col=\"4\" displaytype=\"number\" style=\"align:right;\" text=\"bind:actAmt\" mask=\"###,###,###,##0\"/><Cell col=\"5\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:gdsGrp\" combodataset=\"comGrp\" combocodecol=\"cd\" combodatacol=\"cdNm\" calendardisplaynulltype=\"none\"/><Cell col=\"6\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:dcYn\" combodataset=\"ds_dcYn\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:useYn\" combodataset=\"ds_yn\" combocodecol=\"cd\" combodatacol=\"cdNm\" calendardisplaynulltype=\"none\"/><Cell col=\"8\" edittype=\"normal\" style=\"align:left;\" text=\"bind:gdsDesc\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00", "absolute", "0", "45", "1147", "20", null, null, this);
@@ -277,7 +279,7 @@
 
         		//Save Validation is not needed.
 
-        		if( confirm( "저장하시겠습니까?") ){			
+        		if( confirm( "저장하시겠습니까?") ){
         			var sSvcID        	= "saveProductInfo";                    
         			var sController   	= "rtms/sd/saveAddProductInfo.do";
         			var sInDatasets   	= "";
@@ -362,7 +364,8 @@
         		
          		this.dsPrice.setColumn(row, "dcAmt", 0);
          		this.dsPrice.setColumn(row, "gdsGb", "2");
-         		this.dsPrice.setColumn(row, "useYn", "Y"); 		
+         		this.dsPrice.setColumn(row, "useYn", "Y");
+         		this.dsPrice.setColumn(row, "dcYn", "Y");//19-02-13그리드 할부여부필드 숨기고 무족건 할부로 들어가게 수정 
         	}
 
         //----------------------------------------------------------------------------------

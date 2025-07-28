@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0102
-   PURPOSE   ∞·«’ ∞Ì∞¥ ∞¸∏Æ ∞¸∏Æ
+   PURPOSE   Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Count
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0102Count(
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE            /*∞Ì∞¥∞·«’π¯»£        */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE            /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,28 +32,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
   END f_sRtsd0102Count;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Select
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0102 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,           /*∞Ì∞¥∞·«’π¯»£        */
-    v_Grp_Day_Start  IN RTSD0102.GRP_DAY%TYPE,          /*∞·«’¿œ¿⁄            */
-    v_Grp_Day_End    IN RTSD0102.GRP_DAY%TYPE,          /*∞·«’¿œ¿⁄            */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,           /*∞·«’ø©∫Œ            */
-    v_Cust_No        IN RTSD0103.CUST_NO%TYPE           /*∞Ì∞¥π¯»£            */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,           /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏        */
+    v_Grp_Day_Start  IN RTSD0102.GRP_DAY%TYPE,          /*Í≤∞Ìï©ÏùºÏûê            */
+    v_Grp_Day_End    IN RTSD0102.GRP_DAY%TYPE,          /*Í≤∞Ìï©ÏùºÏûê            */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,           /*Í≤∞Ìï©Ïó¨Î∂Ä            */
+    v_Cust_No        IN RTSD0103.CUST_NO%TYPE           /*Í≥†Í∞ùÎ≤àÌò∏            */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.GRP_NO  ,       /*∞Ì∞¥∞·«’π¯»£   */
-            A.GRP_DAY ,       /*∞·«’¿œ¿⁄       */
-            A.SPT_DAY ,       /*∫–∏Æ¿œ¿⁄       */
-            A.GRP_YN  ,       /*∞·«’ø©∫Œ       */
-            A.REG_ID  ,       /*µÓ∑œ¿⁄ ID      */
-            A.REG_DT  ,       /*µÓ∑œ¿œ        */
-            A.CHG_ID  ,       /*∫Ø∞Ê¿⁄ ID      */
-            A.CHG_DT  ,       /*∫Ø∞Ê¿œ         */
+    SELECT  A.GRP_NO  ,       /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏   */
+            A.GRP_DAY ,       /*Í≤∞Ìï©ÏùºÏûê       */
+            A.SPT_DAY ,       /*Î∂ÑÎ¶¨ÏùºÏûê       */
+            A.GRP_YN  ,       /*Í≤∞Ìï©Ïó¨Î∂Ä       */
+            A.REG_ID  ,       /*Îì±Î°ùÏûê ID      */
+            A.REG_DT  ,       /*Îì±Î°ùÏùº        */
+            A.CHG_ID  ,       /*Î≥ÄÍ≤ΩÏûê ID      */
+            A.CHG_DT  ,       /*Î≥ÄÍ≤ΩÏùº         */
             COUNT(B.GRP_NO)  AS CUST_GRP_COUNT
     FROM    RTSD0102 A LEFT OUTER JOIN RTSD0103 B ON A.GRP_NO = B.GRP_NO
     WHERE   (v_Grp_No        IS NULL OR A.GRP_NO = v_Grp_No)
@@ -66,14 +66,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
   END p_sRtsd0102;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Insert
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -108,14 +108,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
   END f_InsertRtsd0102;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Update
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -138,11 +138,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
   END f_UpdateRtsd0102;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Delete
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -163,15 +163,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
   END f_DeleteRtsd0102;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ ∞¸∏Æ(IUD)
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0102 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Grp_No         IN OUT RTSD0102.GRP_NO%TYPE,     /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Grp_No         IN OUT RTSD0102.GRP_NO%TYPE,     /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -180,12 +180,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
     e_Error EXCEPTION;
   BEGIN
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µÓ∑œ¿⁄ ID('||v_Reg_Id||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù ∂«¥¬ ¿ﬂ∏¯µ» ∞™ ¿‘∑¬¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Îì±Î°ùÏûê ID('||v_Reg_Id||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩ ÎòêÎäî ÏûòÎ™ªÎêú Í∞í ÏûÖÎ†•ÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Grp_Yn) IS NULL THEN
-        v_Return_Message := '∞·«’ø©∫Œ('||v_Grp_Yn||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù ∂«¥¬ ¿ﬂ∏¯µ» ∞™ ¿‘∑¬¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Í≤∞Ìï©Ïó¨Î∂Ä('||v_Grp_Yn||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩ ÎòêÎäî ÏûòÎ™ªÎêú Í∞í ÏûÖÎ†•ÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
     
@@ -195,7 +195,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
 
         IF 0 != f_InsertRtsd0102(v_Grp_No, v_Grp_Day , v_Spt_Day , v_Grp_Yn , 
                                  v_Reg_Id , v_ErrorText) THEN
-            v_Return_Message := '∞·«’ ∞Ì∞¥ ∞¸∏Æ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -206,7 +206,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
         
             IF 0 != f_UpdateRtsd0102(v_Grp_No , v_Grp_Day , v_Spt_Day , v_Grp_Yn , 
                                      v_Reg_Id , v_ErrorText) THEN
-                v_Return_Message := '∞·«’ ∞Ì∞¥ ∞¸∏Æ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -215,13 +215,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
         
             IF 0 != f_DeleteRtsd0102(v_Grp_No , v_Reg_Id ,
                                      v_ErrorText) THEN
-                v_Return_Message := '∞·«’ ∞Ì∞¥ ∞¸∏Æ ªË¡¶ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ ÏÇ≠Ï†ú Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
@@ -229,7 +229,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -244,17 +244,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0102.p_IUDRtsd0102(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0102;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∏∂Ω∫≈Õ - ∞·«’ ∞Ì∞¥ π¯»£ √ºπ¯
+  -- Í≤∞Ìï© Í≥†Í∞ù ÎßàÏä§ÌÑ∞ - Í≤∞Ìï© Í≥†Í∞ù Î≤àÌò∏ Ï≤¥Î≤à
   *****************************************************************************/
   FUNCTION f_sRtsd0102GrpNo RETURN VARCHAR IS
-    v_Grp_No   RTSD0102.GRP_NO%TYPE DEFAULT NULL;   /*∞·«’∞Ì∞¥π¯»£            */
+    v_Grp_No   RTSD0102.GRP_NO%TYPE DEFAULT NULL;   /*Í≤∞Ìï©Í≥†Í∞ùÎ≤àÌò∏            */
   BEGIN
 
     SELECT  NVL(MAX(GRP_NO)+1,'1000000001')
@@ -269,4 +269,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0102 AS
 
   END f_sRtsd0102GrpNo;
 END Pkg_Rtsd0102;
-/

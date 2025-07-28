@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0003 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0003
-   PURPOSE   ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ ∞¸∏Æ
+   PURPOSE   ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,89 +10,88 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0003 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ Count
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0003Count(
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,    /*¥‹∏È∆¯              */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,     /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,     /*¿Œƒ°                */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE        /*PR(∞≠µµ)            */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,    /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,     /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,     /*Ïù∏Ïπò                */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE        /*PR(Í∞ïÎèÑ)            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ Select
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0003 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*±‘∞›                  */
-    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*±‘∞›2                 */
-    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0003.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*Í∑úÍ≤©                  */
+    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*Í∑úÍ≤©2                 */
+    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0003.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ Insert
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0003 (
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*±‘∞›                  */
-    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*±‘∞›2                 */
-    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*Í∑úÍ≤©                  */
+    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*Í∑úÍ≤©2                 */
+    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ Update
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0003 (
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*±‘∞›                  */
-    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*±‘∞›2                 */
-    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*Í∑úÍ≤©                  */
+    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*Í∑úÍ≤©2                 */
+    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ Delete
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0003 (
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ ±‘∞› ∞¸∏Æ ∞¸∏Æ(IUD)
+  -- ÌÉÄÏù¥Ïñ¥ Í∑úÍ≤© Í¥ÄÎ¶¨ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0003 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*±‘∞›                  */
-    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*±‘∞›2                 */
-    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Section_Width  IN RTSD0003.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0003.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0003.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0003.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Size_Cd        IN RTSD0003.SIZE_CD%TYPE,        /*Í∑úÍ≤©                  */
+    v_Size_Cd2       IN RTSD0003.SIZE_CD2%TYPE,       /*Í∑úÍ≤©2                 */
+    v_Use_Yn         IN RTSD0003.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0003.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
 END Pkg_Rtsd0003;
-/

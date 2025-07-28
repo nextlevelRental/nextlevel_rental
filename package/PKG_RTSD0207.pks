@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0207 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0207
-   PURPOSE   SMS ¡˝∞Ë ≥ªø™ ¡∂»∏
+   PURPOSE   SMS ÏßëÍ≥Ñ ÎÇ¥Ïó≠ Ï°∞Ìöå
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,13 +10,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0207 AS
 *******************************************************************************/
    
   /*****************************************************************************
-  -- ø˘∏∂∞®Ω√ SMS πﬂº€≥ªø™ Select
+  -- ÏõîÎßàÍ∞êÏãú SMS Î∞úÏÜ°ÎÇ¥Ïó≠ Select
   *****************************************************************************/
   PROCEDURE p_sSmsCollectionList (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Close_Ym      IN VARCHAR2,                /*∏∂∞®ø˘             */
-    v_Send_Tp       IN VARCHAR2                 /*πﬂº€±∏∫–           */
+    v_Close_Ym      IN VARCHAR2,                /*ÎßàÍ∞êÏõî             */
+    v_Send_Tp       IN VARCHAR2                 /*Î∞úÏÜ°Íµ¨Î∂Ñ           */
     );
     
 END Pkg_Rtsd0207;
-/

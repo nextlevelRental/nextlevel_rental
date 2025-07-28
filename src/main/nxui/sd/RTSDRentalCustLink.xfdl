@@ -59,6 +59,7 @@
                 <Column size="132"/>
                 <Column size="215"/>
                 <Column size="50"/>
+                <Column size="50"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -71,7 +72,9 @@
                 <Cell col="2" rowspan="2" text="판매점코드"/>
                 <Cell col="3" rowspan="2" text="판매점명"/>
                 <Cell col="4" text="퍼플점"/>
+                <Cell col="5" text="P.P점"/>
                 <Cell row="1" col="4" displaytype="checkbox" edittype="checkbox"/>
+                <Cell row="1" col="5" displaytype="checkbox" edittype="checkbox"/>
               </Band>
               <Band id="body">
                 <Cell displaytype="checkbox" edittype="checkbox" text="bind:chk"/>
@@ -79,11 +82,43 @@
                 <Cell col="2" edittype="none" text="bind:agencyCd" editlimit="4"/>
                 <Cell col="3" edittype="none" text="bind:agencyNm" editlimit="100"/>
                 <Cell col="4" displaytype="checkbox" edittype="checkbox" text="bind:prplYn"/>
+                <Cell col="5" displaytype="checkbox" edittype="checkbox" text="bind:premprplYn"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
         <Button id="btn_unReleaseSeler" taborder="140" text="미반영판매자" cssclass="btn_WF_CRUD" top="53" width="93" height="22" right="25" onclick="btn_unReleaseSeler_onclick"/>
+        <Button id="btn_formatDown" taborder="141" text="양식다운로드" cssclass="btn_WF_CRUD" top="53" right="209" width="93" height="22" onclick="btn_formatDown_onclick" enable="true" visible="false"/>
+        <Button id="btn_formatUpload" taborder="142" text="업로드" cssclass="btn_WF_CRUD" top="53" right="121" width="85" height="22" onclick="btn_formatUpload_onclick" enable="true" visible="false"/>
+        <Grid id="grd_custLinkDtlExcel" taborder="143" useinputpanel="false" autofittype="col" left="536" top="418" width="587" height="65" visible="false">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="105"/>
+                <Column size="140"/>
+                <Column size="135"/>
+                <Column size="180"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="판매점코드"/>
+                <Cell col="1" text="판매점명"/>
+                <Cell col="2" text="퍼플점여부(Y/N)"/>
+                <Cell col="3" text="프리미엄퍼플점여부(Y/N)"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:agencyCd" editlimit="4"/>
+                <Cell col="1" edittype="none" text="bind:agencyNm" editlimit="100"/>
+                <Cell col="2" displaytype="normal" edittype="none" text="bind:prplYn"/>
+                <Cell col="3" displaytype="normal" edittype="none" text="bind:premprplYn"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_formatDown00" taborder="144" text="양식다운로드용 그리드" onclick="btn_formatDown_onclick" cssclass="btn_WF_CRUD" top="450" right="238" width="159" height="22" visible="false"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -147,7 +182,16 @@
           <Column id="rentalGroup" type="STRING" size="256"/>
           <Column id="rentalOffice" type="STRING" size="256"/>
           <Column id="prplYn" type="STRING" size="256"/>
+          <Column id="premprplYn" type="STRING" size="256"/>
           <Column id="groupNm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_excelUp">
+        <ColumnInfo>
+          <Column id="COL_01" type="STRING" size="256"/>
+          <Column id="COL_02" type="STRING" size="256"/>
+          <Column id="COL_03" type="STRING" size="256"/>
+          <Column id="COL_04" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
@@ -353,8 +397,14 @@ this.btn_add_onclick = function(obj:Button, e:nexacro.ClickEventInfo) {
 this.div_search_cmb_agency_onitemchanged = function(obj:Combo, e:nexacro.ItemChangeEventInfo) {
 	if(obj.value == 1) {
 		this.grd_custLinkDtl.setFormatColProperty(4, "size", 50);
+		this.grd_custLinkDtl.setFormatColProperty(5, "size", 50);
+		this.btn_formatDown.set_enable(true);
+		this.btn_formatUpload.set_enable(true);
 	} else {
 		this.grd_custLinkDtl.setFormatColProperty(4, "size", 0);
+		this.grd_custLinkDtl.setFormatColProperty(5, "size", 0);
+		this.btn_formatDown.set_enable(false);
+		this.btn_formatUpload.set_enable(false);
 	}
 	
 	/* 렌탈지점 조회 */
@@ -416,6 +466,44 @@ this.ds_custLinkDtl_cancolumnchange = function(obj:Dataset, e:nexacro.DSColChang
 	if(e.columnid == "prplYn") {
 		obj.setColumn(e.row, "agencyGbn", nvl(agencyCd));
 	}
-}]]></Script>
+	if(e.columnid == "premprplYn") {
+		obj.setColumn(e.row, "agencyGbn", nvl(agencyCd));
+	}
+}
+
+/**
+ * 엑셀 양식 다운로드
+ */
+this.btn_formatDown_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{
+	Ex.core.exportExcel(this, this.grd_custLinkDtlExcel); //grd_custLinkDtl 전체다운or양식만다운
+}
+
+/**
+ * 엑셀 업로드
+ */
+this.btn_formatUpload_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
+{//	alert("업");
+	this.ds_excelUp.clearData();
+	
+	if(this.importObj) 
+	{ 
+		this.importObj.destroy(); 
+		this.importObj = null; 
+	}
+	
+	this.importObj = new nexacro.ExcelImportObject("Import01",this);
+	this.importObj.parent.addChild("Import01",this.importObj);
+	this.importObj.set_importtype(nexacro.ImportTypes.EXCEL);
+	this.importObj.addEventHandler("onsuccess", this.Import01_onsuccess, this);
+	this.importObj.addEventHandler("onerror", this.Import01_onerror, this);
+	this.importObj.set_importurl(this.url);
+	this.importObj.importData("", "[command=getsheetdata;Output=ds_excelUp;body=!A2:D;]", "[ds_excelUp=ds_excelUp]","");
+	
+	//Ex.core.set_wait(true);
+}
+
+
+]]></Script>
   </Form>
 </FDL>

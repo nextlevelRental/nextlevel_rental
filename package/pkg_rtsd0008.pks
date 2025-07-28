@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0008 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0008
-   PURPOSE   °¡°Ý °ü¸® °ü¸®
+   PURPOSE   ê°€ê²© ê´€ë¦¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,105 +10,105 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0008 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Count
+  -- ê°€ê²© ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0008Count(
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*°¡°Ý,±Ý¾×À¯Çü       */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*µî·ÏºñÄÚµå          */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,          /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ     */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,          /*°¡°ÝÀû¿ë ¿Ï·áÀÏ     */
-    v_Seq            IN RTSD0008.SEQ%TYPE               /*¼ø¹ø                */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•       */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*ë“±ë¡ë¹„ì½”ë“œ          */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,          /*ê°€ê²©ì ìš© ì‹œìž‘ì¼     */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,          /*ê°€ê²©ì ìš© ì™„ë£Œì¼     */
+    v_Seq            IN RTSD0008.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Select
+  -- ê°€ê²© ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0008 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN RTSD0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN RTSD0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Insert
+  -- ê°€ê²© ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0008 (
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN OUT RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN RTSD0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN OUT RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN RTSD0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Update
+  -- ê°€ê²© ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0008 (
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN RTSD0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN RTSD0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Delete
+  -- ê°€ê²© ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0008 (
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® °ü¸®(IUD)
+  -- ê°€ê²© ê´€ë¦¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0008 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN OUT RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN RTSD0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN OUT RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN RTSD0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN RTSD0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -116,192 +116,191 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0008 AS
 
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Select - »óÇ° ¹× °¡°ÝÁ¶È¸ POPUP
+  -- ê°€ê²© ê´€ë¦¬ Select - ìƒí’ˆ ë° ê°€ê²©ì¡°íšŒ POPUP
   *****************************************************************************/
   PROCEDURE p_sRtsd0008PoPup (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ëÀÏ            */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE         /*Å¸ÀÌ¾îº»¼ö            */
+    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš©ì¼            */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
     );
 
 
   /*****************************************************************************
-  -- »óÇ°°¡°Ý Select - »óÇ° ¹× °¡°ÝÁ¶È¸ POPUP
+  -- ìƒí’ˆê°€ê²© Select - ìƒí’ˆ ë° ê°€ê²©ì¡°íšŒ POPUP
   REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-03-13  wjim             [20170313_01] B2BÀÏ½ÃºÒ °¡°ÝÁ¤Ã¥ Ãß°¡¿¡ µû¸¥ ÆÄ¶ó¹ÌÅÍ Ãß°¡
+   1.1        2017-03-13  wjim             [20170313_01] B2Bì¼ì‹œë¶ˆ ê°€ê²©ì •ì±… ì¶”ê°€ì— ë”°ë¥¸ íŒŒë¼ë¯¸í„° ì¶”ê°€
   *****************************************************************************/
   PROCEDURE p_sRtsd0008_Pro_Pri_PoPup (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,        /*Â÷Á¾                */
-    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,     /*»ç¾ç                */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,           /*ÀüÈÄ ±¸ºÐ           */
-    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,         /*°¡°ÝÀû¿ëÀÏ          */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,          /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,       /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,          /*Å¸ÀÌ¾îº»¼ö          */
-    v_regi_Amt       IN RTSD0106.REGI_AMT%TYPE,        /*·»Å»µî·Ïºñ          */
-    v_Amt            IN RTSD0008.AMT%TYPE,             /*±Ý¾×                */
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE         /*°¡°Ý±Ý¾×À¯Çü        */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,        /*ì°¨ì¢…                */
+    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,     /*ì‚¬ì–‘                */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,           /*ì „í›„ êµ¬ë¶„           */
+    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,         /*ê°€ê²©ì ìš©ì¼          */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,          /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,       /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,          /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_regi_Amt       IN RTSD0106.REGI_AMT%TYPE,        /*ë Œíƒˆë“±ë¡ë¹„          */
+    v_Amt            IN RTSD0008.AMT%TYPE,             /*ê¸ˆì•¡                */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE         /*ê°€ê²©ê¸ˆì•¡ìœ í˜•        */
     );
     
 
   /*****************************************************************************
-    -- »óÇ°°¡°Ý Select - »óÇ° ¹× °¡°ÝÁ¶È¸
+    -- ìƒí’ˆê°€ê²© Select - ìƒí’ˆ ë° ê°€ê²©ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0008_ProductList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,        /*Â÷Á¾                */
-    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,     /*»ç¾ç                */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,           /*ÀüÈÄ ±¸ºÐ           */
-    v_Section_Width  IN RTSD0005.SECTION_WIDTH%TYPE,   /*´Ü¸éÆø              */
-    v_Aspect_Ratio   IN RTSD0005.ASPECT_RATIO%TYPE,    /*ÆíÆòºñ              */
-    v_Wheel_Inches   IN RTSD0005.WHEEL_INCHES%TYPE,    /*ÈÙÀÎÄ¡              */
-    v_Ply_Rating     IN RTSD0005.PLY_RATING%TYPE,      /*°­µµ                */    
-    v_Season_Cd      IN RTSD0005.SEASON_CD%TYPE,       /*°èÀý ±¸ºÐ           */
-    v_Pettern_Cd     IN RTSD0005.PETTERN_CD%TYPE,      /*ÆÐÅÏÄÚµå            */
-    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,         /*°¡°ÝÀû¿ëÀÏ          */    
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,       /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE           /*Å¸ÀÌ¾îº»¼ö          */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,        /*ì°¨ì¢…                */
+    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,     /*ì‚¬ì–‘                */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,           /*ì „í›„ êµ¬ë¶„           */
+    v_Section_Width  IN RTSD0005.SECTION_WIDTH%TYPE,   /*ë‹¨ë©´í­              */
+    v_Aspect_Ratio   IN RTSD0005.ASPECT_RATIO%TYPE,    /*íŽ¸í‰ë¹„              */
+    v_Wheel_Inches   IN RTSD0005.WHEEL_INCHES%TYPE,    /*íœ ì¸ì¹˜              */
+    v_Ply_Rating     IN RTSD0005.PLY_RATING%TYPE,      /*ê°•ë„                */    
+    v_Season_Cd      IN RTSD0005.SEASON_CD%TYPE,       /*ê³„ì ˆ êµ¬ë¶„           */
+    v_Pettern_Cd     IN RTSD0005.PETTERN_CD%TYPE,      /*íŒ¨í„´ì½”ë“œ            */
+    v_Ord_Day        IN RTSD0008.STR_DAY%TYPE,         /*ê°€ê²©ì ìš©ì¼          */    
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,       /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
     );
     
   /*****************************************************************************
-  -- °¡°Ý °ü¸® ¼ø¹øÃ¤¹ø
+  -- ê°€ê²© ê´€ë¦¬ ìˆœë²ˆì±„ë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtsd0008MaxSeq(
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*°¡°Ý,±Ý¾×À¯Çü       */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*µî·ÏºñÄÚµå          */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,          /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ     */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE          /*°¡°ÝÀû¿ë ¿Ï·áÀÏ     */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•       */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*ë“±ë¡ë¹„ì½”ë“œ          */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,          /*ê°€ê²©ì ìš© ì‹œìž‘ì¼     */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE          /*ê°€ê²©ì ìš© ì™„ë£Œì¼     */
     ) RETURN NUMBER;    
 
 
   /*****************************************************************************
-  -- °¡°Ý ÀÌÀüÀÏÀÚµî·Ï¿©ºÎ Á¶È¸
+  -- ê°€ê²© ì´ì „ì¼ìžë“±ë¡ì—¬ë¶€ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtsd0008ExistsDay(
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*°¡°Ý,±Ý¾×À¯Çü       */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*µî·ÏºñÄÚµå          */
-    v_Seq            OUT RTSD0008.SEQ%TYPE              /*¼ø¹ø */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,         /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•       */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,          /*ë“±ë¡ë¹„ì½”ë“œ          */
+    v_Seq            OUT RTSD0008.SEQ%TYPE              /*ìˆœë²ˆ */
     ) RETURN VARCHAR;    
 
   
    /*****************************************************************************
-  -- °¡°Ý °ü¸® °ü¸®(ÀÌÀü Á¾·áÀÏÀÚ ¾÷µ¥ÀÌÆ®Ã³¸®)
+  -- ê°€ê²© ê´€ë¦¬ ê´€ë¦¬(ì´ì „ ì¢…ë£Œì¼ìž ì—…ë°ì´íŠ¸ì²˜ë¦¬)
   *****************************************************************************/
   PROCEDURE p_UpdateRtsd0008EndDay (
-    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_End_Day2       IN RTSD0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ(¼öÁ¤)  */
-    v_Seq            IN RTSD0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN RTSD0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN RTSD0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN RTSD0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN RTSD0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_End_Day2       IN RTSD0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼(ìˆ˜ì •)  */
+    v_Seq            IN RTSD0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- Á¦Ç°Ãß°¡ Select
+  -- ì œí’ˆì¶”ê°€ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0008AddProduct (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*Â÷Á¾                */
-    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*±â°£ÄÚµå            */  
-    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*Å¸ÀÌ¾îº»¼ö          */      
-    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*ÆÇ¸Þ»óÇ°ÄÚµå        */
-    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*Â÷·®»ó¼¼            */
-    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,              /*ÀåÂøÀ§Ä¡            */
+    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*ì°¨ì¢…                */
+    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*ê¸°ê°„ì½”ë“œ            */  
+    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*íƒ€ì´ì–´ë³¸ìˆ˜          */      
+    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*íŒë©”ìƒí’ˆì½”ë“œ        */
+    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*ì°¨ëŸ‰ìƒì„¸            */
+    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,              /*ìž¥ì°©ìœ„ì¹˜            */
     v_Season_cd     IN RTSD0005.SEASON_CD%TYPE,
     v_Pettern_cd    IN RTSD0005.PETTERN_CD%TYPE,
     v_Spec_cd   IN VARCHAR2
   );  
   
   /*****************************************************************************
-  -- °è¾àº° ÀúÀåµÈ Á¦Ç°Á¤º¸ Select
+  -- ê³„ì•½ë³„ ì €ìž¥ëœ ì œí’ˆì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0008AddSelProduct (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*Â÷Á¾                */
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */    
-    v_Ord_No         IN RTSD0106.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */ 
-    v_Sale_Cd        IN RTSD0020.SALE_CD%TYPE,          /*Å¸ÀÌ¾îº»¼ö          */
-    v_contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE       /*Â÷·®»ó¼¼            */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*ì°¨ì¢…                */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */    
+    v_Ord_No         IN RTSD0106.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */ 
+    v_Sale_Cd        IN RTSD0020.SALE_CD%TYPE,          /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE       /*ì°¨ëŸ‰ìƒì„¸            */
   );
   
   
   /*****************************************************************************
-  -- °è¾àº° ÀúÀåµÈ Á¦Ç°Á¤º¸ Select ÀÏ½ÃºÒ
+  -- ê³„ì•½ë³„ ì €ìž¥ëœ ì œí’ˆì •ë³´ Select ì¼ì‹œë¶ˆ
   *****************************************************************************/
   PROCEDURE p_sRtsd0008AddSelProductDirect (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,         /*±â°£ÄÚµå            */  
-    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,            /*Å¸ÀÌ¾îº»¼ö          */ 
-    v_Ord_no         IN RTSD0106.ORD_NO%TYPE,            /*°è¾à¹øÈ£            */  
-    v_Sale_Cd        IN RTSD0020.SALE_CD%TYPE            /*Å¸ÀÌ¾îº»¼ö          */
+    v_Period_Cd      IN RTSD0008.PERIOD_CD%TYPE,         /*ê¸°ê°„ì½”ë“œ            */  
+    v_Cnt_Cd         IN RTSD0008.CNT_CD%TYPE,            /*íƒ€ì´ì–´ë³¸ìˆ˜          */ 
+    v_Ord_no         IN RTSD0106.ORD_NO%TYPE,            /*ê³„ì•½ë²ˆí˜¸            */  
+    v_Sale_Cd        IN RTSD0020.SALE_CD%TYPE            /*íƒ€ì´ì–´ë³¸ìˆ˜          */
   );
 
 
   /*****************************************************************************
-  -- Á¦Ç°Ãß°¡ ÆÐÅÏ ÄÞº¸¹Ú½º  Select
+  -- ì œí’ˆì¶”ê°€ íŒ¨í„´ ì½¤ë³´ë°•ìŠ¤  Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0028PetternCombo (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*Â÷Á¾                */
-    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*±â°£ÄÚµå            */  
-    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*Å¸ÀÌ¾îº»¼ö          */      
-    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*ÆÇ¸Þ»óÇ°ÄÚµå        */
-    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*Â÷·®»ó¼¼            */
-    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,             /*ÀåÂøÀ§Ä¡            */
+    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*ì°¨ì¢…                */
+    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*ê¸°ê°„ì½”ë“œ            */  
+    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*íƒ€ì´ì–´ë³¸ìˆ˜          */      
+    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*íŒë©”ìƒí’ˆì½”ë“œ        */
+    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*ì°¨ëŸ‰ìƒì„¸            */
+    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,             /*ìž¥ì°©ìœ„ì¹˜            */
     v_Season_cd     IN RTSD0005.SEASON_CD%TYPE
   );  
 
   /*****************************************************************************
-  -- Á¦Ç°Ãß°¡ ±Ô°Ý  ÄÞº¸¹Ú½º  Select
+  -- ì œí’ˆì¶”ê°€ ê·œê²©  ì½¤ë³´ë°•ìŠ¤  Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0028PetternComboStan (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*Â÷Á¾                */
-    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*±â°£ÄÚµå            */  
-    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*Å¸ÀÌ¾îº»¼ö          */      
-    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*ÆÇ¸Þ»óÇ°ÄÚµå        */
-    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*Â÷·®»ó¼¼            */
-    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,             /*ÀåÂøÀ§Ä¡            */
+    v_Model_Cd      IN RTSD0004.MODEL_CD%TYPE,          /*ì°¨ì¢…                */
+    v_Period_Cd     IN RTSD0008.PERIOD_CD%TYPE,         /*ê¸°ê°„ì½”ë“œ            */  
+    v_Cnt_Cd        IN RTSD0008.CNT_CD%TYPE,            /*íƒ€ì´ì–´ë³¸ìˆ˜          */      
+    v_Sale_Cd       IN RTSD0020.SALE_CD%TYPE,           /*íŒë©”ìƒí’ˆì½”ë“œ        */
+    v_contents_Cd   IN RTSD0002.CONTENTS_CD%TYPE,       /*ì°¨ëŸ‰ìƒì„¸            */
+    v_fr_Cd         IN RTSD0004.FR_CD%TYPE,             /*ìž¥ì°©ìœ„ì¹˜            */
     v_Season_cd     IN RTSD0005.SEASON_CD%TYPE,
     v_Pettern_cd    IN RTSD0005.PETTERN_CD%TYPE
   ); 
   
   /*****************************************************************************
-  -- Å¸ÀÌ¾î º»¼ö  Ã¼Å©
+  -- íƒ€ì´ì–´ ë³¸ìˆ˜  ì²´í¬
   *****************************************************************************/
   FUNCTION f_sRtsd0008GetWheelQty(
-    v_Model_Cd      IN RTSD0001.MODEL_CD%TYPE,         /*Â÷Á¾                 */
-    v_contents_Cd   IN RTSD0001.CONTENTS_CD%TYPE,      /*Â÷·®»ó¼¼             */
-    v_fr_Cd         IN RTSD0004.FR_CD%TYPE             /*ÀåÂøÀ§Ä¡             */
+    v_Model_Cd      IN RTSD0001.MODEL_CD%TYPE,         /*ì°¨ì¢…                 */
+    v_contents_Cd   IN RTSD0001.CONTENTS_CD%TYPE,      /*ì°¨ëŸ‰ìƒì„¸             */
+    v_fr_Cd         IN RTSD0004.FR_CD%TYPE             /*ìž¥ì°©ìœ„ì¹˜             */
     ) RETURN VARCHAR;
     
   /*****************************************************************************
-  -- ÀåÂø °¡´É Å¸ÀÌ¾î º»¼ö  Ã¼Å©
+  -- ìž¥ì°© ê°€ëŠ¥ íƒ€ì´ì–´ ë³¸ìˆ˜  ì²´í¬
   *****************************************************************************/
   FUNCTION f_sRtsd0008GetWheelQtyLt(
-    v_Model_Cd      IN RTSD0001.MODEL_CD%TYPE,         /*Â÷Á¾                 */
-    v_contents_Cd   IN RTSD0001.CONTENTS_CD%TYPE,      /*Â÷·®»ó¼¼             */
-    v_fr_Cd         IN RTSD0004.FR_CD%TYPE             /*ÀåÂøÀ§Ä¡             */
+    v_Model_Cd      IN RTSD0001.MODEL_CD%TYPE,         /*ì°¨ì¢…                 */
+    v_contents_Cd   IN RTSD0001.CONTENTS_CD%TYPE,      /*ì°¨ëŸ‰ìƒì„¸             */
+    v_fr_Cd         IN RTSD0004.FR_CD%TYPE             /*ìž¥ì°©ìœ„ì¹˜             */
     ) RETURN VARCHAR;
         
 END Pkg_Rtsd0008;
-/

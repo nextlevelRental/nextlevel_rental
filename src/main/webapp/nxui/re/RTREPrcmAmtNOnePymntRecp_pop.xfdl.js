@@ -199,7 +199,9 @@
          * FORM 변수 선언 영역
          ***********************************************************************/
         this.popupYn = "Y";	/* Popup 여부	*/
-        this.toDay	  = "";	/* 당일			*/
+        this.toDay	 = "";	/* 당일			*/
+        this.viewId	 = "";	/* 업무구분	*/
+        this.etcPop	 = "Y";
 
         /***********************************************************************
          * 그룹 변수 선언부
@@ -209,7 +211,7 @@
         this.regiAmt   = "";					/* 등록비										*/
         this.onePymnt  = "";					/* 일시불										*/
         this.recpAmt   = "";					/* 수납금액									*/
-        this.recpTp	   = "";					/* 청구구분									*/
+        this.recpTp	   = this.parent.recpTp;	/* 청구구분									*/
         this.recpPay   = "";					/* 수납방법 - P6 : 계좌출금 P7 : 카드출금	*/
         this.tno	   = "";					/* 거래번호									*/
         this.appNo	   = "";					/* 승인번호									*/
@@ -286,7 +288,7 @@
          */
         this.fn_getDayMongth = function() {
         	var sSvcID		 = "getDayMongth";
-        	var sController	 = "ntrms/re/getDayMongth.do";
+        	var sController	 = "/ntrms/re/getDayMongth.do";
         	var sInDatasets	 = "";
         	var sOutDatasets = "";
         	var sArgs		 = "";
@@ -296,7 +298,7 @@
         }
 
         /***********************************************************************************
-         * CallBack Event (strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
+         * CallBack Event(strSvcId - Sevice ID, nErrorCode - ErrorCode, strErrorMsg - Error Message)
          ***********************************************************************************/
         this.fn_callBack = function(strSvcId,nErrorCode,strErrorMsg) {
         	if(nErrorCode < 0) {
@@ -323,35 +325,49 @@
          * 수납
          */
         this.btn_payment_onclick = function(obj,e) {
-        	var rdo	= this.rdo_recpFg;
-        	var div	= this.div_payment;
+        	var rdo		   = this.rdo_recpFg;
+        	var div		   = this.div_payment;
+        	var dsCrdParam = div.ds_crdPymntParam;
         	
         	div.tordNo = this.tordNo;
         	div.custNo = this.custNo;
+        	div.recpTp = this.recpTp;
         	
         	if(rdo.index == 0) {
         		/* 카드즉시출금결제 */
-        		var doc	   = div.web_kcp.document;
+        		if(parseInt(this.recpAmt.toString()) == 0) {
+        			this.alert("결제금액이 0원입니다.");
+        			
+        			return false;
+        		}
+        		
         		var divCrd = div.div_cardImmWthdr;
         		
-        		doc.getElementById("pay_method_cd").value	= rdo.value;						/* 지불방법코드		*/
-        		doc.getElementById("pay_method_name").value	= rdo.text;							/* 지불방법명			*/
-        		doc.getElementById("good_mny").value		= this.recpAmt.toString();			/* 결제금액			*/
-        		doc.getElementById("ord_no").value			= this.tordNo;						/* 주문번호			*/
-        		doc.getElementById("good_name").value		= this.matNm;						/* 상품명				*/
-        		doc.getElementById("buyr_name").value		= this.custNm;						/* 주문자명			*/
-        		doc.getElementById("buyr_mail").value		= this.custEmail;					/* 주문자 E-Mail		*/
-        		doc.getElementById("buyr_tel1").value		= this.telNo;						/* 주문자 전화번호	*/
-        		doc.getElementById("buyr_tel2").value		= this.mobNo;						/* 주문자 휴대폰번호	*/
+        		if(this.recpTp == "42") {
+        			this.viewId = "PNLT";
+        		}else if(this.recpTp == "90") {
+        			this.viewId = "TMPRR";
+        		}
         		
-        		doc.getElementById("card_no").value			= nvl(divCrd.me_cardNo.value);		/* 카드번호			*/
-        		doc.getElementById("quotaopt").value		= nvl(divCrd.cbo_quotaopt.value);	/* 할부개월			*/
-        		doc.getElementById("expiry_yy").value		= nvl(divCrd.cbo_expiryYy.value);	/* 유효기간(년)		*/
-        		doc.getElementById("expiry_mm").value		= nvl(divCrd.cbo_expiryMm.value);	/* 유효기간(월)		*/
-        		doc.getElementById("cardauth").value		= nvl(divCrd.ed_cardauth.value);	/* 인증정보			*/
-        		doc.getElementById("cardpwd").value			= nvl(divCrd.me_cardpwd.value);		/* 비밀번호			*/
+        		dsCrdParam.clearData();
+        		dsCrdParam.addRow();
         		
-        		doc.getElementById("btnProc").click();
+        		dsCrdParam.setColumn(0, "reqTx",		 "pay");							/* 결제/취소구분	*/
+        		dsCrdParam.setColumn(0, "custNo",		 nvl(this.custNo));					/* 고객번호		*/
+        		dsCrdParam.setColumn(0, "ordNo",		 nvl(this.tordNo));					/* 주문번호		*/
+        		dsCrdParam.setColumn(0, "payMethodCd",	 rdo.value);						/* 지불방법코드	*/
+        		dsCrdParam.setColumn(0, "payMethodName", rdo.text);							/* 지불방법명		*/
+        		dsCrdParam.setColumn(0, "recpAmt",		 nvl(this.recpAmt.toString()));		/* 결제금액		*/
+        		dsCrdParam.setColumn(0, "crdNo",		 nvl(divCrd.me_cardNo.value));		/* 카드번호		*/
+        		dsCrdParam.setColumn(0, "quotaopt",		 nvl(divCrd.cbo_quotaopt.value));	/* 할부개월		*/
+        		dsCrdParam.setColumn(0, "expiryYy",		 nvl(divCrd.cbo_expiryYy.value));	/* 유효기간(년)	*/
+        		dsCrdParam.setColumn(0, "expiryMm",		 nvl(divCrd.cbo_expiryMm.value));	/* 유효기간(월)	*/
+        		dsCrdParam.setColumn(0, "cardauth",		 nvl(divCrd.ed_cardauth.value));	/* 인증정보		*/
+        		dsCrdParam.setColumn(0, "cardpwd",		 nvl(divCrd.me_cardpwd.value));		/* 비밀번호		*/
+        		dsCrdParam.setColumn(0, "workCd",		 this.viewId);						/* 업무구분		*/
+        		
+        		/* 카드즉시출금 결제/환불 */
+        		div.fn_processPayment();
         	} else if(rdo.index == 1) {
         		/* 계좌즉시출금결제 */
         		if(div.agreeYn == "Y") {
@@ -368,12 +384,14 @@
          * 수납유형 Onitemchanged Event
          */
         this.rdo_recpFg_onitemchanged = function(obj,e) {
+        	var div = this.div_payment;
+        	
         	if(obj.index == 0) {
-        		this.div_cardImmWthdr.set_visible(true);
-        		this.div_accImmWthdr.set_visible(false);
+        		div.div_cardImmWthdr.set_visible(true);
+        		div.div_accImmWthdr.set_visible(false);
         	} else if(obj.index == 1) {
-        		this.div_cardImmWthdr.set_visible(false);
-        		this.div_accImmWthdr.set_visible(true);
+        		div.div_cardImmWthdr.set_visible(false);
+        		div.div_accImmWthdr.set_visible(true);
         	}
         }
         });

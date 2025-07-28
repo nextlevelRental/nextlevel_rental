@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0091 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0091
-   PURPOSE   »ç¿ëÀÚº° ·Î±× ¼³Á¤ °ü¸®
+   PURPOSE   ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,72 +10,71 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0091 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ Count
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • Count
   *****************************************************************************/
   FUNCTION f_sRtcm0091Count(
-    v_User_Id        IN RTCM0091.USER_ID%TYPE           /*»ç¿ëÀÚ ¾ÆÀÌµð       */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE           /*ì‚¬ìš©ìž ì•„ì´ë””       */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ Select
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0091 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*»ç¿ëÀÚ¸í              */
-    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*·Î±× ÀúÀå ¿©ºÎ        */
-    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*¸Å°³º¯¼ö ÀúÀå ¿©ºÎ    */
-    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0091.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*ì‚¬ìš©ìžëª…              */
+    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*ë¡œê·¸ ì €ìž¥ ì—¬ë¶€        */
+    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*ë§¤ê°œë³€ìˆ˜ ì €ìž¥ ì—¬ë¶€    */
+    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0091.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ Insert
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0091 (
-    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*·Î±× ÀúÀå ¿©ºÎ        */
-    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*¸Å°³º¯¼ö ÀúÀå ¿©ºÎ    */
-    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*ë¡œê·¸ ì €ìž¥ ì—¬ë¶€        */
+    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*ë§¤ê°œë³€ìˆ˜ ì €ìž¥ ì—¬ë¶€    */
+    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ Update
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0091 (
-    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*·Î±× ÀúÀå ¿©ºÎ        */
-    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*¸Å°³º¯¼ö ÀúÀå ¿©ºÎ    */
-    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*ë¡œê·¸ ì €ìž¥ ì—¬ë¶€        */
+    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*ë§¤ê°œë³€ìˆ˜ ì €ìž¥ ì—¬ë¶€    */
+    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ Delete
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0091 (
-    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚº° ·Î±× ¼³Á¤ °ü¸®(IUD)
+  -- ì‚¬ìš©ìžë³„ ë¡œê·¸ ì„¤ì • ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0091 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*·Î±× ÀúÀå ¿©ºÎ        */
-    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*¸Å°³º¯¼ö ÀúÀå ¿©ºÎ    */
-    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_User_Id        IN RTCM0091.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Log_Save_Yn    IN RTCM0091.LOG_SAVE_YN%TYPE,    /*ë¡œê·¸ ì €ìž¥ ì—¬ë¶€        */
+    v_Para_Save_Yn   IN RTCM0091.PARA_SAVE_YN%TYPE,   /*ë§¤ê°œë³€ìˆ˜ ì €ìž¥ ì—¬ë¶€    */
+    v_Use_Yn         IN RTCM0091.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
 END Pkg_Rtcm0091;
-/

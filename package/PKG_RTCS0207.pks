@@ -7,6 +7,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0207 AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2020-10-05  kstka            1. Created this package body.
+   1.1        2021-11-12  kstka            [20211112-0001] 자동가입프로세스 적용
+   1.2        2024-07-30  10243054         [20240730_01] 발송 메시지 수정 SR2407-01540
+   1.3        2024-10-07  10243054         [20241007_01] 발송 메시지 수정 SR2410-00238
+   1.4        2024-09-27  백인천             구분값 추가하기 어려워 추가 생성함(마모파손서비스 첨부이미지 삭제)
+   1.5        2025-05-19  10243054         p_sRtcs0207SelectList MFP_YN 추가 [20250519_01]
 *******************************************************************************/
    
   /*****************************************************************************
@@ -14,7 +19,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0207 AS
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
-  1.0        2020-10-05  kstka           Created. [20201005_01]                             
+  1.0        2020-10-05  kstka           Created. [20201005_01]
   *****************************************************************************/
   FUNCTION f_sRtcs0207Count(
     v_Ord_No         IN RTCS0207.ORD_NO%TYPE,          /*배송신청일자        */
@@ -190,6 +195,37 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0207 AS
     v_ErrorText      OUT VARCHAR2
     );
     
+  /*****************************************************************************
+  -- 마모파손서비스 부여내역 관리(IUD)
+  REVISIONS
+  Ver        Date        Author           Description
+  ---------  ----------  ---------------  -------------------------------------
+  1.2        2024-09-27  백인천             구분값 추가하기 어려워 추가 생성함
+  *****************************************************************************/
+  PROCEDURE p_RESETRtcs0207 (
+    v_Comm_Dvsn      IN CHAR,                         /*1 처리구분(I,U,D)       */
+    v_Dlvr_Day       IN RTCS0207.DLVR_DAY%TYPE,       /*배송신청일자          */
+    v_Ord_No         IN RTCS0207.ORD_NO%TYPE,         /*주문번호             */
+    v_Dlvr_Type      IN RTCS0207.DLVR_TYPE%TYPE,      /*부여:A, 신청:B       */
+    v_Dlvr_Seq       IN OUT RTCS0207.DLVR_SEQ%TYPE,   /*서비스순번            */
+    v_Serv_Cd        IN RTCS0207.SERV_CD%TYPE,        /*서비스코드            */
+    v_Cust_No        IN RTCS0207.CUST_NO%TYPE,        /*고객번호              */
+    v_Cust_Nm        IN RTCS0207.CUST_NM%TYPE,        /*고객명                */
+    v_Agency_Cd      IN RTCS0207.AGENCY_CD%TYPE,      /*대리점코드             */
+    v_Matnr          IN RTCS0207.MATNR%TYPE,          /*제품코드              */
+    v_Kwmeng         IN RTCS0207.KWMENG%TYPE,         /*타이어본수             */
+    v_Req_Day        IN RTCS0207.REQ_DAY%TYPE,        /*신청일자              */
+    v_Dlv_Stat       IN RTCS0207.DLV_STAT%TYPE,       /*상태                 */
+    v_Dlv_Desc       IN RTCS0207.DLV_DESC%TYPE,       /*요청사항             */
+    v_Car_No         IN RTCS0207.CAR_NO%TYPE,         /*차량번호                */
+    v_Dlv_Tel        IN RTCS0207.DLV_TEL%TYPE,        /*연락처               */
+    v_C_Mileage      IN RTCS0207.C_MILEAGE%TYPE,      /*주행거리              */
+    v_Reg_Id         IN RTCS0207.REG_ID%TYPE,         /*등록자               */
+    v_Success_Code   OUT NUMBER,
+    v_Return_Message OUT VARCHAR2,
+    v_ErrorText      OUT VARCHAR2
+    );
+   
     /*****************************************************************************
   -- 쇼핑몰 마모파손서비스 가입/신청가능여부 정보획득
   
@@ -249,4 +285,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0207 AS
     );
       
 END Pkg_Rtcs0207;
-/

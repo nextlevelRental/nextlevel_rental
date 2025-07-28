@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_files", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
@@ -30,6 +31,7 @@
 
             obj = new Dataset("ds_delfiles", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
@@ -39,6 +41,7 @@
 
             obj = new Dataset("ds_download", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
@@ -48,6 +51,7 @@
 
             obj = new Dataset("ds_input", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
@@ -57,6 +61,7 @@
 
             obj = new Dataset("ds_output", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -217,11 +222,11 @@
 
         
          
-
         this.extUp;     //file upload object
         this.extDown;   //file download object
         this.fileConfig = {
-        		host : "https://portal.tirerental.co.kr/",
+        		//host : "https://portal.tirerental.co.kr/",
+        		host : application.gv_host,
         		//uploadUrl : "fileUpload2.do?path=upload/userImage",
         		//uploadUrl : "saveUserFile.jsp?path=upload/userImage&progid=1111111",
         		uploadUrl : "ntrms/comm/uploadFileController.do",

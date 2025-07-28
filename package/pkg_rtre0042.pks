@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0042 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0042
-   PURPOSE   ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ °ü¸®
+   PURPOSE   ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,63 +10,62 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0042 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ Count
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ Count
   *****************************************************************************/
   FUNCTION f_sRtre0042Count(
-    v_Tno            IN RTRE0042.TNO%TYPE               /*PG°Å·¡¹øÈ£          */
+    v_Tno            IN RTRE0042.TNO%TYPE               /*PGê±°ëž˜ë²ˆí˜¸          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ Select
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0042 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Tno            IN RTRE0042.TNO%TYPE,            /*PG°Å·¡¹øÈ£            */
-    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*Ä«µå¹øÈ£              */
-    v_Reg_Id         IN RTRE0042.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Tno            IN RTRE0042.TNO%TYPE,            /*PGê±°ëž˜ë²ˆí˜¸            */
+    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*ì¹´ë“œë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE0042.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ Insert
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0042 (
-    v_Tno            IN RTRE0042.TNO%TYPE,            /*PG°Å·¡¹øÈ£            */
-    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*Ä«µå¹øÈ£              */
-    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Tno            IN RTRE0042.TNO%TYPE,            /*PGê±°ëž˜ë²ˆí˜¸            */
+    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*ì¹´ë“œë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ Update
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0042 (
-    v_Tno            IN RTRE0042.TNO%TYPE,            /*PG°Å·¡¹øÈ£            */
-    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*Ä«µå¹øÈ£              */
-    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Tno            IN RTRE0042.TNO%TYPE,            /*PGê±°ëž˜ë²ˆí˜¸            */
+    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*ì¹´ë“œë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ Delete
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0042 (
-    v_Tno            IN RTRE0042.TNO%TYPE,            /*PG°Å·¡¹øÈ£            */
-    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Tno            IN RTRE0042.TNO%TYPE,            /*PGê±°ëž˜ë²ˆí˜¸            */
+    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿Â¶óÀÎ °áÁ¦ Ä«µåÁ¤º¸ °ü¸®(IUD)
+  -- ì˜¨ë¼ì¸ ê²°ì œ ì¹´ë“œì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0042 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Tno            IN RTRE0042.TNO%TYPE,            /*PG°Å·¡¹øÈ£            */
-    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*Ä«µå¹øÈ£              */
-    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Tno            IN RTRE0042.TNO%TYPE,            /*PGê±°ëž˜ë²ˆí˜¸            */
+    v_Crd_No         IN RTRE0042.CRD_NO%TYPE,         /*ì¹´ë“œë²ˆí˜¸              */
+    v_Reg_Id         IN RTRE0042.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
 END Pkg_Rtre0042;
-/

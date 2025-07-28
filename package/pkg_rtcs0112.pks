@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0112 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0112
-   PURPOSE   Áú¹®°ü¸®(Áú¹®¹øÈ£) °ü¸®
+   PURPOSE   ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,87 +10,86 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0112 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Count
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Count
   *****************************************************************************/
   FUNCTION f_sRtcs0112Count(
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE       /*Áú¹®¹øÈ£            */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE       /*ì§ˆë¬¸ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Select
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0112 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Insert
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Update
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) Delete
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0112 (
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(Áú¹®¹øÈ£) °ü¸®(IUD)
+  -- ì§ˆë¬¸ê´€ë¦¬(ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0112 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Question       IN RTCS0112.QUESTION%TYPE,       /*Áú¹®                  */
-    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*Æò°¡¹Ý¿µ¿©ºÎ          */
-    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*´äº¯¹øÈ£              */
-    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Question_No    IN RTCS0112.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0112.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Question       IN RTCS0112.QUESTION%TYPE,       /*ì§ˆë¬¸                  */
+    v_Conf_Yn        IN RTCS0112.CONF_YN%TYPE,        /*í‰ê°€ë°˜ì˜ì—¬ë¶€          */
+    v_Answer_No      IN RTCS0112.ANSWER_NO%TYPE,      /*ë‹µë³€ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Æò°¡¹Ý¿µ¿©ºÎÁ¶È¸
+  -- í‰ê°€ë°˜ì˜ì—¬ë¶€ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcs0112_JSYN(
-    v_Question_No        IN RTCS0112.QUESTION_NO%TYPE   /*Áú¹®¹øÈ£            */
+    v_Question_No        IN RTCS0112.QUESTION_NO%TYPE   /*ì§ˆë¬¸ë²ˆí˜¸            */
     ) RETURN VARCHAR ; 
                
     
 END Pkg_Rtcs0112;
-/

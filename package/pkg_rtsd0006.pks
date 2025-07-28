@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0006 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0006
-   PURPOSE   øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ ∞¸∏Æ
+   PURPOSE   Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,91 +10,90 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0006 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ Count
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0006Count(
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE            /*¿œ∑√π¯»£            */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE            /*ÏùºÎ†®Î≤àÌò∏            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ Select
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0006 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*¿œ∑√π¯»£              */
-    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*Ω√µµ                  */
-    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*±∫,±∏                 */
-    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*µø                    */
-    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*π¯¡ˆ                  */
-    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ω√,µµ ƒ⁄µÂ            */
-    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ω√,±∫,±∏ ƒ⁄µÂ         */
-    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0006.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*ÏùºÎ†®Î≤àÌò∏              */
+    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*ÏãúÎèÑ                  */
+    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*Íµ∞,Íµ¨                 */
+    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*Îèô                    */
+    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*Î≤àÏßÄ                  */
+    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ïãú,ÎèÑ ÏΩîÎìú            */
+    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ïãú,Íµ∞,Íµ¨ ÏΩîÎìú         */
+    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0006.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ Insert
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0006 (
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*¿œ∑√π¯»£              */
-    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*Ω√µµ                  */
-    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*±∫,±∏                 */
-    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*µø                    */
-    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*π¯¡ˆ                  */
-    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ω√,µµ ƒ⁄µÂ            */
-    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ω√,±∫,±∏ ƒ⁄µÂ         */
-    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*ÏùºÎ†®Î≤àÌò∏              */
+    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*ÏãúÎèÑ                  */
+    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*Íµ∞,Íµ¨                 */
+    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*Îèô                    */
+    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*Î≤àÏßÄ                  */
+    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ïãú,ÎèÑ ÏΩîÎìú            */
+    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ïãú,Íµ∞,Íµ¨ ÏΩîÎìú         */
+    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ Update
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0006 (
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*¿œ∑√π¯»£              */
-    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*Ω√µµ                  */
-    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*±∫,±∏                 */
-    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*µø                    */
-    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*π¯¡ˆ                  */
-    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ω√,µµ ƒ⁄µÂ            */
-    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ω√,±∫,±∏ ƒ⁄µÂ         */
-    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*ÏùºÎ†®Î≤àÌò∏              */
+    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*ÏãúÎèÑ                  */
+    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*Íµ∞,Íµ¨                 */
+    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*Îèô                    */
+    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*Î≤àÏßÄ                  */
+    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ïãú,ÎèÑ ÏΩîÎìú            */
+    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ïãú,Íµ∞,Íµ¨ ÏΩîÎìú         */
+    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ Delete
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0006 (
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*¿œ∑√π¯»£              */
-    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*ÏùºÎ†®Î≤àÌò∏              */
+    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- øÏ∆Ìπ¯»£ ∏∂Ω∫≈Õ ∞¸∏Æ(IUD)
+  -- Ïö∞Ìé∏Î≤àÌò∏ ÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0006 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*¿œ∑√π¯»£              */
-    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*øÏ∆Ìπ¯»£              */
-    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*Ω√µµ                  */
-    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*±∫,±∏                 */
-    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*µø                    */
-    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*π¯¡ˆ                  */
-    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ω√,µµ ƒ⁄µÂ            */
-    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ω√,±∫,±∏ ƒ⁄µÂ         */
-    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ªÁøÎø©∫Œ              */
-    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ser_No         IN RTSD0006.SER_NO%TYPE,         /*ÏùºÎ†®Î≤àÌò∏              */
+    v_Pos_Cd         IN RTSD0006.POS_CD%TYPE,         /*Ïö∞Ìé∏Î≤àÌò∏              */
+    v_Addrr1         IN RTSD0006.ADDRR1%TYPE,         /*ÏãúÎèÑ                  */
+    v_Addrr2         IN RTSD0006.ADDRR2%TYPE,         /*Íµ∞,Íµ¨                 */
+    v_Addrr3         IN RTSD0006.ADDRR3%TYPE,         /*Îèô                    */
+    v_Addrr4         IN RTSD0006.ADDRR4%TYPE,         /*Î≤àÏßÄ                  */
+    v_Sido_Cd        IN RTSD0006.SIDO_CD%TYPE,        /*Ïãú,ÎèÑ ÏΩîÎìú            */
+    v_Sigun_Cd       IN RTSD0006.SIGUN_CD%TYPE,       /*Ïãú,Íµ∞,Íµ¨ ÏΩîÎìú         */
+    v_Use_Yn         IN RTSD0006.USE_YN%TYPE,         /*ÏÇ¨Ïö©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0006.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
 END Pkg_Rtsd0006;
-/

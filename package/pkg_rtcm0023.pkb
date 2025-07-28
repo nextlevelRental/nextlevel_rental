@@ -240,7 +240,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0023 AS
     v_Success_code := 0;
     v_Return_Message := '정상적으로 등록되었습니다';
     v_ErrorText := '';
-    COMMIT;
+--    COMMIT;
 
     EXCEPTION
       WHEN e_Error THEN
@@ -355,4 +355,3 @@ SELECT A.*
   END p_sRtcm0023AuthGroupUserNot;
   
 END Pkg_Rtcm0023;
-/

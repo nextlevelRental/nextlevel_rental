@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
 /*******************************************************************************
    NAME      Pkg_Rtcm0092
-   PURPOSE   га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ ╟Э╦╝
+   PURPOSE   М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Й╢─К╕╛
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Count
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0092Count(
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*га╥н╫ца╝╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*М■└К║°Л▀°Л═╦К╙┘          */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,26 +32,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   END f_sRtcm0092Count;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Select
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0092 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE       /*га╥н╫ца╝╪Ё╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE       /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.PROC_NM,                   /*га╥н╫ца╝╦М          */
-            A.PROC_DESC,                 /*га╥н╫ца╝╪Ё╦М        */
-            A.LOG_SAVE_YN,               /*╥н╠вюЗюЕ©╘╨н        */
-            A.PARA_SAVE_YN,              /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н    */
-            A.USE_YN,                    /*╩Г©К©╘╨н            */
-            A.REG_ID,                    /*╣Н╥оюз ID           */
-            A.REG_DT,                    /*╣Н╥оюо              */
-            A.CHG_ID,                    /*╨╞╟Фюз ID           */
-            A.CHG_DT                     /*╨╞╟Фюо              */
+    SELECT  A.PROC_NM,                   /*М■└К║°Л▀°Л═╦К╙┘          */
+            A.PROC_DESC,                 /*М■└К║°Л▀°Л═╦Л└╓К╙┘        */
+            A.LOG_SAVE_YN,               /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─        */
+            A.PARA_SAVE_YN,              /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─    */
+            A.USE_YN,                    /*Л┌╛Л ╘Л≈╛К╤─            */
+            A.REG_ID,                    /*К⌠╠К║²Л·░ ID           */
+            A.REG_DT,                    /*К⌠╠К║²Л²╪              */
+            A.CHG_ID,                    /*КЁ─Й╡╫Л·░ ID           */
+            A.CHG_DT                     /*КЁ─Й╡╫Л²╪              */
     FROM    RTCM0092 A
     WHERE   A.PROC_NM  LIKE '%'||v_Proc_Nm||'%'
     AND     A.PROC_DESC LIKE '%'||v_Proc_Desc||'%';
@@ -59,15 +59,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   END p_sRtcm0092;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Insert
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -104,15 +104,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   END f_InsertRtcm0092;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Update
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -136,11 +136,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   END f_UpdateRtcm0092;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Delete
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -160,16 +160,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   END f_DeleteRtcm0092;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ ╟Э╦╝(IUD)
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0092 (
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -178,28 +178,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- гй╪Ж╟╙: га╥н╫ца╝╦М ,╥н╠вюЗюЕ©╘╨н ,╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н ,╩Г©К©╘╨н ,╣Н╥оюз ID
+    -- М∙└Л┬≤Й╟▓: М■└К║°Л▀°Л═╦К╙┘ ,К║°Й╥╦Л═─Л·╔Л≈╛К╤─ ,К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─ ,Л┌╛Л ╘Л≈╛К╤─ ,К⌠╠К║²Л·░ ID
     IF (TRIM(v_Proc_Nm) IS NULL) OR (0 = Pkg_Rtcm0092.f_sRtcm0092ProcCount(UPPER(TRIM(v_Proc_Nm)))) THEN
-        v_Return_Message := 'га╥н╫ца╝╦М('||v_Proc_Nm||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'М■└К║°Л▀°Л═╦К╙┘('||v_Proc_Nm||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
      
     IF (TRIM(v_Log_Save_Yn) IS NULL) OR (v_Log_Save_Yn NOT IN ('Y','N')) THEN
-        v_Return_Message := '╥н╠в юЗюЕ ©╘╨н('||v_Log_Save_Yn||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К║°Й╥╦ Л═─Л·╔ Л≈╛К╤─('||v_Log_Save_Yn||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Para_Save_Yn) IS NULL) OR (v_Para_Save_Yn NOT IN ('Y','N')) THEN
-        v_Return_Message := '╦е╟Ё╨╞╪Ж юЗюЕ ©╘╨н('||v_Para_Save_Yn||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К╖╓Й╟°КЁ─Л┬≤ Л═─Л·╔ Л≈╛К╤─('||v_Para_Save_Yn||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     IF (TRIM(v_Use_Yn) IS NULL) OR (v_Use_Yn NOT IN ('Y','N')) THEN
-        v_Return_Message := '╩Г©К©╘╨н('||v_Use_Yn||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'Л┌╛Л ╘Л≈╛К╤─('||v_Use_Yn||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := '╣Н╥оюз ID('||v_Reg_Id||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К⌠╠К║²Л·░ ID('||v_Reg_Id||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
 
@@ -207,7 +207,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
 
         IF 0 != f_InsertRtcm0092(v_Proc_Nm, v_Proc_Desc, v_Log_Save_Yn, v_Para_Save_Yn, v_Use_Yn, 
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'га╥н╫ца╝╨╟ ╥н╠в ╣Н╥о ╫гфп!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ К⌠╠К║² Л▀╓М▄╗!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -218,7 +218,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
         
             IF 0 != f_UpdateRtcm0092(v_Proc_Nm, v_Proc_Desc, v_Log_Save_Yn, v_Para_Save_Yn, v_Use_Yn, 
                                      v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'га╥н╫ца╝╨╟ ╥н╠в ╪Жа╓ ╫гфп!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л┬≤Л═∙ Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -227,20 +227,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcm0092(v_Proc_Nm, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'га╥н╫ца╝╨╟ ╥н╠в ╩Ха╕ ╫гфп!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л┌╜Л═° Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'цЁ╦╝╠╦╨п(I,U,D)╟╙ ©ю╥Ы!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Л╡≤К╕╛Й╣╛К╤└(I,U,D)Й╟▓ Л≤╓К╔≤!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'а╓╩СюШю╦╥н ╣Н╥о╣г╬З╫ю╢о╢ы';
+    v_Return_Message := 'Л═∙Л┐│Л═│Л°╪К║° К⌠╠К║²К░≤Л≈┬Л┼╣К▀┬К▀╓';
     v_ErrorText := '';
     --COMMIT;
 
@@ -255,7 +255,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '╫ц╫╨еш╟Э╦╝юз©║╟т ╧╝юг╧ы╤Ь╢о╢ы!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'Л▀°Л┼╓М┘°Й╢─К╕╛Л·░Л≈░Й╡▄ К╛╦Л²≤К╟■К·█К▀┬К▀╓!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcm0092.p_IUDRtcm0092(2)', v_ErrorText, v_Return_Message);
 
@@ -263,10 +263,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
 
 
   /*****************************************************************************
-  -- га╥н╫ца╝ а╦юГ ю╞╧╚ Count
+  -- М■└К║°Л▀°Л═╦ Л║╢Л·╛ Л°═К╛╢ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0092ProcCount(
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*га╥н╫ца╝╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*М■└К║°Л▀°Л═╦К╙┘          */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -287,4 +287,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0092 AS
   
 
 END Pkg_Rtcm0092;
-/

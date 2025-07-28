@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0423 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0423
-    PURPOSE     Ω∫∏∂∆Æ≈√πË ≈√πËªÁ ∏∂Ω∫≈Õ
+    PURPOSE     Ïä§ÎßàÌä∏ÌÉùÎ∞∞ ÌÉùÎ∞∞ÏÇ¨ ÎßàÏä§ÌÑ∞
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
@@ -9,28 +9,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0423 AS
 *******************************************************************************/
    
   /*****************************************************************************
-  -- ≈√πËªÁƒ⁄µÂ Count
+  -- ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú Count
   *****************************************************************************/
   FUNCTION f_sRtsd0423Count(
-    v_Logistics_Cd IN  RTSD0423.LOGISTICS_CD%TYPE            /*≈√πËªÁƒ⁄µÂ        */
+    v_Logistics_Cd IN  RTSD0423.LOGISTICS_CD%TYPE            /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú        */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  --≈√πËªÁƒ⁄µÂ∏Ì
+  --ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìúÎ™Ö
   *****************************************************************************/
   FUNCTION f_sRtsd0423Code(
-      v_Logistics_Nm             IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì              */
+      v_Logistics_Nm             IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö              */
     ) RETURN VARCHAR;
   
   /*****************************************************************************
-  --≈√πËªÁƒ⁄µÂ∏Ì
+  --ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìúÎ™Ö
   *****************************************************************************/
   FUNCTION f_sRtsd0423CodeName(
-      v_Logistics_Cd             IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁ∏Ì              */
+      v_Logistics_Cd             IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö              */
     ) RETURN VARCHAR;
     
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏¿‘∑¬(IUD)
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ÏûÖÎ†•(IUD)
   
     REVISIONS
     Ver     Date        Author          Description
@@ -38,18 +38,18 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-04  kstka            [20220704_01] Created this package spec.
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0423 (
-      v_Comm_Dvsn                    IN CHAR                                        /*√≥∏Æ±∏∫–(I,U,D)      */
-    , v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*µÓ∑œ¿⁄ ID             */
+      v_Comm_Dvsn                    IN CHAR                                        /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)      */
+    , v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*Îì±Î°ùÏûê ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
    
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏ Insert
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -57,15 +57,15 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-01  kstka            [20220701_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_InsertRtsd0423 (
-      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*µÓ∑œ¿⁄ ID             */
+      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                  /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ≈√πËªÁ¡§∫∏ Update
+  -- ÌÉùÎ∞∞ÏÇ¨Ï†ïÎ≥¥ Update
   
     REVISIONS
     Ver     Date        Author          Description
@@ -73,12 +73,11 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0423 AS
     1.0     2022-07-04  kstka            [20220704_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0423 (
-      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*≈√πËªÁƒ⁄µÂ           */
-    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*≈√πËªÁ∏Ì             */
-    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*±π¡¶≈√πËø©∫Œ          */
-    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                 /*µÓ∑œ¿⁄ ID             */
+      v_Logistics_Cd                 IN RTSD0423.LOGISTICS_CD%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨ÏΩîÎìú           */
+    , v_Logistics_Nm                 IN RTSD0423.LOGISTICS_NM%TYPE                  /*ÌÉùÎ∞∞ÏÇ¨Î™Ö             */
+    , v_Logistics_International      IN RTSD0423.LOGISTICS_INTERNATIONAL%TYPE       /*Íµ≠Ï†úÌÉùÎ∞∞Ïó¨Î∂Ä          */
+    , v_Reg_Id          IN RTSD0423.REG_ID%TYPE                 /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
      
 END Pkg_Rtsd0423;
-/

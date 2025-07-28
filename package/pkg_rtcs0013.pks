@@ -1,50 +1,49 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0013 AS
 /*******************************************************************************
     NAME        Pkg_Rtcs0013
-    PURPOSE     πÊπÆ¡°∞À ∞≈∫Œ√∂»∏ ∞¸∏Æ
+    PURPOSE     Î∞©Î¨∏Ï†êÍ≤Ä Í±∞Î∂ÄÏ≤†Ìöå Í¥ÄÎ¶¨
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-07-26  wjim            [20170726_01] Ω≈±‘∞≥πﬂ
+    1.0     2017-07-26  wjim            [20170726_01] Ïã†Í∑úÍ∞úÎ∞ú
 *******************************************************************************/
 
   /*****************************************************************************
-  -- πÊπÆ¡°∞À ∞≈∫Œ√∂»∏¡§∫∏ ¡∂»∏
+  -- Î∞©Î¨∏Ï†êÍ≤Ä Í±∞Î∂ÄÏ≤†ÌöåÏ†ïÎ≥¥ Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRTCS0013 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Ord_No          IN RTCS0013.ORD_NO%TYPE           /* ∞Ëæ‡π¯»£         */
+    , v_Ord_No          IN RTCS0013.ORD_NO%TYPE           /* Í≥ÑÏïΩÎ≤àÌò∏         */
   );
   
   /*****************************************************************************
-  -- πÊπÆ¡°∞À ∞≈∫ŒµÓ∑œ
+  -- Î∞©Î¨∏Ï†êÍ≤Ä Í±∞Î∂ÄÎì±Î°ù
   *****************************************************************************/
   PROCEDURE p_SaveRtcs0013Deny (
-      v_Ord_No          IN RTCS0013.ORD_NO%TYPE            /* ∞Ëæ‡π¯»£        */
-    , v_Equ_No          IN RTCS0013.EQU_NO%TYPE            /* º≥∫Òπ¯»£        */
-    , v_Deny_Std_Ym     IN RTCS0013.DENY_STD_YM%TYPE       /* ∞≈∫Œ±‚¡ÿ≥‚ø˘    */       
-    , v_Deny_Desc       IN RTCS0013.DENY_DESC%TYPE         /* ∞≈∫Œ≥ªøÎ        */
-    , v_Reg_Id          IN RTCS0013.REG_ID%TYPE            /* µÓ∑œ¿⁄ID        */
+      v_Ord_No          IN RTCS0013.ORD_NO%TYPE            /* Í≥ÑÏïΩÎ≤àÌò∏        */
+    , v_Equ_No          IN RTCS0013.EQU_NO%TYPE            /* ÏÑ§ÎπÑÎ≤àÌò∏        */
+    , v_Deny_Std_Ym     IN RTCS0013.DENY_STD_YM%TYPE       /* Í±∞Î∂ÄÍ∏∞Ï§ÄÎÖÑÏõî    */       
+    , v_Deny_Desc       IN RTCS0013.DENY_DESC%TYPE         /* Í±∞Î∂ÄÎÇ¥Ïö©        */
+    , v_Reg_Id          IN RTCS0013.REG_ID%TYPE            /* Îì±Î°ùÏûêID        */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
   
   /*****************************************************************************
-  -- πÊπÆ¡°∞À √∂»∏µÓ∑œ
+  -- Î∞©Î¨∏Ï†êÍ≤Ä Ï≤†ÌöåÎì±Î°ù
   *****************************************************************************/
   PROCEDURE p_SaveRtcs0013Withdraw (
-      v_Ord_No          IN RTCS0013.ORD_NO%TYPE            /* ∞Ëæ‡π¯»£        */
-    , v_Equ_No          IN RTCS0013.EQU_NO%TYPE            /* º≥∫Òπ¯»£        */
-    , v_Deny_Seq        IN RTCS0013.DENY_SEQ%TYPE          /* ∞≈∫Œº¯π¯        */
-    , v_Wthdrw_Std_Ym   IN RTCS0013.WTHDRW_STD_YM%TYPE     /* √∂»∏±‚¡ÿ≥‚ø˘    */       
-    , v_Wthdrw_Desc     IN RTCS0013.WTHDRW_DESC%TYPE       /* √∂»∏≥ªøÎ        */
-    , v_Reg_Id          IN RTCS0013.REG_ID%TYPE            /* µÓ∑œ¿⁄ID        */
+      v_Ord_No          IN RTCS0013.ORD_NO%TYPE            /* Í≥ÑÏïΩÎ≤àÌò∏        */
+    , v_Equ_No          IN RTCS0013.EQU_NO%TYPE            /* ÏÑ§ÎπÑÎ≤àÌò∏        */
+    , v_Deny_Seq        IN RTCS0013.DENY_SEQ%TYPE          /* Í±∞Î∂ÄÏàúÎ≤à        */
+    , v_Wthdrw_Std_Ym   IN RTCS0013.WTHDRW_STD_YM%TYPE     /* Ï≤†ÌöåÍ∏∞Ï§ÄÎÖÑÏõî    */       
+    , v_Wthdrw_Desc     IN RTCS0013.WTHDRW_DESC%TYPE       /* Ï≤†ÌöåÎÇ¥Ïö©        */
+    , v_Reg_Id          IN RTCS0013.REG_ID%TYPE            /* Îì±Î°ùÏûêID        */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
         
 END Pkg_Rtcs0013;
-/

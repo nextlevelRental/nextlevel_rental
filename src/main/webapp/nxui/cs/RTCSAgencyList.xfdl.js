@@ -86,7 +86,7 @@
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_AgencyList", this);
-            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sidoNm\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunNm\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbnNm\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"chYn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntProc\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sidoNm\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunNm\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbnNm\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"chYn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntProc\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/><Column id=\"premPrplYn\" type=\"STRING\" size=\"256\"/><Column id=\"totEvalPoint\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_S100", this);
@@ -151,14 +151,14 @@
             obj.set_text("광역시도");
             obj.set_cssclass("sta_WF_schTitle");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("Static04", "absolute", "892", "12", "80", "21", null, null, this.div_search);
+            obj = new Static("Static04", "absolute", "901", "12", "80", "21", null, null, this.div_search);
             obj.set_taborder("51");
             obj.set_text("계절구분");
             obj.set_cssclass("sta_WF_schTitle");
             this.div_search.addChild(obj.name, obj);
             obj = new Static("st_procDay", "absolute", "596", "11", "80", "21", null, null, this.div_search);
             obj.set_taborder("52");
-            obj.set_text("추천점");
+            obj.set_text("전략추천");
             obj.set_cssclass("sta_WF_schTitle");
             this.div_search.addChild(obj.name, obj);
             obj = new Static("Static26", "absolute", "0", "0", "1122", "12", null, null, this.div_search);
@@ -211,7 +211,7 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("10");
             obj.set_index("0");
-            obj = new Combo("cb_ChYn", "absolute", "660", "11", "60", "21", null, null, this.div_search);
+            obj = new Combo("cb_ChYn", "absolute", "669", "12", "60", "21", null, null, this.div_search);
             this.div_search.addChild(obj.name, obj);
             obj.set_taborder("3");
             obj.set_autoselect("true");
@@ -220,12 +220,12 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
             obj.set_index("0");
-            obj = new Static("st_salesOffice00", "absolute", "745", "12", "80", "21", null, null, this.div_search);
+            obj = new Static("st_salesOffice00", "absolute", "754", "12", "80", "21", null, null, this.div_search);
             obj.set_taborder("73");
             obj.set_text("경정비");
             obj.set_cssclass("sta_WF_schTitle");
             this.div_search.addChild(obj.name, obj);
-            obj = new Combo("cb_LmYn", "absolute", "807", "12", "60", "21", null, null, this.div_search);
+            obj = new Combo("cb_LmYn", "absolute", "816", "12", "60", "21", null, null, this.div_search);
             this.div_search.addChild(obj.name, obj);
             obj.set_taborder("4");
             obj.set_autoselect("true");
@@ -234,7 +234,7 @@
             obj.set_datacolumn("cdNm");
             obj.set_displayrowcount("5");
             obj.set_index("0");
-            obj = new Combo("cb_SeasonGbn", "absolute", "977", "12", "108", "21", null, null, this.div_search);
+            obj = new Combo("cb_SeasonGbn", "absolute", "981", "12", "108", "21", null, null, this.div_search);
             this.div_search.addChild(obj.name, obj);
             obj.set_taborder("5");
             obj.set_autoselect("true");
@@ -255,13 +255,13 @@
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("Static02", "absolute", "720", "0", "25", "46", null, null, this.div_search);
+            obj = new Static("Static02", "absolute", "729", "0", "25", "46", null, null, this.div_search);
             obj.set_taborder("78");
             obj.set_text("h72");
             obj.set_cssclass("Guide_color");
             obj.set_visible("false");
             this.div_search.addChild(obj.name, obj);
-            obj = new Static("Static03", "absolute", "867", "0", "25", "46", null, null, this.div_search);
+            obj = new Static("Static03", "absolute", "876", "0", "25", "46", null, null, this.div_search);
             obj.set_taborder("79");
             obj.set_text("h72");
             obj.set_cssclass("Guide_color");
@@ -323,7 +323,7 @@
             obj.set_binddataset("ds_AgencyList");
             obj.set_cellsizingtype("col");
             obj.set_autosizebandtype("allband");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"62\"/><Column size=\"95\"/><Column size=\"190\"/><Column size=\"356\"/><Column size=\"64\"/><Column size=\"107\"/><Column size=\"46\"/><Column size=\"44\"/><Column size=\"85\"/><Column size=\"116\"/><Column size=\"88\"/><Column size=\"100\"/><Column size=\"59\"/><Column size=\"300\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"24\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"광역시도\"/><Cell col=\"1\" text=\"시군구\"/><Cell col=\"2\" text=\"장착점명\"/><Cell col=\"3\" text=\"주소\"/><Cell col=\"4\" text=\"계절구분\"/><Cell col=\"5\" text=\"연락처\"/><Cell col=\"6\" text=\"추천점\"/><Cell col=\"7\" text=\"경정비\"/><Cell col=\"8\" text=\"탈착기\"/><Cell col=\"9\" text=\"얼라인먼트\"/><Cell col=\"10\" text=\"밸런스\"/><Cell col=\"11\" text=\"채널중분류\"/><Cell col=\"12\" text=\"렌탈계정\"/><Cell col=\"13\" text=\"비고\"/></Band><Band id=\"body\"><Cell text=\"bind:sidoNm\"/><Cell col=\"1\" text=\"bind:sigunNm\"/><Cell col=\"2\" edittype=\"normal\" text=\"bind:agencyNm\"/><Cell col=\"3\" edittype=\"normal\" text=\"bind:addr\"/><Cell col=\"4\" text=\"bind:seasonGbnNm\"/><Cell col=\"5\" edittype=\"normal\" text=\"bind:telNo\"/><Cell col=\"6\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:chYn\"/><Cell col=\"7\" text=\"bind:lmYn\"/><Cell col=\"8\" text=\"bind:desorptNm\"/><Cell col=\"9\" text=\"bind:alignNm\"/><Cell col=\"10\" text=\"bind:balanceNm\"/><Cell col=\"11\" text=\"bind:chanMclsNm\"/><Cell col=\"12\" text=\"bind:cntProc\"/><Cell col=\"13\" celltype=\"body\" style=\"align:left;\" text=\"bind:memo\" wordwrap=\"none\" expandshow=\"hide\" autosizerow=\"default\" autosizecol=\"default\"/></Band><Band id=\"summary\"><Cell text=\"총합계\"/><Cell col=\"1\" style=\"align:right;\" expr=\"expr:dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"62\"/><Column size=\"95\"/><Column size=\"190\"/><Column size=\"133\"/><Column size=\"87\"/><Column size=\"356\"/><Column size=\"64\"/><Column size=\"107\"/><Column size=\"58\"/><Column size=\"44\"/><Column size=\"85\"/><Column size=\"116\"/><Column size=\"88\"/><Column size=\"100\"/><Column size=\"59\"/><Column size=\"300\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/><Row size=\"24\" band=\"summ\"/></Rows><Band id=\"head\"><Cell text=\"광역시도\"/><Cell col=\"1\" text=\"시군구\"/><Cell col=\"2\" text=\"장착점명\"/><Cell col=\"3\" text=\"프리미엄 퍼플점 여부\"/><Cell col=\"4\" text=\"만족도 총평점\"/><Cell col=\"5\" text=\"주소\"/><Cell col=\"6\" text=\"계절구분\"/><Cell col=\"7\" text=\"연락처\"/><Cell col=\"8\" text=\"전략추천\"/><Cell col=\"9\" text=\"경정비\"/><Cell col=\"10\" text=\"탈착기\"/><Cell col=\"11\" text=\"얼라인먼트\"/><Cell col=\"12\" text=\"밸런스\"/><Cell col=\"13\" text=\"채널중분류\"/><Cell col=\"14\" text=\"렌탈계정\"/><Cell col=\"15\" text=\"비고\"/></Band><Band id=\"body\"><Cell text=\"bind:sidoNm\"/><Cell col=\"1\" text=\"bind:sigunNm\"/><Cell col=\"2\" edittype=\"normal\" text=\"bind:agencyNm\"/><Cell col=\"3\" text=\"bind:premPrplYn\"/><Cell col=\"4\" text=\"bind:totEvalPoint\"/><Cell col=\"5\" edittype=\"normal\" text=\"bind:addr\"/><Cell col=\"6\" text=\"bind:seasonGbnNm\"/><Cell col=\"7\" edittype=\"normal\" text=\"bind:telNo\"/><Cell col=\"8\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:chYn\"/><Cell col=\"9\" text=\"bind:lmYn\"/><Cell col=\"10\" text=\"bind:desorptNm\"/><Cell col=\"11\" text=\"bind:alignNm\"/><Cell col=\"12\" text=\"bind:balanceNm\"/><Cell col=\"13\" text=\"bind:chanMclsNm\"/><Cell col=\"14\" text=\"bind:cntProc\"/><Cell col=\"15\" celltype=\"body\" style=\"align:left;\" text=\"bind:memo\" wordwrap=\"none\" expandshow=\"hide\" autosizerow=\"default\" autosizecol=\"default\"/></Band><Band id=\"summary\"><Cell text=\"총합계\"/><Cell col=\"1\" style=\"align:right;\" expr=\"expr:dataset.getRowCount()+&quot;(건)&quot;\"/><Cell col=\"2\"/><Cell col=\"3\"/><Cell col=\"4\"/><Cell col=\"5\"/><Cell col=\"6\"/><Cell col=\"7\"/><Cell col=\"8\"/><Cell col=\"9\"/><Cell col=\"10\"/><Cell col=\"11\"/><Cell col=\"12\"/><Cell col=\"13\"/><Cell col=\"14\"/><Cell col=\"15\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
 
@@ -367,7 +367,7 @@
         this.registerScript("RTCSAgencyList.xfdl", function() {
         /***************************************************************************************************
          * 파 일 명 : RTCSAgencyList.xfdl
-         * 설    명 : 대리점 조회
+         * 설    명 : 대리점 조회 
          * 작 성 자 :
          * 변경이력 :
          * 변경일자		변경자		변경내용

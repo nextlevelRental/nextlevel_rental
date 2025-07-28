@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0125 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0125
-   PURPOSE   [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª °ü¸®
+   PURPOSE   [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,95 +10,95 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0125 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Count
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0125Count(
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,         /*ÀÌ¿¬Ç×¸ñ            */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE         /*ÀÌ¿¬È¸Â÷            */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,         /*ì´ì—°í•­ëª©            */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE         /*ì´ì—°íšŒì°¨            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Select
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0125 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Insert
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Update
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Delete
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª °ü¸®(IUD)
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0125 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -106,64 +106,64 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0125 AS
 
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Áßµµº¯°æ UPDATE
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ì¤‘ë„ë³€ê²½ UPDATE
   *****************************************************************************/
   FUNCTION f_UpdateRtre0125Postpone (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ³»¿ª Count
+  -- [RE] ì´ì—°ì²˜ë¦¬ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0125MaxSeq(
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE          /*ÀÌ¿¬Ç×¸ñ            */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE          /*ì´ì—°í•­ëª©            */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ÀÌ¿¬Ã³¸® ³»¿ª Á¶È¸
+  -- ì´ì—°ì²˜ë¦¬ ë‚´ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0125Postpone (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÀÌ¿¬Ã³¸® ³»¿ª Á¶È¸ - ºÎºÐ¹üÀ§Ã³¸®¸¦ À§ÇØ page Ã³¸®
+  -- ì´ì—°ì²˜ë¦¬ ë‚´ì—­ ì¡°íšŒ - ë¶€ë¶„ë²”ìœ„ì²˜ë¦¬ë¥¼ ìœ„í•´ page ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_sRtre0125PostponePage (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Page_No        IN NUMBER,                       /*ÆäÀÌÁö                */
-    v_Get_Cnt        IN NUMBER,                       /*È¹µæ°Ç¼ö              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Page_No        IN NUMBER,                       /*íŽ˜ì´ì§€                */
+    v_Get_Cnt        IN NUMBER,                       /*íšë“ê±´ìˆ˜              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ¸¶°¨ ³»¿ª Á¶È¸
+  -- ë§ˆê° ë‚´ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0125Close (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Close_Ym       IN VARCHAR2,                     /*¸¶°¨³â¿ù              */
-    v_Close_Tp       IN VARCHAR2,                     /*¸¶°¨±¸ºÐ              */
+    v_Close_Ym       IN VARCHAR2,                     /*ë§ˆê°ë…„ì›”              */
+    v_Close_Tp       IN VARCHAR2,                     /*ë§ˆê°êµ¬ë¶„              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -171,4 +171,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0125 AS
 
 
 END Pkg_Rtre0125;
-/

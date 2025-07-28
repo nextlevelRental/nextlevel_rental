@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0090 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0090
-   PURPOSE   Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ °ü¸®
+   PURPOSE   í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,120 +10,119 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0090 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ Count
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ Count
   *****************************************************************************/
   FUNCTION f_sRtre0090Count(
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,          /*°í°´¹øÈ£            */
-    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE            /*µî·Ï¼ø¹ø            */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,          /*ê³ ê°ë²ˆí˜¸            */
+    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE            /*ë“±ë¡ìˆœë²ˆ            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ Select
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0090 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*µî·Ï¼ø¹ø              */
-    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*Àû¿ë½ÃÀÛÀÏ            */
-    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*Àû¿ëÁ¾·áÀÏ            */
-    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ   */
-    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ¹øÈ£   */
-    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*ë“±ë¡ìˆœë²ˆ              */
+    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*ì ìš©ì‹œìž‘ì¼            */
+    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*ì ìš©ì¢…ë£Œì¼            */
+    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€   */
+    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ë²ˆí˜¸   */
+    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ Insert
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0090 (
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*µî·Ï¼ø¹ø              */
-    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*Àû¿ë½ÃÀÛÀÏ            */
-    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*Àû¿ëÁ¾·áÀÏ            */
-    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ   */
-    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ¹øÈ£   */
-    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*ë“±ë¡ìˆœë²ˆ              */
+    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*ì ìš©ì‹œìž‘ì¼            */
+    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*ì ìš©ì¢…ë£Œì¼            */
+    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€   */
+    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ë²ˆí˜¸   */
+    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ Update
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0090 (
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*µî·Ï¼ø¹ø              */
-    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*Àû¿ë½ÃÀÛÀÏ            */
-    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*Àû¿ëÁ¾·áÀÏ            */
-    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ   */
-    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ¹øÈ£   */
-    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*ë“±ë¡ìˆœë²ˆ              */
+    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*ì ìš©ì‹œìž‘ì¼            */
+    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*ì ìš©ì¢…ë£Œì¼            */
+    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€   */
+    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ë²ˆí˜¸   */
+    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ Delete
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0090 (
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*µî·Ï¼ø¹ø              */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cc_Seq         IN RTRE0090.CC_SEQ%TYPE,         /*ë“±ë¡ìˆœë²ˆ              */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ °ü¸®(IUD)
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0090 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cc_Seq         IN OUT RTRE0090.CC_SEQ%TYPE,     /*µî·Ï¼ø¹ø              */
-    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*Àû¿ë½ÃÀÛÀÏ            */
-    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*Àû¿ëÁ¾·áÀÏ            */
-    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ   */
-    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ¹ß±Þ¹øÈ£   */
-    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cc_Seq         IN OUT RTRE0090.CC_SEQ%TYPE,     /*ë“±ë¡ìˆœë²ˆ              */
+    v_Str_Day        IN RTRE0090.STR_DAY%TYPE,        /*ì ìš©ì‹œìž‘ì¼            */
+    v_End_Day        IN RTRE0090.END_DAY%TYPE,        /*ì ìš©ì¢…ë£Œì¼            */
+    v_Chi_Tp         IN RTRE0090.CHI_TP%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€   */
+    v_Chi_No         IN RTRE0090.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ë²ˆí˜¸   */
+    v_Del_Yn         IN RTRE0090.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ - µî·Ï¼ø¹ø È¹µæ
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ - ë“±ë¡ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0090CcSeq(
-    v_Cust_No        IN RTRE0090.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTRE0090.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ - RE-030101_Çö±Ý¿µ¼öÁõ ´ë»óÁý°è
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ - RE-030101_í˜„ê¸ˆì˜ìˆ˜ì¦ ëŒ€ìƒì§‘ê³„
   *****************************************************************************/
   PROCEDURE p_InsertRtre0090Aggregate (
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_Recv_SDay      IN RTRE0030.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚSTART         */
-    v_Recv_EDay      IN RTRE0030.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚEND           */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_Recv_SDay      IN RTRE0030.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìžSTART         */
+    v_Recv_EDay      IN RTRE0030.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìžEND           */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ ¹ß±Þ±âÁØ - RE-030102_Çö±Ý¿µ¼öÁõ ÆÄÀÏ»ý¼º : Ä«µåÀÌÃ¼ ³»¿ªÀ» ±âÁØÀ¸·Î ¼Û½Å ´ë»ó ÆÄÀÏ ÇüÅÂ·Î ³»¿ªÀ» »ý¼ºÇÏ°í ÆÄÀÏ»ý¼ºÀÚ·á¸¦ RETURN ÇÏ´Â ÇÔ¼ö
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œê¸‰ê¸°ì¤€ - RE-030102_í˜„ê¸ˆì˜ìˆ˜ì¦ íŒŒì¼ìƒì„± : ì¹´ë“œì´ì²´ ë‚´ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ì†¡ì‹  ëŒ€ìƒ íŒŒì¼ í˜•íƒœë¡œ ë‚´ì—­ì„ ìƒì„±í•˜ê³  íŒŒì¼ìƒì„±ìžë£Œë¥¼ RETURN í•˜ëŠ” í•¨ìˆ˜
   *****************************************************************************/
   PROCEDURE p_InsertRtre0090FileCreate (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rcrd_Day       IN RTRE0080.RCRD_DAY%TYPE,       /*Ä«µåÀÌÃ¼ÀÏÀÚ          */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Crlf_Yn        OUT VARCHAR,                     /*CRLF¿©ºÎ              */
+    v_Rcrd_Day       IN RTRE0080.RCRD_DAY%TYPE,       /*ì¹´ë“œì´ì²´ì¼ìž          */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0090.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Crlf_Yn        OUT VARCHAR,                     /*CRLFì—¬ë¶€              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
             
 END Pkg_Rtre0090;
-/

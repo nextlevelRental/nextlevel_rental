@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
 /*******************************************************************************
     NAME        Pkg_Rtcm0112
-    PURPOSE     ∑ª≈ª∏∂Ω∫≈Õ ¡§∫∏ ∏∂Ω∫≈Õ
+    PURPOSE     Î†åÌÉàÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ ÎßàÏä§ÌÑ∞
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
@@ -9,7 +9,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
 *******************************************************************************/
     
   /*****************************************************************************
-  -- ∑ª≈ª-¥Î∏Æ¡° ¡§∫∏ ¡∂»∏ Select
+  -- Î†åÌÉà-ÎåÄÎ¶¨Ï†ê Ï†ïÎ≥¥ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0112 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
@@ -17,7 +17,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
     );
     
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ¡§∫∏¿‘∑¬(IUD)
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞Ï†ïÎ≥¥ÏûÖÎ†•(IUD)
   
     REVISIONS
     Ver     Date        Author          Description
@@ -25,17 +25,17 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0112 (
-      v_Comm_Dvsn                    IN CHAR                                        /*√≥∏Æ±∏∫–(I,U,D)      */
-    , v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*¥Î∏Æ¡°ƒ⁄µÂ             */
-    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Comm_Dvsn                    IN CHAR                                        /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)      */
+    , v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú             */
+    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
    
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ¡§∫∏ Insert
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞Ï†ïÎ≥¥ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -43,14 +43,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_InsertRtcm0112 (
-      v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*¥Î∏Æ¡°ƒ⁄µÂ             */
-    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú             */
+    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ¡§∫∏ Update
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Ï†ïÎ≥¥ Update
   
     REVISIONS
     Ver     Date        Author          Description
@@ -58,14 +58,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
     1.0     2022-10-05  kstka            [20221005_01] Created this package spec.
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0112 (
-      v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*∑ª≈ª∏∂Ω∫≈Õ ªÁπ¯           */
-    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*¥Î∏Æ¡°ƒ⁄µÂ             */
-    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*µÓ∑œ¿⁄ ID             */
+      v_Rnt_Mst_Id                   IN RTCM0112.RNT_MST_ID%TYPE                    /*Î†åÌÉàÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à           */
+    , v_Agency_Cd                    IN RTCM0112.AGENCY_CD%TYPE                     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú             */
+    , v_Reg_Id                       IN RTCM0112.REG_ID%TYPE                        /*Îì±Î°ùÏûê ID             */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆªÁ ∞¸∏Æ(DELETE)
+  -- Î†åÌÉàÏßÄÏÇ¨ Í¥ÄÎ¶¨(DELETE)
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0112 (
     v_Rnt_Mst_Id     IN RTCM0112.RNT_MST_ID%TYPE,
@@ -73,4 +73,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0112 AS
   ) RETURN NUMBER;
         
 END Pkg_Rtcm0112;
-/

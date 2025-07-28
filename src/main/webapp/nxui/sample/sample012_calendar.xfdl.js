@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_bind", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -42,11 +43,11 @@
             obj = new Div("div_calendar", "absolute", "288", "512", "111", "23", null, null, this);
             obj.set_taborder("0");
             obj.set_text("Div00");
-            obj.set_url("extComp::ExtCalednar.xfdl");
             obj.set_scrollbars("none");
             obj.getSetter("_bindds").set("");
             obj.getSetter("_bindcol").set("");
             obj.set_async("false");
+            obj.set_url("extComp::ExtCalednar.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_bind", "absolute", "52", "464", "164", "31", null, null, this);
@@ -84,12 +85,12 @@
 
             obj = new Div("div_calendar00", "absolute", "210", "377", "111", "23", null, null, this);
             obj.set_taborder("8");
-            obj.set_url("extComp::ExtCalednar.xfdl");
             obj.set_async("false");
             obj.set_text("Div00");
             obj.set_scrollbars("none");
             obj.getSetter("_bindds").set("ds_bind");
             obj.getSetter("_bindcol").set("col");
+            obj.set_url("extComp::ExtCalednar.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00", "absolute", "42", "366", "160", "42", null, null, this);
@@ -100,11 +101,11 @@
 
             obj = new Div("div_calendar01", "absolute", "213", "417", "111", "23", null, null, this);
             obj.set_taborder("13");
-            obj.set_url("extComp::ExtCalednar.xfdl");
             obj.set_async("false");
             obj.set_text("Div00");
             obj.set_scrollbars("none");
             obj.set_cssclass("essential");
+            obj.set_url("extComp::ExtCalednar.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static02", "absolute", "164", "420", "41", "18", null, null, this);

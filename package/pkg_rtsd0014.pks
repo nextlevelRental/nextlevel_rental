@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0014 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0014
-   PURPOSE   °è¾àº° Ä·ÆäÀÎ Àû¿ë °ü¸®
+   PURPOSE   ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,69 +10,69 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0014 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ Àû¿ë Count
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© Count
   *****************************************************************************/
   FUNCTION f_sRtsd0014Count(
-    v_Ord_No         IN RTSD0014.ORD_NO%TYPE            /*ÁÖ¹®¹øÈ£            */
+    v_Ord_No         IN RTSD0014.ORD_NO%TYPE            /*ì£¼ë¬¸ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ Àû¿ë Select
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0014 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0014.ORD_NO%TYPE          /*ÁÖ¹®¹øÈ£              */
+    v_Ord_No         IN RTSD0014.ORD_NO%TYPE          /*ì£¼ë¬¸ë²ˆí˜¸              */
     );
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ Àû¿ë Insert
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0014 (
-    v_Ord_No         IN RTSD0014.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Dc_Tp          IN RTSD0014.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0014.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Seq            IN RTSD0014.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Dc_Rate        IN RTSD0014.DC_RATE%TYPE,        /*ÇÒÀÎÀ²                */
-    v_Dc_Amt         IN RTSD0014.DC_AMT%TYPE,         /*ÇÒÀÎ±Ý¾×              */
-    v_Reg_Id         IN RTSD0014.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0014.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Dc_Tp          IN RTSD0014.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0014.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Seq            IN RTSD0014.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Dc_Rate        IN RTSD0014.DC_RATE%TYPE,        /*í• ì¸ìœ¨                */
+    v_Dc_Amt         IN RTSD0014.DC_AMT%TYPE,         /*í• ì¸ê¸ˆì•¡              */
+    v_Reg_Id         IN RTSD0014.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ Àû¿ë Delete
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0014 (
-    v_Ord_No         IN RTSD0014.ORD_NO%TYPE          /*ÁÖ¹®¹øÈ£              */
+    v_Ord_No         IN RTSD0014.ORD_NO%TYPE          /*ì£¼ë¬¸ë²ˆí˜¸              */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ Àû¿ë °ü¸®(IUD)
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì ìš© ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0014 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTSD0014.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Dc_Tp          IN RTSD0014.DC_TP%TYPE,          /*ÇÒÀÎÀ¯Çü              */
-    v_Mat_Cd         IN RTSD0014.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Seq            IN RTSD0014.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Dc_Rate        IN RTSD0014.DC_RATE%TYPE,        /*ÇÒÀÎÀ²                */
-    v_Dc_Amt         IN RTSD0014.DC_AMT%TYPE,         /*ÇÒÀÎ±Ý¾×              */
-    v_Reg_Id         IN RTSD0014.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTSD0014.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Dc_Tp          IN RTSD0014.DC_TP%TYPE,          /*í• ì¸ìœ í˜•              */
+    v_Mat_Cd         IN RTSD0014.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Seq            IN RTSD0014.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Dc_Rate        IN RTSD0014.DC_RATE%TYPE,        /*í• ì¸ìœ¨                */
+    v_Dc_Amt         IN RTSD0014.DC_AMT%TYPE,         /*í• ì¸ê¸ˆì•¡              */
+    v_Reg_Id         IN RTSD0014.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- °è¾àº° Ä·ÆäÀÎ ÀúÀå - ¿Â¶óÀÎ
+  -- ê³„ì•½ë³„ ìº íŽ˜ì¸ ì €ìž¥ - ì˜¨ë¼ì¸
   *****************************************************************************/
   PROCEDURE p_Online_InsertRtsd0014 (
-    v_Ord_No      IN RTSD0014.ORD_NO%TYPE,          /*ÁÖ¹®¹øÈ£              */
-    v_Ord_Day     IN RtSD0104.ORD_DAY%TYPE,         /*Á¢¼öÀÏÀÚ              */
-    v_Mat_Cd      IN RTSD0014.MAT_CD%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Cust_No     IN RTSD0100.CUST_NO%TYPE,         /*°í°´¹øÈ£              */
-    v_Cnt_Cd      IN RTSD0008.CNT_CD%TYPE,          /*Å¸ÀÌ¾îº»¼ö            */
-    v_Period_Cd   IN RTSD0008.PERIOD_CD%TYPE,       /*±â°£ÄÚµå              */
-    v_Reg_Id      IN RTSD0014.REG_ID%TYPE,          /*µî·ÏÀÚ ID             */
+    v_Ord_No      IN RTSD0014.ORD_NO%TYPE,          /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Ord_Day     IN RtSD0104.ORD_DAY%TYPE,         /*ì ‘ìˆ˜ì¼ìž              */
+    v_Mat_Cd      IN RTSD0014.MAT_CD%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Cust_No     IN RTSD0100.CUST_NO%TYPE,         /*ê³ ê°ë²ˆí˜¸              */
+    v_Cnt_Cd      IN RTSD0008.CNT_CD%TYPE,          /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Period_Cd   IN RTSD0008.PERIOD_CD%TYPE,       /*ê¸°ê°„ì½”ë“œ              */
+    v_Reg_Id      IN RTSD0014.REG_ID%TYPE,          /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -80,4 +80,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0014 AS
   
   
 END Pkg_Rtsd0014;
-/

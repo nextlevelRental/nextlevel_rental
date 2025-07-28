@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0044 AS
 /******************************************************************************
    NAME:       Pkg_Rtsd0044
-   PURPOSE:   ∏È¡¶»∏¬˜
+   PURPOSE:   Î©¥Ï†úÌöåÏ∞®
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,42 +10,41 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0044 AS
 ******************************************************************************/
 
   /*****************************************************************************
-  -- ∏È¡¶»∏¬˜ Select
+  -- Î©¥Ï†úÌöåÏ∞® Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0044 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN     RTSD0044.SALE_CD%TYPE     /* ∆«∏≈ªÛ«∞ƒ⁄µÂ            */
+    v_Sale_Cd       IN     RTSD0044.SALE_CD%TYPE     /* ÌåêÎß§ÏÉÅÌíàÏΩîÎìú            */
   );
         
   /*****************************************************************************
-  -∏È¡¶»∏¬˜ Insert
+  -Î©¥Ï†úÌöåÏ∞® Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0044 (
-    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ∏È¡¶»∏¬˜         */
-    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* Î©¥Ï†úÌöåÏ∞®         */
+    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_ErrorText         OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -∏È¡¶»∏¬˜ Delete
+  -Î©¥Ï†úÌöåÏ∞® Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0044 (
-    v_Sale_Cd         IN RTSD0044.SALE_CD%TYPE          /* ∆«∏≈ƒ⁄µÂ              */
+    v_Sale_Cd         IN RTSD0044.SALE_CD%TYPE          /* ÌåêÎß§ÏΩîÎìú              */
     ) RETURN NUMBER;  
   
   /*****************************************************************************
-  --∏È¡¶»∏¬˜ (IUD)
+  --Î©¥Ï†úÌöåÏ∞® (IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0044 (
-    v_Comm_Dvsn         IN CHAR,                            /* √≥∏Æ±∏∫–(I,U,D)  */
-    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ∆«∏≈ƒ⁄µÂ         */
-    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ∏È¡¶»∏¬˜         */
-    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID        */
+    v_Comm_Dvsn         IN CHAR,                            /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)  */
+    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ÌåêÎß§ÏΩîÎìú         */
+    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* Î©¥Ï†úÌöåÏ∞®         */
+    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID        */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
   ); 
    
 END Pkg_Rtsd0044;
-/

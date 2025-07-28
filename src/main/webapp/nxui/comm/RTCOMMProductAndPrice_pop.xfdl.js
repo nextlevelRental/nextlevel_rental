@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_product", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_period", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_cnt", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("ds_price", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("ds_priceCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,6 +81,7 @@
 
             obj = new Dataset("ds_seasonCd", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -581,12 +587,28 @@
         	
         	// 규격관련 조회조건 세팅
         	// - 단면폭, 편평비, 인치, PR
-        	var expr = "";
-        	expr += "seasonCd=='"    + seasonCd  + "'";
-        	expr += "&&petternCd=='" + petternCd + "'";
-        	expr += "&&specNm=='"    + specCd    + "'";
+        //  	var expr = "";
+        //  	expr += "seasonCd=='"    + seasonCd  + "'";
+        //  	expr += "&&petternCd=='" + petternCd + "'";
+        //  	expr += "&&specNm=='"    + specCd    + "'";
+        //  
+        //  	var nRow = this.ds_combosetMat.findRowExpr(expr);
         	
-        	var nRow = this.ds_combosetMat.findRowExpr(expr);
+        //2018.05.30 김선태 
+        //N'FERA AU7 패턴코드 인식오류로 인해 for문으로 직접 조회
+         	var val01= "";
+         	var val02 = "";
+         	var val03 = "";
+         	for(var i=0; i<=this.ds_combosetMat.rowcount; i++){
+         		val01 = this.ds_combosetMat.getColumn(i, "seasonCd");
+         		val02 = this.ds_combosetMat.getColumn(i, "petternCd");
+         		val03 = this.ds_combosetMat.getColumn(i, "specNm");
+         
+         		if(val01 == seasonCd && val02 == petternCd && val03 == specCd){
+         			nRow = i;
+         			break;
+         		}		
+         	}
         	
         	var sectionWidth = this.ds_combosetMat.getColumn(nRow, "sectionWidth");	// 단면폭
         	var aspectRatio  = this.ds_combosetMat.getColumn(nRow, "aspectRatio");	// 편평비

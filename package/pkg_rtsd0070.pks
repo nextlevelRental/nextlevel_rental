@@ -9,145 +9,144 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0070 AS
    1.0        2018-12-18      han       1. Created this package.
 ******************************************************************************/
  /*****************************************************************************
-  -- ≈¨∑π¿”∞¸∏Æ Select - ≈¨∑π¿”∞¸∏Æ
+  -- ÌÅ¥Î†àÏûÑÍ¥ÄÎ¶¨ Select - ÌÅ¥Î†àÏûÑÍ¥ÄÎ¶¨
   *****************************************************************************/
 PROCEDURE p_sRtsd0070Status (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_clm_FDay       IN RTSD0070.CLM_DAY%TYPE              /*¡¢ºˆ¿œ¿⁄FROM          */
-    , v_clm_TDay       IN RTSD0070.CLM_DAY%TYPE              /*¡¢ºˆ¿œ¿⁄TO            */
-    , v_clm_Gb         IN RTSD0070.CLM_GB%TYPE               /*πÊπÆ¡°∞À±∏∫–          */
-    , v_prgrs_State    IN RTSD0070.PRGRS_STATE%TYPE          /*√≥∏ÆªÛ≈¬              */
-    , v_ord_No         IN RTSD0070.ORD_NO%TYPE               /*∞Ëæ‡π¯»£              */
-    , v_cust_No        IN RTSD0070.CUST_NO%TYPE              /*∞Ì∞¥π¯»£              */
+    , v_clm_FDay       IN RTSD0070.CLM_DAY%TYPE              /*Ï†ëÏàòÏùºÏûêFROM          */
+    , v_clm_TDay       IN RTSD0070.CLM_DAY%TYPE              /*Ï†ëÏàòÏùºÏûêTO            */
+    , v_clm_Gb         IN RTSD0070.CLM_GB%TYPE               /*Î∞©Î¨∏Ï†êÍ≤ÄÍµ¨Î∂Ñ          */
+    , v_prgrs_State    IN RTSD0070.PRGRS_STATE%TYPE          /*Ï≤òÎ¶¨ÏÉÅÌÉú              */
+    , v_ord_No         IN RTSD0070.ORD_NO%TYPE               /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    , v_cust_No        IN RTSD0070.CUST_NO%TYPE              /*Í≥†Í∞ùÎ≤àÌò∏              */
     );
 
 /*******************************************************************************
- -- ≈¨∑π¿”∞¸∏Æ ≥ªø™¡∂»∏ Select ∞Ì∞¥π¯»£∑Œ ¡∂»∏
+ -- ÌÅ¥Î†àÏûÑÍ¥ÄÎ¶¨ ÎÇ¥Ïó≠Ï°∞Ìöå Select Í≥†Í∞ùÎ≤àÌò∏Î°ú Ï°∞Ìöå
  *******************************************************************************/
      PROCEDURE p_sRtsd0070StatusCust (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_cust_No        IN RTSD0070.CUST_NO%TYPE              /*∞Ì∞¥π¯»£              */
+    , v_cust_No        IN RTSD0070.CUST_NO%TYPE              /*Í≥†Í∞ùÎ≤àÌò∏              */
     );
 
  /*****************************************************************************
-  -- ≈¨∑π¿”∞¸∏Æ Insert
+  -- ÌÅ¥Î†àÏûÑÍ¥ÄÎ¶¨ Insert
   *****************************************************************************/
  FUNCTION f_InsertRtsd0070 (
-      v_custNo       IN RTSD0070.CUST_NO%TYPE       /*∞Ì∞¥π¯»£              */                                        
-    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*∞Ëæ‡π¯»£              */                                     
-    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*∞Ì∞¥∏Ì                */                                           
-    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*√≥∏ÆªÛ≈¬              */
-    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*πÊπÆ¡°∞À±∏∫–          */
-    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*πÊπÆ¡°∞À¿Ø«¸          */
-    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*¿Â¬¯ªÛ¥„ªÁID          */                                               
-    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*¡¢ºˆªÛ¥„ªÁ            */                                                
-    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*ø¨∂Ù√≥                */                                       
-    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*ƒ¡≈ÿø¨∂Ù√≥            */                                                
-    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*∆–≈œ                  */                                               
-    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*∫ªºˆ                  */ 
-    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*¿Â¬¯¿œ¿⁄              */                                                    
-    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*¥Î∏Æ¡°ƒ⁄µÂ            */                                                      
-    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*¿Â¬¯¡°                */                                                   
-    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*¬˜¡æƒ⁄µÂ              */                                             
-    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*¬˜¡æ∏Ì                */                                           
-    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*¬˜∑Æπ¯»£              */                                        
-    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*∞Ì∞¥¡÷º“-øÏ∆Ìπ¯»£     */                                         
-    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*∞Ì∞¥¡÷º“-¡÷º“         */                                     
-    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*∞Ì∞¥¡÷º“-ªÛºº¡÷º“     */                                       
-    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*¡°∞Àø‰√ªø˘            */                                                        
-    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*¿Ã∞¸∞·∞˙              */                                        
-    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*¥„¥Á∑Œµæ»            */                                                        
-    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*¿Á∑ª≈ª∞°¥…º∫∞Ì∞¥      */                                                         
-    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*¡¢ºˆ≥ªøÎ              */                                          
-    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*√≥∏Æ∞·∞˙              */                                                       
-    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*ƒ¡≈√¿Ã∑¬              */                                        
-    , v_regId        IN RTSD0070.REG_ID%TYPE        /*µÓ∑œ¿⁄ID              */                          
-    , v_clmDay       IN RTSD0070.CLM_DAY%TYPE        /*¡¢ºˆ¿œ¿⁄             */
-    , v_clmSeq       OUT NUMBER                     /*¿œ∑√π¯»£              */ 
+      v_custNo       IN RTSD0070.CUST_NO%TYPE       /*Í≥†Í∞ùÎ≤àÌò∏              */                                        
+    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*Í≥ÑÏïΩÎ≤àÌò∏              */                                     
+    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*Í≥†Í∞ùÎ™Ö                */                                           
+    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*Ï≤òÎ¶¨ÏÉÅÌÉú              */
+    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÍµ¨Î∂Ñ          */
+    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÏú†Ìòï          */
+    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*Ïû•Ï∞©ÏÉÅÎã¥ÏÇ¨ID          */                                               
+    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*Ï†ëÏàòÏÉÅÎã¥ÏÇ¨            */                                                
+    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*Ïó∞ÎùΩÏ≤ò                */                                       
+    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*Ïª®ÌÖçÏó∞ÎùΩÏ≤ò            */                                                
+    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*Ìå®ÌÑ¥                  */                                               
+    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*Î≥∏Ïàò                  */ 
+    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*Ïû•Ï∞©ÏùºÏûê              */                                                    
+    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú            */                                                      
+    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*Ïû•Ï∞©Ï†ê                */                                                   
+    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*Ï∞®Ï¢ÖÏΩîÎìú              */                                             
+    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*Ï∞®Ï¢ÖÎ™Ö                */                                           
+    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*Ï∞®ÎüâÎ≤àÌò∏              */                                        
+    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*Í≥†Í∞ùÏ£ºÏÜå-Ïö∞Ìé∏Î≤àÌò∏     */                                         
+    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-Ï£ºÏÜå         */                                     
+    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-ÏÉÅÏÑ∏Ï£ºÏÜå     */                                       
+    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*Ï†êÍ≤ÄÏöîÏ≤≠Ïõî            */                                                        
+    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*Ïù¥Í¥ÄÍ≤∞Í≥º              */                                        
+    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*Îã¥ÎãπÎ°úÎîîÏïà            */                                                        
+    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*Ïû¨Î†åÌÉàÍ∞ÄÎä•ÏÑ±Í≥†Í∞ù      */                                                         
+    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*Ï†ëÏàòÎÇ¥Ïö©              */                                          
+    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*Ï≤òÎ¶¨Í≤∞Í≥º              */                                                       
+    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*Ïª®ÌÉùÏù¥Î†•              */                                        
+    , v_regId        IN RTSD0070.REG_ID%TYPE        /*Îì±Î°ùÏûêID              */                          
+    , v_clmDay       IN RTSD0070.CLM_DAY%TYPE        /*Ï†ëÏàòÏùºÏûê             */
+    , v_clmSeq       OUT NUMBER                     /*ÏùºÎ†®Î≤àÌò∏              */ 
     , v_ErrorText    OUT VARCHAR2  
 
 
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ≈¨∑π¿”∞¸∏Æ Update
+  -- ÌÅ¥Î†àÏûÑÍ¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0070 (
-      v_clmDay       IN RTSD0070.CLM_DAY%TYPE       /* ø‰√ª¿œ¿⁄             */
-    , v_clmSeq       IN RTSD0070.CLM_SEQ%TYPE       /* ø‰√ª¿œ∑√π¯           */
-    , v_custNo       IN RTSD0070.CUST_NO%TYPE       /*∞Ì∞¥π¯»£              */                                        
-    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*∞Ëæ‡π¯»£              */                                     
-    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*∞Ì∞¥∏Ì                */                                           
-    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*√≥∏ÆªÛ≈¬              */
-    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*πÊπÆ¡°∞À±∏∫–          */
-    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*πÊπÆ¡°∞À¿Ø«¸          */
-    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*¿Â¬¯ªÛ¥„ªÁID          */                                               
-    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*¡¢ºˆªÛ¥„ªÁ            */                                                
-    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*ø¨∂Ù√≥                */                                       
-    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*ƒ¡≈ÿø¨∂Ù√≥            */                                                
-    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*∆–≈œ                  */                                               
-    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*∫ªºˆ                  */ 
-    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*¿Â¬¯¿œ¿⁄              */                                                    
-    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*¥Î∏Æ¡°ƒ⁄µÂ            */                                                      
-    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*¿Â¬¯¡°                */                                                   
-    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*¬˜¡æƒ⁄µÂ              */                                             
-    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*¬˜¡æ∏Ì                */                                           
-    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*¬˜∑Æπ¯»£              */                                        
-    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*∞Ì∞¥¡÷º“-øÏ∆Ìπ¯»£     */                                         
-    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*∞Ì∞¥¡÷º“-¡÷º“         */                                     
-    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*∞Ì∞¥¡÷º“-ªÛºº¡÷º“     */                                       
-    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*¡°∞Àø‰√ªø˘            */                                                        
-    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*¿Ã∞¸∞·∞˙              */                                        
-    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*¥„¥Á∑Œµæ»            */                                                        
-    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*¿Á∑ª≈ª∞°¥…º∫∞Ì∞¥      */                                                         
-    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*¡¢ºˆ≥ªøÎ              */                                          
-    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*√≥∏Æ∞·∞˙              */                                                       
-    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*ƒ¡≈√¿Ã∑¬              */                                        
-    , v_regId        IN RTSD0070.REG_ID%TYPE        /*µÓ∑œ¿⁄ID              */   
+      v_clmDay       IN RTSD0070.CLM_DAY%TYPE       /* ÏöîÏ≤≠ÏùºÏûê             */
+    , v_clmSeq       IN RTSD0070.CLM_SEQ%TYPE       /* ÏöîÏ≤≠ÏùºÎ†®Î≤à           */
+    , v_custNo       IN RTSD0070.CUST_NO%TYPE       /*Í≥†Í∞ùÎ≤àÌò∏              */                                        
+    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*Í≥ÑÏïΩÎ≤àÌò∏              */                                     
+    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*Í≥†Í∞ùÎ™Ö                */                                           
+    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*Ï≤òÎ¶¨ÏÉÅÌÉú              */
+    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÍµ¨Î∂Ñ          */
+    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÏú†Ìòï          */
+    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*Ïû•Ï∞©ÏÉÅÎã¥ÏÇ¨ID          */                                               
+    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*Ï†ëÏàòÏÉÅÎã¥ÏÇ¨            */                                                
+    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*Ïó∞ÎùΩÏ≤ò                */                                       
+    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*Ïª®ÌÖçÏó∞ÎùΩÏ≤ò            */                                                
+    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*Ìå®ÌÑ¥                  */                                               
+    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*Î≥∏Ïàò                  */ 
+    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*Ïû•Ï∞©ÏùºÏûê              */                                                    
+    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú            */                                                      
+    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*Ïû•Ï∞©Ï†ê                */                                                   
+    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*Ï∞®Ï¢ÖÏΩîÎìú              */                                             
+    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*Ï∞®Ï¢ÖÎ™Ö                */                                           
+    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*Ï∞®ÎüâÎ≤àÌò∏              */                                        
+    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*Í≥†Í∞ùÏ£ºÏÜå-Ïö∞Ìé∏Î≤àÌò∏     */                                         
+    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-Ï£ºÏÜå         */                                     
+    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-ÏÉÅÏÑ∏Ï£ºÏÜå     */                                       
+    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*Ï†êÍ≤ÄÏöîÏ≤≠Ïõî            */                                                        
+    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*Ïù¥Í¥ÄÍ≤∞Í≥º              */                                        
+    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*Îã¥ÎãπÎ°úÎîîÏïà            */                                                        
+    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*Ïû¨Î†åÌÉàÍ∞ÄÎä•ÏÑ±Í≥†Í∞ù      */                                                         
+    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*Ï†ëÏàòÎÇ¥Ïö©              */                                          
+    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*Ï≤òÎ¶¨Í≤∞Í≥º              */                                                       
+    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*Ïª®ÌÉùÏù¥Î†•              */                                        
+    , v_regId        IN RTSD0070.REG_ID%TYPE        /*Îì±Î°ùÏûêID              */   
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   
   /*****************************************************************************
-  -- ≈¨∑π¿”  ∞¸∏Æ(IUD)
+  -- ÌÅ¥Î†àÏûÑ  Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0070 (
-      v_comm_Dvsn    IN CHAR                        /* √≥∏Æ±∏∫–(I,U,D)      */
-    , v_clmDay       IN RTSD0070.CLM_DAY%TYPE       /* ø‰√ª¿œ¿⁄             */
-    , v_clmSeq   IN OUT RTSD0070.CLM_SEQ%TYPE       /* ø‰√ª¿œ∑√π¯           */
-    , v_custNo       IN RTSD0070.CUST_NO%TYPE       /*∞Ì∞¥π¯»£              */                                        
-    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*∞Ëæ‡π¯»£              */                                     
-    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*∞Ì∞¥∏Ì                */                                           
-    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*√≥∏ÆªÛ≈¬              */
-    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*πÊπÆ¡°∞À±∏∫–          */
-    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*πÊπÆ¡°∞À¿Ø«¸          */
-    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*¿Â¬¯ªÛ¥„ªÁID          */                                               
-    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*¡¢ºˆªÛ¥„ªÁ            */                                                
-    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*ø¨∂Ù√≥                */                                       
-    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*ƒ¡≈ÿø¨∂Ù√≥            */                                                
-    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*∆–≈œ                  */                                               
-    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*∫ªºˆ                  */ 
-    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*¿Â¬¯¿œ¿⁄              */                                                    
-    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*¥Î∏Æ¡°ƒ⁄µÂ            */                                                      
-    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*¿Â¬¯¡°                */                                                   
-    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*¬˜¡æƒ⁄µÂ              */                                             
-    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*¬˜¡æ∏Ì                */                                           
-    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*¬˜∑Æπ¯»£              */                                        
-    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*∞Ì∞¥¡÷º“-øÏ∆Ìπ¯»£     */                                         
-    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*∞Ì∞¥¡÷º“-¡÷º“         */                                     
-    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*∞Ì∞¥¡÷º“-ªÛºº¡÷º“     */                                       
-    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*¡°∞Àø‰√ªø˘            */                                                        
-    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*¿Ã∞¸∞·∞˙              */                                        
-    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*¥„¥Á∑Œµæ»            */                                                        
-    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*¿Á∑ª≈ª∞°¥…º∫∞Ì∞¥      */                                                         
-    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*¡¢ºˆ≥ªøÎ              */                                          
-    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*√≥∏Æ∞·∞˙              */                                                       
-    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*ƒ¡≈√¿Ã∑¬              */                                        
-    , v_regId        IN RTSD0070.REG_ID%TYPE        /*µÓ∑œ¿⁄ID              */
+      v_comm_Dvsn    IN CHAR                        /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)      */
+    , v_clmDay       IN RTSD0070.CLM_DAY%TYPE       /* ÏöîÏ≤≠ÏùºÏûê             */
+    , v_clmSeq   IN OUT RTSD0070.CLM_SEQ%TYPE       /* ÏöîÏ≤≠ÏùºÎ†®Î≤à           */
+    , v_custNo       IN RTSD0070.CUST_NO%TYPE       /*Í≥†Í∞ùÎ≤àÌò∏              */                                        
+    , v_ordNo        IN RTSD0070.ORD_NO%TYPE        /*Í≥ÑÏïΩÎ≤àÌò∏              */                                     
+    , v_custNm       IN RTSD0070.CUST_NM%TYPE       /*Í≥†Í∞ùÎ™Ö                */                                           
+    , v_prgrsState   IN RTSD0070.PRGRS_STATE%TYPE   /*Ï≤òÎ¶¨ÏÉÅÌÉú              */
+    , v_clmGb        IN RTSD0070.CLM_GB%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÍµ¨Î∂Ñ          */
+    , v_clmTp        IN RTSD0070.CLM_TP%TYPE        /*Î∞©Î¨∏Ï†êÍ≤ÄÏú†Ìòï          */
+    , v_counsId      IN RTSD0070.COUNS_ID%TYPE      /*Ïû•Ï∞©ÏÉÅÎã¥ÏÇ¨ID          */                                               
+    , v_counsNm      IN RTSD0070.COUNS_NM%TYPE      /*Ï†ëÏàòÏÉÅÎã¥ÏÇ¨            */                                                
+    , v_mobNo        IN RTSD0070.MOB_NO%TYPE        /*Ïó∞ÎùΩÏ≤ò                */                                       
+    , v_addMobNo     IN RTSD0070.ADD_MOB_NO%TYPE    /*Ïª®ÌÖçÏó∞ÎùΩÏ≤ò            */                                                
+    , v_petternCd    IN RTSD0070.PETTERN_CD%TYPE    /*Ìå®ÌÑ¥                  */                                               
+    , v_cntCd        IN RTSD0070.CNT_CD%TYPE        /*Î≥∏Ïàò                  */ 
+    , v_procDay      IN RTSD0070.PROC_DAY%TYPE      /*Ïû•Ï∞©ÏùºÏûê              */                                                    
+    , v_agencyCd     IN RTSD0070.AGENCY_CD%TYPE     /*ÎåÄÎ¶¨Ï†êÏΩîÎìú            */                                                      
+    , v_agencyNm     IN RTSD0070.AGENCY_NM%TYPE     /*Ïû•Ï∞©Ï†ê                */                                                   
+    , v_modelCd      IN RTSD0070.MODEL_CD%TYPE      /*Ï∞®Ï¢ÖÏΩîÎìú              */                                             
+    , v_modelNm      IN RTSD0070.MODEL_NM%TYPE      /*Ï∞®Ï¢ÖÎ™Ö                */                                           
+    , v_carNo        IN RTSD0070.CAR_NO%TYPE        /*Ï∞®ÎüâÎ≤àÌò∏              */                                        
+    , v_posCd        IN RTSD0070.POS_CD%TYPE        /*Í≥†Í∞ùÏ£ºÏÜå-Ïö∞Ìé∏Î≤àÌò∏     */                                         
+    , v_addr1        IN RTSD0070.ADDR1%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-Ï£ºÏÜå         */                                     
+    , v_addr2        IN RTSD0070.ADDR2%TYPE         /*Í≥†Í∞ùÏ£ºÏÜå-ÏÉÅÏÑ∏Ï£ºÏÜå     */                                       
+    , v_chcRqsMnt    IN RTSD0070.CHC_RQS_MNT%TYPE   /*Ï†êÍ≤ÄÏöîÏ≤≠Ïõî            */                                                        
+    , v_trnRsl       IN RTSD0070.TRN_RSL%TYPE       /*Ïù¥Í¥ÄÍ≤∞Í≥º              */                                        
+    , v_chargRodi    IN RTSD0070.CHARG_RODI%TYPE    /*Îã¥ÎãπÎ°úÎîîÏïà            */                                                        
+    , v_reRentYn     IN RTSD0070.RE_RENT_YN%TYPE    /*Ïû¨Î†åÌÉàÍ∞ÄÎä•ÏÑ±Í≥†Í∞ù      */                                                         
+    , v_rgstDtl      IN RTSD0070.RGST_DTL%TYPE      /*Ï†ëÏàòÎÇ¥Ïö©              */                                          
+    , v_prcsnRslts   IN RTSD0070.PRCSN_RSLTS%TYPE   /*Ï≤òÎ¶¨Í≤∞Í≥º              */                                                       
+    , v_conHist      IN RTSD0070.CON_HIST%TYPE      /*Ïª®ÌÉùÏù¥Î†•              */                                        
+    , v_regId        IN RTSD0070.REG_ID%TYPE        /*Îì±Î°ùÏûêID              */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2   
   );
   
 END Pkg_Rtsd0070;
-/

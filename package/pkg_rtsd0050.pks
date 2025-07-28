@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0050 AS
 /*******************************************************************************
    NAME:     PKG_RTSD0050
-   PURPOSE:  ∑ª≈ª∏∂Ω∫≈Õ
+   PURPOSE:  Î†åÌÉàÎßàÏä§ÌÑ∞
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,35 +10,35 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0050 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ¡∂»∏
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0050 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RTMASTER_NM    IN RTSD0050.RTMASTER_NM%TYPE        /* ∑ª≈ª ∏∂Ω∫≈Õ ∏Ì */
+    v_RTMASTER_NM    IN RTSD0050.RTMASTER_NM%TYPE        /* Î†åÌÉà ÎßàÏä§ÌÑ∞ Î™Ö */
     );
 
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ∞¸∏Æ¡ˆø™ ¡∂»∏
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨ÏßÄÏó≠ Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0050MgmtArea (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ∑ª≈ª ∏∂Ω∫≈Õ ªÁπ¯ */
+    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* Î†åÌÉà ÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à */
     );
 
   /*****************************************************************************
-  -- º“º”∆«∏≈¿Œ ¡∂»∏
+  -- ÏÜåÏÜçÌåêÎß§Ïù∏ Ï°∞Ìöå
   *****************************************************************************/
   PROCEDURE p_sRtsd0050SalesAgent (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP   IN RTSD0052.RENTAL_GROUP%TYPE,      /* ∑ª≈ª¡ˆªÁ */
-    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ∑ª≈ª ∏∂Ω∫≈Õ ªÁπ¯ */    
+    v_RENTAL_GROUP   IN RTSD0052.RENTAL_GROUP%TYPE,      /* Î†åÌÉàÏßÄÏÇ¨ */
+    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* Î†åÌÉà ÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à */    
     );
     
    /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ ∞¸∏Æ(IUD)
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0050 (
-    v_Comm_Dvsn       IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
+    v_Comm_Dvsn       IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
     v_RTMASTER_NM     IN RTSD0050.RTMASTER_NM%TYPE,
     v_MOB_NO          IN RTSD0050.MOB_NO%TYPE,
@@ -51,7 +51,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0050 AS
     );    
 
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ Insert
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0050 (
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
@@ -64,7 +64,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0050 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ Update
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0050 ( 
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
@@ -77,15 +77,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0050 AS
     ) RETURN NUMBER;    
 
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ - ∑ª≈ª ∏∂Ω∫≈Õ ªÁπ¯ »πµÊ
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ - Î†åÌÉà ÎßàÏä§ÌÑ∞ ÏÇ¨Î≤à ÌöçÎìù
   *****************************************************************************/
   FUNCTION f_sRtsd0050NuSeq RETURN VARCHAR2;
   
   /*****************************************************************************
-  -- ∑ª≈ª∏∂Ω∫≈Õ Count
+  -- Î†åÌÉàÎßàÏä§ÌÑ∞ Count
   *****************************************************************************/
   FUNCTION f_sRTSD0050Count ( 
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE
     ) RETURN NUMBER;
 END PKG_RTSD0050;
-/

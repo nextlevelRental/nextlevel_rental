@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0021
-   PURPOSE:  ÆÇ¸ÅÁ¦Ç°Á¤º¸  
+   PURPOSE:  íŒë§¤ì œí’ˆì •ë³´  
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,25 +10,25 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÆÇ¸ÅÁÖÁ¦Ç°(Å¸ÀÌ¾î) Select
+  -- íŒë§¤ì£¼ì œí’ˆ(íƒ€ì´ì–´) Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0021 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN     RTSD0021.SALE_CD%TYPE,         /* ÆÇ¸ÅÄÚµå  */
-    v_Gds_Gb        IN     RTSD0021.GDS_GB%TYPE           /* Á¦Ç°±¸ºÐ  */
+    v_Sale_Cd       IN     RTSD0021.SALE_CD%TYPE,         /* íŒë§¤ì½”ë“œ  */
+    v_Gds_Gb        IN     RTSD0021.GDS_GB%TYPE           /* ì œí’ˆêµ¬ë¶„  */
   ) IS
 
   BEGIN
   
     OPEN Ref_Cursor FOR
-    SELECT  A.SALE_CD,     /* ÆÇ¸ÅÄÚµå                 */
-            A.SALE_GDS_CD, /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå  */
-            A.GDS_GB,      /* Á¦Ç°±¸ºÐ                 */
-            A.GDS_GRP,     /* Á¦Ç°±º                   */
-            A.REG_DT,      /* µî·ÏÀÏ                   */
-            A.REG_ID,      /* µî·ÏÀÚ ID                */
-            A.CHG_ID,      /* º¯°æÀÚ ID                */
-            A.CHG_DT       /* º¯°æÀÏ                   */
+    SELECT  A.SALE_CD,     /* íŒë§¤ì½”ë“œ                 */
+            A.SALE_GDS_CD, /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ  */
+            A.GDS_GB,      /* ì œí’ˆêµ¬ë¶„                 */
+            A.GDS_GRP,     /* ì œí’ˆêµ°                   */
+            A.REG_DT,      /* ë“±ë¡ì¼                   */
+            A.REG_ID,      /* ë“±ë¡ìž ID                */
+            A.CHG_ID,      /* ë³€ê²½ìž ID                */
+            A.CHG_DT       /* ë³€ê²½ì¼                   */
     FROM    RTSD0021    A
     WHERE   A.SALE_CD = DECODE(v_Sale_Cd, NULL, A.SALE_CD, v_Sale_Cd)
     AND     A.GDS_GB  = DECODE(v_Gds_Gb, NULL, A.GDS_GB, v_Gds_Gb)
@@ -36,35 +36,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
   END p_sRtsd0021;
 
   /*****************************************************************************
-  -- ÆÇ¸ÅºÎ°¡Á¦Ç°(°áÇÕ»óÇ°) Select
+  -- íŒë§¤ë¶€ê°€ì œí’ˆ(ê²°í•©ìƒí’ˆ) Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0021SaleProd (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN     RTSD0021.SALE_CD%TYPE,         /* ÆÇ¸ÅÄÚµå  */
-    v_Gds_Gb        IN     RTSD0021.GDS_GB%TYPE           /* Á¦Ç°±¸ºÐ  */
+    v_Sale_Cd       IN     RTSD0021.SALE_CD%TYPE,         /* íŒë§¤ì½”ë“œ  */
+    v_Gds_Gb        IN     RTSD0021.GDS_GB%TYPE           /* ì œí’ˆêµ¬ë¶„  */
   ) IS
 
   BEGIN
   
     OPEN Ref_Cursor FOR
     SELECT
-     T.SALE_CD,                                     /* ÆÇ¸ÅÄÚµå      */   
-     T1.ADD_GDS_CD,                                 /* ºÎ°¡Á¦Ç°ÄÚµå  */
-     T1.ADD_GDS_NM,                                 /* ºÎ°¡Á¦Ç°¸í    */
-     NVL(T1.AMT,0) AS AMT,                          /* ±Ý¾×          */
-     T1.MAKER_NM,                                   /* Á¦Á¶»ç        */
-     T1.GDS_GB,                                     /* Á¦Ç°±¸ºÐ      */
-     T1.GDS_DESC,                                   /* Á¦Ç°¼³¸í      */
-     T1.GDS_DESC_DT,                                /* Á¦Ç°»ó¼¼¼³¸í  */
-     T1.REG_ID,                                     /* µî·ÏÀÚ ID     */
-     T1.REG_DT,                                     /* µî·ÏÀÏ        */
-     T1.CHG_ID,                                     /* º¯°æÀÚ ID     */
-     T1.CHG_DT,                                     /* º¯°æÀÏ        */
-     T1.GDS_GRP,                                    /* Á¦Ç°±º        */
-     T1.USE_YN,                                     /* »ç¿ë¿©ºÎ      */
-     NVL(T1.DC_AMT,0) AS DC_AMT,                    /* ÇÒÀÎ±Ý¾×      */
-     NVL(T1.AMT, 0) - NVL(T1.DC_AMT, 0) AS ACT_AMT, /* ½ÇÆÇ¸Å±Ý¾×    */
-     T1.DC_YN                                       /* ÇÒºÎ¿©ºÎ     */
+     T.SALE_CD,                                     /* íŒë§¤ì½”ë“œ      */   
+     T1.ADD_GDS_CD,                                 /* ë¶€ê°€ì œí’ˆì½”ë“œ  */
+     T1.ADD_GDS_NM,                                 /* ë¶€ê°€ì œí’ˆëª…    */
+     NVL(T1.AMT,0) AS AMT,                          /* ê¸ˆì•¡          */
+     T1.MAKER_NM,                                   /* ì œì¡°ì‚¬        */
+     T1.GDS_GB,                                     /* ì œí’ˆêµ¬ë¶„      */
+     T1.GDS_DESC,                                   /* ì œí’ˆì„¤ëª…      */
+     T1.GDS_DESC_DT,                                /* ì œí’ˆìƒì„¸ì„¤ëª…  */
+     T1.REG_ID,                                     /* ë“±ë¡ìž ID     */
+     T1.REG_DT,                                     /* ë“±ë¡ì¼        */
+     T1.CHG_ID,                                     /* ë³€ê²½ìž ID     */
+     T1.CHG_DT,                                     /* ë³€ê²½ì¼        */
+     T1.GDS_GRP,                                    /* ì œí’ˆêµ°        */
+     T1.USE_YN,                                     /* ì‚¬ìš©ì—¬ë¶€      */
+     NVL(T1.DC_AMT,0) AS DC_AMT,                    /* í• ì¸ê¸ˆì•¡      */
+     NVL(T1.AMT, 0) - NVL(T1.DC_AMT, 0) AS ACT_AMT, /* ì‹¤íŒë§¤ê¸ˆì•¡    */
+     T1.DC_YN                                       /* í• ë¶€ì—¬ë¶€     */
     FROM RTSD0021 T, RTSD0023 T1
     WHERE T.SALE_GDS_CD = T1.ADD_GDS_CD
     AND   T.SALE_CD = DECODE(v_Sale_Cd, NULL, T.SALE_CD, v_Sale_Cd)
@@ -73,14 +73,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
   END p_sRtsd0021SaleProd;
 
   /*****************************************************************************
-  -ÆÇ¸ÅÁ¦Ç°Á¤º¸ Insert
+  -íŒë§¤ì œí’ˆì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0021 (
-    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå       */
-    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå       */
-    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* Á¦Ç°±¸ºÐ       */
-    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* Á¦Ç°±º */
-    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* µî·ÏÀÚ ID      */
+    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ       */
+    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ       */
+    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* ì œí’ˆêµ¬ë¶„       */
+    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* ì œí’ˆêµ° */
+    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* ë“±ë¡ìž ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -115,14 +115,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
   END f_InsertRtsd0021;
 
   /*****************************************************************************
-  -ÆÇ¸ÅÁ¦Ç°Á¤º¸ Update
+  -íŒë§¤ì œí’ˆì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0021 (
-    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå       */
-    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå       */
-    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* Á¦Ç°±¸ºÐ       */
-    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* Á¦Ç°±º */
-    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* µî·ÏÀÚ ID      */
+    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ       */
+    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ       */
+    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* ì œí’ˆêµ¬ë¶„       */
+    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* ì œí’ˆêµ° */
+    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* ë“±ë¡ìž ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -146,14 +146,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
 
 
   /*****************************************************************************
-  -ÆÇ¸ÅÁ¦Ç°Á¤º¸ Delete
+  -íŒë§¤ì œí’ˆì •ë³´ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0021 (
-    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå       */
-    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå       */
-    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* Á¦Ç°±¸ºÐ       */
-    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* Á¦Ç°±º */
-    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* µî·ÏÀÚ ID      */
+    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ       */
+    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ       */
+    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* ì œí’ˆêµ¬ë¶„       */
+    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* ì œí’ˆêµ° */
+    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* ë“±ë¡ìž ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -174,15 +174,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
 
 
   /*****************************************************************************
-  --ÆÇ¸ÅÁ¦Ç°Á¤º¸ (IUD)
+  --íŒë§¤ì œí’ˆì •ë³´ (IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0021 (
-    v_Comm_Dvsn         IN CHAR,                            /* Ã³¸®±¸ºÐ(I,U,D)*/
-    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå       */
-    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå       */
-    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* Á¦Ç°±¸ºÐ       */
-    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* Á¦Ç°±º */
-    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* µî·ÏÀÚ ID      */
+    v_Comm_Dvsn         IN CHAR,                            /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)*/
+    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ       */
+    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ       */
+    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* ì œí’ˆêµ¬ë¶„       */
+    v_Gds_Grp           IN RTSD0021.GDS_GRP%TYPE,           /* ì œí’ˆêµ° */
+    v_Reg_Id            IN RTSD0021.REG_ID%TYPE,            /* ë“±ë¡ìž ID      */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -195,7 +195,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtsd0021(v_Sale_Cd, v_Sale_Gds_Cd, v_Gds_Gb, v_Gds_Grp, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÆÇ¸ÅÁ¦Ç°Á¤º¸ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'íŒë§¤ì œí’ˆì •ë³´ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;    
@@ -204,7 +204,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
         
         IF 0 != f_UpdateRtsd0021(v_Sale_Cd, v_Sale_Gds_Cd, v_Gds_Gb, v_Gds_Grp, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÆÇ¸ÅÁ¦Ç°Á¤º¸ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;    
+            v_Return_Message := 'íŒë§¤ì œí’ˆì •ë³´ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;    
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -212,19 +212,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
     ELSIF v_Comm_Dvsn = 'D' THEN
         
         IF 0 != f_DeleteRtsd0021(v_Sale_Cd, v_Sale_Gds_Cd, v_Gds_Gb, v_Gds_Grp, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÆÇ¸ÅÁ¦Ç°Á¤º¸ »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;    
+            v_Return_Message := 'íŒë§¤ì œí’ˆì •ë³´ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;    
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;     
   
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -239,19 +239,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0021.p_IUDRtsd0021(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0021; 
 
   /*****************************************************************************
-  -- ÆÇ¸ÅÁ¦Ç°Á¤º¸ Á¦Ç°±¸ºÐ¿¡ µû¸¥ »èÁ¦
+  -- íŒë§¤ì œí’ˆì •ë³´ ì œí’ˆêµ¬ë¶„ì— ë”°ë¥¸ ì‚­ì œ
   *****************************************************************************/
   PROCEDURE p_UpdateRtsd0021DeleteGdsGb(
-    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå       */
-    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* Å¸ÀÌ¾îÀÏ °æ¿ì ÆÐÅÏÄÚµå, ¼­ºñ½ºÀÏ °æ¿ì ¼­ºñ½º, ºÎ°¡Á¦Ç°ÀÏ °æ¿ì ºÎ°¡Á¦Ç°ÄÚµå       */
-    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* Á¦Ç°±¸ºÐ       */
+    v_Sale_Cd           IN RTSD0021.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ       */
+    v_Sale_Gds_Cd       IN RTSD0021.SALE_GDS_CD%TYPE,       /* íƒ€ì´ì–´ì¼ ê²½ìš° íŒ¨í„´ì½”ë“œ, ì„œë¹„ìŠ¤ì¼ ê²½ìš° ì„œë¹„ìŠ¤, ë¶€ê°€ì œí’ˆì¼ ê²½ìš° ë¶€ê°€ì œí’ˆì½”ë“œ       */
+    v_Gds_Gb            IN RTSD0021.GDS_GB%TYPE,            /* ì œí’ˆêµ¬ë¶„       */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -276,11 +276,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0021 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0021.p_UpdateRtsd0021DeleteGdsGb(2)', v_ErrorText, v_Return_Message);
 
   END p_UpdateRtsd0021DeleteGdsGb;
   
 END Pkg_Rtsd0021;
-/

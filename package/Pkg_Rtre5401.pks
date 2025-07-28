@@ -10,6 +10,22 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
 *******************************************************************************/
 
   /*****************************************************************************
+    -- 마감전표 생성을 위한 기초 데이터 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5401 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
     -- 마감월별 매출내역 집계
   
     REVISIONS
@@ -120,6 +136,166 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
+  
+  /*****************************************************************************
+    -- 마감월별 카드(PG) 결제내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5208 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 카드이체내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5209 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 수수료 이연내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5210 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 판매수수료 기초내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5211 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 장착수수료 기초내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5212 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 서비스수수료 기초내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5213 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 수수료 합산내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5214 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 충당금내역 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5215 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 벤더정보 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5216 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
+  
+  /*****************************************************************************
+    -- 마감월별 법인고객정보 집계
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2020-07-28  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_AggregateRtre5217 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );
 
   /*****************************************************************************
   -- 마감전표정보 Select
@@ -162,6 +338,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401CalcTotal (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Amt_Fs10n      IN RTRE5206.CM_AMT%TYPE            /*SAP FS10N 금액    */
     , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
@@ -258,6 +435,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
   *****************************************************************************/
   PROCEDURE p_CreateRtre5401Calc09 (
       v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Fs10n_Amt      IN RTRE5206.CM_AMT%TYPE            /*SAP FS10N 금액    */  
     , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
@@ -279,7 +457,25 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
-
+  
+  
+  /*****************************************************************************
+    -- 11.마모파손 마감전표 정보생성
+  
+    REVISIONS
+    Ver     Date        Author          Description
+    -----   ----------  --------------  -------------------------------------
+    1.0     2021-08-03  ITSM            [] 신규작성
+  *****************************************************************************/
+  PROCEDURE p_CreateRtre5401Calc11 (
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE            /*마감년월          */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE            /*작업자 ID         */
+    , v_Success_Code   OUT NUMBER
+    , v_Return_Message OUT VARCHAR2
+    , v_ErrorText      OUT VARCHAR2
+  );  
+  
+  
   /*****************************************************************************
   -- 결과 인터페이스 결과 업데이트
   
@@ -289,14 +485,13 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTRE5401 AS
     1.0     2020-09-29  KST            [] 신규작성
   *****************************************************************************/
   FUNCTION f_UpdateRtre5401 (
-    v_Zmonth         IN RTRE5401.ZMONTH%TYPE,        /*마감월          */
-    v_Stmt_Cd        IN RTRE5401.STMT_CD%TYPE,       /*전표코드          */
-    v_E_Subrc        IN RTRE5401.E_SUBRC%TYPE,       /*결과코드        */
-    v_E_Belnr        IN RTRE5401.E_BELNR%TYPE,       /*전표번호              */
-    v_E_Remsg        IN RTRE5401.E_REMSG%TYPE,       /*결과메세지              */
-    v_Reg_Id         IN RTRE5401.REG_ID%TYPE,        /*등록자         */
-    v_ErrorText      OUT VARCHAR2
-    ) RETURN NUMBER;
-    
+      v_Zmonth         IN RTRE5401.ZMONTH%TYPE        /*마감월          */
+    , v_Stmt_Cd        IN RTRE5401.STMT_CD%TYPE       /*전표코드          */
+    , v_E_Subrc        IN RTRE5401.E_SUBRC%TYPE       /*결과코드        */
+    , v_E_Belnr        IN RTRE5401.E_BELNR%TYPE       /*전표번호              */
+    , v_E_Remsg        IN RTRE5401.E_REMSG%TYPE       /*결과메세지              */
+    , v_Reg_Id         IN RTRE5401.REG_ID%TYPE        /*등록자         */
+    , v_ErrorText      OUT VARCHAR2
+  ) RETURN NUMBER;
+
 END PKG_RTRE5401;
-/

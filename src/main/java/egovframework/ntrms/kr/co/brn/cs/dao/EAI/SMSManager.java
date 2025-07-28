@@ -18,8 +18,9 @@ import com.miracom.oneoone.transceiverx.TrxException;
  */
 public class SMSManager{
 	protected Log logger = LogFactory.getLog(this.getClass());
-	//private static final String connectString = "localhost:10101"; // Local IP Address
-	private static final String connectString = "172.17.32.145:10101;172.17.32.146:10101"; // EAI Server IP Address 기존 : 172.17.32.147:10101
+	//private static final String connectString = "localhost:10101";		// LOCAL
+	private static final String connectString = "172.17.64.36:10101"; 	// DEV
+	//private static final String connectString = "172.17.64.42:10101";	// PROD
 	private Transceiver transceiver;
 	private Session session;	
 
@@ -29,10 +30,10 @@ public class SMSManager{
 		isXml = true;
 	}
 
-//	public SMSManager(boolean isXml) {
-//		this.isXml = isXml;
-//	}
-	
+	//	public SMSManager(boolean isXml) {
+	//		this.isXml = isXml;
+	//	}
+
 	public String sendSync(String systemID, String interfaceID, String data) throws Exception {
 		return sendSync(systemID, interfaceID, data, 30000);
 	}
@@ -70,7 +71,7 @@ public class SMSManager{
 		session.setAutoRecovery(true);
 
 		session.connect(connectString);
-		
+
 	}
 
 	private void termSession() throws Exception {

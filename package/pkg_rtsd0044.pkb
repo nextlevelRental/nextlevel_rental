@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0044
-   PURPOSE:   ¸éÁ¦È¸Â÷
+   PURPOSE:   ë©´ì œíšŒì°¨
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¸éÁ¦È¸Â÷ Select
+  -- ë©´ì œíšŒì°¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0044 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Sale_Cd       IN     RTSD0044.SALE_CD%TYPE         /* ÆÇ¸ÅÄÚµå            */
+    v_Sale_Cd       IN     RTSD0044.SALE_CD%TYPE         /* íŒë§¤ì½”ë“œ            */
   ) IS
 
   BEGIN
@@ -34,12 +34,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
   
 
   /*****************************************************************************
-  -¸éÁ¦È¸Â÷ Insert
+  -ë©´ì œíšŒì°¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0044 (
-    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå         */
-    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ¸éÁ¦È¸Â÷         */
-    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* µî·ÏÀÚ ID        */
+    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ         */
+    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ë©´ì œíšŒì°¨         */
+    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* ë“±ë¡ì ID        */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -71,30 +71,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
 
 
   /*****************************************************************************
-  -¸éÁ¦È¸Â÷ Delete
+  -ë©´ì œíšŒì°¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0044 (
-    v_Sale_Cd         IN RTSD0044.SALE_CD%TYPE          /* ÆÇ¸ÅÄÚµå              */
+    v_Sale_Cd         IN RTSD0044.SALE_CD%TYPE          /* íŒë§¤ì½”ë“œ              */
     ) RETURN NUMBER IS
   BEGIN
 
     DELETE RTSD0044
     WHERE  SALE_CD = v_Sale_Cd;
 
-    Pkg_Utility.p_ErrorFileWrite('PKG_RTSD0044.f_DeleteRtsd0044', 'ÆÇ¸ÅÄÚµå', v_Sale_Cd);
+    Pkg_Utility.p_ErrorFileWrite('PKG_RTSD0044.f_DeleteRtsd0044', 'íŒë§¤ì½”ë“œ', v_Sale_Cd);
 
     RETURN SQLCODE;
   END f_DeleteRtsd0044;
   
   
   /*****************************************************************************
-  --¸éÁ¦È¸Â÷ (IUD)
+  --ë©´ì œíšŒì°¨ (IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0044 (
-    v_Comm_Dvsn         IN CHAR,                            /* Ã³¸®±¸ºĞ(I,U,D)  */
-    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* ÆÇ¸ÅÄÚµå         */
-    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ¸éÁ¦È¸Â÷         */
-    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* µî·ÏÀÚ ID        */
+    v_Comm_Dvsn         IN CHAR,                            /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)  */
+    v_Sale_Cd           IN RTSD0044.SALE_CD%TYPE,           /* íŒë§¤ì½”ë“œ         */
+    v_Exm_Mnt           IN RTSD0044.EXM_MNT%TYPE,           /* ë©´ì œíšŒì°¨         */
+    v_Reg_Id            IN RTSD0044.REG_ID%TYPE,            /* ë“±ë¡ì ID        */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -107,19 +107,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtsd0044(v_Sale_Cd, v_Exm_Mnt, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '¸éÁ¦È¸Â÷ µî·Ï ½ÇÆĞ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë©´ì œíšŒì°¨ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;    
        
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºĞ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;     
   
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -134,7 +134,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0044.p_IUDRtsd0044(2)', v_ErrorText, v_Return_Message);
 
@@ -145,4 +145,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0044 AS
   
 
 END Pkg_Rtsd0044;
-/

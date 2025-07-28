@@ -288,15 +288,15 @@ AS
       DELETE FROM RTRE0120
             WHERE ORD_NO = v_Ord_No AND POSTP_TP = v_Postp_Tp;
 
-      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
-                                    '계약번호',
-                                    v_Ord_No);
-      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
-                                    '이연항목',
-                                    v_Postp_Tp);
-      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
-                                    '등록자 ID',
-                                    v_Reg_Id);
+--      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
+--                                    '계약번호',
+--                                    v_Ord_No);
+--      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
+--                                    '이연항목',
+--                                    v_Postp_Tp);
+--      Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0037.f_DeleteRtre0120(2)',
+--                                    '등록자 ID',
+--                                    v_Reg_Id);
 
       RETURN SQLCODE;
    EXCEPTION
@@ -674,13 +674,23 @@ AS
                || ') : 가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
-
+      -- [SR2101-00053] 마모파손보증 감가상각의 경우 갯수 검증 임시 제외
+      -- 마모파손보증 테이블의 갯수로 대사하도록 보완 필요
+      IF v_Postp_Tp IN ('21','22','23','24','31','32','33','34') THEN
+        v_Ord_Qty1 := v_Ord_Qty;
+      END IF;
+      
+      -- [SR2101-00053] 마모파손보증 감가상각의 경우 제품코드 검증 제외
+      -- 단종 등의 사유로 본품과 다른 제품이 출고될 수 있음
+      IF v_Postp_Tp IN ('21','22','23','24','31','32','33','34') THEN
+        v_Mat_Cd1 := v_Mat_Cd;
+      END IF;
 
       --  DBMS_OUTPUT.Put_Line('v_Chan_Cd = ' || v_Chan_Cd || ',  v_Chan_Cd1 = ' || v_Chan_Cd1);
 
@@ -752,10 +762,10 @@ AS
                || ') : 의 장착정보가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
 
@@ -789,6 +799,7 @@ AS
             v_Mpp_Amt := TRUNC ( (v_Acq_Amt - v_Res_Amt) / v_Pptrm, 0);
             -- 마지막달 처리금액
             v_Lpp_Amt := (v_Acq_Amt - v_Res_Amt) - v_Mpp_Amt * (v_Pptrm - 1);
+            
             v_Pp_Stat := 'A';
             v_Ppch_Ym := v_Pstr_Ym;
 
@@ -930,10 +941,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          ROLLBACK;
@@ -942,10 +953,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120Postpone(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120Postpone(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120Postpone;
 
    /*****************************************************************************
@@ -1156,10 +1167,10 @@ AS
                || ') : 가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_CreateRtre0120ZeroPostpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_CreateRtre0120ZeroPostpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
 
@@ -1233,10 +1244,10 @@ AS
                || ') : 의 장착정보가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
 
@@ -1419,10 +1430,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120Postpone(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          ROLLBACK;
@@ -1431,10 +1442,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120Postpone(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120Postpone(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120ZeroPostpone;
 
 
@@ -1475,11 +1486,11 @@ AS
    -- [RE] 이연대상 중도변경 처리
    *****************************************************************************/
    PROCEDURE p_Rtre0120ChangePostpone (
-      v_Ord_No           IN     RTRE0120.ORD_NO%TYPE,   /*계약번호              */
-      v_Postp_Tp         IN     RTRE0120.POSTP_TP%TYPE, /*이연항목              */
-      v_Pp_Stat          IN     RTRE0120.PP_STAT%TYPE,    /*이연대상상태          */
-      v_Ppch_Ym          IN     RTRE0120.PPCH_YM%TYPE,        /*이연대상상태변경년월  */
-      v_Reg_Id           IN     RTRE0120.REG_ID%TYPE,  /*등록자 ID             */
+      v_Ord_No           IN     RTRE0120.ORD_NO%TYPE,   /*계약번호             */
+      v_Postp_Tp         IN     RTRE0120.POSTP_TP%TYPE, /*이연항목             */
+      v_Pp_Stat          IN     RTRE0120.PP_STAT%TYPE,  /*이연대상상태         */
+      v_Ppch_Ym          IN     RTRE0120.PPCH_YM%TYPE,  /*이연대상상태변경년월 */
+      v_Reg_Id           IN     RTRE0120.REG_ID%TYPE,   /*등록자 ID            */
       v_Success_Code        OUT NUMBER,
       v_Return_Message      OUT VARCHAR2,
       v_ErrorText           OUT VARCHAR2)
@@ -1586,10 +1597,10 @@ AS
                || ') : 의 이연정보가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
 
@@ -1621,10 +1632,10 @@ AS
                || ') : 의 이연 월별정보가 존재하지 않아 처리가 불가 합니다!';
             v_ErrorText :=
                SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite (
-               'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
-               v_ErrorText,
-               v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite (
+--               'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
+--               v_ErrorText,
+--               v_Return_Message);
       END;
 
 
@@ -1757,10 +1768,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtre0125%ISOPEN
@@ -1774,10 +1785,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_Rtre0120ChangePostpone(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_Rtre0120ChangePostpone(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_Rtre0120ChangePostpone;
 
 
@@ -1926,10 +1937,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_Rtre0120ChangeMain(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_Rtre0120ChangeMain(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtre0120%ISOPEN
@@ -1943,10 +1954,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_Rtre0120ChangeMain(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_Rtre0120ChangeMain(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_Rtre0120ChangeMain;
 
 
@@ -2105,10 +2116,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120RegiPostpone(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120RegiPostpone(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtcs0001%ISOPEN
@@ -2122,10 +2133,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120RegiPostpone(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120RegiPostpone(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120RegiPostpone;
 
 
@@ -2804,10 +2815,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtsd0108%ISOPEN
@@ -2821,10 +2832,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120ChangePost;
    
    
@@ -2885,7 +2896,8 @@ AS
                                             AND B.GI_DAY LIKE v_Period||'%'
                                             AND B.ORD_NO = C.ORD_NO
                                             AND B.VBELN  = C.VBELN
-                                            AND B.NUM IS NOT NULL  
+                                            AND B.NUM IS NOT NULL
+                                            AND C.TRANS_TP IN ('S1', 'S2')  
                                         ) A,               
                                         RTRE0120 B
                                   WHERE A.ORD_NO    = B.ORD_NO
@@ -3187,6 +3199,83 @@ AS
    
    
    /*****************************************************************************
+   -- 이연처리 변경사항 반영 - Step 02
+      - 걱정제로 서비스 이연처리 1
+      
+      REVISIONS
+      Ver        Date        Author           Description
+      ---------  ----------  ---------------  -------------------------------------
+      1.8        2020-01-14  rentaldev        [20200114_01] 걱정제로 충당 이연 로직 변경, 이연변경 로직 분리
+   *****************************************************************************/
+   PROCEDURE p_CreateRtre0120ChangePost02B (
+      v_Period           IN     CHAR,                 /*년월                  */
+      v_Reg_Id           IN     RTRE0120.REG_ID%TYPE,  /*등록자 ID             */
+      v_Success_Code        OUT NUMBER,
+      v_Return_Message      OUT VARCHAR2,
+      v_ErrorText           OUT VARCHAR2)
+   IS
+
+      e_Error       EXCEPTION;
+      
+   BEGIN
+      -- 필수값: 마감년월, 등록자 ID
+      IF (TRIM (v_Period) IS NULL) THEN
+         v_Return_Message := '마감년월(' || v_Period || ') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
+         RAISE e_Error;
+      END IF;
+
+      IF (TRIM (v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count (v_Reg_Id)) THEN
+         v_Return_Message := '등록자 ID(' || v_Reg_Id || ') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
+         RAISE e_Error;
+      END IF;
+      
+      -- 2016-05-13 이영근, 걱정제로 서비스 이연처리
+      p_GrntChangePostSer (v_Period,
+                           v_Reg_Id,
+                           v_Success_Code,
+                           v_Return_Message,
+                           v_ErrorText);
+                                       
+      IF v_Success_Code <> 0 THEN
+         RAISE e_Error;
+      END IF;
+      
+      v_Success_code   := 0;
+      v_Return_Message := '정상적으로 처리되었습니다';
+      v_ErrorText      := '';
+         
+      DBMS_OUTPUT.PUT_LINE('Pkg_Rtre0120.p_CreateRtre0120ChangePost02B::정상처리');
+      DBMS_OUTPUT.PUT_LINE('v_Success_code = ['||v_Success_code||']');
+      DBMS_OUTPUT.PUT_LINE('v_Return_Message = ['||v_Return_Message||']');
+      DBMS_OUTPUT.PUT_LINE('v_ErrorText = ['||v_ErrorText||']');      
+      
+   EXCEPTION
+      WHEN e_Error THEN
+         ROLLBACK;
+         v_Success_code   := -1;
+         v_Return_Message := v_Return_Message;
+         v_ErrorText      := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
+         
+         DBMS_OUTPUT.PUT_LINE('Pkg_Rtre0120.p_CreateRtre0120ChangePost02B::사용자정의에러');
+         DBMS_OUTPUT.PUT_LINE('v_Success_code = ['||v_Success_code||']');
+         DBMS_OUTPUT.PUT_LINE('v_Return_Message = ['||v_Return_Message||']');
+         DBMS_OUTPUT.PUT_LINE('v_ErrorText = ['||v_ErrorText||']');
+         
+      WHEN OTHERS THEN
+         ROLLBACK;
+         v_Success_code   := -1;
+         v_Return_Message := NVL (TRIM (v_Return_Message), '시스템관리자에게 문의바랍니다!.');
+         v_ErrorText      := SUBSTR (SQLERRM, 1, 200);
+         
+         DBMS_OUTPUT.PUT_LINE('Pkg_Rtre0120.p_CreateRtre0120ChangePost02B::시스템에러');
+         DBMS_OUTPUT.PUT_LINE('v_Success_code = ['||v_Success_code||']');
+         DBMS_OUTPUT.PUT_LINE('v_Return_Message = ['||v_Return_Message||']');
+         DBMS_OUTPUT.PUT_LINE('v_ErrorText = ['||v_ErrorText||']');
+         
+   END p_CreateRtre0120ChangePost02B;
+   
+   
+   /*****************************************************************************
    -- 이연처리 변경사항 반영 - Step 03
       - 걱정제로 서비스 이연처리 2
       
@@ -3402,6 +3491,7 @@ AS
                 AND A.CUST_NO = C.CUST_NO
                 AND A.ORD_NO = D.ORD_NO(+)
                 AND D.TRANS_TP(+) = 'N'
+                AND A.SLCM_AMT > 0 
          GROUP  BY A.ORD_NO,                
                 A.SLCM_YM,
                 B.PERIOD_CD,
@@ -3623,10 +3713,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120CommPostpone(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120CommPostpone(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtre0120%ISOPEN
@@ -3642,10 +3732,10 @@ AS
                   '시스템관리자에게 문의바랍니다!. - '
                || SUBSTR (SQLERRM, 1, 200));
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120CommPostpone(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120CommPostpone(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120CommPostpone;
 
    /*****************************************************************************
@@ -3795,10 +3885,10 @@ AS
          v_Success_code := -1;
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtsd0108%ISOPEN
@@ -3812,10 +3902,10 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_CreateRtre0120ChangePostSer;
 
    /*****************************************************************************
@@ -4028,10 +4118,10 @@ AS
          v_Return_Message := v_Return_Message;
          v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
 --         dbms_output.put_line('Pkg_Rtre0120.p_CreateRtre0120ChangePost(11)::'||v_Return_Message);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
+--            v_ErrorText,
+--            v_Return_Message);
       WHEN OTHERS
       THEN
          IF Cur_Rtcs0010%ISOPEN
@@ -4045,11 +4135,252 @@ AS
             NVL (TRIM (v_Return_Message),
                  '시스템관리자에게 문의바랍니다!.');
          v_ErrorText := SUBSTR (SQLERRM, 1, 200);
-         Pkg_Utility.p_ErrorFileWrite (
-            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
-            v_ErrorText,
-            v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
+--            v_ErrorText,
+--            v_Return_Message);
    END p_ZeroChangePostSer;
+   
+   
+   /*****************************************************************************
+   -- 이연처리 변경사항 반영-- 마모파손 이연 변경      감가상각    <시작
+   
+   -- 걱정제로 이연변경 처리를 참조하여 생성
+   *****************************************************************************/
+   PROCEDURE p_GrntChangePostSer (v_Period           IN     CHAR, /*년월                  */
+                                  v_Reg_Id           IN     RTRE0120.REG_ID%TYPE, /*등록자 ID             */
+                                  v_Success_Code        OUT NUMBER,
+                                  v_Return_Message      OUT VARCHAR2,
+                                  v_ErrorText           OUT VARCHAR2)
+   IS
+      CURSOR Cur_Rtcs0010
+      IS
+         SELECT COUNT(*) OVER () AS TOT_CNT,
+                A.ORD_NO,
+                B.POSTP_TP,
+                'G' AS END_TP,
+                B.ORD_QTY,
+                B.PP_STAT
+           FROM (
+                 SELECT DISTINCT A.ORD_NO, CUST_NO
+                   FROM 
+                        (SELECT A.ORD_NO, A.CUST_NO, 
+                                RANK() OVER(PARTITION BY A.ORD_NO ORDER BY A.REG_DT ASC)  AS RNK
+                           FROM RTCS0208 A
+                          WHERE 1=1
+--                            and A.DLVR_DAY >= TO_CHAR(ADD_MONTHS(TO_DATE(v_Period,'YYYYMM'),-2),'YYYYMM') || '01' -- 전월 이후 신청내역부터 조회
+--                            AND A.DLV_STAT NOT IN ('01','06') -- 취소건이나 SAP로 미전송된 건은 제외
+                            AND A.DLV_STAT NOT IN ('06') -- 취소건 제외
+                        ) A,
+                        RTSD0116 B,
+                        RTSD0115 C
+                  WHERE A.ORD_NO = B.ORD_NO
+                    AND A.RNK    = B.NUM                  
+                    AND B.GI_DAY LIKE v_Period||'%'
+                    AND B.ORD_NO = C.ORD_NO
+                    AND B.VBELN  = C.VBELN
+                    AND B.NUM IS NOT NULL  
+--                    AND C.TRANS_TP IN ('W1','W2')
+                    AND C.TRANS_TP LIKE 'W%'
+                ) A,               
+                RTRE0120 B
+          WHERE A.ORD_NO    = B.ORD_NO
+            AND B.POSTP_TP IN ('02', '03')
+            AND B.PP_STAT  IN ('A', 'O')
+--            AND A.ORD_NO NOT IN (SELECT ORD_NO FROM RTRE0126_TMP WHERE PERIOD_YM = v_Period) --2021.08.02 주석처리. 누락건 발생. 걱정제로 에러용으로 제외한 것으로 마모파손에서는 미적용
+--            AND A.ORD_NO IN ('B20000326974','D20000322382','D20000325032','D21000331964') --21.06 마감 시 처리누락분에 대한 추가처리를 위해 사용
+--            AND A.ORD_NO IN ('')
+            ;
+
+
+      e_Error       EXCEPTION;
+      v_curr_cunt   NUMBER;
+
+      v_Ord_No      RTRE0120.ORD_NO%TYPE;               /*계약번호              */
+      v_Postp_Tp    RTRE0120.POSTP_TP%TYPE;             /*이연항목              */
+      v_Pstr_Ym     RTRE0120.PSTR_YM%TYPE;              /*이연시작월            */
+      v_Pptrm       RTRE0120.PPTRM%TYPE;                /*이연기간              */
+      v_Acq_Amt     RTRE0120.ACQ_AMT%TYPE;              /*이연처리대상금액      */
+      v_Res_Amt     RTRE0120.RES_AMT%TYPE;              /*잔존가액              */
+      v_Prost_Tp    RTRE0120.PROST_TP%TYPE;             /*처리구분              */
+      v_Chan_Cd     RTRE0120.CHAN_CD%TYPE;              /*채널구분              */
+      v_Agency_Cd   RTRE0120.AGENCY_CD%TYPE;            /*취득조직              */
+      v_Cust_Tp     RTRE0120.CUST_TP%TYPE;              /*고객유형              */
+      v_Mat_Cd      RTRE0120.MAT_CD%TYPE;               /*상품코드              */
+      v_Ord_Qty     RTRE0120.ORD_QTY%TYPE;              /*장착갯수              */
+      v_Acq_Tot     RTRE0120.ACQ_AMT%TYPE;              /*이연처리전체금액      */
+   BEGIN
+   
+        DBMS_OUTPUT.PUT_LINE('p_GrntChangePostSer start');
+        
+      -- 필수값: 마감년월, 등록자 ID
+      IF (TRIM (v_Period) IS NULL)
+      THEN
+         v_Return_Message :=
+               '마감년월('
+            || v_Period
+            || ') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
+         RAISE e_Error;
+      END IF;
+
+      IF    (TRIM (v_Reg_Id) IS NULL)
+         OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count (v_Reg_Id))
+      THEN
+         v_Return_Message :=
+               '등록자 ID('
+            || v_Reg_Id
+            || ') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
+         RAISE e_Error;
+      END IF;
+
+      v_Pstr_Ym := v_Period;
+
+      -- 이미처리되었는지 확인
+      v_curr_cunt := 0;
+
+--      BEGIN
+--         SELECT COUNT (*)
+--           INTO v_curr_cunt
+--           FROM (
+--                 SELECT DISTINCT A.ORD_NO, CUST_NO
+--                   FROM 
+--                        (SELECT A.ORD_NO, A.CUST_NO, 
+--                                RANK() OVER(PARTITION BY A.ORD_NO ORDER BY A.REG_DT ASC)  AS RNK
+--                           FROM RTCS0208 A
+--                          WHERE 1=1
+----                            and A.DLVR_DAY >= TO_CHAR(ADD_MONTHS(TO_DATE(v_Period,'YYYYMM'),-2),'YYYYMM') || '01' -- 전월 이후 신청내역부터 조회
+----                            AND A.DLV_STAT NOT IN ('01','06') -- 취소건이나 SAP로 미전송된 건은 제외
+--                            AND A.DLV_STAT NOT IN ('06') -- 취소건 제외
+--                        ) A,
+--                        RTSD0116 B,
+--                        RTSD0115 C
+--                  WHERE A.ORD_NO = B.ORD_NO
+--                    AND A.RNK    = B.NUM                  
+--                    AND B.GI_DAY LIKE v_Period||'%'
+--                    AND B.ORD_NO = C.ORD_NO
+--                    AND B.VBELN  = C.VBELN
+--                    AND B.NUM IS NOT NULL  
+----                    AND C.TRANS_TP IN ('W1','W2')
+--                    AND C.TRANS_TP LIKE 'W%'
+--                ) A,               
+--                RTRE0120 B,
+--                RTRE0125 C
+--          WHERE A.ORD_NO    = B.ORD_NO
+--            AND B.POSTP_TP IN ('02', '03')
+--            AND B.PP_STAT  <> 'A'
+--            AND B.ORD_NO    = C.ORD_NO
+--            AND B.POSTP_TP  = C.POSTP_TP
+--            AND C.ZERO_DAY  = v_Period
+--            AND ROWNUM      = 1;
+--
+--      EXCEPTION
+--         WHEN OTHERS
+--         THEN
+--            v_Return_Message := '조회실패1';
+--            v_curr_cunt := -1;
+--            RAISE e_Error;
+--      END;
+      
+      DBMS_OUTPUT.PUT_LINE(v_curr_cunt);
+
+      IF NVL (v_curr_cunt, 0) > 0
+      THEN
+         v_Return_Message :=
+               '마감년월('
+            || v_Period
+            || ') : 이미 처리되어 처리가 불가 합니다';
+         RAISE e_Error;
+      END IF;
+
+      -- 이연처리 변경내역 생성
+      FOR CUR_0010 IN Cur_Rtcs0010
+      LOOP
+         EXIT WHEN Cur_Rtcs0010%NOTFOUND;
+         
+         v_curr_cunt := v_curr_cunt + 1;
+         
+--         Pkg_Utility.p_InfoFileWrite ('Pkg_Rtre0120.p_ZeroChangePostSer(2/3)', v_curr_cunt||'/'||CUR_0010.TOT_CNT, CUR_0010.ORD_NO);
+         DBMS_OUTPUT.PUT_LINE('Pkg_Rtre0120.p_ZeroChangePostSer(2/3)'||'['||v_curr_cunt||'/'||CUR_0010.TOT_CNT||']['||CUR_0010.ORD_NO||']');
+         
+         p_Rtre0120ZeroMainSer (CUR_0010.ORD_NO,
+                                CUR_0010.POSTP_TP,
+                                CUR_0010.END_TP,
+                                v_Period,
+                                v_Reg_Id,
+                                v_Success_Code,
+                                v_Return_Message,
+                                v_ErrorText);
+
+
+         IF v_Success_Code <> 0
+         THEN
+            RAISE e_Error;
+         END IF;
+      END LOOP;
+
+      IF Cur_Rtcs0010%ISOPEN
+      THEN
+         CLOSE Cur_Rtcs0010;
+      END IF;
+      
+      --[20161031_05] 이후 로직
+      v_Success_code := 0;
+      v_Return_Message := '정상적으로 처리되었습니다';
+      v_ErrorText := '';
+
+    /* [20161031_05] 이전 로직
+      IF v_curr_cunt > 0
+      THEN
+         v_Success_code := 0;
+         v_Return_Message := '정상적으로 처리되었습니다';
+         v_ErrorText := '';
+      --COMMIT;
+      ELSE
+         v_Return_Message :=
+               v_Success_Code
+            || v_Return_Message
+            || '마감년월('
+            || v_Period
+            || ') : 처리건이 존재하지 않습니다!(ERR CODE: 4D7B2V)';
+         RAISE e_Error;
+      END IF;
+      */
+   EXCEPTION
+      WHEN e_Error
+      THEN
+         IF Cur_Rtcs0010%ISOPEN
+         THEN
+            CLOSE Cur_Rtcs0010;
+         END IF;
+
+         ROLLBACK;
+         -- v_Success_code := -1;
+         v_Return_Message := v_Return_Message;
+         v_ErrorText := SUBSTR (SQLERRM, 1, 200) || ':' || TRIM (v_ErrorText);
+         DBMS_OUTPUT.PUT_LINE('Pkg_Rtre0120.p_CreateRtre0120ChangePost(11)::'||v_Return_Message);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)',
+--            v_ErrorText,
+--            v_Return_Message);
+      WHEN OTHERS
+      THEN
+         IF Cur_Rtcs0010%ISOPEN
+         THEN
+            CLOSE Cur_Rtcs0010;
+         END IF;
+
+         ROLLBACK;
+         v_Success_code := -1;
+         v_Return_Message :=
+            NVL (TRIM (v_Return_Message),
+                 '시스템관리자에게 문의바랍니다!.');
+         v_ErrorText := SUBSTR (SQLERRM, 1, 200);
+--         Pkg_Utility.p_ErrorFileWrite (
+--            'Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)',
+--            v_ErrorText,
+--            v_Return_Message);
+   END p_GrntChangePostSer;
+   
 
    /*****************************************************************************
    -- [RE] 걱정제로 이연대상 중도변경 처리 Main- 1
@@ -4134,26 +4465,71 @@ AS
 
       BEGIN
          -- 기존 S는 .. SS로 변경
-         UPDATE RTRE0120
+         IF v_Pp_Stat = 'S' THEN
+            UPDATE RTRE0120
             SET pp_stat  = 'SS',
                 CHG_ID   = v_Reg_Id,
                 CHG_DT   = SYSDATE
           WHERE ORD_NO   = v_Ord_No
             AND POSTP_TP = v_Postp_Tp
             AND pp_stat  = 'S';
+            
+         ELSIF v_Pp_Stat = 'G' THEN
+         
+            UPDATE RTRE0120
+            SET pp_stat  = 'GB',
+                CHG_ID   = v_Reg_Id,
+                CHG_DT   = SYSDATE
+          WHERE ORD_NO   = v_Ord_No
+            AND POSTP_TP = v_Postp_Tp
+            AND pp_stat  = 'GA';
+         
+            UPDATE RTRE0120
+            SET pp_stat  = 'GA',
+                CHG_ID   = v_Reg_Id,
+                CHG_DT   = SYSDATE
+          WHERE ORD_NO   = v_Ord_No
+            AND POSTP_TP = v_Postp_Tp
+            AND pp_stat  = 'GG';
+         
+            UPDATE RTRE0120
+            SET pp_stat  = 'GG',
+                CHG_ID   = v_Reg_Id,
+                CHG_DT   = SYSDATE
+          WHERE ORD_NO   = v_Ord_No
+            AND POSTP_TP = v_Postp_Tp
+            AND pp_stat  = 'G';
+         END IF;
+         
     --COMMIT;
     EXCEPTION
     WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := '계약번호('||v_Ord_No||') : 의 이연정보가 존재하지 않아 처리가 불가 합니다1';
+        v_Return_Message := '계약번호('||v_Ord_No||'-'||v_Postp_Tp||') : 의 이연정보가 존재하지 않아 처리가 불가 합니다1';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
         RAISE e_Error;
     END;
 
     BEGIN
+        UPDATE RTRE0120
+        SET    pp_stat   = 'ZB',
+               CHG_ID    = v_Reg_Id,
+               CHG_DT    = SYSDATE
+        WHERE  ORD_NO    = v_Ord_No
+        AND    POSTP_TP  = v_Postp_Tp
+        AND    pp_stat   = 'ZA';
+        
+        UPDATE RTRE0120
+        SET    pp_stat   = 'ZA',
+               CHG_ID    = v_Reg_Id,
+               CHG_DT    = SYSDATE
+        WHERE  ORD_NO    = v_Ord_No
+        AND    POSTP_TP  = v_Postp_Tp
+        AND    pp_stat   = 'ZZ';
+        
         -- 기존 Z는 .. ZZ로 변경
         UPDATE RTRE0120
         SET    pp_stat   = 'ZZ',
@@ -4169,7 +4545,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '계약번호('||v_Ord_No||') : 의 이연정보가 존재하지 않아 처리가 불가 합니다2';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
         RAISE e_Error;
     END;
@@ -4219,7 +4595,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangeMain(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangeMain(1)', v_ErrorText, v_Return_Message);
 
       WHEN OTHERS THEN
         IF Cur_Rtre0120%ISOPEN THEN
@@ -4229,7 +4605,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangeMain(2)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangeMain(2)', v_ErrorText, v_Return_Message);
 
   END p_Rtre0120ZeroMainSer;
 
@@ -4328,7 +4704,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '계약번호('||v_Ord_No||') : 의 이연정보가 존재하지 않아 처리가 불가 합니다1';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
         RAISE e_Error;
     END;
@@ -4336,27 +4712,54 @@ AS
 
     BEGIN
         -- 이연처리 처리구분 발췌
-        SELECT TO_NUMBER(SUM(A.KWMENG))
-          INTO v_Kwmeng
-          FROM 
-               (SELECT A.ORD_NO, A.KWMENG, 
-                       RANK() OVER(PARTITION BY A.ORD_NO ORDER BY A.REG_DT ASC)  AS RNK
-                  FROM RTCS0010 A
-                 WHERE A.DLVR_DAY >= TO_CHAR(ADD_MONTHS(TO_DATE(v_Ppch_Ym,'YYYYMM'),-1),'YYYYMM') || '01' -- 전월 이후 신청내역부터 조회
-                   AND A.DLV_STAT NOT IN ('01','06') -- 취소건이나 SAP로 미전송된 건은 제외
-               ) A          
-               
-         WHERE A.ORD_NO =  v_Ord_No
-           AND EXISTS (SELECT 1
-                         FROM RTSD0116 B,
-                              RTSD0115 C
-                        WHERE A.ORD_NO = B.ORD_NO
-                          AND A.RNK    = B.NUM
-                          AND B.GI_DAY LIKE v_Ppch_Ym||'%'
-                          AND B.NUM IS NOT NULL
-                          AND B.ORD_NO = C.ORD_NO
-                          AND B.VBELN  = C.VBELN);          
         
+        IF v_Pp_Stat IN ('S') THEN
+            SELECT TO_NUMBER(SUM(A.KWMENG))
+              INTO v_Kwmeng
+              FROM 
+                   (SELECT A.ORD_NO, A.KWMENG, 
+                           RANK() OVER(PARTITION BY A.ORD_NO ORDER BY A.REG_DT ASC)  AS RNK
+                      FROM RTCS0010 A
+                     WHERE A.DLVR_DAY >= TO_CHAR(ADD_MONTHS(TO_DATE(v_Ppch_Ym,'YYYYMM'),-2),'YYYYMM') || '01' -- 전월 이후 신청내역부터 조회
+                       AND A.DLV_STAT NOT IN ('01','06') -- 취소건이나 SAP로 미전송된 건은 제외
+                   ) A
+             WHERE A.ORD_NO =  v_Ord_No
+               AND EXISTS (SELECT 1
+                             FROM RTSD0116 B,
+                                  RTSD0115 C
+                            WHERE A.ORD_NO = B.ORD_NO
+                              AND A.RNK    = B.NUM
+                              AND B.GI_DAY LIKE v_Ppch_Ym||'%'
+                              AND B.NUM IS NOT NULL
+                              AND B.ORD_NO = C.ORD_NO
+                              AND B.VBELN  = C.VBELN);  
+
+        ELSIF v_Pp_Stat IN ('G') THEN
+        
+            SELECT TO_NUMBER(SUM(A.KWMENG))
+               INTO v_Kwmeng
+               FROM 
+                    (SELECT A.ORD_NO, A.CUST_NO, A.KWMENG,
+                            RANK() OVER(PARTITION BY A.ORD_NO ORDER BY A.REG_DT ASC)  AS RNK
+                       FROM RTCS0208 A
+                      WHERE 1=1
+--                        and A.DLVR_DAY >= TO_CHAR(ADD_MONTHS(TO_DATE(v_Ppch_Ym,'YYYYMM'),-2),'YYYYMM') || '01' -- 전월 이후 신청내역부터 조회
+--                        AND A.DLV_STAT NOT IN ('01','06') -- 취소건이나 SAP로 미전송된 건은 제외
+                        AND A.DLV_STAT NOT IN ('06') -- 취소건 제외
+                    ) A,
+                    RTSD0116 B,
+                    RTSD0115 C
+              WHERE A.ORD_NO =  v_Ord_No
+                AND A.ORD_NO = B.ORD_NO
+                AND A.RNK    = B.NUM                  
+                AND B.GI_DAY LIKE v_Ppch_Ym||'%'
+                AND B.ORD_NO = C.ORD_NO
+                AND B.VBELN  = C.VBELN
+                AND B.NUM IS NOT NULL  
+--                AND C.TRANS_TP IN ('W1','W2')
+                AND C.TRANS_TP LIKE 'W%';
+                      
+        END IF;
 
     EXCEPTION
     WHEN OTHERS THEN
@@ -4364,7 +4767,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '계약번호('||v_Ord_No||') : 의 이연정보가 존재하지 않아 처리가 불가 합니다!';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
         RAISE e_Error;
     END;
@@ -4395,72 +4798,109 @@ AS
         v_Success_code := -1;
         v_Return_Message := 'RTRE0120 조회불가-T/ZZ';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
         RAISE e_Error;
     END;
 
 
     BEGIN
-    INSERT INTO RTRE0120
-         SELECT ORD_NO,
-                POSTP_TP,
-                PSTR_YM,
-                PEND_YM,
-                PPTRM,
-                ROUND (ACQ_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS ACQ_AMT,
-                ROUND (RES_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS RES_AMT,
-                ROUND (MPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS MPP_AMT,
-                ROUND (LPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS LPP_AMT,
-                PROST_TP,
-                CHAN_CD,
-                AGENCY_CD,
-                CUST_TP,
-                MAT_CD,
-                v_OrdQtyNow  - v_Kwmeng AS ORD_QTY, --변경할것
-                'A' AS PP_STAT,
-                PPCH_YM,
-                REG_ID,
-                REG_DT,
-                CHG_ID,
-                CHG_DT,
-                v_OrdQtyNow  - v_Kwmeng
-                --     v_Ppch_Ym AS  ZERO_DAY
-         FROM rtre0120
-         WHERE pp_stat  = 'T'
-         -- pp_stat = 'Z'
-         AND   ord_no   = v_Ord_No
-         AND   postp_tp = v_Postp_Tp
-         UNION ALL
-         SELECT ORD_NO,
-                POSTP_TP,
-                PSTR_YM,
-                PEND_YM,
-                PPTRM,
-                ACQ_AMT- ROUND (ACQ_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS ACQ_AMT,   --v_Kwmeng
-                RES_AMT- ROUND (RES_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS RES_AMT,
-                MPP_AMT- ROUND (MPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS MPP_AMT,
-                LPP_AMT- ROUND (LPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS LPP_AMT,
-                PROST_TP,
-                CHAN_CD,
-                AGENCY_CD,
-                CUST_TP,
-                MAT_CD,
-                v_Kwmeng AS ORD_QTY, --변경할것
-                'K' AS PP_STAT,
-                PPCH_YM,
-                REG_ID,
-                REG_DT,
-                CHG_ID,
-                CHG_DT,
-                v_Kwmeng
-                --   v_Ppch_Ym AS  ZERO_DAY
-         FROM   rtre0120
-         WHERE  pp_stat  = 'T' --v_Qstat
-         -- pp_stat = 'Z'
-         AND    ord_no   = v_Ord_No
-         AND    postp_tp = v_Postp_Tp;
 
+        IF v_OrdQtyNow = v_Kwmeng THEN
+    
+            INSERT INTO RTRE0120         
+             SELECT ORD_NO,
+                    POSTP_TP,
+                    PSTR_YM,
+                    PEND_YM,
+                    PPTRM,
+                    ACQ_AMT- ROUND (ACQ_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS ACQ_AMT,   --v_Kwmeng
+                    RES_AMT- ROUND (RES_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS RES_AMT,
+                    MPP_AMT- ROUND (MPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS MPP_AMT,
+                    LPP_AMT- ROUND (LPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS LPP_AMT,
+                    PROST_TP,
+                    CHAN_CD,
+                    AGENCY_CD,
+                    CUST_TP,
+                    MAT_CD,
+                    v_Kwmeng AS ORD_QTY, --변경할것
+                    'K' AS PP_STAT,
+                    PPCH_YM,
+                    REG_ID,
+                    REG_DT,
+                    CHG_ID,
+                    CHG_DT,
+                    v_Kwmeng
+                    --   v_Ppch_Ym AS  ZERO_DAY
+             FROM   RTRE0120
+             WHERE  pp_stat  = 'T' --v_Qstat
+             -- pp_stat = 'Z'
+             AND    ord_no   = v_Ord_No
+             AND    postp_tp = v_Postp_Tp;
+        
+        ELSE
+        
+            INSERT INTO RTRE0120
+             SELECT ORD_NO,
+                    POSTP_TP,
+                    PSTR_YM,
+                    PEND_YM,
+                    PPTRM,
+                    ROUND (ACQ_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS ACQ_AMT,
+                    ROUND (RES_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS RES_AMT,
+                    ROUND (MPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS MPP_AMT,
+                    ROUND (LPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS LPP_AMT,
+                    PROST_TP,
+                    CHAN_CD,
+                    AGENCY_CD,
+                    CUST_TP,
+                    MAT_CD,
+                    v_OrdQtyNow  - v_Kwmeng AS ORD_QTY, --변경할것
+                    'A' AS PP_STAT,
+                    PPCH_YM,
+                    REG_ID,
+                    REG_DT,
+                    CHG_ID,
+                    CHG_DT,
+                    v_OrdQtyNow  - v_Kwmeng
+                    --     v_Ppch_Ym AS  ZERO_DAY
+             FROM RTRE0120
+             WHERE pp_stat  = 'T'
+             -- pp_stat = 'Z'
+             AND   ord_no   = v_Ord_No
+             AND   postp_tp = v_Postp_Tp
+             UNION ALL
+             SELECT ORD_NO,
+                    POSTP_TP,
+                    PSTR_YM,
+                    PEND_YM,
+                    PPTRM,
+                    ACQ_AMT- ROUND (ACQ_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS ACQ_AMT,   --v_Kwmeng
+                    RES_AMT- ROUND (RES_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS RES_AMT,
+                    MPP_AMT- ROUND (MPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS MPP_AMT,
+                    LPP_AMT- ROUND (LPP_AMT / v_OrdQtyNow * (v_OrdQtyNow - v_Kwmeng)) AS LPP_AMT,
+                    PROST_TP,
+                    CHAN_CD,
+                    AGENCY_CD,
+                    CUST_TP,
+                    MAT_CD,
+                    v_Kwmeng AS ORD_QTY, --변경할것
+                    'K' AS PP_STAT,
+                    PPCH_YM,
+                    REG_ID,
+                    REG_DT,
+                    CHG_ID,
+                    CHG_DT,
+                    v_Kwmeng
+                    --   v_Ppch_Ym AS  ZERO_DAY
+             FROM   RTRE0120
+             WHERE  pp_stat  = 'T' --v_Qstat
+             -- pp_stat = 'Z'
+             AND    ord_no   = v_Ord_No
+             AND    postp_tp = v_Postp_Tp;
+        
+        END IF;
+        
        --  commit;
        EXCEPTION
     WHEN OTHERS THEN
@@ -4468,7 +4908,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '120 신규생성 실패';
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
         RAISE e_Error;
     END;
 
@@ -4492,13 +4932,12 @@ AS
 
 
     ------------------------임시테이블에 개수대로 뿌리는거 만들어야함==> 신규생성 Rtre0120_TEMP, Rtre0120_TEMPB -------------------------------
-    DELETE FROM Rtre0125_temp;
-    DELETE FROM Rtre0125_tempB;
+    DELETE FROM RTRE0125_TEMP;
+    DELETE FROM RTRE0125_TEMPB;
     
     -- 이연처리 월별내역 UPDATE
     FOR CUR_0120 IN Cur_Rtre0120 LOOP
         EXIT WHEN Cur_Rtre0120%NOTFOUND;
-
 
          p_ZeroCal( CUR_0120.ORD_NO,  CUR_0120.POSTP_TP,  CUR_0120.PSTR_YM,  CUR_0120.PPTRM,     CUR_0120.ACQ_AMT,
                     CUR_0120.RES_AMT, CUR_0120.PROST_TP,  CUR_0120.CHAN_CD,  CUR_0120.AGENCY_CD, CUR_0120.CUST_TP,
@@ -4541,7 +4980,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '125 조회 실패 v_Ord_No-'||v_Ord_No||'v_Postp_Tp-'||v_Postp_Tp||'v_Ppch_Ym'||v_Ppch_Ym;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
                 RAISE e_Error;
     END;
 
@@ -4551,11 +4990,12 @@ AS
       FROM DUAL;
 
     BEGIN
-    INSERT INTO Rtre0125
+    INSERT INTO RTRE0125
         SELECT ORD_NO    ,
                POSTP_TP  ,
                v_Postp_Seq  AS POSTP_SEQ ,
-               'S'          AS POSTP_STAT,
+--               'S'          AS POSTP_STAT,
+               v_Pp_Stat    AS POSTP_STAT,
                v_Ppch_Ym ,
                v_Ly_Tpp_Amt2 - LY_TPP_AMT,
                v_Cy_Pp_Amt2  - CY_PP_AMT ,
@@ -4567,7 +5007,7 @@ AS
                CHG_ID    ,
                CHG_DT    ,
                v_Ppch_YM
-          FROM Rtre0125_TEMP
+          FROM RTRE0125_TEMP
          WHERE ORD_NO  = v_Ord_No
            AND POSTP_YM = (SELECT TO_CHAR(ADD_MONTHS(TO_DATE(v_Ppch_Ym,'YYYYMM'),-1),'YYYYMM') FROM DUAL)
            AND POSTP_TP = v_Postp_Tp;
@@ -4577,12 +5017,12 @@ AS
         v_Success_code := -1;
         v_Return_Message := '125 신규 생성 실패 Ord_No : '||v_Ord_No||'Postp_Tp : '||v_Postp_Tp||'v_Ppch_Ym :'||v_Ppch_Ym||Pkg_Rtre0125.f_sRtre0125MaxSeq(v_Ord_No, v_Postp_Tp);
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
           RAISE e_Error;
     END;
     
     BEGIN
-        UPDATE  rtre0120
+        UPDATE  RTRE0120
         SET     pp_stat  = 'Z',
                 CHG_ID   = v_Reg_Id,
                 CHG_DT   = SYSDATE
@@ -4595,13 +5035,14 @@ AS
         v_Success_code := -1;
         v_Return_Message := '120 상태 변경 실패1 - ord_no :'||v_Ord_No||' postp_tp: '||v_Postp_Tp;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
           RAISE e_Error;
     END;
 
     BEGIN
-        UPDATE  rtre0120
-           SET  pp_stat  = 'S',
+        UPDATE  RTRE0120
+--           SET  pp_stat  = 'S', 
+           SET  pp_stat  = v_Pp_Stat,
                 CHG_ID   = v_Reg_Id,
                 CHG_DT   = SYSDATE
          WHERE  ord_no   = v_Ord_No
@@ -4614,12 +5055,12 @@ AS
         v_Success_code := -1;
         v_Return_Message := '120 상태 변경 실패2 - ord_no :'||v_Ord_No||' postp_tp: '||v_Postp_Tp;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
                 RAISE e_Error;
     END;
 
     BEGIN
-        UPDATE rtre0125
+        UPDATE RTRE0125
            SET postp_stat = 'Z',
                ZERO_DAY   = v_Ppch_Ym,
                CHG_DT     = SYSDATE,
@@ -4633,7 +5074,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := '125 상태 변경 실패3 - ord_no :'||v_Ord_No||' postp_tp: '||v_Postp_Tp;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
           RAISE e_Error;
     END;
 
@@ -4656,7 +5097,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
 
       WHEN OTHERS THEN
         IF Cur_Rtre0125%ISOPEN THEN
@@ -4666,7 +5107,7 @@ AS
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(2)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(2)', v_ErrorText, v_Return_Message);
 
   END p_ZeroRChangePostSer;
 
@@ -4696,7 +5137,7 @@ AS
 
     CURSOR Cur_Rtre0125_temp IS
     SELECT POSTP_YM
-      FROM Rtre0125_TEMP
+      FROM RTRE0125_TEMP
      WHERE POSTP_YM >= v_Ppch_Ym1;
 
     e_Error EXCEPTION;
@@ -4906,7 +5347,7 @@ AS
                  CHG_ID    ,
                  CHG_DT    ,
                  v_Ppch_Ym1
-          FROM Rtre0125_TEMP
+          FROM RTRE0125_TEMP
           WHERE POSTP_YM = CUR_0125_temp.POSTP_YM;
           p_Postp_Seq := p_Postp_Seq + 1;
 
@@ -4916,7 +5357,7 @@ AS
             v_Success_code := -1;
             v_Return_Message := 'Rtre0125_TEMP ==> 125 생성 실패';
             v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-            Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
+--            Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_Rtre0120ChangePostpone(1)', v_ErrorText, v_Return_Message);
         END;
       END LOOP;
     END IF;
@@ -4932,14 +5373,14 @@ AS
         v_Success_code := -1;
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120Postpone(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120Postpone(1)', v_ErrorText, v_Return_Message);
 
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120Postpone(2)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120Postpone(2)', v_ErrorText, v_Return_Message);
 
   END p_ZeroCal;
 
@@ -5072,7 +5513,7 @@ AS
     v_Postp_Tp       IN RTRE0120.POSTP_TP%TYPE,       /*이연항목              */
     v_Pp_Stat        IN RTRE0120.PP_STAT%TYPE,        /*이연변경대상상태          */
     v_Ppch_Ym        IN RTRE0120.PPCH_YM%TYPE,        /*이연대상상태변경년월  */
-    v_Ord_Qty_Now    IN RTRE0120.Ord_Qty_Now%TYPE,    /*현재장착   */
+    v_Ord_Qty_Now    IN RTRE0120.ORD_QTY_NOW%TYPE,    /*현재장착   */
     v_Reg_Id         IN RTRE0120.REG_ID%TYPE,         /*등록자 ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
@@ -5316,7 +5757,7 @@ AS
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
 --        dbms_output.put_line('Pkg_Rtre0120.p_CreateRtre0120ChangePost(12)::'||v_Return_Message);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120ChangePost(1)', v_ErrorText, v_Return_Message);
 
       WHEN OTHERS THEN
         IF Cur_Rtcs0010%ISOPEN THEN
@@ -5327,9 +5768,8 @@ AS
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
-        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)', v_ErrorText, v_Return_Message);
+--        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0120.p_CreateRtre0120ChangePost(2)', v_ErrorText, v_Return_Message);
 
   END p_ZeroSrvChangePostSer;
 
 END Pkg_Rtre0120;
-/

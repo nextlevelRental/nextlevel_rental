@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0002 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0002
-   PURPOSE:   »ç¿ëÀÚÀÌ·Â °ü¸®
+   PURPOSE:   ì‚¬ìš©ìžì´ë ¥ ê´€ë¦¬
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0002 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- »ç¿ëÀÚÀÌ·Â Á¶È¸
+  -- ì‚¬ìš©ìžì´ë ¥ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0002 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_User_Id        IN     RTCM0002.USER_ID%TYPE        /*»ç¿ëÀÚ ¾ÆÀÌµð      */
+    v_User_Id        IN     RTCM0002.USER_ID%TYPE        /*ì‚¬ìš©ìž ì•„ì´ë””      */
     ) IS
 
   BEGIN
@@ -46,10 +46,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0002 AS
   END p_sRtcm0002;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚÀÌ·Â Insert
+  -- ì‚¬ìš©ìžì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0002(
-    v_User_Id        IN RTCM0002.USER_ID%TYPE,          /*»ç¿ëÀÚ ¾ÆÀÌµð       */
+    v_User_Id        IN RTCM0002.USER_ID%TYPE,          /*ì‚¬ìš©ìž ì•„ì´ë””       */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
     
@@ -88,4 +88,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0002 AS
 
 
 END Pkg_Rtcm0002;
-/

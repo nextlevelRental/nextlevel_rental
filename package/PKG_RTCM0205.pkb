@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 /*******************************************************************************
    NAME:      Pkg_RTCM0205
-   PURPOSE:   ¹®ÀÚÆ÷¸Ë Detail °ü¸®
+   PURPOSE:   ë¬¸ìží¬ë§· Detail ê´€ë¦¬
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,14 +10,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °øÅëÄÚµå Detail Count
+  -- ê³µí†µì½”ë“œ Detail Count
   *****************************************************************************/
   FUNCTION f_sRtcm0205Count(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*í•˜ìœ„ì½”ë“œëª…          */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -40,31 +40,31 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
   END f_sRtcm0205Count;
   
   /*****************************************************************************
-  -- °øÅëÄÚµå Detail Á¶È¸
+  -- ê³µí†µì½”ë“œ Detail ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0205 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*í•˜ìœ„ì½”ë“œëª…          */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  A.SEND_POS,
-            A.MID_GRP_CD,    /*ÄÚµå±×·ìÄÚµå*/
-            A.CD,           /*ÄÚµå        */
+            A.MID_GRP_CD,    /*ì½”ë“œê·¸ë£¹ì½”ë“œ*/
+            A.CD,           /*ì½”ë“œ        */
             A.CUST_NO,
             A.ORD_NO,
             A.LOCK_YN,
             A.LOCK_TYPE,
-            A.REG_ID,       /*µî·ÏÀÚ ID   */
-            A.REG_DT,       /*µî·ÏÀÏ      */
-            A.CHG_ID,       /*º¯°æÀÚ ID   */
-            A.CHG_DT        /*º¯°æÀÏ      */
+            A.REG_ID,       /*ë“±ë¡ìž ID   */
+            A.REG_DT,       /*ë“±ë¡ì¼      */
+            A.CHG_ID,       /*ë³€ê²½ìž ID   */
+            A.CHG_DT        /*ë³€ê²½ì¼      */
     FROM    RTCM0205 A
     WHERE   1=1
     AND     A.SEND_POS = DECODE(v_Send_Pos, NULL, A.SEND_POS, v_Send_Pos)
@@ -77,19 +77,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
   END p_sRtcm0205;
 
   /*****************************************************************************
-  -- ¹®ÀÚÆ÷¸Ë Detail Insert
+  -- ë¬¸ìží¬ë§· Detail Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -116,20 +116,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
   END f_InsertRtcm0205;
 
   /*****************************************************************************
-  -- ¹®ÀÚÆ÷¸Ë Detail Update
+  -- ë¬¸ìží¬ë§· Detail Update
   *****************************************************************************/
   FUNCTION f_UpdateRTCM0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -160,16 +160,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 
 
   /*****************************************************************************
-  -- ¹®ÀÚÆ÷¸Ë Detail Delete
+  -- ë¬¸ìží¬ë§· Detail Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -197,21 +197,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 
 
   /*****************************************************************************
-  -- ¹®ÀÚÆ÷¸Ë °ü¸®
+  -- ë¬¸ìží¬ë§· ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0205(
-    v_Comm_Dvsn      IN  CHAR,                           /* Ã³¸®±¸ºÐ(I,U,D)        */
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Comm_Dvsn      IN  CHAR,                           /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)        */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -221,29 +221,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 
   BEGIN
 
-    -- ÇÊ¼ö°ª: ÄÚµå±×·ìÄÚµå, ÄÚµå, »ç¿ë¿©ºÎ ,µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ì½”ë“œê·¸ë£¹ì½”ë“œ, ì½”ë“œ, ì‚¬ìš©ì—¬ë¶€ ,ë“±ë¡ìž ID
     IF TRIM(v_Send_Pos) IS NULL THEN
-        v_Return_Message := '¹ß¼ÛÀ§Ä¡ÄÚµå('||v_Send_Pos||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë°œì†¡ìœ„ì¹˜ì½”ë“œ('||v_Send_Pos||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Mid_Grp_Cd) IS NULL THEN
-        v_Return_Message := 'ÄÚµå±×·ìÄÚµå('||v_Mid_Grp_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì½”ë“œê·¸ë£¹ì½”ë“œ('||v_Mid_Grp_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Cd) IS NULL THEN
-        v_Return_Message := 'ÄÚµå('||v_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì½”ë“œ('||v_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Lock_Yn) IS NULL THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Lock_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Lock_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -251,7 +251,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
 
         IF 0 != f_InsertRTCM0205(v_Send_Pos, v_Mid_Grp_Cd, v_Cd, v_Cust_No, v_Ord_No, 
                                  v_Str_Day, v_End_Day, v_Lock_Yn, v_Lock_Type, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '¹®ÀÚÆ÷¸Ë µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë¬¸ìží¬ë§· ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -262,7 +262,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
         
             IF 0 != f_UpdateRTCM0205(v_Send_Pos, v_Mid_Grp_Cd, v_Cd, v_Cust_No, v_Ord_No, v_Seq,
                                  v_Str_Day, v_End_Day, v_Lock_Yn, v_Lock_Type, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¹®ÀÚÆ÷¸Ë ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë¬¸ìží¬ë§· ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -270,20 +270,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRTCM0205(v_Send_Pos, v_Mid_Grp_Cd, v_Cd, v_Cust_No, v_Ord_No, v_Seq, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¹®ÀÚÆ÷¸Ë »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë¬¸ìží¬ë§· ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := ' Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := ' ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
                                      
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -298,22 +298,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_RTCM0205.p_IUDRTCM0205(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0205;
   
   /*****************************************************************************
-  -- °øÅëÄÚµå Detail Count
+  -- ê³µí†µì½”ë“œ Detail Count
   *****************************************************************************/
   FUNCTION f_sRtcm0205LockYn(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ÄÚµå±×·ìÄÚµå        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ÄÚµå±×·ìÄÚµå        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*ÇÏÀ§ÄÚµå            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*ÇÏÀ§ÄÚµå¸í          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE            /*ÇÏÀ§ÄÚµå¸í          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*ì½”ë“œê·¸ë£¹ì½”ë“œ        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*í•˜ìœ„ì½”ë“œ            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*í•˜ìœ„ì½”ë“œëª…          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE            /*í•˜ìœ„ì½”ë“œëª…          */
     ) RETURN VARCHAR2 IS
     v_lock_yn   VARCHAR2(1) DEFAULT 'N';
   BEGIN
@@ -341,4 +341,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0205 AS
   END f_sRtcm0205LockYn;
   
 END Pkg_Rtcm0205;
-/

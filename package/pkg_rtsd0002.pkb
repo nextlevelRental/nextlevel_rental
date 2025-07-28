@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0002
-   PURPOSE   Â÷Á¾_»ç¾ç ¸íÄª °ü¸® °ü¸®
+   PURPOSE   ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,12 +10,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Count
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0002Count(
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,         /*Â÷Á¾                */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,      /*»ç¾ç                */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE             /*ÀüÈÄ ±¸ºÐ           */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,         /*ì°¨ì¢…                */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,      /*ì‚¬ì–‘                */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE             /*ì „í›„ êµ¬ë¶„           */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -35,30 +35,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END f_sRtsd0002Count;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Select
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0002 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ÀüÈÄ ±¸ºÐ             */
-    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*Â÷Á¾-»ç¾ç¸í           */
-    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ì „í›„ êµ¬ë¶„             */
+    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*ì°¨ì¢…-ì‚¬ì–‘ëª…           */
+    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.MODEL_CD,                  /*Â÷Á¾                */
-            A.CONTENTS_CD,               /*»ç¾ç                */
-            A.FR_CD,                     /*ÀüÈÄ ±¸ºÐ           */
-            A.MC_NM,                     /*Â÷Á¾-»ç¾ç¸í         */
-            A.USE_YN,                    /*»ç¿ë¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.MODEL_CD,                  /*ì°¨ì¢…                */
+            A.CONTENTS_CD,               /*ì‚¬ì–‘                */
+            A.FR_CD,                     /*ì „í›„ êµ¬ë¶„           */
+            A.MC_NM,                     /*ì°¨ì¢…-ì‚¬ì–‘ëª…         */
+            A.USE_YN,                    /*ì‚¬ìš©ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0002 A
     WHERE   A.MODEL_CD    = DECODE(v_Model_Cd    , NULL, A.MODEL_CD    , v_Model_Cd)
     AND     A.CONTENTS_CD = DECODE(v_Contents_Cd , NULL, A.CONTENTS_CD , v_Contents_Cd)
@@ -70,15 +70,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END p_sRtsd0002;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Insert
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0002 (
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ÀüÈÄ ±¸ºÐ             */
-    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*Â÷Á¾-»ç¾ç¸í           */
-    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ì „í›„ êµ¬ë¶„             */
+    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*ì°¨ì¢…-ì‚¬ì–‘ëª…           */
+    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -115,15 +115,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END f_InsertRtsd0002;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Update
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0002 (
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ÀüÈÄ ±¸ºÐ             */
-    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*Â÷Á¾-»ç¾ç¸í           */
-    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ì „í›„ êµ¬ë¶„             */
+    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*ì°¨ì¢…-ì‚¬ì–‘ëª…           */
+    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -147,13 +147,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END f_UpdateRtsd0002;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Delete
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0002 (
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ÀüÈÄ ±¸ºÐ             */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ì „í›„ êµ¬ë¶„             */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -175,16 +175,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END f_DeleteRtsd0002;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® °ü¸®(IUD)
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0002 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ÀüÈÄ ±¸ºÐ             */
-    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*Â÷Á¾-»ç¾ç¸í           */
-    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Fr_Cd          IN RTSD0002.FR_CD%TYPE,          /*ì „í›„ êµ¬ë¶„             */
+    v_Mc_Nm          IN RTSD0002.MC_NM%TYPE,          /*ì°¨ì¢…-ì‚¬ì–‘ëª…           */
+    v_Use_Yn         IN RTSD0002.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -193,34 +193,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: Â÷Á¾, »ç¾ç, ÀüÈÄ ±¸ºÐ, Â÷Á¾-»ç¾ç¸í, »ç¿ë¿©ºÎ ,µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ì°¨ì¢…, ì‚¬ì–‘, ì „í›„ êµ¬ë¶„, ì°¨ì¢…-ì‚¬ì–‘ëª…, ì‚¬ìš©ì—¬ë¶€ ,ë“±ë¡ìž ID
     IF TRIM(v_Model_Cd) IS NULL THEN
-        v_Return_Message := 'Â÷Á¾('||v_Model_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì°¨ì¢…('||v_Model_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Contents_Cd) IS NULL THEN
-        v_Return_Message := '»ç¾ç('||v_Contents_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ì–‘('||v_Contents_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Fr_Cd) IS NULL THEN
-        v_Return_Message := 'ÀüÈÄ ±¸ºÐ('||v_Fr_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì „í›„ êµ¬ë¶„('||v_Fr_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Mc_Nm) IS NULL THEN
-        v_Return_Message := 'Â÷Á¾-»ç¾ç¸í('||v_Mc_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì°¨ì¢…-ì‚¬ì–‘ëª…('||v_Mc_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -228,7 +228,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
 
         IF 0 != f_InsertRtsd0002(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Mc_Nm,
                                  v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'Â÷Á¾_»ç¾ç ¸íÄª µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -239,7 +239,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
 
             IF 0 != f_UpdateRtsd0002(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Mc_Nm,
                                      v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Â÷Á¾_»ç¾ç ¸íÄª ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
 
@@ -249,28 +249,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
 
-            -- Â÷Á¾¸¶½ºÅÍ ±âÁØ »ç¿ëÁßÀÎ ±Ô°Ý°ü¸®Á¤º¸°¡ ÀÖÀ¸¸é Ã³¸®ºÒ°¡ Ã³¸®ÇÔ
+            -- ì°¨ì¢…ë§ˆìŠ¤í„° ê¸°ì¤€ ì‚¬ìš©ì¤‘ì¸ ê·œê²©ê´€ë¦¬ì •ë³´ê°€ ìžˆìœ¼ë©´ ì²˜ë¦¬ë¶ˆê°€ ì²˜ë¦¬í•¨
             IF 0 != Pkg_Rtsd0004.f_sRtsd0004UseYnCount(v_Model_Cd, v_Contents_Cd, v_Fr_Cd) THEN
-                v_Return_Message := 'ÇØ´ç Â÷Á¾ ¸¶½ºÅÍ Á¤º¸·Î µî·ÏµÈ ±Ô°Ý°ü¸®Á¤º¸°¡ ÀÖÀ¸¹Ç·Î Ã³¸® ºÒ°¡. ±Ô°Ý°ü¸®Á¤º¸¸¦ ¹Ì»ç¿ë Ã³¸®ÈÄ ÁøÇàÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù.';
+                v_Return_Message := 'í•´ë‹¹ ì°¨ì¢… ë§ˆìŠ¤í„° ì •ë³´ë¡œ ë“±ë¡ëœ ê·œê²©ê´€ë¦¬ì •ë³´ê°€ ìžˆìœ¼ë¯€ë¡œ ì²˜ë¦¬ ë¶ˆê°€. ê·œê²©ê´€ë¦¬ì •ë³´ë¥¼ ë¯¸ì‚¬ìš© ì²˜ë¦¬í›„ ì§„í–‰í•˜ì‹œê¸¸ ë°”ëžë‹ˆë‹¤.';
                 RAISE e_Error;
             END IF;
             
             IF 0 != f_DeleteRtsd0002(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Reg_Id,
                                      v_ErrorText) THEN
-                v_Return_Message := 'Â÷Á¾_»ç¾ç ¸íÄª »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -285,7 +285,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0002.p_IUDRtsd0002(2)', v_ErrorText, v_Return_Message);
 
@@ -293,12 +293,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
 
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® - Â÷Á¾¸¶½ºÅÍ À¯È¿¼º Ã³¸®
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ - ì°¨ì¢…ë§ˆìŠ¤í„° ìœ íš¨ì„± ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_UpdateRtsd0002MasterCheck (
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*Â÷Á¾                  */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*»ç¾ç                  */
-    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,       /*ì°¨ì¢…                  */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE,    /*ì‚¬ì–‘                  */
+    v_Reg_Id         IN RTSD0002.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -307,36 +307,36 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: Â÷Á¾, »ç¾ç, ÀüÈÄ ±¸ºÐ, Â÷Á¾-»ç¾ç¸í, »ç¿ë¿©ºÎ ,µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ì°¨ì¢…, ì‚¬ì–‘, ì „í›„ êµ¬ë¶„, ì°¨ì¢…-ì‚¬ì–‘ëª…, ì‚¬ìš©ì—¬ë¶€ ,ë“±ë¡ìž ID
     IF TRIM(v_Model_Cd) IS NULL THEN
-        v_Return_Message := 'Â÷Á¾('||v_Model_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì°¨ì¢…('||v_Model_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Contents_Cd) IS NULL THEN
-        v_Return_Message := '»ç¾ç('||v_Contents_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ì–‘('||v_Contents_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
 
-    -- Â÷Á¾¸¶½ºÅÍ°¡ ¸ðµÎ ¹Ì»ç¿ëÃ³¸® µÈ °æ¿ì
+    -- ì°¨ì¢…ë§ˆìŠ¤í„°ê°€ ëª¨ë‘ ë¯¸ì‚¬ìš©ì²˜ë¦¬ ëœ ê²½ìš°
     IF 0 = f_sRtsd0002UseYnCount(v_Model_Cd, v_Contents_Cd) THEN
 
 
-        -- Â÷Á¾¸¶½ºÅÍ ±âÁØ »ç¿ëÁßÀÎ ±Ô°Ý°ü¸®Á¤º¸°¡ ÀÖÀ¸¸é Ã³¸®ºÒ°¡ Ã³¸®ÇÔ
+        -- ì°¨ì¢…ë§ˆìŠ¤í„° ê¸°ì¤€ ì‚¬ìš©ì¤‘ì¸ ê·œê²©ê´€ë¦¬ì •ë³´ê°€ ìžˆìœ¼ë©´ ì²˜ë¦¬ë¶ˆê°€ ì²˜ë¦¬í•¨
         IF 0 != Pkg_Rtsd0004.f_sRtsd0004UseYnCount(v_Model_Cd, v_Contents_Cd, NULL) THEN
-            v_Return_Message := 'ÇØ´ç Â÷Á¾ ¸¶½ºÅÍ Á¤º¸·Î µî·ÏµÈ ±Ô°Ý°ü¸®Á¤º¸°¡ ÀÖÀ¸¹Ç·Î Ã³¸® ºÒ°¡. ±Ô°Ý°ü¸®Á¤º¸¸¦ ¹Ì»ç¿ë Ã³¸®ÈÄ ÁøÇàÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù.';
+            v_Return_Message := 'í•´ë‹¹ ì°¨ì¢… ë§ˆìŠ¤í„° ì •ë³´ë¡œ ë“±ë¡ëœ ê·œê²©ê´€ë¦¬ì •ë³´ê°€ ìžˆìœ¼ë¯€ë¡œ ì²˜ë¦¬ ë¶ˆê°€. ê·œê²©ê´€ë¦¬ì •ë³´ë¥¼ ë¯¸ì‚¬ìš© ì²˜ë¦¬í›„ ì§„í–‰í•˜ì‹œê¸¸ ë°”ëžë‹ˆë‹¤.';
             RAISE e_Error;
         END IF;
 
-        -- Â÷Á¾¸¶½ºÅÍ°¡ ¸ðµÎ ¹Ì»ç¿ëÃ³¸® µÈ °æ¿ì Â÷Á¾¸¶½ºÅÍµµ ¹Ì»ç¿ëÃ³¸®
+        -- ì°¨ì¢…ë§ˆìŠ¤í„°ê°€ ëª¨ë‘ ë¯¸ì‚¬ìš©ì²˜ë¦¬ ëœ ê²½ìš° ì°¨ì¢…ë§ˆìŠ¤í„°ë„ ë¯¸ì‚¬ìš©ì²˜ë¦¬
         IF 0 != Pkg_Rtsd0001.f_UpdateRtsd0001UseYn(v_Model_Cd, v_Contents_Cd, 'N', v_Reg_Id, v_ErrorText) THEN
-             v_Return_Message := 'Â÷Á¾¸¶½ºÅÍ°¡ ¸ðµÎ ¹Ì»ç¿ëÃ³¸® µÈ °æ¿ì Â÷Á¾¸¶½ºÅÍµµ ¹Ì»ç¿ëÃ³¸® - ½ÇÆÐ!!!'||'-'||v_ErrorText;
+             v_Return_Message := 'ì°¨ì¢…ë§ˆìŠ¤í„°ê°€ ëª¨ë‘ ë¯¸ì‚¬ìš©ì²˜ë¦¬ ëœ ê²½ìš° ì°¨ì¢…ë§ˆìŠ¤í„°ë„ ë¯¸ì‚¬ìš©ì²˜ë¦¬ - ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
              v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -344,7 +344,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -359,18 +359,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0002.p_UpdateRtsd0002MasterCheck(2)', v_ErrorText, v_Return_Message);
 
   END p_UpdateRtsd0002MasterCheck;
 
   /*****************************************************************************
-  -- Â÷Á¾_»ç¾ç ¸íÄª °ü¸® Count
+  -- ì°¨ì¢…_ì‚¬ì–‘ ëª…ì¹­ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0002UseYnCount(
-    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,         /*Â÷Á¾                */
-    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE       /*»ç¾ç                */
+    v_Model_Cd       IN RTSD0002.MODEL_CD%TYPE,         /*ì°¨ì¢…                */
+    v_Contents_Cd    IN RTSD0002.CONTENTS_CD%TYPE       /*ì‚¬ì–‘                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -391,4 +391,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0002 AS
   END f_sRtsd0002UseYnCount;
 
 END Pkg_Rtsd0002;
-/

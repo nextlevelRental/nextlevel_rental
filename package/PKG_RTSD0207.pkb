@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0207 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0207
-   PURPOSE   SMS ¡˝∞Ë ≥ªø™ ¡∂»∏
+   PURPOSE   SMS ÏßëÍ≥Ñ ÎÇ¥Ïó≠ Ï°∞Ìöå
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,12 +10,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0207 AS
 *******************************************************************************/  
   
   /*****************************************************************************
-  -- ø˘∏∂∞®Ω√ SMS πﬂº€≥ªø™ Select
+  -- ÏõîÎßàÍ∞êÏãú SMS Î∞úÏÜ°ÎÇ¥Ïó≠ Select
   *****************************************************************************/
   PROCEDURE p_sSmsCollectionList (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Close_Ym      IN VARCHAR2,                /*∏∂∞®ø˘             */
-    v_Send_Tp       IN VARCHAR2                 /*πﬂº€±∏∫–           */
+    v_Close_Ym      IN VARCHAR2,                /*ÎßàÍ∞êÏõî             */
+    v_Send_Tp       IN VARCHAR2                 /*Î∞úÏÜ°Íµ¨Î∂Ñ           */
     ) IS
 
   BEGIN
@@ -27,7 +27,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0207 AS
          , COUNT(*) AS SEND_CNT
     FROM RTSD0205 A, RTSD0207 B 
     WHERE A.CMP_MSG_ID = B.MSG_ID 
-    AND RESERVED_DTTM BETWEEN v_Close_Ym || '000000' AND v_Close_Ym || '235959'
+    AND RESERVED_DTTM BETWEEN v_Close_Ym || '01000000' AND v_Close_Ym || '31235959'
     AND (v_Send_Tp IS NULL OR MSG_SNDER_NM  = v_Send_Tp)
     AND RESULT_CD = 'OK'
     GROUP BY SUBSTR(RESERVED_DTTM, 1, 8)
@@ -40,4 +40,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0207 AS
   END p_sSmsCollectionList;
    
 END Pkg_Rtsd0207;
-/

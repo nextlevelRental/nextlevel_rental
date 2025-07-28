@@ -11,9 +11,9 @@
             var obj = null;
             
             if (Form == this.constructor) {
-                this.set_name("RTCSServiceHistory");
+                this.set_name("RTCSZeroChangeService");
                 this.set_classname("RTCMClaim");
-                this.set_titletext("서비스수수료제외처리");
+                this.set_titletext("걱정제로 타이어 교체 서비스 내역 조회");
                 this._setFormPosition(0,0,1147,492);
             }
 
@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_list", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_Yn", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_Service", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -217,7 +220,7 @@
             	//-- Layout function
             	function(p) {
             		p.set_classname("RTCMClaim");
-            		p.set_titletext("서비스수수료제외처리");
+            		p.set_titletext("걱정제로 타이어 교체 서비스 내역 조회");
 
             	}
             );

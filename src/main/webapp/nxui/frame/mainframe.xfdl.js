@@ -26,28 +26,28 @@
             // UI Components Initialize
             obj = new Div("div_topNavi", "absolute", "227", "0", null, "0", "-1", null, this);
             obj.set_taborder("1");
-            obj.set_url("frame::workTopFrame.xfdl");
             obj.set_scrollbars("none");
             obj.set_visible("false");
+            obj.set_url("frame::workTopFrame.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Div("div_left", "absolute", "0", "0", "200", null, null, "34", this);
             obj.set_taborder("0");
-            obj.set_url("frame::leftFrame.xfdl");
             obj.style.set_background("transparent");
             obj.set_scrollbars("autoboth");
+            obj.set_url("frame::leftFrame.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Div("div_work", "absolute", "200", "0", null, null, "1", "34", this);
             obj.set_taborder("2");
-            obj.set_url("frame::workFrame.xfdl");
             obj.set_scrollbars("none");
+            obj.set_url("frame::workFrame.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Div("div_bottom", "absolute", null, null, "1362", "34", null, "0", this);
             obj.set_taborder("3");
-            obj.set_url("frame::bottomFrame.xfdl");
             obj.set_scrollbars("none");
+            obj.set_url("frame::bottomFrame.xfdl");
             this.addChild(obj.name, obj);
 
 

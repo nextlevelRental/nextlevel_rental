@@ -618,6 +618,56 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0060 AS
   END f_sRtcm0060firstDay;
 
   /*****************************************************************************
+  -- 휴일관리 -  영업관리자가 로그인한경우 첫번째 영업일 리턴
+  *****************************************************************************/
+  FUNCTION f_sRtcm0060firstDay_Tmp(
+    v_Ord_Day        IN VARCHAR                         /*접수일자            */
+    ) RETURN VARCHAR IS
+    v_After_Day   VARCHAR(8) DEFAULT NULL;
+  BEGIN
+
+
+    IF 0 != ISDATE(v_Ord_Day) THEN
+        RETURN NULL;
+    END IF;
+
+    SELECT  DAY
+    INTO    v_After_Day
+    FROM    (
+            SELECT  A.DAY,
+                    ROWNUM RN
+            FROM    (
+                    SELECT  LEVEL LV,
+                            TO_CHAR(SDT -1 + LEVEL , 'd') D,
+                            TO_CHAR(SDT -1 + LEVEL, 'YYYYMMDD') DAY
+                    FROM    (
+                            SELECT  TO_DATE(v_Ord_Day, 'YYYYMMDD')+1 SDT,
+                                    TO_DATE(v_Ord_Day, 'YYYYMMDD')+100 EDT
+                            FROM    DUAL
+                            )
+                    CONNECT BY LEVEL<= EDT - SDT + 1
+                    ) A,
+                    (
+                    SELECT  B.H_DATE DT
+                    FROM    RTCM0060 B
+                    WHERE   B.H_DATE BETWEEN TO_DATE(v_Ord_Day, 'YYYYMMDD')+1 AND TO_DATE(v_Ord_Day, 'YYYYMMDD')+100
+                    AND     USE_YN = 'Y'
+                    ) B
+            WHERE   A.DAY = B.DT(+)
+            AND     A.D NOT IN ('1')
+            AND     B.DT IS NULL
+            ) A
+    WHERE RN = 2;
+
+    RETURN v_After_Day;
+
+    EXCEPTION
+      WHEN OTHERS THEN
+        RETURN NULL;
+
+  END f_sRtcm0060firstDay_Tmp;
+  
+  /*****************************************************************************
   -- 휴일관리 -  영업관리자가 로그인한경우 첫번째 영업일 리턴 (가변)
   *****************************************************************************/
   FUNCTION f_sRtcm0060firstDayByTerm(
@@ -668,5 +718,62 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0060 AS
 
   END f_sRtcm0060firstDayByTerm;
   
+  /*****************************************************************************
+  -- 휴일관리 -  Std_Day로부터 Days 이후 영업일 날짜를 찾는 함수임.(토요일 영업일 포함)
+  *****************************************************************************/
+  FUNCTION f_sRtcm0060AfterInDayByTerm(
+    v_Ord_Day        IN VARCHAR,                        /*접수일자            */
+    v_Proc_Day       IN VARCHAR,                        /*장착일자            */
+    v_Term           IN VARCHAR                         /*기간               */
+    ) RETURN NUMBER IS
+    v_curr_cunt   NUMBER DEFAULT 0;
+  BEGIN
+
+
+    IF 0 != ISDATE(v_Ord_Day) THEN
+        RETURN NULL;
+    END IF;
+
+    IF 0 != ISDATE(v_Proc_Day) THEN
+        RETURN NULL;
+    END IF;
+
+    SELECT  COUNT(DAY)
+    INTO    v_curr_cunt
+    FROM    (
+            SELECT  A.DAY,
+                    ROWNUM RN
+            FROM    (
+                    SELECT  LEVEL LV,
+                            TO_CHAR(SDT -1 + LEVEL , 'd') D,
+                            TO_CHAR(SDT -1 + LEVEL, 'YYYYMMDD') DAY
+                    FROM    (
+                            SELECT  TO_DATE(v_Ord_Day, 'YYYYMMDD')+1 SDT,
+                                    TO_DATE(v_Ord_Day, 'YYYYMMDD')+100 EDT
+                            FROM    DUAL
+                            )
+                    CONNECT BY LEVEL<= EDT - SDT + 1
+                    ) A
+--                   ,(
+--                      SELECT  B.H_DATE DT
+--                      FROM    RTCM0060 B
+--                      WHERE   B.H_DATE BETWEEN TO_DATE(v_Ord_Day, 'YYYYMMDD')+1 AND TO_DATE(v_Ord_Day, 'YYYYMMDD')+100
+--                      AND     USE_YN = 'Y'
+--                    ) B
+            WHERE   A.D NOT IN ('1')
+--            AND     A.DAY = B.DT(+)
+--            AND     B.DT IS NULL
+            ) A
+    --WHERE    RN BETWEEN 3 AND 10
+    WHERE    RN BETWEEN v_Term AND 20
+    AND      DAY = v_Proc_Day;
+
+    RETURN v_curr_cunt;
+
+    EXCEPTION
+      WHEN OTHERS THEN
+        RETURN 0;
+
+  END f_sRtcm0060AfterInDayByTerm;
+  
 END Pkg_Rtcm0060;
-/

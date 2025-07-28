@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0103
-   PURPOSE   ÀÎ¹Ù¿îµå Áö¿ªÄÚµå °ü¸®
+   PURPOSE   ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,13 +10,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå Count
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0103Count(
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*´ã´çÁö±¸ ÄÚµå       */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,           /*´ã´çÀÚ »ç¹ø         */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,        /*Áö¿ªÄÚµå            */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE           /*µµ½ÃÄÚµå            */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ       */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,           /*ë‹´ë‹¹ìž ì‚¬ë²ˆ         */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,        /*ì§€ì—­ì½”ë“œ            */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE           /*ë„ì‹œì½”ë“œ            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -38,38 +38,38 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END f_sRtcs0103Count;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå Select
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0103 (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*´ã´çÁö±¸ ¸í           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*´ã´çÀÚ¸í              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*Áö¿ª¸í                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½Ã¸í                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*´ã´çÀÚMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*µî·ÏÀÚID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*ë‹´ë‹¹ì§€êµ¬ ëª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*ë‹´ë‹¹ìžëª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ì§€ì—­ëª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*ë„ì‹œëª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*ë‹´ë‹¹ìžMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*ë“±ë¡ìžID              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.SALES_OFFICE_ID,           /*´ã´çÁö±¸ ÄÚµå       */
-            A.EMP_ID,                    /*´ã´çÀÚ »ç¹ø         */
-            A.REGION_NO,                 /*Áö¿ªÄÚµå            */
-            A.CITY_NO,                   /*µµ½ÃÄÚµå            */
-            A.SALES_OFFICE_NAME,         /*´ã´çÁö±¸ ¸í         */
-            A.EMP_NAME,                  /*´ã´çÀÚ¸í            */
-            A.REGION_NAME,               /*Áö¿ª¸í              */
-            A.CITY_NAME,                 /*µµ½Ã¸í              */
-            A.EMP_MOBILENO,              /*´ã´çÀÚMobile No     */
-            A.REG_ID,                    /*µî·ÏÀÚID            */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚID            */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.SALES_OFFICE_ID,           /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ       */
+            A.EMP_ID,                    /*ë‹´ë‹¹ìž ì‚¬ë²ˆ         */
+            A.REGION_NO,                 /*ì§€ì—­ì½”ë“œ            */
+            A.CITY_NO,                   /*ë„ì‹œì½”ë“œ            */
+            A.SALES_OFFICE_NAME,         /*ë‹´ë‹¹ì§€êµ¬ ëª…         */
+            A.EMP_NAME,                  /*ë‹´ë‹¹ìžëª…            */
+            A.REGION_NAME,               /*ì§€ì—­ëª…              */
+            A.CITY_NAME,                 /*ë„ì‹œëª…              */
+            A.EMP_MOBILENO,              /*ë‹´ë‹¹ìžMobile No     */
+            A.REG_ID,                    /*ë“±ë¡ìžID            */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìžID            */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTCS0103 A
     WHERE   A.SALES_OFFICE_ID  = DECODE(v_Sales_Office_Id, NULL, A.SALES_OFFICE_ID , v_Sales_Office_Id)
     AND     A.EMP_ID           = DECODE(v_Emp_Id         , NULL, A.EMP_ID          , v_Emp_Id)
@@ -85,19 +85,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END p_sRtcs0103;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå Insert
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*´ã´çÁö±¸ ¸í           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*´ã´çÀÚ¸í              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*Áö¿ª¸í                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½Ã¸í                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*´ã´çÀÚMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µî·ÏÀÚID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*ë‹´ë‹¹ì§€êµ¬ ëª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*ë‹´ë‹¹ìžëª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ì§€ì—­ëª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*ë„ì‹œëª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*ë‹´ë‹¹ìžMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*ë“±ë¡ìžID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -142,19 +142,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END f_InsertRtcs0103;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå Update
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*´ã´çÁö±¸ ¸í           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*´ã´çÀÚ¸í              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*Áö¿ª¸í                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½Ã¸í                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*´ã´çÀÚMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µî·ÏÀÚID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*ë‹´ë‹¹ì§€êµ¬ ëª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*ë‹´ë‹¹ìžëª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ì§€ì—­ëª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*ë„ì‹œëª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*ë‹´ë‹¹ìžMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*ë“±ë¡ìžID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -186,14 +186,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END f_UpdateRtcs0103;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå Delete
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µî·ÏÀÚID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*ë“±ë¡ìžID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -204,11 +204,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
     AND    REGION_NO       = v_Region_No
     AND    CITY_NO         = v_City_No;
 
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', '´ã´çÁö±¸ ÄÚµå', v_Sales_Office_Id);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', '´ã´çÀÚ »ç¹ø', v_Emp_Id);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'Áö¿ªÄÚµå', v_Region_No);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'µµ½ÃÄÚµå', v_City_No);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'µî·ÏÀÚID', v_Reg_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ', v_Sales_Office_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'ë‹´ë‹¹ìž ì‚¬ë²ˆ', v_Emp_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'ì§€ì—­ì½”ë“œ', v_Region_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'ë„ì‹œì½”ë“œ', v_City_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.f_DeleteRtcs0103(1)', 'ë“±ë¡ìžID', v_Reg_Id);
                                                                                         
     RETURN SQLCODE;
 
@@ -220,20 +220,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END f_DeleteRtcs0103;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå °ü¸®(IUD)
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0103 (
-    v_Comm_Dvsn         IN CHAR,                            /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*´ã´çÁö±¸ ¸í           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*´ã´çÀÚ¸í              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*Áö¿ª¸í                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½Ã¸í                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*´ã´çÀÚMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µî·ÏÀÚID              */
+    v_Comm_Dvsn         IN CHAR,                            /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*ë‹´ë‹¹ì§€êµ¬ ëª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*ë‹´ë‹¹ìžëª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ì§€ì—­ëª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*ë„ì‹œëª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*ë‹´ë‹¹ìžMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*ë“±ë¡ìžID              */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -242,29 +242,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª:´ã´çÁö±¸ ÄÚµå,´ã´çÀÚ »ç¹ø,Áö¿ªÄÚµå,µµ½ÃÄÚµå, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ,ë‹´ë‹¹ìž ì‚¬ë²ˆ,ì§€ì—­ì½”ë“œ,ë„ì‹œì½”ë“œ, ë“±ë¡ìž ID
     IF (TRIM(v_Sales_Office_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Sales_Office_Id)) THEN
-        v_Return_Message := '´ã´çÁö±¸ ÄÚµå('||v_Sales_Office_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ('||v_Sales_Office_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Emp_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Emp_Id)) THEN
-        v_Return_Message := '´ã´çÀÚ »ç¹ø('||v_Emp_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë‹´ë‹¹ìž ì‚¬ë²ˆ('||v_Emp_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Region_No) IS NULL) THEN
-        v_Return_Message := 'Áö¿ªÄÚµå('||v_Region_No||') : Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì§€ì—­ì½”ë“œ('||v_Region_No||') : ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_City_No) IS NULL) THEN
-        v_Return_Message := 'µµ½ÃÄÚµå('||v_City_No||') : Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë„ì‹œì½”ë“œ('||v_City_No||') : ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -273,7 +273,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
         IF 0 != f_InsertRtcs0103(v_Sales_Office_Id, v_Emp_Id, v_Region_No, v_City_No,
                                  v_Sales_Office_Nm, v_Emp_Name, v_Region_Name, v_City_Name,
                                  v_Emp_Mobileno, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÀÎ¹Ù¿îµå Áö¿ªÄÚµå µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -285,7 +285,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
             IF 0 != f_UpdateRtcs0103(v_Sales_Office_Id, v_Emp_Id, v_Region_No, v_City_No,
                                      v_Sales_Office_Nm, v_Emp_Name, v_Region_Name, v_City_Name,
                                      v_Emp_Mobileno, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'ÀÎ¹Ù¿îµå Áö¿ªÄÚµå ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -294,20 +294,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
         
             IF 0 != f_DeleteRtcs0103(v_Sales_Office_Id, v_Emp_Id, v_Region_No, v_City_No,
                                      v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'ÀÎ¹Ù¿îµå Áö¿ªÄÚµå »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -322,45 +322,45 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0103.p_IUDRtcs0103(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcs0103;
 
 /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ª-µµ½ÃÄÚµå Select
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­-ë„ì‹œì½”ë“œ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0103City (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*´ã´çÁö±¸ ÄÚµå         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*´ã´çÀÚ »ç¹ø           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*Áö¿ªÄÚµå              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ÃÄÚµå              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*´ã´çÁö±¸ ¸í           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*´ã´çÀÚ¸í              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*Áö¿ª¸í                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½Ã¸í                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*´ã´çÀÚMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*µî·ÏÀÚID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*ë‹´ë‹¹ìž ì‚¬ë²ˆ           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ì§€ì—­ì½”ë“œ              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*ë„ì‹œì½”ë“œ              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*ë‹´ë‹¹ì§€êµ¬ ëª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*ë‹´ë‹¹ìžëª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ì§€ì—­ëª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*ë„ì‹œëª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*ë‹´ë‹¹ìžMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*ë“±ë¡ìžID              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.SALES_OFFICE_ID,           /*´ã´çÁö±¸ ÄÚµå       */
-            A.EMP_ID,                    /*´ã´çÀÚ »ç¹ø         */
-            A.REGION_NO,                 /*Áö¿ªÄÚµå            */
-            A.CITY_NO,                   /*µµ½ÃÄÚµå            */
-            A.SALES_OFFICE_NAME,         /*´ã´çÁö±¸ ¸í         */
-            A.EMP_NAME,                  /*´ã´çÀÚ¸í            */
-            A.REGION_NAME,               /*Áö¿ª¸í              */
-            A.CITY_NAME,                 /*µµ½Ã¸í              */
-            A.EMP_MOBILENO,              /*´ã´çÀÚMobile No     */
-            A.REG_ID,                    /*µî·ÏÀÚID            */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚID            */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.SALES_OFFICE_ID,           /*ë‹´ë‹¹ì§€êµ¬ ì½”ë“œ       */
+            A.EMP_ID,                    /*ë‹´ë‹¹ìž ì‚¬ë²ˆ         */
+            A.REGION_NO,                 /*ì§€ì—­ì½”ë“œ            */
+            A.CITY_NO,                   /*ë„ì‹œì½”ë“œ            */
+            A.SALES_OFFICE_NAME,         /*ë‹´ë‹¹ì§€êµ¬ ëª…         */
+            A.EMP_NAME,                  /*ë‹´ë‹¹ìžëª…            */
+            A.REGION_NAME,               /*ì§€ì—­ëª…              */
+            A.CITY_NAME,                 /*ë„ì‹œëª…              */
+            A.EMP_MOBILENO,              /*ë‹´ë‹¹ìžMobile No     */
+            A.REG_ID,                    /*ë“±ë¡ìžID            */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìžID            */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTCS0103 A
     WHERE   A.SALES_OFFICE_ID  = DECODE(v_Sales_Office_Id, NULL, A.SALES_OFFICE_ID , v_Sales_Office_Id)
     AND     A.EMP_ID           = DECODE(v_Emp_Id         , NULL, A.EMP_ID          , v_Emp_Id)
@@ -376,7 +376,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END p_sRtcs0103City;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå- µµ½Ã ÄÚµå,¸í Á¶È¸
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ- ë„ì‹œ ì½”ë“œ,ëª… ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0103Region (
     Ref_Cursor  IN OUT SYS_REFCURSOR
@@ -394,11 +394,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END p_sRtcs0103Region;
 
   /*****************************************************************************
-  -- ÀÎ¹Ù¿îµå Áö¿ªÄÚµå- µµ½Ã ÄÚµå,¸í Á¶È¸
+  -- ì¸ë°”ìš´ë“œ ì§€ì—­ì½”ë“œ- ë„ì‹œ ì½”ë“œ,ëª… ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0103City (
     Ref_Cursor  IN OUT SYS_REFCURSOR,
-    v_Region_No IN RTCS0103.REGION_NO%TYPE            /*Áö¿ªÄÚµå              */
+    v_Region_No IN RTCS0103.REGION_NO%TYPE            /*ì§€ì—­ì½”ë“œ              */
     ) IS
 
   BEGIN
@@ -414,4 +414,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0103 AS
   END p_sRtcs0103City;
   
 END Pkg_Rtcs0103;
-/

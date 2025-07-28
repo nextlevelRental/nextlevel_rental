@@ -140,7 +140,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0013 AS
     ) RETURN NUMBER IS
   BEGIN
 
-    DELETE RTSD0013
+    DELETE FROM RTSD0013
     WHERE  ORD_NO = v_Ord_No;
 
     Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0013.f_DeleteRtsd0013(1)', '주문번호', v_Ord_No);
@@ -148,6 +148,25 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0013 AS
     RETURN SQLCODE;
   END f_DeleteRtsd0013;
 
+  /*****************************************************************************
+  -- 계약별 프리미엄서비스 개별 Delete
+  *****************************************************************************/
+  FUNCTION f_DeleteEachRtsd0013 (
+    v_Ord_No         IN RTSD0013.ORD_NO%TYPE,          /*계약번호              */
+    v_Prs_Dcd        IN RTSD0013.PRS_DCD%TYPE          /*상세서비스             */
+    ) RETURN NUMBER IS
+  BEGIN
+
+    DELETE FROM RTSD0013
+    WHERE  ORD_NO = v_Ord_No
+    AND	   PRS_DCD = v_Prs_Dcd;
+
+    
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0013.f_DeleteEachRtsd0013(1)', '주문번호/상세서비스', v_Ord_No);
+
+    RETURN SQLCODE;
+  END f_DeleteEachRtsd0013;
+    
   /*****************************************************************************
   -- 계약별 프리미엄서비스 관리(IUD)
   *****************************************************************************/
@@ -314,21 +333,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0013 AS
     ) RETURN NUMBER IS
   BEGIN
 
-    IF (v_Prs_Dcd <> 'B00007') THEN --걱정제로 서비스가 아닌경우
+    IF v_Prs_Dcd NOT IN ('B00007', 'B00011', 'B00012') THEN --걱정제로, 조기마모보증, 파손보증 서비스가 아닌경우
+    
         UPDATE RTSD0013
         SET    SERV_CNTR = DECODE(SERV_CNTR,0,0,SERV_CNTR - 1),
                CHG_ID    = v_Reg_Id,
                CHG_DT    = SYSDATE
         WHERE  ORD_NO    = v_Ord_No
         AND    PRS_DCD   = v_Prs_Dcd;
-    ELSE --걱정제로 서비스 인 경우
+    ELSE --걱정제로, 조기마모보증, 파손보증 서비스 인 경우
     
-        UPDATE RTSD0013
-        SET    SERV_CNTR = DECODE(SERV_CNTR,0,0,SERV_CNTR - Pkg_Rtcs0010.f_sRtcs0010DlvrCnt(v_Ord_No)),
-               CHG_ID    = v_Reg_Id,
-               CHG_DT    = SYSDATE
-        WHERE  ORD_NO    = v_Ord_No
-        AND    PRS_DCD   = v_Prs_Dcd;
+        IF v_Prs_Dcd IN ('B00007') THEN --걱정제로
+        
+            UPDATE RTSD0013
+            SET    SERV_CNTR = DECODE(SERV_CNTR,0,0,SERV_CNTR - Pkg_Rtcs0010.f_sRtcs0010DlvrCnt(v_Ord_No)),
+                   CHG_ID    = v_Reg_Id,
+                   CHG_DT    = SYSDATE
+            WHERE  ORD_NO    = v_Ord_No
+            AND    PRS_DCD   = v_Prs_Dcd;
+        ELSE --조기마모보증, 파손보증
+        
+            UPDATE RTSD0013
+            SET    SERV_CNTR = DECODE(SERV_CNTR,0,0,SERV_CNTR - Pkg_Rtcs0208.f_sRtcs0208SumCount(v_Ord_No, v_Prs_Dcd)),
+                   CHG_ID    = v_Reg_Id,
+                   CHG_DT    = SYSDATE
+            WHERE  ORD_NO    = v_Ord_No
+            AND    PRS_DCD   = v_Prs_Dcd;
+        END IF;
+        
     END IF;
 
     RETURN SQLCODE;
@@ -1804,7 +1836,6 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0013 AS
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         RETURN SQLCODE;
 
-  END f_UpdateRtsd0013ServCnt0;  
+  END f_UpdateRtsd0013ServCnt0;
   
 END Pkg_Rtsd0013;
-/

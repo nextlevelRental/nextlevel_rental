@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0010
-   PURPOSE   ¿ìÆí¹øÈ£ ¸¶½ºÅÍ °ü¸®
+   PURPOSE   ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ Count
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° Count
   *****************************************************************************/
   FUNCTION f_sRtsd0010Count(
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE        /*°Ç¹°°ü¸®¹øÈ£(PK)    */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE        /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)    */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,78 +32,78 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_sRtsd0010Count;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ Select
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0010 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*°Ç¹°°ü¸®¹øÈ£(PK)      */
-    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*±¸¿ª¹øÈ£              */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*½Ãµµ                  */
-    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*½Ãµµ¿µ¹®              */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*½Ã±º±¸                */
-    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*½Ã±º±¸¿µ¹®            */
-    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*À¾¸é                  */
-    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*À¾¸é¿µ¹®              */
-    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*µµ·Î¸íÄÚµå            */
-    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*µµ·Î¸í                */
-    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*µµ·Î¸í¿µ¹®            */
-    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:ÁöÇÏ*/
-    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*°Ç¹°¹øÈ£º»¹ø          */
-    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*°Ç¹°¹øÈ£ºÎ¹ø          */
-    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*´Ù·®¹è´ÞÃ³¸í          */
-    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*½Ã±¹±¸¿ë°Ç¹°¸í        */
-    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*¹ýÁ¤µ¿ÄÚµå            */
-    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*¹ýÁ¤µ¿¸í              */
-    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*¸®¸í                  */
-    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*ÇàÁ¤µ¿¸í              */
-    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*»ê¿©ºÎ(0:ÅäÁö,1:»ê)   */
-    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*Áö¹øº»¹ø              */
-    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*À¾¸éµ¿ÀÏ·Ã¹øÈ£        */
-    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*Áö¹øºÎ¹ø              */
-    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*¿ìÆí¹øÈ£              */
-    v_Seq            IN RTSD0010.SEQ%TYPE,            /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£      */
-    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*½Ã,µµ ÄÚµå            */
-    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*½Ã,±º,±¸ ÄÚµå         */
-    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0010.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)      */
+    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*êµ¬ì—­ë²ˆí˜¸              */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*ì‹œë„                  */
+    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*ì‹œë„ì˜ë¬¸              */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*ì‹œêµ°êµ¬                */
+    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*ì‹œêµ°êµ¬ì˜ë¬¸            */
+    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*ìë©´                  */
+    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*ìë©´ì˜ë¬¸              */
+    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*ë„ë¡œëª…ì½”ë“œ            */
+    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*ë„ë¡œëª…                */
+    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*ë„ë¡œëª…ì˜ë¬¸            */
+    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€í•˜*/
+    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ          */
+    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ          */
+    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…          */
+    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…        */
+    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*ë²•ì •ë™ì½”ë“œ            */
+    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*ë²•ì •ë™ëª…              */
+    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*ë¦¬ëª…                  */
+    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*í–‰ì •ë™ëª…              */
+    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°)   */
+    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*ì§€ë²ˆë³¸ë²ˆ              */
+    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸        */
+    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*ì§€ë²ˆë¶€ë²ˆ              */
+    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Seq            IN RTSD0010.SEQ%TYPE,            /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸      */
+    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*ì‹œ,ë„ ì½”ë“œ            */
+    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*ì‹œ,êµ°,êµ¬ ì½”ë“œ         */
+    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0010.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.BLD_MNG_NO,                /*°Ç¹°°ü¸®¹øÈ£(PK)    */
-            A.AREA_NUM,                  /*±¸¿ª¹øÈ£            */
-            A.DO_NM,                     /*½Ãµµ                */
-            A.DO_NM_E,                   /*½Ãµµ¿µ¹®            */
-            A.CT_NM,                     /*½Ã±º±¸              */
-            A.CT_NM_E,                   /*½Ã±º±¸¿µ¹®          */
-            A.EM_NM,                     /*À¾¸é                */
-            A.EM_NM_E,                   /*À¾¸é¿µ¹®            */
-            A.RD_CD,                     /*µµ·Î¸íÄÚµå          */
-            A.RD_NM,                     /*µµ·Î¸í              */
-            A.RD_NM_E,                   /*µµ·Î¸í¿µ¹®          */
-            A.UNDR_GRND,                 /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:Áö*/
-            A.BLD_MB,                    /*°Ç¹°¹øÈ£º»¹ø        */
-            A.BLD_SB,                    /*°Ç¹°¹øÈ£ºÎ¹ø        */
-            A.MD_NM,                     /*´Ù·®¹è´ÞÃ³¸í        */
-            A.BLD_NM1,                   /*½Ã±¹±¸¿ë°Ç¹°¸í      */
-            A.B_DNG_CD,                  /*¹ýÁ¤µ¿ÄÚµå          */
-            A.B_DNG_NM,                  /*¹ýÁ¤µ¿¸í            */
-            A.B_RI_NM,                   /*¸®¸í                */
-            A.H_DNG_NM,                  /*ÇàÁ¤µ¿¸í            */
-            A.S_CD,                      /*»ê¿©ºÎ(0:ÅäÁö,1:»ê) */
-            A.LOT_MB,                    /*Áö¹øº»¹ø            */
-            A.DNG_SEQ,                   /*À¾¸éµ¿ÀÏ·Ã¹øÈ£      */
-            A.LOT_SB,                    /*Áö¹øºÎ¹ø            */
-            A.ZIP_NUM,                   /*¿ìÆí¹øÈ£            */
-            A.SEQ,                       /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£    */
-            A.SIDO_CD,                   /*½Ã,µµ ÄÚµå          */
-            A.SIGUN_CD,                  /*½Ã,±º,±¸ ÄÚµå       */
-            A.USE_YN,                    /*»ç¿ë¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.BLD_MNG_NO,                /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)    */
+            A.AREA_NUM,                  /*êµ¬ì—­ë²ˆí˜¸            */
+            A.DO_NM,                     /*ì‹œë„                */
+            A.DO_NM_E,                   /*ì‹œë„ì˜ë¬¸            */
+            A.CT_NM,                     /*ì‹œêµ°êµ¬              */
+            A.CT_NM_E,                   /*ì‹œêµ°êµ¬ì˜ë¬¸          */
+            A.EM_NM,                     /*ìë©´                */
+            A.EM_NM_E,                   /*ìë©´ì˜ë¬¸            */
+            A.RD_CD,                     /*ë„ë¡œëª…ì½”ë“œ          */
+            A.RD_NM,                     /*ë„ë¡œëª…              */
+            A.RD_NM_E,                   /*ë„ë¡œëª…ì˜ë¬¸          */
+            A.UNDR_GRND,                 /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€*/
+            A.BLD_MB,                    /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ        */
+            A.BLD_SB,                    /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ        */
+            A.MD_NM,                     /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…        */
+            A.BLD_NM1,                   /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…      */
+            A.B_DNG_CD,                  /*ë²•ì •ë™ì½”ë“œ          */
+            A.B_DNG_NM,                  /*ë²•ì •ë™ëª…            */
+            A.B_RI_NM,                   /*ë¦¬ëª…                */
+            A.H_DNG_NM,                  /*í–‰ì •ë™ëª…            */
+            A.S_CD,                      /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°) */
+            A.LOT_MB,                    /*ì§€ë²ˆë³¸ë²ˆ            */
+            A.DNG_SEQ,                   /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸      */
+            A.LOT_SB,                    /*ì§€ë²ˆë¶€ë²ˆ            */
+            A.ZIP_NUM,                   /*ìš°íŽ¸ë²ˆí˜¸            */
+            A.SEQ,                       /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸    */
+            A.SIDO_CD,                   /*ì‹œ,ë„ ì½”ë“œ          */
+            A.SIGUN_CD,                  /*ì‹œ,êµ°,êµ¬ ì½”ë“œ       */
+            A.USE_YN,                    /*ì‚¬ìš©ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0010 A
     WHERE   A.BLD_MNG_NO = DECODE(v_Bld_Mng_No , NULL, A.BLD_MNG_NO  , v_Bld_Mng_No)
     AND     A.AREA_NUM   = DECODE(v_Area_Num   , NULL, A.AREA_NUM    , v_Area_Num)
@@ -139,39 +139,39 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END p_sRtsd0010;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ Insert
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0010 (
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*°Ç¹°°ü¸®¹øÈ£(PK)      */
-    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*±¸¿ª¹øÈ£              */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*½Ãµµ                  */
-    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*½Ãµµ¿µ¹®              */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*½Ã±º±¸                */
-    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*½Ã±º±¸¿µ¹®            */
-    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*À¾¸é                  */
-    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*À¾¸é¿µ¹®              */
-    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*µµ·Î¸íÄÚµå            */
-    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*µµ·Î¸í                */
-    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*µµ·Î¸í¿µ¹®            */
-    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:ÁöÇÏ*/
-    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*°Ç¹°¹øÈ£º»¹ø          */
-    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*°Ç¹°¹øÈ£ºÎ¹ø          */
-    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*´Ù·®¹è´ÞÃ³¸í          */
-    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*½Ã±¹±¸¿ë°Ç¹°¸í        */
-    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*¹ýÁ¤µ¿ÄÚµå            */
-    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*¹ýÁ¤µ¿¸í              */
-    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*¸®¸í                  */
-    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*ÇàÁ¤µ¿¸í              */
-    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*»ê¿©ºÎ(0:ÅäÁö,1:»ê)   */
-    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*Áö¹øº»¹ø              */
-    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*À¾¸éµ¿ÀÏ·Ã¹øÈ£        */
-    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*Áö¹øºÎ¹ø              */
-    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*¿ìÆí¹øÈ£              */
-    v_Seq            IN RTSD0010.SEQ%TYPE,            /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£      */
-    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*½Ã,µµ ÄÚµå            */
-    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*½Ã,±º,±¸ ÄÚµå         */
-    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)      */
+    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*êµ¬ì—­ë²ˆí˜¸              */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*ì‹œë„                  */
+    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*ì‹œë„ì˜ë¬¸              */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*ì‹œêµ°êµ¬                */
+    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*ì‹œêµ°êµ¬ì˜ë¬¸            */
+    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*ìë©´                  */
+    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*ìë©´ì˜ë¬¸              */
+    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*ë„ë¡œëª…ì½”ë“œ            */
+    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*ë„ë¡œëª…                */
+    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*ë„ë¡œëª…ì˜ë¬¸            */
+    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€í•˜*/
+    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ          */
+    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ          */
+    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…          */
+    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…        */
+    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*ë²•ì •ë™ì½”ë“œ            */
+    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*ë²•ì •ë™ëª…              */
+    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*ë¦¬ëª…                  */
+    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*í–‰ì •ë™ëª…              */
+    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°)   */
+    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*ì§€ë²ˆë³¸ë²ˆ              */
+    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸        */
+    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*ì§€ë²ˆë¶€ë²ˆ              */
+    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Seq            IN RTSD0010.SEQ%TYPE,            /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸      */
+    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*ì‹œ,ë„ ì½”ë“œ            */
+    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*ì‹œ,êµ°,êµ¬ ì½”ë“œ         */
+    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -256,39 +256,39 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_InsertRtsd0010;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ Update
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0010 (
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*°Ç¹°°ü¸®¹øÈ£(PK)      */
-    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*±¸¿ª¹øÈ£              */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*½Ãµµ                  */
-    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*½Ãµµ¿µ¹®              */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*½Ã±º±¸                */
-    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*½Ã±º±¸¿µ¹®            */
-    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*À¾¸é                  */
-    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*À¾¸é¿µ¹®              */
-    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*µµ·Î¸íÄÚµå            */
-    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*µµ·Î¸í                */
-    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*µµ·Î¸í¿µ¹®            */
-    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:ÁöÇÏ*/
-    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*°Ç¹°¹øÈ£º»¹ø          */
-    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*°Ç¹°¹øÈ£ºÎ¹ø          */
-    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*´Ù·®¹è´ÞÃ³¸í          */
-    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*½Ã±¹±¸¿ë°Ç¹°¸í        */
-    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*¹ýÁ¤µ¿ÄÚµå            */
-    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*¹ýÁ¤µ¿¸í              */
-    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*¸®¸í                  */
-    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*ÇàÁ¤µ¿¸í              */
-    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*»ê¿©ºÎ(0:ÅäÁö,1:»ê)   */
-    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*Áö¹øº»¹ø              */
-    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*À¾¸éµ¿ÀÏ·Ã¹øÈ£        */
-    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*Áö¹øºÎ¹ø              */
-    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*¿ìÆí¹øÈ£              */
-    v_Seq            IN RTSD0010.SEQ%TYPE,            /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£      */
-    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*½Ã,µµ ÄÚµå            */
-    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*½Ã,±º,±¸ ÄÚµå         */
-    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)      */
+    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*êµ¬ì—­ë²ˆí˜¸              */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*ì‹œë„                  */
+    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*ì‹œë„ì˜ë¬¸              */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*ì‹œêµ°êµ¬                */
+    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*ì‹œêµ°êµ¬ì˜ë¬¸            */
+    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*ìë©´                  */
+    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*ìë©´ì˜ë¬¸              */
+    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*ë„ë¡œëª…ì½”ë“œ            */
+    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*ë„ë¡œëª…                */
+    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*ë„ë¡œëª…ì˜ë¬¸            */
+    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€í•˜*/
+    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ          */
+    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ          */
+    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…          */
+    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…        */
+    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*ë²•ì •ë™ì½”ë“œ            */
+    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*ë²•ì •ë™ëª…              */
+    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*ë¦¬ëª…                  */
+    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*í–‰ì •ë™ëª…              */
+    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°)   */
+    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*ì§€ë²ˆë³¸ë²ˆ              */
+    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸        */
+    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*ì§€ë²ˆë¶€ë²ˆ              */
+    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Seq            IN RTSD0010.SEQ%TYPE,            /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸      */
+    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*ì‹œ,ë„ ì½”ë“œ            */
+    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*ì‹œ,êµ°,êµ¬ ì½”ë“œ         */
+    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -336,11 +336,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_UpdateRtsd0010;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ Delete
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0010 (
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*°Ç¹°°ü¸®¹øÈ£(PK)      */
-    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)      */
+    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -361,40 +361,40 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_DeleteRtsd0010;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ °ü¸®(IUD)
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0010 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*°Ç¹°°ü¸®¹øÈ£(PK)      */
-    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*±¸¿ª¹øÈ£              */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*½Ãµµ                  */
-    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*½Ãµµ¿µ¹®              */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*½Ã±º±¸                */
-    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*½Ã±º±¸¿µ¹®            */
-    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*À¾¸é                  */
-    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*À¾¸é¿µ¹®              */
-    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*µµ·Î¸íÄÚµå            */
-    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*µµ·Î¸í                */
-    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*µµ·Î¸í¿µ¹®            */
-    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:ÁöÇÏ*/
-    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*°Ç¹°¹øÈ£º»¹ø          */
-    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*°Ç¹°¹øÈ£ºÎ¹ø          */
-    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*´Ù·®¹è´ÞÃ³¸í          */
-    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*½Ã±¹±¸¿ë°Ç¹°¸í        */
-    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*¹ýÁ¤µ¿ÄÚµå            */
-    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*¹ýÁ¤µ¿¸í              */
-    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*¸®¸í                  */
-    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*ÇàÁ¤µ¿¸í              */
-    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*»ê¿©ºÎ(0:ÅäÁö,1:»ê)   */
-    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*Áö¹øº»¹ø              */
-    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*À¾¸éµ¿ÀÏ·Ã¹øÈ£        */
-    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*Áö¹øºÎ¹ø              */
-    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*¿ìÆí¹øÈ£              */
-    v_Seq            IN RTSD0010.SEQ%TYPE,            /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£      */
-    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*½Ã,µµ ÄÚµå            */
-    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*½Ã,±º,±¸ ÄÚµå         */
-    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Bld_Mng_No     IN RTSD0010.BLD_MNG_NO%TYPE,     /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)      */
+    v_Area_Num       IN RTSD0010.AREA_NUM%TYPE,       /*êµ¬ì—­ë²ˆí˜¸              */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,          /*ì‹œë„                  */
+    v_Do_Nm_E        IN RTSD0010.DO_NM_E%TYPE,        /*ì‹œë„ì˜ë¬¸              */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,          /*ì‹œêµ°êµ¬                */
+    v_Ct_Nm_E        IN RTSD0010.CT_NM_E%TYPE,        /*ì‹œêµ°êµ¬ì˜ë¬¸            */
+    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,          /*ìë©´                  */
+    v_Em_Nm_E        IN RTSD0010.EM_NM_E%TYPE,        /*ìë©´ì˜ë¬¸              */
+    v_Rd_Cd          IN RTSD0010.RD_CD%TYPE,          /*ë„ë¡œëª…ì½”ë“œ            */
+    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE,          /*ë„ë¡œëª…                */
+    v_Rd_Nm_E        IN RTSD0010.RD_NM_E%TYPE,        /*ë„ë¡œëª…ì˜ë¬¸            */
+    v_Undr_Grnd      IN RTSD0010.UNDR_GRND%TYPE,      /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€í•˜*/
+    v_Bld_Mb         IN RTSD0010.BLD_MB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ          */
+    v_Bld_Sb         IN RTSD0010.BLD_SB%TYPE,         /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ          */
+    v_Md_Nm          IN RTSD0010.MD_NM%TYPE,          /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…          */
+    v_Bld_Nm1        IN RTSD0010.BLD_NM1%TYPE,        /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…        */
+    v_B_Dng_Cd       IN RTSD0010.B_DNG_CD%TYPE,       /*ë²•ì •ë™ì½”ë“œ            */
+    v_B_Dng_Nm       IN RTSD0010.B_DNG_NM%TYPE,       /*ë²•ì •ë™ëª…              */
+    v_B_Ri_Nm        IN RTSD0010.B_RI_NM%TYPE,        /*ë¦¬ëª…                  */
+    v_H_Dng_Nm       IN RTSD0010.H_DNG_NM%TYPE,       /*í–‰ì •ë™ëª…              */
+    v_S_Cd           IN RTSD0010.S_CD%TYPE,           /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°)   */
+    v_Lot_Mb         IN RTSD0010.LOT_MB%TYPE,         /*ì§€ë²ˆë³¸ë²ˆ              */
+    v_Dng_Seq        IN RTSD0010.DNG_SEQ%TYPE,        /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸        */
+    v_Lot_Sb         IN RTSD0010.LOT_SB%TYPE,         /*ì§€ë²ˆë¶€ë²ˆ              */
+    v_Zip_Num        IN RTSD0010.ZIP_NUM%TYPE,        /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Seq            IN RTSD0010.SEQ%TYPE,            /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸      */
+    v_Sido_Cd        IN RTSD0010.SIDO_CD%TYPE,        /*ì‹œ,ë„ ì½”ë“œ            */
+    v_Sigun_Cd       IN RTSD0010.SIGUN_CD%TYPE,       /*ì‹œ,êµ°,êµ¬ ì½”ë“œ         */
+    v_Use_Yn         IN RTSD0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -403,19 +403,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª:°Ç¹°°ü¸®¹øÈ£,»ç¿ë¿©ºÎ,  µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸,ì‚¬ìš©ì—¬ë¶€,  ë“±ë¡ìž ID
     IF TRIM(v_Bld_Mng_No) IS NULL THEN
-        v_Return_Message := '°Ç¹°°ü¸®¹øÈ£('||v_Bld_Mng_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸('||v_Bld_Mng_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Use_Yn) IS NULL) OR (v_Use_Yn IN ('Y','N')) THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -429,7 +429,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
                                  v_S_Cd , v_Lot_Mb , v_Dng_Seq , v_Lot_Sb ,
                                  v_Zip_Num , v_Seq , v_Sido_Cd , v_Sigun_Cd ,
                                  v_Use_Yn , v_Reg_Id , v_ErrorText) THEN
-            v_Return_Message := '¿ìÆí¹øÈ£ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ìš°íŽ¸ë²ˆí˜¸ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -446,7 +446,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
                                      v_S_Cd , v_Lot_Mb , v_Dng_Seq , v_Lot_Sb ,
                                      v_Zip_Num , v_Seq , v_Sido_Cd , v_Sigun_Cd ,
                                      v_Use_Yn , v_Reg_Id , v_ErrorText) THEN
-                v_Return_Message := '¿ìÆí¹øÈ£ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ìš°íŽ¸ë²ˆí˜¸ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -454,13 +454,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtsd0010(v_Bld_Mng_No , v_Reg_Id , v_ErrorText) THEN
-                v_Return_Message := '¿ìÆí¹øÈ£ »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ìš°íŽ¸ë²ˆí˜¸ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
@@ -468,7 +468,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -483,22 +483,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0010.p_IUDRtsd0010(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0010;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ - ¿ìÆí¹øÈ£ Á¶È¸ POPUP
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° - ìš°íŽ¸ë²ˆí˜¸ ì¡°íšŒ POPUP
   *****************************************************************************/
   PROCEDURE p_sRtsd0010Popup (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Db_Cd          IN RTSD0010.USE_YN%TYPE,   /*À¯Çü(D:µµ·Î¸í,B:Áö¹ø)       */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*½Ãµµ                        */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*½Ã±º±¸                      */
-    v_Rd_Dng_Nm      IN VARCHAR,                /*À¾¸é/µ¿/µµ·Î¸í_¸®¸í         */
-    v_Mb_Nm          IN VARCHAR                 /*°Ç¹°º»¹ø.ºÎ¹ø/Áö¹øº»¹ø.ºÎ¹ø */
+    v_Db_Cd          IN RTSD0010.USE_YN%TYPE,   /*ìœ í˜•(D:ë„ë¡œëª…,B:ì§€ë²ˆ)       */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*ì‹œë„                        */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*ì‹œêµ°êµ¬                      */
+    v_Rd_Dng_Nm      IN VARCHAR,                /*ìë©´/ë™/ë„ë¡œëª…_ë¦¬ëª…         */
+    v_Mb_Nm          IN VARCHAR                 /*ê±´ë¬¼ë³¸ë²ˆ.ë¶€ë²ˆ/ì§€ë²ˆë³¸ë²ˆ.ë¶€ë²ˆ */
     ) IS
   BEGIN
 
@@ -507,17 +507,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END p_sRtsd0010Popup;
     
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ¸¶½ºÅÍ - ¿ìÆí¹øÈ£ Á¶È¸ POPUP
+  -- ìš°íŽ¸ë²ˆí˜¸ ë§ˆìŠ¤í„° - ìš°íŽ¸ë²ˆí˜¸ ì¡°íšŒ POPUP
   *****************************************************************************/
   PROCEDURE p_sRtsd0010PopupPage (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Db_Cd          IN RTSD0010.USE_YN%TYPE,   /*À¯Çü(D:µµ·Î¸í,B:Áö¹ø)       */
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*½Ãµµ                        */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*½Ã±º±¸                      */
-    v_Rd_Dng_Nm      IN VARCHAR,                /*À¾¸é/µ¿/µµ·Î¸í_¸®¸í         */
-    v_Mb_Nm          IN VARCHAR,                /*°Ç¹°º»¹ø.ºÎ¹ø/Áö¹øº»¹ø.ºÎ¹ø */
-    v_Page_No        IN NUMBER,                 /*ÆäÀÌÁö                      */
-    v_Get_Cnt        IN NUMBER                  /*È¹µæ°Ç¼ö                    */
+    v_Db_Cd          IN RTSD0010.USE_YN%TYPE,   /*ìœ í˜•(D:ë„ë¡œëª…,B:ì§€ë²ˆ)       */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*ì‹œë„                        */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*ì‹œêµ°êµ¬                      */
+    v_Rd_Dng_Nm      IN VARCHAR,                /*ìë©´/ë™/ë„ë¡œëª…_ë¦¬ëª…         */
+    v_Mb_Nm          IN VARCHAR,                /*ê±´ë¬¼ë³¸ë²ˆ.ë¶€ë²ˆ/ì§€ë²ˆë³¸ë²ˆ.ë¶€ë²ˆ */
+    v_Page_No        IN NUMBER,                 /*íŽ˜ì´ì§€                      */
+    v_Get_Cnt        IN NUMBER                  /*íšë“ê±´ìˆ˜                    */
     ) IS
 
   BEGIN
@@ -526,7 +526,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
      SELECT  A.ROW_NUM,
             A.EM_NM||A.B_DNG_NM||DECODE('D',v_Db_Cd, A.RD_NM, A.B_RI_NM) Rd_Dng_Nm,
             DECODE('D', v_Db_Cd, A.BLD_MB||'-'||A.BLD_SB, A.LOT_MB||'-'||A.LOT_SB) Mb_Nm,
-            /*µµ·Î¸í ÁÖ¼Ò */
+            /*ë„ë¡œëª… ì£¼ì†Œ */
             A.DO_NM||' '||A.CT_NM||DECODE(A.EM_NM,NULL,'',' '||A.EM_NM)||' '||A.RD_NM AS RN_ADDR1_D,
             TRIM(
                 DECODE(A.BLD_SB, NULL,A.BLD_MB  || ' '
@@ -535,7 +535,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
                         DECODE(A.BLD_SB, NULL,NULL,0,NULL,A.BLD_SB  || ' ')   ||
                         DECODE(A.BLD_NM1,NULL,NULL,'('||A.BLD_NM1||')')
             ) AS RN_ADDR2_D,
-            /*¹ýÁ¤µ¿ ÁÖ¼Ò START */
+            /*ë²•ì •ë™ ì£¼ì†Œ START */
             A.DO_NM||' '||A.CT_NM||DECODE(A.EM_NM,NULL,'',' '||A.EM_NM)||' '||DECODE(A.B_RI_NM, NULL, A.B_DNG_NM, A.B_RI_NM) AS RN_ADDR1_B,
                 TRIM(
                     DECODE(A.LOT_SB, NULL,A.LOT_MB  || ' '
@@ -544,68 +544,68 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
                    DECODE(A.LOT_SB, NULL,NULL,0,NULL,A.LOT_SB  || ' ')   ||
                    DECODE(A.BLD_NM1,NULL,NULL,'('||A.BLD_NM1||')')
                    ) AS RN_ADDR2_B,
-            A.BLD_MNG_NO,   /*°Ç¹°°ü¸®¹øÈ£(PK)       */
-            A.AREA_NUM,     /*±¸¿ª¹øÈ£               */
-            A.DO_NM,        /*½Ãµµ                   */
-            A.DO_NM_E,      /*½Ãµµ¿µ¹®               */
-            A.CT_NM,        /*½Ã±º±¸                 */
-            A.CT_NM_E,      /*½Ã±º±¸¿µ¹®             */
-            A.EM_NM,        /*À¾¸é                   */
-            A.EM_NM_E,      /*À¾¸é¿µ¹®               */
-            A.RD_CD,        /*µµ·Î¸íÄÚµå             */
-            A.RD_NM,        /*µµ·Î¸í                 */
-            A.RD_NM_E,      /*µµ·Î¸í¿µ¹®             */
-            A.UNDR_GRND,    /*ÁöÇÏ¿©ºÎ(0:Áö»ó,1:ÁöÇÏ)*/
-            A.BLD_MB,       /*°Ç¹°¹øÈ£º»¹ø           */
-            A.BLD_SB,       /*°Ç¹°¹øÈ£ºÎ¹ø           */
-            A.MD_NM,        /*´Ù·®¹è´ÞÃ³¸í           */
-            A.BLD_NM1,      /*½Ã±¹±¸¿ë°Ç¹°¸í         */
-            A.B_DNG_CD,     /*¹ýÁ¤µ¿ÄÚµå             */
-            A.B_DNG_NM,     /*¹ýÁ¤µ¿¸í               */
-            A.B_RI_NM,      /*¸®¸í                   */
-            A.H_DNG_NM,     /*ÇàÁ¤µ¿¸í               */
-            A.S_CD,         /*»ê¿©ºÎ(0:ÅäÁö,1:»ê)    */
-            A.LOT_MB,       /*Áö¹øº»¹ø               */
-            A.DNG_SEQ,      /*À¾¸éµ¿ÀÏ·Ã¹øÈ£         */
-            A.LOT_SB,       /*Áö¹øºÎ¹ø               */
-            A.ZIP_NUM,      /*¿ìÆí¹øÈ£               */
-            A.SEQ,          /*¿ìÆí¹øÈ£ÀÏ·Ã¹øÈ£       */
-            A.SIDO_CD,      /*½Ã,µµ ÄÚµå             */
-            A.SIGUN_CD,     /*½Ã,±º,±¸ ÄÚµå          */
-            A.TOTAL_CNT     /*ÀüÃ¼ °Ç¼ö              */
+            A.BLD_MNG_NO,   /*ê±´ë¬¼ê´€ë¦¬ë²ˆí˜¸(PK)       */
+            A.AREA_NUM,     /*êµ¬ì—­ë²ˆí˜¸               */
+            A.DO_NM,        /*ì‹œë„                   */
+            A.DO_NM_E,      /*ì‹œë„ì˜ë¬¸               */
+            A.CT_NM,        /*ì‹œêµ°êµ¬                 */
+            A.CT_NM_E,      /*ì‹œêµ°êµ¬ì˜ë¬¸             */
+            A.EM_NM,        /*ìë©´                   */
+            A.EM_NM_E,      /*ìë©´ì˜ë¬¸               */
+            A.RD_CD,        /*ë„ë¡œëª…ì½”ë“œ             */
+            A.RD_NM,        /*ë„ë¡œëª…                 */
+            A.RD_NM_E,      /*ë„ë¡œëª…ì˜ë¬¸             */
+            A.UNDR_GRND,    /*ì§€í•˜ì—¬ë¶€(0:ì§€ìƒ,1:ì§€í•˜)*/
+            A.BLD_MB,       /*ê±´ë¬¼ë²ˆí˜¸ë³¸ë²ˆ           */
+            A.BLD_SB,       /*ê±´ë¬¼ë²ˆí˜¸ë¶€ë²ˆ           */
+            A.MD_NM,        /*ë‹¤ëŸ‰ë°°ë‹¬ì²˜ëª…           */
+            A.BLD_NM1,      /*ì‹œêµ­êµ¬ìš©ê±´ë¬¼ëª…         */
+            A.B_DNG_CD,     /*ë²•ì •ë™ì½”ë“œ             */
+            A.B_DNG_NM,     /*ë²•ì •ë™ëª…               */
+            A.B_RI_NM,      /*ë¦¬ëª…                   */
+            A.H_DNG_NM,     /*í–‰ì •ë™ëª…               */
+            A.S_CD,         /*ì‚°ì—¬ë¶€(0:í† ì§€,1:ì‚°)    */
+            A.LOT_MB,       /*ì§€ë²ˆë³¸ë²ˆ               */
+            A.DNG_SEQ,      /*ìë©´ë™ì¼ë ¨ë²ˆí˜¸         */
+            A.LOT_SB,       /*ì§€ë²ˆë¶€ë²ˆ               */
+            A.ZIP_NUM,      /*ìš°íŽ¸ë²ˆí˜¸               */
+            A.SEQ,          /*ìš°íŽ¸ë²ˆí˜¸ì¼ë ¨ë²ˆí˜¸       */
+            A.SIDO_CD,      /*ì‹œ,ë„ ì½”ë“œ             */
+            A.SIGUN_CD,     /*ì‹œ,êµ°,êµ¬ ì½”ë“œ          */
+            A.TOTAL_CNT     /*ì „ì²´ ê±´ìˆ˜              */
     FROM    (    
             SELECT  A.*,
                     ROW_NUMBER() OVER(ORDER BY DECODE(v_Db_Cd, 'D', TO_NUMBER(BLD_MB), TO_NUMBER(LOT_MB)), DECODE(v_Db_Cd,'D', TO_NUMBER(BLD_SB), TO_NUMBER(LOT_SB))) ROW_NUM,
                     COUNT(BLD_MNG_NO) OVER() TOTAL_CNT                    
             FROM    (
-                    -- µµ·Î¸í ÁÖ¼Ò
+                    -- ë„ë¡œëª… ì£¼ì†Œ
                     SELECT  *
                     FROM    RTSD0010 A
                     WHERE   v_Db_Cd = 'D'
-                    AND     A.DO_NM  = v_Do_Nm /*½Ãµµ    */
-                    AND     A.CT_NM  LIKE v_Ct_Nm||'%' /*½Ã±º±¸  */
+                    AND     A.DO_NM  = v_Do_Nm /*ì‹œë„    */
+                    AND     A.CT_NM  LIKE v_Ct_Nm||'%' /*ì‹œêµ°êµ¬  */
                     AND     (A.RD_NM LIKE v_Rd_Dng_Nm||'%' OR A.EM_NM LIKE v_Rd_Dng_Nm||'%' OR A.B_DNG_NM LIKE v_Rd_Dng_Nm||'%' OR A.BLD_NM1 LIKE '%'||v_Rd_Dng_Nm||'%'
-                    OR REGEXP_REPLACE(A.H_DNG_NM,'Á¦[1-9]µ¿', SUBSTR(A.H_DNG_NM,-2))  LIKE v_Rd_Dng_Nm||'%'  /*ÇàÁ¤µ¿ Á¶È¸°¡´ÉÇÏµµ·Ï ¼öÁ¤ 21060112 ÇÑ½ÂÈÆ */
-                    OR REGEXP_REPLACE(A.B_DNG_NM,'[1-9]µ¿', SUBSTR(A.B_DNG_NM,-1))  LIKE v_Rd_Dng_Nm||'%'  
+                    OR REGEXP_REPLACE(A.H_DNG_NM,'ì œ[1-9]ë™', SUBSTR(A.H_DNG_NM,-2))  LIKE v_Rd_Dng_Nm||'%'  /*í–‰ì •ë™ ì¡°íšŒê°€ëŠ¥í•˜ë„ë¡ ìˆ˜ì • 21060112 í•œìŠ¹í›ˆ */
+                    OR REGEXP_REPLACE(A.B_DNG_NM,'[1-9]ë™', SUBSTR(A.B_DNG_NM,-1))  LIKE v_Rd_Dng_Nm||'%'  
                     OR A.B_DNG_NM LIKE  REGEXP_REPLACE(v_Rd_Dng_Nm,'[1-9]','')||'%'    
                     OR A.H_DNG_NM LIKE v_Rd_Dng_Nm||'%' 
-                    OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,'µ¿',1)+1),v_Rd_Dng_Nm)||'%'  AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
+                    OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,'ë™',1)+1),v_Rd_Dng_Nm)||'%'  AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
                     OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,' ',1)+1),v_Rd_Dng_Nm)||'%' AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
                     )
                     AND     A.BLD_MB||'-'||A.BLD_SB LIKE REPLACE( v_Mb_Nm, ' ', '' )||'%'
                     UNION   ALL
-                    -- Áö¹ø ÁÖ¼Ò
+                    -- ì§€ë²ˆ ì£¼ì†Œ
                     SELECT  *
                     FROM    RTSD0010 A
                     WHERE   v_Db_Cd = 'B'
-                    AND     A.DO_NM  = v_Do_Nm /*½Ãµµ    */
-                    AND     A.CT_NM  LIKE v_Ct_Nm||'%' /*½Ã±º±¸  */
+                    AND     A.DO_NM  = v_Do_Nm /*ì‹œë„    */
+                    AND     A.CT_NM  LIKE v_Ct_Nm||'%' /*ì‹œêµ°êµ¬  */
                     AND     (A.B_RI_NM  LIKE v_Rd_Dng_Nm||'%' OR A.EM_NM LIKE v_Rd_Dng_Nm||'%' OR A.B_DNG_NM LIKE v_Rd_Dng_Nm||'%' OR A.BLD_NM1 LIKE '%'||v_Rd_Dng_Nm||'%'
-                    OR REGEXP_REPLACE(A.H_DNG_NM,'Á¦[1-9]µ¿', SUBSTR(A.H_DNG_NM,-2))  LIKE v_Rd_Dng_Nm||'%'   /*ÇàÁ¤µ¿ Á¶È¸°¡´ÉÇÏµµ·Ï ¼öÁ¤ 21060112 ÇÑ½ÂÈÆ */ 
-                    OR REGEXP_REPLACE(A.B_DNG_NM,'[1-9]µ¿', SUBSTR(A.B_DNG_NM,-1))  LIKE v_Rd_Dng_Nm||'%'  
+                    OR REGEXP_REPLACE(A.H_DNG_NM,'ì œ[1-9]ë™', SUBSTR(A.H_DNG_NM,-2))  LIKE v_Rd_Dng_Nm||'%'   /*í–‰ì •ë™ ì¡°íšŒê°€ëŠ¥í•˜ë„ë¡ ìˆ˜ì • 21060112 í•œìŠ¹í›ˆ */ 
+                    OR REGEXP_REPLACE(A.B_DNG_NM,'[1-9]ë™', SUBSTR(A.B_DNG_NM,-1))  LIKE v_Rd_Dng_Nm||'%'  
                     OR A.B_DNG_NM LIKE  REGEXP_REPLACE(v_Rd_Dng_Nm,'[1-9]','')||'%'
                     OR A.H_DNG_NM LIKE v_Rd_Dng_Nm||'%' 
-                    OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,'µ¿',1)+1),v_Rd_Dng_Nm)||'%'  AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
+                    OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,'ë™',1)+1),v_Rd_Dng_Nm)||'%'  AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
                     OR ( A.BLD_NM1 LIKE NVL(SUBSTR(v_Rd_Dng_Nm,INSTR(v_Rd_Dng_Nm,' ',1)+1),v_Rd_Dng_Nm)||'%' AND A.H_DNG_NM LIKE NVL(SUBSTR(v_Rd_Dng_Nm, 0, INSTR(v_Rd_Dng_Nm,' ',1)-1),v_Rd_Dng_Nm)||'%')
                     )
                     AND     A.LOT_MB||'-'||A.LOT_SB LIKE REPLACE( v_Mb_Nm, ' ', '' )||'%'
@@ -619,7 +619,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END p_sRtsd0010PopupPage;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ½Ãµµ Á¶È¸
+  -- ìš°íŽ¸ë²ˆí˜¸ ì‹œë„ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE f_sRtsd0010DoCombo(
     Ref_Cursor       IN OUT SYS_REFCURSOR
@@ -634,11 +634,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_sRtsd0010DoCombo;
 
   /*****************************************************************************
-  -- ¿ìÆí¹øÈ£ ±¸±º Á¶È¸
+  -- ìš°íŽ¸ë²ˆí˜¸ êµ¬êµ° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE f_sRtsd0010CtCombo(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE     /*½Ãµµ                        */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE     /*ì‹œë„                        */
     ) IS
   BEGIN
   
@@ -654,14 +654,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END f_sRtsd0010CtCombo;
   
   /*****************************************************************************
-  -- Áö¿ªº° Å°¸¶½ºÅ¸  Á¶È¸
+  -- ì§€ì—­ë³„ í‚¤ë§ˆìŠ¤íƒ€  ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0010carmaster(
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*½Ãµµ                        */
-    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*½Ã±º±¸                      */
-    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,    /*À¾¸é                        */
-    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE     /*µµ·Î¸í                      */
+    v_Do_Nm          IN RTSD0010.DO_NM%TYPE,    /*ì‹œë„                        */
+    v_Ct_Nm          IN RTSD0010.CT_NM%TYPE,    /*ì‹œêµ°êµ¬                      */
+    v_Em_Nm          IN RTSD0010.EM_NM%TYPE,    /*ìë©´                        */
+    v_Rd_Nm          IN RTSD0010.RD_NM%TYPE     /*ë„ë¡œëª…                      */
     ) IS
   
   BEGIN
@@ -686,15 +686,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END p_sRtsd0010carmaster;
   
   /*****************************************************************************
-  -- Ä«¸¶½ºÅÍÄÚµå°ª  ÀÏ°ýÀúÀåÇÏ±â.
+  -- ì¹´ë§ˆìŠ¤í„°ì½”ë“œê°’  ì¼ê´„ì €ìž¥í•˜ê¸°.
   *****************************************************************************/
   PROCEDURE p_UpdateRtsd0010CarMaster(
-    v_Do_Nm        IN RTSD0010.DO_NM%TYPE,       /*½Ãµµ                       */
-    v_Ct_Nm        IN RTSD0010.CT_NM%TYPE,       /*½Ã±º±¸                     */   
-    v_Em_Nm        IN RTSD0010.EM_NM%TYPE,       /*À¾¸é                       */
-    v_Rd_Nm        IN RTSD0010.RD_NM%TYPE,       /*µµ·Î¸í                     */
-    v_Carmaster_nu IN RTSD0010.CARMASTER_NU%TYPE,/*Ä«¸¶½ºÅÍ ÄÚµå              */ 
-    v_Reg_Id       IN RTSD0010.REG_ID%TYPE,      /*µî·ÏÀÚ ID                  */
+    v_Do_Nm        IN RTSD0010.DO_NM%TYPE,       /*ì‹œë„                       */
+    v_Ct_Nm        IN RTSD0010.CT_NM%TYPE,       /*ì‹œêµ°êµ¬                     */   
+    v_Em_Nm        IN RTSD0010.EM_NM%TYPE,       /*ìë©´                       */
+    v_Rd_Nm        IN RTSD0010.RD_NM%TYPE,       /*ë„ë¡œëª…                     */
+    v_Carmaster_nu IN RTSD0010.CARMASTER_NU%TYPE,/*ì¹´ë§ˆìŠ¤í„° ì½”ë“œ              */ 
+    v_Reg_Id       IN RTSD0010.REG_ID%TYPE,      /*ë“±ë¡ìž ID                  */
     v_Success_Code    OUT NUMBER,
     v_Return_Message  OUT VARCHAR2,
     v_ErrorText       OUT VARCHAR2      
@@ -714,7 +714,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
     AND    NVL(RD_NM,' ')  = DECODE(v_Rd_Nm,'',NVL(RD_NM,' '),v_Rd_Nm);
                      
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
   
   EXCEPTION
@@ -735,4 +735,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0010 AS
   END p_UpdateRtsd0010CarMaster;
      
 END Pkg_Rtsd0010;
-/

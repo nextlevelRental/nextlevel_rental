@@ -20,6 +20,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0003 AS
    1.12       2023-06-22  kstka            [20230622_01] kstka 계약서내용 조회시 최초발송용과 재발송용으로 구분
    1.13       2023-12-26  kstka            [20231226_01] kstka 마감일 장착주문유형 제한
    1.14       2024-01-17  kstka            [20240117_01] kstka 업무용앱에서 쇼핑몰s회원가입 BLOCK처리
+   1.14       2024-10-25  10243054         [20241025_01] 개인정보제공 동의 당일에만 유효하게 처리
 *******************************************************************************/
   /*****************************************************************************
   -- 0)  PAD 로그인시 사용자 정보 조회 - New Version
@@ -185,11 +186,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0003 AS
          ,  DECODE(A.CUST_TP,'01',SUBSTR(A.BIRTH_DAY,3,6),SUBSTR(A.BUSL_NO,1,6)) ENC_CD /* 암호화 코드 */
          ,  NVL2(B.CUST_NO,'Y','N') AS AG_YN              /* 정보제공 동의여부*/
       FROM  RTSD0100 A
-         ,  ( SELECT 
-                    ROW_NUMBER() OVER(PARTITION BY X.CUST_NO ORDER BY X.SEQ) ROW_NUM
-                  , X.* 
-              FROM RTSD0111 X
-            ) B
+         ,  RTSD0111 B
      WHERE  A.USE_YN     = 'Y'
        AND  A.CUST_TP    = '01'
        AND  A.CUST_NM LIKE v_Cust_Nm||'%'
@@ -202,8 +199,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0003 AS
                 OR (v_Cust_Nm  IS NOT NULL AND v_Mob_No IS NOT NULL)
             )
        AND  A.CUST_NO   = B.CUST_NO(+)
-       AND  B.ROW_NUM(+) = 1
---       AND  B.AG_DAY(+) = TO_CHAR(SYSDATE,'YYYYMMDD') 
+       AND  B.AG_DAY(+) = TO_CHAR(SYSDATE,'YYYYMMDD') 
     ;
 
   END p_sExif0003CustInfo;
@@ -3960,4 +3956,3 @@ IF TRIM(v_User_Id) IS NULL THEN
   END p_sExif0003O2OAgencyInfo;
   
 END Pkg_Exif0003;
-/

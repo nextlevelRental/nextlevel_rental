@@ -1,41 +1,41 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0221 AS
 /*******************************************************************************
    NAME    : Pkg_Rtre0221
-   PURPOSE : °¡»ó°èÁÂ ¼¼ºÎ³»¿ª °ü¸®(¼¼Æ²¹ðÅ© °íÁ¤Çü °¡»ó°èÁÂ)
+   PURPOSE : ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬(ì„¸í‹€ë±…í¬ ê³ ì •í˜• ê°€ìƒê³„ì¢Œ)
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2018-11-28  ncho             1. Created this package spec.
  *******************************************************************************/
 /*****************************************************************************
- -- °¡»ó°èÁÂ ¼¼ºÎ³»¿ª Select
+ -- ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ Select
  *****************************************************************************/
     PROCEDURE p_sRtre0221(  Ref_Cursor IN OUT SYS_REFCURSOR
-                          , v_Rva_Day  IN RTRE0221.RVA_DAY%TYPE /* ¿äÃ»ÀÏÀÚ */
-                          , v_Rva_Seq  IN RTRE0221.RVA_SEQ%TYPE /* ¿äÃ»ÀÏ·Ã¹øÈ£ */
+                          , v_Rva_Day  IN RTRE0221.RVA_DAY%TYPE /* ìš”ì²­ì¼ìž */
+                          , v_Rva_Seq  IN RTRE0221.RVA_SEQ%TYPE /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸ */
                          )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT  A1.RVA_DAY             /* ¿äÃ»ÀÏÀÚ */
-                  , A1.RVA_SEQ             /* ¿äÃ»ÀÏ·Ã¹øÈ£ */
-                  , A1.CUST_NO             /* °í°´¹øÈ£ */
-                  , A1.TORD_NO             /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-                  , A1.ORD_NO              /* °è¾à¹øÈ£ */
-                  , A1.SCHD_SEQ            /* Ã»±¸¼ø¹ø */
-                  , A1.RECP_TP             /* Ã»±¸±¸ºÐÄÚµå */
-                  , B1.CD_NM AS RECP_TP_NM /* Ã»±¸±¸ºÐ¸í */
-                  , A1.DEMD_DT             /* Ã»±¸ÀÏÀÚ */
-                  , A1.ZFBDT               /* ¸¸±â°è»ê±âÁØÀÏ */
-                  , A1.SALE_AMT            /* ¸ÅÃâ±Ý¾× */
-                  , A1.ARRE_AMT            /* ¿¬Ã¼±Ý¾× */
-                  , A1.REG_ID              /* µî·ÏÀÚ ID */
-                  , A1.REG_DT              /* µî·ÏÀÏ */
-                  , A1.CHG_ID              /* º¯°æÀÚ ID */
-                  , A1.CHG_DT              /* º¯°æÀÏ */
-            FROM    RTRE0221 A1 /* °¡»ó°èÁÂ(VAN) ¼¼ºÎ³»¿ª */
-                  , RTCM0051 B1 /* °øÅëÄÚµå Detail */
+            SELECT  A1.RVA_DAY             /* ìš”ì²­ì¼ìž */
+                  , A1.RVA_SEQ             /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸ */
+                  , A1.CUST_NO             /* ê³ ê°ë²ˆí˜¸ */
+                  , A1.TORD_NO             /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+                  , A1.ORD_NO              /* ê³„ì•½ë²ˆí˜¸ */
+                  , A1.SCHD_SEQ            /* ì²­êµ¬ìˆœë²ˆ */
+                  , A1.RECP_TP             /* ì²­êµ¬êµ¬ë¶„ì½”ë“œ */
+                  , B1.CD_NM AS RECP_TP_NM /* ì²­êµ¬êµ¬ë¶„ëª… */
+                  , A1.DEMD_DT             /* ì²­êµ¬ì¼ìž */
+                  , A1.ZFBDT               /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼ */
+                  , A1.SALE_AMT            /* ë§¤ì¶œê¸ˆì•¡ */
+                  , A1.ARRE_AMT            /* ì—°ì²´ê¸ˆì•¡ */
+                  , A1.REG_ID              /* ë“±ë¡ìž ID */
+                  , A1.REG_DT              /* ë“±ë¡ì¼ */
+                  , A1.CHG_ID              /* ë³€ê²½ìž ID */
+                  , A1.CHG_DT              /* ë³€ê²½ì¼ */
+            FROM    RTRE0221 A1 /* ê°€ìƒê³„ì¢Œ(VAN) ì„¸ë¶€ë‚´ì—­ */
+                  , RTCM0051 B1 /* ê³µí†µì½”ë“œ Detail */
             WHERE   A1.RVA_DAY      = DECODE(v_Rva_Day, NULL, A1.RVA_DAY, v_Rva_Day)
             AND     A1.RVA_SEQ      = DECODE(v_Rva_Seq, NULL, A1.RVA_SEQ, v_Rva_Seq)
             AND     A1.RECP_TP      = B1.CD(+)
@@ -45,4 +45,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0221 AS
                     , A1.SCHD_SEQ;
     END p_sRtre0221;
 END PKG_RTRE0221;
-/

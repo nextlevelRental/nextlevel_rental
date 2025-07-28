@@ -20,6 +20,7 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_vaccMangList", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"bankCd\" type=\"STRING\" size=\"256\"/><Column id=\"bankNm\" type=\"STRING\" size=\"256\"/><Column id=\"totlCnt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"isncCnt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"actvCnt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"prdExprCnt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"isncAvlCnt\" type=\"BIGDECIMAL\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);

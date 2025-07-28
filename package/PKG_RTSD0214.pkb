@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0214 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0214
-   PURPOSE   [SD] OMSø¨∞Ë ¿Ã∑¬ New
+   PURPOSE   [SD] OMSÏó∞Í≥Ñ Ïù¥Î†• New
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,15 +10,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0214 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [COMM] OMSø¨∞Ë ¿Ã∑¬≈◊¿Ã∫Ì
+  -- [COMM] OMSÏó∞Í≥Ñ Ïù¥Î†•ÌÖåÏù¥Î∏î
   *****************************************************************************/
     
   /*****************************************************************************
-  -- OMSø¨∞Ë ¿Ã∑¬¿˙¿Â µÓ∑œ(IUD)
-  -- 2022.01.25 K.S.T. - √÷√ ¿€º∫
+  -- OMSÏó∞Í≥Ñ Ïù¥Î†•Ï†ÄÏû• Îì±Î°ù(IUD)
+  -- 2022.01.25 K.S.T. - ÏµúÏ¥àÏûëÏÑ±
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0214 (
-        v_Comm_Dvsn            IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
+        v_Comm_Dvsn            IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
         v_Cust_No               IN RTSD0214.CUST_NO%TYPE,
         v_Send_Url             IN RTSD0214.SEND_URL%TYPE,
         v_Send_Flag            IN RTSD0214.SEND_FLAG%TYPE,
@@ -50,13 +50,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0214 AS
        WHEN OTHERS THEN
         --ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200); 
   END p_IUDRtsd0214;
     
   /*****************************************************************************
-  -- OMSø¨∞Ë µÓ∑œ
-  -- 2022.01.25 K.S.T. - √÷√ ¿€º∫
+  -- OMSÏó∞Í≥Ñ Îì±Î°ù
+  -- 2022.01.25 K.S.T. - ÏµúÏ¥àÏûëÏÑ±
   *****************************************************************************/
   PROCEDURE p_IRtsd0214 (
     v_Cust_No               IN RTSD0214.CUST_NO%TYPE,
@@ -85,8 +85,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0214 AS
   END p_IRtsd0214;
   
   /*****************************************************************************
-  -- OMSø¨∞Ë ªË¡¶
-  -- 2022.01.25 K.S.T. - √÷√ ¿€º∫
+  -- OMSÏó∞Í≥Ñ ÏÇ≠Ï†ú
+  -- 2022.01.25 K.S.T. - ÏµúÏ¥àÏûëÏÑ±
   *****************************************************************************/
   PROCEDURE p_DRtsd0214 IS
   
@@ -99,4 +99,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0214 AS
   END p_DRtsd0214;
   
 END Pkg_Rtsd0214;
-/

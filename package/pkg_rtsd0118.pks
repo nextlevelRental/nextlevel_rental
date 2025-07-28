@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0118 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0118
-   PURPOSE   ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ °ü¸®
+   PURPOSE   ì „ìžì„œëª… ì¡°íšŒì •ë³´ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,98 +10,97 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0118 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ Count
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0118Count(
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Seq            IN RTSD0118.SEQ%TYPE               /*¼ø¹ø                */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Seq            IN RTSD0118.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ Select
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0118 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸              */
     );
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ Insert
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0118 (
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0118.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*¼­½ÄÁ¾·ù              */
-    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*ÆÄÀÏ¸í                */
-    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*Á¶È¸±¸ºÐ              */
-    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ÀÚµ¿¹ß¼Û¿©ºÎ          */
-    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ÀÌ¸ÞÀÏ ÁÖ¼Ò           */   
-    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*Á¶È¸ÀÚID              */
-    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*Á¶È¸ÀÚ¸í              */
-    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0118.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*ì„œì‹ì¢…ë¥˜              */
+    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*íŒŒì¼ëª…                */
+    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*ì¡°íšŒêµ¬ë¶„              */
+    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ìžë™ë°œì†¡ì—¬ë¶€          */
+    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ì´ë©”ì¼ ì£¼ì†Œ           */   
+    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*ì¡°íšŒìžID              */
+    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*ì¡°íšŒìžëª…              */
+    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ Update
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0118 (
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0118.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*¼­½ÄÁ¾·ù              */
-    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*ÆÄÀÏ¸í                */
-    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*Á¶È¸±¸ºÐ              */
-    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ÀÚµ¿¹ß¼Û¿©ºÎ          */
-    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ÀÌ¸ÞÀÏ ÁÖ¼Ò           */   
-    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*Á¶È¸ÀÚID              */
-    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*Á¶È¸ÀÚ¸í              */
-    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0118.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*ì„œì‹ì¢…ë¥˜              */
+    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*íŒŒì¼ëª…                */
+    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*ì¡°íšŒêµ¬ë¶„              */
+    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ìžë™ë°œì†¡ì—¬ë¶€          */
+    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ì´ë©”ì¼ ì£¼ì†Œ           */   
+    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*ì¡°íšŒìžID              */
+    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*ì¡°íšŒìžëª…              */
+    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ Delete
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0118 (
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0118.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0118.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ °ü¸®(IUD)
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0118 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN OUT RTSD0118.SEQ%TYPE,        /*¼ø¹ø                  */
-    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*¼­½ÄÁ¾·ù              */
-    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*ÆÄÀÏ¸í                */
-    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*Á¶È¸±¸ºÐ              */
-    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ÀÚµ¿¹ß¼Û¿©ºÎ          */
-    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ÀÌ¸ÞÀÏ ÁÖ¼Ò           */   
-    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*Á¶È¸ÀÚID              */
-    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*Á¶È¸ÀÚ¸í              */
-    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN OUT RTSD0118.SEQ%TYPE,        /*ìˆœë²ˆ                  */
+    v_Cust_No        IN RTSD0118.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Sheet_Id       IN RTSD0118.SHEET_ID%TYPE,       /*ì„œì‹ì¢…ë¥˜              */
+    v_File_Path      IN RTSD0118.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Name      IN RTSD0118.FILE_NAME%TYPE,      /*íŒŒì¼ëª…                */
+    v_Job_Cd         IN RTSD0118.JOB_CD%TYPE,         /*ì¡°íšŒêµ¬ë¶„              */
+    v_Auto_Yn        IN RTSD0118.AUTO_YN%TYPE,        /*ìžë™ë°œì†¡ì—¬ë¶€          */
+    v_Email_Addr     IN RTSD0118.EMAIL_ADDR%TYPE,     /*ì´ë©”ì¼ ì£¼ì†Œ           */   
+    v_Disp_Id        IN RTSD0118.DISP_ID%TYPE,        /*ì¡°íšŒìžID              */
+    v_Disp_Nm        IN RTSD0118.DISP_NM%TYPE,        /*ì¡°íšŒìžëª…              */
+    v_Reg_Id         IN RTSD0118.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÀüÀÚ¼­¸í Á¶È¸Á¤º¸ - ¼ø¹ø(Seq) È¹µæ
+  -- ì „ìžì„œëª… ì¡°íšŒì •ë³´ - ìˆœë²ˆ(Seq) íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0118Seq(
-    v_Ord_No         IN RTSD0118.ORD_NO%TYPE            /*°è¾à¹øÈ£            */
+    v_Ord_No         IN RTSD0118.ORD_NO%TYPE            /*ê³„ì•½ë²ˆí˜¸            */
     ) RETURN NUMBER;
     
         
 END Pkg_Rtsd0118;
-/

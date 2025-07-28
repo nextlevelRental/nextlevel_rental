@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0412 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0412
-    PURPOSE     ∆«∏≈¿ŒøÎ º≠∫ÒΩ∫ ±›æ◊
+    PURPOSE     ÌåêÎß§Ïù∏Ïö© ÏÑúÎπÑÏä§ Í∏àÏï°
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
@@ -9,7 +9,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0412 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ º≠∫ÒΩ∫ ±›æ◊ Select
+  -- ÌåêÎß§Ïù∏Ïö© ÏÑúÎπÑÏä§ Í∏àÏï° Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -18,10 +18,9 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0412 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0412 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Service_Cd         IN RTSD0412.SERVICE_CD%TYPE         /*º≠∫ÒΩ∫             */
-    , v_Period_Cd          IN RTSD0412.PERIOD_CD%TYPE          /*±‚∞£             */
-    , v_Appr_Cnt           IN RTSD0412.APPR_CNT%TYPE           /*»Ωºˆ            */
+    , v_Service_Cd         IN RTSD0412.SERVICE_CD%TYPE         /*ÏÑúÎπÑÏä§             */
+    , v_Period_Cd          IN RTSD0412.PERIOD_CD%TYPE          /*Í∏∞Í∞Ñ             */
+    , v_Appr_Cnt           IN RTSD0412.APPR_CNT%TYPE           /*ÌöüÏàò            */
   );
         
 END Pkg_Rtsd0412;
-/

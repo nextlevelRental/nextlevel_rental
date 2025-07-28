@@ -656,6 +656,10 @@
             obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
+            obj = new Dataset("ds_widerlabSeq", this);
+            obj._setContents("<ColumnInfo><Column id=\"docSeq\" type=\"STRING\" size=\"256\"/><Column id=\"seq\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
 
             
             // UI Components Initialize
@@ -2262,14 +2266,14 @@
             obj.set_value("0");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_payRegiAmt", "absolute", "80.99%", "1242", null, "21", "9.07%", null, this);
+            obj = new Button("btn_payRegiAmt", "absolute", "81.78%", "1245", null, "21", "8.28%", null, this);
             obj.set_taborder("113");
             obj.set_text("등록비 일시불납부");
             obj.set_enable("false");
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_GrpSave", "absolute", "91.37%", "1242", "76", "21", null, null, this);
+            obj = new Button("btn_GrpSave", "absolute", "92.24%", "1250", "76", "21", null, null, this);
             obj.set_taborder("114");
             obj.set_text("주문서저장");
             obj.set_cssclass("btn_WF_CRUD");
@@ -2331,6 +2335,17 @@
             obj.style.set_cursor("hand");
             obj.set_visible("false");
             obj.set_tooltiptext("갱신");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_contractTerms", "absolute", "76.81%", "1240", "100", "42", null, null, this);
+            obj.set_taborder("120");
+            obj.set_text("렌탈 계약 약관\r\n카카오 발송");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_contractTermsCheck", "absolute", "85.88%", "1240", "69", "42", null, null, this);
+            obj.set_taborder("121");
+            obj.set_text("계약 약관\r\n동의 확인");
+            obj.set_enable("false");
             this.addChild(obj.name, obj);
 
 
@@ -2750,7 +2765,7 @@
         this.SaleManCd		= "";
         this.saleManCdNm	= "";
 
-        this.userGrp 		= application.gds_userInfo.getColumn(0,"userGrp");	//사용자 그룹 		--> *01:영업관리자, *02:콜센터, *03:지사, *04:지점, *05:대리점, *13:콜센터(아웃바운드)
+        this.userGrp 		= application.gds_userInfo.getColumn(0,"userGrp");	//사용자 그룹 		--> *01:영업관리자, *02:콜센터, *03:지사, *04:지점, *05:대리점, *09:방문판매, *13:콜센터(아웃바운드)
         trace("this.userGrp:"+this.userGrp);
         this.userId  		= application.gds_userInfo.getColumn(0,"userId");	
         this.onlineLoginId	= "ONL_SYS";
@@ -2773,6 +2788,12 @@
         this.checkCanOrder = "N"; //[20220616_01] 주문가능여부 확인 플래그
 
         this.resultCnt = ""; //240927 백인천 - 중복코드카운트
+
+        this.contractTermsFlag		= false;	// 페이싸인 계약약관 발송 완료 여부
+        this.contractTermsCheckFlag	= false;	// 페이싸인 계약약관 동의 체크 여부
+
+        this.docSeq = "";	// 문서번호
+        this.seq	= "";	// 수신인번호
 
         //[20230210_1] kstka 주문등록:01, 주문수정:02
         //====================================================================================
@@ -3888,6 +3909,30 @@
         		}
         	}
         	
+        	if (strSvcId == "contractTermsSend") {
+        		if (nErrorCode == "-1") {
+        			this.contractTermsFlag = false;
+        			alert("발송 실패 하였습니다.\n잠시 후 다시 발송해주세요.\n[" + strErrorMsg + "]");
+        		} else {
+        			this.btn_contractTermsCheck.set_enable(true);
+        			this.contractTermsFlag = true;
+        			alert("발송 완료 하였습니다.\n동의여부 확인 버튼을 눌러주세요.");
+        		}
+        	}
+        	
+        	if (strSvcId == "contractTermsSendCheck") {
+        		if (nErrorCode == "-1") {
+        			this.contractTermsCheckFlag = false;
+        			alert("고객동의 확인 실패 하였습니다.\n잠시 후 다시 확인해주세요.\n[" + strErrorMsg + "]");
+        		} else if (nErrorCode == "1") {
+        			this.contractTermsCheckFlag = false;
+        			alert("고객동의 확인 중입니다.\n잠시 후 다시 확인해주세요.\n[" + strErrorMsg + "]");
+        		} else {
+        			this.contractTermsCheckFlag = true;
+        			alert("고객동의 확인 완료 하였습니다.");
+        		}
+        	}
+        	
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         /*★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ */
@@ -4178,7 +4223,7 @@
         		//this.div_stockUseChk.ch_winterYn.set_enable(true);
         		
         		//[20210601_01] TEST
-        		if(application.gds_userInfo.getColumn(0, "vkgrp") == "RC1"){
+        		if(application.gds_userInfo.getColumn(0, "vkgrp") == "113"){
         			this.o2oAgencyInfo(application.gds_userInfo.getColumn(0, "agentId"));
         		}
         	}else{
@@ -4590,8 +4635,8 @@
         	
         	//[20230210_1] kstka
         	//=============================================================================================
-        	if( chanCd == "02" ){
-        	//if( chanCd == "02" || chanCd == "03" ){
+        	if (chanCd == "02") {
+        	//if (chanCd == "02" || chanCd == "03") {
         		//alert("온라인, 방판 정보는 수정 처리가 불가 합니다!");
         		alert("온라인 주문은 수정 처리가 불가 합니다!");
         		return false;
@@ -5991,79 +6036,85 @@
         	
         	//[20230210_1] kstka
         	//======================================================================================
-        	var instCd  = nvl(this.ds_rtsd0104.getColumn(nRow0104, "instCd"));
-        	if( nvl(instCd) == "1010" || nvl(instCd) == "1020" ) {
+        	var instCd = nvl(this.ds_rtsd0104.getColumn(nRow0104, "instCd"));
+        	if (nvl(instCd) == "1010" || nvl(instCd) == "1020") {
         		alert("방문장착/P&D주문은 수정 처리가 불가 합니다!");
         		return false;
         	}
         	//======================================================================================
-        	
-        	
-        	if( chanCd == "02" || ( chanCd == "03" && this.onlineLoginId == regId ) ){
+
+        	if (this.userGrp != "05") {	// 대리점은 이전 로직대로 [20250408][10243054]
+        		if (this.userGrp == "09" && this.contractTermsCheckFlag == false) {
+        			alert("방문판매 업체인 경우 계약약관동의가 필수입니다.");
+        			return false;
+        		}
+        	}
+
+        	if (chanCd == "02" || (chanCd == "03" && this.onlineLoginId == regId)) {
         		alert("온라인, 방판 정보는 수정 처리가 불가 합니다!");
         		return false;
-        	}	
-        	
-        	if( statCd=="03" || statCd=="04" || statCd=="06" ){
+        	}
+
+        	if (statCd=="03" || statCd=="04" || statCd=="06") {
         		alert("장착대기, 장착완료, 계약취소 정보는 수정  처리가 불가 합니다!");
         		return false;
         	}
-        	
-        	if( this.div_payInfo.ed_buslNoCheck.value == false){
+
+        	if (this.div_payInfo.ed_buslNoCheck.value == false) {
         		alert("사업자번호를 확인하세요.");
         		return false;
         	}
-        	
-        	if( this.div_payInfo.ed_ebirDayCheck.value == false){
+
+        	if (this.div_payInfo.ed_ebirDayCheck.value == false) {
         		alert("법정생년월일을  확인하세요.");
         		return false;
         	}
-        	
-        	if( nvl(this.div_custInfo.div_custInfoDetail.ed_posCd.value) == "" || nvl(this.div_custInfo.div_custInfoDetail.ed_addr1.value) == ""){
+
+        	if (nvl(this.div_custInfo.div_custInfoDetail.ed_posCd.value) == "" || nvl(this.div_custInfo.div_custInfoDetail.ed_addr1.value) == "") {
         		alert("주소를 확인하세요.");
         		return false;
         	}
-        	
+
         	var makerCd = nvl(this.ds_rtsd0104.getColumn(nRow0104, "makerCd"));
-        	if( makerCd == "" ){
-        		alert( "차종 값이" + msg);
+        	if (makerCd == "") {
+        		alert("차종 값이" + msg);
         		return this.div_carInfo.cb_makerCd.setFocus(true);
         		return false;
         	}
-        	
+
         	var modelCd = nvl(this.ds_rtsd0104.getColumn(nRow0104, "modelCd"));
-        	if( modelCd == "" ){
-        		alert( "차종 값이" + msg);
+        	if (modelCd == "") {
+        		alert("차종 값이" + msg);
         		return this.div_carInfo.cb_model.setFocus(true);
         		return false;
         	}
-        	
+
         	var contentsCd = nvl(this.ds_model.getColumn( modelRow, "contentsCd"));
-        	if( contentsCd == "" ){
+        	if (contentsCd == "") {
         		alert("차종 사양" + msg);
         		return false;
         	}
-        	
+
         	var frCd = nvl(this.ds_model.getColumn( modelRow, "frCd"));
-        	if( frCd == "" ){
+        	if (frCd == "") {
         		alert("차종 전후" + msg);
         		return false;
         	}
-        	
+
         	//20190410 kstka 전후 규격이 다른 차종의 경우 제품 선택후 전후구분 변경시 선택된 제품이 리프레쉬가 되지 않는 현상 발생
-        	if(this.ds_productInfo.rowcount == 1){
-        		if(frCd != this.ds_productInfo.getColumn(0, "frCd")){
+        	if (this.ds_productInfo.rowcount == 1) {
+        		if (frCd != this.ds_productInfo.getColumn(0, "frCd")) {
         			alert("선택한 차종 전후구분이 제품의 전후구분과 다릅니다.\n제품을 다시 선택해 주세요");
         			return;
         		}
         	}
-        	
+
         	var carNo = nvl(this.ds_rtsd0104.getColumn(nRow0104, "carNo"));
-        	if( carNo == "" ){
+        	if (carNo == "") {
         		alert("차량No" + msg);
         		return false;
         	}
-        	
+
         	//[20230210_1] kstka
         	//===========================================================================================
         	if(this.mode == this.ADD) {
@@ -6856,15 +6907,14 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.FN_goSave = function(){
         	if( confirm( "저장하시겠습니까?") ){
-        	
         		if(!this.chk_prmmAdd_dsCntPrdPymInfo()){
         			alert("프리미엄서비스 금액을 확인하세요! ");
         			return false;
         		}
 
         		this.fn_addSmsMsg(); // 2016-07-28 이영근, 문자메시지 발송 기능 추가
-        	   
-        		// 제품정보 저장	
+
+        		// 제품정보 저장
         		var ds_productInfo_cnt = this.ds_productInfo.getRowCount();
         		this.ds_productInfo.set_updatecontrol(false);
         		for( var i = 0 ; i < ds_productInfo_cnt ; i++){
@@ -6939,7 +6989,10 @@
         			sInDatasets         += " ds_tmsItem=ds_tmsItem:U "; // 20201222 스케쥴산정추가정보
         		}
         		//=====================================================================================================
-        		
+
+        		sArgs += Ex.util.setParam("docSeq", nvl(this.docSeq));
+        		sArgs += Ex.util.setParam("seq", nvl(this.seq));
+
         		var fn_callBack		= "fn_callBack";
         		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         	}else{
@@ -9376,8 +9429,6 @@
         	}
         }
 
-        //[20230210_1] kstka
-        //==================================================================================
         this.btn_refresh_onclick = function(obj,e)
         {
         	var ordNo = this.ed_orderNo.value;
@@ -9385,7 +9436,145 @@
         		this.returnOrderNoInfo(ordNo);
         	}
         }
-        //==================================================================================
+
+        this.btn_contractTerms_onclick = function(obj,e)
+        {
+        	if (this.contractTermsFlag == true) {
+        		alert("이미 발송이 완료 되었습니다.");
+        		return false;
+        	}
+
+        	var nRowRtsd0100	= this.ds_rtsd0100.rowposition;
+        	var nRowRtsd0104	= this.ds_rtsd0104.rowposition;
+        	var nRowProductInfo	= 0;
+
+        	var custNo		= nvl(this.ds_rtsd0100.getColumn(nRowRtsd0100,"custNo"));		//고객번호
+        	var custNm 		= nvl(this.ds_rtsd0100.getColumn(nRowRtsd0100,"custNm"));		//고객명
+        	var birthDay 	= nvl(this.ds_rtsd0100.getColumn(nRowRtsd0100,"birthDay"));		//법정생년월일
+        	var mobNo 		= nvl(this.ds_rtsd0100.getColumn(nRowRtsd0100,"mobNo"));		//휴대폰
+        	var safekey 	= nvl(this.ds_rtsd0100.getColumn(nRowRtsd0100,"safekey"));		//인증번호
+        	var modelNm		= nvl(this.div_carInfo.cb_makerCd.text + " " + this.div_carInfo.cb_model.text);	//차종
+        	var carNo 		= nvl(this.div_carInfo.ed_carNo.text);							//차량번호
+        	var matNm 		= nvl(this.ds_productInfo.getColumn(nRowProductInfo,"matNm"));	//타이어규격
+        	var cntNm 		= nvl(this.ds_productInfo.getColumn(nRowProductInfo,"cntNm"));	//수량
+        	var periodNm 	= nvl(this.ds_productInfo.getColumn(nRowProductInfo,"periodNm"));//계약기간
+        	var rentAmt 	= nvl(this.ds_sumPayInfo.getColumn(nRowProductInfo,"rentAmt"));	//월 렌탈료
+        	var saleProdNm 	= nvl(this.ed_SaleProdNm.text);									//상품 구분
+
+        	// 필수값 validation
+        	if (custNm == "") {
+        		alert("고객명을 확인해주세요.");
+        		this.div_custInfo.ed_custNm.setFocus();
+        		return false;
+        	} else if (birthDay == "") {
+        		alert("생년월일을 확인해주세요.");
+        		this.div_custInfo.ed_birthDay.setFocus();
+        		return false;
+        	} else if (mobNo == "") {
+        		alert("휴대폰번호를 확인해주세요.");
+        		this.div_custInfo.div_custInfoDetail.ed_mobNo.setFocus();
+        		return false;
+        	} else if (safekey == "") {
+        		alert("인증번호를 확인해주세요.");
+        		return false;
+        	} else if (modelNm == "") {
+        		alert("차종을 확인해주세요.");
+        		this.div_carInfo.cb_model.setFocus();
+        		return false;
+        	} else if (carNo == "") {
+        		alert("차량번호를 확인해주세요.");
+        		this.div_carInfo.ed_carNo.setFocus();
+        		return false;
+        	} else if (matNm == "") {
+        		alert("타이어규격을 확인해주세요.");
+        		this.Grid00.setFocus();
+        		return false;
+        	} else if (cntNm == "") {
+        		alert("수량을 확인해주세요.");
+        		this.Grid00.setFocus();
+        		return false;
+        	} else if (periodNm == "") {
+        		alert("계약기간을 확인해주세요.");
+        		this.Grid00.setFocus();
+        		return false;
+        	} else if (rentAmt == "") {
+        		alert("월 렌탈료를 확인해주세요.");
+        		this.Grid00.setFocus();
+        		return false;
+        	} else if (saleProdNm == "") {
+        		alert("상품 구분을 확인해주세요.");
+        		this.ed_SaleProdNm.setFocus();
+        		return false;	
+        	}
+
+        	var sSvcID        	= "contractTermsSend";
+        	var sController   	= "rtms/sd/contractTermsSend.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "ds_widerlabSeq=mapDsWiderlabSeq";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+
+        	sArgs += Ex.util.setParam("custNo", custNo);
+        	sArgs += Ex.util.setParam("custNm", custNm);
+        	sArgs += Ex.util.setParam("birthDay", birthDay);
+        	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut(mobNo));
+        	sArgs += Ex.util.setParam("safekey", safekey);
+        	sArgs += Ex.util.setParam("modelNm", modelNm);
+        	sArgs += Ex.util.setParam("carNo", carNo);
+        	sArgs += Ex.util.setParam("matNm", matNm);
+        	sArgs += Ex.util.setParam("cntNm", cntNm);
+        	sArgs += Ex.util.setParam("periodNm", periodNm);
+        	sArgs += Ex.util.setParam("rentAmt", rentAmt);
+        	sArgs += Ex.util.setParam("saleProdNm", saleProdNm);
+
+        	/*sArgs += Ex.util.setParam("custNo", "999999999999");
+        	sArgs += Ex.util.setParam("custNm", "차은우");
+        	sArgs += Ex.util.setParam("birthDay", "99999999");
+        	sArgs += Ex.util.setParam("mobNo", FN_numberHyphenOut("010-9999-9999"));
+        	sArgs += Ex.util.setParam("safekey", "9999999999999");
+        	sArgs += Ex.util.setParam("modelNm", "BMW M4 Competition");
+        	sArgs += Ex.util.setParam("carNo", "99가9999");
+        	sArgs += Ex.util.setParam("matNm", "N'FERA SUR4G 225/45R17");
+        	sArgs += Ex.util.setParam("cntNm", "4본");
+        	sArgs += Ex.util.setParam("periodNm", "36개월");
+        	sArgs += Ex.util.setParam("rentAmt", "20,000원");
+        	sArgs += Ex.util.setParam("saleProdNm", "안심케어렌탈");*/
+
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+
+        this.btn_contractTermsCheck_onclick = function(obj,e)
+        {
+        	if (this.contractTermsCheckFlag == true) {
+        		alert("이미 동의가 완료 되었습니다.");
+        		return false;
+        	}
+
+        	this.docSeq = nvl(this.ds_widerlabSeq.getColumn(0,"docSeq"));	// 문서번호
+        	this.seq	= nvl(this.ds_widerlabSeq.getColumn(0,"seq"));		// 수신인번호
+
+        	// 필수값 validation
+        	if (this.docSeq == "") {
+        		alert("페이싸인 문서번호가 없습니다.");
+        		return false;
+        	} else if (this.seq == "") {
+        		alert("페이싸인 수신인번호가 없습니다.");
+        		return false;
+        	}
+
+        	var sSvcID        	= "contractTermsSendCheck";
+        	var sController   	= "rtms/sd/contractTermsSendCheck.do";
+        	var sInDatasets   	= "";
+        	var sOutDatasets  	= "";
+        	var sArgs 			= "";
+        	var fn_callBack		= "fn_callBack";
+
+        	sArgs += Ex.util.setParam("docSeq", this.docSeq);
+        	sArgs += Ex.util.setParam("seq", this.seq);
+
+        	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
+        }
+        
         });
 
 
@@ -9459,6 +9648,8 @@
             this.div_stockUseChk.ch_chainYn.addEventHandler("onchanged", this.div_stockUseChk_ch_stockUseYn_onchanged, this);
             this.div_stockUseChk.ch_winterYn.addEventHandler("onchanged", this.div_stockUseChk_ch_stockUseYn_onchanged, this);
             this.btn_refresh.addEventHandler("onclick", this.btn_refresh_onclick, this);
+            this.btn_contractTerms.addEventHandler("onclick", this.btn_contractTerms_onclick, this);
+            this.btn_contractTermsCheck.addEventHandler("onclick", this.btn_contractTermsCheck_onclick, this);
 
         };
 

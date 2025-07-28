@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0112 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0112
-   PURPOSE   ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ ∞¸∏Æ
+   PURPOSE   ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,118 +10,117 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0112 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Count
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Count
   *****************************************************************************/
   FUNCTION f_sRtre0112Count(
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,          /*√§±«∞¸∏Æ≥‚ø˘        */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,           /*∞Ëæ‡π¯»£            */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,          /*∞Ì∞¥π¯»£            */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE          /*√ª±∏º¯π¯            */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,          /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî        */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,           /*Í≥ÑÏïΩÎ≤àÌò∏            */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,          /*Í≥†Í∞ùÎ≤àÌò∏            */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE          /*Ï≤≠Íµ¨ÏàúÎ≤à            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Select
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0112 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*∏∏±‚∞ËªÍ±‚¡ÿ¿œ        */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE          /*µÓ∑œ¿⁄ ID             */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº        */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE          /*Îì±Î°ùÏûê ID             */
     );
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Insert
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0112 (
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*∏∏±‚∞ËªÍ±‚¡ÿ¿œ        */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº        */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Update
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0112 (
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*∏∏±‚∞ËªÍ±‚¡ÿ¿œ        */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº        */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Delete
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0112 (
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ ∞¸∏Æ(IUD)
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0112 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*√ª±∏º¯π¯              */
-    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*√ª±∏±∏∫–              */
-    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*√ª±∏»∏¬˜              */
-    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*∏≈√‚±›æ◊              */
-    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ºˆ≥≥±›æ◊              */
-    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*ø¨√º±›æ◊              */
-    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*∞·¡¶±∏∫–              */
-    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*¿Ã√º¿œ                */
-    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*∏∏±‚∞ËªÍ±‚¡ÿ¿œ        */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Ord_No         IN RTRE0112.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Cust_No        IN RTRE0112.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Schd_Seq       IN RTRE0112.SCHD_SEQ%TYPE,       /*Ï≤≠Íµ¨ÏàúÎ≤à              */
+    v_Recp_Tp        IN RTRE0112.RECP_TP%TYPE,        /*Ï≤≠Íµ¨Íµ¨Î∂Ñ              */
+    v_Recp_Nu        IN RTRE0112.RECP_NU%TYPE,        /*Ï≤≠Íµ¨ÌöåÏ∞®              */
+    v_Sale_Amt       IN RTRE0112.SALE_AMT%TYPE,       /*Îß§Ï∂úÍ∏àÏï°              */
+    v_Recp_Amt       IN RTRE0112.RECP_AMT%TYPE,       /*ÏàòÎÇ©Í∏àÏï°              */
+    v_Arre_Amt       IN RTRE0112.ARRE_AMT%TYPE,       /*Ïó∞Ï≤¥Í∏àÏï°              */
+    v_Pay_Mthd       IN RTRE0112.PAY_MTHD%TYPE,       /*Í≤∞Ï†úÍµ¨Î∂Ñ              */
+    v_Pay_Dd         IN RTRE0112.PAY_DD%TYPE,         /*Ïù¥Ï≤¥Ïùº                */
+    v_Zfb_Day        IN RTRE0112.ZFB_DAY%TYPE,        /*ÎßåÍ∏∞Í≥ÑÏÇ∞Í∏∞Ï§ÄÏùº        */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ¥Áø˘√ª±∏ ºº∫Œ ≥ªø™ Delete
+  -- ÎãπÏõîÏ≤≠Íµ¨ ÏÑ∏Î∂Ä ÎÇ¥Ïó≠ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0112Equal (
-    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*√§±«∞¸∏Æ≥‚ø˘          */
-    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Ramg_Ym        IN RTRE0112.RAMG_YM%TYPE,        /*Ï±ÑÍ∂åÍ¥ÄÎ¶¨ÎÖÑÏõî          */
+    v_Reg_Id         IN RTRE0112.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 END Pkg_Rtre0112;
-/

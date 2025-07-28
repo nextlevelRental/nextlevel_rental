@@ -1,29 +1,29 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
 /*******************************************************************************
     NAME        PKG_RTRE0150
-    PURPOSE     Ãæ´ç±Ý Áö±Þ³»¿ª
+    PURPOSE     ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-11-17  wjim            [20171117_02] ½Å±Ô »ý¼º
+    1.0     2017-11-17  wjim            [20171117_02] ì‹ ê·œ ìƒì„±
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý Áö±Þ³»¿ª Select
+  -- ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0150 (
       Ref_Cursor        IN OUT SYS_REFCURSOR    
-    , v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*µî·Ï³â¿ù               */
-    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*µî·Ï¼ø¹ø               */
-    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*´ë¸®Á¡ÄÚµå             */
-    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*Áö±ÞÀÏÀÚ               */
-    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*Áö±Þ±Ý¾×               */
-    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*Áö±Þ»çÀ¯               */
-    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*»ç¿ë¿©ºÎ               */
-    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*µî·ÏÀÚID               */
-    , v_LOGIN_ID        IN VARCHAR2                  /* ·Î±×ÀÎID: °ü·ÃÇ×¸ñ ¹üÀ§ ÁöÁ¤ */
-    , v_LOGIN_GRP       IN VARCHAR2                  /* ·Î±×ÀÎ »ç¿ëÀÚ ±×·ì */
+    , v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*ë“±ë¡ë…„ì›”               */
+    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*ë“±ë¡ìˆœë²ˆ               */
+    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*ëŒ€ë¦¬ì ì½”ë“œ             */
+    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*ì§€ê¸‰ì¼ìž               */
+    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*ì§€ê¸‰ê¸ˆì•¡               */
+    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*ì§€ê¸‰ì‚¬ìœ                */
+    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*ì‚¬ìš©ì—¬ë¶€               */
+    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*ë“±ë¡ìžID               */
+    , v_LOGIN_ID        IN VARCHAR2                  /* ë¡œê·¸ì¸ID: ê´€ë ¨í•­ëª© ë²”ìœ„ ì§€ì • */
+    , v_LOGIN_GRP       IN VARCHAR2                  /* ë¡œê·¸ì¸ ì‚¬ìš©ìž ê·¸ë£¹ */
   ) IS
 
   BEGIN
@@ -32,8 +32,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
     SELECT A.*,
            B.RENTAL_GROUP,
            B.RENTAL_OFFICE,
-           Pkg_Rtcm0051.f_sRtcm0051Codename('S301',B.RENTAL_GROUP)  AS RENTAL_GROUP_NM  ,/*·»Å»Áö»ç           */
-           Pkg_Rtcm0051.f_sRtcm0051Codename('S302',B.RENTAL_OFFICE) AS RENTAL_OFFICE_NM /*·»Å»ÁöÁ¡           */
+           Pkg_Rtcm0051.f_sRtcm0051Codename('S301',B.RENTAL_GROUP)  AS RENTAL_GROUP_NM  ,/*ë Œíƒˆì§€ì‚¬           */
+           Pkg_Rtcm0051.f_sRtcm0051Codename('S302',B.RENTAL_OFFICE) AS RENTAL_OFFICE_NM /*ë Œíƒˆì§€ì            */
       FROM (
     SELECT  A1.REG_YM
          ,  A1.REG_SEQ
@@ -82,16 +82,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
   END p_sRtre0150;
   
   /*****************************************************************************
-  -- Ãæ´ç±Ý Áö±Þ³»¿ª Insert
+  -- ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0150 (      
-      v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*µî·Ï³â¿ù               */  
-    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*´ë¸®Á¡ÄÚµå             */
-    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*Áö±ÞÀÏÀÚ               */
-    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*Áö±Þ±Ý¾×               */
-    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*Áö±Þ»çÀ¯               */
-    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*»ç¿ë¿©ºÎ               */
-    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*µî·ÏÀÚID               */
+      v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*ë“±ë¡ë…„ì›”               */  
+    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*ëŒ€ë¦¬ì ì½”ë“œ             */
+    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*ì§€ê¸‰ì¼ìž               */
+    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*ì§€ê¸‰ê¸ˆì•¡               */
+    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*ì§€ê¸‰ì‚¬ìœ                */
+    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*ì‚¬ìš©ì—¬ë¶€               */
+    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*ë“±ë¡ìžID               */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS  
   
@@ -137,17 +137,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
   END f_InsertRtre0150;
   
   /*****************************************************************************
-  -- Ãæ´ç±Ý Áö±Þ³»¿ª Update
+  -- ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0150 (
-      v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*µî·Ï³â¿ù               */
-    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*µî·Ï¼ø¹ø               */
-    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*´ë¸®Á¡ÄÚµå             */
-    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*Áö±ÞÀÏÀÚ               */
-    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*Áö±Þ±Ý¾×               */
-    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*Áö±Þ»çÀ¯               */
-    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*»ç¿ë¿©ºÎ               */
-    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*µî·ÏÀÚID               */    
+      v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*ë“±ë¡ë…„ì›”               */
+    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*ë“±ë¡ìˆœë²ˆ               */
+    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*ëŒ€ë¦¬ì ì½”ë“œ             */
+    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*ì§€ê¸‰ì¼ìž               */
+    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*ì§€ê¸‰ê¸ˆì•¡               */
+    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*ì§€ê¸‰ì‚¬ìœ                */
+    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*ì‚¬ìš©ì—¬ë¶€               */
+    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*ë“±ë¡ìžID               */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -175,71 +175,71 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
   END f_UpdateRtre0150;
   
   /*****************************************************************************
-  -- Ãæ´ç±Ý Áö±Þ³»¿ª °ü¸®(IUD)
+  -- ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0150 (
-      v_Comm_Dvsn       IN CHAR                      /* Ã³¸®±¸ºÐ(I,U,D)       */
-    , v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*µî·Ï³â¿ù               */
-    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*µî·Ï¼ø¹ø               */
-    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*´ë¸®Á¡ÄÚµå             */
-    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*Áö±ÞÀÏÀÚ               */
-    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*Áö±Þ±Ý¾×               */
-    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*Áö±Þ»çÀ¯               */
-    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*»ç¿ë¿©ºÎ               */
-    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*µî·ÏÀÚID               */     
+      v_Comm_Dvsn       IN CHAR                      /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    , v_Reg_Ym          IN RTRE0150.REG_YM%TYPE      /*ë“±ë¡ë…„ì›”               */
+    , v_Reg_Seq         IN RTRE0150.REG_SEQ%TYPE     /*ë“±ë¡ìˆœë²ˆ               */
+    , v_Agency_Cd       IN RTRE0150.AGENCY_CD%TYPE   /*ëŒ€ë¦¬ì ì½”ë“œ             */
+    , v_Pay_Day         IN RTRE0150.PAY_DAY%TYPE     /*ì§€ê¸‰ì¼ìž               */
+    , v_Pay_Amt         IN RTRE0150.PAY_AMT%TYPE     /*ì§€ê¸‰ê¸ˆì•¡               */
+    , v_Pay_Msg         IN RTRE0150.PAY_MSG%TYPE     /*ì§€ê¸‰ì‚¬ìœ                */
+    , v_Use_Yn          IN RTRE0150.USE_YN%TYPE      /*ì‚¬ìš©ì—¬ë¶€               */
+    , v_Reg_Id          IN RTRE0150.REG_ID%TYPE      /*ë“±ë¡ìžID               */     
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   ) IS
     
-    ls_Slcm_Ym      VARCHAR2(6);        --¸¶Áö¸· Áý°è/¸¶°¨³â¿ù
-    ln_Btapfd_Amt   NUMBER(13);         --ÀÌÀü¿ù±îÁöÀÇ Ãæ´ç´©°è¾×
-    ln_Pay_Amt      NUMBER(13);         --´ç¿ù ÇöÀç±îÁö µî·ÏµÈ Áö±Þ Ãæ´ç±Ý ÃÑ¾×
+    ls_Slcm_Ym      VARCHAR2(6);        --ë§ˆì§€ë§‰ ì§‘ê³„/ë§ˆê°ë…„ì›”
+    ln_Btapfd_Amt   NUMBER(13);         --ì´ì „ì›”ê¹Œì§€ì˜ ì¶©ë‹¹ëˆ„ê³„ì•¡
+    ln_Pay_Amt      NUMBER(13);         --ë‹¹ì›” í˜„ìž¬ê¹Œì§€ ë“±ë¡ëœ ì§€ê¸‰ ì¶©ë‹¹ê¸ˆ ì´ì•¡
     
     lr_RE0150       RTRE0150%ROWTYPE;
 
     e_Error         EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª È®ÀÎ
+    -- í•„ìˆ˜ê°’ í™•ì¸
     IF TRIM(v_Agency_Cd) IS NULL THEN
-        v_Return_Message := '´ë¸®Á¡ÄÚµå : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ëŒ€ë¦¬ì ì½”ë“œ : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Pay_Day) IS NULL THEN
-        v_Return_Message := 'Áö±ÞÀÏÀÚ : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì§€ê¸‰ì¼ìž : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
-    -- ÀÔ·Â°ª °ËÁõ
+    -- ìž…ë ¥ê°’ ê²€ì¦
     IF v_Pay_Amt <= 0 THEN
-        v_Return_Message := 'Áö±Þ±Ý¾×('||v_Pay_Amt||') : Áö±Þ±Ý¾×Àº 0¿ø ÀÌ»óÀÌ¾î¾ß ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì§€ê¸‰ê¸ˆì•¡('||v_Pay_Amt||') : ì§€ê¸‰ê¸ˆì•¡ì€ 0ì› ì´ìƒì´ì–´ì•¼ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
-    -- ¸¶Áö¸· Áý°è/¸¶°¨¿ù Á¶È¸
-    -- - Ãæ´ç±Ý Áý°è°¡ ¿Ï·áµÇ¸é ÇØ´ç¿ù ¶Ç´Â ÀÌÀü¿ù·Î´Â ½Å±Ô µî·Ï ¹× ¼öÁ¤ ºÒ°¡
+    -- ë§ˆì§€ë§‰ ì§‘ê³„/ë§ˆê°ì›” ì¡°íšŒ
+    -- - ì¶©ë‹¹ê¸ˆ ì§‘ê³„ê°€ ì™„ë£Œë˜ë©´ í•´ë‹¹ì›” ë˜ëŠ” ì´ì „ì›”ë¡œëŠ” ì‹ ê·œ ë“±ë¡ ë° ìˆ˜ì • ë¶ˆê°€
     SELECT  SUBSTR(MAX(APFD_DAY), 1, 6)
       INTO  ls_Slcm_Ym 
       FROM  RTRE5080;
       
-    -- ÀÔ·Â Áö±Þ¿ùÀÌ ÀÌ¹Ì Áý°èµÈ °æ¿ì µî·Ï/¼öÁ¤ ºÒ°¡
+    -- ìž…ë ¥ ì§€ê¸‰ì›”ì´ ì´ë¯¸ ì§‘ê³„ëœ ê²½ìš° ë“±ë¡/ìˆ˜ì • ë¶ˆê°€
     IF SUBSTR(v_Pay_Day, 1, 6) <= ls_Slcm_Ym THEN
-        v_Return_Message := 'ÀÔ·Â Áö±Þ³â¿ù('||SUBSTR(v_Pay_Day, 1, 6)||') : ÇØ´ç Áö±Þ¿ùÀº ÀÌ¹Ì Áý°è ¶Ç´Â ¸¶°¨µÇ¾ú½À´Ï´Ù!';
+        v_Return_Message := 'ìž…ë ¥ ì§€ê¸‰ë…„ì›”('||SUBSTR(v_Pay_Day, 1, 6)||') : í•´ë‹¹ ì§€ê¸‰ì›”ì€ ì´ë¯¸ ì§‘ê³„ ë˜ëŠ” ë§ˆê°ë˜ì—ˆìŠµë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
-    -- ÀÔ·ÂÇÑ Áö±Þ¾×ÀÌ ±âÁ¸ Ãæ´ç±Ý ´©°è¾×º¸´Ù ¸¹ÀºÁö È®ÀÎ
-    -- ´Ü, »ç¿ë¿©ºÎ¸¦ 'N'À¸·Î ÀÔ·Â/¼öÁ¤ÇÏ´Â °æ¿ì´Â Á¦¿Ü
+    -- ìž…ë ¥í•œ ì§€ê¸‰ì•¡ì´ ê¸°ì¡´ ì¶©ë‹¹ê¸ˆ ëˆ„ê³„ì•¡ë³´ë‹¤ ë§Žì€ì§€ í™•ì¸
+    -- ë‹¨, ì‚¬ìš©ì—¬ë¶€ë¥¼ 'N'ìœ¼ë¡œ ìž…ë ¥/ìˆ˜ì •í•˜ëŠ” ê²½ìš°ëŠ” ì œì™¸
     IF v_Use_Yn = 'Y' THEN
-        -- ÀÌÀü´Þ±îÁö ÇØ´ç ´ë¸®Á¡ Ãæ´ç±Ý ´©°è¾× Á¶È¸
+        -- ì´ì „ë‹¬ê¹Œì§€ í•´ë‹¹ ëŒ€ë¦¬ì  ì¶©ë‹¹ê¸ˆ ëˆ„ê³„ì•¡ ì¡°íšŒ
         SELECT  NVL(SUM(APFD_PAMT), 0) - NVL(SUM(APFD_MAMT), 0)
           INTO  ln_Btapfd_Amt
           FROM  RTRE5080
          WHERE  AGENCY_CD = v_Agency_Cd;
         
-        -- ´ç¿ù ÇöÀç±îÁö µî·ÏµÈ Áö±Þ Ãæ´ç±Ý ÇÕ°è Á¶È¸ 
+        -- ë‹¹ì›” í˜„ìž¬ê¹Œì§€ ë“±ë¡ëœ ì§€ê¸‰ ì¶©ë‹¹ê¸ˆ í•©ê³„ ì¡°íšŒ 
         SELECT  NVL(SUM(PAY_AMT), 0)
           INTO  ln_Pay_Amt
           FROM  RTRE0150
@@ -247,9 +247,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
            AND  PAY_DAY LIKE SUBSTR(v_Pay_Day, 1, 6)||'%'
            AND  USE_YN     = 'Y';
         
-        -- ÀÔ·ÂÇÑ Ãæ´çÁö±Þ±Ý¾×ÀÌ Áö³­´Þ±îÁöÀÇ Ãæ´ç´©°è¾×º¸´Ù Å¬ ¼ö ¾øÀ½    
+        -- ìž…ë ¥í•œ ì¶©ë‹¹ì§€ê¸‰ê¸ˆì•¡ì´ ì§€ë‚œë‹¬ê¹Œì§€ì˜ ì¶©ë‹¹ëˆ„ê³„ì•¡ë³´ë‹¤ í´ ìˆ˜ ì—†ìŒ    
         IF ln_Btapfd_Amt - ln_Pay_Amt - v_Pay_Amt < 0 THEN
-            v_Return_Message := 'Áö±Þ±Ý¾×('||v_Pay_Amt||') : ÀÔ·ÂÇÑ Áö±Þ±Ý¾×ÀÌ ±âÁ¸ Ãæ´ç±Ý ´©°è¾×('||ln_Btapfd_Amt||'-'||ln_Pay_Amt||')À» ÃÊ°úÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì§€ê¸‰ê¸ˆì•¡('||v_Pay_Amt||') : ìž…ë ¥í•œ ì§€ê¸‰ê¸ˆì•¡ì´ ê¸°ì¡´ ì¶©ë‹¹ê¸ˆ ëˆ„ê³„ì•¡('||ln_Btapfd_Amt||'-'||ln_Pay_Amt||')ì„ ì´ˆê³¼í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;  
     END IF;
@@ -266,23 +266,23 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
             , v_Reg_Id
             , v_ErrorText
         ) THEN
-            v_Return_Message := 'Ãæ´ç±Ý Áö±Þ³»¿ª µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSIF v_Comm_Dvsn = 'U' THEN
         
-        -- ¼öÁ¤Àü Ãæ´ç±Ý Áö±Þ³»¿ª Á¶È¸
+        -- ìˆ˜ì •ì „ ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ ì¡°íšŒ
         SELECT  *
           INTO  lr_RE0150
           FROM  RTRE0150
          WHERE  REG_YM  = v_Reg_Ym
            AND  REG_SEQ = v_Reg_Seq;
         
-        -- ±âÁ¸ Áö±Þ¿ùÀÌ ÀÌ¹Ì Áý°èµÈ °æ¿ì ¼öÁ¤ ºÒ°¡
+        -- ê¸°ì¡´ ì§€ê¸‰ì›”ì´ ì´ë¯¸ ì§‘ê³„ëœ ê²½ìš° ìˆ˜ì • ë¶ˆê°€
         IF SUBSTR(lr_RE0150.PAY_DAY, 1, 6) <= ls_Slcm_Ym THEN
-            v_Return_Message := '±âÁ¸ Áö±Þ³â¿ù('||SUBSTR(lr_RE0150.PAY_DAY, 1, 6)||') : ÇØ´ç Áö±Þ¿ùÀº ÀÌ¹Ì Áý°è ¶Ç´Â ¸¶°¨µÇ¾ú½À´Ï´Ù!';
+            v_Return_Message := 'ê¸°ì¡´ ì§€ê¸‰ë…„ì›”('||SUBSTR(lr_RE0150.PAY_DAY, 1, 6)||') : í•´ë‹¹ ì§€ê¸‰ì›”ì€ ì´ë¯¸ ì§‘ê³„ ë˜ëŠ” ë§ˆê°ë˜ì—ˆìŠµë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
@@ -297,19 +297,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
             , v_Reg_Id    
             , v_ErrorText
         ) THEN
-            v_Return_Message := 'Ãæ´ç±Ý Áö±Þ³»¿ª ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ì¶©ë‹¹ê¸ˆ ì§€ê¸‰ë‚´ì—­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;    
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -323,11 +323,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0150 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('p_IUDRtre0150.p_IUDRtre0150(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre0150;
         
 END PKG_RTRE0150;
-/

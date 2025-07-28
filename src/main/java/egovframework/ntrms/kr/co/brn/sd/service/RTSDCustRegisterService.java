@@ -28,13 +28,15 @@ public interface RTSDCustRegisterService {
 	Map createNiceTrust(Map<String, Object> inVar) throws Exception;
 	Map searchTodayNiceData(Map<String, Object> inVar) throws Exception;
 	Map createNice0202(Map<String, Object> inVar) throws Exception;
-	
+
 	String onlineEnterdupe(Map<String, Object> inVar) throws Exception;
 	int onlineDupe(Map<String, Object> inVar) throws Exception;
-	
+
 	Map saveSmsMsg(Map<String, Object> inVar) throws Exception;
-	
+
 	List<Map> getReRentalInfo(Map <String, DataSetMap> inDataset, Map<String, Object> inVar) throws Exception;
-	
-	void beforeCheckEmpInfo(Map <String, Object> inVar) throws Exception;
+
+	void beforeCheckEmpInfo(Map<String, Object> inVar) throws Exception;
+	Map<String, Object> infoPrvAgreeSend(Map<String, Object> inVar) throws Exception;
+	Map<String, Object> infoPrvAgreeSendCheck(Map<String, Object> inVar) throws Exception;
 }

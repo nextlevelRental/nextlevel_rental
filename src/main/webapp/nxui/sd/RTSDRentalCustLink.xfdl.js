@@ -21,11 +21,13 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_custLinkMst", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"grpCd\" type=\"STRING\" size=\"0\"/><Column id=\"grpNm\" type=\"STRING\" size=\"256\"/><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("dsGubun", this);
+            obj.getSetter("firenextcount").set("0");
             obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/></ColumnInfo><Rows><Row><Col id=\"cd\">1</Col><Col id=\"cdNm\">대리점</Col></Row><Row><Col id=\"cd\">2</Col><Col id=\"cdNm\">판매인</Col></Row><Row><Col id=\"cd\">3</Col><Col id=\"cdNm\">카마스터</Col></Row></Rows>");
             this.addChild(obj.name, obj);
 
@@ -34,12 +36,18 @@
             this.addChild(obj.name, obj);
 
             obj = new Dataset("comType", this);
+            obj.getSetter("firenextcount").set("0");
             obj._setContents("<ColumnInfo><Column id=\"cdDesc\" type=\"string\" size=\"32\"/><Column id=\"cdNm\" type=\"string\" size=\"32\"/><Column id=\"cd\" type=\"string\" size=\"32\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_custLinkDtl", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"agencyGbn\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"0\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"0\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"groupNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"agencyGbn\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"0\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"0\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"premprplYn\" type=\"STRING\" size=\"256\"/><Column id=\"groupNm\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_excelUp", this);
+            obj._setContents("<ColumnInfo><Column id=\"COL_01\" type=\"STRING\" size=\"256\"/><Column id=\"COL_02\" type=\"STRING\" size=\"256\"/><Column id=\"COL_03\" type=\"STRING\" size=\"256\"/><Column id=\"COL_04\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -158,13 +166,43 @@
             obj.set_binddataset("ds_custLinkDtl");
             obj.set_autofittype("col");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"39\"/><Column size=\"84\"/><Column size=\"132\"/><Column size=\"215\"/><Column size=\"50\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell rowspan=\"2\" displaytype=\"normal\" edittype=\"none\" text=\"선택\"/><Cell col=\"1\" rowspan=\"2\" text=\"그룹\"/><Cell col=\"2\" rowspan=\"2\" text=\"판매점코드\"/><Cell col=\"3\" rowspan=\"2\" text=\"판매점명\"/><Cell col=\"4\" text=\"퍼플점\"/><Cell row=\"1\" col=\"4\" displaytype=\"checkbox\" edittype=\"checkbox\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" displaytype=\"combo\" edittype=\"none\" text=\"bind:groupNm\" editlimit=\"4\" combodataset=\"dsGubun\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"2\" edittype=\"none\" text=\"bind:agencyCd\" editlimit=\"4\"/><Cell col=\"3\" edittype=\"none\" text=\"bind:agencyNm\" editlimit=\"100\"/><Cell col=\"4\" displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:prplYn\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"39\"/><Column size=\"84\"/><Column size=\"132\"/><Column size=\"215\"/><Column size=\"50\"/><Column size=\"50\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell rowspan=\"2\" displaytype=\"normal\" edittype=\"none\" text=\"선택\"/><Cell col=\"1\" rowspan=\"2\" text=\"그룹\"/><Cell col=\"2\" rowspan=\"2\" text=\"판매점코드\"/><Cell col=\"3\" rowspan=\"2\" text=\"판매점명\"/><Cell col=\"4\" text=\"퍼플점\"/><Cell col=\"5\" text=\"P.P점\"/><Cell row=\"1\" col=\"4\" displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell row=\"1\" col=\"5\" displaytype=\"checkbox\" edittype=\"checkbox\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" displaytype=\"combo\" edittype=\"none\" text=\"bind:groupNm\" editlimit=\"4\" combodataset=\"dsGubun\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"2\" edittype=\"none\" text=\"bind:agencyCd\" editlimit=\"4\"/><Cell col=\"3\" edittype=\"none\" text=\"bind:agencyNm\" editlimit=\"100\"/><Cell col=\"4\" displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:prplYn\"/><Cell col=\"5\" displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:premprplYn\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("btn_unReleaseSeler", "absolute", null, "53", "93", "22", "25", null, this);
             obj.set_taborder("140");
             obj.set_text("미반영판매자");
             obj.set_cssclass("btn_WF_CRUD");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_formatDown", "absolute", null, "53", "93", "22", "209", null, this);
+            obj.set_taborder("141");
+            obj.set_text("양식다운로드");
+            obj.set_cssclass("btn_WF_CRUD");
+            obj.set_enable("true");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_formatUpload", "absolute", null, "53", "85", "22", "121", null, this);
+            obj.set_taborder("142");
+            obj.set_text("업로드");
+            obj.set_cssclass("btn_WF_CRUD");
+            obj.set_enable("true");
+            obj.set_visible("false");
+            this.addChild(obj.name, obj);
+
+            obj = new Grid("grd_custLinkDtlExcel", "absolute", "536", "418", "587", "65", null, null, this);
+            obj.set_taborder("143");
+            obj.set_autofittype("col");
+            obj.set_visible("false");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"105\"/><Column size=\"140\"/><Column size=\"135\"/><Column size=\"180\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"판매점코드\"/><Cell col=\"1\" text=\"판매점명\"/><Cell col=\"2\" text=\"퍼플점여부(Y/N)\"/><Cell col=\"3\" text=\"프리미엄퍼플점여부(Y/N)\"/></Band><Band id=\"body\"><Cell edittype=\"none\" text=\"bind:agencyCd\" editlimit=\"4\"/><Cell col=\"1\" edittype=\"none\" text=\"bind:agencyNm\" editlimit=\"100\"/><Cell col=\"2\" displaytype=\"normal\" edittype=\"none\" text=\"bind:prplYn\"/><Cell col=\"3\" displaytype=\"normal\" edittype=\"none\" text=\"bind:premprplYn\"/></Band></Format></Formats>");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("btn_formatDown00", "absolute", null, "450", "159", "22", "238", null, this);
+            obj.set_taborder("144");
+            obj.set_text("양식다운로드용 그리드");
+            obj.set_cssclass("btn_WF_CRUD");
+            obj.set_visible("false");
             this.addChild(obj.name, obj);
 
 
@@ -410,8 +448,14 @@
         this.div_search_cmb_agency_onitemchanged = function(obj,e) {
         	if(obj.value == 1) {
         		this.grd_custLinkDtl.setFormatColProperty(4, "size", 50);
+        		this.grd_custLinkDtl.setFormatColProperty(5, "size", 50);
+        		this.btn_formatDown.set_enable(true);
+        		this.btn_formatUpload.set_enable(true);
         	} else {
         		this.grd_custLinkDtl.setFormatColProperty(4, "size", 0);
+        		this.grd_custLinkDtl.setFormatColProperty(5, "size", 0);
+        		this.btn_formatDown.set_enable(false);
+        		this.btn_formatUpload.set_enable(false);
         	}
         	
         	/* 렌탈지점 조회 */
@@ -473,7 +517,45 @@
         	if(e.columnid == "prplYn") {
         		obj.setColumn(e.row, "agencyGbn", nvl(agencyCd));
         	}
+        	if(e.columnid == "premprplYn") {
+        		obj.setColumn(e.row, "agencyGbn", nvl(agencyCd));
+        	}
         }
+
+        /**
+         * 엑셀 양식 다운로드
+         */
+        this.btn_formatDown_onclick = function(obj,e)
+        {
+        	Ex.core.exportExcel(this, this.grd_custLinkDtlExcel); //grd_custLinkDtl 전체다운or양식만다운
+        }
+
+        /**
+         * 엑셀 업로드
+         */
+        this.btn_formatUpload_onclick = function(obj,e)
+        {//	alert("업");
+        	this.ds_excelUp.clearData();
+        	
+        	if(this.importObj) 
+        	{ 
+        		this.importObj.destroy(); 
+        		this.importObj = null; 
+        	}
+        	
+        	this.importObj = new nexacro.ExcelImportObject("Import01",this);
+        	this.importObj.parent.addChild("Import01",this.importObj);
+        	this.importObj.set_importtype(nexacro.ImportTypes.EXCEL);
+        	this.importObj.addEventHandler("onsuccess", this.Import01_onsuccess, this);
+        	this.importObj.addEventHandler("onerror", this.Import01_onerror, this);
+        	this.importObj.set_importurl(this.url);
+        	this.importObj.importData("", "[command=getsheetdata;Output=ds_excelUp;body=!A2:D;]", "[ds_excelUp=ds_excelUp]","");
+        	
+        	//Ex.core.set_wait(true);
+        }
+
+        
+        
         });
 
 
@@ -491,6 +573,9 @@
             this.div_search.edt_agency.addEventHandler("onkeyup", this.div_search_edt_grpNm_onkeyup, this);
             this.div_search.cmb_agency.addEventHandler("onitemchanged", this.div_search_cmb_agency_onitemchanged, this);
             this.btn_unReleaseSeler.addEventHandler("onclick", this.btn_unReleaseSeler_onclick, this);
+            this.btn_formatDown.addEventHandler("onclick", this.btn_formatDown_onclick, this);
+            this.btn_formatUpload.addEventHandler("onclick", this.btn_formatUpload_onclick, this);
+            this.btn_formatDown00.addEventHandler("onclick", this.btn_formatDown_onclick, this);
 
         };
 

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0217
-   PURPOSE   Paysignπﬂº€¿Ã∑¬ Main
+   PURPOSE   PaysignÎ∞úÏÜ°Ïù¥Î†• Main
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,13 +10,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
 *******************************************************************************/   
 
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ Insert
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0217 (
-    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*¡÷πÆπ¯»£              */
+    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*Ï£ºÎ¨∏Î≤àÌò∏              */
     v_Send_Day       IN RTSD0217.SEND_DAY%TYPE,      
     v_Send_Yn        IN RTSD0217.SEND_YN%TYPE,
-    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*µÓ∑œ¿⁄ ID             */
+    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -49,12 +49,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
   END f_InsertRtsd0217;
 
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ Update
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0217 (
-    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*¡÷πÆπ¯»£              */      
+    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*Ï£ºÎ¨∏Î≤àÌò∏              */      
     v_Send_Yn        IN RTSD0217.SEND_YN%TYPE,
-    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*µÓ∑œ¿⁄ ID             */
+    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -75,14 +75,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
   END f_UpdateRtsd0217;
   
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ ∞¸∏Æ(IUD)
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0217 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*¡÷πÆπ¯»£              */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTSD0217.ORD_NO%TYPE,        /*Ï£ºÎ¨∏Î≤àÌò∏              */
     v_Send_Day       IN RTSD0217.SEND_DAY%TYPE,      
     v_Send_Yn        IN RTSD0217.SEND_YN%TYPE,
-    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*µÓ∑œ¿⁄ ID             */
+    v_Reg_Id         IN RTSD0217.REG_ID%TYPE,        /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -95,7 +95,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
         
         IF f_sRtsd0217Count(v_Ord_No) = 0 THEN        
             IF 0 != f_InsertRtsd0217(v_Ord_No, v_Send_Day, v_Send_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'Paysignπﬂº€ ¿Ã∑¬ Main µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'PaysignÎ∞úÏÜ° Ïù¥Î†• Main Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;        
@@ -104,14 +104,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
     ELSE 
     
         IF 0 != f_UpdateRtsd0217(v_Ord_No, v_Send_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'Paysignπﬂº€ ¿Ã∑¬ Main æ˜µ•¿Ã∆Æ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'PaysignÎ∞úÏÜ° Ïù¥Î†• Main ÏóÖÎç∞Ïù¥Ìä∏ Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -126,17 +126,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0217.p_IUDRtsd0217(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0217;
   
   /*****************************************************************************
-  -- Paysignπﬂº€¿Ã∑¬ - ¿˙¿Âø©∫Œ»Æ¿Œ
+  -- PaysignÎ∞úÏÜ°Ïù¥Î†• - Ï†ÄÏû•Ïó¨Î∂ÄÌôïÏù∏
   *****************************************************************************/
   FUNCTION f_sRtsd0217Count(
-    v_Ord_No         IN RTSD0216.ORD_NO%TYPE           /*¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTSD0216.ORD_NO%TYPE           /*Ï£ºÎ¨∏Î≤àÌò∏            */
     ) RETURN NUMBER IS
   
     v_Count NUMBER;
@@ -152,4 +152,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0217 AS
   END f_sRtsd0217Count;
   
 END Pkg_Rtsd0217;
-/

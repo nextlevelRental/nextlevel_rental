@@ -583,4 +583,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_RTRE7070 AS
         GV_MESG_ERR_UPDATE := '데이터수정 중 오류가 발생했습니다<REP>';
         GV_MESG_ERR_DELETE := '데이터삭제 중 오류가 발생했습니다<REP>';
     END;
-/

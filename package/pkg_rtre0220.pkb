@@ -13,6 +13,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0220 AS
    1.4        2019-10-15  kstka           [20191015_01] 가상계좌 취소건 제외
    1.5        2022-10-04  kstka           [20221004_01] 가상계좌 발급 오류건 처리 (계좌번호 TRIM처리)
                                                         가상계좌 잔여 수량이 남아있지 않을시 알림 적용
+   1.6        2024-08-16  10243054        [20240816_01] 가상계좌 정리 오류건 처리 (기준일자 수정)
  *******************************************************************************/
     /*****************************************************************************
      -- 가상계좌 거래내역 집계 Select
@@ -209,7 +210,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0220 AS
             --             ,  CHG_ID     = 'BATCH' --향후 작업자 파라미터 추가 예정
                          ,  CHG_DT     = SYSDATE
                      WHERE  RQST_STAT IN ('3')      --입금대기
-                       AND  VA_DATE   < TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+                       AND  SUBSTR(VA_DATE, 1, 8) < SYSDATE	-- 정리대상 기준일자를 VACS_VACT.TREND_IL과 동일하게 수정 [20240816_01]
                        AND  BANK_CD    = v_Bank_Cd
                        AND  VACCOUNT   = TRIM(v_Acct_No);
                 EXCEPTION
@@ -1033,6 +1034,11 @@ DBMS_OUTPUT.PUT_LINE('CUR_0220.f_UpdateRtre0160PrePymnt.::'||v_ErrorText);
 
  /*****************************************************************************
   -- 가상계좌(VAN) 입금대상 집계
+   
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------   
+   1.1        2025-05-29  10244015         [20250529_01] 가상계좌 다건 수납시 한건씩 처리
   *****************************************************************************/
   PROCEDURE p_CreateRtre0220RecvResult (
       v_Success_Code   OUT NUMBER
@@ -1042,32 +1048,37 @@ DBMS_OUTPUT.PUT_LINE('CUR_0220.f_UpdateRtre0160PrePymnt.::'||v_ErrorText);
 
 -- 가상계좌 수납처리 대상
     CURSOR  Cur_Rtre0220 IS
-        SELECT B.TR_IL
-             , A.WORK_SCOPE
-             , A.CUST_NO
-             , A.TORD_NO
-             , TRIM(B.IACCT_NO) AS IACCT_NO
-             , (SELECT COUNT(ORD_NO) FROM RTRE0160 WHERE ORD_NO = A.TORD_NO
-                    AND PRPT_DAY = A.RVA_DAY) AS PRPT_CNT 
-             , B.TR_NO AS TNO
-          FROM RTRE0220  A
-             , VACS_AHST B
-             , VACS_VACT C
-         WHERE 1=1
-           AND B.TR_IL = TO_CHAR(SYSDATE,'YYYYMMDD')
---           AND B.TR_IL = '20190527'
-           AND A.RVA_AMT = B.TR_AMT
-           AND A.BANK_CD = B.BANK_CD
-           AND A.VACCOUNT = TRIM(B.IACCT_NO)
-           AND B.TR_AMT = C.TR_AMT
-           AND B.BANK_CD = C.BANK_CD
-           AND B.IACCT_NO = C.ACCT_NO
-           AND A.RQST_STAT = '3'
-           AND C.ACCT_ST = '1'
-           AND B.CANINP_SI IS NULL --[20191015_01] 가상계좌 취소건 제외
---           AND A.TORD_NO IN ('D18000175867','B18000174675')
-           AND A.VA_DATE >= TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
-           ;
+    	SELECT TR_IL, WORK_SCOPE, CUST_NO, TORD_NO, IACCT_NO, PRPT_CNT, TNO
+  		  FROM (
+		        SELECT B.TR_IL
+		             , A.WORK_SCOPE
+		             , A.CUST_NO
+		             , ROW_NUMBER() OVER (PARTITION BY A.TORD_NO ORDER BY A.RVA_SEQ) AS NUM	--[20250529_01] 가상계좌 다건 수납시 한건씩 처리
+		             , A.TORD_NO
+		             , TRIM(B.IACCT_NO) AS IACCT_NO
+		             , (SELECT COUNT(ORD_NO) FROM RTRE0160 WHERE ORD_NO = A.TORD_NO
+		                    AND PRPT_DAY = A.RVA_DAY) AS PRPT_CNT 
+		             , B.TR_NO AS TNO
+		          FROM RTRE0220  A
+		             , VACS_AHST B
+		             , VACS_VACT C
+		         WHERE 1=1
+		           AND B.TR_IL = TO_CHAR(SYSDATE,'YYYYMMDD')
+		--           AND B.TR_IL = '20190527'
+		           AND A.RVA_AMT = B.TR_AMT
+		           AND A.BANK_CD = B.BANK_CD
+		           AND A.VACCOUNT = TRIM(B.IACCT_NO)
+		           AND B.TR_AMT = C.TR_AMT
+		           AND B.BANK_CD = C.BANK_CD
+		           AND B.IACCT_NO = C.ACCT_NO
+		           AND A.RQST_STAT = '3'
+		           AND C.ACCT_ST = '1'
+		           AND B.CANINP_SI IS NULL --[20191015_01] 가상계좌 취소건 제외
+		--           AND A.TORD_NO IN ('D18000175867','B18000174675')
+		           AND A.VA_DATE >= TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS')
+		           )
+  		 WHERE NUM = 1	     
+         ;
 
     e_Error EXCEPTION;  
     
@@ -1821,4 +1832,3 @@ DBMS_OUTPUT.PUT_LINE(v_ErrorText);
     END f_getExistsVacc;  
     
 END Pkg_Rtre0220;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0026 AS
 /*******************************************************************************
    NAME:       Rtcm0026
-   PURPOSE:    ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â °ü¸®
+   PURPOSE:    ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ ê´€ë¦¬
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,27 +10,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0026 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â Á¶È¸
+  -- ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0026 (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*±ÇÇÑ±×·ìÄÚµå       */
-    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*»ç¿ëÀÚ ¾ÆÀÌµð      */
+    , v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*ê¶Œí•œê·¸ë£¹ì½”ë“œ       */
+    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*ì‚¬ìš©ìž ì•„ì´ë””      */
   ) IS
 
   BEGIN
           
     OPEN Ref_Cursor FOR 
-    SELECT  A1.AUTH_GRP_CD  /* ±ÇÇÑ±×·ìÄÚµå  */
-         ,  B1.AUTH_GRP_NM  /* ±ÇÇÑ±×·ì¸í    */
-         ,  A1.USER_ID      /* »ç¿ëÀÚ ¾ÆÀÌµð */
-         ,  C1.USER_NM      /* »ç¿ëÀÚ¸í      */
-         ,  A1.USEQ         /* ÀÌ·Â¼ø¹ø      */
-         ,  A1.DEL_FG       /* »èÁ¦Ç¥½Ã      */
-         ,  A1.REG_ID       /* µî·ÏÀÚ ID     */
-         ,  A1.REG_DT       /* µî·ÏÀÏ        */
-         ,  A1.CHG_ID       /* º¯°æÀÚ ID     */
-         ,  A1.CHG_DT       /* º¯°æÀÏ        */
+    SELECT  A1.AUTH_GRP_CD  /* ê¶Œí•œê·¸ë£¹ì½”ë“œ  */
+         ,  B1.AUTH_GRP_NM  /* ê¶Œí•œê·¸ë£¹ëª…    */
+         ,  A1.USER_ID      /* ì‚¬ìš©ìž ì•„ì´ë”” */
+         ,  C1.USER_NM      /* ì‚¬ìš©ìžëª…      */
+         ,  A1.USEQ         /* ì´ë ¥ìˆœë²ˆ      */
+         ,  A1.DEL_FG       /* ì‚­ì œí‘œì‹œ      */
+         ,  A1.REG_ID       /* ë“±ë¡ìž ID     */
+         ,  A1.REG_DT       /* ë“±ë¡ì¼        */
+         ,  A1.CHG_ID       /* ë³€ê²½ìž ID     */
+         ,  A1.CHG_DT       /* ë³€ê²½ì¼        */
       FROM  RTCM0026 A1  
          ,  RTCM0021 B1
          ,  RTCM0001 C1
@@ -44,11 +44,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0026 AS
   END p_sRtcm0026;
 
   /*****************************************************************************
-  -- ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â Insert
+  -- ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0026(
-      v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*±ÇÇÑ±×·ìÄÚµå       */
-    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*»ç¿ëÀÚ ¾ÆÀÌµð      */
+      v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*ê¶Œí•œê·¸ë£¹ì½”ë“œ       */
+    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*ì‚¬ìš©ìž ì•„ì´ë””      */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
     
@@ -89,4 +89,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0026 AS
 
 
 END Pkg_Rtcm0026;
-/

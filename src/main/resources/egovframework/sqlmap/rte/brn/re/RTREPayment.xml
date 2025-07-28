@@ -99,7 +99,7 @@
 		<result property="crdSeq"  		column="CRD_SEQ" />      	<!--카드순번		-->		
 		<result property="cardcomCd"  	column="CARDCOM_CD" />      <!--카드사코드		-->		
 		<result property="cardNo"  		column="CARD_NO" />      	<!--카드번호		-->		
-		<result property="ebirDay"  	column="EBIR_DAY" />      	<!--법정생년월일		-->		
+		<result property="ebirDay"  		column="EBIR_DAY" />      	<!--법정생년월일		-->		
 		<result property="buslNo"  		column="BUSL_NO" />      	<!--사업자번호		-->		
 		<result property="arrearsAmt"  	column="ARREARS_AMT" />     <!--미납액			-->	
 		<result property="expireYm"  	column="EXPIRE_YM" />     	<!--유효기간		-->
@@ -108,15 +108,18 @@
 		<result property="bkeyChk"  	column="BKEY_CHK" />     	<!--카드확인상태		-->	
 		<result property="oBirthDay"  	column="O_BIRTHDAY" />     	<!--사업주 법정생년월일		-->	
 		<result property="oCustNm"  	column="O_CUSTNM" />     	<!--사업주명		-->
-		<result property="pCustTp"  	column="PCUST_TP" />     	<!--사결제고객구분		-->
+		<result property="pCustTp"  		column="PCUST_TP" />     	<!--사결제고객구분		-->
 		<result property="oBuslNo"  	column="O_BUSL_NO" />				
-		<result property="birthDay"  	column="BIRTH_DAY" />
+		<result property="birthDay"  		column="BIRTH_DAY" />
 		<result property="mobNo"  		column="MOB_NO" />
-		<result property="safeKey"  	column="SAFEKEY" />
+		<result property="safeKey"  		column="SAFEKEY" />
 		<result property="certCd"  		column="CERT_CD" />
 		<result property="mobFirm"  	column="MOB_FIRM" />
-		<result property="lfCd"  		column="LF_CD" />
+		<result property="lfCd"  			column="LF_CD" />
 		<result property="genderCd"  	column="GENDER_CD" />
+		<result property="statNmDetail" 	column="STAT_NM_DETAIL" />
+		<result property="overDueAmt"	column="OVER_DUE_AMT" />
+		<result property="mfpYn"  		column="MFP_YN" />
 	</resultMap>
 	
 	<!-- 결제정보 변경이력 파리미터맵-->      	

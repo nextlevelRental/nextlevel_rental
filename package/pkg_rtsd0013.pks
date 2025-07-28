@@ -54,6 +54,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0013 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
+  -- 계약별 프리미엄서비스 개별 Delete
+  *****************************************************************************/
+  FUNCTION f_DeleteEachRtsd0013 (
+    v_Ord_No         IN RTSD0013.ORD_NO%TYPE,          /*계약번호              */
+    v_Prs_Dcd        IN RTSD0013.PRS_DCD%TYPE          /*상세서비스             */
+    ) RETURN NUMBER;
+
+  /*****************************************************************************
   -- 계약별 프리미엄서비스 관리(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0013 (
@@ -272,4 +280,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0013 AS
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0013;
-/

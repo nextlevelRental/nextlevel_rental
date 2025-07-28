@@ -1,39 +1,39 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0122
-    PURPOSE     °¡°è¾à »ó´ãÁ¤º¸ °ü¸®
+    PURPOSE     ê°€ê³„ì•½ ìƒë‹´ì •ë³´ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2016-07-28  wjim            1. Created this package body.
-    1.1     2016-09-20  wjim            ÀçÄÁÅÃÀÏÀÚ,½Ã°£ Ãß°¡
-    1.2     2019-07-30  kstka           [20190730_1] Àç·»Å»°¡°è¾à»ó´ã Å×ÀÌºí Àç»ý¼ºÀ¸·Î ÀÎÇÑ
-                                        ÄÁÅÃÈ½¼ö, ÀçÄÁÅÃÀÏÀÚ, ÀçÄÁÅÃ½Ã°£ Ãß°¡
+    1.1     2016-09-20  wjim            ìž¬ì»¨íƒì¼ìž,ì‹œê°„ ì¶”ê°€
+    1.2     2019-07-30  kstka           [20190730_1] ìž¬ë Œíƒˆê°€ê³„ì•½ìƒë‹´ í…Œì´ë¸” ìž¬ìƒì„±ìœ¼ë¡œ ì¸í•œ
+                                        ì»¨íƒíšŸìˆ˜, ìž¬ì»¨íƒì¼ìž, ìž¬ì»¨íƒì‹œê°„ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Select
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0122 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£            */
+    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸            */
   ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A1.PROVSN_NO            /* °¡°è¾à¹øÈ£ */
-         ,  A1.CALL_SEQ             /* »ó´ã¼ø¹ø   */
-         ,  A1.CALL_DAY             /* »ó´ãÀÏÀÚ   */
-         ,  A1.CALL_TM              /* »ó´ã½Ã°£   */
-         ,  A1.CALL_DTL             /* »ó´ã³»¿ë   */
-         ,  A1.REG_ID               /* µî·ÏÀÚID   */
-         ,  to_char(A1.REG_DT,'YYYYMMDDHH24MISS') REG_DT    /* µî·ÏÀÏ     */
-         ,  A1.CHG_ID               /* º¯°æÀÚID   */
-         ,  A1.CHG_DT               /* º¯°æÀÏ     */
-         ,  A1.RECALL_DAY           /* ÀçÄÁÅÃÀÏÀÚ */
-         ,  A1.RECALL_TM            /* ÀçÄÁÅÃ½Ã°£ */
+    SELECT  A1.PROVSN_NO            /* ê°€ê³„ì•½ë²ˆí˜¸ */
+         ,  A1.CALL_SEQ             /* ìƒë‹´ìˆœë²ˆ   */
+         ,  A1.CALL_DAY             /* ìƒë‹´ì¼ìž   */
+         ,  A1.CALL_TM              /* ìƒë‹´ì‹œê°„   */
+         ,  A1.CALL_DTL             /* ìƒë‹´ë‚´ìš©   */
+         ,  A1.REG_ID               /* ë“±ë¡ìžID   */
+         ,  to_char(A1.REG_DT,'YYYYMMDDHH24MISS') REG_DT    /* ë“±ë¡ì¼     */
+         ,  A1.CHG_ID               /* ë³€ê²½ìžID   */
+         ,  A1.CHG_DT               /* ë³€ê²½ì¼     */
+         ,  A1.RECALL_DAY           /* ìž¬ì»¨íƒì¼ìž */
+         ,  A1.RECALL_TM            /* ìž¬ì»¨íƒì‹œê°„ */
       FROM  RTSD0122 A1    
      WHERE  A1.PROVSN_NO = DECODE(v_Provsn_No, NULL, A1.PROVSN_NO, v_Provsn_No)
      ORDER BY A1.CALL_SEQ DESC
@@ -42,16 +42,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
   END p_sRTSD0122;
   
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Insert
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0122 (
-      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£ */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ   */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£   */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë   */ 
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID   */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£ */
+      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸ */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž   */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„   */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©   */ 
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID   */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -97,17 +97,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
   END f_InsertRTSD0122;
   
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Update
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0122 (
-      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£ */      
-    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* »ó´ã¼ø¹ø   */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ   */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£   */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë   */ 
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID   */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£ */
+      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸ */      
+    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* ìƒë‹´ìˆœë²ˆ   */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž   */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„   */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©   */ 
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID   */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -134,18 +134,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
   END f_UpdateRTSD0122;
   
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ °ü¸®(IUD)
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0122 (
-      v_Comm_Dvsn       IN CHAR                     /* Ã³¸®±¸ºÐ(I,U,D) */
-    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£      */
-    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* »ó´ã¼ø¹ø        */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ        */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£        */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë        */   
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID        */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ      */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£      */
+      v_Comm_Dvsn       IN CHAR                     /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
+    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸      */
+    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* ìƒë‹´ìˆœë²ˆ        */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž        */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„        */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©        */   
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID        */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž      */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„      */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -154,14 +154,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª È®ÀÎ
+    -- í•„ìˆ˜ê°’ í™•ì¸
     IF TRIM(v_Provsn_No) IS NULL THEN
-        v_Return_Message := '°¡°è¾à¹øÈ£('||v_Provsn_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê°€ê³„ì•½ë²ˆí˜¸('||v_Provsn_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Reg_Id) IS NULL THEN
-        v_Return_Message := 'µî·ÏÀÚID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìžID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
@@ -178,7 +178,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
             , v_Recall_Tm
             , v_ErrorText
         ) THEN
-            v_Return_Message := '°¡°è¾à»ó´ãÁ¤º¸ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ê³„ì•½ìƒë‹´ì •ë³´ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -210,7 +210,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
             , v_Recall_Tm
             , v_ErrorText
         ) THEN
-            v_Return_Message := '°¡°è¾à»ó´ãÁ¤º¸ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ê³„ì•½ìƒë‹´ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -226,14 +226,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
         END IF;
         
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;
      
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
     --COMMIT;
 
@@ -248,7 +248,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0122.p_IUDRtsd0122(2)', v_ErrorText, v_Return_Message);
 
@@ -256,21 +256,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0122 AS
 
 
   /*****************************************************************************
-  -- Àç·»Å»°è¾à»ó´ã  Delete
+  -- ìž¬ë Œíƒˆê³„ì•½ìƒë‹´  Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0121Rental (
-    v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£      */
+    v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸      */
     ) RETURN NUMBER IS
   BEGIN
 
     DELETE FROM RTSD0122
     WHERE  PROVSN_NO = v_Provsn_No;
 
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0121.f_DeleteRtsd0121New(1)', '°¡°è¾à¹øÈ£', v_Provsn_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0121.f_DeleteRtsd0121New(1)', 'ê°€ê³„ì•½ë²ˆí˜¸', v_Provsn_No);
 
     RETURN SQLCODE;
   END f_DeleteRtsd0121Rental;
   
         
 END Pkg_Rtsd0122;
-/

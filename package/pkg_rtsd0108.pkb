@@ -3704,6 +3704,4 @@ SELECT A.*
 
   END f_sRtsd0108Mfp_Yn;
   
-  
 END Pkg_Rtsd0108;
-/

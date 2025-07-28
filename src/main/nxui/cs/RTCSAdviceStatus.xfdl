@@ -23,9 +23,10 @@
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="70"/>
-                <Column size="120"/>
                 <Column size="80"/>
+                <Column size="100"/>
                 <Column size="80"/>
+                <Column size="100"/>
                 <Column size="100"/>
                 <Column size="0"/>
                 <Column size="100"/>
@@ -50,15 +51,16 @@
                 <Cell col="7" text="계약일자"/>
                 <Cell col="8" text="장착일자"/>
                 <Cell col="9" text="계약상태"/>
-                <Cell col="10" text="중도완납"/>
-                <Cell col="11" text="채권매각"/>
-                <Cell col="12" text="핸드폰"/>
+                <Cell col="10" text="상태상세"/>
+                <Cell col="11" text="연체금액"/>
+                <Cell col="12" text="완납/해지/채권"/>
                 <Cell col="13" text="핸드폰"/>
-                <Cell col="14" text="전화번호"/>
+                <Cell col="14" text="핸드폰"/>
                 <Cell col="15" text="전화번호"/>
-                <Cell col="16" text="지점"/>
-                <Cell col="17" text="결제일"/>
-                <Cell col="18" text="월렌탈료"/>
+                <Cell col="16" text="전화번호"/>
+                <Cell col="17" text="지점"/>
+                <Cell col="18" text="결제일"/>
+                <Cell col="19" text="월렌탈료"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:custNo"/>
@@ -71,15 +73,16 @@
                 <Cell col="7" displaytype="date" text="bind:ordDay" calendardisplaynulltype="none"/>
                 <Cell col="8" text="bind:procDay"/>
                 <Cell col="9" text="bind:statNm"/>
-                <Cell col="10" text="bind:mfpYn"/>
-                <Cell col="11" text="bind:bondSelDay"/>
-                <Cell col="12" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
-                <Cell col="13" text="bind:mobNo"/>
-                <Cell col="14" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
-                <Cell col="15" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
-                <Cell col="16" text="bind:agencyNm"/>
-                <Cell col="17" text="bind:payDd"/>
-                <Cell col="18" displaytype="number" text="bind:sumMonAmt"/>
+                <Cell col="10" text="expr:(overDueAmt == '-') || (overDueAmt == '0') ? statNmDetail : statNmDetail + '/연체'"/>
+                <Cell col="11" displaytype="number" text="bind:overDueAmt"/>
+                <Cell col="12" text="bind:mfpYn"/>
+                <Cell col="13" text="bind:mobNo" expr="expr:FN_numberMaskReturn(mobNo)"/>
+                <Cell col="14" text="bind:mobNo"/>
+                <Cell col="15" text="bind:telNo" expr="expr:FN_numberMaskReturn(telNo)"/>
+                <Cell col="16" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="17" text="bind:agencyNm"/>
+                <Cell col="18" text="bind:payDd"/>
+                <Cell col="19" displaytype="number" text="bind:sumMonAmt"/>
               </Band>
               <Band id="summary">
                 <Cell text="총계"/>
@@ -101,6 +104,7 @@
                 <Cell col="16"/>
                 <Cell col="17"/>
                 <Cell col="18"/>
+                <Cell col="19"/>
               </Band>
             </Format>
           </Formats>
@@ -206,6 +210,8 @@
           <Column id="sumMonAmt" type="STRING" size="256"/>
           <Column id="bondSelDay" type="STRING" size="256"/>
           <Column id="payDd" type="STRING" size="256"/>
+          <Column id="overDueAmt" type="STRING" size="256"/>
+          <Column id="statNmDetail" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_installCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

@@ -207,7 +207,6 @@
             this.set_filesecurelevel("0");
             this.set_themeid("nxui.xtheme");
             this.set_enabletouchevent("true");
-            this.set_layoutautofittype("width");
 
             if (this._is_attach_childframe)
             	return;

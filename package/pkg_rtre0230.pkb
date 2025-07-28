@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
 /*******************************************************************************
     NAME    : Pkg_Rtre0230
-    PURPOSE : ¡ﬂµµøœ≥≥≥ªø™¡∂»∏
+    PURPOSE : Ï§ëÎèÑÏôÑÎÇ©ÎÇ¥Ïó≠Ï°∞Ìöå
     REVISIONS
     Ver        Date        Author           Description
     ---------  ----------  ---------------  -------------------------------------
@@ -9,35 +9,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
  *******************************************************************************/
 
 /*******************************************************************************
- -- ¡ﬂµµøœ≥≥/«ÿ¡ˆ ≥ªø™¡∂»∏ Select
+ -- Ï§ëÎèÑÏôÑÎÇ©/Ìï¥ÏßÄ ÎÇ¥Ïó≠Ï°∞Ìöå Select
  *******************************************************************************/
     PROCEDURE p_sRtre0230_fullPayRehisList(  Ref_Cursor   IN OUT SYS_REFCURSOR
-                                           , v_Cnc_F_Day  IN RTRE0230.CNC_DAY%TYPE    /* √Îº“¿œ¿⁄ StartDay */
-                                           , v_Cnc_T_Day  IN RTRE0230.CNC_DAY%TYPE    /* √Îº“¿œ¿⁄ EndDay */
-                                           , v_Ord_No     IN RTRE0230.ORD_NO%TYPE     /* ∞Ëæ‡π¯»£ */
-                                           , v_Cust_No    IN RTRE0230.CUST_NO%TYPE    /* ∞Ì∞¥π¯»£ */
-                                           , v_Mfp_Cd     IN RTRE0230.MFP_CD%TYPE     /* ±∏∫– */
-                                           , v_Mfp_Rsn_Cd IN RTRE0230.MFP_RSN_CD%TYPE /* øœ≥≥/«ÿ¡ˆªÁ¿Ø */
+                                           , v_Cnc_F_Day  IN RTRE0230.CNC_DAY%TYPE    /* Ï∑®ÏÜåÏùºÏûê StartDay */
+                                           , v_Cnc_T_Day  IN RTRE0230.CNC_DAY%TYPE    /* Ï∑®ÏÜåÏùºÏûê EndDay */
+                                           , v_Ord_No     IN RTRE0230.ORD_NO%TYPE     /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                           , v_Cust_No    IN RTRE0230.CUST_NO%TYPE    /* Í≥†Í∞ùÎ≤àÌò∏ */
+                                           , v_Mfp_Cd     IN RTRE0230.MFP_CD%TYPE     /* Íµ¨Î∂Ñ */
+                                           , v_Mfp_Rsn_Cd IN RTRE0230.MFP_RSN_CD%TYPE /* ÏôÑÎÇ©/Ìï¥ÏßÄÏÇ¨Ïú† */
                                           )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT  A.ORD_NO                                                                /* ∞Ëæ‡π¯»£ */
-                  , A.CNC_DAY                                                               /* √Îº“¿œ¿⁄ */
-                  , A.RECV_DAY                                                              /* ºˆ≥≥¿œ¿⁄ */
-                  , Pkg_Rtcm0051.f_sRtcm0051Codename('S070', A.MFP_CD)     AS MFP_CD_NM     /* «ÿ¡ˆ±∏∫– */
-                  , A.PROC_DAY                                                              /* ¿Â¬¯¿œ¿⁄ */
-                  , A.CUST_NO                                                               /* ∞Ì∞¥π¯»£ */
-                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)            AS CUST_NM       /* ∞Ì∞¥∏Ì */
-                  , A.TOT_RENT_AMT                                                          /* √—∑ª≈ª∑· */
-                  , A.RECV_AMT                                                              /* ºˆ≥≥±›æ◊ */
-                  , A.PNLT_AMT                                                              /* ¿ßæ‡±› */
-                  , A.TOT_RECV_AMT                                                          /* √—ºˆ≥≥±›æ◊ */
-                  , A.RECV_RT                                                               /* »∏ºˆ¿≤ */
-                  , Pkg_Rtcm0051.f_sRtcm0051Codename('R053', A.MFP_RSN_CD) AS MFP_RSN_CD_NM /* øœ≥≥«ÿ¡ˆªÁ¿Ø */
-                  , A.MFP_DESC                                                              /* ªÛººªÁ¿Ø */
-            FROM    RTRE0230 A                                                              /* ¡ﬂµµøœ≥≥«ÿ¡ˆ≥ªø™ */
+            SELECT  A.ORD_NO                                                                /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                  , A.CNC_DAY                                                               /* Ï∑®ÏÜåÏùºÏûê */
+                  , A.RECV_DAY                                                              /* ÏàòÎÇ©ÏùºÏûê */
+                  , Pkg_Rtcm0051.f_sRtcm0051Codename('S070', A.MFP_CD)     AS MFP_CD_NM     /* Ìï¥ÏßÄÍµ¨Î∂Ñ */
+                  , A.PROC_DAY                                                              /* Ïû•Ï∞©ÏùºÏûê */
+                  , A.CUST_NO                                                               /* Í≥†Í∞ùÎ≤àÌò∏ */
+                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)            AS CUST_NM       /* Í≥†Í∞ùÎ™Ö */
+                  , A.TOT_RENT_AMT                                                          /* Ï¥ùÎ†åÌÉàÎ£å */
+                  , A.RECV_AMT                                                              /* ÏàòÎÇ©Í∏àÏï° */
+                  , A.PNLT_AMT                                                              /* ÏúÑÏïΩÍ∏à */
+                  , A.TOT_RECV_AMT                                                          /* Ï¥ùÏàòÎÇ©Í∏àÏï° */
+                  , A.RECV_RT                                                               /* ÌöåÏàòÏú® */
+                  , Pkg_Rtcm0051.f_sRtcm0051Codename('R053', A.MFP_RSN_CD) AS MFP_RSN_CD_NM /* ÏôÑÎÇ©Ìï¥ÏßÄÏÇ¨Ïú† */
+                  , A.MFP_DESC                                                              /* ÏÉÅÏÑ∏ÏÇ¨Ïú† */
+            FROM    RTRE0230 A                                                              /* Ï§ëÎèÑÏôÑÎÇ©Ìï¥ÏßÄÎÇ¥Ïó≠ */
             WHERE   A.CNC_DAY BETWEEN v_Cnc_F_Day
                               AND     v_Cnc_T_Day
             AND     A.ORD_NO        = DECODE(v_Ord_No,     NULL, A.ORD_NO,     v_Ord_No)
@@ -48,14 +48,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
     END p_sRtre0230_fullPayRehisList;
 
 /*******************************************************************************
- -- ¡ﬂµµøœ≥≥º¯π¯ √§π¯
+ -- Ï§ëÎèÑÏôÑÎÇ©ÏàúÎ≤à Ï±ÑÎ≤à
  *******************************************************************************/
     FUNCTION f_sRtre0230MfpSeq
     RETURN NUMBER
 
     IS
 
-    v_Mfp_Seq RTRE0230.MFP_SEQ%TYPE DEFAULT 0; /* ¡ﬂµµøœ≥≥º¯π¯ */
+    v_Mfp_Seq RTRE0230.MFP_SEQ%TYPE DEFAULT 0; /* Ï§ëÎèÑÏôÑÎÇ©ÏàúÎ≤à */
 
     BEGIN
         SELECT NVL2(MAX(MFP_SEQ), TO_NUMBER(MAX(MFP_SEQ)) + 1, 1)
@@ -68,26 +68,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
     END f_sRtre0230MfpSeq;
 
 /*******************************************************************************
- -- ¡ﬂµµøœ≥≥≥ªø™ Insert
+ -- Ï§ëÎèÑÏôÑÎÇ©ÎÇ¥Ïó≠ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtsd0230MidFullPymnt(  v_Mfp_Seq        IN  RTRE0230.MFP_SEQ%TYPE      /* ¡ﬂµµøœ≥≥º¯π¯ */
-                                           , v_Ord_No         IN  RTRE0230.ORD_NO%TYPE       /* ∞Ì∞¥π¯»£ */
-                                           , v_Cust_No        IN  RTRE0230.CUST_NO%TYPE      /* ∞Ì∞¥π¯»£ */
-                                           , v_Cnc_Day        IN  RTRE0230.CNC_DAY%TYPE      /* √Îº“¿œ¿⁄ */
-                                           , v_Recv_Mon       IN  RTRE0230.RECV_MON%TYPE     /* ºˆ≥≥≥‚ø˘ */
-                                           , v_Mfp_Cd         IN  RTRE0230.MFP_CD%TYPE       /* «ÿ¡ˆ±∏∫– */
-                                           , v_Proc_Day       IN  RTRE0230.PROC_DAY%TYPE     /* ¿Â¬¯¿œ¿⁄ */
-                                           , v_Tot_Rent_Amt   IN  RTRE0230.TOT_RENT_AMT%TYPE /* √—∑ª≈ª∑· */
-                                           , v_Recv_Amt       IN  RTRE0230.RECV_AMT%TYPE     /* ºˆ≥≥±›æ◊ */
-                                           , v_Pnlt_Amt       IN  RTRE0230.PNLT_AMT%TYPE     /* ¿ßæ‡±› */
-                                           , v_Serv_Amt       IN  RTRE0230.SERV_AMT%TYPE     /* √ﬂ∞°≥≥∫Œ±›æ◊ */
-                                           , v_Tot_Recv_Amt   IN  RTRE0230.TOT_RECV_AMT%TYPE /* √—ºˆ≥≥±›æ◊ */
-                                           , v_Recv_Rt        IN  RTRE0230.RECV_RT%TYPE      /* »∏ºˆ¿≤ */
-                                           , v_Recp_Pay       IN  RTRE0230.RECP_PAY%TYPE     /* ºˆ≥≥πÊπ˝ */
-                                           , v_Recv_Seq       IN  RTRE0230.RECV_SEQ%TYPE     /* ºˆ≥≥∞≈∑°π¯»£ */
-                                           , v_Mfp_Rsn_Cd     IN  RTRE0230.MFP_RSN_CD%TYPE   /* øœ≥≥«ÿ¡ˆªÁ¿Øƒ⁄µÂ */
-                                           , v_Mfp_Desc       IN  RTRE0230.MFP_DESC%TYPE     /* øœ≥≥«ÿ¡ˆªÛººªÁ¿Ø */
-                                           , v_Reg_Id         IN  RTRE0230.REG_ID%TYPE       /* µÓ∑œ¿⁄ ID */
+    PROCEDURE p_InsertRtsd0230MidFullPymnt(  v_Mfp_Seq        IN  RTRE0230.MFP_SEQ%TYPE      /* Ï§ëÎèÑÏôÑÎÇ©ÏàúÎ≤à */
+                                           , v_Ord_No         IN  RTRE0230.ORD_NO%TYPE       /* Í≥†Í∞ùÎ≤àÌò∏ */
+                                           , v_Cust_No        IN  RTRE0230.CUST_NO%TYPE      /* Í≥†Í∞ùÎ≤àÌò∏ */
+                                           , v_Cnc_Day        IN  RTRE0230.CNC_DAY%TYPE      /* Ï∑®ÏÜåÏùºÏûê */
+                                           , v_Recv_Mon       IN  RTRE0230.RECV_MON%TYPE     /* ÏàòÎÇ©ÎÖÑÏõî */
+                                           , v_Mfp_Cd         IN  RTRE0230.MFP_CD%TYPE       /* Ìï¥ÏßÄÍµ¨Î∂Ñ */
+                                           , v_Proc_Day       IN  RTRE0230.PROC_DAY%TYPE     /* Ïû•Ï∞©ÏùºÏûê */
+                                           , v_Tot_Rent_Amt   IN  RTRE0230.TOT_RENT_AMT%TYPE /* Ï¥ùÎ†åÌÉàÎ£å */
+                                           , v_Recv_Amt       IN  RTRE0230.RECV_AMT%TYPE     /* ÏàòÎÇ©Í∏àÏï° */
+                                           , v_Pnlt_Amt       IN  RTRE0230.PNLT_AMT%TYPE     /* ÏúÑÏïΩÍ∏à */
+                                           , v_Serv_Amt       IN  RTRE0230.SERV_AMT%TYPE     /* Ï∂îÍ∞ÄÎÇ©Î∂ÄÍ∏àÏï° */
+                                           , v_Tot_Recv_Amt   IN  RTRE0230.TOT_RECV_AMT%TYPE /* Ï¥ùÏàòÎÇ©Í∏àÏï° */
+                                           , v_Recv_Rt        IN  RTRE0230.RECV_RT%TYPE      /* ÌöåÏàòÏú® */
+                                           , v_Recp_Pay       IN  RTRE0230.RECP_PAY%TYPE     /* ÏàòÎÇ©Î∞©Î≤ï */
+                                           , v_Recv_Seq       IN  RTRE0230.RECV_SEQ%TYPE     /* ÏàòÎÇ©Í±∞ÎûòÎ≤àÌò∏ */
+                                           , v_Mfp_Rsn_Cd     IN  RTRE0230.MFP_RSN_CD%TYPE   /* ÏôÑÎÇ©Ìï¥ÏßÄÏÇ¨Ïú†ÏΩîÎìú */
+                                           , v_Mfp_Desc       IN  RTRE0230.MFP_DESC%TYPE     /* ÏôÑÎÇ©Ìï¥ÏßÄÏÉÅÏÑ∏ÏÇ¨Ïú† */
+                                           , v_Reg_Id         IN  RTRE0230.REG_ID%TYPE       /* Îì±Î°ùÏûê ID */
                                            , v_Success_Code   OUT NUMBER
                                            , v_Return_Message OUT VARCHAR2
                                            , v_Error_Text     OUT VARCHAR2
@@ -144,7 +144,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
                              , SYSDATE
                             );
     v_Success_code   := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_Error_Text     := '';
 
     EXCEPTION
@@ -158,17 +158,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
         WHEN OTHERS THEN
             ROLLBACK;
             v_Success_code   := -1;
-            v_Return_Message := NVL(TRIM(v_Return_Message), 'ø°∑Ø!::' || SUBSTR(SQLERRM, 1, 200));
+            v_Return_Message := NVL(TRIM(v_Return_Message), 'ÏóêÎü¨!::' || SUBSTR(SQLERRM, 1, 200));
             v_Error_Text     := SUBSTR(SQLERRM, 1, 200);
             Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0230.p_InsertRtsd0230MidFullPymnt(2)', v_Error_Text, v_Return_Message);
 
     END p_InsertRtsd0230MidFullPymnt;
 
 /*******************************************************************************
- -- º±ºˆ±›∞¸∑√ Seq ¡∂»∏
+ -- ÏÑ†ÏàòÍ∏àÍ¥ÄÎ†® Seq Ï°∞Ìöå
  *******************************************************************************/
     PROCEDURE p_sRtre0035SeqList(  Ref_Cursor       IN OUT SYS_REFCURSOR
-                                 , v_Ord_No         IN RTRE0035.ORD_NO%TYPE  /* ∞Ëæ‡π¯»£ */
+                                 , v_Ord_No         IN RTRE0035.ORD_NO%TYPE  /* Í≥ÑÏïΩÎ≤àÌò∏ */
                                 )
     IS
 
@@ -184,45 +184,45 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
     END p_sRtre0035SeqList;
 
 /*******************************************************************************
- -- ¡ﬂµµøœ≥≥»Ø∫“¥ÎªÛ≥ªø™¡∂»∏ Select
+ -- Ï§ëÎèÑÏôÑÎÇ©ÌôòÎ∂àÎåÄÏÉÅÎÇ¥Ïó≠Ï°∞Ìöå Select
  *******************************************************************************/
     PROCEDURE p_sRtre0230MfpRfndTrgtList(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                         , v_Recv_Mon IN RTRE0230.RECV_MON%TYPE /* ¥ÎªÛ≥‚ø˘ */
-                                         , v_Mfp_Cd   IN RTRE0230.MFP_CD%TYPE   /* ∞Ëæ‡¡æ∑·¿Ø«¸ */
+                                         , v_Recv_Mon IN RTRE0230.RECV_MON%TYPE /* ÎåÄÏÉÅÎÖÑÏõî */
+                                         , v_Mfp_Cd   IN RTRE0230.MFP_CD%TYPE   /* Í≥ÑÏïΩÏ¢ÖÎ£åÏú†Ìòï */
                                         )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT  A.MFP_SEQ                                                               /* ¡ﬂµµøœ≥≥º¯π¯ */
-                  , A.CNC_DAY                                                               /* ¡ﬂµµøœ≥≥¿œ¿⁄ */
-                  , A.MFP_CD                                                                /* ∞Ëæ‡¡æ∑·¿Ø«¸ƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('S070', A.MFP_CD)   AS MFP_CD_NM       /* ∞Ëæ‡¡æ∑·¿Ø«¸∏Ì */
-                  , A.ORD_NO                                                                /* ∞Ëæ‡π¯»£ */
-                  , A.CUST_NO                                                               /* ∞Ì∞¥π¯»£ */
-                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)          AS CUST_NM         /* ∞Ì∞¥∏Ì */
-                  , (B.PND_AMT - B.SBS_AMT)                              AS DBL_WTH_AMT     /* ¿Ã¡ﬂ√‚±›±›æ◊*/
-                  , B.RECP_PAY                                                              /* ≥≥∫Œ¿Ø«¸ƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R019', B.RECP_PAY) AS RECP_PAY_NM     /* ≥≥∫Œ¿Ø«¸∏Ì */
-                  , C.RECV_DAY                                                              /* ≥≥∫Œ¿œ¿⁄ */
-                  , A.RECP_PAY                                           AS MFP_RECP_PAY    /* ¡ﬂµµøœ≥≥ ≥≥∫Œ¿Ø«¸ƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R019', A.RECP_PAY) AS MFP_RECP_PAY_NM /* ¡ﬂµµøœ≥≥ ≥≥∫Œ¿Ø«¸ */
+            SELECT  A.MFP_SEQ                                                               /* Ï§ëÎèÑÏôÑÎÇ©ÏàúÎ≤à */
+                  , A.CNC_DAY                                                               /* Ï§ëÎèÑÏôÑÎÇ©ÏùºÏûê */
+                  , A.MFP_CD                                                                /* Í≥ÑÏïΩÏ¢ÖÎ£åÏú†ÌòïÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('S070', A.MFP_CD)   AS MFP_CD_NM       /* Í≥ÑÏïΩÏ¢ÖÎ£åÏú†ÌòïÎ™Ö */
+                  , A.ORD_NO                                                                /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                  , A.CUST_NO                                                               /* Í≥†Í∞ùÎ≤àÌò∏ */
+                  , Pkg_Rtsd0100.f_sRtsd0100CustName(A.CUST_NO)          AS CUST_NM         /* Í≥†Í∞ùÎ™Ö */
+                  , (B.PND_AMT - B.SBS_AMT)                              AS DBL_WTH_AMT     /* Ïù¥Ï§ëÏ∂úÍ∏àÍ∏àÏï°*/
+                  , B.RECP_PAY                                                              /* ÎÇ©Î∂ÄÏú†ÌòïÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R019', B.RECP_PAY) AS RECP_PAY_NM     /* ÎÇ©Î∂ÄÏú†ÌòïÎ™Ö */
+                  , C.RECV_DAY                                                              /* ÎÇ©Î∂ÄÏùºÏûê */
+                  , A.RECP_PAY                                           AS MFP_RECP_PAY    /* Ï§ëÎèÑÏôÑÎÇ© ÎÇ©Î∂ÄÏú†ÌòïÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R019', A.RECP_PAY) AS MFP_RECP_PAY_NM /* Ï§ëÎèÑÏôÑÎÇ© ÎÇ©Î∂ÄÏú†Ìòï */
                   , (CASE WHEN A.RECP_PAY = 'P7' THEN D.RECV_SEQ
                           WHEN A.RECP_PAY = 'P6' THEN E.RECV_SEQ
                      END
-                    )                                                    AS RECV_SEQ        /* ºˆ≥≥∞≈∑°π¯»£ */
+                    )                                                    AS RECV_SEQ        /* ÏàòÎÇ©Í±∞ÎûòÎ≤àÌò∏ */
                   , (CASE WHEN A.RECP_PAY = 'P7' THEN D.TNO
                           WHEN A.RECP_PAY = 'P6' THEN E.TNO
                      END
-                    )                                                    AS TNO             /* ∞≈∑°π¯»£ */
+                    )                                                    AS TNO             /* Í±∞ÎûòÎ≤àÌò∏ */
                   , (CASE WHEN A.RECP_PAY = 'P7' THEN D.PRT_CNC_RMNN_AMT
                           WHEN A.RECP_PAY = 'P6' THEN E.PRT_CNC_RMNN_AMT
                      END
-                    )                                                    AS ORGN_TR_AMT     /* ø¯∞≈∑°±›æ◊ */
+                    )                                                    AS ORGN_TR_AMT     /* ÏõêÍ±∞ÎûòÍ∏àÏï° */
                   , (CASE WHEN A.RECP_PAY = 'P6' THEN E.P_OID_SEQ
                                                  ELSE NULL
                      END
-                    )                                                    AS P_OID_SEQ       /* ¡÷πÆ¿œ∑√π¯»£ */
+                    )                                                    AS P_OID_SEQ       /* Ï£ºÎ¨∏ÏùºÎ†®Î≤àÌò∏ */
             FROM    RTRE0230 A
                   , RTRE0035 B
                   , RTRE0030 C
@@ -246,4 +246,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0230 AS
             ORDER BY A.MFP_SEQ,A.ORD_NO;
     END p_sRtre0230MfpRfndTrgtList;
 END Pkg_Rtre0230;
-/

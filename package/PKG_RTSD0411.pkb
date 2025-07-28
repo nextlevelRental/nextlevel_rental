@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0411 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0410
-    PURPOSE     ฦวธลภฮฟ๋ มฆศÞฤซตๅ วาภฮฑÝพื
+    PURPOSE     ํ๋งค์ธ์ฉ ์ ํด์นด๋“ ํ• ์ธ๊ธ์•ก
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0411 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- ฦวธลภฮฟ๋ มฆศÞฤซตๅ วาภฮฑÝพื Select
+  -- ํ๋งค์ธ์ฉ ์ ํด์นด๋“ ํ• ์ธ๊ธ์•ก Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -19,7 +19,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0411 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0411 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Card_Cd         IN RTSD0411.CARD_CD%TYPE         /*ฤซตๅป็             */
+    , v_Card_Cd         IN RTSD0411.CARD_CD%TYPE         /*์นด๋“์ฌ             */
   ) IS
 
   BEGIN
@@ -42,4 +42,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0411 AS
   END p_sRTSD0411; 
         
 END Pkg_Rtsd0411;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0092 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0092
-   PURPOSE   га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ ╟Э╦╝
+   PURPOSE   М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Й╢─К╕╛
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,78 +10,77 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0092 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Count
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0092Count(
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*га╥н╫ца╝╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*М■└К║°Л▀°Л═╦К╙┘          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Select
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0092 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE       /*га╥н╫ца╝╪Ё╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE       /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
     );
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Insert
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Update
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ Delete
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0092 (
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- га╥н╫ца╝╨╟ ╥н╠в ╪Ёа╓ ╟Э╦╝(IUD)
+  -- М■└К║°Л▀°Л═╦КЁ└ К║°Й╥╦ Л└╓Л═∙ Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0092 (
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*га╥н╫ца╝╦М            */
-    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*га╥н╫ца╝╪Ё╦М          */
-    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*╥н╠вюЗюЕ©╘╨н          */
-    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*╦е╟Ё╨╞╪ЖюЗюЕ©╘╨н      */
-    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE,        /*М■└К║°Л▀°Л═╦К╙┘            */
+    v_Proc_Desc      IN RTCM0092.PROC_DESC%TYPE,      /*М■└К║°Л▀°Л═╦Л└╓К╙┘          */
+    v_Log_Save_Yn    IN RTCM0092.LOG_SAVE_YN%TYPE,    /*К║°Й╥╦Л═─Л·╔Л≈╛К╤─          */
+    v_Para_Save_Yn   IN RTCM0092.PARA_SAVE_YN%TYPE,   /*К╖╓Й╟°КЁ─Л┬≤Л═─Л·╔Л≈╛К╤─      */
+    v_Use_Yn         IN RTCM0092.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0092.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- га╥н╫ца╝ а╦юГ ю╞╧╚ Count
+  -- М■└К║°Л▀°Л═╦ Л║╢Л·╛ Л°═К╛╢ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0092ProcCount(
-    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*га╥н╫ца╝╦М          */
+    v_Proc_Nm        IN RTCM0092.PROC_NM%TYPE           /*М■└К║°Л▀°Л═╦К╙┘          */
     ) RETURN NUMBER;
     
 END Pkg_Rtcm0092;
-/

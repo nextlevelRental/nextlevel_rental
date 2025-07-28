@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0091 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0091
-   PURPOSE   Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª °ü¸®
+   PURPOSE   í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,193 +10,193 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0091 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Count
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0091Count(
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,         /*¼ö³³°Å·¡¹øÈ£        */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE          /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã*/
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,         /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸        */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE          /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨*/
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Select
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0091 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*ÆÄÀÏ¼ø¹ø              */
-    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*¼ö³³½Ã°£              */
-    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*¹ßÇà´ë»ó±¸ºÐ          */
-    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ½Äº°¹øÈ£   */
-    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà±Ý¾×   */
-    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà °ø±Þ°¡*/
-    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà ºÎ°¡¼¼*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*Çö±Ý¿µ¼öÁõ ½ÂÀÎ¹øÈ£   */
-    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*¹ß±Þ¿À·ùÄÚµå          */
-    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*¹ß±Þ¿À·ù¸Þ¼¼Áö        */
-    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*¿ø½ÂÀÎ¹øÈ£            */
-    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*¿ø½ÂÀÎÀÏÀÚ            */
-    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*Ãë¼Ò¿©ºÎ              */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*íŒŒì¼ìˆœë²ˆ              */
+    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*ìˆ˜ë‚©ì‹œê°„              */
+    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*ë°œí–‰ëŒ€ìƒêµ¬ë¶„          */
+    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ì‹ë³„ë²ˆí˜¸   */
+    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ê¸ˆì•¡   */
+    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ê³µê¸‰ê°€*/
+    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ë¶€ê°€ì„¸*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸   */
+    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*ë°œê¸‰ì˜¤ë¥˜ì½”ë“œ          */
+    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*ë°œê¸‰ì˜¤ë¥˜ë©”ì„¸ì§€        */
+    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*ì›ìŠ¹ì¸ë²ˆí˜¸            */
+    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*ì›ìŠ¹ì¸ì¼ìž            */
+    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*ì·¨ì†Œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Insert
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0091 (
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*ÆÄÀÏ¼ø¹ø              */
-    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*¼ö³³½Ã°£              */
-    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*¹ßÇà´ë»ó±¸ºÐ          */
-    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ½Äº°¹øÈ£   */
-    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà±Ý¾×   */
-    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà °ø±Þ°¡*/
-    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà ºÎ°¡¼¼*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*Çö±Ý¿µ¼öÁõ ½ÂÀÎ¹øÈ£   */
-    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*¹ß±Þ¿À·ùÄÚµå          */
-    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*¹ß±Þ¿À·ù¸Þ¼¼Áö        */
-    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*¿ø½ÂÀÎ¹øÈ£            */
-    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*¿ø½ÂÀÎÀÏÀÚ            */
-    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*Ãë¼Ò¿©ºÎ              */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*íŒŒì¼ìˆœë²ˆ              */
+    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*ìˆ˜ë‚©ì‹œê°„              */
+    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*ë°œí–‰ëŒ€ìƒêµ¬ë¶„          */
+    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ì‹ë³„ë²ˆí˜¸   */
+    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ê¸ˆì•¡   */
+    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ê³µê¸‰ê°€*/
+    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ë¶€ê°€ì„¸*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸   */
+    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*ë°œê¸‰ì˜¤ë¥˜ì½”ë“œ          */
+    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*ë°œê¸‰ì˜¤ë¥˜ë©”ì„¸ì§€        */
+    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*ì›ìŠ¹ì¸ë²ˆí˜¸            */
+    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*ì›ìŠ¹ì¸ì¼ìž            */
+    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*ì·¨ì†Œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Update
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0091 (
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*ÆÄÀÏ¼ø¹ø              */
-    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*¼ö³³½Ã°£              */
-    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*¹ßÇà´ë»ó±¸ºÐ          */
-    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ½Äº°¹øÈ£   */
-    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà±Ý¾×   */
-    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà °ø±Þ°¡*/
-    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà ºÎ°¡¼¼*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*Çö±Ý¿µ¼öÁõ ½ÂÀÎ¹øÈ£   */
-    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*¹ß±Þ¿À·ùÄÚµå          */
-    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*¹ß±Þ¿À·ù¸Þ¼¼Áö        */
-    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*¿ø½ÂÀÎ¹øÈ£            */
-    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*¿ø½ÂÀÎÀÏÀÚ            */
-    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*Ãë¼Ò¿©ºÎ              */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*íŒŒì¼ìˆœë²ˆ              */
+    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*ìˆ˜ë‚©ì‹œê°„              */
+    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*ë°œí–‰ëŒ€ìƒêµ¬ë¶„          */
+    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ì‹ë³„ë²ˆí˜¸   */
+    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ê¸ˆì•¡   */
+    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ê³µê¸‰ê°€*/
+    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ë¶€ê°€ì„¸*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸   */
+    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*ë°œê¸‰ì˜¤ë¥˜ì½”ë“œ          */
+    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*ë°œê¸‰ì˜¤ë¥˜ë©”ì„¸ì§€        */
+    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*ì›ìŠ¹ì¸ë²ˆí˜¸            */
+    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*ì›ìŠ¹ì¸ì¼ìž            */
+    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*ì·¨ì†Œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Delete
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0091 (
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª °ü¸®(IUD)
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0091 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN OUT RTRE0091.CASH_SEQ%TYPE,   /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*ÆÄÀÏ¼ø¹ø              */
-    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*¼ö³³ÀÏÀÚ              */
-    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*¼ö³³½Ã°£              */
-    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*°Å·¡±¸ºÐ              */
-    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*¹ßÇà´ë»ó±¸ºÐ          */
-    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*Çö±Ý¿µ¼öÁõ ½Äº°¹øÈ£   */
-    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà±Ý¾×   */
-    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà °ø±Þ°¡*/
-    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà ºÎ°¡¼¼*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*Çö±Ý¿µ¼öÁõ ½ÂÀÎ¹øÈ£   */
-    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*¹ß±Þ¿À·ùÄÚµå          */
-    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*¹ß±Þ¿À·ù¸Þ¼¼Áö        */
-    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*¿ø½ÂÀÎ¹øÈ£            */
-    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*¿ø½ÂÀÎÀÏÀÚ            */
-    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*Ãë¼Ò¿©ºÎ              */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN OUT RTRE0091.CASH_SEQ%TYPE,   /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*íŒŒì¼ìˆœë²ˆ              */
+    v_Recv_Day       IN RTRE0091.RECV_DAY%TYPE,       /*ìˆ˜ë‚©ì¼ìž              */
+    v_Recv_Time      IN RTRE0091.RECV_TIME%TYPE,      /*ìˆ˜ë‚©ì‹œê°„              */
+    v_Cust_No        IN RTRE0091.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0091.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cashd_Tp       IN RTRE0091.CASHD_TP%TYPE,       /*ê±°ëž˜êµ¬ë¶„              */
+    v_Cashd_Fg       IN RTRE0091.CASHD_FG%TYPE,       /*ë°œí–‰ëŒ€ìƒêµ¬ë¶„          */
+    v_Chi_No         IN RTRE0091.CHI_NO%TYPE,         /*í˜„ê¸ˆì˜ìˆ˜ì¦ ì‹ë³„ë²ˆí˜¸   */
+    v_Cash_Amt       IN RTRE0091.CASH_AMT%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ê¸ˆì•¡   */
+    v_Cash_Namt      IN RTRE0091.CASH_NAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ê³µê¸‰ê°€*/
+    v_Cash_Vamt      IN RTRE0091.CASH_VAMT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ë¶€ê°€ì„¸*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸   */
+    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*ë°œê¸‰ì˜¤ë¥˜ì½”ë“œ          */
+    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*ë°œê¸‰ì˜¤ë¥˜ë©”ì„¸ì§€        */
+    v_Ocapp_No       IN RTRE0091.OCAPP_NO%TYPE,       /*ì›ìŠ¹ì¸ë²ˆí˜¸            */
+    v_Ocash_Day      IN RTRE0091.OCASH_DAY%TYPE,      /*ì›ìŠ¹ì¸ì¼ìž            */
+    v_Cnc_Yn         IN RTRE0091.CNC_YN%TYPE,         /*ì·¨ì†Œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Update - Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Update - í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ
   *****************************************************************************/
   FUNCTION f_UpdateRtre0091CashStat (
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Update - Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Update - í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ
   *****************************************************************************/
   FUNCTION f_UpdateRtre0091CashStat2 (
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*ÆÄÀÏ¼ø¹ø              */
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_File_Seq       IN RTRE0091.FILE_SEQ%TYPE,       /*íŒŒì¼ìˆœë²ˆ              */
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Update - Çö±Ý¿µ¼öÁõ µ¥ÀÌÅÍ ÆÄÀÏ ÆÄ½ÌÇÏ¿© »ý¼º
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Update - í˜„ê¸ˆì˜ìˆ˜ì¦ ë°ì´í„° íŒŒì¼ íŒŒì‹±í•˜ì—¬ ìƒì„±
   *****************************************************************************/
   FUNCTION f_UpdateRtre0091CashUload (
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*¼ö³³°Å·¡¹øÈ£          */
-    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã¹ø*/
-    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ   */
-    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*Çö±Ý¿µ¼öÁõ ½ÂÀÎ¹øÈ£   */
-    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*¹ß±Þ¿À·ùÄÚµå          */
-    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*¹ß±Þ¿À·ù¸Þ¼¼Áö        */
-    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE,       /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸          */
+    v_Cash_Seq       IN RTRE0091.CASH_SEQ%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ë²ˆ*/
+    v_Cash_Stat      IN RTRE0091.CASH_STAT%TYPE,      /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ   */
+    v_Cashapp_No     IN RTRE0091.CASHAPP_NO%TYPE,     /*í˜„ê¸ˆì˜ìˆ˜ì¦ ìŠ¹ì¸ë²ˆí˜¸   */
+    v_Csercd         IN RTRE0091.CSERCD%TYPE,         /*ë°œê¸‰ì˜¤ë¥˜ì½”ë“œ          */
+    v_Csermsg        IN RTRE0091.CSERMSG%TYPE,        /*ë°œê¸‰ì˜¤ë¥˜ë©”ì„¸ì§€        */
+    v_Reg_Id         IN RTRE0091.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª - Çö±Ý¿µ¼öÁõ ¹ßÇà ÀÏ·Ã È¹µæ
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ - í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ ì¼ë ¨ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0091CashSeq(
-    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE          /*¼ö³³°Å·¡¹øÈ£        */
+    v_Recv_Seq       IN RTRE0091.RECV_SEQ%TYPE          /*ìˆ˜ë‚©ê±°ëž˜ë²ˆí˜¸        */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª Select - ¹ßÇàÀÏÀ» ±âÁØÀ¸·Î ¹ßÇà´ë»ó¿¡ ´ëÇÑ ÇöÈ²À» Á¶È¸ÇÑ´Ù. 
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ Select - ë°œí–‰ì¼ì„ ê¸°ì¤€ìœ¼ë¡œ ë°œí–‰ëŒ€ìƒì— ëŒ€í•œ í˜„í™©ì„ ì¡°íšŒí•œë‹¤. 
   *****************************************************************************/
   PROCEDURE p_sRtre0091TargetList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -204,16 +204,16 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0091 AS
     
     
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ°ü¸® > Çö±Ý¿µ¼öÁõ Á¶È¸ select
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ê´€ë¦¬ > í˜„ê¸ˆì˜ìˆ˜ì¦ ì¡°íšŒ select
   *****************************************************************************/
   PROCEDURE p_sRtre0091CashReceiptList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Recv_Day_F       IN RTRE0091.RECV_DAY%TYPE,        /*¼ö³³ÀÏÀÚ Á¶È¸½ÃÀÛÀÏÀÚ           */
-    v_Recv_Day_T       IN RTRE0091.RECV_DAY%TYPE,        /*¼ö³³ÀÏÀÚ Á¶È¸Á¾·áÀÏÀÚ           */
-    v_Cash_Day_F       IN RTRE0091.CASH_DAY%TYPE,        /*Çö±Ý¿µ¼öÁõ ¹ßÇàÀÏÀÚ Á¶È¸½ÃÀÛÀÏÀÚ*/
-    v_Cash_Day_T       IN RTRE0091.CASH_DAY%TYPE,        /*Çö±Ý¿µ¼öÁõ ¹ßÇàÀÏÀÚ Á¶È¸Á¾·áÀÏÀÚ*/  
-    v_Cust_No          IN RTRE0091.CUST_NO%TYPE,         /*°í°´¹øÈ£*/ 
-    v_Cash_Stat        IN RTRE0091.CASH_STAT%TYPE,       /*Çö±Ý¿µ¼öÁõ ¹ßÇà»óÅÂ*/
+    v_Recv_Day_F       IN RTRE0091.RECV_DAY%TYPE,        /*ìˆ˜ë‚©ì¼ìž ì¡°íšŒì‹œìž‘ì¼ìž           */
+    v_Recv_Day_T       IN RTRE0091.RECV_DAY%TYPE,        /*ìˆ˜ë‚©ì¼ìž ì¡°íšŒì¢…ë£Œì¼ìž           */
+    v_Cash_Day_F       IN RTRE0091.CASH_DAY%TYPE,        /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ì¼ìž ì¡°íšŒì‹œìž‘ì¼ìž*/
+    v_Cash_Day_T       IN RTRE0091.CASH_DAY%TYPE,        /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ì¼ìž ì¡°íšŒì¢…ë£Œì¼ìž*/  
+    v_Cust_No          IN RTRE0091.CUST_NO%TYPE,         /*ê³ ê°ë²ˆí˜¸*/ 
+    v_Cash_Stat        IN RTRE0091.CASH_STAT%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ ë°œí–‰ìƒíƒœ*/
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2    
@@ -221,15 +221,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0091 AS
 
 
   /*****************************************************************************
-  -- Çö±Ý¿µ¼öÁõ¹ß±Þ³»¿ª - Çö±Ý¿µ¼öÁõ °á°ú ³»¿ªÀ» ±âÁØÀ¸·Î ¼ö³³³»¿ª¿¡ ¹ßÇà¿©ºÎ ¾÷µ¥ÀÌÆ® Ã³¸®
+  -- í˜„ê¸ˆì˜ìˆ˜ì¦ë°œê¸‰ë‚´ì—­ - í˜„ê¸ˆì˜ìˆ˜ì¦ ê²°ê³¼ ë‚´ì—­ì„ ê¸°ì¤€ìœ¼ë¡œ ìˆ˜ë‚©ë‚´ì—­ì— ë°œí–‰ì—¬ë¶€ ì—…ë°ì´íŠ¸ ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_UpdateRtre0091CashReltApply (
-    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*Çö±Ý¿µ¼öÁõ¹ßÇàÀÏÀÚ    */
-    v_Reg_Id         IN RTRE0099.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cash_Day       IN RTRE0091.CASH_DAY%TYPE,       /*í˜„ê¸ˆì˜ìˆ˜ì¦ë°œí–‰ì¼ìž    */
+    v_Reg_Id         IN RTRE0099.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
         
 END Pkg_Rtre0091;
-/

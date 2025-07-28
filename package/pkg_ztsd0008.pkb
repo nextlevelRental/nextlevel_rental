@@ -2,15 +2,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
 
   PROCEDURE p_sZtsd0008 (
     Ref_Cursor  IN OUT SYS_REFCURSOR, 
-    v_PRICE_CD               ZTSD0008.PRICE_CD%TYPE, /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_MAT_CD                 ZTSD0008.MAT_CD%TYPE,   /*»óÇ°ÄÚµå              */
-    v_PERIOD_CD              ZTSD0008.PERIOD_CD%TYPE,/*±â°£ÄÚµå              */ 
-    v_CNT_CD                 ZTSD0008.CNT_CD%TYPE,   /*Å¸ÀÌ¾îº»¼ö            */ 
-    v_REGI_CD                ZTSD0008.REGI_CD%TYPE,  /*µî·ÏºñÄÚµå            */ 
-    v_STR_DAY                ZTSD0008.STR_DAY%TYPE,  /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */ 
-    v_END_DAY                ZTSD0008.END_DAY%TYPE,  /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
+    v_PRICE_CD               ZTSD0008.PRICE_CD%TYPE, /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_MAT_CD                 ZTSD0008.MAT_CD%TYPE,   /*ìƒí’ˆì½”ë“œ              */
+    v_PERIOD_CD              ZTSD0008.PERIOD_CD%TYPE,/*ê¸°ê°„ì½”ë“œ              */ 
+    v_CNT_CD                 ZTSD0008.CNT_CD%TYPE,   /*íƒ€ì´ì–´ë³¸ìˆ˜            */ 
+    v_REGI_CD                ZTSD0008.REGI_CD%TYPE,  /*ë“±ë¡ë¹„ì½”ë“œ            */ 
+    v_STR_DAY                ZTSD0008.STR_DAY%TYPE,  /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */ 
+    v_END_DAY                ZTSD0008.END_DAY%TYPE,  /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
     v_SEQ                    ZTSD0008.SEQ%TYPE, 
-    v_AMT                    ZTSD0008.AMT%TYPE,      /*±Ý¾×                  */ 
+    v_AMT                    ZTSD0008.AMT%TYPE,      /*ê¸ˆì•¡                  */ 
     v_USE_YN                 ZTSD0008.USE_YN%TYPE, 
     v_REG_ID                 ZTSD0008.REG_ID%TYPE
   ) IS
@@ -52,20 +52,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
   END p_sZtsd0008;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Insert
+  -- ê°€ê²© ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertZtsd0008 (
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN OUT Ztsd0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN Ztsd0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN OUT Ztsd0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN Ztsd0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -113,20 +113,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
   END f_InsertZtsd0008;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Update
+  -- ê°€ê²© ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateZtsd0008 (
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN Ztsd0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN Ztsd0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN Ztsd0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN Ztsd0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -155,18 +155,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
   END f_UpdateZtsd0008;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Delete
+  -- ê°€ê²© ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteZtsd0008 (
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN Ztsd0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN Ztsd0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -193,21 +193,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
   END f_DeleteZtsd0008;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® °ü¸®(IUD)
+  -- ê°€ê²© ê´€ë¦¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDZtsd0008 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*°¡°Ý,±Ý¾×À¯Çü         */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*±â°£ÄÚµå              */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*Å¸ÀÌ¾îº»¼ö            */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*µî·ÏºñÄÚµå            */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Seq            IN OUT Ztsd0008.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Amt            IN Ztsd0008.AMT%TYPE,            /*±Ý¾×                  */
-    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,       /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•         */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,      /*ê¸°ê°„ì½”ë“œ              */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,         /*íƒ€ì´ì–´ë³¸ìˆ˜            */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,        /*ë“±ë¡ë¹„ì½”ë“œ            */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Seq            IN OUT Ztsd0008.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Amt            IN Ztsd0008.AMT%TYPE,            /*ê¸ˆì•¡                  */
+    v_Use_Yn         IN Ztsd0008.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN Ztsd0008.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -216,14 +216,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: °¡°Ý_±Ý¾×À¯Çü , »óÇ°ÄÚµå,±â°£ÄÚµå,Å¸ÀÌ¾îº»¼ö, µî·ÏºñÄÚµå,°¡°ÝÀû¿ë ½ÃÀÛÀÏ,°¡°ÝÀû¿ë ¿Ï·áÀÏ,  »ç¿ë¿©ºÎ ,µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ê°€ê²©_ê¸ˆì•¡ìœ í˜• , ìƒí’ˆì½”ë“œ,ê¸°ê°„ì½”ë“œ,íƒ€ì´ì–´ë³¸ìˆ˜, ë“±ë¡ë¹„ì½”ë“œ,ê°€ê²©ì ìš© ì‹œìž‘ì¼,ê°€ê²©ì ìš© ì™„ë£Œì¼,  ì‚¬ìš©ì—¬ë¶€ ,ë“±ë¡ìž ID
     /*IF 0 = f_sZtsd0008Count(v_Price_Cd, v_Mat_Cd, v_Period_Cd, v_Cnt_Cd,
                             v_Regi_Cd, v_Str_Day, v_End_Day, v_Seq) THEN */
     IF v_Comm_Dvsn = 'I' THEN                            
         IF 0 != f_InsertZtsd0008(v_Price_Cd, v_Mat_Cd, v_Period_Cd, v_Cnt_Cd,
                                  v_Regi_Cd, v_Str_Day, v_End_Day, v_Seq,
                                  v_Amt, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '°¡°Ý °ü¸® µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ê²© ê´€ë¦¬ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -231,7 +231,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
         IF 0 != f_UpdateZtsd0008(v_Price_Cd, v_Mat_Cd, v_Period_Cd, v_Cnt_Cd,
                                  v_Regi_Cd, v_Str_Day, v_End_Day, v_Seq,
                                  v_Amt, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '°¡°Ý °ü¸® ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ê²© ê´€ë¦¬ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -241,13 +241,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_ZTSD0008 AS
         IF 0 != f_DeleteZtsd0008(v_Price_Cd, v_Mat_Cd, v_Period_Cd, v_Cnt_Cd,
                                  v_Regi_Cd, v_Str_Day, v_End_Day, v_Seq,
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '°¡°Ý °ü¸® »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ê²© ê´€ë¦¬ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
        END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
     END IF;
 
@@ -259,7 +259,7 @@ end;
 
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -275,20 +275,20 @@ end;
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Ztsd0008.p_IUDZtsd0008(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDZtsd0008;
 
   FUNCTION f_sZtsd0008MaxSeq (
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,         /*°¡°Ý,±Ý¾×À¯Çü       */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,          /*µî·ÏºñÄÚµå          */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,          /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ     */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE          /*°¡°ÝÀû¿ë ¿Ï·áÀÏ     */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,         /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•       */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,          /*ë“±ë¡ë¹„ì½”ë“œ          */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,          /*ê°€ê²©ì ìš© ì‹œìž‘ì¼     */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE          /*ê°€ê²©ì ìš© ì™„ë£Œì¼     */
     ) RETURN NUMBER IS
 
     v_curr_cunt   NUMBER DEFAULT 0;
@@ -317,17 +317,17 @@ end;
   END f_sZtsd0008MaxSeq;
 
   /*****************************************************************************
-  -- °¡°Ý °ü¸® Count
+  -- ê°€ê²© ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sZtsd0008Count(
-    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,         /*°¡°Ý,±Ý¾×À¯Çü       */
-    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,           /*»óÇ°ÄÚµå            */
-    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,        /*±â°£ÄÚµå            */
-    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,           /*Å¸ÀÌ¾îº»¼ö          */
-    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,          /*µî·ÏºñÄÚµå          */
-    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,          /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ     */
-    v_End_Day        IN Ztsd0008.END_DAY%TYPE,          /*°¡°ÝÀû¿ë ¿Ï·áÀÏ     */
-    v_Seq            IN Ztsd0008.SEQ%TYPE               /*¼ø¹ø                */
+    v_Price_Cd       IN Ztsd0008.PRICE_CD%TYPE,         /*ê°€ê²©,ê¸ˆì•¡ìœ í˜•       */
+    v_Mat_Cd         IN Ztsd0008.MAT_CD%TYPE,           /*ìƒí’ˆì½”ë“œ            */
+    v_Period_Cd      IN Ztsd0008.PERIOD_CD%TYPE,        /*ê¸°ê°„ì½”ë“œ            */
+    v_Cnt_Cd         IN Ztsd0008.CNT_CD%TYPE,           /*íƒ€ì´ì–´ë³¸ìˆ˜          */
+    v_Regi_Cd        IN Ztsd0008.REGI_CD%TYPE,          /*ë“±ë¡ë¹„ì½”ë“œ          */
+    v_Str_Day        IN Ztsd0008.STR_DAY%TYPE,          /*ê°€ê²©ì ìš© ì‹œìž‘ì¼     */
+    v_End_Day        IN Ztsd0008.END_DAY%TYPE,          /*ê°€ê²©ì ìš© ì™„ë£Œì¼     */
+    v_Seq            IN Ztsd0008.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -353,4 +353,3 @@ end;
 
 
 END PKG_ZTSD0008;
-/

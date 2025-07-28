@@ -20,11 +20,13 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_accImmWthdrList", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"ractDay\" type=\"STRING\" size=\"256\"/><Column id=\"ractSeq\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"tordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"recpTp\" type=\"STRING\" size=\"256\"/><Column id=\"recpTpNm\" type=\"STRING\" size=\"256\"/><Column id=\"bnkCd\" type=\"STRING\" size=\"256\"/><Column id=\"bnkNm\" type=\"STRING\" size=\"256\"/><Column id=\"recpAmt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"cncRseq\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"cncStat\" type=\"STRING\" size=\"256\"/><Column id=\"prtCncRmnnAmt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"recvSeq\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"tno\" type=\"STRING\" size=\"256\"/><Column id=\"refundYn\" type=\"STRING\" size=\"256\"/><Column id=\"pOidSeq\" type=\"BIGDECIMAL\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_accImmWthdrDtlList", this);
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"schdSeq\" type=\"STRING\" size=\"256\"/><Column id=\"recpFg\" type=\"STRING\" size=\"256\"/><Column id=\"recpFgNm\" type=\"STRING\" size=\"256\"/><Column id=\"recpAmt\" type=\"BIGDECIMAL\" size=\"256\"/><Column id=\"cncStat\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
@@ -129,8 +131,8 @@
 
             obj = new Div("div_payment", "absolute", "2", "507", "536", "181", null, null, this);
             obj.set_taborder("19");
-            obj.set_url("re::RTREPaymentComm_div.xfdl");
             obj.set_visible("false");
+            obj.set_url("re::RTREPaymentComm_div.xfdl");
             this.addChild(obj.name, obj);
 
 

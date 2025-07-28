@@ -1,22 +1,22 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
 /*******************************************************************************
     NAME        PKG_RTRE5100
-    PURPOSE     ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ °ü¸®
+    PURPOSE     ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-05-25  wjim            [20170519_01] ½Å±ÔÀÛ¼º
+    1.0     2017-05-25  wjim            [20170519_01] ì‹ ê·œì‘ì„±
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÀÛ¾÷È¸Â÷ Ã¤¹ø
+  -- ì‘ì—…íšŒì°¨ ì±„ë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtre5100JobSeq (
-    v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE           /*¸¶°¨³â¿ù            */
+    v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE           /*ë§ˆê°ë…„ì›”            */
   ) RETURN NUMBER IS
   
-    ln_Job_Seq RTRE5100.JOB_SEQ%TYPE DEFAULT NULL;      /*ÀÛ¾÷È¸Â÷            */
+    ln_Job_Seq RTRE5100.JOB_SEQ%TYPE DEFAULT NULL;      /*ì‘ì—…íšŒì°¨            */
     
   BEGIN
 
@@ -37,15 +37,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
   END f_sRtre5100JobSeq;
 
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ Insert
+  -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre5100 (
-      v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE         /*¸¶°¨³â¿ù            */
-    , v_Job_Seq        IN RTRE5100.JOB_SEQ%TYPE         /*ÀÛ¾÷È¸Â÷            */
-    , v_Std_Ym         IN RTRE5100.STD_YM%TYPE          /*¹èÁ¤±âÁØ³â¿ù        */
-    , v_Ord_No         IN RTRE5100.ORD_NO%TYPE          /*°è¾à¹øÈ£            */
-    , v_Amt_Comm       IN RTRE5100.AMT_COMM%TYPE        /*º¯°æ¼ö¼ö·á          */    
-    , v_Reg_Id         IN RTRE5100.REG_ID%TYPE          /*ÀÛ¾÷ÀÚ ID           */
+      v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE         /*ë§ˆê°ë…„ì›”            */
+    , v_Job_Seq        IN RTRE5100.JOB_SEQ%TYPE         /*ì‘ì—…íšŒì°¨            */
+    , v_Std_Ym         IN RTRE5100.STD_YM%TYPE          /*ë°°ì •ê¸°ì¤€ë…„ì›”        */
+    , v_Ord_No         IN RTRE5100.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸            */
+    , v_Amt_Comm       IN RTRE5100.AMT_COMM%TYPE        /*ë³€ê²½ìˆ˜ìˆ˜ë£Œ          */    
+    , v_Reg_Id         IN RTRE5100.REG_ID%TYPE          /*ì‘ì—…ì ID           */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -83,16 +83,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
   END f_InsertRtre5100;
   
   /*****************************************************************************
-  -- ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ °ü¸®(IUD)
+  -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre5100 (
-      v_Comm_Dvsn      IN CHAR                          /*Ã³¸®±¸ºĞ(I,U,D)     */
-    , v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE         /*¸¶°¨³â¿ù            */
-    , v_Job_Seq        IN RTRE5100.JOB_SEQ%TYPE         /*ÀÛ¾÷È¸Â÷            */
-    , v_Std_Ym         IN RTRE5100.STD_YM%TYPE          /*¹èÁ¤±âÁØ³â¿ù        */
-    , v_Ord_No         IN RTRE5100.ORD_NO%TYPE          /*°è¾à¹øÈ£            */
-    , v_Amt_Comm       IN RTRE5100.AMT_COMM%TYPE        /*º¯°æ¼ö¼ö·á          */    
-    , v_Reg_Id         IN RTRE5100.REG_ID%TYPE          /*ÀÛ¾÷ÀÚ ID           */
+      v_Comm_Dvsn      IN CHAR                          /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)     */
+    , v_Slcm_Ym        IN RTRE5100.SLCM_YM%TYPE         /*ë§ˆê°ë…„ì›”            */
+    , v_Job_Seq        IN RTRE5100.JOB_SEQ%TYPE         /*ì‘ì—…íšŒì°¨            */
+    , v_Std_Ym         IN RTRE5100.STD_YM%TYPE          /*ë°°ì •ê¸°ì¤€ë…„ì›”        */
+    , v_Ord_No         IN RTRE5100.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸            */
+    , v_Amt_Comm       IN RTRE5100.AMT_COMM%TYPE        /*ë³€ê²½ìˆ˜ìˆ˜ë£Œ          */    
+    , v_Reg_Id         IN RTRE5100.REG_ID%TYPE          /*ì‘ì—…ì ID           */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -103,14 +103,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
     
   BEGIN
 
-    -- ÇÊ¼ö°ª È®ÀÎ   
+    -- í•„ìˆ˜ê°’ í™•ì¸   
     IF TRIM(v_Reg_Id) IS NULL THEN
-        v_Return_Message := 'µî·ÏÀÚID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìID('||v_Reg_Id||') : í•„ìˆ˜ ì…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     /*
-     * ´ç¿ù ¼­ºñ½º¼ö¼ö·á Áı°è ÁøÇà¿©ºÎ È®ÀÎ
+     * ë‹¹ì›” ì„œë¹„ìŠ¤ìˆ˜ìˆ˜ë£Œ ì§‘ê³„ ì§„í–‰ì—¬ë¶€ í™•ì¸
      */
     SELECT  COUNT(*)
       INTO  v_Chk
@@ -118,13 +118,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
      WHERE  SLCM_YM = v_Slcm_Ym;
     
     IF v_Chk > 0 THEN
-        v_Return_Message := 'ÇØ´ç¿ù('||v_Slcm_Ym||') ¼­ºñ½º¼ö¼ö·á ±âÃÊÁı°èÀÛ¾÷ÀÌ ¿Ï·áµÇ¾î Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ì›”('||v_Slcm_Ym||') ì„œë¹„ìŠ¤ìˆ˜ìˆ˜ë£Œ ê¸°ì´ˆì§‘ê³„ì‘ì—…ì´ ì™„ë£Œë˜ì–´ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF v_Comm_Dvsn = 'I' THEN        
         
-        -- ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ µî·Ï
+        -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ ë“±ë¡
         IF 0 != f_InsertRtre5100 (
               v_Slcm_Ym
             , v_Job_Seq
@@ -134,12 +134,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
             , v_Reg_Id
             , v_ErrorText
         ) THEN
-            v_Return_Message := '¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ µî·Ï ½ÇÆĞ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
         
-        -- ¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ
+        -- ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½
         IF 0 != PKG_RTRE5090.f_UpdateRtre5090Commamt (
               v_Slcm_Ym
             , v_Std_Ym
@@ -149,19 +149,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
             , v_Reg_Id
             , v_ErrorText
         ) THEN
-            v_Return_Message := '¹æ¹®Á¡°Ë¼ö¼ö·á º¯°æ ½ÇÆĞ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë°©ë¬¸ì ê²€ìˆ˜ìˆ˜ë£Œ ë³€ê²½ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºĞ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;    
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
   EXCEPTION
@@ -173,11 +173,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE5100 AS
 
     WHEN OTHERS THEN
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìì—ê²Œ ë¬¸ì˜ë°”ëë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE5100.p_IUDRtre5100(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre5100;
 
 END PKG_RTRE5100;
-/

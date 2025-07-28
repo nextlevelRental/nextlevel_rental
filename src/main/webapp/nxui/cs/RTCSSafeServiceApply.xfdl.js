@@ -21,7 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_list", this);
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"makerNm\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelNm\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"carOwner\" type=\"STRING\" size=\"256\"/><Column id=\"b00007UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"b00011UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"b00012UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrYn\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrDay\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrSeq\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"servrqDay\" type=\"STRING\" size=\"256\"/><Column id=\"dlvposCd\" type=\"STRING\" size=\"256\"/><Column id=\"dlvAddr1\" type=\"STRING\" size=\"256\"/><Column id=\"dlvTel\" type=\"STRING\" size=\"256\"/><Column id=\"dlvDesc\" type=\"STRING\" size=\"256\"/><Column id=\"dlvStat\" type=\"STRING\" size=\"256\"/><Column id=\"dlvstatNm\" type=\"STRING\" size=\"256\"/><Column id=\"apprAmt\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd1\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"reqNo\" type=\"STRING\" size=\"256\"/><Column id=\"b00007InitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"cMileage\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"servCd\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"periodCd\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"makerNm\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelNm\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"carOwner\" type=\"STRING\" size=\"256\"/><Column id=\"b00007UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"b00011UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"b00012UseCnt\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"procDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrYn\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrDay\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrSeq\" type=\"STRING\" size=\"256\"/><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"servrqDay\" type=\"STRING\" size=\"256\"/><Column id=\"dlvposCd\" type=\"STRING\" size=\"256\"/><Column id=\"dlvAddr1\" type=\"STRING\" size=\"256\"/><Column id=\"dlvTel\" type=\"STRING\" size=\"256\"/><Column id=\"dlvDesc\" type=\"STRING\" size=\"256\"/><Column id=\"dlvStat\" type=\"STRING\" size=\"256\"/><Column id=\"dlvstatNm\" type=\"STRING\" size=\"256\"/><Column id=\"apprAmt\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd1\" type=\"STRING\" size=\"256\"/><Column id=\"cntNm\" type=\"STRING\" size=\"256\"/><Column id=\"reqNo\" type=\"STRING\" size=\"256\"/><Column id=\"b00007InitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"cMileage\" type=\"STRING\" size=\"256\"/><Column id=\"dlvrType\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_save", this);
@@ -562,7 +562,7 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         this.userGrp 	 = application.gds_userInfo.getColumn(0,"userGrp");//사용자 그룹 		--> *01:영업관리자     *02:콜센터     *03:지사     *04:지점     *05:대리점
         this.userId 	 = application.gds_userInfo.getColumn(0,"userId");
-        this.p_arg 				= "RTCSSafeServiceRegister";
+        this.p_arg 				= "RTCSSafeServiceApply";
         this.toDay 				= "";
         this.selectServrqDay	= "";
         this.joinRate           = "";
@@ -640,18 +640,28 @@
         	
         	if( strSvcId == "saveRTCSSafeSer" ){
         		if( nErrorCode < 0 ){
-        		
+        			this.alert(strErrorMsg);
         		}else{
+        			this.alert("저장되었습니다.");
         			this.fn_search();
         		}
         	}
         	
-        	if( strSvcId == "sendURLInfo"){
+        	if( strSvcId == "sendURLInfo" ){
         		this.alert("URL전송이 완료되었습니다.");
         	}
         	
-        	if( strSvcId == "getJoinRate"){
+        	if( strSvcId == "getJoinRate" ){
         		this.div_search.ed_joinRate.set_value(this.joinRate);
+        	}
+        	
+        	if( strSvcId == "resetRTCSSafeOne" ){
+        		if( nErrorCode < 0 ){
+        			this.alert(strErrorMsg);
+        		}else{
+        			this.alert("보증서비스 초기화가 완료되었습니다.");
+        			this.fn_search();
+        		}
         	}
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
@@ -764,12 +774,13 @@
         	var matCd		= nvl(this.ds_list.getColumn(saveRow, "matCd"));						//제품코드
         	var kwmeng		= nvl(this.ds_list.getColumn(saveRow, "cntCd1"));						//수량
         	var reqDay		= nvl(this.ds_list.getColumn(saveRow, "reqDay"));						//가입요청일자
-        	var dlvStat		= nvl(this.ds_list.getOrgColumn(saveRow, "dlvStat")); 						//가입상태
+        	var dlvStat		= nvl(this.ds_list.getOrgColumn(saveRow, "dlvStat")); 					//가입상태
         	var dlvDesc		= nvl(this.ds_list.getColumn(saveRow, "dlvDesc"));						//요청사항
         	var carNo		= nvl(this.ds_list.getColumn(saveRow, "carNo"));						//차량번호
         	var cMileage      = nvl(this.ds_list.getColumn(saveRow, "cMileage"));					//주행거리
         	var dlvrYn      = nvl(this.ds_list.getColumn(saveRow, "dlvrYn"));						//저장 or 업데이트
         	var dlvStatNew  = nvl(this.ds_list.getColumn(saveRow, "dlvStat"));
+        	var mfpYn		= nvl(this.ds_list.getColumn(saveRow, "mfpYn")); 						//중도완납여부
         	
         	//20190418 계약종료고객 서비스 신청 불가
         	//--------------------------------------------------------------------------------------------------------------------------------
@@ -789,8 +800,15 @@
         	var userId 	 = application.gds_userInfo.getColumn(0, "userId");
         	
         	if(osYear + "" + osMonth + ""  + osDate < this.toDay){
-        		if(userId != "10164030" && userId != "10083012"){
+        		if(userId != "10135008" && userId != "10244015"){
         			alert("렌탈계약이 종료된 고객은 서비스를 신청 할 수 없습니다.\n 서비스신청문의는 관리자에게 문의해주세요.");
+        			return;
+        		}
+        	}
+        	
+        	if(mfpYn == "Y"){
+        		if(userId != "10135008" && userId != "10244015"){
+        			alert("중도완납/해지된 고객은 서비스를 신청 할 수 없습니다.\n 서비스신청문의는 관리자에게 문의해주세요.");
         			return;
         		}
         	}
@@ -1027,8 +1045,8 @@
         	var args ={ p_arg : this.p_arg };
         	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
         }
-        this.returnOrderNo = function(ordNo){
-        	this.div_search.ed_ordNo.set_value(ordNo);
+        this.returnOrderNoInfo = function(res){
+        	this.div_search.ed_ordNo.set_value( res[0].getColumn(0, "ordNo") );
         }
 
         this.gr_imgList_oncellclick = function(obj,e)

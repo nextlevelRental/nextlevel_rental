@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0001 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0001
-   PURPOSE   »ç¿ëÀÚ MASTER °ü¸®
+   PURPOSE   ì‚¬ìš©ìž MASTER ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,92 +10,92 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0001 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Count
+  -- ì‚¬ìš©ìž MASTER Count
   *****************************************************************************/
   FUNCTION f_sRtcm0001Count(
-    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*»ç¿ëÀÚ ¾ÆÀÌµð       */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*ì‚¬ìš©ìž ì•„ì´ë””       */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Select
+  -- ì‚¬ìš©ìž MASTER Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0001 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*»ç¿ëÀÚ¸í              */
-    v_User_Grp       IN RTCM0001.USER_GRP%TYPE        /*»ç¿ëÀÚ ±×·ì           */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*ì‚¬ìš©ìžëª…              */
+    v_User_Grp       IN RTCM0001.USER_GRP%TYPE        /*ì‚¬ìš©ìž ê·¸ë£¹           */
     );
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Insert
+  -- ì‚¬ìš©ìž MASTER Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0001 (
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*»ç¿ëÀÚ¸í              */
-    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ºñ¹Ð¹øÈ£              */
-    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*´ë¸®Á¡¾ÆÀÌµð          */
-    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ÁöÁ¡                  */
-    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*Áö»ç                  */
-    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*»ç¿ëÀÚ ±×·ì           */
-    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*»ç¿ëºÒ°¡ °èÁ¤¿©ºÎ     */
-    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*ì‚¬ìš©ìžëª…              */
+    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ë¹„ë°€ë²ˆí˜¸              */
+    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*ëŒ€ë¦¬ì ì•„ì´ë””          */
+    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ì§€ì                   */
+    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*ì§€ì‚¬                  */
+    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*ì‚¬ìš©ìž ê·¸ë£¹           */
+    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*ì‚¬ìš©ë¶ˆê°€ ê³„ì •ì—¬ë¶€     */
+    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Update
+  -- ì‚¬ìš©ìž MASTER Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0001 (
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*»ç¿ëÀÚ¸í              */
-    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ºñ¹Ð¹øÈ£              */
-    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*´ë¸®Á¡¾ÆÀÌµð          */
-    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ÁöÁ¡                  */
-    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*Áö»ç                  */
-    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*»ç¿ëÀÚ ±×·ì           */
-    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*»ç¿ëºÒ°¡ °èÁ¤¿©ºÎ     */
-    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*ì‚¬ìš©ìžëª…              */
+    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ë¹„ë°€ë²ˆí˜¸              */
+    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*ëŒ€ë¦¬ì ì•„ì´ë””          */
+    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ì§€ì                   */
+    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*ì§€ì‚¬                  */
+    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*ì‚¬ìš©ìž ê·¸ë£¹           */
+    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*ì‚¬ìš©ë¶ˆê°€ ê³„ì •ì—¬ë¶€     */
+    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Delete
+  -- ì‚¬ìš©ìž MASTER Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0001 (
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER °ü¸®(IUD)
+  -- ì‚¬ìš©ìž MASTER ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0001 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*»ç¿ëÀÚ¸í              */
-    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ºñ¹Ð¹øÈ£              */
-    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*´ë¸®Á¡¾ÆÀÌµð          */
-    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ÁöÁ¡                  */
-    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*Áö»ç                  */
-    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*»ç¿ëÀÚ ±×·ì           */
-    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*»ç¿ëºÒ°¡ °èÁ¤¿©ºÎ     */
-    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE,        /*ì‚¬ìš©ìžëª…              */
+    v_Password       IN RTCM0001.PASSWORD%TYPE,       /*ë¹„ë°€ë²ˆí˜¸              */
+    v_Agent_Id       IN RTCM0001.AGENT_ID%TYPE,       /*ëŒ€ë¦¬ì ì•„ì´ë””          */
+    v_Vkbur          IN RTCM0001.VKBUR%TYPE,          /*ì§€ì                   */
+    v_Vkgrp          IN RTCM0001.VKGRP%TYPE,          /*ì§€ì‚¬                  */
+    v_User_Grp       IN RTCM0001.USER_GRP%TYPE,       /*ì‚¬ìš©ìž ê·¸ë£¹           */
+    v_Lock_Yn        IN RTCM0001.LOCK_YN%TYPE,        /*ì‚¬ìš©ë¶ˆê°€ ê³„ì •ì—¬ë¶€     */
+    v_Reg_Id         IN RTCM0001.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- »ç¿ëÀÚMaster Update -  PassWord Update
+  -- ì‚¬ìš©ìžMaster Update -  PassWord Update
   *****************************************************************************/
   PROCEDURE p_UpdateRtcm0001PassWord(
-    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*»ç¿ëÀÚ ¾ÆÀÌµð          */
-    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ºñ¹Ð¹øÈ£               */
-    v_Old_Password   IN  RTCM0001.OLD_PASSWORD%TYPE, /*ÀÌÀüºñ¹Ð¹øÈ£           */
-    v_Reason         IN  RTCM0003.REASON%TYPE,       /*º¯°æ»çÀ¯               */
-    v_Reg_Id         IN  RTCM0001.REG_ID%TYPE,       /*µî·ÏÀÚ ID              */
+    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*ì‚¬ìš©ìž ì•„ì´ë””          */
+    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ë¹„ë°€ë²ˆí˜¸               */
+    v_Old_Password   IN  RTCM0001.OLD_PASSWORD%TYPE, /*ì´ì „ë¹„ë°€ë²ˆí˜¸           */
+    v_Reason         IN  RTCM0003.REASON%TYPE,       /*ë³€ê²½ì‚¬ìœ                */
+    v_Reg_Id         IN  RTCM0001.REG_ID%TYPE,       /*ë“±ë¡ìž ID              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -103,12 +103,12 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0001 AS
 
 
   /*****************************************************************************
-  -- »ç¿ëÀÚMaster Update - ºñ¹Ð¹øÈ£ ÃÊ±âÈ­
+  -- ì‚¬ìš©ìžMaster Update - ë¹„ë°€ë²ˆí˜¸ ì´ˆê¸°í™”
   *****************************************************************************/
   PROCEDURE p_UpdateRtcm0001Init(
-    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*»ç¿ëÀÚ ¾ÆÀÌµð          */
-    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ºñ¹Ð¹øÈ£               */
-    v_Reg_Id         IN  RTCM0001.REG_ID%TYPE,       /*µî·ÏÀÚ ID              */
+    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*ì‚¬ìš©ìž ì•„ì´ë””          */
+    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ë¹„ë°€ë²ˆí˜¸               */
+    v_Reg_Id         IN  RTCM0001.REG_ID%TYPE,       /*ë“±ë¡ìž ID              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -116,62 +116,61 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0001 AS
 
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ ÆÐ½º¿öµå °ËÁõ
+  -- ì‚¬ìš©ìž íŒ¨ìŠ¤ì›Œë“œ ê²€ì¦
   *****************************************************************************/
   PROCEDURE p_sPassWordVerification(
-    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*»ç¿ëÀÚ ¾ÆÀÌµð          */
-    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ºñ¹Ð¹øÈ£               */
+    v_User_Id        IN  RTCM0001.USER_ID%TYPE,      /*ì‚¬ìš©ìž ì•„ì´ë””          */
+    v_Password       IN  RTCM0001.PASSWORD%TYPE,     /*ë¹„ë°€ë²ˆí˜¸               */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ Master Á¶È¸- ·Î±×ÀÎ½Ã »ç¿ëÀÚ Á¤º¸ Á¶È¸
+  -- ì‚¬ìš©ìž Master ì¡°íšŒ- ë¡œê·¸ì¸ì‹œ ì‚¬ìš©ìž ì •ë³´ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0001LoginInfo (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_User_Id        IN     RTCM0001.USER_ID%TYPE,       /*»ç¿ëÀÚ ¾ÆÀÌµð      */
-    v_Password       IN     RTCM0001.PASSWORD%TYPE,      /*ºñ¹Ð¹øÈ£           */
-    v_Local_Ip       IN     VARCHAR2                     /*·ÎÄÃPC IP          */
+    v_User_Id        IN     RTCM0001.USER_ID%TYPE,       /*ì‚¬ìš©ìž ì•„ì´ë””      */
+    v_Password       IN     RTCM0001.PASSWORD%TYPE,      /*ë¹„ë°€ë²ˆí˜¸           */
+    v_Local_Ip       IN     VARCHAR2                     /*ë¡œì»¬PC IP          */
     );    
 
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Update - ·Î±×ÀÎ ½ÃµµÈ½¼ö ¾÷µ¥ÀÌÆ®
+  -- ì‚¬ìš©ìž MASTER Update - ë¡œê·¸ì¸ ì‹œë„íšŸìˆ˜ ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0001FailCnt (
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER Update - ·Î±×ÀÎ ½ÃµµÈ½¼ö ÃÊ±âÈ­
+  -- ì‚¬ìš©ìž MASTER Update - ë¡œê·¸ì¸ ì‹œë„íšŸìˆ˜ ì´ˆê¸°í™”
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0001FailCntInit (
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ¾ÆÀÌµð         */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ì•„ì´ë””         */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER - »ç¿ëÀÚ¾ÆÀÌµð ±âÁØ »ç¿ëÀÚ¸í Á¶È¸
+  -- ì‚¬ìš©ìž MASTER - ì‚¬ìš©ìžì•„ì´ë”” ê¸°ì¤€ ì‚¬ìš©ìžëª… ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcm0001UserNm(
-    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*»ç¿ëÀÚ ¾ÆÀÌµð       */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*ì‚¬ìš©ìž ì•„ì´ë””       */
     ) RETURN VARCHAR;
 
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER - »ç¿ëÀÚ¸í ±âÁØ »ç¿ëÀÚ¾ÆÀÌµð Á¶È¸
+  -- ì‚¬ìš©ìž MASTER - ì‚¬ìš©ìžëª… ê¸°ì¤€ ì‚¬ìš©ìžì•„ì´ë”” ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcm0001UserCd(
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE           /*»ç¿ëÀÚ ¸í       */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE           /*ì‚¬ìš©ìž ëª…       */
     ) RETURN VARCHAR;
     
   /*****************************************************************************
-  -- »ç¿ëÀÚ MASTER - »ç¿ëÀÚ¾ÆÀÌµð ±âÁØ »ç¿ëÀÚ ±×·ì Á¶È¸
+  -- ì‚¬ìš©ìž MASTER - ì‚¬ìš©ìžì•„ì´ë”” ê¸°ì¤€ ì‚¬ìš©ìž ê·¸ë£¹ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcm0001UserGrp(
-    v_User_Id        IN RTCM0001.USER_ID%TYPE         /*»ç¿ëÀÚ ¾ÆÀÌµð         */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE         /*ì‚¬ìš©ìž ì•„ì´ë””         */
     ) RETURN VARCHAR;
             
 END Pkg_Rtcm0001;
-/

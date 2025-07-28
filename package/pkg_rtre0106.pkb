@@ -202,7 +202,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0106 AS
         v_Success_code := -1;
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
---         Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0106.p_IUDRtre0106(1)',
+--          Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0106.p_IUDRtre0106(1)',
 --                                       v_ErrorText,
 --                                       v_Return_Message);
 
@@ -211,11 +211,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0106 AS
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
---         Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0106.p_IUDRtre0106(2)',
+--        Pkg_Utility.p_ErrorFileWrite ('Pkg_Rtre0106.p_IUDRtre0106(2)',
 --                                       v_ErrorText,
 --                                       v_Return_Message);
 
   END p_SendSmsRtre0106;
   
 END Pkg_Rtre0106;
-/

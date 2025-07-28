@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
 /*******************************************************************************
    NAME      PKG_RTSD0052
-   PURPOSE   ·»Å»Áö»ç °ü¸®
+   PURPOSE   ë Œíƒˆì§€ì‚¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,32 +9,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
    1.0        2018-10-31  Sean         1. Created this package body.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»Áö»çÁ¶È¸ Select
+  -- ë Œíƒˆì§€ì‚¬ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0052 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP_NM IN RTSD0052.RENTAL_GROUP_NM%TYPE /* ·»Å»Áö»ç¸í           */
+    v_RENTAL_GROUP_NM IN RTSD0052.RENTAL_GROUP_NM%TYPE /* ë Œíƒˆì§€ì‚¬ëª…           */
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR
-    SELECT A.RENTAL_GROUP	    	/* ·»Å»Áö»ç  */
-         , A.RENTAL_GROUP_NM	 	/* ·»Å»Áö»ç¸í*/
-         , A.USE_YN	          	/* »ç¿ë¿©ºÎ  */
-         , A.REG_ID	          	/* µî·ÏÀÚ ID */
-         , A.REG_DT	          	/* µî·ÏÀÏ    */
-         , A.CHG_ID	          	/* º¯°æÀÚ ID */
-         , A.CHG_DT	          	/* º¯°æÀÏ    */
-      FROM RTSD0052 A           /* ·»Å»Áö»ç */
+    SELECT A.RENTAL_GROUP	    	/* ë Œíƒˆì§€ì‚¬  */
+         , A.RENTAL_GROUP_NM	 	/* ë Œíƒˆì§€ì‚¬ëª…*/
+         , A.USE_YN	          	/* ì‚¬ìš©ì—¬ë¶€  */
+         , A.REG_ID	          	/* ë“±ë¡ìž ID */
+         , A.REG_DT	          	/* ë“±ë¡ì¼    */
+         , A.CHG_ID	          	/* ë³€ê²½ìž ID */
+         , A.CHG_DT	          	/* ë³€ê²½ì¼    */
+      FROM RTSD0052 A           /* ë Œíƒˆì§€ì‚¬ */
      WHERE 1=1
        AND A.RENTAL_GROUP_NM like TRIM(v_RENTAL_GROUP_NM) || '%'
        ;
   END p_sRTSD0052;
 
    /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0052 (
-    v_Comm_Dvsn         IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn         IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,		  
     v_RENTAL_GROUP_NM   IN RTSD0052.RENTAL_GROUP_NM%TYPE,		  
     v_USE_YN            IN RTSD0052.USE_YN%TYPE,	
@@ -47,43 +47,43 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
     
   BEGIN
     IF (TRIM(v_RENTAL_GROUP) IS NULL) THEN
-        v_Return_Message := '·»Å»Áö»ç('||v_RENTAL_GROUP||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë Œíƒˆì§€ì‚¬('||v_RENTAL_GROUP||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
   
     IF (TRIM(v_RENTAL_GROUP_NM) IS NULL) THEN
-        v_Return_Message := '·»Å»Áö»ç¸í('||v_RENTAL_GROUP_NM||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë Œíƒˆì§€ì‚¬ëª…('||v_RENTAL_GROUP_NM||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
   
     IF v_Comm_Dvsn = 'I' THEN    
       IF 0 != f_InsertRTSD0052(v_RENTAL_GROUP, v_RENTAL_GROUP_NM,
                                v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;        
     ELSIF v_Comm_Dvsn = 'U' THEN
         IF 0 != f_UpdateRTSD0052(v_RENTAL_GROUP, v_RENTAL_GROUP_NM,
                                  v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSIF v_Comm_Dvsn = 'D' THEN    
         IF 0 != f_UpdateRTSD0052(v_RENTAL_GROUP, v_RENTAL_GROUP_NM,
                                  v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»Áö»ç »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆì§€ì‚¬ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -99,13 +99,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTSD0052.p_IUDRTSD0052(2)', v_ErrorText, v_Return_Message);
   END p_IUDRTSD0052;     
 
   /*****************************************************************************
-  -- ·»Å»Áö¿ª Insert
+  -- ë Œíƒˆì§€ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0052 (
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,		  
@@ -144,7 +144,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
   END f_InsertRTSD0052;    
 
   /*****************************************************************************
-  -- ·»Å»Áö¿ª Update
+  -- ë Œíƒˆì§€ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0052 ( 
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,		  
@@ -169,4 +169,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0052 AS
         RETURN SQLCODE;
   END f_UpdateRTSD0052; 
 END PKG_RTSD0052;
-/

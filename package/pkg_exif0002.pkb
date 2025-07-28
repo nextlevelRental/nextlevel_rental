@@ -1,4 +1,4 @@
-CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
+CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS 
 /*******************************************************************************
    NAME:      Pkg_EXIF0002
    PURPOSE  EAI시스템 인터페이스
@@ -73,6 +73,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
     v_ErrorText      OUT VARCHAR2
     ) IS
 
+    v_Legacy_Sigun_Cd RTSD0007.SIGUN_CD%TYPE DEFAULT NULL;
+
     v_Tel_No2 RTSD0007.TEL_NO%TYPE DEFAULT NULL;      /*전화번호              */
     v_Mob_No2 RTSD0007.MOB_NO%TYPE DEFAULT NULL;      /*핸드폰번호            */
     v_Fax_No2 RTSD0007.FAX_NO%TYPE DEFAULT NULL;      /*FAX번호               */
@@ -89,7 +91,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '주소          ', v_City        );
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '상세주소      ', v_Street      );
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '시,도 코드    ', v_Sido_Cd     );
---    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '시,군,구 코드 ', v_Sigun_Cd    );
+--    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '시,군,구 코드 ', v_Legacy_Sigun_Cd    );
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '우편일련번호  ', v_Ser_No      );
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '전화번호      ', v_Tel_No      );
 --    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvcustomer(1)', '핸드폰번호    ', v_Mob_No      );
@@ -127,6 +129,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
     -- FAX번호
     v_Fax_No2 :=  REPLACE(REPLACE(REPLACE(REPLACE(v_Fax_No, '-',''),'(',''),')',''),'~','');
 
+   -- 차세대 SAP 구코드 그대로 변환 [20250401_01]
+   SELECT CD
+   	 INTO v_Legacy_Sigun_Cd
+     FROM RTCM0051 
+    WHERE CD_GRP_CD = 'S017'
+	  AND REMARK = v_Sigun_Cd;  
 
     IF 0 = Pkg_Rtsd0007.f_sRtsd0007Count(TO_NUMBER(v_Agency_Cd)) THEN
 
@@ -134,12 +142,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
         -- [20190731_01] 충당금반환여부는 'N'으로 고정
         IF 0 != Pkg_Rtsd0007.f_InsertRtsd0007(TO_NUMBER(v_Agency_Cd) , v_Agency_Nm , v_Sales_Group , v_Sales_Office ,
                                  v_Pos_Cd , v_City , v_Street , v_Sido_Cd ,
-                                 v_Sigun_Cd , v_Ser_No , v_Tel_No2 , v_Mob_No2 ,
+                                 v_Legacy_Sigun_Cd , v_Ser_No , v_Tel_No2 , v_Mob_No2 ,
                                  v_Fax_No2 , v_Tax_No , v_Rep_Nm , v_Busi_Type ,
                                  v_Busi_Cond , 'Y' , TO_CHAR(SYSDATE,'YYYYMMDD') , '99991231' ,
                                  NULL, NULL, v_Season_Gbn, 'N',
                                  'N', 'N', 'N', 15,
-                                 NULL, NULL, v_Use_Yn , v_Reg_Id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', 'N', 'N', v_ErrorText) THEN
+                                 NULL, NULL, v_Use_Yn , v_Reg_Id, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'N', 'N', 'N', NULL, NULL, 'N', 'N', 'N', v_ErrorText) THEN
             v_Return_Message := '대리점마스터 등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
@@ -217,7 +225,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Exif0002 AS
 
         IF 0 != Pkg_Rtsd0007.f_UpdateRtsd0007Interface( TO_NUMBER(v_Agency_Cd) , v_Agency_Nm , v_Sales_Group , v_Sales_Office ,
                                                          v_Pos_Cd , v_City , v_Street , v_Sido_Cd ,
-                                                         v_Sigun_Cd , v_Ser_No , v_Tel_No2 , v_Mob_No2 ,
+                                                         v_Legacy_Sigun_Cd , v_Ser_No , v_Tel_No2 , v_Mob_No2 ,
                                                          v_Fax_No2 , v_Tax_No , v_Rep_Nm , v_Busi_Type ,
                                                          v_Busi_Cond , v_Season_Gbn, v_Use_Yn, v_Reg_Id,
                                                          v_ErrorText) THEN
@@ -274,6 +282,8 @@ PROCEDURE p_Erprecvmatrial (
     v_ErrorText      OUT VARCHAR2
     ) IS
 
+    v_Nvl_Pg_Cd RTSD0005.PG_CD%TYPE DEFAULT ' ';
+
     v_Reg_Id    RTCS0103.REG_ID%TYPE DEFAULT 'IFEAI';    /*등록자ID              */
     
     lr_Sd0005   RTSD0005%ROWTYPE;
@@ -281,13 +291,15 @@ PROCEDURE p_Erprecvmatrial (
     e_Error EXCEPTION;
   BEGIN
 
+    v_Nvl_Pg_Cd := NVL(v_Pg_Cd, ' ');
+
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '상품코드           ', v_Mat_Cd       );
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '패턴코드           ', v_Pettern_Cd   );
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '단면폭             ', v_Section_Width);
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '편평비             ', v_Aspect_Ratio );
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '인치               ', v_Wheel_Inches );
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', 'PR(강도)           ', v_Ply_Rating   );
-    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', 'Pricing Group Code ', v_Pg_Cd        );
+    Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', 'Pricing Group Code ', v_Nvl_Pg_Cd        );
     Pkg_Utility.p_InfoFileWrite('Pkg_Exif0002.p_Erprecvmatrial(1)', '사용여부           ', v_Use_Yn       );
 
 
@@ -308,7 +320,7 @@ PROCEDURE p_Erprecvmatrial (
 
         IF 0 != Pkg_Rtsd0005.f_InsertRtsd0005(v_Mat_Cd, NULL, v_Pettern_Cd, TO_CHAR(TO_NUMBER(v_Section_Width)),
                                               NVL(TRIM(v_Aspect_Ratio), 'Z'), v_Wheel_Inches, TO_NUMBER(v_Ply_Rating), NULL,
-                                              v_Pg_Cd, NULL, v_Use_Yn,
+                                              v_Nvl_Pg_Cd, NULL, v_Use_Yn,
                                               v_Reg_Id, v_ErrorText) THEN
             v_Return_Message := '등록 실패!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
@@ -326,7 +338,7 @@ PROCEDURE p_Erprecvmatrial (
 
         IF 0 != Pkg_Rtsd0005.f_UpdateRtsd0005Interface(
               v_Mat_Cd, lr_Sd0005.PETTERN_CD, lr_Sd0005.SECTION_WIDTH
-            , lr_Sd0005.ASPECT_RATIO, lr_Sd0005.WHEEL_INCHES, lr_Sd0005.PLY_RATING, v_Pg_Cd
+            , lr_Sd0005.ASPECT_RATIO, lr_Sd0005.WHEEL_INCHES, lr_Sd0005.PLY_RATING, v_Nvl_Pg_Cd
             , lr_Sd0005.USE_YN, v_Reg_Id, v_ErrorText)
         THEN
             v_Return_Message := '수정 실패!!!'||'-'||v_ErrorText;
@@ -336,7 +348,7 @@ PROCEDURE p_Erprecvmatrial (
         
         --[20171219_02] 이전
 --        IF 0 != Pkg_Rtsd0005.f_UpdateRtsd0005Interface(v_Mat_Cd, v_Pettern_Cd, TO_CHAR(TO_NUMBER(v_Section_Width)),
---                                                       NVL(TRIM(v_Aspect_Ratio), 'Z'), v_Wheel_Inches, TO_NUMBER(v_Ply_Rating), v_Pg_Cd,
+--                                                       NVL(TRIM(v_Aspect_Ratio), 'Z'), v_Wheel_Inches, TO_NUMBER(v_Ply_Rating), v_Nvl_Pg_Cd,
 --                                                       v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
 --            v_Return_Message := '수정 실패!!!'||'-'||v_ErrorText;
 --            v_ErrorText := v_ErrorText;
@@ -450,7 +462,7 @@ PROCEDURE p_Erprecvmatrial (
                 C.PLAN_DAY  AS WADAT,     -- 장착예정일 [20200327]
                 CASE WHEN A.ORD_DAY >= '20200414' THEN
                     CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR
-                        (SELECT COUNT(*) FROM RTSD0104 X WHERE X.CHAN_CD IN ('01', '05') AND X.SALES_GROUP LIKE 'RC%' AND X.ORD_NO = A.ORD_NO) > 0 
+                        (SELECT COUNT(*) FROM RTSD0104 X WHERE X.CHAN_CD IN ('01', '05') AND X.SALES_GROUP LIKE '113%' AND X.ORD_NO = A.ORD_NO) > 0 
                         THEN 'X' ELSE '' END -- [20220322_01] kstka 오프라인 주문 이면서 레귤러체인인경우 접수주문 제외 
                 ELSE '' END AS O2O_STOCK_YN, --거점재고사용유무[20200406]
                 '' AS ZAD_ORDER,  --보증서비스유무 [20201118]
@@ -684,7 +696,7 @@ PROCEDURE p_Erprecvmatrial (
                     G.PROC_DAY        AS WADAT,
                     CASE WHEN A.ORD_DAY >= '20200414' THEN
                     CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR
-                        (SELECT COUNT(*) FROM RTSD0104 X WHERE X.CHAN_CD IN ('01', '05') AND X.SALES_GROUP LIKE 'RC%' AND X.ORD_NO = A.ORD_NO) > 0 
+                        (SELECT COUNT(*) FROM RTSD0104 X WHERE X.CHAN_CD IN ('01', '05') AND X.SALES_GROUP LIKE '113%' AND X.ORD_NO = A.ORD_NO) > 0 
                         THEN 'X' ELSE '' END -- [20220322_01] kstka 오프라인 주문 이면서 레귤러체인인경우 접수주문 제외 
                     ELSE '' END AS O2O_STOCK_YN, --거점재고사용유무 [20200406]
                     '' AS ZAD_ORDER,  --보증서비스여부 [20201118]
@@ -757,7 +769,7 @@ PROCEDURE p_Erprecvmatrial (
                     A.ORD_DAY        AS ERDAT,
                     G.PROC_DAY        AS WADAT,
                     CASE WHEN A.ORD_DAY >= '20200414' THEN --* 20200414 이어야 함
-                        CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR A.SALES_OFFICE LIKE 'RC%' THEN 'X' ELSE '' END
+                        CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR A.SALES_OFFICE LIKE '1104%' THEN 'X' ELSE '' END
                       ELSE '' END AS O2O_STOCK_YN, --거점재고사용유무 [20200406]
                     '' AS ZAD_ORDER,  --보증서비스여부 [20201118]
                     A.OMS_ORDERNO
@@ -831,7 +843,7 @@ PROCEDURE p_Erprecvmatrial (
                     A.ORD_DAY        AS ERDAT,
                     G.PROC_DAY        AS WADAT,
                     CASE WHEN A.ORD_DAY >= '20200414' THEN --* 20200414 이어야 함
-                        CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR A.SALES_OFFICE LIKE 'RC%' THEN 'X' ELSE '' END
+                        CASE WHEN Pkg_Exif0004.f_sExif0004O2OStockYn(A.OMS_ORDERNO) = 'Y' OR A.SALES_OFFICE LIKE '1104%' THEN 'X' ELSE '' END
                       ELSE '' END AS O2O_STOCK_YN, --거점재고사용유무 [20200406]
                     '' AS ZAD_ORDER,  --보증서비스여부 [20201118]
                     A.OMS_ORDERNO
@@ -986,7 +998,7 @@ PROCEDURE p_Erprecvmatrial (
             WHERE   G.PROC_DAY BETWEEN TO_CHAR(SYSDATE - 5,'YYYYMMDD') AND TO_CHAR(SYSDATE,'YYYYMMDD')
             AND     A.CHAN_CD IN ('01', '05')   --[20210709_01] 온라인주문인경우
             AND     A.ORD_ID NOT IN ('02') -- [20170227_01] B2B일시불의 경우 회수오더 미발생
-            AND     A.SALES_OFFICE LIKE '%RC%' --[20220330_01] kstka 거점 레귤러체인인 경우 출고정보가 없으므로 별도 조회
+            AND     A.SALES_OFFICE LIKE '%1104%' --[20220330_01] kstka 거점 레귤러체인인 경우 출고정보가 없으므로 별도 조회
             AND     A.STAT_CD   = '04'
             AND     A.AGENCY_CD = C.AGENCY_CD(+)
             AND     A.ORD_NO    = D.ORD_NO(+)
@@ -4271,4 +4283,3 @@ PROCEDURE p_Erprecvmatrial (
   END p_EhrRecvPrsnlAppmnt;
   
   END Pkg_Exif0002;
-/

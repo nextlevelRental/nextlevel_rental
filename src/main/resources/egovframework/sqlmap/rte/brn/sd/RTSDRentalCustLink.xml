@@ -22,6 +22,7 @@
 		<result property="rentalGroup"    column= "RENTAL_GROUP" />
 		<result property="rentalOffice"   column= "RENTAL_OFFICE" />
 		<result property="prplYn"         column= "PRPL_YN" />
+		<result property="premprplYn"      column= "PREM_PRPL_YN" />
 		<result property="groupNm"         column= "GROUP_NM" />
 	</resultMap>
 	<parameterMap id="officeParam" class="java.util.Map">
@@ -42,13 +43,14 @@
 		<parameter property="rentalOffice"   mode="IN" jdbcType="VARCHAR" />
 		<parameter property="agencyCd"       mode="IN" jdbcType="VARCHAR" />
 		<parameter property="prplYn"         mode="IN" jdbcType="VARCHAR" />
+		<parameter property="premprplYn"         mode="IN" jdbcType="VARCHAR" />
 		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
 		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
 		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
 		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />
 	</parameterMap>
 	<procedure id="rentalCustLink.saveRentalCustLink" parameterMap="p_IUDRentalCust">
-		{call PKG_RTCM0110.p_IUDRentalCust(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+		{call PKG_RTCM0110.p_IUDRentalCust(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 	<!-- 미반영판매자 조회 -->

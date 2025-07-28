@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_C027", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -31,6 +32,7 @@
 
             obj = new Dataset("ds_C028", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -41,6 +43,7 @@
 
             obj = new Dataset("ds_C027_cond", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -51,6 +54,7 @@
 
             obj = new Dataset("ds_C028_cond", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -85,6 +89,7 @@
 
             obj = new Dataset("ds_H008", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -95,6 +100,7 @@
 
             obj = new Dataset("ds_H008_cond", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -1433,27 +1439,13 @@
         	var mm = osDay.substring(4, 6);
         	var dd = osDay.substring(6, 8);
         	
-        	trace(yyyy);
-        	trace(mm);
-        	trace(dd);
-        	
         	var _calcDate = new Date(yyyy, mm, dd);
         	_calcDate.setDate(_calcDate.getDate() + 60);
         	
         	var _yyyy = _calcDate.getFullYear();
-        	var _mm = _calcDate.getMonth();
-        	if(_mm.toString().length == 1){
-        		_mm = "0" + _calcDate.getMonth();
-        	}
-        	
+        	var _mm = (_calcDate.getMonth() + 1).length = 1 ? "0" + _calcDate.getMonth(): _calcDate.getMonth();
         	var _dd = _calcDate.getDate();
-        	if(_dd.toString().length == 1){
-        		_dd = "0" + _calcDate.getDate();
-        	}
         	
-        	trace(_yyyy);
-        	trace(_mm);
-        	trace(_dd);
         	
         	//연체회차가 2회차 이상부터 서비스 block
         	if(this.fUserGrp != "01"){ //영업관리자는 제외
@@ -1468,11 +1460,9 @@
         		}	
         	}
         	
-        	trace(_yyyy + "" + _mm + "" + _dd);
-        	
         	//계약종료이후 60일 초과인경우 변경 금지
         	if(this.fUserGrp != "01" && this.fUserGrp != "02"){ //영업관리자/콜센터는 제외
-        		if(this.toDay > _yyyy + "" + _mm + "" + _dd){
+        		if(this.toDay > _yyyy + _mm + _dd){
         			this.btn_change_save.set_enable(false);
         			this.btn_mrSchd.set_enable(false);
         			this.btn_deny.set_enable(false);

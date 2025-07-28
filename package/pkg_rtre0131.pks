@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0131 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0131
-   PURPOSE   º±≥≥¡§∫∏∞¸∏Æ 
+   PURPOSE   ÏÑ†ÎÇ©Ï†ïÎ≥¥Í¥ÄÎ¶¨ 
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,21 +9,20 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0131 AS
    1.0        2017-01-16  wjim             1. Created this package body.
 *******************************************************************************/
   /*****************************************************************************
-  -- º±≥≥µÓ∑œ
+  -- ÏÑ†ÎÇ©Îì±Î°ù
   *****************************************************************************/
   PROCEDURE p_CreateRtre0131Prepay (
-      v_Ord_No         IN VARCHAR2                            /* ∞Ëæ‡π¯»£     */
-    , v_Prepay_Cd      IN VARCHAR2                            /* º±≥≥∞≥ø˘ƒ⁄µÂ */
-    , v_Str_Ym         IN VARCHAR2                            /* º±≥≥Ω√¿€≥‚ø˘ */
-    , v_End_Ym         IN VARCHAR2                            /* º±≥≥¡æ∑·≥‚ø˘ */
-    , v_Recp_Pay       IN VARCHAR2                            /* ∞·¡¶πÊπ˝     */
-    , v_Prepay_Amt     IN NUMBER                              /* º±≥≥∞·¡¶±›æ◊ */
-    , v_Tno            IN VARCHAR2                            /* PG∞≈∑°π¯»£   */
-    , v_Id             IN VARCHAR2                            /* µÓ∑œ¿⁄ ID    */    
+      v_Ord_No         IN VARCHAR2                            /* Í≥ÑÏïΩÎ≤àÌò∏     */
+    , v_Prepay_Cd      IN VARCHAR2                            /* ÏÑ†ÎÇ©Í∞úÏõîÏΩîÎìú */
+    , v_Str_Ym         IN VARCHAR2                            /* ÏÑ†ÎÇ©ÏãúÏûëÎÖÑÏõî */
+    , v_End_Ym         IN VARCHAR2                            /* ÏÑ†ÎÇ©Ï¢ÖÎ£åÎÖÑÏõî */
+    , v_Recp_Pay       IN VARCHAR2                            /* Í≤∞Ï†úÎ∞©Î≤ï     */
+    , v_Prepay_Amt     IN NUMBER                              /* ÏÑ†ÎÇ©Í≤∞Ï†úÍ∏àÏï° */
+    , v_Tno            IN VARCHAR2                            /* PGÍ±∞ÎûòÎ≤àÌò∏   */
+    , v_Id             IN VARCHAR2                            /* Îì±Î°ùÏûê ID    */    
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
   );
   
 END Pkg_Rtre0131;
-/

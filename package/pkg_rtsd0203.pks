@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0203 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0203
-   PURPOSE   °³ÀÎ½Å¿ëÁ¶È¸Àü¹®
+   PURPOSE   ê°œì¸ì‹ ìš©ì¡°íšŒì „ë¬¸
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,345 +10,345 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0203 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Count
+  -- SAFE KEY IR ì „ë¬¸ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0203Count(
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,          /*ÀÎÁõ¹øÈ£            */
-    v_Seq            IN RTSD0203.SEQ%TYPE               /*¼ø¹ø                */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,          /*ì¸ì¦ë²ˆí˜¸            */
+    v_Seq            IN RTSD0203.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Select
+  -- SAFE KEY IR ì „ë¬¸ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0203 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Seq            IN RTSD0203.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[¼Û½Å]Transaction Code*/
-    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[¼Û½Å]Àü¹®¼Û½Å±â°üÄÚµå*/
-    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[¼Û½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[¼Û½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[¼Û½Å]¼Û½Å FLAG       */
-    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[¼Û½Å]´Ü¸»±â±¸ºÐ      */
-    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[¼Û½Å]ÀÀ´äÄÚµå        */
-    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[¼Û½Å]Âü°¡±â°üID      */
-    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[¼Û½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[¼Û½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[¼Û½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[¼Û½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[¼Û½Å]Primary Bitmap  */
-    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[¼Û½Å]Á¶È¸µ¿ÀÇ»çÀ¯ÄÚµå*/
-    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[¼Û½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[¼Û½Å]ÁÖ¹Î¹øÈ£        */
-    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[¼Û½Å]Á¶È¸»çÀ¯ÄÚµå    */
-    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[¼Û½Å]Á¶È¸ÀÚ ½Äº°ÄÚµå */
-    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[¼Û½Å]Àç¿äÃ»È½¼ö      */
-    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[¼Û½Å]ÀÎÁõ¹øÈ£        */
-    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¼ö½Å */
-    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¿äÃ» */
-    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸±¸ºÐ    */
-    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸ÄÚµå    */
-    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[¼ö½Å]Transaction Code*/
-    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[¼ö½Å]Àü¹®¼ö½Å±â°üÄÚµå*/
-    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[¼ö½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[¼ö½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[¼ö½Å]¼ö½Å FLAG       */
-    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[¼ö½Å]´Ü¸»±â±¸ºÐ      */
-    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[¼ö½Å]ÀÀ´äÄÚµå        */
-    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[¼ö½Å]User ID         */
-    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[¼ö½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[¼ö½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[¼ö½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[¼ö½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[¼ö½Å]Primary Bitmap  */
-    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*°ø¶õ                  */
-    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[¼ö½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[¼ö½Å]ÁÖ¹Î¹øÈ£        */
-    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[¼ö½Å]Á¤º¸¿¬¼Ó        */
-    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[¼ö½Å]Àç¿äÃ» È½¼ö     */
-    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[¼ö½Å]¼º¸í            */
-    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[¼ö½Å]ÀÎÁõ¹øÈ£        */
-    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÃÑ°Ç¼ö     */
-    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÀÀ´ä°Ç¼ö   */
-    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[¼ö½Å]¿ä¾à1 Á¤º¸±¸ºÐ  */
-    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[¼ö½Å]¿ä¾àÄÚµå1       */
-    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[¼ö½Å]ÆòÁ¡ Á¤º¸±¸ºÐ   */
-    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡°á°úÄÚ */
-    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[¼ö½Å]ÆòÁ¡ CB ½ºÄÚ¾î±¸*/
-    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯1  */
-    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯2  */
-    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯3  */
-    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯4  */
-    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯5  */
-    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯6  */
-    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëÆòÁ¡   */
-    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëµî±Þ   */
-    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª1    */
-    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª2    */
-    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª3    */
-    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[¼ö½Å]¿¡·¯ÄÚµå        */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Seq            IN RTSD0203.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[ì†¡ì‹ ]Transaction Code*/
+    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸ì†¡ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[ì†¡ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[ì†¡ì‹ ]ì†¡ì‹  FLAG       */
+    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[ì†¡ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[ì†¡ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[ì†¡ì‹ ]ì°¸ê°€ê¸°ê´€ID      */
+    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[ì†¡ì‹ ]Primary Bitmap  */
+    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒë™ì˜ì‚¬ìœ ì½”ë“œ*/
+    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[ì†¡ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[ì†¡ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒì‚¬ìœ ì½”ë“œ    */
+    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒìž ì‹ë³„ì½”ë“œ */
+    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[ì†¡ì‹ ]ìž¬ìš”ì²­íšŸìˆ˜      */
+    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[ì†¡ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìˆ˜ì‹  */
+    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìš”ì²­ */
+    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´êµ¬ë¶„    */
+    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´ì½”ë“œ    */
+    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[ìˆ˜ì‹ ]Transaction Code*/
+    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸ìˆ˜ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[ìˆ˜ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[ìˆ˜ì‹ ]ìˆ˜ì‹  FLAG       */
+    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[ìˆ˜ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[ìˆ˜ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[ìˆ˜ì‹ ]User ID         */
+    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[ìˆ˜ì‹ ]Primary Bitmap  */
+    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*ê³µëž€                  */
+    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[ìˆ˜ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[ìˆ˜ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[ìˆ˜ì‹ ]ì •ë³´ì—°ì†        */
+    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[ìˆ˜ì‹ ]ìž¬ìš”ì²­ íšŸìˆ˜     */
+    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[ìˆ˜ì‹ ]ì„±ëª…            */
+    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[ìˆ˜ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì´ê±´ìˆ˜     */
+    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‘ë‹µê±´ìˆ˜   */
+    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½1 ì •ë³´êµ¬ë¶„  */
+    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½ì½”ë“œ1       */
+    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì •ë³´êµ¬ë¶„   */
+    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ê²°ê³¼ì½” */
+    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  CB ìŠ¤ì½”ì–´êµ¬*/
+    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 1  */
+    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 2  */
+    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 3  */
+    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 4  */
+    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 5  */
+    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 6  */
+    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©í‰ì    */
+    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©ë“±ê¸‰   */
+    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’1    */
+    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’2    */
+    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’3    */
+    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[ìˆ˜ì‹ ]ì—ëŸ¬ì½”ë“œ        */
     v_E_Nd43         IN RTSD0203.E_ND43%TYPE,         /*Profile Code 1        */
     v_E_Nd44         IN RTSD0203.E_ND44%TYPE,         /*Profile Code 2        */
     v_E_Nd45         IN RTSD0203.E_ND45%TYPE,         /*Profile Code 3        */
-    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0203.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0203.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Insert
+  -- SAFE KEY IR ì „ë¬¸ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0203 (
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Seq            IN RTSD0203.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[¼Û½Å]Transaction Code*/
-    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[¼Û½Å]Àü¹®¼Û½Å±â°üÄÚµå*/
-    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[¼Û½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[¼Û½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[¼Û½Å]¼Û½Å FLAG       */
-    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[¼Û½Å]´Ü¸»±â±¸ºÐ      */
-    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[¼Û½Å]ÀÀ´äÄÚµå        */
-    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[¼Û½Å]Âü°¡±â°üID      */
-    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[¼Û½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[¼Û½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[¼Û½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[¼Û½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[¼Û½Å]Primary Bitmap  */
-    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[¼Û½Å]Á¶È¸µ¿ÀÇ»çÀ¯ÄÚµå*/
-    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[¼Û½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[¼Û½Å]ÁÖ¹Î¹øÈ£        */
-    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[¼Û½Å]Á¶È¸»çÀ¯ÄÚµå    */
-    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[¼Û½Å]Á¶È¸ÀÚ ½Äº°ÄÚµå */
-    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[¼Û½Å]Àç¿äÃ»È½¼ö      */
-    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[¼Û½Å]ÀÎÁõ¹øÈ£        */
-    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¼ö½Å */
-    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¿äÃ» */
-    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸±¸ºÐ    */
-    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸ÄÚµå    */
-    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[¼ö½Å]Transaction Code*/
-    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[¼ö½Å]Àü¹®¼ö½Å±â°üÄÚµå*/
-    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[¼ö½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[¼ö½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[¼ö½Å]¼ö½Å FLAG       */
-    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[¼ö½Å]´Ü¸»±â±¸ºÐ      */
-    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[¼ö½Å]ÀÀ´äÄÚµå        */
-    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[¼ö½Å]User ID         */
-    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[¼ö½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[¼ö½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[¼ö½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[¼ö½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[¼ö½Å]Primary Bitmap  */
-    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*°ø¶õ                  */
-    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[¼ö½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[¼ö½Å]ÁÖ¹Î¹øÈ£        */
-    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[¼ö½Å]Á¤º¸¿¬¼Ó        */
-    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[¼ö½Å]Àç¿äÃ» È½¼ö     */
-    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[¼ö½Å]¼º¸í            */
-    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[¼ö½Å]ÀÎÁõ¹øÈ£        */
-    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÃÑ°Ç¼ö     */
-    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÀÀ´ä°Ç¼ö   */
-    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[¼ö½Å]¿ä¾à1 Á¤º¸±¸ºÐ  */
-    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[¼ö½Å]¿ä¾àÄÚµå1       */
-    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[¼ö½Å]ÆòÁ¡ Á¤º¸±¸ºÐ   */
-    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡°á°úÄÚ */
-    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[¼ö½Å]ÆòÁ¡ CB ½ºÄÚ¾î±¸*/
-    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯1  */
-    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯2  */
-    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯3  */
-    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯4  */
-    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯5  */
-    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯6  */
-    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëÆòÁ¡   */
-    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëµî±Þ   */
-    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª1    */
-    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª2    */
-    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª3    */
-    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[¼ö½Å]¿¡·¯ÄÚµå        */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Seq            IN RTSD0203.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[ì†¡ì‹ ]Transaction Code*/
+    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸ì†¡ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[ì†¡ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[ì†¡ì‹ ]ì†¡ì‹  FLAG       */
+    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[ì†¡ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[ì†¡ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[ì†¡ì‹ ]ì°¸ê°€ê¸°ê´€ID      */
+    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[ì†¡ì‹ ]Primary Bitmap  */
+    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒë™ì˜ì‚¬ìœ ì½”ë“œ*/
+    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[ì†¡ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[ì†¡ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒì‚¬ìœ ì½”ë“œ    */
+    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒìž ì‹ë³„ì½”ë“œ */
+    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[ì†¡ì‹ ]ìž¬ìš”ì²­íšŸìˆ˜      */
+    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[ì†¡ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìˆ˜ì‹  */
+    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìš”ì²­ */
+    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´êµ¬ë¶„    */
+    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´ì½”ë“œ    */
+    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[ìˆ˜ì‹ ]Transaction Code*/
+    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸ìˆ˜ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[ìˆ˜ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[ìˆ˜ì‹ ]ìˆ˜ì‹  FLAG       */
+    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[ìˆ˜ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[ìˆ˜ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[ìˆ˜ì‹ ]User ID         */
+    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[ìˆ˜ì‹ ]Primary Bitmap  */
+    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*ê³µëž€                  */
+    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[ìˆ˜ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[ìˆ˜ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[ìˆ˜ì‹ ]ì •ë³´ì—°ì†        */
+    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[ìˆ˜ì‹ ]ìž¬ìš”ì²­ íšŸìˆ˜     */
+    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[ìˆ˜ì‹ ]ì„±ëª…            */
+    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[ìˆ˜ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì´ê±´ìˆ˜     */
+    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‘ë‹µê±´ìˆ˜   */
+    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½1 ì •ë³´êµ¬ë¶„  */
+    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½ì½”ë“œ1       */
+    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì •ë³´êµ¬ë¶„   */
+    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ê²°ê³¼ì½” */
+    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  CB ìŠ¤ì½”ì–´êµ¬*/
+    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 1  */
+    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 2  */
+    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 3  */
+    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 4  */
+    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 5  */
+    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 6  */
+    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©í‰ì    */
+    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©ë“±ê¸‰   */
+    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’1    */
+    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’2    */
+    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’3    */
+    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[ìˆ˜ì‹ ]ì—ëŸ¬ì½”ë“œ        */
     v_E_Nd43         IN RTSD0203.E_ND43%TYPE,         /*Profile Code 1        */
     v_E_Nd44         IN RTSD0203.E_ND44%TYPE,         /*Profile Code 2        */
     v_E_Nd45         IN RTSD0203.E_ND45%TYPE,         /*Profile Code 3        */
-    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Update
+  -- SAFE KEY IR ì „ë¬¸ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0203 (
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Seq            IN RTSD0203.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[¼Û½Å]Transaction Code*/
-    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[¼Û½Å]Àü¹®¼Û½Å±â°üÄÚµå*/
-    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[¼Û½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[¼Û½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[¼Û½Å]¼Û½Å FLAG       */
-    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[¼Û½Å]´Ü¸»±â±¸ºÐ      */
-    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[¼Û½Å]ÀÀ´äÄÚµå        */
-    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[¼Û½Å]Âü°¡±â°üID      */
-    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[¼Û½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[¼Û½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[¼Û½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[¼Û½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[¼Û½Å]Primary Bitmap  */
-    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[¼Û½Å]Á¶È¸µ¿ÀÇ»çÀ¯ÄÚµå*/
-    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[¼Û½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[¼Û½Å]ÁÖ¹Î¹øÈ£        */
-    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[¼Û½Å]Á¶È¸»çÀ¯ÄÚµå    */
-    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[¼Û½Å]Á¶È¸ÀÚ ½Äº°ÄÚµå */
-    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[¼Û½Å]Àç¿äÃ»È½¼ö      */
-    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[¼Û½Å]ÀÎÁõ¹øÈ£        */
-    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¼ö½Å */
-    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¿äÃ» */
-    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸±¸ºÐ    */
-    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸ÄÚµå    */
-    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[¼ö½Å]Transaction Code*/
-    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[¼ö½Å]Àü¹®¼ö½Å±â°üÄÚµå*/
-    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[¼ö½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[¼ö½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[¼ö½Å]¼ö½Å FLAG       */
-    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[¼ö½Å]´Ü¸»±â±¸ºÐ      */
-    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[¼ö½Å]ÀÀ´äÄÚµå        */
-    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[¼ö½Å]User ID         */
-    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[¼ö½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[¼ö½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[¼ö½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[¼ö½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[¼ö½Å]Primary Bitmap  */
-    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*°ø¶õ                  */
-    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[¼ö½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[¼ö½Å]ÁÖ¹Î¹øÈ£        */
-    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[¼ö½Å]Á¤º¸¿¬¼Ó        */
-    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[¼ö½Å]Àç¿äÃ» È½¼ö     */
-    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[¼ö½Å]¼º¸í            */
-    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[¼ö½Å]ÀÎÁõ¹øÈ£        */
-    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÃÑ°Ç¼ö     */
-    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÀÀ´ä°Ç¼ö   */
-    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[¼ö½Å]¿ä¾à1 Á¤º¸±¸ºÐ  */
-    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[¼ö½Å]¿ä¾àÄÚµå1       */
-    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[¼ö½Å]ÆòÁ¡ Á¤º¸±¸ºÐ   */
-    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡°á°úÄÚ */
-    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[¼ö½Å]ÆòÁ¡ CB ½ºÄÚ¾î±¸*/
-    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯1  */
-    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯2  */
-    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯3  */
-    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯4  */
-    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯5  */
-    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯6  */
-    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëÆòÁ¡   */
-    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëµî±Þ   */
-    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª1    */
-    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª2    */
-    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª3    */
-    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[¼ö½Å]¿¡·¯ÄÚµå        */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Seq            IN RTSD0203.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[ì†¡ì‹ ]Transaction Code*/
+    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸ì†¡ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[ì†¡ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[ì†¡ì‹ ]ì†¡ì‹  FLAG       */
+    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[ì†¡ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[ì†¡ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[ì†¡ì‹ ]ì°¸ê°€ê¸°ê´€ID      */
+    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[ì†¡ì‹ ]Primary Bitmap  */
+    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒë™ì˜ì‚¬ìœ ì½”ë“œ*/
+    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[ì†¡ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[ì†¡ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒì‚¬ìœ ì½”ë“œ    */
+    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒìž ì‹ë³„ì½”ë“œ */
+    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[ì†¡ì‹ ]ìž¬ìš”ì²­íšŸìˆ˜      */
+    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[ì†¡ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìˆ˜ì‹  */
+    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìš”ì²­ */
+    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´êµ¬ë¶„    */
+    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´ì½”ë“œ    */
+    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[ìˆ˜ì‹ ]Transaction Code*/
+    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸ìˆ˜ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[ìˆ˜ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[ìˆ˜ì‹ ]ìˆ˜ì‹  FLAG       */
+    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[ìˆ˜ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[ìˆ˜ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[ìˆ˜ì‹ ]User ID         */
+    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[ìˆ˜ì‹ ]Primary Bitmap  */
+    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*ê³µëž€                  */
+    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[ìˆ˜ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[ìˆ˜ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[ìˆ˜ì‹ ]ì •ë³´ì—°ì†        */
+    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[ìˆ˜ì‹ ]ìž¬ìš”ì²­ íšŸìˆ˜     */
+    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[ìˆ˜ì‹ ]ì„±ëª…            */
+    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[ìˆ˜ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì´ê±´ìˆ˜     */
+    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‘ë‹µê±´ìˆ˜   */
+    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½1 ì •ë³´êµ¬ë¶„  */
+    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½ì½”ë“œ1       */
+    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì •ë³´êµ¬ë¶„   */
+    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ê²°ê³¼ì½” */
+    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  CB ìŠ¤ì½”ì–´êµ¬*/
+    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 1  */
+    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 2  */
+    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 3  */
+    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 4  */
+    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 5  */
+    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 6  */
+    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©í‰ì    */
+    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©ë“±ê¸‰   */
+    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’1    */
+    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’2    */
+    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’3    */
+    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[ìˆ˜ì‹ ]ì—ëŸ¬ì½”ë“œ        */
     v_E_Nd43         IN RTSD0203.E_ND43%TYPE,         /*Profile Code 1        */
     v_E_Nd44         IN RTSD0203.E_ND44%TYPE,         /*Profile Code 2        */
     v_E_Nd45         IN RTSD0203.E_ND45%TYPE,         /*Profile Code 3        */
-    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® Delete
+  -- SAFE KEY IR ì „ë¬¸ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0203 (
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Seq            IN RTSD0203.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Seq            IN RTSD0203.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °³ÀÎ½Å¿ëÁ¶È¸Àü¹®(IUD)
+  -- ê°œì¸ì‹ ìš©ì¡°íšŒì „ë¬¸(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0203 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Seq            IN OUT RTSD0203.SEQ%TYPE,        /*¼ø¹ø                  */
-    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ¼º°ø¿©ºÎ           */
-    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[¼Û½Å]Transaction Code*/
-    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[¼Û½Å]Àü¹®¼Û½Å±â°üÄÚµå*/
-    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[¼Û½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[¼Û½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[¼Û½Å]¼Û½Å FLAG       */
-    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[¼Û½Å]´Ü¸»±â±¸ºÐ      */
-    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[¼Û½Å]ÀÀ´äÄÚµå        */
-    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[¼Û½Å]Âü°¡±â°üID      */
-    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[¼Û½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[¼Û½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[¼Û½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[¼Û½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[¼Û½Å]Primary Bitmap  */
-    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[¼Û½Å]Á¶È¸µ¿ÀÇ»çÀ¯ÄÚµå*/
-    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[¼Û½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[¼Û½Å]ÁÖ¹Î¹øÈ£        */
-    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[¼Û½Å]Á¶È¸»çÀ¯ÄÚµå    */
-    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[¼Û½Å]Á¶È¸ÀÚ ½Äº°ÄÚµå */
-    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[¼Û½Å]Àç¿äÃ»È½¼ö      */
-    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[¼Û½Å]ÀÎÁõ¹øÈ£        */
-    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¼ö½Å */
-    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[¼Û½Å]ÆòÁ¡¼­ºñ½º ¿äÃ» */
-    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸±¸ºÐ    */
-    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[¼Û½Å]ÆòÁ¡Á¤º¸ÄÚµå    */
-    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[¼ö½Å]Transaction Code*/
-    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[¼ö½Å]Àü¹®¼ö½Å±â°üÄÚµå*/
-    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[¼ö½Å]Àü¹®±¸ºÐÄÚµå    */
-    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[¼ö½Å]°Å·¡±¸ºÐÄÚµå    */
-    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[¼ö½Å]¼ö½Å FLAG       */
-    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[¼ö½Å]´Ü¸»±â±¸ºÐ      */
-    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[¼ö½Å]ÀÀ´äÄÚµå        */
-    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[¼ö½Å]User ID         */
-    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[¼ö½Å]±â°üÀü¹® °ü¸®¹ø */
-    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[¼ö½Å]±â°üÀü¹® Àü¼Û½Ã */
-    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[¼ö½Å]NICE Àü¹® °ü¸®¹ø*/
-    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[¼ö½Å]NICE Àü¹® Àü¼Û½Ã*/
-    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[¼ö½Å]Primary Bitmap  */
-    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*°ø¶õ                  */
-    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[¼ö½Å]°³ÀÎ_¹ýÀÎ ±¸ºÐ  */
-    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[¼ö½Å]ÁÖ¹Î¹øÈ£        */
-    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[¼ö½Å]Á¤º¸¿¬¼Ó        */
-    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[¼ö½Å]Àç¿äÃ» È½¼ö     */
-    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[¼ö½Å]¼º¸í            */
-    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[¼ö½Å]ÀÎÁõ¹øÈ£        */
-    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÃÑ°Ç¼ö     */
-    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÀÀ´ä°Ç¼ö   */
-    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[¼ö½Å]¿ä¾à1 Á¤º¸±¸ºÐ  */
-    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[¼ö½Å]¿ä¾àÄÚµå1       */
-    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[¼ö½Å]ÆòÁ¡ Á¤º¸±¸ºÐ   */
-    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡°á°úÄÚ */
-    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[¼ö½Å]ÆòÁ¡ CB ½ºÄÚ¾î±¸*/
-    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[¼ö½Å]ÆòÁ¡Àû¿ë¹èÁ¦»çÀ¯*/
-    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯1  */
-    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯2  */
-    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯3  */
-    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯4  */
-    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯5  */
-    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[¼ö½Å]ÆòÁ¡ ÆòÁ¡»çÀ¯6  */
-    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëÆòÁ¡   */
-    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[¼ö½Å]ÆòÁ¡ ½Å¿ëµî±Þ   */
-    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª1    */
-    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª2    */
-    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[¼ö½Å]ÆòÁ¡ °á°ú°ª3    */
-    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[¼ö½Å]¿¡·¯ÄÚµå        */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Seq            IN OUT RTSD0203.SEQ%TYPE,        /*ìˆœë²ˆ                  */
+    v_Yn             IN RTSD0203.YN%TYPE,             /*IF ì„±ê³µì—¬ë¶€           */
+    v_I_Nd01         IN RTSD0203.I_ND01%TYPE,         /*[ì†¡ì‹ ]Transaction Code*/
+    v_I_Nd02         IN RTSD0203.I_ND02%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸ì†¡ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_I_Nd03         IN RTSD0203.I_ND03%TYPE,         /*[ì†¡ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd04         IN RTSD0203.I_ND04%TYPE,         /*[ì†¡ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_I_Nd05         IN RTSD0203.I_ND05%TYPE,         /*[ì†¡ì‹ ]ì†¡ì‹  FLAG       */
+    v_I_Nd06         IN RTSD0203.I_ND06%TYPE,         /*[ì†¡ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_I_Nd07         IN RTSD0203.I_ND07%TYPE,         /*[ì†¡ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_I_Nd08         IN RTSD0203.I_ND08%TYPE,         /*[ì†¡ì‹ ]ì°¸ê°€ê¸°ê´€ID      */
+    v_I_Nd09         IN RTSD0203.I_ND09%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_I_Nd10         IN RTSD0203.I_ND10%TYPE,         /*[ì†¡ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_I_Nd11         IN RTSD0203.I_ND11%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_I_Nd12         IN RTSD0203.I_ND12%TYPE,         /*[ì†¡ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_I_Nd13         IN RTSD0203.I_ND13%TYPE,         /*[ì†¡ì‹ ]Primary Bitmap  */
+    v_I_Nd14         IN RTSD0203.I_ND14%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒë™ì˜ì‚¬ìœ ì½”ë“œ*/
+    v_I_Nd15         IN RTSD0203.I_ND15%TYPE,         /*[ì†¡ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_I_Nd16         IN RTSD0203.I_ND16%TYPE,         /*[ì†¡ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_I_Nd17         IN RTSD0203.I_ND17%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒì‚¬ìœ ì½”ë“œ    */
+    v_I_Nd18         IN RTSD0203.I_ND18%TYPE,         /*[ì†¡ì‹ ]ì¡°íšŒìž ì‹ë³„ì½”ë“œ */
+    v_I_Nd19         IN RTSD0203.I_ND19%TYPE,         /*[ì†¡ì‹ ]ìž¬ìš”ì²­íšŸìˆ˜      */
+    v_I_Nd20         IN RTSD0203.I_ND20%TYPE,         /*[ì†¡ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_I_Nd21         IN RTSD0203.I_ND21%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìˆ˜ì‹  */
+    v_I_Nd22         IN RTSD0203.I_ND22%TYPE,         /*[ì†¡ì‹ ]í‰ì ì„œë¹„ìŠ¤ ìš”ì²­ */
+    v_I_Nd23         IN RTSD0203.I_ND23%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´êµ¬ë¶„    */
+    v_I_Nd24         IN RTSD0203.I_ND24%TYPE,         /*[ì†¡ì‹ ]í‰ì ì •ë³´ì½”ë“œ    */
+    v_E_Nd01         IN RTSD0203.E_ND01%TYPE,         /*[ìˆ˜ì‹ ]Transaction Code*/
+    v_E_Nd02         IN RTSD0203.E_ND02%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸ìˆ˜ì‹ ê¸°ê´€ì½”ë“œ*/
+    v_E_Nd03         IN RTSD0203.E_ND03%TYPE,         /*[ìˆ˜ì‹ ]ì „ë¬¸êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd04         IN RTSD0203.E_ND04%TYPE,         /*[ìˆ˜ì‹ ]ê±°ëž˜êµ¬ë¶„ì½”ë“œ    */
+    v_E_Nd05         IN RTSD0203.E_ND05%TYPE,         /*[ìˆ˜ì‹ ]ìˆ˜ì‹  FLAG       */
+    v_E_Nd06         IN RTSD0203.E_ND06%TYPE,         /*[ìˆ˜ì‹ ]ë‹¨ë§ê¸°êµ¬ë¶„      */
+    v_E_Nd07         IN RTSD0203.E_ND07%TYPE,         /*[ìˆ˜ì‹ ]ì‘ë‹µì½”ë“œ        */
+    v_E_Nd08         IN RTSD0203.E_ND08%TYPE,         /*[ìˆ˜ì‹ ]User ID         */
+    v_E_Nd09         IN RTSD0203.E_ND09%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ê´€ë¦¬ë²ˆ */
+    v_E_Nd10         IN RTSD0203.E_ND10%TYPE,         /*[ìˆ˜ì‹ ]ê¸°ê´€ì „ë¬¸ ì „ì†¡ì‹œ */
+    v_E_Nd11         IN RTSD0203.E_ND11%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ê´€ë¦¬ë²ˆ*/
+    v_E_Nd12         IN RTSD0203.E_ND12%TYPE,         /*[ìˆ˜ì‹ ]NICE ì „ë¬¸ ì „ì†¡ì‹œ*/
+    v_E_Nd13         IN RTSD0203.E_ND13%TYPE,         /*[ìˆ˜ì‹ ]Primary Bitmap  */
+    v_E_Nd14         IN RTSD0203.E_ND14%TYPE,         /*ê³µëž€                  */
+    v_E_Nd15         IN RTSD0203.E_ND15%TYPE,         /*[ìˆ˜ì‹ ]ê°œì¸_ë²•ì¸ êµ¬ë¶„  */
+    v_E_Nd16         IN RTSD0203.E_ND16%TYPE,         /*[ìˆ˜ì‹ ]ì£¼ë¯¼ë²ˆí˜¸        */
+    v_E_Nd17         IN RTSD0203.E_ND17%TYPE,         /*[ìˆ˜ì‹ ]ì •ë³´ì—°ì†        */
+    v_E_Nd18         IN RTSD0203.E_ND18%TYPE,         /*[ìˆ˜ì‹ ]ìž¬ìš”ì²­ íšŸìˆ˜     */
+    v_E_Nd19         IN RTSD0203.E_ND19%TYPE,         /*[ìˆ˜ì‹ ]ì„±ëª…            */
+    v_E_Nd20         IN RTSD0203.E_ND20%TYPE,         /*[ìˆ˜ì‹ ]ì¸ì¦ë²ˆí˜¸        */
+    v_E_Nd21         IN RTSD0203.E_ND21%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì´ê±´ìˆ˜     */
+    v_E_Nd22         IN RTSD0203.E_ND22%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‘ë‹µê±´ìˆ˜   */
+    v_E_Nd23         IN RTSD0203.E_ND23%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½1 ì •ë³´êµ¬ë¶„  */
+    v_E_Nd24         IN RTSD0203.E_ND24%TYPE,         /*[ìˆ˜ì‹ ]ìš”ì•½ì½”ë“œ1       */
+    v_E_Nd25         IN RTSD0203.E_ND25%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì •ë³´êµ¬ë¶„   */
+    v_E_Nd26         IN RTSD0203.E_ND26%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ê²°ê³¼ì½” */
+    v_E_Nd27         IN RTSD0203.E_ND27%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  CB ìŠ¤ì½”ì–´êµ¬*/
+    v_E_Nd28         IN RTSD0203.E_ND28%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd29         IN RTSD0203.E_ND29%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd30         IN RTSD0203.E_ND30%TYPE,         /*[ìˆ˜ì‹ ]í‰ì ì ìš©ë°°ì œì‚¬ìœ */
+    v_E_Nd31         IN RTSD0203.E_ND31%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 1  */
+    v_E_Nd32         IN RTSD0203.E_ND32%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 2  */
+    v_E_Nd33         IN RTSD0203.E_ND33%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 3  */
+    v_E_Nd34         IN RTSD0203.E_ND34%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 4  */
+    v_E_Nd35         IN RTSD0203.E_ND35%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 5  */
+    v_E_Nd36         IN RTSD0203.E_ND36%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  í‰ì ì‚¬ìœ 6  */
+    v_E_Nd37         IN RTSD0203.E_ND37%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©í‰ì    */
+    v_E_Nd38         IN RTSD0203.E_ND38%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ì‹ ìš©ë“±ê¸‰   */
+    v_E_Nd39         IN RTSD0203.E_ND39%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’1    */
+    v_E_Nd40         IN RTSD0203.E_ND40%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’2    */
+    v_E_Nd41         IN RTSD0203.E_ND41%TYPE,         /*[ìˆ˜ì‹ ]í‰ì  ê²°ê³¼ê°’3    */
+    v_E_Nd42         IN RTSD0203.E_ND42%TYPE,         /*[ìˆ˜ì‹ ]ì—ëŸ¬ì½”ë“œ        */
     v_E_Nd43         IN RTSD0203.E_ND43%TYPE,         /*Profile Code 1        */
     v_E_Nd44         IN RTSD0203.E_ND44%TYPE,         /*Profile Code 2        */
     v_E_Nd45         IN RTSD0203.E_ND45%TYPE,         /*Profile Code 3        */
-    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*°ø¶õ                  */
-    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_E_Nd46         IN RTSD0203.E_ND46%TYPE,         /*ê³µëž€                  */
+    v_Reg_Id         IN RTSD0203.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -356,11 +356,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0203 AS
 
 
   /*****************************************************************************
-  -- SAFE KEY IR Àü¹® - ¼ø¹ø Ãé¹ø È¹µæ
+  -- SAFE KEY IR ì „ë¬¸ - ìˆœë²ˆ ì·Œë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0203Seq(
-    v_Safekey        IN RTSD0203.SAFEKEY%TYPE           /*ÀÎÁõ¹øÈ£            */
+    v_Safekey        IN RTSD0203.SAFEKEY%TYPE           /*ì¸ì¦ë²ˆí˜¸            */
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0203;
-/

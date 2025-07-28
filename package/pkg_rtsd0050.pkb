@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
 /*******************************************************************************
    NAME:     PKG_RTSD0050
-   PURPOSE:  ·»Å»¸¶½ºÅÍ
+   PURPOSE:  ë Œíƒˆë§ˆìŠ¤í„°
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,53 +9,53 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
    1.0        2018-11-05  Sean             1. Created this package body.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ Á¶È¸
+  -- ë Œíƒˆë§ˆìŠ¤í„° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0050 (
     Ref_Cursor            IN OUT SYS_REFCURSOR,
-    v_RTMASTER_NM         IN RTSD0050.RTMASTER_NM%TYPE        /* ·»Å» ¸¶½ºÅÍ ¸í */
+    v_RTMASTER_NM         IN RTSD0050.RTMASTER_NM%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ëª… */
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR
-    SELECT RTMASTER_NU	/* ·»Å» ¸¶½ºÅÍ »ç¹ø */
-        , RTMASTER_NM	  /* ·»Å» ¸¶½ºÅÍ ¸í   */
-        , MOB_NO		    /* ÇÚµåÆù¹øÈ£       */
-        , TEL_NO		    /* ÀüÈ­¹øÈ£         */
-        , USE_YN		    /* ·»Å»¸¶½ºÅÍ¿©ºÎ   */
-        , REG_ID		    /* µî·ÏÀÚ ID        */
-        , REG_DT		    /* µî·ÏÀÏ           */
-        , CHG_ID		    /* º¯°æÀÚ ID        */
-        , CHG_DT		    /* º¯°æÀÏ           */
-      FROM RTSD0050     /* ·»Å»¸¶½ºÅÍ */
+    SELECT RTMASTER_NU	/* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ */
+        , RTMASTER_NM	  /* ë Œíƒˆ ë§ˆìŠ¤í„° ëª…   */
+        , MOB_NO		    /* í•¸ë“œí°ë²ˆí˜¸       */
+        , TEL_NO		    /* ì „í™”ë²ˆí˜¸         */
+        , USE_YN		    /* ë Œíƒˆë§ˆìŠ¤í„°ì—¬ë¶€   */
+        , REG_ID		    /* ë“±ë¡ìž ID        */
+        , REG_DT		    /* ë“±ë¡ì¼           */
+        , CHG_ID		    /* ë³€ê²½ìž ID        */
+        , CHG_DT		    /* ë³€ê²½ì¼           */
+      FROM RTSD0050     /* ë Œíƒˆë§ˆìŠ¤í„° */
      WHERE 1=1
        AND RTMASTER_NM LIKE TRIM(v_RTMASTER_NM) || '%'
 ;
   END p_sRtsd0050;
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ °ü¸®Áö¿ª Á¶È¸
+  -- ë Œíƒˆë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0050MgmtArea (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ·»Å» ¸¶½ºÅÍ »ç¹ø */
+    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ */
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR  
-  SELECT MM.RTMASTER_NU     /* ·»Å» ¸¶½ºÅÍ »ç¹ø */
-       , MM.RENTAL_GROUP    /* ·»Å»Áö»ç */
+  SELECT MM.RTMASTER_NU     /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ */
+       , MM.RENTAL_GROUP    /* ë Œíƒˆì§€ì‚¬ */
        , G.RENTAL_GROUP_NM
-       , MM.RENTAL_OFFICE   /* ·»Å»Áö¿ª */
+       , MM.RENTAL_OFFICE   /* ë Œíƒˆì§€ì—­ */
        , A.RENTAL_OFFICE_NM
-       , MM.STR_DAY         /* ½ÃÀÛÀÏÀÚ */
-       , MM.END_DAY         /* Á¾·áÀÏÀÚ */
-       , MM.REG_ID		      /* µî·ÏÀÚ ID */
-       , MM.REG_DT		      /* µî·ÏÀÏ    */
-       , MM.CHG_ID		      /* º¯°æÀÚ ID */
-       , MM.CHG_DT		      /* º¯°æÀÏ    */     
-    FROM RTSD0050 M       /* ·»Å»¸¶½ºÅÍ */
-       , RTSD0051 MM      /* ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª */
-       , RTSD0052 G       /* ·»Å»Áö»ç */
-       , RTSD0053 A       /* ·»Å»Áö¿ª */
+       , MM.STR_DAY         /* ì‹œìž‘ì¼ìž */
+       , MM.END_DAY         /* ì¢…ë£Œì¼ìž */
+       , MM.REG_ID		      /* ë“±ë¡ìž ID */
+       , MM.REG_DT		      /* ë“±ë¡ì¼    */
+       , MM.CHG_ID		      /* ë³€ê²½ìž ID */
+       , MM.CHG_DT		      /* ë³€ê²½ì¼    */     
+    FROM RTSD0050 M       /* ë Œíƒˆë§ˆìŠ¤í„° */
+       , RTSD0051 MM      /* ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ */
+       , RTSD0052 G       /* ë Œíƒˆì§€ì‚¬ */
+       , RTSD0053 A       /* ë Œíƒˆì§€ì—­ */
    WHERE 1=1
      AND G.RENTAL_GROUP = A.RENTAL_GROUP   
      AND M.RTMASTER_NU = MM.RTMASTER_NU(+)
@@ -74,42 +74,42 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
   END p_sRtsd0050MgmtArea;    
 
   /*****************************************************************************
-  -- ¼Ò¼ÓÆÇ¸ÅÀÎ Á¶È¸
+  -- ì†Œì†íŒë§¤ì¸ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0050SalesAgent (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP   IN RTSD0052.RENTAL_GROUP%TYPE,      /* ·»Å»Áö»ç */
-    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ·»Å» ¸¶½ºÅÍ »ç¹ø */    
+    v_RENTAL_GROUP   IN RTSD0052.RENTAL_GROUP%TYPE,      /* ë Œíƒˆì§€ì‚¬ */
+    v_RTMASTER_NU    IN RTSD0050.RTMASTER_NU%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ */    
     ) IS
   BEGIN
     OPEN Ref_Cursor FOR      
-    SELECT V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-         , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-         , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-         , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-         , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */    
-         , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ   		    */    
-         , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-         , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-         , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-         , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù       */
-         , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù       */         
-         , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+    SELECT V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+         , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+         , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+         , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+         , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */    
+         , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„   		    */    
+         , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+         , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+         , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+         , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜       */
+         , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜       */         
+         , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
          , G.RENTAL_GROUP_NM
-         , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+         , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
          , A.RENTAL_OFFICE_NM
-      FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-         , RTSD0052 G   /* ·»Å»Áö»ç */  
-         , RTSD0053 A   /* ·»Å»Áö¿ª */  
+      FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+         , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+         , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */  
      WHERE 1=1
        AND V.RENTAL_GROUP = G.RENTAL_GROUP
        AND V.RENTAL_OFFICE = A.RENTAL_OFFICE
        AND V.RENTAL_GROUP = v_RENTAL_GROUP
       AND V.RENTAL_OFFICE in (  
-          SELECT IMM.RENTAL_OFFICE  /* ·»Å»Áö¿ª */
-            FROM RTSD0050 IM     /* ·»Å»¸¶½ºÅÍ */
-               , RTSD0051 IMM    /* ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª */
-               , RTSD0053 IA     /* ·»Å»Áö¿ª */
+          SELECT IMM.RENTAL_OFFICE  /* ë Œíƒˆì§€ì—­ */
+            FROM RTSD0050 IM     /* ë Œíƒˆë§ˆìŠ¤í„° */
+               , RTSD0051 IMM    /* ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ */
+               , RTSD0053 IA     /* ë Œíƒˆì§€ì—­ */
            WHERE 1=1
              AND IM.RTMASTER_NU = IMM.RTMASTER_NU
              AND IMM.RENTAL_OFFICE = IA.RENTAL_OFFICE
@@ -121,10 +121,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
   END p_sRtsd0050SalesAgent;
 
    /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ °ü¸®(IUD)
+  -- ë Œíƒˆë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0050 (
-    v_Comm_Dvsn       IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn       IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
     v_RTMASTER_NM     IN RTSD0050.RTMASTER_NM%TYPE,
     v_MOB_NO          IN RTSD0050.MOB_NO%TYPE,
@@ -142,40 +142,40 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
  
     IF v_Comm_Dvsn = 'I' THEN
       IF 0 <> f_sRTSD0050Count(v_RTMASTER_NU) THEN
-          v_Return_Message := 'Áßº¹¿¡·¯ : ÀÌ¹Ì Á¸ÀçÇÏ´Â »ç¹ø('||v_RTMASTER_NU||')ÀÔ´Ï´Ù!';
+          v_Return_Message := 'ì¤‘ë³µì—ëŸ¬ : ì´ë¯¸ ì¡´ìž¬í•˜ëŠ” ì‚¬ë²ˆ('||v_RTMASTER_NU||')ìž…ë‹ˆë‹¤!';
           RAISE e_Error;
       END IF;
       
       IF 0 != f_InsertRTSD0050(v_RTMASTER_NU, v_RTMASTER_NM, v_MOB_NO, v_TEL_NO,
                                v_USE_YN, v_REG_ID, v_ErrorText) THEN
-            v_Return_Message := '·»Å»¸¶½ºÅÍ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë Œíƒˆë§ˆìŠ¤í„° ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
       END IF;        
     ELSIF v_Comm_Dvsn = 'U' THEN
       IF (TRIM(v_RTMASTER_NU) IS NULL) THEN
-          v_Return_Message := '·»Å»¸¶½ºÅÍ »ç¹ø('||v_RTMASTER_NU||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+          v_Return_Message := 'ë Œíƒˆë§ˆìŠ¤í„° ì‚¬ë²ˆ('||v_RTMASTER_NU||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
           RAISE e_Error;
       END IF;
     
       IF 0 = f_sRTSD0050Count(v_RTMASTER_NU) THEN
-          v_Return_Message := '»ç¹ø('||v_RTMASTER_NU||')¿¡ ÇØ´çÇÏ´Â ·»Å»¸¶½ºÅÍ Á¤º¸°¡ ¾ø½À´Ï´Ù.!';
+          v_Return_Message := 'ì‚¬ë²ˆ('||v_RTMASTER_NU||')ì— í•´ë‹¹í•˜ëŠ” ë Œíƒˆë§ˆìŠ¤í„° ì •ë³´ê°€ ì—†ìŠµë‹ˆë‹¤.!';
           RAISE e_Error;
       END IF;    
     
       IF 0 != f_UpdateRTSD0050(v_RTMASTER_NU, v_RTMASTER_NM, v_MOB_NO, v_TEL_NO,
                                v_USE_YN, v_REG_ID, v_ErrorText) THEN
-          v_Return_Message := '·»Å»¸¶½ºÅÍ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+          v_Return_Message := 'ë Œíƒˆë§ˆìŠ¤í„° ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
           v_ErrorText := v_ErrorText;
           RAISE e_Error;
       END IF;
     ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -191,13 +191,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTSD0050.p_IUDRTSD0050(2)', v_ErrorText, v_Return_Message);
   END p_IUDRtsd0050;  
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ Insert
+  -- ë Œíƒˆë§ˆìŠ¤í„° Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0050 (
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
@@ -240,7 +240,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
   END f_InsertRTSD0050;    
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ Update
+  -- ë Œíƒˆë§ˆìŠ¤í„° Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0050 ( 
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE,
@@ -270,10 +270,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
   END f_UpdateRTSD0050; 
 
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ - ·»Å» ¸¶½ºÅÍ »ç¹ø È¹µæ
+  -- ë Œíƒˆë§ˆìŠ¤í„° - ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0050NuSeq RETURN VARCHAR2 IS
-    v_NuSeq   RTSD0050.RTMASTER_NU%TYPE default 0; /* ·»Å» ¸¶½ºÅÍ »ç¹ø */
+    v_NuSeq   RTSD0050.RTMASTER_NU%TYPE default 0; /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ */
   BEGIN
     SELECT  SEQ_RTSD0050RTMASTER_NU_SEQ.NEXTVAL NU_SEQ
       INTO  v_NuSeq
@@ -287,7 +287,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
   END f_sRtsd0050NuSeq;
   
   /*****************************************************************************
-  -- ·»Å»¸¶½ºÅÍ Count
+  -- ë Œíƒˆë§ˆìŠ¤í„° Count
   *****************************************************************************/
   FUNCTION f_sRTSD0050Count ( 
     v_RTMASTER_NU	    IN RTSD0050.RTMASTER_NU%TYPE
@@ -308,4 +308,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0050 AS
         RETURN 0;
   END f_sRTSD0050Count;  
 END PKG_RTSD0050;
-/

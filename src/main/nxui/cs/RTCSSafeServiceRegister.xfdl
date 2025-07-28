@@ -253,6 +253,7 @@
           <Column id="servAdSeq" type="STRING" size="256"/>
           <Column id="basicServCntr" type="STRING" size="256"/>
           <Column id="applyReason" type="STRING" size="256"/>
+          <Column id="mfpYn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_save" useclientlayout="true">
@@ -487,8 +488,9 @@ this.fn_callBack = function (strSvcId, nErrorCode, strErrorMsg){
 	
 	if( strSvcId == "saveRTCSSafeSer" ){		
 		if( nErrorCode < 0 ){
-			alert(strErrorMsg);
+			this.alert(strErrorMsg);
 		}else{
+			this.alert("저장되었습니다.");
 			this.fn_search();
 		}
 	}
@@ -617,7 +619,8 @@ this.fn_save = function(){
 	var dlvrYn		= nvl(this.ds_list.getColumn(saveRow, "dlvrYn"));						//저장 or 업데이트
 	var servAdSeq	= nvl(this.ds_list.getColumn(saveRow, "servAdSeq"));					//부여순번
 	var dlvStatNew  = nvl(this.ds_list.getColumn(saveRow, "dlvStat")); 						//신청상태
-	var applyReason  = nvl(this.ds_list.getColumn(saveRow, "applyReason")); 				//신청사유
+	var applyReason	= nvl(this.ds_list.getColumn(saveRow, "applyReason")); 					//신청사유
+	var mfpYn		= nvl(this.ds_list.getColumn(saveRow, "mfpYn")); 						//중도완납여부
 		
 	//20190418 계약종료고객 서비스 신청 불가
 	//--------------------------------------------------------------------------------------------------------------------------------
@@ -637,8 +640,15 @@ this.fn_save = function(){
 	var userId 	 = application.gds_userInfo.getColumn(0, "userId");
 	
 	if(osYear + "" + osMonth + ""  + osDate < this.toDay){
-		if(userId != "10164030" && userId != "10083012"){
+		if(userId != "10135008" && userId != "10244015"){
 			alert("렌탈계약이 종료된 고객은 서비스를 신청 할 수 없습니다.\n 서비스신청문의는 관리자에게 문의해주세요.");
+			return;
+		}
+	}
+	
+	if(mfpYn == "Y"){
+		if(userId != "10135008" && userId != "10244015"){
+			alert("중도완납/해지된 고객은 서비스를 신청 할 수 없습니다.\n 서비스신청문의는 관리자에게 문의해주세요.");
 			return;
 		}
 	}
@@ -915,16 +925,16 @@ this.div_search_btn_custPopUp_onclick = function(obj:Button,  e:nexacro.ClickEve
 	Ex.core.popup(this,"고객찾기","comm::RTCOMMCust_pop.xfdl",args, "modaless=false");
 }
 this.returnCustInfo = function(res){
-	this.div_search.ed_custNo.set_value( res[0] );
-	this.div_search.ed_custNm.set_value( res[1] );
+	this.div_search.ed_custNo.set_value( res[0].getColumn(0, "custNo") );
+	this.div_search.ed_custNm.set_value( res[0].getColumn(0, "custNm") );
 }
 this.div_search_btn_custPopUp00_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
 	var args ={ p_arg : this.p_arg };
 	Ex.core.popup(this,"계약번호 조회","comm::RTCOMMOrderNo_pop.xfdl",args, "modaless=false");
 }
-this.returnOrderNo = function(ordNo){
-	this.div_search.ed_ordNo.set_value(ordNo);
+this.returnOrderNoInfo = function(res){
+	this.div_search.ed_ordNo.set_value( res[0].getColumn(0, "ordNo") );
 }
 
 this.gr_imgList_oncellclick = function(obj:Grid, e:nexacro.GridClickEventInfo)

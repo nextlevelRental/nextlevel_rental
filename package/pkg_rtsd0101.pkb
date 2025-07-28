@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0101 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0101
-   PURPOSE   °í°´ ¸¶½ºÅÍ º¯°æÀÌ·Â °ü¸®
+   PURPOSE   ê³ ê° ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0101 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ º¯°æÀÌ·Â Count
+  -- ê³ ê° ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0101Count(
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,          /*°í°´¹øÈ£            */
-    v_Seq            IN RTSD0101.SEQ%TYPE               /*¼ø¹ø                */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,          /*ê³ ê°ë²ˆí˜¸            */
+    v_Seq            IN RTSD0101.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,71 +34,71 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0101 AS
   END f_sRtsd0101Count;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ º¯°æÀÌ·Â Select
+  -- ê³ ê° ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0101 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE         /*°í°´¹øÈ£              */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE         /*ê³ ê°ë²ˆí˜¸              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.CUST_NO,                   /*°í°´¹øÈ£            */
-            A.SEQ,                       /*¼ø¹ø                */
-            A.CUST_TP,                   /*°í°´À¯Çü            */
-            A.CUST_TP2,                  /*°í°´ºÐ·ù            */
-            A.CUST_NM,                   /*°í°´¸í/¹ýÀÎ¸í       */
-            A.BIRTH_DAY,                 /*¹ýÁ¤»ý³â¿ùÀÏ        */
-            A.GENDER_CD,                 /*¼ºº°                */
-            A.LF_CD,                     /*³»¿Ü±¹ÀÎ            */
-            A.MOB_NO,                    /*ÈÞ´ëÆù¹øÈ£          */
-            A.MOB_FIRM,                  /*Åë½Å»ç(S039)        */
-            A.TEL_NO,                    /*ÀüÈ­¹øÈ£            */
-            A.FAX_NO,                    /*ÆÑ½º¹øÈ£            */
-            A.BLD_MNG_NO,                /*¿ìÆí¹øÈ£PK(°Ç¹°°ü¸® */
-            A.POS_CD,                    /*¿ìÆí¹øÈ£            */
-            A.ADDR1,                     /*ÁÖ¼Ò                */
-            A.ADDR2,                     /*»ó¼¼ÁÖ¼Ò            */
-            A.TEL_NO2    ,               /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£   */
-            A.BLD_MNG_NO2,               /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£(B)*/
-            A.POS_CD2    ,               /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£   */
-            A.ADDR1_2    ,               /*°í°´ÁÖ¼Ò-ÁÖ¼Ò       */
-            A.ADDR2_2    ,               /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò   */
-            A.SAFEKEY,                   /*ÀÎÁõ¹øÈ£            */
-            A.BUSL_NO,                   /*»ç¾÷ÀÚ¹øÈ£          */
-            A.CORP_NO,                   /*¹ýÀÎ¹øÈ£            */
-            A.REP_NM,                    /*´ëÇ¥ÀÚ¸í            */
-            A.O_CUSTNM,                  /*»ç¾÷ÁÖ¸í            */
-            A.O_BIRTHDAY,                /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ */
-            A.O_GENDERCD,                /*»ç¾÷ÁÖ ¼ºº°         */
-            A.O_LFCD,                    /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ     */
-            A.O_MOBNO,                   /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£   */
-            A.O_SAFEKEY,                 /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£     */
-            A.C_CUSTNM,                  /*´ã´çÀÚ ¸í           */
-            A.C_TELNO,                   /*´ã´çÀÚ ÀüÈ­¹øÈ£     */
-            A.EMAIL_ADDR,                /*E-MailÁÖ¼Ò          */
-            A.BUSI_TYPE,                 /*¾÷Á¾                */
-            A.BUSI_COND,                 /*¾÷ÅÂ                */
-            A.TAX_YN,                    /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ */
-            A.KUNNR,                     /*SAP°í°´¹øÈ£         */
+    SELECT  A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            A.SEQ,                       /*ìˆœë²ˆ                */
+            A.CUST_TP,                   /*ê³ ê°ìœ í˜•            */
+            A.CUST_TP2,                  /*ê³ ê°ë¶„ë¥˜            */
+            A.CUST_NM,                   /*ê³ ê°ëª…/ë²•ì¸ëª…       */
+            A.BIRTH_DAY,                 /*ë²•ì •ìƒë…„ì›”ì¼        */
+            A.GENDER_CD,                 /*ì„±ë³„                */
+            A.LF_CD,                     /*ë‚´ì™¸êµ­ì¸            */
+            A.MOB_NO,                    /*íœ´ëŒ€í°ë²ˆí˜¸          */
+            A.MOB_FIRM,                  /*í†µì‹ ì‚¬(S039)        */
+            A.TEL_NO,                    /*ì „í™”ë²ˆí˜¸            */
+            A.FAX_NO,                    /*íŒ©ìŠ¤ë²ˆí˜¸            */
+            A.BLD_MNG_NO,                /*ìš°íŽ¸ë²ˆí˜¸PK(ê±´ë¬¼ê´€ë¦¬ */
+            A.POS_CD,                    /*ìš°íŽ¸ë²ˆí˜¸            */
+            A.ADDR1,                     /*ì£¼ì†Œ                */
+            A.ADDR2,                     /*ìƒì„¸ì£¼ì†Œ            */
+            A.TEL_NO2    ,               /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸   */
+            A.BLD_MNG_NO2,               /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸(B)*/
+            A.POS_CD2    ,               /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸   */
+            A.ADDR1_2    ,               /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ       */
+            A.ADDR2_2    ,               /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ   */
+            A.SAFEKEY,                   /*ì¸ì¦ë²ˆí˜¸            */
+            A.BUSL_NO,                   /*ì‚¬ì—…ìžë²ˆí˜¸          */
+            A.CORP_NO,                   /*ë²•ì¸ë²ˆí˜¸            */
+            A.REP_NM,                    /*ëŒ€í‘œìžëª…            */
+            A.O_CUSTNM,                  /*ì‚¬ì—…ì£¼ëª…            */
+            A.O_BIRTHDAY,                /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼ */
+            A.O_GENDERCD,                /*ì‚¬ì—…ì£¼ ì„±ë³„         */
+            A.O_LFCD,                    /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸     */
+            A.O_MOBNO,                   /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸   */
+            A.O_SAFEKEY,                 /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸     */
+            A.C_CUSTNM,                  /*ë‹´ë‹¹ìž ëª…           */
+            A.C_TELNO,                   /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸     */
+            A.EMAIL_ADDR,                /*E-Mailì£¼ì†Œ          */
+            A.BUSI_TYPE,                 /*ì—…ì¢…                */
+            A.BUSI_COND,                 /*ì—…íƒœ                */
+            A.TAX_YN,                    /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€ */
+            A.KUNNR,                     /*SAPê³ ê°ë²ˆí˜¸         */
             A.CI_CD,                     /*CI                  */
             A.DI_CD,                     /*DI                  */
-            A.USE_YN,                    /*»ç¿ë¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+            A.USE_YN,                    /*ì‚¬ìš©ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0101 A
     WHERE   A.CUST_NO = v_Cust_No;
 
   END p_sRtsd0101;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ º¯°æÀÌ·Â Insert
+  -- ê³ ê° ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0101 (
-    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
+    v_Cust_No        IN RTSD0101.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -210,4 +210,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0101 AS
   END f_InsertRtsd0101;
 
 END Pkg_Rtsd0101;
-/

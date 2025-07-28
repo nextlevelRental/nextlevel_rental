@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0111 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0111
-   PURPOSE   Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) °ü¸®
+   PURPOSE   ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,91 +10,90 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0111 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) Count
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) Count
   *****************************************************************************/
   FUNCTION f_sRtcs0111Count(
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,           /*»ó´ãÀ¯Çü            */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE       /*Áú¹®¹øÈ£            */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,           /*ìƒë‹´ìœ í˜•            */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE       /*ì§ˆë¬¸ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) Select
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0111 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*Á¤·Ä¼ø¹ø              */
-    v_Reg_Id         IN RTCS0111.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*ì •ë ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0111.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) Insert
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0111 (
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*Á¤·Ä¼ø¹ø              */
-    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*ì •ë ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) Update
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0111 (
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*Á¤·Ä¼ø¹ø              */
-    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*ì •ë ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) Delete
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0111 (
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) °ü¸®(IUD)
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0111 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*Áú¹®¹øÈ£              */
-    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*Á¤·Ä¼ø¹ø              */
-    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_No    IN RTCS0111.QUESTION_NO%TYPE,    /*ì§ˆë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCS0111.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE,       /*ì •ë ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCS0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Áú¹®°ü¸®(»ó´ãÀ¯Çü_Áú¹®¹øÈ£) - Á¤·Ä¼ø¹øº° Áú¹®À¯Çü È¹µæ
+  -- ì§ˆë¬¸ê´€ë¦¬(ìƒë‹´ìœ í˜•_ì§ˆë¬¸ë²ˆí˜¸) - ì •ë ¬ìˆœë²ˆë³„ ì§ˆë¬¸ìœ í˜• íšë“
   *****************************************************************************/
   FUNCTION f_sRtcs0111QuestionNo(
-    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*Áú¹®À¯Çü              */
-    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE        /*Á¤·Ä¼ø¹ø              */
+    v_Job_Tp         IN RTCS0111.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Question_Tp    IN RTCS0112.QUESTION_TP%TYPE,    /*ì§ˆë¬¸ìœ í˜•              */
+    v_Sort_Seq       IN RTCS0111.SORT_SEQ%TYPE        /*ì •ë ¬ìˆœë²ˆ              */
     ) RETURN VARCHAR;
  
 /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã Á¡¼ö¹Ý¿µ¿©ºÎ µî·Ï
+  -- í•´í”¼ì½œìƒë‹´ ì ìˆ˜ë°˜ì˜ì—¬ë¶€ ë“±ë¡
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0111Reg (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE,       /*»ó´ã¹øÈ£              */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE,       /*ìƒë‹´ë²ˆí˜¸              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
        
 END Pkg_Rtcs0111;
-/

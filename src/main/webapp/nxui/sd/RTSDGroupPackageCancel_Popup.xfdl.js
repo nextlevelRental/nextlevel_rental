@@ -14,7 +14,8 @@
                 this.set_name("form");
                 this.set_classname("Authority");
                 this.set_titletext("단체(묶음)해지팝업");
-                this._setFormPosition(0,0,1144,629);
+                this.set_scrollbars("none");
+                this._setFormPosition(0,0,1144,575);
             }
             this.getSetter("inheritanceid").set("");
 
@@ -22,6 +23,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("comGrp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -41,6 +43,7 @@
 
             obj = new Dataset("dsList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -52,6 +55,7 @@
 
             obj = new Dataset("comType", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -63,24 +67,38 @@
 
             obj = new Dataset("ds_ordNoList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"grpType\" type=\"STRING\" size=\"256\"/><Column id=\"dcGb\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_ordNoListChk", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"grpType\" type=\"STRING\" size=\"256\"/><Column id=\"dcGb\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("ds_ordNoListChk00", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("true");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"chk\" type=\"STRING\" size=\"256\"/><Column id=\"ordDay\" type=\"STRING\" size=\"256\"/><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderNm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"lfNm\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo2\" type=\"STRING\" size=\"256\"/><Column id=\"addr\" type=\"STRING\" size=\"256\"/><Column id=\"carNo\" type=\"STRING\" size=\"256\"/><Column id=\"makerCd\" type=\"STRING\" size=\"256\"/><Column id=\"modelCd\" type=\"STRING\" size=\"256\"/><Column id=\"contentsCd\" type=\"STRING\" size=\"256\"/><Column id=\"frCd\" type=\"STRING\" size=\"256\"/><Column id=\"carKind\" type=\"STRING\" size=\"256\"/><Column id=\"statCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNm\" type=\"STRING\" size=\"256\"/><Column id=\"matCd\" type=\"STRING\" size=\"256\"/><Column id=\"matNm\" type=\"STRING\" size=\"256\"/><Column id=\"planDay\" type=\"STRING\" size=\"256\"/><Column id=\"instDay\" type=\"STRING\" size=\"256\"/><Column id=\"seasonCd\" type=\"STRING\" size=\"256\"/><Column id=\"seasonNm\" type=\"STRING\" size=\"256\"/><Column id=\"saleNm\" type=\"STRING\" size=\"256\"/><Column id=\"chanNm\" type=\"STRING\" size=\"256\"/><Column id=\"hshopGbNm\" type=\"STRING\" size=\"256\"/><Column id=\"monAmt\" type=\"STRING\" size=\"256\"/><Column id=\"grpNo\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"cntCd\" type=\"STRING\" size=\"256\"/><Column id=\"dcCd\" type=\"STRING\" size=\"256\"/><Column id=\"grpType\" type=\"STRING\" size=\"256\"/><Column id=\"dcGb\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -166,7 +184,7 @@
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Button("btn_close", "absolute", "1086", "596", "49", "21", null, null, this);
+            obj = new Button("btn_close", "absolute", "1086", "538", "49", "21", null, null, this);
             obj.set_taborder("134");
             obj.set_text("닫기");
             obj.getSetter("domainId").set("nexa.add");
@@ -188,7 +206,7 @@
             obj.set_binddataset("ds_ordNoList");
             obj.set_cellsizingtype("col");
             obj.set_nodatatext("조회된 데이터가 없습니다.");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"30\"/><Column size=\"80\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"75\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"160\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"86\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell col=\"1\" text=\"계약일자\"/><Cell col=\"2\" text=\"계약번호\"/><Cell col=\"3\" text=\"고객코드\"/><Cell col=\"4\" text=\"법정생년월일\"/><Cell col=\"5\" text=\"사업자번호\"/><Cell col=\"6\" text=\"고객명\"/><Cell col=\"7\" text=\"성별\"/><Cell col=\"8\" text=\"내외국인\"/><Cell col=\"9\" text=\"핸드폰\"/><Cell col=\"10\" text=\"핸드폰\"/><Cell col=\"11\" text=\"전화번호\"/><Cell col=\"12\" text=\"전화번호\"/><Cell col=\"13\" text=\"회사전화\"/><Cell col=\"14\" text=\"전화번호2\"/><Cell col=\"15\" text=\"주소\"/><Cell col=\"16\" text=\"차량번호\"/><Cell col=\"17\" text=\"차종\"/><Cell col=\"18\" text=\"계약상태\"/><Cell col=\"19\" text=\"상품\"/><Cell col=\"20\" text=\"장착예정일\"/><Cell col=\"21\" text=\"장착일\"/><Cell col=\"22\" text=\"판매상품명\"/><Cell col=\"23\" text=\"채널\"/><Cell col=\"24\" text=\"홈쇼핑\"/><Cell col=\"25\" text=\"월렌탈료\"/><Cell col=\"26\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"2\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"3\" text=\"bind:custNo\"/><Cell col=\"4\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-'**'-'**'\"/><Cell col=\"5\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"6\" text=\"bind:custNm\"/><Cell col=\"7\" text=\"bind:genderNm\"/><Cell col=\"8\" text=\"bind:lfNm\"/><Cell col=\"9\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"10\" text=\"bind:mobNo\"/><Cell col=\"11\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"12\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"13\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"14\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"15\" text=\"bind:addr\"/><Cell col=\"16\" text=\"bind:carNo\"/><Cell col=\"17\" text=\"bind:carKind\"/><Cell col=\"18\" text=\"bind:statNm\"/><Cell col=\"19\" style=\"align:left;\" text=\"bind:matNm\"/><Cell col=\"20\" displaytype=\"date\" text=\"bind:planDay\" calendardisplaynulltype=\"none\"/><Cell col=\"21\" displaytype=\"date\" text=\"bind:instDay\" calendardisplaynulltype=\"none\"/><Cell col=\"22\" text=\"bind:saleNm\"/><Cell col=\"23\" text=\"bind:chanNm\"/><Cell col=\"24\" text=\"bind:hshopGbNm\"/><Cell col=\"25\" displaytype=\"number\" style=\"align:right;\" text=\"bind:monAmt\"/><Cell col=\"26\" text=\"bind:grpNo\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"30\"/><Column size=\"80\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"75\"/><Column size=\"85\"/><Column size=\"80\"/><Column size=\"40\"/><Column size=\"60\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"80\"/><Column size=\"120\"/><Column size=\"80\"/><Column size=\"65\"/><Column size=\"55\"/><Column size=\"60\"/><Column size=\"84\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\"/><Cell col=\"1\" text=\"계약일자\"/><Cell col=\"2\" text=\"계약번호\"/><Cell col=\"3\" text=\"고객코드\"/><Cell col=\"4\" text=\"법정생년월일\"/><Cell col=\"5\" text=\"사업자번호\"/><Cell col=\"6\" text=\"고객명\"/><Cell col=\"7\" text=\"성별\"/><Cell col=\"8\" text=\"내외국인\"/><Cell col=\"9\" text=\"핸드폰\"/><Cell col=\"10\" text=\"핸드폰\"/><Cell col=\"11\" text=\"전화번호\"/><Cell col=\"12\" text=\"전화번호\"/><Cell col=\"13\" text=\"회사전화\"/><Cell col=\"14\" text=\"전화번호2\"/><Cell col=\"15\" text=\"주소\"/><Cell col=\"16\" text=\"차량번호\"/><Cell col=\"17\" text=\"차종\"/><Cell col=\"18\" text=\"계약상태\"/><Cell col=\"19\" text=\"채널\"/><Cell col=\"20\" text=\"홈쇼핑\"/><Cell col=\"21\" text=\"월렌탈료\"/><Cell col=\"22\" text=\"단체번호\"/></Band><Band id=\"body\"><Cell displaytype=\"checkbox\" edittype=\"checkbox\" text=\"bind:chk\"/><Cell col=\"1\" displaytype=\"date\" text=\"bind:ordDay\" calendardisplaynulltype=\"none\"/><Cell col=\"2\" displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"3\" text=\"bind:custNo\"/><Cell col=\"4\" displaytype=\"normal\" text=\"bind:birthDay\" mask=\"####-'**'-'**'\"/><Cell col=\"5\" displaytype=\"normal\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"6\" text=\"bind:custNm\"/><Cell col=\"7\" text=\"bind:genderNm\"/><Cell col=\"8\" text=\"bind:lfNm\"/><Cell col=\"9\" text=\"bind:mobNo\" expr=\"expr:FN_numberMaskReturn(mobNo)\"/><Cell col=\"10\" text=\"bind:mobNo\"/><Cell col=\"11\" text=\"bind:telNo\" expr=\"expr:FN_numberMaskReturn(telNo)\"/><Cell col=\"12\" text=\"bind:telNo\" expr=\"expr:FN_numberHyphenInReturn(telNo)\"/><Cell col=\"13\" text=\"bind:telNo2\" expr=\"expr:FN_numberMaskReturn(telNo2)\"/><Cell col=\"14\" text=\"bind:telNo2\" expr=\"expr:FN_numberHyphenInReturn(telNo2)\"/><Cell col=\"15\" text=\"bind:addr\"/><Cell col=\"16\" text=\"bind:carNo\"/><Cell col=\"17\" text=\"bind:carKind\"/><Cell col=\"18\" text=\"bind:statNm\"/><Cell col=\"19\" text=\"bind:chanNm\"/><Cell col=\"20\" text=\"bind:hshopGbNm\"/><Cell col=\"21\" displaytype=\"number\" style=\"align:right;\" text=\"bind:monAmt\"/><Cell col=\"22\" text=\"bind:grpNo\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static01", "absolute", "10", "152", "89", "20", null, null, this);
@@ -197,7 +215,7 @@
             obj.set_cssclass("sta_WF_subTitle");
             this.addChild(obj.name, obj);
 
-            obj = new Div("div_ordNoDetail", "absolute", "10", "376", null, "220", "4", null, this);
+            obj = new Div("div_ordNoDetail", "absolute", "10", "376", null, "156", "4", null, this);
             obj.set_taborder("138");
             obj.set_scrollbars("none");
             this.addChild(obj.name, obj);
@@ -211,10 +229,6 @@
             this.div_ordNoDetail.addChild(obj.name, obj);
             obj = new Static("Static02", "absolute", "0", "60", "1125", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("104");
-            obj.set_cssclass("sta_WF_detailLabel2");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("Static03", "absolute", "0", "150", "1125", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("105");
             obj.set_cssclass("sta_WF_detailLabel2");
             this.div_ordNoDetail.addChild(obj.name, obj);
             obj = new Static("Static04", "absolute", "0", "120", "1125", "31", null, null, this.div_ordNoDetail);
@@ -241,34 +255,6 @@
             obj = new Static("Static34", "absolute", "10", "433", "281", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("110");
             obj.set_cssclass("sta_WF_detailLabel2");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_planDay", "absolute", "360", "150", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("111");
-            obj.set_text("장착예정일");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Calendar("cal_planDay", "absolute", "516", "155", "200", "21", null, null, this.div_ordNoDetail);
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj.set_taborder("112");
-            obj.set_readonly("true");
-            obj.set_dateformat("yyyy-MM-dd");
-            obj.set_cssclass("readonly");
-            obj.set_enable("false");
-            obj.set_value("null");
-            obj = new Calendar("cal_instDay", "absolute", "876", "155", "240", "21", null, null, this.div_ordNoDetail);
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj.set_taborder("113");
-            obj.set_readonly("true");
-            obj.set_dateformat("yyyy-MM-dd");
-            obj.set_cssclass("readonly");
-            obj.set_enable("false");
-            obj.set_value("null");
-            obj = new Static("st_instDay", "absolute", "721", "150", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("114");
-            obj.set_text("장착일");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
             obj = new Edit("ed_custNo", "absolute", "876", "5", "240", "20", null, null, this.div_ordNoDetail);
             obj.set_taborder("115");
@@ -361,10 +347,6 @@
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_matNm", "absolute", "155", "155", "200", "21", null, null, this.div_ordNoDetail);
-            obj.set_taborder("133");
-            obj.set_enable("false");
-            this.div_ordNoDetail.addChild(obj.name, obj);
             obj = new Edit("ed_statNm", "absolute", "155", "125", "200", "21", null, null, this.div_ordNoDetail);
             obj.set_taborder("134");
             obj.set_enable("false");
@@ -392,12 +374,6 @@
             obj = new Static("st_statNm", "absolute", "0", "120", "150", "31", null, null, this.div_ordNoDetail);
             obj.set_taborder("139");
             obj.set_text("계약상태");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm", "absolute", "0", "150", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("140");
-            obj.set_text("상품명");
             obj.set_cssclass("sta_WF_detailLabel");
             obj.getSetter("domainId").set("nexa.s_condition");
             this.div_ordNoDetail.addChild(obj.name, obj);
@@ -430,42 +406,6 @@
             obj.set_visible("false");
             obj.style.setStyleValue("align", "disabled", "left middle");
             this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("Static05", "absolute", "0", "180", "1125", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("145");
-            obj.set_cssclass("sta_WF_detailLabel2");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm00", "absolute", "0", "180", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("146");
-            obj.set_text("계절구분");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_seasonCd", "absolute", "155", "185", "200", "21", null, null, this.div_ordNoDetail);
-            obj.set_taborder("147");
-            obj.set_enable("false");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm01", "absolute", "360", "180", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("148");
-            obj.set_text("판매상품명");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Edit("ed_seasonCd00", "absolute", "516", "185", "200", "20", null, null, this.div_ordNoDetail);
-            obj.set_taborder("149");
-            obj.set_enable("false");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new Static("st_matNm02", "absolute", "721", "180", "150", "31", null, null, this.div_ordNoDetail);
-            obj.set_taborder("150");
-            obj.set_text("월렌탈료");
-            obj.set_cssclass("sta_WF_detailLabel");
-            obj.getSetter("domainId").set("nexa.s_condition");
-            this.div_ordNoDetail.addChild(obj.name, obj);
-            obj = new MaskEdit("mae_seasonCd01", "absolute", "77.52%", "184", "241", "20", null, null, this.div_ordNoDetail);
-            obj.set_taborder("152");
-            obj.set_mask("###,###,###,##0");
-            obj.set_enable("false");
-            obj.style.setStyleValue("padding", "disabled", "0 2 0 3");
-            this.div_ordNoDetail.addChild(obj.name, obj);
 
 
             
@@ -484,7 +424,7 @@
             this.div_search.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 0, 220, this.div_ordNoDetail,
+            obj = new Layout("default", "", 0, 156, this.div_ordNoDetail,
             	//-- Layout function
             	function(p) {
             		p.set_taborder("138");
@@ -495,12 +435,13 @@
             this.div_ordNoDetail.addLayout(obj.name, obj);
 
             //-- Default Layout
-            obj = new Layout("default", "", 1144, 629, this,
+            obj = new Layout("default", "", 1144, 575, this,
             	//-- Layout function
             	function(p) {
             		p.set_classname("Authority");
             		p.getSetter("inheritanceid").set("");
             		p.set_titletext("단체(묶음)해지팝업");
+            		p.set_scrollbars("none");
 
             	}
             );
@@ -546,24 +487,6 @@
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item13","div_ordNoDetail.ed_addr","value","ds_ordNoList","addr");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item14","div_ordNoDetail.ed_matNm","value","ds_ordNoList","matNm");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item15","div_ordNoDetail.cal_planDay","value","ds_ordNoList","planDay");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item16","div_ordNoDetail.cal_instDay","value","ds_ordNoList","instDay");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item17","div_ordNoDetail.ed_seasonCd","value","ds_ordNoList","seasonNm");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item18","div_ordNoDetail.ed_seasonCd00","value","ds_ordNoList","saleNm");
-            this.addChild(obj.name, obj);
-            obj.bind();
-            obj = new BindItem("item20","div_ordNoDetail.mae_seasonCd01","value","ds_ordNoList","monAmt");
             this.addChild(obj.name, obj);
             obj.bind();
             obj = new BindItem("item3","div_ordNoDetail.ed_buslNo","value","ds_ordNoList","buslNo");
@@ -701,89 +624,81 @@
         			var sGrpType = this.dsList.getColumn(0, "grpType"); //단체유형
         			var nRestCnt = nexacro.toNumber(this.dsList.getColumn(0, "restCnt")); //잔여계약수
         			var nCntCd = 0; //선택한 타이어본수의 합
+        			var nCntSum = 0;
 
         			if(sGrpType == "D") //단체
         			{			
-        				for(var i=nRow-1; i>=0; i--)
-        				{
-        					if(nexacro._nvl(this.ds_ordNoListChk.getColumn(i, "chk"), 0) == 0)
-        					{
-        						this.ds_ordNoListChk.deleteRow(i);
-        					}else
-        					{
-        						this.ds_ordNoListChk.setColumn(i, "grpType", sGrpType);
-        						var sCntCd = this.ds_ordNoListChk.getColumn(i, "cntCd");
+        			this.ds_ordNoListChk.clearData();
+        			this.ds_ordNoListChk00.clearData();
+        			var nListCnt = this.ds_ordNoList.getRowCount();
+        			for(var i=0;i<this.ds_ordNoList.getRowCount();i++){
+        				if(this.ds_ordNoList.getColumn(i,"chk")==1){
+        					this.ds_ordNoListChk.copyRow(this.ds_ordNoListChk.addRow(),this.ds_ordNoList,i);
+        					if(this.ds_ordNoList.getColumn(i,"statCd") == '01' || this.ds_ordNoList.getColumn(i,"statCd") == '03' || this.ds_ordNoList.getColumn(i,"statCd") == '04'){
+        						var sCntCd = this.ds_ordNoList.getColumn(i,"cntCd");
         						nCntCd = nCntCd + nexacro.toNumber(sCntCd.substr(1));
         					}
-        				}
-
-        				var nMinAgrCnt = nexacro.toNumber(this.dsList.getColumn(0, "minAgrCnt")); //최소약정계약건수
-        				if(nexacro.toNumber(nRestCnt - nCntCd) >= nMinAgrCnt) //A1
-        				{
-        					//선택한 행만 보냄
-        				}
-        				else //A2(최소약정보다 잔여계약(변경후)이 적은 경우는 전체 해지)
-        				{
-        					//ds_ordNoList 전체 행을 보냄
-        					this.ds_ordNoListChk.clearData();
-        					this.ds_ordNoListChk.copyData(this.ds_ordNoList);
-        					this.ds_ordNoListChk.addColumn("grpType", "string");
-        					
-        					for(i=0; i<nRow; i++)
-        					{
-        						this.ds_ordNoListChk.setColumn(i, "grpType", sGrpType);
-        					}
-        					
-        					this.ds_ordNoListChk.addColumn("grpSt", "string"); //단체상태 "해지" flag용 변수
-        					this.ds_ordNoListChk.setColumn(0, "grpSt", "Y");
-        				}
+        				}else{
+        					this.ds_ordNoListChk00.copyRow(this.ds_ordNoListChk00.addRow(),this.ds_ordNoList,i);				}
         			}
-        			else if(sGrpType == "F") //패키지
-        			{
-        				for(var i=nRow-1; i>=0; i--)
-        				{
-        					this.ds_ordNoListChk.setColumn(i, "grpType", sGrpType);
-        					if(nexacro._nvl(this.ds_ordNoListChk.getColumn(i, "chk"), 0) == 0)
-        					{
-
-        					}else
-        					{
-        						var sCntCd = this.ds_ordNoListChk.getColumn(i, "cntCd");
-        						nCntCd = nCntCd + nexacro.toNumber(sCntCd.substr(1));
-        					}
-        				}
-        				
-        				var nChangedResCnt = nexacro.toNumber(nRestCnt - nCntCd); //변경후 잔여계약
-        				if(nChangedResCnt >= 1)
-        				{
-
-        				}
-        				else //해지시 잔여계약이 없게되면 전체해지
-        				{
-        					this.ds_ordNoListChk.addColumn("grpSt", "string"); //단체상태 "해지" flag용 변수
-        					this.ds_ordNoListChk.setColumn(0, "grpSt", "Y");
-        				}
-        			}
-
-        			var sSvcID        	= "cancelOrdNo";
-        			var sController   	= "/rtms/sd/cancelOrdNo.do";
-        			var sInDatasets   	= "";
-        			var sOutDatasets  	= "";
-        			var sArgs 			= "";	
-        			sInDatasets   		= "input=ds_ordNoListChk";
-        			sOutDatasets  		= "";
-        			var fn_callBack		= "fn_callBack";
-        			if(sGrpType == "F") //패키지
-        			{
-        				sArgs += Ex.util.setParam("pkgDcYn", this.dsList.getColumn(0, "pkgDcYn")); //패키지중복할인여부
-        				sArgs += Ex.util.setParam("restCnt", nChangedResCnt); //잔여계좌(변경후)
-        			}
-        						
-        			Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);					
-        		}		
+        			nCntSum = nRestCnt - nCntCd;
+        		}
+        			if(nCntSum < nRestCnt){
+        				this.fn_cancelGroup2();
+        			}else{
+        			this.fn_cancelGroup();
+        			}			
+        		}
         	}
+        	//----------------------------------------------------------------------------------
+        	// Cancel: 해지:Step1
+        	//----------------------------------------------------------------------------------
 
-        	//공통
+        	this.fn_cancelGroup = function(){
+        	for(var i=0;i<this.ds_ordNoListChk.getRowCount();i++){
+        		this.ds_ordNoListChk.setColumn(i,"grpType","D");
+        		this.ds_ordNoListChk.setColumn(i,"dcGb","Z");
+        	}
+        	
+        		var sSvcID        	= "cancelOrdNo";
+        		var sController   	= "/rtms/sd/cancelOrdNo.do";
+        		var sInDatasets   	= "";
+        		var sOutDatasets  	= "";
+        		var sArgs 			= "";	
+        		sInDatasets   		+= "input=ds_ordNoListChk";
+        		sOutDatasets  		= "";
+        		var fn_callBack		= "fn_callBack";
+        					
+        		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);					
+        	}
+        	//----------------------------------------------------------------------------------
+        	// Cancel: 해지:Step2
+        	//----------------------------------------------------------------------------------
+        	
+        	this.fn_cancelGroup2= function(){
+
+        	for(var i=0;i<this.ds_ordNoListChk.getRowCount();i++){
+        		this.ds_ordNoListChk.setColumn(i,"grpType","D");
+        		this.ds_ordNoListChk.setColumn(i,"dcGb","Z");
+        	}
+        	for(var i=0;i<this.ds_ordNoListChk00.getRowCount();i++){
+        		this.ds_ordNoListChk00.setColumn(i,"grpType","D");
+        		this.ds_ordNoListChk00.setColumn(i,"dcGb","Z");
+        	}
+        		var sSvcID        	= "cancelOrdNo2";
+        		var sController   	= "/rtms/sd/cancelOrdNo2.do";
+        		var sInDatasets   	= "";
+        		var sOutDatasets  	= "";
+        		var sArgs 			= "";	
+        		sInDatasets   		+= "dsOrdNolistChk=ds_ordNoListChk:A";
+        		sInDatasets   		+= "dsOrdNolistChk00=ds_ordNoListChk00:A";
+        		sOutDatasets  		= "";
+        		var fn_callBack		= "fn_callBack";
+        					
+        		Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);					
+        	}		
+
+        //공통
         	this.listCommInfo = function()
         	{
         		var sSvcID        	= "listCommInfo";                    
@@ -828,6 +743,9 @@
         				}
         			}
         		}else if( strSvcId == "cancelOrdNo"){	//해지
+        			alert(strErrorMsg);
+        			this.fn_search();	
+        		}else if( strSvcId == "cancelOrdNo2"){	//해지
         			alert(strErrorMsg);
         			this.fn_search();		
         		}
@@ -918,7 +836,7 @@
         	//----------------------------------------------------------------------------------
         	this.btn_close_onclick = function(obj,e)
         	{
-        		this.close();
+        		this.close(this.opener.fn_searchContract());
         	}
 
         	//----------------------------------------------------------------------------------
@@ -990,6 +908,7 @@
             this.dsList.addEventHandler("oncolumnchanged", this.dsPrice_oncolumnchanged, this);
             this.ds_ordNoList.addEventHandler("onrowposchanged", this.Dataset_onrowposchanged, this);
             this.ds_ordNoListChk.addEventHandler("onrowposchanged", this.Dataset_onrowposchanged, this);
+            this.ds_ordNoListChk00.addEventHandler("onrowposchanged", this.Dataset_onrowposchanged, this);
             this.addEventHandler("onload", this.form_onload, this);
             this.div_search.edt_grpNo.addEventHandler("onkeyup", this.div_search_edt_prodNm_onkeyup, this);
             this.div_search.btn_search.addEventHandler("onclick", this.fn_search, this);
@@ -1005,13 +924,9 @@
             this.div_ordNoDetail.ed_ordNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_custNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_carKind.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_ordNoDetail.ed_matNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_statNm.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_mobNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.div_ordNoDetail.ed_carNo.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_ordNoDetail.ed_seasonCd.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.div_ordNoDetail.st_matNm01.addEventHandler("onclick", this.div_ordNoDetail_st_matNm01_onclick, this);
-            this.div_ordNoDetail.ed_seasonCd00.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
 
         };
 

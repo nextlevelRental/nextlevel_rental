@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
 /*******************************************************************************
    NAME:      PKG_RTSD0023
-   PURPOSE:   ∫Œ∞°¡¶«∞ µÓ∑œ Spec
+   PURPOSE:   Î∂ÄÍ∞ÄÏ†úÌíà Îì±Î°ù Spec
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ¡∂»∏ Select
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0023 (
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -20,7 +20,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
   );
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ Insert
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0023 (
     v_ADD_GDS_CD  IN OUT RTSD0023.ADD_GDS_CD%TYPE, 
@@ -39,7 +39,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ Update
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0023 (
     v_ADD_GDS_CD  IN RTSD0023.ADD_GDS_CD%TYPE, 
@@ -58,17 +58,17 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ º¯π¯√§π¯
+  -- Î∂ÄÍ∞ÄÏ†úÌíà ÏàúÎ≤àÏ±ÑÎ≤à
   *****************************************************************************/
   FUNCTION f_sRTSD0023MaxSeq(
     v_ADD_GDS_NM  IN RTSD0023.ADD_GDS_NM%TYPE
     ) RETURN VARCHAR2;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ∞¸∏Æ(IUD)
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0023 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
     v_ADD_GDS_CD     IN OUT RTSD0023.ADD_GDS_CD%TYPE, 
     v_ADD_GDS_NM     IN RTSD0023.ADD_GDS_NM%TYPE, 
     v_AMT            IN RTSD0023.AMT%TYPE,        
@@ -87,14 +87,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
     );
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞ ∞¸∏Æ Count
+  -- Î∂ÄÍ∞ÄÏ†úÌíà Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRTSD0023Count(
     v_ADD_GDS_CD  IN RTSD0023.ADD_GDS_CD%TYPE
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞√ﬂ∞°∆Àæ˜ ¡∂»∏ Select(Deprecated)
+  -- Î∂ÄÍ∞ÄÏ†úÌíàÏ∂îÍ∞ÄÌåùÏóÖ Ï°∞Ìöå Select(Deprecated)
   *****************************************************************************/
   PROCEDURE p_sRTSD0023_pop(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -102,7 +102,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
   );
 
   /*****************************************************************************
-  -- ∫Œ∞°¡¶«∞√ﬂ∞°∆Àæ˜ ¡∂»∏ Select(2018.11.14)
+  -- Î∂ÄÍ∞ÄÏ†úÌíàÏ∂îÍ∞ÄÌåùÏóÖ Ï°∞Ìöå Select(2018.11.14)
   *****************************************************************************/
   PROCEDURE p_sRTSD0023_popNew(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -111,11 +111,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0023 AS
   );
 
   /*****************************************************************************
-  -- ¡÷πÆπ¯»£∫∞ ∫Œ∞°¡¶«∞ ¡∂»∏ 
+  -- Ï£ºÎ¨∏Î≤àÌò∏Î≥Ñ Î∂ÄÍ∞ÄÏ†úÌíà Ï°∞Ìöå 
   *****************************************************************************/
   PROCEDURE p_sRTSD0023Sel(
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
-    v_Ord_No       IN RTSD0041.ORD_NO%TYPE              /*∞Ëæ‡π¯»£            */ 
+    v_Ord_No       IN RTSD0041.ORD_NO%TYPE              /*Í≥ÑÏïΩÎ≤àÌò∏            */ 
   );
 END PKG_RTSD0023;
-/

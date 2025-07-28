@@ -107,7 +107,7 @@
             obj.set_nodatatext("조회된 데이터가 없습니다.");
             obj.set_autofittype("col");
             obj.set_binddataset("ds_saleList");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"할인구분\"/><Cell col=\"1\" text=\"할인시작일\"/><Cell col=\"2\" text=\"할인율\"/><Cell col=\"3\" text=\"할인금액\"/><Cell col=\"4\" text=\"중복할인여부\"/><Cell col=\"5\" text=\"할인상세내용\"/><Cell col=\"6\" text=\"할인상세여부\"/><Cell col=\"7\" edittype=\"date\" text=\"할인종료일\"/></Band><Band id=\"body\"><Cell edittype=\"none\" text=\"bind:dcNm\" editlengthunit=\"ascii\"/><Cell col=\"1\" displaytype=\"normal\" edittype=\"date\" text=\"bind:stdStrDay\" editlengthunit=\"ascii\" calendardisplay=\"edit\"/><Cell col=\"2\" edittype=\"normal\" style=\"align:right;color: ;\" text=\"bind:dcRate\" editdisplay=\"edit\" editlengthunit=\"ascii\"/><Cell col=\"3\" edittype=\"normal\" text=\"bind:dcAmt\" editlengthunit=\"ascii\"/><Cell col=\"4\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:mltDcYn\" editlengthunit=\"ascii\" combodataset=\"mltDcYn\" combocodecol=\"cd\" combodatacol=\"cdNm\" combodisplay=\"edit\"/><Cell col=\"5\" displaytype=\"button\" edittype=\"button\" style=\"display:none\" text=\"할인상세정보내용\"/><Cell col=\"6\" displaytype=\"combo\" edittype=\"combo\" text=\"bind:dcDtlYn\" combodataset=\"dcDtlYn\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" displaytype=\"normal\" edittype=\"date\" text=\"bind:stdEndDay\" editlengthunit=\"ascii\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/><Column size=\"40\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"할인구분\"/><Cell col=\"1\" text=\"할인시작일\"/><Cell col=\"2\" text=\"할인율\"/><Cell col=\"3\" text=\"할인금액\"/><Cell col=\"4\" text=\"할인상세내용\"/><Cell col=\"5\" edittype=\"date\" text=\"할인종료일\"/></Band><Band id=\"body\"><Cell edittype=\"none\" text=\"bind:dcNm\" editlengthunit=\"ascii\"/><Cell col=\"1\" displaytype=\"normal\" edittype=\"date\" text=\"bind:stdStrDay\" editlengthunit=\"ascii\" calendardisplay=\"edit\"/><Cell col=\"2\" edittype=\"normal\" style=\"align:right;color: ;\" text=\"bind:dcRate\" editdisplay=\"edit\" editlengthunit=\"ascii\"/><Cell col=\"3\" displaytype=\"number\" edittype=\"expr:dcGb == 'E' ? 'none' : 'masknumber'\" text=\"bind:dcAmt\" editlengthunit=\"ascii\"/><Cell col=\"4\" displaytype=\"expr:dcGb == 'A' ? &quot;button&quot;:dcGb == 'C' ?  'button' : 'normal'\" edittype=\"expr:dcGb == 'A' ? &quot;button&quot;:dcGb == 'C' ?  'button' : 'none'\" style=\"align:center;\" text=\"expr:dcGb == 'A' ? &quot;할인상세내용&quot;:dcGb == 'C' ?  '할인상세내용' : ''\"/><Cell col=\"5\" displaytype=\"normal\" edittype=\"date\" text=\"bind:stdEndDay\" editlengthunit=\"ascii\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
 
@@ -182,6 +182,8 @@
         this.RTSDSaleRegister_onload = function(obj,e){
         	Ex.core.init(obj);
         	this.fn_init();
+        	
+        	
         }
 
         //----------------------------------------------------------------------------------   
@@ -360,7 +362,17 @@
         	var sColId 		= e.col;
         	var nRow 		= e.row;
         	
-        	if(sColId == '5') {
+        	if(sColId == '4') { 
+        		
+         		if(nvl(this.ds_saleList.getColumn(nRow, "dcGb")) == 'A' || nvl(this.ds_saleList.getColumn(nRow, "dcGb"))  == 'C') {
+        			var sDcGb 		= nvl(this.ds_saleList.getColumn(nRow, "dcGb"));
+        			var sDcNm		= nvl(this.ds_saleList.getColumn(nRow, "dcNm"));
+        			var sStdStrDay 	= nvl(this.ds_saleList.getColumn(nRow, "stdStrDay"));
+        			
+        			var args ={dcGb:sDcGb, dcNm:sDcNm, stdStrDay:sStdStrDay };
+        			Ex.core.popup(this,"할인상세정보등록","sd::RTSDSaleDetailRegister.xfdl",args, "modaless=false");
+        		} 
+        		/*
         		if(nvl(this.ds_saleList.getColumn(nRow, "dcDtlYn")) == 'Y') {
         			var sDcGb 		= nvl(this.ds_saleList.getColumn(nRow, "dcGb"));
         			var sDcNm		= nvl(this.ds_saleList.getColumn(nRow, "dcNm"));
@@ -375,11 +387,11 @@
         			alert("할인상세여부를 선택하여 주세요.");
         			return;
         		}
+        		*/
         	}
         }
 
         
-
         /***********************************************************************************
         * 5. CallBack Functions
         ***********************************************************************************/
@@ -401,6 +413,7 @@
         			break;
         	    case "getSaleGubunCode":
         			this.div_search.cb_SaleGubun.set_index(0);
+        			this.ds_SaleGubun.filter("cd == ' ' || cd == 'A' || cd == 'C' || cd == 'E'");
         	        break;
         	}
         }

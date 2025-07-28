@@ -11,7 +11,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5050 AS
    1.2        2017-05-29  wjim             [20170529_04] 지급금액 기준 변경
    1.3        2017-10-26  wjim             [20171026_02] 장착수수료 집계기준 변경
                                            - 당월 중도완납/해약 계약도 집계대상에 포함
-   1.4        2017-11-03  wjim             [20171103_01] 0원 장착수수료 이연대상 제외                                           
+   1.4        2017-11-03  wjim             [20171103_01] 0원 장착수수료 이연대상 제외
+   1.5        2025-06-19  10244015         [20250620_01] 프리미엄퍼플점 추가 장착수수료 부여                                           
 *******************************************************************************/
 
   /*****************************************************************************
@@ -392,6 +393,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5050 AS
    1.4        2017-11-03  wjim             [20171103_01] 0원 장착수수료 이연대상 제외
                                            - 레귤러체인의 경우 실제 장착수수료는 지급하지 않으나 이력관리를 위해 장착수수료를 0원으로 발생
                                            - 수수료가 0원이 경우 이후 이연처리에서 오류발생하므로 이연대상에서 제외
+   1.5        2025-06-19  10244015         [20250620_01] 프리미엄퍼플점 추가 장착수수료 부여                                         
   *****************************************************************************/
   PROCEDURE p_CreateRtre5050InstallComm (
     v_Period         IN CHAR,                           /*마감월              */
@@ -415,14 +417,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5050 AS
             A.CANC_DAY,                                 /*해지일자            */ 
             A.ORD_DAY,                                  /*접수일자            */
             C.CHAN_LCLS_CD,
-            C.CHAN_MCLS_CD
-    FROM    RTSD0108 A, RTCS0001 B, RTSD0007 C
+            C.CHAN_MCLS_CD,
+            CASE WHEN C.PREM_PRPL_YN = 'Y' THEN TO_NUMBER((SELECT DECODE(MAX(G.CD_DESC), NULL, '0', MAX(G.CD_DESC))		--[20250620_01] 프리미엄퍼플점 추가 장착수수료 부여
+														     FROM RTCM0051 G
+														    WHERE G.CD_GRP_CD = 'R084'
+													          AND E.TOT_EVAL_POINT >= G.CD)) * TO_NUMBER( A.CNT_CD )
+										   ELSE 0 END AS ADD_PRCM_AMT		
+    FROM    RTSD0108 A, RTCS0001 B, RTSD0007 C,
+    		(SELECT AGENCY_CD
+			  	  , ROUND(AVG(TOT_EVAL_POINT),1) AS TOT_EVAL_POINT
+   			   FROM RTCS0130										--[20250620_01]프리미엄퍼플점을 위한 만족도조사 평점
+  			  WHERE 1=1
+				AND DP_YN = 'Y'
+    			AND TO_CHAR(SUBT_DAY,'YYYYMM') BETWEEN TO_CHAR(ADD_MONTHS(SYSDATE,-3),'YYYYMM') AND TO_CHAR(ADD_MONTHS(SYSDATE,-1),'YYYYMM')
+  			  GROUP BY AGENCY_CD) E
     WHERE   A.PROC_DAY BETWEEN v_Period||'01'
                            AND TO_CHAR(LAST_DAY(TO_DATE(v_Period||'01', 'YYYYMMDD')), 'YYYYMMDD')
     AND     A.ORD_NO       = B.ORD_NO
     AND     A.AGENCY_CD    = C.AGENCY_CD
     AND     A.CHAN_CD NOT IN ( '01', '05' ) /* 장착수수료는 '방판' 제외 */
-    AND    NVL(A.INST_CD, '1000') NOT IN ('1010'); --20200331 kstka 방문장착, Pickup And Delivery는 별도 수수료 산정으로 제외
+    AND     NVL(A.INST_CD, '1000') NOT IN ('1010') --20200331 kstka 방문장착, Pickup And Delivery는 별도 수수료 산정으로 제외
+    AND 	A.AGENCY_CD    = E.AGENCY_CD(+);
     
     
     CURSOR  Cur_Rtsd0108_01 IS
@@ -558,7 +573,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5050 AS
             END;
 
             v_curr_cunt  := v_curr_cunt + 1;
-            v_Procc_Amt1 := CUR_0108.CNT_CD * v_Prcm_Amt;
+            v_Procc_Amt1 := (CUR_0108.CNT_CD * v_Prcm_Amt) + CUR_0108.ADD_PRCM_AMT;		--[20250620_01] 프리미엄퍼플점 추가 장착수수료 부여
             
             -- 수수료가 0원인 경우 이연대상에서 제외 [20171103_01]
             IF v_Procc_Amt1 = 0 THEN
@@ -675,4 +690,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre5050 AS
   
 
 END Pkg_Rtre5050;
-/

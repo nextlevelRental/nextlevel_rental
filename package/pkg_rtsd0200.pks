@@ -102,7 +102,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0200 AS
     v_mobNo           IN RTSD0200.MOB_NO%TYPE           /*휴대폰번호          */
     ) RETURN VARCHAR2;
     
-     /*****************************************************************************
+    /*****************************************************************************
   --SAFE KEY 확인 : return -> SAFE_KEY
   *****************************************************************************/
   FUNCTION f_sRtsd0200_safeKeyConfirmNew(
@@ -112,6 +112,5 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0200 AS
     v_mobNo           IN RTSD0200.MOB_NO%TYPE,           /*휴대폰번호          */
     v_custNo           IN RTSD0100.CUST_NO%TYPE           /*고객번호          */
     ) RETURN VARCHAR2;
-              
+        
 END Pkg_Rtsd0200;
-/

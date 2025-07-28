@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("dsBoardInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("dsC033", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("dsS317", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("dsListCp", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,6 +81,7 @@
 
             obj = new Dataset("dsListOrg", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -361,7 +367,7 @@
          ************************************************************************/
         //include "lib::comLib.xjs";
 
-        this.NOASSIGN = "NOASSIGN";
+        this.NOASSIGN = "99";
 
         this.firstDate  = "";
         this.lastDate  = "";
@@ -428,6 +434,7 @@
         	sArgs += Ex.util.setParam("procDayT", procDayT);
         	sArgs += Ex.util.setParam("osDayF", osDayF);
         	sArgs += Ex.util.setParam("osDayT", osDayT);
+        	sArgs += Ex.util.setParam("provsnTp", "R");
         	
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
         }
@@ -436,6 +443,12 @@
         this.fn_aggregate = function(obj,e)
         {
 
+        	var osDayF = this.Div00.cal_os_from.value;
+        	var osDayT = this.Div00.cal_os_to.value;
+        	
+        	var procDayF = this.Div00.cal_proc_from.value;
+        	var procDayT = this.Div00.cal_proc_to.value;
+        	
         	var assignFutureInput = nvl(this.ed_assign_future_input.value);
         	if(assignFutureInput == "") {
         		this.alert("배정 기준 건 수가 입력되지 않았습니다.");
@@ -463,6 +476,10 @@
         	
         	sArgs += Ex.util.setParam("provsnDayF", "");
         	sArgs += Ex.util.setParam("provsnDayT", "");
+        	sArgs += Ex.util.setParam("osDayF", osDayF);
+        	sArgs += Ex.util.setParam("osDayT", osDayT);
+        	sArgs += Ex.util.setParam("procDayF", procDayF);
+        	sArgs += Ex.util.setParam("procDayT", procDayT);
         	sArgs += Ex.util.setParam("distCnt", assignFutureInput);
         	sArgs += Ex.util.setParam("contractType", "R");
         	
@@ -499,7 +516,8 @@
         	
         	sArgs += Ex.util.setParam("provsnDayF", "");
         	sArgs += Ex.util.setParam("provsnDayT", "");
-        	sArgs += Ex.util.setParam("distCnt", assignFutureInput);
+        	sArgs += Ex.util.setParam("distCnt", "");
+        	sArgs += Ex.util.setParam("distDay", distDay);
         	sArgs += Ex.util.setParam("contractType", "R");
         	
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack); 
@@ -529,13 +547,15 @@
         /* 할당데이터 할당/합계 데이터 계산 */
         this.fn_calcAssignData = function(){
 
-        	var assignAvailableCnt = Number(this.ed_assign_future_input.value);
+        	var assignAvailableCnt = this.dsBoardInfo.getColumn(0, "assignCnt");
         	var counsellorCnt = this.dsList.rowcount;
         	
         	var averageAssignCnt = 0;	
         	if(assignAvailableCnt > 0){
-        		averageAssignCnt = assignAvailableCnt / counsellorCnt;
+         		averageAssignCnt = assignAvailableCnt / counsellorCnt;
         	}
+        	
+        	
         	
         	this.ed_userCnt.set_value(counsellorCnt);
         	this.ed_assign_average.set_value(averageAssignCnt);
@@ -565,6 +585,18 @@
         			alert("조회된 데이터가 없습니다.");
         			return;
         		}
+        	}
+        	
+        	if (strSvcId == "aggregateOutboundListDivide")
+        	{
+        		this.alert("배정처리가 완료되었습니다.");
+        		return;
+        	}
+        	
+        	if (strSvcId == "updateOutboundListRevoke")
+        	{
+        		this.alert("회수처리가 완료되었습니다.");
+        		return;
         	}
         }
 

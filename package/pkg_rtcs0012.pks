@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0012 AS
 /*******************************************************************************
     NAME        Pkg_Rtcs0012
-    PURPOSE     ╧Ф╧╝а║╟к даеца╓╨╦ ╟Э╦╝
+    PURPOSE     К╟╘К╛╦Л═░Й╡─ Л╩╗М┐²Л═∙КЁ╢ Й╢─К╕╛
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,71 +10,70 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0012 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ╧Ф╧╝а║╟к даеца╓╨╦ Select
+  -- К╟╘К╛╦Л═░Й╡─ Л╩╗М┐²Л═∙КЁ╢ Select
   *****************************************************************************/
   PROCEDURE p_sRTCS0012 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE           /* ╟Х╬Ю╧Ьхё         */
+    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE           /* ЙЁ└Л∙╫К╡┬М≤╦         */
   );
   
   /*****************************************************************************
-  -- ╧Ф╧╝а║╟к даеца╓╨╦ Insert
+  -- К╟╘К╛╦Л═░Й╡─ Л╩╗М┐²Л═∙КЁ╢ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTCS0012 (
-      v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* ╠БаьЁБ©Ы   */
-    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ╟Х╬Ю╧Ьхё   */
-    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* ╪Ё╨Я╧Ьхё   */
-    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* юш╬В╪Ь╧Ь   */
-    , v_Seq             IN RTCS0012.SEQ%TYPE        /* ╨╞╟Ф╪Ь╧Ь   */
-    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* ╩С╢Цюоюз   */
-    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* ╩С╢Ц╫ц╟ё   */
-    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* ╩С╢ЦЁ╩©К   */ 
-    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* ╣Н╥оюзID   */
-    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* юГдаецюоюз */
-    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* юГдаец╫ц╟ё */
+      v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* Й╦╟Л╓─К┘└Л⌡■   */
+    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ЙЁ└Л∙╫К╡┬М≤╦   */
+    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* Л└╓К╧└К╡┬М≤╦   */
+    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* Л·▒Л≈┘Л┬°К╡┬   */
+    , v_Seq             IN RTCS0012.SEQ%TYPE        /* КЁ─Й╡╫Л┬°К╡┬   */
+    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* Л┐│К▀╢Л²╪Л·░   */
+    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* Л┐│К▀╢Л▀°Й╟└   */
+    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* Л┐│К▀╢К┌╢Л ╘   */ 
+    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* К⌠╠К║²Л·░ID   */
+    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* Л·╛Л╩╗М┐²Л²╪Л·░ */
+    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* Л·╛Л╩╗М┐²Л▀°Й╟└ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╧Ф╧╝а║╟к даеца╓╨╦ Update
+  -- К╟╘К╛╦Л═░Й╡─ Л╩╗М┐²Л═∙КЁ╢ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTCS0012 (
-      v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* ╠БаьЁБ©Ы   */
-    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ╟Х╬Ю╧Ьхё   */
-    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* ╪Ё╨Я╧Ьхё   */
-    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* юш╬В╪Ь╧Ь   */
-    , v_Seq             IN RTCS0012.SEQ%TYPE        /* ╨╞╟Ф╪Ь╧Ь   */
-    , v_Call_Seq        IN RTCS0012.CALL_SEQ%TYPE   /* ╩С╢Ц╪Ь╧Ь   */
-    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* ╩С╢Цюоюз   */
-    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* ╩С╢Ц╫ц╟ё   */
-    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* ╩С╢ЦЁ╩©К   */ 
-    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* ╣Н╥оюзID   */
-    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* юГдаецюоюз */
-    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* юГдаец╫ц╟ё */
+      v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* Й╦╟Л╓─К┘└Л⌡■   */
+    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ЙЁ└Л∙╫К╡┬М≤╦   */
+    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* Л└╓К╧└К╡┬М≤╦   */
+    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* Л·▒Л≈┘Л┬°К╡┬   */
+    , v_Seq             IN RTCS0012.SEQ%TYPE        /* КЁ─Й╡╫Л┬°К╡┬   */
+    , v_Call_Seq        IN RTCS0012.CALL_SEQ%TYPE   /* Л┐│К▀╢Л┬°К╡┬   */
+    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* Л┐│К▀╢Л²╪Л·░   */
+    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* Л┐│К▀╢Л▀°Й╟└   */
+    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* Л┐│К▀╢К┌╢Л ╘   */ 
+    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* К⌠╠К║²Л·░ID   */
+    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* Л·╛Л╩╗М┐²Л²╪Л·░ */
+    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* Л·╛Л╩╗М┐²Л▀°Й╟└ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ╧Ф╧╝а║╟к даеца╓╨╦ ╟Э╦╝(IUD)
+  -- К╟╘К╛╦Л═░Й╡─ Л╩╗М┐²Л═∙КЁ╢ Й╢─К╕╛(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0012 (
-      v_Comm_Dvsn       IN CHAR                     /* цЁ╦╝╠╦╨п(I,U,D) */
-    , v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* ╠БаьЁБ©Ы        */
-    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ╟Х╬Ю╧Ьхё        */
-    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* ╪Ё╨Я╧Ьхё        */
-    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* юш╬В╪Ь╧Ь        */
-    , v_Seq             IN RTCS0012.SEQ%TYPE        /* ╨╞╟Ф╪Ь╧Ь        */
-    , v_Call_Seq        IN RTCS0012.CALL_SEQ%TYPE   /* ╩С╢Ц╪Ь╧Ь        */
-    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* ╩С╢Цюоюз        */
-    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* ╩С╢Ц╫ц╟ё        */
-    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* ╩С╢ЦЁ╩©К        */   
-    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* ╣Н╥оюзID        */
-    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* юГдаецюоюз      */
-    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* юГдаец╫ц╟ё      */
+      v_Comm_Dvsn       IN CHAR                     /* Л╡≤К╕╛Й╣╛К╤└(I,U,D) */
+    , v_Std_Ym          IN RTCS0012.STD_YM%TYPE     /* Й╦╟Л╓─К┘└Л⌡■        */
+    , v_Ord_No          IN RTCS0012.ORD_NO%TYPE     /* ЙЁ└Л∙╫К╡┬М≤╦        */
+    , v_Equ_No          IN RTCS0012.EQU_NO%TYPE     /* Л└╓К╧└К╡┬М≤╦        */
+    , v_Job_Seq         IN RTCS0012.JOB_SEQ%TYPE    /* Л·▒Л≈┘Л┬°К╡┬        */
+    , v_Seq             IN RTCS0012.SEQ%TYPE        /* КЁ─Й╡╫Л┬°К╡┬        */
+    , v_Call_Seq        IN RTCS0012.CALL_SEQ%TYPE   /* Л┐│К▀╢Л┬°К╡┬        */
+    , v_Call_Day        IN RTCS0012.CALL_DAY%TYPE   /* Л┐│К▀╢Л²╪Л·░        */
+    , v_Call_Tm         IN RTCS0012.CALL_TM%TYPE    /* Л┐│К▀╢Л▀°Й╟└        */
+    , v_Call_Dtl        IN RTCS0012.CALL_DTL%TYPE   /* Л┐│К▀╢К┌╢Л ╘        */   
+    , v_Reg_Id          IN RTCS0012.REG_ID%TYPE     /* К⌠╠К║²Л·░ID        */
+    , v_Recall_Day      IN RTCS0012.RECALL_DAY%TYPE /* Л·╛Л╩╗М┐²Л²╪Л·░      */
+    , v_Recall_Tm       IN RTCS0012.RECALL_TM%TYPE  /* Л·╛Л╩╗М┐²Л▀°Й╟└      */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
     );  
         
 END Pkg_Rtcs0012;
-/

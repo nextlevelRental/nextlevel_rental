@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 /*******************************************************************************
    NAME      Pkg_Rtre0125
-   PURPOSE   [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª °ü¸®
+   PURPOSE   [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,12 +10,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Count
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0125Count(
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,         /*ÀÌ¿¬Ç×¸ñ            */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE         /*ÀÌ¿¬È¸Â÷            */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,         /*ì´ì—°í•­ëª©            */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE         /*ì´ì—°íšŒì°¨            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -36,40 +36,40 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END f_sRtre0125Count;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Select
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0125 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ORD_NO,                    /*°è¾à¹øÈ£            */
-            A.POSTP_TP,                  /*ÀÌ¿¬Ç×¸ñ            */
-            A.POSTP_SEQ,                 /*ÀÌ¿¬È¸Â÷            */
-            A.POSTP_STAT,                /*ÀÌ¿¬»óÅÂ            */
-            A.POSTP_YM,                  /*´ë»ó³â¿ù            */
-            A.LY_TPP_AMT,                /*Àü±â¸» ´©°è¾×       */
-            A.CY_PP_AMT,                 /*´ç±â Ã³¸®¾×         */
-            A.CY_TPP_AMT,                /*´ç±â ÃÑ´©°è¾×       */
-            A.CM_PP_AMT,                 /*´ç¿ù Ã³¸®¾×         */
-            A.CM_R_AMT,                  /*´ç¿ù ÀÜÁ¸°¡¾×       */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.ORD_NO,                    /*ê³„ì•½ë²ˆí˜¸            */
+            A.POSTP_TP,                  /*ì´ì—°í•­ëª©            */
+            A.POSTP_SEQ,                 /*ì´ì—°íšŒì°¨            */
+            A.POSTP_STAT,                /*ì´ì—°ìƒíƒœ            */
+            A.POSTP_YM,                  /*ëŒ€ìƒë…„ì›”            */
+            A.LY_TPP_AMT,                /*ì „ê¸°ë§ ëˆ„ê³„ì•¡       */
+            A.CY_PP_AMT,                 /*ë‹¹ê¸° ì²˜ë¦¬ì•¡         */
+            A.CY_TPP_AMT,                /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡       */
+            A.CM_PP_AMT,                 /*ë‹¹ì›” ì²˜ë¦¬ì•¡         */
+            A.CM_R_AMT,                  /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡       */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTRE0125 A
     WHERE   A.ORD_NO           = DECODE(v_Ord_No         , NULL, A.ORD_NO          , v_Ord_No)
     AND     A.POSTP_TP         = DECODE(v_Postp_Tp       , NULL, A.POSTP_TP        , v_Postp_Tp)
@@ -86,20 +86,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END p_sRtre0125;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Insert
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -146,20 +146,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END f_InsertRtre0125;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Update
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -188,13 +188,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END f_UpdateRtre0125;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Delete
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0125 (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -215,21 +215,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END f_DeleteRtre0125;
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª °ü¸®(IUD)
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0125 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*Àü±â¸» ´©°è¾×         */
-    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*´ç±â Ã³¸®¾×           */
-    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*´ç±â ÃÑ´©°è¾×         */
-    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*´ç¿ù Ã³¸®¾×           */
-    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*´ç¿ù ÀÜÁ¸°¡¾×         */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ly_Tpp_Amt     IN RTRE0125.LY_TPP_AMT%TYPE,     /*ì „ê¸°ë§ ëˆ„ê³„ì•¡         */
+    v_Cy_Pp_Amt      IN RTRE0125.CY_PP_AMT%TYPE,      /*ë‹¹ê¸° ì²˜ë¦¬ì•¡           */
+    v_Cy_Tpp_Amt     IN RTRE0125.CY_TPP_AMT%TYPE,     /*ë‹¹ê¸° ì´ëˆ„ê³„ì•¡         */
+    v_Cm_Pp_Amt      IN RTRE0125.CM_PP_AMT%TYPE,      /*ë‹¹ì›” ì²˜ë¦¬ì•¡           */
+    v_Cm_R_Amt       IN RTRE0125.CM_R_AMT%TYPE,       /*ë‹¹ì›” ìž”ì¡´ê°€ì•¡         */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -238,24 +238,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: °è¾à¹øÈ£, ÀÌ¿¬Ç×¸ñ, ÀÌ¿¬È¸ÀÚ, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ê³„ì•½ë²ˆí˜¸, ì´ì—°í•­ëª©, ì´ì—°íšŒìž, ë“±ë¡ìž ID
     IF (TRIM(v_Ord_No) IS NULL) THEN
-        v_Return_Message := '°è¾à¹øÈ£('||v_Ord_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³„ì•½ë²ˆí˜¸('||v_Ord_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Postp_Tp) IS NULL) THEN
-        v_Return_Message := 'ÀÌ¿¬Ç×¸ñ('||v_Postp_Tp||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì´ì—°í•­ëª©('||v_Postp_Tp||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Postp_Seq) IS NULL) THEN
-        v_Return_Message := 'ÀÌ¿¬È¸Â÷('||v_Postp_Seq||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì´ì—°íšŒì°¨('||v_Postp_Seq||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -265,7 +265,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
                                   v_Postp_Ym,  v_Ly_Tpp_Amt, v_Cy_Pp_Amt, v_Cy_Tpp_Amt,
                                   v_Cm_Pp_Amt, v_Cm_R_Amt,   v_Reg_Id,    v_ErrorText
                                 ) THEN
-            v_Return_Message := '[RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª µî·Ï ½ÇÆÐ!!!'||'-'||v_Errortext;
+            v_Return_Message := '[RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
             v_Errortext := v_Errortext;
             RAISE e_Error;
         END IF;
@@ -276,7 +276,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
                                   v_Postp_Ym,  v_Ly_Tpp_Amt, v_Cy_Pp_Amt, v_Cy_Tpp_Amt,
                                   v_Cm_Pp_Amt, v_Cm_R_Amt,   v_Reg_Id,    v_ErrorText
                                 ) THEN
-            v_Return_Message := '[RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_Errortext;
+            v_Return_Message := '[RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_Errortext;
             v_Errortext := v_Errortext;
             RAISE e_Error;
         END IF;
@@ -286,19 +286,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
         IF 0 != f_DeleteRtre0125( v_Ord_No,    v_Postp_Tp,   v_Postp_Seq,
                                   v_Reg_Id,    v_ErrorText
                                 ) THEN
-            v_Return_Message := '[RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª »èÁ¦ ½ÇÆÐ!!!'||'-'||v_Errortext;
+            v_Return_Message := '[RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_Errortext;
             v_Errortext := v_Errortext;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -313,7 +313,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0125.p_IUDRtre0125(2)', v_ErrorText, v_Return_Message);
 
@@ -321,14 +321,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ¿ùº°³»¿ª Áßµµº¯°æ UPDATE
+  -- [RE] ì´ì—°ì²˜ë¦¬ ì›”ë³„ë‚´ì—­ ì¤‘ë„ë³€ê²½ UPDATE
   *****************************************************************************/
   FUNCTION f_UpdateRtre0125Postpone (
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ÀÌ¿¬È¸Â÷              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Seq      IN RTRE0125.POSTP_SEQ%TYPE,      /*ì´ì—°íšŒì°¨              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Reg_Id         IN RTRE0125.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -352,11 +352,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 
 
   /*****************************************************************************
-  -- [RE] ÀÌ¿¬Ã³¸® ³»¿ª Count
+  -- [RE] ì´ì—°ì²˜ë¦¬ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0125MaxSeq(
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE          /*ÀÌ¿¬Ç×¸ñ            */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE          /*ì´ì—°í•­ëª©            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -378,14 +378,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 
 
   /*****************************************************************************
-  -- ÀÌ¿¬Ã³¸® ³»¿ª Á¶È¸
+  -- ì´ì—°ì²˜ë¦¬ ë‚´ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0125Postpone (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -399,16 +399,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   END p_sRtre0125Postpone;
 
   /*****************************************************************************
-  -- ÀÌ¿¬Ã³¸® ³»¿ª Á¶È¸ - ºÎºÐ¹üÀ§Ã³¸®¸¦ À§ÇØ page Ã³¸®
+  -- ì´ì—°ì²˜ë¦¬ ë‚´ì—­ ì¡°íšŒ - ë¶€ë¶„ë²”ìœ„ì²˜ë¦¬ë¥¼ ìœ„í•´ page ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_sRtre0125PostponePage (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*´ë»ó³â¿ù              */
-    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ÀÌ¿¬Ç×¸ñ              */
-    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ÀÌ¿¬»óÅÂ              */
-    v_Page_No        IN NUMBER,                       /*ÆäÀÌÁö                */
-    v_Get_Cnt        IN NUMBER,                       /*È¹µæ°Ç¼ö              */
+    v_Postp_Ym       IN RTRE0125.POSTP_YM%TYPE,       /*ëŒ€ìƒë…„ì›”              */
+    v_Ord_No         IN RTRE0125.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Postp_Tp       IN RTRE0125.POSTP_TP%TYPE,       /*ì´ì—°í•­ëª©              */
+    v_Postp_Stat     IN RTRE0125.POSTP_STAT%TYPE,     /*ì´ì—°ìƒíƒœ              */
+    v_Page_No        IN NUMBER,                       /*íŽ˜ì´ì§€                */
+    v_Get_Cnt        IN NUMBER,                       /*íšë“ê±´ìˆ˜              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -419,24 +419,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
   BEGIN
 
 
-    -- ÇÊ¼ö°ª: ±âÁØ³â¿ù, °è¾à¹øÈ£, ÀÌ¿¬Ç×¸ñ, ÀÌ¿¬»óÅÂ
-    -- ±âÁØ³â¿ù/°è¾à¹øÈ£Àº µÑ ÁßÀÇ ÇÏ³ª´Â ÇÊ¼ö, ÀÌ¿¬Ç×¸ñ/ÀÌ¿¬»óÅÂ´Â ¼±ÅÃ
+    -- í•„ìˆ˜ê°’: ê¸°ì¤€ë…„ì›”, ê³„ì•½ë²ˆí˜¸, ì´ì—°í•­ëª©, ì´ì—°ìƒíƒœ
+    -- ê¸°ì¤€ë…„ì›”/ê³„ì•½ë²ˆí˜¸ì€ ë‘˜ ì¤‘ì˜ í•˜ë‚˜ëŠ” í•„ìˆ˜, ì´ì—°í•­ëª©/ì´ì—°ìƒíƒœëŠ” ì„ íƒ
     IF (v_Ord_No IS NULL) AND (v_Postp_Ym IS NULL) THEN
         v_Serch_Flag := -1;
-        v_Return_Message := '°è¾à¹øÈ£³ª ´ë»ó³â¿ù : µÑÁßÀÇ ÇÏ³ª´Â ¹Ýµå½Ã ÀÔ·ÂÇÏ¼Å¾ß ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³„ì•½ë²ˆí˜¸ë‚˜ ëŒ€ìƒë…„ì›” : ë‘˜ì¤‘ì˜ í•˜ë‚˜ëŠ” ë°˜ë“œì‹œ ìž…ë ¥í•˜ì…”ì•¼ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (v_Ord_No IS NOT NULL) THEN
         IF Pkg_Rtsd0108.f_sRtsd0108Count(v_Ord_No) = 0 THEN
             v_Serch_Flag := -1;
-            v_Return_Message := '°è¾à¹øÈ£('||v_Ord_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ê³„ì•½ë²ˆí˜¸('||v_Ord_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
     END IF;
 
 --    IF (TRIM(v_Postp_Tp) IS NULL) THEN
---        v_Return_Message := 'ÀÌ¿¬Ç×¸ñ('||v_Postp_Tp||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+--        v_Return_Message := 'ì´ì—°í•­ëª©('||v_Postp_Tp||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
 --        RAISE e_Error;
 --    END IF;
 
@@ -473,8 +473,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             A.TOTAL_CNT
     FROM    (
             SELECT  DECODE(GROUPING(A.ROW_NUM),1, NULL, A.ROW_NUM)          AS ROW_NUM,
-                    DECODE(GROUPING(A.ROW_NUM),1, 'ÀüÃ¼ ÃÑ°è', MIN(A.POSTP_YM))  AS POSTP_YM,
-                    DECODE(GROUPING(A.ROW_NUM),1, TO_CHAR(MIN(A.TOTAL_CNT),'999,999,999')||'(°Ç)', MIN(A.POSTP_TP))    AS POSTP_TP,
+                    DECODE(GROUPING(A.ROW_NUM),1, 'ì „ì²´ ì´ê³„', MIN(A.POSTP_YM))  AS POSTP_YM,
+                    DECODE(GROUPING(A.ROW_NUM),1, TO_CHAR(MIN(A.TOTAL_CNT),'999,999,999')||'(ê±´)', MIN(A.POSTP_TP))    AS POSTP_TP,
                     DECODE(GROUPING(A.ROW_NUM),1, NULL, MIN(A.CUST_NO))     AS CUST_NO,
                     DECODE(GROUPING(A.ROW_NUM),1, NULL, MIN(A.CUST_TP))     AS CUST_TP,
                     DECODE(GROUPING(A.ROW_NUM),1, NULL, MIN(A.ORD_NO))      AS ORD_NO,
@@ -533,7 +533,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
     ORDER   BY NVL(TO_NUMBER(A.ROW_NUM),v_Page_No * v_Get_Cnt);
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -548,7 +548,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0125.p_sRtre0125PostponePage(2)', v_ErrorText, v_Return_Message);
 
@@ -556,12 +556,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 
 
   /*****************************************************************************
-  -- ¸¶°¨ ³»¿ª Á¶È¸
+  -- ë§ˆê° ë‚´ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0125Close (
     Ref_Cursor       OUT SYS_REFCURSOR,
-    v_Close_Ym       IN VARCHAR2,                     /*¸¶°¨³â¿ù              */
-    v_Close_Tp       IN VARCHAR2,                     /*¸¶°¨±¸ºÐ              */
+    v_Close_Ym       IN VARCHAR2,                     /*ë§ˆê°ë…„ì›”              */
+    v_Close_Tp       IN VARCHAR2,                     /*ë§ˆê°êµ¬ë¶„              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -570,16 +570,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: ¸¶°¨³â¿ù,
-    -- ¸¶°¨±¸ºÐÀº ¼±ÅÃ
+    -- í•„ìˆ˜ê°’: ë§ˆê°ë…„ì›”,
+    -- ë§ˆê°êµ¬ë¶„ì€ ì„ íƒ
     IF v_Close_Ym IS NULL THEN
-        v_Return_Message := '¸¶°¨³â¿ù('||v_Close_Ym||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë§ˆê°ë…„ì›”('||v_Close_Ym||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF v_Close_Tp IS NOT NULL THEN
         IF 0 = Pkg_Rtcm0051.f_sRtcm0051Count('R041', v_Close_Tp) THEN
-            v_Return_Message := '¸¶°¨±¸ºÐ('||v_Close_Tp||') : Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë§ˆê°êµ¬ë¶„('||v_Close_Tp||') : ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
     END IF;
@@ -594,7 +594,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             CLOSE_CNT,
             CLOSE_AMT
     FROM    (
-            -- (A)¸ÅÃâ
+            -- (A)ë§¤ì¶œ
             SELECT  v_Close_Ym       CLOSE_YM,
                     'A'              CLOSE_TP,
                     A.RECP_TP        CLS_DETAIL,
@@ -606,7 +606,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'A'             = NVL(v_Close_Tp, 'A')
             GROUP   BY A.RECP_TP
             UNION   ALL
-            -- (B)¼ö³³
+            -- (B)ìˆ˜ë‚©
             SELECT  v_Close_Ym       CLOSE_YM,
                     'B'              CLOSE_TP,
                     A.RECP_TP        CLS_DETAIL,
@@ -617,7 +617,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'B'              = NVL(v_Close_Tp, 'B')
             GROUP   BY A.RECP_TP
             UNION   ALL
-            -- (C)¼±¼ö
+            -- (C)ì„ ìˆ˜
             SELECT  v_Close_Ym       CLOSE_YM,
                     'C'              CLOSE_TP,
                     A.RECP_TP        CLS_DETAIL,
@@ -628,7 +628,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'C'              = NVL(v_Close_Tp, 'C')
             GROUP   BY A.RECP_TP
             UNION   ALL
-            -- (D)¹Ì³³
+            -- (D)ë¯¸ë‚©
             SELECT  CLOSE_YM,
                     CLOSE_TP,
                     CLS_DETAIL,
@@ -659,7 +659,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
                     )
             GROUP   BY CLOSE_YM, CLOSE_TP, CLS_DETAIL
             UNION   ALL
-            -- (E)Çö±Ý¿µ¼öÁõ
+            -- (E)í˜„ê¸ˆì˜ìˆ˜ì¦
             SELECT  v_Close_Ym       AS CLOSE_YM,
                     'E'              AS CLOSE_TP,
                     A.CASHD_TP       AS CLS_DETAIL,
@@ -671,7 +671,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'E'         = NVL(v_Close_Tp, 'E')
             GROUP   BY A.CASHD_TP
             UNION   ALL
-            -- (F)Ä«µåÀÌÃ¼
+            -- (F)ì¹´ë“œì´ì²´
             SELECT  v_Close_Ym       AS CLOSE_YM,
                     'F'              AS CLOSE_TP,
                     A.CARDCOM_CD     AS CLS_DETAIL,
@@ -682,7 +682,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'F'        = NVL(v_Close_Tp, 'F')
             GROUP   BY A.CARDCOM_CD
             UNION   ALL
-            -- (G)Ä«µå(PG)
+            -- (G)ì¹´ë“œ(PG)
             SELECT  v_Close_Ym       AS CLOSE_YM,
                     'G'              AS CLOSE_TP,
                     A.RECP_PAY       AS CLS_DETAIL,
@@ -694,12 +694,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'G'        = NVL(v_Close_Tp, 'G')
             GROUP   BY A.RECP_PAY
             UNION   ALL
-            -- (H)°¨°¡»ó°¢,  (I)µî·ÏºñÀÌ¿¬,  (J)¼ö¼ö·áÀÌ¿¬
+            -- (H)ê°ê°€ìƒê°,  (I)ë“±ë¡ë¹„ì´ì—°,  (J)ìˆ˜ìˆ˜ë£Œì´ì—°
             SELECT  A.POSTP_YM       CLOSE_YM,
                     CASE
-                      WHEN A.POSTP_TP   IN ( '02', '03' )                   THEN 'H' -- (H)°¨°¡»ó°¢
-                      WHEN A.POSTP_TP   = '01'                              THEN 'I' -- (I)µî·ÏºñÀÌ¿¬
-                      WHEN A.POSTP_TP   IN ( '04', '05', '06', '07', '08' ) THEN 'J' -- (J)¼ö¼ö·áÀÌ¿¬
+                      WHEN A.POSTP_TP   IN ( '02', '03' )                   THEN 'H' -- (H)ê°ê°€ìƒê°
+                      WHEN A.POSTP_TP   = '01'                              THEN 'I' -- (I)ë“±ë¡ë¹„ì´ì—°
+                      WHEN A.POSTP_TP   IN ( '04', '05', '06', '07', '08' ) THEN 'J' -- (J)ìˆ˜ìˆ˜ë£Œì´ì—°
                     END AS           CLOSE_TP,
                     A.POSTP_TP       CLS_DETAIL,
                     COUNT(*)         CLOSE_CNT,
@@ -718,7 +718,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     A.POSTP_STAT <> 'Z'
             GROUP   BY A.POSTP_YM, A.POSTP_TP
             UNION   ALL
-            -- (K)ÆÇ¸Å¼ö¼ö·á
+            -- (K)íŒë§¤ìˆ˜ìˆ˜ë£Œ
             SELECT  A.SLCM_YM       CLOSE_YM,
                     'K'             CLOSE_TP,
                     A.COMM_TP       CLS_DETAIL,
@@ -729,7 +729,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'K'       = NVL(v_Close_Tp, 'K')
             GROUP   BY A.SLCM_YM, A.COMM_TP
             UNION   ALL
-            -- (L)ÀåÂø¼ö¼ö·á
+            -- (L)ìž¥ì°©ìˆ˜ìˆ˜ë£Œ
             SELECT  A.SLCM_YM        CLOSE_YM,
                     'L'              CLOSE_TP,
                     A.COMM_TP        CLS_DETAIL,
@@ -740,7 +740,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'L'       = NVL(v_Close_Tp, 'L')
             GROUP   BY A.SLCM_YM, A.COMM_TP
             UNION   ALL
-            -- (M)¼­ºñ½º¼ö¼ö·á
+            -- (M)ì„œë¹„ìŠ¤ìˆ˜ìˆ˜ë£Œ
             SELECT  A.SLCM_YM        CLOSE_YM,
                     'M'              CLOSE_TP,
                     A.COMM_TP        CLS_DETAIL,
@@ -751,7 +751,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'M'       = NVL(v_Close_Tp, 'M')
             GROUP   BY A.SLCM_YM, A.COMM_TP
             UNION   ALL
-            -- (N)¼ö¼ö·á ÇÕ»ê
+            -- (N)ìˆ˜ìˆ˜ë£Œ í•©ì‚°
             SELECT  A.SLCM_YM        CLOSE_YM,
                     'N'              CLOSE_TP,
                     ''               CLS_DETAIL,
@@ -762,7 +762,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
             AND     'N'       = NVL(v_Close_Tp, 'N')
             GROUP   BY A.SLCM_YM
             UNION   ALL
-            -- (O)Ãæ´ç±Ý³»¿ª
+            -- (O)ì¶©ë‹¹ê¸ˆë‚´ì—­
             SELECT  SUBSTR(A.APFD_DAY,1,6)          CLOSE_YM,
                     'O'                             CLOSE_TP,
                     A.APFD_TP                       CLS_DETAIL,
@@ -776,7 +776,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
     ORDER   BY CLOSE_YM, CLOSE_TP, CLS_DETAIL;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î Ã³¸®µÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì²˜ë¦¬ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -802,7 +802,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
         FROM    DUAL
         WHERE   DUMMY = 'Z';
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0125.p_sRtre0125Close(2)', v_ErrorText, v_Return_Message);
 
@@ -811,4 +811,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0125 AS
 
 
 END Pkg_Rtre0125;
-/

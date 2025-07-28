@@ -1358,7 +1358,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0205 AS
     WHERE   A.GI_DAY  BETWEEN TO_CHAR(SYSDATE -8, 'YYYYMMDD') AND  TO_CHAR(SYSDATE - 1, 'YYYYMMDD') /* 대상:배송완료일이 전일 */
     AND     A.SMS_YN  = 'N'
     AND     B.STAT_CD = '01'
-    AND     B.CHAN_CD NOT IN ('01','05')   /* 대리점과 타이어뱅크는 제외, 온라인,방판,오픈몰이 대상임 */
+    AND     B.CHAN_CD NOT IN ('01','05')   /* 대리점과 타이어뱅크는 제외, 온라인,방판,오픈몰이 대상임 [20210907_01] consignment로 전환 후 대리점에도 문자발송 포함*/
     AND     A.ORD_NO  = B.ORD_NO
     AND     B.CUST_NO = C.CUST_NO
     AND     B.CUST_NO = C.CUST_NO 
@@ -3321,4 +3321,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0205 AS
     
   END p_Rtsd0205tirearrivalIngJob;     
 END Pkg_Rtsd0205;
-/

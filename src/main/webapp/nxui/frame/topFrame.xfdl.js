@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_menu", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_reversesubsum("false");
             obj.set_enableevent("true");
             obj.set_loadfiltermode("keep");

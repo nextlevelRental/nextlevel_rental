@@ -62,7 +62,7 @@
         <Static id="Static43" taborder="147" text="수입차정비" cssclass="sta_WF_detailLabel" left="748" top="296" width="130" height="31"/>
         <Static id="Static51" taborder="149" cssclass="sta_WF_detailLabel2" left="748" top="326" right="25" height="31"/>
         <Static id="Static52" taborder="150" cssclass="sta_WF_detailLabel2" left="0" top="326" width="1122" height="31"/>
-        <Static id="Static53" taborder="151" text="추천장착점" cssclass="sta_WF_detailLabel" left="374" top="326" width="130" height="31"/>
+        <Static id="Static53" taborder="151" text="전략추천" cssclass="sta_WF_detailLabel" left="374" top="326" width="130" height="31"/>
         <Static id="Static54" taborder="152" text="세차가능" cssclass="sta_WF_detailLabelP" left="0" top="326" width="149" height="31"/>
         <Combo id="cwYn" taborder="153" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" enable="true" left="155" top="331" width="214" height="21"/>
         <Combo id="chYn" taborder="154" displayrowcount="5" onitemchanged="div_search00_userGrp_onitemchanged" enable="true" left="508" top="331" width="236" height="21" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm"/>
@@ -119,8 +119,6 @@
         <Edit id="salesGroupNm00" taborder="207" enable="false" left="310" top="481" width="193" height="21"/>
         <Edit id="salesGroup01" taborder="208" onkeyup="div_search_edt_searchKeyword_onkeyup" enable="false" left="148" top="481" width="36" height="21" visible="false"/>
         <Edit id="salesGroupNm01" taborder="209" enable="false" left="310" top="481" width="26" height="21" visible="false"/>
-        <Static id="Static48" taborder="210" text="퍼플점 여부" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="748" top="476" width="130" height="31"/>
-        <Combo id="cmb_plplYn" taborder="211" innerdataset="@dsPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="481" width="235" height="21"/>
         <Static id="Static49" taborder="212" text="탈착기" cssclass="sta_WF_detailLabel" left="0" top="506" width="149" height="31"/>
         <Static id="Static61" taborder="213" cssclass="sta_WF_detailLabel2" left="0" top="506" width="1122" height="31"/>
         <Combo id="cb_apfdEndYn" taborder="214" innerdataset="@dsYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="155" top="511" width="214" height="21"/>
@@ -129,7 +127,7 @@
         <Combo id="chainYn" taborder="217" innerdataset="@dsUseYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="511" width="235" height="21"/>
         <Static id="Static64" taborder="218" text="담당영업사원" cssclass="sta_WF_detailLabel" left="748" top="146" width="130" height="31"/>
         <Edit id="rntMstNm" taborder="219" enable="false" left="882" top="151" width="94" height="21"/>
-        <MaskEdit id="rntMstMob" taborder="221" left="85.44%" top="151" height="21" width="137" enable="true" mask="###-####-####" type="string" readonly="true"/>
+        <MaskEdit id="rntMstMob" taborder="221" left="980" top="151" height="21" width="137" enable="true" mask="###-####-####" type="string" readonly="true"/>
         <Static id="Static65" taborder="222" cssclass="sta_WF_detailLabel2" left="0" top="446" width="1122" height="31"/>
         <Static id="Static66" taborder="223" text="엔진 오일 무료 점검" cssclass="sta_WF_detailLabel" left="0" top="446" width="149" height="31"/>
         <Combo id="egolNchrgChkYn" taborder="225" innerdataset="@dsEgolNchrgChkYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="155" top="451" width="214" height="21"/>
@@ -140,6 +138,10 @@
         <Static id="Static69" taborder="229" cssclass="sta_WF_detailLabel2" left="0" top="116" width="1122" height="31"/>
         <Static id="Static70" taborder="230" text="홈페이지 대리점명" cssclass="sta_WF_detailLabelP" left="0" top="116" width="149" height="31"/>
         <Edit id="hpAgencyNm" taborder="231" maxlength="120" left="155" top="120" width="213" height="21"/>
+        <Static id="Static48" taborder="210" text="퍼플점 여부" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="748" top="116" width="130" height="31"/>
+        <Combo id="cmb_plplYn" taborder="211" innerdataset="@dsPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="882" top="121" width="235" height="21"/>
+        <Static id="Static71" taborder="232" text="프리미엄퍼플점여부" onclick="Static45_onclick" cssclass="sta_WF_detailLabel" left="374" top="116" width="130" height="31"/>
+        <Combo id="cmb_premprplYn" taborder="233" innerdataset="@dsPremPrplYn" codecolumn="cd" datacolumn="cdNm" displayrowcount="5" left="508" top="121" width="235" height="21"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -198,6 +200,7 @@
           <Column id="rentalOffice" type="STRING" size="256"/>
           <Column id="rentalOfficeNm" type="STRING" size="256"/>
           <Column id="prplYn" type="STRING" size="256"/>
+          <Column id="premprplYn" type="STRING" size="256"/>
           <Column id="apfdEndYn" type="STRING" size="256"/>
           <Column id="chainYn" type="STRING" size="256"/>
           <Column id="rntMstId" type="STRING" size="256"/>
@@ -351,6 +354,22 @@
           <Column id="useYn" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsPremPrplYn" firefirstcount="0" firenextcount="0" useclientlayout="false" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
+        <ColumnInfo>
+          <Column id="cd" type="STRING" size="256"/>
+          <Column id="cdNm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="cd">Y</Col>
+            <Col id="cdNm">Y</Col>
+          </Row>
+          <Row>
+            <Col id="cd">N</Col>
+            <Col id="cdNm">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="div_search.agencyNm" propid="value" datasetid="" columnid=""/>
@@ -406,6 +425,7 @@
       <BindItem id="item50" compid="bkpdNchrgChkYn" propid="value" datasetid="dsAgency" columnid="bkpdNchrgChkYn"/>
       <BindItem id="item51" compid="washerNchrgPayYn" propid="value" datasetid="dsAgency" columnid="washerNchrgPayYn"/>
       <BindItem id="item52" compid="hpAgencyNm" propid="value" datasetid="dsAgency" columnid="hpAgencyNm"/>
+      <BindItem id="item53" compid="cmb_premprplYn" propid="value" datasetid="dsAgency" columnid="premprplYn"/>
     </Bind>
     <Script type="xscript5.0"><![CDATA[/***************************************************************************************************
  * 파 일 명 : RDSDAgency.xfdl
@@ -519,6 +539,7 @@ this.fn_setEnable = function() {
 		this.useYn.set_enable(false);
 		this.olimitCnt.set_enable(false);
 		this.cmb_plplYn.set_enable(false);
+		this.cmb_premprplYn.set_enable(false);
 	}else{ //렌탈팀
 		this.cb_taxRqcd.set_enable(true);
 		this.cb_chanLclsCd.set_value(true);
@@ -532,6 +553,7 @@ this.fn_setEnable = function() {
 		this.useYn.set_enable(true);
 		this.olimitCnt.set_enable(true);
 		this.cmb_plplYn.set_enable(true);
+		this.cmb_premprplYn.set_enable(true);
 	}
 }
 

@@ -153,7 +153,7 @@
         this.FN_search = function(){
         	var petternCd		= this.div_search.edt_searchKeyword.value;
         	var sSvcID        	= "listTire";                    
-        	var sController   	= "/listTireInfo.do";
+        	var sController   	= "/rtms/sd/listTireInfo.do";
         	var sInDatasets   	= "";
         	var sOutDatasets  	= "dsVKGrp=listTireGrp";
         	var sArgs 			= "";	

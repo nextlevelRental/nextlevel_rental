@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0402
-    PURPOSE     πÊπÆ¿Â¬¯ ¿Ã∑¬¡§∫∏ ∞¸∏Æ
+    PURPOSE     Î∞©Î¨∏Ïû•Ï∞© Ïù¥Î†•Ï†ïÎ≥¥ Í¥ÄÎ¶¨
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- πÊπÆ¿Â¬¯ ¿Ã∑¬¡§∫∏ Insert
+  -- Î∞©Î¨∏Ïû•Ï∞© Ïù¥Î†•Ï†ïÎ≥¥ Insert
   
     REVISIONS
     Ver     Date        Author          Description
@@ -18,7 +18,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
     1.0     2018-12-02  wjim            [20181122_01] Created this package body.
   *****************************************************************************/
   FUNCTION f_InsertRtsd0402 (
-      v_Ord_No         IN RTSD0402.ORD_NO%TYPE        /*∞Ëæ‡π¯»£              */
+      v_Ord_No         IN RTSD0402.ORD_NO%TYPE        /*Í≥ÑÏïΩÎ≤àÌò∏              */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   BEGIN
@@ -80,7 +80,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
   END f_InsertRtsd0402;
   
   /*****************************************************************************
-  -- πÊπÆ¿Â¬¯ ¿Ã∑¬¡§∫∏ ∏Ò∑œ Select
+  -- Î∞©Î¨∏Ïû•Ï∞© Ïù¥Î†•Ï†ïÎ≥¥ Î™©Î°ù Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -89,7 +89,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0402 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Ord_No          IN RTSD0402.ORD_NO%TYPE        /*∞Ëæ‡π¯»£             */
+    , v_Ord_No          IN RTSD0402.ORD_NO%TYPE        /*Í≥ÑÏïΩÎ≤àÌò∏             */
   ) IS
 
   BEGIN
@@ -134,4 +134,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0402 AS
   END p_sRTSD0402; 
         
 END Pkg_Rtsd0402;
-/

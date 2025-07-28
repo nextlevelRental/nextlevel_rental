@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0103 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0103
-   PURPOSE   ΐΞΉΩΏξµε ΑφΏªΔΪµε °όΈ®
+   PURPOSE   μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ κ΄€λ¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,129 +10,128 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0103 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε Count
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0103Count(
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*΄γ΄ηΑφ±Έ ΔΪµε       */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,           /*΄γ΄ηΐΪ »ηΉψ         */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,        /*ΑφΏªΔΪµε            */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE           /*µµ½ΓΔΪµε            */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,  /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“       */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,           /*λ‹΄λ‹Ήμ μ‚¬λ²         */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,        /*μ§€μ—­μ½”λ“            */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE           /*λ„μ‹μ½”λ“            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε Select
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0103 (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*΄γ΄ηΑφ±Έ Έν           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*΄γ΄ηΐΪΈν              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ΑφΏªΈν                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½ΓΈν                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*΄γ΄ηΐΪMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*µξ·ΟΐΪID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*λ‹΄λ‹Ήμ§€κµ¬ λª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*λ‹΄λ‹Ήμλª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*μ§€μ—­λª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*λ„μ‹λª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*λ‹΄λ‹ΉμMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*λ“±λ΅μID              */
     );
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε Insert
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*΄γ΄ηΑφ±Έ Έν           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*΄γ΄ηΐΪΈν              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ΑφΏªΈν                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½ΓΈν                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*΄γ΄ηΐΪMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µξ·ΟΐΪID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*λ‹΄λ‹Ήμ§€κµ¬ λª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*λ‹΄λ‹Ήμλª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*μ§€μ—­λª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*λ„μ‹λª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*λ‹΄λ‹ΉμMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*λ“±λ΅μID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε Update
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*΄γ΄ηΑφ±Έ Έν           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*΄γ΄ηΐΪΈν              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ΑφΏªΈν                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½ΓΈν                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*΄γ΄ηΐΪMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µξ·ΟΐΪID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*λ‹΄λ‹Ήμ§€κµ¬ λª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*λ‹΄λ‹Ήμλª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*μ§€μ—­λª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*λ„μ‹λª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*λ‹΄λ‹ΉμMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*λ“±λ΅μID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε Delete
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0103 (
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µξ·ΟΐΪID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*λ“±λ΅μID              */
     v_ErrorText         OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε °όΈ®(IUD)
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“ κ΄€λ¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0103 (
-    v_Comm_Dvsn         IN CHAR,                            /*Γ³Έ®±ΈΊΠ(I,U,D)       */
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*΄γ΄ηΑφ±Έ Έν           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*΄γ΄ηΐΪΈν              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ΑφΏªΈν                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½ΓΈν                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*΄γ΄ηΐΪMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*µξ·ΟΐΪID              */
+    v_Comm_Dvsn         IN CHAR,                            /*μ²λ¦¬κµ¬λ¶„(I,U,D)       */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*λ‹΄λ‹Ήμ§€κµ¬ λª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*λ‹΄λ‹Ήμλª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*μ§€μ—­λª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*λ„μ‹λª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*λ‹΄λ‹ΉμMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE,            /*λ“±λ΅μID              */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏª-µµ½ΓΔΪµε Select
+  -- μΈλ°”μ΄λ“ μ§€μ—­-λ„μ‹μ½”λ“ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0103City (
     Ref_Cursor          IN OUT SYS_REFCURSOR,
-    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*΄γ΄ηΑφ±Έ ΔΪµε         */
-    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*΄γ΄ηΐΪ »ηΉψ           */
-    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*ΑφΏªΔΪµε              */
-    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*µµ½ΓΔΪµε              */
-    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*΄γ΄ηΑφ±Έ Έν           */
-    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*΄γ΄ηΐΪΈν              */
-    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*ΑφΏªΈν                */
-    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*µµ½ΓΈν                */
-    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*΄γ΄ηΐΪMobile No       */
-    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*µξ·ΟΐΪID              */
+    v_Sales_Office_Id   IN RTCS0103.SALES_OFFICE_ID%TYPE,   /*λ‹΄λ‹Ήμ§€κµ¬ μ½”λ“         */
+    v_Emp_Id            IN RTCS0103.EMP_ID%TYPE,            /*λ‹΄λ‹Ήμ μ‚¬λ²           */
+    v_Region_No         IN RTCS0103.REGION_NO%TYPE,         /*μ§€μ—­μ½”λ“              */
+    v_City_No           IN RTCS0103.CITY_NO%TYPE,           /*λ„μ‹μ½”λ“              */
+    v_Sales_Office_Nm   IN RTCS0103.SALES_OFFICE_NAME%TYPE, /*λ‹΄λ‹Ήμ§€κµ¬ λª…           */
+    v_Emp_Name          IN RTCS0103.EMP_NAME%TYPE,          /*λ‹΄λ‹Ήμλª…              */
+    v_Region_Name       IN RTCS0103.REGION_NAME%TYPE,       /*μ§€μ—­λª…                */
+    v_City_Name         IN RTCS0103.CITY_NAME%TYPE,         /*λ„μ‹λª…                */
+    v_Emp_Mobileno      IN RTCS0103.EMP_MOBILENO%TYPE,      /*λ‹΄λ‹ΉμMobile No       */
+    v_Reg_Id            IN RTCS0103.REG_ID%TYPE             /*λ“±λ΅μID              */
     );
         
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε- µµ½Γ ΔΪµε,Έν Α¶ΘΈ
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“- λ„μ‹ μ½”λ“,λª… μ΅°ν
   *****************************************************************************/
   PROCEDURE p_sRtcs0103Region (
     Ref_Cursor  IN OUT SYS_REFCURSOR
     );
   
   /*****************************************************************************
-  -- ΐΞΉΩΏξµε ΑφΏªΔΪµε- µµ½Γ ΔΪµε,Έν Α¶ΘΈ
+  -- μΈλ°”μ΄λ“ μ§€μ—­μ½”λ“- λ„μ‹ μ½”λ“,λª… μ΅°ν
   *****************************************************************************/
   PROCEDURE p_sRtcs0103City (
     Ref_Cursor  IN OUT SYS_REFCURSOR,
-    v_Region_No  IN RTCS0103.REGION_NO%TYPE           /*ΑφΏªΔΪµε              */
+    v_Region_No  IN RTCS0103.REGION_NO%TYPE           /*μ§€μ—­μ½”λ“              */
     );
     
 END Pkg_Rtcs0103;
-/

@@ -1,76 +1,75 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0122 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0122
-    PURPOSE     °¡°è¾à »ó´ãÁ¤º¸ °ü¸®
+    PURPOSE     ê°€ê³„ì•½ ìƒë‹´ì •ë³´ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
     1.0     2016-07-28  wjim            1. Created this package body.
-    1.1     2016-09-20  wjim            ÀçÄÁÅÃÀÏÀÚ,½Ã°£ Ãß°¡
+    1.1     2016-09-20  wjim            ìž¬ì»¨íƒì¼ìž,ì‹œê°„ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Select
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0122 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE      /* °¡°è¾à¹øÈ£         */
+    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE      /* ê°€ê³„ì•½ë²ˆí˜¸         */
   );
   
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Insert
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0122 (
-      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£ */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ   */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£   */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë   */ 
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID   */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£ */
+      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸ */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž   */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„   */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©   */ 
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID   */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ Update
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0122 (
-      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£ */      
-    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* »ó´ã¼ø¹ø   */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ   */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£   */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë   */ 
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID   */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£ */
+      v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸ */      
+    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* ìƒë‹´ìˆœë²ˆ   */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž   */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„   */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©   */ 
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID   */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„ */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- °¡°è¾à »ó´ãÁ¤º¸ °ü¸®(IUD)
+  -- ê°€ê³„ì•½ ìƒë‹´ì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0122 (
-      v_Comm_Dvsn       IN CHAR                     /* Ã³¸®±¸ºÐ(I,U,D) */
-    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£      */
-    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* »ó´ã¼ø¹ø        */
-    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* »ó´ãÀÏÀÚ        */
-    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* »ó´ã½Ã°£        */
-    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* »ó´ã³»¿ë        */   
-    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* µî·ÏÀÚID        */
-    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ÀçÄÁÅÃÀÏÀÚ      */
-    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ÀçÄÁÅÃ½Ã°£      */
+      v_Comm_Dvsn       IN CHAR                     /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
+    , v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸      */
+    , v_Call_Seq        IN RTSD0122.CALL_SEQ%TYPE   /* ìƒë‹´ìˆœë²ˆ        */
+    , v_Call_Day        IN RTSD0122.CALL_DAY%TYPE   /* ìƒë‹´ì¼ìž        */
+    , v_Call_Tm         IN RTSD0122.CALL_TM%TYPE    /* ìƒë‹´ì‹œê°„        */
+    , v_Call_Dtl        IN RTSD0122.CALL_DTL%TYPE   /* ìƒë‹´ë‚´ìš©        */   
+    , v_Reg_Id          IN RTSD0122.REG_ID%TYPE     /* ë“±ë¡ìžID        */
+    , v_Recall_Day      IN RTSD0122.RECALL_DAY%TYPE /* ìž¬ì»¨íƒì¼ìž      */
+    , v_Recall_Tm       IN RTSD0122.RECALL_TM%TYPE  /* ìž¬ì»¨íƒì‹œê°„      */
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Àç·»Å»°è¾à»ó´ã  Delete
+  -- ìž¬ë Œíƒˆê³„ì•½ìƒë‹´  Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0121Rental (
-    v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* °¡°è¾à¹øÈ£      */
+    v_Provsn_No       IN RTSD0122.PROVSN_NO%TYPE  /* ê°€ê³„ì•½ë²ˆí˜¸      */
     ) RETURN NUMBER;
             
 END Pkg_Rtsd0122;
-/

@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_withdrawList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -32,6 +33,7 @@
 
             obj = new Dataset("ds_pamentList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -43,6 +45,7 @@
 
             obj = new Dataset("ds_result", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -54,6 +57,7 @@
 
             obj = new Dataset("ds_re0030", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -65,6 +69,7 @@
 
             obj = new Dataset("ds_re0031", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -76,6 +81,7 @@
 
             obj = new Dataset("ds_pamentTmpList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -87,6 +93,7 @@
 
             obj = new Dataset("ds_re0040", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -98,6 +105,7 @@
 
             obj = new Dataset("ds_accWithdrawList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -109,6 +117,7 @@
 
             obj = new Dataset("ds_crdWithdrawList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -692,7 +701,7 @@
         			this.ds_re0030.setColumn(0, "recpId", this.userId);
         			this.ds_re0030.setColumn(0, "recpAmt", parseInt(nvl(registrationRecpAmt)));
         			this.ds_re0030.setColumn(0, "recpTp", "01");
-        			this.ds_re0030.setColumn(0, "recpPay", "C1");
+        			this.ds_re0030.setColumn(0, "recpPay", "A1");
         			this.ds_re0030.setColumn(0, "recpFg", "01");
         			this.ds_re0030.setColumn(0, "schdSeq", "0");
         			this.ds_re0030.setColumn(0, "cashYn", "N");
@@ -713,7 +722,7 @@
         			this.ds_re0030.setColumn(0, "recpId", this.userId);
         			this.ds_re0030.setColumn(0, "recpAmt", parseInt(nvl(registrationRecpAmt)));
         			this.ds_re0030.setColumn(0, "recpTp", "01");
-        			this.ds_re0030.setColumn(0, "recpPay", "C1");
+        			this.ds_re0030.setColumn(0, "recpPay", "A1");
         			this.ds_re0030.setColumn(0, "recpFg", "01");
         			this.ds_re0030.setColumn(0, "schdSeq", "0");
         			this.ds_re0030.setColumn(0, "cashYn", "N");
@@ -732,7 +741,7 @@
         			this.ds_re0030.setColumn(1, "recpId", this.userId);
         			this.ds_re0030.setColumn(1, "recpAmt", parseInt(nvl(rentalRecpAmt)));
         			this.ds_re0030.setColumn(1, "recpTp", "11");
-        			this.ds_re0030.setColumn(1, "recpPay", "C1");
+        			this.ds_re0030.setColumn(1, "recpPay", "A1");
         			this.ds_re0030.setColumn(1, "recpFg", "01");
         			this.ds_re0030.setColumn(1, "schdSeq", "0");
         			this.ds_re0030.setColumn(1, "cashYn", "N");
@@ -753,7 +762,7 @@
         			this.ds_re0030.setColumn(0, "recpId", this.userId);			
         			this.ds_re0030.setColumn(0, "recpAmt", parseInt(nvl(rentalRecpAmt)));
         			this.ds_re0030.setColumn(0, "recpTp", "11");
-        			this.ds_re0030.setColumn(0, "recpPay", "C1");
+        			this.ds_re0030.setColumn(0, "recpPay", "A1");
         			this.ds_re0030.setColumn(0, "recpFg", "01");
         			this.ds_re0030.setColumn(0, "schdSeq", "0");
         			this.ds_re0030.setColumn(0, "cashYn", "N");
@@ -773,7 +782,7 @@
         		this.ds_re0040.setColumn(0, "recpId", this.userId);			
         		this.ds_re0040.setColumn(0, "recpAmt", this.div_search.edt_payAmt.value);
         		this.ds_re0040.setColumn(0, "bankRecpDay", nvl(this.div_search.cal_payDay.value));
-        		this.ds_re0040.setColumn(0, "recpPay", "C1");
+        		this.ds_re0040.setColumn(0, "recpPay", "A1");
         		this.ds_re0040.setColumn(0, "recpFg", "01");
         		this.ds_re0040.setColumn(0, "cncStat", "N");
         		this.ds_re0040.setColumn(0, "cncRseq", "");
@@ -950,6 +959,10 @@
         			case "10150029":				
         				break;
         			case "10160046":				
+        				break;
+        			case "10154002":				
+        				break;
+        			case "10152001":				
         				break;
         			case "sysmngr001":
         				break;

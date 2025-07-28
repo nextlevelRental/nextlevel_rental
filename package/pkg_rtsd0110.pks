@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0110 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0110
-   PURPOSE   ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ ∞¸∏Æ
+   PURPOSE   Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,98 +10,97 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0110 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Count
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Count
   *****************************************************************************/
   FUNCTION f_sRtsd0110Count(
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,          /*∞Ì∞¥π¯»£            */
-    v_Seq            IN RTSD0110.SEQ%TYPE               /*º¯π¯                */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,          /*Í≥†Í∞ùÎ≤àÌò∏            */
+    v_Seq            IN RTSD0110.SEQ%TYPE               /*ÏàúÎ≤à                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Select
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0110 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Cert_FDay      IN RTSD0110.CERT_DAY%TYPE,       /*¿Œ¡ı¿œ¿⁄FROM          */
-    v_Cert_TDay      IN RTSD0110.CERT_DAY%TYPE        /*¿Œ¡ı¿œ¿⁄TO            */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Cert_FDay      IN RTSD0110.CERT_DAY%TYPE,       /*Ïù∏Ï¶ùÏùºÏûêFROM          */
+    v_Cert_TDay      IN RTSD0110.CERT_DAY%TYPE        /*Ïù∏Ï¶ùÏùºÏûêTO            */
     );
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Insert
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*º¯π¯                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*¿Œ¡ı¿œ¿⁄              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*¿Œ¡ıπ¯»£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*∫ª¿Œ¿Œ¡ıπÊπ˝          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*¿Œ¡ıø©∫Œ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*≈ÎΩ≈ªÁ                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ÏàúÎ≤à                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*Ïù∏Ï¶ùÏùºÏûê              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*Ïù∏Ï¶ùÎ≤àÌò∏              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*Î≥∏Ïù∏Ïù∏Ï¶ùÎ∞©Î≤ï          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*Ïù∏Ï¶ùÏó¨Î∂Ä              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*ÌÜµÏã†ÏÇ¨                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Update
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*º¯π¯                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*¿Œ¡ı¿œ¿⁄              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*¿Œ¡ıπ¯»£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*∫ª¿Œ¿Œ¡ıπÊπ˝          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*¿Œ¡ıø©∫Œ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*≈ÎΩ≈ªÁ                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ÏàúÎ≤à                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*Ïù∏Ï¶ùÏùºÏûê              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*Ïù∏Ï¶ùÎ≤àÌò∏              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*Î≥∏Ïù∏Ïù∏Ï¶ùÎ∞©Î≤ï          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*Ïù∏Ï¶ùÏó¨Î∂Ä              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*ÌÜµÏã†ÏÇ¨                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Delete
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*º¯π¯                  */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ÏàúÎ≤à                  */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ ∞¸∏Æ(IUD)
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0110 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*∞Ì∞¥π¯»£              */
-    v_Seq            IN OUT RTSD0110.SEQ%TYPE,        /*º¯π¯                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*¿Œ¡ı¿œ¿⁄              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*¿Œ¡ıπ¯»£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*∫ª¿Œ¿Œ¡ıπÊπ˝          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*¿Œ¡ıø©∫Œ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*»ﬁ¥Î∆˘π¯»£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*≈ÎΩ≈ªÁ                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*Í≥†Í∞ùÎ≤àÌò∏              */
+    v_Seq            IN OUT RTSD0110.SEQ%TYPE,        /*ÏàúÎ≤à                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*Ïù∏Ï¶ùÏùºÏûê              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*Ïù∏Ï¶ùÎ≤àÌò∏              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*Î≥∏Ïù∏Ïù∏Ï¶ùÎ∞©Î≤ï          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*Ïù∏Ï¶ùÏó¨Î∂Ä              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*Ìú¥ÎåÄÌè∞Î≤àÌò∏            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*ÌÜµÏã†ÏÇ¨                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ - º¯π¯ »πµÊ
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• - ÏàúÎ≤à ÌöçÎìù
   *****************************************************************************/
   FUNCTION f_sRtsd0110Seq(
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*∞Ì∞¥π¯»£            */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*Í≥†Í∞ùÎ≤àÌò∏            */
     ) RETURN NUMBER;
 
  /*****************************************************************************
-  -- ∫ª¿Œ¿Œ¡ı ¿Ã∑¬ Select Max Seq
+  -- Î≥∏Ïù∏Ïù∏Ï¶ù Ïù¥Î†• Select Max Seq
   *****************************************************************************/
   PROCEDURE p_sRtsd0110_MaxSeq (
   Ref_Cursor       IN OUT SYS_REFCURSOR,
-  v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*∞Ì∞¥π¯»£              */
+  v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*Í≥†Í∞ùÎ≤àÌò∏              */
   );
   
 END Pkg_Rtsd0110;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
 /*******************************************************************************
    NAME:     PKG_RTVW0033
-   PURPOSE:  ¼Ò¼ÓÆÇ¸ÅÀÎ
+   PURPOSE:  ì†Œì†íŒë§¤ì¸
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,111 +9,111 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
    1.0        2018-11-13  Sean             1. Created this package body.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»Áö»ç/Áö¿ª Á¶È¸
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì—­ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtvw0033 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP   IN RTVIEW33.RENTAL_GROUP%TYPE,        /* ·»Å» Áö»ç */
-    v_RENTAL_OFFICE  IN RTVIEW33.RENTAL_OFFICE%TYPE,       /* ·»Å» Áö¿ª */
-    v_CHN_CD         IN CHAR                               /* ±¸ºÐ: 1: ´ë¸®Á¡, 2: ÆÇ¸ÅÀÎ, 3:·Îµð¾È */
+    v_RENTAL_GROUP   IN RTVIEW33.RENTAL_GROUP%TYPE,        /* ë Œíƒˆ ì§€ì‚¬ */
+    v_RENTAL_OFFICE  IN RTVIEW33.RENTAL_OFFICE%TYPE,       /* ë Œíƒˆ ì§€ì—­ */
+    v_CHN_CD         IN CHAR                               /* êµ¬ë¶„: 1: ëŒ€ë¦¬ì , 2: íŒë§¤ì¸, 3:ë¡œë””ì•ˆ */
     ) IS
   BEGIN
-    IF v_CHN_CD = '1' THEN  -- ´ë¸®Á¡
+    IF v_CHN_CD = '1' THEN  -- ëŒ€ë¦¬ì 
       IF (TRIM(v_RENTAL_OFFICE) IS NULL) THEN
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)        
-           AND V.CHAN_CD IN ('01', '05') /* ´ë¸®Á¡, Å¸ÀÌ¾î¹ðÅ© */
+           AND V.CHAN_CD IN ('01', '05') /* ëŒ€ë¦¬ì , íƒ€ì´ì–´ë±…í¬ */
           ORDER BY V.AGENCY_CD
          ;
       ELSE       
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)
-           AND V.CHAN_CD IN ('01', '05') /* ´ë¸®Á¡, Å¸ÀÌ¾î¹ðÅ© */
+           AND V.CHAN_CD IN ('01', '05') /* ëŒ€ë¦¬ì , íƒ€ì´ì–´ë±…í¬ */
            AND V.RENTAL_GROUP = v_RENTAL_GROUP                
            AND V.RENTAL_OFFICE = v_RENTAL_OFFICE                
           ORDER BY V.AGENCY_CD
          ;       
       END IF;
-    ELSIF v_CHN_CD = '3' THEN  -- ·Îµð¾È    
+    ELSIF v_CHN_CD = '3' THEN  -- ë¡œë””ì•ˆ    
       IF (TRIM(v_RENTAL_OFFICE) IS NULL) THEN
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
-             , RTCS0002 B   /* ·Îµð¾È Ä«¸¶½ºÅ¸ ¸¶½ºÅÍ */
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
+             , RTCS0002 B   /* ë¡œë””ì•ˆ ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° */
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)        
@@ -124,30 +124,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
       ELSE       
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
-             , RTCS0002 B   /* ·Îµð¾È Ä«¸¶½ºÅ¸ ¸¶½ºÅÍ */             
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
+             , RTCS0002 B   /* ë¡œë””ì•ˆ ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° */             
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)
@@ -158,76 +158,76 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
           ORDER BY V.AGENCY_CD
          ;        
       END IF;      
-    ELSIF v_CHN_CD = '2' THEN  -- ÆÇ¸ÅÀÎ
+    ELSIF v_CHN_CD = '2' THEN  -- íŒë§¤ì¸
       IF (TRIM(v_RENTAL_OFFICE) IS NULL) THEN
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)        
            AND V.CHAN_LCLS_CD = '03' 
            AND NOT EXISTS
                    (SELECT 'O'
-                      FROM RTCS0002 B /* ·Îµð¾È Ä«¸¶½ºÅ¸ ¸¶½ºÅÍ */
+                      FROM RTCS0002 B /* ë¡œë””ì•ˆ ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° */
                      WHERE B.ORD_AGENT = V.AGENCY_CD)
           ORDER BY V.AGENCY_CD
          ;
       ELSE       
         OPEN Ref_Cursor FOR  
         SELECT 0 AS CHK
-             , V.AGENCY_CD	        /* ÆÇ¸ÅÀÎÄÚµå 		    */    
-             , V.AGENCY_NM	        /* ÆÇ¸ÅÁ¡¸í   		    */    
-             , V.SALES_GROUP	      /* Áö»çÄÚµå   		    */    
-             , V.SALES_OFFICE	      /* ÁöÁ¡ÄÚµå   		    */    
-             , V.TEL_NO		          /* ÀüÈ­¹øÈ£   		    */
-             , V.CHAN_CD		        /* Ã¼³Î±¸ºÐ: S030	    */    
-             , V.LIFNR		          /* º¥´õÄÚµå   		    */    
-             , V.TAX_RQCD	          /* ¼¼±Ý°è»ê¼­ ¹ßÇà¹æ¹ý*/  	
-             , V.RENTAL_YN	        /* ·»Å»´ë¸®Á¡ ¿©ºÎ 	  */
-             , V.CHAN_LCLS_CD       /* Ã¤³Î ´ëºÐ·ù: S090 */
-             , V.CHAN_MCLS_CD       /* Ã¤³Î ÁßºÐ·ù: S091 */
-             , V.RENTAL_GROUP	      /* ·»Å»Áö»ç 		      */
+             , V.AGENCY_CD	        /* íŒë§¤ì¸ì½”ë“œ 		    */    
+             , V.AGENCY_NM	        /* íŒë§¤ì ëª…   		    */    
+             , V.SALES_GROUP	      /* ì§€ì‚¬ì½”ë“œ   		    */    
+             , V.SALES_OFFICE	      /* ì§€ì ì½”ë“œ   		    */    
+             , V.TEL_NO		          /* ì „í™”ë²ˆí˜¸   		    */
+             , V.CHAN_CD		        /* ì²´ë„êµ¬ë¶„: S030	    */    
+             , V.LIFNR		          /* ë²¤ë”ì½”ë“œ   		    */    
+             , V.TAX_RQCD	          /* ì„¸ê¸ˆê³„ì‚°ì„œ ë°œí–‰ë°©ë²•*/  	
+             , V.RENTAL_YN	        /* ë ŒíƒˆëŒ€ë¦¬ì  ì—¬ë¶€ 	  */
+             , V.CHAN_LCLS_CD       /* ì±„ë„ ëŒ€ë¶„ë¥˜: S090 */
+             , V.CHAN_MCLS_CD       /* ì±„ë„ ì¤‘ë¶„ë¥˜: S091 */
+             , V.RENTAL_GROUP	      /* ë Œíƒˆì§€ì‚¬ 		      */
              , G.RENTAL_GROUP_NM
-             , V.RENTAL_OFFICE	    /* ·»Å»Áö¿ª 		      */
+             , V.RENTAL_OFFICE	    /* ë Œíƒˆì§€ì—­ 		      */
              , A.RENTAL_OFFICE_NM
-             , v_CHN_CD AS CHN_CL   /* ±¸ºÐ: ´ë¸®Á¡(1), ÆÇ¸ÅÀÎ(2), ·Îµð¾È(3) */
+             , v_CHN_CD AS CHN_CL   /* êµ¬ë¶„: ëŒ€ë¦¬ì (1), íŒë§¤ì¸(2), ë¡œë””ì•ˆ(3) */
              , '' AS RENTAL_GROUP_NEW
              , '' AS RENTAL_GROUP_NM_NEW
              , '' AS RENTAL_OFFICE_NEW
              , '' AS RENTAL_OFFICE_NM_NEW
-          FROM RTVIEW33 V   /* ¼Ò¼ÓÆÇ¸ÅÀÎ View */
-             , RTSD0052 G   /* ·»Å»Áö»ç */  
-             , RTSD0053 A   /* ·»Å»Áö¿ª */
+          FROM RTVIEW33 V   /* ì†Œì†íŒë§¤ì¸ View */
+             , RTSD0052 G   /* ë Œíƒˆì§€ì‚¬ */  
+             , RTSD0053 A   /* ë Œíƒˆì§€ì—­ */
          WHERE 1=1
            AND V.RENTAL_GROUP = G.RENTAL_GROUP(+)
            AND V.RENTAL_OFFICE = A.RENTAL_OFFICE(+)
            AND V.CHAN_LCLS_CD = '03' 
            AND NOT EXISTS
                    (SELECT 'O'
-                      FROM RTCS0002 B /* ·Îµð¾È Ä«¸¶½ºÅ¸ ¸¶½ºÅÍ */
+                      FROM RTCS0002 B /* ë¡œë””ì•ˆ ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° */
                      WHERE B.ORD_AGENT = V.AGENCY_CD)
            AND V.RENTAL_GROUP = v_RENTAL_GROUP                
            AND V.RENTAL_OFFICE = v_RENTAL_OFFICE                
@@ -238,15 +238,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
   END p_sRtvw0033;
   
   /*****************************************************************************
-  -- ·»Å»Áö»ç/Áö¿ª °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtvw0033 (
-    v_Comm_Dvsn      IN CHAR,                           /* Ã³¸®±¸ºÐ(I,U,D)     */
-    v_CHN_CL         IN CHAR,                           /* ±¸ºÐÄÚµå            */
-    v_AGENCY_CD      IN RTVIEW33.AGENCY_CD%TYPE,        /* ´ë¸®Á¡ÄÚµå          */
-    v_RENTAL_GROUP_NEW IN RTVIEW33.RENTAL_GROUP%TYPE,   /* ·»Å»Áö»ç            */
-    v_RENTAL_OFFICE_NEW IN RTVIEW33.RENTAL_OFFICE%TYPE, /* ·»Å»Áö¿ª            */
-    v_Reg_Id         IN RTSD0007.REG_ID%TYPE,           /* µî·ÏÀÚ ID           */
+    v_Comm_Dvsn      IN CHAR,                           /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)     */
+    v_CHN_CL         IN CHAR,                           /* êµ¬ë¶„ì½”ë“œ            */
+    v_AGENCY_CD      IN RTVIEW33.AGENCY_CD%TYPE,        /* ëŒ€ë¦¬ì ì½”ë“œ          */
+    v_RENTAL_GROUP_NEW IN RTVIEW33.RENTAL_GROUP%TYPE,   /* ë Œíƒˆì§€ì‚¬            */
+    v_RENTAL_OFFICE_NEW IN RTVIEW33.RENTAL_OFFICE%TYPE, /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id         IN RTSD0007.REG_ID%TYPE,           /* ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -254,34 +254,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
     e_Error EXCEPTION;    
   BEGIN 
  
-    IF v_CHN_CL = '1' THEN -- ´ë¸®Á¡ 
+    IF v_CHN_CL = '1' THEN -- ëŒ€ë¦¬ì  
       IF 0 != f_UpdateRTSD0007(v_AGENCY_CD, v_RENTAL_GROUP_NEW, v_RENTAL_OFFICE_NEW, 
                                v_Reg_Id, v_ErrorText) THEN
-          v_Return_Message := '·»Å»Áö»ç/Áö¿ª(´ë¸®Á¡) ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+          v_Return_Message := 'ë Œíƒˆì§€ì‚¬/ì§€ì—­(ëŒ€ë¦¬ì ) ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
           v_ErrorText := v_ErrorText;
           RAISE e_Error;
       END IF;
-    ELSIF v_CHN_CL = '2' THEN -- ÆÇ¸ÅÀÎ
+    ELSIF v_CHN_CL = '2' THEN -- íŒë§¤ì¸
       IF 0 != f_UpdateRTSD0113(v_AGENCY_CD, v_RENTAL_GROUP_NEW, v_RENTAL_OFFICE_NEW, 
                                v_Reg_Id, v_ErrorText) THEN
-          v_Return_Message := '·»Å»Áö»ç/Áö¿ª(ÆÇ¸ÅÀÎ) ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+          v_Return_Message := 'ë Œíƒˆì§€ì‚¬/ì§€ì—­(íŒë§¤ì¸) ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
           v_ErrorText := v_ErrorText;
           RAISE e_Error;
       END IF;      
-    ELSIF v_CHN_CL = '3' THEN -- ·Îµð¾È
+    ELSIF v_CHN_CL = '3' THEN -- ë¡œë””ì•ˆ
       IF 0 != f_UpdateRTCS0002(v_AGENCY_CD, v_RENTAL_GROUP_NEW, v_RENTAL_OFFICE_NEW, 
                                v_Reg_Id, v_ErrorText) THEN
-          v_Return_Message := '·»Å»Áö»ç/Áö¿ª(·Îµð¾È) ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+          v_Return_Message := 'ë Œíƒˆì§€ì‚¬/ì§€ì—­(ë¡œë””ì•ˆ) ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
           v_ErrorText := v_ErrorText;
           RAISE e_Error;
       END IF;    
     ELSE
-        v_Return_Message := '±¸ºÐÄÚµå(1,2,3)°ª ¿À·ù!!!['||v_CHN_CL||']';
+        v_Return_Message := 'êµ¬ë¶„ì½”ë“œ(1,2,3)ê°’ ì˜¤ë¥˜!!!['||v_CHN_CL||']';
         RAISE e_Error;    
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î ÀúÀåµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ì €ìž¥ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -297,19 +297,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTVW0033.p_IUDRtvw0033(2)', v_ErrorText, v_Return_Message);
   END p_IUDRtvw0033;  
   
   /*****************************************************************************
-  -- ·»Å»Áö»ç/Áö¿ª(´ë¸®Á¡) Update
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì—­(ëŒ€ë¦¬ì ) Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0007 ( 
-    v_AGENCY_CD         IN RTSD0007.AGENCY_CD%TYPE,     /* ´ë¸®Á¡ÄÚµå          */
-    v_RENTAL_GROUP_NEW  IN RTSD0007.RENTAL_GROUP%TYPE,  /* ·»Å»Áö»ç            */
-    v_RENTAL_OFFICE_NEW IN RTSD0007.RENTAL_OFFICE%TYPE, /* ·»Å»Áö¿ª            */
-    v_Reg_Id            IN RTSD0007.REG_ID%TYPE,        /* µî·ÏÀÚ ID           */
+    v_AGENCY_CD         IN RTSD0007.AGENCY_CD%TYPE,     /* ëŒ€ë¦¬ì ì½”ë“œ          */
+    v_RENTAL_GROUP_NEW  IN RTSD0007.RENTAL_GROUP%TYPE,  /* ë Œíƒˆì§€ì‚¬            */
+    v_RENTAL_OFFICE_NEW IN RTSD0007.RENTAL_OFFICE%TYPE, /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id            IN RTSD0007.REG_ID%TYPE,        /* ë“±ë¡ìž ID           */
     v_ErrorText        OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -329,13 +329,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
   END f_UpdateRTSD0007;    
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç/Áö¿ª(ÆÇ¸ÅÀÎ) Update
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì—­(íŒë§¤ì¸) Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0113 ( 
-    v_AGENCY_CD         IN RTSD0113.ORD_AGENT%TYPE,     /* ÆÇ¸ÅÀÎ¹øÈ£          */
-    v_RENTAL_GROUP_NEW  IN RTSD0113.RENTAL_GROUP%TYPE,  /* ·»Å»Áö»ç            */
-    v_RENTAL_OFFICE_NEW IN RTSD0113.RENTAL_OFFICE%TYPE, /* ·»Å»Áö¿ª            */
-    v_Reg_Id            IN RTSD0113.REG_ID%TYPE,        /* µî·ÏÀÚ ID           */
+    v_AGENCY_CD         IN RTSD0113.ORD_AGENT%TYPE,     /* íŒë§¤ì¸ë²ˆí˜¸          */
+    v_RENTAL_GROUP_NEW  IN RTSD0113.RENTAL_GROUP%TYPE,  /* ë Œíƒˆì§€ì‚¬            */
+    v_RENTAL_OFFICE_NEW IN RTSD0113.RENTAL_OFFICE%TYPE, /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id            IN RTSD0113.REG_ID%TYPE,        /* ë“±ë¡ìž ID           */
     v_ErrorText        OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -355,13 +355,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
   END f_UpdateRTSD0113;
   
   /*****************************************************************************
-  -- ·»Å»Áö»ç/Áö¿ª(·Îµð¾È) Update
+  -- ë Œíƒˆì§€ì‚¬/ì§€ì—­(ë¡œë””ì•ˆ) Update
   *****************************************************************************/
   FUNCTION f_UpdateRTCS0002 ( 
-    v_AGENCY_CD         IN RTCS0002.ORD_AGENT%TYPE,     /* ´ë¸®Á¡ÄÚµå          */
-    v_RENTAL_GROUP_NEW  IN RTCS0002.RENTAL_GROUP%TYPE,  /* ·»Å»Áö»ç            */
-    v_RENTAL_OFFICE_NEW IN RTCS0002.RENTAL_OFFICE%TYPE, /* ·»Å»Áö¿ª            */
-    v_Reg_Id            IN RTCS0002.REG_ID%TYPE,        /* µî·ÏÀÚ ID           */
+    v_AGENCY_CD         IN RTCS0002.ORD_AGENT%TYPE,     /* ëŒ€ë¦¬ì ì½”ë“œ          */
+    v_RENTAL_GROUP_NEW  IN RTCS0002.RENTAL_GROUP%TYPE,  /* ë Œíƒˆì§€ì‚¬            */
+    v_RENTAL_OFFICE_NEW IN RTCS0002.RENTAL_OFFICE%TYPE, /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id            IN RTCS0002.REG_ID%TYPE,        /* ë“±ë¡ìž ID           */
     v_ErrorText        OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -380,4 +380,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTVW0033 AS
         RETURN SQLCODE;
   END f_UpdateRTCS0002;  
 END PKG_RTVW0033;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0012
-   PURPOSE:   ¸Þ´º Master °ü¸®
+   PURPOSE:   ë©”ë‰´ Master ê´€ë¦¬
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¸Þ´º Master Count
+  -- ë©”ë‰´ Master Count
   *****************************************************************************/
   FUNCTION f_sRtcm0012Count(
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE         /*¸Þ´ºÄÚµå              */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE         /*ë©”ë‰´ì½”ë“œ              */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,35 +32,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END f_sRTCM0012Count;
 
   /*****************************************************************************
-  -- ¸Þ´º Master Select
+  -- ë©”ë‰´ Master Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0012 (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*¸Þ´ºÄÚµå              */
-    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*¸Þ´º¸í                */
-    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE     /*»óÀ§¸Þ´ºÄÚµå          */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*ë©”ë‰´ì½”ë“œ              */
+    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*ë©”ë‰´ëª…                */
+    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE     /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
     ) IS
 
   BEGIN
           
     OPEN Ref_Cursor FOR
-    SELECT  A.MENU_CD,       /*¸Þ´ºÄÚµå              */
-            A.MENU_NM,       /*¸Þ´º¸í                */
-            A.MENU_LVL,      /*¸Þ´º·¹º§              */
-            A.UPR_MENU_CD,   /*»óÀ§¸Þ´ºÄÚµå          */
-            B.MENU_NM UP_MENU_NM, /*»óÀ§¸Þ´º¸í       */
-            A.MDL_CD,        /*¸ðµâÄÚµå              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM,    /*¸ðµâ¸í         */
-            A.SORT_ODR,      /*Á¤·Ä¼ø¼­              */
-            A.MENU_DESC,     /*¸Þ´º¼³¸í              */
-            A.USE_YN,        /*»ç¿ë¿©ºÎ              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C004', A.USE_YN) USE_YN_NM, /*»ç¿ë¿©ºÎ¸í     */
-            A.REG_ID,        /*µî·ÏÀÚ ID             */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM,              /*µî·ÏÀÚ¸í       */
-            A.REG_DT,        /*µî·ÏÀÏ                */
-            A.CHG_ID,        /*º¯°æÀÚ ID             */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.CHG_ID) CHG_NM,              /*º¯°æÀÚ¸í       */
-            A.CHG_DT         /*º¯°æÀÏ                */
+    SELECT  A.MENU_CD,       /*ë©”ë‰´ì½”ë“œ              */
+            A.MENU_NM,       /*ë©”ë‰´ëª…                */
+            A.MENU_LVL,      /*ë©”ë‰´ë ˆë²¨              */
+            A.UPR_MENU_CD,   /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+            B.MENU_NM UP_MENU_NM, /*ìƒìœ„ë©”ë‰´ëª…       */
+            A.MDL_CD,        /*ëª¨ë“ˆì½”ë“œ              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM,    /*ëª¨ë“ˆëª…         */
+            A.SORT_ODR,      /*ì •ë ¬ìˆœì„œ              */
+            A.MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */
+            A.USE_YN,        /*ì‚¬ìš©ì—¬ë¶€              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C004', A.USE_YN) USE_YN_NM, /*ì‚¬ìš©ì—¬ë¶€ëª…     */
+            A.REG_ID,        /*ë“±ë¡ìž ID             */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM,              /*ë“±ë¡ìžëª…       */
+            A.REG_DT,        /*ë“±ë¡ì¼                */
+            A.CHG_ID,        /*ë³€ê²½ìž ID             */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.CHG_ID) CHG_NM,              /*ë³€ê²½ìžëª…       */
+            A.CHG_DT         /*ë³€ê²½ì¼                */
     FROM    RTCM0012 A,
             RTCM0012 B
     WHERE   A.MENU_CD = DECODE(v_Menu_Cd, NULL, A.MENU_CD, v_Menu_Cd)
@@ -72,18 +72,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END p_sRtcm0012;
 
   /*****************************************************************************
-  -- ¸Þ´º Master Insert
+  -- ë©”ë‰´ Master Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0012(
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*¸Þ´ºÄÚµå              */
-    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*¸Þ´º¸í                */
-    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*¸Þ´º·¹º§              */
-    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*»óÀ§¸Þ´ºÄÚµå          */
-    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*¸ðµâÄÚµå              */
-    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*Á¤·Ä¼ø¼­              */
-    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*¸Þ´º¼³¸í              */
-    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*ë©”ë‰´ì½”ë“œ              */
+    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*ë©”ë‰´ëª…                */
+    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*ë©”ë‰´ë ˆë²¨              */
+    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*ëª¨ë“ˆì½”ë“œ              */
+    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*ì •ë ¬ìˆœì„œ              */
+    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*ë©”ë‰´ì„¤ëª…              */
+    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -105,7 +105,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
             v_Menu_Cd,
             v_Menu_Nm,
             v_Menu_Lvl,
-            DECODE(V_Menu_Lvl,1,' ', V_Upr_Menu_Cd), -- V_Upr_Menu_Cd ÀÎµ¦½º¸¦ »ç¿ëÇÏ±â À§ÇØ ÃÖ»óÀ§¸Þ´º¸¸ ' 'À¸·Î Ã³¸®
+            DECODE(V_Menu_Lvl,1,' ', V_Upr_Menu_Cd), -- V_Upr_Menu_Cd ì¸ë±ìŠ¤ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ìµœìƒìœ„ë©”ë‰´ë§Œ ' 'ìœ¼ë¡œ ì²˜ë¦¬
             v_Mdl_Cd,
             v_Sort_Odr,
             v_Menu_Desc,
@@ -127,18 +127,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 
 
   /*****************************************************************************
-  -- ¸Þ´º Master Update
+  -- ë©”ë‰´ Master Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0012(
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*¸Þ´ºÄÚµå              */
-    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*¸Þ´º¸í                */
-    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*¸Þ´º·¹º§              */
-    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*»óÀ§¸Þ´ºÄÚµå          */    
-    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*¸ðµâÄÚµå              */
-    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*Á¤·Ä¼ø¼­              */
-    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*¸Þ´º¼³¸í              */
-    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*ë©”ë‰´ì½”ë“œ              */
+    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*ë©”ë‰´ëª…                */
+    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*ë©”ë‰´ë ˆë²¨              */
+    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */    
+    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*ëª¨ë“ˆì½”ë“œ              */
+    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*ì •ë ¬ìˆœì„œ              */
+    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*ë©”ë‰´ì„¤ëª…              */
+    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS    
 
@@ -148,7 +148,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
     SET    MENU_CD      = V_Menu_Cd,
            MENU_NM      = V_Menu_Nm,
            MENU_LVL     = V_Menu_Lvl,
-           UPR_MENU_CD  = DECODE(V_Menu_Lvl,1,' ', V_Upr_Menu_Cd), -- V_Upr_Menu_Cd ÀÎµ¦½º¸¦ »ç¿ëÇÏ±â À§ÇØ ÃÖ»óÀ§¸Þ´º¸¸ ' 'À¸·Î Ã³¸®
+           UPR_MENU_CD  = DECODE(V_Menu_Lvl,1,' ', V_Upr_Menu_Cd), -- V_Upr_Menu_Cd ì¸ë±ìŠ¤ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ìµœìƒìœ„ë©”ë‰´ë§Œ ' 'ìœ¼ë¡œ ì²˜ë¦¬
            MDL_CD       = v_Mdl_Cd,
            SORT_ODR     = v_Sort_Odr,
            MENU_DESC    = V_Menu_Desc,
@@ -169,11 +169,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END f_UpdateRtcm0012;
   
   /*****************************************************************************
-  -- ¸Þ´º Master Delete
+  -- ë©”ë‰´ Master Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0012(
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*¸Þ´ºÄÚµå              */
-    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*ë©”ë‰´ì½”ë“œ              */
+    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -196,19 +196,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 
   
   /*****************************************************************************
-  -- ¸Þ´º Master °ü¸®
+  -- ë©”ë‰´ Master ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0012(
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*¸Þ´ºÄÚµå              */
-    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*¸Þ´º¸í                */
-    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*¸Þ´º·¹º§              */
-    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*»óÀ§¸Þ´ºÄÚµå          */
-    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*¸ðµâÄÚµå              */
-    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*Á¤·Ä¼ø¼­              */
-    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*¸Þ´º¼³¸í              */
-    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE,        /*ë©”ë‰´ì½”ë“œ              */
+    v_Menu_Nm        IN RTCM0012.MENU_NM%TYPE,        /*ë©”ë‰´ëª…                */
+    v_Menu_Lvl       IN RTCM0012.MENU_LVL%TYPE,       /*ë©”ë‰´ë ˆë²¨              */
+    v_Upr_Menu_Cd    IN RTCM0012.UPR_MENU_CD%TYPE,    /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+    v_Mdl_Cd         IN RTCM0012.MDL_CD%TYPE,         /*ëª¨ë“ˆì½”ë“œ              */
+    v_Sort_Odr       IN RTCM0012.SORT_ODR%TYPE,       /*ì •ë ¬ìˆœì„œ              */
+    v_Menu_Desc      IN RTCM0012.MENU_DESC%TYPE,      /*ë©”ë‰´ì„¤ëª…              */
+    v_Use_Yn         IN RTCM0012.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0012.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -218,34 +218,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
     
   BEGIN
 
-    -- ÇÊ¼ö°ª: ÇÁ·Î±×·¥ ÄÚµå, ÇÁ·Î±×·¥ ¸í, ÇÁ·Î±×·¥ URL, ÇÁ·Î±×·¥ ¼³¸í, ¸ðµâÄÚµå , »ç¿ëÀ¯¹«, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: í”„ë¡œê·¸ëž¨ ì½”ë“œ, í”„ë¡œê·¸ëž¨ ëª…, í”„ë¡œê·¸ëž¨ URL, í”„ë¡œê·¸ëž¨ ì„¤ëª…, ëª¨ë“ˆì½”ë“œ , ì‚¬ìš©ìœ ë¬´, ë“±ë¡ìž ID
     IF TRIM(v_Menu_Cd) IS NULL THEN
-        v_Return_Message := '¸Þ´ºÄÚµå('||v_Menu_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë©”ë‰´ì½”ë“œ('||v_Menu_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Menu_Nm) IS NULL THEN
-        v_Return_Message := '¸Þ´º¸í('||v_Menu_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë©”ë‰´ëª…('||v_Menu_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Menu_Lvl) IS NULL THEN
-        v_Return_Message := '¸Þ´º·¹º§('||(v_Menu_Lvl)||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë©”ë‰´ë ˆë²¨('||(v_Menu_Lvl)||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF (v_Menu_Lvl <> 1) AND (TRIM(v_Upr_Menu_Cd) IS NULL) THEN
-        v_Return_Message := 'ÃÖ»óÀ§ ¸Þ´º¸¦ Á¦¿ÜÇÏ°í´Â »óÀ§¸Þ´º('||(v_Upr_Menu_Cd)||')ÇÊ¼ö ÀÔ·ÂÇ×¸ñÀÔ´Ï´Ù. Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ìµœìƒìœ„ ë©”ë‰´ë¥¼ ì œì™¸í•˜ê³ ëŠ” ìƒìœ„ë©”ë‰´('||(v_Upr_Menu_Cd)||')í•„ìˆ˜ ìž…ë ¥í•­ëª©ìž…ë‹ˆë‹¤. ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;        
         
     IF (TRIM(v_Mdl_Cd) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('C003', v_Mdl_Cd)) THEN
-        v_Return_Message := '¸ðµâÄÚµå('||v_Mdl_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ëª¨ë“ˆì½”ë“œ('||v_Mdl_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;    
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
@@ -254,7 +254,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
         IF 0 != f_InsertRtcm0012(v_Menu_Cd, v_Menu_Nm, v_Menu_Lvl, v_Upr_Menu_Cd, 
                                  v_Mdl_Cd, v_Sort_Odr, v_Menu_Desc, v_Use_Yn, 
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '¸Þ´º Master µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë©”ë‰´ Master ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;            
         END IF;      
@@ -266,7 +266,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
             IF 0 != f_UpdateRtcm0012(v_Menu_Cd, v_Menu_Nm, v_Menu_Lvl, v_Upr_Menu_Cd, 
                                      v_Mdl_Cd, v_Sort_Odr, v_Menu_Desc, v_Use_Yn, 
                                      v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¸Þ´º Master ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë©”ë‰´ Master ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -275,20 +275,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtcm0012(v_Menu_Cd, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¸Þ´º Master »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë©”ë‰´ Master ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
             
         ELSE
-            v_Return_Message := ' Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := ' ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;  
                   
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -303,19 +303,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_RTCM0012.p_IUDRTCM0012(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0012;
 
   /*****************************************************************************
-  -- ¸Þ´º Master - ¸Þ´ºÄÚµå·Î ¸Þ´º¸í Á¶È¸
+  -- ë©”ë‰´ Master - ë©”ë‰´ì½”ë“œë¡œ ë©”ë‰´ëª… ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtcm0012MenuName(
-    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE         /*¸Þ´ºÄÚµå              */
+    v_Menu_Cd        IN RTCM0012.MENU_CD%TYPE         /*ë©”ë‰´ì½”ë“œ              */
     ) RETURN VARCHAR IS
-    v_Menu_Nm        RTCM0012.MENU_NM%TYPE;           /*¸Þ´ºÄÚµå              */
+    v_Menu_Nm        RTCM0012.MENU_NM%TYPE;           /*ë©”ë‰´ì½”ë“œ              */
   BEGIN
 
     SELECT  MENU_NM
@@ -332,7 +332,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END f_sRtcm0012MenuName;
 
   /*****************************************************************************
-  -- ¸Þ´º Master - ¸Þ´ºTREE ±¸¼ºÀ» À§ÇÑ ÀüÃ¼ ¸Þ´º±¸Á¶ Á¶È¸
+  -- ë©”ë‰´ Master - ë©”ë‰´TREE êµ¬ì„±ì„ ìœ„í•œ ì „ì²´ ë©”ë‰´êµ¬ì¡° ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0012Tree (
     Ref_Cursor   IN OUT SYS_REFCURSOR
@@ -342,16 +342,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
           
     OPEN Ref_Cursor FOR
     SELECT  ROWNUM ROW_SEQ,
-            A.MENU_CD,       /*¸Þ´ºÄÚµå              */
-            A.MENU_NM,       /*¸Þ´º¸í                */
-            A.MENU_LVL,      /*¸Þ´º·¹º§              */
-            A.UPR_MENU_CD,   /*»óÀ§¸Þ´ºÄÚµå          */
-            Pkg_Rtcm0012.f_sRtcm0012MenuName(A.UPR_MENU_CD) UPR_MENU_NM, /*»óÀ§¸Þ´º¸í          */
-            A.MDL_CD,        /*¸ðµâÄÚµå              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*¸ðµâ¸í */
-            A.SORT_ODR,      /*Á¤·Ä¼ø¼­              */
-            A.MENU_DESC,     /*¸Þ´º¼³¸í              */
-            A.USE_YN         /*»ç¿ë¿©ºÎ              */
+            A.MENU_CD,       /*ë©”ë‰´ì½”ë“œ              */
+            A.MENU_NM,       /*ë©”ë‰´ëª…                */
+            A.MENU_LVL,      /*ë©”ë‰´ë ˆë²¨              */
+            A.UPR_MENU_CD,   /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+            Pkg_Rtcm0012.f_sRtcm0012MenuName(A.UPR_MENU_CD) UPR_MENU_NM, /*ìƒìœ„ë©”ë‰´ëª…          */
+            A.MDL_CD,        /*ëª¨ë“ˆì½”ë“œ              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*ëª¨ë“ˆëª… */
+            A.SORT_ODR,      /*ì •ë ¬ìˆœì„œ              */
+            A.MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */
+            A.USE_YN         /*ì‚¬ìš©ì—¬ë¶€              */
     FROM    RTCM0012 A
     START   WITH A.UPR_MENU_CD = ' '
     CONNECT BY A.UPR_MENU_CD = PRIOR A.MENU_CD
@@ -362,7 +362,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 
 
   /*****************************************************************************
-  -- ¸Þ´º Master -  ¸Þ´º- ÇÁ·Î±×·¥  Æ®¸® ±¸¼º
+  -- ë©”ë‰´ Master -  ë©”ë‰´- í”„ë¡œê·¸ëž¨  íŠ¸ë¦¬ êµ¬ì„±
   *****************************************************************************/
   PROCEDURE p_sRtcm0012TreeProgram (
     Ref_Cursor   IN OUT SYS_REFCURSOR
@@ -372,24 +372,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
           
     OPEN Ref_Cursor FOR
     SELECT  A.MENU_TYPE,                                
-            A.MENU_CD,       /*¸Þ´ºÄÚµå              */ 
-            A.MENU_NM,       /*¸Þ´º¸í                */ 
-            A.MENU_LVL,      /*¸Þ´º·¹º§              */ 
-            A.UPR_MENU_CD,   /*»óÀ§¸Þ´ºÄÚµå          */ 
-            A.MDL_CD,        /*¸ðµâÄÚµå              */ 
-            A.SORT_ODR,      /*Á¤·Ä¼ø¼­              */ 
-            A.MENU_DESC,     /*¸Þ´º¼³¸í              */ 
-            A.USE_YN         /*»ç¿ë¿©ºÎ              */ 
+            A.MENU_CD,       /*ë©”ë‰´ì½”ë“œ              */ 
+            A.MENU_NM,       /*ë©”ë‰´ëª…                */ 
+            A.MENU_LVL,      /*ë©”ë‰´ë ˆë²¨              */ 
+            A.UPR_MENU_CD,   /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */ 
+            A.MDL_CD,        /*ëª¨ë“ˆì½”ë“œ              */ 
+            A.SORT_ODR,      /*ì •ë ¬ìˆœì„œ              */ 
+            A.MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */ 
+            A.USE_YN         /*ì‚¬ìš©ì—¬ë¶€              */ 
     FROM    (
             SELECT  'M' MENU_TYPE,
-                    C12.MENU_CD,       /*¸Þ´ºÄÚµå              */
-                    C12.MENU_NM,       /*¸Þ´º¸í                */
-                    C12.MENU_LVL,      /*¸Þ´º·¹º§              */
-                    C12.UPR_MENU_CD,   /*»óÀ§¸Þ´ºÄÚµå          */
-                    C12.MDL_CD,        /*¸ðµâÄÚµå              */
-                    C12.SORT_ODR,      /*Á¤·Ä¼ø¼­              */
-                    C12.MENU_DESC,     /*¸Þ´º¼³¸í              */
-                    C12.USE_YN         /*»ç¿ë¿©ºÎ              */
+                    C12.MENU_CD,       /*ë©”ë‰´ì½”ë“œ              */
+                    C12.MENU_NM,       /*ë©”ë‰´ëª…                */
+                    C12.MENU_LVL,      /*ë©”ë‰´ë ˆë²¨              */
+                    C12.UPR_MENU_CD,   /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+                    C12.MDL_CD,        /*ëª¨ë“ˆì½”ë“œ              */
+                    C12.SORT_ODR,      /*ì •ë ¬ìˆœì„œ              */
+                    C12.MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */
+                    C12.USE_YN         /*ì‚¬ìš©ì—¬ë¶€              */
             FROM    RTCM0012 C12
             UNION   ALL
             SELECT  'P' MENU_TYPE,
@@ -416,29 +416,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
 
 
   /*****************************************************************************
-  -- ¸Þ´º Master - Æ¯Á¤ »ç¿ëÀÚÀÇ  ¸Þ´º Æ®¸® ±¸¼º
+  -- ë©”ë‰´ Master - íŠ¹ì • ì‚¬ìš©ìžì˜  ë©”ë‰´ íŠ¸ë¦¬ êµ¬ì„±
   *****************************************************************************/
   PROCEDURE p_sRtcm0012UserTree (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*»ç¿ëÀÚ ¾ÆÀÌµð       */    
+    v_User_Id        IN RTCM0001.USER_ID%TYPE           /*ì‚¬ìš©ìž ì•„ì´ë””       */    
     ) IS
 
   BEGIN
           
     OPEN Ref_Cursor FOR
     SELECT  ROWNUM ROW_SEQ,
-            A.MENU_CD,       /*¸Þ´ºÄÚµå              */
-            A.MENU_NM,       /*¸Þ´º¸í                */
-            A.MENU_LVL,      /*¸Þ´º·¹º§              */
-            A.UPR_MENU_CD,   /*»óÀ§¸Þ´ºÄÚµå          */
-            Pkg_Rtcm0012.f_sRtcm0012MenuName(A.UPR_MENU_CD) UPR_MENU_NM, /*»óÀ§¸Þ´º¸í          */
-            A.MDL_CD,        /*¸ðµâÄÚµå              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*¸ðµâ¸í */
-            A.SORT_ODR,      /*Á¤·Ä¼ø¼­              */
-            A.MENU_DESC,     /*¸Þ´º¼³¸í              */
-            A.USE_YN         /*»ç¿ë¿©ºÎ              */
+            A.MENU_CD,       /*ë©”ë‰´ì½”ë“œ              */
+            A.MENU_NM,       /*ë©”ë‰´ëª…                */
+            A.MENU_LVL,      /*ë©”ë‰´ë ˆë²¨              */
+            A.UPR_MENU_CD,   /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+            Pkg_Rtcm0012.f_sRtcm0012MenuName(A.UPR_MENU_CD) UPR_MENU_NM, /*ìƒìœ„ë©”ë‰´ëª…          */
+            A.MDL_CD,        /*ëª¨ë“ˆì½”ë“œ              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*ëª¨ë“ˆëª… */
+            A.SORT_ODR,      /*ì •ë ¬ìˆœì„œ              */
+            A.MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */
+            A.USE_YN         /*ì‚¬ìš©ì—¬ë¶€              */
     FROM    RTCM0012 A
-    WHERE   A.MENU_CD IN (-- »ç¿ëÀÚÀÇ ±ÇÇÑ±×·ìº° ¸Þ´º ¸®½ºÆ®(Áßº¹Á¦°Å)
+    WHERE   A.MENU_CD IN (-- ì‚¬ìš©ìžì˜ ê¶Œí•œê·¸ë£¹ë³„ ë©”ë‰´ ë¦¬ìŠ¤íŠ¸(ì¤‘ë³µì œê±°)
                             SELECT  DISTINCT C25.MENU_CD
                             FROM    RTCM0023 C23,
                                     RTCM0025 C25,
@@ -457,12 +457,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END p_sRtcm0012UserTree;  
   
   /*****************************************************************************
-  -- ¸Þ´º Master -  Æ¯Á¤ »ç¿ëÀÚÀÇ  ¸Þ´º- ÇÁ·Î±×·¥ - »ç¿ë±ÇÇÑ  Æ®¸® ±¸¼º
+  -- ë©”ë‰´ Master -  íŠ¹ì • ì‚¬ìš©ìžì˜  ë©”ë‰´- í”„ë¡œê·¸ëž¨ - ì‚¬ìš©ê¶Œí•œ  íŠ¸ë¦¬ êµ¬ì„±
   *****************************************************************************/
   PROCEDURE p_sRtcm0012UserTreeAuth (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,          /*»ç¿ëÀÚ ¾ÆÀÌµð       */
-    v_Local_Ip       IN VARCHAR2                        /*·ÎÄÃPC IP           */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,          /*ì‚¬ìš©ìž ì•„ì´ë””       */
+    v_Local_Ip       IN VARCHAR2                        /*ë¡œì»¬PC IP           */
     ) IS
 
     v_ErrorText      VARCHAR2(2000);
@@ -487,60 +487,60 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
                     AND C24.PRGM_CD = C13.PRGM_CD
                     GROUP BY C13.MENU_CD
     )
-    SELECT  A.ROW_SEQ,         /*¼ø¹ø                  */
-            A.MENU_TYPE,       /*¸Þ´º_ÇÁ·Î±×·¥±¸ºÐ     */
-            A.MENU_CD,         /*¸Þ´ºÄÚµå              */
-            A.MENU_NM,         /*¸Þ´º¸í                */
-            A.MENU_LVL,        /*¸Þ´º·¹º§              */
-            A.UPR_MENU_CD,     /*»óÀ§¸Þ´ºÄÚµå          */
-            A.MENU_CD_TOP,     /*ÃÖ»óÀ§¸Þ´ºÄÚµå        */
-            LOWER(A.MDL_CD) MDL_CD, /*¸ðµâÄÚµå              */
-            A.SORT_ODR,        /*Á¤·Ä¼ø¼­              */
-            A.MENU_DESC,       /*¸Þ´º¼³¸í              */
-            A.USE_YN,          /*»ç¿ë¿©ºÎ              */
-            A.PRGM_PATH,       /*ÇÁ·Î±×·¥°æ·Î          */
-            B.USER_ID,         /*»ç¿ëÀÚ¾ÆÀÌµð          */
-            B.PRGM_CD,         /*ÇÁ·Î±×·¥ÄÚµå          */
-            B.READ_AUTH_YN,    /*ÀÐ±â±ÇÇÑ ¿©ºÎ         */
-            B.SAVE_AUTH_YN,    /*ÀúÀå±ÇÇÑ¿©ºÎ          */
-            B.DEL_AUTH_YN,     /*»èÁ¦±ÇÇÑ¿©ºÎ          */
-            B.PRNT_AUTH_YN,    /*ÀÎ¼â±ÇÇÑ¿©ºÎ          */
-            B.EXPT_AUTH_YN,    /*¿¢¼¿ÀúÀå±ÇÇÑ¿©ºÎ      */
-            B.CHG_AUTH_YN,     /*Á¶Á÷¼öÁ¤±ÇÇÑ¿©ºÎ      */
-            B.ETC1_AUTH_YN,    /*±âÅ¸ ±ÇÇÑ1            */
-            B.ETC2_AUTH_YN,    /*±âÅ¸ ±ÇÇÑ2            */
-            B.ETC3_AUTH_YN     /*±âÅ¸ ±ÇÇÑ3            */
+    SELECT  A.ROW_SEQ,         /*ìˆœë²ˆ                  */
+            A.MENU_TYPE,       /*ë©”ë‰´_í”„ë¡œê·¸ëž¨êµ¬ë¶„     */
+            A.MENU_CD,         /*ë©”ë‰´ì½”ë“œ              */
+            A.MENU_NM,         /*ë©”ë‰´ëª…                */
+            A.MENU_LVL,        /*ë©”ë‰´ë ˆë²¨              */
+            A.UPR_MENU_CD,     /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+            A.MENU_CD_TOP,     /*ìµœìƒìœ„ë©”ë‰´ì½”ë“œ        */
+            LOWER(A.MDL_CD) MDL_CD, /*ëª¨ë“ˆì½”ë“œ              */
+            A.SORT_ODR,        /*ì •ë ¬ìˆœì„œ              */
+            A.MENU_DESC,       /*ë©”ë‰´ì„¤ëª…              */
+            A.USE_YN,          /*ì‚¬ìš©ì—¬ë¶€              */
+            A.PRGM_PATH,       /*í”„ë¡œê·¸ëž¨ê²½ë¡œ          */
+            B.USER_ID,         /*ì‚¬ìš©ìžì•„ì´ë””          */
+            B.PRGM_CD,         /*í”„ë¡œê·¸ëž¨ì½”ë“œ          */
+            B.READ_AUTH_YN,    /*ì½ê¸°ê¶Œí•œ ì—¬ë¶€         */
+            B.SAVE_AUTH_YN,    /*ì €ìž¥ê¶Œí•œì—¬ë¶€          */
+            B.DEL_AUTH_YN,     /*ì‚­ì œê¶Œí•œì—¬ë¶€          */
+            B.PRNT_AUTH_YN,    /*ì¸ì‡„ê¶Œí•œì—¬ë¶€          */
+            B.EXPT_AUTH_YN,    /*ì—‘ì…€ì €ìž¥ê¶Œí•œì—¬ë¶€      */
+            B.CHG_AUTH_YN,     /*ì¡°ì§ìˆ˜ì •ê¶Œí•œì—¬ë¶€      */
+            B.ETC1_AUTH_YN,    /*ê¸°íƒ€ ê¶Œí•œ1            */
+            B.ETC2_AUTH_YN,    /*ê¸°íƒ€ ê¶Œí•œ2            */
+            B.ETC3_AUTH_YN     /*ê¸°íƒ€ ê¶Œí•œ3            */
     FROM    (
             SELECT  ROWNUM ROW_SEQ,
                     CONNECT_BY_ROOT(A.MENU_CD) MENU_CD_TOP,
                     A.*
             FROM    (
-                    SELECT  'M' MENU_TYPE,               /*¸Þ´º_ÇÁ·Î±×·¥±¸ºÐ     */
-                            C12.MENU_CD,                 /*¸Þ´ºÄÚµå              */
-                            C12.MENU_NM,                 /*¸Þ´º¸í                */
-                            C12.MENU_LVL,                /*¸Þ´º·¹º§              */
-                            C12.UPR_MENU_CD,             /*»óÀ§¸Þ´ºÄÚµå          */
-                            C12.MDL_CD,                  /*¸ðµâÄÚµå              */
-                            C12.SORT_ODR,                /*Á¤·Ä¼ø¼­              */
-                            C12.MENU_DESC,               /*¸Þ´º¼³¸í              */
-                            C12.USE_YN,                  /*»ç¿ë¿©ºÎ              */
-                            '' PRGM_PATH                 /*ÇÁ·Î±×·¥°æ·Î          */
+                    SELECT  'M' MENU_TYPE,               /*ë©”ë‰´_í”„ë¡œê·¸ëž¨êµ¬ë¶„     */
+                            C12.MENU_CD,                 /*ë©”ë‰´ì½”ë“œ              */
+                            C12.MENU_NM,                 /*ë©”ë‰´ëª…                */
+                            C12.MENU_LVL,                /*ë©”ë‰´ë ˆë²¨              */
+                            C12.UPR_MENU_CD,             /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+                            C12.MDL_CD,                  /*ëª¨ë“ˆì½”ë“œ              */
+                            C12.SORT_ODR,                /*ì •ë ¬ìˆœì„œ              */
+                            C12.MENU_DESC,               /*ë©”ë‰´ì„¤ëª…              */
+                            C12.USE_YN,                  /*ì‚¬ìš©ì—¬ë¶€              */
+                            '' PRGM_PATH                 /*í”„ë¡œê·¸ëž¨ê²½ë¡œ          */
                     FROM    RTCM0012 C12
                     WHERE   C12.MENU_CD IN (SELECT  MENU_CD
                                             FROM    RTCM0012 C13
                                             START   WITH C13.MENU_CD IN (SELECT * FROM R_MENU_CD)
                                             CONNECT BY  PRIOR C13.UPR_MENU_CD = C13.MENU_CD )  
                     UNION   ALL
-                    SELECT  'P' MENU_TYPE,               /*¸Þ´º_ÇÁ·Î±×·¥±¸ºÐ     */
-                            C13.PRGM_CD MENU_CD,         /*¸Þ´ºÄÚµå              */
-                            C11.PRGM_NM MENU_NM,         /*¸Þ´º¸í                */
-                            C12.MENU_LVL+1 MENU_LVL,     /*¸Þ´º·¹º§              */
-                            C13.MENU_CD UPR_MENU_CD,     /*»óÀ§¸Þ´ºÄÚµå          */
-                            C12.MDL_CD,                  /*¸ðµâÄÚµå              */
-                            C13.SORT_ODR,                /*Á¤·Ä¼ø¼­              */
-                            C11.PRGM_DESC MENU_DESC,     /*¸Þ´º¼³¸í              */
-                            C11.USE_YN,                  /*»ç¿ë¿©ºÎ              */
-                            C11.PRGM_PATH                /*ÇÁ·Î±×·¥°æ·Î          */
+                    SELECT  'P' MENU_TYPE,               /*ë©”ë‰´_í”„ë¡œê·¸ëž¨êµ¬ë¶„     */
+                            C13.PRGM_CD MENU_CD,         /*ë©”ë‰´ì½”ë“œ              */
+                            C11.PRGM_NM MENU_NM,         /*ë©”ë‰´ëª…                */
+                            C12.MENU_LVL+1 MENU_LVL,     /*ë©”ë‰´ë ˆë²¨              */
+                            C13.MENU_CD UPR_MENU_CD,     /*ìƒìœ„ë©”ë‰´ì½”ë“œ          */
+                            C12.MDL_CD,                  /*ëª¨ë“ˆì½”ë“œ              */
+                            C13.SORT_ODR,                /*ì •ë ¬ìˆœì„œ              */
+                            C11.PRGM_DESC MENU_DESC,     /*ë©”ë‰´ì„¤ëª…              */
+                            C11.USE_YN,                  /*ì‚¬ìš©ì—¬ë¶€              */
+                            C11.PRGM_PATH                /*í”„ë¡œê·¸ëž¨ê²½ë¡œ          */
                     FROM    RTCM0013 C13,
                             RTCM0012 C12,
                             RTCM0011 C11
@@ -557,17 +557,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
             ORDER   SIBLINGS BY A.SORT_ODR
             ) A,
             (
-            SELECT  C23.USER_ID,                         /*»ç¿ëÀÚ¾ÆÀÌµð          */
-                    C24.PRGM_CD,                         /*ÇÁ·Î±×·¥ÄÚµå          */
-                    MAX(C24.READ_AUTH_YN) READ_AUTH_YN,  /*ÀÐ±â±ÇÇÑ ¿©ºÎ         */
-                    MAX(C24.SAVE_AUTH_YN) SAVE_AUTH_YN,  /*ÀúÀå±ÇÇÑ¿©ºÎ          */
-                    MAX(C24.DEL_AUTH_YN ) DEL_AUTH_YN ,  /*»èÁ¦±ÇÇÑ¿©ºÎ          */
-                    MAX(C24.PRNT_AUTH_YN) PRNT_AUTH_YN,  /*ÀÎ¼â±ÇÇÑ¿©ºÎ          */
-                    MAX(C24.EXPT_AUTH_YN) EXPT_AUTH_YN,  /*¿¢¼¿ÀúÀå±ÇÇÑ¿©ºÎ      */
-                    MAX(C24.CHG_AUTH_YN ) CHG_AUTH_YN ,  /*Á¶Á÷¼öÁ¤±ÇÇÑ¿©ºÎ      */
-                    MAX(C24.ETC1_AUTH_YN) ETC1_AUTH_YN,  /*±âÅ¸ ±ÇÇÑ1            */
-                    MAX(C24.ETC2_AUTH_YN) ETC2_AUTH_YN,  /*±âÅ¸ ±ÇÇÑ2            */
-                    MAX(C24.ETC3_AUTH_YN) ETC3_AUTH_YN   /*±âÅ¸ ±ÇÇÑ3            */
+            SELECT  C23.USER_ID,                         /*ì‚¬ìš©ìžì•„ì´ë””          */
+                    C24.PRGM_CD,                         /*í”„ë¡œê·¸ëž¨ì½”ë“œ          */
+                    MAX(C24.READ_AUTH_YN) READ_AUTH_YN,  /*ì½ê¸°ê¶Œí•œ ì—¬ë¶€         */
+                    MAX(C24.SAVE_AUTH_YN) SAVE_AUTH_YN,  /*ì €ìž¥ê¶Œí•œì—¬ë¶€          */
+                    MAX(C24.DEL_AUTH_YN ) DEL_AUTH_YN ,  /*ì‚­ì œê¶Œí•œì—¬ë¶€          */
+                    MAX(C24.PRNT_AUTH_YN) PRNT_AUTH_YN,  /*ì¸ì‡„ê¶Œí•œì—¬ë¶€          */
+                    MAX(C24.EXPT_AUTH_YN) EXPT_AUTH_YN,  /*ì—‘ì…€ì €ìž¥ê¶Œí•œì—¬ë¶€      */
+                    MAX(C24.CHG_AUTH_YN ) CHG_AUTH_YN ,  /*ì¡°ì§ìˆ˜ì •ê¶Œí•œì—¬ë¶€      */
+                    MAX(C24.ETC1_AUTH_YN) ETC1_AUTH_YN,  /*ê¸°íƒ€ ê¶Œí•œ1            */
+                    MAX(C24.ETC2_AUTH_YN) ETC2_AUTH_YN,  /*ê¸°íƒ€ ê¶Œí•œ2            */
+                    MAX(C24.ETC3_AUTH_YN) ETC3_AUTH_YN   /*ê¸°íƒ€ ê¶Œí•œ3            */
             FROM    RTCM0023 C23,
                     RTCM0021 C21,
                     RTCM0024 C24
@@ -582,7 +582,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
     AND     NOT (A.MENU_TYPE = 'P' AND USER_ID IS NULL)
     ORDER BY A.ROW_SEQ;
 
-    -- »ç¿ëÀÚº° ¸Þ´º±ÇÇÑ ÇÁ·Î½ÃÁ®(p_sRtcm0012UserTreeAuth)´Â  ·Î±×ÀÎ ¼º°ø½Ã È£ÃâµÇ´Â ÇÁ·Î½ÃÁ®·Î ÃÖÁ¾ Á¢¼Ó ÀÏÀÚ ¾÷µ¥ÀÌÆ®
+    -- ì‚¬ìš©ìžë³„ ë©”ë‰´ê¶Œí•œ í”„ë¡œì‹œì ¸(p_sRtcm0012UserTreeAuth)ëŠ”  ë¡œê·¸ì¸ ì„±ê³µì‹œ í˜¸ì¶œë˜ëŠ” í”„ë¡œì‹œì ¸ë¡œ ìµœì¢… ì ‘ì† ì¼ìž ì—…ë°ì´íŠ¸
     
     SELECT  FAIL_CNT
       INTO  v_Fail_Cnt
@@ -590,13 +590,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
      WHERE  USER_ID = v_User_Id;
 
     IF v_Fail_Cnt <= 5 THEN
-        -- »ç¿ëÀÚÁ¤º¸Á¶È¸ ÇÁ·Î½ÃÁ®(p_sRtcm0001LoginInfo)¿¡¼­ Á¢¼Ó ½ÇÆÐ °Ç¼ö¸¦ +1 ÇØ³õ°í, ·Î±×ÀÎ ¼º°ø½Ã 0À¸·Î ÃÊ±âÈ­
+        -- ì‚¬ìš©ìžì •ë³´ì¡°íšŒ í”„ë¡œì‹œì ¸(p_sRtcm0001LoginInfo)ì—ì„œ ì ‘ì† ì‹¤íŒ¨ ê±´ìˆ˜ë¥¼ +1 í•´ë†“ê³ , ë¡œê·¸ì¸ ì„±ê³µì‹œ 0ìœ¼ë¡œ ì´ˆê¸°í™”
         IF 0 != Pkg_Rtcm0001.f_UpdateRtcm0001FailCntInit(v_User_Id, v_ErrorText) THEN
-            Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcm0012.p_sRtcm0012UserTreeAuth(2)', 'Á¢¼Ó ½ÇÆÐ °Ç¼ö ÃÊ±âÈ­ ½ÇÆÐ!!!', v_User_Id, v_ErrorText);
+            Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcm0012.p_sRtcm0012UserTreeAuth(2)', 'ì ‘ì† ì‹¤íŒ¨ ê±´ìˆ˜ ì´ˆê¸°í™” ì‹¤íŒ¨!!!', v_User_Id, v_ErrorText);
         END IF;
     END IF;
 
-    -- »ç¿ëÀÚ ¾ÆÀÌµð¿Í ·ÎÄÃ IP Á¤º¸´Â ÃßÈÄ ¾ÆÀÌµð µµ¿ëµîÀÇ ¹®Á¦ Á¡°Ë½Ã »ç¿ëÇÏ±â À§ÇØ ·Î±× »ý¼º
+    -- ì‚¬ìš©ìž ì•„ì´ë””ì™€ ë¡œì»¬ IP ì •ë³´ëŠ” ì¶”í›„ ì•„ì´ë”” ë„ìš©ë“±ì˜ ë¬¸ì œ ì ê²€ì‹œ ì‚¬ìš©í•˜ê¸° ìœ„í•´ ë¡œê·¸ ìƒì„±
     --Pkg_Utility.p_LoginFileWrite('Pkg_Rtcm0012.p_sRtcm0012UserTreeAuth(1)', 'v_User_Id', v_User_Id, 'v_Local_Ip', v_Local_Ip);
 
 
@@ -604,4 +604,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0012 AS
   END p_sRtcm0012UserTreeAuth;
     
 END Pkg_Rtcm0012;
-/

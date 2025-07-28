@@ -232,7 +232,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0420 AS
           , NVL(A.SEND_CNT, 0) AS SEND_CNT
           , D.GI_DAY AS GI_DAY
 --          , CASE WHEN TRIM(C.BEZEI) IN ('택배', '지정일출고') OR TRIM(C.Zcompany) IS NOT NULL OR TRIM(C.ZParcelInvoice) IS NOT NULL THEN 'Y' ELSE NVL(A.GI_YN, 'N') END AS GI_YN
-          , 'Y' AS GI_YN    --[20221205_1] kstka 자동발송을 위해 DEFAULT 값을 Y로 변경
+          , 'N' AS GI_YN
           , E.MOB_NO
           , '01' AS SMS_TYPE
           , CASE WHEN TRIM(C.BEZEI) IN ('택배', '지정일출고') OR TRIM(C.Zcompany) IS NOT NULL OR TRIM(C.ZParcelInvoice) IS NOT NULL THEN '02' ELSE '01' END AS DELIVERY_TYPE
@@ -270,7 +270,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0420 AS
           , NVL(A.SEND_CNT, 0) AS SEND_CNT
           , D.GI_DAY AS GI_DAY
 --          , CASE WHEN TRIM(C.BEZEI) IN ('택배', '지정일출고') OR TRIM(C.Zcompany) IS NOT NULL OR TRIM(C.ZParcelInvoice) IS NOT NULL THEN 'Y' ELSE NVL(A.GI_YN, 'N') END AS GI_YN
-          , 'Y' AS GI_YN    --[20221205_1] kstka 자동발송을 위해 DEFAULT 값을 Y로 변경
+          , 'N' AS GI_YN
           , E.MOB_NO
           , '11' AS SMS_TYPE
           , CASE WHEN TRIM(C.BEZEI) IN ('택배', '지정일출고') OR TRIM(C.Zcompany) IS NOT NULL OR TRIM(C.ZParcelInvoice) IS NOT NULL THEN '02' ELSE '01' END AS DELIVERY_TYPE
@@ -1021,15 +1021,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0420 AS
     
     END IF;
     
-    dbms_output.put_line(v_Mat_Nm);
-    
     SELECT SMS_MSG
     INTO v_Sms_Msg 
     FROM RTSD0422 
     WHERE SMS_TYPE = v_Sms_Type
     AND USE_YN = 'Y';
-    
-    dbms_output.put_line(v_Sms_Msg);
     
     v_Sms_Msg := REPLACE(v_Sms_Msg, '@CUST_NM@', v_Cust_Nm);
     v_Sms_Msg := REPLACE(v_Sms_Msg, '@ORD_NO@', v_Ord_No);
@@ -1282,4 +1278,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0420 AS
   END p_sRTSD0420ByPost; 
   
 END Pkg_Rtsd0420;
-/

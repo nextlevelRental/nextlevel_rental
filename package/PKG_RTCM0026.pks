@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0026 AS
 /*******************************************************************************
    NAME:       Rtcm0026
-   PURPOSE:    ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â °ü¸®
+   PURPOSE:    ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ ê´€ë¦¬
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,22 +10,21 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0026 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â Á¶È¸
+  -- ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcm0026 (
       Ref_Cursor       IN OUT SYS_REFCURSOR
-    , v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*±ÇÇÑ±×·ìÄÚµå       */
-    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*»ç¿ëÀÚ ¾ÆÀÌµð      */
+    , v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*ê¶Œí•œê·¸ë£¹ì½”ë“œ       */
+    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*ì‚¬ìš©ìž ì•„ì´ë””      */
   );
     
   /*****************************************************************************
-  -- ±ÇÇÑ±×·ì-»ç¿ëÀÚ ¿¬µ¿ÀÌ·Â Insert
+  -- ê¶Œí•œê·¸ë£¹-ì‚¬ìš©ìž ì—°ë™ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0026(
-      v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*±ÇÇÑ±×·ìÄÚµå       */
-    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*»ç¿ëÀÚ ¾ÆÀÌµð      */
+      v_Auth_Grp_Cd    IN     RTCM0026.AUTH_GRP_CD%TYPE    /*ê¶Œí•œê·¸ë£¹ì½”ë“œ       */
+    , v_User_Id        IN     RTCM0026.USER_ID%TYPE        /*ì‚¬ìš©ìž ì•„ì´ë””      */
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
 END Pkg_Rtcm0026;
-/

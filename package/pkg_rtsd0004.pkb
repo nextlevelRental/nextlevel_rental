@@ -1,27 +1,27 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0004
-   PURPOSE   ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ ∞¸∏Æ
+   PURPOSE   Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-06-29  jemcarry         1. Created this package body.
-   1.1        2017-11-06  wjim             [20171106_01] ¡§∑ƒ±‚¡ÿ ∫Ø∞Ê
-                                           - ªÁæÁ, ±‘∞› 
+   1.1        2017-11-06  wjim             [20171106_01] Ï†ïÎ†¨Í∏∞Ï§Ä Î≥ÄÍ≤Ω
+                                           - ÏÇ¨Ïñë, Í∑úÍ≤© 
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Count
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0004Count(
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*¬˜¡æ                */
-    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,      /*ªÁæÁ                */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,            /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width  IN RTSD0004.SECTION_WIDTH%TYPE,    /*¥‹∏È∆¯              */
-    v_Aspect_Ratio   IN RTSD0004.ASPECT_RATIO%TYPE,     /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches   IN RTSD0004.WHEEL_INCHES%TYPE,     /*¿Œƒ°                */
-    v_Ply_Rating     IN RTSD0004.PLY_RATING%TYPE        /*PR(∞≠µµ)            */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,      /*ÏÇ¨Ïñë                */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,            /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width  IN RTSD0004.SECTION_WIDTH%TYPE,    /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio   IN RTSD0004.ASPECT_RATIO%TYPE,     /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches   IN RTSD0004.WHEEL_INCHES%TYPE,     /*Ïù∏Ïπò                */
+    v_Ply_Rating     IN RTSD0004.PLY_RATING%TYPE        /*PR(Í∞ïÎèÑ)            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -45,55 +45,55 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_sRtsd0004Count;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-11-06  wjim             [20171106_01] ¡§∑ƒ±‚¡ÿ ∫Ø∞Ê
-                                           - ¿Œƒ° > ∆¯ > ≥Ù¿Ã > PR º¯ ø¿∏ß¬˜º¯ ¡§∑ƒ
+   1.1        2017-11-06  wjim             [20171106_01] Ï†ïÎ†¨Í∏∞Ï§Ä Î≥ÄÍ≤Ω
+                                           - Ïù∏Ïπò > Ìè≠ > ÎÜíÏù¥ > PR Ïàú Ïò§Î¶ÑÏ∞®Ïàú Ï†ïÎ†¨
   *****************************************************************************/
   PROCEDURE p_sRtsd0004 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.MODEL_CD,                  /*¬˜¡æ                */
+    SELECT  A.MODEL_CD,                  /*Ï∞®Ï¢Ö                */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S002',A.MODEL_CD)         AS MODEL_CD_NM,
-            A.CONTENTS_CD,               /*ªÁæÁ                */
+            A.CONTENTS_CD,               /*ÏÇ¨Ïñë                */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S003',A.CONTENTS_CD)      AS CONTENTS_CD_NM,
-            A.FR_CD,                     /*¿¸»ƒ ±∏∫–           */
+            A.FR_CD,                     /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S004',A.FR_CD)            AS FR_CD_NM,
-            A.SECTION_WIDTH,             /*¥‹∏È∆¯              */
+            A.SECTION_WIDTH,             /*Îã®Î©¥Ìè≠              */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S006',A.SECTION_WIDTH)    AS SECTION_WIDTH_NM,
-            A.ASPECT_RATIO,              /*∆Ì∆Ú∫Ò              */
+            A.ASPECT_RATIO,              /*Ìé∏ÌèâÎπÑ              */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S007',A.ASPECT_RATIO)     AS ASPECT_RATIO_NM,
-            A.WHEEL_INCHES,              /*¿Œƒ°                */
+            A.WHEEL_INCHES,              /*Ïù∏Ïπò                */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S008',A.WHEEL_INCHES)     AS WHEEL_INCHES_NM,
-            A.PLY_RATING,                /*PR(∞≠µµ)            */
+            A.PLY_RATING,                /*PR(Í∞ïÎèÑ)            */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S009',A.PLY_RATING)       AS PLY_RATING_NM,
-            A.WHEEL_QTY,                 /*πŸƒ˚ºˆ              */
-            A.WHEEL_LIMIT_QTY,           /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-            A.CLASS_CD,                  /*¬˜∑Æ∫–∑˘            */
-            A.USE_YN,                    /*ªÁøÎø©∫Œ            */
-            A.REG_ID,                    /*µÓ∑œ¿⁄ ID           */
-            A.REG_DT,                    /*µÓ∑œ¿œ              */
-            A.CHG_ID,                    /*∫Ø∞Ê¿⁄ ID           */
-            A.CHG_DT                     /*∫Ø∞Ê¿œ              */
+            A.WHEEL_QTY,                 /*Î∞îÌÄ¥Ïàò              */
+            A.WHEEL_LIMIT_QTY,           /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+            A.CLASS_CD,                  /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+            A.USE_YN,                    /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+            A.REG_ID,                    /*Îì±Î°ùÏûê ID           */
+            A.REG_DT,                    /*Îì±Î°ùÏùº              */
+            A.CHG_ID,                    /*Î≥ÄÍ≤ΩÏûê ID           */
+            A.CHG_DT                     /*Î≥ÄÍ≤ΩÏùº              */
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
     AND     (v_Contents_Cd      IS NULL OR A.CONTENTS_CD     =  v_Contents_Cd)
@@ -113,21 +113,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Insert
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0004 (
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*Îì±Î°ùÏûê ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -176,21 +176,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_InsertRtsd0004;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Update
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0004 (
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*Îì±Î°ùÏûê ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -220,17 +220,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_UpdateRtsd0004;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Delete
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0004 (
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,    /*ªÁæÁ                  */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,          /*¿¸»ƒ ±∏∫–             */
-    v_Section_Width  IN RTSD0004.SECTION_WIDTH%TYPE,  /*¥‹∏È∆¯                */
-    v_Aspect_Ratio   IN RTSD0004.ASPECT_RATIO%TYPE,   /*∆Ì∆Ú∫Ò                */
-    v_Wheel_Inches   IN RTSD0004.WHEEL_INCHES%TYPE,   /*¿Œƒ°                  */
-    v_Ply_Rating     IN RTSD0004.PLY_RATING%TYPE,     /*PR(∞≠µµ)              */
-    v_Reg_Id         IN RTSD0004.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,    /*ÏÇ¨Ïñë                  */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,          /*Ï†ÑÌõÑ Íµ¨Î∂Ñ             */
+    v_Section_Width  IN RTSD0004.SECTION_WIDTH%TYPE,  /*Îã®Î©¥Ìè≠                */
+    v_Aspect_Ratio   IN RTSD0004.ASPECT_RATIO%TYPE,   /*Ìé∏ÌèâÎπÑ                */
+    v_Wheel_Inches   IN RTSD0004.WHEEL_INCHES%TYPE,   /*Ïù∏Ïπò                  */
+    v_Ply_Rating     IN RTSD0004.PLY_RATING%TYPE,     /*PR(Í∞ïÎèÑ)              */
+    v_Reg_Id         IN RTSD0004.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -256,22 +256,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_DeleteRtsd0004;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ ∞¸∏Æ(IUD)
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0004 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*µÓ∑œ¿⁄ ID           */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE,          /*Îì±Î°ùÏûê ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -280,49 +280,49 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- « ºˆ∞™: ¬˜¡æ ,ªÁæÁ ,¿¸»ƒ ±∏∫– ,¥‹∏È∆¯ ,∆Ì∆Ú∫Ò ,¿Œƒ° ,PR(∞≠µµ), ªÁøÎø©∫Œ ,µÓ∑œ¿⁄ ID
+    -- ÌïÑÏàòÍ∞í: Ï∞®Ï¢Ö ,ÏÇ¨Ïñë ,Ï†ÑÌõÑ Íµ¨Î∂Ñ ,Îã®Î©¥Ìè≠ ,Ìé∏ÌèâÎπÑ ,Ïù∏Ïπò ,PR(Í∞ïÎèÑ), ÏÇ¨Ïö©Ïó¨Î∂Ä ,Îì±Î°ùÏûê ID
     IF TRIM(v_Model_Cd) IS NULL THEN
-        v_Return_Message := '¬˜¡æ('||v_Model_Cd||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Ï∞®Ï¢Ö('||v_Model_Cd||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Contents_Cd) IS NULL THEN
-        v_Return_Message := 'ªÁæÁ('||v_Contents_Cd||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'ÏÇ¨Ïñë('||v_Contents_Cd||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Fr_Cd) IS NULL THEN
-        v_Return_Message := '¿¸»ƒ ±∏∫–('||v_Fr_Cd||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Ï†ÑÌõÑ Íµ¨Î∂Ñ('||v_Fr_Cd||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Section_Width) IS NULL THEN
-        v_Return_Message := '¥‹∏È∆¯('||v_Section_Width||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Îã®Î©¥Ìè≠('||v_Section_Width||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Aspect_Ratio) IS NULL THEN
-        v_Return_Message := '∆Ì∆Ú∫Ò('||v_Aspect_Ratio||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Ìé∏ÌèâÎπÑ('||v_Aspect_Ratio||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Wheel_Inches) IS NULL THEN
-        v_Return_Message := '¿Œƒ°('||v_Wheel_Inches||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Ïù∏Ïπò('||v_Wheel_Inches||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Ply_Rating) IS NULL THEN
-        v_Return_Message := 'PR(∞≠µµ)('||v_Ply_Rating||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'PR(Í∞ïÎèÑ)('||v_Ply_Rating||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := 'ªÁøÎø©∫Œ('||v_Use_Yn||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'ÏÇ¨Ïö©Ïó¨Î∂Ä('||v_Use_Yn||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µÓ∑œ¿⁄ ID('||v_Reg_Id||') : « ºˆ ¿‘∑¬∞™ ¥©∂Ù ∂«¥¬ ¿ﬂ∏¯µ» ∞™ ¿‘∑¬¿∏∑Œ √≥∏Æ∞° ∫“∞° «’¥œ¥Ÿ!';
+        v_Return_Message := 'Îì±Î°ùÏûê ID('||v_Reg_Id||') : ÌïÑÏàò ÏûÖÎ†•Í∞í ÎàÑÎùΩ ÎòêÎäî ÏûòÎ™ªÎêú Í∞í ÏûÖÎ†•ÏúºÎ°ú Ï≤òÎ¶¨Í∞Ä Î∂àÍ∞Ä Ìï©ÎãàÎã§!';
         RAISE e_Error;
     END IF;
 
@@ -332,7 +332,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
         IF 0 != f_InsertRtsd0004(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Section_Width,
                                  v_Aspect_Ratio, v_Wheel_Inches, v_Ply_Rating, v_Wheel_Qty,
                                  v_Wheel_Limit_Qty, v_Class_Cd, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -344,7 +344,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
             IF 0 != f_UpdateRtsd0004(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Section_Width,
                                      v_Aspect_Ratio, v_Wheel_Inches, v_Ply_Rating, v_Wheel_Qty,
                                      v_Wheel_Limit_Qty, v_Class_Cd, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -355,20 +355,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
             IF 0 != f_DeleteRtsd0004(v_Model_Cd, v_Contents_Cd, v_Fr_Cd, v_Section_Width,
                                      v_Aspect_Ratio, v_Wheel_Inches, v_Ply_Rating, v_Reg_Id,
                                      v_ErrorText) THEN
-                v_Return_Message := '¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ªË¡¶ Ω«∆–!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© ÏÇ≠Ï†ú Ïã§Ìå®!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     COMMIT;
 
@@ -383,7 +383,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0004.p_IUDRtsd0004(2)', v_ErrorText, v_Return_Message);
 
@@ -391,12 +391,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
 
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Count - ¬˜¡æ,ªÁæÁ,¿¸»ƒ±∏∫– ±‚¡ÿ ªÁøÎ¡ﬂ¿Œ ∞«ºˆ »πµÊ
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Count - Ï∞®Ï¢Ö,ÏÇ¨Ïñë,Ï†ÑÌõÑÍµ¨Î∂Ñ Í∏∞Ï§Ä ÏÇ¨Ïö©Ï§ëÏù∏ Í±¥Ïàò ÌöçÎìù
   *****************************************************************************/
   FUNCTION f_sRtsd0004UseYnCount(
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*¬˜¡æ                */
-    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,      /*ªÁæÁ                */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE             /*¿¸»ƒ ±∏∫–           */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,         /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd    IN RTSD0004.CONTENTS_CD%TYPE,      /*ÏÇ¨Ïñë                */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE             /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -418,28 +418,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_sRtsd0004UseYnCount;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[ªÁæÁ]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[ÏÇ¨Ïñë]
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-11-06  wjim             [20171106_01] ¡§∑ƒ±‚¡ÿ ∫Ø∞Ê
-                                           - º˝¿⁄ > øµæÓ > «—±€ º¯ ø¿∏ß¬˜º¯ ¡§∑ƒ
+   1.1        2017-11-06  wjim             [20171106_01] Ï†ïÎ†¨Í∏∞Ï§Ä Î≥ÄÍ≤Ω
+                                           - Ïà´Ïûê > ÏòÅÏñ¥ > ÌïúÍ∏Ä Ïàú Ïò§Î¶ÑÏ∞®Ïàú Ï†ïÎ†¨
   *****************************************************************************/
   PROCEDURE p_sRtsd0004ContentsCd (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
@@ -448,7 +448,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
     SELECT  *
       FROM  (
                 SELECT  DISTINCT
-                        A.CONTENTS_CD,                              /*ªÁæÁ                */
+                        A.CONTENTS_CD,                              /*ÏÇ¨Ïñë                */
                         Pkg_Rtcm0051.f_sRtcm0051CodeName('S003',A.CONTENTS_CD)  AS CONTENTS_CD_NM
                 FROM    RTSD0004 A
                 WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -470,29 +470,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004ContentsCd;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[¿¸»ƒ±∏∫–]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[Ï†ÑÌõÑÍµ¨Î∂Ñ]
   *****************************************************************************/
   PROCEDURE p_sRtsd0004FrCd (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  DISTINCT
-            A.FR_CD,                                    /*¿¸»ƒ ±∏∫–           */
+            A.FR_CD,                                    /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S004',A.FR_CD) AS FR_CD_NM
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -511,29 +511,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004FrCd;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[PR∞≠µµ]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[PRÍ∞ïÎèÑ]
   *****************************************************************************/
   PROCEDURE p_sRtsd0004PlyRatingCd (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  DISTINCT
-            A.PLY_RATING,                               /*PR(∞≠µµ)            */
+            A.PLY_RATING,                               /*PR(Í∞ïÎèÑ)            */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S009',A.PLY_RATING) AS PLY_RATING_NM
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -552,29 +552,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004PlyRatingCd;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[¥‹∏È∆¯]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[Îã®Î©¥Ìè≠]
   *****************************************************************************/
   PROCEDURE p_sRtsd0004SectionWidth (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  DISTINCT
-            A.SECTION_WIDTH,                            /*¥‹∏È∆¯              */
+            A.SECTION_WIDTH,                            /*Îã®Î©¥Ìè≠              */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S006',A.SECTION_WIDTH) AS SECTION_WIDTH_NM
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -593,29 +593,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004SectionWidth;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[∆Ì∆Ú∫Ò]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[Ìé∏ÌèâÎπÑ]
   *****************************************************************************/
   PROCEDURE p_sRtsd0004AspectRatio (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  DISTINCT
-            A.ASPECT_RATIO,                              /*∆Ì∆Ú∫Ò              */
+            A.ASPECT_RATIO,                              /*Ìé∏ÌèâÎπÑ              */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S007',A.ASPECT_RATIO) AS ASPECT_RATIO_NM
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -634,29 +634,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004AspectRatio;
 
   /*****************************************************************************
-  -- ¬˜¡æ_¿Â¬¯∞°¥… ±‘∞› ∞¸∏Æ Select[¿Œƒ°]
+  -- Ï∞®Ï¢Ö_Ïû•Ï∞©Í∞ÄÎä• Í∑úÍ≤© Í¥ÄÎ¶¨ Select[Ïù∏Ïπò]
   *****************************************************************************/
   PROCEDURE p_sRtsd0004WheelInches (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*¬˜¡æ                */
-    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ªÁæÁ                */
-    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*¿¸»ƒ ±∏∫–           */
-    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*¥‹∏È∆¯              */
-    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*∆Ì∆Ú∫Ò              */
-    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*¿Œƒ°                */
-    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(∞≠µµ)            */
-    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*πŸƒ˚ºˆ              */
-    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*¿Â¬¯∞°¥… πŸƒ˚ºˆ     */
-    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*¬˜∑Æ∫–∑˘            */
-    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ªÁøÎø©∫Œ            */
-    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*µÓ∑œ¿⁄ ID           */
+    v_Model_Cd        IN RTSD0004.MODEL_CD%TYPE,        /*Ï∞®Ï¢Ö                */
+    v_Contents_Cd     IN RTSD0004.CONTENTS_CD%TYPE,     /*ÏÇ¨Ïñë                */
+    v_Fr_Cd           IN RTSD0004.FR_CD%TYPE,           /*Ï†ÑÌõÑ Íµ¨Î∂Ñ           */
+    v_Section_Width   IN RTSD0004.SECTION_WIDTH%TYPE,   /*Îã®Î©¥Ìè≠              */
+    v_Aspect_Ratio    IN RTSD0004.ASPECT_RATIO%TYPE,    /*Ìé∏ÌèâÎπÑ              */
+    v_Wheel_Inches    IN RTSD0004.WHEEL_INCHES%TYPE,    /*Ïù∏Ïπò                */
+    v_Ply_Rating      IN RTSD0004.PLY_RATING%TYPE,      /*PR(Í∞ïÎèÑ)            */
+    v_Wheel_Qty       IN RTSD0004.WHEEL_QTY%TYPE,       /*Î∞îÌÄ¥Ïàò              */
+    v_Wheel_Limit_Qty IN RTSD0004.WHEEL_LIMIT_QTY%TYPE, /*Ïû•Ï∞©Í∞ÄÎä• Î∞îÌÄ¥Ïàò     */
+    v_Class_Cd        IN RTSD0004.CLASS_CD%TYPE,        /*Ï∞®ÎüâÎ∂ÑÎ•ò            */
+    v_Use_Yn          IN RTSD0004.USE_YN%TYPE,          /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id          IN RTSD0004.REG_ID%TYPE           /*Îì±Î°ùÏûê ID           */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
     SELECT  DISTINCT
-            A.WHEEL_INCHES,                             /*¿Œƒ°                */
+            A.WHEEL_INCHES,                             /*Ïù∏Ïπò                */
             Pkg_Rtcm0051.f_sRtcm0051CodeName('S008',A.WHEEL_INCHES) AS WHEEL_INCHES_NM
     FROM    RTSD0004 A
     WHERE   (v_Model_Cd          IS NULL OR A.MODEL_CD        =  v_Model_Cd)
@@ -675,14 +675,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END p_sRtsd0004WheelInches;
   
   /*****************************************************************************
-  -- ¬˜¡æ_»ƒ∑˚¿Â¬¯∞°¥… ºˆ∑Æ (LTR ¿Ãø‹¿« ¬˜∑Æ¿« ∞ÊøÏ »ƒ∑˚¿∫ 2∫ª¿∏∑Œ ∞Ì¡§)
-  -- √ﬂ»ƒ ∏∂Ω∫≈Õ ±‚¡ÿ¿∏∑Œ ¿Â¬¯∫ªºˆ∏¶ ¡§«“ ∞ÊøÏ WHEEL_QTY∏¶ ¡∂¡§«œ∞‘ ∫Ø∞Ê«œ∏È µ»¥Ÿ.
+  -- Ï∞®Ï¢Ö_ÌõÑÎ•úÏû•Ï∞©Í∞ÄÎä• ÏàòÎüâ (LTR Ïù¥Ïô∏Ïùò Ï∞®ÎüâÏùò Í≤ΩÏö∞ ÌõÑÎ•úÏùÄ 2Î≥∏ÏúºÎ°ú Í≥†Ï†ï)
+  -- Ï∂îÌõÑ ÎßàÏä§ÌÑ∞ Í∏∞Ï§ÄÏúºÎ°ú Ïû•Ï∞©Î≥∏ÏàòÎ•º Ï†ïÌï† Í≤ΩÏö∞ WHEEL_QTYÎ•º Ï°∞Ï†ïÌïòÍ≤å Î≥ÄÍ≤ΩÌïòÎ©¥ ÎêúÎã§.
   *****************************************************************************/
   FUNCTION f_sRtsd0004WheelQty (
-    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,       /*¬˜¡æ                  */
-    v_Class_Cd       IN RTSD0004.CLASS_CD%TYPE,       /*ªÁæÁ                  */
-    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,          /*¿¸»ƒ ±∏∫–             */
-    v_Mat_Cd         IN RTSD0005.MAT_CD%TYPE          /*¥‹∏È∆¯                */
+    v_Model_Cd       IN RTSD0004.MODEL_CD%TYPE,       /*Ï∞®Ï¢Ö                  */
+    v_Class_Cd       IN RTSD0004.CLASS_CD%TYPE,       /*ÏÇ¨Ïñë                  */
+    v_Fr_Cd          IN RTSD0004.FR_CD%TYPE,          /*Ï†ÑÌõÑ Íµ¨Î∂Ñ             */
+    v_Mat_Cd         IN RTSD0005.MAT_CD%TYPE          /*Îã®Î©¥Ìè≠                */
     ) RETURN VARCHAR2 IS
     
     v_Wheel_Qty VARCHAR2(4);
@@ -713,4 +713,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0004 AS
   END f_sRtsd0004WheelQty;
 
 END Pkg_Rtsd0004;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0098 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0098
-   PURPOSE   ÆÄÀÏ ¼Û¼ö½Å ³»¿ª °ü¸®
+   PURPOSE   íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,84 +10,84 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0098 AS
 *******************************************************************************/
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Count
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0098Count(
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,         /*¿äÃ»ÀÏÀÚ            */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,          /*ÆÄÀÏ¸í              */
-    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE           /*ROW ¼ø¹ø            */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,         /*ìš”ì²­ì¼ìž            */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,          /*íŒŒì¼ëª…              */
+    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE           /*ROW ìˆœë²ˆ            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Select
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0098 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ¼ø¹ø              */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*ÆÄÀÏ³»¿ë              */
-    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ìˆœë²ˆ              */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*íŒŒì¼ë‚´ìš©              */
+    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Insert
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0098 (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ¼ø¹ø              */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*ÆÄÀÏ³»¿ë              */
-    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ìˆœë²ˆ              */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*íŒŒì¼ë‚´ìš©              */
+    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Update
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0098 (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ¼ø¹ø              */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*ÆÄÀÏ³»¿ë              */
-    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ìˆœë²ˆ              */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*íŒŒì¼ë‚´ìš©              */
+    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Delete
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0098 (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ¼ø¹ø              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Row_Seq        IN RTRE0098.ROW_SEQ%TYPE,        /*ROW ìˆœë²ˆ              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª °ü¸®(IUD)
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0098 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Row_Seq        IN OUT RTRE0098.ROW_SEQ%TYPE,    /*ROW ¼ø¹ø              */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*ÆÄÀÏ³»¿ë              */
-    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Row_Seq        IN OUT RTRE0098.ROW_SEQ%TYPE,    /*ROW ìˆœë²ˆ              */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Row_Data       IN RTRE0098.ROW_DATA%TYPE,       /*íŒŒì¼ë‚´ìš©              */
+    v_Del_Yn         IN RTRE0098.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -95,50 +95,50 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0098 AS
 
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - ¿äÃ»ÀÏÀÚ/ÆÄÀÏ¸í ±âÁØ ROW ¼ø¹ø È¹µæ
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ìš”ì²­ì¼ìž/íŒŒì¼ëª… ê¸°ì¤€ ROW ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0098RowSeq(
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,         /*¿äÃ»ÀÏÀÚ            */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE           /*ÆÄÀÏ¸í              */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,         /*ìš”ì²­ì¼ìž            */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE           /*íŒŒì¼ëª…              */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - °èÁÂ½ÅÃ»ÀÎÁõ ÆÄÀÏ»ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ê³„ì¢Œì‹ ì²­ì¸ì¦ íŒŒì¼ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098EI13Batch (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Crlf_Yn        OUT VARCHAR,                     /*CRLF¿©ºÎ              */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Crlf_Yn        OUT VARCHAR,                     /*CRLFì—¬ë¶€              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - °èÁÂ½ÅÃ»Ã³¸® ÆÄÀÏ»ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ê³„ì¢Œì‹ ì²­ì²˜ë¦¬ íŒŒì¼ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098EB13Batch (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Crlf_Yn        OUT VARCHAR,                     /*CRLF¿©ºÎ              */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Crlf_Yn        OUT VARCHAR,                     /*CRLFì—¬ë¶€              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - °èÁÂ½ÅÃ»Ã³¸® ÆÄÀÏ»ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ê³„ì¢Œì‹ ì²­ì²˜ë¦¬ íŒŒì¼ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098EB12Batch (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Crlf_Yn        OUT VARCHAR,                     /*CRLF¿©ºÎ              */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Crlf_Yn        OUT VARCHAR,                     /*CRLFì—¬ë¶€              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -146,193 +146,192 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0098 AS
 
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - °èÁÂ½ÅÃ»Ã³¸® ÆÄÀÏ»ý¼º - ÄÞ¸¶·Î ºÐ¸®µÈ ½ºÆ®¸µµ¥ÀÌÅÍ¸¦ µî·ÏÇÏ´Â »ùÇÃ
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ê³„ì¢Œì‹ ì²­ì²˜ë¦¬ íŒŒì¼ìƒì„± - ì½¤ë§ˆë¡œ ë¶„ë¦¬ëœ ìŠ¤íŠ¸ë§ë°ì´í„°ë¥¼ ë“±ë¡í•˜ëŠ” ìƒ˜í”Œ
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098EB13String (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Row_Data       IN STRING,                       /*ÆÄÀÏ³»¿ë              */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Tdata_Cnt      OUT VARCHAR,                     /*µ¥ÀÌÅÍ°Ç¼ö            */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Row_Data       IN STRING,                       /*íŒŒì¼ë‚´ìš©              */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Tdata_Cnt      OUT VARCHAR,                     /*ë°ì´í„°ê±´ìˆ˜            */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );        
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Count - ¼Û¼ö½ÅÃ³¸® ³»¿ª Ã¼Å© COUNT
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Count - ì†¡ìˆ˜ì‹ ì²˜ë¦¬ ë‚´ì—­ ì²´í¬ COUNT
   *****************************************************************************/
   FUNCTION f_sRtre0098CountCheck(
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE        /*ÆÄÀÏ ¼ø¹ø             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE        /*íŒŒì¼ ìˆœë²ˆ             */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Count - ¼Û¼ö½ÅÃ³¸® ³»¿ª Ã¼Å© COUNT
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Count - ì†¡ìˆ˜ì‹ ì²˜ë¦¬ ë‚´ì—­ ì²´í¬ COUNT
   *****************************************************************************/
   FUNCTION f_sRtre0098CountCheck2(
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE         /*ÆÄÀÏ¸í                */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE         /*íŒŒì¼ëª…                */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Update - ¼Û½Å ÆÄÀÏ Á¸Àç½Ã DEL_YN ¾÷µ¥ÀÌÆ®
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Update - ì†¡ì‹  íŒŒì¼ ì¡´ìž¬ì‹œ DEL_YN ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_Delete0098FileClear (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Update - ¼Û½Å ÆÄÀÏ Á¸Àç½Ã DEL_YN ¾÷µ¥ÀÌÆ®
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Update - ì†¡ì‹  íŒŒì¼ ì¡´ìž¬ì‹œ DEL_YN ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_Delete0098FileClear2 (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª Delete - ¼Û½Å ÆÄÀÏ ¾÷·Îµå ÀçÃ³¸®ÇÏ±âÀ§ÇØ ±âÁ¸ÀÚ·á »èÁ¦
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ Delete - ì†¡ì‹  íŒŒì¼ ì—…ë¡œë“œ ìž¬ì²˜ë¦¬í•˜ê¸°ìœ„í•´ ê¸°ì¡´ìžë£Œ ì‚­ì œ
   *****************************************************************************/
   FUNCTION f_Delete0098Day_Nm (
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - Ãâ±ÝÀÌÃ¼ÀÚ·á ÆÄÀÏ»ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ì¶œê¸ˆì´ì²´ìžë£Œ íŒŒì¼ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098TransAccum (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2,
-    v_Crlf_Yn        OUT VARCHAR2                     /* CRLF ¿©ºÎ            */
+    v_Crlf_Yn        OUT VARCHAR2                     /* CRLF ì—¬ë¶€            */
     );        
     
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª - Ä«µåÀÌÃ¼ÀÚ·á ÆÄÀÏ»ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­ - ì¹´ë“œì´ì²´ìžë£Œ íŒŒì¼ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098CardTrans (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2,
-    v_Crlf_Yn        OUT VARCHAR2                     /* CRLF ¿©ºÎ            */
+    v_Crlf_Yn        OUT VARCHAR2                     /* CRLF ì—¬ë¶€            */
     );        
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª(RTRE0098) »ý¼º -  È¸»çÁ¢¼ö(A) µ¥ÀÌÅÍ ÆÄÀÏ ÆÄ½ÌÇÏ¿© »ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­(RTRE0098) ìƒì„± -  íšŒì‚¬ì ‘ìˆ˜(A) ë°ì´í„° íŒŒì¼ íŒŒì‹±í•˜ì—¬ ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098FileParsingA (    
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*ÆÄÀÏµ¥ÀÌÅÍ(CLOB)      */
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*°èÁÂ½ÅÃ» ¹ß»ý±¸ºÐ     */
-    v_Extrc_Yn       IN OUT RTRE0099.EXTRC_YN%TYPE,   /*´ë»óÁý°è¿©ºÎ          */
-    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER Á¸Àç¿©ºÎ       */
-    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER Á¸Àç¿©ºÎ      */
-    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*µ¥ÀÌÅÍ ÃÑ°Ç¼ö         */
-    v_Acrq_Cnt       IN OUT RTRE0099.ACRQ_CNT%TYPE,   /*°èÁÂ½ÅÃ»°Ç¼ö          */
-    v_Accnrq_Cnt     IN OUT RTRE0099.ACCNRQ_CNT%TYPE, /*°èÁÂÇØÁö°Ç¼ö          */
-    v_Rmcnrq_Cnt     IN OUT RTRE0099.RMCNRQ_CNT%TYPE, /*°èÁÂÀÓÀÇÇØÁö°Ç¼ö      */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*íŒŒì¼ë°ì´í„°(CLOB)      */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬ë¶„     */
+    v_Extrc_Yn       IN OUT RTRE0099.EXTRC_YN%TYPE,   /*ëŒ€ìƒì§‘ê³„ì—¬ë¶€          */
+    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER ì¡´ìž¬ì—¬ë¶€       */
+    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER ì¡´ìž¬ì—¬ë¶€      */
+    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*ë°ì´í„° ì´ê±´ìˆ˜         */
+    v_Acrq_Cnt       IN OUT RTRE0099.ACRQ_CNT%TYPE,   /*ê³„ì¢Œì‹ ì²­ê±´ìˆ˜          */
+    v_Accnrq_Cnt     IN OUT RTRE0099.ACCNRQ_CNT%TYPE, /*ê³„ì¢Œí•´ì§€ê±´ìˆ˜          */
+    v_Rmcnrq_Cnt     IN OUT RTRE0099.RMCNRQ_CNT%TYPE, /*ê³„ì¢Œìž„ì˜í•´ì§€ê±´ìˆ˜      */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª(RTRE0098) »ý¼º - ÀºÇàÁ¢¼ö(Bµ¥ÀÌÅÍ ÆÄÀÏ ÆÄ½ÌÇÏ¿© »ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­(RTRE0098) ìƒì„± - ì€í–‰ì ‘ìˆ˜(Bë°ì´í„° íŒŒì¼ íŒŒì‹±í•˜ì—¬ ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098FileParsingB (    
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*ÆÄÀÏµ¥ÀÌÅÍ(CLOB)      */
-    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*°èÁÂ½ÅÃ» ¹ß»ý±¸ºÐ     */
-    v_Extrc_Yn       IN OUT RTRE0099.EXTRC_YN%TYPE,   /*´ë»óÁý°è¿©ºÎ          */
-    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER Á¸Àç¿©ºÎ       */
-    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER Á¸Àç¿©ºÎ      */
-    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*µ¥ÀÌÅÍ ÃÑ°Ç¼ö         */
-    v_Acrq_Cnt       IN OUT RTRE0099.ACRQ_CNT%TYPE,   /*°èÁÂ½ÅÃ»°Ç¼ö          */
-    v_Accnrq_Cnt     IN OUT RTRE0099.ACCNRQ_CNT%TYPE, /*°èÁÂÇØÁö°Ç¼ö          */
-    v_Rmcnrq_Cnt     IN OUT RTRE0099.RMCNRQ_CNT%TYPE, /*°èÁÂÀÓÀÇÇØÁö°Ç¼ö      */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*íŒŒì¼ë°ì´í„°(CLOB)      */
+    v_Acrq_Fg        IN RTRE0060.ACRQ_FG%TYPE,        /*ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬ë¶„     */
+    v_Extrc_Yn       IN OUT RTRE0099.EXTRC_YN%TYPE,   /*ëŒ€ìƒì§‘ê³„ì—¬ë¶€          */
+    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER ì¡´ìž¬ì—¬ë¶€       */
+    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER ì¡´ìž¬ì—¬ë¶€      */
+    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*ë°ì´í„° ì´ê±´ìˆ˜         */
+    v_Acrq_Cnt       IN OUT RTRE0099.ACRQ_CNT%TYPE,   /*ê³„ì¢Œì‹ ì²­ê±´ìˆ˜          */
+    v_Accnrq_Cnt     IN OUT RTRE0099.ACCNRQ_CNT%TYPE, /*ê³„ì¢Œí•´ì§€ê±´ìˆ˜          */
+    v_Rmcnrq_Cnt     IN OUT RTRE0099.RMCNRQ_CNT%TYPE, /*ê³„ì¢Œìž„ì˜í•´ì§€ê±´ìˆ˜      */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª(RTRE0098) »ý¼º -  Ãâ±ÝÀÌÃ¼(T) °á°ú ÆÄÀÏ UPLOAD
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­(RTRE0098) ìƒì„± -  ì¶œê¸ˆì´ì²´(T) ê²°ê³¼ íŒŒì¼ UPLOAD
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098FileParsingT (    
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*ÆÄÀÏµ¥ÀÌÅÍ(CLOB)      */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*íŒŒì¼ë°ì´í„°(CLOB)      */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª(RTRE0098) »ý¼º -  Ä«µåÀÌÃ¼(C) °á°ú ÆÄÀÏ UPLOAD
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­(RTRE0098) ìƒì„± -  ì¹´ë“œì´ì²´(C) ê²°ê³¼ íŒŒì¼ UPLOAD
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098FileParsingC (    
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*ÆÄÀÏµ¥ÀÌÅÍ(CLOB)      */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*íŒŒì¼ë°ì´í„°(CLOB)      */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- ÆÄÀÏ ¼Û¼ö½Å ³»¿ª(RTRE0098) »ý¼º - Çö±Ý¿µ¼öÁõ µ¥ÀÌÅÍ ÆÄÀÏ ÆÄ½ÌÇÏ¿© »ý¼º
+  -- íŒŒì¼ ì†¡ìˆ˜ì‹  ë‚´ì—­(RTRE0098) ìƒì„± - í˜„ê¸ˆì˜ìˆ˜ì¦ ë°ì´í„° íŒŒì¼ íŒŒì‹±í•˜ì—¬ ìƒì„±
   *****************************************************************************/
   PROCEDURE p_InsertRtre0098FileParsingCh (    
-    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*¿äÃ»ÀÏÀÚ              */
-    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*ÆÄÀÏ¸í                */
-    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*¼Û¼ö½Å ÆÄÀÏ±¸ºÐ       */
-    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*ÆÄÀÏ ¼ø¹ø             */
-    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*ÆÄÀÏµ¥ÀÌÅÍ(CLOB)      */
-    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER Á¸Àç¿©ºÎ       */
-    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER Á¸Àç¿©ºÎ      */
-    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*µ¥ÀÌÅÍ ÃÑ°Ç¼ö         */
-    v_Tdata_Amt      IN OUT RTRE0099.TDATA_AMT%TYPE,  /*µ¥ÀÌÅÍ ÃÑ±Ý¾×         */
-    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rqst_Day       IN RTRE0098.RQST_DAY%TYPE,       /*ìš”ì²­ì¼ìž              */
+    v_File_Nm        IN RTRE0098.FILE_NM%TYPE,        /*íŒŒì¼ëª…                */
+    v_File_Tp        IN RTRE0098.FILE_TP%TYPE,        /*ì†¡ìˆ˜ì‹  íŒŒì¼êµ¬ë¶„       */
+    v_File_Seq       IN RTRE0098.FILE_SEQ%TYPE,       /*íŒŒì¼ ìˆœë²ˆ             */
+    v_File_Data      IN RTRE0099.FILE_DATA%TYPE,      /*íŒŒì¼ë°ì´í„°(CLOB)      */
+    v_Header_Yn      IN OUT RTRE0099.HEADER_YN%TYPE,  /*HEADER ì¡´ìž¬ì—¬ë¶€       */
+    v_Trailer_Yn     IN OUT RTRE0099.TRAILER_YN%TYPE, /*TRAILER ì¡´ìž¬ì—¬ë¶€      */
+    v_Tdata_Cnt      IN OUT RTRE0099.TDATA_CNT%TYPE,  /*ë°ì´í„° ì´ê±´ìˆ˜         */
+    v_Tdata_Amt      IN OUT RTRE0099.TDATA_AMT%TYPE,  /*ë°ì´í„° ì´ê¸ˆì•¡         */
+    v_Reg_Id         IN RTRE0098.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     ) ;    
     
 END Pkg_Rtre0098;
-/

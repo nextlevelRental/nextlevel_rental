@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0050 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0050
-   PURPOSE   °áÁ¦Á¤º¸ º¯°æÀÌ·Â °ü¸®
+   PURPOSE   ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,181 +10,181 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0050 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Select
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0050List (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Cust_No        IN RTRE0050.BFCUST_NO%TYPE       /* °í°´¹øÈ£             */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0050.BFCUST_NO%TYPE       /* ê³ ê°ë²ˆí˜¸             */
     );
     
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Count
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Count
   *****************************************************************************/
   FUNCTION f_sRtre0050Count(
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE           /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø    */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE           /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ    */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Select
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0050 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Cust_No        IN RTRE0050.BFCUST_NO%TYPE       /* °í°´¹øÈ£             */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0050.BFCUST_NO%TYPE       /* ê³ ê°ë²ˆí˜¸             */
     );
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Insert
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0050 (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÏ        */
-    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÚ        */
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*º¯°æ»çÀ¯              */
-    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ              */
-    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*º¯°æÀü °í°´¹øÈ£       */
-    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*º¯°æÀü ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*º¯°æÀü °áÁ¦¹æ¹ý       */
-    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*º¯°æÀü °áÁ¦ÀÏÀÚ       */
-    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*º¯°æÀü °èÁÂ¼ø¹ø       */
-    v_Bfcrd_Seq      IN RTRE0050.BFCRD_SEQ%TYPE,      /*º¯°æÀü Ä«µå¼ø¹ø       */
-    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*º¯°æÀü BATCH KEY      */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */
-    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*º¯°æÀü °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfrpc_Seq      IN RTRE0050.BFRPC_SEQ%TYPE,      /*ÀÌÀü º¯°æÈÄ ¼öÁ¤³»¿ª  */
-    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*º¯°æÈÄ °í°´¹øÈ£       */
-    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*º¯°æÈÄ ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*º¯°æÈÄ °áÁ¦¹æ¹ý       */
-    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*º¯°æÈÄ °áÁ¦ÀÏÀÚ       */
-    v_Afacc_Seq      IN RTRE0050.AFACC_SEQ%TYPE,      /*º¯°æÈÄ °èÁÂ¼ø¹ø       */
-    v_Afcrd_Seq      IN RTRE0050.AFCRD_SEQ%TYPE,      /*º¯°æÈÄ Ä«µå¼ø¹ø       */
-    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*º¯°æÈÄ BATCH KEY      */
-    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» »óÅÂ  */
-    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®»ó*/
-    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®ÀÏ*/
-    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» ¼ø¹ø  */
-    v_Abrpc_Seq      IN RTRE0050.ABRPC_SEQ%TYPE,      /*ÀÌÀü º¯°æÀü ¼öÁ¤³»¿ª  */
-    v_Del_Yn         IN RTRE0050.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ì¼        */
+    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìž        */
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*ë³€ê²½ì‚¬ìœ               */
+    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼              */
+    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*ë³€ê²½ì „ ê³ ê°ë²ˆí˜¸       */
+    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*ë³€ê²½ì „ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*ë³€ê²½ì „ ê²°ì œë°©ë²•       */
+    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*ë³€ê²½ì „ ê²°ì œì¼ìž       */
+    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œìˆœë²ˆ       */
+    v_Bfcrd_Seq      IN RTRE0050.BFCRD_SEQ%TYPE,      /*ë³€ê²½ì „ ì¹´ë“œìˆœë²ˆ       */
+    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*ë³€ê²½ì „ BATCH KEY      */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */
+    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfrpc_Seq      IN RTRE0050.BFRPC_SEQ%TYPE,      /*ì´ì „ ë³€ê²½í›„ ìˆ˜ì •ë‚´ì—­  */
+    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*ë³€ê²½í›„ ê³ ê°ë²ˆí˜¸       */
+    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*ë³€ê²½í›„ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*ë³€ê²½í›„ ê²°ì œë°©ë²•       */
+    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*ë³€ê²½í›„ ê²°ì œì¼ìž       */
+    v_Afacc_Seq      IN RTRE0050.AFACC_SEQ%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œìˆœë²ˆ       */
+    v_Afcrd_Seq      IN RTRE0050.AFCRD_SEQ%TYPE,      /*ë³€ê²½í›„ ì¹´ë“œìˆœë²ˆ       */
+    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*ë³€ê²½í›„ BATCH KEY      */
+    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìƒíƒœ  */
+    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ìƒ*/
+    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼*/
+    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ  */
+    v_Abrpc_Seq      IN RTRE0050.ABRPC_SEQ%TYPE,      /*ì´ì „ ë³€ê²½ì „ ìˆ˜ì •ë‚´ì—­  */
+    v_Del_Yn         IN RTRE0050.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Update
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0050 (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÏ        */
-    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÚ        */
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*º¯°æ»çÀ¯              */
-    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ              */
-    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*º¯°æÀü °í°´¹øÈ£       */
-    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*º¯°æÀü ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*º¯°æÀü °áÁ¦¹æ¹ý       */
-    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*º¯°æÀü °áÁ¦ÀÏÀÚ       */
-    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*º¯°æÀü °èÁÂ¼ø¹ø       */
-    v_Bfcrd_Seq      IN RTRE0050.BFCRD_SEQ%TYPE,      /*º¯°æÀü Ä«µå¼ø¹ø       */
-    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*º¯°æÀü BATCH KEY      */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */
-    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*º¯°æÀü °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfrpc_Seq      IN RTRE0050.BFRPC_SEQ%TYPE,      /*ÀÌÀü º¯°æÈÄ ¼öÁ¤³»¿ª  */
-    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*º¯°æÈÄ °í°´¹øÈ£       */
-    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*º¯°æÈÄ ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*º¯°æÈÄ °áÁ¦¹æ¹ý       */
-    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*º¯°æÈÄ °áÁ¦ÀÏÀÚ       */
-    v_Afacc_Seq      IN RTRE0050.AFACC_SEQ%TYPE,      /*º¯°æÈÄ °èÁÂ¼ø¹ø       */
-    v_Afcrd_Seq      IN RTRE0050.AFCRD_SEQ%TYPE,      /*º¯°æÈÄ Ä«µå¼ø¹ø       */
-    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*º¯°æÈÄ BATCH KEY      */
-    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» »óÅÂ  */
-    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®»ó*/
-    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®ÀÏ*/
-    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» ¼ø¹ø  */
-    v_Abrpc_Seq      IN RTRE0050.ABRPC_SEQ%TYPE,      /*ÀÌÀü º¯°æÀü ¼öÁ¤³»¿ª  */
-    v_Del_Yn         IN RTRE0050.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ì¼        */
+    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìž        */
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*ë³€ê²½ì‚¬ìœ               */
+    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼              */
+    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*ë³€ê²½ì „ ê³ ê°ë²ˆí˜¸       */
+    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*ë³€ê²½ì „ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*ë³€ê²½ì „ ê²°ì œë°©ë²•       */
+    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*ë³€ê²½ì „ ê²°ì œì¼ìž       */
+    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œìˆœë²ˆ       */
+    v_Bfcrd_Seq      IN RTRE0050.BFCRD_SEQ%TYPE,      /*ë³€ê²½ì „ ì¹´ë“œìˆœë²ˆ       */
+    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*ë³€ê²½ì „ BATCH KEY      */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */
+    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfrpc_Seq      IN RTRE0050.BFRPC_SEQ%TYPE,      /*ì´ì „ ë³€ê²½í›„ ìˆ˜ì •ë‚´ì—­  */
+    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*ë³€ê²½í›„ ê³ ê°ë²ˆí˜¸       */
+    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*ë³€ê²½í›„ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*ë³€ê²½í›„ ê²°ì œë°©ë²•       */
+    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*ë³€ê²½í›„ ê²°ì œì¼ìž       */
+    v_Afacc_Seq      IN RTRE0050.AFACC_SEQ%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œìˆœë²ˆ       */
+    v_Afcrd_Seq      IN RTRE0050.AFCRD_SEQ%TYPE,      /*ë³€ê²½í›„ ì¹´ë“œìˆœë²ˆ       */
+    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*ë³€ê²½í›„ BATCH KEY      */
+    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìƒíƒœ  */
+    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ìƒ*/
+    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼*/
+    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ  */
+    v_Abrpc_Seq      IN RTRE0050.ABRPC_SEQ%TYPE,      /*ì´ì „ ë³€ê²½ì „ ìˆ˜ì •ë‚´ì—­  */
+    v_Del_Yn         IN RTRE0050.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â Delete
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0050 (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â °ü¸®(IUD)
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0050 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÏ        */
-    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÚ        */    
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*º¯°æ»çÀ¯              */ 
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*°èÁÂ½ÅÃ» Ã³¸®ÀÏ       */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*°èÁÂ½ÅÃ» ¼ø¹ø         */
-    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ              */
-    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*º¯°æÀü °í°´¹øÈ£       */
-    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*º¯°æÀü ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*º¯°æÀü °áÁ¦¹æ¹ý       */
-    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*º¯°æÀü °áÁ¦ÀÏÀÚ       */    
-    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*º¯°æÀü °èÁÂ¼ø¹ø       */    
-    v_Bfacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*º¯°æÀü ¿¹±ÝÁÖ¸í       */
-    v_Bfacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*º¯°æÀü°èÁÂ °í°´À¯Çü   */
-    v_Bfaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*º¯°æÀü ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_Bfabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*º¯°æÀü °èÁÂ »ç¾÷ÀÚ¹øÈ£*/
-    v_Bfbank_No      IN RTRE0010.BANK_CD%TYPE,        /*º¯°æÀü ÀºÇàÄÚµå       */
-    v_Bfacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*º¯°æÀü °èÁÂ¹øÈ£       */    
-    v_Bfcrd_Seq      IN RTRE0020.CRD_SEQ%TYPE,        /*º¯°æÀü Ä«µå¼ø¹ø       */
-    v_Bfccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*º¯°æÀü Ä«µåÁÖ¸í       */
-    v_Bfccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*º¯°æÀüÄ«µå°í°´À¯Çü    */
-    v_Bfcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*º¯°æÀüÄ«µå¹ýÁ¤»ý³â¿ùÀÏ*/
-    v_Bfcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*º¯°æÀüÄ«µå»ç¾÷ÀÚ¹øÈ£  */
-    v_Bfcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*º¯°æÀüÄ«µå»çÄÚµå      */
-    v_Bfcard_No      IN RTRE0020.CARD_NO%TYPE,        /*º¯°æÀü Ä«µå¹øÈ£       */
-    v_Bfexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*º¯°æÀü À¯È¿±â°£       */    
-    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*º¯°æÀü BATCH KEY      */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */ 
-    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*º¯°æÈÄ °í°´¹øÈ£       */
-    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*º¯°æÈÄ ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*º¯°æÈÄ °áÁ¦¹æ¹ý       */
-    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*º¯°æÈÄ °áÁ¦ÀÏÀÚ       */    
-    v_Afacc_Seq      IN OUT RTRE0050.AFACC_SEQ%TYPE,  /*º¯°æÈÄ °èÁÂ¼ø¹ø       */    
-    v_Afacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*º¯°æÈÄ °í°´¸í         */
-    v_Afacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*º¯°æÈÄ °í°´À¯Çü       */
-    v_Afaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*º¯°æÈÄ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_Afabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*º¯°æÈÄ »ç¾÷ÀÚ¹øÈ£     */
-    v_Afbank_No      IN RTRE0010.BANK_CD%TYPE,        /*º¯°æÈÄ ÀºÇàÄÚµå       */
-    v_Afacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*º¯°æÈÄ °èÁÂ¹øÈ£       */
-    v_Afacc_Chk      IN RTRE0010.ACC_CHK%TYPE,        /*º¯°æÈÄ °èÁÂÈ®ÀÎ»óÅÂ   */
-    v_Afcrd_Seq      IN OUT RTRE0050.AFCRD_SEQ%TYPE,  /*º¯°æÈÄ Ä«µå¼ø¹ø       */
-    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*º¯°æÈÄ BATCH KEY      */
-    v_Afccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*º¯°æÈÄ Ä«µåÁÖ¸í       */
-    v_Afccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*º¯°æÈÄÄ«µå°í°´À¯Çü    */
-    v_Afcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*º¯°æÈÄÄ«µå¹ýÁ¤»ý³â¿ùÀÏ*/
-    v_Afcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*º¯°æÈÄÄ«µå»ç¾÷ÀÚ¹øÈ£  */
-    v_Afcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*º¯°æÈÄÄ«µå»çÄÚµå      */
-    v_Afcard_No      IN RTRE0020.CARD_NO%TYPE,        /*º¯°æÈÄ Ä«µå¹øÈ£       */
-    v_Afexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*º¯°æÈÄ À¯È¿±â°£       */
-    v_Afbkey_Chk     IN RTRE0020.BKEY_CHK%TYPE,       /*º¯°æÈÄ Ä«µåÈ®ÀÎ »óÅÂ  */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Rpc_Seq        OUT RTRE0050.RPC_SEQ%TYPE,       /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ì¼        */
+    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìž        */    
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*ë³€ê²½ì‚¬ìœ               */ 
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼       */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ         */
+    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼              */
+    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*ë³€ê²½ì „ ê³ ê°ë²ˆí˜¸       */
+    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*ë³€ê²½ì „ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*ë³€ê²½ì „ ê²°ì œë°©ë²•       */
+    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*ë³€ê²½ì „ ê²°ì œì¼ìž       */    
+    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œìˆœë²ˆ       */    
+    v_Bfacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*ë³€ê²½ì „ ì˜ˆê¸ˆì£¼ëª…       */
+    v_Bfacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*ë³€ê²½ì „ê³„ì¢Œ ê³ ê°ìœ í˜•   */
+    v_Bfaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*ë³€ê²½ì „ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_Bfabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*ë³€ê²½ì „ ê³„ì¢Œ ì‚¬ì—…ìžë²ˆí˜¸*/
+    v_Bfbank_No      IN RTRE0010.BANK_CD%TYPE,        /*ë³€ê²½ì „ ì€í–‰ì½”ë“œ       */
+    v_Bfacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*ë³€ê²½ì „ ê³„ì¢Œë²ˆí˜¸       */    
+    v_Bfcrd_Seq      IN RTRE0020.CRD_SEQ%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œìˆœë²ˆ       */
+    v_Bfccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œì£¼ëª…       */
+    v_Bfccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*ë³€ê²½ì „ì¹´ë“œê³ ê°ìœ í˜•    */
+    v_Bfcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*ë³€ê²½ì „ì¹´ë“œë²•ì •ìƒë…„ì›”ì¼*/
+    v_Bfcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*ë³€ê²½ì „ì¹´ë“œì‚¬ì—…ìžë²ˆí˜¸  */
+    v_Bfcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*ë³€ê²½ì „ì¹´ë“œì‚¬ì½”ë“œ      */
+    v_Bfcard_No      IN RTRE0020.CARD_NO%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œë²ˆí˜¸       */
+    v_Bfexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*ë³€ê²½ì „ ìœ íš¨ê¸°ê°„       */    
+    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*ë³€ê²½ì „ BATCH KEY      */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */ 
+    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*ë³€ê²½í›„ ê³ ê°ë²ˆí˜¸       */
+    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*ë³€ê²½í›„ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*ë³€ê²½í›„ ê²°ì œë°©ë²•       */
+    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*ë³€ê²½í›„ ê²°ì œì¼ìž       */    
+    v_Afacc_Seq      IN OUT RTRE0050.AFACC_SEQ%TYPE,  /*ë³€ê²½í›„ ê³„ì¢Œìˆœë²ˆ       */    
+    v_Afacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*ë³€ê²½í›„ ê³ ê°ëª…         */
+    v_Afacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*ë³€ê²½í›„ ê³ ê°ìœ í˜•       */
+    v_Afaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*ë³€ê²½í›„ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_Afabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*ë³€ê²½í›„ ì‚¬ì—…ìžë²ˆí˜¸     */
+    v_Afbank_No      IN RTRE0010.BANK_CD%TYPE,        /*ë³€ê²½í›„ ì€í–‰ì½”ë“œ       */
+    v_Afacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*ë³€ê²½í›„ ê³„ì¢Œë²ˆí˜¸       */
+    v_Afacc_Chk      IN RTRE0010.ACC_CHK%TYPE,        /*ë³€ê²½í›„ ê³„ì¢Œí™•ì¸ìƒíƒœ   */
+    v_Afcrd_Seq      IN OUT RTRE0050.AFCRD_SEQ%TYPE,  /*ë³€ê²½í›„ ì¹´ë“œìˆœë²ˆ       */
+    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*ë³€ê²½í›„ BATCH KEY      */
+    v_Afccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*ë³€ê²½í›„ ì¹´ë“œì£¼ëª…       */
+    v_Afccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*ë³€ê²½í›„ì¹´ë“œê³ ê°ìœ í˜•    */
+    v_Afcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*ë³€ê²½í›„ì¹´ë“œë²•ì •ìƒë…„ì›”ì¼*/
+    v_Afcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*ë³€ê²½í›„ì¹´ë“œì‚¬ì—…ìžë²ˆí˜¸  */
+    v_Afcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*ë³€ê²½í›„ì¹´ë“œì‚¬ì½”ë“œ      */
+    v_Afcard_No      IN RTRE0020.CARD_NO%TYPE,        /*ë³€ê²½í›„ ì¹´ë“œë²ˆí˜¸       */
+    v_Afexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*ë³€ê²½í›„ ìœ íš¨ê¸°ê°„       */
+    v_Afbkey_Chk     IN RTRE0020.BKEY_CHK%TYPE,       /*ë³€ê²½í›„ ì¹´ë“œí™•ì¸ ìƒíƒœ  */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Rpc_Seq        OUT RTRE0050.RPC_SEQ%TYPE,       /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -192,206 +192,205 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0050 AS
 
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â °ü¸®(IUD) - ÀÔ·Â°ª À¯È¿¼º Ã¼Å©
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ ê´€ë¦¬(IUD) - ìž…ë ¥ê°’ ìœ íš¨ì„± ì²´í¬
   *****************************************************************************/
   FUNCTION f_IUDRtre0050InputValueCheck (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÏ        */
-    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*°áÁ¦º¯°æ¿äÃ»ÀÚ        */    
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*º¯°æ»çÀ¯              */ 
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*°èÁÂ½ÅÃ» Ã³¸®ÀÏ       */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*°èÁÂ½ÅÃ» ¼ø¹ø         */
-    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ              */
-    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*º¯°æÀü °í°´¹øÈ£       */
-    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*º¯°æÀü ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*º¯°æÀü °áÁ¦¹æ¹ý       */
-    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*º¯°æÀü °áÁ¦ÀÏÀÚ       */    
-    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*º¯°æÀü °èÁÂ¼ø¹ø       */    
-    v_Bfacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*º¯°æÀü ¿¹±ÝÁÖ¸í       */
-    v_Bfacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*º¯°æÀü°èÁÂ °í°´À¯Çü   */
-    v_Bfaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*º¯°æÀü ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_Bfabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*º¯°æÀü °èÁÂ »ç¾÷ÀÚ¹øÈ£*/
-    v_Bfbank_No      IN RTRE0010.BANK_CD%TYPE,        /*º¯°æÀü ÀºÇàÄÚµå       */
-    v_Bfacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*º¯°æÀü °èÁÂ¹øÈ£       */    
-    v_Bfcrd_Seq      IN RTRE0020.CRD_SEQ%TYPE,        /*º¯°æÀü Ä«µå¼ø¹ø       */
-    v_Bfccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*º¯°æÀü Ä«µåÁÖ¸í       */
-    v_Bfccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*º¯°æÀüÄ«µå°í°´À¯Çü    */
-    v_Bfcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*º¯°æÀüÄ«µå¹ýÁ¤»ý³â¿ùÀÏ*/
-    v_Bfcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*º¯°æÀüÄ«µå»ç¾÷ÀÚ¹øÈ£  */
-    v_Bfcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*º¯°æÀüÄ«µå»çÄÚµå      */
-    v_Bfcard_No      IN RTRE0020.CARD_NO%TYPE,        /*º¯°æÀü Ä«µå¹øÈ£       */
-    v_Bfexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*º¯°æÀü À¯È¿±â°£       */    
-    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*º¯°æÀü BATCH KEY      */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */ 
-    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*º¯°æÈÄ °í°´¹øÈ£       */
-    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*º¯°æÈÄ ÅëÇÕÃ»±¸¹øÈ£   */
-    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*º¯°æÈÄ °áÁ¦¹æ¹ý       */
-    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*º¯°æÈÄ °áÁ¦ÀÏÀÚ       */    
-    v_Afacc_Seq      IN OUT RTRE0050.AFACC_SEQ%TYPE,  /*º¯°æÈÄ °èÁÂ¼ø¹ø       */    
-    v_Afacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*º¯°æÈÄ °í°´¸í         */
-    v_Afacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*º¯°æÈÄ °í°´À¯Çü       */
-    v_Afaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*º¯°æÈÄ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_Afabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*º¯°æÈÄ »ç¾÷ÀÚ¹øÈ£     */
-    v_Afbank_No      IN RTRE0010.BANK_CD%TYPE,        /*º¯°æÈÄ ÀºÇàÄÚµå       */
-    v_Afacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*º¯°æÈÄ °èÁÂ¹øÈ£       */
-    v_Afacc_Chk      IN RTRE0010.ACC_CHK%TYPE,        /*º¯°æÈÄ °èÁÂÈ®ÀÎ»óÅÂ   */
-    v_Afcrd_Seq      IN OUT RTRE0050.AFCRD_SEQ%TYPE,  /*º¯°æÈÄ Ä«µå¼ø¹ø       */
-    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*º¯°æÈÄ BATCH KEY      */
-    v_Afccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*º¯°æÈÄ Ä«µåÁÖ¸í       */
-    v_Afccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*º¯°æÈÄÄ«µå°í°´À¯Çü    */
-    v_Afcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*º¯°æÈÄÄ«µå¹ýÁ¤»ý³â¿ùÀÏ*/
-    v_Afcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*º¯°æÈÄÄ«µå»ç¾÷ÀÚ¹øÈ£  */
-    v_Afcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*º¯°æÈÄÄ«µå»çÄÚµå      */
-    v_Afcard_No      IN RTRE0020.CARD_NO%TYPE,        /*º¯°æÈÄ Ä«µå¹øÈ£       */
-    v_Afexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*º¯°æÈÄ À¯È¿±â°£       */
-    v_Afbkey_Chk     IN RTRE0020.BKEY_CHK%TYPE,       /*º¯°æÈÄ Ä«µåÈ®ÀÎ »óÅÂ  */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Rpc_Day        IN RTRE0050.RPC_DAY%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ì¼        */
+    v_Rpc_Uid        IN RTRE0050.RPC_UID%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìž        */    
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Rpc_Rsn        IN RTRE0050.RPC_RSN%TYPE,        /*ë³€ê²½ì‚¬ìœ               */ 
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,       /*ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼       */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,       /*ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ         */
+    v_File_Grp_Seq   IN RTRE0050.FILE_GRP_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼              */
+    v_Bfcust_No      IN RTRE0050.BFCUST_NO%TYPE,      /*ë³€ê²½ì „ ê³ ê°ë²ˆí˜¸       */
+    v_Bftcgrp_No     IN RTRE0050.BFTCGRP_NO%TYPE,     /*ë³€ê²½ì „ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*ë³€ê²½ì „ ê²°ì œë°©ë²•       */
+    v_Bfpay_Dd       IN RTRE0050.BFPAY_DD%TYPE,       /*ë³€ê²½ì „ ê²°ì œì¼ìž       */    
+    v_Bfacc_Seq      IN RTRE0050.BFACC_SEQ%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œìˆœë²ˆ       */    
+    v_Bfacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*ë³€ê²½ì „ ì˜ˆê¸ˆì£¼ëª…       */
+    v_Bfacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*ë³€ê²½ì „ê³„ì¢Œ ê³ ê°ìœ í˜•   */
+    v_Bfaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*ë³€ê²½ì „ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_Bfabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*ë³€ê²½ì „ ê³„ì¢Œ ì‚¬ì—…ìžë²ˆí˜¸*/
+    v_Bfbank_No      IN RTRE0010.BANK_CD%TYPE,        /*ë³€ê²½ì „ ì€í–‰ì½”ë“œ       */
+    v_Bfacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*ë³€ê²½ì „ ê³„ì¢Œë²ˆí˜¸       */    
+    v_Bfcrd_Seq      IN RTRE0020.CRD_SEQ%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œìˆœë²ˆ       */
+    v_Bfccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œì£¼ëª…       */
+    v_Bfccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*ë³€ê²½ì „ì¹´ë“œê³ ê°ìœ í˜•    */
+    v_Bfcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*ë³€ê²½ì „ì¹´ë“œë²•ì •ìƒë…„ì›”ì¼*/
+    v_Bfcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*ë³€ê²½ì „ì¹´ë“œì‚¬ì—…ìžë²ˆí˜¸  */
+    v_Bfcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*ë³€ê²½ì „ì¹´ë“œì‚¬ì½”ë“œ      */
+    v_Bfcard_No      IN RTRE0020.CARD_NO%TYPE,        /*ë³€ê²½ì „ ì¹´ë“œë²ˆí˜¸       */
+    v_Bfexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*ë³€ê²½ì „ ìœ íš¨ê¸°ê°„       */    
+    v_Bfbatch_Key    IN RTRE0050.BFBATCH_KEY%TYPE,    /*ë³€ê²½ì „ BATCH KEY      */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */ 
+    v_Afcust_No      IN RTRE0050.AFCUST_NO%TYPE,      /*ë³€ê²½í›„ ê³ ê°ë²ˆí˜¸       */
+    v_Aftcgrp_No     IN RTRE0050.AFTCGRP_NO%TYPE,     /*ë³€ê²½í›„ í†µí•©ì²­êµ¬ë²ˆí˜¸   */
+    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*ë³€ê²½í›„ ê²°ì œë°©ë²•       */
+    v_Afpay_Dd       IN RTRE0050.AFPAY_DD%TYPE,       /*ë³€ê²½í›„ ê²°ì œì¼ìž       */    
+    v_Afacc_Seq      IN OUT RTRE0050.AFACC_SEQ%TYPE,  /*ë³€ê²½í›„ ê³„ì¢Œìˆœë²ˆ       */    
+    v_Afacust_Nm     IN RTRE0010.CUST_NM%TYPE,        /*ë³€ê²½í›„ ê³ ê°ëª…         */
+    v_Afacust_Tp     IN RTRE0010.CUST_TP%TYPE,        /*ë³€ê²½í›„ ê³ ê°ìœ í˜•       */
+    v_Afaebir_Day    IN RTRE0010.EBIR_DAY%TYPE,       /*ë³€ê²½í›„ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_Afabusl_No     IN RTRE0010.BUSL_NO%TYPE,        /*ë³€ê²½í›„ ì‚¬ì—…ìžë²ˆí˜¸     */
+    v_Afbank_No      IN RTRE0010.BANK_CD%TYPE,        /*ë³€ê²½í›„ ì€í–‰ì½”ë“œ       */
+    v_Afacct_No      IN RTRE0010.ACCT_NO%TYPE,        /*ë³€ê²½í›„ ê³„ì¢Œë²ˆí˜¸       */
+    v_Afacc_Chk      IN RTRE0010.ACC_CHK%TYPE,        /*ë³€ê²½í›„ ê³„ì¢Œí™•ì¸ìƒíƒœ   */
+    v_Afcrd_Seq      IN OUT RTRE0050.AFCRD_SEQ%TYPE,  /*ë³€ê²½í›„ ì¹´ë“œìˆœë²ˆ       */
+    v_Afbatch_Key    IN RTRE0050.AFBATCH_KEY%TYPE,    /*ë³€ê²½í›„ BATCH KEY      */
+    v_Afccust_Nm     IN RTRE0020.CUST_NM%TYPE,        /*ë³€ê²½í›„ ì¹´ë“œì£¼ëª…       */
+    v_Afccust_Tp     IN RTRE0020.CUST_TP%TYPE,        /*ë³€ê²½í›„ì¹´ë“œê³ ê°ìœ í˜•    */
+    v_Afcebir_Day    IN RTRE0020.EBIR_DAY%TYPE,       /*ë³€ê²½í›„ì¹´ë“œë²•ì •ìƒë…„ì›”ì¼*/
+    v_Afcbusl_No     IN RTRE0020.BUSL_NO%TYPE,        /*ë³€ê²½í›„ì¹´ë“œì‚¬ì—…ìžë²ˆí˜¸  */
+    v_Afcardcom_No   IN RTRE0020.CARDCOM_CD%TYPE,     /*ë³€ê²½í›„ì¹´ë“œì‚¬ì½”ë“œ      */
+    v_Afcard_No      IN RTRE0020.CARD_NO%TYPE,        /*ë³€ê²½í›„ ì¹´ë“œë²ˆí˜¸       */
+    v_Afexpire_Ym    IN RTRE0020.EXPIRE_YM%TYPE,      /*ë³€ê²½í›„ ìœ íš¨ê¸°ê°„       */
+    v_Afbkey_Chk     IN RTRE0020.BKEY_CHK%TYPE,       /*ë³€ê²½í›„ ì¹´ë“œí™•ì¸ ìƒíƒœ  */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) RETURN VARCHAR2;
   
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ »èÁ¦°¡´É¿©ºÎ 
+  -- ê²°ì œì •ë³´ ì‚­ì œê°€ëŠ¥ì—¬ë¶€ 
   *****************************************************************************/
   FUNCTION f_sDelete0050Tp (
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE        /*°è¾à¹øÈ£      */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE        /*ê³„ì•½ë²ˆí˜¸      */
     ) RETURN VARCHAR;
     
  /*****************************************************************************
-  -- °áÁ¦Á¤º¸ »èÁ¦
+  -- ê²°ì œì •ë³´ ì‚­ì œ
   *****************************************************************************/
   PROCEDURE p_DeleteRtre0050 (
-    v_Ord_No        IN RTRE0050.ORD_NO%TYPE,          /*°è¾à¹øÈ£              */
-    v_Del_Tp        IN RTRE0050.DEL_YN%TYPE,          /*»èÁ¦°¡´É¿©ºÎ          */    
-    v_Reg_Id        IN RTRE0050.REG_ID%TYPE,          /*»ç¿ëÀÚ ID             */
+    v_Ord_No        IN RTRE0050.ORD_NO%TYPE,          /*ê³„ì•½ë²ˆí˜¸              */
+    v_Del_Tp        IN RTRE0050.DEL_YN%TYPE,          /*ì‚­ì œê°€ëŠ¥ì—¬ë¶€          */    
+    v_Reg_Id        IN RTRE0050.REG_ID%TYPE,          /*ì‚¬ìš©ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ »èÁ¦ FUNCTION
+  -- ê²°ì œì •ë³´ ì‚­ì œ FUNCTION
   *****************************************************************************/
   FUNCTION f_DeleteTpRtre0050 (
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*°è¾à¹øÈ£               */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID              */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸               */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID              */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
       
   /*****************************************************************************
-  -- °í°´ Ä«µå Á¤º¸ - °áÁ¦º¯°æ¿äÃ»¼ø¹ø È¹µæ
+  -- ê³ ê° ì¹´ë“œ ì •ë³´ - ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050RpcSeq RETURN NUMBER;
 
 
   
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - ÁÖ¹®¹øÈ£ ±âÁØ  ÃÖÁ¾º¯°æÀÌ·ÂÀÇ  º¯°æÀü °èÁÂÇØÁö ½ÅÃ» Ã³¸®»óÅÂ È¹µæ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ì£¼ë¬¸ë²ˆí˜¸ ê¸°ì¤€  ìµœì¢…ë³€ê²½ì´ë ¥ì˜  ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­ ì²˜ë¦¬ìƒíƒœ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050FinalBfacrqSt(
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*ÁÖ¹®¹øÈ£              */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*ì£¼ë¬¸ë²ˆí˜¸              */
     ) RETURN VARCHAR;
     
     
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - ÁÖ¹®¹øÈ£ ±âÁØ  ÃÖÁ¾º¯°æÀÌ·ÂÀÇ  º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®»óÅÂ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ì£¼ë¬¸ë²ˆí˜¸ ê¸°ì¤€  ìµœì¢…ë³€ê²½ì´ë ¥ì˜  ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ìƒíƒœ
   *****************************************************************************/
   FUNCTION f_sRtre0050FinalAfacrqSt(
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*ÁÖ¹®¹øÈ£              */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*ì£¼ë¬¸ë²ˆí˜¸              */
     ) RETURN VARCHAR; 
 
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - º¯°æÀü °èÁÂÇØÁö ½ÅÃ» Ã³¸®»óÅÂ È¹µæ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­ ì²˜ë¦¬ìƒíƒœ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050BfacrqSt(
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*º¯°æÀü °áÁ¦¹æ¹ý       */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */
-    v_RpcAcc_Yn      IN RTRE0050.DEL_YN%TYPE,         /*°áÁ¦°èÁÂ º¯°æ¿©ºÎ     */
-    v_RpcDay_Yn      IN RTRE0050.DEL_YN%TYPE          /*°áÁ¦ÀÏ º¯°æ¿©ºÎ       */
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Bfpay_Mthd     IN RTRE0050.BFPAY_MTHD%TYPE,     /*ë³€ê²½ì „ ê²°ì œë°©ë²•       */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */
+    v_RpcAcc_Yn      IN RTRE0050.DEL_YN%TYPE,         /*ê²°ì œê³„ì¢Œ ë³€ê²½ì—¬ë¶€     */
+    v_RpcDay_Yn      IN RTRE0050.DEL_YN%TYPE          /*ê²°ì œì¼ ë³€ê²½ì—¬ë¶€       */
     ) RETURN VARCHAR;
    
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - º¯°æÈÄ °èÁÂ½ÅÃ» »óÅÂ È¹µæ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìƒíƒœ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050AfaccStat(
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*º¯°æÈÄ °áÁ¦¹æ¹ý       */
-    v_RpcAcc_Yn      IN RTRE0050.DEL_YN%TYPE,         /*°áÁ¦°èÁÂ º¯°æ¿©ºÎ     */
-    v_RpcDay_Yn      IN RTRE0050.DEL_YN%TYPE,         /*°áÁ¦ÀÏ º¯°æ¿©ºÎ       */
-    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*º¯°æÀü °èÁÂ½ÅÃ»»óÅÂ   */     
-    v_Afacc_Stat     OUT RTRE0050.AFACC_STAT%TYPE,    /*º¯°æÈÄ °èÁÂ½ÅÃ» »óÅÂ  */
-    v_Afacrq_St      OUT RTRE0050.AFACRQ_ST%TYPE      /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®»ó*/
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,         /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Afpay_Mthd     IN RTRE0050.AFPAY_MTHD%TYPE,     /*ë³€ê²½í›„ ê²°ì œë°©ë²•       */
+    v_RpcAcc_Yn      IN RTRE0050.DEL_YN%TYPE,         /*ê²°ì œê³„ì¢Œ ë³€ê²½ì—¬ë¶€     */
+    v_RpcDay_Yn      IN RTRE0050.DEL_YN%TYPE,         /*ê²°ì œì¼ ë³€ê²½ì—¬ë¶€       */
+    v_Bfacc_Stat     IN RTRE0050.BFACC_STAT%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ìƒíƒœ   */     
+    v_Afacc_Stat     OUT RTRE0050.AFACC_STAT%TYPE,    /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìƒíƒœ  */
+    v_Afacrq_St      OUT RTRE0050.AFACRQ_ST%TYPE      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ìƒ*/
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - º¯°æÈÄ °èÁÂ½ÅÃ» ¹ß»ý±¸ºÐ/Ã³¸®ÀÏ/¼ø¹ø È¹µæ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬ë¶„/ì²˜ë¦¬ì¼/ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050AfacrqFgDaySeq(
-    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,          /*º¯°æ»çÀ¯ÄÚµå          */
-    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*°èÁÂ½ÅÃ» Ã³¸®ÀÏ       */
-    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,        /*°èÁÂ½ÅÃ» ¼ø¹ø         */
-    v_Afacrq_Fg      OUT RTRE0050.AFACRQ_FG%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Afacrq_Day     OUT RTRE0050.AFACRQ_DAY%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®ÀÏ*/
-    v_Afacrq_Seq     OUT RTRE0050.AFACRQ_SEQ%TYPE      /*º¯°æÈÄ °èÁÂ½ÅÃ» ¼ø¹ø  */
+    v_Rpc_Cd         IN RTRE0050.RPC_CD%TYPE,          /*ë³€ê²½ì‚¬ìœ ì½”ë“œ          */
+    v_Acrq_Day       IN RTRE0060.ACRQ_DAY%TYPE,        /*ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼       */
+    v_Acrq_Seq       IN RTRE0060.ACRQ_SEQ%TYPE,        /*ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ         */
+    v_Afacrq_Fg      OUT RTRE0050.AFACRQ_FG%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Afacrq_Day     OUT RTRE0050.AFACRQ_DAY%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼*/
+    v_Afacrq_Seq     OUT RTRE0050.AFACRQ_SEQ%TYPE      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ  */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - °è¾à¹øÈ£ ±âÁØ »èÁ¦µÇÁö ¾ÊÀº °áÁ¦º¯°æ¿äÃ»¼ø¹ø È¹µæ
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ê³„ì•½ë²ˆí˜¸ ê¸°ì¤€ ì‚­ì œë˜ì§€ ì•Šì€ ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0050RpcSeq(
-    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*°è¾à¹øÈ£               */
+    v_Ord_No         IN RTRE0050.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸               */
     ) RETURN NUMBER;    
 
 
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - °èÁÂÇØÁö°Ç Update
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ê³„ì¢Œí•´ì§€ê±´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0050Terminate (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*º¯°æÀü °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Bfacrq_Fg      IN RTRE0050.BFACRQ_FG%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Bfacrq_Day     IN RTRE0050.BFACRQ_DAY%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Bfacrq_Seq     IN RTRE0050.BFACRQ_SEQ%TYPE,     /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
   
   
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - °èÁÂ½ÅÃ»°Ç Update
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ê³„ì¢Œì‹ ì²­ê±´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0050Application (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» ¹ß»ý±¸*/
-    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®ÀÏ*/
-    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» ¼ø¹ø  */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Afacrq_Fg      IN RTRE0050.AFACRQ_FG%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ë°œìƒêµ¬*/
+    v_Afacrq_Day     IN RTRE0050.AFACRQ_DAY%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ì¼*/
+    v_Afacrq_Seq     IN RTRE0050.AFACRQ_SEQ%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìˆœë²ˆ  */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - °èÁÂ½ÅÃ» °á°úÃ³¸® »óÅÂ°ª(º¯°æÈÄ) Update
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ê³„ì¢Œì‹ ì²­ ê²°ê³¼ì²˜ë¦¬ ìƒíƒœê°’(ë³€ê²½í›„) Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0050AfterResult (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */
-    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*º¯°æÈÄ °èÁÂ½ÅÃ» »óÅÂ  */
-    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*º¯°æÈÄ °èÁÂ½ÅÃ» Ã³¸®»ó*/
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */
+    v_Afacc_Stat     IN RTRE0050.AFACC_STAT%TYPE,     /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ìƒíƒœ  */
+    v_Afacrq_St      IN RTRE0050.AFACRQ_ST%TYPE,      /*ë³€ê²½í›„ ê³„ì¢Œì‹ ì²­ ì²˜ë¦¬ìƒ*/
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °áÁ¦Á¤º¸ º¯°æÀÌ·Â - °èÁÂ½ÅÃ» °á°úÃ³¸® »óÅÂ°ª(º¯°æÈÄ)  Update
+  -- ê²°ì œì •ë³´ ë³€ê²½ì´ë ¥ - ê³„ì¢Œì‹ ì²­ ê²°ê³¼ì²˜ë¦¬ ìƒíƒœê°’(ë³€ê²½í›„)  Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0050BeforeResult (
-    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*°áÁ¦º¯°æ¿äÃ»¼ø¹ø      */   
-    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*º¯°æÀü °èÁÂÇØÁö ½ÅÃ»  */
-    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Rpc_Seq        IN RTRE0050.RPC_SEQ%TYPE,        /*ê²°ì œë³€ê²½ìš”ì²­ìˆœë²ˆ      */   
+    v_Bfacrq_St      IN RTRE0050.BFACRQ_ST%TYPE,      /*ë³€ê²½ì „ ê³„ì¢Œí•´ì§€ ì‹ ì²­  */
+    v_Reg_Id         IN RTRE0050.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtre0050;
-/

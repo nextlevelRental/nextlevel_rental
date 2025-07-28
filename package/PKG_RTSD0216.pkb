@@ -66,6 +66,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0216 AS
     ) IS
 
     v_Seq RTSD0216.SEQ%TYPE;
+    v_Send_Yn RTSD0217.SEND_YN%TYPE;
     v_Wrk VARCHAR2(2);
     
     e_Error EXCEPTION;
@@ -86,11 +87,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0216 AS
         
             IF v_Work_Gb IN ('01') THEN
                 v_Wrk := 'I';
+                v_Send_Yn := 'N';
             ELSIF v_Work_Gb IN ('03') THEN
                 v_Wrk := 'U';
+                v_Send_Yn := 'Y';
             END IF;
             
-            Pkg_Rtsd0217.p_IUDRtsd0217(v_Wrk, v_Ord_No, TO_CHAR(SYSDATE, 'YYYYMMDD'), 'N', v_Reg_Id, v_Success_code, v_Return_Message, v_ErrorText);
+            Pkg_Rtsd0217.p_IUDRtsd0217(v_Wrk, v_Ord_No, TO_CHAR(SYSDATE, 'YYYYMMDD'), v_Send_Yn, v_Reg_Id, v_Success_code, v_Return_Message, v_ErrorText);
             IF v_Success_code > 0 THEN
                 v_Return_Message := 'Paysign발송 Main이력 등록 실패!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
@@ -145,4 +148,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0216 AS
   END f_sRtsd0216Seq;
   
 END Pkg_Rtsd0216;
-/

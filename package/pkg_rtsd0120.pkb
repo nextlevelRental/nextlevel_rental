@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0120
-   PURPOSE   ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ ∞¸∏Æ
+   PURPOSE   ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Count
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Count
   *****************************************************************************/
   FUNCTION f_sRtsd0120Count(
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,        /*∆«∏≈¿Œπ¯»£          */
-    v_Seq            IN RTSD0120.SEQ%TYPE               /*º¯π¯                */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,        /*ÌåêÎß§Ïù∏Î≤àÌò∏          */
+    v_Seq            IN RTSD0120.SEQ%TYPE               /*ÏàúÎ≤à                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,32 +34,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
   END f_sRtsd0120Count;
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Select
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0120 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*∆«∏≈¿Œπ¯»£            */
-    v_Seq            IN RTSD0120.SEQ%TYPE             /*º¯π¯                  */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*ÌåêÎß§Ïù∏Î≤àÌò∏            */
+    v_Seq            IN RTSD0120.SEQ%TYPE             /*ÏàúÎ≤à                  */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ORD_AGENT,                 /*∆«∏≈¿Œπ¯»£          */
-            A.SEQ,                       /*º¯π¯                */
-            A.ORG_AGNM,                  /*∆«∏≈¿Œ∏Ì            */
-            A.ORG_AGTEL,                 /*ø¨∂Ù√≥              */
-            A.CHAN_CD,                   /*√§≥Œ±∏∫–            */
-            A.LIFNR,                     /*∫•¥ıƒ⁄µÂ            */
-            A.NUM,                       /*≥Î√‚º¯º≠            */
-            A.SALES_GROUP,               /*¡ˆªÁ                */
-            A.SALES_OFFICE,              /*¡ˆ¡°                */
-            A.TAX_RQCD,                  /*ºº±›∞ËªÍº≠ πﬂ«‡πÊπ˝ */
-            A.USE_YN,                    /*ªÁøÎø©∫Œ            */
-            A.REG_ID,                    /*µÓ∑œ¿⁄ ID           */
-            A.REG_DT,                    /*µÓ∑œ¿œ              */
-            A.CHG_ID,                    /*∫Ø∞Ê¿⁄ ID           */
-            A.CHG_DT                     /*∫Ø∞Ê¿œ              */
+    SELECT  A.ORD_AGENT,                 /*ÌåêÎß§Ïù∏Î≤àÌò∏          */
+            A.SEQ,                       /*ÏàúÎ≤à                */
+            A.ORG_AGNM,                  /*ÌåêÎß§Ïù∏Î™Ö            */
+            A.ORG_AGTEL,                 /*Ïó∞ÎùΩÏ≤ò              */
+            A.CHAN_CD,                   /*Ï±ÑÎÑêÍµ¨Î∂Ñ            */
+            A.LIFNR,                     /*Î≤§ÎçîÏΩîÎìú            */
+            A.NUM,                       /*ÎÖ∏Ï∂úÏàúÏÑú            */
+            A.SALES_GROUP,               /*ÏßÄÏÇ¨                */
+            A.SALES_OFFICE,              /*ÏßÄÏ†ê                */
+            A.TAX_RQCD,                  /*ÏÑ∏Í∏àÍ≥ÑÏÇ∞ÏÑú Î∞úÌñâÎ∞©Î≤ï */
+            A.USE_YN,                    /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+            A.REG_ID,                    /*Îì±Î°ùÏûê ID           */
+            A.REG_DT,                    /*Îì±Î°ùÏùº              */
+            A.CHG_ID,                    /*Î≥ÄÍ≤ΩÏûê ID           */
+            A.CHG_DT                     /*Î≥ÄÍ≤ΩÏùº              */
     FROM    RTSD0120 A
     WHERE   A.ORD_AGENT = v_Ord_Agent
     AND     A.SEQ       = v_Seq;
@@ -67,10 +67,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
   END p_sRtsd0120;
 
   /*****************************************************************************
-  -- ∆«∏≈¿Œ ¡§∫∏ ¿Ã∑¬ Insert
+  -- ÌåêÎß§Ïù∏ Ï†ïÎ≥¥ Ïù¥Î†• Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0120 (
-    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*∆«∏≈¿Œπ¯»£            */
+    v_Ord_Agent      IN RTSD0120.ORD_AGENT%TYPE,      /*ÌåêÎß§Ïù∏Î≤àÌò∏            */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -92,23 +92,23 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
             CHG_ID,
             CHG_DT
             )
-    SELECT  A.ORD_AGENT,                 /*∆«∏≈¿Œπ¯»£          */
+    SELECT  A.ORD_AGENT,                 /*ÌåêÎß§Ïù∏Î≤àÌò∏          */
             NVL((SELECT  MAX(B.SEQ)
                  FROM    RTSD0120 B
-                 WHERE   B.ORD_AGENT = A.ORD_AGENT)+ 1, 1) AS SEQ, /*º¯π¯                */   
-            A.ORG_AGNM,                  /*∆«∏≈¿Œ∏Ì            */
-            A.ORG_AGTEL,                 /*ø¨∂Ù√≥              */
-            A.CHAN_CD,                   /*√§≥Œ±∏∫–            */
-            A.LIFNR,                     /*∫•¥ıƒ⁄µÂ            */
-            A.NUM,                       /*≥Î√‚º¯º≠            */
-            A.SALES_GROUP,               /*¡ˆªÁ                */
-            A.SALES_OFFICE,              /*¡ˆ¡°                */
-            A.TAX_RQCD,                  /*ºº±›∞ËªÍº≠ πﬂ«‡πÊπ˝ */
-            A.USE_YN,                    /*ªÁøÎø©∫Œ            */
-            A.REG_ID,                    /*µÓ∑œ¿⁄ ID           */
-            A.REG_DT,                    /*µÓ∑œ¿œ              */
-            A.CHG_ID,                    /*∫Ø∞Ê¿⁄ ID           */
-            A.CHG_DT                     /*∫Ø∞Ê¿œ              */
+                 WHERE   B.ORD_AGENT = A.ORD_AGENT)+ 1, 1) AS SEQ, /*ÏàúÎ≤à                */   
+            A.ORG_AGNM,                  /*ÌåêÎß§Ïù∏Î™Ö            */
+            A.ORG_AGTEL,                 /*Ïó∞ÎùΩÏ≤ò              */
+            A.CHAN_CD,                   /*Ï±ÑÎÑêÍµ¨Î∂Ñ            */
+            A.LIFNR,                     /*Î≤§ÎçîÏΩîÎìú            */
+            A.NUM,                       /*ÎÖ∏Ï∂úÏàúÏÑú            */
+            A.SALES_GROUP,               /*ÏßÄÏÇ¨                */
+            A.SALES_OFFICE,              /*ÏßÄÏ†ê                */
+            A.TAX_RQCD,                  /*ÏÑ∏Í∏àÍ≥ÑÏÇ∞ÏÑú Î∞úÌñâÎ∞©Î≤ï */
+            A.USE_YN,                    /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+            A.REG_ID,                    /*Îì±Î°ùÏûê ID           */
+            A.REG_DT,                    /*Îì±Î°ùÏùº              */
+            A.CHG_ID,                    /*Î≥ÄÍ≤ΩÏûê ID           */
+            A.CHG_DT                     /*Î≥ÄÍ≤ΩÏùº              */
     FROM    RTSD0113 A
     WHERE   A.ORD_AGENT = v_Ord_Agent;
     
@@ -123,4 +123,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0120 AS
   END f_InsertRtsd0120;
 
 END Pkg_Rtsd0120;
-/

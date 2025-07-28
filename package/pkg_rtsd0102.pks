@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0102 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0102
-   PURPOSE   ∞·«’ ∞Ì∞¥ ∞¸∏Æ ∞¸∏Æ
+   PURPOSE   Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,75 +10,74 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0102 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Count
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0102Count(
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE            /*∞Ì∞¥∞·«’π¯»£        */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE            /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Select
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0102 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,           /*∞Ì∞¥∞·«’π¯»£        */
-    v_Grp_Day_Start  IN RTSD0102.GRP_DAY%TYPE,          /*∞·«’¿œ¿⁄            */
-    v_Grp_Day_End    IN RTSD0102.GRP_DAY%TYPE,          /*∞·«’¿œ¿⁄            */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,           /*∞·«’ø©∫Œ            */
-    v_Cust_No        IN RTSD0103.CUST_NO%TYPE           /*∞Ì∞¥π¯»£            */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,           /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏        */
+    v_Grp_Day_Start  IN RTSD0102.GRP_DAY%TYPE,          /*Í≤∞Ìï©ÏùºÏûê            */
+    v_Grp_Day_End    IN RTSD0102.GRP_DAY%TYPE,          /*Í≤∞Ìï©ÏùºÏûê            */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,           /*Í≤∞Ìï©Ïó¨Î∂Ä            */
+    v_Cust_No        IN RTSD0103.CUST_NO%TYPE           /*Í≥†Í∞ùÎ≤àÌò∏            */
     );
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Insert
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Update
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ Delete
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0102 (
-    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*∞Ì∞¥∞·«’π¯»£          */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Grp_No         IN RTSD0102.GRP_NO%TYPE,         /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∞¸∏Æ ∞¸∏Æ(IUD)
+  -- Í≤∞Ìï© Í≥†Í∞ù Í¥ÄÎ¶¨ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0102 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Grp_No         IN OUT RTSD0102.GRP_NO%TYPE,     /*∞Ì∞¥∞·«’π¯»£          */
-    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*∞·«’¿œ¿⁄              */
-    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*∫–∏Æ¿œ¿⁄              */
-    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*∞·«’ø©∫Œ              */
-    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Grp_No         IN OUT RTSD0102.GRP_NO%TYPE,     /*Í≥†Í∞ùÍ≤∞Ìï©Î≤àÌò∏          */
+    v_Grp_Day        IN RTSD0102.GRP_DAY%TYPE,        /*Í≤∞Ìï©ÏùºÏûê              */
+    v_Spt_Day        IN RTSD0102.SPT_DAY%TYPE,        /*Î∂ÑÎ¶¨ÏùºÏûê              */
+    v_Grp_Yn         IN RTSD0102.GRP_YN%TYPE,         /*Í≤∞Ìï©Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTSD0102.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ∞·«’ ∞Ì∞¥ ∏∂Ω∫≈Õ - ∞·«’ ∞Ì∞¥ π¯»£ √ºπ¯
+  -- Í≤∞Ìï© Í≥†Í∞ù ÎßàÏä§ÌÑ∞ - Í≤∞Ìï© Í≥†Í∞ù Î≤àÌò∏ Ï≤¥Î≤à
   *****************************************************************************/
   FUNCTION f_sRtsd0102GrpNo RETURN VARCHAR;
 END Pkg_Rtsd0102;
-/

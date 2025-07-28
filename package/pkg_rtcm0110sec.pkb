@@ -1,26 +1,26 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0110SEC AS
 /*******************************************************************************
     NAME    : Pkg_Rtcm0110SEC
-    PURPOSE : ·»Å»¸¶½ºÅÍ ±ÇÇÑ ¼³Á¤
+    PURPOSE : ë Œíƒˆë§ˆìŠ¤í„° ê¶Œí•œ ì„¤ì •
     REVISIONS
     Ver        Date        Author           Description
     ---------  ----------  ---------------  -------------------------------------
     1.0        2018-12-18  sunq             1. Created this package body.
  *******************************************************************************/
     /*******************************************************************************
-    -- »ç¿ëÀÚ RTCM0001¿¡¼­ ·»Å»¸¶½ºÅÍ Á¶È¸ COMBOBOX »ç¿ë 
+    -- ì‚¬ìš©ìž RTCM0001ì—ì„œ ë Œíƒˆë§ˆìŠ¤í„° ì¡°íšŒ COMBOBOX ì‚¬ìš© 
     *******************************************************************************/
     PROCEDURE p_sRtcm0051_RtlMasterCBList(  Ref_Cursor  IN OUT SYS_REFCURSOR
-                                          , v_Cd_Grp_Cd  IN RTCM0051.CD_GRP_CD%TYPE        /* ÄÚµå ±×·ì ÄÚµå */
-                                          , v_Cd_Nm      IN RTCM0051.CD_NM%TYPE            /* ÄÚµå¸í */
+                                          , v_Cd_Grp_Cd  IN RTCM0051.CD_GRP_CD%TYPE        /* ì½”ë“œ ê·¸ë£¹ ì½”ë“œ */
+                                          , v_Cd_Nm      IN RTCM0051.CD_NM%TYPE            /* ì½”ë“œëª… */
                                          )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT A.ORDER_PT   /* ¿ì¼±¼øÀ§ */
-                 , A.CD_NM      /* ÄÚµå¸í */
-                 , A.CD         /* ÄÚµå */
+            SELECT A.ORDER_PT   /* ìš°ì„ ìˆœìœ„ */
+                 , A.CD_NM      /* ì½”ë“œëª… */
+                 , A.CD         /* ì½”ë“œ */
               FROM RTCM0051 A
              WHERE A.USE_YN = 'Y' 
                     AND A.CD_GRP_CD = DECODE(v_Cd_Grp_Cd, NULL, A.CD_GRP_CD, v_Cd_Grp_Cd)
@@ -28,18 +28,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0110SEC AS
           ORDER BY A.ORDER_PT ASC;
     END p_sRtcm0051_RtlMasterCBList;
     /*******************************************************************************
-     »ç¿ëÀÚ RTCM0050¿¡¼­ ·»Å» Áö»ç / ÁöÁ¡ Á¶È¸ COMBOBOX »ç¿ë
+     ì‚¬ìš©ìž RTCM0050ì—ì„œ ë Œíƒˆ ì§€ì‚¬ / ì§€ì  ì¡°íšŒ COMBOBOX ì‚¬ìš©
      *******************************************************************************/
     PROCEDURE p_sRtcm0051_RtlMasterHoBoList(  Ref_Cursor  IN OUT SYS_REFCURSOR
-                                          , v_Cd_Grp_Cd1  IN RTCM0050.CD_GRP_CD%TYPE        /* ÄÚµå ±×·ì ÄÚµå1 */
-                                          , v_Cd_Grp_Cd2  IN RTCM0050.CD_GRP_CD%TYPE        /* ÄÚµå ±×·ì ÄÚµå2 */
+                                          , v_Cd_Grp_Cd1  IN RTCM0050.CD_GRP_CD%TYPE        /* ì½”ë“œ ê·¸ë£¹ ì½”ë“œ1 */
+                                          , v_Cd_Grp_Cd2  IN RTCM0050.CD_GRP_CD%TYPE        /* ì½”ë“œ ê·¸ë£¹ ì½”ë“œ2 */
                                          )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT A.CD_GRP_CD    /* ÄÚµå±×·ìÄÚµå */
-                 , A.CD_GRP_NM    /* ÄÚµå±×·ì¸í */
+            SELECT A.CD_GRP_CD    /* ì½”ë“œê·¸ë£¹ì½”ë“œ */
+                 , A.CD_GRP_NM    /* ì½”ë“œê·¸ë£¹ëª… */
               FROM RTCM0050 A
              WHERE A.USE_YN = 'Y'
                     AND A.CD_GRP_CD IN (
@@ -49,11 +49,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0110SEC AS
           ORDER BY CD_GRP_CD ASC;
     END p_sRtcm0051_RtlMasterHoBoList;
     /*******************************************************************************
-     -- ·»Å» ¸¶½ºÅÍ Á¤º¸ °Ë»ö
+     -- ë Œíƒˆ ë§ˆìŠ¤í„° ì •ë³´ ê²€ìƒ‰
      *******************************************************************************/
     PROCEDURE p_sRtcm0001_RtlMasterList(  Ref_Cursor  IN OUT SYS_REFCURSOR
-                                        , v_User_Nm   IN RTCM0001.USER_NM%TYPE        /* ·»Å» ¸¶½ºÅÍ ÀÌ¸§ */
-                                        , v_User_Id   IN RTCM0001.USER_ID%TYPE        /* ·»Å» ¸¶½ºÅÍ ID */
+                                        , v_User_Nm   IN RTCM0001.USER_NM%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ì´ë¦„ */
+                                        , v_User_Id   IN RTCM0001.USER_ID%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ID */
                                       )
     IS
 
@@ -68,28 +68,28 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0110SEC AS
                     AND A.USER_NM LIKE '%' || v_User_Nm || '%';
     END p_sRtcm0001_RtlMasterList;
     /*******************************************************************************
-     RTCM0110 ·»Å» Áö»ç ÁöÁ¡ °Ë»ö
+     RTCM0110 ë Œíƒˆ ì§€ì‚¬ ì§€ì  ê²€ìƒ‰
      *******************************************************************************/
     /*******************************************************************************
-     RTCM0110 ·»Å» Áö»ç ÁöÁ¡ °Ë»ö
+     RTCM0110 ë Œíƒˆ ì§€ì‚¬ ì§€ì  ê²€ìƒ‰
      *******************************************************************************/
     PROCEDURE p_sRtcm0110_RtlHOBOList(  Ref_Cursor       IN OUT SYS_REFCURSOR
-                                        , v_Rnt_Ofc_Nm   IN RTCM0051.CD_NM%TYPE        /* ·»Å» ¸¶½ºÅÍ ÀÌ¸§ */
-                                        , v_Rnt_Pnt_Nm   IN RTCM0051.CD_NM%TYPE        /* ·»Å» ¸¶½ºÅÍ ID */
-                                        , v_Ofc_Cd       IN RTCM0110.RNT_OFC%TYPE      /* ·»Å» Áö»ç ÄÚµå */
-                                        , v_Pnt_Cd       IN RTCM0110.RNT_PNT%TYPE      /* ·»Å» ÁöÁ¡ ÄÚµå */
+                                        , v_Rnt_Ofc_Nm   IN RTCM0051.CD_NM%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ì´ë¦„ */
+                                        , v_Rnt_Pnt_Nm   IN RTCM0051.CD_NM%TYPE        /* ë Œíƒˆ ë§ˆìŠ¤í„° ID */
+                                        , v_Ofc_Cd       IN RTCM0110.RNT_OFC%TYPE      /* ë Œíƒˆ ì§€ì‚¬ ì½”ë“œ */
+                                        , v_Pnt_Cd       IN RTCM0110.RNT_PNT%TYPE      /* ë Œíƒˆ ì§€ì  ì½”ë“œ */
                                       )
     IS
 
     BEGIN
         OPEN Ref_Cursor FOR
-            SELECT C.RNT_MST_ID                 /* ·»Å» ¸¶½ºÅÍ ID */
-                 , B.CD_GRP_CD AS OFC_GRP_CD    /* ±×·ì ·»Å» Áö»ç ÄÚµå */
-                 , A.CD_GRP_CD AS PNT_GRP_CD    /* ±×·ì ·»Å» ÁöÁ¡ ÄÚµå */
-                 , B.CD AS OFC_CD               /* ·»Å» Áö»ç ÄÚµå */
-                 , B.CD_NM AS OFC_NM            /* ·»Å» Áö»ç ¸í */
-                 , A.CD AS PNT_CD               /* ·»Å» ÁöÁ¡ ÄÚµå */
-                 , A.CD_NM AS PNT_NM            /* ·»Å» ÁöÁ¡ ¸í */
+            SELECT C.RNT_MST_ID                 /* ë Œíƒˆ ë§ˆìŠ¤í„° ID */
+                 , B.CD_GRP_CD AS OFC_GRP_CD    /* ê·¸ë£¹ ë Œíƒˆ ì§€ì‚¬ ì½”ë“œ */
+                 , A.CD_GRP_CD AS PNT_GRP_CD    /* ê·¸ë£¹ ë Œíƒˆ ì§€ì  ì½”ë“œ */
+                 , B.CD AS OFC_CD               /* ë Œíƒˆ ì§€ì‚¬ ì½”ë“œ */
+                 , B.CD_NM AS OFC_NM            /* ë Œíƒˆ ì§€ì‚¬ ëª… */
+                 , A.CD AS PNT_CD               /* ë Œíƒˆ ì§€ì  ì½”ë“œ */
+                 , A.CD_NM AS PNT_NM            /* ë Œíƒˆ ì§€ì  ëª… */
               FROM RTCM0051 A 
                     INNER JOIN RTCM0051 B ON
                         B.CD_GRP_CD = A.RFR_1
@@ -118,4 +118,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0110SEC AS
     END p_sRtcm0110_RtlHOBOList;
 
 END Pkg_Rtcm0110SEC;
-/

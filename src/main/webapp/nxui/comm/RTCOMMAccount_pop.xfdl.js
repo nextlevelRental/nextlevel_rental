@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_List", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -33,6 +34,7 @@
 
             obj = new Dataset("ds_chgInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
@@ -44,6 +46,7 @@
 
             obj = new Dataset("ds_account", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -233,7 +236,7 @@
             //-------------------------------------------------------------------------------      	
         	this.fn_setChgData = function()
         	{
-        		if( this.parent.p_arg ==  "RTSDContractRegister"){
+        		if( this.parent.p_arg ==  "RTSDContractRegister" || this.parent.p_arg ==  "RTSDMemberOrder"){
         			if( this.ds_List.rowposition >= 0 ){
         				var addRow = this.ds_account.addRow();
         				var nRow = this.ds_List.rowposition;

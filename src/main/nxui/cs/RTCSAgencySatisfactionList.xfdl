@@ -55,7 +55,7 @@
                 <Cell col="6" rowspan="2" text="온라인장착 가능여부"/>
                 <Cell col="7" rowspan="2" text="프리미엄퍼플점 여부"/>
                 <Cell col="8" rowspan="2" text="퍼플점 여부"/>
-                <Cell col="9" rowspan="2" text="추천 장착점 여부"/>
+                <Cell col="9" rowspan="2" text="전략 추전점 여부"/>
                 <Cell col="10" rowspan="2" text="총건수"/>
                 <Cell col="11" rowspan="2" text="총평점"/>
                 <Cell col="12" colspan="6" text="장착응대"/>

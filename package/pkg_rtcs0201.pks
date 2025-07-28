@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0201 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0201
-   PURPOSE   [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â °ü¸®
+   PURPOSE   [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,127 +10,126 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0201 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Count
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0201Count(
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,         /*Ã¢°íÄÚµå            */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE           /*Ã¢°íº¯°æ¼ø¹ø        */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,         /*ì°½ê³ ì½”ë“œ            */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE           /*ì°½ê³ ë³€ê²½ìˆœë²ˆ        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Select
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0201 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*Ã¢°íº¯°æ¼ø¹ø          */
-    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*Ã¢°í¸í                */
-    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*¾÷¹«°³½ÃÀÏ            */
-    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*¾÷¹«Á¾·áÀÏ            */
-    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*¿ìÆí¹øÈ£ PK           */
-    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ÀüÈ£¹øÈ£              */
-    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCS0201.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*ì°½ê³ ë³€ê²½ìˆœë²ˆ          */
+    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*ì°½ê³ ëª…                */
+    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*ì—…ë¬´ê°œì‹œì¼            */
+    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*ì—…ë¬´ì¢…ë£Œì¼            */
+    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*ìš°íŽ¸ë²ˆí˜¸ PK           */
+    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ì „í˜¸ë²ˆí˜¸              */
+    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0201.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Insert
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0201 (
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*Ã¢°íº¯°æ¼ø¹ø          */
-    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*Ã¢°í¸í                */
-    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*¾÷¹«°³½ÃÀÏ            */
-    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*¾÷¹«Á¾·áÀÏ            */
-    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*¿ìÆí¹øÈ£ PK           */
-    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ÀüÈ£¹øÈ£              */
-    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*ì°½ê³ ë³€ê²½ìˆœë²ˆ          */
+    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*ì°½ê³ ëª…                */
+    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*ì—…ë¬´ê°œì‹œì¼            */
+    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*ì—…ë¬´ì¢…ë£Œì¼            */
+    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*ìš°íŽ¸ë²ˆí˜¸ PK           */
+    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ì „í˜¸ë²ˆí˜¸              */
+    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Update
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0201 (
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*Ã¢°íº¯°æ¼ø¹ø          */
-    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*Ã¢°í¸í                */
-    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*¾÷¹«°³½ÃÀÏ            */
-    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*¾÷¹«Á¾·áÀÏ            */
-    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*¿ìÆí¹øÈ£ PK           */
-    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ÀüÈ£¹øÈ£              */
-    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*ì°½ê³ ë³€ê²½ìˆœë²ˆ          */
+    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*ì°½ê³ ëª…                */
+    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*ì—…ë¬´ê°œì‹œì¼            */
+    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*ì—…ë¬´ì¢…ë£Œì¼            */
+    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*ìš°íŽ¸ë²ˆí˜¸ PK           */
+    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ì „í˜¸ë²ˆí˜¸              */
+    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Delete
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0201 (
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*Ã¢°íº¯°æ¼ø¹ø          */
-    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*ì°½ê³ ë³€ê²½ìˆœë²ˆ          */
+    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â °ü¸®(IUD)
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0201 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
-    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*Ã¢°íº¯°æ¼ø¹ø          */
-    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*Ã¢°í¸í                */
-    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*¾÷¹«°³½ÃÀÏ            */
-    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*¾÷¹«Á¾·áÀÏ            */
-    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*¿ìÆí¹øÈ£ PK           */
-    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ÀüÈ£¹øÈ£              */
-    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
+    v_Wrh_Seq        IN RTCS0201.WRH_SEQ%TYPE,        /*ì°½ê³ ë³€ê²½ìˆœë²ˆ          */
+    v_Wareh_Nm       IN RTCS0201.WAREH_NM%TYPE,       /*ì°½ê³ ëª…                */
+    v_Begday         IN RTCS0201.BEGDAY%TYPE,         /*ì—…ë¬´ê°œì‹œì¼            */
+    v_Endday         IN RTCS0201.ENDDAY%TYPE,         /*ì—…ë¬´ì¢…ë£Œì¼            */
+    v_Bld_Mng_No     IN RTCS0201.BLD_MNG_NO%TYPE,     /*ìš°íŽ¸ë²ˆí˜¸ PK           */
+    v_Pos_Cd         IN RTCS0201.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTCS0201.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTCS0201.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Tel_No         IN RTCS0201.TEL_NO%TYPE,         /*ì „í˜¸ë²ˆí˜¸              */
+    v_Fax_No         IN RTCS0201.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Mob_No         IN RTCS0201.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Use_Yn         IN RTCS0201.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0201.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- Ã¢°í º¯°æÀÌ·Â Á¶È¸
+  -- ì°½ê³  ë³€ê²½ì´ë ¥ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0201WareHistory (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*Ã¢°íÄÚµå              */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE,       /*ì°½ê³ ì½”ë“œ              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- [CS] Ã¢°í ¸¶½ºÅÍ º¯°æÀÌ·Â Ã¢°íÄÚµåº° Count
+  -- [CS] ì°½ê³  ë§ˆìŠ¤í„° ë³€ê²½ì´ë ¥ ì°½ê³ ì½”ë“œë³„ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0201TotCount(
-    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE          /*Ã¢°íÄÚµå            */
+    v_Wareh_Cd       IN RTCS0201.WAREH_CD%TYPE          /*ì°½ê³ ì½”ë“œ            */
     ) RETURN NUMBER;
 
 END Pkg_Rtcs0201;
-/

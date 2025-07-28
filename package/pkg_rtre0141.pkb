@@ -1,21 +1,21 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
 /*******************************************************************************
     NAME        PKG_RTRE0141
-    PURPOSE     °¡»ó°èÁÂ ¼¼ºÎ³»¿ª °ü¸®
+    PURPOSE     ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬
 
     REVISIONS
     Ver     Date        Author          Description
     -----   ----------  --------------  -------------------------------------
-    1.0     2017-10-02  wjim            [20170224_01] ½Å±Ô »ý¼º
+    1.0     2017-10-02  wjim            [20170224_01] ì‹ ê·œ ìƒì„±
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °¡»ó°èÁÂ ¼¼ºÎ³»¿ª Select
+  -- ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0141 (
       Ref_Cursor      IN OUT SYS_REFCURSOR
-    , v_Rva_Day       IN RTRE0141.RVA_DAY%TYPE     /*¿äÃ»ÀÏÀÚ                 */
-    , v_Rva_Seq       IN RTRE0141.RVA_SEQ%TYPE     /*¿äÃ»ÀÏ·Ã¹øÈ£             */
+    , v_Rva_Day       IN RTRE0141.RVA_DAY%TYPE     /*ìš”ì²­ì¼ìž                 */
+    , v_Rva_Seq       IN RTRE0141.RVA_SEQ%TYPE     /*ìš”ì²­ì¼ë ¨ë²ˆí˜¸             */
   ) IS
 
   BEGIN
@@ -52,21 +52,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
   END p_sRtre0141;
     
   /*****************************************************************************
-  -- °¡»ó°èÁÂ ¼¼ºÎ³»¿ª Insert
+  -- ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0141 (
-      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ¿äÃ»ÀÏÀÚ         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* °í°´¹øÈ£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* °è¾à¹øÈ£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ã»±¸¼ø¹ø         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ã»±¸±¸ºÐ         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ã»±¸ÀÏÀÚ         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ¸¸±â°è»ê±âÁØÀÏ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ¸ÅÃâ±Ý¾×         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ¿¬Ã¼±Ý¾×         */        
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µî·ÏÀÚID         */    
+      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ìš”ì²­ì¼ìž         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ê³ ê°ë²ˆí˜¸         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ê³„ì•½ë²ˆí˜¸         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* ì²­êµ¬ìˆœë²ˆ         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* ì²­êµ¬êµ¬ë¶„         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* ì²­êµ¬ì¼ìž         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ë§¤ì¶œê¸ˆì•¡         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ì—°ì²´ê¸ˆì•¡         */        
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* ë“±ë¡ìžID         */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
@@ -89,18 +89,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
         , CHG_ID
         , CHG_DT
     ) VALUES (
-          v_Rva_Day      /* ¿äÃ»ÀÏÀÚ         */
-        , v_Rva_Seq      /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-        , v_Cust_No      /* °í°´¹øÈ£         */
-        , v_Tord_No      /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-        , v_Ord_No       /* °è¾à¹øÈ£         */
-        , v_Schd_Seq     /* Ã»±¸¼ø¹ø         */
-        , v_Recp_Tp      /* Ã»±¸±¸ºÐ         */
-        , v_Demd_Dt      /* Ã»±¸ÀÏÀÚ         */ 
-        , v_Zfbdt        /* ¸¸±â°è»ê±âÁØÀÏ   */
-        , v_Sale_Amt     /* ¸ÅÃâ±Ý¾×         */
-        , v_Arre_Amt     /* ¿¬Ã¼±Ý¾×         */        
-        , v_Reg_Id       /* µî·ÏÀÚID         */   
+          v_Rva_Day      /* ìš”ì²­ì¼ìž         */
+        , v_Rva_Seq      /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+        , v_Cust_No      /* ê³ ê°ë²ˆí˜¸         */
+        , v_Tord_No      /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+        , v_Ord_No       /* ê³„ì•½ë²ˆí˜¸         */
+        , v_Schd_Seq     /* ì²­êµ¬ìˆœë²ˆ         */
+        , v_Recp_Tp      /* ì²­êµ¬êµ¬ë¶„         */
+        , v_Demd_Dt      /* ì²­êµ¬ì¼ìž         */ 
+        , v_Zfbdt        /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+        , v_Sale_Amt     /* ë§¤ì¶œê¸ˆì•¡         */
+        , v_Arre_Amt     /* ì—°ì²´ê¸ˆì•¡         */        
+        , v_Reg_Id       /* ë“±ë¡ìžID         */   
         , SYSDATE
         , v_Reg_Id
         , SYSDATE
@@ -116,32 +116,32 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
   END f_InsertRtre0141;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ ¼¼ºÎ³»¿ª Update
+  -- ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0141 (
-      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ¿äÃ»ÀÏÀÚ         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* °í°´¹øÈ£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* °è¾à¹øÈ£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ã»±¸¼ø¹ø         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ã»±¸±¸ºÐ         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ã»±¸ÀÏÀÚ         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ¸¸±â°è»ê±âÁØÀÏ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ¸ÅÃâ±Ý¾×         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ¿¬Ã¼±Ý¾×         */
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µî·ÏÀÚID         */    
+      v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ìš”ì²­ì¼ìž         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ê³ ê°ë²ˆí˜¸         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ê³„ì•½ë²ˆí˜¸         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* ì²­êµ¬ìˆœë²ˆ         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* ì²­êµ¬êµ¬ë¶„         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* ì²­êµ¬ì¼ìž         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ë§¤ì¶œê¸ˆì•¡         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ì—°ì²´ê¸ˆì•¡         */
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* ë“±ë¡ìžID         */    
     , v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER IS
   
   BEGIN
 
     UPDATE  RTRE0141
-       SET  RECP_TP  = v_Recp_Tp      /* Ã»±¸±¸ºÐ         */
-         ,  DEMD_DT  = v_Demd_Dt      /* Ã»±¸ÀÏÀÚ         */ 
-         ,  ZFBDT    = v_Zfbdt        /* ¸¸±â°è»ê±âÁØÀÏ   */
-         ,  SALE_AMT = v_Sale_Amt     /* ¸ÅÃâ±Ý¾×         */
-         ,  ARRE_AMT = v_Arre_Amt     /* ¿¬Ã¼±Ý¾×         */
+       SET  RECP_TP  = v_Recp_Tp      /* ì²­êµ¬êµ¬ë¶„         */
+         ,  DEMD_DT  = v_Demd_Dt      /* ì²­êµ¬ì¼ìž         */ 
+         ,  ZFBDT    = v_Zfbdt        /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+         ,  SALE_AMT = v_Sale_Amt     /* ë§¤ì¶œê¸ˆì•¡         */
+         ,  ARRE_AMT = v_Arre_Amt     /* ì—°ì²´ê¸ˆì•¡         */
          ,  CHG_ID   = v_Reg_Id
          ,  CHG_DT   = SYSDATE
      WHERE  RVA_DAY  = v_Rva_Day
@@ -162,22 +162,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
   END f_UpdateRtre0141;
   
   /*****************************************************************************
-  -- °¡»ó°èÁÂ ¼¼ºÎ³»¿ª °ü¸®(IUD)
+  -- ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0141 (
-      v_Comm_Dvsn       IN CHAR                     /* Ã³¸®±¸ºÐ(I,U,D) */
-    , v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ¿äÃ»ÀÏÀÚ         */
-    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* °í°´¹øÈ£         */
-    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* °è¾à¹øÈ£         */
-    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* Ã»±¸¼ø¹ø         */
-    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* Ã»±¸±¸ºÐ         */
-    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* Ã»±¸ÀÏÀÚ         */ 
-    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ¸¸±â°è»ê±âÁØÀÏ   */
-    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ¸ÅÃâ±Ý¾×         */
-    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ¿¬Ã¼±Ý¾×         */        
-    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* µî·ÏÀÚID         */ 
+      v_Comm_Dvsn       IN CHAR                     /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
+    , v_Rva_Day         IN RTRE0141.RVA_DAY%TYPE    /* ìš”ì²­ì¼ìž         */
+    , v_Rva_Seq         IN RTRE0141.RVA_SEQ%TYPE    /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+    , v_Cust_No         IN RTRE0141.CUST_NO%TYPE    /* ê³ ê°ë²ˆí˜¸         */
+    , v_Tord_No         IN RTRE0141.TORD_NO%TYPE    /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+    , v_Ord_No          IN RTRE0141.ORD_NO%TYPE     /* ê³„ì•½ë²ˆí˜¸         */
+    , v_Schd_Seq        IN RTRE0141.SCHD_SEQ%TYPE   /* ì²­êµ¬ìˆœë²ˆ         */
+    , v_Recp_Tp         IN RTRE0141.RECP_TP%TYPE    /* ì²­êµ¬êµ¬ë¶„         */
+    , v_Demd_Dt         IN RTRE0141.DEMD_DT%TYPE    /* ì²­êµ¬ì¼ìž         */ 
+    , v_Zfbdt           IN RTRE0141.ZFBDT%TYPE      /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+    , v_Sale_Amt        IN RTRE0141.SALE_AMT%TYPE   /* ë§¤ì¶œê¸ˆì•¡         */
+    , v_Arre_Amt        IN RTRE0141.ARRE_AMT%TYPE   /* ì—°ì²´ê¸ˆì•¡         */        
+    , v_Reg_Id          IN RTRE0141.REG_ID%TYPE     /* ë“±ë¡ìžID         */ 
     , v_Success_Code   OUT NUMBER
     , v_Return_Message OUT VARCHAR2
     , v_ErrorText      OUT VARCHAR2
@@ -186,30 +186,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª È®ÀÎ
+    -- í•„ìˆ˜ê°’ í™•ì¸
     IF TRIM(v_Rva_Day) IS NULL THEN
-        v_Return_Message := '¿äÃ»ÀÏÀÚ : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ìš”ì²­ì¼ìž : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
     
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_InsertRtre0141 (
-              v_Rva_Day         /* ¿äÃ»ÀÏÀÚ         */
-            , v_Rva_Seq         /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-            , v_Cust_No         /* °í°´¹øÈ£         */
-            , v_Tord_No         /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-            , v_Ord_No          /* °è¾à¹øÈ£         */
-            , v_Schd_Seq        /* Ã»±¸¼ø¹ø         */
-            , v_Recp_Tp         /* Ã»±¸±¸ºÐ         */
-            , v_Demd_Dt         /* Ã»±¸ÀÏÀÚ         */ 
-            , v_Zfbdt           /* ¸¸±â°è»ê±âÁØÀÏ   */
-            , v_Sale_Amt        /* ¸ÅÃâ±Ý¾×         */
-            , v_Arre_Amt        /* ¿¬Ã¼±Ý¾×         */        
-            , v_Reg_Id          /* µî·ÏÀÚID         */    
+              v_Rva_Day         /* ìš”ì²­ì¼ìž         */
+            , v_Rva_Seq         /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+            , v_Cust_No         /* ê³ ê°ë²ˆí˜¸         */
+            , v_Tord_No         /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+            , v_Ord_No          /* ê³„ì•½ë²ˆí˜¸         */
+            , v_Schd_Seq        /* ì²­êµ¬ìˆœë²ˆ         */
+            , v_Recp_Tp         /* ì²­êµ¬êµ¬ë¶„         */
+            , v_Demd_Dt         /* ì²­êµ¬ì¼ìž         */ 
+            , v_Zfbdt           /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+            , v_Sale_Amt        /* ë§¤ì¶œê¸ˆì•¡         */
+            , v_Arre_Amt        /* ì—°ì²´ê¸ˆì•¡         */        
+            , v_Reg_Id          /* ë“±ë¡ìžID         */    
             , v_ErrorText      
         ) THEN
-            v_Return_Message := '°¡»ó°èÁÂ ¼¼ºÎ³»¿ª µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -217,33 +217,33 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
 
         IF 0 != f_UpdateRtre0141 (
-              v_Rva_Day         /* ¿äÃ»ÀÏÀÚ         */
-            , v_Rva_Seq         /* ¿äÃ»ÀÏ·Ã¹øÈ£     */
-            , v_Cust_No         /* °í°´¹øÈ£         */
-            , v_Tord_No         /* ÅëÇÕÃ»±¸°è¾à¹øÈ£ */
-            , v_Ord_No          /* °è¾à¹øÈ£         */
-            , v_Schd_Seq        /* Ã»±¸¼ø¹ø         */
-            , v_Recp_Tp         /* Ã»±¸±¸ºÐ         */
-            , v_Demd_Dt         /* Ã»±¸ÀÏÀÚ         */ 
-            , v_Zfbdt           /* ¸¸±â°è»ê±âÁØÀÏ   */
-            , v_Sale_Amt        /* ¸ÅÃâ±Ý¾×         */
-            , v_Arre_Amt        /* ¿¬Ã¼±Ý¾×         */
-            , v_Reg_Id          /* µî·ÏÀÚID         */    
+              v_Rva_Day         /* ìš”ì²­ì¼ìž         */
+            , v_Rva_Seq         /* ìš”ì²­ì¼ë ¨ë²ˆí˜¸     */
+            , v_Cust_No         /* ê³ ê°ë²ˆí˜¸         */
+            , v_Tord_No         /* í†µí•©ì²­êµ¬ê³„ì•½ë²ˆí˜¸ */
+            , v_Ord_No          /* ê³„ì•½ë²ˆí˜¸         */
+            , v_Schd_Seq        /* ì²­êµ¬ìˆœë²ˆ         */
+            , v_Recp_Tp         /* ì²­êµ¬êµ¬ë¶„         */
+            , v_Demd_Dt         /* ì²­êµ¬ì¼ìž         */ 
+            , v_Zfbdt           /* ë§Œê¸°ê³„ì‚°ê¸°ì¤€ì¼   */
+            , v_Sale_Amt        /* ë§¤ì¶œê¸ˆì•¡         */
+            , v_Arre_Amt        /* ì—°ì²´ê¸ˆì•¡         */
+            , v_Reg_Id          /* ë“±ë¡ìžID         */    
             , v_ErrorText
         ) THEN
-            v_Return_Message := '°¡»ó°èÁÂ ¼¼ºÎ³»¿ª ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ê°€ìƒê³„ì¢Œ ì„¸ë¶€ë‚´ì—­ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;    
 
     v_Success_code   := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText      := '';
 
     EXCEPTION
@@ -257,11 +257,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTRE0141 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code   := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText      := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('PKG_RTRE0141.p_IUDRtre0141(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre0141;
         
 END PKG_RTRE0141;
-/

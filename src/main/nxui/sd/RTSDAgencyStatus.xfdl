@@ -74,9 +74,9 @@
                 <Column size="110"/>
                 <Column size="110"/>
                 <Column size="110"/>
-                <Column size="110"/>
+                <Column size="90"/>
                 <Column size="131"/>
-                <Column size="137"/>
+                <Column size="135"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -114,7 +114,7 @@
                 <Cell col="21" text="경정비 가능여부"/>
                 <Cell col="22" text="1급정비 가능여부"/>
                 <Cell col="23" text="세차 가능여부"/>
-                <Cell col="24" text="추천장착점 여부"/>
+                <Cell col="24" text="전략추천 여부"/>
                 <Cell col="25" text="온라인장착 가능여부"/>
                 <Cell col="26" text="프리미엄 퍼플점 여부"/>
                 <Cell col="27" text="퍼플점 여부"/>

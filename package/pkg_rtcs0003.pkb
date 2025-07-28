@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0003
-   PURPOSE   ·»Å» ¸ÅÃâ¿ø°¡ °ü¸®
+   PURPOSE   ë Œíƒˆ ë§¤ì¶œì›ê°€ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ Count
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0003Count(
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,           /*¸¶°¨³â¿ù            */
-    v_Matnr          IN RTCS0003.MATNR%TYPE             /*»óÇ°ÄÚµå            */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,           /*ë§ˆê°ë…„ì›”            */
+    v_Matnr          IN RTCS0003.MATNR%TYPE             /*ìƒí’ˆì½”ë“œ            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,30 +34,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END f_sRtcs0003Count;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ Select
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ Select
   *****************************************************************************/
   PROCEDURE p_sRtcs0003 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Menge          IN RTCS0003.MENGE%TYPE,          /*»óÇ°¼ö·®              */
-    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*¸ÅÃâ¿ø°¡              */
-    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*¸¶°¨¿©ºÎ              */
-    v_Reg_Id         IN RTCS0003.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Menge          IN RTCS0003.MENGE%TYPE,          /*ìƒí’ˆìˆ˜ëŸ‰              */
+    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*ë§¤ì¶œì›ê°€              */
+    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*ë§ˆê°ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0003.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ZMONTH,                    /*¸¶°¨³â¿ù            */
-            A.MATNR,                     /*»óÇ°ÄÚµå            */
-            A.MENGE,                     /*»óÇ°¼ö·®            */
-            A.COSGAMT,                   /*¸ÅÃâ¿ø°¡            */
-            A.CLOSE_YN,                  /*¸¶°¨¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.ZMONTH,                    /*ë§ˆê°ë…„ì›”            */
+            A.MATNR,                     /*ìƒí’ˆì½”ë“œ            */
+            A.MENGE,                     /*ìƒí’ˆìˆ˜ëŸ‰            */
+            A.COSGAMT,                   /*ë§¤ì¶œì›ê°€            */
+            A.CLOSE_YN,                  /*ë§ˆê°ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTCS0003 A
     WHERE   A.ZMONTH           = DECODE(v_Zmonth         , NULL, A.ZMONTH          , v_Zmonth)
     AND     A.MATNR            = DECODE(v_Matnr          , NULL, A.MATNR           , v_Matnr)
@@ -69,15 +69,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END p_sRtcs0003;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ Insert
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0003 (
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Menge          IN RTCS0003.MENGE%TYPE,          /*»óÇ°¼ö·®              */
-    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*¸ÅÃâ¿ø°¡              */
-    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*¸¶°¨¿©ºÎ              */
-    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Menge          IN RTCS0003.MENGE%TYPE,          /*ìƒí’ˆìˆ˜ëŸ‰              */
+    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*ë§¤ì¶œì›ê°€              */
+    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*ë§ˆê°ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -114,15 +114,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END f_InsertRtcs0003;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ Update
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0003 (
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Menge          IN RTCS0003.MENGE%TYPE,          /*»óÇ°¼ö·®              */
-    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*¸ÅÃâ¿ø°¡              */
-    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*¸¶°¨¿©ºÎ              */
-    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Menge          IN RTCS0003.MENGE%TYPE,          /*ìƒí’ˆìˆ˜ëŸ‰              */
+    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*ë§¤ì¶œì›ê°€              */
+    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*ë§ˆê°ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -146,12 +146,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END f_UpdateRtcs0003;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ Delete
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcs0003 (
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -173,16 +173,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END f_DeleteRtcs0003;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ °ü¸®(IUD)
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0003 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*»óÇ°ÄÚµå              */
-    v_Menge          IN RTCS0003.MENGE%TYPE,          /*»óÇ°¼ö·®              */
-    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*¸ÅÃâ¿ø°¡              */
-    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*¸¶°¨¿©ºÎ              */
-    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Matnr          IN RTCS0003.MATNR%TYPE,          /*ìƒí’ˆì½”ë“œ              */
+    v_Menge          IN RTCS0003.MENGE%TYPE,          /*ìƒí’ˆìˆ˜ëŸ‰              */
+    v_Cosgamt        IN RTCS0003.COSGAMT%TYPE,        /*ë§¤ì¶œì›ê°€              */
+    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE,       /*ë§ˆê°ì—¬ë¶€              */
+    v_Reg_Id         IN RTCS0003.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -191,9 +191,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ë“±ë¡ìž ID
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -201,7 +201,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
 
         IF 0 != f_InsertRtcs0003(v_Zmonth, v_Matnr, v_Menge, v_Cosgamt, 
                                  v_Close_Yn, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'µî·Ï ½ÇÆÐ!!!';
+            v_Return_Message := 'ë“±ë¡ ì‹¤íŒ¨!!!';
             RAISE e_Error;
 
         END IF;
@@ -209,26 +209,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
         IF v_Comm_Dvsn = 'U' THEN
             IF 0 != f_UpdateRtcs0003(v_Zmonth, v_Matnr, v_Menge, v_Cosgamt, 
                                      v_Close_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := '¼öÁ¤ ½ÇÆÐ!!!';
+                v_Return_Message := 'ìˆ˜ì • ì‹¤íŒ¨!!!';
                 RAISE e_Error;
             END IF;
 
 
         ELSIF v_Comm_Dvsn = 'D' THEN
             IF 0 != f_DeleteRtcs0003(v_Zmonth, v_Matnr, v_Reg_Id, v_ErrorText) THEN
-               v_Return_Message := '»èÁ¦ ½ÇÆÐ!!!';
+               v_Return_Message := 'ì‚­ì œ ì‹¤íŒ¨!!!';
                RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -250,11 +250,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END p_IUDRtcs0003;
 
   /*****************************************************************************
-  -- ·»Å» ¸ÅÃâ¿ø°¡ ¸¶°¨¿©ºÎ Count
+  -- ë Œíƒˆ ë§¤ì¶œì›ê°€ ë§ˆê°ì—¬ë¶€ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0003CloseCount(
-    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*¸¶°¨³â¿ù              */
-    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE        /*¸¶°¨¿©ºÎ              */
+    v_Zmonth         IN RTCS0003.ZMONTH%TYPE,         /*ë§ˆê°ë…„ì›”              */
+    v_Close_Yn       IN RTCS0003.CLOSE_YN%TYPE        /*ë§ˆê°ì—¬ë¶€              */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -274,4 +274,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0003 AS
   END f_sRtcs0003CloseCount;
 
 END Pkg_Rtcs0003;
-/

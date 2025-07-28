@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0100 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0100
-   PURPOSE   °í°´ ¸¶½ºÅÍ °ü¸®
+   PURPOSE   ê³ ê° ë§ˆìŠ¤í„° ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,465 +10,465 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0100 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Count
+  -- ê³ ê° ë§ˆìŠ¤í„° Count
   *****************************************************************************/
   FUNCTION f_sRtsd0100Count(
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN NUMBER;
 
   PROCEDURE p_sRtsd0100Base (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Select
+  -- ê³ ê° ë§ˆìŠ¤í„° Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0100 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,          /*µî·ÏÀÚ ID             */
-    v_Ord_Id         IN RTSD0104.ORD_ID%TYPE           /*ÀÏ½ÃºÒ ¸â¹ö½Ê ±¸ºÐ */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,          /*ë“±ë¡ìž ID             */
+    v_Ord_Id         IN RTSD0104.ORD_ID%TYPE           /*ì¼ì‹œë¶ˆ ë©¤ë²„ì‹­ êµ¬ë¶„ */
     );
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Insert
+  -- ê³ ê° ë§ˆìŠ¤í„° Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0100 (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Update
+  -- ê³ ê° ë§ˆìŠ¤í„° Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0100 (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Delete
+  -- ê³ ê° ë§ˆìŠ¤í„° Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0100 (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ °ü¸®(IUD)
+  -- ê³ ê° ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0100 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - °í°´¹øÈ£ Ã¼¹ø
+  -- ê³ ê° ë§ˆìŠ¤í„° - ê³ ê°ë²ˆí˜¸ ì²´ë²ˆ
   *****************************************************************************/
   FUNCTION f_sRtsd0100CustNo RETURN VARCHAR;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - °í°´¸í Á¶È¸
+  -- ê³ ê° ë§ˆìŠ¤í„° - ê³ ê°ëª… ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtsd0100CustName(
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN VARCHAR2;
 
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Select - °í°´Á¤º¸-CI,DI·Î_°í°´Á¤º¸_Á¶È¸
+  -- ê³ ê° ë§ˆìŠ¤í„° Select - ê³ ê°ì •ë³´-CI,DIë¡œ_ê³ ê°ì •ë³´_ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtsd0100CiDiCustTp (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE         /*»ç¾÷ÀÚ¹øÈ£            */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE         /*ì‚¬ì—…ìžë²ˆí˜¸            */
     );
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Select - °í°´Á¤º¸ SAFEKEY Count
+  -- ê³ ê° ë§ˆìŠ¤í„° Select - ê³ ê°ì •ë³´ SAFEKEY Count
   *****************************************************************************/
   FUNCTION f_sRtsd0100Count_Safekey(
     v_Safekey        IN RTSD0100.SAFEKEY%TYPE           /*SAFEKEY            */
     ) RETURN VARCHAR2;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Select - »ç¾÷ÀÚ¹øÈ£ Á¶È¸
+  -- ê³ ê° ë§ˆìŠ¤í„° Select - ì‚¬ì—…ìžë²ˆí˜¸ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtsd0100Count_checkBuslNo(
-    v_BuslNo        IN RTSD0100.BUSL_NO%TYPE           /*»ç¾÷ÀÚ¹ø            */
+    v_BuslNo        IN RTSD0100.BUSL_NO%TYPE           /*ì‚¬ì—…ìžë²ˆ            */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - °í°´¹øÈ£·Î SAFEKEY  È¹µæ
+  -- ê³ ê° ë§ˆìŠ¤í„° - ê³ ê°ë²ˆí˜¸ë¡œ SAFEKEY  íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0100Safekey(
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN VARCHAR;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - SAFEKEY·Î Á¶È¸
+  -- ê³ ê° ë§ˆìŠ¤í„° - SAFEKEYë¡œ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtsd0100SafekeyCount(
     v_Safekey        IN RTSD0100.SAFEKEY%TYPE           /*SAFEKEY            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - »ç¾÷ÀÚ¹øÈ£·Î Á¶È¸
+  -- ê³ ê° ë§ˆìŠ¤í„° - ì‚¬ì—…ìžë²ˆí˜¸ë¡œ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtsd0100BuslCount(
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE           /*»ç¾÷ÀÚ¹øÈ£          */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE           /*ì‚¬ì—…ìžë²ˆí˜¸          */
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ - °í°´¹øÈ£·Î °í°´À¯Çü  È¹µæ
+  -- ê³ ê° ë§ˆìŠ¤í„° - ê³ ê°ë²ˆí˜¸ë¡œ ê³ ê°ìœ í˜•  íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0100CustTp(
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN VARCHAR;
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ º¯°æ - ¿Â¶óÀÎ I/F
+  -- ê³ ê° ë§ˆìŠ¤í„° ë³€ê²½ - ì˜¨ë¼ì¸ I/F
   *****************************************************************************/
   PROCEDURE p_UpdateRtsd0100Online (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÇÚµåÆù                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ºôµù¹øÈ£              */
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*¿ìÆí¹øÈ£              */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ÁÖ¼Ò                  */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*»ó¼¼ÁÖ¼Ò              */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*ÀÌ¸ÞÀÏ                */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*í•¸ë“œí°                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ë¹Œë”©ë²ˆí˜¸              */
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ì£¼ì†Œ                  */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ìƒì„¸ì£¼ì†Œ              */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*ì´ë©”ì¼                */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Select  - °í°´ÇöÈ² - °í°´Á¤º¸
+  -- ê³ ê° ë§ˆìŠ¤í„° Select  - ê³ ê°í˜„í™© - ê³ ê°ì •ë³´
   *****************************************************************************/
   PROCEDURE p_sRtsd0100CustAnalysis01 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Car_No         IN RTSD0108.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Ord_No         IN RTSD0108.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Car_No         IN RTSD0108.CAR_NO%TYPE,         /*ì°¨ëŸ‰ë²ˆí˜¸              */
+    v_Ord_No         IN RTSD0108.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸              */
     );
 
 
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ °ü¸®(IUD)
+  -- ê³ ê° ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0100DirectOrder (
-   v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*°í°´¹øÈ£              */   
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */   
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */    
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Cust_Tp3       IN RTSD0100.CUST_TP3%TYPE,       /*°í°´ºÐ·ù              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */    
+   v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*ê³ ê°ë²ˆí˜¸              */   
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */   
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */    
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Cust_Tp3       IN RTSD0100.CUST_TP3%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */    
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );  
 
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Insert
+  -- ê³ ê° ë§ˆìŠ¤í„° Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0100Direct (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Cust_Tp3       IN RTSD0100.CUST_TP3%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */   
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Cust_Tp3       IN RTSD0100.CUST_TP3%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */   
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;   
  
 
 
  /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ Update
+  -- ê³ ê° ë§ˆìŠ¤í„° Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0100Direct (
-    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */    
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */    
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */    
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Cust_Tp3        IN RTSD0100.CUST_TP3%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */   
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */    
+    v_Cust_No        IN RTSD0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */    
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */    
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */    
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Cust_Tp3        IN RTSD0100.CUST_TP3%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */   
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */    
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;   
     
     
   /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ °ü¸®(IUD)
+  -- ê³ ê° ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0100Member (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -476,54 +476,53 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0100 AS
 
 
    /*****************************************************************************
-  -- °í°´ ¸¶½ºÅÍ °ü¸®(IUD)
+  -- ê³ ê° ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_sRtcs010saveAdviceCust (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*°í°´¹øÈ£              */
-    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*°í°´ºÐ·ù              */
-    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*¼ºº°                  */
-    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*³»¿Ü±¹ÀÎ              */
-    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*ÆÑ½º¹øÈ£              */
-    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÀüÈ­¹øÈ£     */
-    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*º¸Á¶ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*º¸Á¶ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*¹ýÀÎ¹øÈ£              */
-    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*´ëÇ¥ÀÚ¸í              */
-    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*»ç¾÷ÁÖ¸í              */
-    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*»ç¾÷ÁÖ ¹ýÁ¤»ý³â¿ùÀÏ   */
-    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*»ç¾÷ÁÖ ¼ºº°           */
-    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*»ç¾÷ÁÖ ³»¿Ü±¹ÀÎ       */
-    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*»ç¾÷ÁÖ ÈÞ´ëÆù¹øÈ£     */
-    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*»ç¾÷ÁÖ ÀÎÁõ¹øÈ£       */
-    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*´ã´çÀÚ ¸í             */
-    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*´ã´çÀÚ ÀüÈ­¹øÈ£       */
-    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*¾÷Á¾                  */
-    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*¾÷ÅÂ                  */
-    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*°³ÀÎ»ç¾÷ÀÚ ¸é¼¼¿©ºÎ   */
-    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAP°í°´¹øÈ£           */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN OUT RTSD0100.CUST_NO%TYPE,    /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Tp        IN RTSD0100.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Cust_Tp2       IN RTSD0100.CUST_TP2%TYPE,       /*ê³ ê°ë¶„ë¥˜              */
+    v_Cust_Nm        IN RTSD0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Birth_Day      IN RTSD0100.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Gender_Cd      IN RTSD0100.GENDER_CD%TYPE,      /*ì„±ë³„                  */
+    v_Lf_Cd          IN RTSD0100.LF_CD%TYPE,          /*ë‚´ì™¸êµ­ì¸              */
+    v_Mob_No         IN RTSD0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0100.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Tel_No         IN RTSD0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Fax_No         IN RTSD0100.FAX_NO%TYPE,         /*íŒ©ìŠ¤ë²ˆí˜¸              */
+    v_Bld_Mng_No     IN RTSD0100.BLD_MNG_NO%TYPE,     /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd         IN RTSD0100.POS_CD%TYPE,         /*ê³ ê°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1          IN RTSD0100.ADDR1%TYPE,          /*ê³ ê°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2          IN RTSD0100.ADDR2%TYPE,          /*ê³ ê°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Tel_No2        IN RTSD0100.TEL_NO2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì „í™”ë²ˆí˜¸     */
+    v_Bld_Mng_No2    IN RTSD0100.BLD_MNG_NO2%TYPE,    /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸PK(ê±´*/
+    v_Pos_Cd2        IN RTSD0100.POS_CD2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìš°íŽ¸ë²ˆí˜¸     */
+    v_Addr1_2        IN RTSD0100.ADDR1_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ì£¼ì†Œ         */
+    v_Addr2_2        IN RTSD0100.ADDR2_2%TYPE,        /*ë³´ì¡°ì£¼ì†Œ-ìƒì„¸ì£¼ì†Œ     */
+    v_Safekey        IN RTSD0100.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Busl_No        IN RTSD0100.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Corp_No        IN RTSD0100.CORP_NO%TYPE,        /*ë²•ì¸ë²ˆí˜¸              */
+    v_Rep_Nm         IN RTSD0100.REP_NM%TYPE,         /*ëŒ€í‘œìžëª…              */
+    v_O_Custnm       IN RTSD0100.O_CUSTNM%TYPE,       /*ì‚¬ì—…ì£¼ëª…              */
+    v_O_Birthday     IN RTSD0100.O_BIRTHDAY%TYPE,     /*ì‚¬ì—…ì£¼ ë²•ì •ìƒë…„ì›”ì¼   */
+    v_O_Gendercd     IN RTSD0100.O_GENDERCD%TYPE,     /*ì‚¬ì—…ì£¼ ì„±ë³„           */
+    v_O_Lfcd         IN RTSD0100.O_LFCD%TYPE,         /*ì‚¬ì—…ì£¼ ë‚´ì™¸êµ­ì¸       */
+    v_O_Mobno        IN RTSD0100.O_MOBNO%TYPE,        /*ì‚¬ì—…ì£¼ íœ´ëŒ€í°ë²ˆí˜¸     */
+    v_O_Safekey      IN RTSD0100.O_SAFEKEY%TYPE,      /*ì‚¬ì—…ì£¼ ì¸ì¦ë²ˆí˜¸       */
+    v_C_Custnm       IN RTSD0100.C_CUSTNM%TYPE,       /*ë‹´ë‹¹ìž ëª…             */
+    v_C_Telno        IN RTSD0100.C_TELNO%TYPE,        /*ë‹´ë‹¹ìž ì „í™”ë²ˆí˜¸       */
+    v_Email_Addr     IN RTSD0100.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Busi_Type      IN RTSD0100.BUSI_TYPE%TYPE,      /*ì—…ì¢…                  */
+    v_Busi_Cond      IN RTSD0100.BUSI_COND%TYPE,      /*ì—…íƒœ                  */
+    v_Tax_Yn         IN RTSD0100.TAX_YN%TYPE,         /*ê°œì¸ì‚¬ì—…ìž ë©´ì„¸ì—¬ë¶€   */
+    v_Kunnr          IN RTSD0100.KUNNR%TYPE,          /*SAPê³ ê°ë²ˆí˜¸           */
     v_Ci_Cd          IN RTSD0100.CI_CD%TYPE,          /*CI                    */
     v_Di_Cd          IN RTSD0100.DI_CD%TYPE,          /*DI                    */
-    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Use_Yn         IN RTSD0100.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );    
 END Pkg_Rtsd0100;
-/

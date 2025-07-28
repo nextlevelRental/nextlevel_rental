@@ -1,121 +1,120 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0011 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0011
-   PURPOSE   ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® °ü¸®
+   PURPOSE   í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-07-22  jemcarry         1. Created this package body.
-   1.1        2018-02-19  wjim             [20180212_01] ¼±ÅÃÇü ÇÁ¸®¹Ì¾ö ¼­ºñ½º µµÀÔ 
+   1.1        2018-02-19  wjim             [20180212_01] ì„ íƒí˜• í”„ë¦¬ë¯¸ì—„ ì„œë¹„ìŠ¤ ë„ìž… 
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® Count
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0011Count(
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,            /*ÇÁ¸®¹Ì¾ö¼­ºñ½º      */
-    v_Seq            IN RTSD0011.SEQ%TYPE               /*¼ø¹ø                */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,            /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤      */
+    v_Seq            IN RTSD0011.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® Select
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0011 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*ÇÁ¸®¹Ì¾ö¼­ºñ½º        */
-    v_Seq            IN RTSD0011.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*°èÀý±¸ºÐ              */
-    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0011.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤        */
+    v_Seq            IN RTSD0011.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*ê³„ì ˆêµ¬ë¶„              */
+    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0011.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® Insert
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0011 (
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*ÇÁ¸®¹Ì¾ö¼­ºñ½º        */
-    v_Seq            IN RTSD0011.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*°èÀý±¸ºÐ              */
-    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤        */
+    v_Seq            IN RTSD0011.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*ê³„ì ˆêµ¬ë¶„              */
+    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® Update
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0011 (
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*ÇÁ¸®¹Ì¾ö¼­ºñ½º        */
-    v_Seq            IN RTSD0011.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*°èÀý±¸ºÐ              */
-    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤        */
+    v_Seq            IN RTSD0011.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*ê³„ì ˆêµ¬ë¶„              */
+    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® Delete
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0011 (
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*ÇÁ¸®¹Ì¾ö¼­ºñ½º        */
-    v_Seq            IN RTSD0011.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤        */
+    v_Seq            IN RTSD0011.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½º °ü¸® °ü¸®(IUD)
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤ ê´€ë¦¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0011 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*ÇÁ¸®¹Ì¾ö¼­ºñ½º        */
-    v_Seq            IN RTSD0011.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*°¡°ÝÀû¿ë ½ÃÀÛÀÏ       */
-    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*°¡°ÝÀû¿ë ¿Ï·áÀÏ       */
-    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*°èÀý±¸ºÐ              */
-    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ps_Cd          IN RTSD0011.PS_CD%TYPE,          /*í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤        */
+    v_Seq            IN RTSD0011.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Str_Day        IN RTSD0011.STR_DAY%TYPE,        /*ê°€ê²©ì ìš© ì‹œìž‘ì¼       */
+    v_End_Day        IN RTSD0011.END_DAY%TYPE,        /*ê°€ê²©ì ìš© ì™„ë£Œì¼       */
+    v_Season_Cd      IN RTSD0011.SEASON_CD%TYPE,      /*ê³„ì ˆêµ¬ë¶„              */
+    v_Use_Yn         IN RTSD0011.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTSD0011.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÇÁ¸®¹Ì¾ö¼­ºñ½ºÆË¾÷
+  -- í”„ë¦¬ë¯¸ì—„ì„œë¹„ìŠ¤íŒì—…
   *****************************************************************************/
   PROCEDURE p_sRtsd0011_preminumPopup (
       Ref_Cursor           IN OUT SYS_REFCURSOR,
-      v_applyDate          IN RTSD0011.STR_DAY%TYPE,              /*Àû¿ëÀÏÀÚ          */
-      v_cnt                IN RTSD0012.CNT_CD%TYPE,              /*Å¸ÀÌ¾î°¹¼ö         */
-      v_season            IN RTSD0011.SEASON_CD%TYPE,            /*°èÀý¿ë           */
-      v_Period_Cd       IN RTSD0012.PERIOD_CD%TYPE          /*±â°£ÄÚµå        */
+      v_applyDate          IN RTSD0011.STR_DAY%TYPE,              /*ì ìš©ì¼ìž          */
+      v_cnt                IN RTSD0012.CNT_CD%TYPE,              /*íƒ€ì´ì–´ê°¯ìˆ˜         */
+      v_season            IN RTSD0011.SEASON_CD%TYPE,            /*ê³„ì ˆìš©           */
+      v_Period_Cd       IN RTSD0012.PERIOD_CD%TYPE          /*ê¸°ê°„ì½”ë“œ        */
   );
   
   /*****************************************************************************
-  -- ¼±ÅÃÇü ÇÁ¸®¹Ì¾ö ¼­ºñ½º ÆË¾÷ Á¶È¸
-  -- 1) ÀÏÀÚ±¸ºÐ 
-      - ALL(ÀüÃ¼), TODAY(¿À´Ã), IN(Àû¿ëÀÏÀÚ)
+  -- ì„ íƒí˜• í”„ë¦¬ë¯¸ì—„ ì„œë¹„ìŠ¤ íŒì—… ì¡°íšŒ
+  -- 1) ì¼ìžêµ¬ë¶„ 
+      - ALL(ì „ì²´), TODAY(ì˜¤ëŠ˜), IN(ì ìš©ì¼ìž)
       
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2018-02-19  wjim             [20180212_01] ½Å±Ô °³¹ß 
+   1.1        2018-02-19  wjim             [20180212_01] ì‹ ê·œ ê°œë°œ 
   *****************************************************************************/
   PROCEDURE p_sRtsd0011_masterChoicePopup (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_dayTp           IN VARCHAR2                     /*ÀÏÀÚ±¸ºÐ            */
-    , v_applyDate       IN RTSD0011.STR_DAY%TYPE        /*Àû¿ëÀÏÀÚ            */
-    , v_ordId           IN RTSD0011.ORD_ID%TYPE         /*ÁÖ¹®±¸ºÐ(S029)      */
-    , v_chanCd          IN RTSD0011.CHAN_CD%TYPE        /*Ã¤³Î±¸ºÐ(S030)      */
-    , v_Season_Cd       IN RTSD0011.SEASON_CD%TYPE      /*°èÀý±¸ºÐ(S014)      */
+    , v_dayTp           IN VARCHAR2                     /*ì¼ìžêµ¬ë¶„            */
+    , v_applyDate       IN RTSD0011.STR_DAY%TYPE        /*ì ìš©ì¼ìž            */
+    , v_ordId           IN RTSD0011.ORD_ID%TYPE         /*ì£¼ë¬¸êµ¬ë¶„(S029)      */
+    , v_chanCd          IN RTSD0011.CHAN_CD%TYPE        /*ì±„ë„êµ¬ë¶„(S030)      */
+    , v_Season_Cd       IN RTSD0011.SEASON_CD%TYPE      /*ê³„ì ˆêµ¬ë¶„(S014)      */
   );
 
 END Pkg_Rtsd0011;
-/

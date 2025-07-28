@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0022 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0022
-   PURPOSE   Ä«µåÀÎÁõ ³»¿ª °ü¸®
+   PURPOSE   ì¹´ë“œì¸ì¦ ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,122 +10,122 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0022 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª Count
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0022Count(
-    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,        /*Ä«µåÀÎÁõÀÏÀÚ        */
-    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE         /*Ä«µåÀÎÁõ¼ø¹ø        */
+    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,        /*ì¹´ë“œì¸ì¦ì¼ìž        */
+    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE         /*ì¹´ë“œì¸ì¦ìˆœë²ˆ        */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª Select
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0022 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*Ä«µåÀÎÁõ¼ø¹ø          */
-    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*Ä«µå¹øÈ£              */
-    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*À¯È¿±â°£              */
-    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*¿¹±ÝÁÖ                */
-    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ÀÎÁõ¿äÃ»ÀÚ            */
-    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Mob_No         IN RTRE0022.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Email_Addr     IN RTRE0022.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*Ä«µåÈ®ÀÎ»óÅÂ          */
-    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*Ä«µå»çÄÚµå            */
+    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*ì¹´ë“œì¸ì¦ìˆœë²ˆ          */
+    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*ì¹´ë“œë²ˆí˜¸              */
+    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*ìœ íš¨ê¸°ê°„              */
+    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*ì˜ˆê¸ˆì£¼                */
+    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ì¸ì¦ìš”ì²­ìž            */
+    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Mob_No         IN RTRE0022.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Email_Addr     IN RTRE0022.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*ì¹´ë“œí™•ì¸ìƒíƒœ          */
+    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*ì¹´ë“œì‚¬ì½”ë“œ            */
     v_Batch_Key      IN RTRE0022.BATCH_KEY%TYPE,      /*BATCH KEY             */
-    v_Reg_Id         IN RTRE0022.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Reg_Id         IN RTRE0022.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª Insert
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0022 (
-    v_Ccert_Day      IN OUT RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Ccert_Seq      IN OUT RTRE0022.CCERT_SEQ%TYPE,      /*Ä«µåÀÎÁõ¼ø¹ø          */
-    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*Ä«µå¹øÈ£              */
-    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*À¯È¿±â°£              */
-    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*¿¹±ÝÁÖ                */
-    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ÀÎÁõ¿äÃ»ÀÚ            */
-    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Mob_No         IN OUT RTRE0022.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Email_Addr     IN OUT RTRE0022.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*Ä«µåÈ®ÀÎ»óÅÂ          */
-    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*Ä«µå»çÄÚµå            */
+    v_Ccert_Day      IN OUT RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Ccert_Seq      IN OUT RTRE0022.CCERT_SEQ%TYPE,      /*ì¹´ë“œì¸ì¦ìˆœë²ˆ          */
+    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*ì¹´ë“œë²ˆí˜¸              */
+    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*ìœ íš¨ê¸°ê°„              */
+    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*ì˜ˆê¸ˆì£¼                */
+    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ì¸ì¦ìš”ì²­ìž            */
+    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Mob_No         IN OUT RTRE0022.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Email_Addr     IN OUT RTRE0022.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*ì¹´ë“œí™•ì¸ìƒíƒœ          */
+    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*ì¹´ë“œì‚¬ì½”ë“œ            */
     v_Batch_Key      IN RTRE0022.BATCH_KEY%TYPE,      /*BATCH KEY             */
-    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2,
     v_Return_Message OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª Update
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0022 (
-    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*Ä«µåÀÎÁõ¼ø¹ø          */
-    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*Ä«µå¹øÈ£              */
-    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*À¯È¿±â°£              */
-    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*¿¹±ÝÁÖ                */
-    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ÀÎÁõ¿äÃ»ÀÚ            */
-    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Mob_No         IN RTRE0022.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Email_Addr     IN RTRE0022.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*Ä«µåÈ®ÀÎ»óÅÂ          */
-    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*Ä«µå»çÄÚµå            */
+    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*ì¹´ë“œì¸ì¦ìˆœë²ˆ          */
+    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*ì¹´ë“œë²ˆí˜¸              */
+    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*ìœ íš¨ê¸°ê°„              */
+    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*ì˜ˆê¸ˆì£¼                */
+    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ì¸ì¦ìš”ì²­ìž            */
+    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Mob_No         IN RTRE0022.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Email_Addr     IN RTRE0022.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*ì¹´ë“œí™•ì¸ìƒíƒœ          */
+    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*ì¹´ë“œì‚¬ì½”ë“œ            */
     v_Batch_Key      IN RTRE0022.BATCH_KEY%TYPE,      /*BATCH KEY             */
-    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Res_Cd         IN RTRE0022.RES_CD%TYPE,         /* ÀÀ´äÄÚµå*/
-    v_Res_Msg        IN RTRE0022.RES_MSG%TYPE,        /* ÀÀ´ä¸Þ½ÃÁö*/
+    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Res_Cd         IN RTRE0022.RES_CD%TYPE,         /* ì‘ë‹µì½”ë“œ*/
+    v_Res_Msg        IN RTRE0022.RES_MSG%TYPE,        /* ì‘ë‹µë©”ì‹œì§€*/
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª Delete
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0022 (
-    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*Ä«µåÀÎÁõ¼ø¹ø          */
-    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Ccert_Seq      IN RTRE0022.CCERT_SEQ%TYPE,      /*ì¹´ë“œì¸ì¦ìˆœë²ˆ          */
+    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ä«µåÀÎÁõ ³»¿ª °ü¸®(IUD)
+  -- ì¹´ë“œì¸ì¦ ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0022 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ccert_Day      IN OUT RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Ccert_Seq      IN OUT RTRE0022.CCERT_SEQ%TYPE,      /*Ä«µåÀÎÁõ¼ø¹ø          */
-    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*Ä«µå¹øÈ£              */
-    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*À¯È¿±â°£              */
-    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*¿¹±ÝÁÖ                */
-    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ÀÎÁõ¿äÃ»ÀÚ            */
-    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Mob_No         IN OUT RTRE0022.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Email_Addr     IN OUT RTRE0022.EMAIL_ADDR%TYPE,     /*E-MailÁÖ¼Ò            */
-    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*Ä«µåÈ®ÀÎ»óÅÂ          */
-    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*Ä«µå»çÄÚµå            */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ccert_Day      IN OUT RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Ccert_Seq      IN OUT RTRE0022.CCERT_SEQ%TYPE,      /*ì¹´ë“œì¸ì¦ìˆœë²ˆ          */
+    v_Card_No        IN RTRE0022.CARD_NO%TYPE,        /*ì¹´ë“œë²ˆí˜¸              */
+    v_Expire_Ym      IN RTRE0022.EXPIRE_YM%TYPE,      /*ìœ íš¨ê¸°ê°„              */
+    v_Owner_Nm       IN RTRE0022.OWNER_NM%TYPE,       /*ì˜ˆê¸ˆì£¼                */
+    v_Cust_Tp        IN RTRE0022.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0022.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0022.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Ccert_Id       IN RTRE0022.CCERT_ID%TYPE,       /*ì¸ì¦ìš”ì²­ìž            */
+    v_Cust_No        IN RTRE0022.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0022.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Mob_No         IN OUT RTRE0022.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Email_Addr     IN OUT RTRE0022.EMAIL_ADDR%TYPE,     /*E-Mailì£¼ì†Œ            */
+    v_Bkey_Chk       IN RTRE0022.BKEY_CHK%TYPE,       /*ì¹´ë“œí™•ì¸ìƒíƒœ          */
+    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*ì¹´ë“œì‚¬ì½”ë“œ            */
     v_Batch_Key      IN RTRE0022.BATCH_KEY%TYPE,      /*BATCH KEY             */
-    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_Res_Cd         IN RTRE0022.RES_CD%TYPE,         /* ÀÀ´äÄÚµå*/
-    v_Res_Msg        IN RTRE0022.RES_MSG%TYPE,        /* ÀÀ´ä¸Þ½ÃÁö*/
+    v_Reg_Id         IN RTRE0022.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
+    v_Res_Cd         IN RTRE0022.RES_CD%TYPE,         /* ì‘ë‹µì½”ë“œ*/
+    v_Res_Msg        IN RTRE0022.RES_MSG%TYPE,        /* ì‘ë‹µë©”ì‹œì§€*/
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -133,19 +133,18 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0022 AS
 
 
   /*****************************************************************************
-  --  Ä«µåÀÎÁõ ³»¿ª - Ä«µåÀÎÁõ ¼ø¹ø È¹µæ
+  --  ì¹´ë“œì¸ì¦ ë‚´ì—­ - ì¹´ë“œì¸ì¦ ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0022CcertSeq RETURN NUMBER;
   
   
   /*****************************************************************************
-  --  Ä«µåÀÎÁõ ³»¿ª  - Æ¯Á¤ÀÏ Ä«µå ÀÎÁõ ¼º°ø ¼ø¹ø È¹µæ
+  --  ì¹´ë“œì¸ì¦ ë‚´ì—­  - íŠ¹ì •ì¼ ì¹´ë“œ ì¸ì¦ ì„±ê³µ ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0022CcertChkSeq(
-    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*Ä«µåÀÎÁõÀÏÀÚ          */
-    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*Ä«µå»çÄÚµå            */
-    v_Card_No        IN RTRE0022.CARD_NO%TYPE         /*Ä«µå¹øÈ£              */
+    v_Ccert_Day      IN RTRE0022.CCERT_DAY%TYPE,      /*ì¹´ë“œì¸ì¦ì¼ìž          */
+    v_Cardcom_Cd     IN RTRE0022.CARDCOM_CD%TYPE,     /*ì¹´ë“œì‚¬ì½”ë“œ            */
+    v_Card_No        IN RTRE0022.CARD_NO%TYPE         /*ì¹´ë“œë²ˆí˜¸              */
     ) RETURN NUMBER;
 
 END Pkg_Rtre0022;
-/

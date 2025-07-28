@@ -28,7 +28,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0104 AS
    1.18       2021-02-18  kstka            [20210218_01] 렌탈료 할인금액 검증시 렌탈료 할인률 계산 로직 변경
    1.19       2022-01-04  kstka            [20220104_01] 채권매각일자 컬럼 추가
    1.20       2022-01-17  kstka            [20220117_01] kstka 렌탈고객등록 불가 체크로직 추가
-   1.21       2022-04-06  kstka            [20220406_01] TMS고도화 Reassign대응 
+   1.21       2022-04-06  kstka            [20220406_01] TMS고도화 Reassign대응
+   1.22       2024-11-21  백인천      	   [20241121_01] 채널구분 조회 항목 추가 SR2411-00731 
+   1.23       2024-11-22  백인천			   [20241122_01] 주문현황조회 조회항목 추가 SR2410-00286
+   1.24       2024-12-16  백인천			   [20241216_01] 사전 신용정보 확인 기능 추가 SR2411-00763
+   1.25       2025-04-18  10243054		   [20250418_01] 장착유형조회추가
 *******************************************************************************/
 
   /*****************************************************************************
@@ -1437,6 +1441,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0104 AS
    1.7        2018-03-01  wjim             [20180301_03] 프리미엄 서비스 추가
    1.8        2019-03-01  wjim             [20190301_01] '콜센터' 사용자 그룹에 전체 조회권한 부여
    1.9        2024-07-17  백인천             [20240717] '장착유형' 컬럼 추가
+   1.9        2024-07-17  백인천             [20240717] '장착유형' 컬럼 추가
+   1.24       2024-12-16  백인천			   [20241216_01] 사전 신용정보 확인 기능 추가 SR2411-00763
   *****************************************************************************/
   PROCEDURE p_sRtsd0104Status (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -1670,6 +1676,19 @@ SELECT A.*
                 ||' '||Pkg_Rtcm0051.f_sRtcm0051Codename('S004', B.FR_CD) CAR_KIND,    /*차종          */
                 B.STAT_CD,                                                            /*계약상태코드  */
                 Pkg_Rtcm0051.f_sRtcm0051Codename('S032', B.STAT_CD) AS STAT_NM,       /*계약상태명    */
+                CASE WHEN C.STAT_CD = '04' THEN CASE WHEN C.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND C.MFP_YN = 'N' THEN '계약중'
+                									 ELSE '계약종료'
+												 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(B.ORD_NO, B.CUST_NO) > 0 THEN '/선납'
+												 			 ELSE ''
+														 END
+					 ELSE '-'
+				 END AS STAT_NM_DETAIL,	/*상태상세*/
+				NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+					   FROM RTSD0109 X
+					  WHERE X.ORD_NO = B.ORD_NO
+						AND X.ARRE_AMT > 0
+						AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+						AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
                 A.CUST_TP,
                 --Pkg_Rtcm0051.f_sRtcm0051CodeName('S214',E.CHAN_CD) AS CHAN_NM,          /*채널판매구분*/
                 --Pkg_Rtcm0051.f_sRtcm0051CodeName('S096',E.HSHOP_GB) AS HSHOP_GB_NM,          /* 홈쇼핑구분코드명 */
@@ -1684,22 +1703,21 @@ SELECT A.*
                 A.POS_CD,                                                              /*우편번호*/
                 A.ADDR1,                                                               /*주소1*/
                 A.ADDR2,
-                (SELECT CASE WHEN MFP_YN = 'Y' THEN
-                                CASE WHEN END_TP = 'E' THEN '중도완납' 
-                                     ELSE CASE WHEN (SELECT COUNT(*) FROM RTTEMPIWJ_190429_01 X WHERE X.COL_01 = Y.ORD_NO) > 0 THEN '채권매각' ELSE '중도해지' END 
-                                END
-                             ELSE ''                                    
-                             END
-                        FROM RTSD0108 Y 
-                        WHERE Y.ORD_NO = B.ORD_NO
-                        AND ROWNUM = 1) AS MFP_YN,                                                                /*주소2*/
-                (SELECT BOND_SEL_DAY FROM RTSD0108 X WHERE X.ORD_NO = B.ORD_NO) AS BOND_SEL_DAY, --[20220104_01] kstka 채권매각일자 
+                CASE WHEN C.MFP_YN = 'Y' THEN CASE WHEN C.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(C.BOND_SEL_CD) || '차 채권매각'
+												   WHEN C.END_TP = 'E' THEN '중도완납'
+												   ELSE '중도해지'
+											   END
+					 ELSE '-'
+				 END AS MFP_YN,	/*완납/해지/채권*/
+                C.BOND_SEL_DAY,	/*채권매각*/
                 B.CHAN_CD,
                 Pkg_EXIF0004.f_sExif0004O2OAgency(B.AGENCY_CD) AS O2O_YN
         FROM    RTSD0100 A,
-                RTSD0104 B--,
+                RTSD0104 B,
+                RTSD0108 C--,
                 ---RTSD0020 E
         WHERE   A.CUST_NO = B.CUST_NO
+        AND     B.ORD_NO  = C.ORD_NO(+)
         --AND     B.SALE_CD = E.SALE_CD
         AND     A.CUST_TP = DECODE( v_custTp , NULL, A.CUST_TP , v_custTp)
         AND     B.CHAN_CD = DECODE( v_chanCd , NULL, B.CHAN_CD , v_chanCd)
@@ -1747,6 +1765,19 @@ SELECT A.*
                 ||' '||Pkg_Rtcm0051.f_sRtcm0051Codename('S004', B.FR_CD) CAR_KIND,    /*차종          */
                 B.STAT_CD,                                                            /*계약상태코드  */
                 Pkg_Rtcm0051.f_sRtcm0051Codename('S032', B.STAT_CD) AS STAT_NM,       /*계약상태명    */
+                CASE WHEN C.STAT_CD = '04' THEN CASE WHEN C.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND C.MFP_YN = 'N' THEN '계약중'
+                									 ELSE '계약종료'
+												 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(B.ORD_NO, B.CUST_NO) > 0 THEN '/선납'
+												 			 ELSE ''
+														 END
+					 ELSE '-'
+				 END AS STAT_NM_DETAIL,	/*상태상세*/
+				NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+					   FROM RTSD0109 X
+					  WHERE X.ORD_NO = B.ORD_NO
+						AND X.ARRE_AMT > 0
+						AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+						AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
                 A.CUST_TP,
                 --Pkg_Rtcm0051.f_sRtcm0051CodeName('S214',E.CHAN_CD) AS CHAN_NM,          /*채널판매구분*/
                 --Pkg_Rtcm0051.f_sRtcm0051CodeName('S096',E.HSHOP_GB) AS HSHOP_GB_NM,          /* 홈쇼핑구분코드명 */
@@ -1761,22 +1792,21 @@ SELECT A.*
                 A.POS_CD,                                                              /*우편번호*/
                 A.ADDR1,                                                               /*주소1*/
                 A.ADDR2,
-                (SELECT CASE WHEN MFP_YN = 'Y' THEN
-                                CASE WHEN END_TP = 'E' THEN '중도완납' 
-                                     ELSE CASE WHEN (SELECT COUNT(*) FROM RTTEMPIWJ_190429_01 X WHERE X.COL_01 = Y.ORD_NO) > 0 THEN '채권매각' ELSE '중도해지' END 
-                                END
-                             ELSE ''                                    
-                             END
-                        FROM RTSD0108 Y 
-                        WHERE Y.ORD_NO = B.ORD_NO
-                        AND ROWNUM = 1) AS MFP_YN,                                                               /*주소2*/
-                (SELECT BOND_SEL_DAY FROM RTSD0108 X WHERE X.ORD_NO = B.ORD_NO) AS BOND_SEL_DAY, --[20220104_01] kstka 채권매각일자
+                CASE WHEN C.MFP_YN = 'Y' THEN CASE WHEN C.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(C.BOND_SEL_CD) || '차 채권매각'
+												   WHEN C.END_TP = 'E' THEN '중도완납'
+												   ELSE '중도해지'
+											   END
+					 ELSE '-'
+				 END AS MFP_YN,	/*완납/해지/채권*/
+                C.BOND_SEL_DAY,	/*채권매각*/
                 B.CHAN_CD,
                 Pkg_EXIF0004.f_sExif0004O2OAgency(B.AGENCY_CD) AS O2O_YN  
         FROM    RTSD0100 A,
-                RTSD0104 B--,
+                RTSD0104 B,
+                RTSD0108 C--,
                 ---RTSD0020 E
         WHERE   A.CUST_NO = B.CUST_NO
+        AND     B.ORD_NO  = C.ORD_NO(+)
         --AND     B.SALE_CD = E.SALE_CD
         AND     A.CUST_TP = DECODE( v_custTp , NULL, A.CUST_TP , v_custTp)
         AND     B.CHAN_CD = DECODE( v_chanCd , NULL, B.CHAN_CD , v_chanCd)
@@ -2260,6 +2290,8 @@ SELECT A.*
    ---------  ----------  ---------------  -------------------------------------
    1.0        2018-12-03  박 철            최초작성
    1.15       2019-12-21  kstka            [20191221_01] O2O연계 컬럼 추가
+   1.23       2024-11-22  백인천			   [20241122_01] 주문현황조회 조회항목 추가
+   1.25       2025-04-18  10243054		   [20250418_01] 장착유형조회추가
   *****************************************************************************/
   PROCEDURE p_sRtsdContractStatusNew (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -2352,6 +2384,35 @@ SELECT A.*
                 A.BOND_SEL_DAY,      --[20220104_01] kstka 채권매각일자
                 D.VBELN_R,           --[20230920_1] kstka 취소오더번호
                 I.MAT_CD              --[20230920_1] kstka 제품코드
+                , CASE 
+	                WHEN NVL(
+	                	(SELECT  SUM( NVL(ARRE_AMT,0) )
+		                FROM    RTSD0109
+		                WHERE   ORD_NO = A.ORD_NO
+		                AND     ARRE_AMT > 0
+		                AND     ZFB_DAY <= TO_CHAR( SYSDATE, 'YYYYMMDD' )
+		                AND     SCD_STAT = 'S' )
+		            , 0) > 0 THEN '연체중'
+	              ELSE ''
+	              END AS PAID_STATE	-- 수납상태
+                , (SELECT COUNT(*) FROM RTSD0104 WHERE CUST_NO = A.CUST_NO AND STAT_CD != '06')	AS ORD_COUNT	-- 현재계약건수
+                , CASE
+	                WHEN NVL(
+	                	(SELECT  COUNT(*)
+						  FROM  RTRE0400
+						 WHERE  1 = 1
+						   AND  ORD_NO = A.ORD_NO
+						   AND  CUST_NO = A.CUST_NO)
+		            , 0) > 0 THEN '채권매각'
+--		            	WHEN (SELECT TRUNC(MONTHS_BETWEEN(NOW(), C.BIRTH_DAY)/12) AS AGE FROM DUAL) < 19 THEN '채권매각, 연령제한'
+--		            	WHEN (SELECT TRUNC(MONTHS_BETWEEN(NOW(), C.BIRTH_DAY)/12) AS AGE FROM DUAL) > 75 THEN '채권매각, 연령제한'
+--		           		ELSE '채권매각'
+--		           		END
+		           	ELSE ''
+		          END AS RO_VAN		-- 기타제한사유
+		          , '('||C.POS_CD||')'||' '||C.ADDR1||' '||C.ADDR2 AS ADDR_TEXT		-- 주소
+		          , NVL(B.INST_CD, '1030') AS INST_CD											-- 장착유형코드
+		          , Pkg_Rtcm0051.f_sRtcm0051Codename('S304', NVL(B.INST_CD, '1030')) AS INST_NM	-- 장착유형이름
         FROM    RTSD0108 A INNER JOIN RTSD0104 B ON A.ORD_NO = B.ORD_NO
                            INNER JOIN RTSD0100 C ON A.CUST_NO = C.CUST_NO
                            LEFT OUTER JOIN RTSD0115 D ON A.ORD_NO = D.ORD_NO AND D.TRANS_TP = 'N'
@@ -2361,7 +2422,7 @@ SELECT A.*
                            INNER JOIN RTSD0007 H ON A.AGENCY_CD = H.AGENCY_CD
                            INNER JOIN RTSD0106 I ON A.ORD_NO = I.ORD_NO
         WHERE   A.ORD_NO = v_Ord_No;
-
+       
     ELSE
 
         OPEN Ref_Cursor FOR
@@ -2387,7 +2448,7 @@ SELECT A.*
                                 CASE WHEN END_TP = 'E' THEN '중도완납' 
                                      ELSE CASE WHEN (SELECT COUNT(*) FROM RTTEMPIWJ_190429_01 X WHERE X.COL_01 = Y.ORD_NO) > 0 THEN '채권매각' ELSE '중도해지' END 
                                 END
-                             ELSE ''                                    
+                             ELSE ''
                              END
                         FROM RTSD0108 Y 
                         WHERE Y.ORD_NO = A.ORD_NO
@@ -2439,6 +2500,35 @@ SELECT A.*
                 ''          AS BOND_SEL_DAY,      --[20220104_01] kstka 채권매각일자
                 D.VBELN_R,            --[20230920_1] kstka 취소오더번호
                 I.MAT_CD              --[20230920_1] kstka 제품코드
+                , CASE 
+	                WHEN NVL(
+	                	(SELECT  SUM( NVL(ARRE_AMT,0) )
+		                FROM    RTSD0109
+		                WHERE   ORD_NO = A.ORD_NO
+		                AND     ARRE_AMT > 0
+		                AND     ZFB_DAY <= TO_CHAR( SYSDATE, 'YYYYMMDD' )
+		                AND     SCD_STAT = 'S' )
+		            , 0) > 0 THEN '연체중'
+	              ELSE ''
+	              END AS PAID_STATE	-- 수납상태
+                , (SELECT COUNT(*) FROM RTSD0104 WHERE CUST_NO = A.CUST_NO AND STAT_CD != '06')	AS ORD_COUNT	-- 현재계약건수
+                , CASE
+	                WHEN NVL(
+	                	(SELECT  COUNT(*)
+						  FROM  RTRE0400
+						 WHERE  1 = 1
+						   AND  ORD_NO = A.ORD_NO
+						   AND  CUST_NO = A.CUST_NO)
+		            , 0) > 0 THEN '채권매각'
+--		            	WHEN (SELECT TRUNC(MONTHS_BETWEEN(NOW(), C.BIRTH_DAY)/12) AS AGE FROM DUAL) < 19 THEN '채권매각, 연령제한'
+--		            	WHEN (SELECT TRUNC(MONTHS_BETWEEN(NOW(), C.BIRTH_DAY)/12) AS AGE FROM DUAL) > 75 THEN '채권매각, 연령제한'
+--		           		ELSE '채권매각'
+--		           		END
+		           	ELSE ''
+		          END AS RO_VAN		-- 기타제한사유
+		          , '('||C.POS_CD||')'||' '||C.ADDR1||' '||C.ADDR2 AS ADDR_TEXT		-- 주소
+		          , NVL(A.INST_CD, '1030') AS INST_CD											-- 장착유형코드
+		          , Pkg_Rtcm0051.f_sRtcm0051Codename('S304', NVL(A.INST_CD, '1030')) AS INST_NM	-- 장착유형이름
         FROM    RTSD0104 A INNER JOIN RTSD0100 C ON A.CUST_NO = C.CUST_NO
                            LEFT OUTER JOIN RTSD0115 D ON A.ORD_NO = D.ORD_NO AND D.TRANS_TP = 'N'
                            LEFT OUTER JOIN RTSD0121 E ON A.ORD_NO = E.ORD_NO
@@ -3868,7 +3958,8 @@ SELECT A.*
    ---------  ----------  ---------------  -------------------------------------
    1.3        2017-09-28  wjim             [20170922_03] 조회 항목 추가
                                            - 가계약번호
-   1.10       2019-05-24  wjim             [20190524_01] 휴대폰 추가                                           
+   1.10       2019-05-24  wjim             [20190524_01] 휴대폰 추가
+   1.22       2024-11-21  백인천      	   [20241121_01] 채널구분 조회 항목 추가 SR2411-00731                                           
   *****************************************************************************/
   PROCEDURE p_sRtsd0104StatusAgent (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
@@ -3879,7 +3970,8 @@ SELECT A.*
     v_Cust_No        IN RTSD0104.CUST_NO%TYPE,        /*고객번호              */
     v_Proc_Fday      IN RTSD0104.PROC_DAY%TYPE,       /*장착일자FROM          */
     v_Proc_Tday      IN RTSD0104.PROC_DAY%TYPE,       /*장착일자TO            */
-    v_EmpNo_Yn       IN VARCHAR2                      /*임직원상품여부            */
+    v_EmpNo_Yn       IN VARCHAR2,                     /*임직원상품여부          */
+    v_Chan_Cd     	 IN VARCHAR2               		  /*채널구분               */
     ) IS
 
     v_Org_Main_Yn  RTSD0113.ORG_MAIN_YN%TYPE := 'N';
@@ -4058,6 +4150,11 @@ SELECT A.*
     AND     A.CUST_NO    = D.CUST_NO
     AND     A.ORD_AGENT  = E.ORD_AGENT(+)
     AND     A.ORD_NO     = F.ORD_NO(+)
+    AND     (v_Chan_Cd IS NULL OR A.CHAN_CD  IN (SELECT  REGEXP_SUBSTR(v_Chan_Cd,'[^|]+',1,LEVEL)
+                                                   FROM    DUAL
+                                       CONNECT BY LEVEL <= REGEXP_COUNT(v_Chan_Cd, '[^|]+')
+                       )
+            )
     AND     ( 
                 (v_EmpNo_Yn = 'Y' AND A.SALE_CD    IN (SELECT SALE_CD FROM RTSD0020 WHERE PRDT_GRP_DTL = '02' AND USE_YN = 'Y'))
                 OR
@@ -7356,13 +7453,26 @@ PROCEDURE p_sRtsd0104_ordNoList3PoPup (
                 END SALE_CD_DC,
                 B.SUM_MON_AMT,
                 B.PAY_DD,
-                (CASE WHEN A.MFP_YN = 'Y' THEN
-                                CASE WHEN A.END_TP = 'E' THEN '중도완납' 
-                                     ELSE CASE WHEN (SELECT COUNT(*) FROM RTTEMPIWJ_190429_01 X WHERE X.COL_01 = A.ORD_NO) > 0 THEN '채권매각' ELSE '중도해지' END 
-                                END
-                             ELSE ''                                    
-                             END) AS MFP_YN,
-                A.BOND_SEL_DAY
+                CASE WHEN A.MFP_YN = 'Y' THEN CASE WHEN A.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(A.BOND_SEL_CD) || '차 채권매각'
+												   WHEN A.END_TP = 'E' THEN '중도완납'
+												   ELSE '중도해지'
+											   END
+					 ELSE '-'
+				 END AS MFP_YN,	/*완납/해지/채권*/
+				A.BOND_SEL_DAY,	/*채권매각*/
+				NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+					   FROM RTSD0109 X
+					  WHERE X.ORD_NO = B.ORD_NO
+						AND X.ARRE_AMT > 0
+						AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+						AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
+				CASE WHEN A.STAT_CD = '04' THEN CASE WHEN A.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND A.MFP_YN = 'N' THEN '계약중'
+                									 ELSE '계약종료'
+												 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(B.ORD_NO, B.CUST_NO) > 0 THEN '/선납'
+												 			 ELSE ''
+														 END
+					 ELSE '-'
+				 END AS STAT_NM_DETAIL	/*상태상세*/
         FROM    RTSD0108 A INNER JOIN RTSD0104 B ON A.ORD_NO = B.ORD_NO
                            INNER JOIN RTSD0100 C ON A.CUST_NO = C.CUST_NO
                            LEFT OUTER JOIN RTSD0115 D ON A.ORD_NO = D.ORD_NO AND D.TRANS_TP = 'N'
@@ -7447,13 +7557,26 @@ PROCEDURE p_sRtsd0104_ordNoList3PoPup (
                 END SALE_CD_DC,
                 A.SUM_MON_AMT,
                 A.PAY_DD,
-                CASE WHEN G.MFP_YN = 'Y' THEN
-                                CASE WHEN G.END_TP = 'E' THEN '중도완납' 
-                                     ELSE CASE WHEN (SELECT COUNT(*) FROM RTTEMPIWJ_190429_01 X WHERE X.COL_01 = G.ORD_NO) > 0 THEN '채권매각' ELSE '중도해지' END 
-                                END
-                             ELSE ''                                    
-                             END AS MFP_YN,
-                G.BOND_SEL_DAY
+                CASE WHEN G.MFP_YN = 'Y' THEN CASE WHEN G.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(G.BOND_SEL_CD) || '차 채권매각'
+												   WHEN G.END_TP = 'E' THEN '중도완납'
+												   ELSE '중도해지'
+											   END
+					 ELSE '-'
+				 END AS MFP_YN,	/*완납/해지/채권*/
+				G.BOND_SEL_DAY,	/*채권매각*/
+                NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+					   FROM RTSD0109 X
+					  WHERE X.ORD_NO = A.ORD_NO
+						AND X.ARRE_AMT > 0
+						AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+						AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
+                CASE WHEN G.STAT_CD = '04' THEN CASE WHEN G.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND G.MFP_YN = 'N' THEN '계약중'
+                									 ELSE '계약종료'
+												 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(A.ORD_NO, A.CUST_NO) > 0 THEN '/선납'
+												 			 ELSE ''
+														 END
+					 ELSE '-'
+				 END AS STAT_NM_DETAIL	/*상태상세*/
         FROM    RTSD0104 A INNER JOIN RTSD0100 C ON A.CUST_NO = C.CUST_NO
                            LEFT OUTER JOIN RTSD0115 D ON A.ORD_NO = D.ORD_NO AND D.TRANS_TP = 'N'
                            LEFT OUTER JOIN RTSD0121 E ON A.ORD_NO = E.ORD_NO

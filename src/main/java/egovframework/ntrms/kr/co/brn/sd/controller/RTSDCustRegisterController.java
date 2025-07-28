@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -29,70 +30,70 @@ import egovframework.rte.fdl.property.EgovPropertyService;
 @Controller
 public class RTSDCustRegisterController {
 	protected Log logger = LogFactory.getLog(this.getClass());	
-	
+
 	@Resource(name = "propertiesService")
 	protected EgovPropertyService propertiesService;
 
 	@Resource(name="rTSDCustRegisterService")
 	RTSDCustRegisterService rTSDCustRegisterService;
-	
+
 	@Resource(name="commonService")
 	CommonService commonService;
-	
+
 	@RequestMapping("/rtms/sd/initRTCMCustRegister.do") 
 	public ModelAndView initRTCMCustRegister(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			inVar.put("cdGrpCd", "S024");
 			inVar.put("useYn", "Y");
 			Map dsCustTp = commonService.listCommInfo(inVar);
 			Map dsBankCustTp = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S034");
 			inVar.put("useYn", "Y");
 			Map dsCertification  = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S026");
 			inVar.put("useYn", "Y");
 			Map dsGenderCd = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S027");
 			inVar.put("useYn", "Y");
 			Map dsLfcd = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S039");
 			inVar.put("useYn", "Y");
 			Map dsMobFirm = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S042");
 			inVar.put("useYn", "Y");
 			Map dsEmailAddr2 = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S025");
 			inVar.put("useYn", "Y");
 			Map dsCustTp2 = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "R001");
 			inVar.put("useYn", "Y");
 			Map dsBankCd = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "C004");
 			inVar.put("useYn", "Y");
 			Map dsUseYn = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S047");
 			inVar.put("useYn", "Y");
 			Map dsSafekeyResult = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S071");
 			inVar.put("useYn", "Y");
 			Map dsNagYn = commonService.listCommInfo(inVar);
-			
+
 			List listDsCustTp			= (List)dsCustTp.get("result");	
 			List listDsCertification	= (List)dsCertification.get("result");
 			List listDsGenderCd			= (List)dsGenderCd.get("result");
@@ -105,7 +106,7 @@ public class RTSDCustRegisterController {
 			List use					= (List)dsUseYn.get("result");
 			List listDsSafekeyResult	= (List)dsSafekeyResult.get("result");
 			List listDsNagYn			= (List)dsNagYn.get("result");
-			
+
 			DataSetMap mapDsCustTp 			= new DataSetMap();
 			DataSetMap mapDsCertification 	= new DataSetMap();
 			DataSetMap mapDsGenderCd 		= new DataSetMap();
@@ -118,8 +119,8 @@ public class RTSDCustRegisterController {
 			DataSetMap useType 				= new DataSetMap();
 			DataSetMap mapDsSafekeyResult 	= new DataSetMap();
 			DataSetMap mapDsNagYn 			= new DataSetMap();
-			
-			
+
+
 			mapDsCustTp.setRowMaps(listDsCustTp);
 			mapDsCertification.setRowMaps(listDsCertification);
 			mapDsGenderCd.setRowMaps(listDsGenderCd);
@@ -132,7 +133,7 @@ public class RTSDCustRegisterController {
 			useType.setRowMaps(use);
 			mapDsSafekeyResult.setRowMaps(listDsSafekeyResult);
 			mapDsNagYn.setRowMaps(listDsNagYn);
-			
+
 			outDataset.put("mapDsCustTp", mapDsCustTp);
 			outDataset.put("mapDsCertification", mapDsCertification);
 			outDataset.put("mapDsGenderCd",	mapDsGenderCd);
@@ -145,13 +146,13 @@ public class RTSDCustRegisterController {
 			outDataset.put("useType", useType);
 			outDataset.put("mapDsSafekeyResult", mapDsSafekeyResult);
 			outDataset.put("mapDsNagYn", mapDsNagYn);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -159,7 +160,7 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/saveBeforSafeKeyConfirm.do") 
 	public ModelAndView saveBeforSafeKeyConfirm(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -168,17 +169,17 @@ public class RTSDCustRegisterController {
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			Map <String, Object> outVal			= xpDto.getOutVariableMap();
-			
+
 			String selectSafekey = (String)rTSDCustRegisterService.safeKeyConfirm(inVar);
-			
+
 			outVal.put("selectSafekey", selectSafekey);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -186,7 +187,7 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/saveBeforSafeKeySelect.do") 
 	public ModelAndView saveBeforSafeKeySelect(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -195,17 +196,17 @@ public class RTSDCustRegisterController {
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			Map <String, Object> outVal			= xpDto.getOutVariableMap();
-			
+
 			String resultCustNo = (String)rTSDCustRegisterService.countSafeKey(inVar);
-			
+
 			outVal.put("resultCustNo", resultCustNo);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -213,8 +214,8 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
-	
+
+
 	@RequestMapping("/rtms/sd/safeKeyConfirm.do") 
 	public ModelAndView safeKeyConfirm(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -223,17 +224,17 @@ public class RTSDCustRegisterController {
 		try
 		{
 			Map session = (Map)req.getSession().getAttribute("User");
-			
+
 			Map <String, Object> inVar 						= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset 			= xpDto.getOutDataSetMap();
 			Map <String, Object> outVal						= xpDto.getOutVariableMap();
-			
+
 			inVar.put("regId", session.get("userId"));
 			String resultSafekey = "0";
 			String resultCustNo  = "0"; 
-			
+
 			String selectSafekey = (String)rTSDCustRegisterService.safeKeyConfirm(inVar);
-			
+
 			//safekey가 존재하지 않는경우 신규발급을 위해 인터페이스 실행
 			if( selectSafekey.equals("0") ){
 				//본인인증 I/F
@@ -242,21 +243,21 @@ public class RTSDCustRegisterController {
 				int random5 = (int) (Math.random()*10);				int random6 = (int) (Math.random()*10);				int random7 = (int) (Math.random()*10);				int random8 = (int) (Math.random()*10);
 				int random9 = (int) (Math.random()*10);				int random10 = (int) (Math.random()*10);			int random11 = (int) (Math.random()*10);			int random12 = (int) (Math.random()*10);
 				int random13 = (int) (Math.random()*10);
-				
+
 				String random ="";
-				
+
 				random += Integer.toString(random1);	random += Integer.toString(random2);	random += Integer.toString(random3);	random += Integer.toString(random4);	random += Integer.toString(random5);
 				random += Integer.toString(random6);	random += Integer.toString(random7);	random += Integer.toString(random8);	random += Integer.toString(random9);	random += Integer.toString(random10);
 				random += Integer.toString(random11);	random += Integer.toString(random12);	random += Integer.toString(random13);
-				
+
 				resultSafekey=random;
 				inVar.put("safekey", resultSafekey);
-				
+
 				Map loginInfo = (Map) req.getSession().getAttribute("User");
-				
+
 				DataSetMap dsm = new DataSetMap();
 				Map paramMap = new HashMap();
-				
+
 				paramMap.put(NexacroConstant.DATASET_ROW_TYPE,  DataSet.ROW_TYPE_UPDATED);
 				paramMap.put("dvsn", "I");
 				paramMap.put("safekey", resultSafekey);
@@ -267,18 +268,18 @@ public class RTSDCustRegisterController {
 				paramMap.put("mobNo", inVar.get("mobNo"));
 				paramMap.put("genderCd", inVar.get("genderCd"));
 				dsm.add(paramMap);
-				
+
 				inVar.put("regId",  loginInfo.get("userId"));
 				inVar.put("inDsMap",  dsm);
 				inVar.put("sqlnamespace", "cust.saveSafeKey");
-				*/
+				 */
 				//Map result = rTSDCustRegisterService.saveSafeKey(inVar);
-				
+
 				//1. IR을 통해 NICE 에등록된 safekey를 우선적으로 조회(결과값을 rTSDCustRegisterService.saveSafeKey(inVar) 로 저장처리
 				//2. IR로 조회된 결과가 없는경우 아래 팝업출력(이후 결과값을 rTSDCustRegisterService.saveSafeKey(inVar) 로 저장처리
-				
+
 				//IR전문통신은 추후에 추가하도록
-				
+
 				//소켓을 통해 IR전문통신전 RTSD0201 테이블 이력생성(실행시) 입력값등록
 				/*******************************************************************************************************
 				 *  공통부 정의 Start
@@ -286,12 +287,12 @@ public class RTSDCustRegisterController {
 				String ip 		= propertiesService.getString("doc.send.host");
 				String port 	= propertiesService.getString("doc.send.port");
 				String size     = propertiesService.getString("ir.send.docSize");
-				
+
 				//String ip = "172.17.163.147";
 				//String port = "8090";
 				/*String userNm2 = (String)inVar.get("custNm");
 				userNm2 = new String(userNm2.getBytes(), "KSC5601");*/
-				
+
 				/*******************************************************************************************************
 				 *  공통부 정의 Start
 				 *******************************************************************************************************/
@@ -310,29 +311,29 @@ public class RTSDCustRegisterController {
 				String niceDocNo				= "          ";															//NICE 전문 관리번호
 				String niceDocSendTime			= "              ";														//NICE 전문 전송시간
 				String sendSpace				= "                 ";													//공란
-				
+
 				/*******************************************************************************************************
 				 *  개별요청부 Start
 				 *******************************************************************************************************/
 				String userBirthDay				= (String)inVar.get("birthDay");								//생년월일
-				
+
 				String userName					= (String)inVar.get("custNm");//inVar.get("custNm") + "                                  ";	//성명
-				
-				
+
+
 				int totalSize = 40;
 				int nmSize = userName.getBytes("ksc5601").length;
 				int len = totalSize - nmSize;
 				for(int i = 0; i<len; i++) {
 					userName = userName + " ";
 				}
-				
+
 				//String userName					= userNm2 + "                                  ";	//성명
 				String userGenderCd				= (String)inVar.get("genderCd");								//성별
 				// 전문형식변경(성별)
 				String userGenderCd_			= "2".equals(userGenderCd) ? "0" : userGenderCd;
 				String repeatCnt				= "01";															//반복부 건수
 				String	sendSpace2				= "                                                 ";				//공란2
-				
+
 				/*******************************************************************************************************
 				 *  반복부01 Start
 				 *******************************************************************************************************/
@@ -353,16 +354,16 @@ public class RTSDCustRegisterController {
 					handPhone03 = mob.substring(6, 10);
 					handPhone04 = "";
 				}
-				
+
 				String sendSpace3					= "                                                                                                                                                                                                                                            ";					//공란2
-				
-				
+
+
 				DataSetMap dsm = new DataSetMap();
 				Map paramMap  = new HashMap();
 				//상태값을 신규생성상태로 세팅한다.
 				paramMap.put(NexacroConstant.DATASET_ROW_TYPE,  1);
 				paramMap.put("dvsn", 					"I");
-				
+
 				paramMap.put("custNm",  			inVar.get("custNm"));					//신청자
 				paramMap.put("birthDay", 			inVar.get("birthDay"));					//신청자생년월일
 				paramMap.put("genderCd", 			inVar.get("genderCd"));					//성별
@@ -388,23 +389,23 @@ public class RTSDCustRegisterController {
 				paramMap.put("iNd17N",              "");              						//휴대폰번호        
 				paramMap.put("iNd18N",              userGenderCd);             				//성별              
 				paramMap.put("iNd19N",              sendSpace2);              				//공란              
-				           
-				
+
+
 				dsm.add(paramMap);
 				inVar.put("inDsMap",  dsm);
 				inVar.put("sqlnamespace", "custGrp.createIRSafeKey");
 				Map resultMap = rTSDCustRegisterService.createIRSafeKey(inVar);
 				//저장에성공한경우 IR Interface를 수행한다.
 				//소켓통신결과 로 RTSD0201 테이블 이력업데이트
-				
+
 				Map  irMap = new HashMap();
 				irMap.put("ip", ip);
 				irMap.put("port", port);
 				irMap.put("headerSize", size);
-				
+
 				//NICE IR SAFEKEY 전문데이타
 				List list = new ArrayList();
-				
+
 				list.add(transactionCode);
 				list.add(docSendGigwanCd);
 				list.add(docGbCd);
@@ -418,30 +419,30 @@ public class RTSDCustRegisterController {
 				list.add(niceDocNo);
 				list.add(niceDocSendTime);
 				list.add(sendSpace);
-				
+
 				list.add(userBirthDay);
 				list.add(userName);
 				//list.add(userGenderCd);
 				list.add(userGenderCd_);
 				list.add(repeatCnt);
 				list.add(sendSpace2);
-				
+
 				list.add(sendInfoGb01);
 				list.add(handPhone01);
 				list.add(handPhone02);
 				list.add(handPhone03);
 				list.add(handPhone04);
 				list.add(sendSpace3);
-				
+
 				irMap.put("irDsList", list);
 				//소켓을 통해 IR SafeKey를 조회한다.
 				PCISocketProcess process = new PCISocketProcess();
 				String resultString = process.getIRSafeKey(irMap);
-				
+
 				logger.debug("=======================================");
 				logger.debug("결과 메시지[" + resultString + "]");
 				logger.debug("=======================================");
-				
+
 				String returnDocCd				= "";
 				String transactionCode2        	= "";
 				String docSendGigwanCd2     	= "";
@@ -462,55 +463,55 @@ public class RTSDCustRegisterController {
 				String safekey			        = "";
 				String	matchingCd		       	= "";
 				String	sendSpace22		        = "";
-				
+
 				//응답코드로 업데이트처리(정상적인 리턴인경우만 처리하도록 한다.
 				//byte[] b = resultString.getBytes("ksc5601");
 				byte[] b = resultString.getBytes();
 				byte[] b2 = resultString.getBytes("utf-8");
-				
+
 				//if(resultString.length() >= 210) { 
-					
-					
-					returnDocCd			  = new String(b, 0, 10);	//
-					logger.debug("returnDocCd			         " + returnDocCd			);
-					docSendGigwanCd2      = new String(b, 10, 9);
-					logger.debug("docSendGigwanCd2               " + docSendGigwanCd2       );
-					docGbCd2			  = new String(b, 19, 4);
-					logger.debug("docGbCd2			             " + docGbCd2			    );
-					bizGbCd2			  = new String(b, 23, 5);
-					logger.debug("bizGbCd2			             " + bizGbCd2			    );
-					sendReceiveFlag2	  = new String(b, 28, 1);
-					logger.debug("sendReceiveFlag2	             " + sendReceiveFlag2	    );
-					terminalGB2		      = new String(b, 29, 3);
-					logger.debug("terminalGB2		             " + terminalGB2		    );
-					returnCd2		      = new String(b, 32, 4);
-					logger.debug("returnCd2		                 " + returnCd2		        );
-					gigwanId2		      = new String(b, 36, 9);
-					logger.debug("gigwanNo2		                 " + gigwanNo2		        );
-					gigwanNo2		      = new String(b, 45, 10);
-					logger.debug("gigwanId2		                 " + gigwanId2		        );
-					gigwanSendTime2	      = new String(b, 55, 14);
-					logger.debug("gigwanSendTime2	             " + gigwanSendTime2	    );
-					niceDocNo2		      = new String(b, 69, 10);
-					logger.debug("niceDocNo2		             " + niceDocNo2		        );
-					niceDocSendTime2	  = new String(b, 79, 14);
-					logger.debug("niceDocSendTime2	             " + niceDocSendTime2	    );
-					returnSpace2		  = new String(b, 93, 17);
-					logger.debug("returnSpace2		             " + returnSpace2		    );
-					userBirthDay2	      = new String(b, 110, 8);
-					logger.debug("userBirthDay2	                 " + userBirthDay2	        );
-					userName2		      = new String(b, 118, 40);
-					logger.debug("userName2		                 " + userName2		        );
-					userGenderCd2	      = new String(b, 158, 1);
-					logger.debug("userGenderCd2	                 " + userGenderCd2	        );
-					safekey			      = new String(b, 159, 13);
-					logger.debug("safekey			             " + safekey			    );
-					matchingCd		      = new String(b, 172, 2);
-					logger.debug("matchingCd		             " + matchingCd		        );
-					sendSpace22		      = new String(b, 174, 36);
-					logger.debug("sendSpace22		             " + sendSpace22		    );
-					
-					/*docSendGigwanCd2      = new String(b, 0, 9);
+
+
+				returnDocCd			  = new String(b, 0, 10);	//
+				logger.debug("returnDocCd			         " + returnDocCd			);
+				docSendGigwanCd2      = new String(b, 10, 9);
+				logger.debug("docSendGigwanCd2               " + docSendGigwanCd2       );
+				docGbCd2			  = new String(b, 19, 4);
+				logger.debug("docGbCd2			             " + docGbCd2			    );
+				bizGbCd2			  = new String(b, 23, 5);
+				logger.debug("bizGbCd2			             " + bizGbCd2			    );
+				sendReceiveFlag2	  = new String(b, 28, 1);
+				logger.debug("sendReceiveFlag2	             " + sendReceiveFlag2	    );
+				terminalGB2		      = new String(b, 29, 3);
+				logger.debug("terminalGB2		             " + terminalGB2		    );
+				returnCd2		      = new String(b, 32, 4);
+				logger.debug("returnCd2		                 " + returnCd2		        );
+				gigwanId2		      = new String(b, 36, 9);
+				logger.debug("gigwanNo2		                 " + gigwanNo2		        );
+				gigwanNo2		      = new String(b, 45, 10);
+				logger.debug("gigwanId2		                 " + gigwanId2		        );
+				gigwanSendTime2	      = new String(b, 55, 14);
+				logger.debug("gigwanSendTime2	             " + gigwanSendTime2	    );
+				niceDocNo2		      = new String(b, 69, 10);
+				logger.debug("niceDocNo2		             " + niceDocNo2		        );
+				niceDocSendTime2	  = new String(b, 79, 14);
+				logger.debug("niceDocSendTime2	             " + niceDocSendTime2	    );
+				returnSpace2		  = new String(b, 93, 17);
+				logger.debug("returnSpace2		             " + returnSpace2		    );
+				userBirthDay2	      = new String(b, 110, 8);
+				logger.debug("userBirthDay2	                 " + userBirthDay2	        );
+				userName2		      = new String(b, 118, 40);
+				logger.debug("userName2		                 " + userName2		        );
+				userGenderCd2	      = new String(b, 158, 1);
+				logger.debug("userGenderCd2	                 " + userGenderCd2	        );
+				safekey			      = new String(b, 159, 13);
+				logger.debug("safekey			             " + safekey			    );
+				matchingCd		      = new String(b, 172, 2);
+				logger.debug("matchingCd		             " + matchingCd		        );
+				sendSpace22		      = new String(b, 174, 36);
+				logger.debug("sendSpace22		             " + sendSpace22		    );
+
+				/*docSendGigwanCd2      = new String(b, 0, 9);
 					docGbCd2			  = new String(b, 9, 4);
 					bizGbCd2			  = new String(b, 13, 5);
 					sendReceiveFlag2	  = new String(b, 18, 1);
@@ -528,90 +529,90 @@ public class RTSDCustRegisterController {
 					safekey			      = new String(b, 149, 13);
 					matchingCd		      = new String(b, 162, 2);
 					sendSpace22		      = new String(b, 164, 36);*/
-					
-					
-					
-				
-					paramMap.put("eNd01N",              transactionCode2);             	//Transaction Code  
-					paramMap.put("eNd02N",              "");              				//전문그룹코드      
-					paramMap.put("eNd03N",              "");             				//거래종별코드      
-					paramMap.put("eNd04N",              bizGbCd2);              		//거래구분코드      
-					paramMap.put("eNd05N",              sendReceiveFlag2);              //송수신 Flag       
-					paramMap.put("eNd06N",              terminalGB2);              		//단말기구분        
-					paramMap.put("eNd07N",              returnCd2);              		//응답코드          
-					paramMap.put("eNd08N",              gigwanId2);             		//User_ID           
-					paramMap.put("eNd09N",              gigwanNo2);              		//기관전문 관리번호 
-					paramMap.put("eNd10N",              gigwanSendTime2);              	//기관전문 전송시간 
-					paramMap.put("eNd11N",              niceDocNo2);              		//Nice 전문 관리번호
-					paramMap.put("eNd12N",              niceDocSendTime2);              //Nice 전문전송시간 
-					paramMap.put("eNd13N",              returnSpace2);              	//공란              
-					paramMap.put("eNd14N",              "");              				//조회동의사유      
-					paramMap.put("eNd15N",              userBirthDay2);              	//생년월일          
-					paramMap.put("eNd16N",              userName2);              		//성명              
-					paramMap.put("eNd17N",              "");              				//휴대폰번호        
-					paramMap.put("eNd18N",              safekey);              			//SAFE_KEY          
-					paramMap.put("eNd19N",              userGenderCd2);              	//성별              
-					paramMap.put("eNd20N",              sendSpace22);              		//공란   
-					
-					paramMap.put(NexacroConstant.DATASET_ROW_TYPE,  1);
-					paramMap.remove("dvsn");
-					paramMap.put("dvsn", 					"U");
-					
-					//검색결과로 UPDATE처리한다.
-					DataSetMap dsm2 = new DataSetMap();
-					dsm2.add(paramMap);
+
+
+
+
+				paramMap.put("eNd01N",              transactionCode2);             	//Transaction Code  
+				paramMap.put("eNd02N",              "");              				//전문그룹코드      
+				paramMap.put("eNd03N",              "");             				//거래종별코드      
+				paramMap.put("eNd04N",              bizGbCd2);              		//거래구분코드      
+				paramMap.put("eNd05N",              sendReceiveFlag2);              //송수신 Flag       
+				paramMap.put("eNd06N",              terminalGB2);              		//단말기구분        
+				paramMap.put("eNd07N",              returnCd2);              		//응답코드          
+				paramMap.put("eNd08N",              gigwanId2);             		//User_ID           
+				paramMap.put("eNd09N",              gigwanNo2);              		//기관전문 관리번호 
+				paramMap.put("eNd10N",              gigwanSendTime2);              	//기관전문 전송시간 
+				paramMap.put("eNd11N",              niceDocNo2);              		//Nice 전문 관리번호
+				paramMap.put("eNd12N",              niceDocSendTime2);              //Nice 전문전송시간 
+				paramMap.put("eNd13N",              returnSpace2);              	//공란              
+				paramMap.put("eNd14N",              "");              				//조회동의사유      
+				paramMap.put("eNd15N",              userBirthDay2);              	//생년월일          
+				paramMap.put("eNd16N",              userName2);              		//성명              
+				paramMap.put("eNd17N",              "");              				//휴대폰번호        
+				paramMap.put("eNd18N",              safekey);              			//SAFE_KEY          
+				paramMap.put("eNd19N",              userGenderCd2);              	//성별              
+				paramMap.put("eNd20N",              sendSpace22);              		//공란   
+
+				paramMap.put(NexacroConstant.DATASET_ROW_TYPE,  1);
+				paramMap.remove("dvsn");
+				paramMap.put("dvsn", 					"U");
+
+				//검색결과로 UPDATE처리한다.
+				DataSetMap dsm2 = new DataSetMap();
+				dsm2.add(paramMap);
+				inVar.remove("inDsMap");
+				inVar.put("inDsMap",  dsm2);
+				Map resultMap2 = rTSDCustRegisterService.createIRSafeKey(inVar);
+
+				//처리결과가 P000(성공)인경우 신규IR SafeKey를 등록한다.
+				//returnCd2 = "P001";
+				logger.debug("#######################################################################");
+				logger.debug(returnCd2);
+				logger.debug("#######################################################################");
+				if("P000".equals(returnCd2)) {
+					//저장확인용자료
+					//safekey = "8833888888882";
+					DataSetMap safeKeyDsm = new DataSetMap();
+					Map safekeyMap = new HashMap();
+					safekeyMap.put(NexacroConstant.DATASET_ROW_TYPE,  DataSet.ROW_TYPE_UPDATED);
+					safekeyMap.put("dvsn", "I");
+					safekeyMap.put("safekey", safekey);
+					safekeyMap.put("creTp", "R");
+					safekeyMap.put("creDay", date.substring(0, 8));
+					safekeyMap.put("birthDay", inVar.get("birthDay"));
+					safekeyMap.put("custNm", inVar.get("custNm"));
+					safekeyMap.put("mobNo", inVar.get("mobNo"));
+					safekeyMap.put("genderCd", inVar.get("genderCd"));
+					safeKeyDsm.add(safekeyMap);
+
+					//기존 정보삭제후 저장처리
 					inVar.remove("inDsMap");
-					inVar.put("inDsMap",  dsm2);
-					Map resultMap2 = rTSDCustRegisterService.createIRSafeKey(inVar);
-					
-					//처리결과가 P000(성공)인경우 신규IR SafeKey를 등록한다.
-					//returnCd2 = "P001";
-					logger.debug("#######################################################################");
-					logger.debug(returnCd2);
-					logger.debug("#######################################################################");
-					if("P000".equals(returnCd2)) {
-						//저장확인용자료
-						//safekey = "8833888888882";
-						DataSetMap safeKeyDsm = new DataSetMap();
-						Map safekeyMap = new HashMap();
-						safekeyMap.put(NexacroConstant.DATASET_ROW_TYPE,  DataSet.ROW_TYPE_UPDATED);
-						safekeyMap.put("dvsn", "I");
-						safekeyMap.put("safekey", safekey);
-						safekeyMap.put("creTp", "R");
-						safekeyMap.put("creDay", date.substring(0, 8));
-						safekeyMap.put("birthDay", inVar.get("birthDay"));
-						safekeyMap.put("custNm", inVar.get("custNm"));
-						safekeyMap.put("mobNo", inVar.get("mobNo"));
-						safekeyMap.put("genderCd", inVar.get("genderCd"));
-						safeKeyDsm.add(safekeyMap);
-						
-						//기존 정보삭제후 저장처리
-						inVar.remove("inDsMap");
-						inVar.put("inDsMap",  safeKeyDsm);
-						inVar.remove("sqlnamespace");
-						inVar.put("sqlnamespace", "cust.saveSafeKey");
-						Map result = rTSDCustRegisterService.saveSafeKey(inVar);
-						
-						//내부인터페이스를 통해 SAFEKEY가 존재하는경우 해당KEY를 리턴한다.
-						resultSafekey = safekey;
-						inVar.put("safekey", resultSafekey);
-					}
+					inVar.put("inDsMap",  safeKeyDsm);
+					inVar.remove("sqlnamespace");
+					inVar.put("sqlnamespace", "cust.saveSafeKey");
+					Map result = rTSDCustRegisterService.saveSafeKey(inVar);
+
+					//내부인터페이스를 통해 SAFEKEY가 존재하는경우 해당KEY를 리턴한다.
+					resultSafekey = safekey;
+					inVar.put("safekey", resultSafekey);
+				}
 				//}
 			} else {	//safekey 가존재하는경우 해당 키를 반환한다.
 				resultSafekey = selectSafekey;
 				inVar.put("safekey", resultSafekey);
 				returnCd2 = "P000";
 			}
-			
+
 			if( resultSafekey != "0"){
 				resultCustNo = (String)rTSDCustRegisterService.countSafeKey(inVar);
 			}
-			
+
 			outVal.put("resultSafekey", 	resultSafekey);
 			outVal.put("resultCustNo" , 	resultCustNo);
 			outVal.put("resultSuccessCd" , 	returnCd2);
 			outVal.put("resultSuccessMsg", 	propertiesService.getString("safekey.msg." + returnCd2));
-			
+
 			//P000	정상
 			//S003	데이터 없음		
 			//P015	중복건 존재		
@@ -622,10 +623,10 @@ public class RTSDCustRegisterController {
 			//S738	대상자정보 오류 (생년월일, 성별)		
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-		
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-			
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -633,9 +634,9 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
-	
-		
+
+
+
 	@RequestMapping("/rtms/sd/checkBuslNo.do") 
 	public ModelAndView checkCdGrpCd(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -644,17 +645,17 @@ public class RTSDCustRegisterController {
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			Map <String, Object> outVal			= xpDto.getOutVariableMap();
-			
+
 			int idx = (int)rTSDCustRegisterService.checkBuslNo(inVar);
 			outVal.put("resultBuslCnt", idx);
 			outVal.put("checkbuslNo", inVar.get("buslNo"));
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -662,13 +663,13 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/saveCustRegister.do") 
 	public ModelAndView saveCustRegister(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
@@ -676,19 +677,26 @@ public class RTSDCustRegisterController {
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, Object> outVar 		= xpDto.getOutVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			inVar.put("regId", loginInfo.get("userId"));
-			
+
 			Map result =  rTSDCustRegisterService.saveCustRegister(inDataset, inVar);
-			
+
 			outVar.put("resultCustNo", result.get("custNo"));
-			
+
+			if (StringUtils.isNotEmpty(inVar.get("docSeq").toString())) {
+				inVar.put("receiverSeq", inVar.get("seq"));
+				inVar.put("custNo", result.get("custNo"));
+				inVar.put("chgId", loginInfo.get("userId"));
+				commonService.updateCustNoRtsd0218(inVar);
+			}
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));		
-			
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -696,60 +704,60 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
-	
+
+
 	//계좌 상세내역 select
 	@RequestMapping("/rtms/sd/accList.do") 
 	public ModelAndView accList(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			Map result = rTSDCustRegisterService.getaccList(inVar, outDataset);
-						
+
 			inVar.put("cdGrpCd", "R001"); //은행코드, 이름
 			inVar.put("useYn", "Y");
 			Map bankCd = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S024"); //구분
 			inVar.put("useYn", "Y");
 			Map dsCustTp = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "C004"); //사용여부
 			inVar.put("useYn", "Y");
 			Map useYn = commonService.listCommInfo(inVar);
-			
+
 			List resultList	= (List)result.get("accList");
-			
+
 			List bank			= (List)bankCd.get("result");
 			List listDsCustTp	= (List)dsCustTp.get("result");	
 			List use			= (List)useYn.get("result");
-						
+
 			DataSetMap accList = new DataSetMap();
-			
+
 			DataSetMap bankType = new DataSetMap();
 			DataSetMap mapDsCustTp = new DataSetMap();
 			DataSetMap useType = new DataSetMap();
-			
+
 			accList.setRowMaps(resultList);
 			bankType.setRowMaps(bank);
 			mapDsCustTp.setRowMaps(listDsCustTp);
 			useType.setRowMaps(use);
-			
+
 			outDataset.put("accList", accList);
 			outDataset.put("bankType",	bankType);
 			outDataset.put("mapDsCustTp",	mapDsCustTp);
 			outDataset.put("useType",	useType);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));	
-			
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -757,14 +765,14 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	//계좌저장
 	@RequestMapping("/rtms/sd/accSaveDaset.do") 
 	public ModelAndView accSaveDaset(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
@@ -772,17 +780,17 @@ public class RTSDCustRegisterController {
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, Object> outVar 		= xpDto.getOutVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			inVar.put("regId", loginInfo.get("userId"));
-			
+
 			Map result =  rTSDCustRegisterService.saveAccData(inDataset, inVar);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));		
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -790,59 +798,59 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	//카드 상세내역 select
 	@RequestMapping("/rtms/sd/cardList.do") 
 	public ModelAndView cardList(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			Map result = rTSDCustRegisterService.getcardList(inVar, outDataset);
-			
+
 			inVar.put("cdGrpCd", "R002"); //카드코드, 이름
 			inVar.put("useYn", "Y");
 			Map cardCd = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "S024"); //구분
 			inVar.put("useYn", "Y");
 			Map dsCustTp = commonService.listCommInfo(inVar);
-			
+
 			inVar.put("cdGrpCd", "C004"); //사용여부
 			inVar.put("useYn", "Y");
 			Map useYn = commonService.listCommInfo(inVar);
-			
+
 			List resultList	= (List)result.get("cardList");
-			
+
 			List card			= (List)cardCd.get("result");
 			List listDsCustTp	= (List)dsCustTp.get("result");	
 			List use			= (List)useYn.get("result");
-			
+
 			DataSetMap cardList = new DataSetMap();
-			
+
 			DataSetMap cardType = new DataSetMap();
 			DataSetMap mapDsCustTp = new DataSetMap();
 			DataSetMap useType = new DataSetMap();
-			
+
 			cardList.setRowMaps(resultList);
 			cardType.setRowMaps(card);
 			mapDsCustTp.setRowMaps(listDsCustTp);
 			useType.setRowMaps(use);
-			
+
 			outDataset.put("cardList", cardList);
 			outDataset.put("cardType",	cardType);
 			outDataset.put("mapDsCustTp",	mapDsCustTp);
 			outDataset.put("useType",	useType);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));	
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -850,14 +858,14 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-		
+
 	//카드저장
 	@RequestMapping("/rtms/sd/cardSave.do") 
 	public ModelAndView cardSave(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
@@ -865,16 +873,16 @@ public class RTSDCustRegisterController {
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, Object> outVar 		= xpDto.getOutVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			inVar.put("regId", loginInfo.get("userId"));
-			
+
 			Map result =  rTSDCustRegisterService.saveCardData(inDataset, inVar);
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));	
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -882,32 +890,32 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/selectRtsd0110.do") 
 	public ModelAndView selectRtsd0110(NexacroMapDTO xpDto, Model model) throws Exception {
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			Map result = rTSDCustRegisterService.selectRtsd0110(inVar, outDataset);
-			
+
 			List selectRtsd0110 = (List)result.get("selectRtsd0110");
-			
+
 			DataSetMap mapRtsd0110  = new DataSetMap();
 			mapRtsd0110.setRowMaps(selectRtsd0110);
-			
+
 			outDataset.put("mapRtsd0110", mapRtsd0110);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -915,32 +923,32 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/selectRtsd0111.do") 
 	public ModelAndView selectRtsd0111(NexacroMapDTO xpDto, Model model) throws Exception {
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			Map result = rTSDCustRegisterService.selectRtsd0111(inVar, outDataset);
-			
+
 			List selectRtsd0111 = (List)result.get("selectRtsd0111");
-			
+
 			DataSetMap mapRtsd0111  = new DataSetMap();
 			mapRtsd0111.setRowMaps(selectRtsd0111);
-			
+
 			outDataset.put("mapRtsd0111", mapRtsd0111);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -948,32 +956,32 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/selectRtsd0111_2.do") 
 	public ModelAndView selectRtsd0111_2(NexacroMapDTO xpDto, Model model) throws Exception {
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			Map result = rTSDCustRegisterService.selectRtsd0111_2(inVar, outDataset);
-			
+
 			List selectRtsd0111_2 = (List)result.get("selectRtsd0111_2");
-			
+
 			DataSetMap mapRtsd0111_2  = new DataSetMap();
 			mapRtsd0111_2.setRowMaps(selectRtsd0111_2);
-			
+
 			outDataset.put("mapRtsd0111_2", mapRtsd0111_2);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -981,23 +989,23 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	//NICE 신용정보 조회
 	@RequestMapping("/rtms/sd/niceTrustInfo2.do") 
 	public ModelAndView niceTrustInfo2(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-			
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-			
+
 		try {
-			
+
 			DataSetMap tranInfo 						= xpDto.getTranInfoMap();
 			Map <String, Object> inVar 				= xpDto.getInVariableMap();
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, Object> outVar 			= xpDto.getOutVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			inVar.put("regId", loginInfo.get("userId"));
-			
+
 			//전문통신을위한 ip, port를 선언한다.
 			String ip 		= propertiesService.getString("doc.send.host");
 			String port 	= propertiesService.getString("doc.send.port");
@@ -1033,7 +1041,7 @@ public class RTSDCustRegisterController {
 			String avgServiceRequestCnt  = "99";							//평점서비스 요청건수
 			String avgServiceGb				= "64";							//평점서비스구분 정보( 64 )
 			String	avgTable					= "RK0202_000";					//평점표  ID
-			
+
 			Map paramMap = new HashMap();
 			paramMap.put("safekey", 		userSerialNo);              			//인증번호                         
 			paramMap.put("yn", 			"N");              						//IF 성공여부                      
@@ -1061,21 +1069,21 @@ public class RTSDCustRegisterController {
 			paramMap.put("iNd22",       	avgServiceRequestCnt);				//[송신]평점서비스 요청건수        
 			paramMap.put("iNd23",       	avgServiceGb);              			//[송신]평점정보구분               
 			paramMap.put("iNd24",       	avgTable);              				//[송신]평점정보코드               
-			                        
-			
+
+
 			DataSetMap dsm = new DataSetMap();
 			//상태값을 신규생성상태로 세팅한다.
 			paramMap.put(NexacroConstant.DATASET_ROW_TYPE,  1);
 			paramMap.put("dvsn", 					"I");
-			
+
 			dsm.add(paramMap);
 			inVar.put("inDsMap",  dsm);
 			inVar.put("sqlnamespace", "custGrp.createNiceTrust");
 			Map resultMap = rTSDCustRegisterService.createNiceTrust(inVar);
 			//저장에성공한경우 IR Interface를 수행한다.
 			//소켓통신결과 로 RTSD0201 테이블 이력업데이트
-			
-			
+
+
 			Map  irMap = new HashMap();
 			irMap.put("ip", ip);
 			irMap.put("port", port);
@@ -1104,17 +1112,17 @@ public class RTSDCustRegisterController {
 			irMap.put("avgServiceRequestCnt",    	avgServiceRequestCnt	);   		//평점서비스 요청건수             
 			irMap.put("avgServiceGb",			   		avgServiceGb			 	);       	//평점서비스구분 정보( 64 )       
 			irMap.put("avgTable",			       		avgTable			     	);       	//평점표  ID            
-			
+
 			//소켓을 통해 NICE 신용조회를 진행한다.
 			PCINiceTrustSocketProcess process = new PCINiceTrustSocketProcess();
 			String resultString = process.getNiceTrustInfo(irMap);
-			
+
 			logger.debug("############################## [Nice 응답 데이타] ###############################");
 			logger.debug( resultString);
 			logger.debug("############################################################################");
-			
+
 			//응답코드에 해당되는 자료로 업데이트 실행
-			
+
 			/******************************************************************************************
 			 * 공통부 선언 START -- 응답
 			 ******************************************************************************************/
@@ -1143,11 +1151,11 @@ public class RTSDCustRegisterController {
 			String reportInfoNo2				= "";					//보고서 인증번호
 			String avgServiceCnt2				= "";					//평점정보 총건수
 			String avgServiceReceiveCnt2  	= "";					//평점정보 응답건수
-			
+
 			String avgServiceGb2				= "";					//평점서비스구분 정보( 64 )
 			String	avgTable2					= "";					//평점표  ID
-			
-			
+
+
 			if(resultString.length() >= 258) {
 				docGroupCd2 = resultString.substring(0, 9);
 				tradeTypeCd2 = resultString.substring(0, 9);
@@ -1208,13 +1216,13 @@ public class RTSDCustRegisterController {
 			paramMap.put("eNd44", 		"");                                   	//Profile Code 2                   
 			paramMap.put("eNd45", 		"");                                   	//Profile Code 3                   
 			paramMap.put("eNd46", 		"");                                   	//공란     
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG,  "");	
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -1222,7 +1230,7 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/onlineEnterdupe.do") 
 	public ModelAndView onlineEnterdupe(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -1231,16 +1239,16 @@ public class RTSDCustRegisterController {
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			Map <String, Object> outVal			= xpDto.getOutVariableMap();
-			
+
 			String checkCustId = (String)rTSDCustRegisterService.onlineEnterdupe(inVar);
 			outVal.put("checkCustId", checkCustId);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -1248,7 +1256,7 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/onlineDupe.do") 
 	public ModelAndView onlineDupe(NexacroMapDTO xpDto, Model model) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
@@ -1257,16 +1265,16 @@ public class RTSDCustRegisterController {
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
 			Map <String, Object> outVal			= xpDto.getOutVariableMap();
-			
+
 			int countCustId = (int)rTSDCustRegisterService.onlineDupe(inVar);
 			outVal.put("countCustId", countCustId);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
-			
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -1274,13 +1282,13 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/insertRtsd0110.do") 
 	public ModelAndView insertRtsd0110(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
@@ -1288,19 +1296,19 @@ public class RTSDCustRegisterController {
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, Object> outVar 		= xpDto.getOutVariableMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			inVar.put("regId", loginInfo.get("userId"));
-			
+
 			Map result =  rTSDCustRegisterService.insertRtsd0110(inDataset, inVar);
 			//System.out.println("###########result##############:"+result);
 			outVar.put("resultCustNo", result.get("custNo"));
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  result.get("returnMessage"));		
-			
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -1308,32 +1316,32 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
 	@RequestMapping("/rtms/sd/getReRentalInfo.do") 
 	public ModelAndView getReRentalYN(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		Map loginInfo = (Map) req.getSession().getAttribute("User");
-		
+
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		
+
 		try
 		{
 			DataSetMap tranInfo 				= xpDto.getTranInfoMap();
 			Map <String, Object> inVar 			= xpDto.getInVariableMap();
 			Map <String, DataSetMap> inDataset 	= xpDto.getInDataSetMap();
 			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
-			
+
 			List result =  rTSDCustRegisterService.getReRentalInfo(inDataset, inVar);
-			//System.out.println("###########result##############:"+result);
+
 			DataSetMap mapDSReRental  = new DataSetMap();
 			mapDSReRental.setRowMaps(result);
 			outDataset.put("mapDSReRental", mapDSReRental);
-			
+
 			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
 			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
 
 			mav.addObject(NexacroConstant.ERROR_CODE, outDataset.get("successCode")+"");
 			mav.addObject(NexacroConstant.ERROR_MSG,  outDataset.get("returnMessage"));		
-			
+
 		} catch ( Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
@@ -1341,7 +1349,83 @@ public class RTSDCustRegisterController {
 		}
 		return mav;
 	}
-	
+
+
+	/**
+	 * 
+	 * 주문관리 - 고객등록 - 정보제공동의 발송
+	 * <p>정보제공동의 여부를 페이싸인 서비스를 통해 발송.</p>
+	 *
+	 * @param xpDto
+	 * @param model
+	 * @param req
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/rtms/sd/infoPrvAgreeSend.do")  
+	public ModelAndView infoPrvAgreeSend(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		Map loginInfo = (Map)req.getSession().getAttribute("User");
+
+		try {
+			Map<String, Object> inVar = xpDto.getInVariableMap();
+			inVar.put("userId", loginInfo.get("userId"));
+			Map<String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
+			Map<String, Object> result = rTSDCustRegisterService.infoPrvAgreeSend(inVar);
+
+			DataSetMap mapDsWiderlabSeq  = new DataSetMap();
+			mapDsWiderlabSeq.add(result);
+			outDataset.put("mapDsWiderlabSeq", mapDsWiderlabSeq);
+
+			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
+			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
+
+			if (result.get("docSeq").equals("")) {
+				throw new Exception("와이더랩 오류 입니다. [docSeq 생성 실패]");
+			}
+
+			mav.addObject(NexacroConstant.ERROR_CODE, "0");
+			mav.addObject(NexacroConstant.ERROR_MSG, "");
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+
+
+	/**
+	 * 
+	 * 주문관리 - 고객등록 - 정보제공동의 발송 확인
+	 * <p>정보제공동의 여부를 페이싸인 서비스를 통해 발송 확인.</p>
+	 *
+	 * @param xpDto
+	 * @param model
+	 * @param req
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping("/rtms/sd/infoPrvAgreeSendCheck.do")  
+	public ModelAndView infoPrvAgreeSendCheck(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+		Map loginInfo = (Map)req.getSession().getAttribute("User");
+
+		try {
+			Map<String, Object> inVar = xpDto.getInVariableMap();
+			inVar.put("userId", loginInfo.get("userId"));
+			Map<String, Object> result = rTSDCustRegisterService.infoPrvAgreeSendCheck(inVar);
+
+			mav.addObject(NexacroConstant.ERROR_CODE, result.get("successCode").toString());
+			mav.addObject(NexacroConstant.ERROR_MSG, result.get("returnMessage").toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+		return mav;
+	}
+
 
 	/**
 	 * 
@@ -1357,18 +1441,23 @@ public class RTSDCustRegisterController {
 	@RequestMapping("/rtms/sd/beforeCheckEmpInfo.do")  
 	public ModelAndView beforeCheckEmpInfo(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
 		ModelAndView mav = new ModelAndView("nexacroMapView");
-		try{
-			Map <String, Object> inVar = xpDto.getInVariableMap();	
-			rTSDCustRegisterService.beforeCheckEmpInfo(inVar);
-			
+		try {
+			Map <String, Object> inVar = xpDto.getInVariableMap();
+
+			String srvUrl = req.getRequestURL().toString().toLowerCase();
+
+			if (!(srvUrl.contains("1.254.67.135") || srvUrl.contains("localhost"))) {
+				rTSDCustRegisterService.beforeCheckEmpInfo(inVar);
+			}
+
 			mav.addObject(NexacroConstant.ERROR_CODE, "0");
 			mav.addObject(NexacroConstant.ERROR_MSG, "");
-		} catch ( Exception e ) {
+		} catch (Exception e ) {
 			e.printStackTrace();
 			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
 			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
 		}
 		return mav;
 	}
-	
+
 }

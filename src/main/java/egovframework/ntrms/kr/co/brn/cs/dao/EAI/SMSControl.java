@@ -11,7 +11,7 @@ import javax.xml.xpath.XPathFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
-
+import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 /**
@@ -27,12 +27,11 @@ import org.apache.commons.logging.LogFactory;
 public class SMSControl {
 	protected Log logger = LogFactory.getLog(this.getClass());
 	//EAI SystemID 설정(SMS공통)
-	private static String 	SYSTEMID = 	"LIVE";
-	//private static String 	SYSTEMID = 	"DEV";
+	private static String SYSTEMID = "NTRMS";
 	//EAI InterfaceID 설정(SMS공통)
-	private static String 	INTERFACEID1 = 	"NTRMS/NTRMS_102";
-	private static String 	INTERFACEID2 = 	"NTRMS/NTRMS_103";
-	
+	private static String INTERFACEID1 = "NTRMS_102";
+	private static String INTERFACEID2 = "NTRMS_103";
+
 	public SMSControl() {}
 	/**SMS 전송 전 데이터 체크 및 EAI Call
 	 * <pre>
@@ -73,12 +72,12 @@ public class SMSControl {
 			}else{
 				throw new Exception("메시지가 없습니다. 확인바랍니다.");		
 			}
-			
+
 			//VO를 받아서 DMS 내 DB에 데이터를 Insert(EAI Call하기전에 DB에 데이터 저장)
 			//String cmpMsgId = (String)SMSDAO.getInstance().insertSMS(cmSmsVo);
 			//CMP_MSG_ID 값 설정
 			//cmSmsVo.setCmpMsgId(cmpMsgId);
-	
+
 			//EAI로 SMS정보 전송 
 			//if("S".equals(sendEAI(cmSmsVo))){
 			//	retMsg = "전송에 성공하였습니다.";
@@ -122,13 +121,13 @@ public class SMSControl {
 			data = data + "<I_CAR_LIC>"			+	map.get("carNo")	+"</I_CAR_LIC>";
 			data = data + "<I_REC_DATE>"		+	map.get("recvDay")	+"</I_REC_DATE>";
 			data = data + "<I_REC_TIME>"		+	map.get("recvTm")	+"</I_REC_TIME>";
-			data = data + "<I_REC_CONTENT>"		+	map.get("smsTx")	+"</I_REC_CONTENT>";
+			data = data + "<I_REC_CONTENT>"		+	StringEscapeUtils.escapeXml10(map.get("smsTx").toString())	+"</I_REC_CONTENT>";	// 특수문자 치환 20250610
 			data = data + "<I_REGION_NO>"		+	map.get("regionNo")	+"</I_REGION_NO>";
 			data = data + "<I_CITY_NO>"			+	map.get("cityNo")	+"</I_CITY_NO>";
 			data = data + "<I_ENT_USER_ID>"		+	map.get("regId")	+"</I_ENT_USER_ID>";
 			data = data + "<I_REG_TYPE>"		+	map.get("chanCd")	+"</I_REG_TYPE>";
 			data = data + "</EaiSend>";	   
-			
+
 			logger.debug(":::EAI::::::::::::::::::::::::::::::::::::::::::");
 			String data1 = "<?xml version='1.0' encoding='UTF-8'?>\n";
 			data1 = data1 + "<EaiSend>\n";	    
@@ -141,7 +140,7 @@ public class SMSControl {
 			data1 = data1 + "<I_CAR_LIC>"			+	map.get("carNo")	+"</I_CAR_LIC>\n";
 			data1 = data1 + "<I_REC_DATE>"			+	map.get("recvDay")	+"</I_REC_DATE>\n";
 			data1 = data1 + "<I_REC_TIME>"			+	map.get("recvTm")	+"</I_REC_TIME>\n";
-			data1 = data1 + "<I_REC_CONTENT>"		+	map.get("smsTx")	+"</I_REC_CONTENT>\n";
+			data1 = data1 + "<I_REC_CONTENT>"		+	StringEscapeUtils.escapeXml10(map.get("smsTx").toString())	+"</I_REC_CONTENT>\n";	// 특수문자 치환 20250610
 			data1 = data1 + "<I_REGION_NO>"			+	map.get("regionNo")	+"</I_REGION_NO>\n";
 			data1 = data1 + "<I_CITY_NO>"			+	map.get("cityNo")	+"</I_CITY_NO>\n";
 			data1 = data1 + "<I_ENT_USER_ID>"		+	map.get("regId")	+"</I_ENT_USER_ID>\n";
@@ -149,7 +148,7 @@ public class SMSControl {
 			data1 = data1 + "</EaiSend>";	   
 			logger.debug(data1);
 			logger.debug(":::EAI::::::::::::::::::::::::::::::::::::::::::");
-			
+
 			SMSManager smsManager = new SMSManager();
 			logger.debug(":::EAI START::::::::::::::::::::::::::::::::::::::::::");
 			String retData = smsManager.sendSync(SYSTEMID, INTERFACEID1, data);
@@ -158,26 +157,26 @@ public class SMSControl {
 			// XML Document 객체 생성
 			InputSource is = new InputSource(new StringReader(retData));
 			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
-		    // xpath 생성
+			// xpath 생성
 			XPath xpath = XPathFactory.newInstance().newXPath();
-	        // NodeList 가져오기 : row 아래에 있는 모든 col1 을 선택
+			// NodeList 가져오기 : row 아래에 있는 모든 col1 을 선택
 			NodeList cols1 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/O_FLAG", document, XPathConstants.NODESET);
 			NodeList cols2 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/O_MESG", document, XPathConstants.NODESET);
 			NodeList cols3 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/O_CLAIM_NO", document, XPathConstants.NODESET);
-			
-	        // EAI 결과값 - S:성공, E:실패
+
+			// EAI 결과값 - S:성공, E:실패
 			String oFlag 	= (String)cols1.item(0).getTextContent();
 			String oMesg 	= (String)cols2.item(0).getTextContent();
 			String oClaimNo = (String)cols3.item(0).getTextContent();
-			
+
 			logger.debug(":::oFlag::::::::::::::::::::::::::::::::::::::::::" + oFlag);
 			logger.debug(":::oMesg::::::::::::::::::::::::::::::::::::::::::" + oMesg);
 			logger.debug(":::oClaimNo::::::::::::::::::::::::::::::::::::::::::" + oClaimNo);
-			
+
 			map.put("oFlag", oFlag);
 			map.put("oMesg", oMesg);
 			map.put("oClaimNo", oClaimNo);
-			
+
 		} catch (Exception e) {
 			logger.debug("QMS통신 실패_SMSControl.java:::::::::::::::::::::::::::::::::");
 			logger.debug(e);
@@ -186,14 +185,14 @@ public class SMSControl {
 		}
 		return map;
 	}
-	
+
 	public Map resultEAI(Map map){
 		try {
 			String data = "<?xml version='1.0' encoding='UTF-8'?>";	    
 			data = data + "<EaiSend>";	    
 			data = data + "<CLAIM_NO>" + map.get("claimNo")	+"</CLAIM_NO>";
 			data = data + "</EaiSend>";	   
-			
+
 			logger.debug(":::EAI::::::::::::::::::::::::::::::::::::::::::");
 			String data1 = "<?xml version='1.0' encoding='UTF-8'?>\n";
 			data1 = data1 + "<EaiSend>\n";	    
@@ -201,18 +200,18 @@ public class SMSControl {
 			data1 = data1 + "</EaiSend>";	   
 			logger.debug(data1);
 			logger.debug(":::EAI::::::::::::::::::::::::::::::::::::::::::");
-			
+
 			SMSManager smsManager = new SMSManager();
 			String retData = smsManager.sendSync(SYSTEMID, INTERFACEID2, data);
-			
+
 			//EAI 결과값 Parsing
 			// XML Document 객체 생성
 			InputSource is = new InputSource(new StringReader(retData));
 			Document document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(is);
-		    // xpath 생성
+			// xpath 생성
 			XPath xpath = XPathFactory.newInstance().newXPath();
-	        // NodeList 가져오기 : row 아래에 있는 모든 col1 을 선택
-			
+			// NodeList 가져오기 : row 아래에 있는 모든 col1 을 선택
+
 			NodeList cols1 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/CLAIM_NO", document, XPathConstants.NODESET);
 			NodeList cols2 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/REC_CONTENT", document, XPathConstants.NODESET);
 			NodeList cols3 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/CLAIM_TYPE", document, XPathConstants.NODESET);
@@ -225,7 +224,7 @@ public class SMSControl {
 			NodeList cols10 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/EMP_MOBILENO", document, XPathConstants.NODESET);
 			NodeList cols11 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/O_FLAG", document, XPathConstants.NODESET);
 			NodeList cols12 = (NodeList)xpath.evaluate("//QMS_Reply_Msg/O_MESG", document, XPathConstants.NODESET);
-			
+
 			String claimNo		= (String)cols1.item(0).getTextContent(); 
 			String recContent	= (String)cols2.item(0).getTextContent(); 
 			String claimType	= (String)cols3.item(0).getTextContent(); 
@@ -238,7 +237,7 @@ public class SMSControl {
 			String empMobileno 	= (String)cols10.item(0).getTextContent(); 
 			String oFlag		= (String)cols11.item(0).getTextContent(); 
 			String oMesg		= (String)cols12.item(0).getTextContent();
-			
+
 			logger.debug(":::claimNo:::::::::::::::::::::::::::::::::::::::" + claimNo);
 			logger.debug(":::recContent::::::::::::::::::::::::::::::::::::" + recContent);
 			logger.debug(":::claimType:::::::::::::::::::::::::::::::::::::" + claimType);
@@ -251,7 +250,7 @@ public class SMSControl {
 			logger.debug(":::empMobileno:::::::::::::::::::::::::::::::::::" + empMobileno);
 			logger.debug(":::oFlag:::::::::::::::::::::::::::::::::::::::::" + oFlag);
 			logger.debug(":::oMesg:::::::::::::::::::::::::::::::::::::::::" + oMesg);
-			
+
 			map.put("claimNo", claimNo);
 			map.put("recContent", recContent);
 			map.put("claimType", claimType);
@@ -264,13 +263,13 @@ public class SMSControl {
 			map.put("empMobileno", empMobileno);
 			map.put("oFlag", oFlag);
 			map.put("oMesg", oMesg);
-			
+
 			logger.debug("result map::::::::::::::::::::::::::::::::::::::::::");
 			logger.debug(map);
 			logger.debug("result map::::::::::::::::::::::::::::::::::::::::::");
 
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 		}
 		return map;

@@ -14,15 +14,16 @@
                 this.set_name("Login");
                 this.set_classname("Login");
                 this.set_titletext("New Form");
-                this.set_layoutautofittype("width");
                 this._setFormPosition(0,0,1260,871);
             }
             this.style.set_background("transparent");
+            this.getSetter("layoutautofittype").set("width");
 
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsLogin", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -34,6 +35,7 @@
 
             obj = new Dataset("dsService", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -45,6 +47,7 @@
 
             obj = new Dataset("ds_user", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -125,7 +128,7 @@
             		p.set_classname("Login");
             		p.set_titletext("New Form");
             		p.style.set_background("transparent");
-            		p.set_layoutautofittype("width");
+            		p.getSetter("layoutautofittype").set("width");
 
             	}
             );

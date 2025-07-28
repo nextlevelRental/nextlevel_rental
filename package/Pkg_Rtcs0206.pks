@@ -34,4 +34,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0206 AS
     );
      
 END Pkg_Rtcs0206;
-/

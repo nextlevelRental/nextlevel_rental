@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0053 AS
 /*******************************************************************************
    NAME:     PKG_RTSD0053
-   PURPOSE   ∑ª≈ª ¡ˆø™ ∞¸∏Æ
+   PURPOSE   Î†åÌÉà ÏßÄÏó≠ Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,28 +9,28 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0053 AS
    1.0        2018-11-01  Sean         1. Created this package spec.
 *******************************************************************************/
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆø™ ¡∂»∏ Select
+  -- Î†åÌÉàÏßÄÏó≠ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0053 ( 
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP IN RTSD0053.RENTAL_GROUP%TYPE,          /* ∑ª≈ª¡ˆªÁ  */
+    v_RENTAL_GROUP IN RTSD0053.RENTAL_GROUP%TYPE,          /* Î†åÌÉàÏßÄÏÇ¨  */
     v_USE_YN          IN RTSD0052.USE_YN%TYPE,	
     v_USE_YN2         IN RTSD0053.USE_YN%TYPE    
     );
 
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆø™µÓ∑œ∆Àæ˜ ¡∂»∏ Select
+  -- Î†åÌÉàÏßÄÏó≠Îì±Î°ùÌåùÏóÖ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0053_pop ( 
     Ref_Cursor         IN OUT SYS_REFCURSOR,
-    v_RENTAL_OFFICE_NM IN RTSD0053.RENTAL_OFFICE_NM%TYPE        /* ∑ª≈ª¡ˆø™∏Ì  */
+    v_RENTAL_OFFICE_NM IN RTSD0053.RENTAL_OFFICE_NM%TYPE        /* Î†åÌÉàÏßÄÏó≠Î™Ö  */
     );
     
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆø™ ∞¸∏Æ(IUD)
+  -- Î†åÌÉàÏßÄÏó≠ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0053 (
-    v_Comm_Dvsn         IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
+    v_Comm_Dvsn         IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
     v_RENTAL_GROUP	    IN RTSD0053.RENTAL_GROUP%TYPE,		  
     v_RENTAL_OFFICE     IN RTSD0053.RENTAL_OFFICE%TYPE,		  
     v_RENTAL_OFFICE_NM  IN RTSD0053.RENTAL_OFFICE_NM%TYPE,		  
@@ -42,7 +42,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0053 AS
     );
     
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆø™ Insert
+  -- Î†åÌÉàÏßÄÏó≠ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0053 (
     v_RENTAL_GROUP	    IN RTSD0053.RENTAL_GROUP%TYPE,		  
@@ -54,7 +54,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0053 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ∑ª≈ª¡ˆø™ Update
+  -- Î†åÌÉàÏßÄÏó≠ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0053 ( 
     v_RENTAL_GROUP	    IN RTSD0053.RENTAL_GROUP%TYPE,		  
@@ -65,4 +65,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0053 AS
     v_ErrorText   OUT VARCHAR2
     ) RETURN NUMBER;    
 END PKG_RTSD0053;
-/

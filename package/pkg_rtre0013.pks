@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0013 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0013
-   PURPOSE    Ãâ±ÝÀÌÃ¼µ¿ÀÇ log
+   PURPOSE    ì¶œê¸ˆì´ì²´ë™ì˜ log
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,51 +10,50 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0013 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ãâ±ÝÀÌÃ¼µ¿ÀÇ log(IUD)
+  -- ì¶œê¸ˆì´ì²´ë™ì˜ log(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0013 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Mob_no         IN RTRE0013.MOB_NO%TYPE,         /*¼ö½ÅÀÚ¹øÈ£            */
-    v_Cust_nm        IN RTRE0013.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_tp        IN RTRE0013.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Birth_day      IN RTRE0013.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Busl_no        IN RTRE0013.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */    
-    v_Bank_cd        IN RTRE0013.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_no        IN RTRE0013.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Tr_cd          IN RTRE0013.TR_CD%TYPE,          /*¾÷¹«±¸ºÐÄÚµå          */
-    v_Call_dt        IN VARCHAR2,        /*Àü¼ÛÀÏ½Ã              */
-    v_Rslt_cd        IN RTRE0013.RSLT_CD%TYPE,        /*Ã³¸®°á°úÄÚµå          */
-    v_Rslt_msg       IN RTRE0013.RSLT_MSG%TYPE,       /*°á°ú¸Þ½ÃÁö            */
-    v_Resp_tr_cd     IN RTRE0013.RESP_TR_CD%TYPE,     /*°Å·¡ÄÚµå              */
-    v_Txt_no         IN RTRE0013.TXT_NO%TYPE,         /*Àü¹®°íÀ¯¹øÈ£          */
-    v_Record_data    IN RTRE0013.RECORD_DATA%TYPE,    /*³ìÃëµ¥ÀÌÅÍ            */
-    v_Id             IN RTRE0013.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Mob_no         IN RTRE0013.MOB_NO%TYPE,         /*ìˆ˜ì‹ ìžë²ˆí˜¸            */
+    v_Cust_nm        IN RTRE0013.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_tp        IN RTRE0013.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Birth_day      IN RTRE0013.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Busl_no        IN RTRE0013.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */    
+    v_Bank_cd        IN RTRE0013.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_no        IN RTRE0013.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Tr_cd          IN RTRE0013.TR_CD%TYPE,          /*ì—…ë¬´êµ¬ë¶„ì½”ë“œ          */
+    v_Call_dt        IN VARCHAR2,        /*ì „ì†¡ì¼ì‹œ              */
+    v_Rslt_cd        IN RTRE0013.RSLT_CD%TYPE,        /*ì²˜ë¦¬ê²°ê³¼ì½”ë“œ          */
+    v_Rslt_msg       IN RTRE0013.RSLT_MSG%TYPE,       /*ê²°ê³¼ë©”ì‹œì§€            */
+    v_Resp_tr_cd     IN RTRE0013.RESP_TR_CD%TYPE,     /*ê±°ëž˜ì½”ë“œ              */
+    v_Txt_no         IN RTRE0013.TXT_NO%TYPE,         /*ì „ë¬¸ê³ ìœ ë²ˆí˜¸          */
+    v_Record_data    IN RTRE0013.RECORD_DATA%TYPE,    /*ë…¹ì·¨ë°ì´í„°            */
+    v_Id             IN RTRE0013.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2        
   );
 
   /*****************************************************************************
-  -- Ãâ±ÝÀÌÃ¼µ¿ÀÇ log Insert
+  -- ì¶œê¸ˆì´ì²´ë™ì˜ log Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0013 (
-    v_Mob_no         IN RTRE0013.MOB_NO%TYPE,         /*¼ö½ÅÀÚ¹øÈ£            */
-    v_Cust_nm        IN RTRE0013.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_tp        IN RTRE0013.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Birth_day      IN RTRE0013.BIRTH_DAY%TYPE,      /*¹ýÁ¤»ý³â¿ùÀÏ          */
-    v_Busl_no        IN RTRE0013.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Bank_cd        IN RTRE0013.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_no        IN RTRE0013.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Tr_cd          IN RTRE0013.TR_CD%TYPE,          /*¾÷¹«±¸ºÐÄÚµå          */
-    v_Call_dt        IN VARCHAR2,        /*Àü¼ÛÀÏ½Ã              */
-    v_Rslt_cd        IN RTRE0013.RSLT_CD%TYPE,        /*Ã³¸®°á°úÄÚµå          */
-    v_Rslt_msg       IN RTRE0013.RSLT_MSG%TYPE,       /*°á°ú¸Þ½ÃÁö            */
-    v_Resp_tr_cd     IN RTRE0013.RESP_TR_CD%TYPE,     /*°Å·¡ÄÚµå              */
-    v_Txt_no         IN RTRE0013.TXT_NO%TYPE,         /*Àü¹®°íÀ¯¹øÈ£          */
-    v_Record_data    IN RTRE0013.RECORD_DATA%TYPE,    /*³ìÃëµ¥ÀÌÅÍ            */
-    v_Id             IN RTRE0013.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Mob_no         IN RTRE0013.MOB_NO%TYPE,         /*ìˆ˜ì‹ ìžë²ˆí˜¸            */
+    v_Cust_nm        IN RTRE0013.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_tp        IN RTRE0013.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Birth_day      IN RTRE0013.BIRTH_DAY%TYPE,      /*ë²•ì •ìƒë…„ì›”ì¼          */
+    v_Busl_no        IN RTRE0013.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Bank_cd        IN RTRE0013.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_no        IN RTRE0013.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Tr_cd          IN RTRE0013.TR_CD%TYPE,          /*ì—…ë¬´êµ¬ë¶„ì½”ë“œ          */
+    v_Call_dt        IN VARCHAR2,        /*ì „ì†¡ì¼ì‹œ              */
+    v_Rslt_cd        IN RTRE0013.RSLT_CD%TYPE,        /*ì²˜ë¦¬ê²°ê³¼ì½”ë“œ          */
+    v_Rslt_msg       IN RTRE0013.RSLT_MSG%TYPE,       /*ê²°ê³¼ë©”ì‹œì§€            */
+    v_Resp_tr_cd     IN RTRE0013.RESP_TR_CD%TYPE,     /*ê±°ëž˜ì½”ë“œ              */
+    v_Txt_no         IN RTRE0013.TXT_NO%TYPE,         /*ì „ë¬¸ê³ ìœ ë²ˆí˜¸          */
+    v_Record_data    IN RTRE0013.RECORD_DATA%TYPE,    /*ë…¹ì·¨ë°ì´í„°            */
+    v_Id             IN RTRE0013.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2                     
     ) RETURN NUMBER;
 
 END Pkg_Rtre0013;
-/

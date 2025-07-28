@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0205 AS
 /*******************************************************************************
    NAME:      Pkg_RTCM0205
-   PURPOSE:   ╧╝юзфВ╦к Detail ╟Э╦╝
+   PURPOSE:   К╛╦Л·░М▐╛К╖╥ Detail Й╢─К╕╛
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,111 +10,110 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0205 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ╟ЬеКдз╣Е Detail Count
+  -- ЙЁ╣М├╣Л╫■К⌠° Detail Count
   *****************************************************************************/
   FUNCTION f_sRtcm0205Count(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ╟ЬеКдз╣Е Detail а╤х╦
+  -- ЙЁ╣М├╣Л╫■К⌠° Detail Л║╟М ▄
   *****************************************************************************/
   PROCEDURE p_sRtcm0205 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     );
 
   /*****************************************************************************
-  -- ╧╝юзфВ╦к Detail Insert
+  -- К╛╦Л·░М▐╛К╖╥ Detail Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*╣Н╥оюз ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*К⌠╠К║²Л·░ ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ╧╝юзфВ╦к Detail Update
+  -- К╛╦Л·░М▐╛К╖╥ Detail Update
   *****************************************************************************/
   FUNCTION f_UpdateRTCM0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*╣Н╥оюз ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*К⌠╠К║²Л·░ ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ╧╝юзфВ╦к Detail Delete
+  -- К╛╦Л·░М▐╛К╖╥ Detail Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0205(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*╣Н╥оюз ID           */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*К⌠╠К║²Л·░ ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- ╧╝юзфВ╦к ╟Э╦╝
+  -- К╛╦Л·░М▐╛К╖╥ Й╢─К╕╛
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0205(
-    v_Comm_Dvsn      IN  CHAR,                           /* цЁ╦╝╠╦╨п(I,U,D)        */
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*гою╖дз╣Е╦М          */
+    v_Comm_Dvsn      IN  CHAR,                           /* Л╡≤К╕╛Й╣╛К╤└(I,U,D)        */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     v_Seq            IN  RTCM0205.SEQ%TYPE,
     v_Str_Day        IN  RTCM0205.STR_DAY%TYPE,
     v_End_Day        IN  RTCM0205.END_DAY%TYPE,
-    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*╣Н╥оюз ID           */
+    v_Lock_Yn        IN  RTCM0205.LOCK_YN%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Reg_Id         IN  RTCM0205.REG_ID%TYPE,           /*К⌠╠К║²Л·░ ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
     );
   
     /*****************************************************************************
-  -- ╟ЬеКдз╣Е Detail Count
+  -- ЙЁ╣М├╣Л╫■К⌠° Detail Count
   *****************************************************************************/
   FUNCTION f_sRtcm0205LockYn(
-    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */ 
-    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*дз╣Е╠в╥Лдз╣Е        */    
-    v_Cd             IN  RTCM0205.CD%TYPE,               /*гою╖дз╣Е            */
-    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*гою╖дз╣Е╦М          */
-    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE            /*гою╖дз╣Е╦М          */
+    v_Send_Pos       IN  RTCM0205.SEND_POS%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */ 
+    v_Mid_Grp_Cd     IN  RTCM0205.MID_GRP_CD%TYPE,       /*Л╫■К⌠°Й╥╦Кё╧Л╫■К⌠°        */    
+    v_Cd             IN  RTCM0205.CD%TYPE,               /*М∙≤Л°└Л╫■К⌠°            */
+    v_Cust_No        IN  RTCM0205.CUST_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Ord_No         IN  RTCM0205.ORD_NO%TYPE,            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
+    v_Lock_Type      IN  RTCM0205.LOCK_TYPE%TYPE            /*М∙≤Л°└Л╫■К⌠°К╙┘          */
     ) RETURN VARCHAR2;
     
 END Pkg_Rtcm0205;
-/

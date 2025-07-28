@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0112 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0112
-   PURPOSE   ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â °ü¸®
+   PURPOSE   ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,168 +10,167 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0112 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â Count
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0112Count(
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Seq            IN RTSD0112.SEQ%TYPE               /*¼ø¹ø                */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Seq            IN RTSD0112.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â Select
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0112 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0112.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*°áÇÕ ÁöÁ¤_ÇØÁ¦ÀÏ      */
-    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*°í°´°áÇÕ¿©ºÎ          */
-    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*Ä·ÆäÀÎÇÒÀÎ±Ý¾×        */
-    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*¿ù·»Å»·á              */
-    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ÀÌÈÄ_°í°´°áÇÕ¿©ºÎ     */
-    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*Ä·ÆäÀÎÇÒÀÎ¾×          */
-    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*¿ù·»Å»·á              */
-    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*¿ù·»Å»·á_¿ø±Ý         */
-    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*¿ù·»Å»·á_ºÎ°¡¼¼       */
-    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*Ã»±¸¼ø¹ø              */
-    v_Reg_Id         IN RTSD0112.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0112.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*ê²°í•© ì§€ì •_í•´ì œì¼      */
+    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*ê³ ê°ê²°í•©ì—¬ë¶€          */
+    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*ìº íŽ˜ì¸í• ì¸ê¸ˆì•¡        */
+    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*ì›”ë Œíƒˆë£Œ              */
+    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ì´í›„_ê³ ê°ê²°í•©ì—¬ë¶€     */
+    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*ìº íŽ˜ì¸í• ì¸ì•¡          */
+    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*ì›”ë Œíƒˆë£Œ              */
+    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ì›ê¸ˆ         */
+    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ë¶€ê°€ì„¸       */
+    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*ì²­êµ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0112.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â Insert
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0112 (
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0112.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*°áÇÕ ÁöÁ¤_ÇØÁ¦ÀÏ      */
-    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*°í°´°áÇÕ¿©ºÎ          */
-    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*Ä·ÆäÀÎÇÒÀÎ±Ý¾×        */
-    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*¿ù·»Å»·á              */
-    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ÀÌÈÄ_°í°´°áÇÕ¿©ºÎ     */
-    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*Ä·ÆäÀÎÇÒÀÎ¾×          */
-    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*¿ù·»Å»·á              */
-    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*¿ù·»Å»·á_¿ø±Ý         */
-    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*¿ù·»Å»·á_ºÎ°¡¼¼       */
-    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*Ã»±¸¼ø¹ø              */
-    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0112.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*ê²°í•© ì§€ì •_í•´ì œì¼      */
+    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*ê³ ê°ê²°í•©ì—¬ë¶€          */
+    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*ìº íŽ˜ì¸í• ì¸ê¸ˆì•¡        */
+    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*ì›”ë Œíƒˆë£Œ              */
+    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ì´í›„_ê³ ê°ê²°í•©ì—¬ë¶€     */
+    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*ìº íŽ˜ì¸í• ì¸ì•¡          */
+    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*ì›”ë Œíƒˆë£Œ              */
+    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ì›ê¸ˆ         */
+    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ë¶€ê°€ì„¸       */
+    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*ì²­êµ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â Update
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0112 (
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0112.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*°áÇÕ ÁöÁ¤_ÇØÁ¦ÀÏ      */
-    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*°í°´°áÇÕ¿©ºÎ          */
-    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*Ä·ÆäÀÎÇÒÀÎ±Ý¾×        */
-    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*¿ù·»Å»·á              */
-    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ÀÌÈÄ_°í°´°áÇÕ¿©ºÎ     */
-    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*Ä·ÆäÀÎÇÒÀÎ¾×          */
-    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*¿ù·»Å»·á              */
-    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*¿ù·»Å»·á_¿ø±Ý         */
-    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*¿ù·»Å»·á_ºÎ°¡¼¼       */
-    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*Ã»±¸¼ø¹ø              */
-    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0112.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*ê²°í•© ì§€ì •_í•´ì œì¼      */
+    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*ê³ ê°ê²°í•©ì—¬ë¶€          */
+    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*ìº íŽ˜ì¸í• ì¸ê¸ˆì•¡        */
+    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*ì›”ë Œíƒˆë£Œ              */
+    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ì´í›„_ê³ ê°ê²°í•©ì—¬ë¶€     */
+    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*ìº íŽ˜ì¸í• ì¸ì•¡          */
+    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*ì›”ë Œíƒˆë£Œ              */
+    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ì›ê¸ˆ         */
+    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ë¶€ê°€ì„¸       */
+    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*ì²­êµ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â Delete
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0112 (
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN RTSD0112.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN RTSD0112.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â °ü¸®(IUD)
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0112 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Seq            IN OUT RTSD0112.SEQ%TYPE,        /*¼ø¹ø                  */
-    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*°áÇÕ ÁöÁ¤_ÇØÁ¦ÀÏ      */
-    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*°í°´°áÇÕ¿©ºÎ          */
-    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*Ä·ÆäÀÎÇÒÀÎ±Ý¾×        */
-    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*¿ù·»Å»·á              */
-    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ÀÌÈÄ_°í°´°áÇÕ¿©ºÎ     */
-    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*°í°´°áÇÕ¹øÈ£          */
-    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*·»Å»·á(Á¶°ßÇ¥)        */
-    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*Ä·ÆäÀÎÇÒÀÎ¾×          */
-    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*°áÇÕÇÒÀÎÀ²            */
-    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*°áÇÕÇÒÀÎ¾×            */
-    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*Á¦ÇÑÇÒÀÎÀ²            */
-    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*Á¦ÇÑÇÒÀÎ¾×            */
-    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ÃÖÁ¾ÇÒÀÎ¾×            */
-    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*¿ù·»Å»·á              */
-    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*¿ù·»Å»·á_¿ø±Ý         */
-    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*¿ù·»Å»·á_ºÎ°¡¼¼       */
-    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*Ã»±¸¼ø¹ø              */
-    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Seq            IN OUT RTSD0112.SEQ%TYPE,        /*ìˆœë²ˆ                  */
+    v_Job_Day        IN RTSD0112.JOB_DAY%TYPE,        /*ê²°í•© ì§€ì •_í•´ì œì¼      */
+    v_Grp_Yn         IN RTSD0112.GRP_YN%TYPE,         /*ê³ ê°ê²°í•©ì—¬ë¶€          */
+    v_Grp_No         IN RTSD0112.GRP_NO%TYPE,         /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt       IN RTSD0112.RENT_AMT%TYPE,       /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt        IN RTSD0112.C_DCAMT%TYPE,        /*ìº íŽ˜ì¸í• ì¸ê¸ˆì•¡        */
+    v_G_Dcrate       IN RTSD0112.G_DCRATE%TYPE,       /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt        IN RTSD0112.G_DCAMT%TYPE,        /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate       IN RTSD0112.L_DCRATE%TYPE,       /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt        IN RTSD0112.L_DCAMT%TYPE,        /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt        IN RTSD0112.F_DCAMT%TYPE,        /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt        IN RTSD0112.MON_AMT%TYPE,        /*ì›”ë Œíƒˆë£Œ              */
+    v_Grp_Yn2        IN RTSD0112.GRP_YN2%TYPE,        /*ì´í›„_ê³ ê°ê²°í•©ì—¬ë¶€     */
+    v_Grp_No2        IN RTSD0112.GRP_NO2%TYPE,        /*ê³ ê°ê²°í•©ë²ˆí˜¸          */
+    v_Rent_Amt2      IN RTSD0112.RENT_AMT2%TYPE,      /*ë Œíƒˆë£Œ(ì¡°ê²¬í‘œ)        */
+    v_C_Dcamt2       IN RTSD0112.C_DCAMT2%TYPE,       /*ìº íŽ˜ì¸í• ì¸ì•¡          */
+    v_G_Dcrate2      IN RTSD0112.G_DCRATE2%TYPE,      /*ê²°í•©í• ì¸ìœ¨            */
+    v_G_Dcamt2       IN RTSD0112.G_DCAMT2%TYPE,       /*ê²°í•©í• ì¸ì•¡            */
+    v_L_Dcrate2      IN RTSD0112.L_DCRATE2%TYPE,      /*ì œí•œí• ì¸ìœ¨            */
+    v_L_Dcamt2       IN RTSD0112.L_DCAMT2%TYPE,       /*ì œí•œí• ì¸ì•¡            */
+    v_F_Dcamt2       IN RTSD0112.F_DCAMT2%TYPE,       /*ìµœì¢…í• ì¸ì•¡            */
+    v_Mon_Amt2       IN RTSD0112.MON_AMT2%TYPE,       /*ì›”ë Œíƒˆë£Œ              */
+    v_Sale_Namt      IN RTSD0112.SALE_NAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ì›ê¸ˆ         */
+    v_Sale_Vamt      IN RTSD0112.SALE_VAMT%TYPE,      /*ì›”ë Œíƒˆë£Œ_ë¶€ê°€ì„¸       */
+    v_Recp_Nu        IN RTSD0112.RECP_NU%TYPE,        /*ì²­êµ¬ìˆœë²ˆ              */
+    v_Reg_Id         IN RTSD0112.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÀåÂø ÈÄ °í°´°áÇÕ ±Ý¾×ÀÌ·Â - ¼ø¹ø È¹µæ
+  -- ìž¥ì°© í›„ ê³ ê°ê²°í•© ê¸ˆì•¡ì´ë ¥ - ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0112Seq(
-    v_Ord_No         IN RTSD0112.ORD_NO%TYPE            /*°è¾à¹øÈ£            */
+    v_Ord_No         IN RTSD0112.ORD_NO%TYPE            /*ê³„ì•½ë²ˆí˜¸            */
     ) RETURN NUMBER;
     
 END Pkg_Rtsd0112;
-/

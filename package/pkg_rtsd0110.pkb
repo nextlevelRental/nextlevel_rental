@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
 /*******************************************************************************
    NAME      Pkg_Rtsd0110
-   PURPOSE   º»ÀÎÀÎÁõ ÀÌ·Â °ü¸®
+   PURPOSE   ë³¸ì¸ì¸ì¦ ì´ë ¥ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,11 +10,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Count
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Count
   *****************************************************************************/
   FUNCTION f_sRtsd0110Count(
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,          /*°í°´¹øÈ£            */
-    v_Seq            IN RTSD0110.SEQ%TYPE               /*¼ø¹ø                */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,          /*ê³ ê°ë²ˆí˜¸            */
+    v_Seq            IN RTSD0110.SEQ%TYPE               /*ìˆœë²ˆ                */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,30 +34,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END f_sRtsd0110Count;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Select
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0110 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cert_FDay      IN RTSD0110.CERT_DAY%TYPE,       /*ÀÎÁõÀÏÀÚFROM          */
-    v_Cert_TDay      IN RTSD0110.CERT_DAY%TYPE        /*ÀÎÁõÀÏÀÚTO            */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cert_FDay      IN RTSD0110.CERT_DAY%TYPE,       /*ì¸ì¦ì¼ìžFROM          */
+    v_Cert_TDay      IN RTSD0110.CERT_DAY%TYPE        /*ì¸ì¦ì¼ìžTO            */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.CUST_NO,                   /*°í°´¹øÈ£            */
-            A.SEQ,                       /*¼ø¹ø                */
-            A.CERT_DAY,                  /*ÀÎÁõÀÏÀÚ            */
-            A.SAFEKEY,                   /*ÀÎÁõ¹øÈ£            */
-            A.CERT_CD,                   /*º»ÀÎÀÎÁõ¹æ¹ý        */
-            A.CERT_YN,                   /*ÀÎÁõ¿©ºÎ            */
-            A.MOB_NO,                    /*ÈÞ´ëÆù¹øÈ£          */
-            A.MOB_FIRM,                  /*Åë½Å»ç              */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            A.SEQ,                       /*ìˆœë²ˆ                */
+            A.CERT_DAY,                  /*ì¸ì¦ì¼ìž            */
+            A.SAFEKEY,                   /*ì¸ì¦ë²ˆí˜¸            */
+            A.CERT_CD,                   /*ë³¸ì¸ì¸ì¦ë°©ë²•        */
+            A.CERT_YN,                   /*ì¸ì¦ì—¬ë¶€            */
+            A.MOB_NO,                    /*íœ´ëŒ€í°ë²ˆí˜¸          */
+            A.MOB_FIRM,                  /*í†µì‹ ì‚¬              */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0110 A
     WHERE   A.CUST_NO  = v_Cust_No
     AND     A.CERT_DAY BETWEEN v_Cert_FDay AND v_Cert_TDay;
@@ -65,18 +65,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END p_sRtsd0110;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Insert
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ÀÎÁõÀÏÀÚ              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*º»ÀÎÀÎÁõ¹æ¹ý          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ÀÎÁõ¿©ºÎ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ì¸ì¦ì¼ìž              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*ë³¸ì¸ì¸ì¦ë°©ë²•          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ì¸ì¦ì—¬ë¶€              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -119,18 +119,18 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END f_InsertRtsd0110;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Update
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ÀÎÁõÀÏÀÚ              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*º»ÀÎÀÎÁõ¹æ¹ý          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ÀÎÁõ¿©ºÎ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ì¸ì¦ì¼ìž              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*ë³¸ì¸ì¸ì¦ë°©ë²•          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ì¸ì¦ì—¬ë¶€              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -157,12 +157,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END f_UpdateRtsd0110;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Delete
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtsd0110 (
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Seq            IN RTSD0110.SEQ%TYPE,            /*¼ø¹ø                  */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Seq            IN RTSD0110.SEQ%TYPE,            /*ìˆœë²ˆ                  */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -171,9 +171,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
     WHERE  CUST_NO = v_Cust_No
     AND    SEQ     = v_Seq;
 
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', '°í°´¹øÈ£', v_Cust_No);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', '¼ø¹ø', v_Seq);
-    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', 'µî·ÏÀÚ ID', v_Reg_Id);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', 'ê³ ê°ë²ˆí˜¸', v_Cust_No);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', 'ìˆœë²ˆ', v_Seq);
+    Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.f_DeleteRtsd0110(2)', 'ë“±ë¡ìž ID', v_Reg_Id);
 
     RETURN SQLCODE;
 
@@ -185,19 +185,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END f_DeleteRtsd0110;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â °ü¸®(IUD)
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0110 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Seq            IN OUT RTSD0110.SEQ%TYPE,        /*¼ø¹ø                  */
-    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ÀÎÁõÀÏÀÚ              */
-    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ÀÎÁõ¹øÈ£              */
-    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*º»ÀÎÀÎÁõ¹æ¹ý          */
-    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ÀÎÁõ¿©ºÎ              */
-    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*Åë½Å»ç                */
-    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Seq            IN OUT RTSD0110.SEQ%TYPE,        /*ìˆœë²ˆ                  */
+    v_Cert_Day       IN RTSD0110.CERT_DAY%TYPE,       /*ì¸ì¦ì¼ìž              */
+    v_Safekey        IN RTSD0110.SAFEKEY%TYPE,        /*ì¸ì¦ë²ˆí˜¸              */
+    v_Cert_Cd        IN RTSD0110.CERT_CD%TYPE,        /*ë³¸ì¸ì¸ì¦ë°©ë²•          */
+    v_Cert_Yn        IN RTSD0110.CERT_YN%TYPE,        /*ì¸ì¦ì—¬ë¶€              */
+    v_Mob_No         IN RTSD0110.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Mob_Firm       IN RTSD0110.MOB_FIRM%TYPE,       /*í†µì‹ ì‚¬                */
+    v_Reg_Id         IN RTSD0110.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -206,44 +206,44 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª: °í°´¹øÈ£ , ÀÎÁõÀÏÀÚ , ÀÎÁõ¹øÈ£ , º»ÀÎÀÎÁõ¹æ¹ý , ÀÎÁõ¿©ºÎ , ÈÞ´ëÆù¹øÈ£ , Åë½Å»ç , µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’: ê³ ê°ë²ˆí˜¸ , ì¸ì¦ì¼ìž , ì¸ì¦ë²ˆí˜¸ , ë³¸ì¸ì¸ì¦ë°©ë²• , ì¸ì¦ì—¬ë¶€ , íœ´ëŒ€í°ë²ˆí˜¸ , í†µì‹ ì‚¬ , ë“±ë¡ìž ID
     IF (TRIM(v_Cust_No) IS NULL) OR (0 = Pkg_Rtsd0100.f_sRtsd0100Count(v_Cust_No)) THEN
-        v_Return_Message := '°í°´¹øÈ£('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ë²ˆí˜¸('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
 --    IF 0 != ISDATE(v_Cert_Day) THEN
---        v_Return_Message := 'ÀÎÁõÀÏÀÚ('||v_Cert_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+--        v_Return_Message := 'ì¸ì¦ì¼ìž('||v_Cert_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
 --        RAISE e_Error;
 --    END IF;
 
     IF TRIM(v_Safekey) IS NULL THEN
-        v_Return_Message := 'ÀÎÁõ¹øÈ£('||v_Safekey||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì¸ì¦ë²ˆí˜¸('||v_Safekey||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Cert_Cd) IS NULL THEN
-        v_Return_Message := 'º»ÀÎÀÎÁõ¹æ¹ý('||v_Cert_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë³¸ì¸ì¸ì¦ë°©ë²•('||v_Cert_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Cert_Yn) IS NULL) OR (TRIM(v_Cert_Yn) NOT IN ('Y','N')) THEN
-        v_Return_Message := 'ÀÎÁõ¿©ºÎ('||v_Cert_Yn ||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì¸ì¦ì—¬ë¶€('||v_Cert_Yn ||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Mob_No) IS NULL THEN
-        v_Return_Message := 'ÈÞ´ëÆù¹øÈ£('||v_Mob_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'íœ´ëŒ€í°ë²ˆí˜¸('||v_Mob_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Mob_Firm) IS NULL THEN
-        v_Return_Message := 'Åë½Å»ç('||v_Mob_Firm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í†µì‹ ì‚¬('||v_Mob_Firm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -251,7 +251,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
 
 
         IF 0 != f_sRtsd0110Count(v_Cust_No, v_Seq) THEN
-            v_Return_Message := 'ÇØ´ç º»ÀÎÀÎÁõ ÀÌ·Â('||v_Cust_No||'-'||v_Seq||')Àº ÀÌ¹Ì µî·ÏµÈ »óÅÂÀÌ¹Ç·Î ½Å±Ôµî·ÏÃ³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù.!';
+            v_Return_Message := 'í•´ë‹¹ ë³¸ì¸ì¸ì¦ ì´ë ¥('||v_Cust_No||'-'||v_Seq||')ì€ ì´ë¯¸ ë“±ë¡ëœ ìƒíƒœì´ë¯€ë¡œ ì‹ ê·œë“±ë¡ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤.!';
             RAISE e_Error;
         END IF;
 
@@ -260,7 +260,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
         IF 0 != f_InsertRtsd0110(v_Cust_No, v_Seq, v_Cert_Day, v_Safekey,
                                  v_Cert_Cd, v_Cert_Yn, v_Mob_No, v_Mob_Firm,
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'º»ÀÎÀÎÁõ ÀÌ·Â µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'ë³¸ì¸ì¸ì¦ ì´ë ¥ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
 
@@ -268,7 +268,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
     ELSE
 
         IF 0 = f_sRtsd0110Count(v_Cust_No, v_Seq) THEN
-            v_Return_Message := 'ÇØ´ç º»ÀÎÀÎÁõ ÀÌ·Â('||v_Cust_No||'-'||v_Seq||')Àº µî·Ï ¾ÈµÈ »óÅÂÀÌ¹Ç·Î ¼öÁ¤/»èÁ¦ Ã³¸®°¡ ºÒ°¡ÇÕ´Ï´Ù.!';
+            v_Return_Message := 'í•´ë‹¹ ë³¸ì¸ì¸ì¦ ì´ë ¥('||v_Cust_No||'-'||v_Seq||')ì€ ë“±ë¡ ì•ˆëœ ìƒíƒœì´ë¯€ë¡œ ìˆ˜ì •/ì‚­ì œ ì²˜ë¦¬ê°€ ë¶ˆê°€í•©ë‹ˆë‹¤.!';
             RAISE e_Error;
         END IF;
 
@@ -277,7 +277,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
             IF 0 != f_UpdateRtsd0110(v_Cust_No, v_Seq, v_Cert_Day, v_Safekey,
                                      v_Cert_Cd, v_Cert_Yn, v_Mob_No, v_Mob_Firm,
                                      v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := 'º»ÀÎÀÎÁõ ÀÌ·Â ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'ë³¸ì¸ì¸ì¦ ì´ë ¥ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -286,13 +286,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
         ELSIF v_Comm_Dvsn = 'D' THEN
         
             IF 0 != f_DeleteRtsd0110(v_Cust_No, v_Seq, v_Reg_Id, v_ErrorText) THEN
-               v_Return_Message := 'º»ÀÎÀÎÁõ ÀÌ·Â »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+               v_Return_Message := 'ë³¸ì¸ì¸ì¦ ì´ë ¥ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                RAISE e_Error;
             END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
@@ -300,7 +300,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -315,19 +315,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0110.p_IUDRtsd0110(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0110;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â - ¼ø¹ø È¹µæ
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ - ìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtsd0110Seq(
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*°í°´¹øÈ£            */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE           /*ê³ ê°ë²ˆí˜¸            */
     ) RETURN NUMBER IS
-    v_Seq RTSD0110.SEQ%TYPE DEFAULT NULL;               /*¼ø¹ø                */
+    v_Seq RTSD0110.SEQ%TYPE DEFAULT NULL;               /*ìˆœë²ˆ                */
   BEGIN
 
     SELECT  NVL((SELECT  MAX(SEQ)
@@ -345,27 +345,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END f_sRtsd0110Seq;
 
   /*****************************************************************************
-  -- º»ÀÎÀÎÁõ ÀÌ·Â Select Max Seq
+  -- ë³¸ì¸ì¸ì¦ ì´ë ¥ Select Max Seq
   *****************************************************************************/
   PROCEDURE p_sRtsd0110_MaxSeq (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTSD0110.CUST_NO%TYPE         /*°í°´¹øÈ£              */
+    v_Cust_No        IN RTSD0110.CUST_NO%TYPE         /*ê³ ê°ë²ˆí˜¸              */
     ) IS
   BEGIN
   
     OPEN Ref_Cursor FOR
-    SELECT  A.CUST_NO,                   /*°í°´¹øÈ£            */
-            A.SEQ,                       /*¼ø¹ø                */
-            A.CERT_DAY,                  /*ÀÎÁõÀÏÀÚ            */
-            A.SAFEKEY,                   /*ÀÎÁõ¹øÈ£            */
-            A.CERT_CD,                   /*º»ÀÎÀÎÁõ¹æ¹ý        */
-            A.CERT_YN,                   /*ÀÎÁõ¿©ºÎ            */
-            A.MOB_NO,                    /*ÈÞ´ëÆù¹øÈ£          */
-            A.MOB_FIRM,                  /*Åë½Å»ç              */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            A.SEQ,                       /*ìˆœë²ˆ                */
+            A.CERT_DAY,                  /*ì¸ì¦ì¼ìž            */
+            A.SAFEKEY,                   /*ì¸ì¦ë²ˆí˜¸            */
+            A.CERT_CD,                   /*ë³¸ì¸ì¸ì¦ë°©ë²•        */
+            A.CERT_YN,                   /*ì¸ì¦ì—¬ë¶€            */
+            A.MOB_NO,                    /*íœ´ëŒ€í°ë²ˆí˜¸          */
+            A.MOB_FIRM,                  /*í†µì‹ ì‚¬              */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTSD0110 A
     WHERE   A.CUST_NO = v_Cust_No
     AND     A.SEQ     = (SELECT MAX(SEQ) FROM RTSD0110 WHERE CUST_NO  = v_Cust_No);
@@ -373,4 +373,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0110 AS
   END p_sRtsd0110_MaxSeq;
 
 END Pkg_Rtsd0110;
-/

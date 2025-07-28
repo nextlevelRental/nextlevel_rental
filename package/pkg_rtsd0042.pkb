@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0042 AS 
 /******************************************************************************* 
    NAME:      PKG_RTSD0042 
-   PURPOSE    ¸â¹ö½± ÇÕ°è±Þ¾× 
+   PURPOSE    ë©¤ë²„ì‰½ í•©ê³„ê¸‰ì•¡ 
  
    REVISIONS 
    Ver        Date        Author           Description 
@@ -10,12 +10,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0042 AS
 *******************************************************************************/ 
  
   /***************************************************************************** 
-  -- ¸â¹ö½± ÇÕ°è±Þ¾× Select 
+  -- ë©¤ë²„ì‰½ í•©ê³„ê¸‰ì•¡ Select 
   *****************************************************************************/ 
   FUNCTION f_sRtsd0042GetSumPay ( 
-    v_Sale_Cd       IN RTSD0042.SALE_CD%TYPE,          /*°è¾à¹øÈ£              */ 
-    v_Period_Cd     IN RTSD0042.PERIOD_CD%TYPE,          /*°è¾à¹øÈ£              */ 
-    v_Cnt_Cd        IN RTSD0042.CNT_CD%TYPE          /*°è¾à¹øÈ£              */ 
+    v_Sale_Cd       IN RTSD0042.SALE_CD%TYPE,          /*ê³„ì•½ë²ˆí˜¸              */ 
+    v_Period_Cd     IN RTSD0042.PERIOD_CD%TYPE,          /*ê³„ì•½ë²ˆí˜¸              */ 
+    v_Cnt_Cd        IN RTSD0042.CNT_CD%TYPE          /*ê³„ì•½ë²ˆí˜¸              */ 
     ) RETURN NUMBER IS 
     v_amt NUMBER DEFAULT 0; 
   
@@ -38,4 +38,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTSD0042 AS
   
   
 END Pkg_Rtsd0042;
-/

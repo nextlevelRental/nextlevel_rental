@@ -395,14 +395,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0401 AS
         v_Success_code := -1;
         v_Return_Message := v_Return_Message;
         v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
-        --Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0401.p_IUDRtsd0401(1)', v_ErrorText, v_Return_Message);
+        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0401.p_IUDRtsd0401(1)', v_ErrorText, v_Return_Message);
 
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
         v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
-        --Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0401.p_IUDRtsd0401(2)', v_ErrorText, v_Return_Message);
+        Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0401.p_IUDRtsd0401(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtsd0401;
   
@@ -470,4 +470,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0401 AS
   END p_sRTSD0401CountPerStat;
         
 END Pkg_Rtsd0401;
-/

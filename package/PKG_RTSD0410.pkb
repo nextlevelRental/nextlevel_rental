@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
 /*******************************************************************************
     NAME        Pkg_Rtsd0410
-    PURPOSE     ∆«∏≈¿ŒøÎ ∑ª≈ª∑·
+    PURPOSE     ÌåêÎß§Ïù∏Ïö© Î†åÌÉàÎ£å
 
     REVISIONS
     Ver     Date        Author          Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
 *******************************************************************************/
   
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ ∑ª≈ª∑· Select
+  -- ÌåêÎß§Ïù∏Ïö© Î†åÌÉàÎ£å Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -19,11 +19,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410 (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
-    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE          /*ºˆ∑Æ             */
-    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE       /*±‚∞£             */
-    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE        /*µÓ±ﬁ             */
-    , v_Inch            IN RTSD0410.INCH%TYPE            /*¿Œƒ°             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*Ï∞®Ï¢Ö             */
+    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE          /*ÏàòÎüâ             */
+    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE       /*Í∏∞Í∞Ñ             */
+    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE        /*Îì±Í∏â             */
+    , v_Inch            IN RTSD0410.INCH%TYPE            /*Ïù∏Ïπò             */
   ) IS
 
   BEGIN
@@ -53,7 +53,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   END p_sRTSD0410;
   
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ µÓ±ﬁ Select
+  -- ÌåêÎß§Ïù∏Ïö© Îì±Í∏â Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -62,7 +62,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410GradeCd (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*Ï∞®Ï¢Ö             */
   ) IS
 
   BEGIN
@@ -85,7 +85,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   END p_sRTSD0410GradeCd;  
    
   /*****************************************************************************
-  -- ∆«∏≈¿ŒøÎ ¿Œƒ° Select
+  -- ÌåêÎß§Ïù∏Ïö© Ïù∏Ïπò Select
   
     REVISIONS
     Ver     Date        Author          Description
@@ -94,7 +94,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   *****************************************************************************/
   PROCEDURE p_sRTSD0410Inch (
       Ref_Cursor        IN OUT SYS_REFCURSOR
-    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE        /*¬˜¡æ             */
+    , v_Class_Cd        IN RTSD0410.CLASS_CD%TYPE         /*Ï∞®Ï¢Ö             */
+    , v_Period_Cd       IN RTSD0410.PERIOD_CD%TYPE        /*Í∏∞Í∞Ñ             */
+    , v_Cnt_Cd          IN RTSD0410.CNT_CD%TYPE           /*Î≥∏Ïàò             */
+    , v_Grade_Cd        IN RTSD0410.GRADE_CD%TYPE         /*Îì±Í∏â             */
   ) IS
 
   BEGIN
@@ -105,6 +108,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
       FROM  RTSD0410 A
      WHERE  1=1
        AND  A.CLASS_CD = DECODE(v_Class_Cd, NULL, A.CLASS_CD, v_Class_Cd)
+       AND  A.PERIOD_CD = DECODE(v_Period_Cd, NULL, A.PERIOD_CD, v_Period_Cd)
+       AND  A.CNT_CD = DECODE(v_Cnt_Cd, NULL, A.CNT_CD, v_Cnt_Cd)
+       AND  A.GRADE_CD = DECODE(v_Grade_Cd, NULL, A.GRADE_CD, v_Grade_Cd)
        AND  A.USE_YN  = 'Y'
        AND  TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN A.STR_DAY AND A.END_DAY
        GROUP BY A.INCH
@@ -114,4 +120,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0410 AS
   END p_sRTSD0410Inch;  
        
 END Pkg_Rtsd0410;
-/

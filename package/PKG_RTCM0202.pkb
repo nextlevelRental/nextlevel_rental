@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_RTCM0202 AS
 /*******************************************************************************
    NAME:      Pkg_RTCM0202
-   PURPOSE:   πÆ¿⁄∆˜∏À Detail history
+   PURPOSE:   Î¨∏ÏûêÌè¨Îß∑ Detail history
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,30 +10,31 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_RTCM0202 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- πÆ¿⁄∆˜∏À Detail history Insert
+  -- Î¨∏ÏûêÌè¨Îß∑ Detail history Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0202(
-    v_Mid_Grp_Cd     IN  RTCM0202.MID_GRP_CD%TYPE,       /*ƒ⁄µÂ±◊∑Ïƒ⁄µÂ        */    
-    v_Cd             IN  RTCM0202.CD%TYPE,               /*«œ¿ßƒ⁄µÂ            */
-    v_Msg_Contents   IN  RTCM0202.MSG_CONTENTS%TYPE,     /*ƒ⁄µÂº≥∏Ì            */
-    v_Kakao_Msg_Cd   IN  RTCM0202.KAKAO_MSG_CD%TYPE,     /*æÀ∏≤≈Âƒ⁄µÂ            */
-    v_Msg_Type       IN  RTCM0202.MSG_TYPE%TYPE,         /*πﬂº€¿Ø«¸            */
-    v_Reserved_Type  IN  RTCM0202.RESERVED_TYPE%TYPE,    /*¡ÔΩ√πﬂº€ø©∫Œ         */
-    v_Order_Pt       IN  RTCM0202.ORDER_PT%TYPE,         /*¡§∑ƒº¯º≠            */
-    v_Use_Yn         IN  RTCM0202.USE_YN%TYPE,           /*ªÁøÎø©∫Œ            */
-    v_Reg_Id         IN  RTCM0202.REG_ID%TYPE,           /*µÓ∑œ¿⁄ ID           */
+    v_Mid_Grp_Cd     IN  RTCM0202.MID_GRP_CD%TYPE,       /*ÏΩîÎìúÍ∑∏Î£πÏΩîÎìú        */    
+    v_Cd             IN  RTCM0202.CD%TYPE,               /*ÌïòÏúÑÏΩîÎìú            */
+    v_Cd_Nm          IN  RTCM0202.CD_NM%TYPE,            /*ÌïòÏúÑÏΩîÎìúÎ™Ö          */
+    v_Msg_Contents   IN  RTCM0202.MSG_CONTENTS%TYPE,     /*ÏΩîÎìúÏÑ§Î™Ö            */
+    v_Kakao_Msg_Cd   IN  RTCM0202.KAKAO_MSG_CD%TYPE,     /*ÏïåÎ¶ºÌÜ°ÏΩîÎìú            */
+    v_Msg_Type       IN  RTCM0202.MSG_TYPE%TYPE,         /*Î∞úÏÜ°Ïú†Ìòï            */
+    v_Reserved_Type  IN  RTCM0202.RESERVED_TYPE%TYPE,    /*Ï¶âÏãúÎ∞úÏÜ°Ïó¨Î∂Ä         */
+    v_Order_Pt       IN  RTCM0202.ORDER_PT%TYPE,         /*Ï†ïÎ†¨ÏàúÏÑú            */
+    v_Use_Yn         IN  RTCM0202.USE_YN%TYPE,           /*ÏÇ¨Ïö©Ïó¨Î∂Ä            */
+    v_Reg_Id         IN  RTCM0202.REG_ID%TYPE,           /*Îì±Î°ùÏûê ID           */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
   BEGIN
 
     INSERT INTO RTCM0202 (
-            MID_GRP_CD, CD, SEQ, MSG_CONTENTS, 
+            MID_GRP_CD, CD, CD_NM, SEQ, MSG_CONTENTS, 
             ORDER_PT, KAKAO_MSG_CD, MSG_TYPE, RESERVED_TYPE, 
             USE_YN, REG_ID, REG_DT, CHG_ID, CHG_DT
             )
     VALUES  (
-            v_Mid_Grp_Cd, v_Cd, (SELECT MAX(SEQ) + 1 FROM RTCM0202 WHERE MID_GRP_CD = v_Mid_Grp_Cd AND CD = v_Cd), 
+            v_Mid_Grp_Cd, v_Cd, NVL(v_Cd_Nm, ' '), (SELECT MAX(SEQ) + 1 FROM RTCM0202 WHERE MID_GRP_CD = v_Mid_Grp_Cd AND CD = v_Cd), 
             v_Msg_Contents, v_Order_Pt, v_Kakao_Msg_Cd, v_Msg_Type, v_Reserved_Type, 
             v_Use_Yn, v_Reg_Id, SYSDATE, v_Reg_Id, SYSDATE
            );
@@ -48,4 +49,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_RTCM0202 AS
   END f_InsertRtcm0202;
   
 END Pkg_Rtcm0202;
-/

@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0052 AS
 /*******************************************************************************
    NAME:     PKG_RTSD0052
-   PURPOSE   ·»Å» Áö»ç °ü¸®
+   PURPOSE   ë Œíƒˆ ì§€ì‚¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,18 +9,18 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0052 AS
    1.0        2018-10-31  Sean         1. Created this package spec.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»Áö»çÁ¶È¸ Select
+  -- ë Œíƒˆì§€ì‚¬ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0052 (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_RENTAL_GROUP_NM IN RTSD0052.RENTAL_GROUP_NM%TYPE          /* ·»Å»Áö»ç¸í  */
+    v_RENTAL_GROUP_NM IN RTSD0052.RENTAL_GROUP_NM%TYPE          /* ë Œíƒˆì§€ì‚¬ëª…  */
     );
     
    /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0052 (
-    v_Comm_Dvsn         IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn         IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,
     v_RENTAL_GROUP_NM   IN RTSD0052.RENTAL_GROUP_NM%TYPE,
     v_USE_YN            IN RTSD0052.USE_YN%TYPE,	
@@ -31,7 +31,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0052 AS
     );   
 
   /*****************************************************************************
-  -- ·»Å»Áö¿ª Insert
+  -- ë Œíƒˆì§€ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0052 (
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,		  
@@ -42,7 +42,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0052 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»Áö¿ª Update
+  -- ë Œíƒˆì§€ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0052 ( 
     v_RENTAL_GROUP	    IN RTSD0052.RENTAL_GROUP%TYPE,		  
@@ -52,4 +52,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0052 AS
     v_ErrorText   OUT VARCHAR2
     ) RETURN NUMBER;    
 END PKG_RTSD0052;
-/

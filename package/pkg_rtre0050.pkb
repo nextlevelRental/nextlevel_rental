@@ -1309,7 +1309,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0050 AS
             (SELECT E.CERT_CD FROM RTSD0110 E WHERE E.CUST_NO = B.CUST_NO AND E.SEQ = (SELECT MAX(F.SEQ) FROM RTSD0110 F WHERE F.CUST_NO = B.CUST_NO)) AS CERT_CD,
             B.MOB_FIRM,
             B.LF_CD,
-            B.GENDER_CD
+            B.GENDER_CD,
+            CASE WHEN A.STAT_CD = '04' THEN CASE WHEN A.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND A.MFP_YN = 'N' THEN '계약중'
+                								 ELSE '계약종료'
+											 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(A.ORD_NO, A.CUST_NO) > 0 THEN '/선납'
+												 		 ELSE ''
+													 END
+				 ELSE '-'
+			 END AS STAT_NM_DETAIL,	/*상태상세*/
+            NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+				   FROM RTSD0109 X
+				  WHERE X.ORD_NO = A.ORD_NO
+					AND X.ARRE_AMT > 0
+					AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+					AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
+            CASE WHEN A.MFP_YN = 'Y' THEN CASE WHEN A.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(A.BOND_SEL_CD) || '차 채권매각'
+											   WHEN A.END_TP = 'E' THEN '중도완납'
+											   ELSE '중도해지'
+										   END
+				 ELSE '-'
+			 END AS MFP_YN	/*완납/해지/채권*/
     FROM    RTSD0108 A,              /*장착정보T    */
             RTSD0100 B,              /*고객마스터T  */
             RTRE0010 C               /*고객계좌정보T*/
@@ -1363,7 +1382,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0050 AS
             (SELECT E.CERT_CD FROM RTSD0110 E WHERE E.CUST_NO = B.CUST_NO AND E.SEQ = (SELECT MAX(F.SEQ) FROM RTSD0110 F WHERE F.CUST_NO = B.CUST_NO)) AS CERT_CD,
             B.MOB_FIRM,    
             B.LF_CD,
-            B.GENDER_CD                    
+            B.GENDER_CD,
+            CASE WHEN A.STAT_CD = '04' THEN CASE WHEN A.OS_DAY >= TO_CHAR(SYSDATE, 'YYYYMMDD') AND A.MFP_YN = 'N' THEN '계약중'
+                								 ELSE '계약종료'
+											 END || CASE WHEN Pkg_Rtre0035.f_sRtre0035BalanceAmt(A.ORD_NO, A.CUST_NO) > 0 THEN '/선납'
+												 		 ELSE ''
+													 END
+				 ELSE '-'
+			 END AS STAT_NM_DETAIL,	/*상태상세*/
+            NVL((SELECT TO_CHAR(SUM(X.ARRE_AMT))
+				   FROM RTSD0109 X
+				  WHERE X.ORD_NO = A.ORD_NO
+					AND X.ARRE_AMT > 0
+					AND X.ZFB_DAY <= TO_CHAR(SYSDATE, 'YYYYMMDD')
+					AND X.SCD_STAT = 'S'), '-') AS OVER_DUE_AMT,	/*연체금액*/
+            CASE WHEN A.MFP_YN = 'Y' THEN CASE WHEN A.BOND_SEL_CD IS NOT NULL THEN TO_NUMBER(A.BOND_SEL_CD) || '차 채권매각'
+											   WHEN A.END_TP = 'E' THEN '중도완납'
+											   ELSE '중도해지'
+										   END
+				 ELSE '-'
+			 END AS MFP_YN	/*완납/해지/채권*/
     FROM    RTSD0108 A,              /*장착정보T    */
             RTSD0100 B,              /*고객마스터T  */
             RTRE0020 D               /*고객카드정보T*/
@@ -2061,4 +2099,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0050 AS
   END f_UpdateRtre0050BeforeResult;
 
 END Pkg_Rtre0050;
-/

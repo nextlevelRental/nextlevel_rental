@@ -1,21 +1,21 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0100
-   PURPOSE   ÇØÇÇÄÝ´ë»ó °ü¸®
+   PURPOSE   í•´í”¼ì½œëŒ€ìƒ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-07-24  jemcarry         1. Created this package body.
-   1.1        2017-06-21  wjim             [20170621_01] µî·ÏÀÚ Ãß°¡ 
-   1.2        2019-08-20  wjim             [20180820_01] ¸Þ½ÃÁöÀÌ·Â Á¶È¸°á°ú Á¤·Ä
+   1.1        2017-06-21  wjim             [20170621_01] ë“±ë¡ìž ì¶”ê°€ 
+   1.2        2019-08-20  wjim             [20180820_01] ë©”ì‹œì§€ì´ë ¥ ì¡°íšŒê²°ê³¼ ì •ë ¬
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó Count
+  -- í•´í”¼ì½œëŒ€ìƒ Count
   *****************************************************************************/
   FUNCTION f_sRtcs0100Count(
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE           /*»ó´ã¹øÈ£            */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE           /*ìƒë‹´ë²ˆí˜¸            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -34,29 +34,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END f_sRtcs0100Count;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã»ç ¹èÁ¤ Á¶È¸
+  -- í•´í”¼ì½œìƒë‹´ì‚¬ ë°°ì • ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0100 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Job_Day1       IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚFROM          */
-    v_Job_Day2       IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚTO            */
-    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE      /*¹èÁ¤¿©ºÎ              */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Job_Day1       IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìžFROM          */
+    v_Job_Day2       IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìžTO            */
+    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE      /*ë°°ì •ì—¬ë¶€              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.JOB_TP,                                                             /*»ó´ãÀ¯Çü     */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('H001', A.JOB_TP) JOB_TP_NM,         /*»ó´ãÀ¯Çü¸í   */
-            A.CALL_NO,                                                            /*»ó´ã¹øÈ£     */
-            A.ORD_NO,                                                             /*°è¾à¹øÈ£     */
-            A.JOB_DAY,                                                            /*Ã³¸®ÀÏÀÚ     */
-            A.BAEJUNG_YN,                                                         /*¹èÁ¤¿©ºÎ     */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('H003', A.BAEJUNG_YN) BAEJUNG_YN_NM, /*¹èÁ¤¿©ºÎ¸í   */
-            A.USER_ID,                                                            /*»ó´ã»çID     */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.USER_ID) USER_ID_NM,                 /*»ó´ã»ç¸í     */
-            A.BAEJUNG_DAY                                                         /*¹èÁ¤ÀÏÀÚ     */
+    SELECT  A.JOB_TP,                                                             /*ìƒë‹´ìœ í˜•     */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('H001', A.JOB_TP) JOB_TP_NM,         /*ìƒë‹´ìœ í˜•ëª…   */
+            A.CALL_NO,                                                            /*ìƒë‹´ë²ˆí˜¸     */
+            A.ORD_NO,                                                             /*ê³„ì•½ë²ˆí˜¸     */
+            A.JOB_DAY,                                                            /*ì²˜ë¦¬ì¼ìž     */
+            A.BAEJUNG_YN,                                                         /*ë°°ì •ì—¬ë¶€     */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('H003', A.BAEJUNG_YN) BAEJUNG_YN_NM, /*ë°°ì •ì—¬ë¶€ëª…   */
+            A.USER_ID,                                                            /*ìƒë‹´ì‚¬ID     */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.USER_ID) USER_ID_NM,                 /*ìƒë‹´ì‚¬ëª…     */
+            A.BAEJUNG_DAY                                                         /*ë°°ì •ì¼ìž     */
     FROM    RTCS0100 A
     WHERE   A.JOB_TP   = v_Job_Tp
     AND     A.JOB_DAY  BETWEEN v_Job_Day1 AND v_Job_Day2
@@ -68,34 +68,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
 
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó Insert
+  -- í•´í”¼ì½œëŒ€ìƒ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcs0100 (
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*»ó´ã¹øÈ£              */
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚ              */
-    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*ÅëÈ­ÀÏÀÚ              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*»ç¿ëÀÚID(»ó´ã»ç)      */
-    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*¹èÁ¤ÀÏÀÚ              */
-    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*¹èÁ¤¿©ºÎ              */
-    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*½Ãµµ °Ç¼ö             */
-    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0100.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ÀåÂø´ë¸®Á¡            */
-    v_Mat_Cd         IN RTCS0100.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mat_Nm         IN RTCS0100.MAT_NM%TYPE,         /*»óÇ°¸í                */
-    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Car_No         IN RTCS0100.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Vkbur          IN RTCS0100.VKBUR%TYPE,          /*ÁöÁ¡                  */
-    v_Vkgrp          IN RTCS0100.VKGRP%TYPE,          /*Áö»ç                  */
-    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*»ó´ã³»¿ë              */
-    v_Serv_Seq       IN RTCS0100.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Proc_In_Cd     IN RTCS0100.PROC_IN_CD%TYPE,     /*¼­ºñ½º Ã³¸®ÀÚ         */
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸              */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìž              */
+    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*í†µí™”ì¼ìž              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*ì‚¬ìš©ìžID(ìƒë‹´ì‚¬)      */
+    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*ë°°ì •ì¼ìž              */
+    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*ë°°ì •ì—¬ë¶€              */
+    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*ì‹œë„ ê±´ìˆ˜             */
+    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Proc_Day       IN RTCS0100.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ìž¥ì°©ëŒ€ë¦¬ì             */
+    v_Mat_Cd         IN RTCS0100.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Mat_Nm         IN RTCS0100.MAT_NM%TYPE,         /*ìƒí’ˆëª…                */
+    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Car_No         IN RTCS0100.CAR_NO%TYPE,         /*ì°¨ëŸ‰ë²ˆí˜¸              */
+    v_Vkbur          IN RTCS0100.VKBUR%TYPE,          /*ì§€ì                   */
+    v_Vkgrp          IN RTCS0100.VKGRP%TYPE,          /*ì§€ì‚¬                  */
+    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*ìƒë‹´ë‚´ìš©              */
+    v_Serv_Seq       IN RTCS0100.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Proc_In_Cd     IN RTCS0100.PROC_IN_CD%TYPE,     /*ì„œë¹„ìŠ¤ ì²˜ë¦¬ìž         */
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -123,8 +123,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
             VKBUR,
             VKGRP,
             CALL_DTL,
-            SERV_SEQ,       /*¼­ºñ½º ¼ø¹ø           */
-            PROC_IN_CD,     /*¼­ºñ½º Ã³¸®ÀÚ         */
+            SERV_SEQ,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+            PROC_IN_CD,     /*ì„œë¹„ìŠ¤ ì²˜ë¦¬ìž         */
             REG_ID,
             REG_DT,
             CHG_ID,
@@ -153,8 +153,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
             v_Vkbur,
             v_Vkgrp,
             v_Call_Dtl,
-            v_Serv_Seq,       /*¼­ºñ½º ¼ø¹ø           */
-            v_Proc_In_Cd,     /*¼­ºñ½º Ã³¸®ÀÚ         */
+            v_Serv_Seq,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+            v_Proc_In_Cd,     /*ì„œë¹„ìŠ¤ ì²˜ë¦¬ìž         */
             v_Reg_Id,
             SYSDATE,
             v_Reg_Id,
@@ -170,16 +170,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END f_InsertRtcs0100;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó Update
+  -- í•´í”¼ì½œëŒ€ìƒ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0100 (
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*»ó´ã¹øÈ£              */
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚ              */
-    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*»ç¿ëÀÚ ID             */
-    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*¹èÁ¤¿©ºÎ              */
-    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*¹èÁ¤ÀÏÀÚ              */
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸              */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìž              */
+    v_User_Id        IN RTCM0001.USER_ID%TYPE,        /*ì‚¬ìš©ìž ID             */
+    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*ë°°ì •ì—¬ë¶€              */
+    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*ë°°ì •ì¼ìž              */
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -206,35 +206,35 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
 
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó °ü¸®(IUD)
+  -- í•´í”¼ì½œëŒ€ìƒ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0100 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Call_No        IN OUT RTCS0100.CALL_NO%TYPE,    /*»ó´ã¹øÈ£              */
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚ              */
-    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*ÅëÈ­ÀÏÀÚ              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*»ç¿ëÀÚID(»ó´ã»ç)      */
-    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*¹èÁ¤ÀÏÀÚ              */
-    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*¹èÁ¤¿©ºÎ              */
-    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*½Ãµµ °Ç¼ö             */
-    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0100.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ÀåÂø´ë¸®Á¡            */
-    v_Mat_Cd         IN RTCS0100.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mat_Nm         IN RTCS0100.MAT_NM%TYPE,         /*»óÇ°¸í                */
-    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */
-    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Car_No         IN RTCS0100.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Vkbur          IN RTCS0100.VKBUR%TYPE,          /*ÁöÁ¡                  */
-    v_Vkgrp          IN RTCS0100.VKGRP%TYPE,          /*Áö»ç                  */
-    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*»ó´ã³»¿ë              */
-    v_Serv_Seq       IN RTCS0100.SERV_SEQ%TYPE,       /*¼­ºñ½º ¼ø¹ø           */
-    v_Proc_In_Cd     IN RTCS0100.PROC_IN_CD%TYPE,     /*¼­ºñ½º Ã³¸®ÀÚ         */
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Call_No        IN OUT RTCS0100.CALL_NO%TYPE,    /*ìƒë‹´ë²ˆí˜¸              */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Job_Day        IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìž              */
+    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*í†µí™”ì¼ìž              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*ì‚¬ìš©ìžID(ìƒë‹´ì‚¬)      */
+    v_Baejung_Day    IN RTCS0100.BAEJUNG_DAY%TYPE,    /*ë°°ì •ì¼ìž              */
+    v_Baejung_Yn     IN RTCS0100.BAEJUNG_YN%TYPE,     /*ë°°ì •ì—¬ë¶€              */
+    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*ì‹œë„ ê±´ìˆ˜             */
+    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Proc_Day       IN RTCS0100.PROC_DAY%TYPE,       /*ìž¥ì°©ì¼ìž              */
+    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ìž¥ì°©ëŒ€ë¦¬ì             */
+    v_Mat_Cd         IN RTCS0100.MAT_CD%TYPE,         /*ìƒí’ˆì½”ë“œ              */
+    v_Mat_Nm         IN RTCS0100.MAT_NM%TYPE,         /*ìƒí’ˆëª…                */
+    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */
+    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*íœ´ëŒ€í°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Car_No         IN RTCS0100.CAR_NO%TYPE,         /*ì°¨ëŸ‰ë²ˆí˜¸              */
+    v_Vkbur          IN RTCS0100.VKBUR%TYPE,          /*ì§€ì                   */
+    v_Vkgrp          IN RTCS0100.VKGRP%TYPE,          /*ì§€ì‚¬                  */
+    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*ìƒë‹´ë‚´ìš©              */
+    v_Serv_Seq       IN RTCS0100.SERV_SEQ%TYPE,       /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
+    v_Proc_In_Cd     IN RTCS0100.PROC_IN_CD%TYPE,     /*ì„œë¹„ìŠ¤ ì²˜ë¦¬ìž         */
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -243,14 +243,14 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     e_Error EXCEPTION;
   BEGIN
 
-    -- ÇÊ¼ö°ª:»ó´ãÀ¯Çü, Ã³¸®ÀÏÀÚ, ÅëÈ­»óÅÂ,¹èÁ¤¿©ºÎ,°è¾à¹øÈ£, ÀåÂøÀÏÀÚ,»óÇ°ÄÚµå, »óÇ°¸í,°í°´¹øÈ£,°í°´¹øÈ£, µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ìƒë‹´ìœ í˜•, ì²˜ë¦¬ì¼ìž, í†µí™”ìƒíƒœ,ë°°ì •ì—¬ë¶€,ê³„ì•½ë²ˆí˜¸, ìž¥ì°©ì¼ìž,ìƒí’ˆì½”ë“œ, ìƒí’ˆëª…,ê³ ê°ë²ˆí˜¸,ê³ ê°ë²ˆí˜¸, ë“±ë¡ìž ID
     IF (TRIM(v_Job_Tp) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('H001', v_Job_Tp)) THEN
-        v_Return_Message := '»ó´ãÀ¯Çü('||v_Job_Tp||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ìƒë‹´ìœ í˜•('||v_Job_Tp||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Baejung_Yn) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('H003', v_Baejung_Yn)) THEN
-        v_Return_Message := '¹èÁ¤¿©ºÎ('||v_Baejung_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë°°ì •ì—¬ë¶€('||v_Baejung_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
@@ -258,43 +258,43 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     IF TRIM(v_Comm_Dvsn) = 'I' THEN
 
         IF 0!= ISDATE(v_Job_Day) THEN
-            v_Return_Message := 'Ã³¸®ÀÏÀÚ('||v_Job_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì²˜ë¦¬ì¼ìž('||v_Job_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
 
         END IF;
 
         IF (TRIM(v_Call_Status) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('H002', v_Call_Status)) THEN
-            v_Return_Message := 'ÅëÈ­»óÅÂ('||v_Call_Status||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í†µí™”ìƒíƒœ('||v_Call_Status||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF 0 != ISDATE(v_Proc_Day) THEN
-            v_Return_Message := 'ÀåÂøÀÏÀÚ('||v_Proc_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ìž¥ì°©ì¼ìž('||v_Proc_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Agency_Cd) IS NULL) OR (0 = Pkg_Rtsd0007.f_sRtsd0007Count(v_Agency_Cd)) THEN
-            v_Return_Message := 'ÀåÂø´ë¸®Á¡('||v_Agency_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ìž¥ì°©ëŒ€ë¦¬ì ('||v_Agency_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Mat_Cd) IS NULL) OR (0 = Pkg_Rtsd0005.f_sRtsd0005Count(v_Mat_Cd)) THEN
-            v_Return_Message := '»óÇ°ÄÚµå('||v_Mat_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ìƒí’ˆì½”ë“œ('||v_Mat_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF TRIM(v_Mat_Nm) IS NULL THEN
-            v_Return_Message := '»óÇ°¸í('||v_Mat_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ìƒí’ˆëª…('||v_Mat_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Cust_No) IS NULL) OR (0 = Pkg_Rtsd0100.f_sRtsd0100Count(v_Cust_No)) THEN
-            v_Return_Message := '°í°´¹øÈ£('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ê³ ê°ë²ˆí˜¸('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-            v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
@@ -312,7 +312,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
                                  v_Tel_No, v_Car_No, v_Vkbur, v_Vkgrp,
                                  v_Call_Dtl, v_Serv_Seq, v_Proc_In_Cd,
                                  v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := 'ÇØÇÇÄÝ´ë»ó µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'í•´í”¼ì½œëŒ€ìƒ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -320,26 +320,26 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     ELSIF v_Comm_Dvsn = 'U' THEN
 
         IF 0 = f_sRtcs0100Count(v_Call_No) THEN
-            v_Return_Message := 'ÇØ´ç »ó´ã¹øÈ£('||v_Call_No||')·Î µî·ÏµÈ Á¤º¸°¡ ¾ø¾î º¯°æ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'í•´ë‹¹ ìƒë‹´ë²ˆí˜¸('||v_Call_No||')ë¡œ ë“±ë¡ëœ ì •ë³´ê°€ ì—†ì–´ ë³€ê²½ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
 
         IF 0 != f_UpdateRtcs0100(v_Call_No, v_Job_Tp, v_Job_Day, v_User_Id,
                                  v_Baejung_Yn,v_Baejung_Day, v_Reg_Id , v_ErrorText) THEN
-            v_Return_Message := 'ÇØÇÇÄÝ´ë»ó ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'í•´í”¼ì½œëŒ€ìƒ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
 
-        v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D) °ª('||v_Comm_Dvsn||') ¿À·ù·Î Ã³¸® ºÒ°¡!';
+        v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D) ê°’('||v_Comm_Dvsn||') ì˜¤ë¥˜ë¡œ ì²˜ë¦¬ ë¶ˆê°€!';
         RAISE e_Error;
 
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -354,33 +354,33 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0100.p_IUDRtcs0100(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcs0100;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã µî·Ï Á¶È¸
+  -- í•´í”¼ì½œìƒë‹´ ë“±ë¡ ì¡°íšŒ
   
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-06-21  wjim             [20170621_01] µî·ÏÀÚ Ãß°¡ 
+   1.1        2017-06-21  wjim             [20170621_01] ë“±ë¡ìž ì¶”ê°€ 
   *****************************************************************************/
   PROCEDURE p_sRtcs0100Regf (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Job_Day1       IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚFROM          */
-    v_Job_Day2       IN RTCS0100.JOB_DAY%TYPE,        /*Ã³¸®ÀÏÀÚTO            */
-    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*»ó´ã»çID              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ÀåÂø´ë¸®Á¡            */
-    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*ÈÞ´ë¹øÈ£              */
-    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_LOGIN_ID       IN VARCHAR2,                     /* ·Î±×ÀÎID: °ü·ÃÇ×¸ñ ¹üÀ§ ÁöÁ¤ */
-    v_LOGIN_GRP      IN VARCHAR2                      /* ·Î±×ÀÎ »ç¿ëÀÚ ±×·ì */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Job_Day1       IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìžFROM          */
+    v_Job_Day2       IN RTCS0100.JOB_DAY%TYPE,        /*ì²˜ë¦¬ì¼ìžTO            */
+    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*ìƒë‹´ì‚¬ID              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Agency_Cd      IN RTCS0100.AGENCY_CD%TYPE,      /*ìž¥ì°©ëŒ€ë¦¬ì             */
+    v_Mob_No         IN RTCS0100.MOB_NO%TYPE,         /*íœ´ëŒ€ë²ˆí˜¸              */
+    v_Tel_No         IN RTCS0100.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_LOGIN_ID       IN VARCHAR2,                     /* ë¡œê·¸ì¸ID: ê´€ë ¨í•­ëª© ë²”ìœ„ ì§€ì • */
+    v_LOGIN_GRP      IN VARCHAR2                      /* ë¡œê·¸ì¸ ì‚¬ìš©ìž ê·¸ë£¹ */
     ) IS
 
   BEGIN
@@ -389,46 +389,46 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     SELECT A.*,
            B.RENTAL_GROUP,
            B.RENTAL_OFFICE,
-           Pkg_Rtcm0051.f_sRtcm0051Codename('S301',B.RENTAL_GROUP)  AS RENTAL_GROUP_NM  ,/*·»Å»Áö»ç           */
-           Pkg_Rtcm0051.f_sRtcm0051Codename('S302',B.RENTAL_OFFICE) AS RENTAL_OFFICE_NM /*·»Å»ÁöÁ¡           */
+           Pkg_Rtcm0051.f_sRtcm0051Codename('S301',B.RENTAL_GROUP)  AS RENTAL_GROUP_NM  ,/*ë Œíƒˆì§€ì‚¬           */
+           Pkg_Rtcm0051.f_sRtcm0051Codename('S302',B.RENTAL_OFFICE) AS RENTAL_OFFICE_NM /*ë Œíƒˆì§€ì            */
       FROM (
-    SELECT X.JOB_TP_NM,                                                                /*»ó´ãÀ¯Çü¸í   */
-           X.CALL_NO,                                                                  /*»ó´ã¹øÈ£     */
-           X.USER_ID_NM,                                                               /*»ó´ã»ç¸í     */
+    SELECT X.JOB_TP_NM,                                                                /*ìƒë‹´ìœ í˜•ëª…   */
+           X.CALL_NO,                                                                  /*ìƒë‹´ë²ˆí˜¸     */
+           X.USER_ID_NM,                                                               /*ìƒë‹´ì‚¬ëª…     */
            X.CALL_STATUS,
-           X.CALL_STATUS_NM,                                                           /*ÅëÈ­»óÅÂ     */
-           X.ORD_NO,                                                                   /*°è¾à¹øÈ£     */
-           X.AGENCY_NM,                                                                /*´ë¸®Á¡       */
-           X.CUST_NM,                                                                  /*°í°´¸í       */
-           X.MOB_NO,                                                                   /*ÈÞ´ëÆù¹øÈ£   */
-           X.TEL_NO,                                                                   /*ÀüÈ­¹øÈ£     */
-           X.RETRY_CNT,                                                                /*½Ãµµ°Ç¼ö     */
-           X.JOB_DAY,                                                                  /*Ã³¸®ÀÏÀÚ     */
-           X.CALL_DAY,                                                                 /*ÅëÈ­ÀÏÀÚ     */
-           X.CALL_DTL,                                                                 /*»ó´ã³»¿ë     */
-           X.SERV_SEQ,                                                                 /*¼­ºñ½º ¼ø¹ø  */
+           X.CALL_STATUS_NM,                                                           /*í†µí™”ìƒíƒœ     */
+           X.ORD_NO,                                                                   /*ê³„ì•½ë²ˆí˜¸     */
+           X.AGENCY_NM,                                                                /*ëŒ€ë¦¬ì        */
+           X.CUST_NM,                                                                  /*ê³ ê°ëª…       */
+           X.MOB_NO,                                                                   /*íœ´ëŒ€í°ë²ˆí˜¸   */
+           X.TEL_NO,                                                                   /*ì „í™”ë²ˆí˜¸     */
+           X.RETRY_CNT,                                                                /*ì‹œë„ê±´ìˆ˜     */
+           X.JOB_DAY,                                                                  /*ì²˜ë¦¬ì¼ìž     */
+           X.CALL_DAY,                                                                 /*í†µí™”ì¼ìž     */
+           X.CALL_DTL,                                                                 /*ìƒë‹´ë‚´ìš©     */
+           X.SERV_SEQ,                                                                 /*ì„œë¹„ìŠ¤ ìˆœë²ˆ  */
            X.PROC_IN_NM,
-           Y.ANSWER,                                                                   /*°í°´¸¸Á·¿©ºÎ */
-           X.CHG_ID,                                                                   /*µî·ÏÀÚ [20170621_01] */
+           Y.ANSWER,                                                                   /*ê³ ê°ë§Œì¡±ì—¬ë¶€ */
+           X.CHG_ID,                                                                   /*ë“±ë¡ìž [20170621_01] */
            X.SERVICE_CD,
            X.SERVICE_NM,
            X.AGENCY_CD
     FROM (
-       SELECT  Pkg_Rtcm0051.f_sRtcm0051CodeName('H001', A.JOB_TP) JOB_TP_NM,           /*»ó´ãÀ¯Çü¸í   */
-               A.CALL_NO,                                                              /*»ó´ã¹øÈ£     */
-               Pkg_Rtcm0001.f_sRtcm0001UserNm(A.USER_ID) USER_ID_NM,                   /*»ó´ã»ç¸í     */
+       SELECT  Pkg_Rtcm0051.f_sRtcm0051CodeName('H001', A.JOB_TP) JOB_TP_NM,           /*ìƒë‹´ìœ í˜•ëª…   */
+               A.CALL_NO,                                                              /*ìƒë‹´ë²ˆí˜¸     */
+               Pkg_Rtcm0001.f_sRtcm0001UserNm(A.USER_ID) USER_ID_NM,                   /*ìƒë‹´ì‚¬ëª…     */
                A.CALL_STATUS,
-               Pkg_Rtcm0051.f_sRtcm0051CodeName('H002', A.CALL_STATUS) CALL_STATUS_NM, /*ÅëÈ­»óÅÂ     */
-               A.ORD_NO,                                                               /*°è¾à¹øÈ£     */
-               Pkg_Rtsd0007.f_sRtsd0007AgencyNm(A.AGENCY_CD) AGENCY_NM,                /*´ë¸®Á¡       */
-               A.CUST_NM,                                                              /*°í°´¸í       */
-               A.MOB_NO,                                                               /*ÈÞ´ëÆù¹øÈ£   */
-               A.TEL_NO,                                                               /*ÀüÈ­¹øÈ£     */
-               A.RETRY_CNT,                                                            /*½Ãµµ°Ç¼ö     */
-               A.JOB_DAY,                                                              /*Ã³¸®ÀÏÀÚ     */
-               A.CALL_DAY,                                                             /*ÅëÈ­ÀÏÀÚ     */
-               A.CALL_DTL,                                                             /*»ó´ã³»¿ë     */
-               A.SERV_SEQ,                                                             /*¼­ºñ½º ¼ø¹ø  */
+               Pkg_Rtcm0051.f_sRtcm0051CodeName('H002', A.CALL_STATUS) CALL_STATUS_NM, /*í†µí™”ìƒíƒœ     */
+               A.ORD_NO,                                                               /*ê³„ì•½ë²ˆí˜¸     */
+               Pkg_Rtsd0007.f_sRtsd0007AgencyNm(A.AGENCY_CD) AGENCY_NM,                /*ëŒ€ë¦¬ì        */
+               A.CUST_NM,                                                              /*ê³ ê°ëª…       */
+               A.MOB_NO,                                                               /*íœ´ëŒ€í°ë²ˆí˜¸   */
+               A.TEL_NO,                                                               /*ì „í™”ë²ˆí˜¸     */
+               A.RETRY_CNT,                                                            /*ì‹œë„ê±´ìˆ˜     */
+               A.JOB_DAY,                                                              /*ì²˜ë¦¬ì¼ìž     */
+               A.CALL_DAY,                                                             /*í†µí™”ì¼ìž     */
+               A.CALL_DTL,                                                             /*ìƒë‹´ë‚´ìš©     */
+               A.SERV_SEQ,                                                             /*ì„œë¹„ìŠ¤ ìˆœë²ˆ  */
                CASE WHEN A.JOB_TP = 'H1' THEN Pkg_Rtsd0007.f_sRtsd0007AgencyNm(A.AGENCY_CD)
                ELSE CASE WHEN (SELECT AGENCY_NM    FROM RTSD0007 WHERE A.PROC_IN_CD = AGENCY_CD)    IS NOT NULL THEN
                                       Pkg_Rtsd0007.f_sRtsd0007AgencyNm(A.AGENCY_CD)
@@ -495,10 +495,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END p_sRtcs0100Regf;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó - »ó´ã¹øÈ£ È¹µæ
+  -- í•´í”¼ì½œëŒ€ìƒ - ìƒë‹´ë²ˆí˜¸ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcs0100CallNo RETURN NUMBER IS
-    v_Call_No   RTCS0100.CALL_NO%TYPE DEFAULT NULL;     /*»ó´ã¹øÈ£            */
+    v_Call_No   RTCS0100.CALL_NO%TYPE DEFAULT NULL;     /*ìƒë‹´ë²ˆí˜¸            */
   BEGIN
 
     SELECT  SEQ_RTCS0100CALL_NO.NEXTVAL
@@ -514,33 +514,33 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END f_sRtcs0100CallNo;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã °è¾à Á¶È¸
+  -- í•´í”¼ì½œìƒë‹´ ê³„ì•½ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0100Ctf (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Ord_No        IN RTCS0100.ORD_NO%TYPE           /*°è¾à¹øÈ£              */
+    v_Ord_No        IN RTCS0100.ORD_NO%TYPE           /*ê³„ì•½ë²ˆí˜¸              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  B.ORD_NO,                                                       /*°è¾à¹øÈ£     */
-            A.CUST_NM,                                                      /*°í°´¸í       */
-            A.MOB_NO,                                                       /*ÈÞ´ëÆù¹øÈ£   */
-            A.TEL_NO,                                                       /*ÀüÈ­¹øÈ£     */
-            Pkg_Rtsd0007.f_sRtsd0007AgencyNm(B.AGENCY_CD) AGENCY_NM ,       /*ÀåÂø´ë¸®Á¡   */
-            B.PROC_DAY,                                                     /*ÀåÂøÀÏÀÚ     */
-            C.MAT_CD,                                                       /*»óÇ°ÄÚµå     */
-            Pkg_Rtsd0005.f_sRtsd0005MatName(C.MAT_CD) MAT_NM,               /*»óÇ°¸í       */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('S023', B.REGI_CD) REGI_NM,    /*µî·Ïºñ       */
-            B.MON_AMT,                                                      /*¿ù·»Å»·á     */
-            B.CNT_CD,                                                       /*Å¸ÀÌ¾îº»¼ö   */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('S021', B.PERIOD_CD) PERIOD_NM,/*·»Å»±â°£(¿ù) */
-            D.MF_CD MANUFACTURE_DROP,                                       /*Á¦Á¶»ç*/
-            D.MODEL_NM MODEL_NM,                                            /*¸ðµ¨¸í*/
-            D.WIDTH_CD    WIDTH_DROP,                                       /*´Ü¸éÆø*/
-            D.RATIO_CD   RATIO_DROP,                                        /*ÆíÆòºñ*/
-            D.INCH_CD     INCH_DROP                                         /*ÀÎÄ¡*/
+    SELECT  B.ORD_NO,                                                       /*ê³„ì•½ë²ˆí˜¸     */
+            A.CUST_NM,                                                      /*ê³ ê°ëª…       */
+            A.MOB_NO,                                                       /*íœ´ëŒ€í°ë²ˆí˜¸   */
+            A.TEL_NO,                                                       /*ì „í™”ë²ˆí˜¸     */
+            Pkg_Rtsd0007.f_sRtsd0007AgencyNm(B.AGENCY_CD) AGENCY_NM ,       /*ìž¥ì°©ëŒ€ë¦¬ì    */
+            B.PROC_DAY,                                                     /*ìž¥ì°©ì¼ìž     */
+            C.MAT_CD,                                                       /*ìƒí’ˆì½”ë“œ     */
+            Pkg_Rtsd0005.f_sRtsd0005MatName(C.MAT_CD) MAT_NM,               /*ìƒí’ˆëª…       */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S023', B.REGI_CD) REGI_NM,    /*ë“±ë¡ë¹„       */
+            B.MON_AMT,                                                      /*ì›”ë Œíƒˆë£Œ     */
+            B.CNT_CD,                                                       /*íƒ€ì´ì–´ë³¸ìˆ˜   */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S021', B.PERIOD_CD) PERIOD_NM,/*ë Œíƒˆê¸°ê°„(ì›”) */
+            D.MF_CD MANUFACTURE_DROP,                                       /*ì œì¡°ì‚¬*/
+            D.MODEL_NM MODEL_NM,                                            /*ëª¨ë¸ëª…*/
+            D.WIDTH_CD    WIDTH_DROP,                                       /*ë‹¨ë©´í­*/
+            D.RATIO_CD   RATIO_DROP,                                        /*íŽ¸í‰ë¹„*/
+            D.INCH_CD     INCH_DROP                                         /*ì¸ì¹˜*/
     FROM    RTSD0100 A,
             RTSD0108 B,
             RTSD0106 C,
@@ -553,16 +553,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END p_sRtcs0100Ctf;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã µî·Ï
+  -- í•´í”¼ì½œìƒë‹´ ë“±ë¡
   *****************************************************************************/
   FUNCTION f_UpdateRtcs0100Reg (
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*»ó´ã¹øÈ£              */
-    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*»ó´ã³»¿ë              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*½Ãµµ°Ç¼ö              */
-    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*ÅëÈ­ÀÏÀÚ              */
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸              */
+    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*ìƒë‹´ë‚´ìš©              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*ì‹œë„ê±´ìˆ˜              */
+    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*í†µí™”ì¼ìž              */
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -586,16 +586,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   END f_UpdateRtcs0100Reg;
 
  /*****************************************************************************
-  -- ÇØÇÇÄÝ´ë»ó »ó´ã µî·Ï
+  -- í•´í”¼ì½œëŒ€ìƒ ìƒë‹´ ë“±ë¡
   *****************************************************************************/
   PROCEDURE p_UpdateRtcs0100reg (
-    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*»ó´ã¹øÈ£              */
-    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*»ó´ã³»¿ë              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*½Ãµµ°Ç¼ö              */
-    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*ÅëÈ­ÀÏÀÚ              */
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Call_No        IN RTCS0100.CALL_NO%TYPE,        /*ìƒë‹´ë²ˆí˜¸              */
+    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*ìƒë‹´ë‚´ìš©              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_Retry_Cnt      IN RTCS0100.RETRY_CNT%TYPE,      /*ì‹œë„ê±´ìˆ˜              */
+    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*í†µí™”ì¼ìž              */
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -605,24 +605,24 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   BEGIN
 
     IF 0 = f_sRtcs0100Count(v_Call_No) THEN
-        v_Return_Message := 'ÇØ´ç »ó´ã¹øÈ£('||v_Call_No||')·Î µî·ÏµÈ Á¤º¸°¡ ¾ø¾î º¯°æ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ ìƒë‹´ë²ˆí˜¸('||v_Call_No||')ë¡œ ë“±ë¡ëœ ì •ë³´ê°€ ì—†ì–´ ë³€ê²½ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Call_Dtl) IS NULL THEN
-        v_Return_Message := 'ÇØ´ç »ó´ã³»¿ë('||v_Call_Dtl||')°ªÀÌ ¾ø¾î º¯°æ Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'í•´ë‹¹ ìƒë‹´ë‚´ìš©('||v_Call_Dtl||')ê°’ì´ ì—†ì–´ ë³€ê²½ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF 0 != f_UpdateRtcs0100Reg(v_Call_No, v_Ord_No, v_Call_Dtl, v_Call_Status,
                                 v_Retry_Cnt, v_Call_Day, v_Reg_Id, v_ErrorText) THEN
-        v_Return_Message := 'ÇØÇÇÄÝ´ë»ó »ó´ã ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+        v_Return_Message := 'í•´í”¼ì½œëŒ€ìƒ ìƒë‹´ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
         v_ErrorText := v_ErrorText;
         RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -637,19 +637,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0100.p_UpdateRtcs0100reg(2)', v_ErrorText, v_Return_Message);
 
   END p_UpdateRtcs0100reg;
 
   /*****************************************************************************
-  -- ÇØÇÇÄÝ»ó´ã °è¾à Á¶È¸
+  -- í•´í”¼ì½œìƒë‹´ ê³„ì•½ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtcs0100ServiceHistory (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Ord_No        IN RTCS0100.ORD_NO%TYPE,          /*°è¾à¹øÈ£              */
-    v_Serv_Seq      IN RTCS0100.SERV_SEQ%TYPE         /*¼­ºñ½º ¼ø¹ø           */
+    v_Ord_No        IN RTCS0100.ORD_NO%TYPE,          /*ê³„ì•½ë²ˆí˜¸              */
+    v_Serv_Seq      IN RTCS0100.SERV_SEQ%TYPE         /*ì„œë¹„ìŠ¤ ìˆœë²ˆ           */
     ) IS
 
   BEGIN
@@ -672,33 +672,33 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   
   
   /*****************************************************************************
-  -- »ó´ã¸ÞÀÎ »ó´ãÀÌ·Â Á¶È¸ 
+  -- ìƒë‹´ë©”ì¸ ìƒë‹´ì´ë ¥ ì¡°íšŒ 
   *****************************************************************************/
   PROCEDURE p_sRtcs0100AdviceHistory (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Ord_No        IN RTCS0100.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
+    v_Ord_No        IN RTCS0100.ORD_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT RECV_TP        /*»ó´ãÀ¯ÇüÄÚµå      */
-     , RECV_TP_NM     /*»ó´ãÀ¯Çü¸í        */
-     , RECV_DAY       /*ÅëÈ­ÀÏÀÚ          */
-     , RESU_ST        /*Ã³¸®»óÅÂÄÚµå¸í    */
-     , RESU_ST_NM     /*Ã³¸®»óÅÂ¸í        */
-     , ORD_NO         /*°è¾à¹øÈ£          */
-     , CUST_NO        /*°í°´¹øÈ£          */
-     , CUST_NM        /*°í°´¸íÄª          */
-     , END_DAY        /*Ã³¸®ÀÏÀÚ */
-     , CALL_NO        /*»ó´ã¹øÈ£ */
-     , USER_ID        /*»ó´ã»çID          */
-     , USER_ID_NM     /*»ó´ã»ç¸í          */
-     , MOB_NO         /*»ó´ãÀüÈ­¹øÈ£*/
-     , CAR_NO         /*Â÷·®¹øºÐÈ£          */
-     , TEL_NO         /*°í°´¿¬¶ôÃ³          */
-     , CALL_DTL       /*»ó´ã³»¿ë          */
-     , BOUND_GB       /*»ó´ã±¸ºÐ*/
+    SELECT RECV_TP        /*ìƒë‹´ìœ í˜•ì½”ë“œ      */
+     , RECV_TP_NM     /*ìƒë‹´ìœ í˜•ëª…        */
+     , RECV_DAY       /*í†µí™”ì¼ìž          */
+     , RESU_ST        /*ì²˜ë¦¬ìƒíƒœì½”ë“œëª…    */
+     , RESU_ST_NM     /*ì²˜ë¦¬ìƒíƒœëª…        */
+     , ORD_NO         /*ê³„ì•½ë²ˆí˜¸          */
+     , CUST_NO        /*ê³ ê°ë²ˆí˜¸          */
+     , CUST_NM        /*ê³ ê°ëª…ì¹­          */
+     , END_DAY        /*ì²˜ë¦¬ì¼ìž */
+     , CALL_NO        /*ìƒë‹´ë²ˆí˜¸ */
+     , USER_ID        /*ìƒë‹´ì‚¬ID          */
+     , USER_ID_NM     /*ìƒë‹´ì‚¬ëª…          */
+     , MOB_NO         /*ìƒë‹´ì „í™”ë²ˆí˜¸*/
+     , CAR_NO         /*ì°¨ëŸ‰ë²ˆë¶„í˜¸          */
+     , TEL_NO         /*ê³ ê°ì—°ë½ì²˜          */
+     , CALL_DTL       /*ìƒë‹´ë‚´ìš©          */
+     , BOUND_GB       /*ìƒë‹´êµ¬ë¶„*/
   FROM (
         SELECT RECV_TP
              , Pkg_Rtcm0051.f_sRtcm0051CodeName('H005', RECV_TP) RECV_TP_NM
@@ -751,27 +751,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
   
   
    /*****************************************************************************
-  -- »ó´ã¸ÞÀÎ ¸Þ½ÃÁöÀÌ·Â Á¶È¸ 
+  -- ìƒë‹´ë©”ì¸ ë©”ì‹œì§€ì´ë ¥ ì¡°íšŒ 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.2        2019-08-20  wjim             [20180820_01] ¸Þ½ÃÁöÀÌ·Â Á¶È¸°á°ú Á¤·Ä
+   1.2        2019-08-20  wjim             [20180820_01] ë©”ì‹œì§€ì´ë ¥ ì¡°íšŒê²°ê³¼ ì •ë ¬
   *****************************************************************************/
   PROCEDURE p_sRtcs0100MessageHistory (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Mob_No        IN RTCS0100.MOB_NO%TYPE          /*°è¾à¹øÈ£              */
+    v_Mob_No        IN RTCS0100.MOB_NO%TYPE          /*ê³„ì•½ë²ˆí˜¸              */
     ) IS 
     
     BEGIN
     OPEN Ref_Cursor FOR
 
     SELECT CASE WHEN B.MSG_SNDER_NM = 'KAKAO' THEN B.MSG_SNDER_NM
-           ELSE 'SMS' END AS MSG_GB                            /*¸Þ¼¼Áö±¸ºÐ*/
+           ELSE 'SMS' END AS MSG_GB                            /*ë©”ì„¸ì§€êµ¬ë¶„*/
          , A.REG_ID
-         , Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM     /*µî·ÏÀÚ¸í */
-         , A.RCV_PHN_ID                                        /*ÈÞ´ëÆù¹øÈ£*/
-         , TO_CHAR(TO_DATE(NVL(B.SND_DATE, A.RESERVED_DTTM),'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS') AS REG_DT  /*¹ß¼ÛÀÏ½Ã*/
-         , A.SND_MSG                                           /* ¸Þ½ÃÁö³»¿ë */
+         , Pkg_Rtcm0001.f_sRtcm0001UserNm(A.REG_ID) REG_NM     /*ë“±ë¡ìžëª… */
+         , A.RCV_PHN_ID                                        /*íœ´ëŒ€í°ë²ˆí˜¸*/
+         , TO_CHAR(TO_DATE(NVL(B.SND_DATE, A.RESERVED_DTTM),'YYYY-MM-DD HH24:MI:SS'),'YYYY-MM-DD HH24:MI:SS') AS REG_DT  /*ë°œì†¡ì¼ì‹œ*/
+         , A.SND_MSG                                           /* ë©”ì‹œì§€ë‚´ìš© */
       FROM RTSD0205 A
          , RTSD0207 B
      WHERE 1=1
@@ -780,12 +780,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
        AND B.RESULT_CD(+) = 'OK'
      ORDER BY NVL(B.SND_DATE, A.RESERVED_DTTM) DESC;         
     
---    SELECT 'SMS' AS MSG_GB                                   /*¸Þ¼¼Áö±¸ºÐ*/
+--    SELECT 'SMS' AS MSG_GB                                   /*ë©”ì„¸ì§€êµ¬ë¶„*/
 --     , REG_ID
---     , Pkg_Rtcm0001.f_sRtcm0001UserNm(REG_ID) REG_NM     /*µî·ÏÀÚ¸í */
---     , RCV_PHN_ID                                        /*ÈÞ´ëÆù¹øÈ£*/
---     , TO_CHAR(REG_DT, 'YYYY-MM-DD HH:MM:SS') AS REG_DT  /*¹ß¼ÛÀÏ½Ã*/
---     , SND_MSG                                           /* ¸Þ½ÃÁö³»¿ë */
+--     , Pkg_Rtcm0001.f_sRtcm0001UserNm(REG_ID) REG_NM     /*ë“±ë¡ìžëª… */
+--     , RCV_PHN_ID                                        /*íœ´ëŒ€í°ë²ˆí˜¸*/
+--     , TO_CHAR(REG_DT, 'YYYY-MM-DD HH:MM:SS') AS REG_DT  /*ë°œì†¡ì¼ì‹œ*/
+--     , SND_MSG                                           /* ë©”ì‹œì§€ë‚´ìš© */
 --  FROM RTSD0205
 -- WHERE 1=1
 --   AND RCV_PHN_ID = v_Mob_No;
@@ -793,19 +793,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     
 
   /*****************************************************************************
-  -- »ó´ã°ü¸® In ÀúÀå°ü¸® 
+  -- ìƒë‹´ê´€ë¦¬ In ì €ìž¥ê´€ë¦¬ 
   *****************************************************************************/
   PROCEDURE p_sRtcs010SaveAdvice (
-    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*»ó´ãÀ¯Çü              */
-    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*ÅëÈ­ÀÏÀÚ              */
-    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*ÅëÈ­»óÅÂ              */
-    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*°í°´¸í/¹ýÀÎ¸í         */    
-    v_Call_No        IN OUT RTCS0100.CALL_NO%TYPE,    /*»ó´ã¹øÈ£              */
-    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*»ç¿ëÀÚID(»ó´ã»ç)      */
-    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*»ó´ã³»¿ë              */    
-    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Job_Tp         IN RTCS0100.JOB_TP%TYPE,         /*ìƒë‹´ìœ í˜•              */
+    v_Call_Day       IN RTCS0100.CALL_DAY%TYPE,       /*í†µí™”ì¼ìž              */
+    v_Call_Status    IN RTCS0100.CALL_STATUS%TYPE,    /*í†µí™”ìƒíƒœ              */
+    v_Ord_No         IN RTCS0100.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTCS0100.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTCS0100.CUST_NM%TYPE,        /*ê³ ê°ëª…/ë²•ì¸ëª…         */    
+    v_Call_No        IN OUT RTCS0100.CALL_NO%TYPE,    /*ìƒë‹´ë²ˆí˜¸              */
+    v_User_Id        IN RTCS0100.USER_ID%TYPE,        /*ì‚¬ìš©ìžID(ìƒë‹´ì‚¬)      */
+    v_Call_Dtl       IN RTCS0100.CALL_DTL%TYPE,       /*ìƒë‹´ë‚´ìš©              */    
+    v_Reg_Id         IN RTCS0100.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Bonus_Gb       IN VARCHAR2,
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
@@ -837,7 +837,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
     END IF;
     
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -852,10 +852,9 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0100 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0100.p_sRtcs010SaveAdvice(2)', v_ErrorText, v_Return_Message);
     END p_sRtcs010SaveAdvice;  
 
 END Pkg_Rtcs0100;
-/

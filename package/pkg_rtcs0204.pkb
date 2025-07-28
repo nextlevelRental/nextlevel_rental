@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
 /*******************************************************************************
    NAME      Pkg_Rtcs0204
-   PURPOSE   [CS] ���ͱ�ü�ۼ��̷�
+   PURPOSE   [CS] 윈터교체작성이력
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,15 +10,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [CS] ���ͱ�üȮ�μ� �ۼ��̷�
+  -- [CS] 윈터교체확인서 작성이력
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0204 (
-    v_Comm_Dvsn      IN CHAR,                         /*ó������(I,U,D)       */
-    v_Ord_No         IN RTCS0204.ORD_NO%TYPE,         /*����ȣ              */
-    v_Input_Dt       IN RTCS0204.INPUT_DT%TYPE,       /*��üȮ�μ��ۼ�����    */
-    v_Prs_Dcd        IN RTCS0204.PRS_DCD%TYPE,        /*�����ڵ�            */
-    v_Write_Yn       IN RTCS0204.WRITE_YN%TYPE,       /*�ۼ�����              */
-    v_Reg_Id         IN RTCS0204.REG_ID%TYPE,         /*����� ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*처리구분(I,U,D)       */
+    v_Ord_No         IN RTCS0204.ORD_NO%TYPE,         /*계약번호              */
+    v_Input_Dt       IN RTCS0204.INPUT_DT%TYPE,       /*교체확인서작성일자    */
+    v_Prs_Dcd        IN RTCS0204.PRS_DCD%TYPE,        /*서비스코드            */
+    v_Write_Yn       IN RTCS0204.WRITE_YN%TYPE,       /*작성여부              */
+    v_Reg_Id         IN RTCS0204.REG_ID%TYPE,         /*등록자 ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -38,22 +38,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
     IF v_Comm_Dvsn IN ('I','U') THEN
 
         IF (TRIM(v_Cust_No) IS NULL)  THEN
-            v_Return_Message := '�����ڵ�('||v_Cust_No||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+            v_Return_Message := '고객코드('||v_Cust_No||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
             RAISE e_Error;
         END IF;
 
         IF (TRIM(v_Ord_No) IS NULL)  THEN
-            v_Return_Message := '�ֹ���ȣ('||v_Ord_No||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+            v_Return_Message := '주문번호('||v_Ord_No||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
             RAISE e_Error;
         END IF;
 
 --        IF (TRIM(v_Input_Dt) IS NULL)  THEN
---            v_Return_Message := '����Ȯ�μ��ۼ�����('||v_Input_Dt||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+--            v_Return_Message := '서비스확인서작성일자('||v_Input_Dt||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
 --            RAISE e_Error;
 --        END IF;
 
         IF (TRIM(v_Agency_Cd) IS NULL)  THEN
-            v_Return_Message := '�븮���ڵ�('||v_Agency_Cd||') : �ʼ� �Է°� ���� �Ǵ� �߸��� �� �Է����� ó���� �Ұ� �մϴ�!';
+            v_Return_Message := '대리점코드('||v_Agency_Cd||') : 필수 입력값 누락 또는 잘못된 값 입력으로 처리가 불가 합니다!';
             RAISE e_Error;
         END IF;
 
@@ -77,13 +77,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
         DELETE FROM RTCS0204 WHERE ORD_NO = v_Ord_No;
 
     ELSE
-        v_Return_Message := 'ó������(I,U,D)�� ����!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := '처리구분(I,U,D)값 오류!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
     END IF; 
   
   
     v_Success_code := 0;
-    v_Return_Message := '���������� ó���Ǿ����ϴ�';
+    v_Return_Message := '정상적으로 처리되었습니다';
     v_ErrorText := '';
     --COMMIT;
 
@@ -98,17 +98,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '�ý��۰����ڿ��� ���ǹٶ��ϴ�!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtcs0204.p_IUDRtcs0204(2)', v_ErrorText, v_Return_Message);   
              
     END P_IUDRtcs0204;
            
    /*****************************************************************************
-  -- ���ͱ�ü Ȯ�μ� �ۼ�����
+  -- 윈터교체 확인서 작성순서
   *****************************************************************************/
   FUNCTION f_sRtcs0204ServCnt(
-    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*�ֹ���ȣ            */
+    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*주문번호            */
   ) RETURN NUMBER IS
 
     v_Cnt   NUMBER DEFAULT 0;
@@ -129,10 +129,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
   END f_sRtcs0204ServCnt;
   
   /*****************************************************************************
-  -- [CS] ���ͱ�üȮ�μ� �ۼ�����
+  -- [CS] 윈터교체확인서 작성여부
   *****************************************************************************/
   FUNCTION f_sRtcs0204ServYn(
-    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*����ȣ            */
+    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*계약번호            */
   ) RETURN VARCHAR2 IS
     v_write_yn   VARCHAR2(1);
   BEGIN
@@ -157,4 +157,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0204 AS
   END f_sRtcs0204ServYn;
   
 END Pkg_Rtcs0204;
-/

@@ -1,5 +1,5 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RNT_RTRE7070 AS
-    /** ±âº» ¿¡·¯ ¸Þ½ÃÁö */
+    /** ê¸°ë³¸ ì—ëŸ¬ ë©”ì‹œì§€ */
     GV_MESG_RET_OK          VARCHAR2(100);
     
     GV_MESG_ERR_DEFAULT     VARCHAR2(500);
@@ -8,34 +8,34 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RNT_RTRE7070 AS
     GV_MESG_ERR_UPDATE      VARCHAR2(500);
     GV_MESG_ERR_DELETE      VARCHAR2(500);
     
-    /** ÆÇ¸ÅÀÎ¼¾Æ¼ºê Áý°è */
+    /** íŒë§¤ì¸ì„¼í‹°ë¸Œ ì§‘ê³„ */
     PROCEDURE PRC_SALE_INCENTIVE_AGG (
-        PI_YYYYMM   IN VARCHAR2,    /* Áý°è³â¿ù */
-        PI_REG_ID   IN VARCHAR2,    /* ½ÇÇàÀÚID */
+        PI_YYYYMM   IN VARCHAR2,    /* ì§‘ê³„ë…„ì›” */
+        PI_REG_ID   IN VARCHAR2,    /* ì‹¤í–‰ìžID */
         PO_RET_CODE OUT VARCHAR2,   /* RETURN CODE */
         PO_RET_MESG OUT VARCHAR2    /* RETURN MESSAGE */
     );
     
     PROCEDURE PRC_INNER_AGENT_INCENTIVE (
-        PI_YYYYMM   IN VARCHAR2,    /* Áý°è³â¿ù */
-        PI_REG_ID   IN VARCHAR2,    /* ½ÇÇàÀÚID */
-        PO_RET_CNT  OUT NUMBER,     /* Àû¿ë COUNT */
+        PI_YYYYMM   IN VARCHAR2,    /* ì§‘ê³„ë…„ì›” */
+        PI_REG_ID   IN VARCHAR2,    /* ì‹¤í–‰ìžID */
+        PO_RET_CNT  OUT NUMBER,     /* ì ìš© COUNT */
         PO_RET_CODE OUT VARCHAR2,     /* RETURN CODE */
         PO_RET_MESG OUT VARCHAR2    /* RETURN MESSAGE */
     );
     
     PROCEDURE PRC_INNER_VISIT_INCENTIVE (
-        PI_YYYYMM   IN VARCHAR2,    /* Áý°è³â¿ù */
-        PI_REG_ID   IN VARCHAR2,    /* ½ÇÇàÀÚID */
-        PO_RET_CNT  OUT NUMBER,     /* Àû¿ë COUNT */
+        PI_YYYYMM   IN VARCHAR2,    /* ì§‘ê³„ë…„ì›” */
+        PI_REG_ID   IN VARCHAR2,    /* ì‹¤í–‰ìžID */
+        PO_RET_CNT  OUT NUMBER,     /* ì ìš© COUNT */
         PO_RET_CODE OUT VARCHAR2,   /* RETURN CODE */
         PO_RET_MESG OUT VARCHAR2    /* RETURN MESSAGE */
     );
     
     PROCEDURE PRC_INNER_ROADIAN_INCENTIVE (
-        PI_YYYYMM   IN VARCHAR2,    /* Áý°è³â¿ù */
-        PI_REG_ID   IN VARCHAR2,    /* ½ÇÇàÀÚID */
-        PO_RET_CNT  OUT NUMBER,     /* Àû¿ë COUNT */
+        PI_YYYYMM   IN VARCHAR2,    /* ì§‘ê³„ë…„ì›” */
+        PI_REG_ID   IN VARCHAR2,    /* ì‹¤í–‰ìžID */
+        PO_RET_CNT  OUT NUMBER,     /* ì ìš© COUNT */
         PO_RET_CODE OUT VARCHAR2,   /* RETURN CODE */
         PO_RET_MESG OUT VARCHAR2    /* RETURN MESSAGE */
     );
@@ -59,4 +59,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RNT_RTRE7070 AS
     ) RETURN VARCHAR2;
     
 END PKG_RNT_RTRE7070;
-/

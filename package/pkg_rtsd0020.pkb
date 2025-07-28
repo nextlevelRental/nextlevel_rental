@@ -7,8 +7,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0020 AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2018-10-16  sePark         1. Created this package body.
-   1.1        2019-03-21  wjim           [20190321_01] 판매상품 조회 기준 보완  
-   1.2        2020-01-06  kstka          [2020-00003781_01] 부모컬럼 자식컬럼 위치 변경 
+   1.1        2019-03-21  wjim           [20190321_01] 판매상품 조회 기준 보완
+   1.2        2020-01-06  kstka          [2020-00003781_01] 부모컬럼 자식컬럼 위치 변경  
 *******************************************************************************/
 
   /*****************************************************************************
@@ -252,7 +252,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0020 AS
 ----                        CONNECT BY CHAN_CD = PRIOR  P_CHAN_CD
 ----                       )
         AND PRDT_GRP_DTL = DECODE(v_Prdt_Grp2, NULL,PRDT_GRP_DTL, v_Prdt_Grp2)
-        ORDER BY SALE_STR_DAY;                       
+        ORDER BY SALE_STR_DAY;                          
     END IF;
     
     
@@ -552,4 +552,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0020 AS
   
 
 END Pkg_Rtsd0020;
-/

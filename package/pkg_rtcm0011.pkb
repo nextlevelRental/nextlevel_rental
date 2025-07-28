@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcm0011
-   PURPOSE:   га╥н╠в╥╔ Master ╟Э╦╝
+   PURPOSE:   М■└К║°Й╥╦К·╗ Master Й╢─К╕╛
     
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master Count
+  -- М■└К║°Й╥╦К·╗ Master Count
   *****************************************************************************/
   FUNCTION f_sRtcm0011Count(
-    v_Prgm_Cd    IN     RTCM0011.PRGM_CD%TYPE           /*га╥н╠в╥╔дз╣Е        */
+    v_Prgm_Cd    IN     RTCM0011.PRGM_CD%TYPE           /*М■└К║°Й╥╦К·╗Л╫■К⌠°        */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -32,29 +32,29 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
   END f_sRTCM0011Count;
 
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master Select
+  -- М■└К║°Й╥╦К·╗ Master Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0011 (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_Prgm_Cd    IN     RTCM0011.PRGM_CD%TYPE,          /*га╥н╠в╥╔дз╣Е        */
-    v_Prgm_Nm    IN     RTCM0011.PRGM_NM%TYPE           /*га╥н╠в╥╔╦М          */
+    v_Prgm_Cd    IN     RTCM0011.PRGM_CD%TYPE,          /*М■└К║°Й╥╦К·╗Л╫■К⌠°        */
+    v_Prgm_Nm    IN     RTCM0011.PRGM_NM%TYPE           /*М■└К║°Й╥╦К·╗К╙┘          */
     ) IS
 
   BEGIN
           
     OPEN Ref_Cursor FOR
-    SELECT  A.PRGM_CD,    /*га╥н╠в╥╔дз╣Е          */
-            A.PRGM_NM,    /*га╥н╠в╥╔╦М            */
-            A.PRGM_PATH,  /*га╥н╠в╥╔╟Ф╥н          */
-            A.PRGM_DESC,  /*га╥н╠в╥╔╪Ё╦М          */
-            A.MDL_CD,     /*╦П╣Бдз╣Е              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*╦П╣Б╦М */
-            A.USE_YN,     /*╩Г©К©╘╨н              */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('C004', A.USE_YN) USE_YN_NM, /*╩Г©К©╘╨н╦М */
-            A.REG_ID,     /*╣Н╥оюз ID             */
-            A.REG_DT,     /*╣Н╥оюо                */
-            A.CHG_ID,     /*╨╞╟ФюзID              */
-            A.CHG_DT      /*╨╞╟Фюо                */
+    SELECT  A.PRGM_CD,    /*М■└К║°Й╥╦К·╗Л╫■К⌠°          */
+            A.PRGM_NM,    /*М■└К║°Й╥╦К·╗К╙┘            */
+            A.PRGM_PATH,  /*М■└К║°Й╥╦К·╗Й╡╫К║°          */
+            A.PRGM_DESC,  /*М■└К║°Й╥╦К·╗Л└╓К╙┘          */
+            A.MDL_CD,     /*К╙╗К⌠┬Л╫■К⌠°              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C003', A.MDL_CD) MDL_NM, /*К╙╗К⌠┬К╙┘ */
+            A.USE_YN,     /*Л┌╛Л ╘Л≈╛К╤─              */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('C004', A.USE_YN) USE_YN_NM, /*Л┌╛Л ╘Л≈╛К╤─К╙┘ */
+            A.REG_ID,     /*К⌠╠К║²Л·░ ID             */
+            A.REG_DT,     /*К⌠╠К║²Л²╪                */
+            A.CHG_ID,     /*КЁ─Й╡╫Л·░ID              */
+            A.CHG_DT      /*КЁ─Й╡╫Л²╪                */
     FROM    RTCM0011 A
     WHERE   A.PRGM_CD LIKE v_Prgm_Cd||'%'
     AND     A.PRGM_NM LIKE '%'||v_Prgm_Nm||'%';
@@ -62,16 +62,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
   END p_sRtcm0011;
 
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master Insert
+  -- М■└К║°Й╥╦К·╗ Master Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0011(
-    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*га╥н╠в╥╔дз╣Е          */
-    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*га╥н╠в╥╔╦М            */
-    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*га╥н╠в╥╔╟Ф╥н          */
-    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*га╥н╠в╥╔╪Ё╦М          */
-    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*╦П╣Бдз╣Е              */
-    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*╣Н╥оюз ID             */ 
+    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*М■└К║°Й╥╦К·╗Л╫■К⌠°          */
+    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*М■└К║°Й╥╦К·╗К╙┘            */
+    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*М■└К║°Й╥╦К·╗Й╡╫К║°          */
+    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*М■└К║°Й╥╦К·╗Л└╓К╙┘          */
+    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*К╙╗К⌠┬Л╫■К⌠°              */
+    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */ 
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -112,16 +112,16 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
 
 
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master Update
+  -- М■└К║°Й╥╦К·╗ Master Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0011(
-    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*га╥н╠в╥╔дз╣Е          */
-    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*га╥н╠в╥╔╦М            */
-    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*га╥н╠в╥╔╟Ф╥н          */
-    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*га╥н╠в╥╔╪Ё╦М          */
-    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*╦П╣Бдз╣Е              */
-    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*╣Н╥оюз ID             */ 
+    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*М■└К║°Й╥╦К·╗Л╫■К⌠°          */
+    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*М■└К║°Й╥╦К·╗К╙┘            */
+    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*М■└К║°Й╥╦К·╗Й╡╫К║°          */
+    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*М■└К║°Й╥╦К·╗Л└╓К╙┘          */
+    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*К╙╗К⌠┬Л╫■К⌠°              */
+    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */ 
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -147,11 +147,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
   END f_UpdateRtcm0011;
   
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master Delete
+  -- М■└К║°Й╥╦К·╗ Master Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0011(
-    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*га╥н╠в╥╔дз╣Е          */
-    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*╣Н╥оюз ID             */ 
+    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*М■└К║°Й╥╦К·╗Л╫■К⌠°          */
+    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */ 
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
 
@@ -174,17 +174,17 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
 
   
   /*****************************************************************************
-  -- га╥н╠в╥╔ Master ╟Э╦╝
+  -- М■└К║°Й╥╦К·╗ Master Й╢─К╕╛
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0011(
-    v_Comm_Dvsn      IN CHAR,                         /*цЁ╦╝╠╦╨п(I,U,D)       */
-    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*га╥н╠в╥╔дз╣Е          */
-    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*га╥н╠в╥╔╦М            */
-    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*га╥н╠в╥╔╟Ф╥н          */
-    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*га╥н╠в╥╔╪Ё╦М          */
-    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*╦П╣Бдз╣Е              */
-    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*╩Г©К©╘╨н              */
-    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*╣Н╥оюз ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Л╡≤К╕╛Й╣╛К╤└(I,U,D)       */
+    v_Prgm_Cd        IN RTCM0011.PRGM_CD%TYPE,        /*М■└К║°Й╥╦К·╗Л╫■К⌠°          */
+    v_Prgm_Nm        IN RTCM0011.PRGM_NM%TYPE,        /*М■└К║°Й╥╦К·╗К╙┘            */
+    v_Prgm_Path      IN RTCM0011.PRGM_PATH%TYPE,      /*М■└К║°Й╥╦К·╗Й╡╫К║°          */
+    v_Prgm_Desc      IN RTCM0011.PRGM_DESC%TYPE,      /*М■└К║°Й╥╦К·╗Л└╓К╙┘          */
+    v_Mdl_Cd         IN RTCM0011.MDL_CD%TYPE,         /*К╙╗К⌠┬Л╫■К⌠°              */
+    v_Use_Yn         IN RTCM0011.USE_YN%TYPE,         /*Л┌╛Л ╘Л≈╛К╤─              */
+    v_Reg_Id         IN RTCM0011.REG_ID%TYPE,         /*К⌠╠К║²Л·░ ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -194,34 +194,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
     
   BEGIN
 
-    -- гй╪Ж╟╙: га╥н╠в╥╔ дз╣Е, га╥н╠в╥╔ ╦М, га╥н╠в╥╔ URL, га╥н╠в╥╔ ╪Ё╦М, ╦П╣Бдз╣Е , ╩Г©Кю╞╧╚, ╣Н╥оюз ID
+    -- М∙└Л┬≤Й╟▓: М■└К║°Й╥╦К·╗ Л╫■К⌠°, М■└К║°Й╥╦К·╗ К╙┘, М■└К║°Й╥╦К·╗ URL, М■└К║°Й╥╦К·╗ Л└╓К╙┘, К╙╗К⌠┬Л╫■К⌠° , Л┌╛Л ╘Л°═К╛╢, К⌠╠К║²Л·░ ID
     IF TRIM(v_Prgm_Cd) IS NULL THEN
-        v_Return_Message := 'га╥н╠в╥╔дз╣Е('||v_Prgm_Cd||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'М■└К║°Й╥╦К·╗Л╫■К⌠°('||v_Prgm_Cd||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Prgm_Nm) IS NULL THEN
-        v_Return_Message := 'га╥н╠в╥╔╦М('||v_Prgm_Nm||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'М■└К║°Й╥╦К·╗К╙┘('||v_Prgm_Nm||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Prgm_Path) IS NULL THEN
-        v_Return_Message := 'га╥н╠в╥╔╟Ф╥н('||v_Prgm_Path||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'М■└К║°Й╥╦К·╗Й╡╫К║°('||v_Prgm_Path||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Mdl_Cd) IS NULL THEN
-        v_Return_Message := '╦П╣Бдз╣Е('||v_Mdl_Cd||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К╙╗К⌠┬Л╫■К⌠°('||v_Mdl_Cd||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := '╩Г©К©╘╨н('||v_Use_Yn||') : гй╪Ж ют╥б╟╙ ╢╘╤Тю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'Л┌╛Л ╘Л≈╛К╤─('||v_Use_Yn||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
     
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := '╣Н╥оюз ID('||v_Reg_Id||') : гй╪Ж ют╥б╟╙ ╢╘╤Т ╤г╢б юъ╦Ь╣х ╟╙ ют╥бю╦╥н цЁ╦╝╟║ ╨р╟║ гу╢о╢ы!';
+        v_Return_Message := 'К⌠╠К║²Л·░ ID('||v_Reg_Id||') : М∙└Л┬≤ Л·┘К═╔Й╟▓ К┬└К²╫ К≤░К┼■ Л·≤К╙╩К░° Й╟▓ Л·┘К═╔Л°╪К║° Л╡≤К╕╛Й╟─ К╤┬Й╟─ М∙╘К▀┬К▀╓!';
         RAISE e_Error;
     END IF;
        
@@ -232,7 +232,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
         IF 0 != f_InsertRtcm0011(v_Prgm_Cd, v_Prgm_Nm, v_Prgm_Path, 
                                  v_Prgm_Desc, v_Mdl_Cd, v_Use_Yn, v_Reg_Id,
                                  v_ErrorText) THEN
-            v_Return_Message := '╣Н╥о ╫гфп!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'К⌠╠К║² Л▀╓М▄╗!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
             
@@ -242,7 +242,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
             IF 0 != f_UpdateRtcm0011(v_Prgm_Cd, v_Prgm_Nm, v_Prgm_Path, 
                                      v_Prgm_Desc, v_Mdl_Cd, v_Use_Yn, v_Reg_Id,
                                      v_ErrorText) THEN
-                v_Return_Message := '╪Жа╓ ╫гфп!!!'||'-'||v_ErrorText;
+                v_Return_Message := 'Л┬≤Л═∙ Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -250,13 +250,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
         
         ELSIF v_Comm_Dvsn = 'D' THEN
             IF 0 != f_DeleteRtcm0011(v_Prgm_Cd, v_Reg_Id, v_ErrorText) THEN
-               v_Return_Message := '╩Ха╕ ╫гфп!!!'||'-'||v_ErrorText;
+               v_Return_Message := 'Л┌╜Л═° Л▀╓М▄╗!!!'||'-'||v_ErrorText;
                v_ErrorText := v_ErrorText;
                RAISE e_Error;
            END IF;
             
         ELSE
-            v_Return_Message := ' цЁ╦╝╠╦╨п(I,U,D)╟╙ ©ю╥Ы!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := ' Л╡≤К╕╛Й╣╛К╤└(I,U,D)Й╟▓ Л≤╓К╔≤!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;  
                   
         END IF;
@@ -265,7 +265,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
    --DBMS_LOCK.SLEEP(20);
 
     v_Success_code := 0;
-    v_Return_Message := 'а╓╩СюШю╦╥н ╣Н╥о╣г╬З╫ю╢о╢ы';
+    v_Return_Message := 'Л═∙Л┐│Л═│Л°╪К║° К⌠╠К║²К░≤Л≈┬Л┼╣К▀┬К▀╓';
     v_ErrorText := '';
     --COMMIT;
 
@@ -280,11 +280,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcm0011 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '╫ц╫╨еш╟Э╦╝юз©║╟т ╧╝юг╧ы╤Ь╢о╢ы!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'Л▀°Л┼╓М┘°Й╢─К╕╛Л·░Л≈░Й╡▄ К╛╦Л²≤К╟■К·█К▀┬К▀╓!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_RTCM0011.p_IUDRTCM0011(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtcm0011;
   
 END Pkg_Rtcm0011;
-/

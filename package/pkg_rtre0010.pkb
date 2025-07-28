@@ -1,20 +1,20 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 /*******************************************************************************
    NAME      Pkg_Rtre0010
-   PURPOSE   °í°´ °èÁÂ Á¤º¸ °ü¸®
+   PURPOSE   ê³ ê° ê³„ì¢Œ ì •ë³´ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2015-07-06  jemcarry         1. Created this package body.
-   1.1        2017-09-01  wjim             [20170901_01] °èÁÂ¼ø¹ø È¹µæ º¸¿Ï                                        
+   1.1        2017-09-01  wjim             [20170901_01] ê³„ì¢Œìˆœë²ˆ íšë“ ë³´ì™„                                        
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Count
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Count
   *****************************************************************************/
   FUNCTION f_sRtre0010Count(
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE           /*°èÁÂ¼ø¹ø            */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE           /*ê³„ì¢Œìˆœë²ˆ            */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -33,48 +33,48 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_sRtre0010Count;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Select
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0010 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*°èÁÂ¼ø¹ø              */
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Str_Day        IN RTRE0010.STR_DAY%TYPE,        /*½ÃÀÛÀÏÀÚ              */
-    v_End_Day        IN RTRE0010.END_DAY%TYPE,        /*Á¾·áÀÏÀÚ              */
-    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*°èÁÂÈ®ÀÎ»óÅÂ          */
-    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*ÇØÁö»ç¿ëÀÚ            */
-    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*ÇØÁö»çÀ¯              */
-    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Str_Day        IN RTRE0010.STR_DAY%TYPE,        /*ì‹œìž‘ì¼ìž              */
+    v_End_Day        IN RTRE0010.END_DAY%TYPE,        /*ì¢…ë£Œì¼ìž              */
+    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*ê³„ì¢Œí™•ì¸ìƒíƒœ          */
+    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*í•´ì§€ì‚¬ìš©ìž            */
+    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*í•´ì§€ì‚¬ìœ               */
+    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ACC_SEQ,                   /*°èÁÂ¼ø¹ø            */
-            A.CUST_NO,                   /*°í°´¹øÈ£            */
-            A.STR_DAY,                   /*½ÃÀÛÀÏÀÚ            */
-            A.END_DAY,                   /*Á¾·áÀÏÀÚ            */
-            A.CUST_NM,                   /*°í°´¸í              */
-            A.CUST_TP,                   /*°í°´À¯Çü            */
-            A.EBIR_DAY,                  /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)*/
-            A.BUSL_NO,                   /*»ç¾÷ÀÚ¹øÈ£          */
-            A.BANK_CD,                   /*ÀºÇàÄÚµå            */
-            A.ACCT_NO,                   /*°èÁÂ¹øÈ£            */
-            A.ACC_CHK,                   /*°èÁÂÈ®ÀÎ»óÅÂ        */
-            A.ACNC_ID,                   /*ÇØÁö»ç¿ëÀÚ          */
-            A.ACNC_DESC,                 /*ÇØÁö»çÀ¯            */
-            A.USE_YN,                    /*»ç¿ë¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.ACC_SEQ,                   /*ê³„ì¢Œìˆœë²ˆ            */
+            A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            A.STR_DAY,                   /*ì‹œìž‘ì¼ìž            */
+            A.END_DAY,                   /*ì¢…ë£Œì¼ìž            */
+            A.CUST_NM,                   /*ê³ ê°ëª…              */
+            A.CUST_TP,                   /*ê³ ê°ìœ í˜•            */
+            A.EBIR_DAY,                  /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)*/
+            A.BUSL_NO,                   /*ì‚¬ì—…ìžë²ˆí˜¸          */
+            A.BANK_CD,                   /*ì€í–‰ì½”ë“œ            */
+            A.ACCT_NO,                   /*ê³„ì¢Œë²ˆí˜¸            */
+            A.ACC_CHK,                   /*ê³„ì¢Œí™•ì¸ìƒíƒœ        */
+            A.ACNC_ID,                   /*í•´ì§€ì‚¬ìš©ìž          */
+            A.ACNC_DESC,                 /*í•´ì§€ì‚¬ìœ             */
+            A.USE_YN,                    /*ì‚¬ìš©ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTRE0010 A
     WHERE   A.ACC_SEQ   = DECODE(v_Acc_Seq   , NULL, A.ACC_SEQ   , v_Acc_Seq)
     AND     A.CUST_NO   = DECODE(v_Cust_No   , NULL, A.CUST_NO   , v_Cust_No)
@@ -95,22 +95,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END p_sRtre0010;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Insert
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0010 (
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*°èÁÂ¼ø¹ø              */
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*°èÁÂÈ®ÀÎ»óÅÂ          */
-    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*ÇØÁö»ç¿ëÀÚ            */
-    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*ÇØÁö»çÀ¯              */
-    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*ê³„ì¢Œí™•ì¸ìƒíƒœ          */
+    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*í•´ì§€ì‚¬ìš©ìž            */
+    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*í•´ì§€ì‚¬ìœ               */
+    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -165,22 +165,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_InsertRtre0010;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Update
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0010 (
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*°èÁÂ¼ø¹ø              */
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*°èÁÂÈ®ÀÎ»óÅÂ          */
-    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*ÇØÁö»ç¿ëÀÚ            */
-    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*ÇØÁö»çÀ¯              */
-    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*ê³„ì¢Œí™•ì¸ìƒíƒœ          */
+    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*í•´ì§€ì‚¬ìš©ìž            */
+    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*í•´ì§€ì‚¬ìœ               */
+    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -212,13 +212,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_UpdateRtre0010;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Delete
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0010 (
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*°èÁÂ¼ø¹ø              */
-    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*ÇØÁö»ç¿ëÀÚ            */
-    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*ÇØÁö»çÀ¯              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*í•´ì§€ì‚¬ìš©ìž            */
+    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*í•´ì§€ì‚¬ìœ               */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -242,23 +242,23 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_DeleteRtre0010;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ °ü¸®(IUD)
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0010 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Acc_Seq        IN OUT RTRE0010.ACC_SEQ%TYPE,    /*°èÁÂ¼ø¹ø              */
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*°í°´¸í                */
-    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*°í°´À¯Çü              */
-    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)  */
-    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*»ç¾÷ÀÚ¹øÈ£            */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*°èÁÂ¹øÈ£              */
-    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*°èÁÂÈ®ÀÎ»óÅÂ          */
-    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*ÇØÁö»ç¿ëÀÚ            */
-    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*ÇØÁö»çÀ¯              */
-    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Acc_Seq        IN OUT RTRE0010.ACC_SEQ%TYPE,    /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Cust_Nm        IN RTRE0010.CUST_NM%TYPE,        /*ê³ ê°ëª…                */
+    v_Cust_Tp        IN RTRE0010.CUST_TP%TYPE,        /*ê³ ê°ìœ í˜•              */
+    v_Ebir_Day       IN RTRE0010.EBIR_DAY%TYPE,       /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)  */
+    v_Busl_No        IN RTRE0010.BUSL_NO%TYPE,        /*ì‚¬ì—…ìžë²ˆí˜¸            */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE,        /*ê³„ì¢Œë²ˆí˜¸              */
+    v_Acc_Chk        IN RTRE0010.ACC_CHK%TYPE,        /*ê³„ì¢Œí™•ì¸ìƒíƒœ          */
+    v_Acnc_Id        IN RTRE0010.ACNC_ID%TYPE,        /*í•´ì§€ì‚¬ìš©ìž            */
+    v_Acnc_Desc      IN RTRE0010.ACNC_DESC%TYPE,      /*í•´ì§€ì‚¬ìœ               */
+    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -266,73 +266,73 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 
     e_Error EXCEPTION;
 
-    v_Acc_Seqo  RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*°èÁÂ¼ø¹ø              */
+    v_Acc_Seqo  RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*ê³„ì¢Œìˆœë²ˆ              */
 
   BEGIN
 
-    -- ÇÊ¼ö°ª:ÀºÇàÄÚµå ,°èÁÂ¹øÈ£ ,°í°´¹øÈ£ ,°í°´¸í ,°í°´À¯Çü ,¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD) ,»ç¾÷ÀÚ¹øÈ£, °èÁÂÈ®ÀÎ»óÅÂ, »ç¿ë¿©ºÎ,  µî·ÏÀÚ ID
+    -- í•„ìˆ˜ê°’:ì€í–‰ì½”ë“œ ,ê³„ì¢Œë²ˆí˜¸ ,ê³ ê°ë²ˆí˜¸ ,ê³ ê°ëª… ,ê³ ê°ìœ í˜• ,ë²•ì •ìƒë…„ì›”ì¼(YYMMDD) ,ì‚¬ì—…ìžë²ˆí˜¸, ê³„ì¢Œí™•ì¸ìƒíƒœ, ì‚¬ìš©ì—¬ë¶€,  ë“±ë¡ìž ID
     IF (TRIM(v_Bank_Cd) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('R001', v_Bank_Cd)) THEN
-        v_Return_Message := 'ÀºÇàÄÚµå('||v_Bank_Cd||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì€í–‰ì½”ë“œ('||v_Bank_Cd||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Acct_No) IS NULL THEN
-        v_Return_Message := '°èÁÂ¹øÈ£('||v_Acct_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³„ì¢Œë²ˆí˜¸('||v_Acct_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Cust_No) IS NULL) OR (0 = Pkg_Rtsd0100.f_sRtsd0100Count(v_Cust_No)) THEN
-        v_Return_Message := '°í°´¹øÈ£('||v_Cust_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ë²ˆí˜¸('||v_Cust_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF TRIM(v_Cust_Nm) IS NULL THEN
-        v_Return_Message := '°í°´¸í('||v_Cust_Nm||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ëª…('||v_Cust_Nm||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Acc_Chk) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('R012', v_Acc_Chk)) THEN
-        v_Return_Message := '°èÁÂÈ®ÀÎ»óÅÂ('||v_Acc_Chk||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³„ì¢Œí™•ì¸ìƒíƒœ('||v_Acc_Chk||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Cust_Tp) IS NULL) OR (0 = Pkg_Rtcm0051.f_sRtcm0051Count('S024', v_Cust_Tp)) THEN
-        v_Return_Message := '°í°´À¯Çü('||v_Cust_Tp||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ê³ ê°ìœ í˜•('||v_Cust_Tp||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
-    -- °³ÀÎ(01), »ç¾÷ÀÚ(02)
+    -- ê°œì¸(01), ì‚¬ì—…ìž(02)
     IF TRIM(v_Cust_Tp) = '01' THEN
 
         IF TRIM(v_Ebir_Day) IS NULL THEN
-            v_Return_Message := '¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)('||v_Ebir_Day||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)('||v_Ebir_Day||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
     ELSE
         IF TRIM(v_Busl_No) IS NULL THEN
-            v_Return_Message := '»ç¾÷ÀÚ¹øÈ£('||v_Busl_No||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+            v_Return_Message := 'ì‚¬ì—…ìžë²ˆí˜¸('||v_Busl_No||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
             RAISE e_Error;
         END IF;
     END IF;
 
     IF TRIM(v_Use_Yn) IS NULL THEN
-        v_Return_Message := '»ç¿ë¿©ºÎ('||v_Use_Yn||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ôÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ì‚¬ìš©ì—¬ë¶€('||v_Use_Yn||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF (TRIM(v_Reg_Id) IS NULL) OR (0 = Pkg_Rtcm0001.f_sRtcm0001Count(v_Reg_Id)) THEN
-        v_Return_Message := 'µî·ÏÀÚ ID('||v_Reg_Id||') : ÇÊ¼ö ÀÔ·Â°ª ´©¶ô ¶Ç´Â Àß¸øµÈ °ª ÀÔ·ÂÀ¸·Î Ã³¸®°¡ ºÒ°¡ ÇÕ´Ï´Ù!';
+        v_Return_Message := 'ë“±ë¡ìž ID('||v_Reg_Id||') : í•„ìˆ˜ ìž…ë ¥ê°’ ëˆ„ë½ ë˜ëŠ” ìž˜ëª»ëœ ê°’ ìž…ë ¥ìœ¼ë¡œ ì²˜ë¦¬ê°€ ë¶ˆê°€ í•©ë‹ˆë‹¤!';
         RAISE e_Error;
     END IF;
 
     IF v_Comm_Dvsn = 'I' THEN
 
         IF 0 != f_sRtre0010Count(v_Acc_Seq) THEN
-            v_Return_Message := 'ÇØ´ç °í°´°èÁÂÄÚµå('||v_Acc_Seq||')·Î ÀÌ¹Ì µî·ÏµÈ µ¥ÀÌÅÍ°¡ ÀÖÀ½À¸·Î ½Å±Ôµî·ÏÀÌ ºÒ°¡ÇÕ´Ï´Ù.!';
+            v_Return_Message := 'í•´ë‹¹ ê³ ê°ê³„ì¢Œì½”ë“œ('||v_Acc_Seq||')ë¡œ ì´ë¯¸ ë“±ë¡ëœ ë°ì´í„°ê°€ ìžˆìŒìœ¼ë¡œ ì‹ ê·œë“±ë¡ì´ ë¶ˆê°€í•©ë‹ˆë‹¤.!';
             RAISE e_Error;
         END IF;
 
-        -- ½Å±Ô µî·ÏÀÎµ¥, µ¿ÀÏ °í°´/ÀºÇà/°èÁÂ°¡ Á¸ÀçÇÏ¸é, ¿¡·¯Ã³¸®
+        -- ì‹ ê·œ ë“±ë¡ì¸ë°, ë™ì¼ ê³ ê°/ì€í–‰/ê³„ì¢Œê°€ ì¡´ìž¬í•˜ë©´, ì—ëŸ¬ì²˜ë¦¬
         IF 0 != Pkg_Rtre0010.f_sRtre0010CountAcctNo(v_Cust_No, v_Bank_Cd, v_Acct_No) THEN
 
             SELECT ACC_SEQ  INTO v_Acc_Seqo
@@ -344,7 +344,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 
             IF (TRIM(v_Acc_Seqo) IS NULL) THEN
 
-                v_Return_Message := '°í°´ÄÚµå('||v_Cust_No||') ÀºÇàÄÚµå('||v_Bank_Cd||') °èÁÂ¹øÈ£('||v_Acct_No||')·Î µî·ÏµÈ µ¥ÀÌÅÍ°¡ Á¸ÀçÇÕ´Ï´Ù.È®ÀÎ ÈÄ µî·ÏÇÏ½Ã±æ ¹Ù¶ø´Ï´Ù!';
+                v_Return_Message := 'ê³ ê°ì½”ë“œ('||v_Cust_No||') ì€í–‰ì½”ë“œ('||v_Bank_Cd||') ê³„ì¢Œë²ˆí˜¸('||v_Acct_No||')ë¡œ ë“±ë¡ëœ ë°ì´í„°ê°€ ì¡´ìž¬í•©ë‹ˆë‹¤.í™•ì¸ í›„ ë“±ë¡í•˜ì‹œê¸¸ ë°”ëžë‹ˆë‹¤!';
                 RAISE e_Error;
             END IF;
         END IF;
@@ -357,7 +357,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
                                      v_Cust_Nm, v_Cust_Tp, v_Ebir_Day, v_Busl_No,
                                      v_Bank_Cd, v_Acct_No, v_Acc_Chk, v_Acnc_Id,
                                      v_Acnc_Desc, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := ' °í°´ °èÁÂ Á¤º¸ µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := ' ê³ ê° ê³„ì¢Œ ì •ë³´ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -368,7 +368,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
     ELSE
 
         IF 0 = f_sRtre0010Count(v_Acc_Seq) THEN
-            v_Return_Message := 'ÇØ´ç °í°´°èÁÂÄÚµå('||v_Acc_Seq||')·Î µî·ÏµÈ µ¥ÀÌÅÍ°¡ ¾øÀ½À¸·Î ¼öÁ¤/»èÁ¦ÀÌ ºÒ°¡ÇÕ´Ï´Ù.!';
+            v_Return_Message := 'í•´ë‹¹ ê³ ê°ê³„ì¢Œì½”ë“œ('||v_Acc_Seq||')ë¡œ ë“±ë¡ëœ ë°ì´í„°ê°€ ì—†ìŒìœ¼ë¡œ ìˆ˜ì •/ì‚­ì œì´ ë¶ˆê°€í•©ë‹ˆë‹¤.!';
             RAISE e_Error;
         END IF;
 
@@ -378,7 +378,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
                                      v_Cust_Nm, v_Cust_Tp, v_Ebir_Day, v_Busl_No,
                                      v_Bank_Cd, v_Acct_No, v_Acc_Chk, v_Acnc_Id,
                                      v_Acnc_Desc, v_Use_Yn, v_Reg_Id, v_ErrorText) THEN
-                v_Return_Message := ' °í°´ °èÁÂ Á¤º¸ ¼öÁ¤ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := ' ê³ ê° ê³„ì¢Œ ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
             END IF;
@@ -387,27 +387,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 
             IF 0 != f_DeleteRtre0010(v_Acc_Seq, v_Acnc_Id, v_Acnc_Desc, v_Reg_Id,
                                      v_ErrorText) THEN
-                v_Return_Message := ' °í°´ °èÁÂ Á¤º¸ »èÁ¦ ½ÇÆÐ!!!'||'-'||v_ErrorText;
+                v_Return_Message := ' ê³ ê° ê³„ì¢Œ ì •ë³´ ì‚­ì œ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
                 v_ErrorText := v_ErrorText;
                 RAISE e_Error;
            END IF;
 
         ELSE
-            v_Return_Message := 'Ã³¸®±¸ºÐ(I,U,D)°ª ¿À·ù!!!['||v_Comm_Dvsn||']';
+            v_Return_Message := 'ì²˜ë¦¬êµ¬ë¶„(I,U,D)ê°’ ì˜¤ë¥˜!!!['||v_Comm_Dvsn||']';
             RAISE e_Error;
 
         END IF;
     END IF;
 
-    -- º¯°æ ÀÌ·Â »ý¼º
+    -- ë³€ê²½ ì´ë ¥ ìƒì„±
     IF 0 != Pkg_Rtre0011.f_InsertRtre0011(v_Acc_Seq, v_ErrorText) THEN
-        v_Return_Message := '°í°´ °èÁÂ Á¤º¸ ÀÌ·Â µî·Ï ½ÇÆÐ!!!'||'-'||v_ErrorText;
+        v_Return_Message := 'ê³ ê° ê³„ì¢Œ ì •ë³´ ì´ë ¥ ë“±ë¡ ì‹¤íŒ¨!!!'||'-'||v_ErrorText;
         v_ErrorText := v_ErrorText;
         RAISE e_Error;
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := 'Á¤»óÀûÀ¸·Î µî·ÏµÇ¾ú½À´Ï´Ù';
+    v_Return_Message := 'ì •ìƒì ìœ¼ë¡œ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤';
     v_ErrorText := '';
     --COMMIT;
 
@@ -422,22 +422,22 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), '½Ã½ºÅÛ°ü¸®ÀÚ¿¡°Ô ¹®ÀÇ¹Ù¶ø´Ï´Ù!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ì‹œìŠ¤í…œê´€ë¦¬ìžì—ê²Œ ë¬¸ì˜ë°”ëžë‹ˆë‹¤!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtre0010.p_IUDRtre0010(2)', v_ErrorText, v_Return_Message);
 
   END p_IUDRtre0010;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ - °í°´¹øÈ£/ÀºÇàÄÚµå/°èÁÂ¹øÈ£ ±âÁØ °èÁÂ¼ø¹ø È¹µæ
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ - ê³ ê°ë²ˆí˜¸/ì€í–‰ì½”ë“œ/ê³„ì¢Œë²ˆí˜¸ ê¸°ì¤€ ê³„ì¢Œìˆœë²ˆ íšë“
   *****************************************************************************/
   FUNCTION f_sRtre0010AcctNo(
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*°èÁÂ¹øÈ£              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*ê³„ì¢Œë²ˆí˜¸              */
     ) RETURN VARCHAR IS
 
-    v_Acc_Seq   RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*°èÁÂ¼ø¹ø              */
+    v_Acc_Seq   RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*ê³„ì¢Œìˆœë²ˆ              */
   BEGIN
 
     SELECT  ACC_SEQ
@@ -456,15 +456,15 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_sRtre0010AcctNo;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ - °í°´¹øÈ£/ÀºÇàÄÚµå/°èÁÂ¹øÈ£ ±âÁØ »ç¿ë¿©ºÎ Á¶È¸
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ - ê³ ê°ë²ˆí˜¸/ì€í–‰ì½”ë“œ/ê³„ì¢Œë²ˆí˜¸ ê¸°ì¤€ ì‚¬ìš©ì—¬ë¶€ ì¡°íšŒ
   *****************************************************************************/
   FUNCTION f_sRtre0010UseYn(
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*°èÁÂ¹øÈ£              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*ê³„ì¢Œë²ˆí˜¸              */
     ) RETURN VARCHAR IS
 
-    v_Use_Yn    RTRE0010.USE_YN%TYPE DEFAULT NULL;    /*»ç¿ë¿©ºÎ              */
+    v_Use_Yn    RTRE0010.USE_YN%TYPE DEFAULT NULL;    /*ì‚¬ìš©ì—¬ë¶€              */
   BEGIN
 
     SELECT  USE_YN
@@ -483,12 +483,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_sRtre0010UseYn;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ - °í°´¹øÈ£/ÀºÇàÄÚµå/°èÁÂ¹øÈ£ ±âÁØ Á¸Àç¿©ºÎ Ã¼Å©
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ - ê³ ê°ë²ˆí˜¸/ì€í–‰ì½”ë“œ/ê³„ì¢Œë²ˆí˜¸ ê¸°ì¤€ ì¡´ìž¬ì—¬ë¶€ ì²´í¬
   *****************************************************************************/
   FUNCTION f_sRtre0010CountAcctNo(
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ÀºÇàÄÚµå              */
-    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*°èÁÂ¹øÈ£              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Bank_Cd        IN RTRE0010.BANK_CD%TYPE,        /*ì€í–‰ì½”ë“œ              */
+    v_Acct_No        IN RTRE0010.ACCT_NO%TYPE         /*ê³„ì¢Œë²ˆí˜¸              */
     ) RETURN NUMBER IS
     v_curr_cunt   NUMBER DEFAULT 0;
   BEGIN
@@ -511,21 +511,21 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_sRtre0010CountAcctNo;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ - °èÁÂ¼ø¹ø È¹µæ
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ - ê³„ì¢Œìˆœë²ˆ íšë“
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.1        2017-09-01  wjim             [20170901_01] °èÁÂ¼ø¹ø È¹µæ º¸¿Ï
-                                           - °í°´¹øÈ£°¡ 14ÀÚ¸®°¡ ¾Æ´Ñ °æ¿ì ´ëÃ³
+   1.1        2017-09-01  wjim             [20170901_01] ê³„ì¢Œìˆœë²ˆ íšë“ ë³´ì™„
+                                           - ê³ ê°ë²ˆí˜¸ê°€ 14ìžë¦¬ê°€ ì•„ë‹Œ ê²½ìš° ëŒ€ì²˜
   *****************************************************************************/
   FUNCTION f_sRtre0010Seq (
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE         /*°í°´¹øÈ£              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE         /*ê³ ê°ë²ˆí˜¸              */
     ) RETURN VARCHAR IS
 
-    v_Acc_Seq   RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*°èÁÂ¼ø¹ø              */
+    v_Acc_Seq   RTRE0010.ACC_SEQ%TYPE DEFAULT NULL;   /*ê³„ì¢Œìˆœë²ˆ              */
   BEGIN
 
-    -- °èÁÂ¼ø¹ø : A + °í°´¹øÈ£ + SEQ(3)    
+    -- ê³„ì¢Œìˆœë²ˆ : A + ê³ ê°ë²ˆí˜¸ + SEQ(3)    
     SELECT  'A'||LPAD('0',10-LENGTH(v_Cust_No),'0')||v_Cust_No||LPAD(NVL((SELECT  /*+ INDEX_DESC ( RTRE0010 RTRE0010_PK ) */
                                               SUBSTR(ACC_SEQ,LENGTH(ACC_SEQ)-2,3)
                                       FROM    RTRE0010
@@ -535,7 +535,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
     INTO    v_Acc_Seq
     FROM    DUAL;
 
---    --[20170901_01]ÀÌÀü
+--    --[20170901_01]ì´ì „
 --    SELECT  'A'||v_Cust_No||LPAD(NVL((SELECT  /*+ INDEX_DESC ( RTRE0010 RTRE0010_PK ) */
 --                                              SUBSTR(ACC_SEQ,12,3)
 --                                      FROM    RTRE0010
@@ -555,37 +555,37 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Select - °í°´¹øÈ£ ±âÁØ °èÁÂ ¸®½ºÆ®
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Select - ê³ ê°ë²ˆí˜¸ ê¸°ì¤€ ê³„ì¢Œ ë¦¬ìŠ¤íŠ¸
   *****************************************************************************/
   PROCEDURE p_sRtre0010CustNoList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE         /*°í°´¹øÈ£              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE         /*ê³ ê°ë²ˆí˜¸              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ACC_SEQ,                   /*°èÁÂ¼ø¹ø            */
-            A.CUST_NO,                   /*°í°´¹øÈ£            */
-            A.STR_DAY,                   /*½ÃÀÛÀÏÀÚ            */
-            A.END_DAY,                   /*Á¾·áÀÏÀÚ            */
-            A.CUST_NM,                   /*°í°´¸í(¿¹±ÝÁÖ¸í)    */
-            A.CUST_TP,                   /*°í°´À¯Çü            */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('S024', A.CUST_TP) CUST_TP_NM, /*°í°´À¯Çü¸í     */
-            A.EBIR_DAY,                  /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)*/
-            A.BUSL_NO,                   /*»ç¾÷ÀÚ¹øÈ£          */
-            A.BANK_CD,                   /*ÀºÇàÄÚµå            */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('R001', A.BANK_CD) BANK_NM,    /*ÀºÇà¸í         */
-            A.ACCT_NO,                   /*°èÁÂ¹øÈ£            */
-            A.ACC_CHK,                   /*°èÁÂÈ®ÀÎ»óÅÂ        */
-            A.ACNC_ID,                   /*ÇØÁö»ç¿ëÀÚ          */
-            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.ACNC_ID) ACNC_NM,              /*ÇØÁö»ç¿ëÀÚ¸í   */
-            A.ACNC_DESC,                 /*ÇØÁö»çÀ¯            */
-            A.USE_YN,                    /*»ç¿ë¿©ºÎ            */
-            A.REG_ID,                    /*µî·ÏÀÚ ID           */
-            A.REG_DT,                    /*µî·ÏÀÏ              */
-            A.CHG_ID,                    /*º¯°æÀÚ ID           */
-            A.CHG_DT                     /*º¯°æÀÏ              */
+    SELECT  A.ACC_SEQ,                   /*ê³„ì¢Œìˆœë²ˆ            */
+            A.CUST_NO,                   /*ê³ ê°ë²ˆí˜¸            */
+            A.STR_DAY,                   /*ì‹œìž‘ì¼ìž            */
+            A.END_DAY,                   /*ì¢…ë£Œì¼ìž            */
+            A.CUST_NM,                   /*ê³ ê°ëª…(ì˜ˆê¸ˆì£¼ëª…)    */
+            A.CUST_TP,                   /*ê³ ê°ìœ í˜•            */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S024', A.CUST_TP) CUST_TP_NM, /*ê³ ê°ìœ í˜•ëª…     */
+            A.EBIR_DAY,                  /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)*/
+            A.BUSL_NO,                   /*ì‚¬ì—…ìžë²ˆí˜¸          */
+            A.BANK_CD,                   /*ì€í–‰ì½”ë“œ            */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('R001', A.BANK_CD) BANK_NM,    /*ì€í–‰ëª…         */
+            A.ACCT_NO,                   /*ê³„ì¢Œë²ˆí˜¸            */
+            A.ACC_CHK,                   /*ê³„ì¢Œí™•ì¸ìƒíƒœ        */
+            A.ACNC_ID,                   /*í•´ì§€ì‚¬ìš©ìž          */
+            Pkg_Rtcm0001.f_sRtcm0001UserNm(A.ACNC_ID) ACNC_NM,              /*í•´ì§€ì‚¬ìš©ìžëª…   */
+            A.ACNC_DESC,                 /*í•´ì§€ì‚¬ìœ             */
+            A.USE_YN,                    /*ì‚¬ìš©ì—¬ë¶€            */
+            A.REG_ID,                    /*ë“±ë¡ìž ID           */
+            A.REG_DT,                    /*ë“±ë¡ì¼              */
+            A.CHG_ID,                    /*ë³€ê²½ìž ID           */
+            A.CHG_DT                     /*ë³€ê²½ì¼              */
     FROM    RTRE0010 A
     WHERE   A.CUST_NO = v_Cust_No
     ORDER   BY A.ACC_SEQ;
@@ -593,27 +593,27 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END p_sRtre0010CustNoList;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Select - °í°´°èÁÂ¼±ÅÃ ÆË¾÷ Á¶È¸
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Select - ê³ ê°ê³„ì¢Œì„ íƒ íŒì—… ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0010AccPopup (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE         /*°èÁÂ¼ø¹ø              */
+    v_Cust_No        IN RTRE0010.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE         /*ê³„ì¢Œìˆœë²ˆ              */
     ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.ACC_SEQ,                   /*°èÁÂ¼ø¹ø            */
-            A.CUST_NO,                      /*°í°´¹øÈ£            */
-            A.BANK_CD,                   /*ÀºÇàÄÚµå            */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('R001', A.BANK_CD) BANK_NM,    /*ÀºÇà¸í         */
-            A.ACCT_NO,                   /*°èÁÂ¹øÈ£            */
-            A.CUST_NM,                   /*°í°´¸í              */
-            A.CUST_TP,                   /*°í°´À¯Çü            */
-            A.EBIR_DAY,                  /*¹ýÁ¤»ý³â¿ùÀÏ(YYMMDD)*/
-            A.BUSL_NO,                   /*»ç¾÷ÀÚ¹øÈ£          */
-            ACC_CHK                         /*°èÁÂÈ®ÀÎ»óÅÂ        */
+    SELECT  A.ACC_SEQ,                   /*ê³„ì¢Œìˆœë²ˆ            */
+            A.CUST_NO,                      /*ê³ ê°ë²ˆí˜¸            */
+            A.BANK_CD,                   /*ì€í–‰ì½”ë“œ            */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('R001', A.BANK_CD) BANK_NM,    /*ì€í–‰ëª…         */
+            A.ACCT_NO,                   /*ê³„ì¢Œë²ˆí˜¸            */
+            A.CUST_NM,                   /*ê³ ê°ëª…              */
+            A.CUST_TP,                   /*ê³ ê°ìœ í˜•            */
+            A.EBIR_DAY,                  /*ë²•ì •ìƒë…„ì›”ì¼(YYMMDD)*/
+            A.BUSL_NO,                   /*ì‚¬ì—…ìžë²ˆí˜¸          */
+            ACC_CHK                         /*ê³„ì¢Œí™•ì¸ìƒíƒœ        */
     FROM    RTRE0010 A
     WHERE   A.CUST_NO = v_Cust_No
     AND     TO_CHAR(SYSDATE, 'YYYYMMDD') BETWEEN A.STR_DAY AND  A.END_DAY
@@ -624,12 +624,12 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END p_sRtre0010AccPopup;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ - »ç¿ëÀ¯¹« ¾÷µ¥ÀÌÆ®
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ - ì‚¬ìš©ìœ ë¬´ ì—…ë°ì´íŠ¸
   *****************************************************************************/
   FUNCTION f_UpdateRtre0010UseYn (
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*°èÁÂ¼ø¹ø              */
-    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*»ç¿ëÀ¯¹«              */
-    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE,        /*ê³„ì¢Œìˆœë²ˆ              */
+    v_Use_Yn         IN RTRE0010.USE_YN%TYPE,         /*ì‚¬ìš©ìœ ë¬´              */
+    v_Reg_Id         IN RTRE0010.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -650,13 +650,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
   END f_UpdateRtre0010UseYn;
 
   /*****************************************************************************
-  -- °í°´ °èÁÂ Á¤º¸ Bank_Cd
+  -- ê³ ê° ê³„ì¢Œ ì •ë³´ Bank_Cd
   *****************************************************************************/
   FUNCTION f_sRtre0010BankCd(
-    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE           /*°èÁÂ¼ø¹ø            */
+    v_Acc_Seq        IN RTRE0010.ACC_SEQ%TYPE           /*ê³„ì¢Œìˆœë²ˆ            */
     ) RETURN VARCHAR2 IS
 
-    v_Bank_Cd   RTRE0060.BANK_CD%TYPE DEFAULT NULL;     /*ÀºÇàÄÚµå            */
+    v_Bank_Cd   RTRE0060.BANK_CD%TYPE DEFAULT NULL;     /*ì€í–‰ì½”ë“œ            */
 
   BEGIN
 
@@ -675,4 +675,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtre0010 AS
 
 
 END Pkg_Rtre0010;
-/

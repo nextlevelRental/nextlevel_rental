@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0111 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre0111
-   PURPOSE   Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª °ü¸®
+   PURPOSE   ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,133 +10,133 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0111 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Count
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre0111Count(
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,          /*Ã¤±Ç°ü¸®³â¿ù        */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,           /*°è¾à¹øÈ£            */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,          /*°í°´¹øÈ£            */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE           /*Ã»±¸±¸ºÐ            */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,          /*ì±„ê¶Œê´€ë¦¬ë…„ì›”        */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,           /*ê³„ì•½ë²ˆí˜¸            */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,          /*ê³ ê°ë²ˆí˜¸            */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE           /*ì²­êµ¬êµ¬ë¶„            */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Select
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre0111 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Insert
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre0111 (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Update
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre0111 (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Delete
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0111 (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª °ü¸®(IUD)
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre0111 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -144,78 +144,77 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0111 AS
 
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª °ü¸® - Ã¤±Ç´ë»ó Áý°è
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ ê´€ë¦¬ - ì±„ê¶ŒëŒ€ìƒ ì§‘ê³„
   *****************************************************************************/
   PROCEDURE p_IUDRtre0111Aggregate (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
     
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Update - Ã¤±Ç´ë»ó Áý°è
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Update - ì±„ê¶ŒëŒ€ìƒ ì§‘ê³„
   *****************************************************************************/
   FUNCTION f_UpdateRtre0111Aggregate (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*Ã»±¸±¸ºÐ              */
-    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*°áÁ¦¹æ¹ý              */
-    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*°áÁ¦ÀÏ                */
-    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*¿¬Ã¼È¸Â÷              */
-    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*Ã¤±Ç°ü¸®±Ý¾×          */
-    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*¿¬Ã¼±Ý¾×              */
-    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*´ç¿ùÃ»±¸±Ý¾×          */
-    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*Ã¤±Ç°ü¸®¼ö³³±Ý¾×      */
-    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*¿¬Ã¼¼ö³³±Ý¾×          */
-    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*´ç¿ùÃ»±¸¼ö³³±Ý¾×      */
-    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*¿¬Ã¼ÀÌÀÚ±Ý¾×          */
-    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*¿¬Ã¼ÀÌÀÚ ¼ö³³±Ý¾×     */
-    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*Áßµµ¿Ï³³¿©ºÎ          */
-    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ÀÓ½ÃÇØ¾à¿©ºÎ          */
-    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*¼ÒÀ¯±ÇÀÌÀü¿©ºÎ        */
-    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*¿¬Ã¼½ÃÀÛ³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Ord_No         IN RTRE0111.ORD_NO%TYPE,         /*ê³„ì•½ë²ˆí˜¸              */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Recp_Tp        IN RTRE0111.RECP_TP%TYPE,        /*ì²­êµ¬êµ¬ë¶„              */
+    v_Pay_Mthd       IN RTRE0111.PAY_MTHD%TYPE,       /*ê²°ì œë°©ë²•              */
+    v_Pay_Dd         IN RTRE0111.PAY_DD%TYPE,         /*ê²°ì œì¼                */
+    v_Appr_Scnt      IN RTRE0111.APPR_SCNT%TYPE,      /*ì—°ì²´íšŒì°¨              */
+    v_Ramg_Amt       IN RTRE0111.RAMG_AMT%TYPE,       /*ì±„ê¶Œê´€ë¦¬ê¸ˆì•¡          */
+    v_Arre_Amt       IN RTRE0111.ARRE_AMT%TYPE,       /*ì—°ì²´ê¸ˆì•¡              */
+    v_Rmon_Amt       IN RTRE0111.RMON_AMT%TYPE,       /*ë‹¹ì›”ì²­êµ¬ê¸ˆì•¡          */
+    v_Ramgre_Amt     IN RTRE0111.RAMGRE_AMT%TYPE,     /*ì±„ê¶Œê´€ë¦¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Arrere_Amt     IN RTRE0111.ARRERE_AMT%TYPE,     /*ì—°ì²´ìˆ˜ë‚©ê¸ˆì•¡          */
+    v_Rmonre_Amt     IN RTRE0111.RMONRE_AMT%TYPE,     /*ë‹¹ì›”ì²­êµ¬ìˆ˜ë‚©ê¸ˆì•¡      */
+    v_Ovin_Amt       IN RTRE0111.OVIN_AMT%TYPE,       /*ì—°ì²´ì´ìžê¸ˆì•¡          */
+    v_Ovinre_Amt     IN RTRE0111.OVINRE_AMT%TYPE,     /*ì—°ì²´ì´ìž ìˆ˜ë‚©ê¸ˆì•¡     */
+    v_Mfp_Yn         IN RTRE0111.MFP_YN%TYPE,         /*ì¤‘ë„ì™„ë‚©ì—¬ë¶€          */
+    v_Tcan_Yn        IN RTRE0111.TCAN_YN%TYPE,        /*ìž„ì‹œí•´ì•½ì—¬ë¶€          */
+    v_Os_Yn          IN RTRE0111.OS_YN%TYPE,          /*ì†Œìœ ê¶Œì´ì „ì—¬ë¶€        */
+    v_Fst_Del_Ym     IN RTRE0111.FST_DEL_YM%TYPE,     /*ì—°ì²´ì‹œìž‘ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;    
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Select - Ã¤±Ç ´ë»ó °è¾àº° Á¶È¸
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Select - ì±„ê¶Œ ëŒ€ìƒ ê³„ì•½ë³„ ì¡°íšŒ
   *****************************************************************************/
   PROCEDURE p_sRtre0111OrdList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Cust_No        IN RTRE0111.CUST_NO%TYPE         /*°í°´¹øÈ£              */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Cust_No        IN RTRE0111.CUST_NO%TYPE         /*ê³ ê°ë²ˆí˜¸              */
     );
 
   /*****************************************************************************
-  -- Ã¤±Ç °ü¸® ¼¼ºÎ³»¿ª Delete
+  -- ì±„ê¶Œ ê´€ë¦¬ ì„¸ë¶€ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre0111Equal (
-    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*Ã¤±Ç°ü¸®³â¿ù          */
-    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ramg_Ym        IN RTRE0111.RAMG_YM%TYPE,        /*ì±„ê¶Œê´€ë¦¬ë…„ì›”          */
+    v_Reg_Id         IN RTRE0111.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
 END Pkg_Rtre0111;
-/

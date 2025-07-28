@@ -137,4 +137,20 @@ public class CommonMapDAO extends EgovAbstractDAO {
 		getSqlMapClientTemplate().queryForObject("comm.runQuery", map);
 		return map;
 	}
+	public Map insertRtsd0218(Map map) throws NtRmsDaoException {
+		getSqlMapClientTemplate().queryForObject("comm.insertRtsd0218", map);
+		return map;
+	}
+	public Map updateRtsd0218(Map map) throws NtRmsDaoException {
+		getSqlMapClientTemplate().queryForObject("comm.updateRtsd0218", map);
+		return map;
+	}
+	public Map updateCustNoRtsd0218(Map map) throws NtRmsDaoException {
+		getSqlMapClientTemplate().queryForObject("comm.updateCustNoRtsd0218", map);
+		return map;
+	}
+	public Map updateOrdNoRtsd0218(Map map) throws NtRmsDaoException {
+		getSqlMapClientTemplate().queryForObject("comm.updateOrdNoRtsd0218", map);
+		return map;
+	}
 }

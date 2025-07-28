@@ -29,7 +29,7 @@
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
-            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"serNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"faxNo\" type=\"STRING\" size=\"256\"/><Column id=\"taxNo\" type=\"STRING\" size=\"256\"/><Column id=\"repNm\" type=\"STRING\" size=\"256\"/><Column id=\"busiType\" type=\"STRING\" size=\"256\"/><Column id=\"busiCond\" type=\"STRING\" size=\"256\"/><Column id=\"rentalYn\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"posX\" type=\"STRING\" size=\"256\"/><Column id=\"posY\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgNm\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"fmYn\" type=\"STRING\" size=\"256\"/><Column id=\"cwYn\" type=\"STRING\" size=\"256\"/><Column id=\"olimitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/><Column id=\"chanLclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"opYn\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"apfdEndYn\" type=\"STRING\" size=\"256\"/><Column id=\"chainYn\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstId\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstNm\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstMob\" type=\"STRING\" size=\"256\"/><Column id=\"egolNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"bkpdNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"washerNchrgPayYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"agencyCd\" type=\"STRING\" size=\"256\"/><Column id=\"agencyNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroup\" type=\"STRING\" size=\"256\"/><Column id=\"salesGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"salesOffice\" type=\"STRING\" size=\"256\"/><Column id=\"salesOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"posCd\" type=\"STRING\" size=\"256\"/><Column id=\"city\" type=\"STRING\" size=\"256\"/><Column id=\"street\" type=\"STRING\" size=\"256\"/><Column id=\"sidoCd\" type=\"STRING\" size=\"256\"/><Column id=\"sigunCd\" type=\"STRING\" size=\"256\"/><Column id=\"serNo\" type=\"STRING\" size=\"256\"/><Column id=\"telNo\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"faxNo\" type=\"STRING\" size=\"256\"/><Column id=\"taxNo\" type=\"STRING\" size=\"256\"/><Column id=\"repNm\" type=\"STRING\" size=\"256\"/><Column id=\"busiType\" type=\"STRING\" size=\"256\"/><Column id=\"busiCond\" type=\"STRING\" size=\"256\"/><Column id=\"rentalYn\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"posX\" type=\"STRING\" size=\"256\"/><Column id=\"posY\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regNm\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgNm\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"seasonGbn\" type=\"STRING\" size=\"256\"/><Column id=\"lmYn\" type=\"STRING\" size=\"256\"/><Column id=\"fmYn\" type=\"STRING\" size=\"256\"/><Column id=\"cwYn\" type=\"STRING\" size=\"256\"/><Column id=\"olimitCnt\" type=\"STRING\" size=\"256\"/><Column id=\"lifnr\" type=\"STRING\" size=\"256\"/><Column id=\"taxRqcd\" type=\"STRING\" size=\"256\"/><Column id=\"chanLclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"chanMclsCd\" type=\"STRING\" size=\"256\"/><Column id=\"opYn\" type=\"STRING\" size=\"256\"/><Column id=\"memo\" type=\"STRING\" size=\"256\"/><Column id=\"desorptCd\" type=\"STRING\" size=\"256\"/><Column id=\"desorptNm\" type=\"STRING\" size=\"256\"/><Column id=\"alignCd\" type=\"STRING\" size=\"256\"/><Column id=\"alignNm\" type=\"STRING\" size=\"256\"/><Column id=\"balanceCd\" type=\"STRING\" size=\"256\"/><Column id=\"balanceNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroup\" type=\"STRING\" size=\"256\"/><Column id=\"rentalGroupNm\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOffice\" type=\"STRING\" size=\"256\"/><Column id=\"rentalOfficeNm\" type=\"STRING\" size=\"256\"/><Column id=\"prplYn\" type=\"STRING\" size=\"256\"/><Column id=\"premprplYn\" type=\"STRING\" size=\"256\"/><Column id=\"apfdEndYn\" type=\"STRING\" size=\"256\"/><Column id=\"chainYn\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstId\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstNm\" type=\"STRING\" size=\"256\"/><Column id=\"rntMstMob\" type=\"STRING\" size=\"256\"/><Column id=\"egolNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"bkpdNchrgChkYn\" type=\"STRING\" size=\"256\"/><Column id=\"washerNchrgPayYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("dsUseYn", this);
@@ -190,6 +190,18 @@
 
             obj = new Dataset("ds_controlAuth", this);
             obj._setContents("<ColumnInfo><Column id=\"mdlCd\" type=\"STRING\" size=\"256\"/><Column id=\"prgmCd\" type=\"STRING\" size=\"256\"/><Column id=\"controlId\" type=\"STRING\" size=\"256\"/><Column id=\"userGrp\" type=\"STRING\" size=\"256\"/><Column id=\"userId\" type=\"STRING\" size=\"256\"/><Column id=\"typeCd\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this.addChild(obj.name, obj);
+
+            obj = new Dataset("dsPremPrplYn", this);
+            obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
+            obj.set_useclientlayout("false");
+            obj.set_updatecontrol("true");
+            obj.set_enableevent("true");
+            obj.set_loadkeymode("keep");
+            obj.set_loadfiltermode("keep");
+            obj.set_reversesubsum("false");
+            obj._setContents("<ColumnInfo><Column id=\"cd\" type=\"STRING\" size=\"256\"/><Column id=\"cdNm\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"cd\">Y</Col><Col id=\"cdNm\">Y</Col></Row><Row><Col id=\"cd\">N</Col><Col id=\"cdNm\">N</Col></Row></Rows>");
             this.addChild(obj.name, obj);
 
 
@@ -500,7 +512,7 @@
 
             obj = new Static("Static53", "absolute", "374", "326", "130", "31", null, null, this);
             obj.set_taborder("151");
-            obj.set_text("추천장착점");
+            obj.set_text("전략추천");
             obj.set_cssclass("sta_WF_detailLabel");
             this.addChild(obj.name, obj);
 
@@ -844,20 +856,6 @@
             obj.set_visible("false");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static48", "absolute", "748", "476", "130", "31", null, null, this);
-            obj.set_taborder("210");
-            obj.set_text("퍼플점 여부");
-            obj.set_cssclass("sta_WF_detailLabel");
-            this.addChild(obj.name, obj);
-
-            obj = new Combo("cmb_plplYn", "absolute", "882", "481", "235", "21", null, null, this);
-            this.addChild(obj.name, obj);
-            obj.set_taborder("211");
-            obj.set_innerdataset("@dsPrplYn");
-            obj.set_codecolumn("cd");
-            obj.set_datacolumn("cdNm");
-            obj.set_displayrowcount("5");
-
             obj = new Static("Static49", "absolute", "0", "506", "149", "31", null, null, this);
             obj.set_taborder("212");
             obj.set_text("탈착기");
@@ -908,7 +906,7 @@
             obj.set_enable("false");
             this.addChild(obj.name, obj);
 
-            obj = new MaskEdit("rntMstMob", "absolute", "85.44%", "151", "137", "21", null, null, this);
+            obj = new MaskEdit("rntMstMob", "absolute", "980", "151", "137", "21", null, null, this);
             obj.set_taborder("221");
             obj.set_enable("true");
             obj.set_mask("###-####-####");
@@ -978,6 +976,34 @@
             obj.set_taborder("231");
             obj.set_maxlength("120");
             this.addChild(obj.name, obj);
+
+            obj = new Static("Static48", "absolute", "748", "116", "130", "31", null, null, this);
+            obj.set_taborder("210");
+            obj.set_text("퍼플점 여부");
+            obj.set_cssclass("sta_WF_detailLabel");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("cmb_plplYn", "absolute", "882", "121", "235", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("211");
+            obj.set_innerdataset("@dsPrplYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
+
+            obj = new Static("Static71", "absolute", "374", "116", "130", "31", null, null, this);
+            obj.set_taborder("232");
+            obj.set_text("프리미엄퍼플점여부");
+            obj.set_cssclass("sta_WF_detailLabel");
+            this.addChild(obj.name, obj);
+
+            obj = new Combo("cmb_premprplYn", "absolute", "508", "121", "235", "21", null, null, this);
+            this.addChild(obj.name, obj);
+            obj.set_taborder("233");
+            obj.set_innerdataset("@dsPremPrplYn");
+            obj.set_codecolumn("cd");
+            obj.set_datacolumn("cdNm");
+            obj.set_displayrowcount("5");
 
 
             
@@ -1169,6 +1195,9 @@
             obj = new BindItem("item52","hpAgencyNm","value","dsAgency","hpAgencyNm");
             this.addChild(obj.name, obj);
             obj.bind();
+            obj = new BindItem("item53","cmb_premprplYn","value","dsAgency","premprplYn");
+            this.addChild(obj.name, obj);
+            obj.bind();
 
             
             // Remove Reference
@@ -1292,6 +1321,7 @@
         		this.useYn.set_enable(false);
         		this.olimitCnt.set_enable(false);
         		this.cmb_plplYn.set_enable(false);
+        		this.cmb_premprplYn.set_enable(false);
         	}else{ //렌탈팀
         		this.cb_taxRqcd.set_enable(true);
         		this.cb_chanLclsCd.set_value(true);
@@ -1305,6 +1335,7 @@
         		this.useYn.set_enable(true);
         		this.olimitCnt.set_enable(true);
         		this.cmb_plplYn.set_enable(true);
+        		this.cmb_premprplYn.set_enable(true);
         	}
         }
 
@@ -1511,8 +1542,9 @@
             this.salesGroup00.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
             this.bt_searchSalesGroup01.addEventHandler("onclick", this.div_search_bt_searchSalesGroup01_onclick, this);
             this.salesGroup01.addEventHandler("onkeyup", this.div_search_edt_searchKeyword_onkeyup, this);
-            this.Static48.addEventHandler("onclick", this.Static45_onclick, this);
             this.Static68.addEventHandler("onclick", this.Static45_onclick, this);
+            this.Static48.addEventHandler("onclick", this.Static45_onclick, this);
+            this.Static71.addEventHandler("onclick", this.Static45_onclick, this);
 
         };
 

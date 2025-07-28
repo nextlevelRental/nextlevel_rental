@@ -7,7 +7,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2020-10-05  kstka            1. Created this package body.
-   1.1        2021-11-12  kstka            [20211112-0001] 자동가입프로세스 적용 
+   1.1        2021-11-12  kstka            [20211112-0001] 자동가입프로세스 적용
+   1.2        2024-07-30  10243054         [20240730_01] 발송 메시지 수정 SR2407-01540
+   1.3        2024-10-07  10243054         [20241007_01] 발송 메시지 수정 SR2410-00238
+   1.4        2024-09-27  백인천             구분값 추가하기 어려워 추가 생성함(마모파손서비스 첨부이미지 삭제)
+   1.5        2025-05-19  10243054         p_sRtcs0207SelectList MFP_YN 추가 [20250519_01]
 *******************************************************************************/
   
   /*****************************************************************************
@@ -15,7 +19,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
-  1.0        2020-10-05  kstka           Created. [20201005_01]                             
+  1.0        2020-10-05  kstka           Created. [20201005_01]
   *****************************************************************************/
   FUNCTION f_sRtcs0207Count(
     v_Ord_No        IN RTCS0207.ORD_NO%TYPE,          /*배송신청일자        */
@@ -106,7 +110,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
             Pkg_Rtsd0013.f_sRtsd0013ServCnt0(A.ORD_NO, 'B00007') AS B00007_INIT_CNT,                                                 /*걱정제로 최초부여횟수 */ --[20180426_01]
             Pkg_Rtcs0207.f_sRtcs0207ReqNo(A.ORD_NO, D.DLVR_TYPE, D.DLVR_DAY, D.DLVR_SEQ) AS REQ_NO,  /*걱정제로 신청회차     */ --[20180426_01]
             D.C_MILEAGE AS C_MILEAGE,
-            D.DLV_DESC            
+            D.DLV_DESC,
+            A.MFP_YN
     FROM    RTSD0108 A
             INNER JOIN RTSD0100 B ON A.CUST_NO  = B.CUST_NO
             INNER JOIN RTSD0106 C ON A.ORD_NO   = C.ORD_NO AND C.SEQ = 1
@@ -673,6 +678,135 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
 
     END p_IUDRtcs0207;
   
+  /*****************************************************************************
+  -- 마모파손서비스 부여내역 초기화
+  REVISIONS
+  Ver        Date        Author           Description
+  ---------  ----------  ---------------  -------------------------------------
+  1.4        2024-09-27  백인천             구분값 추가하기 어려워 추가 생성함(마모파손서비스 첨부이미지 삭제)
+  *****************************************************************************/
+  PROCEDURE p_RESETRtcs0207 (
+    v_Comm_Dvsn      IN CHAR,                         /*처리구분(R)       */
+    v_Dlvr_Day       IN RTCS0207.DLVR_DAY%TYPE,       /*배송신청일자          */
+    v_Ord_No         IN RTCS0207.ORD_NO%TYPE,         /*주문번호             */
+    v_Dlvr_Type      IN RTCS0207.DLVR_TYPE%TYPE,      /*부여:A, 신청:B       */
+    v_Dlvr_Seq       IN OUT RTCS0207.DLVR_SEQ%TYPE,   /*서비스순번            */
+    v_Serv_Cd        IN RTCS0207.SERV_CD%TYPE,        /*서비스코드            */
+    v_Cust_No        IN RTCS0207.CUST_NO%TYPE,        /*고객번호              */
+    v_Cust_Nm        IN RTCS0207.CUST_NM%TYPE,        /*고객명                */
+    v_Agency_Cd      IN RTCS0207.AGENCY_CD%TYPE,      /*대리점코드             */
+    v_Matnr          IN RTCS0207.MATNR%TYPE,          /*제품코드              */
+    v_Kwmeng         IN RTCS0207.KWMENG%TYPE,         /*타이어본수             */
+    v_Req_Day        IN RTCS0207.REQ_DAY%TYPE,        /*신청일자              */
+    v_Dlv_Stat       IN RTCS0207.DLV_STAT%TYPE,       /*상태                 */
+    v_Dlv_Desc       IN RTCS0207.DLV_DESC%TYPE,       /*요청사항             */
+    v_Car_No         IN RTCS0207.CAR_NO%TYPE,         /*차량번호                */
+    v_Dlv_Tel        IN RTCS0207.DLV_TEL%TYPE,        /*연락처               */
+    v_C_Mileage      IN RTCS0207.C_MILEAGE%TYPE,      /*주행거리              */
+    v_Reg_Id         IN RTCS0207.REG_ID%TYPE,         /*등록자               */
+    v_Success_Code   OUT NUMBER,
+    v_Return_Message OUT VARCHAR2,
+    v_ErrorText      OUT VARCHAR2
+    ) IS
+    
+    e_Error         EXCEPTION;
+    
+    lr_Sd0100       RTSD0100%ROWTYPE;             /*고객정보                  */
+    
+    v_Serv_Cnt0     RTSD0013.SERV_CNT0%TYPE;
+    v_Kwmeng_0      RTCS0207.KWMENG%TYPE;
+    
+    v_Ord_NoB       RTCS0207.ORD_NO%TYPE;         /*계약번호              */
+    v_Cust_NoB      RTCS0207.CUST_NO%TYPE;        /*고객코드              */
+    v_Dlv_StatB     RTCS0207.DLV_STAT%TYPE;       /*상태                  */    
+    v_Dlv_TelB      RTCS0207.DLV_TEL%TYPE;        /*연락처                */    
+    v_Cnt_CdB       RTSD0104.CNT_CD%TYPE;
+   
+   	v_Check_Ps		NUMBER;
+    
+  BEGIN  
+
+
+    IF 0 = f_sRtcs0207Count(v_Ord_No, v_Serv_Cd) THEN
+        v_Return_Message := '주문번호-서비스('||v_Ord_No||'-'||v_Serv_Cd||')로 등록된 데이터가 존재하지 않음므로 수정처리가 불가 합니다!';
+        RAISE e_Error;
+    END IF;
+
+    BEGIN
+        
+        SELECT  A.ORD_NO, A.CUST_NO, A.CNT_CD, B.DLV_STAT
+        INTO    v_Ord_NoB, v_Cust_NoB, v_Cnt_CdB, v_Dlv_StatB
+        FROM    RTSD0104 A 
+                LEFT OUTER JOIN RTCS0207 B 
+                ON A.ORD_NO = B.ORD_NO 
+                AND DLVR_DAY  = v_Dlvr_Day
+                AND DLVR_SEQ  = v_Dlvr_Seq
+        WHERE   1 = 1
+        AND A.ORD_NO = v_Ord_No;
+
+        EXCEPTION
+          WHEN OTHERS THEN
+            v_Return_Message := '마모파손 부여 내역(RTCS0207) 획득 실패!.';
+            RAISE e_Error;
+    END;
+
+    -- 계약번호, 고객번호 동일여부 체크
+    IF v_Ord_No <> v_Ord_NoB THEN
+        v_Return_Message := '계약번호('||v_Ord_No||'='||v_Ord_NoB||')가 일치하지 않음으로 처리가 불가 합니다!';
+        RAISE e_Error;
+    END IF;
+
+    IF (v_Cust_No <> v_Cust_NoB) THEN
+        v_Return_Message := '고객번호('||v_Cust_No||'='||v_Cust_NoB||')가 일치하지 않음으로 처리가 불가 합니다!';
+        RAISE e_Error;
+    END IF;
+    
+    IF 0 != f_UpdateRtcs0207(v_Dlvr_Day ,v_Ord_No , v_Dlvr_Type ,v_Serv_Cd ,
+                             v_Dlvr_Seq ,v_Dlv_Stat , v_C_Mileage, v_Dlv_Desc, v_Reg_Id, v_ErrorText) THEN
+        v_Return_Message := '마모파손서비스 신청 내역 초기화 실패!!!'||'-'||v_Errortext;
+        v_Errortext := v_Errortext;
+        RAISE e_Error;
+    END IF;
+    
+    IF 0 != Pkg_Rtcs0208.f_DeleteRtcs0208(v_Dlvr_Day ,v_Ord_No , v_Dlvr_Type ,v_Serv_Cd ,
+                             v_Dlvr_Seq ,v_Reg_Id, v_ErrorText) THEN
+        v_Return_Message := '마모파손서비스 부여 내역 삭제 실패!!!'||'-'||v_Errortext;
+        v_Errortext := v_Errortext;
+        RAISE e_Error;
+    END IF;
+   
+    IF 0 != Pkg_Rtcs0209.f_DeleteAllRtcs0209(v_Ord_No, v_Dlvr_Day ,v_Dlvr_Type, v_Serv_Cd , v_Dlvr_Seq,
+                             v_Reg_Id ,v_ErrorText) THEN
+        v_Return_Message := '마모파손서비스 첨부이미지 삭제 실패!!!'||'-'||v_Errortext;
+        v_Errortext := v_Errortext;
+        RAISE e_Error;
+    END IF;
+   
+    -- 프리미엄서비스 중 해당 항목 삭제(마모보증서비스, 파손보증서비스)
+   	v_Check_Ps := Pkg_Rtsd0013.f_DeleteEachRtsd0013(v_Ord_No, 'B00011');
+    
+   	v_Check_Ps := Pkg_Rtsd0013.f_DeleteEachRtsd0013(v_Ord_No, 'B00012');
+   
+    v_Success_code := 0;
+    v_Return_Message := '정상적으로 처리되었습니다';
+    v_ErrorText := '';
+
+    EXCEPTION
+      WHEN e_Error THEN
+        ROLLBACK;
+        v_Success_code := -1;
+        v_Return_Message := v_Return_Message;
+        v_ErrorText := SUBSTR(SQLERRM, 1, 200)||':'||TRIM(v_ErrorText);
+
+      WHEN OTHERS THEN
+        ROLLBACK;
+        v_Success_code := -1;
+        v_Return_Message := NVL( TRIM(v_Return_Message), '시스템관리자에게 문의바랍니다!.');
+        v_ErrorText := SUBSTR(SQLERRM, 1, 200);
+
+    END p_RESETRtcs0207;
+  
+   
     /*****************************************************************************
   -- 쇼핑몰 마모파손서비스 가입/신청가능여부 정보획득
   
@@ -786,6 +920,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
   
   /*****************************************************************************
   -- SMS 발송
+  
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------   
+   1.3        2024-10-07  10243054         [20241007_01] 발송 메시지 수정 SR2410-00238
   *****************************************************************************/
  PROCEDURE p_regiSendSms (
     v_Ord_No         IN RTCS0207.ORD_NO%TYPE,         /*주문번호              */
@@ -893,15 +1032,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
                     v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
                     v_Sms_Msg := v_Sms_Msg||'[보증서비스 신청 방법안내]';
                     v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-                    v_Sms_Msg := v_Sms_Msg||'1.넥스트레벨 고객센터 ☎1855-0100';
+                    v_Sms_Msg := v_Sms_Msg||'넥스트레벨 고객센터 ☎1855-0100';
                     v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-                    v_Sms_Msg := v_Sms_Msg||'1)본인확인 -> 2)파손사진첨부 -> 3)타이어교체';
+                    v_Sms_Msg := v_Sms_Msg||'1)본인확인 -> 2)파손사진 첨부 -> 3)파손사진 첨부 후 고객센터 통화 -> 4)타이어교체';
                     v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-                    v_Sms_Msg := v_Sms_Msg||'2.넥스트레벨 홈페이지';
-                    v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-                    v_Sms_Msg := v_Sms_Msg||'1) https://www.nexen-nextlevel.com 접속 → 2) 나의 렌탈 관리(파손 사진 첨부 후 신청) → 3) 타이어 교체';
-                    v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-                    v_Sms_Msg := v_Sms_Msg||'※회사에서 무상제공하는 모든타이어는 렌탈타이어 본 품 수량에 한합니다.';
+                    v_Sms_Msg := v_Sms_Msg||'※회사에서 무상 제공하는 모든타이어는 렌탈타이어 본 품 수량에 한합니다.';
                     v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
                     v_Sms_Msg := v_Sms_Msg||'※회사사정에 따라 무상제공되는 타이어가 변경될 수 있습니다.';
                     
@@ -955,6 +1090,11 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
   
   /*****************************************************************************
   -- 주문 등록시 보증서비스 SMS 발송
+  
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------   
+   1.2        2024-07-30  10243054         [20240730_01] 발송 메시지 수정 SR2407-01540
   *****************************************************************************/
  PROCEDURE p_warrantySendSms (
     v_Ord_No         IN RTSD0108.ORD_NO%TYPE,         /*주문번호              */
@@ -1010,21 +1150,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
         
             v_Sms_Msg := '고객님, 넥스트레벨 타이어렌탈 서비스를 이용해 주시어 진심으로 감사드립니다.';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-            v_Sms_Msg := v_Sms_Msg||'타이어렌탈 서비스 이용시, 계약기간 내 렌탈 타이어가 파손 되어도 타이어를 무상으로 교체 받으실수 있습니다. 넥센타이어가 제공하는 획기적인 서비스를 누려보세요.';
+            v_Sms_Msg := v_Sms_Msg||'보증서비스를 가입하셔야만, 계약기간 내 렌탈타이어가 파손되어도 타이어를 무상으로 교체 받으실 수 있습니다. 넥센타이어가 제공하는 획기적인 서비스를 누려보세요.';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10);
-            v_Sms_Msg := v_Sms_Msg||'무상 파손 보증 서비스 가입을 위해 장착완료일을 기준으로 한달내, 아래 URL을 눌러 사진을 첨부해주세요.';
+            v_Sms_Msg := v_Sms_Msg||'무상 파손 보증 서비스 가입을 위해 장착완료일을 기준으로 한달 내, 아래 URL을 눌러 사진을 첨부해주세요.';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
             v_Sms_Msg := v_Sms_Msg||'(URL주소: https://m.nexen-nextlevel.com/mypage/newFreeDamageSrvJoin?ordNo=' || v_Ord_No  || ')';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-            v_Sms_Msg := v_Sms_Msg||'※앞/뒤 타이어가 다른 렌탈고객은 수신된 2건의 보증서비스 가입 문자를 모두 클릭하시어 사진 등록을 해야 합니다.';
+            v_Sms_Msg := v_Sms_Msg||'※ 보증서비스는 장착 완료 후 한달 이내 가입해야합니다.';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-            v_Sms_Msg := v_Sms_Msg||'※보증서비스는 사계절용 타이어/승용차/SUV차량에 한하여 제공되며 영업용, 임대용 차량은 서비스가 제한됩니다. 회사에서 제공하는 자세한 보증범위는 넥스트레벨 홈페이지에서 확인할 수 있습니다.';
+            v_Sms_Msg := v_Sms_Msg||'※ 앞/뒤 타이어가 다른 렌탈고객은 수신된 2건의 보증서비스 가입 문자를 모두 클릭하시어 사진 등록을 해야 합니다.';
+            v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
+            v_Sms_Msg := v_Sms_Msg||'※ 보증서비스는 사계절용 타이어/승용차/SUV차량에 한하여 제공되며 영업용, 임대용 차량은 서비스가 제한됩니다. 회사에서 제공하는 자세한 보증범위는 넥스트레벨 홈페이지에서 확인할 수 있습니다.';
             v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
             v_Sms_Msg := v_Sms_Msg||'https://www.nexen-nextlevel.com/contents/guaranteeSystem';
-            v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10); 
-            v_Sms_Msg := v_Sms_Msg||CHR(13)||CHR(10);
-            v_Sms_Msg := v_Sms_Msg||'※ 보증서비스는 넥스트레벨 홈페이지를 통해서도 가입 가능합니다. (마이페이지 → 나의 렌탈관리 → 상세페이지 → 보증서비스 가입)';
         
             --주문접수완료 SMS 발송
             Pkg_Rtsd0205.p_Rtsd0205InterfaceNew_RealTmp (
@@ -1246,4 +1385,3 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0207 AS
   
   
 END Pkg_Rtcs0207;
-/

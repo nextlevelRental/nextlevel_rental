@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0204 AS
 /*******************************************************************************
    NAME:      Pkg_Rtcs0204
-   PURPOSE   [CS] ¿©≈Õ±≥√º∞¸∏Æ
+   PURPOSE   [CS] ÏúàÌÑ∞ÍµêÏ≤¥Í¥ÄÎ¶¨
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,33 +10,32 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0204 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- [CS] ¿©≈Õ±≥√º¡§∫∏¿‘∑¬(IUD)
+  -- [CS] ÏúàÌÑ∞ÍµêÏ≤¥Ï†ïÎ≥¥ÏûÖÎ†•(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtcs0204 (
-    v_Comm_Dvsn      IN CHAR,                         /*√≥∏Æ±∏∫–(I,U,D)       */
-    v_Ord_No         IN RTCS0204.ORD_NO%TYPE,         /*∞Ëæ‡π¯»£              */
-    v_Input_Dt       IN RTCS0204.INPUT_DT%TYPE,       /*±≥√º»Æ¿Œº≠¿€º∫¿œ¿⁄    */
-    v_Prs_Dcd        IN RTCS0204.PRS_DCD%TYPE,        /*º≠∫ÒΩ∫ƒ⁄µÂ            */
-    v_Write_Yn       IN RTCS0204.WRITE_YN%TYPE,       /*¿€º∫ø©∫Œ              */
-    v_Reg_Id         IN RTCS0204.REG_ID%TYPE,         /*µÓ∑œ¿⁄ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)       */
+    v_Ord_No         IN RTCS0204.ORD_NO%TYPE,         /*Í≥ÑÏïΩÎ≤àÌò∏              */
+    v_Input_Dt       IN RTCS0204.INPUT_DT%TYPE,       /*ÍµêÏ≤¥ÌôïÏù∏ÏÑúÏûëÏÑ±ÏùºÏûê    */
+    v_Prs_Dcd        IN RTCS0204.PRS_DCD%TYPE,        /*ÏÑúÎπÑÏä§ÏΩîÎìú            */
+    v_Write_Yn       IN RTCS0204.WRITE_YN%TYPE,       /*ÏûëÏÑ±Ïó¨Î∂Ä              */
+    v_Reg_Id         IN RTCS0204.REG_ID%TYPE,         /*Îì±Î°ùÏûê ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );        
   
   /*****************************************************************************
-  -- ¿©≈Õ±≥√º »Æ¿Œº≠ ¿€º∫º¯º≠
+  -- ÏúàÌÑ∞ÍµêÏ≤¥ ÌôïÏù∏ÏÑú ÏûëÏÑ±ÏàúÏÑú
   *****************************************************************************/
   FUNCTION f_sRtcs0204ServCnt(
-    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*Ï£ºÎ¨∏Î≤àÌò∏            */
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- [CS] ¿©≈Õ±≥√º»Æ¿Œº≠ ¿€º∫ø©∫Œ
+  -- [CS] ÏúàÌÑ∞ÍµêÏ≤¥ÌôïÏù∏ÏÑú ÏûëÏÑ±Ïó¨Î∂Ä
   *****************************************************************************/
   FUNCTION f_sRtcs0204ServYn(
-    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*∞Ëæ‡π¯»£            */
+    v_Ord_No         IN RTCS0203.ORD_NO%TYPE           /*Í≥ÑÏïΩÎ≤àÌò∏            */
   ) RETURN VARCHAR2;
         
 END Pkg_Rtcs0204;
-/

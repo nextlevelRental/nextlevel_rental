@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
 /*******************************************************************************
    NAME:      PKG_RTSD0031
-   PURPOSE:   ¥‹√º¡§∫∏ Spec
+   PURPOSE:   Îã®Ï≤¥Ï†ïÎ≥¥ Spec
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,7 +10,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
 *******************************************************************************/
  
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ ¡∂»∏ Select
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0031 (
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -19,14 +19,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
   );
 
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ Seq√§π¯
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ SeqÏ±ÑÎ≤à
   *****************************************************************************/
   FUNCTION f_sRTSD0031NextSeq(
     v_GRP_NO		     IN OUT RTSD0031.GRP_NO%TYPE
     ) RETURN VARCHAR2;
   
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ Insert
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0031 (
     v_GRP_NO		     IN OUT RTSD0031.GRP_NO%TYPE,		  
@@ -43,7 +43,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ Update
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0031 ( 
     v_GRP_NO		     IN RTSD0031.GRP_NO%TYPE,		  
@@ -60,10 +60,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ ∞¸∏Æ(IUD)
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ Í¥ÄÎ¶¨(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0031 (
-    v_Comm_Dvsn      IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
     v_GRP_NO		     IN OUT RTSD0031.GRP_NO%TYPE,		  
     v_GRP_NM		     IN RTSD0031.GRP_NM%TYPE,		  
     v_GRP_ST		     IN RTSD0031.GRP_ST%TYPE,		  
@@ -80,7 +80,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
     );  
     
   /*****************************************************************************
-  -- ¥‹√º√£±‚ ¡∂»∏ Select
+  -- Îã®Ï≤¥Ï∞æÍ∏∞ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0031GrpAddSelect (
     Ref_Cursor IN OUT SYS_REFCURSOR, 
@@ -89,20 +89,20 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
   );  
 
   /*****************************************************************************
-  -- ¥‹√º(π≠¿Ω)«ÿ¡ˆ (Cancel)
+  -- Îã®Ï≤¥(Î¨∂Ïùå)Ìï¥ÏßÄ (Cancel)
   *****************************************************************************/
   PROCEDURE p_sRTSD0031cancel (
-    v_Comm_Dvsn      IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
-    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,     /* ¥‹√ºπ¯»£ */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* ¡÷πÆπ¯»£ */
-    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* ¥‹√º¿Ø«¸ */
-    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ≈∏¿ÃæÓ∫ªºˆ */
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* µÓ∑œ¿⁄ ID */
+    v_Comm_Dvsn      IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
+    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,     /* Îã®Ï≤¥Î≤àÌò∏ */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* Ï£ºÎ¨∏Î≤àÌò∏ */
+    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* Îã®Ï≤¥Ïú†Ìòï */
+    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò */
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* Îì±Î°ùÏûê ID */
     v_dc_Cd          IN RTSD0040.DC_CD%TYPE,
-    v_grpSt          IN CHAR,                         /* ¥‹√ºªÛ≈¬ ºˆ¡§ø©∫Œ */
-    v_chk            IN CHAR,                         /* √º≈©π⁄Ω∫ */
-    v_restCnt        IN CHAR,                         /* ¿‹ø©∞Ëæ‡(∫Ø∞Ê»ƒ) */
-    v_pkgDcYn        IN CHAR,                         /* ∆–≈∞¡ˆ¡ﬂ∫π«“¿Œø©∫Œ */
+    v_grpSt          IN CHAR,                         /* Îã®Ï≤¥ÏÉÅÌÉú ÏàòÏ†ïÏó¨Î∂Ä */
+    v_chk            IN CHAR,                         /* Ï≤¥ÌÅ¨Î∞ïÏä§ */
+    v_restCnt        IN CHAR,                         /* ÏûîÏó¨Í≥ÑÏïΩ(Î≥ÄÍ≤ΩÌõÑ) */
+    v_pkgDcYn        IN CHAR,                         /* Ìå®ÌÇ§ÏßÄÏ§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä */
     v_dc_Gb          IN CHAR,
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
@@ -110,54 +110,54 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
     ); 
 
   /*****************************************************************************
-  -- ¿‹ø©∞Ëæ‡∞«ºˆ
+  -- ÏûîÏó¨Í≥ÑÏïΩÍ±¥Ïàò
   *****************************************************************************/
   FUNCTION f_sRtsd0031Cnt(
-    v_Grp_No         IN RTSD0031.GRP_NO%TYPE            /* ¥‹√ºπ¯»£            */
+    v_Grp_No         IN RTSD0031.GRP_NO%TYPE            /* Îã®Ï≤¥Î≤àÌò∏            */
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- √÷º“æ‡¡§∞Ëæ‡∞«ºˆ
+  -- ÏµúÏÜåÏïΩÏ†ïÍ≥ÑÏïΩÍ±¥Ïàò
   *****************************************************************************/
   FUNCTION f_sRtsd0031MinAgrCnt(
-    v_Grp_No         IN RTSD0031.GRP_NO%TYPE            /* ¥‹√ºπ¯»£            */
+    v_Grp_No         IN RTSD0031.GRP_NO%TYPE            /* Îã®Ï≤¥Î≤àÌò∏            */
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ≈∏¿ÃæÓ∫ªºˆ
+  -- ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò
   *****************************************************************************/
   FUNCTION f_sRtsd0104TireCnt(
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE            /* ¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE            /* Ï£ºÎ¨∏Î≤àÌò∏            */
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- «’∞Ëø˘∑ª≈ª∑· ¡∂»∏
+  -- Ìï©Í≥ÑÏõîÎ†åÌÉàÎ£å Ï°∞Ìöå
   *****************************************************************************/
   FUNCTION f_sRtsd0104SumMonAmt(
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE            /* ¡÷πÆπ¯»£            */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE            /* Ï£ºÎ¨∏Î≤àÌò∏            */
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¿‹ø©∞Ëæ‡ Update
+  -- ÏûîÏó¨Í≥ÑÏïΩ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0031RestCnt(
-    v_Grp_No         IN RTSD0031.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£            */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£            */
-    v_Reg_Id         IN RTSD0031.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Grp_No         IN RTSD0031.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏            */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏            */
+    v_Reg_Id         IN RTSD0031.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥‹√ºªÛ≈¬ Update(«ÿ¡ˆ)
+  -- Îã®Ï≤¥ÏÉÅÌÉú Update(Ìï¥ÏßÄ)
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0031GrpSt(
-    v_Grp_No         IN RTSD0031.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£            */
-    v_Reg_Id         IN RTSD0031.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Grp_No         IN RTSD0031.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏            */
+    v_Reg_Id         IN RTSD0031.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥‹√ºªÛ≈¬ ∞¸∏Æ(U)
+  -- Îã®Ï≤¥ÏÉÅÌÉú Í¥ÄÎ¶¨(U)
   *****************************************************************************/
   PROCEDURE p_IUDRTSD0031GrpSt(
     v_GRP_NO		     IN OUT RTSD0031.GRP_NO%TYPE,		  
@@ -168,57 +168,57 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
   );  
 
   /*****************************************************************************
-  -- ø˘∑ª≈ª∑·, ¥‹√ºπ¯»£ Update
+  -- ÏõîÎ†åÌÉàÎ£å, Îã®Ï≤¥Î≤àÌò∏ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0104MonAmt(
-    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£            */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£            */
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏            */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏            */
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Package ø˘∑ª≈ª∑·, ¥‹√ºπ¯»£ Update
+  -- Package ÏõîÎ†åÌÉàÎ£å, Îã®Ï≤¥Î≤àÌò∏ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0104PkgMonAmt(
-    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£            */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£            */
-    v_REST_CNT       IN RTSD0031.REST_CNT%TYPE,          /* ¿‹ø©∞Ëæ‡            */
-    v_grpSt          IN CHAR,                            /* ¥‹√ºªÛ≈¬ ºˆ¡§ø©∫Œ    */  
-    v_pkgDcYn        IN CHAR,                            /* ∆–≈∞¡ˆ¡ﬂ∫π«“¿Œø©∫Œ   */
-    v_chk            IN CHAR,                            /* √º≈©π⁄Ω∫ */  
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏            */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏            */
+    v_REST_CNT       IN RTSD0031.REST_CNT%TYPE,          /* ÏûîÏó¨Í≥ÑÏïΩ            */
+    v_grpSt          IN CHAR,                            /* Îã®Ï≤¥ÏÉÅÌÉú ÏàòÏ†ïÏó¨Î∂Ä    */  
+    v_pkgDcYn        IN CHAR,                            /* Ìå®ÌÇ§ÏßÄÏ§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä   */
+    v_chk            IN CHAR,                            /* Ï≤¥ÌÅ¨Î∞ïÏä§ */  
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ±‚¡ÿ¡æ∑·¿œ, ªÁøÎø©∫Œ Update
+  -- Í∏∞Ï§ÄÏ¢ÖÎ£åÏùº, ÏÇ¨Ïö©Ïó¨Î∂Ä Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0040StdEndDay(
-    v_Ord_No         IN RTSD0040.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£            */
-    v_Reg_Id         IN RTSD0040.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Ord_No         IN RTSD0040.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏            */
+    v_Reg_Id         IN RTSD0040.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¥‹√º«ÿ¡ˆ¿œ Update
+  -- Îã®Ï≤¥Ìï¥ÏßÄÏùº Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0032GrpCnclDt(
-    v_Grp_No         IN RTSD0032.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£            */
-    v_Ord_No         IN RTSD0032.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£            */
-    v_Reg_Id         IN RTSD0032.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID           */  
+    v_Grp_No         IN RTSD0032.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏            */
+    v_Ord_No         IN RTSD0032.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏            */
+    v_Reg_Id         IN RTSD0032.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID           */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ¥‹√º¡§∫∏ Seq√§π¯
+  -- Îã®Ï≤¥Ï†ïÎ≥¥ SeqÏ±ÑÎ≤à
   *****************************************************************************/
   FUNCTION f_sRTSD0031NextSeq2(
     v_GRP_NO             IN OUT RTSD0031.GRP_NO%TYPE
     ) RETURN VARCHAR2;  
 
   /*****************************************************************************
-  -- ∆–≈∞¡ˆ ¡∂»∏ Select
+  -- Ìå®ÌÇ§ÏßÄ Ï°∞Ìöå Select
   *****************************************************************************/
   PROCEDURE p_sRTSD0031Package (
     Ref_Cursor     IN OUT SYS_REFCURSOR, 
@@ -226,54 +226,54 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
   );
 
   /*****************************************************************************
-  -- Package ø˘∑ª≈ª∑·, ¥‹√ºπ¯»£ Update
+  -- Package ÏõîÎ†åÌÉàÎ£å, Îã®Ï≤¥Î≤àÌò∏ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0104PkgMonAmt2(
-    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* ¥‹√ºπ¯»£          */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* ¡÷πÆπ¯»£          */
-    v_REST_CNT       IN RTSD0031.REST_CNT%TYPE,          /* ¿‹ø©∞Ëæ‡          */  
-    v_grpSt          IN CHAR,                            /* ¥‹√ºªÛ≈¬ ºˆ¡§ø©∫Œ */
-    v_pkgDcYn        IN CHAR,                            /* ∆–≈∞¡ˆ¡ﬂ∫π«“¿Œø©∫Œ*/
-    v_chk            IN CHAR,                            /* √º≈©π⁄Ω∫          */    
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID         */  
+    v_Grp_No         IN RTSD0104.GRP_NO%TYPE,            /* Îã®Ï≤¥Î≤àÌò∏          */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,            /* Ï£ºÎ¨∏Î≤àÌò∏          */
+    v_REST_CNT       IN RTSD0031.REST_CNT%TYPE,          /* ÏûîÏó¨Í≥ÑÏïΩ          */  
+    v_grpSt          IN CHAR,                            /* Îã®Ï≤¥ÏÉÅÌÉú ÏàòÏ†ïÏó¨Î∂Ä */
+    v_pkgDcYn        IN CHAR,                            /* Ìå®ÌÇ§ÏßÄÏ§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä*/
+    v_chk            IN CHAR,                            /* Ï≤¥ÌÅ¨Î∞ïÏä§          */    
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID         */  
     v_ErrorText      OUT VARCHAR2
   ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- ∆–≈∞¡ˆ (π≠¿Ω)«ÿ¡ˆ (Cancel)
+  -- Ìå®ÌÇ§ÏßÄ (Î¨∂Ïùå)Ìï¥ÏßÄ (Cancel)
   *****************************************************************************/
   PROCEDURE p_sRTSD0031cancel2 (
-    v_Comm_Dvsn      IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
-    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,          /* ¥‹√ºπ¯»£ */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* ¡÷πÆπ¯»£ */
-    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* ¥‹√º¿Ø«¸ */
-    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ≈∏¿ÃæÓ∫ªºˆ */
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* µÓ∑œ¿⁄ ID */
+    v_Comm_Dvsn      IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
+    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,          /* Îã®Ï≤¥Î≤àÌò∏ */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* Ï£ºÎ¨∏Î≤àÌò∏ */
+    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* Îã®Ï≤¥Ïú†Ìòï */
+    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò */
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* Îì±Î°ùÏûê ID */
     v_dc_Cd          IN RTSD0040.DC_CD%TYPE,
-    v_grpSt          IN CHAR,                         /* ¥‹√ºªÛ≈¬ ºˆ¡§ø©∫Œ */
-    v_chk            IN CHAR,                         /* √º≈©π⁄Ω∫ */
-    v_restCnt        IN CHAR,                         /* ¿‹ø©∞Ëæ‡(∫Ø∞Ê»ƒ) */
-    v_pkgDcYn        IN CHAR,                         /* ∆–≈∞¡ˆ¡ﬂ∫π«“¿Œø©∫Œ */
+    v_grpSt          IN CHAR,                         /* Îã®Ï≤¥ÏÉÅÌÉú ÏàòÏ†ïÏó¨Î∂Ä */
+    v_chk            IN CHAR,                         /* Ï≤¥ÌÅ¨Î∞ïÏä§ */
+    v_restCnt        IN CHAR,                         /* ÏûîÏó¨Í≥ÑÏïΩ(Î≥ÄÍ≤ΩÌõÑ) */
+    v_pkgDcYn        IN CHAR,                         /* Ìå®ÌÇ§ÏßÄÏ§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
   );
   
   /*****************************************************************************
-  -- ¥‹√º(π≠¿Ω)«ÿ¡ˆ (Cancel) ¿‹ø©∞Ëæ‡∫ªºˆ ¿Ã«œ
+  -- Îã®Ï≤¥(Î¨∂Ïùå)Ìï¥ÏßÄ (Cancel) ÏûîÏó¨Í≥ÑÏïΩÎ≥∏Ïàò Ïù¥Ìïò
   *****************************************************************************/
   PROCEDURE p_sRTSD0031cancelGroup (
-    v_Comm_Dvsn      IN CHAR,                         /* √≥∏Æ±∏∫–(I,U,D) */
-    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,          /* ¥‹√ºπ¯»£ */
-    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* ¡÷πÆπ¯»£ */
-    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* ¥‹√º¿Ø«¸ */
-    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ≈∏¿ÃæÓ∫ªºˆ */
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* µÓ∑œ¿⁄ ID */
+    v_Comm_Dvsn      IN CHAR,                         /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D) */
+    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,          /* Îã®Ï≤¥Î≤àÌò∏ */
+    v_Ord_No         IN RTSD0104.ORD_NO%TYPE,         /* Ï£ºÎ¨∏Î≤àÌò∏ */
+    v_GRP_TYPE       IN RTSD0031.GRP_TYPE%TYPE,       /* Îã®Ï≤¥Ïú†Ìòï */
+    v_CNT_CD         IN RTSD0104.CNT_CD%TYPE,         /* ÌÉÄÏù¥Ïñ¥Î≥∏Ïàò */
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,         /* Îì±Î°ùÏûê ID */
     v_dc_Cd          IN RTSD0040.DC_CD%TYPE,
-    v_grpSt          IN CHAR,                         /* ¥‹√ºªÛ≈¬ ºˆ¡§ø©∫Œ */
-    v_chk            IN CHAR,                         /* √º≈©π⁄Ω∫ */
-    v_restCnt        IN CHAR,                         /* ¿‹ø©∞Ëæ‡(∫Ø∞Ê»ƒ) */
-    v_pkgDcYn        IN CHAR,                         /* ∆–≈∞¡ˆ¡ﬂ∫π«“¿Œø©∫Œ */
+    v_grpSt          IN CHAR,                         /* Îã®Ï≤¥ÏÉÅÌÉú ÏàòÏ†ïÏó¨Î∂Ä */
+    v_chk            IN CHAR,                         /* Ï≤¥ÌÅ¨Î∞ïÏä§ */
+    v_restCnt        IN CHAR,                         /* ÏûîÏó¨Í≥ÑÏïΩ(Î≥ÄÍ≤ΩÌõÑ) */
+    v_pkgDcYn        IN CHAR,                         /* Ìå®ÌÇ§ÏßÄÏ§ëÎ≥µÌï†Ïù∏Ïó¨Î∂Ä */
     v_dc_Gb          IN CHAR,
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
@@ -281,15 +281,14 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0031 AS
   );
     
   /*****************************************************************************
-  -- ¥‹√º(π≠¿Ω)«ÿ¡ˆ √ﬂ∞°Ω√ ¿‹ø©∞Ëæ‡∫ªºˆ ¿ÃªÛ¿∏∑Œ ¿Á ¡¯¿‘Ω√
+  -- Îã®Ï≤¥(Î¨∂Ïùå)Ìï¥ÏßÄ Ï∂îÍ∞ÄÏãú ÏûîÏó¨Í≥ÑÏïΩÎ≥∏Ïàò Ïù¥ÏÉÅÏúºÎ°ú Ïû¨ ÏßÑÏûÖÏãú
   *****************************************************************************/
   PROCEDURE p_sRTSD0031AddGroup (
-    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,                /* ¥‹√ºπ¯»£  */    
-    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,                    /* µÓ∑œ¿⁄ ID */
+    v_Grp_No         IN OUT RTSD0031.GRP_NO%TYPE,                /* Îã®Ï≤¥Î≤àÌò∏  */    
+    v_Reg_Id         IN RTSD0104.REG_ID%TYPE,                    /* Îì±Î°ùÏûê ID */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
   );
     
 END PKG_RTSD0031;
-/

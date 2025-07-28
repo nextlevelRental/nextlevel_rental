@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
 /*******************************************************************************
    NAME:     p_sRentalMst
-   PURPOSE   ·»Å» Áö»ç °ü¸®
+   PURPOSE   ë Œíƒˆ ì§€ì‚¬ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,27 +9,27 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
    1.0        2018-12-13  JYS         1. Created this package spec.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å»Áö»çÁ¶È¸ Select
+  -- ë Œíƒˆì§€ì‚¬ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRentalMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ÄÚµå¸í */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ì½”ë“œëª… */
     );
     
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡Á¶È¸ Select
+  -- ë Œíƒˆì§€ì ì¡°íšŒ Select
   *****************************************************************************/
   PROCEDURE p_sRentalDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD              IN RTCM0051.CD%TYPE, /*¸ÅÇÎÄÚµå */
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ÄÚµå¸í */
+    v_CD              IN RTCM0051.CD%TYPE, /*ë§¤í•‘ì½”ë“œ */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ì½”ë“œëª… */
     );
     
   /*****************************************************************************
-  -- ·»Å»Áö»ç °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì‚¬ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalMst (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
     v_CD             IN RTCM0051.CD%TYPE,
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,
@@ -42,7 +42,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     );   
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç Insert
+  -- ë Œíƒˆì§€ì‚¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -55,7 +55,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç Update
+  -- ë Œíƒˆì§€ì‚¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -68,7 +68,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»Áö»ç Delete
+  -- ë Œíƒˆì§€ì‚¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalMst (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -81,10 +81,10 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ °ü¸®(IUD)
+  -- ë Œíƒˆì§€ì  ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalDtl (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
     v_CD             IN RTCM0051.CD%TYPE,
     v_CD_NM          IN RTCM0051.CD_NM%TYPE,
@@ -99,7 +99,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     );   
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Insert
+  -- ë Œíƒˆì§€ì  Insert
   *****************************************************************************/
   FUNCTION f_InsertRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -114,7 +114,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Update
+  -- ë Œíƒˆì§€ì  Update
   *****************************************************************************/
   FUNCTION f_UpdateRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -129,7 +129,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡ Delete
+  -- ë Œíƒˆì§€ì  Delete
   *****************************************************************************/
   FUNCTION f_DeleteRentalDtl (
     v_CD_GRP_CD      IN RTCM0051.CD_GRP_CD%TYPE,
@@ -146,32 +146,32 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
 
     
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°áÁ¶È¸ MASTER Select
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²°ì¡°íšŒ MASTER Select
   *****************************************************************************/
   PROCEDURE p_sRentalCustMst (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ÄÚµå¸í */
+    v_CD_NM           IN RTCM0051.CD_NM%TYPE /* ì½”ë“œëª… */
     );
     
     
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°áÁ¶È¸ DETAIL Select
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²°ì¡°íšŒ DETAIL Select
   *****************************************************************************/
   PROCEDURE p_sRentalCustDtl (
     Ref_Cursor        IN OUT SYS_REFCURSOR,
-    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*Áö»çÄÚµå */
-    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*ÁöÁ¡ÄÚµå */
-    v_AGENCY_GBN      IN VARCHAR2, /* ÆÇ¸ÅÀÚ±¸ºÐ */
-    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* ÆÇ¸ÅÀÚ¸í */
+    v_GRP_CD          IN RTSD0007.RENTAL_GROUP%TYPE, /*ì§€ì‚¬ì½”ë“œ */
+    v_CD              IN RTSD0007.RENTAL_OFFICE%TYPE, /*ì§€ì ì½”ë“œ */
+    v_AGENCY_GBN      IN VARCHAR2, /* íŒë§¤ìžêµ¬ë¶„ */
+    v_AGENCY_NM       IN RTSD0007.AGENCY_NM%TYPE /* íŒë§¤ìžëª… */
     );
     
     
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á ÀúÀå(IUD)
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° ì €ìž¥(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRentalCust (
-    v_Comm_Dvsn      IN CHAR,                         /* Ã³¸®±¸ºÐ(I,U,D) */
-    v_AGENCY_GBN     IN VARCHAR2, /* ÆÇ¸ÅÀÚ±¸ºÐ */
+    v_Comm_Dvsn      IN CHAR,                         /* ì²˜ë¦¬êµ¬ë¶„(I,U,D) */
+    v_AGENCY_GBN     IN VARCHAR2, /* íŒë§¤ìžêµ¬ë¶„ */
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
     v_RENTAL_OFFICE  IN RTSD0007.RENTAL_OFFICE%TYPE,
     v_AGENCY_CD      IN RTSD0007.AGENCY_CD%TYPE,
@@ -182,7 +182,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     );   
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0007  update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0007  update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust1 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -193,7 +193,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTSD0113  update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTSD0113  update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust2 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -204,7 +204,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å»ÁöÁ¡/ÆÇ¸ÅÀÚ¿¬°á RTCS0002  update
+  -- ë Œíƒˆì§€ì /íŒë§¤ìžì—°ê²° RTCS0002  update
   *****************************************************************************/
   FUNCTION f_UpdateRentalCust3 (
     v_RENTAL_GROUP   IN RTSD0007.RENTAL_GROUP%TYPE,
@@ -218,4 +218,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RENTAL_TEST AS
 
 
 END PKG_RENTAL_TEST;
-/

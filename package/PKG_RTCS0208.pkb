@@ -7,6 +7,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0208 AS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
    1.0        2020-10-05  kstka            1. Created this package body.
+   1.1        2025-05-19  10243054         p_sRtcs0208SelectList MFP_YN 추가 [20250519_01]
 *******************************************************************************/
 
   /*****************************************************************************
@@ -14,7 +15,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0208 AS
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
-  1.0        2020-10-05  kstka           Created. [20201005_01]                             
+  1.0        2020-10-05  kstka           Created. [20201005_01]
   *****************************************************************************/
   FUNCTION f_sRtcs0208Count(
     v_Dlvr_Day       IN RTCS0208.DLVR_DAY%TYPE,         /*배송신청일자        */
@@ -160,7 +161,8 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtcs0208 AS
             D.C_MILEAGE AS C_MILEAGE,
             D.DLV_DESC,
             Pkg_Exif0004.f_sExif0004O2OTireImg(A.ORD_NO) AS IMG_URL,
-            D.APPLY_REASON
+            D.APPLY_REASON,
+            A.MFP_YN
     FROM    RTSD0108 A
             INNER JOIN RTSD0100 B ON A.CUST_NO  = B.CUST_NO
             INNER JOIN RTSD0106 C ON A.ORD_NO   = C.ORD_NO AND C.SEQ = 1
@@ -1226,4 +1228,3 @@ SELECT A.*
   
 END Pkg_Rtcs0208;
 --/
-/

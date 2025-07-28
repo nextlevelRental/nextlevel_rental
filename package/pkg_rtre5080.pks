@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5080 AS
 /*******************************************************************************
    NAME:      Pkg_Rtre5080
-   PURPOSE   Ãæ´ç±Ý ³»¿ª °ü¸®
+   PURPOSE   ì¶©ë‹¹ê¸ˆ ë‚´ì—­ ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
@@ -10,83 +10,83 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5080 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª Count
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRtre5080Count(
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,        /*·»Å»Àü¹®Á¡          */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,         /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ      */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE          /*Ãæ´ç±Ý¼ø¹ø          */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,        /*ë Œíƒˆì „ë¬¸ì           */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,         /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž      */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE          /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ          */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª Select
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ Select
   *****************************************************************************/
   PROCEDURE p_sRtre5080 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ        */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*Ãæ´ç±Ý¼ø¹ø            */
-    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*Ãæ´ç±Ý±¸ºÐ            */
-    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*Ãæ´ç±Ý¹ß»ý±Ý¾×        */
-    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*Ãæ´ç±ÝÂ÷°¨±Ý¾×        */
-    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*Ãæ´ç±ÝÃ³¸® »çÀ¯       */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž        */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ            */
+    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*ì¶©ë‹¹ê¸ˆêµ¬ë¶„            */
+    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆë°œìƒê¸ˆì•¡        */
+    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆì°¨ê°ê¸ˆì•¡        */
+    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ ì‚¬ìœ        */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE          /*ë“±ë¡ìž ID             */
     );
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª Insert
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtre5080 (
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ        */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*Ãæ´ç±Ý¼ø¹ø            */
-    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*Ãæ´ç±Ý±¸ºÐ            */
-    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*Ãæ´ç±Ý¹ß»ý±Ý¾×        */
-    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*Ãæ´ç±ÝÂ÷°¨±Ý¾×        */
-    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*Ãæ´ç±ÝÃ³¸® »çÀ¯       */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž        */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ            */
+    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*ì¶©ë‹¹ê¸ˆêµ¬ë¶„            */
+    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆë°œìƒê¸ˆì•¡        */
+    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆì°¨ê°ê¸ˆì•¡        */
+    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ ì‚¬ìœ        */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª Update
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtre5080 (
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ        */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*Ãæ´ç±Ý¼ø¹ø            */
-    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*Ãæ´ç±Ý±¸ºÐ            */
-    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*Ãæ´ç±Ý¹ß»ý±Ý¾×        */
-    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*Ãæ´ç±ÝÂ÷°¨±Ý¾×        */
-    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*Ãæ´ç±ÝÃ³¸® »çÀ¯       */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž        */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ            */
+    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*ì¶©ë‹¹ê¸ˆêµ¬ë¶„            */
+    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆë°œìƒê¸ˆì•¡        */
+    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆì°¨ê°ê¸ˆì•¡        */
+    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ ì‚¬ìœ        */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª Delete
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtre5080 (
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ        */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*Ãæ´ç±Ý¼ø¹ø            */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž        */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ            */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ³»¿ª °ü¸®(IUD)
+  -- ì¶©ë‹¹ê¸ˆ ë‚´ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtre5080 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*Ãæ´ç±ÝÃ³¸®ÀÏÀÚ        */
-    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*Ãæ´ç±Ý¼ø¹ø            */
-    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*Ãæ´ç±Ý±¸ºÐ            */
-    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*Ãæ´ç±Ý¹ß»ý±Ý¾×        */
-    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*Ãæ´ç±ÝÂ÷°¨±Ý¾×        */
-    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*Ãæ´ç±ÝÃ³¸® »çÀ¯       */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Apfd_Day       IN RTRE5080.APFD_DAY%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ì¼ìž        */
+    v_Apfd_Seq       IN RTRE5080.APFD_SEQ%TYPE,       /*ì¶©ë‹¹ê¸ˆìˆœë²ˆ            */
+    v_Apfd_Tp        IN RTRE5080.APFD_TP%TYPE,        /*ì¶©ë‹¹ê¸ˆêµ¬ë¶„            */
+    v_Apfd_Pamt      IN RTRE5080.APFD_PAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆë°œìƒê¸ˆì•¡        */
+    v_Apfd_Mamt      IN RTRE5080.APFD_MAMT%TYPE,      /*ì¶©ë‹¹ê¸ˆì°¨ê°ê¸ˆì•¡        */
+    v_Apfd_Msg       IN RTRE5080.APFD_MSG%TYPE,       /*ì¶©ë‹¹ê¸ˆì²˜ë¦¬ ì‚¬ìœ        */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
@@ -94,39 +94,38 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre5080 AS
 
 
   /*****************************************************************************
-  -- Ãæ´ç±Ý ¼³Á¤ Ã³¸®
+  -- ì¶©ë‹¹ê¸ˆ ì„¤ì • ì²˜ë¦¬
   *****************************************************************************/
   PROCEDURE p_CreateRtre5080Allowance (
-    v_Period         IN CHAR,                           /*¸¶°¨¿ù              */
-    v_Reg_Id         IN RTRE5070.REG_ID%TYPE,           /*µî·ÏÀÚ ID           */
+    v_Period         IN CHAR,                           /*ë§ˆê°ì›”              */
+    v_Reg_Id         IN RTRE5070.REG_ID%TYPE,           /*ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ÆÇ¸ÅÀÎº° Ãæ´ç±Ý ÇöÈ² - ÆÇ¸ÅÀÎº° Ãæ´ç±Ý ÀÜ¾×À» Á¶È¸ÇÏ´Â ±â´É
+  -- íŒë§¤ì¸ë³„ ì¶©ë‹¹ê¸ˆ í˜„í™© - íŒë§¤ì¸ë³„ ì¶©ë‹¹ê¸ˆ ìž”ì•¡ì„ ì¡°íšŒí•˜ëŠ” ê¸°ëŠ¥
   *****************************************************************************/
   PROCEDURE p_sRtre5080AgencyAppStatus (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*·»Å»Àü¹®Á¡            */
-    v_Sales_Group    IN RTSD0007.SALES_GROUP%TYPE,    /*Áö»çÄÚµå              */
-    v_Sales_Office   IN RTSD0007.SALES_OFFICE%TYPE,   /*ÁöÁ¡ÄÚµå              */
-    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE,      /*ë Œíƒˆì „ë¬¸ì             */
+    v_Sales_Group    IN RTSD0007.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTSD0007.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Reg_Id         IN RTRE5080.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_RENTAL_GROUP   IN VARCHAR2,
     v_RENTAL_OFFICE  IN VARCHAR2,
-    v_LOGIN_ID       IN VARCHAR2,                     /* ·Î±×ÀÎID: °ü·ÃÇ×¸ñ ¹üÀ§ ÁöÁ¤ */
-    v_LOGIN_GRP      IN VARCHAR2                      /* ·Î±×ÀÎ »ç¿ëÀÚ ±×·ì */
+    v_LOGIN_ID       IN VARCHAR2,                     /* ë¡œê·¸ì¸ID: ê´€ë ¨í•­ëª© ë²”ìœ„ ì§€ì • */
+    v_LOGIN_GRP      IN VARCHAR2                      /* ë¡œê·¸ì¸ ì‚¬ìš©ìž ê·¸ë£¹ */
     );
 
 
   /*****************************************************************************
-  -- ÆÇ¸ÅÀÎº° Ãæ´ç±Ý ÇöÈ² - Ãæ´ç±Ý ¹ß»ý/Â÷°¨ ¼¼ºÎ ³»¿ª
+  -- íŒë§¤ì¸ë³„ ì¶©ë‹¹ê¸ˆ í˜„í™© - ì¶©ë‹¹ê¸ˆ ë°œìƒ/ì°¨ê° ì„¸ë¶€ ë‚´ì—­
   *****************************************************************************/
   PROCEDURE p_sRtre5080AgencyAppList (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE       /*·»Å»Àü¹®Á¡            */
+    v_Agency_Cd      IN RTRE5080.AGENCY_CD%TYPE       /*ë Œíƒˆì „ë¬¸ì             */
     );
         
 END Pkg_Rtre5080;
-/

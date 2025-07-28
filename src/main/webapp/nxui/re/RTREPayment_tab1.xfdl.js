@@ -22,6 +22,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsS024", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -33,6 +34,7 @@
 
             obj = new Dataset("ds_chgInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -45,6 +47,7 @@
 
             obj = new Dataset("dsR001", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -56,6 +59,7 @@
 
             obj = new Dataset("dsR002", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -67,6 +71,7 @@
 
             obj = new Dataset("dsR005", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -78,6 +83,7 @@
 
             obj = new Dataset("dsR006", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -89,6 +95,7 @@
 
             obj = new Dataset("dsR004", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -99,6 +106,7 @@
 
             obj = new Dataset("dsInList", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
@@ -109,17 +117,19 @@
 
             obj = new Dataset("ds_List", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
             obj.set_loadkeymode("keep");
             obj.set_loadfiltermode("keep");
             obj.set_reversesubsum("false");
             obj.set_useclientlayout("true");
-            obj._setContents("<ColumnInfo><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"vehicleNo\" type=\"STRING\" size=\"256\"/><Column id=\"accSeq\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"ebirDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"bankCd\" type=\"STRING\" size=\"256\"/><Column id=\"bankNm\" type=\"STRING\" size=\"256\"/><Column id=\"acctNo\" type=\"STRING\" size=\"256\"/><Column id=\"accChk\" type=\"STRING\" size=\"256\"/><Column id=\"acncId\" type=\"STRING\" size=\"256\"/><Column id=\"acncDesc\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"crdSeq\" type=\"STRING\" size=\"256\"/><Column id=\"cardcomCd\" type=\"STRING\" size=\"256\"/><Column id=\"cardcomNm\" type=\"STRING\" size=\"256\"/><Column id=\"cardNo\" type=\"STRING\" size=\"256\"/><Column id=\"expireYm\" type=\"STRING\" size=\"256\"/><Column id=\"bkeyChk\" type=\"STRING\" size=\"256\"/><Column id=\"batchKey\" type=\"STRING\" size=\"256\"/><Column id=\"payMthd\" type=\"STRING\" size=\"256\"/><Column id=\"productNm\" type=\"STRING\" size=\"256\"/><Column id=\"payDd\" type=\"STRING\" size=\"256\"/><Column id=\"arrearsAmt\" type=\"STRING\" size=\"256\"/><Column id=\"depositor\" type=\"STRING\" size=\"256\"/><Column id=\"expireY\" type=\"STRING\" size=\"256\"/><Column id=\"expireM\" type=\"STRING\" size=\"256\"/><Column id=\"tcgrpNo\" type=\"STRING\" size=\"256\"/><Column id=\"deleteTp\" type=\"STRING\" size=\"256\"/><Column id=\"accStat\" type=\"STRING\" size=\"256\"/><Column id=\"custTp2\" type=\"STRING\" size=\"256\"/><Column id=\"oBirthDay\" type=\"STRING\" size=\"256\"/><Column id=\"oCustNm\" type=\"STRING\" size=\"256\"/><Column id=\"pCustTp\" type=\"STRING\" size=\"256\"/><Column id=\"oBuslNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"safeKey\" type=\"STRING\" size=\"256\"/><Column id=\"certCd\" type=\"STRING\" size=\"256\"/><Column id=\"mobFirm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("<ColumnInfo><Column id=\"ordNo\" type=\"STRING\" size=\"256\"/><Column id=\"vehicleNo\" type=\"STRING\" size=\"256\"/><Column id=\"accSeq\" type=\"STRING\" size=\"256\"/><Column id=\"custNo\" type=\"STRING\" size=\"256\"/><Column id=\"strDay\" type=\"STRING\" size=\"256\"/><Column id=\"endDay\" type=\"STRING\" size=\"256\"/><Column id=\"custNm\" type=\"STRING\" size=\"256\"/><Column id=\"custTp\" type=\"STRING\" size=\"256\"/><Column id=\"ebirDay\" type=\"STRING\" size=\"256\"/><Column id=\"buslNo\" type=\"STRING\" size=\"256\"/><Column id=\"bankCd\" type=\"STRING\" size=\"256\"/><Column id=\"bankNm\" type=\"STRING\" size=\"256\"/><Column id=\"acctNo\" type=\"STRING\" size=\"256\"/><Column id=\"accChk\" type=\"STRING\" size=\"256\"/><Column id=\"acncId\" type=\"STRING\" size=\"256\"/><Column id=\"acncDesc\" type=\"STRING\" size=\"256\"/><Column id=\"useYn\" type=\"STRING\" size=\"256\"/><Column id=\"regId\" type=\"STRING\" size=\"256\"/><Column id=\"regDt\" type=\"STRING\" size=\"256\"/><Column id=\"chgId\" type=\"STRING\" size=\"256\"/><Column id=\"chgDt\" type=\"STRING\" size=\"256\"/><Column id=\"crdSeq\" type=\"STRING\" size=\"256\"/><Column id=\"cardcomCd\" type=\"STRING\" size=\"256\"/><Column id=\"cardcomNm\" type=\"STRING\" size=\"256\"/><Column id=\"cardNo\" type=\"STRING\" size=\"256\"/><Column id=\"expireYm\" type=\"STRING\" size=\"256\"/><Column id=\"bkeyChk\" type=\"STRING\" size=\"256\"/><Column id=\"batchKey\" type=\"STRING\" size=\"256\"/><Column id=\"payMthd\" type=\"STRING\" size=\"256\"/><Column id=\"productNm\" type=\"STRING\" size=\"256\"/><Column id=\"payDd\" type=\"STRING\" size=\"256\"/><Column id=\"arrearsAmt\" type=\"STRING\" size=\"256\"/><Column id=\"depositor\" type=\"STRING\" size=\"256\"/><Column id=\"expireY\" type=\"STRING\" size=\"256\"/><Column id=\"expireM\" type=\"STRING\" size=\"256\"/><Column id=\"tcgrpNo\" type=\"STRING\" size=\"256\"/><Column id=\"deleteTp\" type=\"STRING\" size=\"256\"/><Column id=\"accStat\" type=\"STRING\" size=\"256\"/><Column id=\"custTp2\" type=\"STRING\" size=\"256\"/><Column id=\"oBirthDay\" type=\"STRING\" size=\"256\"/><Column id=\"oCustNm\" type=\"STRING\" size=\"256\"/><Column id=\"pCustTp\" type=\"STRING\" size=\"256\"/><Column id=\"oBuslNo\" type=\"STRING\" size=\"256\"/><Column id=\"birthDay\" type=\"STRING\" size=\"256\"/><Column id=\"mobNo\" type=\"STRING\" size=\"256\"/><Column id=\"safeKey\" type=\"STRING\" size=\"256\"/><Column id=\"certCd\" type=\"STRING\" size=\"256\"/><Column id=\"mobFirm\" type=\"STRING\" size=\"256\"/><Column id=\"lfCd\" type=\"STRING\" size=\"256\"/><Column id=\"genderCd\" type=\"STRING\" size=\"256\"/><Column id=\"statNmDetail\" type=\"STRING\" size=\"256\"/><Column id=\"overDueAmt\" type=\"STRING\" size=\"256\"/><Column id=\"mfpYn\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
             obj = new Dataset("ds_cust", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -131,6 +141,7 @@
 
             obj = new Dataset("ds_delInfo", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -142,6 +153,7 @@
 
             obj = new Dataset("dsBatch", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -153,6 +165,7 @@
 
             obj = new Dataset("dsFile", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("false");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -164,6 +177,7 @@
 
             obj = new Dataset("ds_certification", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -175,6 +189,7 @@
 
             obj = new Dataset("ds_rtsd0110", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -293,7 +308,7 @@
             obj = new Grid("grdList", "absolute", "10", "66", "1102", "150", null, null, this);
             obj.set_taborder("10");
             obj.set_binddataset("ds_List");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"120\"/><Column size=\"80\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"93\"/><Column size=\"120\"/><Column size=\"91\"/><Column size=\"96\"/><Column size=\"100\"/><Column size=\"128\"/><Column size=\"80\"/><Column size=\"102\"/><Column size=\"121\"/><Column size=\"111\"/><Column size=\"114\"/><Column size=\"80\"/><Column size=\"0\"/><Column size=\"0\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약번호\"/><Cell col=\"1\" text=\"차량번호\"/><Cell col=\"2\" text=\"고객번호\"/><Cell col=\"3\" text=\"고객번호\"/><Cell col=\"4\" text=\"고객명\"/><Cell col=\"5\" text=\"상품명\"/><Cell col=\"6\" text=\"결제방법\"/><Cell col=\"7\" text=\"결제일\"/><Cell col=\"8\" text=\"은행\"/><Cell col=\"9\" text=\"계좌번호\"/><Cell col=\"10\" text=\"예금주\"/><Cell col=\"11\" text=\"카드사\"/><Cell col=\"12\" text=\"카드번호\"/><Cell col=\"13\" text=\"법정생년월일\"/><Cell col=\"14\" text=\"사업자번호\"/><Cell col=\"15\" text=\"미납금액\"/><Cell col=\"16\" text=\"삭제가능여부\"/><Cell col=\"17\"/></Band><Band id=\"body\"><Cell displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"1\" text=\"bind:vehicleNo\"/><Cell col=\"2\" displaytype=\"none\" text=\"bind:password\"/><Cell col=\"3\" text=\"bind:custNo\"/><Cell col=\"4\" text=\"bind:custNm\"/><Cell col=\"5\" text=\"bind:productNm\"/><Cell col=\"6\" displaytype=\"combo\" text=\"bind:payMthd\" combodataset=\"dsR004\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" displaytype=\"combo\" text=\"bind:payDd\" combodataset=\"expr:payMthd == &quot;A&quot; ? &quot;dsR005&quot; : &quot;dsR006&quot;\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"8\" displaytype=\"combo\" text=\"bind:bankCd\" combodataset=\"dsR001\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"9\" text=\"bind:acctNo\"/><Cell col=\"10\" text=\"bind:depositor\"/><Cell col=\"11\" displaytype=\"combo\" text=\"bind:cardcomCd\" combodataset=\"dsR002\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"12\" text=\"bind:cardNo\"/><Cell col=\"13\" displaytype=\"normal\" text=\"bind:ebirDay\" mask=\"##-##-##\" calendardisplaynulltype=\"none\"/><Cell col=\"14\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"15\" displaytype=\"number\" style=\"align:right middle;\" text=\"bind:arrearsAmt\" mask=\"###,###,###,##0\"/><Cell col=\"16\" text=\"bind:deleteTp\"/><Cell col=\"17\" text=\"bind:tcgrpNo\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"120\"/><Column size=\"80\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"93\"/><Column size=\"120\"/><Column size=\"91\"/><Column size=\"96\"/><Column size=\"100\"/><Column size=\"128\"/><Column size=\"80\"/><Column size=\"102\"/><Column size=\"121\"/><Column size=\"111\"/><Column size=\"114\"/><Column size=\"80\"/><Column size=\"0\"/><Column size=\"0\"/><Column size=\"100\"/><Column size=\"80\"/><Column size=\"100\"/></Columns><Rows><Row size=\"30\" band=\"head\"/><Row size=\"30\"/></Rows><Band id=\"head\"><Cell text=\"계약번호\"/><Cell col=\"1\" text=\"차량번호\"/><Cell col=\"2\" text=\"고객번호\"/><Cell col=\"3\" text=\"고객번호\"/><Cell col=\"4\" text=\"고객명\"/><Cell col=\"5\" text=\"상품명\"/><Cell col=\"6\" text=\"결제방법\"/><Cell col=\"7\" text=\"결제일\"/><Cell col=\"8\" text=\"은행\"/><Cell col=\"9\" text=\"계좌번호\"/><Cell col=\"10\" text=\"예금주\"/><Cell col=\"11\" text=\"카드사\"/><Cell col=\"12\" text=\"카드번호\"/><Cell col=\"13\" text=\"법정생년월일\"/><Cell col=\"14\" text=\"사업자번호\"/><Cell col=\"15\" text=\"미납금액\"/><Cell col=\"16\" text=\"삭제가능여부\"/><Cell col=\"17\"/><Cell col=\"18\" text=\"상태상세\"/><Cell col=\"19\" text=\"연체금액\"/><Cell col=\"20\" text=\"완납/해지/채권\"/></Band><Band id=\"body\"><Cell displaytype=\"text\" edittype=\"readonly\" text=\"bind:ordNo\"/><Cell col=\"1\" text=\"bind:vehicleNo\"/><Cell col=\"2\" displaytype=\"none\" text=\"bind:password\"/><Cell col=\"3\" text=\"bind:custNo\"/><Cell col=\"4\" text=\"bind:custNm\"/><Cell col=\"5\" text=\"bind:productNm\"/><Cell col=\"6\" displaytype=\"combo\" text=\"bind:payMthd\" combodataset=\"dsR004\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"7\" displaytype=\"combo\" text=\"bind:payDd\" combodataset=\"expr:payMthd == &quot;A&quot; ? &quot;dsR005&quot; : &quot;dsR006&quot;\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"8\" displaytype=\"combo\" text=\"bind:bankCd\" combodataset=\"dsR001\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"9\" text=\"bind:acctNo\"/><Cell col=\"10\" text=\"bind:depositor\"/><Cell col=\"11\" displaytype=\"combo\" text=\"bind:cardcomCd\" combodataset=\"dsR002\" combocodecol=\"cd\" combodatacol=\"cdNm\"/><Cell col=\"12\" text=\"bind:cardNo\"/><Cell col=\"13\" displaytype=\"normal\" text=\"bind:ebirDay\" mask=\"##-##-##\" calendardisplaynulltype=\"none\"/><Cell col=\"14\" text=\"bind:buslNo\" mask=\"###-##-#####\"/><Cell col=\"15\" displaytype=\"number\" style=\"align:right middle;\" text=\"bind:arrearsAmt\" mask=\"###,###,###,##0\"/><Cell col=\"16\" text=\"bind:deleteTp\"/><Cell col=\"17\" text=\"bind:tcgrpNo\"/><Cell col=\"18\" text=\"expr:(overDueAmt == '-') || (overDueAmt == '0') ? statNmDetail : statNmDetail + '/연체'\"/><Cell col=\"19\" displaytype=\"number\" text=\"bind:overDueAmt\"/><Cell col=\"20\" text=\"bind:mfpYn\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Div("divInfo", "absolute", "10", "259", "1102", "269", null, null, this);
@@ -512,8 +527,8 @@
             obj.set_visible("false");
             obj = new WebBrowser("nice_interface", "absolute", "1027", "64", "124", "24", null, null, this.divInfo.divChgInfo);
             obj.set_taborder("62");
-            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             obj.set_visible("false");
+            obj.set_url("https://portal.tirerental.co.kr/interface/di_safekey/main.jsp");
             this.divInfo.divChgInfo.addChild(obj.name, obj);
             obj = new Button("btn_certification", "absolute", "980", "65", "41", "21", null, null, this.divInfo.divChgInfo);
             obj.set_taborder("63");

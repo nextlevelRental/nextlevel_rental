@@ -210,6 +210,8 @@
           <Column id="ordCount" type="STRING" size="256"/>
           <Column id="roVan" type="STRING" size="256"/>
           <Column id="addrText" type="STRING" size="256"/>
+          <Column id="instCd" type="STRING" size="256"/>
+          <Column id="instNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_installCp" firefirstcount="0" firenextcount="0" useclientlayout="true" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">
@@ -1216,13 +1218,14 @@ this.btn_order_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 	
 	var chanCd = this.ds_contractStatus.getColumn(0, "chanCd");
 	var augru = "";
+	var text = "";
 	if(chanCd == "01" || chanCd == "05") {
 		augru = "R42";
+		text = "오프라인_렌탈(" + this.ds_contractStatus.getColumn(0, "ordNo") + ")";
 	} else {
 		augru = "R41";
+		text = this.ds_contractStatus.getColumn(0, "instNm") + "_렌탈(" + this.ds_contractStatus.getColumn(0, "custNm") + "," + this.ds_contractStatus.getColumn(0, "mobNo") + "," + this.ds_contractStatus.getColumn(0, "ordNo") + ")";
 	}
-	
-	var text = this.ds_contractStatus.getColumn(0, "ordNo") + "|" + this.ds_contractStatus.getColumn(0, "custNm") + "|" + this.ds_contractStatus.getColumn(0, "mobNo");
 	
 	var sSvcID        	= "sapOrderCreate";                    
 	var sController   	= "/rtms/sd/sapOrderCreate.do";

@@ -1,182 +1,185 @@
-CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0001 AS
+CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcs0002 AS
 /*******************************************************************************
-   NAME:      Pkg_Rtcs0001
-   PURPOSE   ¼³ºñ Á¤º¸ °ü¸®
+   NAME:      Pkg_Rtcs0002
+   PURPOSE   ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° ê´€ë¦¬
 
    REVISIONS
    Ver        Date        Author           Description
    ---------  ----------  ---------------  -------------------------------------
-   1.0        2015-07-24  jemcarry         1. Created this package body.
+   1.0        2015-08-12  jemcarry         1. Created this package body.
+   1.2        2017-05-19  wjim             [20170519_01] íŒë§¤ì¸ë²ˆí˜¸ ì¶”ê°€
+   1.3        2017-06-22  wjim             [20170622_01] ì‚¬ë²ˆìœ¼ë¡œ ë¡œë””ì•ˆ ì¡°íšŒê¸°ëŠ¥ ì¶”ê°€
 *******************************************************************************/
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ Count
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° Count
   *****************************************************************************/
-  FUNCTION f_sRtcs0001Count(
-    v_Equ_No         IN RTCS0001.EQU_NO%TYPE            /*¼³ºñ¹øÈ£            */
+  FUNCTION f_sRtcs0002Count(
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE      /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ       */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ Select
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° Select
   *****************************************************************************/
-  PROCEDURE p_sRtcs0001 (
+  PROCEDURE p_sRtcs0002 (
     Ref_Cursor       IN OUT SYS_REFCURSOR,
-    v_Equ_No         IN RTCS0001.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0001.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Mat_Cd         IN RTCS0001.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mob_No         IN RTCS0001.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0001.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0001.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTCS0001.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTCS0001.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTCS0001.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTCS0001.TEL_NO2%TYPE,        /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No2    IN RTCS0001.BLD_MNG_NO2%TYPE,    /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTCS0001.POS_CD2%TYPE,        /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTCS0001.ADDR1_2%TYPE,        /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTCS0001.ADDR2_2%TYPE,        /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Car_No         IN RTCS0001.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Car_Owner      IN RTCS0001.CAR_OWNER%TYPE,      /*Â÷·®¼ÒÀ¯ÀÚ            */
-    v_Close_Yn       IN RTCS0001.CLOSE_YN%TYPE,       /*Á¾·á¿©ºÎ              */
-    v_Close_Day      IN RTCS0001.CLOSE_DAY%TYPE,      /*Á¾·áÀÏÀÚ              */
-    v_Fl_Yn          IN RTCS0001.FL_YN%TYPE,          /*ÀåÂøÀ§-¾Õ,¿ÞÂÊ        */
-    v_Fr_Yn          IN RTCS0001.FR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-¾Õ,¿À¸¥ÂÊ    */
-    v_Rl_Yn          IN RTCS0001.RL_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿ÞÂÊ      */
-    v_Rr_Yn          IN RTCS0001.RR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿À¸¥ÂÊ    */
-    v_Pos_X          IN RTCS0001.POS_X%TYPE,          /*XÁÂÇ¥                 */
-    v_Pos_Y          IN RTCS0001.POS_Y%TYPE,          /*YÁÂÇ¥                 */
-    v_Reg_Id         IN RTCS0001.REG_ID%TYPE          /*µî·ÏÀÚ ID             */
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE    /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
     );
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ Insert
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° Insert
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.2        2017-05-19  wjim             [20170519_01] íŒë§¤ì¸ë²ˆí˜¸ ì¶”ê°€
   *****************************************************************************/
-  FUNCTION f_InsertRtcs0001 (
-    v_Equ_No         IN RTCS0001.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0001.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Mat_Cd         IN RTCS0001.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mob_No         IN RTCS0001.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0001.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0001.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTCS0001.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTCS0001.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTCS0001.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTCS0001.TEL_NO2%TYPE,        /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No2    IN RTCS0001.BLD_MNG_NO2%TYPE,    /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTCS0001.POS_CD2%TYPE,        /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTCS0001.ADDR1_2%TYPE,        /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTCS0001.ADDR2_2%TYPE,        /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Car_No         IN RTCS0001.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Car_Owner      IN RTCS0001.CAR_OWNER%TYPE,      /*Â÷·®¼ÒÀ¯ÀÚ            */
-    v_Close_Yn       IN RTCS0001.CLOSE_YN%TYPE,       /*Á¾·á¿©ºÎ              */
-    v_Close_Day      IN RTCS0001.CLOSE_DAY%TYPE,      /*Á¾·áÀÏÀÚ              */
-    v_Fl_Yn          IN RTCS0001.FL_YN%TYPE,          /*ÀåÂøÀ§-¾Õ,¿ÞÂÊ        */
-    v_Fr_Yn          IN RTCS0001.FR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-¾Õ,¿À¸¥ÂÊ    */
-    v_Rl_Yn          IN RTCS0001.RL_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿ÞÂÊ      */
-    v_Rr_Yn          IN RTCS0001.RR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿À¸¥ÂÊ    */
-    v_Pos_X          IN RTCS0001.POS_X%TYPE,          /*XÁÂÇ¥                 */
-    v_Pos_Y          IN RTCS0001.POS_Y%TYPE,          /*YÁÂÇ¥                 */
-    v_Reg_Id         IN RTCS0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+  FUNCTION f_InsertRtcs0002 (
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
+    v_Carmaster_Nm   IN RTCS0002.CARMASTER_NM%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ëª…           */
+    v_Sales_Group    IN RTCS0002.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTCS0002.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Agency_Cd      IN RTCS0002.AGENCY_CD%TYPE,      /*ëŒ€ë¦¬ì ì½”ë“œ            */
+    v_Mob_No         IN RTCS0002.MOB_NO%TYPE,         /*í•¸ë“œí°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0002.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Pos_Cd         IN RTCS0002.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_City           IN RTCS0002.CITY%TYPE,           /*ì£¼ì†Œ                  */
+    v_Street         IN RTCS0002.STREET%TYPE,         /*ìƒì„¸ì£¼ì†Œ              */
+    v_Str_Day        IN RTCS0002.STR_DAY%TYPE,        /*ìž…ì‚¬ì¼                */
+    v_End_Day        IN RTCS0002.END_DAY%TYPE,        /*í‡´ì‚¬ì¼                */
+    v_Use_Yn         IN RTCS0002.USE_YN%TYPE,         /*ê·¼ë¬´ì—¬ë¶€              */
+    v_Etc1           IN RTCS0002.ETC1%TYPE,           /*ê¸°íƒ€1                 */
+    v_Etc2           IN RTCS0002.ETC2%TYPE,           /*ê¸°íƒ€2                 */    
+    v_Reg_Id         IN RTCS0002.REG_ID%TYPE,         /*ë“±ë¡ìžID              */
+    v_Ord_Agent      IN RTCS0002.ORD_AGENT%TYPE,      /*íŒë§¤ì¸ë²ˆí˜¸            */
+    v_Rental_Group   IN RTCS0002.RENTAL_GROUP%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */
+    v_Rental_Office  IN RTCS0002.RENTAL_OFFICE%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */    
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ Update
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° Update
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.2        2017-05-19  wjim             [20170519_01] íŒë§¤ì¸ë²ˆí˜¸ ì¶”ê°€
   *****************************************************************************/
-  FUNCTION f_UpdateRtcs0001 (
-    v_Equ_No         IN RTCS0001.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0001.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Mat_Cd         IN RTCS0001.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mob_No         IN RTCS0001.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0001.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0001.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTCS0001.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTCS0001.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTCS0001.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTCS0001.TEL_NO2%TYPE,        /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No2    IN RTCS0001.BLD_MNG_NO2%TYPE,    /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTCS0001.POS_CD2%TYPE,        /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTCS0001.ADDR1_2%TYPE,        /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTCS0001.ADDR2_2%TYPE,        /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Car_No         IN RTCS0001.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Car_Owner      IN RTCS0001.CAR_OWNER%TYPE,      /*Â÷·®¼ÒÀ¯ÀÚ            */
-    v_Close_Yn       IN RTCS0001.CLOSE_YN%TYPE,       /*Á¾·á¿©ºÎ              */
-    v_Close_Day      IN RTCS0001.CLOSE_DAY%TYPE,      /*Á¾·áÀÏÀÚ              */
-    v_Fl_Yn          IN RTCS0001.FL_YN%TYPE,          /*ÀåÂøÀ§-¾Õ,¿ÞÂÊ        */
-    v_Fr_Yn          IN RTCS0001.FR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-¾Õ,¿À¸¥ÂÊ    */
-    v_Rl_Yn          IN RTCS0001.RL_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿ÞÂÊ      */
-    v_Rr_Yn          IN RTCS0001.RR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿À¸¥ÂÊ    */
-    v_Pos_X          IN RTCS0001.POS_X%TYPE,          /*XÁÂÇ¥                 */
-    v_Pos_Y          IN RTCS0001.POS_Y%TYPE,          /*YÁÂÇ¥                 */
-    v_Reg_Id         IN RTCS0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+  FUNCTION f_UpdateRtcs0002 (
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
+    v_Carmaster_Nm   IN RTCS0002.CARMASTER_NM%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ëª…           */
+    v_Sales_Group    IN RTCS0002.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTCS0002.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Agency_Cd      IN RTCS0002.AGENCY_CD%TYPE,      /*ëŒ€ë¦¬ì ì½”ë“œ            */
+    v_Mob_No         IN RTCS0002.MOB_NO%TYPE,         /*í•¸ë“œí°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0002.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Pos_Cd         IN RTCS0002.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_City           IN RTCS0002.CITY%TYPE,           /*ì£¼ì†Œ                  */
+    v_Street         IN RTCS0002.STREET%TYPE,         /*ìƒì„¸ì£¼ì†Œ              */
+    v_Str_Day        IN RTCS0002.STR_DAY%TYPE,        /*ìž…ì‚¬ì¼                */
+    v_End_Day        IN RTCS0002.END_DAY%TYPE,        /*í‡´ì‚¬ì¼                */
+    v_Use_Yn         IN RTCS0002.USE_YN%TYPE,         /*ê·¼ë¬´ì—¬ë¶€              */
+    v_Etc1           IN RTCS0002.ETC1%TYPE,           /*ê¸°íƒ€1                 */
+    v_Etc2           IN RTCS0002.ETC2%TYPE,           /*ê¸°íƒ€2                 */
+    v_Reg_Id         IN RTCS0002.REG_ID%TYPE,         /*ë“±ë¡ìžID              */
+    v_Ord_Agent      IN RTCS0002.ORD_AGENT%TYPE,      /*íŒë§¤ì¸ë²ˆí˜¸            */
+    v_Rental_Group   IN RTCS0002.RENTAL_GROUP%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */
+    v_Rental_Office  IN RTCS0002.RENTAL_OFFICE%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */    
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ °ü¸®(IUD)
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° Delete
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.2        2017-05-19  wjim             [20170519_01] íŒë§¤ì¸ë²ˆí˜¸ ì¶”ê°€
   *****************************************************************************/
-  PROCEDURE p_IUDRtcs0001 (
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Equ_No         IN OUT RTCS0001.EQU_NO%TYPE,     /*¼³ºñ¹øÈ£              */
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Proc_Day       IN RTCS0001.PROC_DAY%TYPE,       /*ÀåÂøÀÏÀÚ              */
-    v_Mat_Cd         IN RTCS0001.MAT_CD%TYPE,         /*»óÇ°ÄÚµå              */
-    v_Mob_No         IN RTCS0001.MOB_NO%TYPE,         /*ÈÞ´ëÆù¹øÈ£            */
-    v_Tel_No         IN RTCS0001.TEL_NO%TYPE,         /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No     IN RTCS0001.BLD_MNG_NO%TYPE,     /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd         IN RTCS0001.POS_CD%TYPE,         /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1          IN RTCS0001.ADDR1%TYPE,          /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2          IN RTCS0001.ADDR2%TYPE,          /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Tel_No2        IN RTCS0001.TEL_NO2%TYPE,        /*ÀüÈ­¹øÈ£              */
-    v_Bld_Mng_No2    IN RTCS0001.BLD_MNG_NO2%TYPE,    /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£PK(°Ç*/
-    v_Pos_Cd2        IN RTCS0001.POS_CD2%TYPE,        /*°í°´ÁÖ¼Ò-¿ìÆí¹øÈ£     */
-    v_Addr1_2        IN RTCS0001.ADDR1_2%TYPE,        /*°í°´ÁÖ¼Ò-ÁÖ¼Ò         */
-    v_Addr2_2        IN RTCS0001.ADDR2_2%TYPE,        /*°í°´ÁÖ¼Ò-»ó¼¼ÁÖ¼Ò     */
-    v_Car_No         IN RTCS0001.CAR_NO%TYPE,         /*Â÷·®¹øÈ£              */
-    v_Car_Owner      IN RTCS0001.CAR_OWNER%TYPE,      /*Â÷·®¼ÒÀ¯ÀÚ            */
-    v_Close_Yn       IN RTCS0001.CLOSE_YN%TYPE,       /*Á¾·á¿©ºÎ              */
-    v_Close_Day      IN RTCS0001.CLOSE_DAY%TYPE,      /*Á¾·áÀÏÀÚ              */
-    v_Fl_Yn          IN RTCS0001.FL_YN%TYPE,          /*ÀåÂøÀ§-¾Õ,¿ÞÂÊ        */
-    v_Fr_Yn          IN RTCS0001.FR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-¾Õ,¿À¸¥ÂÊ    */
-    v_Rl_Yn          IN RTCS0001.RL_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿ÞÂÊ      */
-    v_Rr_Yn          IN RTCS0001.RR_YN%TYPE,          /*ÀåÂøÀ§Ä¡-µÚ,¿À¸¥ÂÊ    */
-    v_Pos_X          IN RTCS0001.POS_X%TYPE,          /*XÁÂÇ¥                 */
-    v_Pos_Y          IN RTCS0001.POS_Y%TYPE,          /*YÁÂÇ¥                 */
-    v_Reg_Id         IN RTCS0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+  FUNCTION f_DeleteRtcs0002 (
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
+    v_Carmaster_Nm   IN RTCS0002.CARMASTER_NM%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ëª…           */
+    v_Sales_Group    IN RTCS0002.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTCS0002.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Agency_Cd      IN RTCS0002.AGENCY_CD%TYPE,      /*ëŒ€ë¦¬ì ì½”ë“œ            */
+    v_Mob_No         IN RTCS0002.MOB_NO%TYPE,         /*í•¸ë“œí°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0002.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Pos_Cd         IN RTCS0002.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_City           IN RTCS0002.CITY%TYPE,           /*ì£¼ì†Œ                  */
+    v_Street         IN RTCS0002.STREET%TYPE,         /*ìƒì„¸ì£¼ì†Œ              */
+    v_Str_Day        IN RTCS0002.STR_DAY%TYPE,        /*ìž…ì‚¬ì¼                */
+    v_End_Day        IN RTCS0002.END_DAY%TYPE,        /*í‡´ì‚¬ì¼                */
+    v_Use_Yn         IN RTCS0002.USE_YN%TYPE,         /*ê·¼ë¬´ì—¬ë¶€              */
+    v_Etc1           IN RTCS0002.ETC1%TYPE,           /*ê¸°íƒ€1                 */
+    v_Etc2           IN RTCS0002.ETC2%TYPE,           /*ê¸°íƒ€2                 */
+    v_Reg_Id         IN RTCS0002.REG_ID%TYPE,         /*ë“±ë¡ìžID              */
+    v_Ord_Agent      IN RTCS0002.ORD_AGENT%TYPE,      /*íŒë§¤ì¸ë²ˆí˜¸            */
+    v_Rental_Group   IN RTCS0002.RENTAL_GROUP%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */
+    v_Rental_Office  IN RTCS0002.RENTAL_OFFICE%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */
+    v_ErrorText      OUT VARCHAR2
+    ) RETURN NUMBER;
+
+  /*****************************************************************************
+  -- ì¹´ë§ˆìŠ¤íƒ€ ë§ˆìŠ¤í„° ê´€ë¦¬(IUD)
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.2        2017-05-19  wjim             [20170519_01] íŒë§¤ì¸ë²ˆí˜¸ ì¶”ê°€
+  *****************************************************************************/
+  PROCEDURE p_IUDRtcs0002 (
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
+    v_Carmaster_Nm   IN RTCS0002.CARMASTER_NM%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ëª…           */
+    v_Sales_Group    IN RTCS0002.SALES_GROUP%TYPE,    /*ì§€ì‚¬ì½”ë“œ              */
+    v_Sales_Office   IN RTCS0002.SALES_OFFICE%TYPE,   /*ì§€ì ì½”ë“œ              */
+    v_Agency_Cd      IN RTCS0002.AGENCY_CD%TYPE,      /*ëŒ€ë¦¬ì ì½”ë“œ            */
+    v_Mob_No         IN RTCS0002.MOB_NO%TYPE,         /*í•¸ë“œí°ë²ˆí˜¸            */
+    v_Tel_No         IN RTCS0002.TEL_NO%TYPE,         /*ì „í™”ë²ˆí˜¸              */
+    v_Pos_Cd         IN RTCS0002.POS_CD%TYPE,         /*ìš°íŽ¸ë²ˆí˜¸              */
+    v_City           IN RTCS0002.CITY%TYPE,           /*ì£¼ì†Œ                  */
+    v_Street         IN RTCS0002.STREET%TYPE,         /*ìƒì„¸ì£¼ì†Œ              */
+    v_Str_Day        IN RTCS0002.STR_DAY%TYPE,        /*ìž…ì‚¬ì¼                */
+    v_End_Day        IN RTCS0002.END_DAY%TYPE,        /*í‡´ì‚¬ì¼                */
+    v_Use_Yn         IN RTCS0002.USE_YN%TYPE,         /*ê·¼ë¬´ì—¬ë¶€              */
+    v_Etc1           IN RTCS0002.ETC1%TYPE,           /*ê¸°íƒ€1                 */
+    v_Etc2           IN RTCS0002.ETC2%TYPE,           /*ê¸°íƒ€2                 */
+    v_Reg_Id         IN RTCS0002.REG_ID%TYPE,         /*ë“±ë¡ìžID              */
+    v_Ord_Agent      IN RTCS0002.ORD_AGENT%TYPE,      /*íŒë§¤ì¸ë²ˆí˜¸            */
+    v_Rental_Group   IN RTCS0002.RENTAL_GROUP%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */
+    v_Rental_Office  IN RTCS0002.RENTAL_OFFICE%TYPE,    /*ë Œíƒˆì§€ì—­ ì½”ë“œ */    
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
+
+  /*****************************************************************************
+  -- ì¹´ë§ˆìŠ¤íƒ€ íŒì—…
+  
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------   
+   1.4        2017-06-22  wjim             [20170622_02] 'ê·¼ë¬´ì—¬ë¶€' ì¡°íšŒì¡°ê±´ ì¶”ê°€   
+  *****************************************************************************/
+  PROCEDURE p_sRtcs0002carmasterPopup(
+    Ref_Cursor       IN OUT SYS_REFCURSOR,
+    v_Carmaster_Nm   IN RTCS0002.CARMASTER_NM%TYPE,   /*ì¹´ë§ˆìŠ¤íƒ€ ëª…           */
+    v_Use_Yn         IN RTCS0002.USE_YN%TYPE          /*ê·¼ë¬´ì—¬ë¶€              */
+  );
     
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ - ¼³ºñ¹øÈ£ È¹µæ
+  -- ì‚¬ë²ˆìœ¼ë¡œ ë¡œë””ì•ˆ ì •ë³´ ì¡°íšŒ
+  
+   REVISIONS
+   Ver        Date        Author           Description
+   ---------  ----------  ---------------  -------------------------------------
+   1.3        2017-06-22  wjim             [20170622_01] ê¸°ëŠ¥ì¶”ê°€
   *****************************************************************************/
-  FUNCTION f_sRtcs0001EquNo(
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
-    ) RETURN VARCHAR;
-
-
-  /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ Update - Áßµµ¿Ï³³
-  *****************************************************************************/
-  FUNCTION f_UpdateRtcs0001Cancel (
-    v_Equ_No         IN RTCS0001.EQU_NO%TYPE,         /*¼³ºñ¹øÈ£              */
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE,         /*°è¾à¹øÈ£              */
-    v_Close_Yn       IN RTCS0001.CLOSE_YN%TYPE,       /*Á¾·á¿©ºÎ              */
-    v_Close_Day      IN RTCS0001.CLOSE_DAY%TYPE,      /*Á¾·áÀÏÀÚ              */
-    v_Reg_Id         IN RTCS0001.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
-    v_ErrorText      OUT VARCHAR2
-    ) RETURN NUMBER;
+  PROCEDURE p_sRtcs0002carmasterNu (
+      Ref_Cursor       IN OUT SYS_REFCURSOR
+    , v_Carmaster_Nu   IN RTCS0002.CARMASTER_NU%TYPE    /*ë¡œë””ì•ˆ ì‚¬ë²ˆ         */
+  );    
 
   /*****************************************************************************
-  -- ¼³ºñ Á¤º¸ - °è¾à¹øÈ£·Î ¼³ºñ¹øÈ£ È¹µæ
+  -- ASê¸°ì‚¬ìˆœë²ˆ êµ¬í•˜ê¸°
   *****************************************************************************/
-  FUNCTION f_sRtcs0001OrdNoForEquNo(
-    v_Ord_No         IN RTCS0001.ORD_NO%TYPE          /*°è¾à¹øÈ£              */
-    ) RETURN VARCHAR;
-        
-END Pkg_Rtcs0001;
-/
+  PROCEDURE p_sRtcs0002getmaxnu(
+    v_Carmaster_Nu   OUT  RTCS0002.CARMASTER_NU%TYPE  /*ì¹´ë§ˆìŠ¤íƒ€ ì‚¬ë²ˆ         */
+    );
+END Pkg_Rtcs0002;

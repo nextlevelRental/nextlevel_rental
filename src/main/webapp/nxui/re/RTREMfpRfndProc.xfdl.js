@@ -93,8 +93,8 @@
 
             obj = new Div("div_payment", "absolute", "2", "507", "536", "181", null, null, this);
             obj.set_taborder("17");
-            obj.set_url("re::RTREPaymentComm_div.xfdl");
             obj.set_visible("false");
+            obj.set_url("re::RTREPaymentComm_div.xfdl");
             this.addChild(obj.name, obj);
 
 

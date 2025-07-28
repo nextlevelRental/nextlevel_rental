@@ -61,7 +61,8 @@
 		<result property="rentalGroupNm"  	    column="RENTAL_GROUP_NM"   /> 
 		<result property="rentalOffice"  	    column="RENTAL_OFFICE"   /> 
 		<result property="rentalOfficeNm"  	    column="RENTAL_OFFICE_NM"   /> 
-		<result property="prplYn"       	    column="PRPL_YN"   />
+		<result property="prplYn"       	    	column="PRPL_YN"   />
+		<result property="premprplYn"       	column="PREM_PRPL_YN"   /> <!-- [20250610_01] -->
 		<result property="apfdEndYn"      	    column="APFD_END_YN"  /> <!-- [20190731_01] -->
 		<result property="chainYn"      	    column="CHAIN_YN"  /> <!-- [20210809_01] -->
 		<result property="rntMstId"      	    column="RNT_MST_ID"  /> <!-- [20221013_01] -->
@@ -128,6 +129,7 @@
 		<parameter property="rentalGroup"	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="rentalOffice"	jdbcType="VARCHAR" mode="IN" />
 		<parameter property="prplYn"	    jdbcType="VARCHAR" mode="IN" />
+		<parameter property="premprplYn"	    jdbcType="VARCHAR" mode="IN" />
 		<parameter property="apfdEndYn"	    jdbcType="VARCHAR" mode="IN" />
 		<parameter property="chainYn"	    jdbcType="VARCHAR" mode="IN" />
 		<parameter property="hpAgencyNm"     	jdbcType="VARCHAR" mode="IN" />
@@ -137,7 +139,7 @@
 	</parameterMap>
 	
 	<procedure id="agency.saveAgencyInfo" parameterMap="p_IUDRtsd0007_U">
-		{call Pkg_Rtsd0007.p_IUDRtsd0007(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+		{call Pkg_Rtsd0007.p_IUDRtsd0007(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
 	</procedure>
 	
 	<!-- 콜센터용 대리점정보 조회 -->
@@ -164,6 +166,8 @@
 		<result property="alignNm"	  	        column="ALIGN_NM"       /> <!-- 20180312_01 -->
 		<result property="balanceCd"  	        column="BALANCE_CD"     /> <!-- 20180312_01 -->
 		<result property="balanceNm"  	        column="BALANCE_NM"     /> <!-- 20180312_01 -->
+		<result property="premPrplYn"  	        column="PREM_PRPL_YN"     /> <!-- 20250612_01 -->
+		<result property="totEvalPoint"  	        column="TOT_EVAL_POINT"     /> <!-- 20250612_01 -->
 	</resultMap>	
 	<parameterMap id="agencyCallParamMap" class="java.util.Map">
 		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="agencyCallResultMap"/>

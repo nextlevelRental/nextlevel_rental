@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0040 AS
 /******************************************************************************
    NAME:       Pkg_Rtcm0040
-   PURPOSE:    ÀÌ¹ÌÁö °ü¸® Çì´õ
+   PURPOSE:    ì´ë¯¸ì§€ ê´€ë¦¬ í—¤ë”
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,86 +10,86 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0040 AS
 ******************************************************************************/
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0040Count(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE        /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE        /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
     ) RETURN NUMBER;
  
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Select
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0040 (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_Reg_Fdt        IN VARCHAR,                      /*¾÷·ÎµåÀÏÀÚFROM        */
-    v_Reg_Tdt        IN VARCHAR,                      /*¾÷·ÎµåÀÏÀÚTO          */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE        /*¾÷·Îµå ÇÁ·Î±×·¥       */
+    v_Reg_Fdt        IN VARCHAR,                      /*ì—…ë¡œë“œì¼ìžFROM        */
+    v_Reg_Tdt        IN VARCHAR,                      /*ì—…ë¡œë“œì¼ìžTO          */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE        /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
     );
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Insert
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Update
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Delete
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0040(
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® °ü¸®
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0040(
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*¾÷·ÎµåÆÄÀÏ¹øÈ£        */
-    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£    */
-    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*³í¸®Àû ÆÄÀÏ¸í         */
-    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*¹°¸®Àû ÆÄÀÏ¸í         */
-    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*ÆÄÀÏ°æ·Î              */
-    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*ÆÄÀÏ»çÀÌÁî            */
-    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*¾÷·Îµå ÇÁ·Î±×·¥       */
-    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*°í°´¹øÈ£              */
-    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ÁÖ¹®¹øÈ£              */
-    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*»ç¿ë¿©ºÎ              */
-    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_File_Seq       IN RTCM0040.FILE_SEQ%TYPE,       /*ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸        */
+    v_File_Grp_Seq   IN RTCM0040.FILE_GRP_SEQ%TYPE,   /*ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸    */
+    v_File_Lnm       IN RTCM0040.FILE_LNM%TYPE,       /*ë…¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Pnm       IN RTCM0040.FILE_PNM%TYPE,       /*ë¬¼ë¦¬ì  íŒŒì¼ëª…         */
+    v_File_Path      IN RTCM0040.FILE_PATH%TYPE,      /*íŒŒì¼ê²½ë¡œ              */
+    v_File_Size      IN RTCM0040.FILE_SIZE%TYPE,      /*íŒŒì¼ì‚¬ì´ì¦ˆ            */
+    v_Uplpg_Cd       IN RTCM0040.UPLPG_CD%TYPE,       /*ì—…ë¡œë“œ í”„ë¡œê·¸ëž¨       */
+    v_Cust_No        IN RTCM0040.CUST_NO%TYPE,        /*ê³ ê°ë²ˆí˜¸              */
+    v_Ord_No         IN RTCM0040.ORD_NO%TYPE,         /*ì£¼ë¬¸ë²ˆí˜¸              */
+    v_Use_Yn         IN RTCM0040.USE_YN%TYPE,         /*ì‚¬ìš©ì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0040.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
@@ -97,24 +97,23 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0040 AS
 
         
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count - ¾÷·ÎµåÆÄÀÏ¹øÈ£ È¹µæ
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count - ì—…ë¡œë“œíŒŒì¼ë²ˆí˜¸ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcm0040Seq RETURN NUMBER;
   
   /*****************************************************************************
-  -- ÀÌ¹ÌÁö °ü¸® Count - ¾÷·ÎµåÆÄÀÏ±×·ì¹øÈ£ È¹µæ
+  -- ì´ë¯¸ì§€ ê´€ë¦¬ Count - ì—…ë¡œë“œíŒŒì¼ê·¸ë£¹ë²ˆí˜¸ íšë“
   *****************************************************************************/
   FUNCTION f_sRtcm0040GrpSeq RETURN NUMBER;
   
   PROCEDURE p_sRtcm0040FileGrpList (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_File_Grp_Seq        IN RTCM0040.FILE_GRP_SEQ%TYPE         /*¾÷·ÎµåÀÏÀÚFROM        */
+    v_File_Grp_Seq        IN RTCM0040.FILE_GRP_SEQ%TYPE         /*ì—…ë¡œë“œì¼ìžFROM        */
     );
     
   PROCEDURE p_sRtcm0040FileOne (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_File_Seq        IN RTCM0040.FILE_SEQ%TYPE         /*¾÷·ÎµåÀÏÀÚFROM        */
+    v_File_Seq        IN RTCM0040.FILE_SEQ%TYPE         /*ì—…ë¡œë“œì¼ìžFROM        */
   );
   
 END Pkg_Rtcm0040;
-/

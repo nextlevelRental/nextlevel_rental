@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
 /*******************************************************************************
    NAME:      Pkg_Rtsd0025
-   PURPOSE:   «“¿Œºº∫Œ¡§∫∏
+   PURPOSE:   Ìï†Ïù∏ÏÑ∏Î∂ÄÏ†ïÎ≥¥
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,31 +10,31 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- «“¿Œºº∫Œ¡§∫∏ Select
+  -- Ìï†Ïù∏ÏÑ∏Î∂ÄÏ†ïÎ≥¥ Select
   *****************************************************************************/
   PROCEDURE p_sRtsd0025 (
     Ref_Cursor      IN OUT SYS_REFCURSOR,
-    v_Dc_Gb         IN     RTSD0025.DC_GB%TYPE,         /* «“¿Œ±∏∫–ƒ⁄µÂ            */
-    v_Std_Str_Day   IN     RTSD0025.STD_STR_DAY%TYPE    /* «“¿ŒΩ√¿€¿œ(±‚¡ÿΩ√¿€¿œ   */
+    v_Dc_Gb         IN     RTSD0025.DC_GB%TYPE,         /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú            */
+    v_Std_Str_Day   IN     RTSD0025.STD_STR_DAY%TYPE    /* Ìï†Ïù∏ÏãúÏûëÏùº(Í∏∞Ï§ÄÏãúÏûëÏùº   */
   ) IS
 
   BEGIN
 
     OPEN Ref_Cursor FOR
-    SELECT  A.DC_GB,                                                        /* «“¿Œ±∏∫–ƒ⁄µÂ  */
-            Pkg_Rtcm0051.f_sRtcm0051CodeName('S207', A.DC_GB) GRP_STD_NM,   /* «“¿Œ±∏∫–∏Ì    */
-            TO_CHAR(TO_DATE(A.STD_STR_DAY),'YYYY-MM-DD') AS STD_STR_DAY,    /* «“¿ŒΩ√¿€¿œ    */
-            A.DC_CD,                                                        /* «“¿Œƒ⁄µÂ      */
-            RTRIM(TO_CHAR(A.DC_RATE,'FM9990D99'),'.')||'%' AS DC_RATE,      /* «“¿Œ¿≤        */
-            A.DC_AMT,                                                       /* «“¿Œ±›æ◊      */
-            A.MIN_CNT,                                                      /* √÷º“∞«        */
-            A.MAX_CNT,                                                      /* √÷¥Î∞«        */
-            TO_CHAR(TO_DATE(A.STD_END_DAY),'YYYY-MM-DD') AS STD_END_DAY,    /* «“¿Œ¡æ∑·¿œ    */
-            A.DC_DESC,                                                      /* ∫Ò∞Ì          */
-            A.REG_DT,                                                       /* µÓ∑œ¿œ        */
-            A.REG_ID,                                                       /* µÓ∑œ¿⁄ ID     */
-            A.CHG_ID,                                                       /* ∫Ø∞Ê¿⁄ ID     */
-            A.CHG_DT                                                        /* ∫Ø∞Ê¿œ        */
+    SELECT  A.DC_GB,                                                        /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú  */
+            Pkg_Rtcm0051.f_sRtcm0051CodeName('S207', A.DC_GB) GRP_STD_NM,   /* Ìï†Ïù∏Íµ¨Î∂ÑÎ™Ö    */
+            TO_CHAR(TO_DATE(A.STD_STR_DAY),'YYYY-MM-DD') AS STD_STR_DAY,    /* Ìï†Ïù∏ÏãúÏûëÏùº    */
+            A.DC_CD,                                                        /* Ìï†Ïù∏ÏΩîÎìú      */
+            RTRIM(TO_CHAR(A.DC_RATE,'FM9990D99'),'.')||'%' AS DC_RATE,      /* Ìï†Ïù∏Ïú®        */
+            A.DC_AMT,                                                       /* Ìï†Ïù∏Í∏àÏï°      */
+            A.MIN_CNT,                                                      /* ÏµúÏÜåÍ±¥        */
+            A.MAX_CNT,                                                      /* ÏµúÎåÄÍ±¥        */
+            TO_CHAR(TO_DATE(A.STD_END_DAY),'YYYY-MM-DD') AS STD_END_DAY,    /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº    */
+            A.DC_DESC,                                                      /* ÎπÑÍ≥†          */
+            A.REG_DT,                                                       /* Îì±Î°ùÏùº        */
+            A.REG_ID,                                                       /* Îì±Î°ùÏûê ID     */
+            A.CHG_ID,                                                       /* Î≥ÄÍ≤ΩÏûê ID     */
+            A.CHG_DT                                                        /* Î≥ÄÍ≤ΩÏùº        */
     FROM    RTSD0025    A
     WHERE   A.DC_GB       = DECODE(v_Dc_Gb, NULL, A.DC_GB, v_Dc_Gb)
     AND     A.STD_STR_DAY = DECODE(v_Std_Str_Day, NULL, A.STD_STR_DAY, v_Std_Str_Day)
@@ -43,19 +43,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
   END p_sRtsd0025;
 
   /*****************************************************************************
-  -«“¿ŒªÛºº¡§∫∏ Insert
+  -Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtsd0025 (
-    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* «“¿Œƒ⁄µÂ       */
-    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* √÷º“∞«         */
-    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* √÷¥Î∞«         */
-    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ∫Ò∞Ì           */
-    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* Ìï†Ïù∏ÏΩîÎìú       */
+    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* ÏµúÏÜåÍ±¥         */
+    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* ÏµúÎåÄÍ±¥         */
+    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ÎπÑÍ≥†           */
+    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -100,19 +100,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
   END f_InsertRtsd0025;
 
   /*****************************************************************************
-  -«“¿ŒªÛºº¡§∫∏ Update
+  -Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtsd0025 (
-    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* «“¿Œƒ⁄µÂ       */
-    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* √÷º“∞«         */
-    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* √÷¥Î∞«         */
-    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ∫Ò∞Ì           */
-    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* Ìï†Ïù∏ÏΩîÎìú       */
+    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* ÏµúÏÜåÍ±¥         */
+    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* ÏµúÎåÄÍ±¥         */
+    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ÎπÑÍ≥†           */
+    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -141,19 +141,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
   END f_UpdateRtsd0025;
 
   /*****************************************************************************
-  -«“¿ŒªÛºº¡§∫∏DB Copy
+  -Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥DB Copy
   *****************************************************************************/
   FUNCTION f_InsertRtsd0027 (
-    v_Dc_Gb             IN RTSD0027.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0027.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Cd             IN RTSD0027.DC_CD%TYPE,             /* «“¿Œƒ⁄µÂ       */
-    v_Dc_Rate           IN RTSD0027.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0027.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Min_Cnt           IN RTSD0027.MIN_CNT%TYPE,           /* √÷º“∞«         */
-    v_Max_Cnt           IN RTSD0027.MAX_CNT%TYPE,           /* √÷¥Î∞«         */
-    v_Std_End_Day       IN RTSD0027.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Desc           IN RTSD0027.DC_DESC%TYPE,           /* ∫Ò∞Ì           */
-    v_Reg_Id            IN RTSD0027.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Dc_Gb             IN RTSD0027.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0027.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Cd             IN RTSD0027.DC_CD%TYPE,             /* Ìï†Ïù∏ÏΩîÎìú       */
+    v_Dc_Rate           IN RTSD0027.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0027.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Min_Cnt           IN RTSD0027.MIN_CNT%TYPE,           /* ÏµúÏÜåÍ±¥         */
+    v_Max_Cnt           IN RTSD0027.MAX_CNT%TYPE,           /* ÏµúÎåÄÍ±¥         */
+    v_Std_End_Day       IN RTSD0027.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Desc           IN RTSD0027.DC_DESC%TYPE,           /* ÎπÑÍ≥†           */
+    v_Reg_Id            IN RTSD0027.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER IS
   BEGIN
@@ -200,20 +200,20 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
   END f_InsertRtsd0027;
 
   /*****************************************************************************
-  --«“¿Œºº∫Œ¡§∫∏µÓ∑œ(IUD)
+  --Ìï†Ïù∏ÏÑ∏Î∂ÄÏ†ïÎ≥¥Îì±Î°ù(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0025 (
-    v_Comm_Dvsn         IN CHAR,                            /* √≥∏Æ±∏∫–(I,U,D)*/
-    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* «“¿Œ±∏∫–ƒ⁄µÂ   */
-    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* «“¿ŒΩ√¿€¿œ     */
-    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* «“¿Œƒ⁄µÂ       */
-    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* «“¿Œ¿≤         */
-    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* «“¿Œ±›æ◊       */
-    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* √÷º“∞«         */
-    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* √÷¥Î∞«         */
-    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* «“¿Œ¡æ∑·¿œ     */
-    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ∫Ò∞Ì           */
-    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* µÓ∑œ¿⁄ ID      */
+    v_Comm_Dvsn         IN CHAR,                            /* Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)*/
+    v_Dc_Gb             IN RTSD0025.DC_GB%TYPE,             /* Ìï†Ïù∏Íµ¨Î∂ÑÏΩîÎìú   */
+    v_Std_Str_Day       IN RTSD0025.STD_STR_DAY%TYPE,       /* Ìï†Ïù∏ÏãúÏûëÏùº     */
+    v_Dc_Cd             IN RTSD0025.DC_CD%TYPE,             /* Ìï†Ïù∏ÏΩîÎìú       */
+    v_Dc_Rate           IN RTSD0025.DC_RATE%TYPE,           /* Ìï†Ïù∏Ïú®         */
+    v_Dc_Amt            IN RTSD0025.DC_AMT%TYPE,            /* Ìï†Ïù∏Í∏àÏï°       */
+    v_Min_Cnt           IN RTSD0025.MIN_CNT%TYPE,           /* ÏµúÏÜåÍ±¥         */
+    v_Max_Cnt           IN RTSD0025.MAX_CNT%TYPE,           /* ÏµúÎåÄÍ±¥         */
+    v_Std_End_Day       IN RTSD0025.STD_END_DAY%TYPE,       /* Ìï†Ïù∏Ï¢ÖÎ£åÏùº     */
+    v_Dc_Desc           IN RTSD0025.DC_DESC%TYPE,           /* ÎπÑÍ≥†           */
+    v_Reg_Id            IN RTSD0025.REG_ID%TYPE,            /* Îì±Î°ùÏûê ID      */
     v_Success_Code      OUT NUMBER,
     v_Return_Message    OUT VARCHAR2,
     v_ErrorText         OUT VARCHAR2
@@ -227,7 +227,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
         IF 0 != f_InsertRtsd0025(v_Dc_Gb, v_Std_Str_Day, v_Dc_Cd, v_Dc_Rate,
                                  v_Dc_Amt, v_Min_Cnt, v_Max_Cnt, v_Std_End_Day,
                                  v_Dc_Desc, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '«“¿ŒªÛºº¡§∫∏ µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥ Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -235,7 +235,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
         IF 0 != f_InsertRtsd0027(v_Dc_Gb, v_Std_Str_Day, v_Dc_Cd, v_Dc_Rate,
                                  v_Dc_Amt, v_Min_Cnt, v_Max_Cnt, v_Std_End_Day,
                                  v_Dc_Desc, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '«“¿ŒªÛºº¡§∫∏DB Copy µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥DB Copy Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -245,7 +245,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
         IF 0 != f_UpdateRtsd0025(v_Dc_Gb, v_Std_Str_Day, v_Dc_Cd, v_Dc_Rate,
                                  v_Dc_Amt, v_Min_Cnt, v_Max_Cnt, v_Std_End_Day,
                                  v_Dc_Desc, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '«“¿ŒªÛºº¡§∫∏ ºˆ¡§ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥ ÏàòÏ†ï Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
@@ -253,19 +253,19 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
         IF 0 != f_InsertRtsd0027(v_Dc_Gb, v_Std_Str_Day, v_Dc_Cd, v_Dc_Rate,
                                  v_Dc_Amt, v_Min_Cnt, v_Max_Cnt, v_Std_End_Day,
                                  v_Dc_Desc, v_Reg_Id, v_ErrorText) THEN
-            v_Return_Message := '«“¿ŒªÛºº¡§∫∏DB Copy µÓ∑œ Ω«∆–!!!'||'-'||v_ErrorText;
+            v_Return_Message := 'Ìï†Ïù∏ÏÉÅÏÑ∏Ï†ïÎ≥¥DB Copy Îì±Î°ù Ïã§Ìå®!!!'||'-'||v_ErrorText;
             v_ErrorText := v_ErrorText;
             RAISE e_Error;
         END IF;
 
     ELSE
-        v_Return_Message := '√≥∏Æ±∏∫–(I,U,D)∞™ ø¿∑˘!!!['||v_Comm_Dvsn||']';
+        v_Return_Message := 'Ï≤òÎ¶¨Íµ¨Î∂Ñ(I,U,D)Í∞í Ïò§Î•ò!!!['||v_Comm_Dvsn||']';
         RAISE e_Error;
 
     END IF;
 
     v_Success_code := 0;
-    v_Return_Message := '¡§ªÛ¿˚¿∏∑Œ µÓ∑œµ«æ˙Ω¿¥œ¥Ÿ';
+    v_Return_Message := 'Ï†ïÏÉÅÏ†ÅÏúºÎ°ú Îì±Î°ùÎêòÏóàÏäµÎãàÎã§';
     v_ErrorText := '';
     --COMMIT;
 
@@ -280,7 +280,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
       WHEN OTHERS THEN
         ROLLBACK;
         v_Success_code := -1;
-        v_Return_Message := NVL( TRIM(v_Return_Message), 'Ω√Ω∫≈€∞¸∏Æ¿⁄ø°∞‘ πÆ¿«πŸ∂¯¥œ¥Ÿ!.');
+        v_Return_Message := NVL( TRIM(v_Return_Message), 'ÏãúÏä§ÌÖúÍ¥ÄÎ¶¨ÏûêÏóêÍ≤å Î¨∏ÏùòÎ∞îÎûçÎãàÎã§!.');
         v_ErrorText := SUBSTR(SQLERRM, 1, 200);
         Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0025.p_IUDRtsd0025(2)', v_ErrorText, v_Return_Message);
 
@@ -288,10 +288,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0025 AS
 
 
 /*****************************************************************************
--- ¥‹√º«“¿Œ±›æ◊
+-- Îã®Ï≤¥Ìï†Ïù∏Í∏àÏï°
 *****************************************************************************/
 FUNCTION f_sRtsd0025SearchAmt(
-  rest_cnt         IN RTSD0031.REST_CNT%TYPE           /* ¥‹√ºπ¯»£            */
+  rest_cnt         IN RTSD0031.REST_CNT%TYPE           /* Îã®Ï≤¥Î≤àÌò∏            */
 ) RETURN NUMBER IS
   v_Curr_Cnt NUMBER Default 0;
 
@@ -312,10 +312,10 @@ FUNCTION f_sRtsd0025SearchAmt(
   END f_sRtsd0025SearchAmt;
 
 /*****************************************************************************
- -- ¥‹√º«“¿Œ±›æ◊
+ -- Îã®Ï≤¥Ìï†Ïù∏Í∏àÏï°
  *****************************************************************************/
 FUNCTION f_sRtsd0025SearchRate(
-  rest_cnt         IN RTSD0031.REST_CNT%TYPE           /* ¥‹√ºπ¯»£            */
+  rest_cnt         IN RTSD0031.REST_CNT%TYPE           /* Îã®Ï≤¥Î≤àÌò∏            */
 ) RETURN NUMBER IS
   v_Curr_Cnt NUMBER Default 0;
 
@@ -335,4 +335,3 @@ FUNCTION f_sRtsd0025SearchRate(
         RETURN 0;
   END f_sRtsd0025SearchRate;
 END Pkg_Rtsd0025;
-/

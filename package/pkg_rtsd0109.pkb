@@ -14,6 +14,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.Pkg_Rtsd0109 AS
    1.5        2018-12-11  ncho             1. 선납할인수납 청구스케줄 Update 추가
    1.6        2019-03-07  wjim             [20190307_01] 중도해지 시 장착수수료 산정기준 변경
    1.7        2023-07-10  kstka            [20230710_1] 중도해지시 위약금에 장탈착비 제외 (위법사항, 법무팀)
+   1.8        2024-11-05  10243054         [20241105_01] 3차 채권매각 일자변경(20241101)
 *******************************************************************************/
 
   /*****************************************************************************
@@ -3150,7 +3151,8 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
   REVISIONS
   Ver        Date        Author           Description
   ---------  ----------  ---------------  -------------------------------------
-  X.X        2019-04-30  wjim             [20190430_01] 신규생성
+  1.0        2019-04-30  wjim             [20190430_01] 신규생성
+  1.1        2024-11-05  10243054         [20241105_01] 3차 채권매각 일자변경(20241101)
   *****************************************************************************/
   PROCEDURE p_InsertRtsd0109CancelSave3 (
     v_Ord_No         IN RTSD0109.ORD_NO%TYPE,         /*계약번호              */
@@ -3313,7 +3315,7 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
     SELECT A.RECP_NU,
             A.CUST_NO, A.SALES_GROUP, A.SALES_OFFICE, A.AGENCY_CD, A.PAY_MTHD, A.PAY_DD, A.PERIOD_CD
     INTO    v_Recp_Nu, v_Cust_No, v_Sales_Group, v_Sales_Office, v_Agency_Cd, v_Pay_Mthd, v_Pay_Dd , v_Period_Cd 
-    FROM RTTEMPIWJ_210630_08 A
+    FROM RTTEMPIWJ_210630_08@NEXENBIZ_DEV A
     WHERE A.ORD_NO = v_Ord_No;
     
 --    -- 청구스케줄 Update - 중도완납
@@ -3331,7 +3333,8 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
            AND  A1.SCD_STAT = 'S'
     ) LOOP
     
-        IF cur1.DEMD_DT >= '20210601' OR cur1.ARRE_AMT > 0 THEN
+        IF cur1.DEMD_DT >= '20241101' OR cur1.ARRE_AMT > 0 THEN
+--        IF cur1.DEMD_DT >= '20210601' OR cur1.ARRE_AMT > 0 THEN
 --        IF cur1.DEMD_DT >= '20190401' OR cur1.ARRE_AMT > 0 THEN
             UPDATE RTSD0109
             SET    SCD_STAT = v_Scd_Stat,
@@ -3340,7 +3343,7 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
             WHERE  ORD_NO   = v_Ord_No
             AND    SCHD_SEQ = cur1.SCHD_SEQ;
             
-            INSERT INTO RTTEMPIWJ_210630_07 (COL_01, COL_02, COL_03) VALUES (v_Ord_No, cur1.SCHD_SEQ, 'U');
+            INSERT INTO RTTEMPIWJ_210630_07 (ORD_NO, SCHD_SEQ, MODE_CD) VALUES (v_Ord_No, cur1.SCHD_SEQ, 'U');
         END IF;
     
     END LOOP;
@@ -3527,7 +3530,8 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
         v_Sale_Vamt := v_Sale_Amt - NVL(v_Sale_Namt,0);
         
 --        v_Cancl_Day2 := '20190501';
-        v_Cancl_Day2 := '20210601';
+--        v_Cancl_Day2 := '20210601';
+        v_Cancl_Day2 := '20241101';
         
         IF v_Recp_Nu IS NULL THEN
             v_Recp_Nu  := TO_NUMBER(v_Period_Cd)+1;
@@ -3578,7 +3582,7 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
             RAISE e_Error;
         END IF;
 
-        INSERT INTO RTTEMPIWJ_210630_07 (COL_01, COL_02, COL_03) VALUES (v_Ord_No, v_Schd_Seq, 'I');
+        INSERT INTO RTTEMPIWJ_210630_07 (ORD_NO, SCHD_SEQ, MODE_CD) VALUES (v_Ord_No, v_Schd_Seq, 'I');
 
     END IF;
 
@@ -3605,4 +3609,3 @@ Pkg_Utility.p_ErrorFileWrite('Pkg_Rtsd0109.MfpProctest_07', v_Ord_No, v_Recp_Nu)
   END p_InsertRtsd0109CancelSave3;     
 
 END Pkg_Rtsd0109;
-/

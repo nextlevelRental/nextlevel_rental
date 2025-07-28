@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
 /******************************************************************************
    NAME:       PKG_RNT_TMP
-   PURPOSE:    ¡∂¡˜∞¸∏Æ COMMON PACKAGE TEMP VER
+   PURPOSE:    Ï°∞ÏßÅÍ¥ÄÎ¶¨ COMMON PACKAGE TEMP VER
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
 ******************************************************************************/
 
 /******************************************************************************
-    ¿Œºæ∆º∫Í ±‚√ ¡˝∞Ë √÷¡æºˆ«‡ ≥ªø™ ¡∂»∏(Temp Ver)
+    Ïù∏ÏÑºÌã∞Î∏å Í∏∞Ï¥àÏßëÍ≥Ñ ÏµúÏ¢ÖÏàòÌñâ ÎÇ¥Ïó≠ Ï°∞Ìöå(Temp Ver)
  ******************************************************************************/
     PROCEDURE PRC_LIST_INC_BAS_AGGR_TMP(  REF_CURSOR IN OUT SYS_REFCURSOR
-                                        , V_SLCM_YM  IN RTRE7040.SLCM_YM%TYPE /* ¡˝∞Ë≥‚ø˘ */
+                                        , V_SLCM_YM  IN RTRE7040.SLCM_YM%TYPE /* ÏßëÍ≥ÑÎÖÑÏõî */
     )
 
     IS
@@ -21,13 +21,13 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
     BEGIN
         OPEN REF_CURSOR FOR
             SELECT  DISTINCT
-                    '¥Î∏Æ¡°' AS COMM_TP_NM                                 /* ¡˝∞Ë±∏∫– */
+                    'ÎåÄÎ¶¨Ï†ê' AS COMM_TP_NM                                 /* ÏßëÍ≥ÑÍµ¨Î∂Ñ */
                   , (CASE WHEN PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID) IS NULL THEN REG_ID
                                                                               ELSE REG_ID || ' / ' || PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID)
 
                      END
-                    ) AS USER_NM                                        /* ºˆ«‡¿⁄ */
-                  , TO_CHAR(REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS EXEC_TM /* ºˆ«‡Ω√∞¢ */
+                    ) AS USER_NM                                        /* ÏàòÌñâÏûê */
+                  , TO_CHAR(REG_DT, 'YYYY-MM-DD HH24:MI:SS') AS EXEC_TM /* ÏàòÌñâÏãúÍ∞Å */
             FROM    RTRE7040
             WHERE   SLCM_YM = V_SLCM_YM
             AND     COMM_TP = 'A1'
@@ -38,7 +38,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
                               )
             UNION ALL
             SELECT  DISTINCT
-                    '¥Î∏Æ¡°' AS COMM_TP_NM
+                    'ÎåÄÎ¶¨Ï†ê' AS COMM_TP_NM
                   , ''    AS USER_NM
                   , ''    AS EXEC_TM
             FROM    RTRE7040
@@ -49,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
                               )
             UNION ALL
             SELECT  DISTINCT
-                    'πÊπÆ∆«∏≈' AS COMM_TP_NM
+                    'Î∞©Î¨∏ÌåêÎß§' AS COMM_TP_NM
                   , (CASE WHEN PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID) IS NULL THEN REG_ID
                                                                               ELSE REG_ID || ' / ' || PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID)
 
@@ -66,7 +66,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
                               )
             UNION ALL
             SELECT  DISTINCT
-                    'πÊπÆ∆«∏≈' AS COMM_TP_NM
+                    'Î∞©Î¨∏ÌåêÎß§' AS COMM_TP_NM
                   , ''     AS USER_NM
                   , ''     AS EXEC_TM
             FROM    RTRE7040
@@ -77,7 +77,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
                               )
             UNION ALL
             SELECT  DISTINCT
-                    '∑Œµæ»'  AS COMM_TP_NM
+                    'Î°úÎîîÏïà'  AS COMM_TP_NM
                   , (CASE WHEN PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID) IS NULL THEN REG_ID
                                                                               ELSE REG_ID || ' / ' || PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID)
 
@@ -94,7 +94,7 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
                               )
             UNION ALL
             SELECT  DISTINCT
-                    '∑Œµæ»' AS COMM_TP_NM
+                    'Î°úÎîîÏïà' AS COMM_TP_NM
                   , ''    AS USER_NM
                   , ''    AS EXEC_TM
             FROM    RTRE7040
@@ -107,30 +107,30 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
     END PRC_LIST_INC_BAS_AGGR_TMP;
 
 /******************************************************************************
-    ¿Œºæ∆º∫Í / ¿Â∑¡±› ∆«∏≈¡˝∞Ë √÷¡æºˆ«‡ ≥ªø™ ¡∂»∏(Temp Ver)
+    Ïù∏ÏÑºÌã∞Î∏å / Ïû•Î†§Í∏à ÌåêÎß§ÏßëÍ≥Ñ ÏµúÏ¢ÖÏàòÌñâ ÎÇ¥Ïó≠ Ï°∞Ìöå(Temp Ver)
  ******************************************************************************/
     PROCEDURE PRC_LIST_INC_SBS_SLS_AGGR_TMP(  REF_CURSOR IN OUT SYS_REFCURSOR
-                                            , V_SLCM_YM  IN VARCHAR2 /* ¡˝∞Ë≥‚ø˘ */
-                                            , V_AGG_GRP  IN VARCHAR2 /* ¡˝∞Ë±◊∑Ï */
+                                            , V_SLCM_YM  IN VARCHAR2 /* ÏßëÍ≥ÑÎÖÑÏõî */
+                                            , V_AGG_GRP  IN VARCHAR2 /* ÏßëÍ≥ÑÍ∑∏Î£π */
     )
 
     IS
 
     BEGIN
         OPEN REF_CURSOR FOR
-          SELECT  TO_CHAR(TO_DATE(SLCM_YM, 'YYYY-MM'), 'YYYY-MM') AS SLCM_YM /* ¡˝∞Ë≥‚ø˘ */
-                , AGENCY_CD                                                  /* ∆«∏≈¿Œƒ⁄µÂ */
-                , AGENCY_NM                                                  /* ∆«∏≈¿Œ∏Ì */
-                , USER_GRP_CD                                                /* ∆«∏≈¿Œ±∏∫–ƒ⁄µÂ */
-                , USER_GRP_NM                                                /* ∆«∏≈¿Œ±∏∫–∏Ì */
-                , AGNC_INCN                                                  /* ¥Î∏Æ¡°¿Œºæ∆º∫Í */
-                , AFL_VSLS_INCN                                              /* ¡¶»ﬁπÊ∆«¿Œºæ∆º∫Í */
-                , RDN_INCN                                                   /* ∑Œµæ»¿Œºæ∆º∫Í */
-                , AGNC_SBS                                                   /* ¥Î∏Æ¡°¿Â∑¡±› */
-                , AFL_VSLS_SBS                                               /* ¡¶»ﬁπÊ∆«¿Â∑¡±› */
-                , RDN_SBS                                                    /* ∑Œµæ»¿Â∑¡±› */
-                , USER_NM                                                    /* ºˆ«‡¿⁄ */
-                , EXEC_TM                                                    /* ºˆ«‡Ω√∞¢ */
+          SELECT  TO_CHAR(TO_DATE(SLCM_YM, 'YYYY-MM'), 'YYYY-MM') AS SLCM_YM /* ÏßëÍ≥ÑÎÖÑÏõî */
+                , AGENCY_CD                                                  /* ÌåêÎß§Ïù∏ÏΩîÎìú */
+                , AGENCY_NM                                                  /* ÌåêÎß§Ïù∏Î™Ö */
+                , USER_GRP_CD                                                /* ÌåêÎß§Ïù∏Íµ¨Î∂ÑÏΩîÎìú */
+                , USER_GRP_NM                                                /* ÌåêÎß§Ïù∏Íµ¨Î∂ÑÎ™Ö */
+                , AGNC_INCN                                                  /* ÎåÄÎ¶¨Ï†êÏù∏ÏÑºÌã∞Î∏å */
+                , AFL_VSLS_INCN                                              /* Ï†úÌú¥Î∞©ÌåêÏù∏ÏÑºÌã∞Î∏å */
+                , RDN_INCN                                                   /* Î°úÎîîÏïàÏù∏ÏÑºÌã∞Î∏å */
+                , AGNC_SBS                                                   /* ÎåÄÎ¶¨Ï†êÏû•Î†§Í∏à */
+                , AFL_VSLS_SBS                                               /* Ï†úÌú¥Î∞©ÌåêÏû•Î†§Í∏à */
+                , RDN_SBS                                                    /* Î°úÎîîÏïàÏû•Î†§Í∏à */
+                , USER_NM                                                    /* ÏàòÌñâÏûê */
+                , EXEC_TM                                                    /* ÏàòÌñâÏãúÍ∞Å */
           FROM   (SELECT  A.SLCM_YM
                         , A.AGENCY_CD
                         , B.USER_NM                                            AS AGENCY_NM
@@ -167,35 +167,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RNT_TMP AS
     END PRC_LIST_INC_SBS_SLS_AGGR_TMP;
 
 /******************************************************************************
-    ¡˝∞Ëºˆ«‡¿Ã∑¬ ¡∂»∏(Temp Ver)
+    ÏßëÍ≥ÑÏàòÌñâÏù¥Î†• Ï°∞Ìöå(Temp Ver)
  ******************************************************************************/
     PROCEDURE PRC_LIST_AGGR_EXEC_HST_TMP(  REF_CURSOR IN OUT SYS_REFCURSOR
-                                         , V_SLCM_YM  IN RTHS7000.SLCM_YM%TYPE /* ¡˝∞Ë≥‚ø˘ */
+                                         , V_SLCM_YM  IN RTHS7000.SLCM_YM%TYPE /* ÏßëÍ≥ÑÎÖÑÏõî */
     )
 
     IS
 
     BEGIN
         OPEN REF_CURSOR FOR
-            SELECT  SLCM_YM      /* ∏∂∞®≥‚ø˘ */
+            SELECT  SLCM_YM      /* ÎßàÍ∞êÎÖÑÏõî */
                   , (CASE WHEN PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID) IS NULL THEN REG_ID
                                                                               ELSE REG_ID || ' / ' || PKG_RTCM0001.f_sRtcm0001UserNm(REG_ID)
 
                      END
-                    ) AS USER_NM /* ºˆ«‡¿⁄ */
-                  , SLS_CD       /* ∆«∏≈ƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R060', SLS_CD) AS SLS_NM /* ∆«∏≈ƒ⁄µÂ∏Ì */
-                  , BNS_CD       /* ∫∏≥ Ω∫ƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R061', BNS_CD) AS BNS_NM /* ∫∏≥ Ω∫ƒ⁄µÂ∏Ì */
-                  , PYM_CD       /* ¡ˆ±ﬁƒ⁄µÂ */
-                  , PKG_RTCM0051.f_sRtcm0051CodeName('R062', PYM_CD) AS PYM_NM /* ¡ˆ±ﬁƒ⁄µÂ∏Ì */
-                  , START_TM     /* Ω√¿€Ω√∞£ */
-                  , END_TM       /* ¡æ∑·Ω√∞£ */
-                  , TO_CHAR(TO_TIMESTAMP(END_TM, 'YYYY-MM-DD HH24:MI:SS.FF3'), 'YYYY-MM-DD HH24:MI:SS.FF3') AS EXEC_TM /* ºˆ«‡Ω√∞¢ */
-                  , APL_CNT      /* ¿˚øÎ∞«ºˆ */
+                    ) AS USER_NM /* ÏàòÌñâÏûê */
+                  , SLS_CD       /* ÌåêÎß§ÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R060', SLS_CD) AS SLS_NM /* ÌåêÎß§ÏΩîÎìúÎ™Ö */
+                  , BNS_CD       /* Î≥¥ÎÑàÏä§ÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R061', BNS_CD) AS BNS_NM /* Î≥¥ÎÑàÏä§ÏΩîÎìúÎ™Ö */
+                  , PYM_CD       /* ÏßÄÍ∏âÏΩîÎìú */
+                  , PKG_RTCM0051.f_sRtcm0051CodeName('R062', PYM_CD) AS PYM_NM /* ÏßÄÍ∏âÏΩîÎìúÎ™Ö */
+                  , START_TM     /* ÏãúÏûëÏãúÍ∞Ñ */
+                  , END_TM       /* Ï¢ÖÎ£åÏãúÍ∞Ñ */
+                  , TO_CHAR(TO_TIMESTAMP(END_TM, 'YYYY-MM-DD HH24:MI:SS.FF3'), 'YYYY-MM-DD HH24:MI:SS.FF3') AS EXEC_TM /* ÏàòÌñâÏãúÍ∞Å */
+                  , APL_CNT      /* Ï†ÅÏö©Í±¥Ïàò */
             FROM    RTHS7000
             WHERE   SLCM_YM = V_SLCM_YM;
 
     END PRC_LIST_AGGR_EXEC_HST_TMP;
 END PKG_RNT_TMP;
-/

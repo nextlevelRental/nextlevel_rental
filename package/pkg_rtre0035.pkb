@@ -1549,7 +1549,8 @@ DBMS_OUTPUT.PUT_LINE('CUR_0110.v_Recp_Amt :: ' || v_Recp_Amt);
         END IF;
            
         v_Sbs_Iseq := 0;
-        Pkg_Rtre0036.p_IUDRtre0036('I', v_Recv_Seq, v_Sbs_Iseq, TO_CHAR(SYSDATE, 'YYYYMMDD'), v_Ord_No, v_Cust_No, v_Recp_Amt * -1, '90', v_Recp_Pay, '41', 'S', v_Recv_Seq_New, 1, v_Reg_Id, v_Success_Code, v_Return_Message, v_ErrorText);
+        
+        Pkg_Rtre0036.p_IUDRtre0036('I', v_Recv_Seq_New, v_Sbs_Iseq, TO_CHAR(SYSDATE, 'YYYYMMDD'), v_Ord_No, v_Cust_No, v_Recp_Amt * -1, '90', v_Recp_Pay, '41', 'S', v_Recv_Seq, 1, v_Reg_Id, v_Success_Code, v_Return_Message, v_ErrorText);
         IF v_Success_Code = -1 THEN
             v_Return_Message := '선수금 수납정리내역 Insert(RTRE0036) 실패!!(수납거래번호-'||v_Recv_Seq||')';
             RAISE e_Error;
@@ -1579,4 +1580,3 @@ DBMS_OUTPUT.PUT_LINE('CUR_0110.v_Recp_Amt :: ' || v_Recp_Amt);
   END p_UpdateRtre0035Refund;
       
 END Pkg_Rtre0035;
-/

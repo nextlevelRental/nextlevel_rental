@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0030 AS
 /*******************************************************************************
    NAME:       Pkg_Rtcm0030
-   PURPOSE:    °øÁö»çÇ×
+   PURPOSE:    ê³µì§€ì‚¬í•­
 
    REVISIONS:
    Ver        Date        Author           Description
@@ -10,95 +10,94 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtcm0030 AS
 *******************************************************************************/
 
   /*****************************************************************************
-  -- °øÁö»çÇ× Count
+  -- ê³µì§€ì‚¬í•­ Count
   *****************************************************************************/
   FUNCTION f_sRtcm0030Count(
-    v_Ntc_Seq    IN     RTCM0030.NTC_SEQ%TYPE        /* °øÁö»çÇ× ¼ø¹ø         */
+    v_Ntc_Seq    IN     RTCM0030.NTC_SEQ%TYPE        /* ê³µì§€ì‚¬í•­ ìˆœë²ˆ         */
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- °øÁö»çÇ× Select
+  -- ê³µì§€ì‚¬í•­ Select
   *****************************************************************************/
   PROCEDURE p_sRtcm0030 (
     Ref_Cursor   IN OUT SYS_REFCURSOR,
-    v_Title          IN RTCM0030.TITLE%TYPE,          /*Á¦¸ñ                  */
-    v_Reg_Fdt        IN VARCHAR,                      /*µî·ÏÀÏFROM            */
-    v_Reg_Tdt        IN VARCHAR,                      /*µî·ÏÀÏTO              */
-    v_User_Nm        IN RTCM0001.USER_NM%TYPE         /*ÀÛ¼ºÀÚ                */
+    v_Title          IN RTCM0030.TITLE%TYPE,          /*ì œëª©                  */
+    v_Reg_Fdt        IN VARCHAR,                      /*ë“±ë¡ì¼FROM            */
+    v_Reg_Tdt        IN VARCHAR,                      /*ë“±ë¡ì¼TO              */
+    v_User_Nm        IN RTCM0001.USER_NM%TYPE         /*ìž‘ì„±ìž                */
     );
 
   /*****************************************************************************
-  -- °øÁö»çÇ× Insert
+  -- ê³µì§€ì‚¬í•­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRtcm0030(
-    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*°øÁö±¸ºÐ(¾È³»/¼³¸í...)*/
-    v_Title          IN RTCM0030.TITLE%TYPE,          /*Á¦¸ñ                  */
-    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*°øÁö³»¿ë              */
-    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*°øÁö°Ô½Ã ½ÃÀÛÀÏ       */
-    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*°øÁö°Ô½Ã Á¾·áÀÏ       */
-    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*Á¶È¸°Ç¼ö              */
-    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ Á¤º¸         */
-    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*ê³µì§€êµ¬ë¶„(ì•ˆë‚´/ì„¤ëª…...)*/
+    v_Title          IN RTCM0030.TITLE%TYPE,          /*ì œëª©                  */
+    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*ê³µì§€ë‚´ìš©              */
+    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*ê³µì§€ê²Œì‹œ ì‹œìž‘ì¼       */
+    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*ê³µì§€ê²Œì‹œ ì¢…ë£Œì¼       */
+    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*ì¡°íšŒê±´ìˆ˜              */
+    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼ ì •ë³´         */
+    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
 
 
   /*****************************************************************************
-  -- °øÁö»çÇ× Update
+  -- ê³µì§€ì‚¬í•­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRtcm0030(
-    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*°øÁö¼ø¹ø              */
-    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*°øÁö±¸ºÐ(¾È³»/¼³¸í...)*/
-    v_Title          IN RTCM0030.TITLE%TYPE,          /*Á¦¸ñ                  */
-    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*°øÁö³»¿ë              */
-    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*°øÁö°Ô½Ã ½ÃÀÛÀÏ       */
-    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*°øÁö°Ô½Ã Á¾·áÀÏ       */
-    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*Á¶È¸°Ç¼ö              */
-    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ Á¤º¸         */
-    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */ 
+    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*ê³µì§€ìˆœë²ˆ              */
+    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*ê³µì§€êµ¬ë¶„(ì•ˆë‚´/ì„¤ëª…...)*/
+    v_Title          IN RTCM0030.TITLE%TYPE,          /*ì œëª©                  */
+    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*ê³µì§€ë‚´ìš©              */
+    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*ê³µì§€ê²Œì‹œ ì‹œìž‘ì¼       */
+    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*ê³µì§€ê²Œì‹œ ì¢…ë£Œì¼       */
+    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*ì¡°íšŒê±´ìˆ˜              */
+    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼ ì •ë³´         */
+    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */ 
     v_ErrorText      OUT VARCHAR2   
     ) RETURN NUMBER;
   
   /*****************************************************************************
-  -- °øÁö»çÇ× Delete
+  -- ê³µì§€ì‚¬í•­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRtcm0030(
-    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*°øÁö¼ø¹ø              */
-    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */
+    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*ê³µì§€ìˆœë²ˆ              */
+    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */
     v_ErrorText      OUT VARCHAR2
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- °øÁö»çÇ× °ü¸®
+  -- ê³µì§€ì‚¬í•­ ê´€ë¦¬
   *****************************************************************************/
   PROCEDURE p_IUDRtcm0030(
-    v_Comm_Dvsn      IN CHAR,                         /*Ã³¸®±¸ºÐ(I,U,D)       */
-    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*°øÁö¼ø¹ø              */
-    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*°øÁö±¸ºÐ(¾È³»/¼³¸í...)*/
-    v_Title          IN RTCM0030.TITLE%TYPE,          /*Á¦¸ñ                  */
-    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*°øÁö³»¿ë              */
-    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*°øÁö°Ô½Ã ½ÃÀÛÀÏ       */
-    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*°øÁö°Ô½Ã Á¾·áÀÏ       */
-    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*Á¶È¸°Ç¼ö              */
-    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*Ã·ºÎÆÄÀÏ Á¤º¸         */
-    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*»èÁ¦¿©ºÎ              */
-    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*µî·ÏÀÚ ID             */    
+    v_Comm_Dvsn      IN CHAR,                         /*ì²˜ë¦¬êµ¬ë¶„(I,U,D)       */
+    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*ê³µì§€ìˆœë²ˆ              */
+    v_Ntc_Type       IN RTCM0030.NTC_TYPE%TYPE,       /*ê³µì§€êµ¬ë¶„(ì•ˆë‚´/ì„¤ëª…...)*/
+    v_Title          IN RTCM0030.TITLE%TYPE,          /*ì œëª©                  */
+    v_Contents       IN RTCM0030.CONTENTS%TYPE,       /*ê³µì§€ë‚´ìš©              */
+    v_Start_Dt       IN RTCM0030.START_DT%TYPE,       /*ê³µì§€ê²Œì‹œ ì‹œìž‘ì¼       */
+    v_End_Dt         IN RTCM0030.END_DT%TYPE,         /*ê³µì§€ê²Œì‹œ ì¢…ë£Œì¼       */
+    v_Read_Cnt       IN RTCM0030.READ_CNT%TYPE,       /*ì¡°íšŒê±´ìˆ˜              */
+    v_Attch_Fl_Seq   IN RTCM0030.ATTCH_FL_SEQ%TYPE,   /*ì²¨ë¶€íŒŒì¼ ì •ë³´         */
+    v_Del_Yn         IN RTCM0030.DEL_YN%TYPE,         /*ì‚­ì œì—¬ë¶€              */
+    v_Reg_Id         IN RTCM0030.REG_ID%TYPE,         /*ë“±ë¡ìž ID             */    
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
     );
 
   /*****************************************************************************
-  -- °øÁö»çÇ× Update - °øÁö»çÇ× Á¶È¸°Ç¼ö ¾÷µ¥ÀÌÆ®
+  -- ê³µì§€ì‚¬í•­ Update - ê³µì§€ì‚¬í•­ ì¡°íšŒê±´ìˆ˜ ì—…ë°ì´íŠ¸
   *****************************************************************************/
   PROCEDURE p_UpdateRtcm0030ReadCnt(
-    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*°øÁö¼ø¹ø              */
+    v_Ntc_Seq        IN RTCM0030.NTC_SEQ%TYPE,        /*ê³µì§€ìˆœë²ˆ              */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2 
     );
     
 END Pkg_Rtcm0030;
-/

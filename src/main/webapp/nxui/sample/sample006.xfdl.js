@@ -25,11 +25,11 @@
             obj = new Div("Div00", "absolute", "55", "54", "710", "293", null, null, this);
             obj.set_taborder("0");
             obj.set_text("Div00");
-            obj.set_url("extComp::WebEditor.xfdl");
             obj.set_scrollbars("none");
             obj.style.set_background("#e4e5e9ff");
             obj.style.set_border("0 none #808080ff");
             obj.getSetter("titletext").set("웹에디터샘플");
+            obj.set_url("extComp::WebEditor.xfdl");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button01", "absolute", "6.35%", "8", null, "39", "76.83%", null, this);

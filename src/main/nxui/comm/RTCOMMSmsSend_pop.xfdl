@@ -49,6 +49,8 @@
  * 2017-09-22	wjim		[20170922_03] 제휴카드(농협) 추가 및 SMS메시지 변경
  * 2017-10-17	wjim		[20171017_01] 제휴카드(하나) 추가 및 SMS메시지 변경
  * 2019-02-20	wjim		[20190220_01] 제휴카드(우리) 연락처 수정
+ * 2024-08-28	10243054	[20240828_01] 제휴카드(국민, 우리, 롯데, 신한, 농협, 하나) SMS메시지 변경
+ * 2024-09-06	10243054	[20240906_01] 인코딩 깨짐현상 발송 tran에서 encodeURIComponent코드 제거
  ***************************************************************************************************/
 include "lib::comLib.xjs"; 
 
@@ -160,36 +162,26 @@ this.btn_msgCnfm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
 
 	switch (msgDiv02) {
 		case "0101":
-// 			sndMsg  = "[제휴카드] 넥센타이어 국민카드연락처 1644-8388";
-// 			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
 			sndMsg = "[제휴카드] 넥센타이어 국민카드연락처 1644-8388";
-			sndMsg += "타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
-			sndMsg += "결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
-// 			sndMsg += "-. 22년 6월 30일까지 신청 URL 통해서 신청 시 30만원 구간 3천원 추가 할인 (월 14,000원 청구할인, 최대 12개월)";
-// 			sndMsg += "-. 프로모션 URL : https://bit.ly/39WQPOq (URL 클릭 후 '카드 신청')";
-// 			sndMsg += "-. 가족카드 제외, 동일카드 재발급/ 기 보유 회원 및 해지 후 1년 미경과자 제외";
+			sndMsg += "\n\n타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg += "\n\n결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
 			this.fMsgId = "S014";
 			this.fEtcChar4 = "RENTAL00000000000055";
 			break;
-		// 제휴카드 > 우리카드 
-		// - 연락처 수정 [20190220_01]		
-		// - 문구 수정 [20200402_01]
+			
 		// - 문구 수정 [20220621_01] LG U+통신사인경우 URL첨부 문자 미발송되는 현상
 		case "0102":
-// 			sndMsg  = "[제휴카드] 넥센타이어 우리카드 전용 ARS 1800-0635 번";
-// 			sndMsg += "\n또는 모바일 카드신청 URL주소 https://bit.ly/3r1Kh6O 통해 카드신청";
-// 			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
-//          sndMsg  = "[제휴카드] 넥센타이어 우리카드 전용 ARS 1800-0635 번";
-			sndMsg  = "[제휴카드] 넥센타이어 우리카드 전용 ARS 1800-4136 번";
-			sndMsg += "\n카드 발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg = "[제휴카드] 넥센타이어 우리카드연락처 1800-4136";
+			sndMsg += "\n\n타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg += "\n\n결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
 			this.fMsgId = "S014";
 			this.fEtcChar4 = "RENTAL00000000000056";
-			break;			
-			
+			break;
 			
 		case "0103":
-			sndMsg  = "[제휴카드] 넥센타이어 롯데카드연락처 1899-4082";
-			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg = "[제휴카드] 넥센타이어 롯데카드연락처 1899-4082";
+			sndMsg += "\n\n타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg += "\n\n결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
 			this.fMsgId = "S014";
 			this.fEtcChar4 = "RENTAL00000000000057";
 			break;
@@ -202,15 +194,17 @@ this.btn_msgCnfm_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
 			break;
 		// [20170922_03]
 		case "0105":
-			sndMsg  = "[제휴카드] 넥센타이어 농협카드연락처 1644-2866";
-			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg = "[제휴카드] 넥센타이어 농협카드연락처 1644-2866";
+			sndMsg += "\n\n타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg += "\n\n결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
 			this.fMsgId = "S014";
 			this.fEtcChar4 = "RENTAL00000000000059";
 			break;
 		// [20171017_01]
 		case "0106":
-			sndMsg  = "[제휴카드] 넥센타이어 하나카드연락처 1599-6538";
-			sndMsg += "\n발급후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg = "[제휴카드] 넥센타이어 하나카드연락처 1599-6538";
+			sndMsg += "\n\n타이어 장착 완료 후 넥센고객센터(1855-0100) 연락주셔서 결제변경 꼭 부탁드립니다.";
+			sndMsg += "\n\n결제 변경은 장착 완료 이후에 가능한 점 참고 부탁드립니다.";
 			this.fMsgId = "S014";
 			this.fEtcChar4 = "RENTAL00000000000060";
 			break;
@@ -336,7 +330,7 @@ this.btn_send_onclick = function(obj:Button,  e:nexacro.ClickEventInfo) {
 		sArgs += Ex.util.setParam("reservedDttm", "00000000000000");		// 예약전송시간 (yyyyMMddHHmmss, 즉시발송의 경우 '0'으로 세팅하면 DB에서 현재시간으로 전환)
 		sArgs += Ex.util.setParam("rcvPhnId"    , this.ed_rcvPhnNo.text);	// 받는 전화번호 ('-', 공백없이 숫자형태만 입력)
 		sArgs += Ex.util.setParam("sndPhnId"    , this.ed_sndPhnNo.text);	// 보내는 전화번호 ('-', 공백없이 숫자형태만 입력)
-		sArgs += Ex.util.setParam("sndMsg"      , encodeURIComponent(this.ta_smsMsg.value));	// 메시지내용 (최대 2000 byte)
+		sArgs += Ex.util.setParam("sndMsg"      , this.ta_smsMsg.value);	// 메시지내용 (최대 2000 byte)
 		sArgs += Ex.util.setParam("etcChar1"    , this.fMsgId);				// 사용자지정1(=메시지ID)
 		sArgs += Ex.util.setParam("etcChar2"    , this.fEtcChar2);			// 사용자지정2
 		sArgs += Ex.util.setParam("etcChar3"    , this.fEtcChar3);			// 사용자지정3

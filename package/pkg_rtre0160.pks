@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0160 AS
 /*******************************************************************************
     NAME    : Pkg_Rtre0160
-    PURPOSE : º±≥≥≥ªø™ ¿˙¿Â
+    PURPOSE : ÏÑ†ÎÇ©ÎÇ¥Ïó≠ Ï†ÄÏû•
     REVISIONS
     Ver        Date        Author           Description
     ---------  ----------  ---------------  -------------------------------------
@@ -9,82 +9,82 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0160 AS
  *******************************************************************************/
 
 /*****************************************************************************
- -- º±≥≥∞≥ø˘ º±≈√«◊∏Ò ¡∂»∏
+ -- ÏÑ†ÎÇ©Í∞úÏõî ÏÑ†ÌÉùÌï≠Î™© Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrptMonList(Ref_Cursor IN OUT SYS_REFCURSOR);
 
 /*****************************************************************************
- -- º±≥≥±›æ◊∞ËªÍ
+ -- ÏÑ†ÎÇ©Í∏àÏï°Í≥ÑÏÇ∞
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrePymntAmtCalc(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                         , v_Ord_No   IN RTSD0109.ORD_NO%TYPE  /* ∞Ëæ‡π¯»£ */
-                                         , v_Dc_Cd    IN RTSD0025.DC_CD%TYPE   /* «“¿Œƒ⁄µÂ */
-                                         , v_Prpt_Mon IN RTSD0025.MAX_CNT%TYPE /* º±≥≥∞≥ø˘ */
+                                         , v_Ord_No   IN RTSD0109.ORD_NO%TYPE  /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                         , v_Dc_Cd    IN RTSD0025.DC_CD%TYPE   /* Ìï†Ïù∏ÏΩîÎìú */
+                                         , v_Prpt_Mon IN RTSD0025.MAX_CNT%TYPE /* ÏÑ†ÎÇ©Í∞úÏõî */
                                         );
 
 /*****************************************************************************
- -- ≥≥∫Œøπ¡§ªÛºº ¡∂»∏
+ -- ÎÇ©Î∂ÄÏòàÏ†ïÏÉÅÏÑ∏ Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PymntSchdlDtlList(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                           , v_Ord_No   IN RTSD0109.ORD_NO%TYPE  /* ∞Ëæ‡π¯»£ */
-                                           , v_Dc_Cd    IN RTSD0025.DC_CD%TYPE   /* «“¿Œƒ⁄µÂ */
-                                           , v_Prpt_Mon IN RTSD0025.MAX_CNT%TYPE /* º±≥≥∞≥ø˘ */
+                                           , v_Ord_No   IN RTSD0109.ORD_NO%TYPE  /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                           , v_Dc_Cd    IN RTSD0025.DC_CD%TYPE   /* Ìï†Ïù∏ÏΩîÎìú */
+                                           , v_Prpt_Mon IN RTSD0025.MAX_CNT%TYPE /* ÏÑ†ÎÇ©Í∞úÏõî */
                                           );
 
 /*******************************************************************************
- -- º±≥≥ø‰√ª¿œ∑√π¯»£ √§π¯
+ -- ÏÑ†ÎÇ©ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏ Ï±ÑÎ≤à
  *******************************************************************************/
     FUNCTION f_sRtre0160PrptSeq
 
     RETURN NUMBER;
 
 /*******************************************************************************
- -- º±≥≥≥ªø™ Insert
+ -- ÏÑ†ÎÇ©ÎÇ¥Ïó≠ Insert
  *******************************************************************************/
-    PROCEDURE p_InsertRtre0160PrePymntMst(  v_Prpt_Seq       IN  RTRE0160.PRPT_SEQ%TYPE       /* º±≥≥ø‰√ª¿œ∑√π¯»£ */
-                                          , v_Ord_No         IN  RTRE0160.ORD_NO%TYPE         /* ∞Ëæ‡π¯»£ */
-                                          , v_Cust_No        IN  RTRE0160.CUST_NO%TYPE        /* ∞Ì∞¥π¯»£ */
-                                          , v_Recp_Fg        IN  RTRE0160.RECP_FG%TYPE        /* ºˆ≥≥¿Ø«¸ */
-                                          , v_Recp_Pay       IN  RTRE0160.RECP_PAY%TYPE       /* ºˆ≥≥πÊπ˝ */
-                                          , v_Recv_Seq       IN  RTRE0160.RECV_SEQ%TYPE       /* ºˆ≥≥∞≈∑°π¯»£ */
-                                          , v_Recp_Trno      IN  RTRE0160.RECP_TRNO%TYPE      /* ≥≥∫Œ∫∞ºˆ≥≥∞Ì¿Øπ¯»£ */
-                                          , v_Prpt_Mnct      IN  RTRE0160.PRPT_MNCT%TYPE      /* º±≥≥∞≥ø˘ */
-                                          , v_Prpt_Dscn_Rt   IN  RTRE0160.PRPT_DSCN_RT%TYPE   /* º±≥≥«“¿Œ¿≤ */
-                                          , v_Tot_Rnt_Amt    IN  RTRE0160.TOT_RNT_AMT%TYPE    /* √—∑ª≈ª±›æ◊ */
-                                          , v_Tot_Prpt_Dcamt IN  RTRE0160.TOT_PRPT_DCAMT%TYPE /* √—«“¿Œ±›æ◊ */
-                                          , v_Tot_Prpt_Amt   IN  RTRE0160.TOT_PRPT_AMT%TYPE   /* ≥≥¿‘øπ¡§±›æ◊ */
-                                          , v_Prpt_Blnc_Amt  IN  RTRE0160.PRPT_BLNC_AMT%TYPE  /* πÃ≥≥±›æ◊ */
-                                          , v_Prpt_Sttg_Tmbt IN  RTRE0160.PRPT_STTG_TMBT%TYPE /* º±≥≥Ω√¿€»∏¬˜ */
-                                          , v_Prpt_Fnsh_Tmbt IN  RTRE0160.PRPT_FNSH_TMBT%TYPE /* º±≥≥¡æ∑·»∏¬˜ */
-                                          , v_Recv_Day       IN  RTRE0160.RECV_DAY%TYPE       /* º±≥≥ºˆ≥≥¿œ¿⁄ */
-                                          , v_Reg_Id         IN  RTRE0160.REG_ID%TYPE         /* µÓ∑œ¿⁄ ID */
+    PROCEDURE p_InsertRtre0160PrePymntMst(  v_Prpt_Seq       IN  RTRE0160.PRPT_SEQ%TYPE       /* ÏÑ†ÎÇ©ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏ */
+                                          , v_Ord_No         IN  RTRE0160.ORD_NO%TYPE         /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                          , v_Cust_No        IN  RTRE0160.CUST_NO%TYPE        /* Í≥†Í∞ùÎ≤àÌò∏ */
+                                          , v_Recp_Fg        IN  RTRE0160.RECP_FG%TYPE        /* ÏàòÎÇ©Ïú†Ìòï */
+                                          , v_Recp_Pay       IN  RTRE0160.RECP_PAY%TYPE       /* ÏàòÎÇ©Î∞©Î≤ï */
+                                          , v_Recv_Seq       IN  RTRE0160.RECV_SEQ%TYPE       /* ÏàòÎÇ©Í±∞ÎûòÎ≤àÌò∏ */
+                                          , v_Recp_Trno      IN  RTRE0160.RECP_TRNO%TYPE      /* ÎÇ©Î∂ÄÎ≥ÑÏàòÎÇ©Í≥†Ïú†Î≤àÌò∏ */
+                                          , v_Prpt_Mnct      IN  RTRE0160.PRPT_MNCT%TYPE      /* ÏÑ†ÎÇ©Í∞úÏõî */
+                                          , v_Prpt_Dscn_Rt   IN  RTRE0160.PRPT_DSCN_RT%TYPE   /* ÏÑ†ÎÇ©Ìï†Ïù∏Ïú® */
+                                          , v_Tot_Rnt_Amt    IN  RTRE0160.TOT_RNT_AMT%TYPE    /* Ï¥ùÎ†åÌÉàÍ∏àÏï° */
+                                          , v_Tot_Prpt_Dcamt IN  RTRE0160.TOT_PRPT_DCAMT%TYPE /* Ï¥ùÌï†Ïù∏Í∏àÏï° */
+                                          , v_Tot_Prpt_Amt   IN  RTRE0160.TOT_PRPT_AMT%TYPE   /* ÎÇ©ÏûÖÏòàÏ†ïÍ∏àÏï° */
+                                          , v_Prpt_Blnc_Amt  IN  RTRE0160.PRPT_BLNC_AMT%TYPE  /* ÎØ∏ÎÇ©Í∏àÏï° */
+                                          , v_Prpt_Sttg_Tmbt IN  RTRE0160.PRPT_STTG_TMBT%TYPE /* ÏÑ†ÎÇ©ÏãúÏûëÌöåÏ∞® */
+                                          , v_Prpt_Fnsh_Tmbt IN  RTRE0160.PRPT_FNSH_TMBT%TYPE /* ÏÑ†ÎÇ©Ï¢ÖÎ£åÌöåÏ∞® */
+                                          , v_Recv_Day       IN  RTRE0160.RECV_DAY%TYPE       /* ÏÑ†ÎÇ©ÏàòÎÇ©ÏùºÏûê */
+                                          , v_Reg_Id         IN  RTRE0160.REG_ID%TYPE         /* Îì±Î°ùÏûê ID */
                                           , v_Success_Code   OUT NUMBER
                                           , v_Return_Message OUT VARCHAR2
                                           , v_Error_Text     OUT VARCHAR2
                                          );
 
 /*******************************************************************************
- -- º±≥≥≥ªø™ ªÛºº Insert
+ -- ÏÑ†ÎÇ©ÎÇ¥Ïó≠ ÏÉÅÏÑ∏ Insert
  *******************************************************************************/
-   PROCEDURE p_InsertRtre0161PrePymntDtl(  v_Prpt_Seq       IN  RTRE0161.PRPT_SEQ%TYPE       /* º±≥≥ø‰√ª¿œ∑√π¯»£ */
-                                         , v_Ord_No         IN  RTRE0161.ORD_NO%TYPE         /* ∞Ëæ‡π¯»£ */
-                                         , v_Schd_Seq_I     IN  RTRE0161.SCHD_SEQ%TYPE       /* Ω∫ƒ…¡Ïº¯π¯ Insert */
-                                         , v_Sale_Amt       IN  RTRE0161.SALE_AMT%TYPE       /* ø˘¡§±‚±›æ◊ */
-                                         , v_Prpt_Seq_Dcamt IN  RTRE0161.PRPT_SEQ_DCAMT%TYPE /* º±≥≥«“¿Œ±›æ◊(»∏¬˜∫∞ ¿ßæ‡±›) */
-                                         , v_Reg_Id         IN  RTRE0161.REG_ID%TYPE         /* µÓ∑œ¿⁄ ID */
+   PROCEDURE p_InsertRtre0161PrePymntDtl(  v_Prpt_Seq       IN  RTRE0161.PRPT_SEQ%TYPE       /* ÏÑ†ÎÇ©ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏ */
+                                         , v_Ord_No         IN  RTRE0161.ORD_NO%TYPE         /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                         , v_Schd_Seq_I     IN  RTRE0161.SCHD_SEQ%TYPE       /* Ïä§ÏºÄÏ•¥ÏàúÎ≤à Insert */
+                                         , v_Sale_Amt       IN  RTRE0161.SALE_AMT%TYPE       /* ÏõîÏ†ïÍ∏∞Í∏àÏï° */
+                                         , v_Prpt_Seq_Dcamt IN  RTRE0161.PRPT_SEQ_DCAMT%TYPE /* ÏÑ†ÎÇ©Ìï†Ïù∏Í∏àÏï°(ÌöåÏ∞®Î≥Ñ ÏúÑÏïΩÍ∏à) */
+                                         , v_Reg_Id         IN  RTRE0161.REG_ID%TYPE         /* Îì±Î°ùÏûê ID */
                                          , v_Success_Code   OUT NUMBER
                                          , v_Return_Message OUT VARCHAR2
                                          , v_Error_Text     OUT VARCHAR2
                                         );
 
 /*****************************************************************************
- -- º±≥≥«“¿Œºˆ≥≥ √ª±∏Ω∫ƒ…¡Ÿ Update
+ -- ÏÑ†ÎÇ©Ìï†Ïù∏ÏàòÎÇ© Ï≤≠Íµ¨Ïä§ÏºÄÏ§Ñ Update
  *****************************************************************************/
-    FUNCTION f_UpdateRtsd0109PrePymnt(  v_Ord_No    IN  RTSD0109.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                      , v_Schd_Seq  IN  RTSD0109.SCHD_SEQ%TYPE /* Ω∫ƒ…¡Ïº¯π¯ */
-                                      , v_Sale_Amt  IN  RTSD0109.SALE_AMT%TYPE /* ø˘¡§±‚±›æ◊ */
-                                      , v_Arre_Amt  IN  RTSD0109.ARRE_AMT%TYPE /* πÃ≥≥±›æ◊ */
-                                      , v_Chg_Id    IN  RTSD0109.CHG_ID%TYPE   /* ∫Ø∞Ê¿⁄ ID */
+    FUNCTION f_UpdateRtsd0109PrePymnt(  v_Ord_No    IN  RTSD0109.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                      , v_Schd_Seq  IN  RTSD0109.SCHD_SEQ%TYPE /* Ïä§ÏºÄÏ•¥ÏàúÎ≤à */
+                                      , v_Sale_Amt  IN  RTSD0109.SALE_AMT%TYPE /* ÏõîÏ†ïÍ∏∞Í∏àÏï° */
+                                      , v_Arre_Amt  IN  RTSD0109.ARRE_AMT%TYPE /* ÎØ∏ÎÇ©Í∏àÏï° */
+                                      , v_Chg_Id    IN  RTSD0109.CHG_ID%TYPE   /* Î≥ÄÍ≤ΩÏûê ID */
                                       , v_ErrorText OUT VARCHAR2
                                      )
     RETURN NUMBER;
@@ -92,91 +92,90 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtre0160 AS
 
 
 /*****************************************************************************
- -- º±≥≥«“¿Œø©∫Œ
+ -- ÏÑ†ÎÇ©Ìï†Ïù∏Ïó¨Î∂Ä
  *****************************************************************************/
-    FUNCTION f_Rtsd0105PrePymnt(v_Ord_No    IN  RTSD0109.ORD_NO%TYPE) /* ∞Ëæ‡π¯»£ */
+    FUNCTION f_Rtsd0105PrePymnt(v_Ord_No    IN  RTSD0109.ORD_NO%TYPE) /* Í≥ÑÏïΩÎ≤àÌò∏ */
 
     RETURN VARCHAR2;
     
 /*****************************************************************************
- -- º±≥≥«“¿Œ∞°¥…ø©∫Œ √º≈©
+ -- ÏÑ†ÎÇ©Ìï†Ïù∏Í∞ÄÎä•Ïó¨Î∂Ä Ï≤¥ÌÅ¨
  *****************************************************************************/
-    FUNCTION f_Rtsd0160PrePymntChk(  v_Ord_No    IN  RTSD0109.ORD_NO%TYPE  /* ∞Ëæ‡π¯»£ */
-                                   , v_Dc_Cd     IN  RTSD0025.DC_CD%TYPE /* º±≥≥«“¿Œƒ⁄µÂ */
+    FUNCTION f_Rtsd0160PrePymntChk(  v_Ord_No    IN  RTSD0109.ORD_NO%TYPE  /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                   , v_Dc_Cd     IN  RTSD0025.DC_CD%TYPE /* ÏÑ†ÎÇ©Ìï†Ïù∏ÏΩîÎìú */
 
                                 )
      RETURN VARCHAR2;        
 
 /*****************************************************************************
- -- º±≥≥≥ªø™¡∂»∏
+ -- ÏÑ†ÎÇ©ÎÇ¥Ïó≠Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrePaymentMstList(  Ref_Cursor      IN OUT SYS_REFCURSOR
-                                           , v_Prpt_From_Day IN RTRE0160.PRPT_DAY%TYPE /* ø‰√ª¿œ¿⁄(From) */
-                                           , v_Prpt_To_Day   IN RTRE0160.PRPT_DAY%TYPE /* ø‰√ª¿œ¿⁄(To) */
-                                           , v_Recv_From_Day IN RTRE0160.RECV_DAY%TYPE /* ºˆ≥≥¿œ¿⁄(From) */
-                                           , v_Recv_To_Day   IN RTRE0160.RECV_DAY%TYPE /* ºˆ≥≥¿œ¿⁄(To) */
-                                           , v_Ord_No        IN RTRE0160.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                           , v_Cust_No       IN RTRE0160.CUST_NO%TYPE  /* ∞Ì∞¥π¯»£ */
+                                           , v_Prpt_From_Day IN RTRE0160.PRPT_DAY%TYPE /* ÏöîÏ≤≠ÏùºÏûê(From) */
+                                           , v_Prpt_To_Day   IN RTRE0160.PRPT_DAY%TYPE /* ÏöîÏ≤≠ÏùºÏûê(To) */
+                                           , v_Recv_From_Day IN RTRE0160.RECV_DAY%TYPE /* ÏàòÎÇ©ÏùºÏûê(From) */
+                                           , v_Recv_To_Day   IN RTRE0160.RECV_DAY%TYPE /* ÏàòÎÇ©ÏùºÏûê(To) */
+                                           , v_Ord_No        IN RTRE0160.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                           , v_Cust_No       IN RTRE0160.CUST_NO%TYPE  /* Í≥†Í∞ùÎ≤àÌò∏ */
                                           );
 
 /*****************************************************************************
- -- º±≥≥≥ªø™ªÛºº¡∂»∏
+ -- ÏÑ†ÎÇ©ÎÇ¥Ïó≠ÏÉÅÏÑ∏Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrePaymentDtlList(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                           , v_Ord_No   IN RTRE0160.ORD_NO%TYPE /* ∞Ëæ‡π¯»£ */
+                                           , v_Ord_No   IN RTRE0160.ORD_NO%TYPE /* Í≥ÑÏïΩÎ≤àÌò∏ */
                                           );
 
 /*****************************************************************************
- -- º±≥≥«“¿Œ±›æ◊∞ËªÍ
+ -- ÏÑ†ÎÇ©Ìï†Ïù∏Í∏àÏï°Í≥ÑÏÇ∞
  *****************************************************************************/
     PROCEDURE p_sRtre0160prePymntDscntCalc(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                           , v_Ord_No   IN RTRE0160.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                           , v_Zfb_Day  IN RTRE0160.PRPT_DAY%TYPE /* √Îº“¿œ¿⁄ */
+                                           , v_Ord_No   IN RTRE0160.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                           , v_Zfb_Day  IN RTRE0160.PRPT_DAY%TYPE /* Ï∑®ÏÜåÏùºÏûê */
                                           );
 
 /*****************************************************************************
- -- º±≥≥ Update Data ¡∂»∏
+ -- ÏÑ†ÎÇ© Update Data Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrePymntUpdateList(  Ref_Cursor   IN OUT SYS_REFCURSOR
-                                            , v_Ord_No     IN RTRE0160.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                            , v_Prpt_Seq   IN RTRE0160.PRPT_SEQ%TYPE /* º±≥≥º¯π¯ */
-                                            , v_Schd_Seq_U IN RTRE0161.SCHD_SEQ%TYPE /* √ª±∏º¯π¯ Update */
-                                            , v_Schd_Seq_I IN RTRE0161.SCHD_SEQ%TYPE /* √ª±∏º¯π¯ Insert */
+                                            , v_Ord_No     IN RTRE0160.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                            , v_Prpt_Seq   IN RTRE0160.PRPT_SEQ%TYPE /* ÏÑ†ÎÇ©ÏàúÎ≤à */
+                                            , v_Schd_Seq_U IN RTRE0161.SCHD_SEQ%TYPE /* Ï≤≠Íµ¨ÏàúÎ≤à Update */
+                                            , v_Schd_Seq_I IN RTRE0161.SCHD_SEQ%TYPE /* Ï≤≠Íµ¨ÏàúÎ≤à Insert */
                                            );
 
 /*****************************************************************************
- -- º±≥≥ √Îº“ Update Data ¡∂»∏
+ -- ÏÑ†ÎÇ© Ï∑®ÏÜå Update Data Ï°∞Ìöå
  *****************************************************************************/
     PROCEDURE p_sRtre0160PrePymntCancelList(  Ref_Cursor IN OUT SYS_REFCURSOR
-                                            , v_Ord_No   IN RTRE0160.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                            , v_Prpt_Seq IN RTRE0160.PRPT_SEQ%TYPE /* º±≥≥º¯π¯ */
+                                            , v_Ord_No   IN RTRE0160.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                            , v_Prpt_Seq IN RTRE0160.PRPT_SEQ%TYPE /* ÏÑ†ÎÇ©ÏàúÎ≤à */
                                            );
 
 /*****************************************************************************
- -- º±≥≥√Îº“∏≈√‚ Update
+ -- ÏÑ†ÎÇ©Ï∑®ÏÜåÎß§Ï∂ú Update
  *****************************************************************************/
-    PROCEDURE p_UpdateRtre0160CancelPrpt(  v_Ord_No         IN  RTRE0160.ORD_NO%TYPE        /* ∞Ëæ‡π¯»£ */
-                                         , v_Prpt_Seq       IN  RTRE0160.PRPT_SEQ%TYPE      /* ø‰√ª¿œ∑√π¯»£ */
-                                         , v_Cnc_Rseq       IN  RTRE0160.PRPT_CNC_RSEQ%TYPE /* º±≥≥√Îº“∞≈∑°π¯»£ */
-                                         , v_Reg_Id         IN  RTRE0160.REG_ID%TYPE        /* µÓ∑œ¿⁄ ID */
+    PROCEDURE p_UpdateRtre0160CancelPrpt(  v_Ord_No         IN  RTRE0160.ORD_NO%TYPE        /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                         , v_Prpt_Seq       IN  RTRE0160.PRPT_SEQ%TYPE      /* ÏöîÏ≤≠ÏùºÎ†®Î≤àÌò∏ */
+                                         , v_Cnc_Rseq       IN  RTRE0160.PRPT_CNC_RSEQ%TYPE /* ÏÑ†ÎÇ©Ï∑®ÏÜåÍ±∞ÎûòÎ≤àÌò∏ */
+                                         , v_Reg_Id         IN  RTRE0160.REG_ID%TYPE        /* Îì±Î°ùÏûê ID */
                                          , v_Success_Code   OUT NUMBER
                                          , v_Return_Message OUT VARCHAR2
                                          , v_ErrorText      OUT VARCHAR2
                                         );
 
 /*****************************************************************************
- -- ∞°ªÛ∞Ë¡¬ º±≥≥«“¿Œºˆ≥≥ ºˆ≥≥π¯»£ Update
+ -- Í∞ÄÏÉÅÍ≥ÑÏ¢å ÏÑ†ÎÇ©Ìï†Ïù∏ÏàòÎÇ© ÏàòÎÇ©Î≤àÌò∏ Update
  *****************************************************************************/
-    FUNCTION f_UpdateRtre0160PrePymnt(  v_Ord_No    IN  RTRE0160.ORD_NO%TYPE   /* ∞Ëæ‡π¯»£ */
-                                      , v_Recv_Seq  IN  RTRE0160.RECV_SEQ%TYPE /* ºˆ≥≥π¯»£ */
-                                      , v_Recp_Trno IN  RTRE0160.RECP_TRNO%TYPE /* ºˆ≥≥∞≈∑°π¯»£ */
-                                      , v_Recv_Day  IN  RTRE0160.RECV_DAY%TYPE /* ºˆ≥≥¿œ */
-                                      , v_Prpt_Day  IN  RTRE0160.PRPT_DAY%TYPE /* º±≥≥µÓ∑œ¿œ */
-                                      , v_Recp_Pay  IN  RTRE0160.RECP_PAY%TYPE /* ≥≥∫ŒπÊπ˝ */
-                                      , v_Chg_Id    IN  RTRE0160.CHG_ID%TYPE   /* ∫Ø∞Ê¿⁄ ID */
+    FUNCTION f_UpdateRtre0160PrePymnt(  v_Ord_No    IN  RTRE0160.ORD_NO%TYPE   /* Í≥ÑÏïΩÎ≤àÌò∏ */
+                                      , v_Recv_Seq  IN  RTRE0160.RECV_SEQ%TYPE /* ÏàòÎÇ©Î≤àÌò∏ */
+                                      , v_Recp_Trno IN  RTRE0160.RECP_TRNO%TYPE /* ÏàòÎÇ©Í±∞ÎûòÎ≤àÌò∏ */
+                                      , v_Recv_Day  IN  RTRE0160.RECV_DAY%TYPE /* ÏàòÎÇ©Ïùº */
+                                      , v_Prpt_Day  IN  RTRE0160.PRPT_DAY%TYPE /* ÏÑ†ÎÇ©Îì±Î°ùÏùº */
+                                      , v_Recp_Pay  IN  RTRE0160.RECP_PAY%TYPE /* ÎÇ©Î∂ÄÎ∞©Î≤ï */
+                                      , v_Chg_Id    IN  RTRE0160.CHG_ID%TYPE   /* Î≥ÄÍ≤ΩÏûê ID */
                                       , v_ErrorText OUT VARCHAR2
                                      )
     RETURN NUMBER;
 
 END Pkg_Rtre0160;
-/

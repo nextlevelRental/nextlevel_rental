@@ -21,6 +21,7 @@
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_agencyPop", this);
             obj.set_firefirstcount("0");
+            obj.getSetter("firenextcount").set("0");
             obj.set_useclientlayout("true");
             obj.set_updatecontrol("true");
             obj.set_enableevent("true");
@@ -212,6 +213,9 @@
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
         //include "lib::comLib.xjs";
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+        this.fv_opYn = "";	// 온라인장착 가능여부
+
         this.fn_callBack = function (strSvcId,nErrorCode,strErrorMsg,resultCnt){
         	if( strSvcId == "initRTCOMMAgencyEtcPop" ){
         		var nCnt = this.ds_S016.getRowCount()
@@ -248,6 +252,12 @@
         this.RTCOMMAgencyEtc_pop_onload = function(obj,e){
         	Ex.core.init(obj);
         	this.fn_init();
+        	
+        	// 모화면에서 온라인장착 가능여부 파라미터를 받았는지 확인하여 전역변수로 세팅
+        	// - 받지않은 경우 null로 처리하여 가능여부와 관계없이 모두 조회되도록 함
+        	if (this.parent.p_opYn == "Y" || this.parent.p_opYn == "N") {
+        		this.fv_opYn = this.parent.p_opYn;
+        	}
         }
         this.fn_init = function(){
         	var sSvcID      	= "initRTCOMMAgencyEtcPop";  
@@ -286,7 +296,7 @@
         	sArgs += Ex.util.setParam("sigunCd", 		sigunCd);
         	sArgs += Ex.util.setParam("lmYn", 			lmYn);
         	sArgs += Ex.util.setParam("fnYn", 			fnYn);
-        	sArgs += Ex.util.setParam("opYn", 			"Y");
+        	sArgs += Ex.util.setParam("opYn"       , this.fv_opYn);	// 온라인장착 가능여부(null인 경우 가능여부 관계없이 모두 조회)
         	Ex.core.tran(this,sSvcID, sController, sInDatasets, sOutDatasets, sArgs, fn_callBack);
         }
         /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/

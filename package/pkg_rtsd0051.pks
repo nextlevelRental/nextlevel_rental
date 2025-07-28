@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0051 AS
 /*******************************************************************************
    NAME:     PKG_RTSD0051
-   Title:    ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª
+   Title:    ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­
 
    REVISIONS
    Ver        Date        Author           Description
@@ -9,59 +9,58 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTSD0051 AS
    1.0        2018-11-09  Sean             1. Created this package spec.
 *******************************************************************************/
   /*****************************************************************************
-  -- ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª °ü¸®(IUD)
+  -- ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ ê´€ë¦¬(IUD)
   *****************************************************************************/
   PROCEDURE p_IUDRtsd0051 (
-    v_Comm_Dvsn      IN CHAR,                           /* Ã³¸®±¸ºÐ(I,U,D)     */
-    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ·»Å» ¸¶½ºÅÍ »ç¹ø     */
-    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ·»Å»Áö»ç            */
-    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ·»Å»Áö¿ª            */
-    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* µî·ÏÀÚ ID           */
+    v_Comm_Dvsn      IN CHAR,                           /* ì²˜ë¦¬êµ¬ë¶„(I,U,D)     */
+    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ     */
+    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ë Œíƒˆì§€ì‚¬            */
+    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* ë“±ë¡ìž ID           */
     v_Success_Code   OUT NUMBER,
     v_Return_Message OUT VARCHAR2,
     v_ErrorText      OUT VARCHAR2
     );
 
   /*****************************************************************************
-  -- ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª Count
+  -- ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ Count
   *****************************************************************************/
   FUNCTION f_sRTSD0051Count(
-    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ·»Å» ¸¶½ºÅÍ »ç¹ø     */
-    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ·»Å»Áö»ç            */
-    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE     /* ·»Å»Áö¿ª            */
+    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ     */
+    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ë Œíƒˆì§€ì‚¬            */
+    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE     /* ë Œíƒˆì§€ì—­            */
     ) RETURN NUMBER;
     
   /*****************************************************************************
-  -- ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª Insert
+  -- ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ Insert
   *****************************************************************************/
   FUNCTION f_InsertRTSD0051 (
-    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ·»Å» ¸¶½ºÅÍ »ç¹ø     */
-    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ·»Å»Áö»ç            */
-    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ·»Å»Áö¿ª            */
-    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* µî·ÏÀÚ ID           */
+    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ     */
+    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ë Œíƒˆì§€ì‚¬            */
+    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* ë“±ë¡ìž ID           */
     v_ErrorText     OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª Update
+  -- ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ Update
   *****************************************************************************/
   FUNCTION f_UpdateRTSD0051 ( 
-    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ·»Å» ¸¶½ºÅÍ »ç¹ø     */
-    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ·»Å»Áö»ç            */
-    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ·»Å»Áö¿ª            */
-    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* µî·ÏÀÚ ID           */
+    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ     */
+    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ë Œíƒˆì§€ì‚¬            */
+    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* ë“±ë¡ìž ID           */
     v_ErrorText     OUT VARCHAR2
     ) RETURN NUMBER;
 
   /*****************************************************************************
-  -- ·»Å» ¸¶½ºÅÍ °ü¸®Áö¿ª Delete
+  -- ë Œíƒˆ ë§ˆìŠ¤í„° ê´€ë¦¬ì§€ì—­ Delete
   *****************************************************************************/
   FUNCTION f_DeleteRTSD0051 ( 
-    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ·»Å» ¸¶½ºÅÍ »ç¹ø     */
-    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ·»Å»Áö»ç            */
-    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ·»Å»Áö¿ª            */
-    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* µî·ÏÀÚ ID           */
+    v_rtmasterNu     IN RTSD0051.RTMASTER_NU%TYPE,      /* ë Œíƒˆ ë§ˆìŠ¤í„° ì‚¬ë²ˆ     */
+    v_rentalGroup    IN RTSD0051.RENTAL_GROUP%TYPE,     /* ë Œíƒˆì§€ì‚¬            */
+    v_rentalOffice   IN RTSD0051.RENTAL_OFFICE%TYPE,    /* ë Œíƒˆì§€ì—­            */
+    v_Reg_Id         IN RTSD0051.REG_ID%TYPE,           /* ë“±ë¡ìž ID           */
     v_ErrorText     OUT VARCHAR2
     ) RETURN NUMBER;      
 END PKG_RTSD0051;
-/

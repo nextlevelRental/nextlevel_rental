@@ -243,7 +243,7 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0205 AS
     v_ErrorText      OUT VARCHAR2
     );
   
-/*****************************************************************************
+  /*****************************************************************************
   -- SMS 발송 interfaceNew1 - 2021/09/13
   *****************************************************************************/
    PROCEDURE p_Rtsd0205InterfaceNew1 (
@@ -353,4 +353,3 @@ CREATE OR REPLACE PACKAGE NXRADMIN.Pkg_Rtsd0205 AS
     );    
                      
 END Pkg_Rtsd0205;
-/

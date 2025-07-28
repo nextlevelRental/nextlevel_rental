@@ -17,7 +17,7 @@
 		<result property="makerNm" 	column="MAKER_NM" 	/>
 		<result property="modelCd" 		column="MODEL_CD" 	/>
 		<result property="modelNm" 	column="MODEL_NM" 	/>
-		<result property="carNo" 			column="CAR_NO" 	/>
+		<result property="carNo" 		column="CAR_NO" 	/>
 		<result property="carOwner" 	column="CAR_OWNER" 	/>
 		<result property="b00007UseCnt"	column="B00007_USE_CNT" 	/>
 		<result property="b00011UseCnt" 	column="B00011_USE_CNT" 	/>
@@ -37,7 +37,8 @@
 		<result property="cntNm" 		column="CNT_NM" 	/>
 		<result property="reqNo" 		column="REQ_NO" 	/>
 		<result property="cMileage" 		column="C_MILEAGE" 	/>
-		<result property="dlvrYn" 			column="DLVR_YN" 	/>
+		<result property="dlvrYn" 		column="DLVR_YN" 	/>
+		<result property="mfpYn"			column="MFP_YN"		/>
 	</resultMap>
 	<parameterMap id="pSRtcs0207SelectList" class="java.util.Map">
 		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0207SelectList" />
@@ -181,7 +182,7 @@
 		<result property="makerNm" 	column="MAKER_NM" 	/>
 		<result property="modelCd" 		column="MODEL_CD" 	/>
 		<result property="modelNm" 	column="MODEL_NM" 	/>
-		<result property="carNo" 			column="CAR_NO" 	/>
+		<result property="carNo" 		column="CAR_NO" 	/>
 		<result property="carOwner" 	column="CAR_OWNER" 	/>
 		<result property="b00011RCnt" 	column="B00011_R_CNT" 	/>
 		<result property="b00012RCnt" 	column="B00012_R_CNT" 	/>
@@ -190,30 +191,31 @@
 		<result property="b00012UCnt" 	column="B00012_U_CNT" 	/>
 		<result property="b00007ICnt" 	column="B00007_I_CNT" 	/>
 		<result property="ordDay" 		column="ORD_DAY" 	/>
-		<result property="servRqDay" 		column="SERVRQ_DAY" 	/>
+		<result property="servRqDay" 	column="SERVRQ_DAY" 	/>
 		<result property="procDay" 		column="PROC_DAY" 	/>
-		<result property="servAdSeq" 		column="SERVAD_SEQ" 	/>
+		<result property="servAdSeq" 	column="SERVAD_SEQ" 	/>
 		<result property="agencyCd" 	column="AGENCY_CD" 	/>
 		<result property="agencyNm" 	column="AGENCY_NM" 	/>
 		<result property="mobNo" 		column="MOB_NO" 	/>
 		<result property="dlvrDay" 		column="DLVR_DAY" 		/>
 		<result property="dlvrSeq" 		column="DLVR_SEQ" 		/>
-		<result property="dlvPosCd" 			column="DLV_POS_CD" 	/>
-		<result property="dlvAddr1" 			column="DLV_ADDR1" 	/>
-		<result property="dlvAddr2" 			column="DLV_ADDR2" 	/>
+		<result property="dlvPosCd" 		column="DLV_POS_CD" 	/>
+		<result property="dlvAddr1" 		column="DLV_ADDR1" 	/>
+		<result property="dlvAddr2" 		column="DLV_ADDR2" 	/>
 		<result property="dlvTel" 			column="DLV_TEL" 	/>
 		<result property="dlvStat" 		column="DLV_STAT" 	/>
 		<result property="dlvstatNm" 	column="DLVSTAT_NM" 	/>
 		<result property="apprAmt" 		column="APPR_AMT" 	/>
-		<result property="basicServCntr" 		    column="BASIC_SERV_CNTR" 	/>
+		<result property="basicServCntr"	column="BASIC_SERV_CNTR" 	/>
 		<result property="cntCd1" 		column="CNT_CD1" 	/>
 		<result property="cntNm" 		column="CNT_NM" 	/>
 		<result property="reqNo" 		column="REQ_NO" 	/>
 		<result property="cMileage" 		column="C_MILEAGE" 	/>
-		<result property="dlvrYn" 			column="DLVR_YN" 	/>
+		<result property="dlvrYn" 		column="DLVR_YN" 	/>
 		<result property="dlvDesc" 		column="DLV_DESC" 	/>
 		<result property="imgUrl" 		column="IMG_URL" 	/>
-		<result property="applyReason" 		column="APPLY_REASON" 	/>
+		<result property="applyReason"	column="APPLY_REASON" 	/>
+		<result property="mfpYn"			column="MFP_YN"		/>
 	</resultMap>
 	<parameterMap id="pSRtcs0208SelectList" class="java.util.Map">
 		<parameter property="vcursor" 	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rSRtcs0208SelectList" />

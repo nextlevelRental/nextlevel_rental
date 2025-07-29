@@ -12,6 +12,7 @@
               <Columns>
                 <Column size="80"/>
                 <Column size="250"/>
+                <Column size="160"/>
                 <Column size="90"/>
                 <Column size="90"/>
                 <Column size="90"/>
@@ -32,34 +33,36 @@
               <Band id="head">
                 <Cell text="대리점코드"/>
                 <Cell col="1" text="대리점명"/>
-                <Cell col="2" text="렌탈지사코드"/>
-                <Cell col="3" text="렌탈지사명"/>
-                <Cell col="4" text="렌탈지점코드"/>
-                <Cell col="5" text="렌탈지점명"/>
-                <Cell col="6" text="우편번호"/>
-                <Cell col="7" text="주소"/>
-                <Cell col="8" text="상세주소"/>
-                <Cell col="9" text="전화번호"/>
-                <Cell col="10" text="대표명"/>
-                <Cell col="11" text="렌탈대리점 여부 "/>
-                <Cell col="12" text="경정비"/>
-                <Cell col="13" text="수입차경정비"/>
+                <Cell col="2" text="홈페이지 대리점명"/>
+                <Cell col="3" text="렌탈지사코드"/>
+                <Cell col="4" text="렌탈지사명"/>
+                <Cell col="5" text="렌탈지점코드"/>
+                <Cell col="6" text="렌탈지점명"/>
+                <Cell col="7" text="우편번호"/>
+                <Cell col="8" text="주소"/>
+                <Cell col="9" text="상세주소"/>
+                <Cell col="10" text="전화번호"/>
+                <Cell col="11" text="대표명"/>
+                <Cell col="12" text="렌탈대리점 여부 "/>
+                <Cell col="13" text="경정비"/>
+                <Cell col="14" text="수입차경정비"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:agencyCd"/>
                 <Cell col="1" style="align:left;" text="bind:agencyNm"/>
-                <Cell col="2" text="bind:rentalGroup"/>
-                <Cell col="3" text="bind:rentalGroupNm"/>
-                <Cell col="4" text="bind:rentalOffice"/>
-                <Cell col="5" text="bind:rentalOfficeNm"/>
-                <Cell col="6" text="bind:posCd"/>
-                <Cell col="7" style="align:left;" text="bind:city"/>
-                <Cell col="8" style="align:left;" text="bind:street"/>
-                <Cell col="9" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
-                <Cell col="10" text="bind:repNm"/>
-                <Cell col="11" text="bind:rentalYn"/>
-                <Cell col="12" text="bind:lmYn"/>
-                <Cell col="13" text="bind:fmYn"/>
+                <Cell col="2" style="align:left;" text="bind:hpAgencyNm"/>
+                <Cell col="3" text="bind:rentalGroup"/>
+                <Cell col="4" text="bind:rentalGroupNm"/>
+                <Cell col="5" text="bind:rentalOffice"/>
+                <Cell col="6" text="bind:rentalOfficeNm"/>
+                <Cell col="7" text="bind:posCd"/>
+                <Cell col="8" style="align:left;" text="bind:city"/>
+                <Cell col="9" style="align:left;" text="bind:street"/>
+                <Cell col="10" text="bind:telNo" expr="expr:FN_numberHyphenInReturn(telNo)"/>
+                <Cell col="11" text="bind:repNm"/>
+                <Cell col="12" text="bind:rentalYn"/>
+                <Cell col="13" text="bind:lmYn"/>
+                <Cell col="14" text="bind:fmYn"/>
               </Band>
             </Format>
           </Formats>
@@ -156,6 +159,7 @@
           <Column id="rentalGroupNm" type="STRING" size="256"/>
           <Column id="rentalOffice" type="STRING" size="256"/>
           <Column id="rentalOfficeNm" type="STRING" size="256"/>
+          <Column id="hpAgencyNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_s016" firenextcount="0" useclientlayout="true">

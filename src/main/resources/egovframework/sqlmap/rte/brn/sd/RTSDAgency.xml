@@ -168,6 +168,7 @@
 		<result property="balanceNm"  	        column="BALANCE_NM"     /> <!-- 20180312_01 -->
 		<result property="premPrplYn"  	        column="PREM_PRPL_YN"     /> <!-- 20250612_01 -->
 		<result property="totEvalPoint"  	        column="TOT_EVAL_POINT"     /> <!-- 20250612_01 -->
+		<result property="hpAgencyNm"  	        column="HP_AGENCY_NM"     />
 	</resultMap>	
 	<parameterMap id="agencyCallParamMap" class="java.util.Map">
 		<parameter property="vcursor"   	jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="agencyCallResultMap"/>

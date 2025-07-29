@@ -46,6 +46,7 @@
                 <Column size="62"/>
                 <Column size="95"/>
                 <Column size="190"/>
+                <Column size="164"/>
                 <Column size="133"/>
                 <Column size="87"/>
                 <Column size="356"/>
@@ -69,37 +70,39 @@
                 <Cell text="광역시도"/>
                 <Cell col="1" text="시군구"/>
                 <Cell col="2" text="장착점명"/>
-                <Cell col="3" text="프리미엄 퍼플점 여부"/>
-                <Cell col="4" text="만족도 총평점"/>
-                <Cell col="5" text="주소"/>
-                <Cell col="6" text="계절구분"/>
-                <Cell col="7" text="연락처"/>
-                <Cell col="8" text="전략추천"/>
-                <Cell col="9" text="경정비"/>
-                <Cell col="10" text="탈착기"/>
-                <Cell col="11" text="얼라인먼트"/>
-                <Cell col="12" text="밸런스"/>
-                <Cell col="13" text="채널중분류"/>
-                <Cell col="14" text="렌탈계정"/>
-                <Cell col="15" text="비고"/>
+                <Cell col="3" text="홈페이지 대리점명"/>
+                <Cell col="4" text="프리미엄 퍼플점 여부"/>
+                <Cell col="5" text="만족도 총평점"/>
+                <Cell col="6" text="주소"/>
+                <Cell col="7" text="계절구분"/>
+                <Cell col="8" text="연락처"/>
+                <Cell col="9" text="전략추천"/>
+                <Cell col="10" text="경정비"/>
+                <Cell col="11" text="탈착기"/>
+                <Cell col="12" text="얼라인먼트"/>
+                <Cell col="13" text="밸런스"/>
+                <Cell col="14" text="채널중분류"/>
+                <Cell col="15" text="렌탈계정"/>
+                <Cell col="16" text="비고"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:sidoNm"/>
                 <Cell col="1" text="bind:sigunNm"/>
                 <Cell col="2" edittype="normal" text="bind:agencyNm"/>
-                <Cell col="3" text="bind:premPrplYn"/>
-                <Cell col="4" text="bind:totEvalPoint"/>
-                <Cell col="5" edittype="normal" text="bind:addr"/>
-                <Cell col="6" text="bind:seasonGbnNm"/>
-                <Cell col="7" edittype="normal" text="bind:telNo"/>
-                <Cell col="8" displaytype="text" edittype="readonly" text="bind:chYn"/>
-                <Cell col="9" text="bind:lmYn"/>
-                <Cell col="10" text="bind:desorptNm"/>
-                <Cell col="11" text="bind:alignNm"/>
-                <Cell col="12" text="bind:balanceNm"/>
-                <Cell col="13" text="bind:chanMclsNm"/>
-                <Cell col="14" text="bind:cntProc"/>
-                <Cell col="15" celltype="body" style="align:left;" text="bind:memo" wordwrap="none" expandshow="hide" autosizerow="default" autosizecol="default"/>
+                <Cell col="3" text="bind:hpAgencyNm"/>
+                <Cell col="4" text="bind:premPrplYn"/>
+                <Cell col="5" text="bind:totEvalPoint"/>
+                <Cell col="6" edittype="normal" text="bind:addr"/>
+                <Cell col="7" text="bind:seasonGbnNm"/>
+                <Cell col="8" edittype="normal" text="bind:telNo"/>
+                <Cell col="9" displaytype="text" edittype="readonly" text="bind:chYn"/>
+                <Cell col="10" text="bind:lmYn"/>
+                <Cell col="11" text="bind:desorptNm"/>
+                <Cell col="12" text="bind:alignNm"/>
+                <Cell col="13" text="bind:balanceNm"/>
+                <Cell col="14" text="bind:chanMclsNm"/>
+                <Cell col="15" text="bind:cntProc"/>
+                <Cell col="16" celltype="body" style="align:left;" text="bind:memo" wordwrap="none" expandshow="hide" autosizerow="default" autosizecol="default"/>
               </Band>
               <Band id="summary">
                 <Cell text="총합계"/>
@@ -118,6 +121,7 @@
                 <Cell col="13"/>
                 <Cell col="14"/>
                 <Cell col="15"/>
+                <Cell col="16"/>
               </Band>
             </Format>
           </Formats>
@@ -237,6 +241,7 @@
           <Column id="balanceNm" type="STRING" size="256"/>
           <Column id="premPrplYn" type="STRING" size="256"/>
           <Column id="totEvalPoint" type="STRING" size="256"/>
+          <Column id="hpAgencyNm" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_S100" firefirstcount="0" firenextcount="0" updatecontrol="true" enableevent="true" loadkeymode="keep" loadfiltermode="keep" reversesubsum="false">

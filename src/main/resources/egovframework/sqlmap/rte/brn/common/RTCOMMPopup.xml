@@ -69,6 +69,7 @@
 		<result property="stfyPointCd1"		column="STFY_POINT_CD1"          /> <!-- 만족도조사 장착응대 평점 -->
 		<result property="stfyPointCd2"		column="STFY_POINT_CD2"          /> <!-- 만족도조사 렌탈혜택 평점 -->
 		<result property="stfyPointCd3"		column="STFY_POINT_CD3"          /> <!-- 만족도조사 친절 평점 -->
+		<result property="hpAgencyNm"		column="HP_AGENCY_NM"          /> <!-- 홈페이지 대리점명 -->
 	</resultMap>
 	<parameterMap id="paramAgenypop" class="java.util.Map">
 		<parameter property="vcursor" 		jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="resultAgencypop" />

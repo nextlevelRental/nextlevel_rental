@@ -102,6 +102,8 @@ this.form_onload = function (obj:Form, e:LoadEventInfo)
 		this.httpsFormFN();
 	}
 	
+
+	
 	// 업무용앱 런칭 공지팝업 게시 (2017-01-17 ~ 2017-05-22)
 	//this.set_alert("알림","대리점용 어플리케이션 변경 예정!!\n자세한 사항은 공지사항을 참조하세요.");	
 }
@@ -119,8 +121,14 @@ this.fn_loginOnkeyUp = function(obj:Edit, e:nexacro.KeyEventInfo)
 {
 	
 	if(e.keycode == 13)
-	{   
-	    this.fn_isUserExistsTr();
+	{
+		if(application.gv_host == "http://localhost/" || application.gv_host == "http://1.254.67.135:8090/" || application.gv_host == "http://1.254.67.135:9080/" ){
+			// 로컬 서버인 경우 바로 로그인 처리
+			this.fn_loginTr();		
+		}else{
+			// 운영 환경인 경우 사용자 존재 확인 → 인증 팝업 → 로그인
+			this.fn_isUserExistsTr();
+		}	   
 	}
 }
 
@@ -325,7 +333,13 @@ this.fn_userAuth = function()
 ***********************************************************************************/
 this.btn_login_onclick = function(obj:Button,  e:nexacro.ClickEventInfo)
 {
-	this.fn_isUserExistsTr();
+	if(application.gv_host == "http://localhost/" || application.gv_host == "http://1.254.67.135:8090/" || application.gv_host == "http://1.254.67.135:9080/" ){
+		// 로컬 서버인 경우 바로 로그인 처리
+		this.fn_loginTr();		
+	}else{
+		// 운영 환경인 경우 사용자 존재 확인 → 인증 팝업 → 로그인
+		this.fn_isUserExistsTr();
+	}
 }
 
 

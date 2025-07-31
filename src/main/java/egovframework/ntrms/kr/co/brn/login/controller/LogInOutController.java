@@ -82,6 +82,16 @@ public class LogInOutController {
 				mav.addObject(NexacroConstant.ERROR_MSG, "ERROR");
 				return mav;
 			}
+
+			String srvUrl = request.getRequestURL().toString();
+			srvUrl = srvUrl.toLowerCase();
+			if (srvUrl.indexOf("localhost")!=-1) {	// 로컬
+				//인증여부 세션에 추가
+				HttpSession session = request.getSession();
+				session.setAttribute("authVerified", true);
+				session.setAttribute("authUserId", sUserId);
+			}
+
 			
 			Map map = new HashMap();
 			map.put("userId", 	sUserId);

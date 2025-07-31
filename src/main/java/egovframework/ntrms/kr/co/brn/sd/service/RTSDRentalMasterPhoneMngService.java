@@ -16,6 +16,12 @@ import java.util.Map;
 @SuppressWarnings("unchecked")
  
 public interface RTSDRentalMasterPhoneMngService {
+
+	/**
+	 * 2차인증 렌탈마스터 ID 조회
+	 */
+	Map listRentalAuthMstGrpInfo(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception;
+
 	/**
 	 * 2차인증 사용자 목록조회
 	 */

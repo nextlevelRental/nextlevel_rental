@@ -4,6 +4,21 @@
 
 <sqlMap namespace="rentalMasterPhoneMng">
 
+	<resultMap id="rentalAuthMstResultMap" class="java.util.HashMap">
+		<result property="userId"       column= "USER_ID" />
+		<result property="userNm"       column= "USER_NM" />
+	</resultMap>
+
+	<parameterMap id="groupParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalAuthMstResultMap" />
+		<parameter property="userNm"  	mode="IN" jdbcType="VARCHAR" />
+		<parameter property="sUserId"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+
+	<procedure id="rentalMasterPhoneMng.listRentalAuthMstGrpInfo" parameterMap="groupParam">
+		{call PKG_RTCM0110.p_sRentalAuthMstGrp(?, ?, ?)}
+	</procedure>
+
 	<resultMap id="rentalAuthPhoneResultMap" class="java.util.HashMap">
 		<result property="rntMstId" 	column="RNT_MST_ID"/>
 		<result property="userNm" 		column="USER_NM"/>

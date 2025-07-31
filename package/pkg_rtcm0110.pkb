@@ -1244,6 +1244,34 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
   END p_sRentalAuthCttpcList;
 
   /*****************************************************************************
+  -- 렌탈마스터 권한그룹 마스터 조회
+  *****************************************************************************/
+  PROCEDURE p_sRentalAuthMstGrp (
+    Ref_Cursor          IN OUT SYS_REFCURSOR,
+    v_USER_NM           IN RTCM0001.USER_NM%TYPE, /* 이름 */
+	v_USER_ID           IN RTCM0001.USER_ID%TYPE /* 아이디 */
+    ) IS
+
+    v_User_Grp  RTCM0001.USER_GRP%TYPE DEFAULT NULL;    /*사용자 그룹 */
+
+  BEGIN
+	v_User_Grp := Pkg_Rtcm0001.f_sRtcm0001UserGrp(v_USER_ID);
+
+  OPEN Ref_Cursor FOR
+    SELECT  USER_ID
+     ,USER_NM
+    FROM RTCM0001
+    WHERE 1=1
+    AND LOCK_YN = 'N'
+    AND USER_GRP = 'RM'
+    AND (v_User_Grp = '01' OR USER_ID = v_USER_ID)
+    AND (USER_ID LIKE '%' || DECODE(v_USER_NM, NULL, '%', v_USER_NM) || '%' OR
+       USER_NM LIKE '%' || DECODE(v_USER_NM, NULL, '%', v_USER_NM) || '%')
+    ORDER BY USER_ID
+    ;
+  END p_sRentalAuthMstGrp;
+
+  /*****************************************************************************
   -- 2차인증 사용자 사용자 관리
   *****************************************************************************/
   PROCEDURE p_IUDRentalAuthPhone (

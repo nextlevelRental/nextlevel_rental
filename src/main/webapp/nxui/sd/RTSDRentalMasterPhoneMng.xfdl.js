@@ -262,8 +262,8 @@
         		this.dsList.clearData();
         		this.dsList2.clearData();
         		
-        		var sSvcID        	= "listRentalAuthMstInfo";                    
-        		var sController   	= "/rtms/sd/listRentalAuthMstInfo.do";
+        		var sSvcID        	= "listRentalAuthMstGrpInfo";                    
+        		var sController   	= "/rtms/sd/listRentalAuthMstGrpInfo.do";
         		var sInDatasets   	= "";
         		var sOutDatasets  	= "dsList=ds_output";
         		var sArgs 			= "";	
@@ -348,11 +348,11 @@
         			return;
         		}
         		
-        		if (strSvcId == "listRentalAuthMstInfo") { //지사조회(M)
+        		if (strSvcId == "listRentalAuthMstGrpInfo") { //렌탈마스터(M)
         		
         		}
         		
-        		if (strSvcId == "listRentalAuthPhoneInfo") { //지역조회(D)
+        		if (strSvcId == "listRentalAuthPhoneInfo") { //인증사용자(D)
         		
         		}
         				

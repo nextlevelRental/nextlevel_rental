@@ -29,6 +29,15 @@ public class RTSDRentalMasterPhoneMngMapDAO extends RtcmAbstractDAO {
 	Logger logger = Logger.getLogger(TableMetaDataAspectJ.class);
 
 	/**
+	 * 2차인증 렌탈마스터 ID 조회
+	 */
+	public List<Map> listRentalAuthMstGrpInfo(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException{
+		getSqlMapClientTemplate().queryForObject("rentalMasterPhoneMng.listRentalAuthMstGrpInfo", map);
+		List li = (List)map.get("vcursor");
+		return li;
+	}
+
+	/**
 	 * 2차인증 사용자 목록조회
 	 */
 	public List<Map> listRentalAuthPhoneInfo(Map map, Map <String, DataSetMap> outDataset) throws NtRmsDaoException{

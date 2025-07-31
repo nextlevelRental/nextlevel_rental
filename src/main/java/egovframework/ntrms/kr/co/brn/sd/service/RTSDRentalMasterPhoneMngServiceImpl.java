@@ -29,6 +29,15 @@ public class RTSDRentalMasterPhoneMngServiceImpl extends EgovAbstractServiceImpl
 	RTSDRentalMasterPhoneMngMapDAO rtsdRentalMasterPhoneMngMapDAO;
 
 	/**
+	 * 2차인증 렌탈마스터 ID 조회
+	 */
+	public Map listRentalAuthMstGrpInfo(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception {
+		Map result = new HashMap();
+		result.put("listMstGrpInfo", rtsdRentalMasterPhoneMngMapDAO.listRentalAuthMstGrpInfo(inVar, outDataset));
+		return  result;
+	}
+
+	/**
 	 * 2차인증 사용자 목록조회
 	 */
 	public Map listRentalAuthPhoneInfo(Map<String, Object> inVar, Map <String, DataSetMap> outDataset) throws Exception {

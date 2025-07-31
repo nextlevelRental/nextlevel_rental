@@ -25,6 +25,53 @@ public class RTSDRentalMasterPhoneMngController {
 	RTSDRentalMasterPhoneMngService rtsdRentalMasterPhoneMngService;
 
 	/************************************
+	 * 판매처 2차인증 렌탈마스터 ID 조회
+	 * @param xpDto
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 ************************************/
+	@RequestMapping("/rtms/sd/listRentalAuthMstGrpInfo.do")
+	public ModelAndView listRentalAuthMstGrpInfo(NexacroMapDTO xpDto, Model model, HttpServletRequest req) throws Exception {
+		ModelAndView mav = new ModelAndView("nexacroMapView");
+
+		try {
+
+			Map loginInfo = (Map)req.getSession().getAttribute("User");
+			Map <String, Object> inVar 			= xpDto.getInVariableMap();
+			Map <String, DataSetMap> outDataset = xpDto.getOutDataSetMap();
+
+			String sUserId 	= (String)inVar.get("userId");
+			if(("").equals(sUserId)){
+				mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+				mav.addObject(NexacroConstant.ERROR_MSG, "ERROR");
+				return mav;
+			}
+
+			inVar.put("sUserId", loginInfo.get("userId"));	//세션정보
+
+			Map result = rtsdRentalMasterPhoneMngService.listRentalAuthMstGrpInfo(inVar, outDataset);
+			List listMstGrpInfo = (List)result.get("listMstGrpInfo");
+			DataSetMap dsResult = new DataSetMap();
+			dsResult.setRowMaps(listMstGrpInfo);
+
+			outDataset.put("ds_output", dsResult);
+
+			mav.addObject(NexacroConstant.OUT_VARIABLES_ATT_NAME, 	xpDto.getOutVariableMap());
+			mav.addObject(NexacroConstant.OUT_DATASET_ATT_NAME, 	xpDto.getOutDataSetMap());
+			mav.addObject(NexacroConstant.ERROR_CODE, "0");
+			mav.addObject(NexacroConstant.ERROR_MSG, "");
+		}
+		catch ( Exception e ) {
+			e.printStackTrace();
+			mav.addObject(NexacroConstant.ERROR_CODE, "-1");
+			mav.addObject(NexacroConstant.ERROR_MSG, e.toString());
+		}
+
+		return mav;
+	}
+
+	/************************************
 	 * 2차인증 사용자 목록조회
 	 * @param xpDto
 	 * @param model
@@ -46,9 +93,9 @@ public class RTSDRentalMasterPhoneMngController {
 			}
 
 			Map result = rtsdRentalMasterPhoneMngService.listRentalAuthPhoneInfo(inVar, outDataset);
-			List planInfo = (List)result.get("listUserInfo");
+			List listUserInfo = (List)result.get("listUserInfo");
 			DataSetMap dsResult = new DataSetMap();
-			dsResult.setRowMaps(planInfo);
+			dsResult.setRowMaps(listUserInfo);
 
 			outDataset.put("ds_output", dsResult);
 

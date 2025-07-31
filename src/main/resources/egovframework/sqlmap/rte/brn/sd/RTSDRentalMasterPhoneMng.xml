@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+
+<sqlMap namespace="rentalMasterPhoneMng">
+
+	<resultMap id="rentalAuthPhoneResultMap" class="java.util.HashMap">
+		<result property="rntMstId" 	column="RNT_MST_ID"/>
+		<result property="userNm" 		column="USER_NM"/>
+		<result property="emailAddr" 	column="EMAIL_ADDR"/>
+		<result property="mobNo" 		column="MOB_NO"/>
+		<result property="useYn" 		column="USE_YN"/>
+		<result property="memo" 		column="MEMO"/>
+		<result property="regId" 		column="REG_ID"/>
+		<result property="regDt" 		column="REG_DT"/>
+		<result property="chgId" 		column="CHG_ID"/>
+		<result property="chgDt" 		column="CHG_DT"/>
+	</resultMap>
+
+	<parameterMap id="rentalAuthPhoneParam" class="java.util.Map">
+		<parameter property="vcursor"   jdbcType="ORACLECURSOR" javaType="java.sql.ResultSet" mode="OUT" resultMap="rentalAuthPhoneResultMap" />
+		<parameter property="rntMstId"  	mode="IN" jdbcType="VARCHAR" />
+	</parameterMap>
+	
+	<procedure id="rentalMasterPhoneMng.listRentalAuthPhoneInfo" parameterMap="rentalAuthPhoneParam">
+		{ call PKG_RTCM0110.p_sRentalAuthPhoneList(?, ?) }
+	</procedure>
+
+	<parameterMap id="saveRentalAuthPhoneParam" class="java.util.Map">
+		<parameter property="dvsn" 			 jdbcType="VARCHAR" mode="IN" />
+		<parameter property="rntMstId"  	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="userNm"         mode="IN" jdbcType="VARCHAR" />
+		<parameter property="mobNo"          mode="IN" jdbcType="VARCHAR" />
+		<parameter property="emailAddr"      mode="IN" jdbcType="VARCHAR" />
+		<parameter property="useYn"   		 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="regId"     	 mode="IN" jdbcType="VARCHAR" />
+		<parameter property="successCode" 	 jdbcType="NUMERIC" mode="OUT" />
+		<parameter property="returnMessage"  jdbcType="VARCHAR" mode="OUT" />
+		<parameter property="errortext" 	 jdbcType="VARCHAR" mode="OUT" />
+	</parameterMap>
+
+	<procedure id="rentalMasterPhoneMng.saveRentalAuthPhone" parameterMap="saveRentalAuthPhoneParam">
+		{call PKG_RTCM0110.p_IUDRentalAuthPhone(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}
+	</procedure>
+
+</sqlMap>

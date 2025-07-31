@@ -339,5 +339,58 @@ CREATE OR REPLACE PACKAGE NXRADMIN.PKG_RTCM0110 AS
     v_RNT_MST_ID      IN RTCM0113.RNT_MST_ID%TYPE   /* 사용자ID */
     );
 
+  /*****************************************************************************
+  -- 2차인증 사용자 정보 관리(IUD)
+  *****************************************************************************/
+  PROCEDURE p_IUDRentalAuthPhone (
+    v_dvsn           IN VARCHAR2,     				  -- 처리구분: I/U/D
+    v_rntMstId       IN RTCM0113.RNT_MST_ID%TYPE,     -- 렌탈마스터ID
+    v_userNm         IN RTCM0113.USER_NM%TYPE,     	  -- 사용자명
+    v_mobNo          IN RTCM0113.MOB_NO%TYPE,     	  -- 휴대전화
+    v_emailAddr      IN RTCM0113.EMAIL_ADDR%TYPE,     -- 이메일주소
+    v_useYn          IN RTCM0113.USE_YN%TYPE,         -- 사용여부
+    v_regId          IN RTCM0113.REG_ID%TYPE,         -- 등록자ID
+    v_successCode    OUT NUMBER,      				  -- 성공 코드
+    v_returnMessage  OUT VARCHAR2,    				  -- 리턴 메시지
+    v_errorText      OUT VARCHAR2     				  -- 에러 텍스트
+    );
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Insert
+  *****************************************************************************/
+  FUNCTION f_InsertRentalAuthPhone (
+	v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+	v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+	v_emailAddr    IN RTCM0113.EMAIL_ADDR%TYPE,
+	v_userNm       IN RTCM0113.USER_NM%TYPE,
+	v_useYn        IN RTCM0113.USE_YN%TYPE,
+	v_regId        IN RTCM0113.REG_ID%TYPE,
+	v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER;
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Update
+  *****************************************************************************/
+  FUNCTION f_UpdateRentalAuthPhone (
+    v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+    v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+    v_emailAddr    IN RTCM0113.EMAIL_ADDR%TYPE,
+    v_userNm       IN RTCM0113.USER_NM%TYPE,
+    v_useYn        IN RTCM0113.USE_YN%TYPE,
+    v_regId        IN RTCM0113.REG_ID%TYPE,
+    v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER;
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Delete
+  *****************************************************************************/
+  FUNCTION f_DeleteRentalAuthPhone (
+    v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+    v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+    v_regId        IN RTCM0113.REG_ID%TYPE,
+    v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER;
+
+
 END PKG_RTCM0110;
 /

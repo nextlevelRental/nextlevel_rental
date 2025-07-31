@@ -1242,5 +1242,180 @@ CREATE OR REPLACE PACKAGE BODY NXRADMIN.PKG_RTCM0110 AS
     ORDER BY MOB_NO;
 
   END p_sRentalAuthCttpcList;
+
+  /*****************************************************************************
+  -- 2차인증 사용자 사용자 관리
+  *****************************************************************************/
+  PROCEDURE p_IUDRentalAuthPhone (
+    v_dvsn           IN VARCHAR2,     				  -- 처리구분: I/U/D
+    v_rntMstId       IN RTCM0113.RNT_MST_ID%TYPE,     -- 렌탈마스터ID
+    v_userNm         IN RTCM0113.USER_NM%TYPE,     	  -- 사용자명
+    v_mobNo          IN RTCM0113.MOB_NO%TYPE,     	  -- 휴대전화
+    v_emailAddr      IN RTCM0113.EMAIL_ADDR%TYPE,     -- 이메일주소
+    v_useYn          IN RTCM0113.USE_YN%TYPE,         -- 사용여부
+    v_regId          IN RTCM0113.REG_ID%TYPE,         -- 등록자ID
+    v_successCode    OUT NUMBER,      				  -- 성공 코드
+    v_returnMessage  OUT VARCHAR2,    				  -- 리턴 메시지
+    v_errorText      OUT VARCHAR2     				  -- 에러 텍스트
+  ) IS
+    e_Error EXCEPTION;
+    v_Error VARCHAR2(200);
+  BEGIN
+    -- 공통 필수 체크
+    IF TRIM(v_dvsn) IS NULL THEN
+        v_returnMessage := '처리구분은 필수 입력입니다.';
+        RAISE e_Error;
+    END IF;
+
+    IF TRIM(v_rntMstId) IS NULL THEN
+        v_returnMessage := '렌탈마스터ID는 필수 입력입니다.';
+        RAISE e_Error;
+    END IF;
+
+    IF TRIM(v_emailAddr) IS NOT NULL AND
+       NOT REGEXP_LIKE(v_emailAddr, '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$') THEN
+        v_returnMessage := '유효하지 않은 이메일 주소입니다: ' || v_emailAddr;
+        RAISE e_Error;
+    END IF;
+
+    IF v_dvsn = 'I' THEN
+        -- Insert용 필수 체크
+        IF TRIM(v_userNm) IS NULL OR TRIM(v_useYn) IS NULL OR TRIM(v_mobNo) IS NULL THEN
+            v_returnMessage := '사용자명, 휴대폰번호, 사용여부는 필수 입력입니다.';
+            RAISE e_Error;
+    END IF;
+
+    IF 0 != f_InsertRentalAuthPhone(v_rntMstId, v_mobNo, v_emailAddr, v_userNm, v_useYn, v_regId, v_Error) THEN
+        v_returnMessage := '인증사용자 등록 실패: ' || v_Error;
+        RAISE e_Error;
+    END IF;
+
+    ELSIF v_dvsn = 'U' THEN
+        -- Update용 필수 체크
+        IF TRIM(v_userNm) IS NULL OR TRIM(v_useYn) IS NULL THEN
+            v_returnMessage := '사용자명, 사용여부는 필수 입력입니다.';
+            RAISE e_Error;
+    END IF;
+
+    IF 0 != f_UpdateRentalAuthPhone(v_rntMstId, v_mobNo, v_emailAddr, v_userNm, v_useYn, v_regId, v_Error) THEN
+        v_returnMessage := '인증사용자 수정 실패: ' || v_Error;
+        RAISE e_Error;
+    END IF;
+
+    ELSIF v_dvsn = 'D' THEN
+        IF 0 != f_DeleteRentalAuthPhone(v_rntMstId, v_mobNo, v_regId, v_Error) THEN
+            v_returnMessage := '인증사용자 삭제 실패: ' || v_Error;
+            RAISE e_Error;
+    END IF;
+
+    ELSE
+        v_returnMessage := '처리구분값 오류: [' || v_dvsn || ']';
+        RAISE e_Error;
+    END IF;
+
+    -- 성공 반환
+    v_successCode := 0;
+    v_returnMessage := '정상적으로 처리되었습니다.';
+    v_errorText := '';
+
+  EXCEPTION
+    WHEN e_Error THEN
+        ROLLBACK;
+        v_successCode := -1;
+        v_errorText := SUBSTR(SQLERRM, 1, 200);
+  WHEN OTHERS THEN
+        ROLLBACK;
+        v_successCode := -1;
+        v_returnMessage := '시스템 오류가 발생했습니다.';
+        v_errorText := SUBSTR(SQLERRM, 1, 200);
+  END p_IUDRentalAuthPhone;
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Insert
+  *****************************************************************************/
+  FUNCTION f_InsertRentalAuthPhone (
+	v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+	v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+	v_emailAddr    IN RTCM0113.EMAIL_ADDR%TYPE,
+	v_userNm       IN RTCM0113.USER_NM%TYPE,
+	v_useYn        IN RTCM0113.USE_YN%TYPE,
+	v_regId        IN RTCM0113.REG_ID%TYPE,
+	v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER IS
+  BEGIN
+  INSERT INTO RTCM0113 (
+    RNT_MST_ID, MOB_NO, EMAIL_ADDR, USER_NM,
+    USE_YN, MEMO, REG_ID, REG_DT, CHG_ID, CHG_DT
+  ) VALUES (
+             v_rntMstId, v_mobNo, v_emailAddr, v_userNm,
+             v_useYn, NULL, v_regId, SYSDATE, v_regId, SYSDATE
+         );
+  RETURN 0;
+  EXCEPTION
+	WHEN OTHERS THEN
+		v_ErrorText := SUBSTR(SQLERRM, 1, 200);
+  RETURN -1;
+  END f_InsertRentalAuthPhone;
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Update
+  *****************************************************************************/
+  FUNCTION f_UpdateRentalAuthPhone (
+    v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+    v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+    v_emailAddr    IN RTCM0113.EMAIL_ADDR%TYPE,
+    v_userNm       IN RTCM0113.USER_NM%TYPE,
+    v_useYn        IN RTCM0113.USE_YN%TYPE,
+    v_regId        IN RTCM0113.REG_ID%TYPE,
+    v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER IS
+  BEGIN
+  UPDATE RTCM0113
+  SET EMAIL_ADDR = v_emailAddr,
+    USER_NM    = v_userNm,
+    USE_YN     = v_useYn,
+    CHG_ID     = v_regId,
+    CHG_DT     = SYSDATE
+  WHERE RNT_MST_ID = v_rntMstId
+  AND MOB_NO     = v_mobNo;
+
+  IF SQL%ROWCOUNT = 0 THEN
+        v_ErrorText := '수정 대상 데이터가 존재하지 않습니다.';
+  RETURN -1;
+  END IF;
+
+  RETURN 0;
+  EXCEPTION
+    WHEN OTHERS THEN
+        v_ErrorText := SUBSTR(SQLERRM, 1, 200);
+  RETURN -1;
+  END f_UpdateRentalAuthPhone;
+
+  /*****************************************************************************
+  -- 2차인증 사용자정보 Delete
+  *****************************************************************************/
+  FUNCTION f_DeleteRentalAuthPhone (
+    v_rntMstId     IN RTCM0113.RNT_MST_ID%TYPE,
+    v_mobNo        IN RTCM0113.MOB_NO%TYPE,
+    v_regId        IN RTCM0113.REG_ID%TYPE,
+    v_ErrorText    OUT VARCHAR2
+  ) RETURN NUMBER IS
+  BEGIN
+  DELETE FROM RTCM0113
+  WHERE RNT_MST_ID = v_rntMstId
+  AND MOB_NO     = v_mobNo;
+
+  IF SQL%ROWCOUNT = 0 THEN
+        v_ErrorText := '삭제 대상 데이터가 존재하지 않습니다.';
+  RETURN -1;
+  END IF;
+
+  RETURN 0;
+  EXCEPTION
+    WHEN OTHERS THEN
+        v_ErrorText := SUBSTR(SQLERRM, 1, 200);
+  RETURN -1;
+  END f_DeleteRentalAuthPhone;
+
 END PKG_RTCM0110;
 /
